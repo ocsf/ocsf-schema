@@ -1,0 +1,42 @@
+{
+  "name": "Event Source",
+  "type": "event_source",
+  "description": "The event source object describes the collection context of the event. Events that originate from a monitored logging facility contain an event source object.",
+  "attributes": {
+    "type": {
+      "description": "The type of the event source."
+    },
+    "type_id": {
+      "description": "The type identifier of the source from which the event was derived.",
+      "requirement": "required",
+      "enum": {
+        "1": {
+          "name": "System",
+          "description": "The information was collected from the operating system event log such as Syslog on Unix/Linux and the System event file on Windows."
+        },
+        "2": {
+          "name": "Application",
+          "description": "The information was collected from an application log",
+          "notes": "For example, FTP, MSQL, MYSQL, ORACLE, APACHE, etc. The <b>Facility</b> attribute identifies the application and the <b>Facility Detail</b> attribute specifies the instance of the application (e.g., a database name)."
+        },
+        "3": {
+          "name": "Security",
+          "description": "The event was logged from a security subsystem.",
+          "notes": "For example, a system that audits activity of a security-relevant nature, including successful and unsuccessful logins, accesses and changes to objects (such as files and folders), system API call monitoring, etc.<p>On Windows this information is found in the Security event file.</p><p>On Unix-like systems there are usually two security subsystem sources: Audit trails for logins, logouts and failed login attempts to the system (the files wtmp, utmp, btmp and variants such as wtmpx, utmpx and btmpx are used to track this logon/logoff activity and Audit trails of Object access and System Call activity are tracked in Linux audit files (on some UNIX systems such as Solaris, AIX and HP-UX these are called C2 log files.)</p>"
+        },
+        "4": {
+          "name": "ETW",
+          "description": "The event was logged from the Event Tracing for Windows(ETW) facility."
+        }
+      }
+    },
+    "facility": {
+      "requirement": "required"
+    },
+    "facility_detail": {
+      "requirement": "required"
+    },
+    "facility_uid": {
+    }
+  }
+}

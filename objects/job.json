@@ -1,0 +1,67 @@
+{
+  "name": "Job",
+  "type": "job",
+  "description": "The job object describes the name, command line and state of a scheduled job.",
+  "attributes": {
+    "name": {
+      "description": "The name of the job.",
+      "requirement": "required"
+    },
+    "cmd_line": {
+      "description": "The job command line.",
+      "requirement": "recommended"
+    },
+    "created_time": {
+      "description": "The time that the job was created.",
+      "requirement": "recommended"
+    },
+    "desc": {
+      "description": "The description of the job.",
+      "requirement": "recommended"
+    },
+    "file": {
+      "description": "The file that pertains to the job.",
+      "requirement": "required"
+    },
+    "last_run_time": {
+      "description": "The time that the job was last run.",
+      "requirement": "recommended"
+    },
+    "next_run_time": {
+      "description": "The time that the job will next be run.",
+      "requirement": "optional"
+    },
+    "run_state": {
+      "description": "The run state of the job.",
+      "requirement": "optional"
+    },
+    "run_state_id": {
+      "description": "The run state ID of the job.",
+      "requirement": "recommended",
+      "enum": {
+        "-1": {
+          "name": "Other"
+        },
+        "0": {
+          "name": "Unknown"
+        },
+        "1": {
+          "name": "Ready"
+        },
+        "2": {
+          "name": "Queued"
+        },
+        "3": {
+          "name": "Running"
+        },
+        "4": {
+          "name": "Stopped"
+        }
+      }
+    },
+    "user": {
+      "description": "The user that created the job.",
+      "requirement": "optional"
+    }
+  }
+}

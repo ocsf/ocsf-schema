@@ -1,0 +1,104 @@
+{
+  "name": "DNS Answer Activity",
+  "type": "dns_answer_activity",
+  "uid": 423,
+  "category_id": "activity",
+  "extends": "event",
+  "description": "DNS Answer Activity events report a DNS answer.",
+  "attributes": {
+    "connection": {
+      "description": "The network connection, when TCP is used to make the DNS query.",
+      "requirement": "optional"
+    },
+    "server": {
+      "requirement": "optional"
+    },    
+    "dns_answers": {
+      "requirement": "required"
+    },
+    "outcome_id": {
+      "enum": {
+        "1": {
+          "name": "Resolved"
+        },
+        "2": {
+          "name": "Failed"
+        }
+      }
+    },
+    "response_id": {
+      "name": "DNS Response",
+      "description": "The DNS response code.",
+      "enum": {
+        "0": {
+          "name": "Unknown"
+        },
+        "1": {
+          "name": "Format Error"
+        },
+        "2": {
+          "name": "Server Failure"
+        },
+        "3": {
+          "name": "Non-Existent Domain "
+        },
+        "4": {
+          "name": "Not Implemented"
+        },
+        "5": {
+          "name": "Query Refused"
+        },
+        "6": {
+          "name": "Name Exists when it should not"
+        },
+        "7": {
+          "name": "RR Set Exists when it should not "
+        },
+        "8": {
+          "name": "RR Set that should exist does not "
+        },
+        "9": {
+          "name": "Not Authorized  "
+        },
+        "10": {
+          "name": "Name not contained in zone"
+        },
+        "11": {
+          "name": "DSO-TYPE Not Implemented"
+        },
+        "16": {
+          "name": "TSIG Signature Failure"
+        },
+        "17": {
+          "name": "Key not recognized"
+        },
+        "18": {
+          "name": "Signature out of time window"
+        },
+        "19": {
+          "name": "Bad TKEY Mode"
+        },
+        "20": {
+          "name": "Duplicate key name"
+        },
+        "21": {
+          "name": "Algorithm not supported"
+        },
+        "22": {
+          "name": "Bad Truncation"
+        },
+        "23": {
+          "name": "Bad/missing Server Cookie"
+        },
+        "-1": {
+          "name": "Other"
+        }
+      }
+    },
+    "severity_id": {
+      "enum": {
+        "1": {}
+      }
+    }
+  }
+}

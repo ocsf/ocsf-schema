@@ -1,0 +1,30 @@
+{
+  "name": "Email URL Activity",
+  "type": "email_url_activity",
+  "uid": 432,
+  "category_id": "activity",
+  "extends": "event",
+  "description": "Email URL Activity events report non-threatening URLs within an email.",
+  "attributes": {
+    "connection_ref_uid": {
+      "requirement": "optional"
+    },
+    "email_uid": {
+      "requirement": "required"
+    },
+    "outcome_id": {
+      "enum": {
+        "2": {
+          "name": "Allowed"
+        },
+        "4": {
+          "name": "Logged"
+        }
+      }
+    },
+    "url": {
+      "description": "The URL included in the email content.",
+      "requirement": "required"
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "name": "Module Detection",
+  "type": "module_detection",
+  "uid": 511,
+  "extends": "detection_event",
+  "description": "Module Detection events report the detection and resolution of module malicious activity.",
+  "attributes": {
+    "activity": {
+      "requirement": "optional"
+    },
+    "activity_id": {
+      "description": "The module activity.",
+      "requirement": "optional",
+      "enum": {
+        "0": {
+          "name": "Unknown"
+        },
+        "1": {
+          "name": "Load"
+        },
+        "2": {
+          "name": "Unload"
+        },
+        "-1": {
+          "name": "Other"
+        }
+      }
+    },
+    "module": {
+      "description": "The module object that triggered the detection.",
+      "requirement": "required"
+    },
+    "module_type": {
+      "requirement": "required"
+    },
+    "outcome_id": {
+      "enum": {
+        "1": {
+          "name": "Blocked"
+        },
+        "2": {
+          "name": "Allowed"
+        },
+        "3": {
+          "name": "No Action"
+        },
+        "4": {
+          "name": "Logged"
+        },
+        "5": {
+          "name": "Command Script Run"
+        },
+        "6": {
+          "name": "Corrected"
+        },
+        "7": {
+          "name": "Partially Corrected"
+        },
+        "8": {
+          "name": "Uncorrected"
+        },
+        "10": {
+          "name": "Delayed",
+          "description": "Requires reboot to finish the operation."
+        },
+        "11": {
+          "name": "Deleted"
+        },
+        "12": {
+          "name": "Quarantined"
+        },
+        "13": {
+          "name": "Restored"
+        },
+        "14": {
+          "name": "Detected"
+        }
+      }
+    },
+    "quarantine_uid": {
+      "description": "If the event id is one of:<ul><li>[12] Quarantined</li><li>[13] Restored</li></ul> the unique identifier of the item that was quarantined or restored from quarantine.",
+      "requirement": "optional"
+    }
+  }
+}

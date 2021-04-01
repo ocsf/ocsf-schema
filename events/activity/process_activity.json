@@ -1,0 +1,180 @@
+{
+  "name": "Process Activity",
+  "type": "process_activity",
+  "uid": 401,
+  "extends": "activity",
+  "description": "Process Activity events report when a process launches, injects, opens or terminates another process, successful or otherwise.",
+  "attributes": {
+    "outcome_id": {
+      "enum": {
+        "1": {
+          "name": "Launched"
+        },
+        "2": {
+          "name": "Terminated"
+        },
+        "3": {
+          "name": "Open"
+        },
+        "4": {
+          "name": "Injected"
+        },
+        "5": {
+          "name": "Set User ID"
+        }
+      }
+    },
+    "actual_permissions": {
+      "requirement": "optional",
+      "enum": {
+        "1": {
+          "name": "TERMINATE (Kill)"
+        },
+        "2": {
+          "name": "CREATE_THREAD"
+        },
+        "3": {
+          "name": "SET_SESSION_ID"
+        },
+        "4": {
+          "name": "VM_OPERATION"
+        },
+        "5": {
+          "name": "VM_READ"
+        },
+        "6": {
+          "name": "VM_WRITE"
+        },
+        "7": {
+          "name": "DUP_HANDLE"
+        },
+        "8": {
+          "name": "CREATE_PROCESS"
+        },
+        "9": {
+          "name": "SET_QUOTA"
+        },
+        "10": {
+          "name": "SET_INFORMATION"
+        },
+        "11": {
+          "name": "QUERY_INFORMATION"
+        },
+        "12": {
+          "name": "SUSPEND_RESUME"
+        },
+        "13": {
+          "name": "QUERY_LIMITED_INFORMATION"
+        },
+        "14": {
+          "name": "READ_REG (registers)"
+        },
+        "15": {
+          "name": "WRITE_REG (registers)"
+        },
+        "16": {
+          "name": "PROC_READ"
+        },
+        "17": {
+          "name": "PROC_WRITE"
+        },
+        "18": {
+          "name": "CONTROL"
+        },
+        "19": {
+          "name": "ATTACH"
+        }
+      }
+    },
+    "injection_type_id": {
+      "requirement": "optional",
+      "enum": {
+        "0": {
+          "name": "Unknown"
+        },
+        "1": {
+          "name": "Remote Thread"
+        },
+        "2": {
+          "name": "Accessibility APIs"
+        },
+        "3": {
+          "name": "Process Manipulation APIs"
+        }
+      }
+    },
+    "process": {
+      "description": "The process that was launched, injected, opened or terminated.",
+      "requirement": "required"
+    },
+    "requested_permissions": {
+      "requirement": "optional",
+      "enum": {
+        "1": {
+          "name": "TERMINATE (Kill)"
+        },
+        "2": {
+          "name": "CREATE_THREAD"
+        },
+        "3": {
+          "name": "SET_SESSION_ID"
+        },
+        "4": {
+          "name": "VM_OPERATION"
+        },
+        "5": {
+          "name": "VM_READ"
+        },
+        "6": {
+          "name": "VM_WRITE"
+        },
+        "7": {
+          "name": "DUP_HANDLE"
+        },
+        "8": {
+          "name": "CREATE_PROCESS"
+        },
+        "9": {
+          "name": "SET_QUOTA"
+        },
+        "10": {
+          "name": "SET_INFORMATION"
+        },
+        "11": {
+          "name": "QUERY_INFORMATION"
+        },
+        "12": {
+          "name": "SUSPEND_RESUME"
+        },
+        "13": {
+          "name": "QUERY_LIMITED_INFORMATION"
+        },
+        "14": {
+          "name": "READ_REG (registers)"
+        },
+        "15": {
+          "name": "WRITE_REG (registers)"
+        },
+        "16": {
+          "name": "PROC_READ"
+        },
+        "17": {
+          "name": "PROC_WRITE"
+        },
+        "18": {
+          "name": "CONTROL"
+        },
+        "19": {
+          "name": "ATTACH"
+        }
+      }
+    },
+    "session": {
+      "description": "The user session from which the process was launched.",
+      "requirement": "optional"
+    },
+    "user": {
+      "description": "The user that started/created the new process."
+    }
+  }
+}

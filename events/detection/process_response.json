@@ -1,0 +1,28 @@
+{
+  "name": "Process Response",
+  "type": "process_response",
+  "uid": 515,
+  "extends": "response",
+  "description": "Process response events report process actions that were taken in response to a detection.",
+  "attributes": {
+    "outcome_id": {
+      "enum": {
+        "4": {
+          "name": "Logged"
+        },
+        "10": {
+          "name": "Delayed",
+          "description": "Requires reboot to finish the operation."
+        },
+        "15": {
+          "name": "Terminated"
+        }
+      }
+    },
+    "process": {
+      "name": "Process",
+      "description": "The process that pertains to the response action.",
+      "requirement": "required"
+    }
+  }
+}

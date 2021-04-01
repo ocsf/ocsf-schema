@@ -1,0 +1,62 @@
+{
+  "name": "Entity Change",
+  "type": "entity_change",
+  "uid": 504,
+  "extends": "detection",
+  "description": "Entity Change events report when an entity state changes that impact the security of the entity.",
+  "attributes": {
+    "curr_security_level_id": {
+      "requirement": "required",
+      "enum": {
+        "0": {
+          "name": "Unknown"
+        },
+        "1": {
+          "name": "Secure"
+        },
+        "2": {
+          "name": "At Risk"
+        },
+        "3": {
+          "name": "Compromised"
+        }
+      }
+    },
+    "curr_security_state": {
+      "requirement": "required"
+    },
+    "entity": {
+      "requirement": "required"
+    },
+    "entity_result": {
+      "requirement": "optional"
+    },
+    "outcome_id": {
+      "enum": {
+        "4": {
+          "name": "Logged"
+        }
+      }
+    },
+    "prev_security_level_id": {
+      "requirement": "required",
+      "enum": {
+        "0": {
+          "name": "Unknown"
+        },
+        "1": {
+          "name": "Secure"
+        },
+        "2": {
+          "name": "At Risk"
+        },
+        "3": {
+          "name": "Compromised"
+        }
+      }
+    },
+    "prev_security_state": {
+      "requirement": "required"
+    }
+  }
+}

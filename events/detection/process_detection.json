@@ -1,0 +1,236 @@
+{
+  "name": "Process Detection",
+  "type": "process_detection",
+  "uid": 514,
+  "extends": "detection_event",
+  "description": "Process Detection events report the detection and resolution of process malicious activity.",
+  "attributes": {
+    "activity_id": {
+      "description": "The process activity.",
+      "requirement": "optional",
+      "enum": {
+        "0": {
+          "name": "Unknown"
+        },
+        "1": {
+          "name": "Launch"
+        },
+        "2": {
+          "name": "Terminate"
+        },
+        "3": {
+          "name": "Open"
+        },
+        "4": {
+          "name": "Inject"
+        },
+        "5": {
+          "name": "Set User ID"
+        },
+        "-1": {
+          "name": "Other"
+        }
+      }
+    },
+    "actual_permissions": {
+      "requirement": "optional",
+      "enum": {
+        "1": {
+          "name": "Terminate (kill)"
+        },
+        "2": {
+          "name": "Create Thread"
+        },
+        "3": {
+          "name": "Set Session ID"
+        },
+        "4": {
+          "name": "VM Operation"
+        },
+        "5": {
+          "name": "VM Read"
+        },
+        "6": {
+          "name": "VM Write"
+        },
+        "7": {
+          "name": "Duplicate Handle"
+        },
+        "8": {
+          "name": "Create Process"
+        },
+        "9": {
+          "name": "Set Quota"
+        },
+        "10": {
+          "name": "Set Information"
+        },
+        "11": {
+          "name": "Query Information"
+        },
+        "12": {
+          "name": "Suspend/Resume"
+        },
+        "13": {
+          "name": "Query Limited Information"
+        },
+        "14": {
+          "name": "Read Registers"
+        },
+        "15": {
+          "name": "Write Registers"
+        },
+        "16": {
+          "name": "Process Read"
+        },
+        "17": {
+          "name": "Process Write"
+        },
+        "18": {
+          "name": "Control"
+        },
+        "19": {
+          "name": "Attach"
+        }
+      }
+    },
+    "injection_type_id": {
+      "requirement": "optional",
+      "enum": {
+        "0": {
+          "name": "Unknown"
+        },
+        "1": {
+          "name": "Remote Thread"
+        },
+        "2": {
+          "name": "Accessibility APIs"
+        },
+        "3": {
+          "name": "Process Manipulation APIs"
+        }
+      }
+    },
+    "outcome_id": {
+      "enum": {
+        "1": {
+          "name": "Blocked"
+        },
+        "2": {
+          "name": "Allowed"
+        },
+        "3": {
+          "name": "No Action"
+        },
+        "4": {
+          "name": "Logged"
+        },
+        "5": {
+          "name": "Command Script Run"
+        },
+        "6": {
+          "name": "Corrected"
+        },
+        "7": {
+          "name": "Partially Corrected"
+        },
+        "8": {
+          "name": "Uncorrected"
+        },
+        "10": {
+          "name": "Delayed",
+          "description": "Requires reboot to finish the operation."
+        },
+        "11": {
+          "name": "Deleted"
+        },
+        "12": {
+          "name": "Quarantined"
+        },
+        "13": {
+          "name": "Restored"
+        },
+        "14": {
+          "name": "Detected"
+        },
+        "15": {
+          "name": "Terminated"
+        }
+      }
+    },
+    "process": {
+      "description": "The process that triggered the detection.",
+      "requirement": "required"
+    },
+    "quarantine_uid": {
+      "description": "If the event id is one of:<ul><li>[12] Quarantined</li><li>[13] Restored</li></ul>the unique identifier of the item that was quarantined or restored from quarantine.",
+      "requirement": "optional"
+    },
+    "requested_permissions": {
+      "description": "The permissions requested by the actor process.",
+      "requirement": "optional",
+      "enum": {
+        "1": {
+          "name": "Terminate (kill)"
+        },
+        "2": {
+          "name": "Create Thread"
+        },
+        "3": {
+          "name": "Set Session ID"
+        },
+        "4": {
+          "name": "VM Operation"
+        },
+        "5": {
+          "name": "VM Read"
+        },
+        "6": {
+          "name": "VM Write"
+        },
+        "7": {
+          "name": "Duplicate Handle"
+        },
+        "8": {
+          "name": "Create Process"
+        },
+        "9": {
+          "name": "Set Quota"
+        },
+        "10": {
+          "name": "Set Information"
+        },
+        "11": {
+          "name": "Query Information"
+        },
+        "12": {
+          "name": "Suspend/Resume"
+        },
+        "13": {
+          "name": "Query Limited Information"
+        },
+        "14": {
+          "name": "Read Registers"
+        },
+        "15": {
+          "name": "Write Registers"
+        },
+        "16": {
+          "name": "Process Read"
+        },
+        "17": {
+          "name": "Process Write"
+        },
+        "18": {
+          "name": "Control"
+        },
+        "19": {
+          "name": "Attach"
+        }
+      }
+    },
+    "resource": {
+      "requirement": "required"
+    }
+  }
+}

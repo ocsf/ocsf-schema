@@ -1,0 +1,63 @@
+{
+  "name": "Email URL Detection",
+  "type": "email_url_detection",
+  "uid": 503,
+  "extends": "detection",
+  "description": "Email URL Detection events report the detection and resolution of URL threats within emails.",
+  "attributes": {
+    "connection_ref_uid": {
+      "requirement": "optional"
+    },
+    "email_uid": {
+      "requirement": "required"
+    },
+    "http_status": {
+      "requirement": "optional"
+    },
+    "outcome_id": {
+      "enum": {
+        "1": {
+          "name": "Blocked"
+        },
+        "2": {
+          "name": "Allowed"
+        },
+        "4": {
+          "name": "Logged"
+        },
+        "5": {
+          "name": "Isolated"
+        },
+        "12": {
+          "name": "Quarantined"
+        },
+        "16": {
+          "name": "Tagged"
+        }
+      }
+    },
+    "quarantine_uid": {
+      "requirement": "optional"
+    },
+    "reason_id": {
+      "requirement": "required"
+    },
+    "request_headers": {
+      "requirement": "optional"
+    },
+    "resource_type": {
+      "requirement": "optional"
+    },
+    "response_headers": {
+      "requirement": "optional"
+    },
+    "threat": {
+      "description": "The primary threat in the URL.",
+      "requirement": "required"
+    },
+    "url": {
+      "description": "The URL that triggered the detection.",
+      "requirement": "required"
+    }
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "name": "Network Information",
+  "type": "network_info",
+  "description": "The network information object describes the type, reputation, and associated addresses and service set identifiers of a network interface.",
+  "attributes": {
+    "type": {
+      "description": "The type of network.",
+      "requirement": "optional"
+    },
+    "type_id": {
+      "description": "The network type identifier.",
+      "requirement": "required",
+      "enum": {
+        "0": {
+          "name": "Unknown"
+        },
+        "1": {
+          "name": "Wired"
+        },
+        "2": {
+          "name": "Wireless"
+        },
+        "3": {
+          "name": "Mobile"
+        },
+        "-1": {
+          "name": "Other"
+        }
+      }
+    },
+    "bssid": {
+      "requirement": "recommended"
+    },
+    "gateway_ip": {
+      "requirement": "optional"
+    },
+    "gateway_mac": {
+      "requirement": "optional"
+    },
+    "ipv4": {
+      "requirement": "recommended"
+    },
+    "ipv6": {
+      "requirement": "recommended"
+    },
+    "is_public": {
+      "requirement": "optional"
+    },
+    "mac": {
+      "requirement": "recommended"
+    },
+    "rep_score_id": {
+      "description": "The reputation of the network.",
+      "requirement": "recommended",
+      "enum": {
+        "0": {
+          "name": "Unknown"
+        },
+        "1": {
+          "name": "Very Safe"
+        },
+        "2": {
+          "name": "Safe"
+        },
+        "3": {
+          "name": "Probably Safe"
+        },
+        "4": {
+          "name": "Leans Safe"
+        },
+        "5": {
+          "name": "May not be Safe"
+        },
+        "6": {
+          "name": "Exercise Caution"
+        },
+        "8": {
+          "name": "Possibly Malicious"
+        },
+        "9": {
+          "name": "Probably Malicious"
+        },
+        "10": {
+          "name": "Malicious"
+        },
+        "-1": {
+          "name": "Other"
+        }
+      }
+    },
+    "ssid": {
+      "requirement": "recommended"
+    }
+  }
+}

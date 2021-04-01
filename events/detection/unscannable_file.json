@@ -1,0 +1,43 @@
+{
+  "name": "Unscannable File",
+  "type": "unscannable_file",
+  "uid": 522,
+  "extends": "detection",
+  "description": "Unscannable file events report files that could not be scanned and the reasons why.",
+  "attributes": {
+    "component": {
+      "requirement": "recommended"
+    },
+    "file": {
+      "description": "The file that could not be scanned.",
+      "requirement": "required"
+    },
+    "outcome_id": {
+      "enum": {
+        "1": {
+          "name": "Permission Denied"
+        },
+        "2": {
+          "name": "Encrypted"
+        },
+        "3": {
+          "name": "Too Large"
+        },
+        "4": {
+          "name": "Error"
+        },
+        "5": {
+          "name": "Malformed"
+        }
+      }
+    },
+    "scan_name": {
+      "description": "The name of the scan - an administrator-supplied name or an application-generated summary of the scan task. For example: <ul><li>Home office weekly user database scan</li><li>Scan folders for viruses</li><li>Full system virus scan</li></ul><p>Recommended maximum length of 256.</p>",
+      "requirement": "required"
+    },
+    "scan_uid": {
+      "description": "The application-generated unique identifier that is used to associate detection events with this SCAN event.",
+      "requirement": "recommended"
+    }
+  }
+}

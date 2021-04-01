@@ -1,0 +1,58 @@
+{
+  "name": "File Content Protection",
+  "type": "file_content_protection",
+  "uid": 604,
+  "extends": "information_protection",
+  "description": "File Content Protection events report the detection and resolution of file content policy violations.",
+  "attributes": {
+    "activity": {
+      "requirement": "optional"
+    },
+    "app_name": {
+      "requirement": "optional"
+    },
+    "app_uid": {
+      "requirement": "optional"
+    },
+    "direction_id": {
+      "description": "The direction of the initiated file transfer.",
+      "requirement": "optional",
+      "enum": {
+        "0": {
+          "name": "Unknown",
+          "description": "The email direction is unknown."
+        },
+        "1": {
+          "name": "Inbound",
+          "description": "The email is incoming."
+        },
+        "2": {
+          "name": "Outbound",
+          "description": "The email is outgoing."
+        }
+      }      
+    },
+    "file": {
+      "description": "The file that triggered the detection.",
+      "requirement": "required"
+    },
+    "first_seen_time": {
+      "requirement": "recommended"
+    },
+    "http_user_agent": {
+      "requirement": "optional"
+    },
+    "scan_uid": {
+      "requirement": "recommended"
+    },
+    "scan_name": {
+      "requirement": "recommended"
+    },
+    "scan_type": {
+      "requirement": "recommended"
+    },
+    "sender_email": {
+      "requirement": "optional"
+    }
+  }
+}

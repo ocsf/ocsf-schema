@@ -1,0 +1,42 @@
+{
+  "name": "Host DNS Query Activity",
+  "type": "host_dns_query_activity",
+  "uid": 417,
+  "extends": "activity",
+  "description": "Host DNS Query Activity events report a single DNS query initiated by a host application.",
+  "attributes": {
+    "connection": {
+      "requirement": "optional"
+    },
+    "dns_query": {
+      "requirement": "required"
+    },
+    "outcome_id": {
+      "enum": {
+        "1": {
+          "name": "Query"
+        },
+        "2": {
+          "name": "Status"
+        },
+        "3": {
+          "name": "Notify"
+        },
+        "4": {
+          "name": "Update"
+        },
+        "5": {
+          "name": "DNS Stateful Operations (DSO)"
+        }
+      }
+    },
+    "proxy": {
+      "requirement": "optional"
+    },
+    "severity_id": {
+      "enum": {
+        "1": {}
+      }
+    }
+  }
+}

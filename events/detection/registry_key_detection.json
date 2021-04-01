@@ -1,0 +1,192 @@
+{
+  "name": "Registry Key Detection",
+  "type": "registry_key_detection",
+  "uid": 516,
+  "extends": "detection_event",
+  "description": "Registry Key Detection events report the detection and resolution of registry key malicious access.",
+  "attributes": {
+    "access_mask": {
+      "requirement": "optional"
+    },
+    "access_mask_ids": {
+      "requirement": "optional",
+      "enum": {
+        "1": {
+          "name": "Generic Read"
+        },
+        "2": {
+          "name": "Generic Write"
+        },
+        "3": {
+          "name": "Generic Execute"
+        },
+        "4": {
+          "name": "Generic All"
+        },
+        "5": {
+          "name": "Delete"
+        },
+        "6": {
+          "name": "Write DAC"
+        },
+        "7": {
+          "name": "Write Owner"
+        },
+        "16": {
+          "name": "Read Attributes"
+        },
+        "17": {
+          "name": "Write Attributes"
+        },
+        "18": {
+          "name": "Read Control"
+        },
+        "19": {
+          "name": "Access System Security"
+        },
+        "20": {
+          "name": "Max Allowed"
+        },
+        "21": {
+          "name": "Query Value"
+        },
+        "22": {
+          "name": "Set Value"
+        },
+        "23": {
+          "name": "Create Sub Key"
+        },
+        "24": {
+          "name": "Enum Sub Keys"
+        },
+        "25": {
+          "name": "Notify"
+        },
+        "26": {
+          "name": "Create Link"
+        }
+      }
+    },
+    "activity": {
+      "requirement": "optional"
+    },
+    "activity_id": {
+      "description": "The registry key activity.",
+      "requirement": "optional",
+      "enum": {
+        "0": {
+          "name": "Unknown"
+        },
+        "1": {
+          "name": "Create"
+        },
+        "2": {
+          "name": "Delete"
+        },
+        "3": {
+          "name": "Open"
+        },
+        "4": {
+          "name": "Rename"
+        },
+        "5": {
+          "name": "Set Security"
+        },
+        "6": {
+          "name": "Restore"
+        },
+        "-1": {
+          "name": "Other"
+        }
+      }
+    },
+    "create_mask": {
+      "requirement": "optional"
+    },
+    "create_mask_id": {
+      "description": "The Windows setting needed to create a registry key",
+      "requirement": "optional",
+      "enum": {
+        "0": {
+          "name": "REG_OPTION_NON_VOLATILE",
+          "description": "(Default) - This key is not volatile. The information is stored in a file and is preserved when the system is restarted."
+        },
+        "1": {
+          "name": "REG_OPTION_VOLATILE",
+          "description": "All keys created by the function are volatile. The information is stored in memory and is not preserved when the corresponding registry hive is unloaded."
+        },
+        "2": {
+          "name": "REG_OPTION_CREATE_LINK",
+          "description": "This key is a symbolic link."
+        },
+        "4": {
+          "name": "REG_OPTION_BACKUP_RESTORE",
+          "description": "Attempts to open the key with the access required to backup or restore the key."
+        }
+      }
+    },
+    "open_mask_id": {
+      "description": "The Windows setting needed to open a registry key.",
+      "requirement": "optional",
+      "enum": {
+        "0": {
+          "name": "NONE",
+          "description": "Default"
+        },
+        "8": {
+          "name": "REG_OPTION_OPEN_LINK",
+          "description": "The key is a symbolic link"
+        }
+      }
+    },
+    "outcome_id": {
+      "enum": {
+        "1": {
+          "name": "Blocked"
+        },
+        "2": {
+          "name": "Allowed"
+        },
+        "3": {
+          "name": "No Action"
+        },
+        "4": {
+          "name": "Logged"
+        },
+        "5": {
+          "name": "Command Script"
+        },
+        "6": {
+          "name": "Corrected"
+        },
+        "7": {
+          "name": "Partially Corrected"
+        },
+        "8": {
+          "name": "Uncorrected"
+        },
+        "10": {
+          "name": "Delayed",
+          "description": "Requires reboot to finish the operation."
+        },
+        "11": {
+          "name": "Deleted"
+        },
+        "13": {
+          "name": "Restored"
+        },
+        "14": {
+          "name": "Detected"
+        }
+      }
+    },
+    "reg_key": {
+      "description": "The registry key that triggered the detection.",
+      "requirement": "required"
+    },
+    "reg_key_result": {
+      "description": "The resulting registry key; for example, if a Registry key operation is ALLOWED, the resulting registry key can be included in the event.",
+      "requirement": "optional"
+    }
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "attributes": {
+    "cmd_line": {
+      "requirement": "recommended"
+    },
+    "created_time": {
+      "description": "The time that the process created/started.",
+      "requirement": "optional"
+    },
+    "file": {
+      "description": "The process file object.",
+      "requirement": "required"
+    },
+    "integrity": {
+      "requirement": "optional"
+    },
+    "integrity_id": {
+      "enum": {
+        "-1": {
+          "name": "Other"
+        },
+        "0": {
+          "name": "Unknown"
+        },
+        "1": {
+          "name": "Untrusted"
+        },
+        "2": {
+          "name": "Low"
+        },
+        "3": {
+          "name": "Medium"
+        },
+        "4": {
+          "name": "High"
+        },
+        "5": {
+          "name": "System"
+        },
+        "6": {
+          "name": "Protected"
+        }
+      },
+      "requirement": "optional"
+    },
+    "loaded_modules": {
+      "requirement": "optional"
+    },
+    "name": {
+      "description": "The friendly name of the process, for example: <code>Notepad++</code>.",
+      "requirement": "recommended"
+    },
+    "pid": {
+      "requirement": "required"
+    },
+    "sandbox": {
+      "requirement": "optional"
+    },
+    "tid": {
+      "requirement": "optional"
+    },
+    "uid": {
+      "description": "The process unique identifier, as reported by the event source. For examples a process-generated UUID or Sysmon Process GUIDs, which  some uniquely identifies the process.",
+      "name": "Process UID",
+      "requirement": "optional"
+    },
+    "xattributes": {
+      "description": "An unordered collection of zero or more name/value pairs that represent a process extended attribute.",
+      "requirement": "optional"
+    }
+  },
+  "description": "The process object describes a running instance of a launched program.",
+  "name": "Process",
+  "type": "process"
+}

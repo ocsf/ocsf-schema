@@ -1,0 +1,138 @@
+{
+  "name": "Registry Key Activity",
+  "type": "registry_key_activity",
+  "uid": 405,
+  "extends": "activity",
+  "description": "Registry Key Activity events report when a process performs an action on a Windows registry key.",
+  "attributes": {
+    "access_mask": {
+      "requirement": "optional"
+    },
+    "access_mask_ids": {
+      "requirement": "optional",
+      "enum": {
+        "1": {
+          "name": "GENERIC_READ"
+        },
+        "2": {
+          "name": "GENERIC_WRITE"
+        },
+        "3": {
+          "name": "GENERIC_EXECUTE"
+        },
+        "4": {
+          "name": "GENERIC_ALL"
+        },
+        "5": {
+          "name": "DELETE"
+        },
+        "6": {
+          "name": "WRITE_DAC"
+        },
+        "7": {
+          "name": "WRITE_OWNER"
+        },
+        "16": {
+          "name": "READ_ATTRIBUTES"
+        },
+        "17": {
+          "name": "WRITE_ATTRIBUTES"
+        },
+        "18": {
+          "name": "READ_CONTROL"
+        },
+        "19": {
+          "name": "ACCESS_SYSTEM_SECURITY"
+        },
+        "20": {
+          "name": "MAX_ALLOWED"
+        },
+        "21": {
+          "name": "QUERY_VALUE"
+        },
+        "22": {
+          "name": "SET_VALUE"
+        },
+        "23": {
+          "name": "CREATE_SUB_KEY"
+        },
+        "24": {
+          "name": "ENUM_SUB_KEYS"
+        },
+        "25": {
+          "name": "NOTIFY"
+        },
+        "26": {
+          "name": "CREATE_LINK"
+        }
+      }
+    },
+    "create_mask": {
+      "requirement": "optional"
+    },
+    "create_mask_id": {
+      "description": "The Windows setting needed to create a registry key.",
+      "requirement": "required",
+      "enum": {
+        "0": {
+          "name": "REG_OPTION_NON_VOLATILE",
+          "description": "(Default) - This key is not volatile. The information is stored in a file and is preserved when the system is restarted."
+        },
+        "1": {
+          "name": "REG_OPTION_VOLATILE",
+          "description": "All keys created by the function are volatile. The information is stored in memory and is not preserved when the corresponding registry hive is unloaded."
+        },
+        "2": {
+          "name": "REG_OPTION_CREATE_LINK",
+          "description": "This key is a symbolic link."
+        },
+        "4": {
+          "name": "REG_OPTION_BACKUP_RESTORE",
+          "description": "Attempts to open the key with the access required to backup or restore the key."
+        }
+      }
+    },
+    "open_mask_id": {
+      "description": "The Windows setting needed to open a registry key.",
+      "requirement": "required",
+      "enum": {
+        "0": {
+          "name": "NONE",
+          "description": "(Default)"
+        },
+        "8": {
+          "name": "REG_OPTION_OPEN_LINK",
+          "description": "The key is a symbolic link"
+        }
+      }
+    },
+    "outcome_id": {
+      "enum": {
+        "1": {
+          "name": "Created"
+        },
+        "2": {
+          "name": "Deleted"
+        },
+        "3": {
+          "name": "Opened"
+        },
+        "4": {
+          "name": "Renamed"
+        },
+        "5": {
+          "name": "Set Security Descriptor"
+        },
+        "6": {
+          "name": "Restored"
+        }
+      }
+    },
+    "reg_key": {
+      "requirement": "required"
+    },
+    "reg_key_result": {
+      "requirement": "optional"
+    }
+  }
+}

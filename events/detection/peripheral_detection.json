@@ -1,0 +1,57 @@
+{
+  "name": "Peripheral Device Detection",
+  "type": "peripheral_detection",
+  "uid": 513,
+  "extends": "detection_event",
+  "description": "Peripheral Device Detection events report the detection and resolution of peripheral device activity.",
+  "attributes": {
+    "activity": {
+      "requirement": "optional"
+    },
+    "activity_id": {
+      "description": "The peripheral device activity.",
+      "requirement": "required",
+      "enum": {
+        "0": {
+          "name": "Unknown"
+        },
+        "1": {
+          "name": "Read"
+        },
+        "2": {
+          "name": "Write"
+        },
+        "3": {
+          "name": "Delete"
+        },
+        "4": {
+          "name": "Device Mount"
+        },
+        "5": {
+          "name": "Execute"
+        },
+        "-1": {
+          "name": "Other"
+        }
+      }
+    },
+    "file": {
+      "description": "The file that pertains to the detection event.",
+      "requirement": "optional"
+    },
+    "outcome_id": {
+      "enum": {
+        "1": {
+          "name": "Blocked"
+        },
+        "2": {
+          "name": "Allowed"
+        }
+      }
+    },
+    "peripheral_device": {
+      "description": "The peripheral device object that triggered the detection.",
+      "requirement": "required"
+    }
+  }
+}

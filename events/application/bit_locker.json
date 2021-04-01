@@ -1,0 +1,38 @@
+{
+  "name": "BitLocker",
+  "type": "bit_locker",
+  "uid": 304,
+  "extends": "application",
+  "description": "BitLocker events report volume encryption and decryption activity.",
+  "attributes": {
+    "outcome_id": {
+      "enum": {
+        "1": {
+          "name": "Encryption Failed"
+        },
+        "2": {
+          "name": "Encryption Started"
+        },
+        "3": {
+          "name": "Encryption Finished"
+        },
+        "10": {
+          "name": "Recovery Key Recycled"
+        }
+      }
+    },
+    "recovery_key_uid": {
+      "description": "The unique identifier of the recovery key. Required for <b>Recovery Key Recycled</b>",
+      "requirement": "optional"
+    },
+    "severity_id": {
+      "enum": {
+        "1": {},
+        "4": {}
+      }
+    },
+    "volume_uid": {
+      "requirement": "required"
+    }
+  }
+}

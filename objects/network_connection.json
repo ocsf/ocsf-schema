@@ -1,0 +1,56 @@
+{
+  "name": "Network Connection",
+  "type": "network_connection",
+  "description": "The network connection object describes the protocol, direction, source, and destination of a network connection.",
+  "attributes": {
+    "direction_id": {
+      "requirement": "required",
+      "enum": {
+        "0": {
+          "name": "Unknown",
+          "description": "Connection direction is unknown, for example as for a CLOSE operation."
+        },
+        "1": {
+          "name": "Inbound",
+          "description": "Accepted an inbound connection"
+        },
+        "2": {
+          "name": "Outbound",
+          "description": "Initiated an outbound connection"
+        },
+        "3": {
+          "name": "Local",
+          "description": "Accepted an connection between two endpoints on the same device"
+        },
+        "4": {
+          "name": "Internal",
+          "description": "Accepted an internal connection"
+        },
+        "5": {
+          "name": "External",
+          "description": "Accepted an external connection"
+        }
+      }
+    },
+    "dst": {
+      "requirement": "required"
+    },
+    "ether_type": {
+      "requirement": "optional"
+    },
+    "protocol_id": {
+      "requirement": "optional"
+    },
+    "src": {
+      "requirement": "required"
+    },
+    "tcp_flags": {
+      "requirement": "optional"
+    },
+    "uid": {
+      "name": "Connection Unique ID",
+      "description": "The unique identifier of the connection.",
+      "requirement": "optional"
+    }
+  }
+}

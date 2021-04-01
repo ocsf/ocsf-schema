@@ -1,0 +1,49 @@
+{
+  "name": "Registry Key Response",
+  "type": "registry_key_response",
+  "uid": 517,
+  "extends": "response",
+  "description": "Registry Key Response events report registry key actions that were taken in response to a detection.",
+  "attributes": {
+    "outcome_id": {
+      "enum": {
+        "1": {
+          "name": "Blocked"
+        },
+        "2": {
+          "name": "Allowed"
+        },
+        "3": {
+          "name": "No Action"
+        },
+        "4": {
+          "name": "Logged"
+        },
+        "5": {
+          "name": "Command Script"
+        },
+        "8": {
+          "name": "Uncorrected"
+        },
+        "10": {
+          "name": "Delayed",
+          "description": "Requires reboot to finish the operation."
+        },
+        "11": {
+          "name": "Deleted"
+        },
+        "13": {
+          "name": "Restored"
+        },
+        "14": {
+          "name": "Detected"
+        }
+      }
+    },
+    "reg_key": {
+      "name": "Registry key",
+      "description": "The registry key that pertains to the response action.",
+      "requirement": "required"
+    }
+  }
+}

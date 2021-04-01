@@ -1,0 +1,79 @@
+{
+  "name": "Memory Detection",
+  "type": "memory_detection",
+  "uid": 510,
+  "extends": "detection_event",
+  "description": "Memory Detection events report the detection and resolution of malicious memory access.",
+  "attributes": {
+    "activity": {
+      "requirement": "optional"
+    },
+    "activity_id": {
+      "description": "The memory activity.",
+      "requirement": "optional",
+      "enum": {
+        "0": {
+          "name": "Unknown"
+        },
+        "1": {
+          "name": "Page Allocated"
+        },
+        "2": {
+          "name": "Page Modified"
+        },
+        "3": {
+          "name": "Page Deleted"
+        },
+        "4": {
+          "name": "Buffer Overflow"
+        },
+        "5": {
+          "name": "Disabled DEP",
+          "description": "Data Execution Permission"
+        },
+        "6": {
+          "name": "Enabled DEP",
+          "description": "Data Execution Permission"
+        },
+        "-1": {
+          "name": "Other"
+        }
+      }
+    },
+    "outcome_id": {
+      "enum": {
+        "1": {
+          "name": "Blocked"
+        },
+        "2": {
+          "name": "Allowed"
+        },
+        "3": {
+          "name": "No Action"
+        },
+        "4": {
+          "name": "Logged"
+        },
+        "5": {
+          "name": "Command Script Run"
+        },
+        "6": {
+          "name": "Corrected"
+        },
+        "7": {
+          "name": "Partially Corrected"
+        },
+        "8": {
+          "name": "Uncorrected"
+        },
+        "10": {
+          "name": "Delayed",
+          "description": "Requires reboot to finish the operation."
+        },
+        "14": {
+          "name": "Detected"
+        }
+      }
+    }
+  }
+}

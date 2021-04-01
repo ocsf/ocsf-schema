@@ -1,0 +1,165 @@
+{
+  "name": "File Detection",
+  "type": "file_detection",
+  "uid": 505,
+  "extends": "detection_event",
+  "description": "File Detection events report the detection and resolution of file malicious activity.",
+  "attributes": {
+    "access_mask": {
+      "requirement": "optional"
+    },
+    "access_mask_ids": {
+      "requirement": "optional"
+    },
+    "activity": {
+      "requirement": "optional"
+    },
+    "activity_id": {
+      "description": "The file activity.",
+      "requirement": "optional",
+      "enum": {
+        "0": {
+          "name": "Unknown"
+        },
+        "1": {
+          "name": "Create"
+        },
+        "2": {
+          "name": "Delete"
+        },
+        "3": {
+          "name": "Open"
+        },
+        "4": {
+          "name": "Rename"
+        },
+        "5": {
+          "name": "Modify"
+        },
+        "6": {
+          "name": "Set Attributes"
+        },
+        "7": {
+          "name": "Set Security"
+        },
+        "8": {
+          "name": "Get Attributes"
+        },
+        "9": {
+          "name": "Get Security"
+        },
+        "10": {
+          "name": "Encrypt"
+        },
+        "11": {
+          "name": "Decrypt"
+        },
+        "-1": {
+          "name": "Other"
+        }
+      }
+    },
+    "component": {
+      "requirement": "optional"
+    },
+    "connection_ref_uid": {
+      "requirement": "optional"
+    },
+    "content_ver": {},
+    "create_mask": {
+      "requirement": "optional"
+    },
+    "create_mask_id": {
+      "description": "The Windows create file flag, applicable to System Activity File Create event.",
+      "requirement": "optional",
+      "enum": {
+        "1": {
+          "name": "Create New"
+        },
+        "2": {
+          "name": "Create Always"
+        },
+        "3": {
+          "name": "Open Existing"
+        },
+        "4": {
+          "name": "Open Always"
+        },
+        "5": {
+          "name": "Truncate Existing"
+        }
+      }
+    },
+    "file": {
+      "description": "The file that triggered the detection.",
+      "requirement": "required"
+    },
+    "file_diff": {
+      "requirement": "optional"
+    },
+    "file_result": {
+      "description": "The resulting file object; for example, if a file operation is ALLOWED, the resulting file object can be included in the event.",
+      "requirement": "optional"
+    },
+    "outcome_id": {
+      "enum": {
+        "1": {
+          "name": "Blocked"
+        },
+        "2": {
+          "name": "Allowed"
+        },
+        "3": {
+          "name": "No Action"
+        },
+        "4": {
+          "name": "Logged"
+        },
+        "5": {
+          "name": "Command Script Run"
+        },
+        "6": {
+          "name": "Corrected"
+        },
+        "7": {
+          "name": "Partially Corrected"
+        },
+        "8": {
+          "name": "Uncorrected"
+        },
+        "10": {
+          "name": "Delayed",
+          "description": "Requires reboot to finish the operation."
+        },
+        "11": {
+          "name": "Deleted"
+        },
+        "12": {
+          "name": "Quarantined"
+        },
+        "13": {
+          "name": "Restored"
+        },
+        "14": {
+          "name": "Detected"
+        },
+        "15": {
+          "name": "Exonerated",
+          "description": "No longer suspicious (re-scored)."
+        },
+        "16": {
+          "name": "Tagged",
+          "description": "Marked with extended attributes."
+        }
+      }
+    },
+    "quarantine_uid": {
+      "description": "If the event disposition is one of:<ul><li>[12] QUARANTINED</li><li>[13] RESTORED (from quarantine)</li></ul>include the unique identifier of the item that was quarantined or restored from quarantine.",
+      "requirement": "optional"
+    },
+    "scan_uid": {
+      "description": "The application-generated unique ID of the scan, if applicable, that caused the detection event.",
+      "requirement": "optional"
+    }
+  }
+}

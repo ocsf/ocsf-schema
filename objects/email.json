@@ -1,0 +1,54 @@
+{
+  "name": "Email",
+  "type": "email",
+  "description": "The Email object describes the email metadata such as sender, recipients, and direction.",
+  "attributes": {
+    "direction_id": {
+      "name": "Direction",
+      "description": "The direction of the email relative to the scanning host or organization.</p>Email scanned at an internet gateway might be characterized as inbound to the organization (from the internet) or outbound from the organization (to the internet). Email scanned at a workstation might be characterized as inbound to or outbound from the workstation.",
+      "requirement": "required",
+      "enum": {
+        "0": {
+          "name": "Unknown",
+          "description": "The email direction is unknown."
+        },
+        "1": {
+          "name": "Inbound",
+          "description": "The email is incoming."
+        },
+        "2": {
+          "name": "Outbound",
+          "description": "The email is outgoing."
+        }
+      }
+    },
+    "from_email": {
+      "requirement": "required"
+    },
+    "message_id": {
+      "requirement": "recommended"
+    },
+    "reply_to_email": {
+      "requirement": "recommended"
+    },
+    "subject": {
+      "requirement": "required"
+    },
+    "to_email": {
+      "requirement": "required"
+    },
+    "size": {
+      "description": "The size in bytes of the email, including attachments.",
+      "requirement": "recommended"
+    },
+    "smtp_from_email": {
+      "requirement": "recommended"
+    },
+    "smtp_hello": {
+      "requirement": "recommended"
+    },
+    "smtp_to_email": {
+      "requirement": "recommended"
+    }
+  }
+}

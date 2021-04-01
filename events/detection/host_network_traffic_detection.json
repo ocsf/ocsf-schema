@@ -1,0 +1,34 @@
+{
+  "name": "Host Network Traffic Detection",
+  "type": "host_network_traffic_detection",
+  "uid": 508,
+  "extends": "detection_event",
+  "description": "Host Network Traffic Detection events report the detection of threats in the network traffic data.",
+  "attributes": {
+    "actor_process": {
+      "description": "The process that is establishing the network connection."
+    },
+    "connection": {
+      "requirement": "required"
+    },
+    "outcome_id": {
+      "enum": {
+        "1": {
+          "name": "Blocked"
+        },
+        "2": {
+          "name": "Allowed"
+        }
+      }
+    },
+    "proxy": {
+      "requirement": "optional"
+    },
+    "target": {
+      "requirement": "recommended"
+    },        
+    "traffic": {
+      "requirement": "required"
+    }
+  }
+}

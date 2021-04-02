@@ -1,14 +1,15 @@
 {
-  "name": "User Session Detection",
-  "type": "session_detection",
-  "uid": 521,
-  "extends": "detection_event",
-  "description": "User Session Detection events report the detection and resolution of session malicious activity.",
   "attributes": {
     "outcome_id": {
       "enum": {
         "1": {
           "name": "Blocked"
+        },
+        "14": {
+          "name": "Detected"
+        },
+        "15": {
+          "name": "Terminated"
         },
         "2": {
           "name": "Allowed"
@@ -21,17 +22,16 @@
         },
         "5": {
           "name": "Command Script Run"
-        },
-        "14": {
-          "name": "Detected"
-        },
-        "15": {
-          "name": "Terminated"
         }
       }
     },
     "session": {
       "requirement": "required"
     }
-  }
+  },
+  "description": "User Session Detection events report the detection and resolution of session malicious activity.",
+  "extends": "detection_event",
+  "name": "User Session Detection",
+  "type": "session_detection",
+  "uid": 523
 }

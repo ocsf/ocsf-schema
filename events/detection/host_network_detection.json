@@ -1,9 +1,4 @@
 {
-  "name": "Host Network Detection",
-  "type": "host_network_detection",
-  "uid": 507,
-  "extends": "detection_event",
-  "description": "Host Network Detection events report the detection and resolution of host network malicious access.",
   "attributes": {
     "actor_process": {
       "description": "The process that is establishing the network connection."
@@ -16,6 +11,9 @@
         "1": {
           "name": "Blocked"
         },
+        "14": {
+          "name": "Detected"
+        },
         "2": {
           "name": "Allowed"
         },
@@ -24,17 +22,19 @@
         },
         "4": {
           "name": "Deleted"
-        },
-        "14": {
-          "name": "Detected"
         }
       }
     },
-    "target": {
-      "requirement": "recommended"
-    },        
     "proxy": {
       "requirement": "optional"
+    },
+    "target": {
+      "requirement": "recommended"
     }
-  }
+  },
+  "description": "Host Network Detection events report the detection and resolution of host network malicious access.",
+  "extends": "detection_event",
+  "name": "Host Network Detection",
+  "type": "host_network_detection",
+  "uid": 508
 }

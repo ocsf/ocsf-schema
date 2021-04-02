@@ -1,9 +1,4 @@
 {
-  "name": "File Response",
-  "type": "file_response",
-  "uid": 506,
-  "extends": "response",
-  "description": "File Response events report file actions taken in response to a detection.",
   "attributes": {
     "file": {
       "description": "The file that pertains to the response action. ",
@@ -13,6 +8,30 @@
       "enum": {
         "1": {
           "name": "Blocked"
+        },
+        "10": {
+          "description": "Requires reboot to finish the operation.",
+          "name": "Delayed"
+        },
+        "11": {
+          "name": "Deleted"
+        },
+        "12": {
+          "name": "Quarantined"
+        },
+        "13": {
+          "name": "Restored"
+        },
+        "14": {
+          "name": "Detected"
+        },
+        "15": {
+          "description": "No longer suspicious (re-scored).",
+          "name": "Exonerated"
+        },
+        "16": {
+          "description": "Marked with extended attributes.",
+          "name": "Tagged"
         },
         "2": {
           "name": "Allowed"
@@ -34,32 +53,13 @@
         },
         "8": {
           "name": "Uncorrected"
-        },
-        "10": {
-          "name": "Delayed",
-          "description": "Requires reboot to finish the operation."
-        },
-        "11": {
-          "name": "Deleted"
-        },
-        "12": {
-          "name": "Quarantined"
-        },
-        "13": {
-          "name": "Restored"
-        },
-        "14": {
-          "name": "Detected"
-        },
-        "15": {
-          "name": "Exonerated",
-          "description": "No longer suspicious (re-scored)."
-        },
-        "16": {
-          "name": "Tagged",
-          "description": "Marked with extended attributes."
         }
       }
     }
-  }
+  },
+  "description": "File Response events report file actions taken in response to a detection.",
+  "extends": "response",
+  "name": "File Response",
+  "type": "file_response",
+  "uid": 506
 }

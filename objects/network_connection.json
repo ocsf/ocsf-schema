@@ -4,31 +4,32 @@
   "description": "The network connection object describes the protocol, direction, source, and destination of a network connection.",
   "attributes": {
     "direction_id": {
+      "description": "The direction of the connection.",
       "requirement": "required",
       "enum": {
         "0": {
           "name": "Unknown",
-          "description": "Connection direction is unknown, for example as for a CLOSE operation."
+          "description": "Connection direction is unknown."
         },
         "1": {
           "name": "Inbound",
-          "description": "Accepted an inbound connection"
+          "description": "Inbound network connection. The connection was originated from the Internet or outside network, destined for services on the inside network."
         },
         "2": {
           "name": "Outbound",
-          "description": "Initiated an outbound connection"
+          "description": "Outbound network connection. The connection was was originated from inside the network, destined for services on the Internet or outside network."
         },
         "3": {
           "name": "Local",
-          "description": "Accepted an connection between two endpoints on the same device"
+          "description": "Local network connection on the same endpoint."
         },
         "4": {
           "name": "Internal",
-          "description": "Accepted an internal connection"
+          "description": "Internal network connection between two endpoints inside network."
         },
         "5": {
           "name": "External",
-          "description": "Accepted an external connection"
+          "description": "External network connection between two endpoints on the Internet or outside the network."
         }
       }
     },

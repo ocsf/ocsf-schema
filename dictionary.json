@@ -179,7 +179,40 @@
     "algorithm": {
       "name": "Algorithm",
       "type": "string_t",
-      "description": "The algorithm that was used to create the fingerprint. The valid values are one of the following: <code>md5</code>, <code>sha1</code>, or <code>sha256</code>."
+      "description": "The original hash algorithm, as reported by the event source, which was used to create the digital fingerprint."
+    },
+    "algorithm_id": {
+      "name": "Algorithm ID",
+      "type": "integer_t",
+      "description": "The identifier of the normalized hash algorithm, whcih was used to create the digital fingerprint.",
+      "enum": {
+        "0": {
+          "name": "Unknown"
+        },
+        "1": {
+          "name": "MD5",
+          "description": "MD5 message-digest algorithm producing a 128-bit (16-byte) hash value."
+        },
+        "2": {
+          "name": "SHA-1",
+          "description": "Secure Hash Algorithm 1 producing a 160-bit (20-byte) hash value."
+        },
+        "3": {
+          "name": "SHA-256",
+          "description": "Secure Hash Algorithm 2 producing a 256-bit (32-byte) hash value."
+        },
+        "4": {
+          "name": "SHA-512",
+          "description": "Secure Hash Algorithm 2 producing a 512-bit (64-byte) hash value."
+        },
+        "5": {
+          "name": "CTPH",
+"description": "The ssdeep generated fuzzy checksum. Also known as Context Triggered Piecewise Hash (CTPH)."          
+        },
+       "-1": {
+          "name": "Other"
+        }
+      }
     },
     "analysis": {
       "name": "Analysis",
@@ -1286,11 +1319,6 @@
       "description": "An array of MAC addresses.",
       "is_array": true
     },
-    "md5": {
-      "name": "MD5",
-      "type": "string_t",
-      "description": "The MD5 checksum of the object content."
-    },
     "mem_allocated": {
       "name": "Allocated Memory",
       "type": "long_t",
@@ -1978,26 +2006,6 @@
         }
       }
     },
-    "sha1": {
-      "name": "SHA-1",
-      "type": "string_t",
-      "description": "The SHA-1 checksum of the object content."
-    },
-    "sha256": {
-      "name": "SHA-256",
-      "type": "string_t",
-      "description": "The SHA-256 checksum of the object content."
-    },
-    "sha512": {
-      "name": "SHA-512",
-      "type": "string_t",
-      "description": "The SHA-512 checksum of the object content."
-    },
-    "ssdeep": {
-      "name": "Fuzzy Hash",
-      "type": "string_t",
-      "description": "The ssdeep fuzzy checksum of the object content. Also known as Context Triggered Piecewise Hash (CTPH)."
-    },
     "shell": {
       "name": "Shell",
       "type": "string_t",
@@ -2270,6 +2278,24 @@
       "name": "Target",
       "type": "string_t",
       "description": "The target resource that pertains to the event."
+    },
+    "target_file": {
+      "name": "Target",
+      "type": "object_t",
+      "description": "The file that is the target of the operation.",
+      "object_type": "file"
+    },
+    "target_process": {
+      "name": "Target",
+      "type": "object_t",
+      "description": "The target process that was launched, injected, opened or terminated.",
+      "object_type": "process"
+    },
+    "target_resource": {
+      "name": "Target",
+      "type": "object_t",
+      "description": "The target resource that was accessed.",
+      "object_type": "resource"
     },
     "tcp_flags": {
       "name": "TCP Flags",

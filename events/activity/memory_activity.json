@@ -1,13 +1,7 @@
 {
-  "name": "Memory Activity",
-  "type": "memory_activity",
-  "uid": 408,
-  "extends": "activity",
-  "description": "Memory Activity events report when a process performs internal memory allocation, modification, or other manipulation activities - such as a buffer overflow or turning off data execution protection (DEP) - that are not typical for a process.",
   "attributes": {
     "actual_permissions": {
       "description": "The permissions that were granted to the actor process. Recommended for [1]Page Allocate, [2]Page Modify, and [3]Page Delete.",
-      "requirement": "optional",
       "enum": {
         "1": {
           "name": "Read"
@@ -21,7 +15,8 @@
         "4": {
           "name": "Execute"
         }
-      }
+      },
+      "requirement": "optional"
     },
     "outcome_id": {
       "enum": {
@@ -38,19 +33,17 @@
           "name": "Buffer Overflow"
         },
         "5": {
-          "name": "Disabled DEP",
-          "description": "Data Execution Permission"
+          "description": "Data Execution Permission",
+          "name": "Disabled DEP"
         },
         "6": {
-          "name": "Enabled DEP",
-          "description": "Data Execution Permission"
+          "description": "Data Execution Permission",
+          "name": "Enabled DEP"
         }
       }
     },
     "requested_permissions": {
-      "name": "Requested Permissions",
       "description": "The permissions that were requested by the actor process. Recommended for [1]Page Allocate, [2]Page Modify, and [3]Page Delete.",
-      "requirement": "optional",
       "enum": {
         "1": {
           "name": "Read"
@@ -64,7 +57,14 @@
         "4": {
           "name": "Execute"
         }
-      }
+      },
+      "name": "Requested Permissions",
+      "requirement": "optional"
     }
-  }
+  },
+  "description": "Memory Activity events report when a process performs internal memory allocation, modification, or other manipulation activities - such as a buffer overflow or turning off data execution protection (DEP) - that are not typical for a process.",
+  "extends": "activity",
+  "name": "Memory Activity",
+  "type": "memory_activity",
+  "uid": 413
 }

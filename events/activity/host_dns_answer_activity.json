@@ -1,9 +1,4 @@
 {
-  "name": "Host DNS Answer Activity",
-  "type": "host_dns_answer_activity",
-  "uid": 418,
-  "extends": "activity",
-  "description": "Host DNS Answer Activity events report a DNS answer to a query initiated by a host application.",
   "attributes": {
     "connection": {
       "requirement": "optional"
@@ -25,17 +20,49 @@
       "requirement": "optional"
     },
     "response_id": {
-      "name": "DNS Response",
       "description": "The DNS response code.",
       "enum": {
+        "-1": {
+          "name": "Other"
+        },
         "0": {
           "name": "Unknown"
         },
         "1": {
           "name": "Format Error"
         },
+        "10": {
+          "name": "Name not contained in zone"
+        },
+        "11": {
+          "name": "DSO-TYPE Not Implemented"
+        },
+        "16": {
+          "name": "TSIG Signature Failure"
+        },
+        "17": {
+          "name": "Key not recognized"
+        },
+        "18": {
+          "name": "Signature out of time window"
+        },
+        "19": {
+          "name": "Bad TKEY Mode"
+        },
         "2": {
           "name": "Server Failure"
+        },
+        "20": {
+          "name": "Duplicate key name"
+        },
+        "21": {
+          "name": "Algorithm not supported"
+        },
+        "22": {
+          "name": "Bad Truncation"
+        },
+        "23": {
+          "name": "Bad/missing Server Cookie"
         },
         "3": {
           "name": "Non-Existent Domain "
@@ -57,46 +84,19 @@
         },
         "9": {
           "name": "Not Authorized  "
-        },
-        "10": {
-          "name": "Name not contained in zone"
-        },
-        "11": {
-          "name": "DSO-TYPE Not Implemented"
-        },
-        "16": {
-          "name": "TSIG Signature Failure"
-        },
-        "17": {
-          "name": "Key not recognized"
-        },
-        "18": {
-          "name": "Signature out of time window"
-        },
-        "19": {
-          "name": "Bad TKEY Mode"
-        },
-        "20": {
-          "name": "Duplicate key name"
-        },
-        "21": {
-          "name": "Algorithm not supported"
-        },
-        "22": {
-          "name": "Bad Truncation"
-        },
-        "23": {
-          "name": "Bad/missing Server Cookie"
-        },
-        "-1": {
-          "name": "Other"
         }
-      }
+      },
+      "name": "DNS Response"
     },
     "severity_id": {
       "enum": {
         "1": {}
       }
     }
-  }
+  },
+  "description": "Host DNS Answer Activity events report a DNS answer to a query initiated by a host application.",
+  "extends": "activity",
+  "name": "Host DNS Answer Activity",
+  "type": "host_dns_answer_activity",
+  "uid": 408
 }

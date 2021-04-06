@@ -1,14 +1,61 @@
 {
-  "name": "Directory Activity",
-  "type": "directory_activity",
-  "uid": 404,
-  "extends": "activity",
-  "description": "Directory Activity events report when a process performs an action on a directory.",
   "attributes": {
+    "access_mask": {
+      "requirement": "optional"
+    },
+    "access_mask_ids": {
+      "requirement": "optional"
+    },
+    "create_mask": {
+      "requirement": "optional"
+    },
+    "create_mask_id": {
+      "enum": {
+        "1": {
+          "description": "Creates a new file, only if it does not already exist",
+          "name": "CREATE_NEW"
+        },
+        "2": {
+          "description": "Creates a new file, always",
+          "name": "CREATE_ALWAYS"
+        },
+        "3": {
+          "description": "Opens a file or device, only if it exists",
+          "name": "OPEN_EXISTING"
+        },
+        "4": {
+          "description": "Opens a file, always",
+          "name": "OPEN_ALWAYS"
+        },
+        "5": {
+          "description": "Opens a file and truncates it so that its size is zero bytes, only if it exists",
+          "name": "TRUNCATE_EXISTING"
+        }
+      },
+      "requirement": "required"
+    },
+    "directory": {
+      "requirement": "required"
+    },
+    "directory_result": {
+      "requirement": "optional"
+    },
     "outcome_id": {
       "enum": {
         "1": {
           "name": "Created"
+        },
+        "10": {
+          "name": "Encrypted"
+        },
+        "11": {
+          "name": "Decrypted"
+        },
+        "12": {
+          "name": "Mounted"
+        },
+        "13": {
+          "name": "Unmounted"
         },
         "2": {
           "name": "Deleted"
@@ -30,60 +77,13 @@
         },
         "9": {
           "name": "Get Security"
-        },
-        "10": {
-          "name": "Encrypted"
-        },
-        "11": {
-          "name": "Decrypted"
-        },
-        "12": {
-          "name": "Mounted"
-        },
-        "13": {
-          "name": "Unmounted"
         }
       }
-    },
-    "access_mask": {
-      "requirement": "optional"
-    },
-    "access_mask_ids": {
-      "requirement": "optional"
-    },
-    "create_mask": {
-      "requirement": "optional"
-    },
-    "create_mask_id": {
-      "requirement": "required",
-      "enum": {
-        "1": {
-          "name": "CREATE_NEW",
-          "description": "Creates a new file, only if it does not already exist"
-        },
-        "2": {
-          "name": "CREATE_ALWAYS",
-          "description": "Creates a new file, always"
-        },
-        "3": {
-          "name": "OPEN_EXISTING",
-          "description": "Opens a file or device, only if it exists"
-        },
-        "4": {
-          "name": "OPEN_ALWAYS",
-          "description": "Opens a file, always"
-        },
-        "5": {
-          "name": "TRUNCATE_EXISTING",
-          "description": "Opens a file and truncates it so that its size is zero bytes, only if it exists"
-        }
-      }
-    },
-    "directory": {
-      "requirement": "required"
-    },
-    "directory_result": {
-      "requirement": "optional"
     }
-  }
+  },
+  "description": "Directory Activity events report when a process performs an action on a directory.",
+  "extends": "activity",
+  "name": "Directory Activity",
+  "type": "directory_activity",
+  "uid": 400
 }

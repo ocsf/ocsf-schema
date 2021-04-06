@@ -2,10 +2,10 @@
   "name": "Network Connection",
   "type": "network_connection",
   "description": "The network connection object describes the protocol, direction, source, and destination of a network connection.",
+  "extends": "_connection",
   "attributes": {
     "direction_id": {
       "description": "The direction of the connection.",
-      "requirement": "required",
       "enum": {
         "0": {
           "name": "Unknown",
@@ -32,26 +32,6 @@
           "description": "External network connection between two endpoints on the Internet or outside the network."
         }
       }
-    },
-    "dst": {
-      "requirement": "required"
-    },
-    "ether_type": {
-      "requirement": "optional"
-    },
-    "protocol_id": {
-      "requirement": "optional"
-    },
-    "src": {
-      "requirement": "required"
-    },
-    "tcp_flags": {
-      "requirement": "optional"
-    },
-    "uid": {
-      "name": "Connection Unique ID",
-      "description": "The unique identifier of the connection.",
-      "requirement": "optional"
     }
   }
 }

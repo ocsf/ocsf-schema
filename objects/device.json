@@ -3,41 +3,27 @@
   "type": "device",
   "description": "Addressable device where events occurred.",
   "attributes": {
-    "name": {
-      "description": "The alternate device name, ordinarily as assigned by an administrator. <p><b>Note:</b> The <b>Name</b> could be any other string that helps to identify the device, such as a phone number; for example <code>310-555-1234</code>.</p>",
-      "requirement": "recommended"
-    },
-    "type": {
-      "name": "Type",
-      "description": "The device type. For example: <code>unknown</code>, <code>server</code>, <code>desktop</code>, <code>laptop</code>, <code>tablet</code>, <code>mobile</code>, <code>virtual</code>, <code>browser</code>, or <code>other</code>.",
-      "requirement": "recommended"
-    },
-    "uid": {
-      "name": "Device UID",
-      "description": "The unique identifier of the device.",
-      "requirement": "recommended"
-    },
     "caption": {
       "requirement": "optional"
     },
     "desc": {
-      "name": "Description",
       "description": "The description of the device, ordinarily as reported by the operating system.",
+      "name": "Description",
       "requirement": "optional"
     },
     "domain": {
-      "name": "Domain",
       "description": "The network domain where the device resides. For example: <code>work.company.com</code>.",
+      "name": "Domain",
       "requirement": "optional"
     },
     "group": {
-      "name": "Group",
       "description": "The name of the group to which the device belongs. For example: <code>Windows Laptops<code/>.",
+      "name": "Group",
       "requirement": "optional"
     },
     "hostname": {
-      "name": "Hostname",
       "description": "The device hostname.",
+      "name": "Hostname",
       "requirement": "required"
     },
     "hw_bios_date": {
@@ -78,6 +64,10 @@
       "description": "The Media Access Control (MAC) address that is associated with the device.",
       "requirement": "optional"
     },
+    "name": {
+      "description": "The alternate device name, ordinarily as assigned by an administrator. <p><b>Note:</b> The <b>Name</b> could be any other string that helps to identify the device, such as a phone number; for example <code>310-555-1234</code>.</p>",
+      "requirement": "recommended"
+    },
     "networks": {
       "requirement": "optional"
     },
@@ -90,16 +80,57 @@
     "public_ip": {
       "requirement": "optional"
     },
-    "subnet": {
-      "requirement": "optional"
-    },
-    "vhost": {
-      "requirement": "optional"
-    },
     "risk_category": {
       "requirement": "optional"
     },
     "risk_score": {
+      "requirement": "optional"
+    },
+    "subnet": {
+      "requirement": "optional"
+    },
+    "type": {
+      "description": "The device type. For example: <code>unknown</code>, <code>server</code>, <code>desktop</code>, <code>laptop</code>, <code>tablet</code>, <code>mobile</code>, <code>virtual</code>, <code>browser</code>, or <code>other</code>.",
+      "name": "Type",
+      "requirement": "recommended"
+    },
+    "type_id": {
+      "description": "The device type ID.",
+      "enum": {
+        "1": {
+          "name": "Server"
+        },
+        "2": {
+          "name": "Desktop"
+        },
+        "3": {
+          "name": "Laptop"
+        },
+        "4": {
+          "name": "Tablet"
+        },
+        "5": {
+          "name": "Mobile"
+        },
+        "6": {
+          "name": "Virtual"
+        },
+        "7": {
+          "name": "IOT"
+        },
+        "8": {
+          "name": "Browser"
+        }
+      },
+      "name": "Type ID",
+      "requirement": "required"
+    },
+    "uid": {
+      "description": "The unique identifier of the device.",
+      "name": "Device UID",
+      "requirement": "recommended"
+    },
+    "vhost": {
       "requirement": "optional"
     },
     "vhost_id": {

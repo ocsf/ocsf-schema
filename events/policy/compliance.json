@@ -1,5 +1,34 @@
 {
+  "name": "Compliance",
+  "type": "compliance",
+  "uid": 601,
+  "extends": "policy",
+  "description": "Compliance events report the results of a compliance and remediation checks.",
   "attributes": {
+    "type_id": {
+      "description": "The compliance describes the type of a compliance check.",
+      "requirement": "required",
+      "enum": {
+        "1": {
+          "name": "Malware Protection Enforcement"
+        },
+        "2": {
+          "name": "Patch Enforcement"
+        },
+        "3": {
+          "name": "Service Pack Enforcement"
+        },
+        "4": {
+          "name": "Firewall Enforcement"
+        },
+        "5": {
+          "name": "Custom Rule Enforcement"
+        },
+        "6": {
+          "name": "Configuration Enforcement"
+        }
+      }
+    },
     "cvssv2": {
       "requirement": "recommended"
     },
@@ -37,35 +66,6 @@
     "scan_uid": {
       "description": "The scan that is associated with this compliance event.",
       "requirement": "optional"
-    },
-    "type_id": {
-      "description": "The compliance describes the type of a compliance check.",
-      "enum": {
-        "1": {
-          "name": "Malware Protection Enforcement"
-        },
-        "2": {
-          "name": "Patch Enforcement"
-        },
-        "3": {
-          "name": "Service Pack Enforcement"
-        },
-        "4": {
-          "name": "Firewall Enforcement"
-        },
-        "5": {
-          "name": "Custom Rule Enforcement"
-        },
-        "6": {
-          "name": "Configuration Enforcement"
-        }
-      },
-      "requirement": "required"
     }
-  },
-  "description": "Compliance events report the results of a compliance and remediation checks.",
-  "extends": "policy",
-  "name": "Compliance",
-  "type": "compliance",
-  "uid": 601
+  }
 }

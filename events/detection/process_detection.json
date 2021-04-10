@@ -1,11 +1,14 @@
 {
+  "name": "Process Detection",
+  "type": "process_detection",
+  "uid": 514,
+  "extends": "detection_event",
+  "description": "Process Detection events report the detection and resolution of process malicious activity.",
   "attributes": {
     "activity_id": {
       "description": "The process activity.",
+      "requirement": "optional",
       "enum": {
-        "-1": {
-          "name": "Other"
-        },
         "0": {
           "name": "Unknown"
         },
@@ -23,14 +26,41 @@
         },
         "5": {
           "name": "Set User ID"
+        },
+        "-1": {
+          "name": "Other"
         }
-      },
-      "requirement": "optional"
+      }
     },
     "actual_permissions": {
+      "requirement": "optional",
       "enum": {
         "1": {
           "name": "Terminate (kill)"
+        },
+        "2": {
+          "name": "Create Thread"
+        },
+        "3": {
+          "name": "Set Session ID"
+        },
+        "4": {
+          "name": "VM Operation"
+        },
+        "5": {
+          "name": "VM Read"
+        },
+        "6": {
+          "name": "VM Write"
+        },
+        "7": {
+          "name": "Duplicate Handle"
+        },
+        "8": {
+          "name": "Create Process"
+        },
+        "9": {
+          "name": "Set Quota"
         },
         "10": {
           "name": "Set Information"
@@ -61,35 +91,11 @@
         },
         "19": {
           "name": "Attach"
-        },
-        "2": {
-          "name": "Create Thread"
-        },
-        "3": {
-          "name": "Set Session ID"
-        },
-        "4": {
-          "name": "VM Operation"
-        },
-        "5": {
-          "name": "VM Read"
-        },
-        "6": {
-          "name": "VM Write"
-        },
-        "7": {
-          "name": "Duplicate Handle"
-        },
-        "8": {
-          "name": "Create Process"
-        },
-        "9": {
-          "name": "Set Quota"
         }
-      },
-      "requirement": "optional"
+      }
     },
     "injection_type_id": {
+      "requirement": "optional",
       "enum": {
         "0": {
           "name": "Unknown"
@@ -103,32 +109,12 @@
         "3": {
           "name": "Process Manipulation APIs"
         }
-      },
-      "requirement": "optional"
+      }
     },
     "outcome_id": {
       "enum": {
         "1": {
           "name": "Blocked"
-        },
-        "10": {
-          "description": "Requires reboot to finish the operation.",
-          "name": "Delayed"
-        },
-        "11": {
-          "name": "Deleted"
-        },
-        "12": {
-          "name": "Quarantined"
-        },
-        "13": {
-          "name": "Restored"
-        },
-        "14": {
-          "name": "Detected"
-        },
-        "15": {
-          "name": "Terminated"
         },
         "2": {
           "name": "Allowed"
@@ -150,6 +136,25 @@
         },
         "8": {
           "name": "Uncorrected"
+        },
+        "10": {
+          "name": "Delayed",
+          "description": "Requires reboot to finish the operation."
+        },
+        "11": {
+          "name": "Deleted"
+        },
+        "12": {
+          "name": "Quarantined"
+        },
+        "13": {
+          "name": "Restored"
+        },
+        "14": {
+          "name": "Detected"
+        },
+        "15": {
+          "name": "Terminated"
         }
       }
     },
@@ -163,9 +168,34 @@
     },
     "requested_permissions": {
       "description": "The permissions requested by the actor process.",
+      "requirement": "optional",
       "enum": {
         "1": {
           "name": "Terminate (kill)"
+        },
+        "2": {
+          "name": "Create Thread"
+        },
+        "3": {
+          "name": "Set Session ID"
+        },
+        "4": {
+          "name": "VM Operation"
+        },
+        "5": {
+          "name": "VM Read"
+        },
+        "6": {
+          "name": "VM Write"
+        },
+        "7": {
+          "name": "Duplicate Handle"
+        },
+        "8": {
+          "name": "Create Process"
+        },
+        "9": {
+          "name": "Set Quota"
         },
         "10": {
           "name": "Set Information"
@@ -196,41 +226,11 @@
         },
         "19": {
           "name": "Attach"
-        },
-        "2": {
-          "name": "Create Thread"
-        },
-        "3": {
-          "name": "Set Session ID"
-        },
-        "4": {
-          "name": "VM Operation"
-        },
-        "5": {
-          "name": "VM Read"
-        },
-        "6": {
-          "name": "VM Write"
-        },
-        "7": {
-          "name": "Duplicate Handle"
-        },
-        "8": {
-          "name": "Create Process"
-        },
-        "9": {
-          "name": "Set Quota"
         }
-      },
-      "requirement": "optional"
+      }
     },
     "resource": {
       "requirement": "required"
     }
-  },
-  "description": "Process Detection events report the detection and resolution of process malicious activity.",
-  "extends": "detection_event",
-  "name": "Process Detection",
-  "type": "process_detection",
-  "uid": 516
+  }
 }

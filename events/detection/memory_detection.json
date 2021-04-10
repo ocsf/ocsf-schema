@@ -1,14 +1,17 @@
 {
+  "name": "Memory Detection",
+  "type": "memory_detection",
+  "uid": 509,
+  "extends": "detection_event",
+  "description": "Memory Detection events report the detection and resolution of malicious memory access.",
   "attributes": {
     "activity": {
       "requirement": "optional"
     },
     "activity_id": {
       "description": "The memory activity.",
+      "requirement": "optional",
       "enum": {
-        "-1": {
-          "name": "Other"
-        },
         "0": {
           "name": "Unknown"
         },
@@ -25,27 +28,22 @@
           "name": "Buffer Overflow"
         },
         "5": {
-          "description": "Data Execution Permission",
-          "name": "Disabled DEP"
+          "name": "Disabled DEP",
+          "description": "Data Execution Permission"
         },
         "6": {
-          "description": "Data Execution Permission",
-          "name": "Enabled DEP"
+          "name": "Enabled DEP",
+          "description": "Data Execution Permission"
+        },
+        "-1": {
+          "name": "Other"
         }
-      },
-      "requirement": "optional"
+      }
     },
     "outcome_id": {
       "enum": {
         "1": {
           "name": "Blocked"
-        },
-        "10": {
-          "description": "Requires reboot to finish the operation.",
-          "name": "Delayed"
-        },
-        "14": {
-          "name": "Detected"
         },
         "2": {
           "name": "Allowed"
@@ -67,13 +65,15 @@
         },
         "8": {
           "name": "Uncorrected"
+        },
+        "10": {
+          "name": "Delayed",
+          "description": "Requires reboot to finish the operation."
+        },
+        "14": {
+          "name": "Detected"
         }
       }
     }
-  },
-  "description": "Memory Detection events report the detection and resolution of malicious memory access.",
-  "extends": "detection_event",
-  "name": "Memory Detection",
-  "type": "memory_detection",
-  "uid": 511
+  }
 }

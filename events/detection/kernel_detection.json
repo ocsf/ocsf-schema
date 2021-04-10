@@ -1,14 +1,17 @@
 {
+  "name": "Kernel Detection",
+  "type": "kernel_detection",
+  "uid": 508,
+  "extends": "detection_event",
+  "description": "Kernel Detection events report the detection and resolution of kernel resource malicious access.",
   "attributes": {
     "activity": {
       "requirement": "optional"
     },
     "activity_id": {
       "description": "The kernel activity.",
+      "requirement": "optional",
       "enum": {
-        "-1": {
-          "name": "Other"
-        },
         "0": {
           "name": "Unknown"
         },
@@ -20,9 +23,11 @@
         },
         "3": {
           "name": "Read"
+        },
+        "-1": {
+          "name": "Other"
         }
-      },
-      "requirement": "optional"
+      }
     },
     "kernel": {
       "description": "The kernel resource object that triggered the detection.",
@@ -32,16 +37,6 @@
       "enum": {
         "1": {
           "name": "Blocked"
-        },
-        "10": {
-          "description": "Requires reboot to finish the operation.",
-          "name": "Delayed"
-        },
-        "11": {
-          "name": "Deleted"
-        },
-        "14": {
-          "name": "Detected"
         },
         "2": {
           "name": "Allowed"
@@ -57,13 +52,18 @@
         },
         "8": {
           "name": "Uncorrected"
+        },
+        "10": {
+          "name": "Delayed",
+          "description": "Requires reboot to finish the operation."
+        },
+        "11": {
+          "name": "Deleted"
+        },
+        "14": {
+          "name": "Detected"
         }
       }
     }
-  },
-  "description": "Kernel Detection events report the detection and resolution of kernel resource malicious access.",
-  "extends": "detection_event",
-  "name": "Kernel Detection",
-  "type": "kernel_detection",
-  "uid": 510
+  }
 }

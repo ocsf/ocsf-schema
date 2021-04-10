@@ -1,14 +1,17 @@
 {
+  "name": "Module Detection",
+  "type": "module_detection",
+  "uid": 510,
+  "extends": "detection_event",
+  "description": "Module Detection events report the detection and resolution of module malicious activity.",
   "attributes": {
     "activity": {
       "requirement": "optional"
     },
     "activity_id": {
       "description": "The module activity.",
+      "requirement": "optional",
       "enum": {
-        "-1": {
-          "name": "Other"
-        },
         "0": {
           "name": "Unknown"
         },
@@ -17,9 +20,11 @@
         },
         "2": {
           "name": "Unload"
+        },
+        "-1": {
+          "name": "Other"
         }
-      },
-      "requirement": "optional"
+      }
     },
     "module": {
       "description": "The module object that triggered the detection.",
@@ -32,22 +37,6 @@
       "enum": {
         "1": {
           "name": "Blocked"
-        },
-        "10": {
-          "description": "Requires reboot to finish the operation.",
-          "name": "Delayed"
-        },
-        "11": {
-          "name": "Deleted"
-        },
-        "12": {
-          "name": "Quarantined"
-        },
-        "13": {
-          "name": "Restored"
-        },
-        "14": {
-          "name": "Detected"
         },
         "2": {
           "name": "Allowed"
@@ -69,6 +58,22 @@
         },
         "8": {
           "name": "Uncorrected"
+        },
+        "10": {
+          "name": "Delayed",
+          "description": "Requires reboot to finish the operation."
+        },
+        "11": {
+          "name": "Deleted"
+        },
+        "12": {
+          "name": "Quarantined"
+        },
+        "13": {
+          "name": "Restored"
+        },
+        "14": {
+          "name": "Detected"
         }
       }
     },
@@ -76,10 +81,5 @@
       "description": "If the event id is one of:<ul><li>[12] Quarantined</li><li>[13] Restored</li></ul> the unique identifier of the item that was quarantined or restored from quarantine.",
       "requirement": "optional"
     }
-  },
-  "description": "Module Detection events report the detection and resolution of module malicious activity.",
-  "extends": "detection_event",
-  "name": "Module Detection",
-  "type": "module_detection",
-  "uid": 512
+  }
 }

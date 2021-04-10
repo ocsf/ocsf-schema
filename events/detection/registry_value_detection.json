@@ -1,14 +1,17 @@
 {
+  "name": "Registry Value Detection",
+  "type": "registry_value_detection",
+  "uid": 516,
+  "extends": "detection_event",
+  "description": "Registry Value Detection events report the detection and resolution of registry value malicious access.",
   "attributes": {
     "activity": {
       "requirement": "optional"
     },
     "activity_id": {
       "description": "The registry value activity.",
+      "requirement": "optional",
       "enum": {
-        "-1": {
-          "name": "Other"
-        },
         "0": {
           "name": "Unknown"
         },
@@ -20,27 +23,16 @@
         },
         "3": {
           "name": "Deleted"
+        },
+        "-1": {
+          "name": "Other"
         }
-      },
-      "requirement": "optional"
+      }
     },
     "outcome_id": {
       "enum": {
         "1": {
           "name": "Blocked"
-        },
-        "10": {
-          "description": "Requires reboot to finish the operation.",
-          "name": "Delayed"
-        },
-        "11": {
-          "name": "Deleted"
-        },
-        "13": {
-          "name": "Restored"
-        },
-        "14": {
-          "name": "Detected"
         },
         "2": {
           "name": "Allowed"
@@ -62,23 +54,31 @@
         },
         "8": {
           "name": "Uncorrected"
+        },
+        "10": {
+          "name": "Delayed",
+          "description": "Requires reboot to finish the operation."
+        },
+        "11": {
+          "name": "Deleted"
+        },
+        "13": {
+          "name": "Restored"
+        },
+        "14": {
+          "name": "Detected"
         }
       }
     },
     "reg_value": {
-      "description": "The registry value that triggered the detection.",
       "name": "Registry Value",
+      "description": "The registry value that triggered the detection.",
       "requirement": "required"
     },
     "reg_value_result": {
-      "description": "The resulting registry value; for example, if a Registry value operation is ALLOWED, the resulting registry value object can be included in the event.",
       "name": "Registry Value Result",
+      "description": "The resulting registry value; for example, if a Registry value operation is ALLOWED, the resulting registry value object can be included in the event.",
       "requirement": "optional"
     }
-  },
-  "description": "Registry Value Detection events report the detection and resolution of registry value malicious access.",
-  "extends": "detection_event",
-  "name": "Registry Value Detection",
-  "type": "registry_value_detection",
-  "uid": 520
+  }
 }

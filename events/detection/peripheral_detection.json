@@ -1,14 +1,17 @@
 {
+  "name": "Peripheral Device Detection",
+  "type": "peripheral_detection",
+  "uid": 513,
+  "extends": "detection_event",
+  "description": "Peripheral Device Detection events report the detection and resolution of peripheral device activity.",
   "attributes": {
     "activity": {
       "requirement": "optional"
     },
     "activity_id": {
       "description": "The peripheral device activity.",
+      "requirement": "required",
       "enum": {
-        "-1": {
-          "name": "Other"
-        },
         "0": {
           "name": "Unknown"
         },
@@ -26,9 +29,11 @@
         },
         "5": {
           "name": "Execute"
+        },
+        "-1": {
+          "name": "Other"
         }
-      },
-      "requirement": "required"
+      }
     },
     "file": {
       "description": "The file that pertains to the detection event.",
@@ -48,10 +53,5 @@
       "description": "The peripheral device object that triggered the detection.",
       "requirement": "required"
     }
-  },
-  "description": "Peripheral Device Detection events report the detection and resolution of peripheral device activity.",
-  "extends": "detection_event",
-  "name": "Peripheral Device Detection",
-  "type": "peripheral_detection",
-  "uid": 515
+  }
 }

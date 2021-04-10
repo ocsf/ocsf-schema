@@ -1,4 +1,9 @@
 {
+  "name": "File Activity",
+  "type": "file_activity",
+  "uid": 407,
+  "extends": "activity",
+  "description": "File Activity events report when a process performs an action on a file.",
   "attributes": {
     "access_mask": {
       "requirement": "recommended"
@@ -14,29 +19,29 @@
     },
     "create_mask_id": {
       "description": "The Windows setting needed when creating a file.",
+      "requirement": "recommended",
       "enum": {
         "1": {
-          "description": "Creates a new file, only if it does not already exist",
-          "name": "CREATE_NEW"
+          "name": "CREATE_NEW",
+          "description": "Creates a new file, only if it does not already exist"
         },
         "2": {
-          "description": "Creates a new file, always",
-          "name": "CREATE_ALWAYS"
+          "name": "CREATE_ALWAYS",
+          "description": "Creates a new file, always"
         },
         "3": {
-          "description": "Opens a file or device, only if it exists",
-          "name": "OPEN_EXISTING"
+          "name": "OPEN_EXISTING",
+          "description": "Opens a file or device, only if it exists"
         },
         "4": {
-          "description": "Opens a file, always",
-          "name": "OPEN_ALWAYS"
+          "name": "OPEN_ALWAYS",
+          "description": "Opens a file, always"
         },
         "5": {
-          "description": "Opens a file and truncates it so that its size is zero bytes, only if it exists",
-          "name": "TRUNCATE_EXISTING"
+          "name": "TRUNCATE_EXISTING",
+          "description": "Opens a file and truncates it so that its size is zero bytes, only if it exists"
         }
-      },
-      "requirement": "recommended"
+      }
     },
     "file": {
       "description": "The file that is the target of the operation.",
@@ -52,12 +57,6 @@
       "enum": {
         "1": {
           "name": "Created"
-        },
-        "10": {
-          "name": "Encrypted"
-        },
-        "11": {
-          "name": "Decrypted"
         },
         "2": {
           "name": "Deleted"
@@ -82,13 +81,14 @@
         },
         "9": {
           "name": "Get Security"
+        },
+        "10": {
+          "name": "Encrypted"
+        },
+        "11": {
+          "name": "Decrypted"
         }
       }
     }
-  },
-  "description": "File Activity events report when a process performs an action on a file.",
-  "extends": "activity",
-  "name": "File Activity",
-  "type": "file_activity",
-  "uid": 407
+  }
 }

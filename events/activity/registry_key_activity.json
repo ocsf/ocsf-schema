@@ -1,12 +1,36 @@
 {
+  "name": "Registry Key Activity",
+  "type": "registry_key_activity",
+  "uid": 419,
+  "extends": "activity",
+  "description": "Registry Key Activity events report when a process performs an action on a Windows registry key.",
   "attributes": {
     "access_mask": {
       "requirement": "optional"
     },
     "access_mask_ids": {
+      "requirement": "optional",
       "enum": {
         "1": {
           "name": "GENERIC_READ"
+        },
+        "2": {
+          "name": "GENERIC_WRITE"
+        },
+        "3": {
+          "name": "GENERIC_EXECUTE"
+        },
+        "4": {
+          "name": "GENERIC_ALL"
+        },
+        "5": {
+          "name": "DELETE"
+        },
+        "6": {
+          "name": "WRITE_DAC"
+        },
+        "7": {
+          "name": "WRITE_OWNER"
         },
         "16": {
           "name": "READ_ATTRIBUTES"
@@ -19,9 +43,6 @@
         },
         "19": {
           "name": "ACCESS_SYSTEM_SECURITY"
-        },
-        "2": {
-          "name": "GENERIC_WRITE"
         },
         "20": {
           "name": "MAX_ALLOWED"
@@ -43,63 +64,47 @@
         },
         "26": {
           "name": "CREATE_LINK"
-        },
-        "3": {
-          "name": "GENERIC_EXECUTE"
-        },
-        "4": {
-          "name": "GENERIC_ALL"
-        },
-        "5": {
-          "name": "DELETE"
-        },
-        "6": {
-          "name": "WRITE_DAC"
-        },
-        "7": {
-          "name": "WRITE_OWNER"
         }
-      },
-      "requirement": "optional"
+      }
     },
     "create_mask": {
       "requirement": "optional"
     },
     "create_mask_id": {
       "description": "The Windows setting needed to create a registry key.",
+      "requirement": "required",
       "enum": {
         "0": {
-          "description": "(Default) - This key is not volatile. The information is stored in a file and is preserved when the system is restarted.",
-          "name": "REG_OPTION_NON_VOLATILE"
+          "name": "REG_OPTION_NON_VOLATILE",
+          "description": "(Default) - This key is not volatile. The information is stored in a file and is preserved when the system is restarted."
         },
         "1": {
-          "description": "All keys created by the function are volatile. The information is stored in memory and is not preserved when the corresponding registry hive is unloaded.",
-          "name": "REG_OPTION_VOLATILE"
+          "name": "REG_OPTION_VOLATILE",
+          "description": "All keys created by the function are volatile. The information is stored in memory and is not preserved when the corresponding registry hive is unloaded."
         },
         "2": {
-          "description": "This key is a symbolic link.",
-          "name": "REG_OPTION_CREATE_LINK"
+          "name": "REG_OPTION_CREATE_LINK",
+          "description": "This key is a symbolic link."
         },
         "4": {
-          "description": "Attempts to open the key with the access required to backup or restore the key.",
-          "name": "REG_OPTION_BACKUP_RESTORE"
+          "name": "REG_OPTION_BACKUP_RESTORE",
+          "description": "Attempts to open the key with the access required to backup or restore the key."
         }
-      },
-      "requirement": "required"
+      }
     },
     "open_mask_id": {
       "description": "The Windows setting needed to open a registry key.",
+      "requirement": "required",
       "enum": {
         "0": {
-          "description": "(Default)",
-          "name": "NONE"
+          "name": "NONE",
+          "description": "(Default)"
         },
         "8": {
-          "description": "The key is a symbolic link",
-          "name": "REG_OPTION_OPEN_LINK"
+          "name": "REG_OPTION_OPEN_LINK",
+          "description": "The key is a symbolic link"
         }
-      },
-      "requirement": "required"
+      }
     },
     "outcome_id": {
       "enum": {
@@ -129,10 +134,5 @@
     "reg_key_result": {
       "requirement": "optional"
     }
-  },
-  "description": "Registry Key Activity events report when a process performs an action on a Windows registry key.",
-  "extends": "activity",
-  "name": "Registry Key Activity",
-  "type": "registry_key_activity",
-  "uid": 419
+  }
 }

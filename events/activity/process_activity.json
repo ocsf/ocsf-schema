@@ -1,9 +1,39 @@
 {
+  "name": "Process Activity",
+  "type": "process_activity",
+  "uid": 418,
+  "extends": "activity",
+  "description": "Process Activity events report when a process launches, injects, opens or terminates another process, successful or otherwise.",
   "attributes": {
     "actual_permissions": {
+      "requirement": "optional",
       "enum": {
         "1": {
           "name": "TERMINATE (Kill)"
+        },
+        "2": {
+          "name": "CREATE_THREAD"
+        },
+        "3": {
+          "name": "SET_SESSION_ID"
+        },
+        "4": {
+          "name": "VM_OPERATION"
+        },
+        "5": {
+          "name": "VM_READ"
+        },
+        "6": {
+          "name": "VM_WRITE"
+        },
+        "7": {
+          "name": "DUP_HANDLE"
+        },
+        "8": {
+          "name": "CREATE_PROCESS"
+        },
+        "9": {
+          "name": "SET_QUOTA"
         },
         "10": {
           "name": "SET_INFORMATION"
@@ -34,35 +64,11 @@
         },
         "19": {
           "name": "ATTACH"
-        },
-        "2": {
-          "name": "CREATE_THREAD"
-        },
-        "3": {
-          "name": "SET_SESSION_ID"
-        },
-        "4": {
-          "name": "VM_OPERATION"
-        },
-        "5": {
-          "name": "VM_READ"
-        },
-        "6": {
-          "name": "VM_WRITE"
-        },
-        "7": {
-          "name": "DUP_HANDLE"
-        },
-        "8": {
-          "name": "CREATE_PROCESS"
-        },
-        "9": {
-          "name": "SET_QUOTA"
         }
-      },
-      "requirement": "optional"
+      }
     },
     "injection_type_id": {
+      "requirement": "optional",
       "enum": {
         "0": {
           "name": "Unknown"
@@ -76,8 +82,7 @@
         "3": {
           "name": "Process Manipulation APIs"
         }
-      },
-      "requirement": "optional"
+      }
     },
     "outcome_id": {
       "enum": {
@@ -103,9 +108,34 @@
       "requirement": "required"
     },
     "requested_permissions": {
+      "requirement": "optional",
       "enum": {
         "1": {
           "name": "TERMINATE (Kill)"
+        },
+        "2": {
+          "name": "CREATE_THREAD"
+        },
+        "3": {
+          "name": "SET_SESSION_ID"
+        },
+        "4": {
+          "name": "VM_OPERATION"
+        },
+        "5": {
+          "name": "VM_READ"
+        },
+        "6": {
+          "name": "VM_WRITE"
+        },
+        "7": {
+          "name": "DUP_HANDLE"
+        },
+        "8": {
+          "name": "CREATE_PROCESS"
+        },
+        "9": {
+          "name": "SET_QUOTA"
         },
         "10": {
           "name": "SET_INFORMATION"
@@ -136,33 +166,8 @@
         },
         "19": {
           "name": "ATTACH"
-        },
-        "2": {
-          "name": "CREATE_THREAD"
-        },
-        "3": {
-          "name": "SET_SESSION_ID"
-        },
-        "4": {
-          "name": "VM_OPERATION"
-        },
-        "5": {
-          "name": "VM_READ"
-        },
-        "6": {
-          "name": "VM_WRITE"
-        },
-        "7": {
-          "name": "DUP_HANDLE"
-        },
-        "8": {
-          "name": "CREATE_PROCESS"
-        },
-        "9": {
-          "name": "SET_QUOTA"
         }
-      },
-      "requirement": "optional"
+      }
     },
     "session": {
       "description": "The user session from which the process was launched.",
@@ -171,10 +176,5 @@
     "user": {
       "description": "The user that started/created the new process."
     }
-  },
-  "description": "Process Activity events report when a process launches, injects, opens or terminates another process, successful or otherwise.",
-  "extends": "activity",
-  "name": "Process Activity",
-  "type": "process_activity",
-  "uid": 418
+  }
 }

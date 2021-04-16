@@ -326,9 +326,9 @@
       "description": "A short description or caption of the device. For example: \"ATP Scanner 1 \" or \" CSP Manager\"."
     },
     "categories": {
-      "name": "Categories",
+      "name": "URL Categories",
       "type": "string_t",
-      "description": "An array of URL categories.",
+      "description": "An array of URL categories as defined by the event source.",
       "is_array": true
     },
     "category_id": {
@@ -342,16 +342,281 @@
         },
         "-1": {
           "name": "Other",
-          "description": "The category is not mapped. See the <code>category</code> attribute, which may contain an event source specific value."
+          "description": "The category is not mapped. See the <code>category</code> attribute, which may contain a data source specific value."
         }
       },
       "default": 0
     },
     "category_ids": {
-      "name": "Category IDs",
+      "name": "URL Category IDs",
       "type": "integer_t",
       "description": "An array of URL category identifies.",
-      "is_array": true
+      "is_array": true,
+      "enum": {
+        "0": {
+          "name": "Unknown",
+          "description": "The URL category is unknown."
+        },
+        "-1": {
+          "name": "Other",
+          "description": "The URL category is not mapped. See the <code>categories</code> attribute, which may contain a data source specific value."
+        },
+        "1": {
+          "name": "Adult/Mature Content"
+        },
+        "3": {
+          "name": "Pornography"
+        },
+        "4": {
+          "name": "Sex Education"
+        },
+        "5": {
+          "name": "Intimate Apparel/Swimsuit"
+        },
+        "6": {
+          "name": "Nudity"
+        },
+        "7": {
+          "name": "Extreme"
+        },
+        "9": {
+          "name": "Scam/Questionable/Illegal"
+        },
+        "11": {
+          "name": "Gambling"
+        },
+        "14": {
+          "name": "Violence/Hate/Racism"
+        },
+        "15": {
+          "name": "Weapons"
+        },
+        "16": {
+          "name": "Abortion"
+        },
+        "17": {
+          "name": "Hacking"
+        },
+        "18": {
+          "name": "Phishing"
+        },
+        "20": {
+          "name": "Entertainment"
+        },
+        "21": {
+          "name": "Business/Economy"
+        },
+        "22": {
+          "name": "Alternative Spirituality/Belief"
+        },
+        "23": {
+          "name": "Alcohol"
+        },
+        "24": {
+          "name": "Tobacco"
+        },
+        "25": {
+          "name": "Controlled Substances"
+        },
+        "26": {
+          "name": "Child Pornography"
+        },
+        "27": {
+          "name": "Education"
+        },
+        "29": {
+          "name": "Charitable Organizations"
+        },
+        "30": {
+          "name": "Art/Culture"
+        },
+        "31": {
+          "name": "Financial Services"
+        },
+        "32": {
+          "name": "Brokerage/Trading"
+        },
+        "33": {
+          "name": "Games"
+        },
+        "34": {
+          "name": "Government/Legal"
+        },
+        "35": {
+          "name": "Military"
+        },
+        "36": {
+          "name": "Political/Social Advocacy"
+        },
+        "37": {
+          "name": "Health"
+        },
+        "38": {
+          "name": "Technology/Internet"
+        },
+        "40": {
+          "name": "Search Engines/Portals"
+        },
+        "43": {
+          "name": "Malicious Sources/Malnets"
+        },
+        "44": {
+          "name": "Malicious Outbound Data/Botnets"
+        },
+        "45": {
+          "name": "Job Search/Careers"
+        },
+        "46": {
+          "name": "News/Media"
+        },
+        "47": {
+          "name": "Personals/Dating"
+        },
+        "49": {
+          "name": "Reference"
+        },
+        "50": {
+          "name": "Mixed Content/Potentially Adult"
+        },
+        "51": {
+          "name": "Chat (IM)/SMS"
+        },
+        "52": {
+          "name": "Email"
+        },
+        "53": {
+          "name": "Newsgroups/Forums"
+        },
+        "54": {
+          "name": "Religion"
+        },
+        "55": {
+          "name": "Social Networking"
+        },
+        "56": {
+          "name": "File Storage/Sharing"
+        },
+        "57": {
+          "name": "Remote Access Tools"
+        },
+        "58": {
+          "name": "Shopping"
+        },
+        "59": {
+          "name": "Auctions"
+        },
+        "60": {
+          "name": "Real Estate"
+        },
+        "61": {
+          "name": "Society/Daily Living"
+        },
+        "63": {
+          "name": "Personal Sites"
+        },
+        "64": {
+          "name": "Restaurants/Dining/Food"
+        },
+        "65": {
+          "name": "Sports/Recreation"
+        },
+        "66": {
+          "name": "Travel"
+        },
+        "67": {
+          "name": "Vehicles"
+        },
+        "68": {
+          "name": "Humor/Jokes"
+        },
+        "71": {
+          "name": "Software Downloads"
+        },
+        "83": {
+          "name": "Peer-to-Peer (P2P)"
+        },
+        "84": {
+          "name": "Audio/Video Clips"
+        },
+        "85": {
+          "name": "Office/Business Applications"
+        },
+        "86": {
+          "name": "Proxy Avoidance"
+        },
+        "87": {
+          "name": "For Kids"
+        },
+        "88": {
+          "name": "Web Ads/Analytics"
+        },
+        "89": {
+          "name": "Web Hosting"
+        },
+        "90": {
+          "name": "Uncategorized"
+        },
+        "92": {
+          "name": "Suspicious"
+        },
+        "93": {
+          "name": "Sexual Expression"
+        },
+        "95": {
+          "name": "Translation"
+        },
+        "96": {
+          "name": "Non-Viewable/Infrastructure"
+        },
+        "97": {
+          "name": "Content Servers"
+        },
+        "98": {
+          "name": "Placeholders"
+        },
+        "101": {
+          "name": "Spam"
+        },
+        "102": {
+          "name": "Potentially Unwanted Software"
+        },
+        "103": {
+          "name": "Dynamic DNS Host"
+        },
+        "106": {
+          "name": "E-Card/Invitations"
+        },
+        "107": {
+          "name": "Informational"
+        },
+        "108": {
+          "name": "Computer/Information Security"
+        },
+        "109": {
+          "name": "Internet Connected Devices"
+        },
+        "110": {
+          "name": "Internet Telephony"
+        },
+        "111": {
+          "name": "Online Meetings"
+        },
+        "112": {
+          "name": "Media Sharing"
+        },
+        "113": {
+          "name": "Radio/Audio Streams"
+        },
+        "114": {
+          "name": "TV/Video Streams"
+        },
+        "118": {
+          "name": "Piracy/Copyright Concerns"
+        },
+        "121": {
+          "name": "Marijuana"
+        }
+      }
     },
     "certificate": {
       "name": "TLS Certificate",
@@ -1583,7 +1848,7 @@
         },
         "-1": {
           "name": "Other",
-          "description": "The priority is not mapped. See the <code>priority</code> attribute, which contains an event source specific value."
+          "description": "The priority is not mapped. See the <code>priority</code> attribute, which contains a data source specific value."
         }
       }
     },
@@ -1790,7 +2055,7 @@
         },
         "-1": {
           "name": "Other",
-          "description": "The reputation score is not mapped. See the <code>rep_score</code> attribute, which contains an event source specific value."
+          "description": "The reputation score is not mapped. See the <code>rep_score</code> attribute, which contains a data source specific value."
         }
       }
     },
@@ -2037,7 +2302,7 @@
         },
         "-1": {
           "name": "Other",
-          "description": "The event severity is not mapped. See the <code>severity</code> attribute, which contains an event source specific value."
+          "description": "The event severity is not mapped. See the <code>severity</code> attribute, which contains a data source specific value."
         }
       }
     },
@@ -2166,7 +2431,7 @@
         },
         "-1": {
           "name": "Other",
-          "description": "The start type is not mapped. See the <code>start_type</code> attribute, which contains an event source specific value."
+          "description": "The start type is not mapped. See the <code>start_type</code> attribute, which contains a data source specific value."
         }
       }
     },
@@ -2224,7 +2489,7 @@
         },
         "-1": {
           "name": "Other",
-          "description": "The event status is not mapped. See the <code>status</code> attribute, which contains an event source specific value."
+          "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
         }
       }
     },
@@ -2411,7 +2676,7 @@
         },
         "-1": {
           "name": "Other",
-          "description": "The type is not mapped. See the <code>type</code> attribute, which may contain an event source specific value."
+          "description": "The type is not mapped. See the <code>type</code> attribute, which may contain a data source specific value."
         }
       },
       "default": 0
@@ -2463,7 +2728,7 @@
         },
         "-1": {
           "name": "Other",
-          "description": "The service type is not mapped. See the <code>types</code> attribute, which contains an event source specific values."
+          "description": "The service type is not mapped. See the <code>types</code> attribute, which contains a data source specific values."
         }
       },
       "is_array": true

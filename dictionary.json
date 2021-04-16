@@ -8,55 +8,20 @@
       "type": "string_t",
       "description": "The name of the entity. See specific usage."
     },
-    "type": {
-      "name": "Type",
-      "type": "string_t",
-      "description": "The type of an object or value. See specific usage."
-    },
-    "type_id": {
-      "name": "Type ID",
-      "type": "integer_t",
-      "description": "The type identifier of an object. See specific usage.",
-      "enum": {
-        "0": {
-          "name": "Unknown",
-          "description": "The type is unknown."
-        },
-        "-1": {
-          "name": "Other",
-          "description": "The type is not mapped. See the <code>type</code> attribute, which contains an event source specific value."
-        },
-        "default": 0
-      }
-    },
     "uid": {
       "name": "Unique ID",
       "type": "string_t",
       "description": "The unique identifier. See specific usage."
     },
-    "category_id": {
-      "name": "Category ID",
-      "type": "integer_t",
-      "description": "The category identifier of the event or object. See specific usage.",
-      "enum": {},
-      "default": 0
-    },
-    "class": {
-      "name": "Class",
+    "category": {
+      "name": "Category",
       "type": "string_t",
-      "description": "The class name of the event or object."
+      "description": "The original category of an event or object, as defined by the event source. See specific usage."
     },
-    "class_id": {
-      "name": "Class ID",
-      "type": "integer_t",
-      "description": "The class identifier describes the attributes available in an event. See specific usage.",
-      "enum": {},
-      "default": 0
-    },
-    "caption": {
-      "name": "Caption",
+    "type": {
+      "name": "Type",
       "type": "string_t",
-      "description": "A short description or caption of the device. For example: \"ATP Scanner 1 \" or \" CSP Manager\"."
+      "description": "The type of an object or value. See specific usage."
     },
     "attributes": {
       "name": "Attributes",
@@ -355,16 +320,32 @@
       "type": "long_t",
       "description": "The number of bytes sent from the source to the destination."
     },
+    "caption": {
+      "name": "Caption",
+      "type": "string_t",
+      "description": "A short description or caption of the device. For example: \"ATP Scanner 1 \" or \" CSP Manager\"."
+    },
     "categories": {
       "name": "Categories",
       "type": "string_t",
       "description": "An array of URL categories.",
       "is_array": true
     },
-    "category": {
-      "name": "Category",
-      "type": "string_t",
-      "description": "The original category of an event or object, as defined by the event source. See specific usage."
+    "category_id": {
+      "name": "Category ID",
+      "type": "integer_t",
+      "description": "The category identifier of the event.",
+      "enum": {
+        "0": {
+          "name": "Unknown",
+          "description": "The category is unknown."
+        },
+        "-1": {
+          "name": "Other",
+          "description": "The category is not mapped. See the <code>category</code> attribute, which may contain an event source specific value."
+        }
+      },
+      "default": 0
     },
     "category_ids": {
       "name": "Category IDs",
@@ -398,6 +379,18 @@
       "name": "City",
       "type": "string_t",
       "description": "The name of the city."
+    },
+    "class": {
+      "name": "Class",
+      "type": "string_t",
+      "description": "The class name of the event or object."
+    },
+    "class_id": {
+      "name": "Class ID",
+      "type": "integer_t",
+      "description": "The class identifier describes the attributes available in an event. See specific usage.",
+      "enum": {},
+      "default": 0
     },
     "classification_ids": {
       "name": "Classification IDs",
@@ -2406,6 +2399,22 @@
       "name": "TTL",
       "type": "integer_t",
       "description": "The time interval that the resource record may be cached. Zero value means that the resource record can only be used for the transaction in progress, and should not be cached."
+    },
+    "type_id": {
+      "name": "Type ID",
+      "type": "integer_t",
+      "description": "The type identifier of an object. See specific usage.",
+      "enum": {
+        "0": {
+          "name": "Unknown",
+          "description": "The type is unknown."
+        },
+        "-1": {
+          "name": "Other",
+          "description": "The type is not mapped. See the <code>type</code> attribute, which may contain an event source specific value."
+        }
+      },
+      "default": 0
     },
     "type_ids": {
       "name": "Type ID's",

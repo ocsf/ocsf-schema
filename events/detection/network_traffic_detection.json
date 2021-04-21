@@ -2,7 +2,7 @@
   "name": "Network Traffic Detection",
   "uid": 512,
   "type": "network_traffic_detection",
-  "extends": "detection_event",
+  "extends": "detection",
   "description": "Network Traffic Detection events report the detection of threats in the network traffic data.",
   "attributes": {
     "connection": {
@@ -27,8 +27,15 @@
         }
       }
     },
+    "rule": {
+      "description": "The rule that triggered the network traffic detection event.",
+      "requirement": "recommended"
+    },
     "traffic": {
       "requirement": "required"
-    }
+    },
+    "threat": {
+      "requirement": "required"
+    }    
   }
 }

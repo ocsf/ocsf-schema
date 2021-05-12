@@ -1,21 +1,18 @@
 {
-  "name": "Email Detection",
-  "type": "email_detection",
-  "uid": 501,
-  "extends": "detection",
-  "description": "Email Detection events report the detection and resolution of email malicious activity.",
+  "name": "Email File Alert",
+  "type": "email_file_alert",
+  "uid": 502,
+  "extends": "alert",
+  "description": "Email File Alert events report the detections and resolutions of threats within email file attachments.",
   "attributes": {
     "connection_ref_uid": {
       "requirement": "optional"
     },
-    "email": {
-      "description": "The email that triggered the detection.",
-      "requirement": "required"
-    },
-    "email_auth": {
-      "requirement": "required"
-    },
     "email_uid": {
+      "requirement": "required"
+    },
+    "file": {
+      "description": "The file attachment that triggered the alert.",
       "requirement": "required"
     },
     "disposition_id": {
@@ -38,19 +35,11 @@
       }
     },
     "quarantine_uid": {
+      "description": "The unique identifier of the item that was quarantined.",
       "requirement": "optional"
     },
     "reason_id": {
       "requirement": "required"
-    },
-    "recipient_email": {
-      "requirement": "optional"
-    },
-    "sender_hostname": {
-      "requirement": "optional"
-    },
-    "sender_ip": {
-      "requirement": "optional"
     },
     "threat": {
       "requirement": "required"

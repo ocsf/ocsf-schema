@@ -1,37 +1,30 @@
 {
-  "name": "Module Detection",
-  "uid": 510,
-  "type": "module_detection",
-  "extends": "detection_event",
-  "description": "Module Detection events report the detection and resolution of module malicious activity.",
+  "name": "Registry Value Alert",
+  "type": "registry_value_alert",
+  "uid": 516,
+  "extends": "alert_event",
+  "description": "Registry Value Alert events report the detections and resolutions of registry value malicious access.",
   "attributes": {
     "activity": {
       "requirement": "optional"
     },
     "activity_id": {
-      "description": "The module activity.",
+      "description": "The registry value activity.",
       "requirement": "optional",
       "enum": {
-        "0": {
-          "name": "Unknown"
-        },
         "1": {
-          "name": "Load"
+          "name": "Get"
         },
         "2": {
-          "name": "Unload"
+          "name": "Set"
         },
-        "-1": {
-          "name": "Other"
+        "3": {
+          "name": "Modified"
+        },
+        "4": {
+          "name": "Deleted"
         }
       }
-    },
-    "module": {
-      "description": "The module object that triggered the detection.",
-      "requirement": "required"
-    },
-    "module_type": {
-      "requirement": "required"
     },
     "disposition_id": {
       "enum": {
@@ -61,18 +54,21 @@
           "name": "Deleted"
         },
         "9": {
-          "name": "Quarantined"
-        },
-        "10": {
           "name": "Restored"
         },
-        "11": {
+        "10": {
           "name": "Detected"
         }
       }
     },
-    "quarantine_uid": {
-      "description": "If the event id is one of:<ul><li>[12] Quarantined</li><li>[13] Restored</li></ul> the unique identifier of the item that was quarantined or restored from quarantine.",
+    "reg_value": {
+      "name": "Registry Value",
+      "description": "The registry value that triggered the alert.",
+      "requirement": "required"
+    },
+    "reg_value_result": {
+      "name": "Registry Value Result",
+      "description": "The resulting registry value; for example, if a Registry value operation is ALLOWED, the resulting registry value object can be included in the event.",
       "requirement": "optional"
     }
   }

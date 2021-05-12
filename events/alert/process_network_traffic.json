@@ -1,14 +1,14 @@
 {
-  "name": "Network Detection",
-  "uid": 511,
-  "type": "network_detection",
-  "extends": "detection",
-  "description": "Network Detection events report the detection and resolution of network threats.",
+  "name": "Process Network Traffic Alert",
+  "type": "process_network_traffic_alert",
+  "uid": 507,
+  "extends": "process_network_alert",
+  "description": "Process Network Traffic Alert events report the detections of threats in the network traffic data.",
   "attributes": {
-    "connection": {
-      "requirement": "required"
+    "actor_process": {
+      "description": "The process that involved with the network traffic."
     },
-    "app_name": {
+    "connection": {
       "requirement": "optional"
     },
     "disposition_id": {
@@ -30,11 +30,7 @@
         }
       }
     },
-    "rule": {
-      "description": "The rule that triggered the network detection event.",
-      "requirement": "recommended"
-    },
-    "threat": {
+    "traffic": {
       "requirement": "required"
     }
   }

@@ -2,15 +2,14 @@
   "name": "Email Delivery",
   "type": "email_delivery",
   "uid": 404,
-  "category": "activity",
-  "extends": "event",
+  "extends": "email_activity",
   "description": "Email Delivery events report the delivery status of emails.",
   "attributes": {
     "attempt": {
       "requirement": "recommended"
     },
     "banner": {
-      "requirement": "recommended"
+      "requirement": "optional"
     },
     "dkim_signature": {
       "requirement": "recommended"
@@ -18,7 +17,7 @@
     "email": {
       "requirement": "required"
     },
-    "email_uid": {
+    "email_auth": {
       "requirement": "recommended"
     },
     "disposition_id": {
@@ -34,8 +33,11 @@
         }
       }
     },
-    "tls": {
-      "requirement": "recommended"
+    "sender_hostname": {
+      "requirement": "optional"
+    },
+    "sender_ip": {
+      "requirement": "optional"
     }
   }
 }

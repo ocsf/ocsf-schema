@@ -1,21 +1,15 @@
 {
   "name": "Email Alert",
-  "type": "email_alert",
+  "type": "email_delivery_alert",
   "uid": 501,
-  "extends": "alert",
+  "extends": "email_alert",
   "description": "Email Alert events report the detections and resolutions of email malicious activity.",
   "attributes": {
-    "connection_ref_uid": {
-      "requirement": "optional"
-    },
     "email": {
       "description": "The email that triggered the alert.",
       "requirement": "required"
     },
     "email_auth": {
-      "requirement": "required"
-    },
-    "email_uid": {
       "requirement": "required"
     },
     "disposition_id": {
@@ -37,20 +31,11 @@
         }
       }
     },
-    "quarantine_uid": {
-      "requirement": "optional"
-    },
-    "reason_id": {
-      "requirement": "required"
-    },
     "sender_hostname": {
       "requirement": "optional"
     },
     "sender_ip": {
       "requirement": "optional"
-    },
-    "threat": {
-      "requirement": "required"
     }
   }
 }

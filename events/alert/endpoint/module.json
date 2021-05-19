@@ -1,30 +1,37 @@
 {
-  "name": "Registry Value Alert",
-  "type": "registry_value_alert",
-  "uid": 516,
-  "extends": "alert_event",
-  "description": "Registry Value Alert events report the detections and resolutions of registry value malicious access.",
+  "name": "Module Alert",
+  "uid": 510,
+  "type": "module_alert",
+  "extends": "endpoint_alert",
+  "description": "Module Alert events report the detections and resolutions of module malicious activity.",
   "attributes": {
     "activity": {
       "requirement": "optional"
     },
     "activity_id": {
-      "description": "The registry value activity.",
+      "description": "The module activity.",
       "requirement": "optional",
       "enum": {
+        "0": {
+          "name": "Unknown"
+        },
         "1": {
-          "name": "Get"
+          "name": "Load"
         },
         "2": {
-          "name": "Set"
+          "name": "Unload"
         },
-        "3": {
-          "name": "Modified"
-        },
-        "4": {
-          "name": "Deleted"
+        "-1": {
+          "name": "Other"
         }
       }
+    },
+    "module": {
+      "description": "The module object that triggered the alert.",
+      "requirement": "required"
+    },
+    "module_type": {
+      "requirement": "required"
     },
     "disposition_id": {
       "enum": {
@@ -54,21 +61,18 @@
           "name": "Deleted"
         },
         "9": {
-          "name": "Restored"
+          "name": "Quarantined"
         },
         "10": {
+          "name": "Restored"
+        },
+        "11": {
           "name": "Detected"
         }
       }
     },
-    "reg_value": {
-      "name": "Registry Value",
-      "description": "The registry value that triggered the alert.",
-      "requirement": "required"
-    },
-    "reg_value_result": {
-      "name": "Registry Value Result",
-      "description": "The resulting registry value; for example, if a Registry value operation is ALLOWED, the resulting registry value object can be included in the event.",
+    "quarantine_uid": {
+      "description": "If the event id is one of:<ul><li>[12] Quarantined</li><li>[13] Restored</li></ul> the unique identifier of the item that was quarantined or restored from quarantine.",
       "requirement": "optional"
     }
   }

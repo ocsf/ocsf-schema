@@ -1,14 +1,11 @@
 {
-  "name": "Network Alert",
-  "uid": 511,
-  "type": "network_alert",
-  "extends": "alert",
-  "description": "Network Alert events report the detections and resolutions of network threats.",
+  "name": "Network Traffic Alert",
+  "uid": 512,
+  "type": "network_traffic_alert",
+  "extends": "network_alert",
+  "description": "Network Traffic Alert events report the detections of threats in the network traffic data.",
   "attributes": {
     "connection": {
-      "requirement": "required"
-    },
-    "app_name": {
       "requirement": "optional"
     },
     "disposition_id": {
@@ -30,12 +27,8 @@
         }
       }
     },
-    "rule": {
-      "description": "The rule that triggered the network alert event.",
-      "requirement": "recommended"
-    },
-    "threat": {
+    "traffic": {
       "requirement": "required"
-    }
+    }    
   }
 }

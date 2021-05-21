@@ -1,9 +1,9 @@
 {
   "name": "DNS Answer Activity",
   "type": "dns_answer_activity",
-  "uid": 401,
+  "uid": 402,
   "extends": "network_activity",
-  "description": "DNS Answer Activity events report a DNS answer.",
+  "description": "DNS Answer Activity events report a DNS answer and optionally, it may include the DNS query information.",
   "attributes": {
     "dns_answers": {
       "requirement": "required"
@@ -86,6 +86,34 @@
           "name": "Other"
         }
       }
+    },
+    "activity": {
+      "requirement": "optional"
+    },
+    "activity_id": {
+      "description": "The DNS activity/query that triggered this answer.",
+      "requirement": "optional",
+      "enum": {
+        "1": {
+          "name": "Query"
+        },
+        "2": {
+          "name": "Status"
+        },
+        "3": {
+          "name": "Notify"
+        },
+        "4": {
+          "name": "Update"
+        },
+        "5": {
+          "name": "DNS Stateful Operations (DSO)"
+        }
+      }
+    },
+    "dns_query": {
+      "description": "The Domain Name System (DNS) query that triggered this answer.",
+      "requirement": "optional"
     },
     "server": {
       "requirement": "optional"

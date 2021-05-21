@@ -1,9 +1,9 @@
 {
-  "name": "Process DNS Answer Activity",
-  "type": "process_dns_answer_activity",
-  "uid": 408,
+  "name": "Endpoint DNS Answer Activity",
+  "type": "endpoint_dns_answer_activity",
+  "uid": 409,
   "extends": "endpoint_activity",
-  "description": "Process DNS Answer Activity events report a DNS answer to a query initiated by a host application.",
+  "description": "Endpoint DNS Answer Activity events report a DNS answer to a query initiated by some application running on an endpoint; and optionally, it may also include the DNS query information.",
   "attributes": {
     "connection": {
       "requirement": "optional"
@@ -92,6 +92,34 @@
           "name": "Other"
         }
       }
-    }
+    },
+    "activity": {
+      "requirement": "optional"
+    },
+    "activity_id": {
+      "description": "The DNS activity/query that triggered this answer.",
+      "requirement": "optional",
+      "enum": {
+        "1": {
+          "name": "Query"
+        },
+        "2": {
+          "name": "Status"
+        },
+        "3": {
+          "name": "Notify"
+        },
+        "4": {
+          "name": "Update"
+        },
+        "5": {
+          "name": "DNS Stateful Operations (DSO)"
+        }
+      }
+    },
+    "dns_query": {
+      "description": "The Domain Name System (DNS) query that triggered this answer.",
+      "requirement": "optional"
+    }    
   }
 }

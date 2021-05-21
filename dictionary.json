@@ -137,13 +137,7 @@
           "name": "Other",
           "description": "The event activity is not mapped."
         }
-      }      
-    },
-    "lineage": {
-      "name": "Lineage",
-      "type": "string_t",
-      "description": "The lineage of the process.",
-      "is_array": true
+      }
     },
     "actor_process": {
       "name": "Actor",
@@ -319,19 +313,19 @@
       "name": "Total Bytes",
       "type": "long_t",
       "description": "The total number of bytes (in and out).",
-      "default": 0      
+      "default": 0
     },
     "bytes_in": {
       "name": "Bytes In",
       "type": "long_t",
       "description": "The number of bytes received on the source from the destination.",
-      "default": 0      
+      "default": 0
     },
     "bytes_out": {
       "name": "Bytes Out",
       "type": "long_t",
       "description": "The number of bytes sent from the source to the destination.",
-      "default": 0      
+      "default": 0
     },
     "caption": {
       "name": "Caption",
@@ -354,15 +348,10 @@
       "name": "URL Category IDs",
       "type": "integer_t",
       "description": "An array of URL category identifies.",
-      "is_array": true,
       "enum": {
         "0": {
           "name": "Unknown",
           "description": "The URL category is unknown."
-        },
-        "-1": {
-          "name": "Other",
-          "description": "The URL category is not mapped. See the <code>categories</code> attribute, which may contain a data source specific value."
         },
         "1": {
           "name": "Adult/Mature Content"
@@ -618,8 +607,13 @@
         },
         "121": {
           "name": "Marijuana"
+        },
+        "-1": {
+          "name": "Other",
+          "description": "The URL category is not mapped. See the <code>categories</code> attribute, which may contain a data source specific value."
         }
-      }
+      },
+      "is_array": true
     },
     "certificate": {
       "name": "TLS Certificate",
@@ -834,7 +828,7 @@
       "name": "Creator",
       "type": "object_t",
       "description": "The user that created the file.",
-      "object_type": "user"      
+      "object_type": "user"
     },
     "creator_name": {
       "name": "Creator Name",
@@ -877,6 +871,11 @@
       "name": "Data Center Region",
       "type": "string_t",
       "description": "The data center region, as defined by the cloud vendor."
+    },
+    "delivered_to": {
+      "name": "Delivered To",
+      "type": "email_t",
+      "description": "The <strong>Delivered-To</strong> email header field."
     },
     "desc": {
       "name": "Description",
@@ -926,6 +925,26 @@
       "name": "Displayed Text",
       "type": "string_t",
       "description": "The information that is displayed to the user that describes the impact of a client side override action."
+    },
+    "disposition": {
+      "name": "Disposition",
+      "type": "string_t",
+      "description": "The disposition of the event, as defined by the event source."
+    },
+    "disposition_id": {
+      "name": "Disposition ID",
+      "type": "integer_t",
+      "description": "The disposition ID of the event.",
+      "enum": {
+        "0": {
+          "name": "Unknown",
+          "description": "The event disposition is unknown."
+        },
+        "-1": {
+          "name": "Other",
+          "description": "The event disposition is not mapped."
+        }
+      }
     },
     "dkim_domain": {
       "name": "DKIM Domain",
@@ -1397,6 +1416,12 @@
       "description": "The license information.",
       "object_type": "license_info"
     },
+    "lineage": {
+      "name": "Lineage",
+      "type": "string_t",
+      "description": "The lineage of the process.",
+      "is_array": true
+    },
     "load_type": {
       "name": "Load Type",
       "type": "string_t",
@@ -1536,7 +1561,7 @@
       "name": "Modifier",
       "type": "object_t",
       "description": "The user who last modified the file.",
-      "object_type": "user"      
+      "object_type": "user"
     },
     "modifier_name": {
       "name": "Modifier Name",
@@ -1644,26 +1669,6 @@
       "description": "The device operation system.",
       "object_type": "os"
     },
-    "disposition": {
-      "name": "Disposition",
-      "type": "string_t",
-      "description": "The disposition of the event, as defined by the event source."
-    },
-    "disposition_id": {
-      "name": "Disposition ID",
-      "type": "integer_t",
-      "description": "The disposition ID of the event.",
-      "enum": {
-        "0": {
-          "name": "Unknown",
-          "description": "The event disposition is unknown."
-        },
-        "-1": {
-          "name": "Other",
-          "description": "The event disposition is not mapped."
-        }
-      }
-    },
     "override_duration": {
       "name": "Override Duration",
       "type": "integer_t",
@@ -1673,7 +1678,7 @@
       "name": "Owner",
       "type": "object_t",
       "description": "The user that owns the file.",
-      "object_type": "user"      
+      "object_type": "user"
     },
     "owner_email": {
       "name": "Owner Email",
@@ -1886,11 +1891,6 @@
       "type": "integer_t",
       "description": "The reason for the detection."
     },
-    "delivered_to": {
-      "name": "Delivered To",
-      "type": "email_t",
-      "description": "The <strong>Delivered-To</strong> email header field."
-    },
     "recovery_key_uid": {
       "name": "Recovery Key ID",
       "type": "string_t",
@@ -2102,7 +2102,6 @@
       "description": "The user that started the process.",
       "object_type": "user"
     },
-
     "run_count": {
       "name": "Run Count",
       "type": "integer_t",

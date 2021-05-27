@@ -1,56 +1,40 @@
 {
-  "name": "Endpoint DNS Answer Activity",
-  "uid": 409,
-  "type": "endpoint_dns_answer_activity",
-  "extends": "endpoint_activity",
-  "description": "Endpoint DNS Answer Activity events report a DNS answer to a query initiated by some application running on an endpoint; and optionally, it may also include the DNS query information.",
+  "name": "DNS Activity",
+  "uid": 402,
+  "type": "dns_activity",
+  "extends": "network_activity",
+  "description": "DNS Activity events report DNS queries and answers as seen on the network.",
   "attributes": {
-    "activity": {
-      "requirement": "optional"
-    },
-    "activity_id": {
-      "description": "The DNS activity/query that triggered this answer.",
-      "requirement": "optional",
-      "enum": {
-        "1": {
-          "name": "Query"
-        },
-        "2": {
-          "name": "Status"
-        },
-        "3": {
-          "name": "Notify"
-        },
-        "4": {
-          "name": "Update"
-        },
-        "5": {
-          "name": "DNS Stateful Operations (DSO)"
-        }
-      }
-    },
     "connection": {
       "requirement": "optional"
     },
     "disposition_id": {
       "enum": {
         "1": {
-          "name": "Resolved"
+          "name": "Resolved",
+          "description": "The DNS request was successfully resolved."
         },
         "2": {
-          "name": "Failed"
+          "name": "Failed",
+          "description": "The DNS request has failed."
+        },
+        "3": {
+          "name": "Query",
+          "description": "The DNS query request."
         }
       }
     },
-    "dns_answers": {
-      "requirement": "required"
-    },
-    "dns_query": {
-      "description": "The Domain Name System (DNS) query that triggered this answer.",
+    "answer_time": {
       "requirement": "optional"
     },
-    "end_time": {
-      "description": "The DNS answer time (when the event contains the DNS query)."
+    "answers": {
+      "requirement": "recommended"
+    },
+    "query": {
+      "requirement": "recommended"
+    },
+    "query_time": {
+      "requirement": "optional"
     },
     "proxy": {
       "requirement": "optional"
@@ -69,7 +53,7 @@
           "name": "Server Failure"
         },
         "3": {
-          "name": "Non-Existent Domain "
+          "name": "Non-Existent Domain"
         },
         "4": {
           "name": "Not Implemented"
@@ -81,13 +65,13 @@
           "name": "Name Exists when it should not"
         },
         "7": {
-          "name": "RR Set Exists when it should not "
+          "name": "RR Set Exists when it should not"
         },
         "8": {
-          "name": "RR Set that should exist does not "
+          "name": "RR Set that should exist does not"
         },
         "9": {
-          "name": "Not Authorized  "
+          "name": "Not Authorized "
         },
         "10": {
           "name": "Name not contained in zone"
@@ -124,8 +108,8 @@
         }
       }
     },
-    "time": {
-      "description": "The DNS answer time, or if the event contains the DNS query, then this is the DNS query time."
+    "server": {
+      "requirement": "optional"
     }
   }
 }

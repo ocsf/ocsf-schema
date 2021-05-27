@@ -189,6 +189,18 @@
         }
       }
     },
+    "answer_time": {
+      "name": "Answer Time",
+      "type": "timestamp_t",
+      "description": "The Domain Name System (DNS) answer time."
+    },
+    "answers": {
+      "name": "DNS Answer",
+      "type": "object_t",
+      "description": "The Domain Name System (DNS) answers.",
+      "is_array": true,
+      "object_type": "dns_answer"
+    },
     "app_name": {
       "name": "Application Name",
       "type": "string_t",
@@ -976,23 +988,10 @@
       "type": "integer_t",
       "description": "The Domain-based Message Authentication, Reporting and Conformance (DMARC) policy."
     },
-    "dns_answers": {
-      "name": "DNS Answer",
-      "type": "object_t",
-      "description": "The Domain Name System (DNS) answers.",
-      "is_array": true,
-      "object_type": "dns_answer"
-    },
     "dns_id": {
       "name": "DNS ID",
       "type": "integer_t",
       "description": "The DNS packet identifier assigned by the program that generated the query. The identifier is copied to the response."
-    },
-    "dns_query": {
-      "name": "DNS Query",
-      "type": "object_t",
-      "description": "The Domain Name System (DNS) query.",
-      "object_type": "dns_query"
     },
     "domain": {
       "name": "Domain",
@@ -1195,6 +1194,11 @@
       "name": "Host Name",
       "type": "hostname_t",
       "description": "The hostname of an endpoint ot device"
+    },
+    "http_query": {
+      "name": "HTTP Query",
+      "type": "string_t",
+      "description": "The query portion of the URL. For example: the query portion of the URL <code>http://www.example.com/search?q=bad&sort=date</code> is <code>q=bad&sort=date</code>."
     },
     "http_status": {
       "name": "HTTP Status",
@@ -1405,6 +1409,11 @@
       "type": "timestamp_t",
       "description": "The last run time of application or service. See specific usage."
     },
+    "last_updated_time": {
+      "name": "Last Updated",
+      "type": "timestamp_t",
+      "description": "The time when the event was last updated or enriched."
+    },
     "last_write_time": {
       "name": "Last Written",
       "type": "timestamp_t",
@@ -1557,11 +1566,6 @@
       "type": "timestamp_t",
       "description": "The time when the object was last modified. See specific usage."
     },
-    "last_updated_time": {
-      "name": "Last Updated",
-      "type": "timestamp_t",
-      "description": "The time when the event was last updated or enriched."
-    },
     "modifier": {
       "name": "Modifier",
       "type": "object_t",
@@ -1656,6 +1660,41 @@
       "name": "Violations",
       "type": "integer_t",
       "description": "The number of times the policy or rule was violated."
+    },
+    "opcode": {
+      "name": "DNS Opcode",
+      "type": "integer_t",
+      "description": "The DNS opcode specifies the type of the query message.",
+      "enum": {
+        "0": {
+          "name": "Query",
+          "description": "Standard query"
+        },
+        "1": {
+          "name": "Inverse Query",
+          "description": "Inverse query, obsolete"
+        },
+        "2": {
+          "name": "Status",
+          "description": "Server status request"
+        },
+        "3": {
+          "name": "Reserved",
+          "description": "Reserved, not used"
+        },
+        "4": {
+          "name": "Notify",
+          "description": "Zone change notification"
+        },
+        "5": {
+          "name": "Update",
+          "description": "Dynamic DNS update"
+        },
+        "6": {
+          "name": "DSO Message",
+          "description": "DNS Stateful Operations (DSO)"
+        }
+      }
     },
     "open_mask_id": {
       "name": "Open Mask",
@@ -1809,6 +1848,12 @@
         }
       }
     },
+    "privileges": {
+      "name": "Privileges",
+      "type": "string_t",
+      "description": "The user privileges.",
+      "is_array": true
+    },
     "process": {
       "name": "Process",
       "type": "object_t",
@@ -1872,9 +1917,15 @@
       "description": "The unique identifier of the item that was quarantined or restored from quarantine."
     },
     "query": {
-      "name": "Query",
-      "type": "string_t",
-      "description": "The query portion of the URL. For example: the query portion of the URL <code>http://www.example.com/search?q=bad&sort=date</code> is <code>q=bad&sort=date</code>."
+      "name": "DNS Query",
+      "type": "object_t",
+      "description": "The Domain Name System (DNS) query.",
+      "object_type": "dns_query"
+    },
+    "query_time": {
+      "name": "Query Time",
+      "type": "timestamp_t",
+      "description": "The Domain Name System (DNS) query time."
     },
     "raw_data": {
       "name": "Raw Data",
@@ -2200,7 +2251,7 @@
     "server": {
       "name": "DNS Server",
       "type": "object_t",
-      "description": "The DNS server endpoint of network traffic.",
+      "description": "The DNS server.",
       "object_type": "network_endpoint"
     },
     "service": {

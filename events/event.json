@@ -3,6 +3,7 @@
   "type": "event",
   "description": "The base event is a generic concrete event and it also defines a set of attributes available in most event classes. As a generic event that does not belong to any event category, it could be used to log events that are not otherwise defined by the schema.",
   "attributes": {
+    "category": {},
     "category_id": {
       "description": "The event category.",
       "requirement": "required",
@@ -23,13 +24,16 @@
         }
       }
     },
-    "category": {},
     "container": {},
     "correlation_uid": {},
     "count": {},
     "customer_uid": {},
     "device": {
       "requirement": "recommended"
+    },
+    "disposition": {},
+    "disposition_id": {
+      "requirement": "required"
     },
     "end_time": {
       "name": "End Time",
@@ -40,22 +44,19 @@
     },
     "feature": {},
     "is_user_present": {},
+    "labels": {
+      "name": "Labels",
+      "description": "The list of labels attached to the event or specific attributes.<p>For example: <code>[\"network\", \"connection.ip:destination\", \"device.ip:source\"]</code></p>",
+      "requirement": "optional"
+    },
+    "last_updated_time": {},
     "log_name": {
       "requirement": "reserved"
     },
-    "labels": {
-      "name": "Labels",
-     "description": "The list of labels attached to the event or specific attributes.<p>For example: <code>[\"network\", \"connection.ip:destination\", \"device.ip:source\"]</code></p>",
-      "requirement": "optional"
-    },    
     "log_time": {
       "requirement": "reserved"
     },
     "message": {},
-    "disposition": {},
-    "disposition_id": {
-      "requirement": "required"
-    },
     "product": {},
     "raw_data": {
       "requirement": "reserved"
@@ -70,8 +71,8 @@
     },
     "source": {},
     "status": {},
-    "status_id": {},
     "status_detail": {},
+    "status_id": {},
     "time": {
       "requirement": "required"
     },

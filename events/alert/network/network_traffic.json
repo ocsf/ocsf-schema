@@ -5,30 +5,9 @@
   "extends": "network_alert",
   "description": "Network Traffic Alert events report the detections of threats in the network traffic data.",
   "attributes": {
-    "connection": {
-      "requirement": "optional"
-    },
-    "disposition_id": {
-      "enum": {
-        "1": {
-          "name": "Allowed"
-        },
-        "2": {
-          "name": "Blocked"
-        },
-        "3": {
-          "name": "Dropped"
-        },
-        "4": {
-          "name": "Deleted"
-        },
-        "5": {
-          "name": "Isolated"
-        }
-      }
-    },
-    "traffic": {
-      "requirement": "required"
-    }    
+    "$include": [
+      "traits/network_traffic.json",
+      "traits/network_alert.json"
+    ]
   }
 }

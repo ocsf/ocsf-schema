@@ -4,11 +4,13 @@
   "extends": "activity",
   "description": "Email Activity events report non-threatening email activity.",
   "attributes": {
-    "connection_ref_uid": {
-      "requirement": "optional"
-    },
-    "email_uid": {
-      "requirement": "recommended"
+    "$include": "traits/email.json",
+    "disposition_id": {
+      "enum": {
+        "1": {
+          "name": "Allowed"
+        }
+      }
     }
   }
 }

@@ -1,50 +1,13 @@
 {
   "name": "Scan Alert",
-  "type": "scan_alert",
   "uid": 517,
+  "type": "scan_alert",
   "extends": "alert",
   "description": "Scan Alert events report the start, completion, and results of a scan. The scan event includes the number of items that were scanned and the number of detections that were resolved.",
   "attributes": {
     "name": {
       "description": "The name of the scan job.",
       "requirement": "required"
-    },
-    "type_id": {
-      "description": "The type of scan.",
-      "requirement": "required",
-      "enum": {
-        "0": {
-          "name": "Unknown"
-        },
-        "1": {
-          "name": "Manual",
-          "description": "The scan was manually initiated by the user or administrator."
-        },
-        "2": {
-          "name": "Scheduled",
-          "description": "The scan was started based on scheduler."
-        },
-        "3": {
-          "name": "Updated Definitions",
-          "description": "The scan was triggered by a content update."
-        },
-        "4": {
-          "name": "Quarantined Items",
-          "description": "The scan was triggered by newly quarantined items."
-        },
-        "5": {
-          "name": "Attached Media",
-          "description": "The scan was triggered by the attachment of removable media."
-        },
-        "6": {
-          "name": "User Logon",
-          "description": "The scan was started due to a user logon."
-        },
-        "7": {
-          "name": "ELAM",
-          "description": "The scan was triggered by an Early Launch Anti-Malware (ELAM) detection."
-        }
-      }
     },
     "uid": {
       "name": "Scan UID",
@@ -53,40 +16,6 @@
     },
     "command_uid": {
       "description": "The command identifier that is associated with this Scan event; required if the scan was initiated by a command.",
-      "requirement": "recommended"
-    },
-    "duration": {
-      "requirement": "recommended"
-    },
-    "end_time": {
-      "description": "The end time of the scan job.",
-      "requirement": "recommended"
-    },
-    "num_detections": {
-      "requirement": "recommended"
-    },
-    "num_files": {
-      "requirement": "recommended"
-    },
-    "num_folders": {
-      "requirement": "recommended"
-    },
-    "num_network": {
-      "requirement": "recommended"
-    },
-    "num_processes": {
-      "requirement": "recommended"
-    },
-    "num_registry": {
-      "requirement": "recommended"
-    },
-    "num_resolutions": {
-      "requirement": "recommended"
-    },
-    "num_skipped": {
-      "requirement": "recommended"
-    },
-    "num_trusted": {
       "requirement": "recommended"
     },
     "disposition_id": {
@@ -129,6 +58,41 @@
         }
       }
     },
+    "duration": {
+      "description": "The duration of the scan",
+      "requirement": "recommended"
+    },
+    "end_time": {
+      "description": "The end time of the scan job.",
+      "requirement": "recommended"
+    },
+    "num_detections": {
+      "requirement": "recommended"
+    },
+    "num_files": {
+      "requirement": "recommended"
+    },
+    "num_folders": {
+      "requirement": "recommended"
+    },
+    "num_network": {
+      "requirement": "recommended"
+    },
+    "num_processes": {
+      "requirement": "recommended"
+    },
+    "num_registry": {
+      "requirement": "recommended"
+    },
+    "num_resolutions": {
+      "requirement": "recommended"
+    },
+    "num_skipped": {
+      "requirement": "recommended"
+    },
+    "num_trusted": {
+      "requirement": "recommended"
+    },
     "policy": {
       "description": "The policy associated with this Scan event; required if the scan was initiated by a policy.",
       "requirement": "recommended"
@@ -147,6 +111,43 @@
     "total": {
       "description": "The total number of items that were scanned; zero if no items were scanned.",
       "requirement": "recommended"
+    },
+    "type_id": {
+      "description": "The type of scan.",
+      "requirement": "required",
+      "enum": {
+        "0": {
+          "name": "Unknown"
+        },
+        "1": {
+          "name": "Manual",
+          "description": "The scan was manually initiated by the user or administrator."
+        },
+        "2": {
+          "name": "Scheduled",
+          "description": "The scan was started based on scheduler."
+        },
+        "3": {
+          "name": "Updated Definitions",
+          "description": "The scan was triggered by a content update."
+        },
+        "4": {
+          "name": "Quarantined Items",
+          "description": "The scan was triggered by newly quarantined items."
+        },
+        "5": {
+          "name": "Attached Media",
+          "description": "The scan was triggered by the attachment of removable media."
+        },
+        "6": {
+          "name": "User Logon",
+          "description": "The scan was started due to a user logon."
+        },
+        "7": {
+          "name": "ELAM",
+          "description": "The scan was triggered by an Early Launch Anti-Malware (ELAM) detection."
+        }
+      }
     }
   }
 }

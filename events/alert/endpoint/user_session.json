@@ -1,12 +1,13 @@
 {
   "name": "User Session Alert",
-  "type": "user_session_alert",
   "uid": 518,
+  "type": "user_session_alert",
   "extends": "endpoint_alert",
   "description": "User Session Alert events report the detections and resolutions of session malicious activity.",
   "attributes": {
+    "$include": "traits/user_session.json",
     "activity_id": {
-      "description": "The ruser session activity.",
+      "description": "The user session activity.",
       "requirement": "optional",
       "enum": {
         "1": {
@@ -25,7 +26,7 @@
         "2": {
           "name": "Blocked"
         },
-       "3": {
+        "3": {
           "name": "Command Script Run"
         },
         "4": {
@@ -35,9 +36,6 @@
           "name": "Terminated"
         }
       }
-    },
-    "session": {
-      "requirement": "required"
     }
   }
 }

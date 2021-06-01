@@ -1,13 +1,11 @@
 {
   "name": "User Session Activity",
-  "type": "user_session_activity",
   "uid": 422,
+  "type": "user_session_activity",
   "extends": "endpoint_activity",
   "description": "User Session Activity events report when a user attempts a logon or logoff, successfully or otherwise.",
   "attributes": {
-    "is_cleartext": {
-      "requirement": "optional"
-    },
+    "$include": "traits/user_session.json",
     "disposition_id": {
       "enum": {
         "1": {
@@ -17,16 +15,6 @@
           "name": "Logoff"
         }
       }
-    },
-    "session": {
-      "description": "The session that was logged on to or logged off from.",
-      "requirement": "required"
-    },
-    "status_detail": {
-      "description": "The message attribute contains details about the success or failure of the logon or logoff. Possible details for Windows are:<ul><li>Success</li><ul><li>LOGOFF_USER_INITIATED</li><li>LOGOFF_OTHER</li></ul><li>Failure</li><ul><li>USER_DOES_NOT_EXIST</li><li>INVALID_CREDENTIALS</li><li>ACCOUNT_DISABLED</li><li>ACCOUNT_LOCKED_OUT</li><li>PASSWORD_EXPIRED</li></ul></ul>"
-    },
-    "status_id": {
-      "description": "The cross-platform status of the logon or logoff operation."
     }
   }
 }

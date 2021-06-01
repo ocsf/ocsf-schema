@@ -1,7 +1,7 @@
 {
   "name": "File Alert",
-  "type": "file_alert",
   "uid": 505,
+  "type": "file_alert",
   "extends": "endpoint_alert",
   "description": "File Alert events report the detections and resolutions of file malicious activity.",
   "attributes": {
@@ -84,17 +84,6 @@
         }
       }
     },
-    "file": {
-      "description": "The file that triggered the alert.",
-      "requirement": "required"
-    },
-    "file_diff": {
-      "requirement": "optional"
-    },
-    "file_result": {
-      "description": "The resulting file object; for example, if a file operation is ALLOWED, the resulting file object can be included in the event.",
-      "requirement": "optional"
-    },
     "disposition_id": {
       "enum": {
         "1": {
@@ -140,6 +129,17 @@
           "description": "Marked with extended attributes."
         }
       }
+    },
+    "file": {
+      "description": "The file that triggered the alert.",
+      "requirement": "required"
+    },
+    "file_diff": {
+      "requirement": "optional"
+    },
+    "file_result": {
+      "description": "The resulting file object; for example, if a file operation is ALLOWED, the resulting file object can be included in the event.",
+      "requirement": "optional"
     },
     "quarantine_uid": {
       "description": "If the event disposition is one of:<ul><li>[12] QUARANTINED</li><li>[13] RESTORED (from quarantine)</li></ul>include the unique identifier of the item that was quarantined or restored from quarantine.",

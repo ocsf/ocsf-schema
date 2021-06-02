@@ -26,11 +26,35 @@
     "home_dir": {
       "requirement": "optional"
     },
-    "is_admin": {
-      "requirement": "optional"
+    "type_id": {
+      "requirement": "optional",
+      "name": "Account Type ID",
+      "type": "integer_t",
+      "description": "The account type identifier.",
+      "enum": {
+        "0": {
+          "name": "Unknown"
+        },
+        "1": {
+          "name": "User",
+          "description": "Regular user account."
+        },
+        "2": {
+          "name": "Admin",
+          "description": "Admin/root user account."
+        },
+        "3": {
+          "name": "System",
+          "description": "System account. For example, Windows computer accounts with a trailing dollar sign ($)."
+        },
+        "-1": {
+          "name": "Other"
+        }
+      }
     },
     "privileges": {
-      "requirement": "optional"
+      "requirement": "optional",
+      "description": "The user privileges."
     },
     "risk_category": {
       "requirement": "optional"

@@ -921,18 +921,6 @@
       "description": "The direction of the initiated connection or traffic.",
       "enum": {}
     },
-    "folder": {
-      "name": "Folder",
-      "type": "object_t",
-      "description": "The folder that pertains to the event.",
-      "object_type": "file"
-    },
-    "folder_result": {
-      "name": "Folder Result",
-      "type": "object_t",
-      "description": "The folder that is the result of the event.",
-      "object_type": "file"
-    },
     "displayed_text": {
       "name": "Displayed Text",
       "type": "string_t",
@@ -1151,6 +1139,18 @@
       "type": "string_t",
       "description": "The list of DNS answer header flags.",
       "is_array": true
+    },
+    "folder": {
+      "name": "Folder",
+      "type": "object_t",
+      "description": "The folder that pertains to the event.",
+      "object_type": "file"
+    },
+    "folder_result": {
+      "name": "Folder Result",
+      "type": "object_t",
+      "description": "The folder that is the result of the event.",
+      "object_type": "file"
     },
     "from": {
       "name": "From",
@@ -1477,33 +1477,41 @@
           "name": "Unknown",
           "description": "Unknown logon type."
         },
-        "1": {
+        "2": {
           "name": "Interactive",
           "description": "A local logon to device console."
         },
-        "2": {
-          "name": "Remote Interactive",
-          "description": "A logon using remote protocol."
-        },
         "3": {
-          "name": "Cached Interactive",
-          "description": "A user logged on to this computer with network credentials that were stored locally on the computer and the domain controller was not contacted to verify the credentials."
-        },
-        "4": {
           "name": "Network",
           "description": "A user or device logged onto this device from the network."
         },
-        "5": {
+        "4": {
           "name": "Batch",
           "description": "A batch server logon, where processes may be executing on behalf of a user without their direct intervention."
         },
-        "6": {
+        "5": {
           "name": "Service",
           "description": "A logon by a service or daemon that was started by the OS."
         },
         "7": {
+          "name": "Unlock",
+          "description": "A logon to unlocked device."
+        },
+        "8": {
+          "name": "Network Cleartext",
+          "description": "A user logged on to this computer from the network. The user's password was passed to the authentication package in its unhashed form."
+        },
+        "9": {
           "name": "New Credentials",
           "description": "A caller cloned its current token and specified new credentials for outbound connections. The new logon session has the same local identity, but uses different credentials for other network connections."
+        },
+        "10": {
+          "name": "Remote Interactive",
+          "description": "A remote logon using Terminal Services or remote desktop application."
+        },
+        "11": {
+          "name": "Cached Interactive",
+          "description": "A user logged on to this computer with network credentials that were stored locally on the computer and the domain controller was not contacted to verify the credentials."
         },
         "-1": {
           "name": "Other",

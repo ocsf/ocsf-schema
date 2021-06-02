@@ -4,11 +4,15 @@
   "description": "The user object describes the identity of a user.",
   "attributes": {
     "name": {
-      "description": "The name of the user.",
+      "description": "The name of the user account.",
       "requirement": "required"
     },
     "uid": {
       "description": "The unique identifier of the user associated with the event. For example, for Windows events this is the security identifier (SID) of the user account.",
+      "requirement": "optional"
+    },
+    "type": {
+      "name": "Account Type",
       "requirement": "optional"
     },
     "domain": {
@@ -26,11 +30,27 @@
     "home_dir": {
       "requirement": "optional"
     },
+    "privileges": {
+      "description": "The user privileges.",
+      "requirement": "optional"
+    },
+    "risk_category": {
+      "requirement": "optional"
+    },
+    "risk_score": {
+      "requirement": "optional"
+    },
+    "session_uid": {
+      "requirement": "optional"
+    },
+    "shell": {
+      "requirement": "optional"
+    },
     "type_id": {
-      "requirement": "optional",
       "name": "Account Type ID",
       "type": "integer_t",
       "description": "The account type identifier.",
+      "requirement": "optional",
       "enum": {
         "0": {
           "name": "Unknown"
@@ -51,22 +71,6 @@
           "name": "Other"
         }
       }
-    },
-    "privileges": {
-      "requirement": "optional",
-      "description": "The user privileges."
-    },
-    "risk_category": {
-      "requirement": "optional"
-    },
-    "risk_score": {
-      "requirement": "optional"
-    },
-    "session_uid": {
-      "requirement": "optional"
-    },
-    "shell": {
-      "requirement": "optional"
     }
   }
 }

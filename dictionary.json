@@ -765,14 +765,9 @@
       "object_type": "container"
     },
     "content_type": {
-      "name": "Content Type",
+      "name": "HTTP Content Type",
       "type": "string_t",
-      "description": "The type of the content to which the update pertains."
-    },
-    "content_ver": {
-      "name": "Detection Version",
-      "type": "string_t",
-      "description": "The version of the detection engine or signature content."
+      "description": "The request header that identifies the original <a target='_blank' href='https://www.iana.org/assignments/media-types/media-types.xhtml'>media type </a> of the resource (prior to any content encoding applied for sending)."
     },
     "continent": {
       "name": "Continent",
@@ -1195,20 +1190,10 @@
       "type": "hostname_t",
       "description": "The hostname of an endpoint ot device"
     },
-    "http_query": {
-      "name": "HTTP Query",
-      "type": "string_t",
-      "description": "The query portion of the URL. For example: the query portion of the URL <code>http://www.example.com/search?q=bad&sort=date</code> is <code>q=bad&sort=date</code>."
-    },
     "http_status": {
       "name": "HTTP Status",
       "type": "integer_t",
-      "description": "The HTTP status code returned to the client."
-    },
-    "http_user_agent": {
-      "name": "HTTP User-Agent",
-      "type": "string_t",
-      "description": "The request header that is used to identify the operating system and web browser."
+      "description": "The Hypertext Transfer Protocol (HTTP) <a target='_blank' href='https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml'>status code</a> returned to the client."
     },
     "hw_bios_date": {
       "name": "BIOS Date",
@@ -1330,7 +1315,7 @@
       "name": "Remote",
       "type": "boolean_t",
       "description": "The indication of whether the session is remote."
-    },    
+    },
     "is_system": {
       "name": "System",
       "type": "boolean_t",
@@ -1554,10 +1539,10 @@
       "type": "string_t",
       "description": "The email header Message-Id value, as defined by RFC 5322."
     },
-    "method": {
-      "name": "Method",
+    "http_method": {
+      "name": "HTTP Method",
       "type": "string_t",
-      "description": "The HTTP method used in the URL request."
+      "description": "The HTTP request method indicates the desired action to be performed for a given resource. Expected values: <ul> <li>TRACE</li> <li>CONNECT</li> <li>OPTIONS</li> <li>HEAD</li> <li>DELETE</li> <li>POST</li> <li>PUT</li> <li>GET</li></ul>"
     },
     "mime_type": {
       "name": "MIME type",
@@ -1720,6 +1705,11 @@
       "type": "object_t",
       "description": "The device operation system.",
       "object_type": "os"
+    },
+    "other": {
+      "name": "HTTP Headers",
+      "type": "json_t",
+      "description": "Other HTTP headers of an HTTP request or response that pass additional context and metadata about the request or response."
     },
     "override_duration": {
       "name": "Override Duration",
@@ -1930,6 +1920,11 @@
       "description": "The Domain Name System (DNS) query.",
       "object_type": "dns_query"
     },
+    "query_string": {
+      "name": "HTTP Query String",
+      "type": "string_t",
+      "description": "The query portion of the URL. For example: the query portion of the URL <code>http://www.example.com/search?q=bad&sort=date</code> is <code>q=bad&sort=date</code>."
+    },
     "query_time": {
       "name": "Query Time",
       "type": "timestamp_t",
@@ -1980,10 +1975,15 @@
       "type": "string_t",
       "description": "The unique event identifier of the event instance, as defined by the event source."
     },
-    "referrer": {
-      "name": "Referrer",
+    "referer": {
+      "name": "HTTP Referer",
       "type": "string_t",
-      "description": "The address accessed prior to this one."
+      "description": "The request header that identifies the address of the previous web page, which is linked to the current web page or resource being requested."
+    },
+    "referer_hostname": {
+      "name": "HTTP Referer Host",
+      "type": "hostname_t",
+      "description": "The hostname contained in the HTTP Referer request header."
     },
     "reg_key": {
       "name": "Registry Key",
@@ -2082,8 +2082,9 @@
     },
     "request_headers": {
       "name": "Request Headers",
-      "type": "json_t",
-      "description": "The additional information associated with and HTTP request."
+      "type": "object_t",
+      "object_type": "http_headers",
+      "description": "The additional information associated with and the HTTP request."
     },
     "requested_permissions": {
       "name": "Requested Permissions",
@@ -2105,7 +2106,7 @@
     "response_headers": {
       "name": "Response Headers",
       "type": "json_t",
-      "description": "The additional information associated with and HTTP response."
+      "description": "The additional information associated with and the HTTP response."
     },
     "response_id": {
       "name": "Response",
@@ -2603,7 +2604,7 @@
     "text": {
       "name": "URL Text",
       "type": "string_t",
-      "description": "THE URL text string."
+      "description": "The URL. For example: http://www.example.com/download/trouble.exe."
     },
     "threat": {
       "name": "Threat",
@@ -2770,6 +2771,11 @@
       "type": "object_t",
       "description": "The user that pertains to the event or object.",
       "object_type": "user"
+    },
+    "user_agent": {
+      "name": "HTTP User-Agent",
+      "type": "string_t",
+      "description": "The request header that identifies the operating system and web browser."
     },
     "users": {
       "name": "Users",

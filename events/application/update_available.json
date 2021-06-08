@@ -1,10 +1,21 @@
 {
   "name": "Update Available",
-  "type": "update_available",
   "uid": 315,
+  "type": "update_available",
   "extends": "application",
   "description": "Update Available events report when code, content, configuration, or policy updates are available.",
   "attributes": {
+    "type": {
+      "name": "Content Type",
+      "description": "The type of the content to which the update pertains.",
+      "requirement": "optional"
+    },
+    "channel": {
+      "requirement": "recommended"
+    },
+    "curr_ver": {
+      "requirement": "required"
+    },
     "disposition_id": {
       "enum": {
         "1": {
@@ -26,15 +37,6 @@
           "name": "Application"
         }
       }
-    },
-    "channel": {
-      "requirement": "recommended"
-    },
-    "content_type": {
-      "requirement": "optional"
-    },
-    "curr_ver": {
-      "requirement": "required"
     },
     "prev_ver": {
       "requirement": "recommended"

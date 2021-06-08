@@ -1,0 +1,20 @@
+{
+  "name": "Authentication Activity",
+  "uid": 422,
+  "type": "authentication_activity",
+  "extends": "endpoint_activity",
+  "description": "Authentication Activity events report authentication session activities such as user attempts a logon or logoff, successfully or otherwise.",
+  "attributes": {
+    "$include": "traits/authentication.json",
+    "disposition_id": {
+      "enum": {
+        "1": {
+          "name": "Logon"
+        },
+        "2": {
+          "name": "Logoff"
+        }
+      }
+    }
+  }
+}

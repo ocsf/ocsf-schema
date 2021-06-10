@@ -7,6 +7,41 @@
       "description": "An array of associated events.",
       "is_array": true
     },
+    "cis20": {
+      "name": "CIS 20 List",
+      "type": "string_t",
+      "description": "The CIS 20 is a list of 20 actions and practices an organization’s security team can take on such that cyberattacks, or threats, are minimized and prevented.",
+      "is_array": true
+    },
+    "confidence": {
+      "name": "Confidence",
+      "type": "string_t",
+      "description": "The confidence of the reported finding."
+    },
+    "confidence_id": {
+      "name": "Confidence ID",
+      "type": "integer_t",
+      "description": "The normalized confidence level refers to the accuracy of the rule that created the finding. A rule with a low confidence level means that the detection scope is wide and may create finding reports that may not be malicious in nature.",
+      "enum": {
+        "0": {
+          "name": "Unknown",
+          "description": "No confidence is assigned."
+        },
+        "1": {
+          "name": "Low"
+        },
+        "2": {
+          "name": "Medium"
+        },
+        "3": {
+          "name": "High"
+        },
+        "-1": {
+          "name": "Other",
+          "description": "The confidence is not mapped to the defined enum values. See the <code>confidence</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
     "containers": {
       "name": "Containers",
       "type": "object_t",
@@ -28,6 +63,12 @@
       "is_array": true,
       "object_type": "email"
     },
+    "event_uids": {
+      "name": "Event UIDs",
+      "type": "string_t",
+      "description": "The list of event unique identifiers associated with the finding.",
+      "is_array": true
+    },
     "files": {
       "name": "Files",
       "type": "object_t",
@@ -40,6 +81,46 @@
       "type": "object_t",
       "description": "The finding reported by detection or analytics",
       "object_type": "finding"
+    },
+    "impact": {
+      "name": "Impact",
+      "type": "string_t",
+      "description": "The impact of the finding."
+    },
+    "impact_id": {
+      "name": "Impact ID",
+      "type": "integer_t",
+      "description": "The normalized impact of the finding.",
+      "enum": {
+        "0": {
+          "name": "Unknown"
+        },
+        "1": {
+          "name": "Low"
+        },
+        "2": {
+          "name": "Medium"
+        },
+        "3": {
+          "name": "High"
+        },
+        "4": {
+          "name": "Critical"
+        },
+        "5": {
+          "name": "Fatal"
+        },
+        "-1": {
+          "name": "Other",
+          "description": "The finding impact is not mapped. See the <code>impact</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
+    "nist": {
+      "name": "NIST List",
+      "type": "string_t",
+      "description": "The NIST Cybersecurity Framework recomendations for managing the cybersecurity risk.",
+      "is_array": true
     },
     "observables": {
       "name": "Observables",

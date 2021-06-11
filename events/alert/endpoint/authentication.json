@@ -1,17 +1,40 @@
 {
+  "name": "Authentication Alert",
+  "uid": 500,
+  "type": "authentication_alert",
+  "extends": "endpoint_alert",
+  "description": "Authentication Alert events report the detections and resolutions of authentication session malicious activity.",
   "attributes": {
     "$include": "traits/authentication.json",
     "activity_id": {
       "description": "The authentication activity.",
+      "requirement": "optional",
       "enum": {
         "1": {
-          "name": "Logon"
+          "name": "Logon",
+          "desc": "A new logon session was created."
         },
         "2": {
-          "name": "Logoff"
+          "name": "Logoff",
+          "decs": "A logon session was terminated and no longer exists."
+        },
+        "3": {
+          "name": "Privileged Logon",
+          "desc": "Special privileges assigned to new logon."
+        },
+        "4": {
+          "name": "Special Groups Logon",
+          "desc": "Special groups have been assigned to a new logon."
+        },
+        "5": {
+          "name": "Authentication Requested",
+          "desc": "A Kerberos authentication ticket (TGT) was requested."
+        },
+        "6": {
+          "name": "Ticket Requested",
+          "desc": "A Kerberos service ticket was requested."
         }
-      },
-      "requirement": "optional"
+      }
     },
     "disposition_id": {
       "enum": {
@@ -32,10 +55,5 @@
         }
       }
     }
-  },
-  "description": "Authentication Alert events report the detections and resolutions of authentication session malicious activity.",
-  "extends": "endpoint_alert",
-  "name": "Authentication Alert",
-  "type": "authentication_alert",
-  "uid": 500
+  }
 }

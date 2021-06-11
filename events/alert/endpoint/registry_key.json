@@ -1,36 +1,12 @@
 {
-  "name": "Registry Key Alert",
-  "uid": 515,
-  "type": "registry_key_alert",
-  "extends": "endpoint_alert",
-  "description": "Registry Key Alert events report the detections and resolutions of registry key malicious access.",
   "attributes": {
     "access_mask": {
       "requirement": "optional"
     },
     "access_mask_ids": {
-      "requirement": "optional",
       "enum": {
         "1": {
           "name": "Generic Read"
-        },
-        "2": {
-          "name": "Generic Write"
-        },
-        "3": {
-          "name": "Generic Execute"
-        },
-        "4": {
-          "name": "Generic All"
-        },
-        "5": {
-          "name": "Delete"
-        },
-        "6": {
-          "name": "Write DAC"
-        },
-        "7": {
-          "name": "Write Owner"
         },
         "16": {
           "name": "Read Attributes"
@@ -43,6 +19,9 @@
         },
         "19": {
           "name": "Access System Security"
+        },
+        "2": {
+          "name": "Generic Write"
         },
         "20": {
           "name": "Max Allowed"
@@ -64,15 +43,30 @@
         },
         "26": {
           "name": "Create Link"
+        },
+        "3": {
+          "name": "Generic Execute"
+        },
+        "4": {
+          "name": "Generic All"
+        },
+        "5": {
+          "name": "Delete"
+        },
+        "6": {
+          "name": "Write DAC"
+        },
+        "7": {
+          "name": "Write Owner"
         }
-      }
+      },
+      "requirement": "optional"
     },
     "activity": {
       "requirement": "optional"
     },
     "activity_id": {
       "description": "The registry key activity.",
-      "requirement": "optional",
       "enum": {
         "1": {
           "name": "Created"
@@ -95,37 +89,41 @@
         "7": {
           "name": "Restored"
         }
-      }
+      },
+      "requirement": "optional"
     },
     "create_mask": {
       "requirement": "optional"
     },
     "create_mask_id": {
       "description": "The Windows setting needed to create a registry key",
-      "requirement": "recommended",
       "enum": {
         "0": {
-          "name": "REG_OPTION_NON_VOLATILE",
-          "description": "(Default) - This key is not volatile. The information is stored in a file and is preserved when the system is restarted."
+          "description": "(Default) - This key is not volatile. The information is stored in a file and is preserved when the system is restarted.",
+          "name": "REG_OPTION_NON_VOLATILE"
         },
         "1": {
-          "name": "REG_OPTION_VOLATILE",
-          "description": "All keys created by the function are volatile. The information is stored in memory and is not preserved when the corresponding registry hive is unloaded."
+          "description": "All keys created by the function are volatile. The information is stored in memory and is not preserved when the corresponding registry hive is unloaded.",
+          "name": "REG_OPTION_VOLATILE"
         },
         "2": {
-          "name": "REG_OPTION_CREATE_LINK",
-          "description": "This key is a symbolic link."
+          "description": "This key is a symbolic link.",
+          "name": "REG_OPTION_CREATE_LINK"
         },
         "4": {
-          "name": "REG_OPTION_BACKUP_RESTORE",
-          "description": "Attempts to open the key with the access required to backup or restore the key."
+          "description": "Attempts to open the key with the access required to backup or restore the key.",
+          "name": "REG_OPTION_BACKUP_RESTORE"
         }
-      }
+      },
+      "requirement": "recommended"
     },
     "disposition_id": {
       "enum": {
         "1": {
           "name": "Allowed"
+        },
+        "10": {
+          "name": "Detected"
         },
         "2": {
           "name": "Blocked"
@@ -143,33 +141,30 @@
           "name": "Uncorrected"
         },
         "7": {
-          "name": "Delayed",
-          "description": "Requires reboot to finish the operation."
+          "description": "Requires reboot to finish the operation.",
+          "name": "Delayed"
         },
         "8": {
           "name": "Deleted"
         },
         "9": {
           "name": "Restored"
-        },
-        "10": {
-          "name": "Detected"
         }
       }
     },
     "open_mask_id": {
       "description": "The Windows setting needed to open a registry key.",
-      "requirement": "recommended",
       "enum": {
         "0": {
-          "name": "NONE",
-          "description": "Default"
+          "description": "Default",
+          "name": "NONE"
         },
         "8": {
-          "name": "REG_OPTION_OPEN_LINK",
-          "description": "The key is a symbolic link"
+          "description": "The key is a symbolic link",
+          "name": "REG_OPTION_OPEN_LINK"
         }
-      }
+      },
+      "requirement": "recommended"
     },
     "reg_key": {
       "description": "The registry key that triggered the alert.",
@@ -179,5 +174,10 @@
       "description": "The resulting registry key; for example, if a Registry key operation is ALLOWED, the resulting registry key can be included in the event.",
       "requirement": "optional"
     }
-  }
+  },
+  "description": "Registry Key Alert events report the detections and resolutions of registry key malicious access.",
+  "extends": "endpoint_alert",
+  "name": "Registry Key Alert",
+  "type": "registry_key_alert",
+  "uid": 517
 }

@@ -1018,6 +1018,13 @@
       "type": "timestamp_t",
       "description": "The end time of a time period. See specific usage."
     },
+    "enrichments": {
+      "name": "Enrichments",
+      "type": "object_t",
+      "description": "The additional information that is associated with the event.<p>For example add location information for the IP address in the DNS answers:</p><code>[{\"name\": \"answers.ip\", \"value\": \"92.24.47.250\", \"type\": \"location\", \"data\": {\"city\": \"Supplement amenities\", \"continent\": \"Asia\", \"coordinates\": [-25.4153, 17.0743], \"country\": \"YE\", \"desc\": \"Yemen\"}}]</code>",
+      "is_array": true,
+      "object_type": "enrichment"
+    },
     "entity": {
       "name": "Entity",
       "type": "object_t",
@@ -1183,6 +1190,11 @@
       "name": "Host Name",
       "type": "hostname_t",
       "description": "The hostname of an endpoint ot device"
+    },
+    "http_method": {
+      "name": "HTTP Method",
+      "type": "string_t",
+      "description": "The HTTP request method indicates the desired action to be performed for a given resource. Expected values: <ul> <li>TRACE</li> <li>CONNECT</li> <li>OPTIONS</li> <li>HEAD</li> <li>DELETE</li> <li>POST</li> <li>PUT</li> <li>GET</li></ul>"
     },
     "http_status": {
       "name": "HTTP Status",
@@ -1372,12 +1384,6 @@
       "type": "string_t",
       "description": "The label set for the policy."
     },
-    "labels": {
-      "name": "Labels",
-      "type": "string_t",
-      "description": "The container image labels.",
-      "is_array": true
-    },
     "label_ids": {
       "name": "Label IDs",
       "type": "integer_t",
@@ -1526,60 +1532,65 @@
         "70": {
           "name": "Rares: Rare User",
           "description": "There was a rare user involved in this finding. This will typically be applied to a finding based on other entities (device, printer, service, etc.)."
-         },
-         "71": {
+        },
+        "71": {
           "name": "Rares: Rare Process",
           "description": "There was a rare process or application involved in this finding. This can apply to app detection like PAN or Blue Coat, process names, or PIDs. It can also be used with hashes or any other other method of uniquely identifying executable code."
-         },
-         "72": {
+        },
+        "72": {
           "name": "Rares: Rare Device",
           "description": "There was a rare physical device or virtual machine involved in this finding. This can be set if you are working with endpoint data, relying on identity resolution, or have a way to identify individual machines/instances. If you are relying on IP/Network or domains for determination, the more specific RareNetwork or RareDomain should be used."
-         },
-         "73": {
+        },
+        "73": {
           "name": "Rares: Rare Domain",
           "description": "There was a rare domain involved in this finding. This can be an Active Directory domain, a DNS domain, a Kerberos realm, or a tenant identifier. Use domain for logical groupings of devices."
-         },
-         "74": {
+        },
+        "74": {
           "name": "Rares: Rare Network",
           "description": "There was a rare network involved in this finding. This can be based on IP/Network blocks, firewall zones, Netflow interfaces, or other indicators based on routing packets."
-         },
-         "75": {
+        },
+        "75": {
           "name": "Rares: Rare Location",
           "description": "There was a rare location involved in this finding. This can be a GeoLocation based on IP/Endpoint or a physical location based on Badge data."
-         },
-         "80": {
+        },
+        "80": {
           "name": "Other: Peer Group",
           "description": "The finding also considered the behavior of the user's peers."
-         },
-         "81": {
+        },
+        "81": {
           "name": "Other: Brute Force",
           "description": "Attempt to gain access to a system by making a high volume of login attempts."
-         },
-         "82": {
+        },
+        "82": {
           "name": "Other: Policy Violation",
           "description": "Violation of a company policy."
-         },
-         "83": {
+        },
+        "83": {
           "name": "Other: Threat Intelligence",
           "description": "The finding is based on external threat intelligence source as having an indicator of compromise, threatening location, or other security threat."
-         },
-         "84": {
+        },
+        "84": {
           "name": "Other: Flight Risk",
           "description": "This finding indicates that the user may plan on leaving the organization."
-         },
-         "85": {
+        },
+        "85": {
           "name": "Other: Removable Storage",
           "description": "The finding concerns USB drive or other physical storage capable of easy removal."
-         },          
+        },
         "-1": {
           "name": "Other",
           "description": "The category label identifier is not in the predefined list. See the <code>labels</code> attribute, which may contain additional category labels."
         }
       },
-      
       "is_array": true
     },
-     "lang": {
+    "labels": {
+      "name": "Labels",
+      "type": "string_t",
+      "description": "The container image labels.",
+      "is_array": true
+    },
+    "lang": {
       "name": "Language",
       "type": "string_t",
       "description": "The two letter lower case language codes, as defined by <a target='_blank' href='https://en.wikipedia.org/wiki/ISO_639-1'>ISO 639-1</a>. For example: \"en\" (English), \"de\" (German), or \"fr\" (French)."
@@ -1733,11 +1744,6 @@
       "name": "Message ID",
       "type": "string_t",
       "description": "The email header Message-Id value, as defined by RFC 5322."
-    },
-    "http_method": {
-      "name": "HTTP Method",
-      "type": "string_t",
-      "description": "The HTTP request method indicates the desired action to be performed for a given resource. Expected values: <ul> <li>TRACE</li> <li>CONNECT</li> <li>OPTIONS</li> <li>HEAD</li> <li>DELETE</li> <li>POST</li> <li>PUT</li> <li>GET</li></ul>"
     },
     "mime_type": {
       "name": "MIME type",
@@ -2278,8 +2284,8 @@
     "request_headers": {
       "name": "Request Headers",
       "type": "object_t",
-      "object_type": "http_headers",
-      "description": "The additional information associated with and the HTTP request."
+      "description": "The additional information associated with and the HTTP request.",
+      "object_type": "http_headers"
     },
     "requested_permissions": {
       "name": "Requested Permissions",

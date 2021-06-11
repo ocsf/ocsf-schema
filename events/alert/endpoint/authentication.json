@@ -1,14 +1,8 @@
 {
-  "name": "Authentication Alert",
-  "uid": 518,
-  "type": "authentication_alert",
-  "extends": "endpoint_alert",
-  "description": "Authentication Alert events report the detections and resolutions of authentication session malicious activity.",
   "attributes": {
     "$include": "traits/authentication.json",
     "activity_id": {
       "description": "The authentication activity.",
-      "requirement": "optional",
       "enum": {
         "1": {
           "name": "Logon"
@@ -16,7 +10,8 @@
         "2": {
           "name": "Logoff"
         }
-      }
+      },
+      "requirement": "optional"
     },
     "disposition_id": {
       "enum": {
@@ -37,5 +32,10 @@
         }
       }
     }
-  }
+  },
+  "description": "Authentication Alert events report the detections and resolutions of authentication session malicious activity.",
+  "extends": "endpoint_alert",
+  "name": "Authentication Alert",
+  "type": "authentication_alert",
+  "uid": 500
 }

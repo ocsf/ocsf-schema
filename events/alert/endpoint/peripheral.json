@@ -1,15 +1,9 @@
 {
-  "name": "Peripheral Device Alert",
-  "uid": 513,
-  "type": "peripheral_alert",
-  "extends": "endpoint_alert",
-  "description": "Peripheral Device Alert events report the detections and resolutions of peripheral device activity.",
   "attributes": {
     "activity": {
       "requirement": "optional"
     },
     "activity_id": {
-      "requirement": "recommended",
       "enum": {
         "1": {
           "name": "Read"
@@ -26,7 +20,8 @@
         "5": {
           "name": "Execute"
         }
-      }
+      },
+      "requirement": "recommended"
     },
     "disposition_id": {
       "enum": {
@@ -46,5 +41,10 @@
       "description": "The peripheral device object that triggered the alert.",
       "requirement": "required"
     }
-  }
+  },
+  "description": "Peripheral Device Alert events report the detections and resolutions of peripheral device activity.",
+  "extends": "endpoint_alert",
+  "name": "Peripheral Device Alert",
+  "type": "peripheral_alert",
+  "uid": 515
 }

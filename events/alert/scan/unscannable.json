@@ -1,16 +1,7 @@
 {
-  "name": "Unscannable File Alert",
-  "type": "unscannable_file_alert",
-  "uid": 519,
-  "extends": "alert",
-  "description": "Unscannable File Alert events report files that could not be scanned and the reasons why.",
   "attributes": {
     "component": {
       "requirement": "recommended"
-    },
-    "file": {
-      "description": "The file that could not be scanned.",
-      "requirement": "required"
     },
     "disposition_id": {
       "enum": {
@@ -31,6 +22,10 @@
         }
       }
     },
+    "file": {
+      "description": "The file that could not be scanned.",
+      "requirement": "required"
+    },
     "scan_name": {
       "description": "The name of the scan - an administrator-supplied name or an application-generated summary of the scan task. For example: <ul><li>Home office weekly user database scan</li><li>Scan folders for viruses</li><li>Full system virus scan</li></ul><p>Recommended maximum length of 256.</p>",
       "requirement": "required"
@@ -39,5 +34,10 @@
       "description": "The application-generated unique identifier that is used to associate alert events with this scan event.",
       "requirement": "recommended"
     }
-  }
+  },
+  "description": "Unscannable File Alert events report files that could not be scanned and the reasons why.",
+  "extends": "alert",
+  "name": "Unscannable File Alert",
+  "type": "unscannable_file_alert",
+  "uid": 520
 }

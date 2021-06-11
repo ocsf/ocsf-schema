@@ -1,0 +1,80 @@
+{
+  "name": "Finding Report",
+  "uid": 10000,
+  "category": "alert",
+  "type": "finding_report",
+  "description": "Finding events report the results of detections or analytics.",
+  "attributes": {
+    "associated_events": {},
+    "category_id": {
+      "requirement": "required"
+    },
+    "class": {
+      "description": "The event class name."
+    },
+    "class_id": {
+      "requirement": "required"
+    },
+    "customer_uid": {},
+    "disposition": {},
+    "disposition_id": {
+      "requirement": "required",
+      "enum": {
+        "1": {
+          "name": "Logged"
+        }
+      }
+    },
+    "end_time": {
+      "description": "The time of the most recent event included in the findings report.",
+      "requirement": "recommended"
+    },
+    "feature": {},
+    "finding": {
+      "requirement": "required"
+    },
+    "label_ids": {
+      "requirement": "required"
+    },
+    "labels": {
+      "description": "The list of category labels attached to the finding or specific attributes.<p>For example: <code>[\"network\", \"connection.ip:destination\", \"device.ip:source\"]</code></p>",
+      "requirement": "optional"
+    },
+    "message": {
+      "description": "The description of the finding report."
+    },
+    "priority": {},
+    "priority_id": {},
+    "product": {},
+    "raw_data": {
+      "requirement": "reserved"
+    },
+    "ref_uid": {},
+    "rule": {
+      "description": "The rule that created the finding report.",
+      "requirement": "required"
+    },
+    "sequence": {},
+    "severity": {},
+    "severity_id": {
+      "requirement": "required"
+    },
+    "start_time": {
+      "description": "The time of the least recent event included in the finding report.",
+      "requirement": "recommended"
+    },
+    "time": {
+      "description": "The time when the finding was created.",
+      "requirement": "required"
+    },
+    "timezone": {},
+    "uuid": {
+      "requirement": "reserved"
+    },
+    "version": {
+      "description": "The version of the event class, in the form major.minor. For example: 1.0. Event consumers use the version to determine the available event attributes.",
+      "requirement": "required",
+      "default": "1.0"
+    }
+  }
+}

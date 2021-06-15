@@ -1823,6 +1823,12 @@
       "type": "mac_t",
       "description": "The Media Access Control (MAC)  address that is associated with the network interface."
     },
+    "malware": {
+      "name": "Malware",
+      "type": "object_t",
+      "description": "The primary malware identified by the event.<p><b>Note:</b> The primary malware may be the first malware found by the detection engine, or it may be the most severe malware found.</p>",
+      "object_type": "malware"
+    },
     "mem_allocated": {
       "name": "Allocated Memory",
       "type": "long_t",
@@ -1967,8 +1973,8 @@
     "observables": {
       "name": "Observables",
       "type": "object_t",
-      "description": "The observables associated with an event.",
-      "object_type": "observables"
+      "description": "The observables associated with an event or finding.",
+      "object_type": "observable"
     },
     "opcode": {
       "name": "DNS Opcode",
@@ -2026,6 +2032,13 @@
       "name": "HTTP Headers",
       "type": "json_t",
       "description": "Other HTTP headers of an HTTP request or response that pass additional context and metadata about the request or response."
+    },
+    "other_malware": {
+      "name": "Other Malware",
+      "type": "object_t",
+      "description": "The additional malware that was detected.",
+      "is_array": true,
+      "object_type": "malware"
     },
     "override_duration": {
       "name": "Override Duration",
@@ -2470,6 +2483,52 @@
           "name": "Other"
         }
       }
+    },
+    "role_ids": {
+      "name": "Role IDs",
+      "type": "integer_t",
+      "description": "The role identifiers that classify the observable.",
+      "enum": {
+        "0": {
+          "name": "Unknown",
+          "description": "Unknown role."
+        },
+        "1": {
+          "name": "Actor"
+        },
+        "2": {
+          "name": "Target"
+        },
+        "3": {
+          "name": "Attacker"
+        },
+        "4": {
+          "name": "Victim"
+        },
+        "5": {
+          "name": "Parent Process"
+        },
+        "6": {
+          "name": "Child Process"
+        },
+        "7": {
+          "name": "Known Bad"
+        },
+        "8": {
+          "name": "Data Loss"
+        },
+        "-1": {
+          "name": "Other",
+          "description": "The observable role is not mapped."
+        }
+      },
+      "is_array": true
+    },
+    "roles": {
+      "name": "Roles",
+      "type": "string_t",
+      "description": "The observable roles that are not in the pre-defined roles.",
+      "is_array": true
     },
     "rule": {
       "name": "Rule",
@@ -2928,19 +2987,6 @@
       "name": "URL Text",
       "type": "string_t",
       "description": "The URL. For example: http://www.example.com/download/trouble.exe."
-    },
-    "malware": {
-      "name": "Malware",
-      "type": "object_t",
-      "description": "The primary malware identified by the event.<p><b>Note:</b> The primary malware may be the first malware found by the detection engine, or it may be the most severe malware found.</p>",
-      "object_type": "malware"
-    },
-    "other_malware": {
-      "name": "Other Malware",
-      "type": "object_t",
-      "description": "The additional malware that was detected.",
-      "is_array": true,
-      "object_type": "malware"
     },
     "throughput_eps": {
       "name": "Events per Second",

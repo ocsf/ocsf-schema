@@ -4,32 +4,88 @@
   "description": "The observable object is a pivot element that contains related information found in many places in the event.",
   "attributes": {
     "name": {
-      "description": "The name of the observable attribute. For example: `file`",
+      "description": "The name of the observable attribute. For example: `file.name`",
       "requirement": "required"
     },
     "type": {
-      "description": "The observable type not in the pre-defined type enums. For example: \"Location\"",
+      "description": "The observable value type name that is not in the pre-defined types.",
       "requirement": "optional"
     },
-    "data": {
-      "description": "The data associated with the observable. The meaning of this data depends on the observable type.",
+    "value": {
+      "description": "The data value associated with the observable attribute. The meaning of this data depends on the observable type.",
       "requirement": "required"
     },
     "role_ids": {
-      "description": "The observable rule identifiers.",
-      "requirement": "recommended"
+      "requirement": "required"
     },
     "roles": {
-      "description": "The observable roles not in the pre-defined role enums. For example: \"Bad Location\"",
       "requirement": "optional"
     },
     "type_id": {
-      "description": "The observable type identifier.",
-      "requirement": "recommended"
-    },
-    "value": {
-      "description": "The value of the attribute to which the enriched data pertains.",
-      "requirement": "required"
+      "type": "integer_t",
+      "description": "The observable value type identifier.",
+      "requirement": "required",
+      "enum": {
+        "0": {
+          "name": "Unknown",
+          "description": "Unknown observable data type."
+        },
+        "1": {
+          "name": "Device"
+        },
+        "2": {
+          "name": "Container"
+        },
+        "3": {
+          "name": "Endpoint"
+        },
+        "4": {
+          "name": "Hostname"
+        },
+        "5": {
+          "name": "IP Address"
+        },
+        "6": {
+          "name": "User"
+        },
+        "7": {
+          "name": "Username"
+        },        
+        "8": {
+          "name": "Email"
+        },
+        "9": {
+          "name": "Email Address"
+        },
+        "10": {
+          "name": "URL"
+        },
+        "11": {
+          "name": "URL Domain"
+        },
+        "12": {
+          "name": "File"
+        },
+        "13": {
+          "name": "File Name"
+        },
+        "14": {
+          "name": "File Hash"
+        },
+        "15": {
+          "name": "Process"
+        },
+        "16": {
+          "name": "Process Name"
+        },
+        "17": {
+          "name": "Location"
+        },
+        "-1": {
+          "name": "Other",
+          "description": "The observable data type is not mapped. See the <code>type</code> attribute, which may contain data source specific value."
+        }
+      }
     }
   }
 }

@@ -714,7 +714,7 @@
     },
     "confidence": {
       "name": "Confidence",
-      "type": "string_t",
+      "type": "integer_t",
       "description": "The confidence of the reported finding."
     },
     "confidence_id": {
@@ -1303,7 +1303,7 @@
     },
     "impact": {
       "name": "Impact",
-      "type": "string_t",
+      "type": "integer_t",
       "description": "The impact of the finding."
     },
     "impact_id": {
@@ -1487,14 +1487,20 @@
       "type": "string_t",
       "description": "The label set for the policy."
     },
-    "label_ids": {
-      "name": "Label IDs",
+    "context": {
+      "name": "Context",
+      "type": "string_t",
+      "description": "The list of the context categories of the finding.",
+      "is_array": true
+    },
+    "context_ids": {
+      "name": "Context IDs",
       "type": "integer_t",
-      "description": "The list of the required category label identifiers for every detection.",
+      "description": "The list of the context identifiers of the finding.",
       "enum": {
         "0": {
           "name": "Unknown",
-          "description": "The category label identifier is unknown"
+          "description": "The context identifier is unknown"
         },
         "10": {
           "name": "Source: Endpoint",
@@ -1690,7 +1696,7 @@
     "labels": {
       "name": "Labels",
       "type": "string_t",
-      "description": "The container image labels.",
+      "description": "The list of labels attached to an event, object, or attribute.",
       "is_array": true
     },
     "lang": {
@@ -3160,7 +3166,7 @@
     },
     "value": {
       "name": "Value",
-      "type": "string_t",
+      "type": "json_t",
       "description": "The value that pertains to the object. See specific usage."
     },
     "vendor": {

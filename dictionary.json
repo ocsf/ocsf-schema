@@ -646,7 +646,7 @@
     "cis20": {
       "name": "CIS 20 List",
       "type": "string_t",
-      "description": "The CIS 20 is a list of 20 actions and practices an organization’s security team can take on such that cyberattacks, or threats, are minimized and prevented.",
+      "description": "The CIS 20 is a list of 20 actions and practices an organization’s security team can take on such that cyberattacks or malware, are minimized and prevented.",
       "is_array": true
     },
     "city": {
@@ -669,12 +669,12 @@
     "classification_ids": {
       "name": "Classification IDs",
       "type": "integer_t",
-      "description": "An array of threat classifications."
+      "description": "An array of malware classifications."
     },
     "classifications": {
       "name": "Classifications",
       "type": "string_t",
-      "description": "The threat classifications.",
+      "description": "The malware classifications.",
       "is_array": true
     },
     "cmd_line": {
@@ -928,7 +928,7 @@
     "detected_time": {
       "name": "Detection Time",
       "type": "timestamp_t",
-      "description": "The time that the threat was detected."
+      "description": "The time that the malware was detected."
     },
     "detection_uid": {
       "name": "Detection ID",
@@ -1164,7 +1164,7 @@
     "first_seen_time": {
       "name": "First Seen",
       "type": "timestamp_t",
-      "description": "The initial detection time of the threat."
+      "description": "The initial detection time of the malware."
     },
     "flag_ids": {
       "name": "DNS Header Flags",
@@ -1558,11 +1558,11 @@
         },
         "30": {
           "name": "Outcome: Blocked",
-          "description": "Unsuccessful or blocked security threat."
+          "description": "Unsuccessful or blocked security malware."
         },
         "31": {
           "name": "Outcome: Allowed",
-          "description": "Security threat was not blocked. This is the default, if this category is not explicitly set, then it is assumed to be Allowed."
+          "description": "Malware was not blocked. This is the default, if this category is not explicitly set, then it is assumed to be Allowed."
         },
         "40": {
           "name": "Stage: Recon",
@@ -1670,7 +1670,7 @@
         },
         "83": {
           "name": "Other: Threat Intelligence",
-          "description": "The finding is based on external threat intelligence source as having an indicator of compromise, threatening location, or other security threat."
+          "description": "The finding is based on external intelligence source as having an indicator of compromise, threatening location, or security malware."
         },
         "84": {
           "name": "Other: Flight Risk",
@@ -2929,18 +2929,18 @@
       "type": "string_t",
       "description": "The URL. For example: http://www.example.com/download/trouble.exe."
     },
-    "threat": {
-      "name": "Threat",
+    "malware": {
+      "name": "Malware",
       "type": "object_t",
-      "description": "The primary threat identified by the event.<p><b>Note:</b> The primary threat may be the first threat found by the detection engine, or it may be the most severe threat found. The client determines the primary threat.</p>",
-      "object_type": "threat"
+      "description": "The primary malware identified by the event.<p><b>Note:</b> The primary malware may be the first malware found by the detection engine, or it may be the most severe malware found.</p>",
+      "object_type": "malware"
     },
-    "threats": {
-      "name": "Threats",
+    "other_malware": {
+      "name": "Other Malware",
       "type": "object_t",
-      "description": "The additional threats that were detected.",
+      "description": "The additional malware that was detected.",
       "is_array": true,
-      "object_type": "threat"
+      "object_type": "malware"
     },
     "throughput_eps": {
       "name": "Events per Second",

@@ -4,7 +4,7 @@
   "description": "Asset is a device of the environment that supports information-related activities. Assets should be protected from illicit access, use, disclosure, alteration, destruction, and/or theft, resulting in loss to the organization.",
   "attributes": {
     "name": {
-      "description": "The asset name, ordinarily as assigned by an administrator.",
+      "description": "The asset name, ordinarily as assigned by an administrator or an LDAP common name (CN).",
       "requirement": "recommended"
     },
     "uid": {
@@ -14,8 +14,8 @@
     },
     "type": {
       "name": "Type",
-      "description": "The asset type. For example: <code>unknown</code>, <code>server</code>, <code>desktop</code>, <code>laptop</code>, <code>tablet</code>, <code>mobile</code>, <code>virtual</code>, <code>browser</code>, or <code>other</code>.",
-      "requirement": "recommended"
+      "description": "The original asset type assigned to the asset.",
+      "requirement": "optional"
     },
     "caption": {
       "requirement": "optional"
@@ -35,23 +35,14 @@
       "description": "The name of the group to which the device belongs. For example: <code>Windows Laptops<code/>.",
       "requirement": "optional"
     },
-    "is_compliant": {
-      "requirement": "optional"
-    },
-    "is_managed": {
-      "requirement": "optional"
-    },
-    "is_personal": {
-      "requirement": "optional"
-    },
-    "is_trusted": {
-      "requirement": "optional"
-    },
     "labels": {
       "description": "The list of labels attached to the asset.",
       "requirement": "optional"
     },
     "location": {
+      "requirement": "optional"
+    },
+    "managed_by": {
       "requirement": "optional"
     },
     "networks_info": {
@@ -96,6 +87,7 @@
       "requirement": "optional"
     },
     "ref_uid": {
+      "description": "The reference to a unique identifier, managed by an external system. For example LDAP distinguished name of the asset.",
       "requirement": "optional"
     },
     "type_id": {

@@ -1,14 +1,57 @@
 {
   "name": "Network Information",
   "type": "network_info",
-  "description": "The network information object describes the type, reputation, and associated addresses and service set identifiers of a network interface.",
+  "description": "The network information object describes the type, reputation, and associated addresses of a network interface.",
   "attributes": {
+    "name": {
+      "description": "The name of the network interface.",
+      "requirement": "recommended"
+    },
     "type": {
-      "description": "The type of network.",
+      "description": "The type of network interface.",
+      "requirement": "optional"
+    },
+    "gateway_ip": {
+      "requirement": "optional"
+    },
+    "gateway_mac": {
+      "requirement": "optional"
+    },
+    "hostname": {
+      "name": "Hostname",
+      "description": "The hostname associated with the network interface.",
+      "requirement": "required"
+    },
+    "ip": {
+      "description": "The IP address associated with the network interface.",
+      "requirement": "recommended"
+    },
+    "ipv4": {
+      "description": "The IPv4 address associated with the network interface.",
+      "requirement": "optional"
+    },
+    "ipv6": {
+      "description": "The IPv6 address associated with the network interface.",
+      "requirement": "optional"
+    },
+    "mac": {
+      "description": "The MAC address of the network interface.",
+      "requirement": "optional"
+    },
+    "namespace": {
+      "requirement": "optional"
+    },
+    "rep_score": {
+      "requirement": "optional"
+    },
+    "rep_score_id": {
+      "requirement": "optional"
+    },
+    "ssid": {
       "requirement": "optional"
     },
     "type_id": {
-      "description": "The network type identifier.",
+      "description": "The network interface type identifier.",
       "requirement": "required",
       "enum": {
         "0": {
@@ -27,34 +70,6 @@
           "name": "Other"
         }
       }
-    },
-    "gateway_ip": {
-      "requirement": "optional"
-    },
-    "gateway_mac": {
-      "requirement": "optional"
-    },
-    "ipv4": {
-      "requirement": "recommended"
-    },
-    "ipv6": {
-      "requirement": "recommended"
-    },
-    "is_public": {
-      "requirement": "optional"
-    },
-    "mac": {
-      "requirement": "recommended"
-    },
-    "rep_score": {
-      "requirement": "optional"
-    },
-    "rep_score_id": {
-      "description": "The reputation of the network.",
-      "requirement": "recommended"
-    },
-    "ssid": {
-      "requirement": "optional"
     }
   }
 }

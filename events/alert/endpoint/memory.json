@@ -1,13 +1,16 @@
 {
+  "name": "Memory Alert",
+  "uid": 507,
+  "type": "memory_alert",
+  "extends": "endpoint_alert",
+  "description": "Memory Alert events report the detections and resolutions of malicious memory access.",
   "attributes": {
     "activity": {
       "requirement": "optional"
     },
     "activity_id": {
+      "requirement": "recommended",
       "enum": {
-        "-1": {
-          "name": "Other"
-        },
         "0": {
           "name": "Unknown"
         },
@@ -24,15 +27,17 @@
           "name": "Buffer Overflow"
         },
         "5": {
-          "description": "Data Execution Permission",
-          "name": "Disabled DEP"
+          "name": "Disabled DEP",
+          "description": "Data Execution Permission"
         },
         "6": {
-          "description": "Data Execution Permission",
-          "name": "Enabled DEP"
+          "name": "Enabled DEP",
+          "description": "Data Execution Permission"
+        },
+        "-1": {
+          "name": "Other"
         }
-      },
-      "requirement": "recommended"
+      }
     },
     "disposition_id": {
       "enum": {
@@ -55,8 +60,8 @@
           "name": "Uncorrected"
         },
         "7": {
-          "description": "Requires reboot to finish the operation.",
-          "name": "Delayed"
+          "name": "Delayed",
+          "description": "Requires reboot to finish the operation."
         },
         "8": {
           "name": "Detected"
@@ -64,9 +69,7 @@
       }
     }
   },
-  "description": "Memory Alert events report the detections and resolutions of malicious memory access.",
-  "extends": "endpoint_alert",
-  "name": "Memory Alert",
-  "type": "memory_alert",
-  "uid": 507
+  "see_also": [
+    "memory_activity"
+  ]
 }

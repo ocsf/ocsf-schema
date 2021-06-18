@@ -1,9 +1,15 @@
 {
+  "name": "Kernel Alert",
+  "uid": 506,
+  "type": "kernel_alert",
+  "extends": "endpoint_alert",
+  "description": "Kernel Alert events report the detections and resolutions of kernel resource malicious access.",
   "attributes": {
     "activity": {
       "requirement": "optional"
     },
     "activity_id": {
+      "requirement": "recommended",
       "enum": {
         "1": {
           "name": "Created"
@@ -17,8 +23,7 @@
         "4": {
           "name": "Invoked"
         }
-      },
-      "requirement": "recommended"
+      }
     },
     "disposition_id": {
       "enum": {
@@ -35,8 +40,8 @@
           "name": "Uncorrected"
         },
         "5": {
-          "description": "Requires reboot to finish the operation.",
-          "name": "Delayed"
+          "name": "Delayed",
+          "description": "Requires reboot to finish the operation."
         },
         "6": {
           "name": "Deleted"
@@ -51,9 +56,7 @@
       "requirement": "required"
     }
   },
-  "description": "Kernel Alert events report the detections and resolutions of kernel resource malicious access.",
-  "extends": "endpoint_alert",
-  "name": "Kernel Alert",
-  "type": "kernel_alert",
-  "uid": 506
+  "see_also": [
+    "kernel_activity"
+  ]
 }

@@ -1,14 +1,17 @@
 {
+  "name": "Module Alert",
+  "uid": 508,
+  "type": "module_alert",
+  "extends": "endpoint_alert",
+  "description": "Module Alert events report the detections and resolutions of module malicious activity.",
   "attributes": {
     "activity": {
       "requirement": "optional"
     },
     "activity_id": {
       "description": "The module activity.",
+      "requirement": "optional",
       "enum": {
-        "-1": {
-          "name": "Other"
-        },
         "0": {
           "name": "Unknown"
         },
@@ -17,20 +20,16 @@
         },
         "2": {
           "name": "Unload"
+        },
+        "-1": {
+          "name": "Other"
         }
-      },
-      "requirement": "optional"
+      }
     },
     "disposition_id": {
       "enum": {
         "1": {
           "name": "Allowed"
-        },
-        "10": {
-          "name": "Restored"
-        },
-        "11": {
-          "name": "Detected"
         },
         "2": {
           "name": "Blocked"
@@ -48,14 +47,20 @@
           "name": "Uncorrected"
         },
         "7": {
-          "description": "Requires reboot to finish the operation.",
-          "name": "Delayed"
+          "name": "Delayed",
+          "description": "Requires reboot to finish the operation."
         },
         "8": {
           "name": "Deleted"
         },
         "9": {
           "name": "Quarantined"
+        },
+        "10": {
+          "name": "Restored"
+        },
+        "11": {
+          "name": "Detected"
         }
       }
     },
@@ -71,9 +76,7 @@
       "requirement": "optional"
     }
   },
-  "description": "Module Alert events report the detections and resolutions of module malicious activity.",
-  "extends": "endpoint_alert",
-  "name": "Module Alert",
-  "type": "module_alert",
-  "uid": 508
+  "see_also": [
+    "module_activity"
+  ]
 }

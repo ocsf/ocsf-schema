@@ -1,4 +1,9 @@
 {
+  "name": "File Alert",
+  "uid": 505,
+  "type": "file_alert",
+  "extends": "endpoint_alert",
+  "description": "File Alert events report the detections and resolutions of file malicious activity.",
   "attributes": {
     "access_mask": {
       "requirement": "optional"
@@ -11,15 +16,10 @@
     },
     "activity_id": {
       "description": "The file activity.",
+      "requirement": "optional",
       "enum": {
         "1": {
           "name": "Created"
-        },
-        "10": {
-          "name": "Encrypted"
-        },
-        "11": {
-          "name": "Decrypted"
         },
         "2": {
           "name": "Read"
@@ -44,9 +44,14 @@
         },
         "9": {
           "name": "Get Security"
+        },
+        "10": {
+          "name": "Encrypted"
+        },
+        "11": {
+          "name": "Decrypted"
         }
-      },
-      "requirement": "optional"
+      }
     },
     "component": {
       "requirement": "optional"
@@ -59,6 +64,7 @@
     },
     "create_mask_id": {
       "description": "The Windows create file flag, applicable to System Activity File Create event.",
+      "requirement": "optional",
       "enum": {
         "1": {
           "name": "Create New"
@@ -75,27 +81,12 @@
         "5": {
           "name": "Truncate Existing"
         }
-      },
-      "requirement": "optional"
+      }
     },
     "disposition_id": {
       "enum": {
         "1": {
           "name": "Allowed"
-        },
-        "10": {
-          "name": "Restored"
-        },
-        "11": {
-          "name": "Detected"
-        },
-        "12": {
-          "description": "No longer suspicious (re-scored).",
-          "name": "Exonerated"
-        },
-        "13": {
-          "description": "Marked with extended attributes.",
-          "name": "Tagged"
         },
         "2": {
           "name": "Blocked"
@@ -113,14 +104,28 @@
           "name": "Uncorrected"
         },
         "7": {
-          "description": "Requires reboot to finish the operation.",
-          "name": "Delayed"
+          "name": "Delayed",
+          "description": "Requires reboot to finish the operation."
         },
         "8": {
           "name": "Deleted"
         },
         "9": {
           "name": "Quarantined"
+        },
+        "10": {
+          "name": "Restored"
+        },
+        "11": {
+          "name": "Detected"
+        },
+        "12": {
+          "name": "Exonerated",
+          "description": "No longer suspicious (re-scored)."
+        },
+        "13": {
+          "name": "Tagged",
+          "description": "Marked with extended attributes."
         }
       }
     },
@@ -144,9 +149,8 @@
       "requirement": "optional"
     }
   },
-  "description": "File Alert events report the detections and resolutions of file malicious activity.",
-  "extends": "endpoint_alert",
-  "name": "File Alert",
-  "type": "file_alert",
-  "uid": 505
+  "see_also": [
+    "file_activity",
+    "folder_activity"
+  ]
 }

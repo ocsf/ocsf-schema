@@ -1,10 +1,16 @@
 {
+  "name": "Registry Value Alert",
+  "uid": 518,
+  "type": "registry_value_alert",
+  "extends": "endpoint_alert",
+  "description": "Registry Value Alert events report the detections and resolutions of registry value malicious access.",
   "attributes": {
     "activity": {
       "requirement": "optional"
     },
     "activity_id": {
       "description": "The registry value activity.",
+      "requirement": "optional",
       "enum": {
         "1": {
           "name": "Get"
@@ -18,16 +24,12 @@
         "4": {
           "name": "Deleted"
         }
-      },
-      "requirement": "optional"
+      }
     },
     "disposition_id": {
       "enum": {
         "1": {
           "name": "Allowed"
-        },
-        "10": {
-          "name": "Detected"
         },
         "2": {
           "name": "Blocked"
@@ -45,31 +47,34 @@
           "name": "Uncorrected"
         },
         "7": {
-          "description": "Requires reboot to finish the operation.",
-          "name": "Delayed"
+          "name": "Delayed",
+          "description": "Requires reboot to finish the operation."
         },
         "8": {
           "name": "Deleted"
         },
         "9": {
           "name": "Restored"
+        },
+        "10": {
+          "name": "Detected"
         }
       }
     },
     "reg_value": {
-      "description": "The registry value that triggered the alert.",
       "name": "Registry Value",
+      "description": "The registry value that triggered the alert.",
       "requirement": "required"
     },
     "reg_value_result": {
-      "description": "The resulting registry value; for example, if a Registry value operation is ALLOWED, the resulting registry value object can be included in the event.",
       "name": "Registry Value Result",
+      "description": "The resulting registry value; for example, if a Registry value operation is ALLOWED, the resulting registry value object can be included in the event.",
       "requirement": "optional"
     }
   },
-  "description": "Registry Value Alert events report the detections and resolutions of registry value malicious access.",
-  "extends": "endpoint_alert",
-  "name": "Registry Value Alert",
-  "type": "registry_value_alert",
-  "uid": 518
+  "see_also": [
+    "registry_key_alert",
+    "registry_key_activity",
+    "registry_value_activity"
+  ]
 }

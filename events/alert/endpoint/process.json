@@ -1,11 +1,14 @@
 {
+  "name": "Process Alert",
+  "uid": 516,
+  "type": "process_alert",
+  "extends": "endpoint_alert",
+  "description": "Process Alert events report the detections and resolutions of process malicious activity.",
   "attributes": {
     "activity_id": {
       "description": "The process activity.",
+      "requirement": "optional",
       "enum": {
-        "-1": {
-          "name": "Other"
-        },
         "0": {
           "name": "Unknown"
         },
@@ -23,14 +26,41 @@
         },
         "5": {
           "name": "Set User ID"
+        },
+        "-1": {
+          "name": "Other"
         }
-      },
-      "requirement": "optional"
+      }
     },
     "actual_permissions": {
+      "requirement": "optional",
       "enum": {
         "1": {
           "name": "Terminate (kill)"
+        },
+        "2": {
+          "name": "Create Thread"
+        },
+        "3": {
+          "name": "Set Session ID"
+        },
+        "4": {
+          "name": "VM Operation"
+        },
+        "5": {
+          "name": "VM Read"
+        },
+        "6": {
+          "name": "VM Write"
+        },
+        "7": {
+          "name": "Duplicate Handle"
+        },
+        "8": {
+          "name": "Create Process"
+        },
+        "9": {
+          "name": "Set Quota"
         },
         "10": {
           "name": "Set Information"
@@ -61,47 +91,13 @@
         },
         "19": {
           "name": "Attach"
-        },
-        "2": {
-          "name": "Create Thread"
-        },
-        "3": {
-          "name": "Set Session ID"
-        },
-        "4": {
-          "name": "VM Operation"
-        },
-        "5": {
-          "name": "VM Read"
-        },
-        "6": {
-          "name": "VM Write"
-        },
-        "7": {
-          "name": "Duplicate Handle"
-        },
-        "8": {
-          "name": "Create Process"
-        },
-        "9": {
-          "name": "Set Quota"
         }
-      },
-      "requirement": "optional"
+      }
     },
     "disposition_id": {
       "enum": {
         "1": {
           "name": "Allowed"
-        },
-        "10": {
-          "name": "Restored"
-        },
-        "11": {
-          "name": "Detected"
-        },
-        "12": {
-          "name": "Terminated"
         },
         "2": {
           "name": "Blocked"
@@ -119,18 +115,28 @@
           "name": "Uncorrected"
         },
         "7": {
-          "description": "Requires reboot to finish the operation.",
-          "name": "Delayed"
+          "name": "Delayed",
+          "description": "Requires reboot to finish the operation."
         },
         "8": {
           "name": "Deleted"
         },
         "9": {
           "name": "Quarantined"
+        },
+        "10": {
+          "name": "Restored"
+        },
+        "11": {
+          "name": "Detected"
+        },
+        "12": {
+          "name": "Terminated"
         }
       }
     },
     "injection_type_id": {
+      "requirement": "optional",
       "enum": {
         "0": {
           "name": "Unknown"
@@ -144,8 +150,7 @@
         "3": {
           "name": "Process Manipulation APIs"
         }
-      },
-      "requirement": "optional"
+      }
     },
     "process": {
       "description": "The process that triggered the alert.",
@@ -157,9 +162,34 @@
     },
     "requested_permissions": {
       "description": "The permissions requested by the actor process.",
+      "requirement": "optional",
       "enum": {
         "1": {
           "name": "Terminate (kill)"
+        },
+        "2": {
+          "name": "Create Thread"
+        },
+        "3": {
+          "name": "Set Session ID"
+        },
+        "4": {
+          "name": "VM Operation"
+        },
+        "5": {
+          "name": "VM Read"
+        },
+        "6": {
+          "name": "VM Write"
+        },
+        "7": {
+          "name": "Duplicate Handle"
+        },
+        "8": {
+          "name": "Create Process"
+        },
+        "9": {
+          "name": "Set Quota"
         },
         "10": {
           "name": "Set Information"
@@ -190,41 +220,14 @@
         },
         "19": {
           "name": "Attach"
-        },
-        "2": {
-          "name": "Create Thread"
-        },
-        "3": {
-          "name": "Set Session ID"
-        },
-        "4": {
-          "name": "VM Operation"
-        },
-        "5": {
-          "name": "VM Read"
-        },
-        "6": {
-          "name": "VM Write"
-        },
-        "7": {
-          "name": "Duplicate Handle"
-        },
-        "8": {
-          "name": "Create Process"
-        },
-        "9": {
-          "name": "Set Quota"
         }
-      },
-      "requirement": "optional"
+      }
     },
     "resource": {
       "requirement": "required"
     }
   },
-  "description": "Process Alert events report the detections and resolutions of process malicious activity.",
-  "extends": "endpoint_alert",
-  "name": "Process Alert",
-  "type": "process_alert",
-  "uid": 516
+  "see_also": [
+    "process_activity"
+  ]
 }

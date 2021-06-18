@@ -1,39 +1,9 @@
 {
-  "name": "Process Activity",
-  "type": "process_activity",
-  "uid": 418,
-  "extends": "endpoint_activity",
-  "description": "Process Activity events report when a process launches, injects, opens or terminates another process, successful or otherwise.",
   "attributes": {
     "actual_permissions": {
-      "requirement": "optional",
       "enum": {
         "1": {
           "name": "TERMINATE (Kill)"
-        },
-        "2": {
-          "name": "CREATE_THREAD"
-        },
-        "3": {
-          "name": "SET_SESSION_ID"
-        },
-        "4": {
-          "name": "VM_OPERATION"
-        },
-        "5": {
-          "name": "VM_READ"
-        },
-        "6": {
-          "name": "VM_WRITE"
-        },
-        "7": {
-          "name": "DUP_HANDLE"
-        },
-        "8": {
-          "name": "CREATE_PROCESS"
-        },
-        "9": {
-          "name": "SET_QUOTA"
         },
         "10": {
           "name": "SET_INFORMATION"
@@ -64,25 +34,33 @@
         },
         "19": {
           "name": "ATTACH"
-        }
-      }
-    },
-    "injection_type_id": {
-      "requirement": "optional",
-      "enum": {
-        "0": {
-          "name": "Unknown"
-        },
-        "1": {
-          "name": "Remote Thread"
         },
         "2": {
-          "name": "Accessibility APIs"
+          "name": "CREATE_THREAD"
         },
         "3": {
-          "name": "Process Manipulation APIs"
+          "name": "SET_SESSION_ID"
+        },
+        "4": {
+          "name": "VM_OPERATION"
+        },
+        "5": {
+          "name": "VM_READ"
+        },
+        "6": {
+          "name": "VM_WRITE"
+        },
+        "7": {
+          "name": "DUP_HANDLE"
+        },
+        "8": {
+          "name": "CREATE_PROCESS"
+        },
+        "9": {
+          "name": "SET_QUOTA"
         }
-      }
+      },
+      "requirement": "optional"
     },
     "disposition_id": {
       "enum": {
@@ -103,39 +81,31 @@
         }
       }
     },
+    "injection_type_id": {
+      "enum": {
+        "0": {
+          "name": "Unknown"
+        },
+        "1": {
+          "name": "Remote Thread"
+        },
+        "2": {
+          "name": "Accessibility APIs"
+        },
+        "3": {
+          "name": "Process Manipulation APIs"
+        }
+      },
+      "requirement": "optional"
+    },
     "process": {
       "description": "The process that was launched, injected, opened or terminated.",
       "requirement": "required"
     },
     "requested_permissions": {
-      "requirement": "optional",
       "enum": {
         "1": {
           "name": "TERMINATE (Kill)"
-        },
-        "2": {
-          "name": "CREATE_THREAD"
-        },
-        "3": {
-          "name": "SET_SESSION_ID"
-        },
-        "4": {
-          "name": "VM_OPERATION"
-        },
-        "5": {
-          "name": "VM_READ"
-        },
-        "6": {
-          "name": "VM_WRITE"
-        },
-        "7": {
-          "name": "DUP_HANDLE"
-        },
-        "8": {
-          "name": "CREATE_PROCESS"
-        },
-        "9": {
-          "name": "SET_QUOTA"
         },
         "10": {
           "name": "SET_INFORMATION"
@@ -166,8 +136,33 @@
         },
         "19": {
           "name": "ATTACH"
+        },
+        "2": {
+          "name": "CREATE_THREAD"
+        },
+        "3": {
+          "name": "SET_SESSION_ID"
+        },
+        "4": {
+          "name": "VM_OPERATION"
+        },
+        "5": {
+          "name": "VM_READ"
+        },
+        "6": {
+          "name": "VM_WRITE"
+        },
+        "7": {
+          "name": "DUP_HANDLE"
+        },
+        "8": {
+          "name": "CREATE_PROCESS"
+        },
+        "9": {
+          "name": "SET_QUOTA"
         }
-      }
+      },
+      "requirement": "optional"
     },
     "session": {
       "description": "The user session from which the process was launched."
@@ -176,7 +171,12 @@
       "description": "The user that started/created the new process."
     }
   },
+  "description": "Process Activity events report when a process launches, injects, opens or terminates another process, successful or otherwise.",
+  "extends": "endpoint_activity",
+  "name": "Process Activity",
   "see_also": [
     "process_alert"
-  ]
+  ],
+  "type": "process_activity",
+  "uid": 419
 }

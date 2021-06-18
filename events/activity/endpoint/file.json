@@ -1,9 +1,4 @@
 {
-  "name": "File Activity",
-  "type": "file_activity",
-  "uid": 407,
-  "extends": "endpoint_activity",
-  "description": "File Activity events report when a process performs an action on a file.",
   "attributes": {
     "access_mask": {
       "requirement": "optional"
@@ -19,44 +14,40 @@
     },
     "create_mask_id": {
       "description": "The Windows setting needed when creating a file.",
-      "requirement": "optional",
       "enum": {
         "1": {
-          "name": "CREATE_NEW",
-          "description": "Creates a new file, only if it does not already exist"
+          "description": "Creates a new file, only if it does not already exist",
+          "name": "CREATE_NEW"
         },
         "2": {
-          "name": "CREATE_ALWAYS",
-          "description": "Creates a new file, always"
+          "description": "Creates a new file, always",
+          "name": "CREATE_ALWAYS"
         },
         "3": {
-          "name": "OPEN_EXISTING",
-          "description": "Opens a file or device, only if it exists"
+          "description": "Opens a file or device, only if it exists",
+          "name": "OPEN_EXISTING"
         },
         "4": {
-          "name": "OPEN_ALWAYS",
-          "description": "Opens a file, always"
+          "description": "Opens a file, always",
+          "name": "OPEN_ALWAYS"
         },
         "5": {
-          "name": "TRUNCATE_EXISTING",
-          "description": "Opens a file and truncates it so that its size is zero bytes, only if it exists"
+          "description": "Opens a file and truncates it so that its size is zero bytes, only if it exists",
+          "name": "TRUNCATE_EXISTING"
         }
-      }
-    },
-    "file": {
-      "description": "The file that is the target of the operation.",
-      "requirement": "required"
-    },
-    "file_diff": {
-      "requirement": "optional"
-    },
-    "file_result": {
+      },
       "requirement": "optional"
     },
     "disposition_id": {
       "enum": {
         "1": {
           "name": "Created"
+        },
+        "10": {
+          "name": "Encrypted"
+        },
+        "11": {
+          "name": "Decrypted"
         },
         "2": {
           "name": "Read"
@@ -81,18 +72,27 @@
         },
         "9": {
           "name": "Get Security"
-        },
-        "10": {
-          "name": "Encrypted"
-        },
-        "11": {
-          "name": "Decrypted"
         }
       }
+    },
+    "file": {
+      "description": "The file that is the target of the operation.",
+      "requirement": "required"
+    },
+    "file_diff": {
+      "requirement": "optional"
+    },
+    "file_result": {
+      "requirement": "optional"
     }
   },
+  "description": "File Activity events report when a process performs an action on a file.",
+  "extends": "endpoint_activity",
+  "name": "File Activity",
   "see_also": [
     "file_alert",
     "folder_activity"
-  ]
+  ],
+  "type": "file_activity",
+  "uid": 407
 }

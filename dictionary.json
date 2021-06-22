@@ -119,6 +119,12 @@
       "type": "string_t",
       "description": "The name of the user who last accessed the object."
     },
+    "accounts": {
+      "name": "Accounts",
+      "type": "string_t",
+      "description": "The user accounts.",
+      "is_array": true
+    },
     "activity": {
       "name": "User Activity",
       "type": "string_t",
@@ -1725,7 +1731,7 @@
       "description": "The load type describes how the module was loaded in memory."
     },
     "load_type_id": {
-      "name": "Load Type UID",
+      "name": "Load Type ID",
       "type": "integer_t",
       "description": "The load type identifies how the module was loaded in memory."
     },
@@ -1762,7 +1768,7 @@
       "description": "The logon type."
     },
     "logon_type_id": {
-      "name": "Logon Type UID",
+      "name": "Logon Type ID",
       "type": "integer_t",
       "description": "The logon type identifier.",
       "enum": {
@@ -2150,37 +2156,33 @@
     },
     "priority": {
       "name": "Priority",
-      "type": "string_t",
-      "description": "The original event priority, as defined by the event source.</p>Priority identifies the relative importance of an incident or event. It is a measurement of urgency."
+      "type": "integer_t",
+      "description": "The original priority, as defined by the data source."
     },
     "priority_id": {
-      "name": "Priority UID",
+      "name": "Priority ID",
       "type": "integer_t",
-      "description": "The normalized event priority identifier.</p>Priority identifies the relative importance of an incident or event. It is a measurement of urgency.",
+      "description": "The normalized priority.",
       "enum": {
         "0": {
           "name": "Unknown",
           "description": "No priority is assigned."
         },
         "1": {
-          "name": "Low",
-          "description": "Application or personal procedure unusable, where a workaround is available or a repair is possible."
+          "name": "Low"
         },
         "2": {
-          "name": "Medium",
-          "description": "Non-critical function or procedure, unusable or hard to use having an operational impact, but with no direct impact on services availability. A workaround is available."
+          "name": "Medium"
         },
         "3": {
-          "name": "High",
-          "description": "Critical functionality or network access interrupted, degraded or unusable, having a severe impact on services availability. No acceptable alternative is possible."
+          "name": "High"
         },
         "4": {
-          "name": "Critical",
-          "description": "Interruption making a critical functionality inaccessible or a complete network interruption causing a severe impact on services availability. There is no possible alternative."
+          "name": "Critical"
         },
         "-1": {
           "name": "Other",
-          "description": "The priority is not normalized. See the <code>priority</code> attribute, which contains a data source specific value."
+          "description": "The priority is not normalized."
         }
       }
     },
@@ -2777,7 +2779,7 @@
       "description": "The start type of the service or startup application."
     },
     "start_type_id": {
-      "name": "Start Type UID",
+      "name": "Start Type ID",
       "type": "integer_t",
       "description": "The start type ID of the service or startup application.",
       "enum": {
@@ -3059,7 +3061,7 @@
       "description": "The time interval that the resource record may be cached. Zero value means that the resource record can only be used for the transaction in progress, and should not be cached."
     },
     "type_id": {
-      "name": "Type UID",
+      "name": "Type ID",
       "type": "integer_t",
       "description": "The type identifier of an object. See specific usage.",
       "enum": {
@@ -3191,7 +3193,7 @@
       "description": "The device virtual host type string."
     },
     "vhost_id": {
-      "name": "Virtual Host Type UID",
+      "name": "Virtual Host Type ID",
       "type": "integer_t",
       "description": "The device virtual host type identifier.",
       "enum": {

@@ -9,8 +9,9 @@
     },
     "uid": {
       "description": "The unique identifier of the person.",
-      "requirement": "required"
+      "requirement": "reserved"
     },
+    "accounts": {},
     "domain": {
       "description": "The domain where the person is defined. For example: the LDAP or Active Directory domain.",
       "requirement": "optional"
@@ -60,33 +61,11 @@
       "description": "The original priority assigned to the person."
     },
     "priority_id": {
-      "description": "The normalized priority identifier assigned to the person. The priority is useful for calculating the urgency for alerts or incidents.",
-      "enum": {
-        "0": {
-          "name": "Unknown",
-          "description": "No priority is assigned."
-        },
-        "1": {
-          "name": "Low"
-        },
-        "2": {
-          "name": "Medium"
-        },
-        "3": {
-          "name": "High"
-        },
-        "4": {
-          "name": "Critical"
-        },
-        "-1": {
-          "name": "Other",
-          "description": "The priority is not normalized. See the <code>priority</code> attribute, which contains a data source specific value."
-        }
-      }
+      "description": "The normalized priority identifier assigned to the person. The priority is useful for calculating the urgency for alerts or incidents."
     },
     "ref_uid": {
       "description": "The reference to a unique identifier, managed by an external system. For example LDAP distinguished name of the person.",
-      "requirement": "optional"
+      "requirement": "recommended"
     },
     "start_time": {
       "name": "Start Date",

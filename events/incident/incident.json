@@ -1,7 +1,7 @@
 {
   "name": "Incident Events",
-  "type": "incident",
   "category": "incident",
+  "type": "incident",
   "extends": "event",
   "description": "Incident events report the creation, update and closure of incidents.",
   "attributes": {
@@ -17,7 +17,25 @@
       "requirement": "optional"
     },
     "priority_id": {
-      "requirement": "recommended"
+      "description": "The normalized priority.</p>Priority identifies the relative importance of the incident. It is a measurement of urgency of the incident.",
+      "requirement": "recommended",
+      "enum": {
+        "0": {},
+        "1": {
+          "description": "Application or personal procedure unusable, where a workaround is available or a repair is possible."
+        },
+        "2": {
+          "description": "Non-critical function or procedure, unusable or hard to use having an operational impact, but with no direct impact on services availability. A workaround is available."
+        },
+        "3": {
+          "description": "Critical functionality or network access interrupted, degraded or unusable, having a severe impact on services availability. No acceptable alternative is possible."
+        },
+        "4": {
+          "description": "Interruption making a critical functionality inaccessible or a complete network interruption causing a severe impact on services availability. There is no possible alternative.",
+          "nme": "Critical"
+        },
+        "-1": {}
+      }
     },
     "state": {
       "description": "The incident state.",

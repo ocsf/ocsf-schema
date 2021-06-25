@@ -1,8 +1,8 @@
 {
   "name": "Network Traffic",
-  "type": "network_traffic",  
-  "description": "The network traffic object describes network data traffic.",
+  "type": "network_traffic",
   "extends": "_connection",
+  "description": "The network traffic object describes network data traffic.",
   "attributes": {
     "bytes": {
       "requirement": "required"
@@ -15,32 +15,36 @@
     },
     "direction_id": {
       "description": "The direction of the network traffic.",
+      "requirement": "required",
       "enum": {
         "0": {
-          "description": "Network traffic direction is unknown",
-          "name": "Unknown"
+          "name": "Unknown",
+          "description": "Network traffic direction is unknown"
         },
         "1": {
-          "description": "Inbound network traffic. The traffic was originated from the Internet or outside network, destined for services on the inside network.",
-          "name": "Inbound"
+          "name": "Inbound",
+          "description": "Inbound network traffic. The traffic was originated from the Internet or outside network, destined for services on the inside network."
         },
         "2": {
-          "description": "Outbound network traffic. The traffic was originated from inside the network, destined for services on the Internet or outside network.",
-          "name": "Outbound"
+          "name": "Outbound",
+          "description": "Outbound network traffic. The traffic was originated from inside the network, destined for services on the Internet or outside network."
         },
         "3": {
-          "description": "Local network traffic on the same endpoint.",
-          "name": "Local"
+          "name": "Local",
+          "description": "Local network traffic on the same endpoint."
         },
         "4": {
-          "description": "Internal network traffic between two endpoints inside network.",
-          "name": "Internal"
+          "name": "Internal",
+          "description": "Internal network traffic between two endpoints inside network."
         },
         "5": {
-          "description": "External network traffic between two endpoints on the Internet or outside the network.",
-          "name": "External"
+          "name": "External",
+          "description": "External network traffic between two endpoints on the Internet or outside the network."
         }
-      },
+      }
+    },
+    "dst": {
+      "description": "The destination of the network traffic. If the reported traffic is bidirectional, then the endpoint that received a request for the data and sent back a response.",
       "requirement": "required"
     },
     "packets": {
@@ -51,6 +55,10 @@
     },
     "packets_out": {
       "requirement": "optional"
+    },
+    "src": {
+      "description": "The source of the network traffic. If the reported traffic is bidirectional, then the endpoint that sent a request for the data.",
+      "requirement": "required"
     }
   }
 }

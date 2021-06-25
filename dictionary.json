@@ -1155,8 +1155,33 @@
     "direction_id": {
       "name": "Direction",
       "type": "integer_t",
-      "description": "The direction of the initiated connection or traffic.",
-      "enum": {}
+      "description": "The direction of the initiated connection, traffic, or email.",
+      "enum": {
+        "0": {
+          "name": "Unknown",
+          "description": "The direction is unknown."
+        },
+        "1": {
+          "name": "Inbound",
+          "description": "Inbound, from the Internet or outside network destined for services on the inside network."
+        },
+        "2": {
+          "name": "Outbound",
+          "description": "Outbound, from inside the network destined for services on the Internet or outside network."
+        },
+        "3": {
+          "name": "Local",
+          "description": "Local, on the same endpoint."
+        },
+        "4": {
+          "name": "Internal",
+          "description": "Internal, between two endpoints inside network."
+        },
+        "5": {
+          "name": "External",
+          "description": "External, between two endpoints on the Internet or outside the network."
+        }
+      }
     },
     "displayed_text": {
       "name": "Displayed Text",

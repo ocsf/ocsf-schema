@@ -1,5 +1,22 @@
 {
+  "name": "Scan Alert",
+  "uid": 519,
+  "type": "scan_alert",
+  "extends": "alert",
+  "description": "Scan Alert events report the start, completion, and results of a scan. The scan event includes the number of items that were scanned and the number of detections that were resolved.",
   "attributes": {
+    "name": {
+      "description": "The name of the scan job.",
+      "requirement": "required"
+    },
+    "type": {
+      "description": "The scan type."
+    },
+    "uid": {
+      "name": "Scan UID",
+      "description": "The unique identifier of the scan job.",
+      "requirement": "required"
+    },
     "command_uid": {
       "description": "The command identifier that is associated with this Scan event; required if the scan was initiated by a command.",
       "requirement": "recommended"
@@ -9,10 +26,6 @@
         "1": {
           "name": "Started"
         },
-        "10": {
-          "description": "The user delayed the scan.",
-          "name": "Delayed"
-        },
         "2": {
           "name": "Completed"
         },
@@ -20,27 +33,31 @@
           "name": "Cancelled"
         },
         "4": {
-          "description": "The allocated scan time was insufficient to complete the requested scan.",
-          "name": "Duration Violation"
+          "name": "Duration Violation",
+          "description": "The allocated scan time was insufficient to complete the requested scan."
         },
         "5": {
-          "description": "The scan was paused, either by the user or by program constraints (e.g. scans that are suspended during certain time intervals), and not resumed within the allotted time.",
-          "name": "Pause Violation"
+          "name": "Pause Violation",
+          "description": "The scan was paused, either by the user or by program constraints (e.g. scans that are suspended during certain time intervals), and not resumed within the allotted time."
         },
         "6": {
-          "description": "The scan could not be completed due to an internal error.",
-          "name": "Error"
+          "name": "Error",
+          "description": "The scan could not be completed due to an internal error."
         },
         "7": {
           "name": "Paused"
         },
         "8": {
-          "description": "The scan was resumed from the pause point.",
-          "name": "Resumed"
+          "name": "Resumed",
+          "description": "The scan was resumed from the pause point."
         },
         "9": {
-          "description": "The scan restarted from the beginning of the file enumeration.",
-          "name": "Restarted"
+          "name": "Restarted",
+          "description": "The scan restarted from the beginning of the file enumeration."
+        },
+        "10": {
+          "name": "Delayed",
+          "description": "The user delayed the scan."
         }
       }
     },
@@ -51,10 +68,6 @@
     "end_time": {
       "description": "The end time of the scan job.",
       "requirement": "recommended"
-    },
-    "name": {
-      "description": "The name of the scan job.",
-      "requirement": "required"
     },
     "num_detections": {
       "requirement": "recommended"
@@ -104,50 +117,40 @@
     },
     "type_id": {
       "description": "The type of scan.",
+      "requirement": "required",
       "enum": {
         "0": {
           "name": "Unknown"
         },
         "1": {
-          "description": "The scan was manually initiated by the user or administrator.",
-          "name": "Manual"
+          "name": "Manual",
+          "description": "The scan was manually initiated by the user or administrator."
         },
         "2": {
-          "description": "The scan was started based on scheduler.",
-          "name": "Scheduled"
+          "name": "Scheduled",
+          "description": "The scan was started based on scheduler."
         },
         "3": {
-          "description": "The scan was triggered by a content update.",
-          "name": "Updated Definitions"
+          "name": "Updated Definitions",
+          "description": "The scan was triggered by a content update."
         },
         "4": {
-          "description": "The scan was triggered by newly quarantined items.",
-          "name": "Quarantined Items"
+          "name": "Quarantined Items",
+          "description": "The scan was triggered by newly quarantined items."
         },
         "5": {
-          "description": "The scan was triggered by the attachment of removable media.",
-          "name": "Attached Media"
+          "name": "Attached Media",
+          "description": "The scan was triggered by the attachment of removable media."
         },
         "6": {
-          "description": "The scan was started due to a user logon.",
-          "name": "User Logon"
+          "name": "User Logon",
+          "description": "The scan was started due to a user logon."
         },
         "7": {
-          "description": "The scan was triggered by an Early Launch Anti-Malware (ELAM) detection.",
-          "name": "ELAM"
+          "name": "ELAM",
+          "description": "The scan was triggered by an Early Launch Anti-Malware (ELAM) detection."
         }
-      },
-      "requirement": "required"
-    },
-    "uid": {
-      "description": "The unique identifier of the scan job.",
-      "name": "Scan UID",
-      "requirement": "required"
+      }
     }
-  },
-  "description": "Scan Alert events report the start, completion, and results of a scan. The scan event includes the number of items that were scanned and the number of detections that were resolved.",
-  "extends": "alert",
-  "name": "Scan Alert",
-  "type": "scan_alert",
-  "uid": 519
+  }
 }

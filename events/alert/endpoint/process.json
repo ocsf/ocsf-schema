@@ -5,6 +5,9 @@
   "extends": "endpoint_alert",
   "description": "Process Alert events report the detections and resolutions of process malicious activity.",
   "attributes": {
+    "activity": {
+      "requirement": "optional"
+    },
     "activity_id": {
       "description": "The process activity.",
       "requirement": "optional",
@@ -136,21 +139,7 @@
       }
     },
     "injection_type_id": {
-      "requirement": "optional",
-      "enum": {
-        "0": {
-          "name": "Unknown"
-        },
-        "1": {
-          "name": "Remote Thread"
-        },
-        "2": {
-          "name": "Accessibility APIs"
-        },
-        "3": {
-          "name": "Process Manipulation APIs"
-        }
-      }
+      "requirement": "optional"
     },
     "process": {
       "description": "The process that triggered the alert.",

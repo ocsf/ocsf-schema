@@ -1564,7 +1564,21 @@
     "injection_type_id": {
       "name": "Injection Type",
       "type": "integer_t",
-      "description": "The process injection method."
+      "description": "The process injection method.",
+      "enum": {
+        "0": {
+          "name": "Unknown"
+        },
+        "1": {
+          "name": "Remote Thread"
+        },
+        "2": {
+          "name": "Accessibility APIs"
+        },
+        "3": {
+          "name": "Process Manipulation APIs"
+        }
+      }
     },
     "integrity": {
       "name": "Integrity",
@@ -2050,8 +2064,18 @@
     "open_mask_id": {
       "name": "Open Mask",
       "type": "integer_t",
-      "description": "The Windows setting that is required to open the object.",
-      "notes": "<strong>What are the possible values?</strong>"
+      "description": "The Windows setting needed to open a registry key.",
+      "notes": "<strong>What are the possible values?</strong>",
+      "enum": {
+        "0": {
+          "name": "NONE",
+          "description": "Default"
+        },
+        "8": {
+          "name": "REG_OPTION_OPEN_LINK",
+          "description": "The key is a symbolic link"
+        }
+      }
     },
     "org_unit": {
       "name": "Org Unit",
@@ -3063,7 +3087,21 @@
     "tls_policy_id": {
       "name": "TLS Policy",
       "type": "integer_t",
-      "description": "The Transport Layer Security (TLS) policy."
+      "description": "The Transport Layer Security (TLS) policy.",
+      "enum": {
+        "0": {
+          "name": "Unknown"
+        },
+        "1": {
+          "name": "None"
+        },
+        "2": {
+          "name": "Enforced"
+        },
+        "3": {
+          "name": "Opportunistic"
+        }
+      }
     },
     "to": {
       "name": "To",

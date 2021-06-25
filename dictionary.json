@@ -123,8 +123,8 @@
       "name": "Accounts",
       "type": "object_t",
       "description": "The user accounts.",
-      "object_type": "user_account",
-      "is_array": true
+      "is_array": true,
+      "object_type": "user_account"
     },
     "activity": {
       "name": "User Activity",
@@ -1448,6 +1448,11 @@
       "type": "string_t",
       "description": "The full name of a user."
     },
+    "function_name": {
+      "name": "Function Name",
+      "type": "string_t",
+      "description": "The entry-point function of the module. The system calls the entry-point function whenever a process or thread loads or unloads the module."
+    },
     "gateway_ip": {
       "name": "Gateway IP Address",
       "type": "ip_t",
@@ -2023,8 +2028,8 @@
       "name": "Observables",
       "type": "object_t",
       "description": "The observables associated with an event or finding.",
-      "object_type": "observable",
-      "is_array": true
+      "is_array": true,
+      "object_type": "observable"
     },
     "opcode": {
       "name": "DNS Opcode",
@@ -2065,7 +2070,6 @@
       "name": "Open Mask",
       "type": "integer_t",
       "description": "The Windows setting needed to open a registry key.",
-      "notes": "<strong>What are the possible values?</strong>",
       "enum": {
         "0": {
           "name": "NONE",
@@ -2075,12 +2079,18 @@
           "name": "REG_OPTION_OPEN_LINK",
           "description": "The key is a symbolic link"
         }
-      }
+      },
+      "notes": "<strong>What are the possible values?</strong>"
     },
     "org_unit": {
       "name": "Org Unit",
       "type": "string_t",
       "description": "The name of an organizational unit."
+    },
+    "original_name": {
+      "name": "Original Name",
+      "type": "string_t",
+      "description": "The original name of the file."
     },
     "os": {
       "name": "OS",
@@ -2145,7 +2155,7 @@
       "description": "An array of parent URL categories.",
       "is_array": true
     },
-    "parent_dir": {
+    "parent_folder": {
       "name": "Parent Folder",
       "type": "path_t",
       "description": "The parent folder in which the file resides. For example: <code>c:\\windows\\system32</code>"

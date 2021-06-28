@@ -84,8 +84,7 @@
     "actual_permissions": {
       "name": "Actual Permissions",
       "type": "integer_t",
-      "description": "The permissions that were granted to the process.",
-      "is_array": true
+      "description": "The permissions that were granted to the process."
     },
     "algorithm": {
       "name": "Algorithm",
@@ -1491,10 +1490,15 @@
       "type": "string_t",
       "description": "If the event pertains to an incident, the incident unique identifier."
     },
-    "injection_type_id": {
+    "injection_type": {
       "name": "Injection Type",
+      "type": "string_t",
+      "description": "The process injection method."
+    },
+    "injection_type_id": {
+      "name": "Injection Type ID",
       "type": "integer_t",
-      "description": "The process injection method.",
+      "description": "The normalized process injection type identifier.",
       "enum": {
         "0": {
           "name": "Unknown"
@@ -1507,6 +1511,9 @@
         },
         "3": {
           "name": "Process Manipulation APIs"
+        },
+        "-1": {
+          "name": "Other"
         }
       }
     },
@@ -2404,8 +2411,7 @@
     "requested_permissions": {
       "name": "Requested Permissions",
       "type": "integer_t",
-      "description": "The permissions that were requested by the process.",
-      "is_array": true
+      "description": "The permissions mask that were requested by the process."
     },
     "resource": {
       "name": "Resource",

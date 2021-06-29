@@ -3,95 +3,27 @@
   "type": "event",
   "description": "The base event is a generic concrete event and it also defines a set of attributes available in most event classes. As a generic event that does not belong to any event category, it could be used to log events that are not otherwise defined by the schema.",
   "attributes": {
-    "category": {},
-    "category_id": {
-      "description": "The event category.",
-      "requirement": "required",
-      "enum": {
-        "0": {
-          "name": "Unknown"
-        },
-        "-1": {
-          "name": "Other"
-        }
-      }
-    },
-    "class": {
-      "description": "The event class name."
-    },
-    "class_id": {
-      "requirement": "required",
-      "enum": {
-        "0": {
-          "name": "Unknown"
-        }
-      }
-    },
+    "$include": "traits/common.json",
     "container": {},
     "correlation_uid": {},
-    "count": {},
-    "customer_uid": {},
     "device": {
       "requirement": "recommended"
     },
-    "disposition": {},
-    "disposition_id": {
-      "requirement": "required"
-    },
-    "duration": {},
-    "end_time": {
-      "name": "End Time",
-      "description": "The time when the event ended or when the activity was last observed."
-    },
-    "enrichments": {},
-    "event_uid": {
-      "requirement": "reserved"
-    },
-    "feature": {},
     "is_user_present": {},
-    "labels": {
-      "description": "The list of labels attached to the event or specific attributes.<p>For example: <code>[\"network\", \"connection.ip:destination\", \"device.ip:source\"]</code></p>",
-      "requirement": "optional"
-    },
     "last_updated_time": {},
-    "log_name": {
-      "requirement": "reserved"
-    },
-    "log_time": {
-      "requirement": "reserved"
-    },
-    "message": {},
-    "product": {},
     "raw_data": {
       "requirement": "reserved"
     },
     "ref_event_name": {},
     "ref_event_uid": {},
-    "sequence": {},
-    "severity": {},
-    "severity_id": {
-      "requirement": "required"
-    },
     "source": {},
     "status": {},
     "status_detail": {},
     "status_id": {},
-    "time": {
-      "requirement": "required"
-    },
-    "timezone": {},
     "unmapped": {},
     "user": {
       "description": "The user that pertains to the event.",
       "requirement": "recommended"
-    },
-    "uuid": {
-      "requirement": "reserved"
-    },
-    "version": {
-      "description": "The version of the event class, using Semantic Versioning Specification (SemVer). For example: 1.0.0. Event consumers use the version to determine the available event attributes.",
-      "requirement": "required",
-      "default": "1.0.0"
     }
   }
 }

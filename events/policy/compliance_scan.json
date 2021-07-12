@@ -1,40 +1,5 @@
 {
-  "name": "Compliance Scan",
-  "type": "compliance_scan",
-  "uid": 602,
-  "extends": "policy",
-  "description": "Compliance Scan events report the start, completion, and overall result of the scan. Detailed results are reported in individual compliance events.",
   "attributes": {
-    "name": {
-      "description": "The name of the scan job.",
-      "requirement": "required"
-    },
-    "type": {
-      "description": "The scan type."
-    },
-    "type_id": {
-      "description": "The type of scan.",
-      "requirement": "required",
-      "enum": {
-        "1": {
-          "name": "MANUAL",
-          "description": "the scan was manually initiated by the user or admin."
-        },
-        "2": {
-          "name": "SCHEDULED",
-          "description": "the scan was started based on scheduler."
-        }
-      }
-    },
-    "uid": {
-      "name": "Scan UID",
-      "description": "The unique identifier of the scan job.",
-      "requirement": "required"
-    },
-    "end_time": {
-      "description": "The end time of the compliance scan.",
-      "requirement": "recommended"
-    },
     "disposition_id": {
       "enum": {
         "1": {
@@ -44,10 +9,18 @@
           "name": "Failed"
         },
         "3": {
-          "name": "Soft Fail",
-          "description": "The host integrity check failed, but was reported as Passed."
-         }
+          "description": "The host integrity check failed, but was reported as Passed.",
+          "name": "Soft Fail"
+        }
       }
+    },
+    "end_time": {
+      "description": "The end time of the compliance scan.",
+      "requirement": "recommended"
+    },
+    "name": {
+      "description": "The name of the scan job.",
+      "requirement": "required"
     },
     "schedule_uid": {
       "requirement": "required"
@@ -59,6 +32,33 @@
     "time": {
       "description": "The time when the scan report were created.",
       "requirement": "required"
+    },
+    "type": {
+      "description": "The scan type."
+    },
+    "type_id": {
+      "description": "The type of scan.",
+      "enum": {
+        "1": {
+          "description": "the scan was manually initiated by the user or admin.",
+          "name": "MANUAL"
+        },
+        "2": {
+          "description": "the scan was started based on scheduler.",
+          "name": "SCHEDULED"
+        }
+      },
+      "requirement": "required"
+    },
+    "uid": {
+      "description": "The unique identifier of the scan job.",
+      "name": "Scan UID",
+      "requirement": "required"
     }
-  }
+  },
+  "description": "Compliance Scan events report the start, completion, and overall result of the scan. Detailed results are reported in individual compliance events.",
+  "extends": "policy",
+  "name": "Compliance Scan",
+  "type": "compliance_scan",
+  "uid": 302
 }

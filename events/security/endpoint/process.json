@@ -1,0 +1,106 @@
+{
+  "attributes": {
+    "activity": {
+      "requirement": "optional"
+    },
+    "activity_id": {
+      "description": "The process activity.",
+      "enum": {
+        "-1": {
+          "name": "Other"
+        },
+        "0": {
+          "name": "Unknown"
+        },
+        "1": {
+          "name": "Launch"
+        },
+        "2": {
+          "name": "Terminate"
+        },
+        "3": {
+          "name": "Open"
+        },
+        "4": {
+          "name": "Inject"
+        },
+        "5": {
+          "name": "Set User ID"
+        }
+      },
+      "requirement": "optional"
+    },
+    "actual_permissions": {
+      "requirement": "optional"
+    },
+    "disposition_id": {
+      "enum": {
+        "1": {
+          "name": "Allowed"
+        },
+        "10": {
+          "name": "Restored"
+        },
+        "11": {
+          "name": "Detected"
+        },
+        "12": {
+          "name": "Terminated"
+        },
+        "2": {
+          "name": "Blocked"
+        },
+        "3": {
+          "name": "Command Script Run"
+        },
+        "4": {
+          "name": "Corrected"
+        },
+        "5": {
+          "name": "Partially Corrected"
+        },
+        "6": {
+          "name": "Uncorrected"
+        },
+        "7": {
+          "description": "Requires reboot to finish the operation.",
+          "name": "Delayed"
+        },
+        "8": {
+          "name": "Deleted"
+        },
+        "9": {
+          "name": "Quarantined"
+        }
+      }
+    },
+    "injection_type": {
+      "requirement": "optional"
+    },
+    "injection_type_id": {
+      "requirement": "optional"
+    },
+    "process": {
+      "description": "The process that triggered the alert.",
+      "requirement": "required"
+    },
+    "quarantine_uid": {
+      "description": "If the event id is one of:<ul><li>[12] Quarantined</li><li>[13] Restored</li></ul>the unique identifier of the item that was quarantined or restored from quarantine.",
+      "requirement": "optional"
+    },
+    "requested_permissions": {
+      "requirement": "optional"
+    },
+    "resource": {
+      "requirement": "required"
+    }
+  },
+  "description": "Process Alert events report the detections and resolutions of process malicious activity.",
+  "extends": "endpoint_alert",
+  "name": "Process Alert",
+  "see_also": [
+    "process_activity"
+  ],
+  "type": "process_alert",
+  "uid": 216
+}

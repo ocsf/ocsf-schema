@@ -1,0 +1,75 @@
+{
+  "attributes": {
+    "activity": {
+      "requirement": "optional"
+    },
+    "activity_id": {
+      "enum": {
+        "-1": {
+          "name": "Other"
+        },
+        "0": {
+          "name": "Unknown"
+        },
+        "1": {
+          "name": "Page Allocated"
+        },
+        "2": {
+          "name": "Page Modified"
+        },
+        "3": {
+          "name": "Page Deleted"
+        },
+        "4": {
+          "name": "Buffer Overflow"
+        },
+        "5": {
+          "description": "Data Execution Permission",
+          "name": "Disabled DEP"
+        },
+        "6": {
+          "description": "Data Execution Permission",
+          "name": "Enabled DEP"
+        }
+      },
+      "requirement": "recommended"
+    },
+    "disposition_id": {
+      "enum": {
+        "1": {
+          "name": "Allowed"
+        },
+        "2": {
+          "name": "Blocked"
+        },
+        "3": {
+          "name": "Command Script Run"
+        },
+        "4": {
+          "name": "Corrected"
+        },
+        "5": {
+          "name": "Partially Corrected"
+        },
+        "6": {
+          "name": "Uncorrected"
+        },
+        "7": {
+          "description": "Requires reboot to finish the operation.",
+          "name": "Delayed"
+        },
+        "8": {
+          "name": "Detected"
+        }
+      }
+    }
+  },
+  "description": "Memory Alert events report the detections and resolutions of malicious memory access.",
+  "extends": "endpoint_alert",
+  "name": "Memory Alert",
+  "see_also": [
+    "memory_activity"
+  ],
+  "type": "memory_alert",
+  "uid": 207
+}

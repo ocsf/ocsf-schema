@@ -1,9 +1,4 @@
 {
-  "name": "Memory Activity",
-  "uid": 410,
-  "type": "memory_activity",
-  "extends": "endpoint_activity",
-  "description": "Memory Activity events report when a process performs internal memory allocation, modification, or other manipulation activities - such as a buffer overflow or turning off data execution protection (DEP) - that are not typical for a process.",
   "attributes": {
     "actual_permissions": {
       "requirement": "optional"
@@ -23,12 +18,12 @@
           "name": "Buffer Overflow"
         },
         "5": {
-          "name": "Disabled DEP",
-          "description": "Data Execution Permission"
+          "description": "Data Execution Permission",
+          "name": "Disabled DEP"
         },
         "6": {
-          "name": "Enabled DEP",
-          "description": "Data Execution Permission"
+          "description": "Data Execution Permission",
+          "name": "Enabled DEP"
         }
       }
     },
@@ -36,7 +31,12 @@
       "requirement": "optional"
     }
   },
+  "description": "Memory Activity events report when a process performs internal memory allocation, modification, or other manipulation activities - such as a buffer overflow or turning off data execution protection (DEP) - that are not typical for a process.",
+  "extends": "endpoint_activity",
+  "name": "Memory Activity",
   "see_also": [
     "memory_alert"
-  ]
+  ],
+  "type": "memory_activity",
+  "uid": 110
 }

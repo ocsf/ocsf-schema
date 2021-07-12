@@ -1,0 +1,96 @@
+{
+  "attributes": {
+    "access_mask": {
+      "requirement": "optional"
+    },
+    "activity": {
+      "requirement": "optional"
+    },
+    "activity_id": {
+      "description": "The registry key activity.",
+      "enum": {
+        "1": {
+          "name": "Created"
+        },
+        "2": {
+          "name": "Read"
+        },
+        "3": {
+          "name": "Modified"
+        },
+        "4": {
+          "name": "Deleted"
+        },
+        "5": {
+          "name": "Renamed"
+        },
+        "6": {
+          "name": "Set Security"
+        },
+        "7": {
+          "name": "Restored"
+        }
+      },
+      "requirement": "optional"
+    },
+    "create_mask": {
+      "requirement": "optional"
+    },
+    "disposition_id": {
+      "enum": {
+        "1": {
+          "name": "Allowed"
+        },
+        "10": {
+          "name": "Detected"
+        },
+        "2": {
+          "name": "Blocked"
+        },
+        "3": {
+          "name": "Command Script"
+        },
+        "4": {
+          "name": "Corrected"
+        },
+        "5": {
+          "name": "Partially Corrected"
+        },
+        "6": {
+          "name": "Uncorrected"
+        },
+        "7": {
+          "description": "Requires reboot to finish the operation.",
+          "name": "Delayed"
+        },
+        "8": {
+          "name": "Deleted"
+        },
+        "9": {
+          "name": "Restored"
+        }
+      }
+    },
+    "open_mask": {
+      "requirement": "recommended"
+    },
+    "reg_key": {
+      "description": "The registry key that triggered the alert.",
+      "requirement": "required"
+    },
+    "reg_key_result": {
+      "description": "The resulting registry key; for example, if a Registry key operation is ALLOWED, the resulting registry key can be included in the event.",
+      "requirement": "optional"
+    }
+  },
+  "description": "Registry Key Alert events report the detections and resolutions of registry key malicious access.",
+  "extends": "endpoint_alert",
+  "name": "Registry Key Alert",
+  "see_also": [
+    "registry_value_alert",
+    "registry_key_activity",
+    "registry_value_activity"
+  ],
+  "type": "registry_key_alert",
+  "uid": 217
+}

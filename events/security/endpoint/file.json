@@ -1,0 +1,132 @@
+{
+  "attributes": {
+    "access_mask": {
+      "requirement": "optional"
+    },
+    "activity": {
+      "requirement": "optional"
+    },
+    "activity_id": {
+      "description": "The file activity.",
+      "enum": {
+        "1": {
+          "name": "Created"
+        },
+        "10": {
+          "name": "Encrypted"
+        },
+        "11": {
+          "name": "Decrypted"
+        },
+        "2": {
+          "name": "Read"
+        },
+        "3": {
+          "name": "Modified"
+        },
+        "4": {
+          "name": "Deleted"
+        },
+        "5": {
+          "name": "Renamed"
+        },
+        "6": {
+          "name": "Set Attributes"
+        },
+        "7": {
+          "name": "Set Security"
+        },
+        "8": {
+          "name": "Get Attributes"
+        },
+        "9": {
+          "name": "Get Security"
+        }
+      },
+      "requirement": "optional"
+    },
+    "component": {
+      "requirement": "optional"
+    },
+    "connection_ref_uid": {
+      "requirement": "optional"
+    },
+    "create_mask": {
+      "requirement": "optional"
+    },
+    "disposition_id": {
+      "enum": {
+        "1": {
+          "name": "Allowed"
+        },
+        "10": {
+          "name": "Restored"
+        },
+        "11": {
+          "name": "Detected"
+        },
+        "12": {
+          "description": "No longer suspicious (re-scored).",
+          "name": "Exonerated"
+        },
+        "13": {
+          "description": "Marked with extended attributes.",
+          "name": "Tagged"
+        },
+        "2": {
+          "name": "Blocked"
+        },
+        "3": {
+          "name": "Command Script Run"
+        },
+        "4": {
+          "name": "Corrected"
+        },
+        "5": {
+          "name": "Partially Corrected"
+        },
+        "6": {
+          "name": "Uncorrected"
+        },
+        "7": {
+          "description": "Requires reboot to finish the operation.",
+          "name": "Delayed"
+        },
+        "8": {
+          "name": "Deleted"
+        },
+        "9": {
+          "name": "Quarantined"
+        }
+      }
+    },
+    "file": {
+      "description": "The file that triggered the alert.",
+      "requirement": "required"
+    },
+    "file_diff": {
+      "requirement": "optional"
+    },
+    "file_result": {
+      "description": "The resulting file object; for example, if a file operation is ALLOWED, the resulting file object can be included in the event.",
+      "requirement": "optional"
+    },
+    "quarantine_uid": {
+      "description": "If the event disposition is one of:<ul><li>[12] QUARANTINED</li><li>[13] RESTORED (from quarantine)</li></ul>include the unique identifier of the item that was quarantined or restored from quarantine.",
+      "requirement": "optional"
+    },
+    "scan_uid": {
+      "description": "The application-generated unique ID of the scan, if applicable, that caused the alert event.",
+      "requirement": "optional"
+    }
+  },
+  "description": "File Alert events report the detections and resolutions of file malicious activity.",
+  "extends": "endpoint_alert",
+  "name": "File Alert",
+  "see_also": [
+    "file_activity",
+    "folder_activity"
+  ],
+  "type": "file_alert",
+  "uid": 205
+}

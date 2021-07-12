@@ -1,9 +1,4 @@
 {
-  "name": "Policy Override Audit",
-  "type": "policy_audit",
-  "uid": 101,
-  "extends": "audit",
-  "description": "Reports user policy override activity at a management console or a managed client.",
   "attributes": {
     "app_name": {
       "description": "The name of the application that may be associated with the policy change.",
@@ -18,10 +13,6 @@
       "requirement": "optional"
     },
     "displayed_text": {
-      "requirement": "optional"
-    },
-    "file": {
-      "description": "The file that pertains to the policy override.",
       "requirement": "optional"
     },
     "disposition_id": {
@@ -53,6 +44,10 @@
         }
       }
     },
+    "file": {
+      "description": "The file that pertains to the policy override.",
+      "requirement": "optional"
+    },
     "override_duration": {
       "requirement": "optional"
     },
@@ -63,5 +58,10 @@
       "description": "The user session ID from which the override action was performed (Windows only).",
       "requirement": "optional"
     }
-  }
+  },
+  "description": "Reports user policy override activity at a management console or a managed client.",
+  "extends": "audit",
+  "name": "Policy Override Audit",
+  "type": "policy_audit",
+  "uid": 701
 }

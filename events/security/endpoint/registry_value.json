@@ -1,0 +1,80 @@
+{
+  "attributes": {
+    "activity": {
+      "requirement": "optional"
+    },
+    "activity_id": {
+      "description": "The registry value activity.",
+      "enum": {
+        "1": {
+          "name": "Get"
+        },
+        "2": {
+          "name": "Set"
+        },
+        "3": {
+          "name": "Modified"
+        },
+        "4": {
+          "name": "Deleted"
+        }
+      },
+      "requirement": "optional"
+    },
+    "disposition_id": {
+      "enum": {
+        "1": {
+          "name": "Allowed"
+        },
+        "10": {
+          "name": "Detected"
+        },
+        "2": {
+          "name": "Blocked"
+        },
+        "3": {
+          "name": "Command Script Run"
+        },
+        "4": {
+          "name": "Corrected"
+        },
+        "5": {
+          "name": "Partially Corrected"
+        },
+        "6": {
+          "name": "Uncorrected"
+        },
+        "7": {
+          "description": "Requires reboot to finish the operation.",
+          "name": "Delayed"
+        },
+        "8": {
+          "name": "Deleted"
+        },
+        "9": {
+          "name": "Restored"
+        }
+      }
+    },
+    "reg_value": {
+      "description": "The registry value that triggered the alert.",
+      "name": "Registry Value",
+      "requirement": "required"
+    },
+    "reg_value_result": {
+      "description": "The resulting registry value; for example, if a Registry value operation is ALLOWED, the resulting registry value object can be included in the event.",
+      "name": "Registry Value Result",
+      "requirement": "optional"
+    }
+  },
+  "description": "Registry Value Alert events report the detections and resolutions of registry value malicious access.",
+  "extends": "endpoint_alert",
+  "name": "Registry Value Alert",
+  "see_also": [
+    "registry_key_alert",
+    "registry_key_activity",
+    "registry_value_activity"
+  ],
+  "type": "registry_value_alert",
+  "uid": 218
+}

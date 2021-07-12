@@ -1,0 +1,82 @@
+{
+  "attributes": {
+    "activity": {
+      "requirement": "optional"
+    },
+    "activity_id": {
+      "description": "The module activity.",
+      "enum": {
+        "-1": {
+          "name": "Other"
+        },
+        "0": {
+          "name": "Unknown"
+        },
+        "1": {
+          "name": "Load"
+        },
+        "2": {
+          "name": "Unload"
+        }
+      },
+      "requirement": "optional"
+    },
+    "disposition_id": {
+      "enum": {
+        "1": {
+          "name": "Allowed"
+        },
+        "10": {
+          "name": "Restored"
+        },
+        "11": {
+          "name": "Detected"
+        },
+        "2": {
+          "name": "Blocked"
+        },
+        "3": {
+          "name": "Command Script Run"
+        },
+        "4": {
+          "name": "Corrected"
+        },
+        "5": {
+          "name": "Partially Corrected"
+        },
+        "6": {
+          "name": "Uncorrected"
+        },
+        "7": {
+          "description": "Requires reboot to finish the operation.",
+          "name": "Delayed"
+        },
+        "8": {
+          "name": "Deleted"
+        },
+        "9": {
+          "name": "Quarantined"
+        }
+      }
+    },
+    "module": {
+      "description": "The module object that triggered the alert.",
+      "requirement": "required"
+    },
+    "module_type": {
+      "requirement": "required"
+    },
+    "quarantine_uid": {
+      "description": "If the event id is one of:<ul><li>[12] Quarantined</li><li>[13] Restored</li></ul> the unique identifier of the item that was quarantined or restored from quarantine.",
+      "requirement": "optional"
+    }
+  },
+  "description": "Module Alert events report the detections and resolutions of module malicious activity.",
+  "extends": "endpoint_alert",
+  "name": "Module Alert",
+  "see_also": [
+    "module_activity"
+  ],
+  "type": "module_alert",
+  "uid": 208
+}

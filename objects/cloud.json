@@ -1,0 +1,38 @@
+{
+  "name": "Cloud",
+  "type": "cloud",
+  "description": "The Cloud object describes a cloud service or resource. It refers to compute, storage, networking, security, or other services that are accessed over the internet, which are hosted at a remote data center and managed by a cloud services provider.",
+  "attributes": {
+    "name": {
+      "description": "The name of the service or resource. For example, the Object Storage container or bucket name.",
+      "requirement": "recommended"
+    },
+    "type": {
+      "description": "The type of the cloud service or resource. For example: `Object Storage`.",
+      "requirement": "optional"
+    },
+    "account_uid": {
+      "requirement": "recommended"
+    },
+    "org_unit": {
+      "description": "The name of an organizational unit that uses the Cloud resource or service.",
+      "requirement": "recommended"
+    },
+    "provider": {
+      "description": "The unique name of the Cloud services provider, such as AWS, MS Azure, GCP, etc.",
+      "requirement": "required"
+    },
+    "region": {
+      "requirement": "recommended",
+      "description": "The name of the cloud region, as defined by the cloud provider. The region identifies a physical location around the world where the cloud data centers are located. The region has a set of one or more data centers, which are deployed within a latency-defined perimeter and connected through a dedicated regional low-latency network."
+    },
+    "vpc_uid": {
+      "requirement": "optional"
+    },
+    "zone": {
+      "name": "Zone",
+      "description": "The Zone or availability zone refers to an isolated data center within a single region. The Zone has one or more discrete data centers with redundant power, networking, and connectivity in a single region.",
+      "requirement": "recommended"
+    }
+  }
+}

@@ -48,17 +48,17 @@
       "type": "string_t",
       "description": "The name of the user who last accessed the object."
     },
+    "account_uid": {
+      "name": "Account UID",
+      "type": "string_t",
+      "description": "The unique identifier of an user account."
+    },
     "accounts": {
       "name": "Accounts",
       "type": "object_t",
       "description": "The user accounts.",
       "is_array": true,
       "object_type": "user_account"
-    },
-    "account_uid": {
-      "name": "Account UID",
-      "type": "string_t",
-      "description": "The unique identifier of an user account."
     },
     "activity": {
       "name": "User Activity",
@@ -128,11 +128,6 @@
           "name": "Other"
         }
       }
-    },
-    "response_time": {
-      "name": "Response Time",
-      "type": "timestamp_t",
-      "description": "The Domain Name System (DNS) response time."
     },
     "answers": {
       "name": "DNS Answer",
@@ -1132,15 +1127,15 @@
         }
       }
     },
-    "dkim_domain": {
-      "name": "DKIM Domain",
-      "type": "string_t",
-      "description": "The DomainKeys Identified Mail (DKIM) signing domain of the email."
-    },
     "dkim": {
       "name": "DKIM Status",
       "type": "string_t",
       "description": "The DomainKeys Identified Mail (DKIM) status of the email."
+    },
+    "dkim_domain": {
+      "name": "DKIM Domain",
+      "type": "string_t",
+      "description": "The DomainKeys Identified Mail (DKIM) signing domain of the email."
     },
     "dkim_signature": {
       "name": "DKIM Signature",
@@ -1439,6 +1434,11 @@
       "name": "Processor Type",
       "type": "string_t",
       "description": "The processor type. For example: \"x86 Family 6 Model 37 Stepping 5\"."
+    },
+    "hypervisor": {
+      "name": "Hypervisor",
+      "type": "string_t",
+      "description": "The name of the hypervisor running on the device. For example, <code>Xen</code>, <code>VMware</code>, <code>Hyper-V</code>, <code>VirtualBox</code>, etc."
     },
     "image": {
       "name": "Image",
@@ -2252,6 +2252,11 @@
       "type": "string_t",
       "description": "The email authentication header."
     },
+    "rcode": {
+      "name": "Response Code",
+      "type": "integer_t",
+      "description": "The DNS server response code. See <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc6895'>RFC-6895</a>."
+    },
     "reason": {
       "name": "Reason",
       "type": "string_t",
@@ -2414,20 +2419,20 @@
       "type": "string_t",
       "description": "The context in which a resource was retrieved in a web request."
     },
+    "response_action": {
+      "name": "Response Action",
+      "type": "string_t",
+      "description": "The information protection response action taken."
+    },
     "response_headers": {
       "name": "Response Headers",
       "type": "json_t",
       "description": "The additional information associated with and the HTTP response."
     },
-    "rcode": {
-      "name": "Response Code",
-      "type": "integer_t",
-      "description": "The DNS server response code. See <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc6895'>RFC-6895</a>."
-    },
-    "response_action": {
-      "name": "Response Action",
-      "type": "string_t",
-      "description": "The information protection response action taken."
+    "response_time": {
+      "name": "Response Time",
+      "type": "timestamp_t",
+      "description": "The Domain Name System (DNS) response time."
     },
     "risk": {
       "name": "Risk",
@@ -3176,69 +3181,6 @@
       "name": "Version",
       "type": "string_t",
       "description": "The version that pertains to the event or object. See specific usage."
-    },
-    "vhost": {
-      "name": "Virtual Host Type",
-      "type": "string_t",
-      "description": "The device virtual host type string."
-    },
-    "vhost_id": {
-      "name": "Virtual Host Type ID",
-      "type": "integer_t",
-      "description": "The device virtual host type identifier.",
-      "enum": {
-        "0": {
-          "name": "Unknown"
-        },
-        "1": {
-          "name": "None"
-        },
-        "10": {
-          "name": "VMware"
-        },
-        "11": {
-          "name": "Hyper-V®"
-        },
-        "12": {
-          "name": "Xen"
-        },
-        "13": {
-          "name": "KVM"
-        },
-        "14": {
-          "name": "QEMU"
-        },
-        "15": {
-          "name": "VirtualBox"
-        },
-        "16": {
-          "name": "Solaris Zones"
-        },
-        "30": {
-          "name": "AWS"
-        },
-        "31": {
-          "name": "Azure"
-        },
-        "32": {
-          "name": "GCP"
-        },
-        "33": {
-          "name": "OCP"
-        },
-        "50": {
-          "name": "Docker"
-        },
-        "51": {
-          "name": "Cloud Foundry"
-        },
-        "52": {
-          "name": "LXC"
-        },
-        "-1": {
-          "name": "Other"
-        }
-      }
     },
     "volume_uid": {
       "name": "Volume UID",

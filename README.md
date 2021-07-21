@@ -5,7 +5,8 @@ This directory contains the JSON files describing the Slunk Event Schema (SES).
 ## Extending the Schema
 The Splunk Event Schema can be extended by adding new attributes, objects, and event classes.
 
-To extend the schema create a new directory in the `schema/extensions` directory. The directory structure is the same as the top level schema directory and it may contain the following files and subdirectories.
+To extend the schema create a new directory in the `schema/extensions` directory. The directory structure is 
+the same as the top level schema directory, and it may contain the following files and subdirectories.
 
 | Name              | Description                                                  |
 | ----------------- | ------------------------------------------------------------ |

@@ -3001,9 +3001,14 @@
       "type": "integer_t"
     },
     "time": {
-      "description": "The event occurrence time, representing the time when the event was created by the event producer.",
+      "description": "The event time set by the logging system using information from the raw event data (event_time).",
       "name": "Time",
       "type": "timestamp_t"
+    },
+    "event_time": {
+      "description": "The event occurrence time, representing the time when the event was created by the event producer.<p><b>Note:</b> The format is ISO 8601: <code>yyyy-MM-dd'T'HH:mm:ss.SSSXXX</code>. For example: 2021-07-22T14:41:17.128-07:00</p>",
+      "name": "Event Time",
+      "type": "string_t"
     },
     "timezone": {
       "description": "The number of minutes that the reported event <code>time</code> is ahead or behind UTC. A number in the range -1,080 to +1,080.",

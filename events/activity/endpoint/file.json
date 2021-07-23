@@ -1,4 +1,13 @@
 {
+  "description": "File Activity events report when a process performs an action on a file.",
+  "extends": "endpoint_activity",
+  "name": "File Activity",
+  "see_also": [
+    "file_alert",
+    "folder_activity"
+  ],
+  "type": "file_activity",
+  "uid": 107,
   "attributes": {
     "access_mask": {
       "requirement": "optional"
@@ -10,41 +19,8 @@
       "requirement": "optional"
     },
     "disposition_id": {
-      "enum": {
-        "1": {
-          "name": "Created"
-        },
-        "10": {
-          "name": "Encrypted"
-        },
-        "11": {
-          "name": "Decrypted"
-        },
-        "2": {
-          "name": "Read"
-        },
-        "3": {
-          "name": "Modified"
-        },
-        "4": {
-          "name": "Deleted"
-        },
-        "5": {
-          "name": "Renamed"
-        },
-        "6": {
-          "name": "Set Attributes"
-        },
-        "7": {
-          "name": "Set Security"
-        },
-        "8": {
-          "name": "Get Attributes"
-        },
-        "9": {
-          "name": "Get Security"
-        }
-      }
+      "$include": "enums/file_activity.json",
+      "description": "The disposition ID of the event."
     },
     "file": {
       "description": "The file that is the target of the operation.",
@@ -56,14 +32,5 @@
     "file_result": {
       "requirement": "optional"
     }
-  },
-  "description": "File Activity events report when a process performs an action on a file.",
-  "extends": "endpoint_activity",
-  "name": "File Activity",
-  "see_also": [
-    "file_alert",
-    "folder_activity"
-  ],
-  "type": "file_activity",
-  "uid": 107
+  }
 }

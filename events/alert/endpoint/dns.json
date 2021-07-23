@@ -1,0 +1,38 @@
+{
+  "attributes": {
+    "$include": "traits/dns.json",
+    "activity_id": {
+      "$include": "enums/dns_activity.json"
+    },
+    "disposition_id": {
+      "enum": {
+        "1": {
+          "name": "Allowed"
+        },
+        "2": {
+          "name": "Blocked"
+        },
+        "3": {
+          "name": "Dropped"
+        },
+        "4": {
+          "name": "Deleted"
+        },
+        "5": {
+          "name": "Isolated"
+        }
+      }
+    },
+    "proxy": {
+      "requirement": "optional"
+    }
+  },
+  "description": "Endpoint DNS Alert events report the detections and resolutions of malicious DNS queries.",
+  "extends": "endpoint_alert",
+  "name": "Endpoint DNS Alert",
+  "see_also": [
+    "network_dns_activity"
+  ],
+  "type": "endpoint_dns_alert",
+  "uid": 202
+}

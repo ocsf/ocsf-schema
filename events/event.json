@@ -3,11 +3,24 @@
   "type": "base_event",
   "description": "The base event is a generic concrete event and it also defines a set of attributes available in most event classes. As a generic event that does not belong to any event category, it could be used to log events that are not otherwise defined by the schema.",
   "attributes": {
-    "$include": ["traits/common.json", "traits/classification.json"],
-    "cloud": {},
-    "container": {},
-    "correlation_uid": {},
+    "$include": [
+      "traits/common.json",
+      "traits/classification.json",
+      "traits/origination.json",
+      "traits/occurrence.json",
+      "traits/context.json"
+    ],
+    "cloud": {
+      "trait": "origination"
+    },
+    "container": {
+      "trait": "origination"
+    },
+    "correlation_uid": {
+      "trait": "context"
+    },
     "device": {
+      "trait": "origination",
       "requirement": "recommended"
     },
     "end_time": {
@@ -15,11 +28,18 @@
     },
     "last_updated_time": {},
     "raw_data": {
+      "trait": "context",
       "requirement": "reserved"
     },
-    "ref_event_name": {},
-    "ref_event_uid": {},
-    "source": {},
+    "ref_event_name": {
+      "trait": "context"
+    },
+    "ref_event_uid": {
+      "trait": "context"
+    },
+    "source": {
+      "trait": "origination"      
+    },
     "start_time": {
       "description": "The start time of a time period, or the time of the least recent event included in the aggregate event."
     },
@@ -28,8 +48,11 @@
     "status_id": {
       "requirement": "recommended"
     },
-    "unmapped": {},
+    "unmapped": {
+      "trait": "context"
+    },
     "user": {
+      "trait": "context",
       "description": "The user that pertains to the event.",
       "requirement": "recommended"
     }

@@ -1794,7 +1794,8 @@
       "description": "The primary malware identified by the event.<p><b>Note:</b> The primary malware may be the first malware found by the detection engine, or it may be the most severe malware found.</p>",
       "name": "Malware",
       "object_type": "malware",
-      "type": "object_t"
+      "type": "object_t",
+      "trait": "primary"
     },
     "managed_by": {
       "description": "The distinguished name of the user that is assigned to manage this object.",
@@ -2024,7 +2025,8 @@
       "is_array": true,
       "name": "Other Malware",
       "object_type": "malware",
-      "type": "object_t"
+      "type": "object_t",
+      "trait": "primary"
     },
     "override_duration": {
       "description": "The length in minutes for the override action to remain in place until restored upon expiration of time. If not provided it implies infinite duration of policy enforcement or until such time as another policy action occurs.",
@@ -2208,7 +2210,8 @@
     "quarantine_uid": {
       "description": "The unique identifier of the item that was quarantined or restored from quarantine.",
       "name": "Quarantine UID",
-      "type": "string_t"
+      "type": "string_t",
+      "trait": "primary"
     },
     "query": {
       "description": "The Domain Name System (DNS) query.",
@@ -2250,11 +2253,6 @@
       "description": "The reason for the detection.",
       "name": "Reason",
       "type": "string_t"
-    },
-    "reason_id": {
-      "description": "The reason for the detection.",
-      "name": "Reason",
-      "type": "integer_t"
     },
     "recovery_key_uid": {
       "description": "The unique identifier of the recovery key of the volume.",
@@ -2588,13 +2586,23 @@
       "name": "Sender Email",
       "type": "email_t"
     },
+    "receiver_hostname": {
+      "description": "The host name of the receiving email server.",
+      "name": "Sender Host Name",
+      "type": "hostname_t"
+    },
+    "receiver_ip": {
+      "description": "The IP address of the receiving email server, in either IPv4 or IPv6 format.",
+      "name": "Sender IP Address",
+      "type": "ip_t"
+    },
     "sender_hostname": {
       "description": "The host name of the sending email server.",
       "name": "Sender Host Name",
       "type": "hostname_t"
     },
     "sender_ip": {
-      "description": "The IP address of the sender, in either IPv4 or IPv6 format.",
+      "description": "The IP address of the sending email server, in either IPv4 or IPv6 format.",
       "name": "Sender IP Address",
       "type": "ip_t"
     },

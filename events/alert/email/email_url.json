@@ -1,22 +1,4 @@
 {
-  "attributes": {
-    "http_status": {
-      "requirement": "optional"
-    },
-    "request_headers": {
-      "requirement": "optional"
-    },
-    "resource_type": {
-      "requirement": "optional"
-    },
-    "response_headers": {
-      "requirement": "optional"
-    },
-    "url": {
-      "description": "The URL that triggered the alert.",
-      "requirement": "required"
-    }
-  },
   "description": "Email URL Alert events report the detections and resolutions of URL malware within emails.",
   "extends": "email_alert",
   "name": "Email URL Alert",
@@ -26,5 +8,12 @@
     "email_file_alert"
   ],
   "type": "email_url_alert",
-  "uid": 206
+  "uid": 206,
+  "attributes": {
+    "url": {
+      "description": "The URL that triggered the alert.",
+      "requirement": "required",
+      "trait": "primary"
+    }
+  }
 }

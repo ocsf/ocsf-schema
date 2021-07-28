@@ -1,19 +1,4 @@
 {
-  "attributes": {
-    "email": {
-      "description": "The email that triggered the alert.",
-      "requirement": "required"
-    },
-    "email_auth": {
-      "requirement": "required"
-    },
-    "sender_hostname": {
-      "requirement": "optional"
-    },
-    "sender_ip": {
-      "requirement": "optional"
-    }
-  },
   "description": "Email Delivery Alert events report the detections and resolutions of email malicious activity.",
   "extends": "email_alert",
   "name": "Email Delivery Alert",
@@ -23,5 +8,8 @@
     "email_url_alert"
   ],
   "type": "email_delivery_alert",
-  "uid": 204
+  "uid": 204,
+  "attributes": {
+    "$include": "traits/email_delivery.json"
+  }
 }

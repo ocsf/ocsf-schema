@@ -1,22 +1,28 @@
 {
   "attributes": {
     "access_mask": {
+      "group": "context",
       "requirement": "optional"
     },
     "activity": {
+      "group": "primary",
       "requirement": "optional"
     },
     "activity_id": {
       "$include": "enums/file_activity.json",
+      "group": "primary",
       "requirement": "recommended"
     },
     "component": {
+      "group": "primary",
       "requirement": "optional"
     },
     "connection_ref_uid": {
+      "group": "context",
       "requirement": "optional"
     },
     "create_mask": {
+      "group": "primary",
       "requirement": "optional"
     },
     "disposition_id": {
@@ -67,21 +73,26 @@
     },
     "file": {
       "description": "The file that triggered the alert.",
+      "group": "primary",
       "requirement": "required"
     },
     "file_diff": {
+      "group": "primary",
       "requirement": "optional"
     },
     "file_result": {
       "description": "The resulting file object; for example, if a file operation is ALLOWED, the resulting file object can be included in the event.",
+      "group": "primary",
       "requirement": "optional"
     },
     "quarantine_uid": {
       "description": "If the event disposition is one of:<ul><li>[12] QUARANTINED</li><li>[13] RESTORED (from quarantine)</li></ul>include the unique identifier of the item that was quarantined or restored from quarantine.",
+      "group": "primary",
       "requirement": "optional"
     },
     "scan_uid": {
       "description": "The application-generated unique ID of the scan, if applicable, that caused the alert event.",
+      "group": "primary",
       "requirement": "optional"
     }
   },

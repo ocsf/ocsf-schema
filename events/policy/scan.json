@@ -1,7 +1,12 @@
 {
+  "description": "Scan events report the start, completion, and results of a scan job. The scan event includes the number of items that were scanned and the number of detections that were resolved.",
+  "extends": "policy",
+  "name": "Scan",
+  "type": "scan",
+  "uid": 309,
   "attributes": {
     "command_uid": {
-      "description": "The command identifier that is associated with this Scan event; required if the scan was initiated by a command.",
+      "description": "The command identifier that is associated with this scan event; required if the scan was initiated by a command.",
       "group": "primary",
       "requirement": "recommended"
     },
@@ -122,7 +127,6 @@
     },
     "type_id": {
       "description": "The type of scan.",
-      "group": "primary",
       "enum": {
         "0": {
           "name": "Unknown"
@@ -156,6 +160,7 @@
           "name": "ELAM"
         }
       },
+      "group": "primary",
       "requirement": "required"
     },
     "uid": {
@@ -164,11 +169,5 @@
       "name": "Scan UID",
       "requirement": "required"
     }
-  },
-  "description": "Scan Alert events report the start, completion, and results of a scan. The scan event includes the number of items that were scanned and the number of detections that were resolved.",
-  "category": "alert",
-  "extends": "base_event",
-  "name": "Scan Alert",
-  "type": "scan_alert",
-  "uid": 221
+  }
 }

@@ -9,7 +9,7 @@
       "type": "integer_t"
     },
     "access_mask": {
-      "description": "The access mask in platform-native format.",
+      "description": "The access mask in a platform-native format.",
       "name": "Access Mask",
       "type": "integer_t"
     },
@@ -38,12 +38,10 @@
     "activity": {
       "description": "The user activity related to the event.",
       "name": "User Activity",
-      "group": "context",
       "type": "string_t"
     },
     "activity_id": {
       "description": "The identifier of the activity that triggered the alert event.",
-      "group": "context",
       "enum": {
         "-1": {
           "description": "The event activity is not mapped.",
@@ -61,11 +59,10 @@
       "description": "The process that performed the operation or action on the target object. For example, the process that could have created a new file or violated a policy.",
       "name": "Actor",
       "object_type": "process",
-      "group": "primary",
       "type": "object_t"
     },
     "actual_permissions": {
-      "description": "The permissions that were granted to the process.",
+      "description": "The permissions that were granted to the in a platform-native format.",
       "name": "Actual Permissions",
       "type": "integer_t"
     },
@@ -108,7 +105,7 @@
       "type": "integer_t"
     },
     "alt_uids": {
-      "description": "The alternative unique identifiers of an endpoint.",
+      "description": "The alternative unique identifiers of the network endpoint.",
       "is_array": true,
       "name": "Alternative UIDs",
       "type": "string_t"
@@ -1735,7 +1732,7 @@
       "type": "string_t"
     },
     "logon_type_id": {
-      "description": "The logon type identifier.",
+      "description": "The normalized logon type identifier.",
       "enum": {
         "-1": {
           "description": "Other logon type.",
@@ -1794,8 +1791,7 @@
       "description": "The primary malware identified by the event.<p><b>Note:</b> The primary malware may be the first malware found by the detection engine, or it may be the most severe malware found.</p>",
       "name": "Malware",
       "object_type": "malware",
-      "type": "object_t",
-      "group": "primary"
+      "type": "object_t"
     },
     "managed_by": {
       "description": "The distinguished name of the user that is assigned to manage this object.",
@@ -2025,8 +2021,7 @@
       "is_array": true,
       "name": "Other Malware",
       "object_type": "malware",
-      "type": "object_t",
-      "group": "primary"
+      "type": "object_t"
     },
     "override_duration": {
       "description": "The length in minutes for the override action to remain in place until restored upon expiration of time. If not provided it implies infinite duration of policy enforcement or until such time as another policy action occurs.",
@@ -2210,8 +2205,7 @@
     "quarantine_uid": {
       "description": "The unique identifier of the item that was quarantined or restored from quarantine.",
       "name": "Quarantine UID",
-      "type": "string_t",
-      "group": "primary"
+      "type": "string_t"
     },
     "query": {
       "description": "The Domain Name System (DNS) query.",
@@ -3198,7 +3192,7 @@
       "type": "string_t"
     },
     "xattributes": {
-      "description": "An unordered collection of zero or more name/value pairs where each pair represents a file or folder extended attribute.<p>For example: Windows alternate data stream attributes (ADS stream name, ADS size, etc.), user-defined or application-defined attributes, ACL, owner, primary group, etc. Examples from DCS: </p><ul><li><strong>ads_name</strong></li><li><strong>ads_size</strong></li><li><strong>dacl</strong></li><li><strong>owner</strong></li><li><strong>primary_group</strong></li><li><strong>link_name</strong> - name of the link associated to the file.</li><li><strong>hard_link_count</strong> - the number of links that are associated to the file.</li></ul>",
+      "description": "An unordered collection of zero or more name/value pairs where each pair represents a file or folder extended attribute.</p>For example: Windows alternate data stream attributes (ADS stream name, ADS size, etc.), user-defined or application-defined attributes, ACL, owner, primary group, etc. Examples from DCS: </p><ul><li><strong>ads_name</strong></li><li><strong>ads_size</strong></li><li><strong>dacl</strong></li><li><strong>owner</strong></li><li><strong>primary_group</strong></li><li><strong>link_name</strong> - name of the link associated to the file.</li><li><strong>hard_link_count</strong> - the number of links that are associated to the file.</li></ul>",
       "name": "Extended Attributes",
       "type": "json_t"
     },

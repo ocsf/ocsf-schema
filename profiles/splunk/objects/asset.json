@@ -1,0 +1,122 @@
+{
+  "name": "Asset",
+  "type": "asset",
+  "description": "Asset is a device of the environment that supports information-related activities. Assets should be protected from illicit access, use, disclosure, alteration, destruction, and/or theft, resulting in loss to the organization.",
+  "attributes": {
+    "name": {
+      "description": "The asset name, ordinarily as assigned by an administrator or LDAP common name (CN).",
+      "requirement": "recommended"
+    },
+    "uid": {
+      "name": "Asset UID",
+      "description": "The unique identifier of the asset.",
+      "requirement": "reserved"
+    },
+    "type": {
+      "name": "Type",
+      "description": "The original asset type assigned to the asset.",
+      "requirement": "optional"
+    },
+    "caption": {
+      "requirement": "optional"
+    },
+    "desc": {
+      "name": "Description",
+      "description": "The description of the device, ordinarily as reported by the operating system.",
+      "requirement": "optional"
+    },
+    "domain": {
+      "name": "Domain",
+      "description": "The network domain where the device resides. For example: <code>work.example.com</code>.",
+      "requirement": "optional"
+    },
+    "group": {
+      "name": "Group",
+      "description": "The name of the group to which the device belongs. For example: <code>Windows Laptops<code/>.",
+      "requirement": "optional"
+    },
+    "labels": {
+      "description": "The list of labels attached to the asset.",
+      "requirement": "optional"
+    },
+    "location": {
+      "requirement": "optional"
+    },
+    "managed_by": {
+      "requirement": "optional"
+    },
+    "networks_info": {
+      "requirement": "recommended"
+    },
+    "org_unit": {
+      "requirement": "optional"
+    },
+    "owner_name": {
+      "description": "The user or department associated with the asset."
+    },
+    "priority": {
+      "description": "The original priority assigned to the asset."
+    },
+    "priority_id": {
+      "description": "The normalized priority identifier assigned to the asset. The priority is useful for calculating the urgency for alerts or incidents.",
+      "$include": "enums/object_priority.json"
+    },
+    "provider": {
+      "description": "The source or the provider of the asset data.",
+      "requirement": "optional"
+    },
+    "ref_uid": {
+      "description": "The reference to a unique identifier, managed by an external system. For example LDAP distinguished name of the asset.",
+      "requirement": "recommended"
+    },
+    "type_id": {
+      "name": "Type ID",
+      "description": "The asset type identifier.",
+      "requirement": "required",
+      "enum": {
+        "1": {
+          "name": "Server"
+        },
+        "2": {
+          "name": "Desktop"
+        },
+        "3": {
+          "name": "Laptop"
+        },
+        "4": {
+          "name": "Tablet"
+        },
+        "5": {
+          "name": "Mobile"
+        },
+        "6": {
+          "name": "Virtual Machine"
+        },
+        "7": {
+          "name": "IOT"
+        },
+        "8": {
+          "name": "File Server"
+        },
+        "9": {
+          "name": "Network Router"
+        },
+        "10": {
+          "name": "Sharepoint Server"
+        },
+        "11": {
+          "name": "VPN Server"
+        },
+        "12": {
+          "name": "Web Server"
+        },
+        "13": {
+          "name": "Proxy Server"
+        },
+        "14": {
+          "name": "Active Directory"
+        }
+      }
+    }
+  }
+}

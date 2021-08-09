@@ -1,0 +1,76 @@
+{
+  "name": "Network",
+  "type": "network",
+  "description": "The network object describes a network identified by a subnet mask.",
+  "attributes": {
+    "name": {
+      "description": "The name of the network.",
+      "requirement": "required"
+    },
+    "uid": {
+      "description": "The unique identifier of the network.",
+      "requirement": "reserved"
+    },
+    "type": {
+      "description": "The type of network.",
+      "requirement": "optional"
+    },
+    "domain": {
+      "description": "The network domain.",
+      "requirement": "optional"
+    },
+    "is_public": {
+      "requirement": "optional"
+    },
+    "labels": {
+      "description": "The list of labels attached to the network.",
+      "requirement": "optional"
+    },
+    "location": {
+      "description": "The geographical location of the network.",
+      "requirement": "optional"
+    },
+    "namespace": {
+      "requirement": "optional"
+    },
+    "org_unit": {
+      "description": "The name of the org unit to which the network belongs.",
+      "requirement": "optional"
+    },
+    "owner_name": {
+      "description": "The user or department associated with the network."
+    },
+    "priority": {
+      "description": "The original priority assigned to the network."
+    },
+    "priority_id": {
+      "description": "The normalized priority identifier assigned to the network. The priority is useful for calculating the urgency for alerts or incidents.",
+      "$include": "enums/object_priority.json"
+    },
+    "subnet": {
+      "description": "The subnet mask identifying the network segment.",
+      "requirement": "required"
+    },
+    "type_id": {
+      "description": "The network type identifier.",
+      "requirement": "required",
+      "enum": {
+        "0": {
+          "name": "Unknown"
+        },
+        "1": {
+          "name": "Wired"
+        },
+        "2": {
+          "name": "Wireless"
+        },
+        "3": {
+          "name": "Mobile"
+        },
+        "-1": {
+          "name": "Other"
+        }
+      }
+    }
+  }
+}

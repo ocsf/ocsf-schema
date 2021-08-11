@@ -1,13 +1,8 @@
 {
   "name": "Attribute Dictionary",
   "type": "dictionary",
-  "description": "The Attribute Dictionary defines schema attributes and includes references to the events and objects in which they are used.",
+  "description": "The Attribute Dictionary defines attributes and includes references to the events and objects in which they are used.",
   "attributes": {
-    "postcode": {
-      "description": "The postal code of the location.",
-      "name": "Postal Code",
-      "type": "string_t"
-    },
     "access_complexity_id": {
       "description": "The access complexity Common Vulnerability Scoring System (CVSS) metric.",
       "name": "Access Complexity",
@@ -1053,7 +1048,7 @@
       "type": "timestamp_t"
     },
     "enrichments": {
-      "description": "The additional information that is associated with the event. For example add location information for the IP address in the DNS answers:</p><code>[{\"name\": \"answers.ip\", \"value\": \"92.24.47.250\", \"type\": \"location\", \"data\": {\"city\": \"Supplement amenities\", \"continent\": \"Asia\", \"coordinates\": [-25.4153, 17.0743], \"country\": \"YE\", \"desc\": \"Yemen\"}}]</code>",
+      "description": "The additional information from an external data source, which is associated with the event. For example add location information for the IP address in the DNS answers:</p><code>[{\"name\": \"answers.ip\", \"value\": \"92.24.47.250\", \"type\": \"location\", \"data\": {\"city\": \"Supplement amenities\", \"continent\": \"Asia\", \"coordinates\": [-25.4153, 17.0743], \"country\": \"YE\", \"desc\": \"Yemen\"}}]</code>",
       "is_array": true,
       "name": "Enrichments",
       "object_type": "enrichment",
@@ -1063,6 +1058,11 @@
       "description": "The EtherType indicates which protocol is encapsulated in the payload of an Ethernet frame.",
       "name": "EtherType",
       "type": "integer_t"
+    },
+    "event_time": {
+      "description": "The event occurrence time, representing the time when the event was created by the event producer.<p><b>Note:</b> The format is ISO 8601: <code>yyyy-MM-dd'T'HH:mm:ss.SSSXXX</code>. For example: 2021-07-22T14:41:17.128-07:00</p>",
+      "name": "Event Time",
+      "type": "string_t"
     },
     "event_uid": {
       "description": "The event UID identifies the event's semantics and structure. The value is calculated by the logging system as: <code>class_id * 1000 + disposition_id</code>.",
@@ -1478,7 +1478,7 @@
       "type": "string_t"
     },
     "log_time": {
-      "description": "The time when the logging system collected and logged the event.</p>This attribute is distinct from the event <strong>Time</strong> in that event <strong>Time</strong> typically contain the time extracted from the original event. Most of the time, these two times will be different. </p>",
+      "description": "The time when the logging system collected and logged the event.</p>This attribute is distinct from the event time in that event time typically contain the time extracted from the original event. Most of the time, these two times will be different.",
       "name": "Logged Time",
       "type": "timestamp_t"
     },
@@ -1553,6 +1553,12 @@
       "description": "The description of the event.",
       "name": "Message",
       "type": "string_t"
+    },
+    "metadata": {
+      "description": "The metadata associated with the event.",
+      "name": "Metadata",
+      "object_type": "metadata",
+      "type": "object_t"
     },
     "mime_type": {
       "description": "The Multipurpose Internet Mail Extensions (MIME) type of the file, if applicable.",
@@ -1676,6 +1682,12 @@
       "name": "Org Unit",
       "type": "string_t"
     },
+    "origin": {
+      "description": "The origin of the event, where the event was created.",
+      "name": "Origin",
+      "object_type": "event_origin",
+      "type": "object_t"
+    },
     "original_name": {
       "description": "The original name of the file.",
       "name": "Original Name",
@@ -1778,9 +1790,9 @@
     },
     "priority_id": {
       "description": "The normalized priority. See specific usage.",
+      "enum": {},
       "name": "Priority ID",
-      "type": "integer_t",
-      "enum": {}
+      "type": "integer_t"
     },
     "privileges": {
       "description": "The user or group privileges.",
@@ -2008,15 +2020,15 @@
       "object_type": "resource",
       "type": "object_t"
     },
-    "response_headers": {
-      "description": "The additional information associated with and the HTTP response.",
-      "name": "Response Headers",
-      "type": "json_t"
-    },
     "resource_type": {
       "description": "The context in which a resource was retrieved in a web request.",
       "name": "Resource Type",
       "type": "string_t"
+    },
+    "response_headers": {
+      "description": "The additional information associated with and the HTTP response.",
+      "name": "Response Headers",
+      "type": "json_t"
     },
     "response_time": {
       "description": "The Domain Name System (DNS) response time.",
@@ -2360,11 +2372,6 @@
       "name": "Time",
       "type": "timestamp_t"
     },
-    "event_time": {
-      "description": "The event occurrence time, representing the time when the event was created by the event producer.<p><b>Note:</b> The format is ISO 8601: <code>yyyy-MM-dd'T'HH:mm:ss.SSSXXX</code>. For example: 2021-07-22T14:41:17.128-07:00</p>",
-      "name": "Event Time",
-      "type": "string_t"
-    },
     "timezone": {
       "description": "The number of minutes that the reported event <code>time</code> is ahead or behind UTC. A number in the range -1,080 to +1,080.",
       "name": "Time Zone",
@@ -2466,99 +2473,99 @@
     }
   },
   "types": {
-    "name": "Data Types",
     "description": "The predefined data types. The data type of an value specifies what kind of data that value can have.",
+    "name": "Data Types",
     "attributes": {
       "boolean_t": {
-        "name": "Boolean",
         "description": "Boolean data type.",
+        "name": "Boolean",
         "values": [
           false,
           true
         ]
       },
       "email_t": {
-        "name": "Email Address",
-        "type": "string_t",
         "description": "Email address type. For example: <code>john_doe@example.com</code>.",
+        "name": "Email Address",
         "regex": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
+        "type": "string_t",
         "type_name": "String"
       },
       "float_t": {
-        "name": "Float",
-        "description": "Real floating-point data type."
+        "description": "Real floating-point data type.",
+        "name": "Float"
       },
       "hostname_t": {
-        "name": "Hostname",
-        "type": "string_t",
         "description": "A unique name assigned to a device that is connected to a specific computer network. For example: <code>r2-d2.example.com</code>.",
+        "name": "Hostname",
         "regex": "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\\-]*[a-zA-Z0-9])\\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\\-]*[A-Za-z0-9])$",
+        "type": "string_t",
         "type_name": "String"
       },
       "integer_t": {
-        "name": "Integer",
-        "description": "Basic signed integer data type."
+        "description": "Basic signed integer data type.",
+        "name": "Integer"
       },
       "ip_t": {
-        "name": "IP Address",
-        "type": "string_t",
         "description": "Internet Protocol address (IP address), in either IPv4 or IPv6 format.",
         "max_len": 40,
+        "name": "IP Address",
         "regex": "/^(?>(?>([a-f0-9]{1,4})(?>:(?1)){7}|(?!(?:.*[a-f0-9](?>:|$)){8,})((?1)(?>:(?1)){0,6})?::(?2)?)|(?>(?>(?1)(?>:(?1)){5}:|(?!(?:.*[a-f0-9]:){6,})(?3)?::(?>((?1)(?>:(?1)){0,4}):)?)?(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(?>\\.(?4)){3}))$/iD",
+        "type": "string_t",
         "type_name": "String"
       },
       "json_t": {
-        "name": "JSON",
-        "description": "Embedded JSON value. A value can be a string, or a number, or true or false or null, or an object or an array. These structures can be nested. See <a target='_blank' href='https://www.json.org'>www.json.org</a>."
+        "description": "Embedded JSON value. A value can be a string, or a number, or true or false or null, or an object or an array. These structures can be nested. See <a target='_blank' href='https://www.json.org'>www.json.org</a>.",
+        "name": "JSON"
       },
       "long_t": {
-        "name": "Long",
-        "description": "8-byte long, signed integer data type."
+        "description": "8-byte long, signed integer data type.",
+        "name": "Long"
       },
       "mac_t": {
-        "name": "MAC Address",
-        "type": "string_t",
         "description": "Media Access Control (MAC) address. For example: <code>18:36:F3:98:4F:9A</code>.",
         "max_len": 32,
+        "name": "MAC Address",
         "regex": "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$",
+        "type": "string_t",
         "type_name": "String"
       },
       "object_t": {
-        "name": "Object",
-        "description": "Embedded object."
+        "description": "Embedded object.",
+        "name": "Object"
       },
       "path_t": {
-        "name": "Path Name",
-        "type": "string_t",
         "description": "File or folder full path name. For example: <code>/home/user/tmp/text-file.txt</code>.",
+        "name": "Path Name",
         "regex": "^[\\pL0-9_]+[\\pL0-9 ~!@#%&*\\-./_]*$",
+        "type": "string_t",
         "type_name": "String"
       },
       "port_t": {
-        "name": "IP Port",
-        "type": "integer_t",
         "description": "IP TCP/UDP port number. For example: <code>80</code> or <code>22</code>.",
+        "name": "IP Port",
         "range": [
           0,
           65535
         ],
+        "type": "integer_t",
         "type_name": "Integer"
       },
       "string_t": {
-        "name": "String",
         "description": "UTF-8 encoded byte sequence.",
-        "max_len": 65535
+        "max_len": 65535,
+        "name": "String"
       },
       "subnet_t": {
-        "name": "Subnet",
         "description": "Subnet mask in Classless Inter-Domain Routing (CIDR) notation. For example <code>192.168.200.0/24</code>.",
         "max_len": 40,
+        "name": "Subnet",
         "type_name": "String"
       },
       "timestamp_t": {
+        "description": "The time format is the number of milliseconds since the Epoch 01/01/1970 00:00:00 UTC. For example <code>1618524549901</code>.",
         "name": "Timestamp",
         "type": "long_t",
-        "description": "The time format is the number of milliseconds since the Epoch 01/01/1970 00:00:00 UTC. For example <code>1618524549901</code>.",
         "type_name": "Long"
       }
     }

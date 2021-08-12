@@ -10,6 +10,7 @@
     "module_alert"
   ],
   "attributes": {
+    "$include": "traits/process_activity.json",
     "activity": {
       "group": "primary",
       "requirement": "optional"
@@ -18,10 +19,6 @@
       "$include": "enums/process_activity.json",
       "group": "primary",
       "requirement": "recommended"
-    },
-    "actual_permissions": {
-      "group": "primary",
-      "requirement": "optional"
     },
     "disposition_id": {
       "enum": {
@@ -64,25 +61,11 @@
         }
       }
     },
-    "injection_type": {
-      "group": "primary",
-      "requirement": "optional"
-    },
-    "injection_type_id": {
-      "group": "primary",
-      "requirement": "optional"
-    },
     "process": {
-      "description": "The process that triggered the alert.",
-      "group": "primary",
-      "requirement": "required"
+      "description": "The process that triggered the alert."
     },
     "quarantine_uid": {
       "description": "If the event id is one of:<ul><li>[12] Quarantined</li><li>[13] Restored</li></ul>the unique identifier of the item that was quarantined or restored from quarantine.",
-      "group": "primary",
-      "requirement": "optional"
-    },
-    "requested_permissions": {
       "group": "primary",
       "requirement": "optional"
     }

@@ -17,35 +17,39 @@
       "requirement": "optional"
     },
     "load_type_id": {
-      "requirement": "required",
       "enum": {
+        "-1": {
+          "name": "Other"
+        },
         "0": {
           "name": "Unknown"
         },
         "1": {
-          "name": "Standard",
-          "description": "A normal module loaded by the normal windows loading mechanism i.e. LoadLibrary."
+          "description": "A normal module loaded by the normal windows loading mechanism i.e. LoadLibrary.",
+          "name": "Standard"
         },
         "2": {
-          "name": "Non Standard",
-          "description": "A module loaded in a way avoidant of normal windows procedures. i.e. Bootstrapped Loading/Manual Dll Loading."
+          "description": "A module loaded in a way avoidant of normal windows procedures. i.e. Bootstrapped Loading/Manual Dll Loading.",
+          "name": "Non Standard"
         },
         "3": {
-          "name": "ShellCode",
-          "description": "A raw module in process memory that is READWRITE_EXECUTE and had a thread started in its range."
+          "description": "A raw module in process memory that is READWRITE_EXECUTE and had a thread started in its range.",
+          "name": "ShellCode"
         },
         "4": {
-          "name": "Mapped",
-          "description": "A memory mapped file, typically created with CreatefileMapping/MapViewOfFile."
+          "description": "A memory mapped file, typically created with CreatefileMapping/MapViewOfFile.",
+          "name": "Mapped"
         },
         "5": {
-          "name": "NonStandard Backed",
-          "description": "A module loaded in a non standard way. However, GetModuleFileName succeeds on this allocation."
-        },
-        "-1": {
-          "name": "Other"
+          "description": "A module loaded in a non standard way. However, GetModuleFileName succeeds on this allocation.",
+          "name": "NonStandard Backed"
         }
-      }
+      },
+      "requirement": "required"
+    },
+    "type": {
+      "requirement": "recommended"
     }
   }
 }
+

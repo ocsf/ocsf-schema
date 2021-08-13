@@ -3,8 +3,8 @@
   "type": "person",
   "description": "The person object represents a real user in an organizational network environment.",
   "attributes": {
-    "name": {
-      "description": "The name of the person.",
+    "names": {
+      "description": "The names of the person.",
       "requirement": "required"
     },
     "uid": {
@@ -63,6 +63,10 @@
     "priority_id": {
       "description": "The normalized priority identifier assigned to the person. The priority is useful for calculating the urgency for alerts or incidents.",
       "$include": "enums/object_priority.json"
+    },
+    "provider": {
+      "description": "The source or the provider of the user data.",
+      "requirement": "optional"
     },
     "ref_uid": {
       "description": "The reference to a unique identifier, managed by an external system. For example LDAP distinguished name of the person.",

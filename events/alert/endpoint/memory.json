@@ -1,5 +1,14 @@
 {
+  "name": "Memory Alert",
+  "type": "memory_alert",
+  "uid": 209,
+  "description": "Memory Alert events report the detections and resolutions of malicious memory access.",
+  "extends": "endpoint_alert",
+  "see_also": [
+    "memory_activity"
+  ],
   "attributes": {
+    "$include": "traits/memory_activity.json",
     "activity": {
       "group": "primary",
       "requirement": "optional"
@@ -38,13 +47,5 @@
         }
       }
     }
-  },
-  "description": "Memory Alert events report the detections and resolutions of malicious memory access.",
-  "extends": "endpoint_alert",
-  "name": "Memory Alert",
-  "see_also": [
-    "memory_activity"
-  ],
-  "type": "memory_alert",
-  "uid": 209
+  }
 }

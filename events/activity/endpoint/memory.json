@@ -1,22 +1,16 @@
 {
-  "attributes": {
-    "actual_permissions": {
-      "group": "primary",
-      "requirement": "optional"
-    },
-    "disposition_id": {
-      "$include": "enums/memory_activity.json"
-    },
-    "requested_permissions": {
-      "requirement": "optional"
-    }
-  },
+  "name": "Memory Activity",
+  "type": "memory_activity",
+  "uid": 110,
   "description": "Memory Activity events report when a process performs internal memory allocation, modification, or other manipulation activities - such as a buffer overflow or turning off data execution protection (DEP) - that are not typical for a process.",
   "extends": "endpoint_activity",
-  "name": "Memory Activity",
   "see_also": [
     "memory_alert"
   ],
-  "type": "memory_activity",
-  "uid": 110
+  "attributes": {
+    "$include": "traits/memory_activity.json",
+    "disposition_id": {
+      "$include": "enums/memory_activity.json"
+    }
+  }
 }

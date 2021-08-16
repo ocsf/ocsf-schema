@@ -3,210 +3,6 @@
   "type": "dictionary",
   "description": "The Attribute Dictionary defines schema attributes and includes references to the events and objects in which they are used.",
   "attributes": {
-    "tls_policy_id": {
-      "description": "The Transport Layer Security (TLS) policy.",
-      "enum": {
-        "0": {
-          "name": "Unknown"
-        },
-        "1": {
-          "name": "None"
-        },
-        "2": {
-          "name": "Enforced"
-        },
-        "3": {
-          "name": "Opportunistic"
-        }
-      },
-      "name": "TLS Policy",
-      "type": "integer_t"
-    },
-    "to": {
-      "description": "The email header To values, as defined by RFC 5322.",
-      "is_array": true,
-      "name": "To",
-      "type": "email_t"
-    },
-    "subject": {
-      "description": "The email header Subject value, as defined by RFC 5322.",
-      "name": "Subject",
-      "type": "string_t"
-    },
-    "spf": {
-      "description": "The Sender Policy Framework (SPF) status of the email.",
-      "name": "SPF Status",
-      "type": "string_t"
-    },
-    "reply_to": {
-      "description": "The email header Reply-To values, as defined by RFC 5322.",
-      "name": "Reply To",
-      "type": "email_t"
-    },
-    "raw_header": {
-      "description": "The email authentication header.",
-      "name": "Raw Header",
-      "type": "string_t"
-    },
-    "message_id": {
-      "description": "The email header Message-Id value, as defined by RFC 5322.",
-      "name": "Message UID",
-      "type": "string_t"
-    },
-    "key_length": {
-      "description": "The length of the encryption key.",
-      "name": "Key Length",
-      "type": "integer_t"
-    },
-    "from": {
-      "description": "The email header From values, as defined by RFC 5322.",
-      "name": "From",
-      "type": "email_t"
-    },
-    "cipher": {
-      "description": "The encryption algorithm.",
-      "name": "Cipher",
-      "type": "string_t"
-    },
-    "is_advertised": {
-      "description": "The indication of whether the protocol is advertised by the server.",
-      "name": "Advertised",
-      "type": "boolean_t"
-    },
-    "smtp_from": {
-      "description": "The value of the SMTP MAIL FROM command.",
-      "name": "SMTP From",
-      "type": "email_t"
-    },
-    "smtp_hello": {
-      "description": "The value of the SMTP HELO or EHLO command.",
-      "name": "SMTP Hello",
-      "type": "string_t"
-    },
-    "smtp_to": {
-      "description": "The value of the SMTP envelope RCPT TO command.",
-      "is_array": true,
-      "name": "SMTP To",
-      "type": "email_t"
-    },
-    "is_used": {
-      "description": "The indication of whether the TLS is used.",
-      "name": "Used",
-      "type": "boolean_t"
-    },
-    "dkim": {
-      "description": "The DomainKeys Identified Mail (DKIM) status of the email.",
-      "name": "DKIM Status",
-      "type": "string_t"
-    },
-    "dkim_domain": {
-      "description": "The DomainKeys Identified Mail (DKIM) signing domain of the email.",
-      "name": "DKIM Domain",
-      "type": "string_t"
-    },
-    "dkim_signature": {
-      "description": "The DomainKeys Identified Mail (DKIM) signature used by the sending/receiving system.",
-      "name": "DKIM Signature",
-      "type": "string_t"
-    },
-    "dmarc": {
-      "description": "The Domain-based Message Authentication, Reporting and Conformance (DMARC) status of the email.",
-      "name": "DMARC Status",
-      "type": "string_t"
-    },
-    "dmarc_override": {
-      "description": "The Domain-based Message Authentication, Reporting and Conformance (DMARC) override action.",
-      "name": "DMARC Override",
-      "type": "string_t"
-    },
-    "dmarc_policy": {
-      "description": "The Domain-based Message Authentication, Reporting and Conformance (DMARC) policy status.",
-      "name": "DMARC Policy",
-      "type": "string_t"
-    },
-    "tls": {
-      "description": "The Transport Layer Security (TLS) attributes.",
-      "name": "TLS",
-      "object_type": "tls",
-      "type": "object_t"
-    },
-    "delivered_to": {
-      "description": "The <strong>Delivered-To</strong> email header field.",
-      "name": "Delivered To",
-      "type": "email_t"
-    },
-    "banner": {
-      "description": "The initial SMTP connection response that a messaging server receives after it connects to a email server.",
-      "name": "SMTP Banner",
-      "type": "string_t"
-    },
-    "receiver_ip": {
-      "description": "The IP address of the receiving email server, in either IPv4 or IPv6 format.",
-      "name": "Sender IP Address",
-      "type": "ip_t"
-    },
-    "sender_ip": {
-      "description": "The IP address of the sending email server, in either IPv4 or IPv6 format.",
-      "name": "Sender IP Address",
-      "type": "ip_t"
-    },
-    "receiver_hostname": {
-      "description": "The host name of the receiving email server.",
-      "name": "Sender Host Name",
-      "type": "hostname_t"
-    },
-    "sender_hostname": {
-      "description": "The host name of the sending email server.",
-      "name": "Sender Host Name",
-      "type": "hostname_t"
-    },
-    "email": {
-      "description": "The email object.",
-      "name": "Email",
-      "object_type": "email",
-      "type": "object_t"
-    },
-    "email_auth": {
-      "description": "The SPF, DKIM and DMARC attributes of an email.",
-      "name": "Email Authentication",
-      "object_type": "email_auth",
-      "type": "object_t"
-    },
-    "email_uid": {
-      "description": "The unique identifier of the email, used to correlate related email alert and activity events.",
-      "name": "Email UID",
-      "type": "string_t"
-    },
-    "attempt": {
-      "description": "The delivery attempt.",
-      "name": "Attempt",
-      "type": "integer_t"
-    },
-    "issuer_organization": {
-      "description": "The certificate issuer organization.",
-      "name": "Issuer Organization",
-      "type": "string_t"
-    },
-    "mem_allocated": {
-      "description": "The Java Virtual Machine&reg; (JVM) allocated memory (in bytes).",
-      "name": "Allocated Memory",
-      "type": "long_t"
-    },
-    "mem_free": {
-      "description": "The Java Virtual Machine&reg; (JVM) free memory (in bytes).",
-      "name": "Free Memory",
-      "type": "long_t"
-    },
-    "mem_max": {
-      "description": "The Java Virtual Machine&reg; (JVM) maximum memory (in bytes).",
-      "name": "Maximum Memory",
-      "type": "long_t"
-    },
-    "run_count": {
-      "description": "The prefetch file run count.",
-      "name": "Run Count",
-      "type": "integer_t"
-    },
     "app_uid": {
       "description": "The unique identifier of the application that is associated with the event or object.",
       "name": "Application UID",
@@ -217,9 +13,19 @@
       "name": "Application Version",
       "type": "string_t"
     },
+    "attempt": {
+      "description": "The delivery attempt.",
+      "name": "Attempt",
+      "type": "integer_t"
+    },
     "autoscale_uid": {
       "description": "The unique identifier of the cloud autoscale configuration.",
       "name": "Autoscale UID",
+      "type": "string_t"
+    },
+    "banner": {
+      "description": "The initial SMTP connection response that a messaging server receives after it connects to a email server.",
+      "name": "SMTP Banner",
       "type": "string_t"
     },
     "certificate": {
@@ -278,6 +84,11 @@
       "name": "Days Left",
       "type": "integer_t"
     },
+    "delivered_to": {
+      "description": "The <strong>Delivered-To</strong> email header field.",
+      "name": "Delivered To",
+      "type": "email_t"
+    },
     "detected_time": {
       "description": "The time that the malware was detected.",
       "name": "Detection Time",
@@ -288,10 +99,57 @@
       "name": "Displayed Text",
       "type": "string_t"
     },
+    "dkim": {
+      "description": "The DomainKeys Identified Mail (DKIM) status of the email.",
+      "name": "DKIM Status",
+      "type": "string_t"
+    },
+    "dkim_domain": {
+      "description": "The DomainKeys Identified Mail (DKIM) signing domain of the email.",
+      "name": "DKIM Domain",
+      "type": "string_t"
+    },
+    "dkim_signature": {
+      "description": "The DomainKeys Identified Mail (DKIM) signature used by the sending/receiving system.",
+      "name": "DKIM Signature",
+      "type": "string_t"
+    },
+    "dmarc": {
+      "description": "The Domain-based Message Authentication, Reporting and Conformance (DMARC) status of the email.",
+      "name": "DMARC Status",
+      "type": "string_t"
+    },
+    "dmarc_override": {
+      "description": "The Domain-based Message Authentication, Reporting and Conformance (DMARC) override action.",
+      "name": "DMARC Override",
+      "type": "string_t"
+    },
+    "dmarc_policy": {
+      "description": "The Domain-based Message Authentication, Reporting and Conformance (DMARC) policy status.",
+      "name": "DMARC Policy",
+      "type": "string_t"
+    },
     "effective_time": {
       "description": "The date and time that the specific policy and rule was applied and became operational. ",
       "name": "Effective Date",
       "type": "timestamp_t"
+    },
+    "email": {
+      "description": "The email object.",
+      "name": "Email",
+      "object_type": "email",
+      "type": "object_t"
+    },
+    "email_auth": {
+      "description": "The SPF, DKIM and DMARC attributes of an email.",
+      "name": "Email Authentication",
+      "object_type": "email_auth",
+      "type": "object_t"
+    },
+    "email_uid": {
+      "description": "The unique identifier of the email, used to correlate related email alert and activity events.",
+      "name": "Email UID",
+      "type": "string_t"
     },
     "entity": {
       "description": "The managed entity that is being acted upon.",
@@ -310,6 +168,11 @@
       "name": "First Seen",
       "type": "timestamp_t"
     },
+    "from": {
+      "description": "The email header From values, as defined by RFC 5322.",
+      "name": "From",
+      "type": "email_t"
+    },
     "interpreter": {
       "description": "The script interpreter used. For example: \"CMD\", \"POWERSHELL\", \"VBSCRIPT\", \"JAVASCRIPT\".",
       "name": "Interpreter",
@@ -319,6 +182,11 @@
       "description": "The indication of whether the certificate is valid.",
       "name": "Valid",
       "type": "boolean_t"
+    },
+    "issuer_organization": {
+      "description": "The certificate issuer organization.",
+      "name": "Issuer Organization",
+      "type": "string_t"
     },
     "label": {
       "description": "The label set for the policy.",
@@ -334,6 +202,31 @@
     "loaded_module_name": {
       "description": "The name of the module loaded by the service.",
       "name": "Loaded Module",
+      "type": "string_t"
+    },
+    "mem_allocated": {
+      "description": "The Java Virtual Machine&reg; (JVM) allocated memory (in bytes).",
+      "name": "Allocated Memory",
+      "type": "long_t"
+    },
+    "mem_free": {
+      "description": "The Java Virtual Machine&reg; (JVM) free memory (in bytes).",
+      "name": "Free Memory",
+      "type": "long_t"
+    },
+    "mem_max": {
+      "description": "The Java Virtual Machine&reg; (JVM) maximum memory (in bytes).",
+      "name": "Maximum Memory",
+      "type": "long_t"
+    },
+    "message_id": {
+      "description": "The email header Message-Id value, as defined by RFC 5322.",
+      "name": "Message UID",
+      "type": "string_t"
+    },
+    "module_type": {
+      "description": "The type of module.",
+      "name": "Module Type",
       "type": "string_t"
     },
     "num_detections": {
@@ -418,10 +311,30 @@
       "object_type": "printer",
       "type": "object_t"
     },
+    "raw_header": {
+      "description": "The email authentication header.",
+      "name": "Raw Header",
+      "type": "string_t"
+    },
+    "receiver_hostname": {
+      "description": "The host name of the receiving email server.",
+      "name": "Sender Host Name",
+      "type": "hostname_t"
+    },
+    "receiver_ip": {
+      "description": "The IP address of the receiving email server, in either IPv4 or IPv6 format.",
+      "name": "Sender IP Address",
+      "type": "ip_t"
+    },
     "recovery_key_uid": {
       "description": "The unique identifier of the recovery key of the volume.",
       "name": "Recovery Key UID",
       "type": "string_t"
+    },
+    "reply_to": {
+      "description": "The email header Reply-To values, as defined by RFC 5322.",
+      "name": "Reply To",
+      "type": "email_t"
     },
     "request": {
       "description": "An object describing a request.",
@@ -439,6 +352,11 @@
       "name": "Rules",
       "object_type": "rule",
       "type": "object_t"
+    },
+    "run_count": {
+      "description": "The prefetch file run count.",
+      "name": "Run Count",
+      "type": "integer_t"
     },
     "scan_name": {
       "description": "The administrator-supplied or application-generated name of the scan. For example:<ul><li>\"Home office weekly user database scan\"</li><li>\"Scan folders for viruses\"</li><li>\"Full system virus scan\"</li></ul>",
@@ -470,11 +388,42 @@
       "name": "Sender Email",
       "type": "email_t"
     },
+    "sender_hostname": {
+      "description": "The host name of the sending email server.",
+      "name": "Sender Host Name",
+      "type": "hostname_t"
+    },
+    "sender_ip": {
+      "description": "The IP address of the sending email server, in either IPv4 or IPv6 format.",
+      "name": "Sender IP Address",
+      "type": "ip_t"
+    },
     "service": {
       "description": "The service that pertains to the object.",
       "name": "Service",
       "object_type": "service",
       "type": "object_t"
+    },
+    "smtp_from": {
+      "description": "The value of the SMTP MAIL FROM command.",
+      "name": "SMTP From",
+      "type": "email_t"
+    },
+    "smtp_hello": {
+      "description": "The value of the SMTP HELO or EHLO command.",
+      "name": "SMTP Hello",
+      "type": "string_t"
+    },
+    "smtp_to": {
+      "description": "The value of the SMTP envelope RCPT TO command.",
+      "is_array": true,
+      "name": "SMTP To",
+      "type": "email_t"
+    },
+    "spf": {
+      "description": "The Sender Policy Framework (SPF) status of the email.",
+      "name": "SPF Status",
+      "type": "string_t"
     },
     "start_type": {
       "description": "The start type of the service or startup application.",
@@ -552,6 +501,11 @@
       "name": "Stack Trace",
       "type": "string_t"
     },
+    "subject": {
+      "description": "The email header Subject value, as defined by RFC 5322.",
+      "name": "Subject",
+      "type": "string_t"
+    },
     "subject_city": {
       "description": "The certificate subject city.",
       "name": "Subject City",
@@ -606,6 +560,12 @@
       "description": "The number of kilobytes of data processed per second (kB/s).",
       "name": "Kilobytes per Second",
       "type": "integer_t"
+    },
+    "to": {
+      "description": "The email header To values, as defined by RFC 5322.",
+      "is_array": true,
+      "name": "To",
+      "type": "email_t"
     },
     "total": {
       "description": "The total number of items. See specific usage.",

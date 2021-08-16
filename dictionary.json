@@ -521,6 +521,11 @@
       "name": "URL Category IDs",
       "type": "integer_t"
     },
+    "cipher": {
+      "description": "The encryption algorithm.",
+      "name": "Cipher",
+      "type": "string_t"
+    },
     "cis20": {
       "description": "The CIS 20 is a list of 20 actions and practices an organization’s security team can take on such that cyberattacks or malware, are minimized and prevented.",
       "is_array": true,
@@ -1346,6 +1351,11 @@
       "name": "IP Address",
       "type": "ip_t"
     },
+    "is_advertised": {
+      "description": "The indication of whether the protocol is advertised by the server.",
+      "name": "Advertised",
+      "type": "boolean_t"
+    },
     "is_cleartext": {
       "description": "Indicates whether the credentials were passed in clear text.<p><b>Note:</b> True if the credentials were passed in a clear text protocol such as FTP or TELNET, or if Windows detected that a user's logon password was passed to the authentication package in clear text.</p>",
       "name": "Cleartext Credentials",
@@ -1391,6 +1401,11 @@
       "name": "Trusted Device",
       "type": "boolean_t"
     },
+    "is_used": {
+      "description": "The indication of whether the TLS is used.",
+      "name": "Used",
+      "type": "boolean_t"
+    },
     "is_user_present": {
       "description": "The indication of whether the user was logged on at event generation time.",
       "name": "User Present",
@@ -1417,6 +1432,11 @@
       "name": "Kernel",
       "object_type": "kernel",
       "type": "object_t"
+    },
+    "key_length": {
+      "description": "The length of the encryption key.",
+      "name": "Key Length",
+      "type": "integer_t"
     },
     "labels": {
       "description": "The list of labels attached to an event, object, or attribute.",
@@ -1591,11 +1611,6 @@
       "name": "Module",
       "object_type": "module",
       "type": "object_t"
-    },
-    "module_type": {
-      "description": "The type of module.",
-      "name": "Module Type",
-      "type": "string_t"
     },
     "name": {
       "description": "The name of the entity. See specific usage.",
@@ -2375,6 +2390,31 @@
     "timezone": {
       "description": "The number of minutes that the reported event <code>time</code> is ahead or behind UTC. A number in the range -1,080 to +1,080.",
       "name": "Time Zone",
+      "type": "integer_t"
+    },
+    "tls": {
+      "description": "The Transport Layer Security (TLS) attributes.",
+      "name": "TLS",
+      "object_type": "tls",
+      "type": "object_t"
+    },
+    "tls_policy_id": {
+      "description": "The Transport Layer Security (TLS) policy.",
+      "enum": {
+        "0": {
+          "name": "Unknown"
+        },
+        "1": {
+          "name": "None"
+        },
+        "2": {
+          "name": "Enforced"
+        },
+        "3": {
+          "name": "Opportunistic"
+        }
+      },
+      "name": "TLS Policy",
       "type": "integer_t"
     },
     "traffic": {

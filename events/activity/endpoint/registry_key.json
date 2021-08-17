@@ -1,37 +1,18 @@
 {
-  "attributes": {
-    "access_mask": {
-      "group": "primary",
-      "requirement": "optional"
-    },
-    "create_mask": {
-      "group": "primary",
-      "requirement": "optional"
-    },
-    "disposition_id": {
-      "$include": "enums/registry_key_activity.json"
-    },
-    "open_mask": {
-      "group": "primary",
-      "requirement": "recommended"
-    },
-    "reg_key": {
-      "group": "primary",
-      "requirement": "required"
-    },
-    "reg_key_result": {
-      "group": "primary",
-      "requirement": "optional"
-    }
-  },
+  "name": "Registry Key Activity",
+  "type": "registry_key_activity",
+  "uid": 120,
   "description": "Registry Key Activity events report when a process performs an action on a Windows registry key.",
   "extends": "endpoint_activity",
-  "name": "Registry Key Activity",
   "see_also": [
     "registry_value_activity",
     "registry_key_alert",
     "registry_value_alert"
   ],
-  "type": "registry_key_activity",
-  "uid": 120
+  "attributes": {
+    "$include": "traits/registry_key.json",
+    "disposition_id": {
+      "$include": "enums/registry_key_activity.json"
+    }
+  }
 }

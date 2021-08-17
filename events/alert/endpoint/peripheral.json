@@ -1,5 +1,14 @@
 {
+  "name": "Peripheral Device Alert",
+  "type": "peripheral_alert",
+  "uid": 217,
+  "description": "Peripheral Device Alert events report the detections and resolutions of peripheral device activity.",
+  "extends": "endpoint_alert",
+  "see_also": [
+    "peripheral_activity"
+  ],
   "attributes": {
+    "$include": "traits/peripheral.json",
     "activity": {
       "group": "primary",
       "requirement": "optional"
@@ -18,24 +27,6 @@
           "name": "Blocked"
         }
       }
-    },
-    "file": {
-      "description": "The file that pertains to the alert event.",
-      "group": "primary",
-      "requirement": "optional"
-    },
-    "peripheral_device": {
-      "description": "The peripheral device object that triggered the alert.",
-      "group": "primary",
-      "requirement": "required"
     }
-  },
-  "description": "Peripheral Device Alert events report the detections and resolutions of peripheral device activity.",
-  "extends": "endpoint_alert",
-  "name": "Peripheral Device Alert",
-  "see_also": [
-    "peripheral_activity"
-  ],
-  "type": "peripheral_alert",
-  "uid": 217
+  }
 }

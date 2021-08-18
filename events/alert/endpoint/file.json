@@ -1,9 +1,15 @@
 {
+  "name": "File Alert",
+  "type": "file_alert",
+  "uid": 207,
+  "description": "File Alert events report the detections and resolutions of file malicious activity.",
+  "extends": "endpoint_alert",
+  "see_also": [
+    "file_activity",
+    "folder_activity"
+  ],
   "attributes": {
-    "access_mask": {
-      "group": "context",
-      "requirement": "optional"
-    },
+    "$include": "traits/file.json",
     "activity": {
       "group": "primary",
       "requirement": "optional"
@@ -13,36 +19,10 @@
       "group": "primary",
       "requirement": "recommended"
     },
-    "component": {
-      "group": "primary",
-      "requirement": "optional"
-    },
-    "connection_ref_uid": {
-      "group": "context",
-      "requirement": "optional"
-    },
-    "create_mask": {
-      "group": "primary",
-      "requirement": "optional"
-    },
     "disposition_id": {
       "enum": {
         "1": {
           "name": "Allowed"
-        },
-        "10": {
-          "name": "Restored"
-        },
-        "11": {
-          "name": "Detected"
-        },
-        "12": {
-          "description": "No longer suspicious (re-scored).",
-          "name": "Exonerated"
-        },
-        "13": {
-          "description": "Marked with extended attributes.",
-          "name": "Tagged"
         },
         "2": {
           "name": "Blocked"
@@ -68,36 +48,27 @@
         },
         "9": {
           "name": "Quarantined"
+        },
+        "10": {
+          "name": "Restored"
+        },
+        "11": {
+          "name": "Detected"
+        },
+        "12": {
+          "description": "No longer suspicious (re-scored).",
+          "name": "Exonerated"
+        },
+        "13": {
+          "description": "Marked with extended attributes.",
+          "name": "Tagged"
         }
       }
     },
-    "file": {
-      "description": "The file that triggered the alert.",
-      "group": "primary",
-      "requirement": "required"
-    },
-    "file_diff": {
-      "group": "primary",
-      "requirement": "optional"
-    },
-    "file_result": {
-      "description": "The resulting file object; for example, if a file operation is ALLOWED, the resulting file object can be included in the event.",
-      "group": "primary",
-      "requirement": "optional"
-    },
     "quarantine_uid": {
-      "description": "If the event disposition is one of:<ul><li>[12] QUARANTINED</li><li>[13] RESTORED (from quarantine)</li></ul>include the unique identifier of the item that was quarantined or restored from quarantine.",
+      "description": "If the event disposition is one of:<ul><li>9 Quarantined</li><li>10 Restored (from quarantine)</li></ul>include the unique identifier of the item that was quarantined or restored from quarantine.",
       "group": "primary",
       "requirement": "optional"
     }
-  },
-  "description": "File Alert events report the detections and resolutions of file malicious activity.",
-  "extends": "endpoint_alert",
-  "name": "File Alert",
-  "see_also": [
-    "file_activity",
-    "folder_activity"
-  ],
-  "type": "file_alert",
-  "uid": 207
+  }
 }

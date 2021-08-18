@@ -1,42 +1,18 @@
 {
+  "name": "File Activity",
+  "type": "file_activity",
+  "uid": 107,
   "description": "File Activity events report when a process performs an action on a file.",
   "extends": "endpoint_activity",
-  "name": "File Activity",
   "see_also": [
     "file_alert",
     "folder_activity"
   ],
-  "type": "file_activity",
-  "uid": 107,
   "attributes": {
-    "access_mask": {
-      "group": "context",
-      "requirement": "optional"
-    },
-    "connection_ref_uid": {
-      "group": "context",
-      "requirement": "optional"
-    },
-    "create_mask": {
-      "group": "primary",
-      "requirement": "optional"
-    },
+    "$include": "traits/file.json",
     "disposition_id": {
       "$include": "enums/file_activity.json",
       "description": "The disposition ID of the event."
-    },
-    "file": {
-      "description": "The file that is the target of the operation.",
-      "group": "primary",
-      "requirement": "required"
-    },
-    "file_diff": {
-      "group": "primary",
-      "requirement": "optional"
-    },
-    "file_result": {
-      "group": "primary",
-      "requirement": "optional"
     }
   }
 }

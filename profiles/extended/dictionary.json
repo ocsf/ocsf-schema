@@ -28,12 +28,6 @@
       "name": "SMTP Banner",
       "type": "string_t"
     },
-    "certificate": {
-      "description": "The TLS certificate.",
-      "name": "TLS Certificate",
-      "object_type": "certificate",
-      "type": "object_t"
-    },
     "channel": {
       "description": "The channel that was used to update the component.",
       "name": "Channel",
@@ -178,6 +172,16 @@
       "name": "Interpreter",
       "type": "string_t"
     },
+    "is_advertised": {
+      "description": "The indication of whether the TLS protocol is advertised by the SMTP server.",
+      "name": "Advertised",
+      "type": "boolean_t"
+    },
+    "is_used": {
+      "description": "The indication of whether the TLS is used when sending email.",
+      "name": "Used",
+      "type": "boolean_t"
+    },
     "is_valid": {
       "description": "The indication of whether the certificate is valid.",
       "name": "Valid",
@@ -295,6 +299,25 @@
       "object_type": "policy",
       "type": "object_t"
     },
+    "policy_id": {
+      "description": "The SMTP Transport Layer Security (TLS) policy.",
+      "enum": {
+        "0": {
+          "name": "Unknown"
+        },
+        "1": {
+          "name": "None"
+        },
+        "2": {
+          "name": "Enforced"
+        },
+        "3": {
+          "name": "Opportunistic"
+        }
+      },
+      "name": "SMTP TLS Policy",
+      "type": "integer_t"
+    },
     "prev_ver": {
       "description": "The pre-update version of the code, content, configuration or policy.",
       "name": "Previous Version",
@@ -309,6 +332,12 @@
       "description": "The printer object.",
       "name": "Printer",
       "object_type": "printer",
+      "type": "object_t"
+    },
+    "public_key_cert": {
+      "description": "The Public Key Certificate used to prove the ownership of a public key.",
+      "name": "Public Key Certificate",
+      "object_type": "public_key_certificate",
       "type": "object_t"
     },
     "raw_header": {
@@ -414,17 +443,17 @@
       "name": "SMTP Hello",
       "type": "string_t"
     },
-    "smtp_to": {
-      "description": "The value of the SMTP envelope RCPT TO command.",
-      "is_array": true,
-      "name": "SMTP To",
-      "type": "email_t"
-    },
     "smtp_tls": {
       "description": "The SMTP Transport Layer Security (TLS) attributes.",
       "name": "SMTP TLS",
       "object_type": "smtp_tls",
       "type": "object_t"
+    },
+    "smtp_to": {
+      "description": "The value of the SMTP envelope RCPT TO command.",
+      "is_array": true,
+      "name": "SMTP To",
+      "type": "email_t"
     },
     "spf": {
       "description": "The Sender Policy Framework (SPF) status of the email.",

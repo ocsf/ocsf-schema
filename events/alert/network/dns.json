@@ -5,9 +5,9 @@
   "description": "Network DNS Alert events report the detections and resolutions of malicious DNS queries.",
   "extends": "network_alert",
   "see_also": [
-    "endpoint_dns_alert",
     "network_dns_activity",
-    "endpoint_dns_activity"
+    "endpoint_dns_activity",
+    "endpoint_dns_alert"
   ],
   "attributes": {
     "$include": "traits/dns.json",
@@ -15,25 +15,6 @@
       "$include": "enums/dns_activity.json",
       "group": "primary",
       "requirement": "recommended"
-    },
-    "disposition_id": {
-      "enum": {
-        "1": {
-          "name": "Allowed"
-        },
-        "2": {
-          "name": "Blocked"
-        },
-        "3": {
-          "name": "Dropped"
-        },
-        "4": {
-          "name": "Deleted"
-        },
-        "5": {
-          "name": "Isolated"
-        }
-      }
     }
   }
 }

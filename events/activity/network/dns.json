@@ -1,19 +1,18 @@
 {
-  "description": "Network DNS Activity events report DNS queries and answers as seen on the network.",
-  "extends": "network_activity",
   "name": "Network DNS Activity",
   "type": "network_dns_activity",
   "uid": 103,
+  "description": "Network DNS Activity events report DNS queries and answers as seen on the network.",
+  "extends": "activity",
+  "see_also": [
+    "network_dns_alert",
+    "endpoint_dns_activity",
+    "endpoint_dns_alert"
+  ],
   "attributes": {
-    "$include": "traits/dns.json",
+    "$include": ["traits/network.json", "traits/dns.json"],
     "disposition_id": {
-      "description": "The disposition ID of the event.",
       "$include": "enums/dns_activity.json"
     }
-  },
-  "see_also": [
-    "endpoint_dns_activity",
-    "endpoint_dns_alert",
-    "network_dns_alert"
-  ]
+  }
 }

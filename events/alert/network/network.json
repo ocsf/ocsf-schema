@@ -1,10 +1,16 @@
 {
-  "name": "Network Security Alert",
+  "name": "Network Alert",
   "type": "network_alert",
+  "uid": 212,
+  "description": "Network Alert events report the detections and resolutions of network threats.",
   "extends": "alert",
-  "description": "Network Security Alert events report the detections and resolutions of network threats.",
+  "see_also": [
+    "network_activity",
+    "endpoint_network_activity",
+    "endpoint_network_alert"
+  ],
   "attributes": {
-    "$include": "traits/network.json",
+    "$include": ["traits/network.json", "traits/network_alert.json"],
     "rule": {
       "description": "The rule that triggered the network alert event.",
       "group": "primary",

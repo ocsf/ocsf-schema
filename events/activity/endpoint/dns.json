@@ -2,18 +2,17 @@
   "name": "Endpoint DNS Activity",
   "uid": 102,
   "type": "endpoint_dns_activity",
-  "extends": "endpoint_activity",
   "description": "Endpoint DNS Activity events report DNS queries and answers initiated by an application running on an endpoint.",
+  "extends": "endpoint_activity",
+  "see_also": [
+    "endpoint_dns_alert",
+    "network_dns_activity",
+    "endpoint_dns_alert"
+  ],
   "attributes": {
-    "$include": "traits/dns.json",
+    "$include": ["traits/network.json", "traits/dns.json"],
     "disposition_id": {
-      "description": "The disposition ID of the event.",
       "$include": "enums/dns_activity.json"
     }
-  },
-  "see_also": [
-    "network_dns_activity",
-    "endpoint_dns_alert",
-    "network_dns_alert"
-  ]
+  }
 }

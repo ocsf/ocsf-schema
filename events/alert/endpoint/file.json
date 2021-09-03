@@ -1,13 +1,4 @@
 {
-  "name": "Endpoint File Alert",
-  "type": "endpoint_file_alert",
-  "uid": 207,
-  "description": "Endpoint File Alert events report the detections and resolutions of file malicious activity.",
-  "extends": "endpoint_alert",
-  "see_also": [
-    "file_activity",
-    "folder_activity"
-  ],
   "attributes": {
     "$include": "traits/file.json",
     "activity": {
@@ -23,6 +14,20 @@
       "enum": {
         "1": {
           "name": "Allowed"
+        },
+        "10": {
+          "name": "Restored"
+        },
+        "11": {
+          "name": "Detected"
+        },
+        "12": {
+          "description": "No longer suspicious (re-scored).",
+          "name": "Exonerated"
+        },
+        "13": {
+          "description": "Marked with extended attributes.",
+          "name": "Tagged"
         },
         "2": {
           "name": "Blocked"
@@ -48,20 +53,6 @@
         },
         "9": {
           "name": "Quarantined"
-        },
-        "10": {
-          "name": "Restored"
-        },
-        "11": {
-          "name": "Detected"
-        },
-        "12": {
-          "description": "No longer suspicious (re-scored).",
-          "name": "Exonerated"
-        },
-        "13": {
-          "description": "Marked with extended attributes.",
-          "name": "Tagged"
         }
       }
     },
@@ -70,5 +61,14 @@
       "group": "primary",
       "requirement": "optional"
     }
-  }
+  },
+  "description": "Endpoint File Alert events report the detections and resolutions of file malicious activity.",
+  "extends": "endpoint_alert",
+  "name": "Endpoint File Alert",
+  "see_also": [
+    "file_activity",
+    "folder_activity"
+  ],
+  "type": "endpoint_file_alert",
+  "uid": 204
 }

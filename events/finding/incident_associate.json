@@ -1,11 +1,16 @@
 {
+  "name": "Incident Associate",
+  "type": "incident_associate",
+  "uid": 1,
+  "category": "finding",
+  "extends": "base_event",
+  "description": "Incident Associate events report when a new event is associated with an existing incident.",
+  "see_also": [
+    "incident_create",
+    "incident_update",
+    "incident_close"
+  ],
   "attributes": {
-    "$include": [
-      "traits/common.json",
-      "traits/classification.json",
-      "traits/occurrence.json",
-      "traits/context.json"
-    ],
     "disposition_id": {
       "enum": {
         "1": {
@@ -23,15 +28,5 @@
       "name": "Event UID",
       "requirement": "required"
     }
-  },
-  "category": "finding",
-  "description": "Incident Associate events report when a new event is associated with an existing incident.",
-  "name": "Incident Associate",
-  "see_also": [
-    "incident_create",
-    "incident_update",
-    "incident_close"
-  ],
-  "type": "incident_associate",
-  "uid": 1
+  }
 }

@@ -1,19 +1,30 @@
 {
-  "name": "Base Event",
-  "type": "base_event",
-  "description": "The base event is a generic concrete event and it also defines a set of attributes available in most event classes. As a generic event that does not belong to any event category, it could be used to log events that are not otherwise defined by the schema.",
+  "name": "Event",
+  "type": "event",
+  "extends": "base_event",
+  "description": "The event is a generic concrete event and it also defines a set of attributes available in most event classes. As a generic event that does not belong to any event category, it could be used to log events that are not otherwise defined by the schema.",
   "attributes": {
-    "$include": [
-      "traits/common.json",
-      "traits/classification.json",
-      "traits/occurrence.json",
-      "traits/context.json"
-    ],
-    "end_time": {
-      "description": "The end time of a time period, or the time of the most recent event included in the aggregate event."
+    "disposition": {
+      "group": "classification"
     },
-    "start_time": {
-      "description": "The start time of a time period, or the time of the least recent event included in the aggregate event."
+    "disposition_id": {
+      "group": "classification",
+      "requirement": "required"
+    },
+    "event_id": {
+      "group": "classification",
+      "requirement": "reserved"
+    },
+    "labels": {
+      "description": "The list of category labels attached to the event or specific attributes. Labels are user defined tags or aliases added at normalization time.</p>For example: <code>[\"network\", \"connection.ip:destination\", \"device.ip:source\"]</code>",
+      "group": "context"
+    },
+    "severity": {
+      "group": "classification"
+    },
+    "severity_id": {
+      "group": "classification",
+      "requirement": "required"
     },
     "status": {
       "group": "primary"
@@ -24,6 +35,13 @@
     "status_id": {
       "group": "primary",
       "requirement": "recommended"
+    },
+    "time": {
+      "group": "occurrence",
+      "requirement": "reserved"
+    },
+    "timezone": {
+      "group": "occurrence"
     }
   }
 }

@@ -10,10 +10,240 @@
       "object_type": "user_account",
       "type": "object_t"
     },
-    "nickname": {
-      "description": "The nickname of a person.",
-      "name": "Nickname",
+    "confidence": {
+      "description": "The confidence of the reported finding as a percentage: 0%-100%.",
+      "name": "Confidence",
+      "type": "integer_t"
+    },
+    "confidence_id": {
+      "description": "The normalized confidence level refers to the accuracy of the rule that created the finding. A rule with a low confidence level means that the detection scope is wide and may create finding reports that may not be malicious in nature.",
+      "enum": {
+        "-1": {
+          "description": "The confidence is not mapped to the defined enum values. See the <code>confidence</code> attribute, which contains a data source specific value.",
+          "name": "Other"
+        },
+        "0": {
+          "description": "No confidence is assigned.",
+          "name": "Unknown"
+        },
+        "1": {
+          "name": "Low"
+        },
+        "2": {
+          "name": "Medium"
+        },
+        "3": {
+          "name": "High"
+        }
+      },
+      "name": "Confidence ID",
+      "type": "integer_t"
+    },
+    "context": {
+      "description": "The list of the context categories of the finding.",
+      "is_array": true,
+      "name": "Context",
       "type": "string_t"
+    },
+    "context_ids": {
+      "description": "The list of the context identifiers of the finding.",
+      "enum": {
+        "-1": {
+          "description": "The category label identifier is not in the predefined list. See the <code>labels</code> attribute, which may contain additional category labels.",
+          "name": "Other"
+        },
+        "0": {
+          "description": "The context identifier is unknown",
+          "name": "Unknown"
+        },
+        "10": {
+          "description": "Antivirus, Firewall, or some other protection software running on a device.",
+          "name": "Source: Endpoint"
+        },
+        "11": {
+          "description": "Microsoft Active Directory.",
+          "name": "Source: AD"
+        },
+        "12": {
+          "description": "Network Based Firewall or system that provides information about network connections beyond hostnames or IP addresses. For example Netflow, DNS, and web proxy logs.",
+          "name": "Source: Firewall"
+        },
+        "13": {
+          "description": "Single application data log. For example Apache, JIRA, or Firefox logs. This label can be applied along with another source category label. The Application Log category does not include general operating system logs.",
+          "name": "Source: Application Log"
+        },
+        "14": {
+          "description": "Network based IDS/IPS. This is also a generic category label for \"product of external security logic.\" If the detection was based on the IP addresses, bytes, or security zone from PAN logs, only Firewall would apply.  If PAN categorized the event as malware detection and you relied on that determination, then IPS label would also apply. The one exception to this is Endpoint.",
+          "name": "Source: IPS"
+        },
+        "15": {
+          "description": "Cloud data logs. For example Amazon, Box, Office365, etc.",
+          "name": "Source: Cloud Data"
+        },
+        "16": {
+          "description": "Multiple data source types or the underlying source is unknown.",
+          "name": "Source: Correlation"
+        },
+        "17": {
+          "description": "Printer logs.",
+          "name": "Source: Printer"
+        },
+        "18": {
+          "description": "Physical access control logs.",
+          "name": "Source: Badge"
+        },
+        "20": {
+          "description": "The finding has a network component and the direction of the initiated connection or traffic is internal (both endpoints are considered internal, on-premises).",
+          "name": "Scope: Internal"
+        },
+        "21": {
+          "description": "The finding has a network component and the direction of the initiated connection or traffic is external (both endpoints are considered external). For example cloud data with an external source.",
+          "name": "Scope: External"
+        },
+        "22": {
+          "description": "The finding has a network component and the direction of the initiated connection or traffic is inbound (one of the endpoints is internal and the other one is external).",
+          "name": "Scope: Inbound"
+        },
+        "23": {
+          "description": "The finding has a network component and the direction of the initiated connection or traffic is outbound (one of the endpoints is internal and the other one is external).",
+          "name": "Scope: Outbound"
+        },
+        "24": {
+          "description": "The finding has no network component. For example a local privilege escalation or a badge based detection.",
+          "name": "Scope: Local"
+        },
+        "25": {
+          "description": "The finding has a network component, but the direction of the initiated connection or traffic is unknown.",
+          "name": "Scope: Network"
+        },
+        "30": {
+          "description": "Unsuccessful or blocked security malware.",
+          "name": "Outcome: Blocked"
+        },
+        "31": {
+          "description": "Malware was not blocked. This is the default, if this category is not explicitly set, then it is assumed to be Allowed.",
+          "name": "Outcome: Allowed"
+        },
+        "40": {
+          "description": "The reconnaissance stage, such as scanning, DNS enumeration, or other observable attempts to gain information about the customer's network.",
+          "name": "Stage: Recon"
+        },
+        "41": {
+          "description": "The initial access tactic represents the vectors adversaries use to gain an initial foothold within a network.",
+          "name": "Stage: Initial Access"
+        },
+        "42": {
+          "description": "The execution tactic represents techniques that result in execution of adversary-controlled code on a local or remote system. This tactic is often used in conjunction with initial access as the means of executing code once access is obtained, and lateral movement to expand access to remote systems on a network.",
+          "name": "Stage: Execution"
+        },
+        "43": {
+          "description": "Persistence is any access, action, or configuration change to a system that gives an adversary a persistent presence on that system. Adversaries will often need to maintain access to systems through interruptions such as system restarts, loss of credentials, or other failures that would require a remote access tool to restart or alternate backdoor for them to regain access.",
+          "name": "Stage: Persistence"
+        },
+        "44": {
+          "description": "Privilege escalation is the result of actions that allows an adversary to obtain a higher level of permissions on a system or network. Certain tools or actions require a higher level of privilege to work and are likely necessary at many points throughout an operation. Adversaries can enter a system with unprivileged access and must take advantage of a system weakness to obtain local administrator or SYSTEM/root level privileges. A user account with administrator-like access can also be used. User accounts with permissions to access specific systems or perform specific functions necessary for adversaries to achieve their objective may also be considered an escalation of privilege.",
+          "name": "Stage: Privilege Escalation"
+        },
+        "45": {
+          "description": "Defense evasion consists of techniques an adversary may use to evade detection or avoid other defenses. Sometimes these actions are the same as or variations of techniques in other categories that have the added benefit of subverting a particular defense or mitigation. Defense evasion may be considered a set of attributes the adversary applies to all other phases of the operation.",
+          "name": "Stage: Defense Evasion"
+        },
+        "46": {
+          "description": "Credential access represents techniques resulting in access to or control over system, domain, or service credentials that are used within an enterprise environment. Adversaries will likely attempt to obtain legitimate credentials from users or administrator accounts (local system administrator or domain users with administrator access) to use within the network. This allows the adversary to assume the identity of the account, with all of that account's permissions on the system and network, and makes it harder for defenders to detect the adversary. With sufficient access within a network, an adversary can create accounts for later use within the environment.",
+          "name": "Stage: Credential Access"
+        },
+        "47": {
+          "description": "Discovery consists of techniques that allow the adversary to gain knowledge about the system and internal network. When adversaries gain access to a new system, they must orient themselves to what they now have control of and what benefits operating from that system give to their current objective or overall goals during the intrusion. The operating system provides many native tools that aid in this post-compromise information-gathering phase.",
+          "name": "Stage: Discovery"
+        },
+        "48": {
+          "description": "Lateral movement consists of techniques that enable an adversary to access and control remote systems on a network and could, but does not necessarily, include execution of tools on remote systems. The lateral movement techniques could allow an adversary to gather information from a system without needing additional tools, such as a remote access tool.",
+          "name": "Stage: Lateral Movement"
+        },
+        "49": {
+          "description": "Collection consists of techniques used to identify and gather information, such as sensitive files, from a target network prior to exfiltration. This category also covers locations on a system or network where the adversary may look for information to exfiltrate.",
+          "name": "Stage: Collection"
+        },
+        "50": {
+          "description": "Exfiltration refers to techniques and attributes that result or aid in the adversary removing files and information from a target network. This category also covers locations on a system or network where the adversary may look for information to exfiltrate.",
+          "name": "Stage: Exfiltration"
+        },
+        "51": {
+          "description": "The command and control tactic represents how adversaries communicate with systems under their control within a target network. There are many ways an adversary can establish command and control with various levels of covertness, depending on system configuration and network topology. Due to the wide degree of variation available to the adversary at the network level, only the most common factors were used to describe the differences in command and control. There are still a great many specific techniques within the documented methods, largely due to how easy it is to define new protocols and use existing, legitimate protocols and network services for communication.",
+          "name": "Stage: Command And Control"
+        },
+        "60": {
+          "description": "Installation of malware on one of the included devices.",
+          "name": "Consequence: Infection"
+        },
+        "61": {
+          "description": "Reduction in log output or other data used for detection. Implies a deliberate attempt to hide an attackers actions.",
+          "name": "Consequence: Reduced Visibility"
+        },
+        "62": {
+          "description": "Destruction of data- either thru deletion or encryption.  This is distinctly different from ReducedVisability, because the goal is to destroy the data, not to hide activity.",
+          "name": "Consequence: Data Destruction"
+        },
+        "63": {
+          "description": "Asset no longer performs it's normal functions.",
+          "name": "Consequence: Denial Of Service"
+        },
+        "64": {
+          "description": "Asset is no longer under a customer's control.",
+          "name": "Consequence: Loss Of Control"
+        },
+        "70": {
+          "description": "There was a rare user involved in this finding. This will typically be applied to a finding based on other entities (device, printer, service, etc.).",
+          "name": "Rares: Rare User"
+        },
+        "71": {
+          "description": "There was a rare process or application involved in this finding. This can apply to app detection like PAN or Blue Coat, process names, or PIDs. It can also be used with hashes or any other other method of uniquely identifying executable code.",
+          "name": "Rares: Rare Process"
+        },
+        "72": {
+          "description": "There was a rare physical device or virtual machine involved in this finding. This can be set if you are working with endpoint data, relying on identity resolution, or have a way to identify individual machines/instances. If you are relying on IP/Network or domains for determination, the more specific RareNetwork or RareDomain should be used.",
+          "name": "Rares: Rare Device"
+        },
+        "73": {
+          "description": "There was a rare domain involved in this finding. This can be an Active Directory domain, a DNS domain, a Kerberos realm, or a tenant identifier. Use domain for logical groupings of devices.",
+          "name": "Rares: Rare Domain"
+        },
+        "74": {
+          "description": "There was a rare network involved in this finding. This can be based on IP/Network blocks, firewall zones, Netflow interfaces, or other indicators based on routing packets.",
+          "name": "Rares: Rare Network"
+        },
+        "75": {
+          "description": "There was a rare location involved in this finding. This can be a GeoLocation based on IP/Endpoint or a physical location based on Badge data.",
+          "name": "Rares: Rare Location"
+        },
+        "80": {
+          "description": "The finding also considered the behavior of the user's peers.",
+          "name": "Other: Peer Group"
+        },
+        "81": {
+          "description": "Attempt to gain access to a system by making a high volume of login attempts.",
+          "name": "Other: Brute Force"
+        },
+        "82": {
+          "description": "Violation of a company policy.",
+          "name": "Other: Policy Violation"
+        },
+        "83": {
+          "description": "The finding is based on external intelligence source as having an indicator of compromise, threatening location, or security malware.",
+          "name": "Other: Threat Intelligence"
+        },
+        "84": {
+          "description": "This finding indicates that the user may plan on leaving the organization.",
+          "name": "Other: Flight Risk"
+        },
+        "85": {
+          "description": "The finding concerns USB drive or other physical storage capable of easy removal.",
+          "name": "Other: Removable Storage"
+        }
+      },
+      "is_array": true,
+      "name": "Context IDs",
+      "type": "integer_t"
     },
     "emails": {
       "description": "A list of emails of the person.",
@@ -21,20 +251,65 @@
       "name": "Emails",
       "type": "email_t"
     },
+    "finding": {
+      "description": "The finding reported by detection or analytics",
+      "name": "Finding",
+      "object_type": "finding",
+      "type": "object_t"
+    },
     "first_name": {
       "description": "The first name of a person.",
       "name": "First Name",
       "type": "string_t"
     },
-    "last_name": {
-      "description": "The last name of a person.",
-      "name": "Last Name",
+    "impact": {
+      "description": "The impact of the finding, valid range 0-100.",
+      "name": "Impact",
+      "type": "integer_t"
+    },
+    "impact_id": {
+      "description": "The normalized impact of the finding.",
+      "enum": {
+        "-1": {
+          "description": "The finding impact is not mapped. See the <code>impact</code> attribute, which contains a data source specific value.",
+          "name": "Other"
+        },
+        "0": {
+          "name": "Unknown"
+        },
+        "1": {
+          "name": "Low"
+        },
+        "2": {
+          "name": "Medium"
+        },
+        "3": {
+          "name": "High"
+        },
+        "4": {
+          "name": "Critical"
+        },
+        "5": {
+          "name": "Fatal"
+        }
+      },
+      "name": "Impact ID",
+      "type": "integer_t"
+    },
+    "incident_uid": {
+      "description": "If the event pertains to an incident, the incident unique identifier.",
+      "name": "Incident UID",
       "type": "string_t"
     },
     "is_public": {
       "description": "The indication of whether the network interface is a public IP address.",
       "name": "Public Network",
       "type": "boolean_t"
+    },
+    "last_name": {
+      "description": "The last name of a person.",
+      "name": "Last Name",
+      "type": "string_t"
     },
     "managed_by": {
       "description": "The distinguished name of the user that is assigned to manage this object.",
@@ -47,16 +322,47 @@
       "name": "Names",
       "type": "string_t"
     },
+    "nickname": {
+      "description": "The nickname of a person.",
+      "name": "Nickname",
+      "type": "string_t"
+    },
     "phones": {
       "description": "The list of phone numbers.",
       "is_array": true,
       "name": "Phones",
       "type": "string_t"
     },
+    "priority": {
+      "description": "The original priority, as defined by the data source.",
+      "name": "Priority",
+      "type": "integer_t"
+    },
+    "priority_id": {
+      "description": "The normalized priority. See specific usage.",
+      "enum": {},
+      "name": "Priority ID",
+      "type": "integer_t"
+    },
+    "ref_incident_uid": {
+      "description": "The unique incident identifier, as defined by the event source.",
+      "name": "Source Incident UID",
+      "type": "string_t"
+    },
     "ref_uid": {
       "description": "The reference to a unique identifier, managed by an external system.",
       "name": "Reference UID",
       "type": "string_t"
+    },
+    "state": {
+      "description": "The state of the event or object, as defined by the event source. See specific usage.",
+      "name": "State",
+      "type": "string_t"
+    },
+    "state_id": {
+      "description": "The state ID of the event or object. See specific usage.",
+      "name": "State ID",
+      "type": "integer_t"
     },
     "suffix": {
       "description": "The suffix of a person. For example: <code>M.D.</code> or <code>Ph.D.</code>.",

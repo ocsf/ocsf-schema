@@ -1,7 +1,7 @@
 {
-  "name": "Transport Layer Security",
+  "name": "Transport Layer Security (TLS)",
   "type": "tls",
-  "description": "The Transport Layer Security (TLS) object.",
+  "description": "The negotiated TLS protocol used for secure communications over an establish network connection.",
   "attributes": {
     "cipher": {
       "requirement": "required"
@@ -9,13 +9,20 @@
     "key_length": {
       "requirement": "recommended"
     },
-    "uid": {
-      "description": "The unique identifier of the certificate used to establish the TLS connection. For example, the AWS ARN of the certificate presented to the client.",
+    "cert_uid": {
+      "requirement": "recommended"
+    },
+    "cert_serial": {
+      "requirement": "optional"
+    },
+    "domain": {
+      "name": "Domain Name",
+      "description": "The domain name used in the TLS negotiation.",
       "requirement": "recommended"
     },
     "version": {
       "name": "Version",
-      "description": "The protocol version.",
+      "description": "The TLS protocol version.",
       "requirement": "recommended"
     }
   }

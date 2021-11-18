@@ -3,73 +3,54 @@
   "type": "user",
   "description": "The user object describes the identity of a user.",
   "attributes": {
-    "name": {
-      "description": "The name of the user account.",
-      "requirement": "required"
-    },
-    "uid": {
-      "description": "The unique identifier of the user associated with the event. For example, for Windows events this is the security identifier (SID) of the user account.",
-      "requirement": "optional"
-    },
-    "type": {
-      "name": "Account Type",
-      "requirement": "optional"
-    },
-    "domain": {
-      "description": "The domain where the user is defined. For example: the LDAP or Active Directory domain.",
-      "requirement": "optional"
-    },
-    "full_name": {
-      "requirement": "optional"
-    },
     "groups": {
       "description": "The administrative groups to which the user belongs.",
       "requirement": "optional"
     },
-    "home_dir": {
-      "requirement": "optional"
+    "name": {
+      "description": "The name of the user.",
+      "requirement": "recommended"
     },
-    "privileges": {
-      "description": "The user privileges.",
-      "requirement": "optional"
-    },
-    "risk_score_id": {
-      "requirement": "optional"
-    },
-    "risk_score": {
-      "requirement": "optional"
-    },
-    "session_uid": {
-      "requirement": "optional"
-    },
-    "shell": {
+    "type": {
+      "name": "Type",
       "requirement": "optional"
     },
     "type_id": {
-      "name": "Account Type ID",
+      "name": "Type ID",
+      "requirement": "optional",
       "type": "integer_t",
       "description": "The account type identifier.",
-      "requirement": "optional",
       "enum": {
+        "-1": {
+          "name": "Other"
+        },
         "0": {
           "name": "Unknown"
         },
         "1": {
-          "name": "User",
-          "description": "Regular user account."
+          "description": "Regular user account.",
+          "name": "User"
         },
         "2": {
-          "name": "Admin",
-          "description": "Admin/root user account."
+          "description": "Admin/root user account.",
+          "name": "Admin"
         },
         "3": {
-          "name": "System",
-          "description": "System account. For example, Windows computer accounts with a trailing dollar sign ($)."
-        },
-        "-1": {
-          "name": "Other"
+          "description": "System account. For example, Windows computer accounts with a trailing dollar sign ($).",
+          "name": "System"
         }
       }
+    },
+    "uid": {
+      "description": "The unique identifier of the user.",
+      "requirement": "recommended"
+    },
+    "uuid": {
+      "description": "The universally unique identifier of the user.",
+      "requirement": "recommended"
     }
+  },
+  "constraints": {
+    "at_least_one": ["name", "uid", "uuid"]
   }
 }

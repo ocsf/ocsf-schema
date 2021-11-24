@@ -870,7 +870,7 @@
     },
     "event_name": {
       "description": "The event name, as defined by the event source.",
-      "name": "Source Event Name",
+      "name": "Event Name",
       "type": "string_t"
     },
     "event_time": {
@@ -880,8 +880,13 @@
     },
     "event_uid": {
       "description": "The event instance identifier, as defined by the event source. It is the index of the event in an external event log. For example, the Windows EventRecordID.",
-      "name": "Source Event UID",
+      "name": "Event UID",
       "type": "string_t"
+    },
+    "exit_code": {
+      "description": "The exit code reported by a process when it terminates. The convention is that zero indicates success and any non-zero exit code indicates that some error occurred.",
+      "name": "Exit Code",
+      "type": "integer_t"
     },
     "facility": {
       "description": "The subsystem or application that is providing the event data.",
@@ -1239,6 +1244,12 @@
       "description": "The geographical location usually associated with an IP address.",
       "name": "Geo Location",
       "object_type": "location",
+      "type": "object_t"
+    },
+    "log_device": {
+      "description": "The device that logged the event.",
+      "name": "Log Device`",
+      "object_type": "device",
       "type": "object_t"
     },
     "log_name": {
@@ -2005,8 +2016,8 @@
       "type": "long_t"
     },
     "event_source": {
-      "description": "The monitored source that originated the event.",
-      "name": "Source",
+      "description": "The event source from which the event originates.",
+      "name": "Event Source",
       "object_type": "event_source",
       "type": "object_t"
     },
@@ -2042,7 +2053,7 @@
       "type": "string_t"
     },
     "status_detail": {
-      "description": "The status details contains the reason for the failure.",
+      "description": "The status details contains additional information about the event outcome.",
       "name": "Status Details",
       "type": "string_t"
     },

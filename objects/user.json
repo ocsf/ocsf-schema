@@ -3,22 +3,45 @@
   "type": "user",
   "description": "The user object describes the identity of a user.",
   "attributes": {
+    "domain": {
+      "description": "The domain where the user is defined. For example: the LDAP or Active Directory domain.",
+      "requirement": "optional"
+    },
+    "full_name": {
+      "requirement": "optional"
+    },
     "groups": {
       "description": "The administrative groups to which the user belongs.",
+      "requirement": "optional"
+    },
+    "home_dir": {
       "requirement": "optional"
     },
     "name": {
       "description": "The name of the user.",
       "requirement": "recommended"
     },
+    "privileges": {
+      "description": "The user privileges.",
+      "requirement": "optional"
+    },
+    "risk_score": {
+      "requirement": "optional"
+    },
+    "risk_score_id": {
+      "requirement": "optional"
+    },
+    "session_uid": {
+      "requirement": "optional"
+    },
+    "shell": {
+      "requirement": "optional"
+    },
     "type": {
       "name": "Type",
       "requirement": "optional"
     },
     "type_id": {
-      "name": "Type ID",
-      "requirement": "optional",
-      "type": "integer_t",
       "description": "The account type identifier.",
       "enum": {
         "-1": {
@@ -39,7 +62,10 @@
           "description": "System account. For example, Windows computer accounts with a trailing dollar sign ($).",
           "name": "System"
         }
-      }
+      },
+      "name": "Type ID",
+      "requirement": "optional",
+      "type": "integer_t"
     },
     "uid": {
       "description": "The unique identifier of the user.",
@@ -51,6 +77,10 @@
     }
   },
   "constraints": {
-    "at_least_one": ["name", "uid", "uuid"]
+    "at_least_one": [
+      "name",
+      "uid",
+      "uuid"
+    ]
   }
 }

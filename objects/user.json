@@ -3,18 +3,20 @@
   "type": "user",
   "description": "The user object describes the identity of a user.",
   "attributes": {
+    "account_uid": {
+      "description": "Unique identifier of the Account to which the user belongs (e.g. AWS Account ID) ",
+      "requirement": "optional"
+    },
+    "credential_uid": {
+      "description": "Unique identifier of the user's credential (e.g. AWS Access Key ID)",
+      "requirement": "optional"
+    },
     "domain": {
       "description": "The domain where the user is defined. For example: the LDAP or Active Directory domain.",
       "requirement": "optional"
     },
-    "full_name": {
-      "requirement": "optional"
-    },
     "groups": {
       "description": "The administrative groups to which the user belongs.",
-      "requirement": "optional"
-    },
-    "home_dir": {
       "requirement": "optional"
     },
     "name": {
@@ -24,20 +26,7 @@
     "org_uid": {
       "requirement": "optional"
     },
-    "privileges": {
-      "description": "The user privileges.",
-      "requirement": "optional"
-    },
-    "risk_score": {
-      "requirement": "optional"
-    },
-    "risk_score_id": {
-      "requirement": "optional"
-    },
     "session_uid": {
-      "requirement": "optional"
-    },
-    "shell": {
       "requirement": "optional"
     },
     "type": {
@@ -79,14 +68,13 @@
     "uuid": {
       "name": "Unique User ID",
       "description": "The universally unique identifier of the user. For example, AWS ARN or Windows user GUID.",
-      "requirement": "recommended"
+      "requirement": "optional"
     }
   },
   "constraints": {
     "at_least_one": [
       "name",
-      "uid",
-      "uuid"
+      "uid"
     ]
   }
 }

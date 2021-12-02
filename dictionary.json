@@ -863,11 +863,6 @@
       "name": "EtherType",
       "type": "integer_t"
     },
-    "event_code": {
-      "description": "The event type code, as defined by the event source. It is used to identify the type of event. For example, the Windows event code or ID.",
-      "name": "Event Code",
-      "type": "string_t"
-    },
     "event_id": {
       "description": "The event ID identifies the event's semantics and structure. The value is calculated by the logging system as: <code>class_id * 1000 + disposition_id</code>.",
       "name": "Event ID",
@@ -877,6 +872,12 @@
       "description": "The event name, as defined by the event source.",
       "name": "Event Name",
       "type": "string_t"
+    },
+    "event_source": {
+      "description": "The event source from which the event originates.",
+      "name": "Event Source",
+      "object_type": "event_source",
+      "type": "object_t"
     },
     "event_time": {
       "description": "The event occurrence time, representing the time when the event was created by the event producer.<p><b>Note:</b> The format is ISO 8601: <code>yyyy-MM-dd'T'HH:mm:ss.SSSXXX</code>. For example: 2021-07-22T14:41:17.128-07:00</p>",
@@ -1675,6 +1676,12 @@
       "name": "DNS RData",
       "type": "string_t"
     },
+    "ref_event_uids": {
+      "description": "The event identifiers where the observable was found.",
+      "is_array": true,
+      "name": "Event UID's",
+      "type": "string_t"
+    },
     "referrer": {
       "description": "The request header that identifies the address of the previous web page, which is linked to the current web page or resource being requested.",
       "name": "HTTP Referrer",
@@ -2025,11 +2032,20 @@
       "name": "Size",
       "type": "long_t"
     },
-    "event_source": {
-      "description": "The event source from which the event originates.",
-      "name": "Event Source",
-      "object_type": "event_source",
-      "type": "object_t"
+    "source_code": {
+      "description": "The event type code, as defined by the event source. It is used to identify the type of event. For example, the Windows event code or ID.",
+      "name": "Source Event Code",
+      "type": "string_t"
+    },
+    "source_name": {
+      "description": "The event name, as defined by the event source.",
+      "name": "Source Event Name",
+      "type": "string_t"
+    },
+    "source_uid": {
+      "description": "The event instance identifier, as defined by the event source. It is the index of the event in an external event log. For example, the Windows EventRecordID.",
+      "name": "Source Event ID",
+      "type": "string_t"
     },
     "sp_name": {
       "description": "The name of the latest Service Pack.",

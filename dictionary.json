@@ -1208,6 +1208,53 @@
       "name": "Key Length",
       "type": "integer_t"
     },
+    "kill_chain_phase": {
+      "description": "The <a target='_blank' href='https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html'>Cyber Kill Chain®</a> phase.",
+      "name": "Kill Chain Phase",
+      "type": "string_t"
+    },
+    "kill_chain_phase_id": {
+      "description": "The <a target='_blank' href='https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html'>Cyber Kill Chain®</a> phase identifer.",
+      "enum": {
+        "-1": {
+          "name": "Other"
+        },
+        "0": {
+          "description": "The kill chain phase is unknown.",
+          "name": "Unknown"
+        },
+        "1": {
+          "description": "The attackers pick a target and perform a detailed analysis, start collecting information (email addresses, conferences information, etc.) and evaluate the victim’s vulnerabilities to determine how to exploit them.",
+          "name": "Reconnaissance"
+        },
+        "2": {
+          "description": "The attackers develop a malware weapon and aim to exploit the discovered vulnerabilities.",
+          "name": "Weaponization"
+        },
+        "3": {
+          "description": "The intruders will use various tactics, such as phishing, infected USB drives, etc.",
+          "name": "Delivery"
+        },
+        "4": {
+          "description": "The intruders start leveraging vulnerabilities to executed code on the victim’s system.",
+          "name": "Exploitation"
+        },
+        "5": {
+          "description": "The intruders install malware on the victim’s system.",
+          "name": "Installation"
+        },
+        "6": {
+          "description": "Malware opens a command channel to enable the intruders to remotely manipulate the victim's system.",
+          "name": "Command & Control"
+        },
+        "7": {
+          "description": "With hands-on keyboard access, intruders accomplish the mission’s goal.",
+          "name": "Actions on Objectives"
+        }
+      },
+      "name": "Kill Chain Phase ID",
+      "type": "integer_t"
+    },
     "labels": {
       "description": "The list of labels attached to an event, object, or attribute.",
       "is_array": true,

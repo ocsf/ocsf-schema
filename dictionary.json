@@ -223,7 +223,7 @@
     },
     "bytes_in": {
       "default": 0,
-      "description": "The number of bytes received on the source from the destination.",
+      "description": "The number of bytes sent from the destination to the source.",
       "name": "Bytes In",
       "type": "long_t"
     },
@@ -915,7 +915,7 @@
       "type": "string_t"
     },
     "file_result": {
-      "description": "The result of the file change. It sould contain the new values of the changed attributes.",
+      "description": "The result of the file change. It should contain the new values of the changed attributes.",
       "name": "File Result",
       "object_type": "file",
       "type": "object_t"
@@ -1202,7 +1202,7 @@
       "type": "string_t"
     },
     "kill_chain_phase_id": {
-      "description": "The <a target='_blank' href='https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html'>Cyber Kill Chain®</a> phase identifer.",
+      "description": "The <a target='_blank' href='https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html'>Cyber Kill Chain®</a> phase identifier.",
       "enum": {
         "-1": {
           "name": "Other"
@@ -1502,7 +1502,7 @@
       "type": "integer_t"
     },
     "org_uid": {
-      "description": "The unique identifer of the organization to which the user belongs. For example, Active Directory or AWS Org ID.",
+      "description": "The unique identifier of the organization to which the user belongs. For example, Active Directory or AWS Org ID.",
       "name": "Org ID",
       "type": "string_t"
     },
@@ -1559,7 +1559,7 @@
     },
     "packets_in": {
       "default": 0,
-      "description": "The number of packets received on the source from the destination.",
+      "description": "The number of packets sent from the destination to the source.",
       "name": "Packets In",
       "type": "long_t"
     },
@@ -1636,12 +1636,12 @@
       "type": "string_t"
     },
     "protocol_name": {
-      "description": "The IP protocol name in lowercase, as defined by the Internet Assigned Numbers Authority (IANA). See <a target='_blank' href='https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml'>Protocol Numbers</a>. For example: <code>tcp</code> and <code>udp</code>.",
+      "description": "The IP protocol name in lowercase, as defined by the Internet Assigned Numbers Authority (IANA). See <a target='_blank' href='https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml'>Protocol Numbers</a>. For example: <code>tcp</code> or <code>udp</code>.",
       "name": "Protocol Name",
       "type": "string_t"
     },
     "protocol_num": {
-      "description": "The IP protocol number, as defined by the Internet Assigned Numbers Authority (IANA). See <a target='_blank' href='https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml'>Protocol Numbers</a>. For example: <code>6</code> for TCP and <code>17</code> for UDP.",
+      "description": "The IP protocol number, as defined by the Internet Assigned Numbers Authority (IANA). Use -1 if the protocol is not defined by IANA. See <a target='_blank' href='https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml'>Protocol Numbers</a>. For example: <code>6</code> for TCP and <code>17</code> for UDP.",
       "name": "Protocol Number",
       "type": "integer_t"
     },
@@ -1716,10 +1716,9 @@
       "name": "DNS RData",
       "type": "string_t"
     },
-    "ref_event_uids": {
-      "description": "The event identifiers where the observable was found.",
-      "is_array": true,
-      "name": "Event UID's",
+    "ref_event_uid": {
+      "description": "The identifier of the event associated with a finding.",
+      "name": "Reference Event ID",
       "type": "string_t"
     },
     "referrer": {
@@ -1739,7 +1738,7 @@
       "type": "object_t"
     },
     "reg_key_result": {
-      "description": "The result of the registry key change. It sould contain the new values of the changed attributes.",
+      "description": "The result of the registry key change. It should contain the new values of the changed attributes.",
       "name": "Registry Key Result",
       "object_type": "registry_key",
       "type": "object_t"
@@ -1751,7 +1750,7 @@
       "type": "object_t"
     },
     "reg_value_result": {
-      "description": "The result of the registry value change. It sould contain the new values of the changed attributes.",
+      "description": "The result of the registry value change. It should contain the new values of the changed attributes.",
       "name": "Registry Value Result",
       "object_type": "registry_value",
       "type": "object_t"
@@ -2160,7 +2159,7 @@
     },
     "svc_name": {
       "description": "The service name, as defined by the Internet Assigned Numbers Authority (IANA). See <a target='_blank' href='https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml'>Service Name and Transport Protocol Port Number Registry</a>.",
-      "name": "IANA Service Name",
+      "name": "Service Name",
       "type": "string_t"
     },
     "system_call": {
@@ -2226,6 +2225,60 @@
       "object_type": "network_traffic",
       "type": "object_t"
     },
+    "traffic_path_id": {
+      "description": "The boundary of the connection. For cloud connections, this translates to the traffic-path (same VPC, through IGW, etc.). For traditional networks, this is described as Local, Internal, or External.",
+      "name": "Traffic Path ID",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "name": "Unknown"
+        },
+        "1": {
+          "description": "Local network traffic on the same endpoint.",
+          "name": "Local"
+        },
+        "2": {
+          "description": "Internal network traffic between two endpoints inside network.",
+          "name": "Internal"
+        },
+        "3": {
+          "description": "External network traffic between two endpoints on the Internet or outside the network.",
+          "name": "External"
+        },
+        "4": {
+          "name": "Same VPC",
+          "description": "Through another resource in the same VPC"
+        },
+        "5": {
+          "name": "Internet/VPC Gateway",
+          "description": "Through an Internet gateway or a gateway VPC endpoint"
+        },
+        "6": {
+          "name": "Virtual Private Gateway",
+          "description": "Through a virtual private gateway"
+        },
+        "7": {
+          "name": "Intra-region VPC",
+          "description": "Through an intra-region VPC peering connection"
+        },
+        "8": {
+          "name": "Inter-region VPC",
+          "description": "Through an inter-region VPC peering connection"
+        },
+        "9": {
+          "name": "Local Gateway",
+          "description": "Through a local gateway"
+        },
+        "10": {
+          "name": "Gateway VPC",
+          "description": "Through a gateway VPC endpoint (Nitro-based instances only)"
+        },
+        "11": {
+          "name": "Internet Gateway",
+          "description": "Through an Internet gateway (Nitro-based instances only)"
+        }
+      }
+    },
     "ttl": {
       "description": "The time interval that the resource record may be cached. Zero value means that the resource record can only be used for the transaction in progress, and should not be cached.",
       "name": "TTL",
@@ -2280,7 +2333,7 @@
       "type": "string_t"
     },
     "user_result": {
-      "description": "The result of the user account change. It sould contain the new values of the changed attributes.",
+      "description": "The result of the user account change. It should contain the new values of the changed attributes.",
       "name": "User Result",
       "object_type": "user",
       "type": "object_t"

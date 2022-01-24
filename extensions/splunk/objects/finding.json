@@ -3,13 +3,6 @@
   "type": "finding",
   "description": "The finding object describes the results of detections or analytics.",
   "attributes": {
-    "uid": {
-      "name": "UID",
-      "description": "The unique identifier of the finding."
-    },
-    "type": {
-      "description": "The type of the finding."
-    },
     "attacks": {
       "description": "The array of attacks identified by the detections or analytics."
     },
@@ -33,13 +26,16 @@
     "kill_chain_phase": {},
     "kill_chain_phase_id": {},
     "nist": {},
+    "ref_event_uid": {},
     "risk_score": {},
     "risk_score_id": {
       "requirement": "recommended"
     },
+    "type": {
+      "description": "The type of the finding."
+    },
     "type_id": {
       "description": "The type of the finding.",
-      "requirement": "required",
       "enum": {
         "1": {
           "name": "Rule"
@@ -50,7 +46,12 @@
         "3": {
           "name": "Information"
         }
-      }
+      },
+      "requirement": "required"
+    },
+    "uid": {
+      "description": "The unique identifier of the finding.",
+      "name": "UID"
     }
   }
 }

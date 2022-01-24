@@ -1,0 +1,32 @@
+{
+  "name": "Windows Event",
+  "description": "Windows activity event class represent a general purpose Microsoft Windows operating system event.",
+  "type": "windows",
+  "extends": "activity",
+  "uid": 999,
+  "attributes": {
+    "disposition_id": {
+      "requirement": "required",
+      "enum": {
+        "1": {
+          "name": "Logged"
+        }
+      }
+    },
+    "source_name": {
+      "group": "primary"
+    },
+    "source_uid": {
+      "description": "The event instance identifier (the Windows EventRecordID).",
+      "name": "Source Event ID",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "source_code": {
+      "description": "The Windows event code, as defined by the Microsoft Windows operating system. It is used to identify the type of Windows event.",
+      "group": "primary",
+      "name": "Event Code",
+      "requirement": "required"
+    }
+  }
+}

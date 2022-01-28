@@ -1,64 +1,18 @@
 {
   "name": "Network Traffic",
   "type": "network_traffic",
-  "extends": "_connection",
-  "description": "The network traffic object describes network data traffic.",
+  "description": "The object describes network data traffic. Network traffic refers to the amount of data moving across a network at a given point of time.",
   "attributes": {
     "bytes": {
-      "requirement": "optional"
+      "requirement": "recommended"
     },
-    "bytes_in": {
-      "requirement": "optional"
-    },
-    "bytes_out": {
-      "requirement": "optional"
-    },
-    "direction_id": {
-      "description": "The direction of the network traffic.",
-      "requirement": "required",
-      "enum": {
-        "0": {
-          "name": "Unknown",
-          "description": "Network traffic direction is unknown"
-        },
-        "1": {
-          "name": "Inbound",
-          "description": "Inbound network traffic. The traffic was originated from the Internet or outside network, destined for services on the inside network."
-        },
-        "2": {
-          "name": "Outbound",
-          "description": "Outbound network traffic. The traffic was originated from inside the network, destined for services on the Internet or outside network."
-        },
-        "3": {
-          "name": "Local",
-          "description": "Local network traffic on the same endpoint."
-        },
-        "4": {
-          "name": "Internal",
-          "description": "Internal network traffic between two endpoints inside network."
-        },
-        "5": {
-          "name": "External",
-          "description": "External network traffic between two endpoints on the Internet or outside the network."
-        }
-      }
-    },
-    "dst": {
-      "description": "The destination of the network traffic. If the reported traffic is bidirectional, then the endpoint that received a request for the data and sent back a response.",
-      "requirement": "required"
-    },
+    "bytes_in": {},
+    "bytes_out": {},
+    "connection_uid": {},
     "packets": {
-      "requirement": "optional"
+      "requirement": "recommended"
     },
-    "packets_in": {
-      "requirement": "optional"
-    },
-    "packets_out": {
-      "requirement": "optional"
-    },
-    "src": {
-      "description": "The source of the network traffic. If the reported traffic is bidirectional, then the endpoint that sent a request for the data.",
-      "requirement": "required"
-    }
+    "packets_in": {},
+    "packets_out": {}
   }
 }

@@ -2,10 +2,13 @@
   "name": "Network Connection",
   "type": "network_connection",
   "description": "The network connection object describes the protocol, direction, source, and destination of a network connection.",
-  "extends": "_connection",
   "attributes": {
+    "direction": {
+      "description": "The direction of the initiated connection.",
+      "requirement": "recommended"
+    },
     "direction_id": {
-      "description": "The direction of the connection.",
+      "description": "The direction of the initiated connection.",
       "enum": {
         "0": {
           "description": "Connection direction is unknown.",
@@ -18,20 +21,9 @@
         "2": {
           "description": "Outbound network connection. The connection was originated from inside the network, destined for services on the Internet or outside network.",
           "name": "Outbound"
-        },
-        "3": {
-          "description": "Local network connection on the same endpoint.",
-          "name": "Local"
-        },
-        "4": {
-          "description": "Internal network connection between two endpoints inside network.",
-          "name": "Internal"
-        },
-        "5": {
-          "description": "External network connection between two endpoints on the Internet or outside the network.",
-          "name": "External"
         }
-      }
+      },
+      "requirement": "required"
     },
     "protocol_name": {
       "requirement": "optional"
@@ -39,15 +31,17 @@
     "protocol_num": {
       "requirement": "recommended"
     },
+    "protocol_ver": {
+      "requirement": "recommended"
+    },
     "protocol_ver_id": {
       "requirement": "required"
     },
-    "svc_name": {
-      "requirement": "recommended"
-    },
-    "tls": {
+    "tcp_flags": {
       "requirement": "optional"
     },
+    "traffic_path": {},
+    "traffic_path_id": {},
     "uid": {
       "description": "The unique identifier of the connection.",
       "name": "Connection UID",

@@ -771,6 +771,11 @@
       "object_type": "device",
       "type": "object_t"
     },
+    "direction": {
+      "description": "The direction of the initiated connection, traffic, or email.",
+      "name": "Direction",
+      "type": "string_t"
+    },
     "direction_id": {
       "description": "The direction of the initiated connection, traffic, or email.",
       "enum": {
@@ -787,7 +792,7 @@
           "name": "Outbound"
         }
       },
-      "name": "Direction",
+      "name": "Direction ID",
       "type": "integer_t"
     },
     "disposition": {
@@ -1636,17 +1641,22 @@
       "type": "string_t"
     },
     "protocol_name": {
-      "description": "The IP protocol name in lowercase, as defined by the Internet Assigned Numbers Authority (IANA). See <a target='_blank' href='https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml'>Protocol Numbers</a>. For example: <code>tcp</code> or <code>udp</code>.",
+      "description": "The TCP/IP protocol name in lowercase, as defined by the Internet Assigned Numbers Authority (IANA). See <a target='_blank' href='https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml'>Protocol Numbers</a>. For example: <code>tcp</code> or <code>udp</code>.",
       "name": "Protocol Name",
       "type": "string_t"
     },
     "protocol_num": {
-      "description": "The IP protocol number, as defined by the Internet Assigned Numbers Authority (IANA). Use -1 if the protocol is not defined by IANA. See <a target='_blank' href='https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml'>Protocol Numbers</a>. For example: <code>6</code> for TCP and <code>17</code> for UDP.",
+      "description": "The TCP/IP protocol number, as defined by the Internet Assigned Numbers Authority (IANA). Use -1 if the protocol is not defined by IANA. See <a target='_blank' href='https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml'>Protocol Numbers</a>. For example: <code>6</code> for TCP and <code>17</code> for UDP.",
       "name": "Protocol Number",
       "type": "integer_t"
     },
-    "protocol_ver_id": {
+    "protocol_ver": {
       "description": "The Internet Protocol version.",
+      "name": "IP Version",
+      "type": "string_t"
+    },
+    "protocol_ver_id": {
+      "description": "The Internet Protocol version identifier.",
       "enum": {
         "-1": {
           "name": "Other"
@@ -1661,7 +1671,7 @@
           "name": "Internet Protocol version 6 (IPv6)"
         }
       },
-      "name": "IP Version",
+      "name": "IP Version ID",
       "type": "integer_t"
     },
     "provider": {
@@ -2224,6 +2234,11 @@
       "name": "Traffic",
       "object_type": "network_traffic",
       "type": "object_t"
+    },
+    "traffic_path": {
+      "description": "The boundary of the connection. For cloud connections, this translates to the traffic-path (same VPC, through IGW, etc.). For traditional networks, this is described as Local, Internal, or External.",
+      "name": "Traffic Path",
+      "type": "string_t"
     },
     "traffic_path_id": {
       "description": "The boundary of the connection. For cloud connections, this translates to the traffic-path (same VPC, through IGW, etc.). For traditional networks, this is described as Local, Internal, or External.",

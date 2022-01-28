@@ -1,4 +1,9 @@
 {
+  "name": "Endpoint DNS Alert",
+  "uid": 2,
+  "type": "endpoint_dns_alert",
+  "extends": "endpoint_alert",
+  "description": "Endpoint DNS Alert events report the detections and resolutions of malicious DNS queries.",
   "attributes": {
     "$include": [
       "traits/network.json",
@@ -6,19 +11,14 @@
       "traits/network_alert.json"
     ],
     "activity_id": {
+      "requirement": "recommended",
       "$include": "enums/dns_activity.json",
-      "group": "primary",
-      "requirement": "recommended"
+      "group": "primary"
     }
   },
-  "description": "Endpoint DNS Alert events report the detections and resolutions of malicious DNS queries.",
-  "extends": "endpoint_alert",
-  "name": "Endpoint DNS Alert",
   "see_also": [
     "endpoint_dns_activity",
     "network_dns_activity",
     "network_dns_alert"
-  ],
-  "type": "endpoint_dns_alert",
-  "uid": 2
+  ]
 }

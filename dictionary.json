@@ -1873,19 +1873,16 @@
       "name": "Risk",
       "type": "float_t"
     },
-    "risk_score": {
-      "description": "The original risk score as reported by the event source.",
-      "name": "Risk Score",
-      "type": "integer_t"
+    "risk_level": {
+      "description": "The normalized risk level.",
+      "name": "Risk Level",
+      "type": "string_t"
     },
-    "risk_score_id": {
-      "description": "The normalized risk score.",
+    "risk_level_id": {
+      "description": "The normalized risk level id.",
       "enum": {
-        "-1": {
-          "name": "Other"
-        },
         "0": {
-          "name": "Unknown"
+          "name": "Info"
         },
         "1": {
           "name": "Low"
@@ -1900,7 +1897,12 @@
           "name": "Critical"
         }
       },
-      "name": "Risk Score ID",
+      "name": "Risk Level ID",
+      "type": "integer_t"
+    },
+    "risk_score": {
+      "description": "The original risk score as reported by the event source.",
+      "name": "Risk Score",
       "type": "integer_t"
     },
     "role_ids": {

@@ -3,36 +3,22 @@
   "type": "device_entity",
   "description": "A device of the environment that supports information-related activities. Devices should be protected from illicit access, use, disclosure, alteration, destruction, and/or theft, resulting in loss to the organization.",
   "attributes": {
-    "name": {
-      "description": "The device name, ordinarily as assigned by an administrator or LDAP common name (CN).",
-      "requirement": "recommended"
-    },
-    "uid": {
-      "name": "Device UID",
-      "description": "The unique identifier of the device.",
-      "requirement": "reserved"
-    },
-    "type": {
-      "name": "Type",
-      "description": "The original type assigned to the device.",
-      "requirement": "optional"
-    },
     "caption": {
       "requirement": "optional"
     },
     "desc": {
-      "name": "Description",
       "description": "The description of the device, ordinarily as reported by the operating system.",
+      "name": "Description",
       "requirement": "optional"
     },
     "domain": {
-      "name": "Domain",
       "description": "The network domain where the device resides. For example: <code>work.example.com</code>.",
+      "name": "Domain",
       "requirement": "optional"
     },
     "group": {
-      "name": "Group",
       "description": "The name of the group to which the device belongs. For example: <code>Windows Laptops<code/>.",
+      "name": "Group",
       "requirement": "optional"
     },
     "labels": {
@@ -44,6 +30,10 @@
     },
     "managed_by": {
       "requirement": "optional"
+    },
+    "name": {
+      "description": "The device name, ordinarily as assigned by an administrator or LDAP common name (CN).",
+      "requirement": "recommended"
     },
     "networks_info": {
       "requirement": "recommended"
@@ -58,8 +48,8 @@
       "description": "The original priority assigned to the device."
     },
     "priority_id": {
-      "description": "The normalized priority identifier assigned to the device. The priority is useful for calculating the urgency for alerts or incidents.",
-      "$include": "enums/object_priority.json"
+      "$include": "enums/object_priority.json",
+      "description": "The normalized priority identifier assigned to the device. The priority is useful for calculating the urgency for alerts or incidents."
     },
     "provider": {
       "description": "The source or the provider of the device data.",
@@ -69,13 +59,31 @@
       "description": "The reference to a unique identifier, managed by an external system. For example LDAP distinguished name of the device.",
       "requirement": "recommended"
     },
+    "type": {
+      "description": "The original type assigned to the device.",
+      "name": "Type",
+      "requirement": "optional"
+    },
     "type_id": {
-      "name": "Type ID",
       "description": "The device type identifier.",
-      "requirement": "required",
       "enum": {
         "1": {
           "name": "Server"
+        },
+        "10": {
+          "name": "Sharepoint Server"
+        },
+        "11": {
+          "name": "VPN Server"
+        },
+        "12": {
+          "name": "Web Server"
+        },
+        "13": {
+          "name": "Proxy Server"
+        },
+        "14": {
+          "name": "Active Directory"
         },
         "2": {
           "name": "Desktop"
@@ -100,23 +108,15 @@
         },
         "9": {
           "name": "Network Router"
-        },
-        "10": {
-          "name": "Sharepoint Server"
-        },
-        "11": {
-          "name": "VPN Server"
-        },
-        "12": {
-          "name": "Web Server"
-        },
-        "13": {
-          "name": "Proxy Server"
-        },
-        "14": {
-          "name": "Active Directory"
         }
-      }
+      },
+      "name": "Type ID",
+      "requirement": "required"
+    },
+    "uid": {
+      "description": "The unique identifier of the device.",
+      "name": "Device UID",
+      "requirement": "required"
     }
   }
 }

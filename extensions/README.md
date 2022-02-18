@@ -1,9 +1,20 @@
 # Schema Extensions
 
 ## Extending the Schema
-The Splunk Event Schema can be extended by adding new attributes, objects, and event classes.
+The Event Schema can be extended by adding new attributes, objects, and event classes.
 
-To extend the schema create a new directory in the `schema/extensions` directory. The directory structure is the same as the top level schema directory and it may contain the following files and subdirectories.
+To extend the schema create a new directory in the `schema/extensions` directory and add `extension.json` file. 
+For example:
+```json
+{
+  "name": "New Extension",
+  "type": "new_ex",
+  "version": "0.0.0",
+  "uid": 123
+}
+```
+
+The directory structure is the same as the top level schema directory and it may contain the following files and subdirectories.
 
 | Name              | Description                                                  |
 | ----------------- | ------------------------------------------------------------ |

@@ -1,0 +1,45 @@
+{
+  "name": "Endpoint",
+  "type": "endpoint",
+  "description": "The endpoint object describes an addressable entity that has name and IP address.",
+  "attributes": {
+    "domain": {
+      "requirement": "optional"
+    },
+    "hostname": {
+      "description": "The fully qualified name of the endpoint.",
+      "requirement": "recommended"
+    },
+    "ip": {
+      "description": "The IP address of the endpoint, in either IPv4 or IPv6 format.",
+      "requirement": "recommended"
+    },
+    "location": {
+      "description": "The geographical location of the endpoint.",
+      "requirement": "optional"
+    },
+    "mac": {
+      "description": "The Media Access Control (MAC) address of the endpoint.",
+      "requirement": "optional"
+    },
+    "name": {
+      "description": "The short name of the endpoint.",
+      "requirement": "recommended"
+    },
+    "timezone": {
+      "requirement": "optional"
+    },
+    "uid": {
+      "description": "The unique identifier of the endpoint.",
+      "requirement": "recommended"
+    }
+  },
+  "constraints": {
+    "at_least_one": [
+      "hostname",
+      "ip",
+      "name",
+      "uid"
+    ]
+  }
+}

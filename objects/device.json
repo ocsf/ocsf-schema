@@ -2,6 +2,7 @@
   "name": "Device",
   "type": "device",
   "description": "Addressable device where events occurred.",
+  "extends": "endpoint",
   "attributes": {
     "caption": {
       "requirement": "optional"
@@ -12,9 +13,7 @@
       "requirement": "optional"
     },
     "domain": {
-      "description": "The network domain where the device resides. For example: <code>work.example.com</code>.",
-      "name": "Domain",
-      "requirement": "optional"
+      "description": "The network domain where the device resides. For example: <code>work.example.com</code>."
     },
     "group": {
       "description": "The name of the group to which the device belongs. For example: <code>Windows Laptops<code/>.",
@@ -22,8 +21,7 @@
       "requirement": "optional"
     },
     "hostname": {
-      "description": "The device hostname.",
-      "requirement": "recommended"
+      "description": "The device hostname."
     },
     "hw_bios_date": {
       "requirement": "optional"
@@ -44,8 +42,7 @@
       "requirement": "optional"
     },
     "ip": {
-      "description": "The device IP address, in either IPv4 or IPv6 format.",
-      "requirement": "recommended"
+      "description": "The device IP address, in either IPv4 or IPv6 format."
     },
     "is_compliant": {
       "requirement": "optional"
@@ -60,15 +57,13 @@
       "requirement": "optional"
     },
     "location": {
-      "requirement": "optional"
+      "description": "The geographical location of the endpoint."
     },
     "mac": {
-      "description": "The device Media Access Control (MAC) address.",
-      "requirement": "optional"
+      "description": "The device Media Access Control (MAC) address."
     },
     "name": {
-      "description": "The alternate device name, ordinarily as assigned by an administrator. <p><b>Note:</b> The <b>Name</b> could be any other string that helps to identify the device, such as a phone number; for example <code>310-555-1234</code>.</p>",
-      "requirement": "recommended"
+      "description": "The alternate device name, ordinarily as assigned by an administrator. <p><b>Note:</b> The <b>Name</b> could be any other string that helps to identify the device, such as a phone number; for example <code>310-555-1234</code>.</p>"
     },
     "networks_info": {
       "requirement": "optional"
@@ -131,17 +126,7 @@
       "requirement": "required"
     },
     "uid": {
-      "description": "The unique identifier of the device.",
-      "name": "Device UID",
-      "requirement": "recommended"
+      "description": "The unique identifier of the device."
     }
-  },
-  "constraints": {
-    "at_least_one": [
-      "ip",
-      "name",
-      "uid",
-      "hostname"
-    ]
   }
 }

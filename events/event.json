@@ -3,32 +3,38 @@
   "type": "event",
   "extends": "base_event",
   "description": "The event is a generic concrete event and it also defines a set of attributes available in most event classes. As a generic event that does not belong to any event category, it could be used to log events that are not otherwise defined by the schema.",
-  "attributes": {    
-  "source_code": {},
-  "source_name": {},
-  "source_uid": {},
+  "attributes": {
     "disposition": {
       "group": "classification"
     },
     "disposition_id": {
+      "requirement": "required",
       "$include": "enums/defaults.json",
-      "group": "classification",
-      "requirement": "required"
+      "group": "classification"
     },
     "event_id": {
-      "group": "classification",
-      "requirement": "reserved"
+      "requirement": "reserved",
+      "group": "classification"
     },
     "labels": {
       "description": "The list of category labels attached to the event or specific attributes. Labels are user defined tags or aliases added at normalization time.</p>For example: <code>[\"network\", \"connection.ip:destination\", \"device.ip:source\"]</code>",
+      "group": "context"
+    },
+    "ref_event_code": {
+      "group": "context"
+    },
+    "ref_event_name": {
+      "group": "context"
+    },
+    "ref_event_uid": {
       "group": "context"
     },
     "severity": {
       "group": "classification"
     },
     "severity_id": {
-      "group": "classification",
-      "requirement": "required"
+      "requirement": "required",
+      "group": "classification"
     },
     "status": {
       "group": "primary"
@@ -37,12 +43,12 @@
       "group": "primary"
     },
     "status_id": {
-      "group": "primary",
-      "requirement": "recommended"
+      "requirement": "recommended",
+      "group": "primary"
     },
     "time": {
-      "group": "occurrence",
-      "requirement": "reserved"
+      "requirement": "reserved",
+      "group": "occurrence"
     },
     "timezone": {
       "group": "occurrence"

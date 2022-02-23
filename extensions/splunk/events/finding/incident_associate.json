@@ -1,15 +1,10 @@
 {
   "name": "Incident Associate",
-  "type": "incident_associate",
   "uid": 1,
   "category": "finding",
+  "type": "incident_associate",
   "extends": "base_event",
   "description": "Incident Associate events report when a new event is associated with an existing incident.",
-  "see_also": [
-    "incident_create",
-    "incident_update",
-    "incident_close"
-  ],
   "attributes": {
     "disposition": {
       "group": "classification"
@@ -23,18 +18,23 @@
       "group": "classification"
     },
     "event_id": {
-      "group": "classification",
-      "requirement": "reserved"
-    },
-    "event_uid": {
-      "description": "The identifier of the event that is associated with the incident.",
-      "group": "primary",
-      "name": "Event UID",
-      "requirement": "required"
+      "requirement": "reserved",
+      "group": "classification"
     },
     "incident_uid": {
-      "group": "primary",
-      "requirement": "required"
+      "requirement": "required",
+      "group": "primary"
+    },
+    "ref_event_uid": {
+      "name": "Event UID",
+      "description": "The identifier of the event that is associated with the incident.",
+      "requirement": "required",
+      "group": "primary"
     }
-  }
+  },
+  "see_also": [
+    "incident_create",
+    "incident_update",
+    "incident_close"
+  ]
 }

@@ -1,9 +1,9 @@
 {
   "name": "Windows Event",
-  "description": "Windows activity event class represent a general purpose Microsoft Windows operating system event.",
+  "uid": 999,
   "type": "windows",
   "extends": "activity",
-  "uid": 999,
+  "description": "Windows activity event class represent a general purpose Microsoft Windows operating system event.",
   "attributes": {
     "disposition_id": {
       "requirement": "required",
@@ -13,20 +13,20 @@
         }
       }
     },
-    "source_name": {
+    "ref_event_code": {
+      "name": "Event Code",
+      "description": "The Windows event code, as defined by the Microsoft Windows operating system. It is used to identify the type of Windows event.",
+      "requirement": "required",
       "group": "primary"
     },
-    "source_uid": {
-      "description": "The event instance identifier (the Windows EventRecordID).",
-      "name": "Source Event ID",
-      "group": "primary",
-      "requirement": "recommended"
+    "ref_event_name": {
+      "group": "primary"
     },
-    "source_code": {
-      "description": "The Windows event code, as defined by the Microsoft Windows operating system. It is used to identify the type of Windows event.",
-      "group": "primary",
-      "name": "Event Code",
-      "requirement": "required"
+    "ref_event_uid": {
+      "name": "Event Record ID",
+      "description": "The event instance identifier (the Windows EventRecordID).",
+      "requirement": "recommended",
+      "group": "primary"
     }
   }
 }

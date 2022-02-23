@@ -1308,6 +1308,12 @@
       "name": "Logged Time",
       "type": "timestamp_t"
     },
+    "logon_process": {
+      "description": "The trusted process that validated the authentication credentials.",
+      "name": "Logon Process",
+      "object_type": "process",
+      "type": "object_t"
+    },
     "logon_type": {
       "description": "The logon type.",
       "name": "Logon Type",
@@ -1536,7 +1542,8 @@
     "other": {
       "description": "Other HTTP headers of an HTTP request or response that pass additional context and metadata about the request or response.",
       "name": "HTTP Headers",
-      "type": "json_t"
+      "object_type": "data",
+      "type": "object_t"
     },
     "other_malware": {
       "description": "The additional malware that was detected.",
@@ -1636,8 +1643,8 @@
       "type": "object_t"
     },
     "project_uid": {
-      "name": "Project ID",
       "description": "Cloud project identifier.",
+      "name": "Project ID",
       "type": "string_t"
     },
     "protocol_name": {
@@ -1861,7 +1868,8 @@
     "response_headers": {
       "description": "The additional information associated with and the HTTP response.",
       "name": "Response Headers",
-      "type": "json_t"
+      "object_type": "data",
+      "type": "object_t"
     },
     "response_time": {
       "description": "The Domain Name System (DNS) response time.",
@@ -2119,6 +2127,18 @@
       "object_type": "network_endpoint",
       "type": "object_t"
     },
+    "dst_user": {
+      "description": "The user that was a target of an activity.",
+      "name": "Destination User",
+      "object_type": "user",
+      "type": "object_t"
+    },
+    "src_user": {
+      "description": "The existing user from which an activity was initiated.",
+      "name": "Source User",
+      "object_type": "user",
+      "type": "object_t"
+    },
     "ssid": {
       "description": "The name of the wireless network, or Service Set Identifier (SSID).",
       "name": "SSID",
@@ -2244,8 +2264,6 @@
     },
     "traffic_path_id": {
       "description": "The boundary of the connection. For cloud connections, this translates to the traffic-path (same VPC, through IGW, etc.). For traditional networks, this is described as Local, Internal, or External.",
-      "name": "Traffic Path ID",
-      "type": "integer_t",
       "enum": {
         "0": {
           "name": "Unknown"
@@ -2253,6 +2271,14 @@
         "1": {
           "description": "Local network traffic on the same endpoint.",
           "name": "Local"
+        },
+        "10": {
+          "description": "Through a gateway VPC endpoint (Nitro-based instances only)",
+          "name": "Gateway VPC"
+        },
+        "11": {
+          "description": "Through an Internet gateway (Nitro-based instances only)",
+          "name": "Internet Gateway"
         },
         "2": {
           "description": "Internal network traffic between two endpoints inside network.",
@@ -2263,38 +2289,32 @@
           "name": "External"
         },
         "4": {
-          "name": "Same VPC",
-          "description": "Through another resource in the same VPC"
+          "description": "Through another resource in the same VPC",
+          "name": "Same VPC"
         },
         "5": {
-          "name": "Internet/VPC Gateway",
-          "description": "Through an Internet gateway or a gateway VPC endpoint"
+          "description": "Through an Internet gateway or a gateway VPC endpoint",
+          "name": "Internet/VPC Gateway"
         },
         "6": {
-          "name": "Virtual Private Gateway",
-          "description": "Through a virtual private gateway"
+          "description": "Through a virtual private gateway",
+          "name": "Virtual Private Gateway"
         },
         "7": {
-          "name": "Intra-region VPC",
-          "description": "Through an intra-region VPC peering connection"
+          "description": "Through an intra-region VPC peering connection",
+          "name": "Intra-region VPC"
         },
         "8": {
-          "name": "Inter-region VPC",
-          "description": "Through an inter-region VPC peering connection"
+          "description": "Through an inter-region VPC peering connection",
+          "name": "Inter-region VPC"
         },
         "9": {
-          "name": "Local Gateway",
-          "description": "Through a local gateway"
-        },
-        "10": {
-          "name": "Gateway VPC",
-          "description": "Through a gateway VPC endpoint (Nitro-based instances only)"
-        },
-        "11": {
-          "name": "Internet Gateway",
-          "description": "Through an Internet gateway (Nitro-based instances only)"
+          "description": "Through a local gateway",
+          "name": "Local Gateway"
         }
-      }
+      },
+      "name": "Traffic Path ID",
+      "type": "integer_t"
     },
     "ttl": {
       "description": "The time interval that the resource record may be cached. Zero value means that the resource record can only be used for the transaction in progress, and should not be cached.",
@@ -2328,9 +2348,10 @@
       "type": "string_t"
     },
     "unmapped": {
-      "description": "The attributes that are not mapped to the event schema. The names and values of those attribute are specific to the event source.",
+      "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
       "name": "Unmapped Data",
-      "type": "json_t"
+      "object_type": "data",
+      "type": "object_t"
     },
     "url": {
       "description": "The URL object that pertains to the event or object. See specific usage.",
@@ -2383,7 +2404,8 @@
     "xattributes": {
       "description": "An unordered collection of zero or more name/value pairs where each pair represents a file or folder extended attribute.</p>For example: Windows alternate data stream attributes (ADS stream name, ADS size, etc.), user-defined or application-defined attributes, ACL, owner, primary group, etc. Examples from DCS: </p><ul><li><strong>ads_name</strong></li><li><strong>ads_size</strong></li><li><strong>dacl</strong></li><li><strong>owner</strong></li><li><strong>primary_group</strong></li><li><strong>link_name</strong> - name of the link associated to the file.</li><li><strong>hard_link_count</strong> - the number of links that are associated to the file.</li></ul>",
       "name": "Extended Attributes",
-      "type": "json_t"
+      "object_type": "data",
+      "type": "object_t"
     },
     "zone": {
       "description": "The network zone or LAN segment.",
@@ -2392,99 +2414,99 @@
     }
   },
   "types": {
-    "description": "The predefined data types. The data type of an value specifies what kind of data that value can have.",
     "name": "Data Types",
+    "description": "The predefined data types. The data type of an value specifies what kind of data that value can have.",
     "attributes": {
       "boolean_t": {
-        "description": "Boolean data type.",
         "name": "Boolean",
+        "description": "Boolean data type.",
         "values": [
           false,
           true
         ]
       },
       "email_t": {
-        "description": "Email address type. For example: <code>john_doe@example.com</code>.",
         "name": "Email Address",
-        "regex": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
         "type": "string_t",
+        "description": "Email address type. For example: <code>john_doe@example.com</code>.",
+        "regex": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
         "type_name": "String"
       },
       "float_t": {
-        "description": "Real floating-point data type.",
-        "name": "Float"
+        "name": "Float",
+        "description": "Real floating-point data type."
       },
       "hostname_t": {
-        "description": "A unique name assigned to a device that is connected to a specific computer network. A domain name in general is an Internet address that can be resolved through the Domain Name System (DNS). For example: <code>r2-d2.example.com</code>.",
         "name": "Hostname",
-        "regex": "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\\-]*[a-zA-Z0-9])\\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\\-]*[A-Za-z0-9])$",
         "type": "string_t",
+        "description": "A unique name assigned to a device that is connected to a specific computer network. A domain name in general is an Internet address that can be resolved through the Domain Name System (DNS). For example: <code>r2-d2.example.com</code>.",
+        "regex": "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\\-]*[a-zA-Z0-9])\\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\\-]*[A-Za-z0-9])$",
         "type_name": "String"
       },
       "integer_t": {
-        "description": "Basic signed integer data type.",
-        "name": "Integer"
+        "name": "Integer",
+        "description": "Basic signed integer data type."
       },
       "ip_t": {
+        "name": "IP Address",
+        "type": "string_t",
         "description": "Internet Protocol address (IP address), in either IPv4 or IPv6 format.",
         "max_len": 40,
-        "name": "IP Address",
         "regex": "/^(?>(?>([a-f0-9]{1,4})(?>:(?1)){7}|(?!(?:.*[a-f0-9](?>:|$)){8,})((?1)(?>:(?1)){0,6})?::(?2)?)|(?>(?>(?1)(?>:(?1)){5}:|(?!(?:.*[a-f0-9]:){6,})(?3)?::(?>((?1)(?>:(?1)){0,4}):)?)?(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(?>\\.(?4)){3}))$/iD",
-        "type": "string_t",
         "type_name": "String"
       },
       "json_t": {
-        "description": "Embedded JSON value. A value can be a string, or a number, or true or false or null, or an object or an array. These structures can be nested. See <a target='_blank' href='https://www.json.org'>www.json.org</a>.",
-        "name": "JSON"
+        "name": "JSON",
+        "description": "Embedded JSON value. A value can be a string, or a number, or true or false or null, or an object or an array. These structures can be nested. See <a target='_blank' href='https://www.json.org'>www.json.org</a>."
       },
       "long_t": {
-        "description": "8-byte long, signed integer data type.",
-        "name": "Long"
+        "name": "Long",
+        "description": "8-byte long, signed integer data type."
       },
       "mac_t": {
+        "name": "MAC Address",
+        "type": "string_t",
         "description": "Media Access Control (MAC) address. For example: <code>18:36:F3:98:4F:9A</code>.",
         "max_len": 32,
-        "name": "MAC Address",
         "regex": "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$",
-        "type": "string_t",
         "type_name": "String"
       },
       "object_t": {
-        "description": "Embedded object.",
-        "name": "Object"
+        "name": "Object",
+        "description": "Embedded object."
       },
       "path_t": {
-        "description": "File or folder full path name. For example: <code>/home/user/tmp/text-file.txt</code>.",
         "name": "Path Name",
-        "regex": "^[\\pL0-9_]+[\\pL0-9 ~!@#%&*\\-./_]*$",
         "type": "string_t",
+        "description": "File or folder full path name. For example: <code>/home/user/tmp/text-file.txt</code>.",
+        "regex": "^[\\pL0-9_]+[\\pL0-9 ~!@#%&*\\-./_]*$",
         "type_name": "String"
       },
       "port_t": {
-        "description": "IP TCP/UDP port number. For example: <code>80</code> or <code>22</code>.",
         "name": "IP Port",
+        "type": "integer_t",
+        "description": "IP TCP/UDP port number. For example: <code>80</code> or <code>22</code>.",
         "range": [
           0,
           65535
         ],
-        "type": "integer_t",
         "type_name": "Integer"
       },
       "string_t": {
+        "name": "String",
         "description": "UTF-8 encoded byte sequence.",
-        "max_len": 65535,
-        "name": "String"
+        "max_len": 65535
       },
       "subnet_t": {
+        "name": "Subnet",
         "description": "Subnet mask in Classless Inter-Domain Routing (CIDR) notation. For example <code>192.168.200.0/24</code>.",
         "max_len": 40,
-        "name": "Subnet",
         "type_name": "String"
       },
       "timestamp_t": {
-        "description": "The time format is the number of milliseconds since the Epoch 01/01/1970 00:00:00 UTC. For example <code>1618524549901</code>.",
         "name": "Timestamp",
         "type": "long_t",
+        "description": "The time format is the number of milliseconds since the Epoch 01/01/1970 00:00:00 UTC. For example <code>1618524549901</code>.",
         "type_name": "Long"
       }
     }

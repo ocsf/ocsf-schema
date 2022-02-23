@@ -1,14 +1,19 @@
 {
+  "name": "Endpoint Authentication Alert",
+  "uid": 0,
+  "type": "endpoint_authentication_alert",
+  "extends": "endpoint_alert",
+  "description": "Endpoint Authentication Alert events report the detections and resolutions of authentication session malicious activity.",
   "attributes": {
     "$include": "traits/authentication.json",
     "activity": {
-      "group": "primary",
-      "requirement": "optional"
+      "requirement": "optional",
+      "group": "primary"
     },
     "activity_id": {
-      "$include": "enums/authentication_activity.json",
-      "group": "primary",
-      "requirement": "recommended"
+      "requirement": "recommended",
+      "$include": "enums/authentication.json",
+      "group": "primary"
     },
     "disposition_id": {
       "enum": {
@@ -30,13 +35,8 @@
       }
     }
   },
-  "description": "Endpoint Authentication Alert events report the detections and resolutions of authentication session malicious activity.",
-  "extends": "endpoint_alert",
-  "name": "Endpoint Authentication Alert",
   "see_also": [
-    "endpoint_authentication_activity",
-    "endpoint_account_activity"
-  ],
-  "type": "endpoint_authentication_alert",
-  "uid": 0
+    "authentication_audit",
+    "account_change_audit"
+  ]
 }

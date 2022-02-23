@@ -1,0 +1,66 @@
+{
+  "name": "Account Change Audit",
+  "uid": 0,
+  "type": "account_change_audit",
+  "extends": "audit",
+  "description": "Account Audit events report when specific user account management tasks are performed, such as a user account is created, changed, deleted, renamed, disabled, enabled, locked out or unlocked.",
+  "attributes": {
+    "actor_process": {
+      "description": "The process that requested the account changes.",
+      "group": "context"
+    },
+    "disposition_id": {
+      "enum": {
+        "1": {
+          "name": "Create",
+          "description": "A user account was created."
+        },
+        "2": {
+          "name": "Enable",
+          "description": "A user account was enabled."
+        },
+        "3": {
+          "name": "Password Change",
+          "description": "An attempt was made to change an account's password."
+        },
+        "4": {
+          "name": "Password Reset",
+          "description": "An attempt was made to reset an account's password."
+        },
+        "5": {
+          "name": "Disable",
+          "description": "A user account was disabled."
+        },
+        "6": {
+          "name": "Delete",
+          "description": "A user account was deleted."
+        },
+        "7": {
+          "name": "Change",
+          "description": "A user account was changed."
+        },
+        "8": {
+          "name": "Locked Out",
+          "description": "A user account was locked out."
+        }
+      }
+    },
+    "dst_user": {
+      "requirement": "required",
+      "group": "primary"
+    },
+    "src_user": {
+      "requirement": "optional",
+      "group": "primary"
+    },
+    "user_result": {
+      "requirement": "optional",
+      "group": "primary"
+    }
+  },
+  "see_also": [
+    "endpoint_authentication_alert",
+    "authentication_audit",
+    "authorization_audit"
+  ]
+}

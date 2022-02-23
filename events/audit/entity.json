@@ -1,0 +1,45 @@
+{
+  "name": "Entity Audit",
+  "uid": 3,
+  "type": "entity_audit",
+  "extends": "audit",
+  "description": "Entity Audit events report activity by a managed client, a micro service, or a user at a management console. The activity can be a create, update, and delete operation on a managed entity.",
+  "attributes": {
+    "comment": {
+      "description": "The user provided comment about why the entity was changed.",
+      "requirement": "optional",
+      "group": "primary"
+    },
+    "disposition_id": {
+      "enum": {
+        "1": {
+          "name": "Created"
+        },
+        "2": {
+          "name": "Updated"
+        },
+        "3": {
+          "name": "Deleted"
+        },
+        "4": {
+          "name": "Moved"
+        },
+        "5": {
+          "name": "Accessed"
+        }
+      }
+    },
+    "entity": {
+      "requirement": "required",
+      "group": "primary"
+    },
+    "entity_result": {
+      "requirement": "optional",
+      "group": "primary"
+    },
+    "src_user": {
+      "requirement": "recommended",
+      "group": "context"
+    }
+  }
+}

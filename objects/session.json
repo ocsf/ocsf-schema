@@ -1,18 +1,8 @@
 {
-  "name": "Session",
+  "name": "Authenticated Session",
   "type": "session",
-  "description": "The session object describes the session in which the event occurred.",
+  "description": "This object describes the session created by a successful user or process authentication.",
   "attributes": {
-    "uid": {
-      "name": "Session ID",
-      "description": "The session identifier, as reported by the operating system, which can help to correlate this event with another events that can contain the same session ID.",
-      "requirement": "recommended"
-    },
-    "uuid": {
-      "name": "Unique Session ID",
-      "description": "The unique session identifier, as reported by the operating system. For example, Windows session GUID.",
-      "requirement": "optional"
-    },
     "auth_protocol": {
       "requirement": "optional"
     },
@@ -21,20 +11,28 @@
     },
     "is_remote": {
       "requirement": "recommended"
-    },    
+    },
     "logon_type": {
       "requirement": "optional"
     },
     "logon_type_id": {
       "requirement": "recommended"
     },
-    "src": {
-      "description": "The source endpoint associated with the user session. Remote sessions only.",
-      "requirement": "optional"
-    },
-    "user": {
-      "description": "The user that is associated with this session.",
+    "uid": {
+      "description": "The session identifier, as reported by the operating system, which can help to correlate this event with another events that can contain the same session ID.",
+      "name": "Session ID",
       "requirement": "recommended"
-    }    
+    },
+    "uuid": {
+      "description": "The unique session identifier, as reported by the operating system. For example, Windows session GUID.",
+      "name": "Unique Session ID",
+      "requirement": "optional"
+    }
+  },
+  "constraints": {
+    "at_least_one": [
+      "uuid",
+      "uid"
+    ]
   }
 }

@@ -6,11 +6,19 @@
       "description": "The process that requested the authentication.",
       "group": "context"
     },
-    "logon_process": {
-      "group": "context"
+    "auth_protocol": {
+      "requirement": "optional"
+    },
+    "auth_protocol_id": {
+      "requirement": "recommended"
     },
     "dst": {
       "description": "The Endpoint for which the authentication was targeted.",
+      "requirement": "required",
+      "group": "primary"
+    },
+    "dst_user": {
+      "description": "The destination user to authenticate.",
       "requirement": "required",
       "group": "primary"
     },
@@ -18,7 +26,19 @@
       "requirement": "optional",
       "group": "primary"
     },
-    "session": {
+    "is_remote": {
+      "requirement": "recommended"
+    },
+    "logon_process": {
+      "group": "context"
+    },
+    "logon_type": {
+      "requirement": "optional"
+    },
+    "logon_type_id": {
+      "requirement": "recommended"
+    },
+    "session_uid": {
       "requirement": "recommended",
       "group": "primary"
     },
@@ -33,11 +53,6 @@
     },
     "status_detail": {
       "description": "The details about the authentication request. For example, possible details for Windows logon or logoff events are:<ul><li>Success</li><ul><li>LOGOFF_USER_INITIATED</li><li>LOGOFF_OTHER</li></ul><li>Failure</li><ul><li>USER_DOES_NOT_EXIST</li><li>INVALID_CREDENTIALS</li><li>ACCOUNT_DISABLED</li><li>ACCOUNT_LOCKED_OUT</li><li>PASSWORD_EXPIRED</li></ul></ul>"
-    },
-    "dst_user": {
-      "description": "The destination user to authenticate.",
-      "requirement": "required",
-      "group": "primary"
     }
   }
 }

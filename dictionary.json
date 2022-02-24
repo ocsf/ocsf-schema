@@ -3,13 +3,6 @@
   "type": "dictionary",
   "description": "The Attribute Dictionary defines attributes and includes references to the events and objects in which they are used.",
   "attributes": {
-    "x_forwarded_for": {
-      "description": "The X-Forwarded-For header identifying the originating IP address of a client connecting to a web server through an HTTP proxy or a load balancer.",
-      "name": "X-Forwarded-For",
-      "type": "ip_t",
-      "is_array": true
-    },
-
     "access_complexity_id": {
       "description": "The access complexity Common Vulnerability Scoring System (CVSS) metric.",
       "name": "Access Complexity",
@@ -125,6 +118,11 @@
     "app_name": {
       "description": "The name of the application that is associated with the event or object.",
       "name": "Application Name",
+      "type": "string_t"
+    },
+    "args": {
+      "description": "The arguments sent along with the HTTP request.",
+      "name": "HTTP Arguments",
       "type": "string_t"
     },
     "assignee": {
@@ -571,6 +569,16 @@
       "name": "Class ID",
       "type": "integer_t"
     },
+    "classification": {
+      "description": "TODO: The HTTP response classification.",
+      "name": "Classification",
+      "type": "string_t"
+    },
+    "classification_detail": {
+      "description": "TODO: The HTTP response classification detail.",
+      "name": "Classification Detail",
+      "type": "string_t"
+    },
     "classification_ids": {
       "description": "An array of malware classifications.",
       "is_array": true,
@@ -599,6 +607,11 @@
       "description": "The full command line used to launch an application, service, process, or job. For example: <code>ssh user@10.0.0.10</code>",
       "name": "Command Line",
       "type": "string_t"
+    },
+    "code": {
+      "description": "The numeric response sent to a HTTP request.",
+      "name": "Response Code",
+      "type": "integer_t"
     },
     "comment": {
       "description": "The user-provided comment.",
@@ -836,6 +849,12 @@
       "object_type": "network_endpoint",
       "type": "object_t"
     },
+    "dst_user": {
+      "description": "The user that was a target of an activity.",
+      "name": "Destination User",
+      "object_type": "user",
+      "type": "object_t"
+    },
     "duration": {
       "description": "The event duration or aggregate time, the amount of time the event covers from <code>start_time</code> to <code>end_time</code> in milliseconds.",
       "name": "Duration",
@@ -845,6 +864,11 @@
       "description": "The operating system edition. For example: <code>Professional</code>.",
       "name": "OS Edition",
       "type": "string_t"
+    },
+    "email_addr": {
+      "description": "The user's email address.",
+      "name": "Email Address",
+      "type": "email_t"
     },
     "end_time": {
       "description": "The end time of a time period. See specific usage.",
@@ -856,6 +880,18 @@
       "is_array": true,
       "name": "Enrichments",
       "object_type": "enrichment",
+      "type": "object_t"
+    },
+    "entity": {
+      "description": "The managed entity that is being acted upon.",
+      "name": "Entity",
+      "object_type": "managed_entity",
+      "type": "object_t"
+    },
+    "entity_result": {
+      "description": "The updated managed entity.",
+      "name": "Entity Result",
+      "object_type": "managed_entity",
       "type": "object_t"
     },
     "ether_type": {
@@ -1011,6 +1047,11 @@
       "object_type": "group",
       "type": "object_t"
     },
+    "group_name": {
+      "description": "The name of the group that the resource belongs to.",
+      "name": "Group Name",
+      "type": "string_t"
+    },
     "groups": {
       "description": "The groups to which user belongs.",
       "is_array": true,
@@ -1033,15 +1074,29 @@
       "name": "Hostname",
       "type": "hostname_t"
     },
-    "prefix": {
-      "description": "The domain prefix.",
-      "name": "Prefix",
-      "type": "string_t"
+    "http_headers": {
+      "description": "Additional HTTP headers of an HTTP request or response.",
+      "is_array": true,
+      "name": "HTTP Headers",
+      "object_type": "http_header",
+      "type": "object_t"
     },
     "http_method": {
       "description": "The HTTP request method indicates the desired action to be performed for a given resource. Expected values: <ul> <li>TRACE</li> <li>CONNECT</li> <li>OPTIONS</li> <li>HEAD</li> <li>DELETE</li> <li>POST</li> <li>PUT</li> <li>GET</li></ul>",
       "name": "HTTP Method",
       "type": "string_t"
+    },
+    "http_request": {
+      "description": "The HTTP Request made to a web server.",
+      "name": "HTTP Request",
+      "object_type": "http_request",
+      "type": "object_t"
+    },
+    "http_response": {
+      "description": "The HTTP Response from a web server to a requester.",
+      "name": "HTTP Response",
+      "object_type": "http_response",
+      "type": "object_t"
     },
     "http_status": {
       "description": "The Hypertext Transfer Protocol (HTTP) <a target='_blank' href='https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml'>status code</a> returned to the client.",
@@ -1275,6 +1330,16 @@
       "description": "The last run time of application or service. See specific usage.",
       "name": "Last Run",
       "type": "timestamp_t"
+    },
+    "latency": {
+      "description": "TODO: The HTTP response latency. In seconds, milliseconds, etc.?",
+      "name": "Latency",
+      "type": "integer_t"
+    },
+    "length": {
+      "description": "The HTTP response length, in number of bytes.",
+      "name": "Response Length",
+      "type": "integer_t"
     },
     "lineage": {
       "description": "The lineage of the process.",
@@ -1575,11 +1640,6 @@
       "name": "Owner Name",
       "type": "string_t"
     },
-    "group_name": {
-      "description": "The name of the group that the resource belongs to.",
-      "name": "Group Name",
-      "type": "string_t"
-    },
     "packets": {
       "default": 0,
       "description": "The total number of packets (in and out).",
@@ -1641,6 +1701,11 @@
       "name": "Postal Code",
       "type": "string_t"
     },
+    "prefix": {
+      "description": "The domain prefix.",
+      "name": "Prefix",
+      "type": "string_t"
+    },
     "privileges": {
       "description": "The user or group privileges.",
       "is_array": true,
@@ -1663,43 +1728,6 @@
       "description": "Cloud project identifier.",
       "name": "Project ID",
       "type": "string_t"
-    },
-    "code": {
-      "description": "The numeric response sent to a HTTP request.",
-      "name": "Response Code",
-      "type": "integer_t"
-    },
-    "classification": {
-      "description": "TODO: The HTTP response classification.",
-      "name": "Classification",
-      "type": "string_t"
-    },
-    "classification_detail": {
-      "description": "TODO: The HTTP response classification detail.",
-      "name": "Classification Detail",
-      "type": "string_t"
-    },
-    "latency": {
-      "description": "TODO: The HTTP response latency. In seconds, milliseconds, etc.?",
-      "name": "Latency",
-      "type": "integer_t"
-    },
-    "length": {
-      "description": "The HTTP response length, in number of bytes.",
-      "name": "Response Length",
-      "type": "integer_t"
-    },
-    "entity": {
-      "description": "The managed entity that is being acted upon.",
-      "name": "Entity",
-      "object_type": "managed_entity",
-      "type": "object_t"
-    },
-    "entity_result": {
-      "description": "The updated managed entity.",
-      "name": "Entity Result",
-      "object_type": "managed_entity",
-      "type": "object_t"
     },
     "protocol_name": {
       "description": "The TCP/IP protocol name in lowercase, as defined by the Internet Assigned Numbers Authority (IANA). See <a target='_blank' href='https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml'>Protocol Numbers</a>. For example: <code>tcp</code> or <code>udp</code>.",
@@ -1785,6 +1813,21 @@
     "rdata": {
       "description": "The data describing the DNS resource. The meaning of this data depends on the type and class of the resource record.",
       "name": "DNS RData",
+      "type": "string_t"
+    },
+    "ref_event_code": {
+      "description": "The event code/ID, as defined by the event source. It is used to identify the type of event. For example, the Windows event Code or ID.",
+      "name": "Reference Event Code",
+      "type": "string_t"
+    },
+    "ref_event_name": {
+      "description": "The event name, as defined by the event source.",
+      "name": "Reference Event Name",
+      "type": "string_t"
+    },
+    "ref_event_uid": {
+      "description": "The event instance identifier, as defined by the event source. It is the index of the event in an external event log. For example, the Windows EventRecordID.",
+      "name": "Reference Event ID",
       "type": "string_t"
     },
     "referrer": {
@@ -1882,13 +1925,6 @@
       "name": "Reputation Score ID",
       "type": "integer_t"
     },
-    "http_headers": {
-      "description": "Additional HTTP headers of an HTTP request or response.",
-      "name": "HTTP Headers",
-      "object_type": "http_header",
-      "type": "object_t",
-      "is_array": true
-    },
     "request_headers": {
       "description": "The additional information associated with and the HTTP request.",
       "name": "Request Headers",
@@ -1926,23 +1962,6 @@
       "name": "Response Headers",
       "object_type": "http_header",
       "type": "object_t"
-    },
-    "http_request": {
-      "description": "The HTTP Request made to a web server.",
-      "name": "HTTP Request",
-      "object_type": "http_request",
-      "type": "object_t"
-    },
-    "http_response": {
-      "description": "The HTTP Response from a web server to a requester.",
-      "name": "HTTP Response",
-      "object_type": "http_response",
-      "type": "object_t"
-    },
-    "args": {
-      "description": "The arguments sent along with the HTTP request.",
-      "name": "HTTP Arguments",
-      "type": "string_t"
     },
     "response_time": {
       "description": "The Domain Name System (DNS) response time.",
@@ -2163,21 +2182,6 @@
       "name": "Size",
       "type": "long_t"
     },
-    "ref_event_code": {
-      "description": "The event code/ID, as defined by the event source. It is used to identify the type of event. For example, the Windows event Code or ID.",
-      "name": "Reference Event Code",
-      "type": "string_t"
-    },
-    "ref_event_name": {
-      "description": "The event name, as defined by the event source.",
-      "name": "Reference Event Name",
-      "type": "string_t"
-    },
-    "ref_event_uid": {
-      "description": "The event instance identifier, as defined by the event source. It is the index of the event in an external event log. For example, the Windows EventRecordID.",
-      "name": "Reference Event ID",
-      "type": "string_t"
-    },
     "sp_name": {
       "description": "The name of the latest Service Pack.",
       "name": "OS Service Pack",
@@ -2192,12 +2196,6 @@
       "description": "The network source endpoint.",
       "name": "Source Endpoint",
       "object_type": "network_endpoint",
-      "type": "object_t"
-    },
-    "dst_user": {
-      "description": "The user that was a target of an activity.",
-      "name": "Destination User",
-      "object_type": "user",
       "type": "object_t"
     },
     "src_user": {
@@ -2467,6 +2465,12 @@
       "description": "The unique identifier of the Virtual Private Cloud (VPC).",
       "name": "VPC UID",
       "type": "string_t"
+    },
+    "x_forwarded_for": {
+      "description": "The X-Forwarded-For header identifying the originating IP address of a client connecting to a web server through an HTTP proxy or a load balancer.",
+      "is_array": true,
+      "name": "X-Forwarded-For",
+      "type": "ip_t"
     },
     "xattributes": {
       "description": "An unordered collection of zero or more name/value pairs where each pair represents a file or folder extended attribute.</p>For example: Windows alternate data stream attributes (ADS stream name, ADS size, etc.), user-defined or application-defined attributes, ACL, owner, primary group, etc. Examples from DCS: </p><ul><li><strong>ads_name</strong></li><li><strong>ads_size</strong></li><li><strong>dacl</strong></li><li><strong>owner</strong></li><li><strong>primary_group</strong></li><li><strong>link_name</strong> - name of the link associated to the file.</li><li><strong>hard_link_count</strong> - the number of links that are associated to the file.</li></ul>",

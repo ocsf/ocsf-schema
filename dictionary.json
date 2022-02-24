@@ -3,6 +3,13 @@
   "type": "dictionary",
   "description": "The Attribute Dictionary defines attributes and includes references to the events and objects in which they are used.",
   "attributes": {
+    "x_forwarded_for": {
+      "description": "The X-Forwarded-For header identifying the originating IP address of a client connecting to a web server through an HTTP proxy or a load balancer.",
+      "name": "X-Forwarded-For",
+      "type": "ip_t",
+      "is_array": true
+    },
+
     "access_complexity_id": {
       "description": "The access complexity Common Vulnerability Scoring System (CVSS) metric.",
       "name": "Access Complexity",
@@ -24,8 +31,8 @@
       "type": "string_t"
     },
     "account_uid": {
-      "description": "The unique identifier of an user account.",
-      "name": "User Account UID",
+      "description": "The unique identifier of the account to which the user belongs (e.g. AWS Account ID).",
+      "name": "Account UID",
       "type": "string_t"
     },
     "activity": {
@@ -127,7 +134,7 @@
     },
     "attack_vector_id": {
       "description": "The attack vector Common Vulnerability Scoring System (CVSS) metric.",
-      "name": "Attack Vector",
+      "name": "Attack Vector ID",
       "type": "integer_t"
     },
     "attacks": {
@@ -192,12 +199,12 @@
     },
     "authentication_id": {
       "description": "The authentication Common Vulnerability Scoring System (CVSS) metric.",
-      "name": "Authentication",
+      "name": "Authentication ID",
       "type": "integer_t"
     },
     "availability_impact_id": {
       "description": "The availability impact Common Vulnerability Scoring System (CVSS) metric.",
-      "name": "Availability Impact",
+      "name": "Availability Impact ID",
       "type": "integer_t"
     },
     "base_address": {
@@ -206,7 +213,7 @@
       "type": "string_t"
     },
     "bits": {
-      "description": "The number of processor bits. For example: 64 or 128.",
+      "description": "The number of processor bits. For example: <code>64</code> or <code>128</code>.",
       "name": "OS Bits",
       "type": "integer_t"
     },
@@ -234,7 +241,7 @@
       "type": "long_t"
     },
     "caption": {
-      "description": "A short description or caption of the device. For example: \"ATP Scanner 1 \" or \" CSP Manager\".",
+      "description": "A short description or caption of the device. For example: <code>Scanner 1</code> or <code>Database Manager</code>.",
       "name": "Caption",
       "type": "string_t"
     },
@@ -599,7 +606,7 @@
       "type": "string_t"
     },
     "company_name": {
-      "description": "The name of the company that published the file. For example: \"Microsoft Corporation\".",
+      "description": "The name of the company that published the file. For example: <code>Microsoft Corporation</code>.",
       "name": "Company Name",
       "type": "string_t"
     },
@@ -671,7 +678,7 @@
       "type": "string_t"
     },
     "coordinates": {
-      "description": "A two-element array, containing a longitude/latitude pair. The format conforms with <a target='_blank' href='https://geojson.org'>GeoJSON</a>. For example: [-73.983, 40.719].",
+      "description": "A two-element array, containing a longitude/latitude pair. The format conforms with <a target='_blank' href='https://geojson.org'>GeoJSON</a>. For example: <code>[-73.983, 40.719]</code>.",
       "is_array": true,
       "name": "Coordinates",
       "type": "float_t"
@@ -688,7 +695,7 @@
       "type": "integer_t"
     },
     "country": {
-      "description": "The ISO 3166-1 Alpha-2 country code. For the complete list of country codes see <a target='_blank' href='https://www.iso.org/obp/ui/#iso:pub:PUB500001:en' >ISO 3166-1 alpha-2 codes</a>.<p><b>Note:</b> The two letter country code should be capitalized. For example: \"US\" or \"CA\".</p>",
+      "description": "The ISO 3166-1 Alpha-2 country code. For the complete list of country codes see <a target='_blank' href='https://www.iso.org/obp/ui/#iso:pub:PUB500001:en' >ISO 3166-1 alpha-2 codes</a>.<p><b>Note:</b> The two letter country code should be capitalized. For example: <code>US</code> or <code>CA</code>.</p>",
       "name": "Country",
       "type": "string_t"
     },
@@ -873,7 +880,7 @@
       "type": "object_t"
     },
     "event_time": {
-      "description": "The event occurrence time, representing the time when the event was created by the event producer.<p><b>Note:</b> The format is ISO 8601: <code>yyyy-MM-dd'T'HH:mm:ss.SSSXXX</code>. For example: 2021-07-22T14:41:17.128-07:00</p>",
+      "description": "The event occurrence time, representing the time when the event was created by the event producer.<p><b>Note:</b> The format is ISO 8601: <code>yyyy-MM-dd'T'HH:mm:ss.SSSXXX</code>. For example: <code>2021-07-22T14:41:17.128-07:00</code></p>",
       "name": "Event Time",
       "type": "string_t"
     },
@@ -1026,6 +1033,11 @@
       "name": "Hostname",
       "type": "hostname_t"
     },
+    "prefix": {
+      "description": "The domain prefix.",
+      "name": "Prefix",
+      "type": "string_t"
+    },
     "http_method": {
       "description": "The HTTP request method indicates the desired action to be performed for a given resource. Expected values: <ul> <li>TRACE</li> <li>CONNECT</li> <li>OPTIONS</li> <li>HEAD</li> <li>DELETE</li> <li>POST</li> <li>PUT</li> <li>GET</li></ul>",
       "name": "HTTP Method",
@@ -1036,23 +1048,28 @@
       "name": "HTTP Status",
       "type": "integer_t"
     },
+    "http_version": {
+      "description": "The Hypertext Transfer Protocol (HTTP) version.",
+      "name": "HTTP Version",
+      "type": "string_t"
+    },
     "hw_bios_date": {
-      "description": "The BIOS date. For example: \"03/31/16\".",
+      "description": "The BIOS date. For example: <code>03/31/16</code>.",
       "name": "BIOS Date",
       "type": "string_t"
     },
     "hw_bios_manufacturer": {
-      "description": "The BIOS manufacturer. For example: \"LENOVO\".",
+      "description": "The BIOS manufacturer. For example: <code>LENOVO</code>.",
       "name": "BIOS Manufacturer",
       "type": "string_t"
     },
     "hw_bios_ver": {
-      "description": "The BIOS version. For example: \"LENOVO G5ETA2WW (2.62)\".",
+      "description": "The BIOS version. For example: <code>LENOVO G5ETA2WW (2.62)</code>.",
       "name": "BIOS Version",
       "type": "string_t"
     },
     "hw_cpu_type": {
-      "description": "The processor type. For example: \"x86 Family 6 Model 37 Stepping 5\".",
+      "description": "The processor type. For example: <code>x86 Family 6 Model 37 Stepping 5</code>.",
       "name": "Processor Type",
       "type": "string_t"
     },
@@ -1250,7 +1267,7 @@
       "type": "string_t"
     },
     "lang": {
-      "description": "The two letter lower case language codes, as defined by <a target='_blank' href='https://en.wikipedia.org/wiki/ISO_639-1'>ISO 639-1</a>. For example: \"en\" (English), \"de\" (German), or \"fr\" (French).",
+      "description": "The two letter lower case language codes, as defined by <a target='_blank' href='https://en.wikipedia.org/wiki/ISO_639-1'>ISO 639-1</a>. For example: <code>en</code> (English), <code>de</code> (German), or <code>fr</code> (French).",
       "name": "Language",
       "type": "string_t"
     },
@@ -1554,8 +1571,13 @@
       "type": "object_t"
     },
     "owner_name": {
-      "description": "The name of the data owner.",
+      "description": "The name of the service or user account that owns the resource.",
       "name": "Owner Name",
+      "type": "string_t"
+    },
+    "group_name": {
+      "description": "The name of the group that the resource belongs to.",
+      "name": "Group Name",
       "type": "string_t"
     },
     "packets": {
@@ -1642,6 +1664,43 @@
       "name": "Project ID",
       "type": "string_t"
     },
+    "code": {
+      "description": "The numeric response sent to a HTTP request.",
+      "name": "Response Code",
+      "type": "integer_t"
+    },
+    "classification": {
+      "description": "TODO: The HTTP response classification.",
+      "name": "Classification",
+      "type": "string_t"
+    },
+    "classification_detail": {
+      "description": "TODO: The HTTP response classification detail.",
+      "name": "Classification Detail",
+      "type": "string_t"
+    },
+    "latency": {
+      "description": "TODO: The HTTP response latency. In seconds, milliseconds, etc.?",
+      "name": "Latency",
+      "type": "integer_t"
+    },
+    "length": {
+      "description": "The HTTP response length, in number of bytes.",
+      "name": "Response Length",
+      "type": "integer_t"
+    },
+    "entity": {
+      "description": "The managed entity that is being acted upon.",
+      "name": "Entity",
+      "object_type": "managed_entity",
+      "type": "object_t"
+    },
+    "entity_result": {
+      "description": "The updated managed entity.",
+      "name": "Entity Result",
+      "object_type": "managed_entity",
+      "type": "object_t"
+    },
     "protocol_name": {
       "description": "The TCP/IP protocol name in lowercase, as defined by the Internet Assigned Numbers Authority (IANA). See <a target='_blank' href='https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml'>Protocol Numbers</a>. For example: <code>tcp</code> or <code>udp</code>.",
       "name": "Protocol Name",
@@ -1677,7 +1736,7 @@
       "type": "integer_t"
     },
     "provider": {
-      "description": "The origin of the reputation and category information.",
+      "description": "The origin of information associated with the event. See specific usage.",
       "name": "Provider",
       "type": "string_t"
     },
@@ -1763,7 +1822,7 @@
       "type": "object_t"
     },
     "region": {
-      "description": "The name or the code of a geographical region. See specific usage.",
+      "description": "The name or the code of a region. See specific usage.",
       "name": "Region",
       "type": "string_t"
     },
@@ -1823,10 +1882,17 @@
       "name": "Reputation Score ID",
       "type": "integer_t"
     },
+    "http_headers": {
+      "description": "Additional HTTP headers of an HTTP request or response.",
+      "name": "HTTP Headers",
+      "object_type": "http_header",
+      "type": "object_t",
+      "is_array": true
+    },
     "request_headers": {
       "description": "The additional information associated with and the HTTP request.",
       "name": "Request Headers",
-      "object_type": "http_headers",
+      "object_type": "http_header",
       "type": "object_t"
     },
     "requested_permissions": {
@@ -1858,8 +1924,25 @@
     "response_headers": {
       "description": "The additional information associated with and the HTTP response.",
       "name": "Response Headers",
-      "object_type": "data",
+      "object_type": "http_header",
       "type": "object_t"
+    },
+    "http_request": {
+      "description": "The HTTP Request made to a web server.",
+      "name": "HTTP Request",
+      "object_type": "http_request",
+      "type": "object_t"
+    },
+    "http_response": {
+      "description": "The HTTP Response from a web server to a requester.",
+      "name": "HTTP Response",
+      "object_type": "http_response",
+      "type": "object_t"
+    },
+    "args": {
+      "description": "The arguments sent along with the HTTP request.",
+      "name": "HTTP Arguments",
+      "type": "string_t"
     },
     "response_time": {
       "description": "The Domain Name System (DNS) response time.",
@@ -1985,7 +2068,7 @@
       "type": "string_t"
     },
     "scheme": {
-      "description": "The scheme portion of the URL. For example: \"http\", \"https\", \"ftp\" or \"sftp\".",
+      "description": "The scheme portion of the URL. For example: <code>http</code>, <code>https</code>, <code>ftp</code>, or <code>sftp</code>.",
       "name": "Scheme",
       "type": "string_t"
     },
@@ -2200,17 +2283,17 @@
       "type": "integer_t"
     },
     "technique_name": {
-      "description": "The name of the attack technique, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>. For example: Drive-by Compromise.",
+      "description": "The name of the attack technique, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>. For example: <code>Drive-by Compromise</code>.",
       "name": "Technique Name",
       "type": "string_t"
     },
     "technique_uid": {
-      "description": "The unique identifier of the attack technique, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>. For example: T1189.",
+      "description": "The unique identifier of the attack technique, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>. For example: <code>T1189</code>.",
       "name": "Technique ID",
       "type": "string_t"
     },
     "text": {
-      "description": "The URL. For example: http://www.example.com/download/trouble.exe.",
+      "description": "The URL. For example: <code>http://www.example.com/download/trouble.exe</code>.",
       "name": "URL Text",
       "type": "string_t"
     },

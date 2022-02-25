@@ -1,10 +1,19 @@
 {
   "name": "Network Endpoint",
   "type": "network_endpoint",
-  "description": "The network endpoint object describes source or destination of a network connection.",
   "extends": "endpoint",
+  "description": "The network endpoint object describes source or destination of a network connection.",
   "attributes": {
     "hostname": {
+      "requirement": "optional"
+    },
+    "instance_uid": {
+      "requirement": "optional"
+    },
+    "interface_uid": {
+      "requirement": "optional"
+    },
+    "intermediate_ips": {
       "requirement": "optional"
     },
     "ip": {
@@ -16,11 +25,29 @@
     "port": {
       "requirement": "recommended"
     },
-    "resolved_ip": {
+    "subnet_uid": {
       "requirement": "optional"
     },
     "svc_name": {
       "requirement": "optional"
+    },
+    "vlan_uid": {
+      "requirement": "optional"
+    },
+    "vpc_uid": {
+      "requirement": "optional"
+    },
+    "zone": {
+      "requirement": "optional"
     }
+  },
+  "constraints": {
+    "at_least_one": [
+      "hostname",
+      "ip",
+      "svc_name",
+      "instance_uid",
+      "interface_uid"
+    ]
   }
 }

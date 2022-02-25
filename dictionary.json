@@ -3,6 +3,27 @@
   "type": "dictionary",
   "description": "The Attribute Dictionary defines attributes and includes references to the events and objects in which they are used.",
   "attributes": {
+    "instance_uid": {
+      "description": "The unique identifier of a VM instance.",
+      "name": "Instance ID",
+      "type": "string_t"
+    },
+    "interface_uid": {
+      "description": "The unique identifier of the network interface.",
+      "name": "Network Interface ID",
+      "type": "string_t"
+    },
+    "intermediate_ips": {
+      "description": "The intermediate IP Addresses. For example, the IP addresses in the HTTP X-Forwarded-For header.",
+      "name": "Intermediate IP Addresses",
+      "type": "ip_t",
+      "is_array": true
+    },
+    "vlan_uid": {
+      "description": "The Virtual LAN identifier.",
+      "name": "VLAN",
+      "type": "string_t"
+    },
     "access_complexity_id": {
       "description": "The access complexity Common Vulnerability Scoring System (CVSS) metric.",
       "name": "Access Complexity",
@@ -1615,12 +1636,6 @@
       "object_type": "os",
       "type": "object_t"
     },
-    "other": {
-      "description": "Other HTTP headers of an HTTP request or response that pass additional context and metadata about the request or response.",
-      "name": "HTTP Headers",
-      "object_type": "data",
-      "type": "object_t"
-    },
     "other_malware": {
       "description": "The additional malware that was detected.",
       "is_array": true,
@@ -1833,11 +1848,6 @@
       "description": "The request header that identifies the address of the previous web page, which is linked to the current web page or resource being requested.",
       "name": "HTTP Referrer",
       "type": "string_t"
-    },
-    "referrer_hostname": {
-      "description": "The hostname contained in the HTTP Referrer request header.",
-      "name": "HTTP Referrer Host",
-      "type": "hostname_t"
     },
     "reg_key": {
       "description": "The registry key.",
@@ -2478,7 +2488,7 @@
       "type": "string_t"
     },
     "x_forwarded_for": {
-      "description": "The X-Forwarded-For header identifying the originating IP address of a client connecting to a web server through an HTTP proxy or a load balancer.",
+      "description": "The X-Forwarded-For header identifying the originating IP address(es) of a client connecting to a web server through an HTTP proxy or a load balancer.",
       "is_array": true,
       "name": "X-Forwarded-For",
       "type": "ip_t"

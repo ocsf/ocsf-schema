@@ -1,4 +1,7 @@
 {
+  "name": "Process",
+  "type": "process",
+  "description": "The process object describes a running instance of a launched program.",
   "attributes": {
     "cmd_line": {
       "requirement": "recommended"
@@ -15,10 +18,8 @@
       "requirement": "optional"
     },
     "integrity_id": {
+      "requirement": "optional",
       "enum": {
-        "-1": {
-          "name": "Other"
-        },
         "0": {
           "name": "Unknown"
         },
@@ -39,9 +40,11 @@
         },
         "6": {
           "name": "Protected"
-        }
       },
-      "requirement": "optional"
+        "-1": {
+          "name": "Other"
+        }
+      }
     },
     "lineage": {
       "requirement": "optional"
@@ -59,7 +62,9 @@
     "pid": {
       "requirement": "required"
     },
-    "run_as": {},
+    "run_as": {
+      "requirement": "optional"
+    },
     "sandbox": {
       "requirement": "optional"
     },
@@ -67,8 +72,8 @@
       "requirement": "optional"
     },
     "uid": {
-      "description": "The process unique identifier, as reported by the event source. For examples a process-generated UUID or Sysmon Process GUIDs, which  some uniquely identifies the process.",
       "name": "Process UID",
+      "description": "The process unique identifier, as reported by the event source. For examples a process-generated UUID or Sysmon Process GUIDs, which  some uniquely identifies the process.",
       "requirement": "optional"
     },
     "xattributes": {
@@ -76,7 +81,10 @@
       "requirement": "optional"
     }
   },
-  "description": "The process object describes a running instance of a launched program.",
-  "name": "Process",
-  "type": "process"
+  "constraints": {
+    "at_least_one": [
+      "file",
+      "name"
+    ]
+  }
 }

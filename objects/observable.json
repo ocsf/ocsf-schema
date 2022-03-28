@@ -7,19 +7,13 @@
       "description": "The name of the observable attribute. For example: <code>file.name</code>.",
       "requirement": "required"
     },
-    "type": {
-      "description": "The observable value type name that is not in the pre-defined types.",
-      "requirement": "optional"
-    },
+    "associations": {},
     "role_ids": {
+      "requirement": "required",
       "enum": {
-        "-1": {
-          "description": "The observable role is not mapped.",
-          "name": "Other"
-        },
         "0": {
-          "description": "Unknown role.",
-          "name": "Unknown"
+          "name": "Unknown",
+          "description": "Unknown role."
         },
         "1": {
           "name": "Actor"
@@ -47,12 +41,19 @@
         },
         "9": {
           "name": "Observer"
+        },
+        "-1": {
+          "name": "Other",
+          "description": "The observable role is not mapped."
         }
-      },
-      "requirement": "required"
+      }
     },
     "roles": {
       "requirement": "optional"
+    },
+    "type": {
+      "description": "The observable value type name that is not in the pre-defined types.",
+      "requirement": "required"
     },
     "type_id": {
       "description": "The observable value type identifier.",
@@ -124,7 +125,7 @@
     },
     "value": {
       "description": "The value associated with the observable attribute. The meaning of the data depends on the observable type.",
-      "requirement": "required"
+      "requirement": "optional"
     }
   }
 }

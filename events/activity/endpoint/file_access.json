@@ -1,0 +1,33 @@
+{
+  "name": "Endpoint File Access Activity",
+  "uid": 1,
+  "type": "endpoint_file_access_activity",
+  "extends": "activity",
+  "description": "Endpoint File Access Activity events report when a network share object was checked to see whether client can be granted desired access on a file.",
+  "attributes": {
+    "$include": "traits/file_access.json",
+    "disposition_id": {
+      "description": "The disposition ID of the event.",
+      "enum": {
+        "1": {
+          "name": "Allow"
+        },
+        "2": {
+          "name": "Block"
+        }
+      }
+    }
+  },
+  "associations": {
+    "origin.device": [
+      "user"
+    ],
+    "user": [
+      "origin.device"
+    ]
+  },
+  "see_also": [
+    "endpoint_file_activity",
+    "endpoint_folder_activity"
+  ]
+}

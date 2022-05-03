@@ -5,40 +5,22 @@
   "extends": "base_event",
   "description": "The conclusion events report the results of detections or analytics.",
   "attributes": {
-    "disposition": {
-      "group": "classification"
-    },
-    "disposition_id": {
-      "$include": "enums/defaults.json",
-      "group": "classification",
-      "requirement": "required"
-    },
+    "$include": "profiles/classification_ex.json",
     "end_time": {
-      "group": "occurrence",
       "requirement": "recommended"
-    },
-    "event_name": {
-      "requirement": "reserved",
-      "group": "classification"
-    },
-    "event_uid": {
-      "group": "classification",
-      "requirement": "reserved"
     },
     "message": {
       "description": "The description of the finding or incident.",
       "group": "primary"
     },
     "rule": {
-      "group": "primary",
-      "requirement": "required"
+      "requirement": "required",
+      "group": "primary"
     },
     "start_time": {
-      "group": "occurrence",
       "requirement": "recommended"
     },
     "time": {
-      "group": "occurrence",
       "requirement": "required"
     }
   }

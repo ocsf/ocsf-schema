@@ -6,24 +6,13 @@
   "extends": "base_event",
   "description": "Incident Associate events report when a new event is associated with an existing incident.",
   "attributes": {
-    "disposition": {
-      "group": "classification"
-    },
+    "$include": "profiles/classification_ex.json",
     "disposition_id": {
       "enum": {
         "1": {
           "name": "Logged"
         }
-      },
-      "group": "classification"
-    },
-    "event_name": {
-      "requirement": "reserved",
-      "group": "classification"
-    },
-    "event_uid": {
-      "requirement": "reserved",
-      "group": "classification"
+      }
     },
     "incident_uid": {
       "requirement": "required",

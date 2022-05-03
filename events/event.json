@@ -4,22 +4,7 @@
   "extends": "base_event",
   "description": "The event is a generic concrete event and it also defines a set of attributes available in most event classes. As a generic event that does not belong to any event category, it could be used to log events that are not otherwise defined by the schema.",
   "attributes": {
-    "disposition": {
-      "group": "classification"
-    },
-    "disposition_id": {
-      "requirement": "required",
-      "$include": "enums/defaults.json",
-      "group": "classification"
-    },
-    "event_name": {
-      "requirement": "reserved",
-      "group": "classification"
-    },
-    "event_uid": {
-      "requirement": "reserved",
-      "group": "classification"
-    },
+    "$include": "profiles/classification_ex.json",
     "labels": {
       "description": "The list of category labels attached to the event or specific attributes. Labels are user defined tags or aliases added at normalization time.</p>For example: <code>[\"network\", \"connection.ip:destination\", \"device.ip:source\"]</code>",
       "group": "context"
@@ -49,13 +34,6 @@
     "status_id": {
       "requirement": "recommended",
       "group": "primary"
-    },
-    "time": {
-      "requirement": "reserved",
-      "group": "occurrence"
-    },
-    "timezone": {
-      "group": "occurrence"
     }
   }
 }

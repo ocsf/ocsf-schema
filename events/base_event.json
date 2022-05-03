@@ -3,38 +3,9 @@
   "type": "base_event",
   "description": "The base event is a generic concrete event and it also defines a set of attributes available in most event classes. As a generic event that does not belong to any event category, it could be used to log events that are not otherwise defined by the schema.",
   "attributes": {
-    "category": {
-      "group": "classification"
-    },
-    "category_uid": {
-      "requirement": "required",
-      "$include": "enums/defaults.json",
-      "group": "classification"
-    },
-    "class_name": {
-      "group": "classification"
-    },
-    "class_uid": {
-      "requirement": "required",
-      "$include": "enums/defaults.json",
-      "group": "classification"
-    },
-    "count": {
-      "group": "occurrence"
-    },
-    "duration": {
-      "group": "occurrence"
-    },
-    "end_time": {
-      "description": "The end time of a time period, or the time of the most recent event included in the aggregate event.",
-      "group": "occurrence"
-    },
+    "$include": ["profiles/occurrence.json", "profiles/classification.json"],
     "enrichments": {
       "group": "context"
-    },
-    "event_time": {
-      "requirement": "recommended",
-      "group": "occurrence"
     },
     "message": {
       "requirement": "recommended",
@@ -50,15 +21,11 @@
     },
     "origin": {
       "requirement": "required",
-      "group": "origination"
+      "group": "context"
     },
     "raw_data": {
       "requirement": "reserved",
       "group": "context"
-    },
-    "start_time": {
-      "description": "The start time of a time period, or the time of the least recent event included in the aggregate event.",
-      "group": "occurrence"
     },
     "unmapped": {
       "requirement": "reserved",

@@ -1,35 +1,38 @@
 {
   "name": "Finding Report",
-  "type": "finding_report",
   "uid": 0,
+  "category": "finding",
+  "type": "finding_report",
+  "extends": "base_event",
   "description": "Finding events report the results of detections or analytics.",
-  "extends": "conclusion",
   "attributes": {
+    "$include": "profiles/classification_ex.json",
     "detection_end_time": {
-      "group": "primary",
-      "requirement": "recommended"
+      "requirement": "recommended",
+      "group": "primary"
     },
     "detection_start_time": {
-      "group": "primary",
-      "requirement": "recommended"
+      "requirement": "recommended",
+      "group": "primary"
     },
     "device_entities": {
       "group": "primary"
     },
     "disposition_id": {
+      "requirement": "required",
       "enum": {
         "1": {
           "name": "Logged"
         }
-      },
-      "requirement": "required"
+      }
     },
     "end_time": {
-      "description": "The time of the most recent event included in the findings report."
+      "description": "The time of the most recent event included in the findings report.",
+      "requirement": "recommended"
     },
     "finding": {
-      "group": "primary",
-      "requirement": "required"
+      "requirement": "required",
+      "group": "primary"
     },
     "message": {
       "description": "The description of the finding report.",
@@ -38,11 +41,17 @@
     "observables": {
       "description": "The observables associated with the finding report."
     },
+    "rule": {
+      "requirement": "required",
+      "group": "primary"
+    },
     "start_time": {
-      "description": "The time of the least recent event included in the finding report."
+      "description": "The time of the least recent event included in the finding report.",
+      "requirement": "recommended"
     },
     "time": {
-      "description": "The time when the finding was created."
+      "description": "The time when the finding was created.",
+      "requirement": "required"
     },
     "user_entities": {
       "group": "primary"

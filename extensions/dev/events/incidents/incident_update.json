@@ -1,0 +1,39 @@
+{
+  "name": "Incident Update",
+  "uid": 4,
+  "type": "incident_update",
+  "extends": "incident",
+  "description": "Incident updates events report when an incident has been updated.",
+  "attributes": {
+    "assignee": {
+      "requirement": "optional",
+      "group": "primary"
+    },
+    "data": {
+      "requirement": "optional",
+      "group": "primary"
+    },
+    "disposition_id": {
+      "enum": {
+        "1": {
+          "name": "Logged"
+        }
+      }
+    },
+    "modified_time": {
+      "description": "The time that the incident was modified.",
+      "requirement": "required",
+      "group": "occurrence"
+    },
+    "modifier": {
+      "description": "The name of the user that last modified the incident.",
+      "requirement": "optional",
+      "group": "primary"
+    }
+  },
+  "see_also": [
+    "incident_create",
+    "incident_close",
+    "incident_associate"
+  ]
+}

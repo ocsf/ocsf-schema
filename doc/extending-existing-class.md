@@ -95,7 +95,7 @@ If you are planning to use the new  `Better Cloud` object in a single class or j
   "uid": 1,
   "extends": "base_event",
   "attributes": {
-    "disposition_id": {
+    "activity_id": {
       "enum": {
         "1": {
           "name": "Logged"

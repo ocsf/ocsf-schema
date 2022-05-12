@@ -1,8 +1,8 @@
 {
-  "name": "Process",
   "observable": 16,
-  "type": "process",
   "description": "The process object describes a running instance of a launched program.",
+  "name": "Process",
+  "type": "process",
   "attributes": {
     "cmd_line": {
       "requirement": "recommended"
@@ -41,7 +41,7 @@
         },
         "6": {
           "name": "Protected"
-      },
+        },
         "-1": {
           "name": "Other"
         }
@@ -49,7 +49,7 @@
     },
     "lineage": {
       "requirement": "optional"
-    },    
+    },
     "loaded_modules": {
       "requirement": "optional"
     },
@@ -60,7 +60,11 @@
     },
     "parent_process": {
       "requirement": "optional"
-    },    
+    },
+    "path": {
+      "description": "The filesystem path of the process that was observed.",
+      "requirement": "recommended"
+    },
     "pid": {
       "requirement": "required"
     },
@@ -70,12 +74,16 @@
     "sandbox": {
       "requirement": "optional"
     },
+    "termination_time": {
+      "description": "The termination timestamp of the process.",
+      "requirement": "optional"
+    },
     "tid": {
       "requirement": "optional"
     },
     "uid": {
-      "name": "Process UID",
       "description": "The process unique identifier, as reported by the event source. For examples a process-generated UUID or Sysmon Process GUIDs, which  some uniquely identifies the process.",
+      "name": "Process UID",
       "requirement": "optional"
     },
     "xattributes": {

@@ -40,6 +40,41 @@
     "name": "Account UID",
     "type": "string_t"
   },
+  "account_type": {
+    "description": "The user account type (e.g. AWS, LDAP, Windows account, etc.).",
+    "name": "Account Type ID",
+    "type": "string_t"
+  },
+  "account_type_id": {
+    "description": "The user account type identifier (e.g. AWS, LDAP, Windows account, etc.).",
+    "name": "Account Type ID",
+    "enum": {
+      "-1": {
+        "description": "The user account type is not mapped.",
+        "name": "Other"
+      },
+      "0": {
+        "description": "The user account type is unknown.",
+        "name": "Unknown"
+      },
+      "1": {
+        "name": "LDAP Account"
+      },
+      "2": {
+        "name": "Windows Account"
+      },
+      "3": {
+        "name": "AWS IAM Account"
+      },
+      "4": {
+        "name": "GCP Account"
+      },
+      "5": {
+        "name": "Azure AD Account"
+      }
+    },
+    "type": "integer_t"
+  },
   "activity": {
     "description": "The original activity that triggered the alert event.",
     "name": "Activity",

@@ -1,0 +1,33 @@
+{
+  "uid": 7,
+  "category": "application_activity",
+  "description": "AWS Web Application Firewall (Log Source)",
+  "extends": "base_event",
+  "name": "AWS Web Application Firewall",
+  "type": "waf_activity",
+  "attributes": {
+    "alternate_rules": {
+      "requirement": "optional"
+    },
+    "disposition_id": {
+      "description": "The disposition ID of the event.",
+      "enum": {
+        "1": {
+          "name": "Allowed"
+        }
+      }
+    },
+    "http_request": {
+      "requirement": "required"
+    },
+    "http_response": {
+      "requirement": "required"
+    },
+    "src_endpoint": {
+      "requirement": "required"
+    },
+    "terminating_rule": {
+      "requirement": "required"
+    }
+  }
+}

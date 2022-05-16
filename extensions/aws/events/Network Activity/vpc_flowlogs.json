@@ -1,0 +1,35 @@
+{
+  "uid": 18,
+  "category": "network_activity",
+  "description": "VPC Flowlogs (Log Source)",
+  "extends": "base_event",
+  "name": "VPC Flowlogs",
+  "type": "vpc_flowlogs",
+  "attributes": {
+    "action": {
+      "requirement": "recommended"
+    },
+    "disposition_id": {
+      "description": "The disposition ID of the event.",
+      "enum": {
+        "1": {
+          "name": "Allowed"
+        }
+      }
+    },
+    "dst_endpoint": {
+      "requirement": "required"
+    },
+    "network_connection": {
+      "description": "Describes the protocol, direction, source, and destination of a network connection. Intended to be used alongside Network Traffic.",
+      "requirement": "required"
+    },
+    "network_traffic": {
+      "description": "Describes the network data traffic. Network traffic refers to the amount of data moving across a network at a given point of time. Intended to be used alongside Network Connection.",
+      "requirement": "required"
+    },
+    "src_endpoint": {
+      "requirement": "required"
+    }
+  }
+}

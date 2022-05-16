@@ -1,0 +1,36 @@
+{
+  "uid": 14,
+  "category": "network_activity",
+  "description": "AWS Network Firewall (Log Source)",
+  "extends": "base_event",
+  "name": "AWS Network Firewall",
+  "type": "network_firewall",
+  "attributes": {
+    "action": {
+      "requirement": "required"
+    },
+    "aws_rule": {
+      "requirement": "recommended"
+    },
+    "disposition_id": {
+      "description": "The disposition ID of the event.",
+      "enum": {
+        "1": {
+          "name": "Allowed"
+        }
+      }
+    },
+    "dst_endpoint": {
+      "requirement": "required"
+    },
+    "network_traffic": {
+      "requirement": "required"
+    },
+    "severity": {
+      "requirement": "optional"
+    },
+    "src_endpoint": {
+      "requirement": "required"
+    }
+  }
+}

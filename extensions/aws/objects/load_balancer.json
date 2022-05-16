@@ -1,0 +1,66 @@
+{
+  "description": "Indicates a request and response is being serviced by a load balancer",
+  "name": "Load Balancer",
+  "type": "load_balancer",
+  "attributes": {
+    "error_message": {
+      "description": "",
+      "requirement": "optional"
+    },
+    "lb_actions": {
+      "requirement": "required"
+    },
+    "matched_rule_priority": {
+      "description": "",
+      "requirement": "optional"
+    },
+    "redirect_url": {
+      "description": "The URL of the redirect target for the location header of the HTTP response, enclosed in double quotes. If no redirect actions were taken, this value is set to -.",
+      "requirement": "optional"
+    },
+    "request_classification": {
+      "requirement": "optional"
+    },
+    "request_classification_reason": {
+      "requirement": "optional"
+    },
+    "request_creation_time": {
+      "requirement": "optional"
+    },
+    "request_processing_time": {
+      "description": "",
+      "requirement": "optional"
+    },
+    "response_processing_time": {
+      "description": "",
+      "requirement": "optional"
+    },
+    "target_group_uid": {
+      "requirement": "optional"
+    },
+    "target_processing_time": {
+      "description": "The total time elapsed (in seconds, with millisecond precision) from the time the load balancer sent the request to a target until the target started to send the response headers. This value is set to -1 if the load balancer can't dispatch the request to a target. This can happen if the target closes the connection before the idle timeout or if the client sends a malformed request. This value can also be set to -1 if the registered target does not respond before the idle timeout.",
+      "requirement": "recommended"
+    },
+    "target_status_code": {
+      "description": "The status code of the response from the target. This value is recorded only if a connection was established to the target and the target sent a response. Otherwise, it is set to -.",
+      "requirement": "required"
+    },
+    "target_status_code_list": {
+      "description": "list of status codes from the responses of the targets. This value is recorded only if a connection was established to the target and the target sent a response. Otherwise, it is set to -.",
+      "requirement": "recommended"
+    },
+    "tls_client_protocol": {
+      "requirement": "optional"
+    },
+    "tls_listener_uid": {
+      "requirement": "optional"
+    },
+    "tls_server_protocol": {
+      "requirement": "optional"
+    },
+    "total_connection_time": {
+      "requirement": "optional"
+    }
+  }
+}

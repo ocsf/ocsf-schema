@@ -1,0 +1,45 @@
+{
+  "uid": 17,
+  "category": "network_activity",
+  "description": "Network DNS Activity events report DNS queries and answers as seen on the network. (Log Source)",
+  "extends": "base_event",
+  "name": "Route53 DNS Activity",
+  "type": "route53_resolver_query_logs",
+  "attributes": {
+    "answers": {
+      "requirement": "required"
+    },
+    "disposition_id": {
+      "description": "The disposition ID of the event.",
+      "enum": {
+        "1": {
+          "description": "The DNS request was successfully resolved.",
+          "name": "Resolved"
+        },
+        "2": {
+          "description": "The DNS request has failed.",
+          "name": "Failed"
+        },
+        "3": {
+          "description": "The DNS query request.",
+          "name": "Query"
+        }
+      }
+    },
+    "network_traffic": {
+      "requirement": "required"
+    },
+    "query": {
+      "requirement": "required"
+    },
+    "query_time": {
+      "requirement": "optional"
+    },
+    "rcode": {
+      "requirement": "required"
+    },
+    "src_endpoint": {
+      "requirement": "required"
+    }
+  }
+}

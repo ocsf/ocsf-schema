@@ -1,0 +1,42 @@
+{
+    "uid": 6,
+    "category": "application_activity",
+    "description": "S3 Access Logs (Log Source)",
+    "extends": "base_event",
+    "name": "S3 Access Logs",
+    "type": "s3_access_logs",
+    "attributes": {
+        "authentication_type": {
+            "requirement": "optional"
+        },
+        "disposition_id": {
+            "description": "The disposition ID of the event.",
+            "enum": {
+                "1": {
+                    "name": "Allowed"
+                }
+            }
+        },
+        "http_request": {
+            "requirement": "required"
+        },
+        "http_response": {
+            "requirement": "required"
+        },
+        "object_storage": {
+            "requirement": "required"
+        },
+        "owner": {
+            "requirement": "recommended"
+        },
+        "signature_version": {
+            "requirement": "optional"
+        },
+        "src_endpoint": {
+            "requirement": "required"
+        },
+        "tls": {
+            "requirement": "required"
+        }
+    }
+}

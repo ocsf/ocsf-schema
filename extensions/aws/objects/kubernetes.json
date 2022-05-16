@@ -1,0 +1,43 @@
+{
+  "description": "Kubernetes Object encompasses various K8 specifc logs fields. is a (Kubernetes is a unique type of container orchestration).",
+  "name": "kubernetes",
+  "type": "kubernetes",
+  "attributes": {
+    "container_orchestration_runtime": {
+      "description": "The Kubernetes Resources object details resources that were operated on in the request",
+      "requirement": "optional"
+    },
+    "http_request": {
+      "description": "The HTTP Request Object details a request made to a web server",
+      "requirement": "required"
+    },
+    "http_response": {
+      "description": "The HTTP Response Object details a response from a web server to a requester",
+      "requirement": "required"
+    },
+    "level": {
+      "description": "AuditLevel at which event was generated",
+      "requirement": "required"
+    },
+    "operation": {
+      "description": "Kubernetes verb/operation associated with the request",
+      "requirement": "required"
+    },
+    "request": {
+      "desctription": "Embedded Kubernetes API JSON dict from the request",
+      "requirement": "optional"
+    },
+    "response": {
+      "desctription": "Embedded Kubernetes API JSON dict from the response",
+      "requirement": "optional"
+    },
+    "stage": {
+      "description": "Stage of the request handling when this event instance was generated.",
+      "requirement": "required"
+    },
+    "stage_timestamp": {
+      "description": "Time the request reached current audit stage",
+      "requirement": "required"
+    }
+  }
+}

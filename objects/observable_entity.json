@@ -1,0 +1,69 @@
+{
+  "name": "Observable Entity",
+  "type": "observable_entity",
+  "description": "The observable entity object is a pivot element that contains related information found in many places in the event.",
+  "attributes": {
+    "names": {
+      "description": "The name of the observable attribute. For example: <code>file.name</code>.",
+      "requirement": "required"
+    },
+    "type": {
+      "description": "The observable value type name that is not in the pre-defined types.",
+      "requirement": "required"
+    },
+    "type_id": {
+      "description": "The observable value type identifier.",
+      "requirement": "required",
+      "enum": {
+        "0": {
+          "name": "Unknown",
+          "description": "Unknown observable data type."
+        },
+        "1": {
+          "name": "Hostname"
+        },
+        "2": {
+          "name": "IP Address"
+        },
+        "3": {
+          "name": "MAC Address"
+        },
+        "4": {
+          "name": "Username"
+        },
+        "5": {
+          "name": "Email Address"
+        },
+        "6": {
+          "name": "URL"
+        },
+        "7": {
+          "name": "URL Domain"
+        },
+        "8": {
+          "name": "File Name"
+        },
+        "9": {
+          "name": "File Hash"
+        },
+        "10": {
+          "name": "Process Name"
+        },
+        "11": {
+          "name": "Location"
+        },
+        "12": {
+          "name": "Resource UID"
+        },
+        "-1": {
+          "name": "Other",
+          "description": "The observable data type is not mapped. See the <code>type</code> attribute, which may contain data source specific value."
+        }
+      }
+    },
+    "values": {
+      "description": "The value associated with the observable attribute. The meaning of the data depends on the observable type.",
+      "requirement": "recommended"
+    }
+  }
+}

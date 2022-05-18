@@ -1,18 +1,22 @@
 {
   "name": "Network Activity",
-  "uid": 12,
+  "uid": 1,
   "type": "network_activity",
-  "extends": "activity",
+  "category": "network_activity",
+  "profiles": [
+    "user",
+    "host"
+  ],
   "description": "Network Activity events report network connection and traffic activity.",
+  "extends": "event",
   "attributes": {
-    "$include": "traits/network.json",
+    "$include": [
+      "traits/network.json",
+      "profiles/host.json",
+      "profiles/user.json"
+    ],
     "activity_id": {
       "$include": "enums/network_activity.json"
     }
-  },
-  "see_also": [
-    "network_alert",
-    "endpoint_network_activity",
-    "endpoint_network_alert"
-  ]
+  }
 }

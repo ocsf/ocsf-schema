@@ -2,20 +2,22 @@
   "name": "Network DNS Activity",
   "uid": 3,
   "type": "network_dns_activity",
-  "extends": "activity",
+  "profiles": [
+    "user",
+    "host"
+  ],
+  "category": "network_activity",
   "description": "Network DNS Activity events report DNS queries and answers as seen on the network.",
+  "extends": "event",
   "attributes": {
     "$include": [
+      "profiles/host.json",
+      "profiles/user.json",
       "traits/network.json",
       "traits/dns.json"
     ],
     "activity_id": {
       "$include": "enums/dns_activity.json"
     }
-  },
-  "see_also": [
-    "network_dns_alert",
-    "endpoint_dns_activity",
-    "endpoint_dns_alert"
-  ]
+  }
 }

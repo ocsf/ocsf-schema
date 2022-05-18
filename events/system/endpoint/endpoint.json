@@ -1,0 +1,13 @@
+{
+  "name": "Endpoint Activity",
+  "type": "endpoint_activity",
+  "extends": "activity",
+  "profiles": ["user", "host", "malware"],
+  "attributes": {
+    "$include": ["profiles/host.json", "profiles/user.json", "profiles/malware.json"]
+  },
+  "associations": {
+    "origin.device": ["user"],
+    "user": ["origin.device"]
+  } 
+}

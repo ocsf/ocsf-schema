@@ -1,0 +1,64 @@
+{
+  "name": "Network DHCP Activity",
+  "uid": 20,
+  "type": "network_dhcp_activity",
+  "extends": "activity",
+  "description": "This class reports MAC to IP assignment via DHCP.",
+  "attributes": {
+    "ip": {
+      "description": "The IP Address assigned via DHCP",
+      "group": "primary",
+      "requirement": "required"
+    },
+    "mac": {
+      "description": "",
+      "group": "primary",
+      "requirement": "required"
+    },
+    "disposition_id": {
+      "enum": {
+        "1": {
+          "description": "DHCPDISCOVER",
+          "name": "Discover"
+        },
+        "2": {
+          "description": "DHCPOFFER",
+          "name": "Offer"
+        },
+        "3": {
+          "description": "DHCPREQUEST",
+          "name": "Request"
+        },
+        "4": {
+          "description": "DHCPDECLINE",
+          "name": "Decline"
+        },
+        "5": {
+          "description": "The server accepts the request by sending the client a DHCP Acknowledgment message.",
+          "name": "Ack"
+        },
+        "6": {
+          "description": "DHCPNAK",
+          "name": "Nak"
+        },
+        "7": {
+          "description": "A DHCP client sends a DHCPRELEASE packet to the server to release the IP address and cancel any remaining lease.",
+          "name": "Release"
+        },
+        "8": {
+          "description": "DHCPINFORM",
+          "name": "Inform"
+        },
+        "99": {
+          "description": "A DHCP lease expired.",
+          "name": "Expire"
+        }
+      },
+      "requirement": "required"
+    },
+    "lease_time": {
+      "group": "primary",
+      "requirement": "optional"
+    }
+  }
+}

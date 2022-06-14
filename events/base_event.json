@@ -3,33 +3,66 @@
   "type": "base_event",
   "description": "The base event is a generic concrete event and it also defines a set of attributes available in most event classes. As a generic event that does not belong to any event category, it could be used to log events that are not otherwise defined by the schema.",
   "attributes": {
-    "$include": ["traits/occurrence.json", "traits/classification.json"],
+    "$include": [
+      "traits/occurrence.json",
+      "traits/classification.json"
+    ],
     "enrichments": {
       "group": "context"
     },
+    "labels": {
+      "description": "The list of category labels attached to the event or specific attributes. Labels are user defined tags or aliases added at normalization time.</p>For example: <code>[\"network\", \"connection.ip:destination\", \"device.ip:source\"]</code>",
+      "group": "context"
+    },
     "message": {
-      "requirement": "recommended",
-      "group": "primary"
+      "group": "primary",
+      "requirement": "recommended"
     },
     "metadata": {
-      "requirement": "required",
-      "group": "context"
+      "group": "context",
+      "requirement": "required"
     },
     "observables": {
-      "requirement": "reserved",
-      "group": "primary"
+      "group": "primary",
+      "requirement": "reserved"
     },
     "origin": {
-      "requirement": "required",
-      "group": "context"
+      "group": "context",
+      "requirement": "required"
     },
     "raw_data": {
-      "requirement": "reserved",
+      "group": "context",
+      "requirement": "reserved"
+    },
+    "ref_event_code": {
       "group": "context"
     },
-    "unmapped": {
-      "requirement": "reserved",
+    "ref_event_name": {
       "group": "context"
+    },
+    "ref_event_uid": {
+      "group": "context"
+    },
+    "severity": {
+      "group": "classification"
+    },
+    "severity_id": {
+      "group": "classification",
+      "requirement": "required"
+    },
+    "status": {
+      "group": "primary"
+    },
+    "status_detail": {
+      "group": "primary"
+    },
+    "status_id": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "unmapped": {
+      "group": "context",
+      "requirement": "reserved"
     }
   }
 }

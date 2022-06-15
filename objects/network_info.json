@@ -3,14 +3,6 @@
   "type": "network_info",
   "description": "The network information object describes the type, reputation, and associated addresses of a network interface.",
   "attributes": {
-    "name": {
-      "description": "The name of the network interface.",
-      "requirement": "recommended"
-    },
-    "type": {
-      "description": "The type of network interface.",
-      "requirement": "optional"
-    },
     "gateway_ip": {
       "requirement": "optional"
     },
@@ -29,6 +21,10 @@
       "description": "The MAC address of the network interface.",
       "requirement": "recommended"
     },
+    "name": {
+      "description": "The name of the network interface.",
+      "requirement": "recommended"
+    },
     "namespace": {
       "requirement": "optional"
     },
@@ -41,10 +37,16 @@
     "ssid": {
       "requirement": "optional"
     },
+    "type": {
+      "description": "The type of network interface.",
+      "requirement": "required"
+    },
     "type_id": {
       "description": "The network interface type identifier.",
-      "requirement": "required",
       "enum": {
+        "-1": {
+          "name": "Other"
+        },
         "0": {
           "name": "Unknown"
         },
@@ -56,11 +58,9 @@
         },
         "3": {
           "name": "Mobile"
-        },
-        "-1": {
-          "name": "Other"
         }
-      }
+      },
+      "requirement": "required"
     }
   }
 }

@@ -9,11 +9,10 @@
     },
     "type": {
       "description": "The TLS extension type. For example: <code>Server Name</code>.",
-      "requirement": "optional"
+      "requirement": "required"
     },
     "type_id": {
       "description": "The TLS extension type identifier. See <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc8446#page-35'>The Transport Layer Security (TLS) extension page</a>.",
-      "requirement": "required",
       "enum": {
         "0": {
           "description": "The Server Name Indication extension.",
@@ -22,10 +21,6 @@
         "1": {
           "description": "The Maximum Fragment Length Negotiation extension.",
           "name": "maximum_fragment_length"
-        },
-        "5": {
-          "description": "The Certificate Status Request extension.",
-          "name": "status_request"
         },
         "10": {
           "description": "The Supported Groups extension.",
@@ -95,6 +90,10 @@
           "description": "The Post-Handshake Client Authentication extension.",
           "name": "post_handshake_auth"
         },
+        "5": {
+          "description": "The Certificate Status Request extension.",
+          "name": "status_request"
+        },
         "50": {
           "description": "The Signature Algorithms extension.",
           "name": "signature_algorithms_cert"
@@ -103,7 +102,8 @@
           "description": "The Key Share extension.",
           "name": "key_share"
         }
-      }
+      },
+      "requirement": "required"
     }
   }
 }

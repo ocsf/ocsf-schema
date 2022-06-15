@@ -3,10 +3,6 @@
   "type": "job",
   "description": "The job object describes the name, command line and state of a scheduled job or task.",
   "attributes": {
-    "name": {
-      "description": "The name of the job.",
-      "requirement": "required"
-    },
     "cmd_line": {
       "description": "The job command line.",
       "requirement": "recommended"
@@ -27,17 +23,20 @@
       "description": "The time that the job was last run.",
       "requirement": "recommended"
     },
+    "name": {
+      "description": "The name of the job.",
+      "requirement": "required"
+    },
     "next_run_time": {
       "description": "The time that the job will next be run.",
       "requirement": "optional"
     },
     "run_state": {
       "description": "The run state of the job.",
-      "requirement": "optional"
+      "requirement": "recommended"
     },
     "run_state_id": {
       "description": "The run state ID of the job.",
-      "requirement": "recommended",
       "enum": {
         "-1": {
           "name": "Other"
@@ -57,7 +56,8 @@
         "4": {
           "name": "Stopped"
         }
-      }
+      },
+      "requirement": "recommended"
     },
     "user": {
       "description": "The user that created the job.",

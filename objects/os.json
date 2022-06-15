@@ -3,17 +3,38 @@
   "type": "os",
   "description": "The OS object describes an operating system, such as Linux or Windows.",
   "attributes": {
+    "bits": {
+      "requirement": "optional"
+    },
+    "build": {
+      "requirement": "optional"
+    },
+    "country": {
+      "description": "The operating system country code, as defined by the ISO 3166-1 standard (Alpha-2 code). For the complete list of country codes, see <a target='_blank' href='https://www.iso.org/obp/ui/#iso:pub:PUB500001:en'>ISO 3166-1 alpha-2 codes</a>.",
+      "requirement": "optional"
+    },
+    "edition": {
+      "requirement": "optional"
+    },
+    "lang": {
+      "requirement": "optional"
+    },
     "name": {
       "description": "The operating system name.",
       "requirement": "required"
     },
+    "sp_name": {
+      "requirement": "optional"
+    },
+    "sp_ver": {
+      "requirement": "optional"
+    },
     "type": {
       "description": "The type of the operating system.",
-      "requirement": "optional"
+      "requirement": "required"
     },
     "type_id": {
       "description": "The type identifier of the operating system.",
-      "requirement": "required",
       "enum": {
         "100": {
           "name": "Windows"
@@ -45,29 +66,8 @@
         "402": {
           "name": "HP-UX"
         }
-      }
-    },
-    "bits": {
-      "requirement": "optional"
-    },
-    "build": {
-      "requirement": "optional"
-    },
-    "country": {
-      "description": "The operating system country code, as defined by the ISO 3166-1 standard (Alpha-2 code). For the complete list of country codes, see <a target='_blank' href='https://www.iso.org/obp/ui/#iso:pub:PUB500001:en'>ISO 3166-1 alpha-2 codes</a>.",
-      "requirement": "optional"
-    },
-    "edition": {
-      "requirement": "optional"
-    },
-    "lang": {
-      "requirement": "optional"
-    },
-    "sp_name": {
-      "requirement": "optional"
-    },
-    "sp_ver": {
-      "requirement": "optional"
+      },
+      "requirement": "required"
     },
     "version": {
       "description": "The version of the OS running on the device that originated the event. For example: \"Windows 10\", \"OS X 10.7\", or \"iOS 9\".",

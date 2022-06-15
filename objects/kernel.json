@@ -3,15 +3,12 @@
   "type": "kernel",
   "description": "The kernel resource object describes the name and type of a kernel resource.",
   "attributes": {
+    "is_system": {
+      "requirement": "optional"
+    },
     "name": {
       "description": "The name of the kernel resource.",
       "requirement": "required"
-    },
-    "type": {
-      "description": "The type of the kernel resource."
-    },
-    "is_system": {
-      "requirement": "optional"
     },
     "path": {
       "description": "The full path of the kernel resource.",
@@ -20,9 +17,12 @@
     "system_call": {
       "requirement": "optional"
     },
+    "type": {
+      "description": "The type of the kernel resource.",
+      "requirement": "required"
+    },
     "type_id": {
       "description": "The type of the kernel resource.",
-      "requirement": "required",
       "enum": {
         "1": {
           "name": "Shared Mutex"
@@ -33,7 +33,8 @@
         "3": {
           "name": "Named Pipe"
         }
-      }
+      },
+      "requirement": "required"
     }
   }
 }

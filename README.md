@@ -18,7 +18,7 @@ origin1(Origin) -->| logs to | logger(Logger)
 origin2(Origin) -->| logs to | logger
 ```
 
-2. A device (Origin) creates events and forwards them to an intermediate server (Replay), which replays the log data to the Logger. For example, this is the case of syslog server or Windows domain controller that collects log data from multiple devices.
+2. A device (Origin) creates events and forwards them to an intermediate server (Relay), which relays the log data to the Logger. For example, this is the case of syslog server or Windows domain controller that collects log data from multiple devices.
 
 ```mermaid
 graph LR
@@ -30,7 +30,7 @@ relay -->| relays | logger(Logger)
 
 
 
-3. A device (Origin) creates events and sends them to an intermediate server (replay), which replays the events to a Forwarder server, which forwards the events to the Logger server. For example, this is the case when data is generated on premises and forwarded to a cloud-based centralized logging system.
+3. A device (Origin) creates events and sends them to an intermediate server (Relay), which relays the events to a Forwarder server, which forwards the events to the Logger server. For example, this is the case when data is generated on premises and forwarded to a cloud-based centralized logging system.
 
 ```mermaid
 graph TD

@@ -1031,10 +1031,10 @@
       "object_type": "event_source",
       "type": "object_t"
     },
-    "event_time": {
-      "description": "The event occurrence time, representing the time when the event was created by the event producer.<p><b>Note:</b> The format is ISO 8601: <code>yyyy-MM-dd'T'HH:mm:ss.SSSXXX</code>. For example: <code>2021-07-22T14:41:17.128-07:00</code></p>",
+    "time": {
+      "description": "The normalized event occurrence time <p><b>Note:</b> ???? The format is ISO 8601: <code>yyyy-MM-dd'T'HH:mm:ss.SSSXXX</code>. For example: <code>2021-07-22T14:41:17.128-07:00</code></p>",
       "name": "Event Time",
-      "type": "string_t"
+      "type": "timestamp_t"
     },
     "event_uid": {
       "description": "The event ID identifies the event's semantics and structure. The value is calculated by the logging system as: <code>class_id * 100 + activity_id</code>.",
@@ -2488,12 +2488,12 @@
       "name": "Thread ID",
       "type": "integer_t"
     },
-    "time": {
-      "description": "The event time set by the logging system using information from the raw event data (event_time).",
+    "ref_time": {
+      "description": "The original event time as reported by the event source.",
       "name": "Time",
-      "type": "timestamp_t"
+      "type": "string_t"
     },
-    "timezone": {
+    "ref_timezone": {
       "description": "The number of minutes that the reported event <code>time</code> is ahead or behind UTC. A number in the range -1,080 to +1,080.",
       "name": "Time Zone",
       "type": "integer_t"

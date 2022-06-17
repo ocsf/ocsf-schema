@@ -1,7 +1,7 @@
 # Open Cybersecurity Schema Framework 
 
 This is the Open Cybersecurity Schema Framework (OCSF) schema repository. The repository contains  JSON files of the Open Cybersecurity Schema Framework (OCSF).
-
+adfasdasdada
 ## OCSF Architecture
 
 A production logging architecture is likely to use multiple *devices* and *services* working together to handle log data. Some will generate log data, and they are called **Origin**. Some will collect data from multiple origins and forward the log data to a logger, they are called **Relay**. Finally, centralized logging systems receive and store the log data, those are called **Logger**. The Event Schema is defined from the point of view of the centralized event logging system. 

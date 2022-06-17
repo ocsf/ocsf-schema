@@ -53,4 +53,3 @@ To extend the schema create a new directory in the `schema/extensions` directory
 | `dictionary.json` | Create it to define new attributes.                          |
 | `events`          | Create it to define new event classes.                       |
 | `objects`         | Create it to define new objects.                             |
-

@@ -212,6 +212,12 @@
       "type": "object_t",
       "is_array": true
     },
+    "api": {
+      "description": "API object details information pertaining to the API calls",
+      "name": "API details",
+      "object_type": "api",
+      "type": "object_t"
+    },
     "app_name": {
       "description": "The name of the application that is associated with the event or object.",
       "name": "Application Name",
@@ -296,6 +302,12 @@
       "description": "The authentication Common Vulnerability Scoring System (CVSS) metric.",
       "name": "Authentication ID",
       "type": "integer_t"
+    },
+    "authorization": {
+      "description": "Authorization object provides details related to Authorization",
+      "name": "Authorization Information",
+      "object_type": "authorization",
+      "type": "object_t"
     },
     "availability_impact_id": {
       "description": "The availability impact Common Vulnerability Scoring System (CVSS) metric.",
@@ -707,6 +719,11 @@
       "object_type": "cloud",
       "type": "object_t"
     },
+    "cloud_partition": {
+      "description": "The canonical cloud partition name to which the region is assigned (e.g. AWS Partitions: aws, aws-cn, aws-us-gov).",
+      "name": "Cloud Partition",
+      "type": "string_t"
+    },
     "cmd_line": {
       "description": "The full command line used to launch an application, service, process, or job. For example: <code>ssh user@10.0.0.10</code>",
       "name": "Command Line",
@@ -877,6 +894,11 @@
       "name": "User Credential ID",
       "type": "string_t"
     },
+    "criticality": {
+      "description": "Criticality of a resource/object in question",
+      "name": "Criticality",
+      "type": "string_t"
+    },
     "customer_uid": {
       "description": "The unique customer identifier.",
       "name": "Customer UID",
@@ -899,9 +921,19 @@
       "name": "Data",
       "type": "json_t"
     },
+    "decision": {
+      "description": "Decision/outcome of the authorization mechanism (e.g. Approved, Denied)",
+      "name": "Authorization Decision/Outcome",
+      "type": "string_t"
+    },
     "desc": {
       "description": "The description that pertains to the object or event. See specific usage.",
       "name": "Description",
+      "type": "string_t"
+    },
+    "details": {
+      "description": "Details of an entity. See specific usage",
+      "name": "Details",
       "type": "string_t"
     },
     "detection_end_time": {
@@ -1015,6 +1047,16 @@
       "object_type": "managed_entity",
       "type": "object_t"
     },
+    "error": {
+      "description": "Error Code",
+      "name": "Error Code",
+      "type": "string_t"
+    },
+    "error_message": {
+      "description": "Error Message",
+      "name": "Error Message",
+      "type": "string_t"
+    },
     "ether_type": {
       "description": "The EtherType indicates which protocol is encapsulated in the payload of an Ethernet frame.",
       "name": "EtherType",
@@ -1031,10 +1073,10 @@
       "object_type": "event_source",
       "type": "object_t"
     },
-    "event_time": {
-      "description": "The event occurrence time, representing the time when the event was created by the event producer.<p><b>Note:</b> The format is ISO 8601: <code>yyyy-MM-dd'T'HH:mm:ss.SSSXXX</code>. For example: <code>2021-07-22T14:41:17.128-07:00</code></p>",
+    "time": {
+      "description": "The normalized event occurrence time <p><b>Note:</b> The format is yet undecided",
       "name": "Event Time",
-      "type": "string_t"
+      "type": "timestamp_t"
     },
     "event_uid": {
       "description": "The event ID identifies the event's semantics and structure. The value is calculated by the logging system as: <code>class_id * 100 + activity_id</code>.",
@@ -1260,6 +1302,18 @@
       "name": "Hypervisor",
       "type": "string_t"
     },
+    "identity": {
+      "description": "Identity Object details AuthN, AuthZ information pertaining to the event",
+      "name": "identity",
+      "object_type": "identity",
+      "type": "object_t"
+    },
+    "idp": {
+      "description": "IDP object descivbes details pertaining to the Identity Provider used",
+      "name": "Identity Provider",
+      "object_type": "idp",
+      "type": "object_t"
+    },
     "image": {
       "description": "The image used as a template to run a container or virtual machine.",
       "name": "Image",
@@ -1328,6 +1382,11 @@
       "name": "Intermediate IP Addresses",
       "type": "ip_t",
       "is_array": true
+    },
+    "invoked_by": {
+      "description": "The name of the service that made the request",
+      "name": "Invoked by",
+      "type": "string_t"
     },
     "ip": {
       "description": "The IP address, in either IPv4 or IPv6 format.",
@@ -1748,6 +1807,11 @@
       "name": "Open Mask",
       "type": "integer_t"
     },
+    "operation": {
+      "description": "Verb/Operation associated with the request",
+      "name": "Operation",
+      "type": "string_t"
+    },
     "org_uid": {
       "description": "The unique identifier of the organization to which the user belongs. For example, Active Directory or AWS Org ID.",
       "name": "Org ID",
@@ -1856,6 +1920,11 @@
       "name": "Peripheral Device",
       "object_type": "peripheral_device",
       "type": "object_t"
+    },
+    "permission": {
+      "description": "The IAM permission related to an event",
+      "name": "Permission",
+      "type": "string_t"
     },
     "pid": {
       "description": "The process identifier, as reported by the operating system. Process ID (PID) is a number used by the operating system to uniquely identify an active process.",
@@ -2113,6 +2182,12 @@
         }
       }
     },
+    "request": {
+      "description": "General Purpose API Request Object. See specific usage",
+      "name": "API Request Details",
+      "object_type": "request",
+      "type": "object_t"
+    },
     "request_headers": {
       "description": "The additional information associated with and the HTTP request.",
       "name": "Request Headers",
@@ -2144,6 +2219,12 @@
       "description": "The unique identifier of a cloud resource. For example, S3 Bucket name, EC2 Instance Id.",
       "name": "Resource ID",
       "type": "resource_uid_t"
+    },
+    "response": {
+      "description": "General Purpose API Response Object. See specific usage.",
+      "name": "API Response Details",
+      "object_type": "response",
+      "type": "object_t"
     },
     "response_headers": {
       "description": "The additional information associated with and the HTTP response.",
@@ -2488,10 +2569,10 @@
       "name": "Thread ID",
       "type": "integer_t"
     },
-    "time": {
-      "description": "The event time set by the logging system using information from the raw event data (event_time).",
-      "name": "Time",
-      "type": "timestamp_t"
+    "ref_time": {
+      "description": "The original event time as reported by the event source.",
+      "name": "Original Time",
+      "type": "string_t"
     },
     "timezone": {
       "description": "The number of minutes that the reported event <code>time</code> is ahead or behind UTC. A number in the range -1,080 to +1,080.",
@@ -2573,6 +2654,11 @@
           "name": "Internet Gateway"
         }
       }
+    },
+    "transaction_uid": {
+      "description": "The unique identifier of the transaction.",
+      "name": "Transaction UID",
+      "type": "string_t"
     },
     "ttl": {
       "description": "The time interval that the resource record may be cached. Zero value means that the resource record can only be used for the transaction in progress, and should not be cached.",

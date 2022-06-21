@@ -212,6 +212,12 @@
       "type": "object_t",
       "is_array": true
     },
+    "api": {
+      "description": "API object details information pertaining to the API calls",
+      "name": "API details",
+      "object_type": "api",
+      "type": "object_t"
+    },
     "app_name": {
       "description": "The name of the application that is associated with the event or object.",
       "name": "Application Name",
@@ -296,6 +302,12 @@
       "description": "The authentication Common Vulnerability Scoring System (CVSS) metric.",
       "name": "Authentication ID",
       "type": "integer_t"
+    },
+    "authorization": {
+      "description": "Authorization object provides details related to Authorization",
+      "name": "Authorization Information",
+      "object_type": "authorization",
+      "type": "object_t"
     },
     "availability_impact_id": {
       "description": "The availability impact Common Vulnerability Scoring System (CVSS) metric.",
@@ -909,6 +921,11 @@
       "name": "Data",
       "type": "json_t"
     },
+    "decision": {
+      "description": "Decision/outcome of the authorization mechanism (e.g. Approved, Denied)",
+      "name": "Authorization Decision/Outcome",
+      "type": "string_t"
+    },
     "desc": {
       "description": "The description that pertains to the object or event. See specific usage.",
       "name": "Description",
@@ -1029,6 +1046,16 @@
       "name": "Entity Result",
       "object_type": "managed_entity",
       "type": "object_t"
+    },
+    "error": {
+      "description": "Error Code",
+      "name": "Error Code",
+      "type": "string_t"
+    },
+    "error_message": {
+      "description": "Error Message",
+      "name": "Error Message",
+      "type": "string_t"
     },
     "ether_type": {
       "description": "The EtherType indicates which protocol is encapsulated in the payload of an Ethernet frame.",
@@ -1275,6 +1302,18 @@
       "name": "Hypervisor",
       "type": "string_t"
     },
+    "identity": {
+      "description": "Identity Object details AuthN, AuthZ information pertaining to the event",
+      "name": "identity",
+      "object_type": "identity",
+      "type": "object_t"
+    },
+    "idp": {
+      "description": "IDP object descivbes details pertaining to the Identity Provider used",
+      "name": "Identity Provider",
+      "object_type": "idp",
+      "type": "object_t"
+    },
     "image": {
       "description": "The image used as a template to run a container or virtual machine.",
       "name": "Image",
@@ -1343,6 +1382,11 @@
       "name": "Intermediate IP Addresses",
       "type": "ip_t",
       "is_array": true
+    },
+    "invoked_by": {
+      "description": "The name of the service that made the request",
+      "name": "Invoked by",
+      "type": "string_t"
     },
     "ip": {
       "description": "The IP address, in either IPv4 or IPv6 format.",
@@ -1763,6 +1807,11 @@
       "name": "Open Mask",
       "type": "integer_t"
     },
+    "operation": {
+      "description": "Verb/Operation associated with the request",
+      "name": "Operation",
+      "type": "string_t"
+    },
     "org_uid": {
       "description": "The unique identifier of the organization to which the user belongs. For example, Active Directory or AWS Org ID.",
       "name": "Org ID",
@@ -1871,6 +1920,11 @@
       "name": "Peripheral Device",
       "object_type": "peripheral_device",
       "type": "object_t"
+    },
+    "permission": {
+      "description": "The IAM permission related to an event",
+      "name": "Permission",
+      "type": "string_t"
     },
     "pid": {
       "description": "The process identifier, as reported by the operating system. Process ID (PID) is a number used by the operating system to uniquely identify an active process.",
@@ -2128,6 +2182,12 @@
         }
       }
     },
+    "request": {
+      "description": "General Purpose API Request Object. See specific usage",
+      "name": "API Request Details",
+      "object_type": "request",
+      "type": "object_t"
+    },
     "request_headers": {
       "description": "The additional information associated with and the HTTP request.",
       "name": "Request Headers",
@@ -2159,6 +2219,12 @@
       "description": "The unique identifier of a cloud resource. For example, S3 Bucket name, EC2 Instance Id.",
       "name": "Resource ID",
       "type": "resource_uid_t"
+    },
+    "response": {
+      "description": "General Purpose API Response Object. See specific usage.",
+      "name": "API Response Details",
+      "object_type": "response",
+      "type": "object_t"
     },
     "response_headers": {
       "description": "The additional information associated with and the HTTP response.",

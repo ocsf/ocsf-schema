@@ -1,28 +1,30 @@
 {
     "uid": 8,
     "category": "cloud_activity",
-    "description": "Cloud Control & Data Plane Activity",
+    "description": "Cloud API Activity events describe the Cloud Control & Data Plane Activity. e.g. (AWS Cloudtrail, GCP Cloud Audit Logs)",
     "extends": "base_event",
-    "name": "Cloud Operations",
-    "type": "cloud_operations",
+    "name": "Cloud API Activity",
+    "type": "cloud_api_activity",
     "attributes": {
         "api": {
+            "group": "primary",
             "requirement": "required"
         },
         "resource": {
+            "group": "primary",
             "requirement": "optional",
             "is_array": true
         },
         "http_request": {
+            "group": "primary",
             "requirement": "optional"
         },
         "identity": {
+            "group": "primary",
             "requirement": "required"
         },
-        "severity": {
-            "requirement": "optional"
-        },
         "src_endpoint": {
+            "group": "primary",
             "requirement": "required"
         }
     }

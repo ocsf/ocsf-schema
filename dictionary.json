@@ -3,12 +3,6 @@
   "name": "Attribute Dictionary",
   "type": "dictionary",
   "attributes": {
-    "values": {
-      "description": "The values that pertain to the observable.",
-      "is_array": true,
-      "name": "Values",
-      "type": "string_t"
-    },
     "access_complexity_id": {
       "description": "The access complexity Common Vulnerability Scoring System (CVSS) metric.",
       "name": "Access Complexity",
@@ -16,9 +10,9 @@
     },
     "access_list": {
       "description": "The list of requested access rights.",
+      "is_array": true,
       "name": "Access List",
-      "type": "string_t",
-      "is_array": true
+      "type": "string_t"
     },
     "access_mask": {
       "description": "The access mask in a platform-native format.",
@@ -48,9 +42,11 @@
     },
     "account_type_id": {
       "description": "The user account type identifier (e.g. AWS, LDAP, Windows account, etc.).",
-      "name": "Account Type ID",
-      "type": "integer_t",
       "enum": {
+        "-1": {
+          "description": "The user account type is not mapped.",
+          "name": "Other"
+        },
         "0": {
           "description": "The user account type is unknown.",
           "name": "Unknown"
@@ -69,12 +65,10 @@
         },
         "5": {
           "name": "Azure AD Account"
-        },
-        "-1": {
-          "description": "The user account type is not mapped.",
-          "name": "Other"
         }
-      }
+      },
+      "name": "Account Type ID",
+      "type": "integer_t"
     },
     "account_uid": {
       "description": "The unique identifier of the account(e.g. AWS Account ID).",
@@ -88,18 +82,18 @@
     },
     "activity_id": {
       "description": "The normalized identifier of the activity that triggered the alert event.",
-      "name": "Activity ID",
-      "type": "integer_t",
       "enum": {
-        "0": {
-          "description": "The event activity is unknown.",
-          "name": "Unknown"
-        },
         "-1": {
           "description": "The event activity is not mapped.",
           "name": "Other"
+        },
+        "0": {
+          "description": "The event activity is unknown.",
+          "name": "Unknown"
         }
-      }
+      },
+      "name": "Activity ID",
+      "type": "integer_t"
     },
     "actor_process": {
       "description": "The process that performed the operation or action on the target object. For example, the process that could have created a new file or violated a policy.",
@@ -124,9 +118,10 @@
     },
     "algorithm_id": {
       "description": "The identifier of the normalized hash algorithm, which was used to create the digital fingerprint.",
-      "name": "Algorithm ID",
-      "type": "integer_t",
       "enum": {
+        "-1": {
+          "name": "Other"
+        },
         "0": {
           "name": "Unknown"
         },
@@ -149,18 +144,17 @@
         "5": {
           "description": "The ssdeep generated fuzzy checksum. Also known as Context Triggered Piecewise Hash (CTPH).",
           "name": "CTPH"
-        },
-        "-1": {
-          "name": "Other"
         }
-      }
+      },
+      "name": "Algorithm ID",
+      "type": "integer_t"
     },
     "answers": {
       "description": "The Domain Name System (DNS) answers.",
+      "is_array": true,
       "name": "DNS Answer",
       "object_type": "dns_answer",
-      "type": "object_t",
-      "is_array": true
+      "type": "object_t"
     },
     "api": {
       "description": "API object details information pertaining to the API calls",
@@ -190,10 +184,10 @@
     },
     "attacks": {
       "description": "An array of attacks associated with an event.",
+      "is_array": true,
       "name": "Attacks",
       "object_type": "attack",
-      "type": "object_t",
-      "is_array": true
+      "type": "object_t"
     },
     "attributes": {
       "description": "The bitmask value that represents the file attributes.",
@@ -207,14 +201,18 @@
     },
     "auth_protocol_id": {
       "description": "The authentication protocol used to create the user session.",
-      "name": "Auth Protocol ID",
-      "type": "integer_t",
       "enum": {
+        "-1": {
+          "name": "Other"
+        },
         "0": {
           "name": "Unknown"
         },
         "1": {
           "name": "NTLM"
+        },
+        "10": {
+          "name": "RADIUS"
         },
         "2": {
           "name": "Kerberos"
@@ -239,14 +237,10 @@
         },
         "9": {
           "name": "EAP"
-        },
-        "10": {
-          "name": "RADIUS"
-        },
-        "-1": {
-          "name": "Other"
         }
-      }
+      },
+      "name": "Auth Protocol ID",
+      "type": "integer_t"
     },
     "authentication_id": {
       "description": "The authentication Common Vulnerability Scoring System (CVSS) metric.",
@@ -314,9 +308,9 @@
     },
     "categories": {
       "description": "A list of categories.",
+      "is_array": true,
       "name": "Categories",
-      "type": "string_t",
-      "is_array": true
+      "type": "string_t"
     },
     "category": {
       "description": "The original category of an event or object, as defined by the event source. See specific usage.",
@@ -325,9 +319,11 @@
     },
     "category_ids": {
       "description": "An array of URL category identifies.",
-      "name": "URL Category IDs",
-      "type": "integer_t",
       "enum": {
+        "-1": {
+          "description": "The URL category is not mapped. See the <code>categories</code> attribute, which may contain a data source specific value.",
+          "name": "Other"
+        },
         "0": {
           "description": "The URL category is unknown.",
           "name": "Unknown"
@@ -335,26 +331,50 @@
         "1": {
           "name": "Adult/Mature Content"
         },
-        "3": {
-          "name": "Pornography"
+        "101": {
+          "name": "Spam"
         },
-        "4": {
-          "name": "Sex Education"
+        "102": {
+          "name": "Potentially Unwanted Software"
         },
-        "5": {
-          "name": "Intimate Apparel/Swimsuit"
+        "103": {
+          "name": "Dynamic DNS Host"
         },
-        "6": {
-          "name": "Nudity"
+        "106": {
+          "name": "E-Card/Invitations"
         },
-        "7": {
-          "name": "Extreme"
+        "107": {
+          "name": "Informational"
         },
-        "9": {
-          "name": "Scam/Questionable/Illegal"
+        "108": {
+          "name": "Computer/Information Security"
+        },
+        "109": {
+          "name": "Internet Connected Devices"
         },
         "11": {
           "name": "Gambling"
+        },
+        "110": {
+          "name": "Internet Telephony"
+        },
+        "111": {
+          "name": "Online Meetings"
+        },
+        "112": {
+          "name": "Media Sharing"
+        },
+        "113": {
+          "name": "Radio/Audio Streams"
+        },
+        "114": {
+          "name": "TV/Video Streams"
+        },
+        "118": {
+          "name": "Piracy/Copyright Concerns"
+        },
+        "121": {
+          "name": "Marijuana"
         },
         "14": {
           "name": "Violence/Hate/Racism"
@@ -398,6 +418,9 @@
         "29": {
           "name": "Charitable Organizations"
         },
+        "3": {
+          "name": "Pornography"
+        },
         "30": {
           "name": "Art/Culture"
         },
@@ -425,6 +448,9 @@
         "38": {
           "name": "Technology/Internet"
         },
+        "4": {
+          "name": "Sex Education"
+        },
         "40": {
           "name": "Search Engines/Portals"
         },
@@ -445,6 +471,9 @@
         },
         "49": {
           "name": "Reference"
+        },
+        "5": {
+          "name": "Intimate Apparel/Swimsuit"
         },
         "50": {
           "name": "Mixed Content/Potentially Adult"
@@ -476,6 +505,9 @@
         "59": {
           "name": "Auctions"
         },
+        "6": {
+          "name": "Nudity"
+        },
         "60": {
           "name": "Real Estate"
         },
@@ -499,6 +531,9 @@
         },
         "68": {
           "name": "Humor/Jokes"
+        },
+        "7": {
+          "name": "Extreme"
         },
         "71": {
           "name": "Software Downloads"
@@ -524,6 +559,9 @@
         "89": {
           "name": "Web Hosting"
         },
+        "9": {
+          "name": "Scam/Questionable/Illegal"
+        },
         "90": {
           "name": "Uncategorized"
         },
@@ -544,55 +582,11 @@
         },
         "98": {
           "name": "Placeholders"
-        },
-        "101": {
-          "name": "Spam"
-        },
-        "102": {
-          "name": "Potentially Unwanted Software"
-        },
-        "103": {
-          "name": "Dynamic DNS Host"
-        },
-        "106": {
-          "name": "E-Card/Invitations"
-        },
-        "107": {
-          "name": "Informational"
-        },
-        "108": {
-          "name": "Computer/Information Security"
-        },
-        "109": {
-          "name": "Internet Connected Devices"
-        },
-        "110": {
-          "name": "Internet Telephony"
-        },
-        "111": {
-          "name": "Online Meetings"
-        },
-        "112": {
-          "name": "Media Sharing"
-        },
-        "113": {
-          "name": "Radio/Audio Streams"
-        },
-        "114": {
-          "name": "TV/Video Streams"
-        },
-        "118": {
-          "name": "Piracy/Copyright Concerns"
-        },
-        "121": {
-          "name": "Marijuana"
-        },
-        "-1": {
-          "description": "The URL category is not mapped. See the <code>categories</code> attribute, which may contain a data source specific value.",
-          "name": "Other"
         }
       },
-      "is_array": true
+      "is_array": true,
+      "name": "URL Category IDs",
+      "type": "integer_t"
     },
     "category_uid": {
       "default": 0,
@@ -618,9 +612,9 @@
     },
     "cis20": {
       "description": "The CIS 20 is a list of 20 actions and practices an organization’s security team can take on such that cyber attacks or malware, are minimized and prevented.",
+      "is_array": true,
       "name": "CIS 20 List",
-      "type": "string_t",
-      "is_array": true
+      "type": "string_t"
     },
     "city": {
       "description": "The name of the city.",
@@ -646,22 +640,22 @@
     },
     "classification_ids": {
       "description": "An array of malware classifications.",
+      "is_array": true,
       "name": "Classification IDs",
       "sibling": "classifications",
-      "type": "integer_t",
-      "is_array": true
+      "type": "integer_t"
     },
     "classifications": {
       "description": "The malware classifications.",
+      "is_array": true,
       "name": "Classifications",
-      "type": "string_t",
-      "is_array": true
+      "type": "string_t"
     },
     "client_ciphers": {
       "description": "The client cipher suites that were exchanged during the TLS handshake negotiation.",
+      "is_array": true,
       "name": "Client Cipher Suites",
-      "type": "string_t",
-      "is_array": true
+      "type": "string_t"
     },
     "cloud": {
       "description": "The cloud where the event was originally created or logged.",
@@ -741,9 +735,10 @@
     },
     "confidentiality_id": {
       "description": "The file content confidentiality indicator.",
-      "name": "Confidentiality ID",
-      "type": "integer_t",
       "enum": {
+        "-1": {
+          "name": "Other"
+        },
         "0": {
           "name": "Unknown"
         },
@@ -758,11 +753,10 @@
         },
         "4": {
           "name": "Top Secret"
-        },
-        "-1": {
-          "name": "Other"
         }
-      }
+      },
+      "name": "Confidentiality ID",
+      "type": "integer_t"
     },
     "confidentiality_impact_id": {
       "description": "The confidentiality impact Common Vulnerability Scoring System (CVSS) metric.",
@@ -796,18 +790,11 @@
       "name": "Continent",
       "type": "string_t"
     },
-    "http_cookies": {
-      "description": "The cookies object describes details about HTTP cookies",
-      "name": "HTTP Cookies",
-      "object_type": "http_cookie",
-      "type": "object_t",
-      "is_array": true
-    },
     "coordinates": {
       "description": "A two-element array, containing a longitude/latitude pair. The format conforms with <a target='_blank' href='https://geojson.org'>GeoJSON</a>. For example: <code>[-73.983, 40.719]</code>.",
+      "is_array": true,
       "name": "Coordinates",
-      "type": "float_t",
-      "is_array": true
+      "type": "float_t"
     },
     "correlation_uid": {
       "description": "The unique identifier used to correlate events.",
@@ -862,9 +849,9 @@
     },
     "cve_uids": {
       "description": "The common vulnerabilities and exposures (<a target='_blank' href='https://cve.mitre.org/'>CVE</a>) unique identifiers.",
+      "is_array": true,
       "name": "CVE UIDs",
-      "type": "string_t",
-      "is_array": true
+      "type": "string_t"
     },
     "cvss": {
       "description": "The CVSS object details Common Vulnerability Scoring System (CVSS) scores from the advisory that are related to the vulnerability.",
@@ -925,8 +912,6 @@
     },
     "direction_id": {
       "description": "The direction of the initiated connection, traffic, or email.",
-      "name": "Direction ID",
-      "type": "integer_t",
       "enum": {
         "0": {
           "description": "The direction is unknown.",
@@ -940,7 +925,9 @@
           "description": "Outbound, from inside the network destined for services on the Internet or outside network.",
           "name": "Outbound"
         }
-      }
+      },
+      "name": "Direction ID",
+      "type": "integer_t"
     },
     "dns_id": {
       "description": "The DNS packet identifier assigned by the program that generated the query. The identifier is copied to the response.",
@@ -986,10 +973,10 @@
     },
     "enrichments": {
       "description": "The additional information from an external data source, which is associated with the event. For example add location information for the IP address in the DNS answers:</p><code>[{\"name\": \"answers.ip\", \"value\": \"92.24.47.250\", \"type\": \"location\", \"data\": {\"city\": \"Socotra\", \"continent\": \"Asia\", \"coordinates\": [-25.4153, 17.0743], \"country\": \"YE\", \"desc\": \"Yemen\"}}]</code>",
+      "is_array": true,
       "name": "Enrichments",
       "object_type": "enrichment",
-      "type": "object_t",
-      "is_array": true
+      "type": "object_t"
     },
     "entity": {
       "description": "The managed entity that is being acted upon.",
@@ -1029,11 +1016,6 @@
       "object_type": "event_source",
       "type": "object_t"
     },
-    "time": {
-      "description": "The normalized event occurrence time <p><b>Note:</b> The format is yet undecided",
-      "name": "Event Time",
-      "type": "timestamp_t"
-    },
     "event_uid": {
       "description": "The event ID identifies the event's semantics and structure. The value is calculated by the logging system as: <code>class_id * 100 + activity_id</code>.",
       "name": "Event ID",
@@ -1071,12 +1053,6 @@
       "object_type": "feature",
       "type": "object_t"
     },
-    "finding": {
-      "description": "Finding object provides details related to a finding generated by security tool",
-      "name": "Finding",
-      "object_type": "finding",
-      "type": "object_t"
-    },
     "file": {
       "description": "The file that pertains to the event or object. See specific usage.",
       "name": "File",
@@ -1094,12 +1070,18 @@
       "object_type": "file",
       "type": "object_t"
     },
+    "finding": {
+      "description": "Finding object provides details related to a finding generated by security tool",
+      "name": "Finding",
+      "object_type": "finding",
+      "type": "object_t"
+    },
     "fingerprints": {
       "description": "An array of fingerprint objects associated with the certificate.",
+      "is_array": true,
       "name": "Fingerprints",
       "object_type": "fingerprint",
-      "type": "object_t",
-      "is_array": true
+      "type": "object_t"
     },
     "first_occurence": {
       "description": "Indicates when an entity is first observed.",
@@ -1108,9 +1090,11 @@
     },
     "flag_ids": {
       "description": "The list of DNS answer header flag IDs.",
-      "name": "DNS Header Flags",
-      "type": "integer_t",
       "enum": {
+        "-1": {
+          "description": "The event DNS header flag is not mapped.",
+          "name": "Other"
+        },
         "0": {
           "name": "Unknown"
         },
@@ -1131,19 +1115,17 @@
         },
         "6": {
           "name": "Checking Disabled"
-        },
-        "-1": {
-          "description": "The event DNS header flag is not mapped.",
-          "name": "Other"
         }
       },
-      "is_array": true
+      "is_array": true,
+      "name": "DNS Header Flags",
+      "type": "integer_t"
     },
     "flags": {
       "description": "The list of DNS answer header flags.",
+      "is_array": true,
       "name": "DNS Header Flags",
-      "type": "string_t",
-      "is_array": true
+      "type": "string_t"
     },
     "folder": {
       "description": "The folder that pertains to the event.",
@@ -1190,10 +1172,10 @@
     },
     "groups": {
       "description": "The groups to which an entity belongs. See specific usage.",
+      "is_array": true,
       "name": "Groups",
       "object_type": "group",
-      "type": "object_t",
-      "is_array": true
+      "type": "object_t"
     },
     "handshake_time": {
       "description": "The amount of total time for the TLS handshake to complete after the TCP connection is established, including client-side delays, in milliseconds.",
@@ -1210,12 +1192,19 @@
       "name": "Hostname",
       "type": "hostname_t"
     },
+    "http_cookies": {
+      "description": "The cookies object describes details about HTTP cookies",
+      "is_array": true,
+      "name": "HTTP Cookies",
+      "object_type": "http_cookie",
+      "type": "object_t"
+    },
     "http_headers": {
       "description": "Additional HTTP headers of an HTTP request or response.",
+      "is_array": true,
       "name": "HTTP Headers",
       "object_type": "http_header",
-      "type": "object_t",
-      "is_array": true
+      "type": "object_t"
     },
     "http_method": {
       "description": "The HTTP request method indicates the desired action to be performed for a given resource. Expected values: <ul> <li>TRACE</li> <li>CONNECT</li> <li>OPTIONS</li> <li>HEAD</li> <li>DELETE</li> <li>POST</li> <li>PUT</li> <li>GET</li></ul>",
@@ -1299,9 +1288,10 @@
     },
     "injection_type_id": {
       "description": "The normalized process injection type identifier.",
-      "name": "Injection Type ID",
-      "type": "integer_t",
       "enum": {
+        "-1": {
+          "name": "Other"
+        },
         "0": {
           "name": "Unknown"
         },
@@ -1313,11 +1303,10 @@
         },
         "3": {
           "name": "Process Manipulation APIs"
-        },
-        "-1": {
-          "name": "Other"
         }
-      }
+      },
+      "name": "Injection Type ID",
+      "type": "integer_t"
     },
     "instance_uid": {
       "description": "The unique identifier of a VM instance.",
@@ -1346,9 +1335,9 @@
     },
     "intermediate_ips": {
       "description": "The intermediate IP Addresses. For example, the IP addresses in the HTTP X-Forwarded-For header.",
+      "is_array": true,
       "name": "Intermediate IP Addresses",
-      "type": "ip_t",
-      "is_array": true
+      "type": "ip_t"
     },
     "invoked_by": {
       "description": "The name of the service that made the request",
@@ -1428,9 +1417,9 @@
     },
     "kb_articles": {
       "description": "The KB article/s related to the entity",
+      "is_array": true,
       "name": "Knowledgebase Articles",
-      "type": "string_t",
-      "is_array": true
+      "type": "string_t"
     },
     "kernel": {
       "description": "The kernel resource object that pertains to the event.",
@@ -1450,9 +1439,10 @@
     },
     "kill_chain_phase_id": {
       "description": "The <a target='_blank' href='https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html'>Cyber Kill Chain®</a> phase identifier.",
-      "name": "Kill Chain Phase ID",
-      "type": "integer_t",
       "enum": {
+        "-1": {
+          "name": "Other"
+        },
         "0": {
           "description": "The kill chain phase is unknown.",
           "name": "Unknown"
@@ -1484,17 +1474,16 @@
         "7": {
           "description": "With hands-on keyboard access, intruders accomplish the mission’s goal.",
           "name": "Actions on Objectives"
-        },
-        "-1": {
-          "name": "Other"
         }
-      }
+      },
+      "name": "Kill Chain Phase ID",
+      "type": "integer_t"
     },
     "labels": {
       "description": "The list of labels attached to an event, object, or attribute.",
+      "is_array": true,
       "name": "Labels",
-      "type": "string_t",
-      "is_array": true
+      "type": "string_t"
     },
     "lang": {
       "description": "The two letter lower case language codes, as defined by <a target='_blank' href='https://en.wikipedia.org/wiki/ISO_639-1'>ISO 639-1</a>. For example: <code>en</code> (English), <code>de</code> (German), or <code>fr</code> (French).",
@@ -1528,9 +1517,9 @@
     },
     "lineage": {
       "description": "The lineage of the process.",
+      "is_array": true,
       "name": "Lineage",
-      "type": "string_t",
-      "is_array": true
+      "type": "string_t"
     },
     "load_type": {
       "description": "The load type describes how the module was loaded in memory.",
@@ -1544,9 +1533,9 @@
     },
     "loaded_modules": {
       "description": "The list of loaded module names.",
+      "is_array": true,
       "name": "Loaded Modules",
-      "type": "string_t",
-      "is_array": true
+      "type": "string_t"
     },
     "location": {
       "description": "The geographical location usually associated with an IP address.",
@@ -1583,12 +1572,30 @@
     },
     "logon_type_id": {
       "description": "The normalized logon type identifier.",
-      "name": "Logon Type ID",
-      "type": "integer_t",
       "enum": {
+        "-1": {
+          "description": "Other logon type.",
+          "name": "Other"
+        },
         "0": {
           "description": "Used only by the System account, for example at system startup.",
           "name": "System"
+        },
+        "10": {
+          "description": "A remote logon using Terminal Services or remote desktop application.",
+          "name": "Remote Interactive"
+        },
+        "11": {
+          "description": "A user logged on to this device with network credentials that were stored locally on the device and the domain controller was not contacted to verify the credentials.",
+          "name": "Cached Interactive"
+        },
+        "12": {
+          "description": "Same as Remote Interactive. This is used for internal auditing.",
+          "name": "Cached Remote Interactive"
+        },
+        "13": {
+          "description": "Workstation logon.",
+          "name": "Cached Unlock"
         },
         "2": {
           "description": "A local logon to device console.",
@@ -1617,28 +1624,10 @@
         "9": {
           "description": "A caller cloned its current token and specified new credentials for outbound connections. The new logon session has the same local identity, but uses different credentials for other network connections.",
           "name": "New Credentials"
-        },
-        "10": {
-          "description": "A remote logon using Terminal Services or remote desktop application.",
-          "name": "Remote Interactive"
-        },
-        "11": {
-          "description": "A user logged on to this device with network credentials that were stored locally on the device and the domain controller was not contacted to verify the credentials.",
-          "name": "Cached Interactive"
-        },
-        "12": {
-          "description": "Same as Remote Interactive. This is used for internal auditing.",
-          "name": "Cached Remote Interactive"
-        },
-        "13": {
-          "description": "Workstation logon.",
-          "name": "Cached Unlock"
-        },
-        "-1": {
-          "description": "Other logon type.",
-          "name": "Other"
         }
-      }
+      },
+      "name": "Logon Type ID",
+      "type": "integer_t"
     },
     "mac": {
       "description": "The Media Access Control (MAC) address that is associated with the network interface.",
@@ -1722,10 +1711,10 @@
     },
     "network_interfaces": {
       "description": "The network interfaces that are associated with the device, one for each MAC address/IP address combination.<p><b>Note:</b> The first element of the array is the network information that pertains to the event.</p>",
+      "is_array": true,
       "name": "Network Interfaces",
       "object_type": "network_interface",
-      "type": "object_t",
-      "is_array": true
+      "type": "object_t"
     },
     "next_run_time": {
       "description": "The next run time. See specific usage.",
@@ -1734,21 +1723,19 @@
     },
     "nist": {
       "description": "The NIST Cybersecurity Framework recommendations for managing the cybersecurity risk.",
+      "is_array": true,
       "name": "NIST List",
-      "type": "string_t",
-      "is_array": true
+      "type": "string_t"
     },
     "observables": {
       "description": "The observables associated with the event.",
+      "is_array": true,
       "name": "Observables",
       "object_type": "observable",
-      "type": "object_t",
-      "is_array": true
+      "type": "object_t"
     },
     "opcode": {
       "description": "The DNS opcode specifies the type of the query message.",
-      "name": "DNS Opcode",
-      "type": "integer_t",
       "enum": {
         "0": {
           "description": "Standard query",
@@ -1778,7 +1765,9 @@
           "description": "DNS Stateful Operations (DSO)",
           "name": "DSO Message"
         }
-      }
+      },
+      "name": "DNS Opcode",
+      "type": "integer_t"
     },
     "open_mask": {
       "description": "The Windows options needed to open a registry key.",
@@ -1814,10 +1803,10 @@
     },
     "other_malware": {
       "description": "The additional malware that was detected.",
+      "is_array": true,
       "name": "Other Malware",
       "object_type": "malware",
-      "type": "object_t",
-      "is_array": true
+      "type": "object_t"
     },
     "outcome": {
       "description": "The outcome of the event, as defined by the event source.",
@@ -1826,16 +1815,16 @@
     },
     "outcome_id": {
       "description": "The outcome ID of the event.",
-      "name": "Outcome ID",
-      "type": "integer_t",
       "enum": {
-        "0": {
-          "name": "Unknown"
-        },
         "-1": {
           "name": "Other"
+        },
+        "0": {
+          "name": "Unknown"
         }
-      }
+      },
+      "name": "Outcome ID",
+      "type": "integer_t"
     },
     "owner": {
       "description": "The user that owns the file.",
@@ -1849,9 +1838,9 @@
     },
     "packages": {
       "description": "List of vulnerable packages as identified by the security product",
+      "is_array": true,
       "name": "Related Packages",
-      "type": "string_t",
-      "is_array": true
+      "type": "string_t"
     },
     "packets": {
       "default": 0,
@@ -1873,9 +1862,9 @@
     },
     "parent_categories": {
       "description": "An array of parent URL categories.",
+      "is_array": true,
       "name": "Parent Categories",
-      "type": "string_t",
-      "is_array": true
+      "type": "string_t"
     },
     "parent_folder": {
       "description": "The parent folder in which the file resides. For example: <code>c:\\windows\\system32</code>",
@@ -1937,9 +1926,9 @@
     },
     "privileges": {
       "description": "The user or group privileges.",
+      "is_array": true,
       "name": "Privileges",
-      "type": "string_t",
-      "is_array": true
+      "type": "string_t"
     },
     "process": {
       "description": "The process object.",
@@ -1985,9 +1974,10 @@
     },
     "protocol_ver_id": {
       "description": "The Internet Protocol version identifier.",
-      "name": "IP Version ID",
-      "type": "integer_t",
       "enum": {
+        "-1": {
+          "name": "Other"
+        },
         "0": {
           "name": "Unknown"
         },
@@ -1996,11 +1986,10 @@
         },
         "6": {
           "name": "Internet Protocol version 6 (IPv6)"
-        },
-        "-1": {
-          "name": "Other"
         }
-      }
+      },
+      "name": "IP Version ID",
+      "type": "integer_t"
     },
     "provider": {
       "description": "The origin of information associated with the event. See specific usage.",
@@ -2069,6 +2058,11 @@
       "name": "Reference Event ID",
       "type": "string_t"
     },
+    "ref_time": {
+      "description": "The original event time as reported by the event source.",
+      "name": "Original Time",
+      "type": "string_t"
+    },
     "ref_uid": {
       "description": "The reference to a unique identifier, managed by an external system.",
       "name": "Reference UID",
@@ -2076,20 +2070,14 @@
     },
     "reference": {
       "description": "Supporting reference URLs",
+      "is_array": true,
       "name": "Reference",
-      "type": "string_t",
-      "is_array": true
+      "type": "string_t"
     },
     "referrer": {
       "description": "The request header that identifies the address of the previous web page, which is linked to the current web page or resource being requested.",
       "name": "HTTP Referrer",
       "type": "string_t"
-    },
-    "remediation": {
-      "description": "The Remediation object describes details about recommended remediation strategies.",
-      "name": "Remediation Details",
-      "object_type": "remediation",
-      "type": "object_t"
     },
     "reg_key": {
       "description": "The registry key.",
@@ -2128,9 +2116,15 @@
     },
     "related_vulns": {
       "description": "List of vulnerabilities that are related to this vulnerability.",
+      "is_array": true,
       "name": "Related Vulnerabilities",
-      "type": "string_t",
-      "is_array": true
+      "type": "string_t"
+    },
+    "remediation": {
+      "description": "The Remediation object describes details about recommended remediation strategies.",
+      "name": "Remediation Details",
+      "object_type": "remediation",
+      "type": "object_t"
     },
     "rep_score": {
       "description": "The original reputation score as reported by the event source.",
@@ -2139,9 +2133,11 @@
     },
     "rep_score_id": {
       "description": "The normalized reputation score identifier.",
-      "name": "Reputation Score ID",
-      "type": "integer_t",
       "enum": {
+        "-1": {
+          "description": "The reputation score is not mapped. See the <code>rep_score</code> attribute, which contains a data source specific value.",
+          "name": "Other"
+        },
         "0": {
           "description": "The reputation score is unknown.",
           "name": "Unknown"
@@ -2149,6 +2145,10 @@
         "1": {
           "description": "Long history of good behavior.",
           "name": "Very Safe"
+        },
+        "10": {
+          "description": "Proven evidence of maliciousness.",
+          "name": "Malicious"
         },
         "2": {
           "description": "Consistently good behavior.",
@@ -2177,16 +2177,10 @@
         "9": {
           "description": "Indicators of maliciousness.",
           "name": "Probably Malicious"
-        },
-        "10": {
-          "description": "Proven evidence of maliciousness.",
-          "name": "Malicious"
-        },
-        "-1": {
-          "description": "The reputation score is not mapped. See the <code>rep_score</code> attribute, which contains a data source specific value.",
-          "name": "Other"
         }
-      }
+      },
+      "name": "Reputation Score ID",
+      "type": "integer_t"
     },
     "request": {
       "description": "General Purpose API Request Object. See specific usage",
@@ -2207,9 +2201,9 @@
     },
     "requirements": {
       "description": "A list of applicable compliance requirements for which this finding is related to.",
+      "is_array": true,
       "name": "Requirements",
-      "type": "string_t",
-      "is_array": true
+      "type": "string_t"
     },
     "resolved_ip": {
       "description": "The resolved IP address, in either IPv4 or IPv6 format. For example, Layer 4 load balancer translated IP address.",
@@ -2261,8 +2255,6 @@
     },
     "risk_level_id": {
       "description": "The normalized risk level id.",
-      "name": "Risk Level ID",
-      "type": "integer_t",
       "enum": {
         "0": {
           "name": "Info"
@@ -2279,7 +2271,9 @@
         "4": {
           "name": "Critical"
         }
-      }
+      },
+      "name": "Risk Level ID",
+      "type": "integer_t"
     },
     "risk_score": {
       "description": "The original risk score as reported by the event source.",
@@ -2288,10 +2282,10 @@
     },
     "role_ids": {
       "description": "The role identifiers that classify the observable.",
-      "name": "Role IDs",
-      "type": "integer_t",
       "enum": {},
-      "is_array": true
+      "is_array": true,
+      "name": "Role IDs",
+      "type": "integer_t"
     },
     "roles": {
       "description": "The role names of the observable.",
@@ -2357,9 +2351,9 @@
     },
     "server_ciphers": {
       "description": "The server cipher suites that were exchanged during the TLS handshake negotiation.",
+      "is_array": true,
       "name": "Server Cipher Suites",
-      "type": "string_t",
-      "is_array": true
+      "type": "string_t"
     },
     "service": {
       "description": "The cloud service that pertains to the event.",
@@ -2385,9 +2379,11 @@
     },
     "severity_id": {
       "description": "The normalized event severity.</p>The normalized severity is a measurement the effort and expense required to manage and resolve an event or incident. Smaller numerical values represent lower impact events, and larger numerical values represent higher impact events.",
-      "name": "Severity ID",
-      "type": "integer_t",
       "enum": {
+        "-1": {
+          "description": "The event severity is not mapped. See the <code>severity</code> attribute, which contains a data source specific value.",
+          "name": "Other"
+        },
         "0": {
           "description": "The event severity is not known.",
           "name": "Unknown"
@@ -2415,12 +2411,10 @@
         "6": {
           "description": "An error occurred but it is too late to take remedial action.",
           "name": "Fatal"
-        },
-        "-1": {
-          "description": "The event severity is not mapped. See the <code>severity</code> attribute, which contains a data source specific value.",
-          "name": "Other"
         }
-      }
+      },
+      "name": "Severity ID",
+      "type": "integer_t"
     },
     "sha1": {
       "description": "The SHA-1 checksum of the file content.",
@@ -2507,9 +2501,11 @@
     },
     "status_id": {
       "description": "The cross-platform normalized status of the activity or alert reported by the event.",
-      "name": "Status ID",
-      "type": "integer_t",
       "enum": {
+        "-1": {
+          "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value.",
+          "name": "Other"
+        },
         "0": {
           "name": "Unknown"
         },
@@ -2518,12 +2514,10 @@
         },
         "2": {
           "name": "Failure"
-        },
-        "-1": {
-          "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value.",
-          "name": "Other"
         }
-      }
+      },
+      "name": "Status ID",
+      "type": "integer_t"
     },
     "subnet": {
       "description": "The subnet mask.",
@@ -2537,9 +2531,9 @@
     },
     "supporting_data": {
       "description": "Additional data supporting a finding as provided by security tool",
+      "is_array": true,
       "name": "Supporting Data",
-      "type": "json_t",
-      "is_array": true
+      "type": "json_t"
     },
     "svc_name": {
       "description": "The service name in service-to-service connections. For example, AWS VPC logs the pkt-src-aws-service and pkt-dst-aws-service fields identify the connection is coming from or going to an AWS service.",
@@ -2553,9 +2547,9 @@
     },
     "tactics": {
       "description": "The a list of tactic ID's that are associated with the attack technique, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>.",
+      "is_array": true,
       "name": "Tactics",
-      "type": "string_t",
-      "is_array": true
+      "type": "string_t"
     },
     "tag": {
       "description": "The image tag. For example: <code>1.11-alpine</code>.",
@@ -2592,10 +2586,10 @@
       "name": "Thread ID",
       "type": "integer_t"
     },
-    "ref_time": {
-      "description": "The original event time as reported by the event source.",
-      "name": "Original Time",
-      "type": "string_t"
+    "time": {
+      "description": "The normalized event occurrence time <p><b>Note:</b> The format is yet undecided",
+      "name": "Event Time",
+      "type": "timestamp_t"
     },
     "timezone": {
       "description": "The number of minutes that the reported event <code>time</code> is ahead or behind UTC. A number in the range -1,080 to +1,080.",
@@ -2626,8 +2620,6 @@
     },
     "traffic_path_id": {
       "description": "The boundary of the connection. For cloud connections, this translates to the traffic-path (same VPC, through IGW, etc.). For traditional networks, this is described as Local, Internal, or External.",
-      "name": "Traffic Path ID",
-      "type": "integer_t",
       "enum": {
         "0": {
           "name": "Unknown"
@@ -2635,6 +2627,14 @@
         "1": {
           "description": "Local network traffic on the same endpoint.",
           "name": "Local"
+        },
+        "10": {
+          "description": "Through a gateway VPC endpoint (Nitro-based instances only)",
+          "name": "Gateway VPC"
+        },
+        "11": {
+          "description": "Through an Internet gateway (Nitro-based instances only)",
+          "name": "Internet Gateway"
         },
         "2": {
           "description": "Internal network traffic between two endpoints inside network.",
@@ -2667,16 +2667,10 @@
         "9": {
           "description": "Through a local gateway",
           "name": "Local Gateway"
-        },
-        "10": {
-          "description": "Through a gateway VPC endpoint (Nitro-based instances only)",
-          "name": "Gateway VPC"
-        },
-        "11": {
-          "description": "Through an Internet gateway (Nitro-based instances only)",
-          "name": "Internet Gateway"
         }
-      }
+      },
+      "name": "Traffic Path ID",
+      "type": "integer_t"
     },
     "transaction_uid": {
       "description": "The unique identifier of the transaction.",
@@ -2693,27 +2687,27 @@
       "name": "Type",
       "type": "string_t"
     },
-    "types": {
-      "description": "The type/s of an entity. See specific usage.",
-      "name": "Types",
-      "type": "string_t",
-      "is_array": true
-    },
     "type_id": {
       "default": 0,
       "description": "The type identifier of an object. See specific usage.",
-      "name": "Type ID",
-      "type": "integer_t",
       "enum": {
-        "0": {
-          "description": "The type is unknown.",
-          "name": "Unknown"
-        },
         "-1": {
           "description": "The type is not mapped. See the <code>type</code> attribute, which may contain a data source specific value.",
           "name": "Other"
+        },
+        "0": {
+          "description": "The type is unknown.",
+          "name": "Unknown"
         }
-      }
+      },
+      "name": "Type ID",
+      "type": "integer_t"
+    },
+    "types": {
+      "description": "The type/s of an entity. See specific usage.",
+      "is_array": true,
+      "name": "Types",
+      "type": "string_t"
     },
     "uid": {
       "description": "The unique identifier. See specific usage.",
@@ -2792,9 +2786,9 @@
     },
     "x_forwarded_for": {
       "description": "The X-Forwarded-For header identifying the originating IP address(es) of a client connecting to a web server through an HTTP proxy or a load balancer.",
+      "is_array": true,
       "name": "X-Forwarded-For",
-      "type": "ip_t",
-      "is_array": true
+      "type": "ip_t"
     },
     "xattributes": {
       "description": "An unordered collection of zero or more name/value pairs where each pair represents a file or folder extended attribute.</p>For example: Windows alternate data stream attributes (ADS stream name, ADS size, etc.), user-defined or application-defined attributes, ACL, owner, primary group, etc. Examples from DCS: </p><ul><li><strong>ads_name</strong></li><li><strong>ads_size</strong></li><li><strong>dacl</strong></li><li><strong>owner</strong></li><li><strong>primary_group</strong></li><li><strong>link_name</strong> - name of the link associated to the file.</li><li><strong>hard_link_count</strong> - the number of links that are associated to the file.</li></ul>",

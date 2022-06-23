@@ -1,36 +1,41 @@
 {
     "uid": 19,
     "category": "alert",
-    "description": "Security Alerts and Findings",
+    "description": "Security Finding events describe findings, detections, anomalies, alerts and/or actions performed by security products",
     "extends": "base_event",
-    "name": "Security Alerts and Findings",
-    "type": "security_alerts_&_findings",
+    "name": "Security Finding",
+    "type": "security_finding",
     "attributes": {
         "malware_v2": {
+            "group": "context",
+            "requirement": "optional"
+        },
+        "malware":{
+            "group": "context",
             "requirement": "optional"
         },
         "compliance": {
+            "group": "context",
             "requirement": "optional"
         },
         "finding": {
+            "group": "primary",
             "requirement": "required"
         },
         "process": {
+            "group": "context",
             "requirement": "optional"
         },
         "remediation": {
+            "group": "context",
             "requirement": "optional"
         },
         "resource": {
+            "group": "primary",
             "requirement": "required"
         },
-        "severity": {
-            "requirement": "optional"
-        },
-        "severity_score": {
-            "requirement": "optional"
-        },
         "vulnerability": {
+            "group": "context",
             "requirement": "optional"
         }
     }

@@ -6,4 +6,5 @@ can avoid extension name and uid collisions.
 |----------------|--------|-----|-------|
 | Splunk         | splunk | **1** | The Splunk schema extension |
 | AWS            | aws_ex | **2** | The Amazon AWS schema extension |
+| Trend Micro    | trendmicro| **3** | The Trend Micro schema extension |    
 | Development    | dev    | **999** | The development (TODO) schema extensions |

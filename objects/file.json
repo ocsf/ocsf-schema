@@ -2,8 +2,10 @@
   "name": "File",
   "observable": 24,
   "type": "file",
+  "profiles": ["security"],
   "description": "The file object describes files, folders, links and mounts, including the reputation information, if applicable.",
   "attributes": {
+    "$include": ["objects/profiles/file_security.json"],
     "accessed_time": {
       "requirement": "optional"
     },
@@ -14,12 +16,6 @@
       "requirement": "optional"
     },
     "company_name": {
-      "requirement": "optional"
-    },
-    "confidentiality": {
-      "requirement": "optional"
-    },
-    "confidentiality_id": {
       "requirement": "optional"
     },
     "creation_time": {
@@ -33,9 +29,6 @@
     "desc": {
       "description": "The description of the file, as returned by file system. For example: the description as returned by the Unix file command or the Windows file type.",
       "requirement": "optional"
-    },
-    "fingerprints": {
-      "requirement": "recommended"
     },
     "is_system": {
       "requirement": "optional"
@@ -72,19 +65,7 @@
     "security_descriptor": {
       "requirement": "optional"
     },
-    "signature": {
-      "requirement": "optional"
-    },
     "size": {
-      "requirement": "optional"
-    },
-    "md5": {
-      "requirement": "optional"
-    },
-    "sha1": {
-      "requirement": "optional"
-    },
-    "sha2": {
       "requirement": "optional"
     },
     "type": {

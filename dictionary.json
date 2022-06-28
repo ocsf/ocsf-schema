@@ -183,6 +183,11 @@
       "name": "Assignee",
       "type": "string_t"
     },
+    "attack_complexity": {
+      "description": "The conditions beyond the attacker's control that must exist in order to exploit the vulnerability.",
+      "name": "Attack Complexity",
+      "type": "integer_t"
+    },
     "attack_vector_id": {
       "description": "The attack vector Common Vulnerability Scoring System (CVSS) metric.",
       "name": "Attack Vector ID",
@@ -796,13 +801,6 @@
       "name": "Continent",
       "type": "string_t"
     },
-    "http_cookies": {
-      "description": "The cookies object describes details about HTTP cookies",
-      "name": "HTTP Cookies",
-      "object_type": "http_cookie",
-      "type": "object_t",
-      "is_array": true
-    },
     "coordinates": {
       "description": "A two-element array, containing a longitude/latitude pair. The format conforms with <a target='_blank' href='https://geojson.org'>GeoJSON</a>. For example: <code>[-73.983, 40.719]</code>.",
       "name": "Coordinates",
@@ -1210,6 +1208,13 @@
       "name": "Hostname",
       "type": "hostname_t"
     },
+    "http_cookies": {
+      "description": "The cookies object describes details about HTTP cookies",
+      "name": "HTTP Cookies",
+      "object_type": "http_cookie",
+      "type": "object_t",
+      "is_array": true
+    },
     "http_headers": {
       "description": "Additional HTTP headers of an HTTP request or response.",
       "name": "HTTP Headers",
@@ -1221,6 +1226,11 @@
       "description": "The HTTP request method indicates the desired action to be performed for a given resource. Expected values: <ul> <li>TRACE</li> <li>CONNECT</li> <li>OPTIONS</li> <li>HEAD</li> <li>DELETE</li> <li>POST</li> <li>PUT</li> <li>GET</li></ul>",
       "name": "HTTP Method",
       "type": "string_t"
+    },
+    "http_only": {
+      "description": "A cookie attribute to make it inaccessible via JavaScript",
+      "name": "HTTP Only",
+      "type": "boolean_t"
     },
     "http_request": {
       "description": "The HTTP Request made to a web server.",
@@ -1714,6 +1724,11 @@
       "name": "Namespace",
       "type": "string_t"
     },
+    "network_driver": {
+      "description": "The network driver used by the container. For example, bridge, overlay, host, none, etc.",
+      "name": "Network Driver",
+      "type": "string_t"
+    },
     "network_interface": {
       "description": "The network interface that is associated with the device.",
       "name": "Network Interface",
@@ -1788,6 +1803,11 @@
     "operation": {
       "description": "Verb/Operation associated with the request",
       "name": "Operation",
+      "type": "string_t"
+    },
+    "orchestrator": {
+      "description": "The orchestrator managing the container, such as ECS, EKS, K8s, OpenShift, None.",
+      "name": "Orchestrator",
       "type": "string_t"
     },
     "org_uid": {
@@ -1940,6 +1960,11 @@
       "name": "Privileges",
       "type": "string_t",
       "is_array": true
+    },
+    "privileges_required": {
+      "description": "The level of privileges an attacker must possess before successfully exploiting the vulnerability.",
+      "name": "Privileges Required",
+      "type": "integer_t"
     },
     "process": {
       "description": "The process object.",
@@ -2325,6 +2350,11 @@
       "name": "Runtime",
       "type": "string_t"
     },
+    "samesite": {
+      "description": "The cookie attribute that lets servers specify whether/when cookies are sent with cross-site requests. Values are: Strict, Lax or None",
+      "name": "SameSite",
+      "type": "string_t"
+    },
     "sandbox": {
       "description": "The name of the containment jail (i.e., sandbox). For example, hardened_ps, high_security_ps, oracle_ps, netsvcs_ps, or default_ps.",
       "name": "Sandbox",
@@ -2334,6 +2364,11 @@
       "description": "The scheme portion of the URL. For example: <code>http</code>, <code>https</code>, <code>ftp</code>, or <code>sftp</code>.",
       "name": "Scheme",
       "type": "string_t"
+    },
+    "secure": {
+      "description": "The cookie attribute to only send cookies to the server with an encrypted request over the HTTPS protocol.",
+      "name": "Secure",
+      "type": "boolean_t"
     },
     "security_descriptor": {
       "description": "The object security descriptor.",
@@ -2747,6 +2782,11 @@
       "description": "The request header that identifies the operating system and web browser.",
       "name": "HTTP User-Agent",
       "type": "string_t"
+    },
+    "user_interaction": {
+      "description": "The requirement for a user, other than the attacker, to participate in the successful compromise of the vulnerable component.",
+      "name": "User Interaction",
+      "type": "integer_t"
     },
     "user_result": {
       "description": "The result of the user account change. It should contain the new values of the changed attributes.",

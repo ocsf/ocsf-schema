@@ -301,6 +301,12 @@
       "name": "Bytes Out",
       "type": "long_t"
     },
+    "capabilities": {
+      "description": "A list of RDP capabilities.",
+      "is_array": true,
+      "name": "Capabilities",
+      "type": "string_t"
+    },
     "caption": {
       "description": "A short description or caption of the device. For example: <code>Scanner 1</code> or <code>Database Manager</code>.",
       "name": "Caption",
@@ -651,11 +657,28 @@
       "name": "Classifications",
       "type": "string_t"
     },
+    "client": {
+      "description": "The client object pertaining to the client/server exchange.",
+      "name": "Client",
+      "object_type": "client",
+      "type": "object_t"
+    },
     "client_ciphers": {
       "description": "The client cipher suites that were exchanged during the TLS handshake negotiation.",
       "is_array": true,
       "name": "Client Cipher Suites",
       "type": "string_t"
+    },
+    "client_name": {
+      "description": "The clients computer name.",
+      "name": "Client Name",
+      "type": "string_t"
+    },
+    "client_product": {
+      "description": "Client product information pertaining to the client/server exchange",
+      "name": "Client Product",
+      "object_type": "product",
+      "type": "object_t"
     },
     "cloud": {
       "description": "The cloud where the event was originally created or logged.",
@@ -676,6 +699,11 @@
     "code": {
       "description": "The numeric response sent to a HTTP request.",
       "name": "Response Code",
+      "type": "integer_t"
+    },
+    "color_depth": {
+      "description": "The numeric color depth.",
+      "name": "Color Depth",
       "type": "integer_t"
     },
     "comment": {
@@ -874,6 +902,21 @@
       "name": "Description",
       "type": "string_t"
     },
+    "desktop_height": {
+      "description": "The numeric height of the clients desktop",
+      "name": "Desktop Height",
+      "type": "integer_t"
+    },
+    "desktop_orientation": {
+      "description": "The numeric angle of orientation",
+      "name": "Desktop Orientation",
+      "type": "integer_t"
+    },
+    "desktop_width": {
+      "description": "The numeric width of the clients desktop",
+      "name": "Desktop Width",
+      "type": "integer_t"
+    },
     "details": {
       "description": "Details of an entity. See specific usage",
       "name": "Details",
@@ -927,6 +970,11 @@
         }
       },
       "name": "Direction ID",
+      "type": "integer_t"
+    },
+    "device_scale_factor": {
+      "description": "The numeric scale factor of the display.",
+      "name": "Device Scale Factor",
       "type": "integer_t"
     },
     "dns_id": {
@@ -1139,6 +1187,11 @@
       "name": "Full Name",
       "type": "string_t"
     },
+    "function_keys": {
+      "description": "The number of function keys on client keyboard.",
+      "name": "Function Keys",
+      "type": "integer_t"
+    },
     "function_name": {
       "description": "The entry-point function of the module. The system calls the entry-point function whenever a process or thread loads or unloads the module.",
       "name": "Function Name",
@@ -1281,6 +1334,11 @@
       "object_type": "image",
       "type": "object_t"
     },
+    "ime": {
+      "description": "The Input Method Editor (IME) file name.",
+      "name": "IME",
+      "type": "string_t"
+    },
     "imei": {
       "description": "The International Mobile Station Equipment Identifier that is associated with the device.",
       "name": "IMEI",
@@ -1343,6 +1401,11 @@
       "is_array": true,
       "name": "Intermediate IP Addresses",
       "type": "ip_t"
+    },
+    "internet_connection": {
+      "description": "The internet connection type (e.g. modem, low_broadband, satellite, high_broadband, wan, lan, autodetect).",
+      "name": "Internet Connection",
+      "type": "string_t"
     },
     "invoked_by": {
       "description": "The name of the service that made the request",
@@ -1441,6 +1504,21 @@
       "description": "The length of the encryption key.",
       "name": "Key Length",
       "type": "integer_t"
+    },
+    "keyboard_layout": {
+      "description": "The keyboard locale identifier name (e.g., en-US).",
+      "name": "Keyboard Layout",
+      "type": "string_t"
+    },
+    "keyboard_subtype": {
+      "description": "The keyboard numeric code.",
+      "name": "Keyboard Subtype",
+      "type": "integer_t"
+    },
+    "keyboard_type": {
+      "description": "The keyboard type (e.g., xt, ico).",
+      "name": "Keyboard Type",
+      "type": "string_t"
     },
     "kill_chain_phase": {
       "description": "The <a target='_blank' href='https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html'>Cyber Kill Chain®</a> phase.",
@@ -1907,6 +1985,16 @@
       "name": "Permission",
       "type": "string_t"
     },
+    "physical_height": {
+      "description": "The numeric physical height of display.",
+      "name": "Physical Height",
+      "type": "integer_t"
+    },
+    "physical_width": {
+      "description": "The numeric physical width of display.",
+      "name": "Physical Width",
+      "type": "integer_t"
+    },
     "pid": {
       "description": "The process identifier, as reported by the operating system. Process ID (PID) is a number used by the operating system to uniquely identify an active process.",
       "name": "Process ID",
@@ -2160,6 +2248,11 @@
     "rdata": {
       "description": "The data describing the DNS resource. The meaning of this data depends on the type and class of the resource record.",
       "name": "DNS RData",
+      "type": "string_t"
+    },
+    "rdp_version": {
+      "description": "The Remote Desktop Protocol (RDP) version.",
+      "name": "RDP Version",
       "type": "string_t"
     },
     "ref_event_code": {
@@ -2450,6 +2543,11 @@
       "name": "Sandbox",
       "type": "string_t"
     },
+    "scale_factor": {
+      "description": "The numeric scale factor of desktop.",
+      "name": "Scale Factor",
+      "type": "integer_t"
+    },
     "scheme": {
       "description": "The scheme portion of the URL. For example: <code>http</code>, <code>https</code>, <code>ftp</code>, or <code>sftp</code>.",
       "name": "Scheme",
@@ -2485,6 +2583,12 @@
       "is_array": true,
       "name": "Server Cipher Suites",
       "type": "string_t"
+    },
+    "server_product": {
+      "description": "Server product information pertaining to the client/server exchange",
+      "name": "Server Product",
+      "object_type": "product",
+      "type": "object_t"
     },
     "service": {
       "description": "The cloud service that pertains to the event.",

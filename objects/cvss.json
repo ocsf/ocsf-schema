@@ -23,8 +23,11 @@
     },
     "attack_vector_id": {
       "enum": {
-        "0": {
+        "-1": {
           "name": "Unknown"
+        },
+        "0": {
+          "name": "Physical"
         },
         "1": {
           "name": "Local Access"
@@ -118,6 +121,42 @@
     "version": {
       "description": "The CVSS version",
       "requirement": "recommended"
+    }, 
+    "privileges_required": {
+      "enum": {
+        "0": {
+          "name": "None"
+        },
+        "1": {
+          "name": "Low"
+        },
+        "2": {
+          "name": "High"
+        }
+      },
+      "requirement": "required"
+    },
+    "user_interaction": {
+      "enum": {
+        "0": {
+          "name": "None"
+        },
+        "1": {
+          "name": "Required"
+        }
+      },
+      "requirement": "required"
+    },
+    "attack_complexity": {
+      "enum": {
+        "0": {
+          "name": "Low"
+        },
+        "1": {
+          "name": "High"
+        }
+      },
+      "requirement": "required"
     }
   }
 }

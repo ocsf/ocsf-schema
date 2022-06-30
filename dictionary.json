@@ -2056,7 +2056,106 @@
     "rcode": {
       "description": "The DNS server response code. See <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc6895'>RFC-6895</a>.",
       "name": "Response Code",
-      "type": "integer_t"
+      "type": "string_t"
+    },
+    "rcode_id": {
+      "description": "The DNS server response code id. See <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc6895'>RFC-6895</a>.",
+      "name": "Response Code ID",
+      "type": "integer_t",
+      "enum": {
+        "-1": {
+          "description": "The dns response code is not defined by the RFC.",
+          "name": "Other"
+        },
+        "0": {
+          "description": "No Error.",
+          "name": "NoError"
+        },
+        "1": {
+          "description": "Format Error.",
+          "name": "FormError"
+        },
+        "2": {
+          "description": "Server Failure.",
+          "name": "ServError"
+        },
+        "3": {
+          "description": "Non-Existent Domain.",
+          "name": "NXDomain"
+        },
+        "4": {
+          "description": "Not Implemented.",
+          "name": "NotImp"
+        },
+        "5": {
+          "description": "Query Refused.",
+          "name": "Refused"
+        },
+        "6": {
+          "description": "Name Exists when it should not.",
+          "name": "YXDomain"
+        },
+        "7": {
+          "description": "RR Set Exists when it should not.",
+          "name": "YXRRSet"
+        },
+        "8": {
+          "description": "RR Set that should exist does not.",
+          "name": "NXRRSet"
+        },
+        "9": {
+          "description": "Not Authorized or Server Not Authoritative for zone.",
+          "name": "NotAuth"
+        },
+        "10": {
+          "description": "Name not contained in zone.",
+          "name": "NotZone"
+        },
+        "11": {
+          "description": "DSO-TYPE Not Implemented.",
+          "name": "DSOTYPENI"
+        },
+        "16": {
+          "description": "TSIG Signature Failure or Bad OPT Version.",
+          "name": "BADSIG_VERS"
+        },
+        "17": {
+          "description": "Key not recognized.",
+          "name": "BADKEY"
+        },
+        "18": {
+          "description": "Signature out of time window.",
+          "name": "BADTIME"
+        },
+        "19": {
+          "description": "Bad TKEY Mode.",
+          "name": "BADMODE"
+        },
+        "20": {
+          "description": "Duplicate key name.",
+          "name": "BADNAME"
+        },
+        "21": {
+          "description": "Algorithm not supported.",
+          "name": "BADALG"
+        },
+        "22": {
+          "description": "Bad Truncation.",
+          "name": "BADTRUNC"
+        },
+        "23": {
+          "description": "Bad/missing Server Cookie.",
+          "name": "BADCOOKIE"
+        },
+        "24": {
+          "description": "The codes deemed to be unassigned by the RFC (unassigned codes: 12-15, 24-3840, 4096-65534).",
+          "name": "Unassigned"
+        },
+        "25": {
+          "description": "The codes deemed to be reserved by the RFC (codes: 3841-4095, 65535).",
+          "name": "Reserved"
+        }
+      }
     },
     "rdata": {
       "description": "The data describing the DNS resource. The meaning of this data depends on the type and class of the resource record.",

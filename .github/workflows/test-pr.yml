@@ -23,7 +23,10 @@ jobs:
           sudo apt-get install elixir
 
       - name: Clone OCSF Server
-        run: git clone --recurse-submodules https://github.com/magnologan/ocsf-server.git 
+        uses: actions/checkout@v3 
+        with:
+          repository: magnologan/ocsf-server
+          token: ${{ secrets.ACCESS_TOKEN }}
 
       - name: Install the build tools
         run: mix local.hex --force && mix local.rebar --force

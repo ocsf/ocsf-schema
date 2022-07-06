@@ -32,13 +32,10 @@ jobs:
       - name: Install the build tools
         run: mix local.hex --force && mix local.rebar --force
 
-      - name: Get the dependencies
+      - name: Get the dependencies and Compile the source code
         run: |
           cd ocsf-server
           mix do deps.get, deps.compile
-
-      - name: Compile the source code
-        run: |
           mix compile
 
       - name: Run the schema server

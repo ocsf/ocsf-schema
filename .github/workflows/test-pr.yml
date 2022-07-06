@@ -12,8 +12,6 @@ jobs:
   test-pr:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
 
       - name: Setup Elixir and inotify
         run: |
@@ -23,6 +21,15 @@ jobs:
           sudo apt-get install esl-erlang
           sudo apt-get install elixir
           sudo apt-get install inotify-tools
+      
+      - name: Checkout OCSF Schema
+        uses: actions/checkout@v3
+        
+      - name: Check modified files
+        run: |
+          URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${{ github.event.pull_request.number }}/files"
+          FILES=$(curl -s -X GET -G $URL | jq -r '.[] | .filename')
+          echo $FILES
 
       - name: Clone OCSF Server
         uses: actions/checkout@v3 

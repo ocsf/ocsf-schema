@@ -30,7 +30,6 @@ jobs:
           URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${{github.event.pull_request.number}}/files"
           FILES=$(curl -s -X GET -G $URL)
           echo $FILES
-          echo ${GITHUB_REPOSITORY}
 
       - name: Clone OCSF Server
         uses: actions/checkout@v3 

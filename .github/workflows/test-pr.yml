@@ -1,0 +1,36 @@
+name: 'Test Pull Request with OCSF Server'
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:    
+      - main
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Elixir
+        uses: erlef/setup-beam@v1
+
+      - name: Clone OCSF Server
+        run: git clone --recurse-submodules https://github.com/ocsf/ocsf-server.git
+
+      - name: Install the build tools
+        run: mix local.hex --force && mix local.rebar --force
+
+      - name: Get the dependencies
+        run: |
+          cd ocsf-server
+          mix do deps.get, deps.compile
+
+      - name: Compile the source code
+        run: |
+          mix compile
+
+      - name: Run the schema server
+        run: |
+          SCHEMA_DIR=modules/schema SCHEMA_EXTENSION=extensions iex -S mix phx.server

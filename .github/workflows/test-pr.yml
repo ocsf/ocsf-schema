@@ -2,16 +2,14 @@ name: 'Test Pull Request with OCSF Server'
 
 on:
   workflow_dispatch:
+  push: 
   pull_request:
     branches:    
       - main
-
-permissions:
-  contents: read
-  pull-requests: read
+      - action
 
 jobs:
-  check-links:
+  test-pr:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

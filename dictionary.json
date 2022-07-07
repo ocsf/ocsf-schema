@@ -106,6 +106,20 @@
       "name": "Actual Permissions",
       "type": "integer_t"
     },
+    "additional_malware": {
+      "description": "This object describes additional malware reported in a security finding",
+      "name": "Additional Malware",
+      "object_type": "malware",
+      "type": "object_t",
+      "is_array":true
+    },
+    "additional_vulnerabilities": {
+      "description": "This object describes additional vulnerabilities reported in a security finding",
+      "name": "Additional Vulnerbailities",
+      "object_type": "vulnerability",
+      "type": "object_t",
+      "is_array":true
+    },
     "alert": {
       "description": "The integer value of TLS alert if present. The alerts are defined in the TLS specification in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc2246'>RFC-2246</a>.",
       "name": "Client TLS Alert",
@@ -176,6 +190,11 @@
       "description": "The name of the user who is assigned to the incident.",
       "name": "Assignee",
       "type": "string_t"
+    },
+    "attack_complexity_id": {
+      "description": "The conditions beyond the attacker's control that must exist in order to exploit the vulnerability.",
+      "name": "Attack Complexity",
+      "type": "integer_t"
     },
     "attack_vector_id": {
       "description": "The attack vector Common Vulnerability Scoring System (CVSS) metric.",
@@ -1055,6 +1074,11 @@
       "description": "The expiration time. See specific usage.",
       "name": "Expiration Time",
       "type": "timestamp_t"
+    },
+    "exposed_port": {
+      "description": "The IP port number exposed by container. For example 0.0.0.0:49155-> <<exposed_port>>/tcp",
+      "name": "Port",
+      "type": "port_t"
     },
     "facility": {
       "description": "The subsystem or application that is providing the event data.",
@@ -1996,6 +2020,12 @@
       "name": "Privileges",
       "type": "string_t"
     },
+    "privileges_required_id": {
+      "description": "The level of privileges an attacker must possess before successfully exploiting the vulnerability.",
+      "enum": {},
+      "name": "Privileges Required",
+      "type": "integer_t"
+    },
     "process": {
       "description": "The process object.",
       "name": "Process",
@@ -2230,10 +2260,10 @@
       "name": "Reference UID",
       "type": "string_t"
     },
-    "reference": {
+    "references": {
       "description": "Supporting reference URLs",
       "is_array": true,
-      "name": "Reference",
+      "name": "References",
       "type": "string_t"
     },
     "referrer": {
@@ -2927,6 +2957,11 @@
       "description": "The request header that identifies the operating system and web browser.",
       "name": "HTTP User-Agent",
       "type": "string_t"
+    },
+    "user_interaction_id": {
+      "description": "The requirement for a user, other than the attacker, to participate in the successful compromise of the vulnerable component.",
+      "name": "User Interaction",
+      "type": "integer_t"
     },
     "user_result": {
       "description": "The result of the user account change. It should contain the new values of the changed attributes.",

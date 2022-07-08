@@ -3,5 +3,12 @@
   "category": "system",
   "type": "system",
   "extends": "base_event",
-  "attributes": {}
+  "profiles": ["user", "host", "malware"],
+  "attributes": {
+    "$include": ["profiles/host.json", "profiles/user.json", "profiles/malware.json"]
+  },
+  "associations": {
+    "origin.device": ["user"],
+    "user": ["origin.device"]
+  } 
 }

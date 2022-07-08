@@ -1,0 +1,64 @@
+{
+  "name": "Finding Report",
+  "uid": 0,
+  "category": "finding",
+  "type": "finding_report",
+  "extends": "base_event",
+  "description": "Finding events report the results of detections or analytics.",
+  "attributes": {
+    "detection_end_time": {
+      "requirement": "recommended",
+      "group": "primary"
+    },
+    "detection_start_time": {
+      "requirement": "recommended",
+      "group": "primary"
+    },
+    "device_entities": {
+      "group": "primary"
+    },
+    "outcome": {
+      "requirement": "required",
+      "group": "classification"
+    },
+    "outcome_id": {
+      "requirement": "required",
+      "group": "classification",
+      "enum": {
+        "1": {
+          "name": "Logged"
+        }
+      }
+    },
+    "end_time": {
+      "description": "The time of the most recent event included in the findings report.",
+      "requirement": "recommended"
+    },
+    "finding": {
+      "requirement": "required",
+      "group": "primary"
+    },
+    "message": {
+      "description": "The description of the finding report.",
+      "group": "primary"
+    },
+    "observables": {
+      "description": "The observables associated with the finding report."
+    },
+    "rule": {
+      "requirement": "required",
+      "group": "primary"
+    },
+    "start_time": {
+      "description": "The time of the least recent event included in the finding report.",
+      "requirement": "recommended"
+    },
+    "time": {
+      "description": "The time when the finding was created.",
+      "requirement": "required"
+    },
+    "user_entities": {
+      "group": "primary"
+    }
+  }
+}

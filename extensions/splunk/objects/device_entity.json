@@ -1,0 +1,122 @@
+{
+  "name": "Device Entity",
+  "type": "device_entity",
+  "description": "A device of the environment that supports information-related activities. Devices should be protected from illicit access, use, disclosure, alteration, destruction, and/or theft, resulting in loss to the organization.",
+  "attributes": {
+    "caption": {
+      "requirement": "optional"
+    },
+    "desc": {
+      "description": "The description of the device, ordinarily as reported by the operating system.",
+      "name": "Description",
+      "requirement": "optional"
+    },
+    "domain": {
+      "description": "The network domain where the device resides. For example: <code>work.example.com</code>.",
+      "name": "Domain",
+      "requirement": "optional"
+    },
+    "group": {
+      "description": "The name of the group to which the device belongs. For example: <code>Windows Laptops<code/>.",
+      "name": "Group",
+      "requirement": "optional"
+    },
+    "labels": {
+      "description": "The list of labels attached to the device.",
+      "requirement": "optional"
+    },
+    "location": {
+      "requirement": "optional"
+    },
+    "managed_by": {
+      "requirement": "optional"
+    },
+    "name": {
+      "description": "The device name, ordinarily as assigned by an administrator or LDAP common name (CN).",
+      "requirement": "recommended"
+    },
+    "network_interfaces": {
+      "requirement": "recommended"
+    },
+    "org_unit": {
+      "requirement": "optional"
+    },
+    "owner_name": {
+      "description": "The user or department associated with the device."
+    },
+    "priority": {
+      "description": "The original priority assigned to the device."
+    },
+    "priority_id": {
+      "$include": "enums/object_priority.json",
+      "description": "The normalized priority identifier assigned to the device. The priority is useful for calculating the urgency for alerts or incidents."
+    },
+    "provider": {
+      "description": "The source or the provider of the device data.",
+      "requirement": "optional"
+    },
+    "ref_uid": {
+      "description": "The reference to a unique identifier, managed by an external system. For example LDAP distinguished name of the device.",
+      "requirement": "recommended"
+    },
+    "type": {
+      "description": "The original type assigned to the device.",
+      "name": "Type",
+      "requirement": "required"
+    },
+    "type_id": {
+      "description": "The device type identifier.",
+      "enum": {
+        "1": {
+          "name": "Server"
+        },
+        "10": {
+          "name": "Sharepoint Server"
+        },
+        "11": {
+          "name": "VPN Server"
+        },
+        "12": {
+          "name": "Web Server"
+        },
+        "13": {
+          "name": "Proxy Server"
+        },
+        "14": {
+          "name": "Active Directory"
+        },
+        "2": {
+          "name": "Desktop"
+        },
+        "3": {
+          "name": "Laptop"
+        },
+        "4": {
+          "name": "Tablet"
+        },
+        "5": {
+          "name": "Mobile"
+        },
+        "6": {
+          "name": "Virtual Machine"
+        },
+        "7": {
+          "name": "IOT"
+        },
+        "8": {
+          "name": "File Server"
+        },
+        "9": {
+          "name": "Network Router"
+        }
+      },
+      "name": "Type ID",
+      "requirement": "required"
+    },
+    "uid": {
+      "description": "The unique identifier of the device.",
+      "name": "Device UID",
+      "requirement": "required"
+    }
+  }
+}

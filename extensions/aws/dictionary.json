@@ -1,324 +1,324 @@
 {
   "description": "The Attribute Dictionary defines schema attributes and includes references to the events and objects in which they are used.",
-  "name": "Attribute Dictionary",
-  "type": "dictionary",
+  "caption": "Attribute Dictionary",
+  "name": "dictionary",
   "attributes": {
     "action": {
       "description": "The resultant action carried out in an event, e.g. allowed, blocked for network flows.",
-      "name": "Action",
+      "caption": "Action",
       "type": "string_t"
     },
     "agreed_protocol_version": {
       "description": "Negotiaged and Agreed Upon TLS Protocol Version",
-      "name": "Agreed Protocol Version",
+      "caption": "Agreed Protocol Version",
       "type": "string_t"
     },
     "alternate_rules": {
       "description": "Alternate applicable rules",
-      "name": "alternate_rules",
+      "caption": "alternate_rules",
       "object_type": "aws_rule",
       "type": "object_t",
       "is_array": true
     },
     "authentication_type": {
       "description": "The type of authentication used, e.g. AuthHeader for authentication headers, QueryString for query string (pre-signed URL) or a - for unauthenticated requests.",
-      "name": "Authentication Type",
+      "caption": "Authentication Type",
       "type": "string_t"
     },
     "aws_rule": {
       "description": "The rule object describes rules associated with a policy or event.",
-      "name": "Rule",
+      "caption": "Rule",
       "object_type": "aws_rule",
       "type": "object_t"
     },
     "cache_response": {
       "description": "Server classification of the response, e.g. in case of CloudFront logs - Hit, Miss",
-      "name": "Cache Response",
+      "caption": "Cache Response",
       "type": "string_t"
     },
     "certificate": {
       "description": "TLS/SSL Certificate Information",
-      "name": "Certficate",
+      "caption": "Certficate",
       "object_type": "certificate",
       "type": "object_t"
     },
     "cluster_name": {
       "description": "The name for the container cluster",
-      "name": "Cluster Name",
+      "caption": "Cluster Name",
       "type": "string_t"
     },
     "cluster_uid": {
       "description": "The unique identifer for the container cluster",
-      "name": "Cluster UID",
+      "caption": "Cluster UID",
       "type": "string_t"
     },
     "configuration": {
       "description": "Details resource configurations as determined by AWS Config",
-      "name": "Configuration Data",
+      "caption": "Configuration Data",
       "type": "string_t"
     },
     "container_orchestration_runtime": {
       "description": "The object to contain the information that describes the runtime environment of a container",
-      "name": "Container Orchestration Runtime Object",
+      "caption": "Container Orchestration Runtime Object",
       "object_type": "container_orchestration_runtime",
       "type": "object_t"
     },
     "container_pull_end": {
       "description": "The timestamp for when the container pull completed.",
-      "name": "Container Pull End Time",
+      "caption": "Container Pull End Time",
       "type": "timestamp_t"
     },
     "container_pull_start": {
       "description": "The timestamp for when the container pull began.",
-      "name": "Container Pull Start Time",
+      "caption": "Container Pull Start Time",
       "type": "timestamp_t"
     },
     "cpu": {
       "description": "The CPU units allocated to a runtime environment. A container instance has 1,024 cpu units for every CPU core.",
-      "name": "CPU Allocation",
+      "caption": "CPU Allocation",
       "type": "integer_t"
     },
     "deployment_uid": {
       "description": "A unique identifer for a container deployment",
-      "name": "deployment_uid",
+      "caption": "deployment_uid",
       "type": "string_t"
     },
     "desired_status": {
       "description": "The desired status of the target",
-      "name": "Desired Status",
+      "caption": "Desired Status",
       "type": "string_t"
     },
     "event_reason": {
       "description": "The provided reason to describe why an event has been logged",
-      "name": "event_reason",
+      "caption": "event_reason",
       "type": "string_t"
     },
     "event_type": {
       "description": "The type of event. For ECS, this would describe state changes to a runtime instance.",
-      "name": "The Event Type",
+      "caption": "The Event Type",
       "type": "string_t"
     },
     "excluded": {
       "description": "Whether or not the associated rule has been excluded from the operation. Rules that are excluded will be counted but will not result in a block action.",
-      "name": "Rule exclusion",
+      "caption": "Rule exclusion",
       "type": "boolean_t"
     },
     "group_uid": {
       "description": "The unique identifer to describe a group of rules",
-      "name": "Group UID",
+      "caption": "Group UID",
       "type": "string_t"
     },
     "hostname_uid": {
       "description": "A unique identifer to recognize the endpoint where a WAF request originated.",
-      "name": "hostname_uid",
+      "caption": "hostname_uid",
       "type": "string_t"
     },
     "integration": {
       "description": "Integration Object describes the values of the integration of two or more services, relationships/associations between 2 or more resources",
-      "name": "Integration",
+      "caption": "Integration",
       "object_type": "integration",
       "type": "object_t"
     },
     "issuer_dn": {
       "description": "Issuer Disinguished name (DN) of a digital certificate",
-      "name": "Issuer DN",
+      "caption": "Issuer DN",
       "type": "string_t"
     },
     "kubernetes": {
       "description": "Kubernetes object describes details related to a K8 entity",
-      "name": "kubernetes",
+      "caption": "kubernetes",
       "object_type": "kubernetes",
       "type": "object_t"
     },
     "last_status": {
       "description": "The last reported status from the runtime environment for a container",
-      "name": "last_status",
+      "caption": "last_status",
       "type": "string_t"
     },
     "lb_actions": {
       "description": "The actions performed by the load balancer",
-      "name": "Load Balancer Actions",
+      "caption": "Load Balancer Actions",
       "type": "string_t",
       "enum": {
         "authenticate": {
           "description": "The load balancer validated the session, authenticated the user, and added the user information to the request headers, as specified by the rule configuration.",
-          "name": "AUTHENTICATE"
+          "caption": "AUTHENTICATE"
         },
         "fixed-response": {
           "description": "The load balancer issued a fixed response, as specified by the rule configuration.",
-          "name": "FIXED-RESPONSE"
+          "caption": "FIXED-RESPONSE"
         },
         "forward": {
           "description": "The load balancer forwarded the request to a target, as specified by the rule configuration.",
-          "name": "FORWARD"
+          "caption": "FORWARD"
         },
         "redirect": {
           "description": "The load balancer redirected the request to another URL, as specified by the rule configuration.",
-          "name": "REDIRECT"
+          "caption": "REDIRECT"
         },
         "waf": {
           "description": "The load balancer forwarded the request to AWS WAF to determine whether the request should be forwarded to the target. If this is the final action, AWS WAF determined that the request should be rejected.",
-          "name": "WAF"
+          "caption": "WAF"
         },
         "waf-failed": {
           "description": "The load balancer attempted to forward the request to AWS WAF, but this process failed.",
-          "name": "WAF-FAILED"
+          "caption": "WAF-FAILED"
         }
       }
     },
     "level": {
       "description": "AuditLevel at which event was generated",
-      "name": "Level",
+      "caption": "Level",
       "type": "string_t"
     },
     "limit_key": {
       "description": "Indicates the IP address source that AWS WAF should use to aggregate requests for rate limiting by a rate-based rule. Possible values are IP, for web request origin, and FORWARDED_IP, for an IP forwarded in a header in the request.",
-      "name": "Limit Key",
+      "caption": "Limit Key",
       "type": "string_t"
     },
     "limit_value": {
       "description": "The IP address used by a rate-based rule to aggregate requests for rate limiting. If a request contains an IP address that isn't valid, the limitvalue is INVALID.",
-      "name": "Limit Value",
+      "caption": "Limit Value",
       "type": "string_t"
     },
     "load_balancer": {
       "description": "Load balancer object describes details related to a load balancer entity (e.g. AWS ELB)",
-      "name": "Load Balancer",
+      "caption": "Load Balancer",
       "object_type": "load_balancer",
       "type": "object_t"
     },
     "matched_rule_priority": {
       "description": "The priority of the matching rule",
-      "name": "matched_rule_priority",
+      "caption": "matched_rule_priority",
       "type": "integer_t"
     },
     "matching": {
       "description": "A boolean value to identify if the associated rule matched the logged event",
-      "name": "Matching",
+      "caption": "Matching",
       "type": "boolean_t"
     },
     "max_rate_allowed": {
       "description": "The maximum number of requests, which have an identical value in the field that is specified by limitKey, allowed in a five-minute period. If the number of requests exceeds the maxRateAllowed and the other predicates specified in the rule are also met, AWS WAF triggers the action that is specified for this rule.",
-      "name": "Maximum Rate Allowed",
+      "caption": "Maximum Rate Allowed",
       "type": "integer_t"
     },
     "memory": {
       "description": "The amount of memory, in MB, allocated to a container runtime",
-      "name": "Memory Allocation",
+      "caption": "Memory Allocation",
       "type": "integer_t"
     },
     "network_connection": {
       "description": "Describes the protocol, direction, source, and destination of a network connection. Intended to be used alongside Network Traffic.",
-      "name": "Network Connection",
+      "caption": "Network Connection",
       "object_type": "network_connection",
       "type": "object_t"
     },
     "network_traffic": {
       "description": "Describes the network data traffic. Network traffic refers to the amount of data moving across a network at a given point of time. Intended to be used alongside Network Connection.",
-      "name": "Network Traffic",
+      "caption": "Network Traffic",
       "object_type": "network_traffic",
       "type": "object_t"
     },
     "node_name": {
       "description": "The Name of the Node inside the Kubernetes cluster",
-      "name": "Node Name",
+      "caption": "Node Name",
       "type": "string_t"
     },
     "node_ip": {
       "description": "The IP of the Node inside the Kubernetes cluster",
-      "name": "Node IP",
+      "caption": "Node IP",
       "type": "string_t"
     },
     "not_after": {
       "description": "The maximum TLS certificate's validty period",
-      "name": "Not After",
+      "caption": "Not After",
       "type": "string_t"
     },
     "not_before": {
       "description": "The minimum TLS certificate's validty period",
-      "name": "Not Before",
+      "caption": "Not Before",
       "type": "string_t"
     },
     "object_storage": {
       "description": "Object storage descriptors",
-      "name": "Object Storage",
+      "caption": "Object Storage",
       "object_type": "object_storage",
       "type": "object_t"
     },
     "orchestration": {
       "description": "An object to describe the orchestration of a container task",
-      "name": "Container Orchestration",
+      "caption": "Container Orchestration",
       "object_type": "container_orchestration",
       "type": "object_t"
     },
     "overrides": {
       "description": "A list of any overrides present to take precedent over the default values for the container runtime",
-      "name": "Overrides",
+      "caption": "Overrides",
       "type": "string_t"
     },
     "pem": {
       "description": "An identifier for an associated PEM format for certificates",
-      "name": "PEM",
+      "caption": "PEM",
       "type": "string_t"
     },
     "pod_uid": {
       "description": "The unique ID of the pod inside the Kubernetes cluster",
-      "name": "Pod ID",
+      "caption": "Pod ID",
       "type": "string_t"
     },
     "pod_ip": {
       "description": "The IP of the pod inside the Kubernetes cluster",
-      "name": "Pod IP",
+      "caption": "Pod IP",
       "type": "string_t"
     },
     "pod_name": {
       "description": "The name of the pod inside the Kubernetes cluster",
-      "name": "Pod Name",
+      "caption": "Pod Name",
       "type": "string_t"
     },
     "pod_namespace": {
       "description": "The Namespace where the pod is located inside the Kubernetes cluster",
-      "name": "Pod Name",
+      "caption": "Pod Name",
       "type": "string_t"
     },
     "redirect_url": {
       "description": "The URL specified for redirection by the LB",
-      "name": "redirect_url",
+      "caption": "redirect_url",
       "type": "string_t"
     },
     "relation": {
       "description": "Defines the relationship amongst the resources",
-      "name": "Relation/Association",
+      "caption": "Relation/Association",
       "type": "string_t"
     },
     "reporter": {
       "description": "Descrbies who reported the log e.g. Source, Destination, Unkown",
-      "name": "Reporter",
+      "caption": "Reporter",
       "type": "string_t"
     },
     "request_classification": {
       "description": "The classification for desync mitigation, enclosed in double quotes. If the request does not comply with RFC 7230, the possible values are Acceptable, Ambiguous, and Severe.",
-      "name": "Request Classification",
+      "caption": "Request Classification",
       "type": "string_t"
     },
     "request_classification_reason": {
       "description": "The classification reason code, enclosed in double quotes. If the request does not comply with RFC 7230, this is one of the classification codes described in Classification reasons. If the request complies with RFC 7230, this value is set to -.",
-      "name": "Request Classification Reason",
+      "caption": "Request Classification Reason",
       "type": "string_t"
     },
     "request_creation_time": {
       "description": "The time when the load balancer received the request from the client, in ISO 8601 format.",
-      "name": "Request Creation Time",
+      "caption": "Request Creation Time",
       "type": "timestamp_t"
     },
     "request_id": {
       "description": "A unique identifier to track the HTTP request",
-      "name": "Request Identifier",
+      "caption": "Request Identifier",
       "type": "string_t"
     },
     "request_processing_time": {
       "description": "The total time elapsed (in seconds, with millisecond precision) from the time the load balancer received the request until the time it sent the request to a target.",
-      "name": "request_processing_time",
+      "caption": "request_processing_time",
       "type": "integer_t"
     },
     "requested_version_uid": {
@@ -328,122 +328,122 @@
     },
     "requester_id": {
       "description": "Details a requester's identifiers whenever avaialble ",
-      "name": "Requester ID",
+      "caption": "Requester ID",
       "type": "string_t"
     },
     "resource_path": {
       "description": "The Route Key/Resource Path of the API request, for example /pets. Will include the path pattern used to handle the request.",
-      "name": "Resource Path",
+      "caption": "Resource Path",
       "type": "string_t"
     },
     "response_processing_time": {
       "description": "The total time elapsed (in seconds, with millisecond precision) from the time the load balancer received the response header from the target until it started to send the response to the client. This includes both the queuing time at the load balancer and the connection acquisition time from the load balancer to the client.",
-      "name": "response_processing_time",
+      "caption": "response_processing_time",
       "type": "integer_t"
     },
     "rule_details": {
       "description": "Details provided to descrive the rule and the rule's behavior",
-      "name": "Rule details",
+      "caption": "Rule details",
       "type": "json_t"
     },
     "server_protocol": {
       "description": "For negotiation, the protocol offered by the server",
-      "name": "Server Protocol",
+      "caption": "Server Protocol",
       "type": "string_t"
     },
     "severity_score": {
       "description": "The severity score of a finding",
-      "name": "Severity Score",
+      "caption": "Severity Score",
       "type": "string_t"
     },
     "signature_version": {
       "description": "The AWS signature version used for Authentication",
-      "name": "Signature version",
+      "caption": "Signature version",
       "type": "string_t"
     },
     "stage": {
       "description": "Stage or phase of an entity(e.g. Dev, Test, Stage, Prod et al)",
-      "name": "Stage",
+      "caption": "Stage",
       "type": "string_t"
     },
     "stage_timestamp": {
       "description": "Time the request reached current audit stage",
-      "name": "Stage Timestamp",
+      "caption": "Stage Timestamp",
       "type": "timestamp_t"
     },
     "subject_dn": {
       "description": "Subject Disinguished name (DN) of a digital certificate",
-      "name": "Subject DN",
+      "caption": "Subject DN",
       "type": "string_t"
     },
     "target_group_uid": {
       "description": "A unique identifier to recognize the target for a load balancer connection",
-      "name": "Target Group UID",
+      "caption": "Target Group UID",
       "type": "string_t"
     },
     "target_processing_time": {
       "description": "The total time elapsed (in seconds, with millisecond precision) from the time the load balancer sent the request to a target until the target started to send the response headers.",
-      "name": "target_processing_time",
+      "caption": "target_processing_time",
       "type": "integer_t"
     },
     "target_status_code": {
       "description": "The status code of the utilized target for an LB target action.",
-      "name": "target_status_code",
+      "caption": "target_status_code",
       "type": "integer_t"
     },
     "target_status_code_list": {
       "description": "A space-delimited list of status codes from the responses of the targets, enclosed in double quotes. Currently, this list can contain one item and it matches the target_status_code field.",
-      "name": "target_status_code_list",
+      "caption": "target_status_code_list",
       "type": "integer_t",
       "is_array": true
     },
     "task_uid": {
       "description": "The unique identifier for a task utilized in a container runtime environment",
-      "name": "Task UID",
+      "caption": "Task UID",
       "type": "string_t"
     },
     "terminating_rule": {
       "description": "The rule responsibile for termination",
-      "name": "terminating_rule",
+      "caption": "terminating_rule",
       "object_type": "aws_rule",
       "type": "object_t"
     },
     "tls_client_protocol": {
       "description": "The application protocol negotiated with the client, in string format. The possible values are h2, http/1.1, and http/1.0. If no ALPN policy is configured in the TLS listener, no matching protocol is found, or no valid protocol list is sent, this value is set to -.",
-      "name": "TLS Client Protocol",
+      "caption": "TLS Client Protocol",
       "type": "string_t",
       "enum": {
         "h2": {
           "description": "",
-          "name": "h2"
+          "caption": "h2"
         },
         "http/1.0": {
           "description": "",
-          "name": "http/1.0"
+          "caption": "http/1.0"
         },
         "http/1.1": {
           "description": "",
-          "name": "http/1.1"
+          "caption": "http/1.1"
         },
         "NOT_SET": {
           "description": "",
-          "name": "NOT_SET"
+          "caption": "NOT_SET"
         }
       }
     },
     "tls_listener_uid": {
       "description": "The unique identifier of a TLS listener (e.g. AWS ELB Listener arn)",
-      "name": "TLS Listener UID",
+      "caption": "TLS Listener UID",
       "type": "string_t"
     },
     "tls_server_protocol": {
       "description": "The application protocol negotiated with the target, in string format. The possible values are h2, http/1.1, and http/1.0. If no ALPN policy is configured in the TLS listener, no matching protocol is found, or no valid protocol list is sent, this value is set to -.",
-      "name": "TLS Server Protocol",
+      "caption": "TLS Server Protocol",
       "type": "string_t"
     },
     "total_connection_time": {
       "description": "The total time for the connection to complete, from start to closure, in milliseconds.",
-      "name": "Total Connection Time",
+      "caption": "Total Connection Time",
       "type": "integer_t"
     },
     "turn_around_time": {
@@ -453,12 +453,12 @@
     },
     "url_path": {
       "description": "The URL path as extracted from the URL. For example: <code>/download/trouble</code>.",
-      "name": "URL Path",
+      "caption": "URL Path",
       "type": "path_t"
     },
     "use_case": {
       "description": "The usecase identifier of an entity",
-      "name": "Use case identifier",
+      "caption": "Use case identifier",
       "type": "string_t"
     }
   }

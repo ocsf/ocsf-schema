@@ -28,8 +28,8 @@ Create a new object (`cloud_ex.json`) in the `extensions/splunk_dev/objects` fol
 
 ```json
 {
-  "name": "Better Cloud",
-  "type": "cloud_ex",
+  "caption": "Better Cloud",
+  "name": "cloud_ex",
   "description": "The Better Cloud object describes a cloud with a comment.",
   "extends": "cloud",
   "attributes": {
@@ -48,8 +48,8 @@ Create a new object (`origin_ex.json`) in the `extensions/splunk_dev/objects` fo
 
 ```json
 {
-  "name": "Better Event Origin",
-  "type": "event_origin_ex",
+  "caption": "Better Event Origin",
+  "name": "event_origin_ex",
   "description": "The Better Event Origin with an added comment to the cloud object.",
   "extends": "event_origin",
   "attributes": {
@@ -69,8 +69,8 @@ If you are planning to use the new  `Better Cloud` object in many classes, then 
 
 ```json
 {
-  "name": "Better Event",
-  "type": "event_ex",
+  "caption": "Better Event",
+  "name": "event_ex",
   "extends": "base_event",
   "description": "A slightly better event using the better cloud.",
   "attributes": {
@@ -89,8 +89,8 @@ If you are planning to use the new  `Better Cloud` object in a single class or j
 
 ```json
 {
-  "name": "Diagnostic Event",
-  "type": "diagnostic",
+  "caption": "Diagnostic Event",
+  "name": "diagnostic",
   "category": "diagnostic",
   "uid": 1,
   "extends": "base_event",
@@ -98,7 +98,7 @@ If you are planning to use the new  `Better Cloud` object in a single class or j
     "activity_id": {
       "enum": {
         "1": {
-          "name": "Logged"
+          "caption": "Logged"
         }
       }
     },

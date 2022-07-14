@@ -7,8 +7,9 @@ To extend the schema create a new directory in the `schema/extensions` directory
 For example:
 ```json
 {
-  "name": "New Extension",
-  "type": "new_ex",
+  "caption": "New Extension",
+  "meta": "profile",
+  "name": "new_ex",
   "version": "0.0.0",
   "uid": 123
 }

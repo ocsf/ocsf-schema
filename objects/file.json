@@ -1,12 +1,12 @@
 {
-  "name": "File",
+  "caption": "File",
   "observable": 24,
-  "type": "file",
+  "name": "file",
   "profiles": ["security"],
   "description": "The file object describes files, folders, links and mounts, including the reputation information, if applicable.",
   "extends": "object",
   "attributes": {
-    "$include": ["objects/profiles/file_security.json"],
+    "$include": ["profiles/file_security.json"],
     "accessed_time": {
       "requirement": "optional"
     },
@@ -48,7 +48,7 @@
     "name": {
       "description": "The name of the file. For example: <code>svchost.exe</code>",
       "requirement": "required",
-      "type": "file_name_t"
+      "name": "file_name_t"
     },
     "owner": {
       "requirement": "optional"
@@ -77,31 +77,31 @@
       "description": "The file type ID.",
       "enum": {
         "-1": {
-          "name": "Other"
+          "caption": "Other"
         },
         "0": {
-          "name": "Unknown"
+          "caption": "Unknown"
         },
         "1": {
-          "name": "Regular File"
+          "caption": "Regular File"
         },
         "2": {
-          "name": "Folder"
+          "caption": "Folder"
         },
         "3": {
-          "name": "Character Device"
+          "caption": "Character Device"
         },
         "4": {
-          "name": "Block Device"
+          "caption": "Block Device"
         },
         "5": {
-          "name": "Local Socket"
+          "caption": "Local Socket"
         },
         "6": {
-          "name": "Named Pipe"
+          "caption": "Named Pipe"
         },
         "7": {
-          "name": "Symbolic Link"
+          "caption": "Symbolic Link"
         }
       },
       "requirement": "required"

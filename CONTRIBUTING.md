@@ -13,7 +13,7 @@ This documentation is about making changes to OCSF schema itself.
 ### Key Terminology
 
 1. **Field**: A field is a unique identifier name for a piece of data contained in OCSF. Each field also designates a corresponding data_type.
-2. **Object**: An object is a collection of contextually related fields, and other objects.  It is also a data_type in OCSF.
+2. **Object**: An object is a collection of contextually related fields and other objects.  It is also a data_type in OCSF.
 3. **Attribute**: An attribute is the more generic name for both fields and objects in OCSF.  A field is a scalar attribute while an object is a complex attribute.
 4. **Event Class**: An event is represented by an Event Class, which are a particular set of attributes (including fields & objects) representing a log line or telemetry submission at a point in time.
 5. **Category:** A Category organizes event classes that represent a particular domain.
@@ -129,7 +129,7 @@ Choose a **unique** object you want to add, `vulnerability` in the example above
 ### Adding/Modifying an `event_class`
 
 1. All the available Event Classes are defined as .json files in the [/events](https://github.com/ocsf/ocsf-schema/tree/main/events) folder.
-2. Review existing Event Classes, determine if a modification of the existing class would be sufficient or f there’s a need for a completely new event_class.
+2. Review existing Event Classes, determine if a modification of the existing class would be sufficient or if there’s a need for a completely new event_class.
 3. To define a new class, 
     1. Create a new file →  `<event_class_name.json>` inside the category specific subfolder in the [/events](https://github.com/ocsf/ocsf-schema/tree/main/events) folder.
     2. Use the template available [here](https://github.com/ocsf/ocsf-schema/blob/main/templates/event_class_name.json), to get started with the .json definition.
@@ -140,7 +140,7 @@ Choose a **unique** object you want to add, `vulnerability` in the example above
     6. `name` → Add a **unique** name of the event_class. Ensure it matches the file name to maintain consistency.
     7. `extends` → Ensure the value is `base_event`.
     8. `attributes` → Add the attributes that you want to define in the event_class, 
-        1. `group` → For each attribute ensure you add a group value. Valid values are - `Classification`, `Context`, `Occurrence`, `Primary`
+        1. `group` → For each attribute ensure you add a group value. Valid values are - `classification`, `context`, `occurrence`, `primary`
         2. `requirement` →  For each attribute ensure you add a requirement value. Valid values are `optional`, `required`, `reserved`, `recommended` 
 
 * * *

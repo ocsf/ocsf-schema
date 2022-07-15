@@ -978,10 +978,10 @@
       "caption": "Direction ID",
       "type": "integer_t"
     },
-    "dn": {
+    "cert_dn": {
       "description": "The certificate distinguished name.",
       "caption": "Distinguished Name",
-      "object_type": "dn",
+      "object_type": "cert_dn",
       "type": "object_t"
     },
     "dns_id": {
@@ -1139,13 +1139,13 @@
       "type": "object_t"
     },
     "fingerprint": {
-      "description": "A fingerprint associated with the certificate.",
+      "description": "The digital fingerprint associated with an object.",
       "caption": "Fingerprint",
       "object_type": "fingerprint",
       "type": "object_t"
     },
     "fingerprints": {
-      "description": "An array of fingerprint objects associated with the certificate.",
+      "description": "An array of digital fingerprint objects.",
       "is_array": true,
       "caption": "Fingerprints",
       "object_type": "fingerprint",
@@ -1204,6 +1204,12 @@
       "description": "The gateway media access control (MAC) address.",
       "caption": "Gateway MAC Address",
       "type": "mac_t"
+    },
+    "geo_location": {
+      "description": "The geographical location describes the city, state and country associated with an object.",
+      "caption": "Geo Location",
+      "object_type": "geo_location",
+      "type": "object_t"
     },
     "group": {
       "description": "The group object associated with an entity such as user, policy, or rule.",
@@ -1483,7 +1489,7 @@
     "issuer_dn": {
       "description": "The certificate issuer distinguished name.",
       "caption": "Issuer Distinguished Name",
-      "object_type": "dn",
+      "object_type": "cert_dn",
       "type": "object_t"
     },
     "ja3_fingerprint": {
@@ -1652,8 +1658,8 @@
       "type": "string_t"
     },
     "location": {
-      "description": "The geographical location usually associated with an IP address.",
-      "caption": "Geo Location",
+      "description": "The detailed geographical location usually associated with an IP address.",
+      "caption": "Detailed Geo Location",
       "object_type": "location",
       "type": "object_t"
     },
@@ -2546,7 +2552,7 @@
     },
     "sans": {
       "description": "The list of subject alternative names that are secured by a specific certificate.",
-      "caption": "SANS",
+      "caption": "Subject Alternative Names",
       "is_array": true,
       "object_type": "san",
       "type": "object_t"
@@ -2759,7 +2765,7 @@
     "subject_dn": {
       "description": "The certificate subject distinguished name.",
       "caption": "Subject Distinguished Name",
-      "object_type": "dn",
+      "object_type": "cert_dn",
       "type": "object_t"
     },
     "subnet": {

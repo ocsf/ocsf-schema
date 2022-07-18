@@ -28,6 +28,13 @@ jobs:
           
           FILES=$(curl -H "Accept: application/vnd.github+json" -H "Authorization: token ${{ secrets.ACCESS_TOKEN }}" -s -X GET -G $URL | jq -r '.[] | .filename')
           echo $FILES
+          for file in $FILES; 
+          do echo $file
+          do cp $file "/tmp/"$file
+          cd /tmp/
+          ls -la
+          done
+          
 
       - name: Clone OCSF Server
         uses: actions/checkout@v3 

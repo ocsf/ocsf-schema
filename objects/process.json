@@ -5,12 +5,48 @@
   "name": "process",
   "extends": "object",
   "attributes": {
+    "algorithm": {
+      "description": "The original hash algorithm, as reported by the event source, which was used to create the digital fingerprint.",
+      "requirement"": "recommended",
+    },
+    "algorithm_id": {
+      "description": "The identifier of the normalized hash algorithm, which was used to create the digital fingerprint.",
+      "enum": {
+        "-1": {
+          "caption": "Other"
+        },
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "description": "MD5 message-digest algorithm producing a 128-bit (16-byte) hash value.",
+          "caption": "MD5"
+        },
+        "2": {
+          "description": "Secure Hash Algorithm 1 producing a 160-bit (20-byte) hash value.",
+          "caption": "SHA-1"
+        },
+        "3": {
+          "description": "Secure Hash Algorithm 2 producing a 256-bit (32-byte) hash value.",
+          "caption": "SHA-256"
+        },
+        "4": {
+          "description": "Secure Hash Algorithm 2 producing a 512-bit (64-byte) hash value.",
+          "caption": "SHA-512"
+        },
+        "5": {
+          "description": "The ssdeep generated fuzzy checksum. Also known as Context Triggered Piecewise Hash (CTPH).",
+          "caption": "CTPH"
+        }
+      },
+      "requirement: "recommended,
+    },
     "cmd_line": {
       "requirement": "recommended"
     },
     "creation_time": {
       "description": "The time when the process was created/started.",
-      "requirement": "optional"
+      "requirement": "recommended"
     },
     "file": {
       "description": "The process file object.",
@@ -59,7 +95,15 @@
       "requirement": "recommended",
       "name": "process_name_t"
     },
+    "parent_pid": {
+      "description": "The parent process identifier, as reported by the operating system. Used to walk process ancestry",
+      "requirement": "optional"
+    },
     "parent_process": {
+      "requirement": "optional"
+    }
+    "parent_uid": {
+      "description": "The parent unique identifier. Used to walk process ancestry.",
       "requirement": "optional"
     },
     "path": {

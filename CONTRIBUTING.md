@@ -26,7 +26,7 @@ This documentation is about making changes to OCSF schema itself.
 2. Check the [dictionary](https://github.com/ocsf/ocsf-schema/blob/main/dictionary.json) and the [/objects](https://github.com/ocsf/ocsf-schema/tree/main/objects) folder, many of your desired attributes may already be present.
 3. Define the missing attributes → Adding a `field` , Adding an `object`.
 4. Determine which category you would want to add your event_class in, note it’s  `name`
-5. Create a new file →  `<event_class_name.json>` inside the category specific subfolder in the [/events](https://github.com/ocsf/ocsf-schema/tree/main/events) folder.
+5. Create a new file →  `<event_class_name.json>` inside the category specific subfolder in the [/events](https://github.com/ocsf/ocsf-schema/tree/main/events) folder. Template available [here](https://github.com/ocsf/ocsf-schema/blob/main/templates/event_class_name.json)
 6. Define the `event_class` itself → Adding an `event_class`.
 7. Finally, verify the changes are working as expected in your local [ocsf-server](https://github.com/ocsf/ocsf-server).
 

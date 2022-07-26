@@ -1,68 +1,35 @@
 {
-  "description": "The CVSS object details Common Vulnerability Scoring System (CVSS) scores from the advisory that are related to the vulnerability.",
   "caption": "CVSS Scores",
-  "name": "cvss",
+  "description": "The CVSS object details Common Vulnerability Scoring System (CVSS) scores from the advisory that are related to the vulnerability.",
   "extends": "object",
+  "name": "cvss",
   "attributes": {
-    "cvss_score": {
-      "description": "The CVSS score value",
-      "requirement": "recommended"
-    },
-    "cvss_vector_string": {
-      "description": "The CVSS vector string is a text representation of a set of CVSS metrics. It is commonly used to record or transfer CVSS metric information in a concise form. An example: CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:N",
-      "requirement": "optional"
-    },
-    "cvss_depth_id": {
-      "description": "The CVSS depth. Representing a depth of the equation used to calculate CVSS score.",
-      "enum": {
-        "0": {
-          "caption": "Base"
-        },
-        "1": {
-          "caption": "Temporal"
-        },
-        "2": {
-          "caption": "Environmental"
-        }
-      },
-      "requirement": "recommended"
-    },
-    "cvss_severity_id": {
-      "description": "A textual representation of the numeric score. None (0.0), Low (0.1 - 3.9), Medium (4.0 - 6.9), High (7.0 - 8.9), Critical (9.0 - 10.0)",
-      "enum": {
-        "0": {
-          "caption": "None"
-        },
-        "1": {
-          "caption": "Low"
-        },
-        "2": {
-          "caption": "Medium"
-        },
-        "3": {
-          "caption": "High"
-        },
-        "4": {
-          "caption": "Critical"
-        }
-      },
-      "requirement": "optional"
-    },
-    "cvss_version": {
-      "description": "The CVSS version (v1, v2, v3)",
-      "requirement": "recommended"
-    },
     "cvss_access_complexity_id": {
       "description": "Name: Access Complexity (AC). Group: Base. CVSS Version: v1, v2",
       "enum": {
         "0": {
-          "name": "Low (L)"
+          "caption": "Low (L)"
         },
         "1": {
-          "name": "Medium (M)"
+          "caption": "Medium (M)"
         },
         "2": {
-          "name": "High (H)"
+          "caption": "High (H)"
+        }
+      },
+      "requirement": "optional"
+    },
+    "cvss_access_vector_id": {
+      "description": "Name: Access Vector (AV). Group: Base. CVSS version: v1, v2",
+      "enum": {
+        "0": {
+          "caption": "Local (L)"
+        },
+        "1": {
+          "caption": "Adjacent Network (A)"
+        },
+        "2": {
+          "caption": "Network (N)"
         }
       },
       "requirement": "optional"
@@ -97,21 +64,6 @@
       },
       "requirement": "optional"
     },
-    "cvss_access_vector_id": {
-      "description": "Name: Access Vector (AV). Group: Base. CVSS version: v1, v2",
-      "enum": {
-        "0": {
-          "caption": "Local (L)"
-        },
-        "1": {
-          "caption": "Adjacent Network (A)"
-        },
-        "2": {
-          "caption": "Network (N)"
-        }
-      },
-      "requirement": "optional"
-    },
     "cvss_authentication_id": {
       "description": "Name: Authentication (Au). Group: Base. CVSS version: v1, v2",
       "enum": {
@@ -127,8 +79,8 @@
       },
       "requirement": "optional"
     },
-    "cvss_privileges_required_id": {
-      "description": "Name: Privileges Required (PR). Group: Base. CVSS version: v3",
+    "cvss_availability_id": {
+      "description": "Name: Availability (A). Group: Base. CVSS version: v3",
       "enum": {
         "0": {
           "caption": "None (N)"
@@ -157,38 +109,26 @@
       },
       "requirement": "optional"
     },
-    "cvss_confidentiality_impact_id": {
-      "description": "Name: Confidentiality Impact (C). Group: Base CVSS version: v1, v2",
+    "cvss_availability_requirement_id": {
+      "description": "Name: Availability Requirement (AR). Group: Environmental. CVSS version: v2, v3",
       "enum": {
         "0": {
-          "caption": "None (N)"
+          "caption": "Not Defined (X, ND)"
         },
         "1": {
-          "caption": "Partial (P)"
+          "caption": "Low (L)"
         },
         "2": {
-          "caption": "Complete (C)"
+          "caption": "Medium (LM)"
+        },
+        "3": {
+          "caption": "High (H)"
         }
       },
       "requirement": "optional"
     },
-    "cvss_integrity_impact_id": {
-      "description": "Name: Integrity Impact (I). Group: Base. CVSS version: v1, v2",
-      "enum": {
-        "0": {
-          "caption": "None (N)"
-        },
-        "1": {
-          "caption": "Partial (P)"
-        },
-        "2": {
-          "caption": "Complete (C)"
-        }
-      },
-      "requirement": "optional"
-    },
-    "cvss_availability_id": {
-      "description": "Name: Availability (A). Group: Base. CVSS version: v3",
+    "cvss_collateral_damage_potential_id": {
+      "description": "Name: Collateral Damage Potential (CDP). Group: Environmental. CVSS version: v1, v2",
       "enum": {
         "0": {
           "caption": "None (N)"
@@ -197,7 +137,16 @@
           "caption": "Low (L)"
         },
         "2": {
+          "caption": "Low-Medium (LM)"
+        },
+        "3": {
+          "caption": "Medium-High (MH)"
+        },
+        "4": {
           "caption": "High (H)"
+        },
+        "5": {
+          "caption": "Not Defined (ND)"
         }
       },
       "requirement": "optional"
@@ -217,44 +166,53 @@
       },
       "requirement": "optional"
     },
-    "cvss_integrity_id": {
-      "description": "Name: Integrity (I). Group: Base. CVSS version: v3",
+    "cvss_confidentiality_impact_id": {
+      "description": "Name: Confidentiality Impact (C). Group: Base CVSS version: v1, v2",
       "enum": {
         "0": {
           "caption": "None (N)"
+        },
+        "1": {
+          "caption": "Partial (P)"
+        },
+        "2": {
+          "caption": "Complete (C)"
+        }
+      },
+      "requirement": "optional"
+    },
+    "cvss_confidentiality_requirement_id": {
+      "description": "Name: Confidentiality Requirement (CR). Group: Environmental. CVSS version: v2, v3",
+      "enum": {
+        "0": {
+          "caption": "Not Defined (X, ND)"
         },
         "1": {
           "caption": "Low (L)"
         },
         "2": {
+          "caption": "Medium (LM)"
+        },
+        "3": {
           "caption": "High (H)"
         }
       },
       "requirement": "optional"
     },
-    "cvss_user_interaction_id": {
-      "description": "Name: User Interaction (UI). Group: Base. CVSS version: v3",
+    "cvss_depth_id": {
+      "description": "The CVSS depth. Representing a depth of the equation used to calculate CVSS score.",
       "enum": {
         "0": {
-          "caption": "None (N)"
+          "caption": "Base"
         },
         "1": {
-          "caption": "Required (R)"
-        }
-      },
-      "requirement": "optional"
-    },
-    "cvss_scope_id": {
-      "description": "Name: Scope (S). Group: Base. CVSS version: v3",
-      "enum": {
-        "0": {
-          "caption": "Unchanged (U)"
+          "caption": "Temporal"
         },
-        "1": {
-          "caption": "Changed (C)"
+        "2": {
+          "caption": "Environmental"
         }
       },
-      "requirement": "optional"
+      "requirement": "recommended"
     },
     "cvss_exploit_code_maturity_id": {
       "description": "Name: Exploit Code Maturity (E). Group: Temporal. CVSS version: v3",
@@ -294,6 +252,207 @@
         },
         "4": {
           "caption": "Unproven (U)"
+        }
+      },
+      "requirement": "optional"
+    },
+    "cvss_integrity_id": {
+      "description": "Name: Integrity (I). Group: Base. CVSS version: v3",
+      "enum": {
+        "0": {
+          "caption": "None (N)"
+        },
+        "1": {
+          "caption": "Low (L)"
+        },
+        "2": {
+          "caption": "High (H)"
+        }
+      },
+      "requirement": "optional"
+    },
+    "cvss_integrity_impact_id": {
+      "description": "Name: Integrity Impact (I). Group: Base. CVSS version: v1, v2",
+      "enum": {
+        "0": {
+          "caption": "None (N)"
+        },
+        "1": {
+          "caption": "Partial (P)"
+        },
+        "2": {
+          "caption": "Complete (C)"
+        }
+      },
+      "requirement": "optional"
+    },
+    "cvss_integrity_requirement_id": {
+      "description": "Name: Integrity Requirement (IR). Group: Environmental. CVSS version: v2, v3",
+      "enum": {
+        "0": {
+          "caption": "Not Defined (X, ND)"
+        },
+        "1": {
+          "caption": "Low (L)"
+        },
+        "2": {
+          "caption": "Medium (LM)"
+        },
+        "3": {
+          "caption": "High (H)"
+        }
+      },
+      "requirement": "optional"
+    },
+    "cvss_modified_attack_complexity_id": {
+      "description": "Name: Modified Attack Complexity (MAC). Group: Environmental. Version: v3",
+      "enum": {
+        "0": {
+          "caption": "Not Defined (X)"
+        },
+        "1": {
+          "caption": "Low (L)"
+        },
+        "2": {
+          "caption": "High (H)"
+        }
+      },
+      "requirement": "optional"
+    },
+    "cvss_modified_attack_vector_id": {
+      "description": "Name: Modified Attack Vector (MAV). Group: Environmental. Version: v3",
+      "enum": {
+        "0": {
+          "caption": "Not Defined (X)"
+        },
+        "1": {
+          "caption": "Network (N)"
+        },
+        "2": {
+          "caption": "Adjacent (A)"
+        },
+        "3": {
+          "caption": "Local (L)"
+        },
+        "4": {
+          "caption": "Physical (P)"
+        }
+      },
+      "requirement": "optional"
+    },
+    "cvss_modified_availability_id": {
+      "description": "Name: Modified Availability (MA). Group: Environmental. Version: v3",
+      "enum": {
+        "0": {
+          "caption": "Not Defined (X)"
+        },
+        "1": {
+          "caption": "None (N)"
+        },
+        "2": {
+          "caption": "Low (L)"
+        },
+        "3": {
+          "caption": "High (H)"
+        }
+      },
+      "requirement": "optional"
+    },
+    "cvss_modified_confidentiality_id": {
+      "description": "Name: Modified Confidentiality (MC). Group: Environmental. Version: v3",
+      "enum": {
+        "0": {
+          "caption": "Not Defined (X)"
+        },
+        "1": {
+          "caption": "None (N)"
+        },
+        "2": {
+          "caption": "Low (L)"
+        },
+        "3": {
+          "caption": "High (H)"
+        }
+      },
+      "requirement": "optional"
+    },
+    "cvss_modified_integrity_id": {
+      "description": "Name: Modified Integrity (MI). Group: Environmental. Version: v3",
+      "enum": {
+        "0": {
+          "caption": "Not Defined (X)"
+        },
+        "1": {
+          "caption": "None (N)"
+        },
+        "2": {
+          "caption": "Low (L)"
+        },
+        "3": {
+          "caption": "High (H)"
+        }
+      },
+      "requirement": "optional"
+    },
+    "cvss_modified_privileges_required_id": {
+      "description": "Name: Modified Privileges Required (MPR). Group: Environmental. Version: v3",
+      "enum": {
+        "0": {
+          "caption": "Not Defined (X)"
+        },
+        "1": {
+          "caption": "None (N)"
+        },
+        "2": {
+          "caption": "Low (L)"
+        },
+        "3": {
+          "caption": "High (H)"
+        }
+      },
+      "requirement": "optional"
+    },
+    "cvss_modified_scope_id": {
+      "description": "Name: Modified Scope (MS). Group: Environmental. Version: v3",
+      "enum": {
+        "0": {
+          "caption": "Not Defined (X)"
+        },
+        "1": {
+          "caption": "Unchanged (U)"
+        },
+        "2": {
+          "caption": "Changed (C)"
+        }
+      },
+      "requirement": "optional"
+    },
+    "cvss_modified_user_interaction_id": {
+      "description": "Name: Modified User Interaction (MUI). Group: Environmental. Version: v3",
+      "enum": {
+        "0": {
+          "caption": "Not Defined (X)"
+        },
+        "1": {
+          "caption": "None (N)"
+        },
+        "2": {
+          "caption": "Required (R)"
+        }
+      },
+      "requirement": "optional"
+    },
+    "cvss_privileges_required_id": {
+      "description": "Name: Privileges Required (PR). Group: Base. CVSS version: v3",
+      "enum": {
+        "0": {
+          "caption": "None (N)"
+        },
+        "1": {
+          "caption": "Low (L)"
+        },
+        "2": {
+          "caption": "High (H)"
         }
       },
       "requirement": "optional"
@@ -343,26 +502,39 @@
       },
       "requirement": "optional"
     },
-    "cvss_collateral_damage_potential_id": {
-      "description": "Name: Collateral Damage Potential (CDP). Group: Environmental. CVSS version: v1, v2",
+    "cvss_scope_id": {
+      "description": "Name: Scope (S). Group: Base. CVSS version: v3",
       "enum": {
         "0": {
-          "caption": "None (N)"
+          "caption": "Unchanged (U)"
         },
         "1": {
-          "caption": "Low (L)"
+          "caption": "Changed (C)"
+        }
+      },
+      "requirement": "optional"
+    },
+    "cvss_score": {
+      "description": "The CVSS score value",
+      "requirement": "recommended"
+    },
+    "cvss_severity_id": {
+      "description": "A textual representation of the numeric score. None (0.0), Low (0.1 - 3.9), Medium (4.0 - 6.9), High (7.0 - 8.9), Critical (9.0 - 10.0)",
+      "enum": {
+        "0": {
+          "caption": "None"
+        },
+        "1": {
+          "caption": "Low"
         },
         "2": {
-          "caption": "Low-Medium (LM)"
+          "caption": "Medium"
         },
         "3": {
-          "caption": "Medium-High (MH)"
+          "caption": "High"
         },
         "4": {
-          "caption": "High (H)"
-        },
-        "5": {
-          "caption": "Not Defined (ND)"
+          "caption": "Critical"
         }
       },
       "requirement": "optional"
@@ -388,197 +560,25 @@
       },
       "requirement": "optional"
     },
-    "cvss_confidentiality_requirement_id": {
-      "description": "Name: Confidentiality Requirement (CR). Group: Environmental. CVSS version: v2, v3",
+    "cvss_user_interaction_id": {
+      "description": "Name: User Interaction (UI). Group: Base. CVSS version: v3",
       "enum": {
         "0": {
-          "caption": "Not Defined (X, ND)"
-        },
-        "1": {
-          "caption": "Low (L)"
-        },
-        "2": {
-          "caption": "Medium (LM)"
-        },
-        "3": {
-          "caption": "High (H)"
-        }
-      },
-      "requirement": "optional"
-    },
-    "cvss_integrity_requirement_id": {
-      "description": "Name: Integrity Requirement (IR). Group: Environmental. CVSS version: v2, v3",
-      "enum": {
-        "0": {
-          "caption": "Not Defined (X, ND)"
-        },
-        "1": {
-          "caption": "Low (L)"
-        },
-        "2": {
-          "caption": "Medium (LM)"
-        },
-        "3": {
-          "caption": "High (H)"
-        }
-      },
-      "requirement": "optional"
-    },
-    "cvss_availability_requirement_id": {
-      "description": "Name: Availability Requirement (AR). Group: Environmental. CVSS version: v2, v3",
-      "enum": {
-        "0": {
-          "caption": "Not Defined (X, ND)"
-        },
-        "1": {
-          "caption": "Low (L)"
-        },
-        "2": {
-          "caption": "Medium (LM)"
-        },
-        "3": {
-          "caption": "High (H)"
-        }
-      },
-      "requirement": "optional"
-    },
-    "cvss_modified_attack_vector_id": {
-      "description": "Name: Modified Attack Vector (MAV). Group: Environmental. Version: v3",
-      "enum": {
-        "0": {
-          "caption": "Not Defined (X)"
-        },
-        "1": {
-          "caption": "Network (N)"
-        },
-        "2": {
-          "caption": "Adjacent (A)"
-        },
-        "3": {
-          "caption": "Local (L)"
-        },
-        "4": {
-          "caption": "Physical (P)"
-        }
-      },
-      "requirement": "optional"
-    },
-    "cvss_modified_attack_complexity_id": {
-      "description": "Name: Modified Attack Complexity (MAC). Group: Environmental. Version: v3",
-      "enum": {
-        "0": {
-          "caption": "Not Defined (X)"
-        },
-        "1": {
-          "caption": "Low (L)"
-        },
-        "2": {
-          "caption": "High (H)"
-        }
-      },
-      "requirement": "optional"
-    },
-    "cvss_modified_privileges_required_id": {
-      "description": "Name: Modified Privileges Required (MPR). Group: Environmental. Version: v3",
-      "enum": {
-        "0": {
-          "caption": "Not Defined (X)"
-        },
-        "1": {
           "caption": "None (N)"
         },
-        "2": {
-          "caption": "Low (L)"
-        },
-        "3": {
-          "caption": "High (H)"
-        }
-      },
-      "requirement": "optional"
-    },
-    "cvss_modified_user_interaction_id": {
-      "description": "Name: Modified User Interaction (MUI). Group: Environmental. Version: v3",
-      "enum": {
-        "0": {
-          "caption": "Not Defined (X)"
-        },
         "1": {
-          "caption": "None (N)"
-        },
-        "2": {
           "caption": "Required (R)"
         }
       },
       "requirement": "optional"
     },
-    "cvss_modified_scope_id": {
-      "description": "Name: Modified Scope (MS). Group: Environmental. Version: v3",
-      "enum": {
-        "0": {
-          "caption": "Not Defined (X)"
-        },
-        "1": {
-          "caption": "Unchanged (U)"
-        },
-        "2": {
-          "caption": "Changed (C)"
-        }
-      },
+    "cvss_vector_string": {
+      "description": "The CVSS vector string is a text representation of a set of CVSS metrics. It is commonly used to record or transfer CVSS metric information in a concise form. An example: CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:N",
       "requirement": "optional"
     },
-    "cvss_modified_confidentiality_id": {
-      "description": "Name: Modified Confidentiality (MC). Group: Environmental. Version: v3",
-      "enum": {
-        "0": {
-          "caption": "Not Defined (X)"
-        },
-        "1": {
-          "caption": "None (N)"
-        },
-        "2": {
-          "caption": "Low (L)"
-        },
-        "3": {
-          "caption": "High (H)"
-        }
-      },
-      "requirement": "optional"
-    },
-    "cvss_modified_integrity_id": {
-      "description": "Name: Modified Integrity (MI). Group: Environmental. Version: v3",
-      "enum": {
-        "0": {
-          "caption": "Not Defined (X)"
-        },
-        "1": {
-          "caption": "None (N)"
-        },
-        "2": {
-          "caption": "Low (L)"
-        },
-        "3": {
-          "caption": "High (H)"
-        }
-      },
-      "requirement": "optional"
-    },
-    "cvss_modified_availability_id": {
-      "description": "Name: Modified Availability (MA). Group: Environmental. Version: v3",
-      "enum": {
-        "0": {
-          "caption": "Not Defined (X)"
-        },
-        "1": {
-          "caption": "None (N)"
-        },
-        "2": {
-          "caption": "Low (L)"
-        },
-        "3": {
-          "caption": "High (H)"
-        }
-      },
-      "requirement": "optional"
+    "cvss_version": {
+      "description": "The CVSS version (v1, v2, v3)",
+      "requirement": "recommended"
     }
   }
 }

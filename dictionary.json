@@ -675,6 +675,12 @@
       "is_array": true,
       "type": "string_t"
     },
+    "client_dialects": {
+      "description": "The list of SMB dialects that the client speaks.",
+      "is_array": true,
+      "caption": "Client Dialects",
+      "type": "string_t"
+    },
     "cloud": {
       "caption": "Cloud",
       "description": "The cloud where the event was originally created or logged.",
@@ -700,6 +706,16 @@
       "caption": "Color Depth",
       "description": "The numeric color depth.",
       "type": "integer_t"
+    },
+    "command": {
+      "description": "The command name.",
+      "caption": "Command",
+      "type": "string_t"
+    },
+    "command_response": {
+      "description": "The response to the command.",
+      "caption": "Command Response",
+      "type": "string_t"
     },
     "comment": {
       "caption": "Comment",
@@ -1087,6 +1103,12 @@
       "description": "The additional data that is associated with the event or object. See specific usage.",
       "type": "json_t"
     },
+    "dce_rpc": {
+      "description": "The DCE/RPC object describes the remote procedure call system for distributed computing environments.",
+      "caption": "Distributed Computing Environment/Remote Procedure Call (DCE/RPC)",
+      "object_type": "dce_rpc",
+      "type": "object_t"
+    },
     "decision": {
       "caption": "Authorization Decision/Outcome",
       "description": "Decision/outcome of the authorization mechanism (e.g. Approved, Denied)",
@@ -1133,6 +1155,11 @@
       "description": "The device that reported the event.",
       "object_type": "device",
       "type": "object_t"
+    },
+    "dialect": {
+      "description": "The negotiated protocol dialect.",
+      "caption": "Dialect",
+      "type": "string_t"
     },
     "direction": {
       "caption": "Direction",
@@ -2019,10 +2046,20 @@
       "description": "The Windows options needed to open a registry key.",
       "type": "integer_t"
     },
+    "open_type": {
+      "description": "The file open type.",
+      "caption": "Open Type",
+      "type": "string_t"
+    },
     "operation": {
       "caption": "Operation",
       "description": "Verb/Operation associated with the request",
       "type": "string_t"
+    },
+    "opnum": {
+      "description": "An operation number used to identify a specific remote procedure call (RPC) method or a method in an interface.",
+      "caption": "Opnum",
+      "type": "integer_t"
     },
     "orchestrator": {
       "caption": "Orchestrator",
@@ -2729,6 +2766,12 @@
       "description": "The serial number that pertains to the object. See specific usage.",
       "type": "string_t"
     },
+    "server": {
+      "description": "The server object pertaining to the client/server exchange.",
+      "caption": "Server",
+      "object_type": "server",
+      "type": "object_t"
+    },
     "server_ciphers": {
       "caption": "Server Cipher Suites",
       "description": "The server cipher suites that were exchanged during the TLS handshake negotiation.",
@@ -2795,6 +2838,16 @@
         }
       },
       "type": "integer_t"
+    },
+    "share": {
+      "description": "The SMB share name.",
+      "caption": "Share",
+      "type": "string_t"
+    },
+    "share_type": {
+      "description": "The SMB share type.",
+      "caption": "Share Type",
+      "type": "string_t"
     },
     "sha1": {
       "caption": "SHA-1",
@@ -3060,6 +3113,11 @@
     "transaction_uid": {
       "caption": "Transaction UID",
       "description": "The unique identifier of the transaction.",
+      "type": "string_t"
+    },
+    "tree_uid": {
+      "description": "The tree id is a unique SMB identifier which represents an open connection to a share.",
+      "caption": "Tree UID",
       "type": "string_t"
     },
     "ttl": {

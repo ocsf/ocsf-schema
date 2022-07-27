@@ -1,5 +1,5 @@
 {
-  "caption": "SMB Activity",
+  "caption": "Server Message Block (SMB) Protocol Trait",
   "uid": 6,
   "name": "network_smb_activity",
   "profiles": [
@@ -10,11 +10,87 @@
   "description": "Server Message Block (SMB) Protocol Activity events report client/server connections sharing resources within the network.",
   "extends": "network",
   "attributes": {
-    "$include": [
-      "includes/smb.json"
-    ],
     "activity_id": {
-      "$include": "enums/smb_activity.json"
+      "enum": {
+        "1": {
+          "caption": "File Supersede",
+          "description": "The event pertains to file superseded activity (overwritten if it exists and created if not)."
+        },
+        "2": {
+          "caption": "File Open",
+          "description": "The event pertains to file open activity (the file is opened if it exists and fails to open if it doesn't)."
+        },
+        "3": {
+          "caption": "File Create",
+          "description": "The event pertains to file creation activity (a file is created if it does not exist and fails if it does)."
+        },
+        "4": {
+          "caption": "File Open If",
+          "description": "The event pertains to file open activity (the file is opened if it exists and is created if it doesn't)."
+        },
+        "5": {
+          "caption": "File Overwrite",
+          "description": "The event pertains to file overwrite activity (the file is opened in a truncated form if it exists and fails if it doesn't)."
+        },
+        "6": {
+          "caption": "File Overwrite If",
+          "description": "The event pertains to file overwrite activity (the file is opened in a truncated form if it exists and created otherwise)"
+        }
+      }
+    },
+    "command": {
+      "description": "The command name (e.g. SMB2_COMMAND_CREATE, SMB1_COMMAND_WRITE_ANDX).",
+      "group": "primary",
+      "requirement": "required"
+    },
+    "client": {
+      "description": "The SMB client.",
+      "group": "primary",
+      "requirement": "required"
+    },
+    "client_dialects": {
+      "group": "context",
+      "requirement": "recommended"
+    },
+    "dce_rpc": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "dialect": {
+      "group": "context",
+      "requirement": "recommended"
+    },
+    "file": {
+      "description": "The file that is the target of the SMB activity.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "open_type": {
+      "description": "Indicates how the file was opened (e.g. normal, delete on close).",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "response": {
+      "description": "The server response in an SMB network connection.",
+      "group": "primary",
+      "requirement": "required"
+    },
+    "server": {
+      "description": "The SMB server.",
+      "group": "primary",
+      "requirement": "required"
+    },
+    "share": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "share_type": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "tree_uid": {
+      "group": "primary",
+      "requirement": "optional"
     }
   }
 }

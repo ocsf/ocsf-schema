@@ -1,15 +1,26 @@
 {
-  "caption": "Distributed Computing Environment/Remote Procedure Calls (DCE/RPC)",
+  "caption": "Distributed Computing Environment/Remote Procedure Call (DCE/RPC)",
   "name": "dce_rpc",
   "description": "The DCE/RPC object describes the remote procedure call system for distributed computing environments.",
   "attributes": {
+    "command": {
+      "description": "The request command (e.g. REQUEST, BIND).",
+      "requirement": "recommended"
+    },
+    "command_response": {
+      "description": "The reply to the request command (e.g. RESPONSE, BINDACK or FAULT).",
+      "requirement": "recommended"
+    },
     "flags": {
-      "description": "The list of interfaces",
+      "description": "The list of interface flags.",
       "requirement": "required"
     },
     "network_interfaces": {
       "description": "The list of DCE/RPC interfaces",
-      "requirement": "optional"
+      "requirement": "required"
+    },
+    "opnum": {
+      "requirement": "recommended"
     }
   }
 }

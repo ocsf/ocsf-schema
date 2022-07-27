@@ -262,9 +262,14 @@
       "caption": "Base Address",
       "type": "string_t"
     },
-    "bits": {
-      "description": "The number of processor bits. For example: <code>64</code> or <code>128</code>.",
-      "caption": "OS Bits",
+    "cpu_bits": {
+      "description": "The cpu architecture, the number of bits used for addressing in memory. For example: <code>32</code> or <code>64</code>.",
+      "caption": "CPU Bits",
+      "type": "integer_t"
+    },
+    "ram_size": {
+      "description": "The ctotal amount of installed RAM, in Megabytes. For example: <code>2048</code>.",
+      "caption": "RAM Size",
       "type": "integer_t"
     },
     "build": {
@@ -1428,30 +1433,46 @@
       "caption": "HTTP Version",
       "type": "string_t"
     },
-    "hw_bios_date": {
+    "bios_date": {
       "description": "The BIOS date. For example: <code>03/31/16</code>.",
       "caption": "BIOS Date",
       "type": "string_t"
     },
-    "hw_bios_manufacturer": {
+    "bios_manufacturer": {
       "description": "The BIOS manufacturer. For example: <code>LENOVO</code>.",
       "caption": "BIOS Manufacturer",
       "type": "string_t"
     },
-    "hw_serial": {
-      "caption": "Serial Number",
-      "type": "string_t",
-      "description": "The manufacturer serial number."
-    },
-    "hw_bios_ver": {
+    "bios_ver": {
       "description": "The BIOS version. For example: <code>LENOVO G5ETA2WW (2.62)</code>.",
       "caption": "BIOS Version",
       "type": "string_t"
     },
-    "hw_cpu_type": {
+    "cpu_count": {
+      "description": "The number of physical processors on a system. For example: <code>1</code>.",
+      "caption": "CPU Count",
+      "type": "integer_t"
+    },
+    "cpu_cores": {
+      "description": "The number of processor cores in all installed processors. For Example: <code>42</code>.",
+      "caption": "CPU Cores",
+      "type": "integer_t"
+    },
+    "cpu_speed": {
+      "description": "The speed of the processor in Mhz. For Example: <code>4200</code>.",
+      "caption": "Processor Type",
+      "type": "integer_t"
+    },
+    "cpu_type": {
       "description": "The processor type. For example: <code>x86 Family 6 Model 37 Stepping 5</code>.",
       "caption": "Processor Type",
       "type": "string_t"
+    },
+    "hw_info": {
+      "description": "The device hardware information.",
+      "caption": "Hardware Info",
+      "type": "object_t",
+      "object_type": "device_hw_info"
     },
     "hypervisor": {
       "description": "The name of the hypervisor running on the device. For example, <code>Xen</code>, <code>VMware</code>, <code>Hyper-V</code>, <code>VirtualBox</code>, etc.",
@@ -2714,14 +2735,9 @@
       "caption": "Sequence Number",
       "type": "integer_t"
     },
-    "serial": {
+    "serial_number": {
       "description": "The serial number that pertains to the object. See specific usage.",
       "caption": "Serial Number",
-      "type": "string_t"
-    },
-    "serial_number": {
-      "description": "The object serial number.",
-      "caption": "Signature Serial Number",
       "type": "string_t"
     },
     "server_ciphers": {

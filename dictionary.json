@@ -4,47 +4,48 @@
   "name": "dictionary",
   "attributes": {
     "access_list": {
+      "caption": "Access List",
       "description": "The list of requested access rights.",
       "is_array": true,
-      "caption": "Access List",
       "type": "string_t"
     },
     "access_mask": {
-      "description": "The access mask in a platform-native format.",
       "caption": "Access Mask",
+      "description": "The access mask in a platform-native format.",
       "type": "integer_t"
     },
     "access_result": {
-      "description": "The list of access check results.",
       "caption": "Access Check Result",
+      "description": "The list of access check results.",
       "object_type": "object",
       "type": "object_t"
     },
     "accessed_time": {
-      "description": "The time that the file was last accessed.",
       "caption": "Accessed",
+      "description": "The time that the file was last accessed.",
       "type": "timestamp_t"
     },
     "accessor": {
-      "description": "The name of the user who last accessed the object.",
       "caption": "Accessor",
+      "description": "The name of the user who last accessed the object.",
       "type": "string_t"
     },
     "account_type": {
-      "description": "The user account type (e.g. AWS, LDAP, Windows account, etc.).",
       "caption": "Account Type ID",
+      "description": "The user account type (e.g. AWS, LDAP, Windows account, etc.).",
       "type": "string_t"
     },
     "account_type_id": {
+      "caption": "Account Type ID",
       "description": "The user account type identifier (e.g. AWS, LDAP, Windows account, etc.).",
       "enum": {
         "-1": {
-          "description": "The user account type is not mapped.",
-          "caption": "Other"
+          "caption": "Other",
+          "description": "The user account type is not mapped."
         },
         "0": {
-          "description": "The user account type is unknown.",
-          "caption": "Unknown"
+          "caption": "Unknown",
+          "description": "The user account type is unknown."
         },
         "1": {
           "caption": "LDAP Account"
@@ -62,70 +63,70 @@
           "caption": "Azure AD Account"
         }
       },
-      "caption": "Account Type ID",
       "type": "integer_t"
     },
     "account_uid": {
-      "description": "The unique identifier of the account(e.g. AWS Account ID).",
       "caption": "Account UID",
+      "description": "The unique identifier of the account(e.g. AWS Account ID).",
       "type": "string_t"
     },
     "activity": {
-      "description": "The original activity that triggered the alert event.",
       "caption": "Activity",
+      "description": "The original activity that triggered the alert event.",
       "type": "string_t"
     },
     "activity_id": {
+      "caption": "Activity ID",
       "description": "The normalized identifier of the activity that triggered the alert event.",
       "enum": {
         "-1": {
-          "description": "The event activity is not mapped.",
-          "caption": "Other"
+          "caption": "Other",
+          "description": "The event activity is not mapped."
         },
         "0": {
-          "description": "The event activity is unknown.",
-          "caption": "Unknown"
+          "caption": "Unknown",
+          "description": "The event activity is unknown."
         }
       },
-      "caption": "Activity ID",
       "type": "integer_t"
     },
     "actor_process": {
-      "description": "The process that performed the operation or action on the target object. For example, the process that could have created a new file or violated a policy.",
       "caption": "Actor Process",
+      "description": "The process that performed the operation or action on the target object. For example, the process that could have created a new file or violated a policy.",
       "object_type": "process",
       "type": "object_t"
     },
     "actual_permissions": {
-      "description": "The permissions that were granted to the in a platform-native format.",
       "caption": "Actual Permissions",
+      "description": "The permissions that were granted to the in a platform-native format.",
       "type": "integer_t"
     },
     "additional_malware": {
-      "description": "This object describes additional malware reported in a security finding",
       "caption": "Additional Malware",
+      "description": "This object describes additional malware reported in a security finding",
+      "is_array": true,
       "object_type": "malware",
-      "type": "object_t",
-      "is_array": true
+      "type": "object_t"
     },
     "additional_vulnerabilities": {
-      "description": "This object describes additional vulnerabilities reported in a security finding",
       "caption": "Additional Vulnerbailities",
+      "description": "This object describes additional vulnerabilities reported in a security finding",
+      "is_array": true,
       "object_type": "vulnerability",
-      "type": "object_t",
-      "is_array": true
+      "type": "object_t"
     },
     "alert": {
-      "description": "The integer value of TLS alert if present. The alerts are defined in the TLS specification in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc2246'>RFC-2246</a>.",
       "caption": "Client TLS Alert",
+      "description": "The integer value of TLS alert if present. The alerts are defined in the TLS specification in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc2246'>RFC-2246</a>.",
       "type": "integer_t"
     },
     "algorithm": {
-      "description": "The original hash algorithm, as reported by the event source, which was used to create the digital fingerprint.",
       "caption": "Algorithm",
+      "description": "The original hash algorithm, as reported by the event source, which was used to create the digital fingerprint.",
       "type": "string_t"
     },
     "algorithm_id": {
+      "caption": "Algorithm ID",
       "description": "The identifier of the normalized hash algorithm, which was used to create the digital fingerprint.",
       "enum": {
         "-1": {
@@ -135,80 +136,80 @@
           "caption": "Unknown"
         },
         "1": {
-          "description": "MD5 message-digest algorithm producing a 128-bit (16-byte) hash value.",
-          "caption": "MD5"
+          "caption": "MD5",
+          "description": "MD5 message-digest algorithm producing a 128-bit (16-byte) hash value."
         },
         "2": {
-          "description": "Secure Hash Algorithm 1 producing a 160-bit (20-byte) hash value.",
-          "caption": "SHA-1"
+          "caption": "SHA-1",
+          "description": "Secure Hash Algorithm 1 producing a 160-bit (20-byte) hash value."
         },
         "3": {
-          "description": "Secure Hash Algorithm 2 producing a 256-bit (32-byte) hash value.",
-          "caption": "SHA-256"
+          "caption": "SHA-256",
+          "description": "Secure Hash Algorithm 2 producing a 256-bit (32-byte) hash value."
         },
         "4": {
-          "description": "Secure Hash Algorithm 2 producing a 512-bit (64-byte) hash value.",
-          "caption": "SHA-512"
+          "caption": "SHA-512",
+          "description": "Secure Hash Algorithm 2 producing a 512-bit (64-byte) hash value."
         },
         "5": {
-          "description": "The ssdeep generated fuzzy checksum. Also known as Context Triggered Piecewise Hash (CTPH).",
-          "caption": "CTPH"
+          "caption": "CTPH",
+          "description": "The ssdeep generated fuzzy checksum. Also known as Context Triggered Piecewise Hash (CTPH)."
         }
       },
-      "caption": "Algorithm ID",
       "type": "integer_t"
     },
     "answers": {
+      "caption": "DNS Answer",
       "description": "The Domain Name System (DNS) answers.",
       "is_array": true,
-      "caption": "DNS Answer",
       "object_type": "dns_answer",
       "type": "object_t"
     },
     "api": {
-      "description": "API object details information pertaining to the API calls",
       "caption": "API details",
+      "description": "API object details information pertaining to the API calls",
       "object_type": "api",
       "type": "object_t"
     },
     "app_name": {
-      "description": "The name of the application that is associated with the event or object.",
       "caption": "Application Name",
+      "description": "The name of the application that is associated with the event or object.",
       "type": "string_t"
     },
     "args": {
-      "description": "The arguments sent along with the HTTP request.",
       "caption": "HTTP Arguments",
+      "description": "The arguments sent along with the HTTP request.",
       "type": "string_t"
     },
     "assignee": {
-      "description": "The name of the user who is assigned to the incident.",
       "caption": "Assignee",
+      "description": "The name of the user who is assigned to the incident.",
       "type": "string_t"
     },
     "attack_complexity_id": {
-      "description": "The conditions beyond the attacker's control that must exist in order to exploit the vulnerability.",
       "caption": "Attack Complexity",
+      "description": "The conditions beyond the attacker's control that must exist in order to exploit the vulnerability.",
       "type": "integer_t"
     },
     "attacks": {
+      "caption": "Attacks",
       "description": "An array of attacks associated with an event.",
       "is_array": true,
-      "caption": "Attacks",
       "object_type": "attack",
       "type": "object_t"
     },
     "attributes": {
-      "description": "The bitmask value that represents the file attributes.",
       "caption": "Attributes",
+      "description": "The bitmask value that represents the file attributes.",
       "type": "integer_t"
     },
     "auth_protocol": {
-      "description": "The authentication protocol as reported by the event source.",
       "caption": "Auth Protocol",
+      "description": "The authentication protocol as reported by the event source.",
       "type": "string_t"
     },
     "auth_protocol_id": {
+      "caption": "Auth Protocol ID",
       "description": "The authentication protocol used to create the user session.",
       "enum": {
         "-1": {
@@ -248,85 +249,90 @@
           "caption": "EAP"
         }
       },
-      "caption": "Auth Protocol ID",
       "type": "integer_t"
     },
     "authorization": {
-      "description": "Authorization object provides details related to Authorization",
       "caption": "Authorization Information",
+      "description": "Authorization object provides details related to Authorization",
       "object_type": "authorization",
       "type": "object_t"
     },
     "base_address": {
-      "description": "The memory address where the module was loaded.",
       "caption": "Base Address",
+      "description": "The memory address where the module was loaded.",
       "type": "string_t"
     },
-    "cpu_bits": {
-      "description": "The cpu architecture, the number of bits used for addressing in memory. For example: <code>32</code> or <code>64</code>.",
-      "caption": "CPU Bits",
-      "type": "integer_t"
+    "bios_date": {
+      "caption": "BIOS Date",
+      "description": "The BIOS date. For example: <code>03/31/16</code>.",
+      "type": "string_t"
     },
-    "ram_size": {
-      "description": "The ctotal amount of installed RAM, in Megabytes. For example: <code>2048</code>.",
-      "caption": "RAM Size",
-      "type": "integer_t"
+    "bios_manufacturer": {
+      "caption": "BIOS Manufacturer",
+      "description": "The BIOS manufacturer. For example: <code>LENOVO</code>.",
+      "type": "string_t"
+    },
+    "bios_ver": {
+      "caption": "BIOS Version",
+      "description": "The BIOS version. For example: <code>LENOVO G5ETA2WW (2.62)</code>.",
+      "type": "string_t"
     },
     "build": {
-      "description": "The operating system build number.",
       "caption": "OS Build",
+      "description": "The operating system build number.",
       "type": "string_t"
     },
     "bytes": {
+      "caption": "Total Bytes",
       "default": 0,
       "description": "The total number of bytes (in and out).",
-      "caption": "Total Bytes",
       "type": "long_t"
     },
     "bytes_in": {
+      "caption": "Bytes In",
       "default": 0,
       "description": "The number of bytes sent from the destination to the source.",
-      "caption": "Bytes In",
       "type": "long_t"
     },
     "bytes_out": {
+      "caption": "Bytes Out",
       "default": 0,
       "description": "The number of bytes sent from the source to the destination.",
-      "caption": "Bytes Out",
       "type": "long_t"
     },
     "capabilities": {
+      "caption": "Capabilities",
       "description": "A list of RDP capabilities.",
       "is_array": true,
-      "caption": "Capabilities",
       "type": "string_t"
     },
     "caption": {
-      "description": "A short description or caption of the device. For example: <code>Scanner 1</code> or <code>Database Manager</code>.",
       "caption": "Caption",
+      "description": "A short description or caption of the device. For example: <code>Scanner 1</code> or <code>Database Manager</code>.",
       "type": "string_t"
     },
     "categories": {
+      "caption": "Categories",
       "description": "A list of categories.",
       "is_array": true,
-      "caption": "Categories",
       "type": "string_t"
     },
     "category": {
-      "description": "The object category. See specific usage.",
       "caption": "Category",
+      "description": "The object category. See specific usage.",
       "type": "string_t"
     },
     "category_ids": {
+      "caption": "URL Category IDs",
       "description": "An array of URL category identifies.",
       "enum": {
         "-1": {
-          "description": "The URL category is not mapped. See the <code>categories</code> attribute, which may contain a data source specific value.",
-          "caption": "Other"
+          "caption": "Other",
+          "description": "The URL category is not mapped. See the <code>categories</code> attribute, which may contain a data source specific value."
         },
         "0": {
-          "description": "The URL category is unknown.",
-          "caption": "Unknown"
+          "caption": "Unknown",
+          "description": "The URL category is unknown."
         },
         "1": {
           "caption": "Adult/Mature Content"
@@ -585,153 +591,174 @@
         }
       },
       "is_array": true,
-      "caption": "URL Category IDs",
       "type": "integer_t"
     },
     "category_name": {
-      "description": "The category name of the event.",
       "caption": "Category",
+      "description": "The category name of the event.",
       "type": "string_t"
     },
     "category_uid": {
+      "caption": "Category ID",
       "default": 0,
       "description": "The category unique identifier of the event.",
-      "caption": "Category ID",
       "sibling": "category_name",
       "type": "integer_t"
     },
     "certificate": {
-      "description": "The certificate object containing information about the digital certificate.",
       "caption": "Certificate",
+      "description": "The certificate object containing information about the digital certificate.",
       "object_type": "certificate",
       "type": "object_t"
     },
     "certificate_chain": {
+      "caption": "Certificate Chain",
       "description": "The Chain of Certificate Serial Numbers field provides a chain of Certificate Issuer Serial Numbers leading to the Root Certificate Issuer.",
       "is_array": true,
-      "caption": "Certificate Chain",
+      "type": "string_t"
+    },
+    "chassis": {
+      "caption": "Chassis",
+      "description": "The chassis type describes the system enclosure or physical form factor. Such as the following examples for Windows <a target='_blank' href='https://docs.microsoft.com/en-us/windows/win32/cimwin32prov/win32-systemenclosure'>Windows Chassis Types</a>",
       "type": "string_t"
     },
     "cipher": {
-      "description": "The negotiated cipher suite.",
       "caption": "Cipher Suite",
+      "description": "The negotiated cipher suite.",
       "type": "string_t"
     },
     "cis20": {
+      "caption": "CIS 20 List",
       "description": "The CIS 20 is a list of 20 actions and practices an organization’s security team can take on such that cyber attacks or malware, are minimized and prevented.",
       "is_array": true,
-      "caption": "CIS 20 List",
       "type": "string_t"
     },
     "city": {
-      "description": "The name of the city.",
       "caption": "City",
+      "description": "The name of the city.",
       "type": "string_t"
     },
     "class": {
-      "description": "The class name of the object. See specific usage.",
       "caption": "Class",
+      "description": "The class name of the object. See specific usage.",
       "type": "string_t"
     },
     "class_name": {
-      "description": "The class name of the event.",
       "caption": "Class",
+      "description": "The class name of the event.",
       "type": "string_t"
     },
     "class_uid": {
+      "caption": "Class ID",
       "default": 0,
       "description": "The class identifier describes the attributes available in an event.",
-      "caption": "Class ID",
       "sibling": "class_name",
       "type": "integer_t"
     },
     "classification_ids": {
+      "caption": "Classification IDs",
       "description": "An array of malware classifications. Reference: <a target='_blank' href='https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_oxlc4df65spl'>STIX Malware Types</a> ",
       "is_array": true,
-      "caption": "Classification IDs",
       "sibling": "classifications",
       "type": "integer_t"
     },
     "classifications": {
+      "caption": "Classifications",
       "description": "The malware classifications.",
       "is_array": true,
-      "caption": "Classifications",
       "type": "string_t"
     },
     "client": {
-      "description": "The client object pertaining to the client/server exchange.",
       "caption": "Client",
+      "description": "The client object pertaining to the client/server exchange.",
       "object_type": "client",
       "type": "object_t"
     },
     "client_ciphers": {
+      "caption": "Client Cipher Suites",
       "description": "The client cipher suites that were exchanged during the TLS handshake negotiation.",
       "is_array": true,
-      "caption": "Client Cipher Suites",
+      "type": "string_t"
+    },
+    "client_dialects": {
+      "description": "The list of SMB dialects that the client speaks.",
+      "is_array": true,
+      "caption": "Client Dialects",
       "type": "string_t"
     },
     "cloud": {
-      "description": "The cloud where the event was originally created or logged.",
       "caption": "Cloud",
+      "description": "The cloud where the event was originally created or logged.",
       "object_type": "cloud",
       "type": "object_t"
     },
     "cloud_partition": {
-      "description": "The canonical cloud partition name to which the region is assigned (e.g. AWS Partitions: aws, aws-cn, aws-us-gov).",
       "caption": "Cloud Partition",
+      "description": "The canonical cloud partition name to which the region is assigned (e.g. AWS Partitions: aws, aws-cn, aws-us-gov).",
       "type": "string_t"
     },
     "cmd_line": {
-      "description": "The full command line used to launch an application, service, process, or job. For example: <code>ssh user@10.0.0.10</code>",
       "caption": "Command Line",
+      "description": "The full command line used to launch an application, service, process, or job. For example: <code>ssh user@10.0.0.10</code>",
       "type": "string_t"
     },
     "code": {
-      "description": "The numeric response sent to a HTTP request.",
       "caption": "Response Code",
+      "description": "The numeric response sent to a HTTP request.",
       "type": "integer_t"
     },
     "color_depth": {
-      "description": "The numeric color depth.",
       "caption": "Color Depth",
+      "description": "The numeric color depth.",
       "type": "integer_t"
     },
+    "command": {
+      "description": "The command name.",
+      "caption": "Command",
+      "type": "string_t"
+    },
+    "command_response": {
+      "description": "The response to the command.",
+      "caption": "Command Response",
+      "type": "string_t"
+    },
     "comment": {
-      "description": "The user-provided comment.",
       "caption": "Comment",
+      "description": "The user-provided comment.",
       "type": "string_t"
     },
     "company_name": {
-      "description": "The name of the company that published the file. For example: <code>Microsoft Corporation</code>.",
       "caption": "Company Name",
+      "description": "The name of the company that published the file. For example: <code>Microsoft Corporation</code>.",
       "type": "string_t"
     },
     "compliance": {
-      "description": "The complaince object describes compliance related details",
       "caption": "Compliance",
+      "description": "The complaince object describes compliance related details",
       "object_type": "compliance",
       "type": "object_t"
     },
     "component": {
-      "description": "The name or relative pathname of a sub-component of the data object, if applicable. </p>For example: <code>attachment.doc</code>, <code>attachment.zip/bad.doc</code>, or <code>part.mime/part.cab/part.uue/part.doc</code>.",
       "caption": "Component",
+      "description": "The name or relative pathname of a sub-component of the data object, if applicable. </p>For example: <code>attachment.doc</code>, <code>attachment.zip/bad.doc</code>, or <code>part.mime/part.cab/part.uue/part.doc</code>.",
       "type": "string_t"
     },
     "confidence": {
-      "description": "The confidence of the reported finding as a percentage: 0%-100%.",
       "caption": "Confidence",
+      "description": "The confidence of the reported finding as a percentage: 0%-100%.",
       "type": "integer_t"
     },
     "confidence_id": {
+      "caption": "Confidence ID",
       "description": "The normalized confidence level refers to the accuracy of the rule that created the finding. A rule with a low confidence level means that the detection scope is wide and may create finding reports that may not be malicious in nature.",
       "enum": {
         "-1": {
-          "description": "The confidence is not mapped to the defined enum values. See the <code>confidence</code> attribute, which contains a data source specific value.",
-          "caption": "Other"
+          "caption": "Other",
+          "description": "The confidence is not mapped to the defined enum values. See the <code>confidence</code> attribute, which contains a data source specific value."
         },
         "0": {
-          "description": "No confidence is assigned.",
-          "caption": "Unknown"
+          "caption": "Unknown",
+          "description": "No confidence is assigned."
         },
         "1": {
           "caption": "Low"
@@ -743,15 +770,15 @@
           "caption": "High"
         }
       },
-      "caption": "Confidence ID",
       "type": "integer_t"
     },
     "confidentiality": {
-      "description": "The file content confidentiality.",
       "caption": "Confidentiality",
+      "description": "The file content confidentiality.",
       "type": "string_t"
     },
     "confidentiality_id": {
+      "caption": "Confidentiality ID",
       "description": "The file content confidentiality indicator.",
       "enum": {
         "-1": {
@@ -773,751 +800,741 @@
           "caption": "Top Secret"
         }
       },
-      "caption": "Confidentiality ID",
       "type": "integer_t"
     },
     "connection_info": {
-      "description": "The network connection information.",
       "caption": "Connection Info",
+      "description": "The network connection information.",
       "object_type": "network_connection_info",
       "type": "object_t"
     },
     "connection_uid": {
-      "description": "The network connection identifier.",
       "caption": "Connection Identifier",
+      "description": "The network connection identifier.",
       "type": "string_t"
     },
     "container": {
-      "description": "The container information.",
       "caption": "Container",
+      "description": "The container information.",
       "object_type": "container",
       "type": "object_t"
     },
     "content_type": {
-      "description": "The request header that identifies the original <a target='_blank' href='https://www.iana.org/assignments/media-types/media-types.xhtml'>media type </a> of the resource (prior to any content encoding applied for sending).",
       "caption": "HTTP Content Type",
+      "description": "The request header that identifies the original <a target='_blank' href='https://www.iana.org/assignments/media-types/media-types.xhtml'>media type </a> of the resource (prior to any content encoding applied for sending).",
       "type": "string_t"
     },
     "continent": {
-      "description": "The name of the continent.",
       "caption": "Continent",
+      "description": "The name of the continent.",
       "type": "string_t"
     },
     "coordinates": {
+      "caption": "Coordinates",
       "description": "A two-element array, containing a longitude/latitude pair. The format conforms with <a target='_blank' href='https://geojson.org'>GeoJSON</a>. For example: <code>[-73.983, 40.719]</code>.",
       "is_array": true,
-      "caption": "Coordinates",
       "type": "float_t"
     },
     "correlation_uid": {
-      "description": "The unique identifier used to correlate events.",
       "caption": "Correlation UID",
+      "description": "The unique identifier used to correlate events.",
       "type": "string_t"
     },
     "count": {
+      "caption": "Count",
       "default": 1,
       "description": "The number of times that events in the same logical group occurred during the event <strong>Start Time</strong> to <strong>End Time</strong> period.",
-      "caption": "Count",
       "type": "integer_t"
     },
     "country": {
-      "description": "The ISO 3166-1 Alpha-2 country code. For the complete list of country codes see <a target='_blank' href='https://www.iso.org/obp/ui/#iso:pub:PUB500001:en' >ISO 3166-1 alpha-2 codes</a>.<p><b>Note:</b> The two letter country code should be capitalized. For example: <code>US</code> or <code>CA</code>.</p>",
       "caption": "Country",
+      "description": "The ISO 3166-1 Alpha-2 country code. For the complete list of country codes see <a target='_blank' href='https://www.iso.org/obp/ui/#iso:pub:PUB500001:en' >ISO 3166-1 alpha-2 codes</a>.<p><b>Note:</b> The two letter country code should be capitalized. For example: <code>US</code> or <code>CA</code>.</p>",
+      "type": "string_t"
+    },
+    "cpu_bits": {
+      "caption": "CPU Bits",
+      "description": "The cpu architecture, the number of bits used for addressing in memory. For example: <code>32</code> or <code>64</code>.",
+      "type": "integer_t"
+    },
+    "cpu_cores": {
+      "caption": "CPU Cores",
+      "description": "The number of processor cores in all installed processors. For Example: <code>42</code>.",
+      "type": "integer_t"
+    },
+    "cpu_count": {
+      "caption": "CPU Count",
+      "description": "The number of physical processors on a system. For example: <code>1</code>.",
+      "type": "integer_t"
+    },
+    "cpu_speed": {
+      "caption": "Processor Type",
+      "description": "The speed of the processor in Mhz. For Example: <code>4200</code>.",
+      "type": "integer_t"
+    },
+    "cpu_type": {
+      "caption": "Processor Type",
+      "description": "The processor type. For example: <code>x86 Family 6 Model 37 Stepping 5</code>.",
       "type": "string_t"
     },
     "create_mask": {
-      "description": "The original Windows mask that is required to create the object.",
       "caption": "Create Mask",
+      "description": "The original Windows mask that is required to create the object.",
       "type": "string_t"
     },
     "creation_time": {
-      "description": "The time that the object was created. See specific usage.",
       "caption": "Creation Time",
+      "description": "The time that the object was created. See specific usage.",
       "type": "timestamp_t"
     },
     "creator": {
-      "description": "The user that created the object associated with event. See specific usage.",
       "caption": "Creator",
+      "description": "The user that created the object associated with event. See specific usage.",
       "type": "string_t"
     },
     "creator_name": {
-      "description": "The name of the user who created the incident.",
       "caption": "Creator Name",
+      "description": "The name of the user who created the incident.",
       "type": "string_t"
     },
     "credential_uid": {
-      "description": "The unique identifier of the user's credential. For example, AWS Access Key ID.",
       "caption": "User Credential ID",
+      "description": "The unique identifier of the user's credential. For example, AWS Access Key ID.",
       "type": "string_t"
     },
     "criticality": {
-      "description": "Criticality of a resource/object in question",
       "caption": "Criticality",
+      "description": "Criticality of a resource/object in question",
       "type": "string_t"
     },
     "customer_uid": {
-      "description": "The unique customer identifier.",
       "caption": "Customer UID",
+      "description": "The unique customer identifier.",
       "type": "string_t"
     },
     "cve_uids": {
+      "caption": "CVE UIDs",
       "description": "The common vulnerabilities and exposures (<a target='_blank' href='https://cve.mitre.org/'>CVE</a>) unique identifiers.",
       "is_array": true,
-      "caption": "CVE UIDs",
       "type": "string_t"
     },
     "cvss": {
-      "description": "The CVSS object details Common Vulnerability Scoring System (CVSS) scores from the advisory that are related to the vulnerability.",
       "caption": "CVSS Scores",
+      "description": "The CVSS object details Common Vulnerability Scoring System (CVSS) scores from the advisory that are related to the vulnerability.",
       "object_type": "cvss",
       "type": "object_t"
     },
     "cvss_access_complexity_id": {
-      "description": "The Access Complexity Common Vulnerability Scoring System (CVSS) metric.",
       "caption": "Access Complexity (AC)",
+      "description": "The Access Complexity Common Vulnerability Scoring System (CVSS) metric.",
       "type": "integer_t"
     },
     "cvss_access_vector_id": {
-      "description": "The Access Vector Common Vulnerability Scoring System (CVSS) metric.",
       "caption": "Access Vector (AV)",
+      "description": "The Access Vector Common Vulnerability Scoring System (CVSS) metric.",
       "type": "integer_t"
     },
     "cvss_attack_complexity_id": {
-      "description": "The Attack Complexity Common Vulnerability Scoring System (CVSS) metric.",
       "caption": "Attack Complexity (AC)",
+      "description": "The Attack Complexity Common Vulnerability Scoring System (CVSS) metric.",
       "type": "integer_t"
     },
     "cvss_attack_vector_id": {
-      "description": "The Attack Vector Common Vulnerability Scoring System (CVSS) metric.",
       "caption": "Attack Vector (AV)",
-      "type": "integer_t"
-    },
-    "cvss_availability_id": {
-      "description": "The Availability Common Vulnerability Scoring System (CVSS) metric.",
-      "caption": "Availability (A)",
-      "type": "integer_t"
-    },
-    "cvss_availability_impact_id": {
-      "description": "The Availability Impact Common Vulnerability Scoring System (CVSS) metric.",
-      "caption": "Availability Impact (A)",
-      "type": "integer_t"
-    },
-    "cvss_availability_requirement_id": {
-      "description": "The Availability Requirement Common Vulnerability Scoring System (CVSS) metric.",
-      "caption": "Availability Requirement (AR)",
+      "description": "The Attack Vector Common Vulnerability Scoring System (CVSS) metric.",
       "type": "integer_t"
     },
     "cvss_authentication_id": {
-      "description": "The Authentication Common Vulnerability Scoring System (CVSS) metric.",
       "caption": "Authentication (Au)",
+      "description": "The Authentication Common Vulnerability Scoring System (CVSS) metric.",
+      "type": "integer_t"
+    },
+    "cvss_availability_id": {
+      "caption": "Availability (A)",
+      "description": "The Availability Common Vulnerability Scoring System (CVSS) metric.",
+      "type": "integer_t"
+    },
+    "cvss_availability_impact_id": {
+      "caption": "Availability Impact (A)",
+      "description": "The Availability Impact Common Vulnerability Scoring System (CVSS) metric.",
+      "type": "integer_t"
+    },
+    "cvss_availability_requirement_id": {
+      "caption": "Availability Requirement (AR)",
+      "description": "The Availability Requirement Common Vulnerability Scoring System (CVSS) metric.",
       "type": "integer_t"
     },
     "cvss_collateral_damage_potential_id": {
-      "description": "The Collateral Damage Potential Common Vulnerability Scoring System (CVSS) metric.",
       "caption": "Collateral Damage Potential (CDP)",
+      "description": "The Collateral Damage Potential Common Vulnerability Scoring System (CVSS) metric.",
       "type": "integer_t"
     },
     "cvss_confidentiality_id": {
-      "description": "The Confidentiality Common Vulnerability Scoring System (CVSS) metric.",
       "caption": "Confidentiality (C)",
+      "description": "The Confidentiality Common Vulnerability Scoring System (CVSS) metric.",
       "type": "integer_t"
     },
     "cvss_confidentiality_impact_id": {
-      "description": "The Confidentiality Impact Common Vulnerability Scoring System (CVSS) metric.",
       "caption": "Confidentiality Impact (C)",
+      "description": "The Confidentiality Impact Common Vulnerability Scoring System (CVSS) metric.",
       "type": "integer_t"
     },
     "cvss_confidentiality_requirement_id": {
-      "description": "The Confidentiality Requirement Common Vulnerability Scoring System (CVSS) metric.",
       "caption": "Confidentiality Requirement (CR)",
+      "description": "The Confidentiality Requirement Common Vulnerability Scoring System (CVSS) metric.",
       "type": "integer_t"
     },
     "cvss_depth_id": {
-      "description": "The Depth of the equation used to calculate Common Vulnerability Scoring System (CVSS) score.",
       "caption": "CVSS Depth",
-      "type": "integer_t"
-    },
-    "cvss_exploitability_id": {
-      "description": "The Exploitability Common Vulnerability Scoring System (CVSS) metric.",
-      "caption": "Exploitability (E)",
+      "description": "The Depth of the equation used to calculate Common Vulnerability Scoring System (CVSS) score.",
       "type": "integer_t"
     },
     "cvss_exploit_code_maturity_id": {
-      "description": "The Exploit Code Maturity Common Vulnerability Scoring System (CVSS) metric.",
       "caption": "Exploit Code Maturity (E)",
+      "description": "The Exploit Code Maturity Common Vulnerability Scoring System (CVSS) metric.",
+      "type": "integer_t"
+    },
+    "cvss_exploitability_id": {
+      "caption": "Exploitability (E)",
+      "description": "The Exploitability Common Vulnerability Scoring System (CVSS) metric.",
       "type": "integer_t"
     },
     "cvss_integrity_id": {
-      "description": "The Integrity Common Vulnerability Scoring System (CVSS) metric.",
       "caption": "Integrity (I)",
+      "description": "The Integrity Common Vulnerability Scoring System (CVSS) metric.",
       "type": "integer_t"
     },
     "cvss_integrity_impact_id": {
-      "description": "The Integrity Impact Common Vulnerability Scoring System (CVSS) metric.",
       "caption": "Integrity Impact (I)",
+      "description": "The Integrity Impact Common Vulnerability Scoring System (CVSS) metric.",
       "type": "integer_t"
     },
     "cvss_integrity_requirement_id": {
-      "description": "The Integrity Requirement Common Vulnerability Scoring System (CVSS) metric.",
       "caption": "Integrity Requirement (IR)",
+      "description": "The Integrity Requirement Common Vulnerability Scoring System (CVSS) metric.",
       "type": "integer_t"
     },
     "cvss_modified_attack_complexity_id": {
-      "description": "The Modified Attack Complexity Common Vulnerability Scoring System (CVSS) metric.",
       "caption": "Modified Attack Complexity (MAC)",
+      "description": "The Modified Attack Complexity Common Vulnerability Scoring System (CVSS) metric.",
       "type": "integer_t"
     },
     "cvss_modified_attack_vector_id": {
-      "description": "The Modified Attack Vector Common Vulnerability Scoring System (CVSS) metric.",
       "caption": "Modified Attack Vector (MAV)",
+      "description": "The Modified Attack Vector Common Vulnerability Scoring System (CVSS) metric.",
       "type": "integer_t"
     },
     "cvss_modified_availability_id": {
-      "description": "The Modified Availability Common Vulnerability Scoring System (CVSS) metric.",
       "caption": "Modified Availability (MA)",
+      "description": "The Modified Availability Common Vulnerability Scoring System (CVSS) metric.",
       "type": "integer_t"
     },
     "cvss_modified_confidentiality_id": {
-      "description": "The Modified Confidentiality Common Vulnerability Scoring System (CVSS) metric.",
       "caption": "Modified Confidentiality (MC)",
+      "description": "The Modified Confidentiality Common Vulnerability Scoring System (CVSS) metric.",
       "type": "integer_t"
     },
     "cvss_modified_integrity_id": {
-      "description": "The Modified Integrity Common Vulnerability Scoring System (CVSS) metric.",
       "caption": "Modified Integrity (MI)",
+      "description": "The Modified Integrity Common Vulnerability Scoring System (CVSS) metric.",
       "type": "integer_t"
     },
     "cvss_modified_privileges_required_id": {
-      "description": "The Modified Privileges Required Common Vulnerability Scoring System (CVSS) metric.",
       "caption": "Modified Privileges Required (MPR)",
+      "description": "The Modified Privileges Required Common Vulnerability Scoring System (CVSS) metric.",
       "type": "integer_t"
     },
     "cvss_modified_scope_id": {
-      "description": "The Modified Scope Common Vulnerability Scoring System (CVSS) metric.",
       "caption": "Modified Scope (MS)",
+      "description": "The Modified Scope Common Vulnerability Scoring System (CVSS) metric.",
       "type": "integer_t"
     },
     "cvss_modified_user_interaction_id": {
-      "description": "The Modified User Interaction Common Vulnerability Scoring System (CVSS) metric.",
       "caption": "Modified User Interaction (MUI)",
+      "description": "The Modified User Interaction Common Vulnerability Scoring System (CVSS) metric.",
       "type": "integer_t"
     },
     "cvss_privileges_required_id": {
-      "description": "The Privileges Required (PR) Common Vulnerability Scoring System (CVSS) metric.",
       "caption": "Privileges Required (PR)",
+      "description": "The Privileges Required (PR) Common Vulnerability Scoring System (CVSS) metric.",
       "type": "integer_t"
     },
     "cvss_remediation_level_id": {
-      "description": "The Remediation Level Common Vulnerability Scoring System (CVSS) metric.",
       "caption": "Remediation Level (RL)",
+      "description": "The Remediation Level Common Vulnerability Scoring System (CVSS) metric.",
       "type": "integer_t"
     },
     "cvss_report_confidence_id": {
-      "description": "The Report Confidence Common Vulnerability Scoring System (CVSS) metric.",
       "caption": "Report Confidence (RC)",
+      "description": "The Report Confidence Common Vulnerability Scoring System (CVSS) metric.",
       "type": "integer_t"
     },
     "cvss_scope_id": {
-      "description": "The Scope Common Vulnerability Scoring System (CVSS) metric.",
       "caption": "Scope (S)",
+      "description": "The Scope Common Vulnerability Scoring System (CVSS) metric.",
       "type": "integer_t"
     },
     "cvss_score": {
-      "description": "CVSS Score in the range of 0.0 to 10.0.",
       "caption": "Score",
+      "description": "CVSS Score in the range of 0.0 to 10.0.",
       "type": "float_t"
     },
     "cvss_severity_id": {
-      "description": "The Common Vulnerability Scoring System (CVSS) Qualitative Severity Rating.",
       "caption": "Qualitative Severity Rating",
+      "description": "The Common Vulnerability Scoring System (CVSS) Qualitative Severity Rating.",
       "type": "integer_t"
     },
     "cvss_target_distribution_id": {
-      "description": "The Target Distribution Common Vulnerability Scoring System (CVSS) metric.",
       "caption": "Target Distribution (TD)",
+      "description": "The Target Distribution Common Vulnerability Scoring System (CVSS) metric.",
       "type": "integer_t"
     },
     "cvss_user_interaction_id": {
-      "description": "The User Interaction Common Vulnerability Scoring System (CVSS) metric.",
       "caption": "User Interaction (UI)",
+      "description": "The User Interaction Common Vulnerability Scoring System (CVSS) metric.",
       "type": "integer_t"
     },
     "cvss_vector_string": {
-      "description": "The CVSS vector string is a text representation of a set of CVSS metrics. It is commonly used to record or transfer CVSS metric information in a concise form.",
       "caption": "Vector String",
+      "description": "The CVSS vector string is a text representation of a set of CVSS metrics. It is commonly used to record or transfer CVSS metric information in a concise form.",
       "type": "string_t"
     },
     "cvss_version": {
-      "description": "The CVSS version (v1, v2, v3).",
       "caption": "Version",
+      "description": "The CVSS version (v1, v2, v3).",
       "type": "string_t"
     },
     "data": {
-      "description": "The additional data that is associated with the event or object. See specific usage.",
       "caption": "Data",
+      "description": "The additional data that is associated with the event or object. See specific usage.",
       "type": "json_t"
     },
+    "dce_rpc": {
+      "description": "The DCE/RPC object describes the remote procedure call system for distributed computing environments.",
+      "caption": "Distributed Computing Environment/Remote Procedure Call (DCE/RPC)",
+      "object_type": "dce_rpc",
+      "type": "object_t"
+    },
     "decision": {
-      "description": "Decision/outcome of the authorization mechanism (e.g. Approved, Denied)",
       "caption": "Authorization Decision/Outcome",
+      "description": "Decision/outcome of the authorization mechanism (e.g. Approved, Denied)",
       "type": "string_t"
     },
     "desc": {
-      "description": "The description that pertains to the object or event. See specific usage.",
       "caption": "Description",
+      "description": "The description that pertains to the object or event. See specific usage.",
       "type": "string_t"
     },
     "desktop_display": {
-      "description": "The desktop display affiliated with the event",
       "caption": "Desktop Display",
+      "description": "The desktop display affiliated with the event",
       "object_type": "display",
       "type": "object_t"
     },
     "details": {
-      "description": "Details of an entity. See specific usage",
       "caption": "Details",
+      "description": "Details of an entity. See specific usage",
       "type": "string_t"
     },
     "detection_end_time": {
-      "description": "The end time of a detection time period.",
       "caption": "Detection Start Time",
+      "description": "The end time of a detection time period.",
       "type": "timestamp_t"
     },
     "detection_start_time": {
-      "description": "The start time of a detection time period.",
       "caption": "Detection Start Time",
+      "description": "The start time of a detection time period.",
       "type": "timestamp_t"
     },
     "detection_uid": {
-      "description": "The associated unique detection event identifier. For example: detection response events include the <b>Detection ID</b> of the original event.",
       "caption": "Detection UID",
+      "description": "The associated unique detection event identifier. For example: detection response events include the <b>Detection ID</b> of the original event.",
       "type": "string_t"
     },
     "developer_uid": {
-      "description": "The developer ID on the certificate that signed the file.",
       "caption": "Developer UID",
+      "description": "The developer ID on the certificate that signed the file.",
       "type": "string_t"
     },
     "device": {
-      "description": "The device that reported the event.",
       "caption": "Device",
+      "description": "The device that reported the event.",
       "object_type": "device",
       "type": "object_t"
     },
+    "dialect": {
+      "description": "The negotiated protocol dialect.",
+      "caption": "Dialect",
+      "type": "string_t"
+    },
     "direction": {
-      "description": "The direction of the initiated connection, traffic, or email.",
       "caption": "Direction",
+      "description": "The direction of the initiated connection, traffic, or email.",
       "type": "string_t"
     },
     "direction_id": {
+      "caption": "Direction ID",
       "description": "The direction of the initiated connection, traffic, or email.",
       "enum": {
         "0": {
-          "description": "The direction is unknown.",
-          "caption": "Unknown"
+          "caption": "Unknown",
+          "description": "The direction is unknown."
         },
         "1": {
-          "description": "Inbound, from the Internet or outside network destined for services on the inside network.",
-          "caption": "Inbound"
+          "caption": "Inbound",
+          "description": "Inbound, from the Internet or outside network destined for services on the inside network."
         },
         "2": {
-          "description": "Outbound, from inside the network destined for services on the Internet or outside network.",
-          "caption": "Outbound"
+          "caption": "Outbound",
+          "description": "Outbound, from inside the network destined for services on the Internet or outside network."
         }
       },
-      "caption": "Direction ID",
       "type": "integer_t"
     },
     "dn": {
-      "description": "The distinguished name.",
       "caption": "Distinguished Name",
+      "description": "The distinguished name.",
       "type": "string_t"
     },
     "dns_id": {
-      "description": "The DNS packet identifier assigned by the program that generated the query. The identifier is copied to the response.",
       "caption": "DNS UID",
+      "description": "The DNS packet identifier assigned by the program that generated the query. The identifier is copied to the response.",
       "type": "integer_t"
     },
     "domain": {
-      "description": "The name of the domain.",
       "caption": "Domain",
+      "description": "The name of the domain.",
       "type": "string_t"
     },
     "dst_endpoint": {
-      "description": "The network destination endpoint.",
       "caption": "Destination Endpoint",
+      "description": "The network destination endpoint.",
       "object_type": "network_endpoint",
       "type": "object_t"
     },
     "dst_user": {
-      "description": "The user that was a target of an activity.",
       "caption": "Destination User",
+      "description": "The user that was a target of an activity.",
       "object_type": "user",
       "type": "object_t"
     },
     "duration": {
-      "description": "The event duration or aggregate time, the amount of time the event covers from <code>start_time</code> to <code>end_time</code> in milliseconds.",
       "caption": "Duration",
+      "description": "The event duration or aggregate time, the amount of time the event covers from <code>start_time</code> to <code>end_time</code> in milliseconds.",
       "type": "integer_t"
     },
     "edition": {
-      "description": "The operating system edition. For example: <code>Professional</code>.",
       "caption": "OS Edition",
+      "description": "The operating system edition. For example: <code>Professional</code>.",
       "type": "string_t"
     },
     "email_addr": {
-      "description": "The user's email address.",
       "caption": "Email Address",
+      "description": "The user's email address.",
       "type": "email_t"
     },
     "end_time": {
-      "description": "The end time of a time period. See specific usage.",
       "caption": "End Time",
+      "description": "The end time of a time period. See specific usage.",
       "type": "timestamp_t"
     },
     "enrichments": {
+      "caption": "Enrichments",
       "description": "The additional information from an external data source, which is associated with the event. For example add location information for the IP address in the DNS answers:</p><code>[{\"name\": \"answers.ip\", \"value\": \"92.24.47.250\", \"type\": \"location\", \"data\": {\"city\": \"Socotra\", \"continent\": \"Asia\", \"coordinates\": [-25.4153, 17.0743], \"country\": \"YE\", \"desc\": \"Yemen\"}}]</code>",
       "is_array": true,
-      "caption": "Enrichments",
       "object_type": "enrichment",
       "type": "object_t"
     },
     "entity": {
-      "description": "The managed entity that is being acted upon.",
       "caption": "Entity",
+      "description": "The managed entity that is being acted upon.",
       "object_type": "managed_entity",
       "type": "object_t"
     },
     "entity_result": {
-      "description": "The updated managed entity.",
       "caption": "Entity Result",
+      "description": "The updated managed entity.",
       "object_type": "managed_entity",
       "type": "object_t"
     },
     "error": {
-      "description": "Error Code",
       "caption": "Error Code",
+      "description": "Error Code",
       "type": "string_t"
     },
     "error_message": {
-      "description": "Error Message",
       "caption": "Error Message",
-      "type": "string_t"
-    },
-    "type_name": {
-      "description": "The event type name, as defined by the type_uid.",
-      "caption": "Type Name",
+      "description": "Error Message",
       "type": "string_t"
     },
     "event_source": {
-      "description": "The event source from which the event originates.",
       "caption": "Event Source",
+      "description": "The event source from which the event originates.",
       "object_type": "event_source",
       "type": "object_t"
     },
-    "type_uid": {
-      "description": "The event type ID identifies the event's semantics and structure. The value is calculated by the logging system as: <code>class_uid * 100 + activity_id</code>.",
-      "caption": "Type ID",
-      "sibling": "type_name",
-      "type": "integer_t"
-    },
     "exit_code": {
-      "description": "The exit code reported by a process when it terminates. The convention is that zero indicates success and any non-zero exit code indicates that some error occurred.",
       "caption": "Exit Code",
+      "description": "The exit code reported by a process when it terminates. The convention is that zero indicates success and any non-zero exit code indicates that some error occurred.",
       "type": "integer_t"
     },
     "expiration_time": {
-      "description": "The expiration time. See specific usage.",
       "caption": "Expiration Time",
+      "description": "The expiration time. See specific usage.",
       "type": "timestamp_t"
     },
     "exposed_port": {
-      "description": "The IP port number exposed by container. For example 0.0.0.0:49155-> <<exposed_port>>/tcp",
       "caption": "Port",
+      "description": "The IP port number exposed by container. For example 0.0.0.0:49155-> <<exposed_port>>/tcp",
       "type": "port_t"
     },
     "extension_list": {
-      "description": "The list of TLS extensions",
       "caption": "Extension List",
+      "description": "The list of TLS extensions",
       "is_array": true,
       "object_type": "tls_extension",
       "type": "object_t"
     },
     "facility": {
-      "description": "The subsystem or application that is providing the event data.",
       "caption": "Facility",
+      "description": "The subsystem or application that is providing the event data.",
       "type": "string_t"
     },
     "facility_detail": {
-      "description": "Additional detail about the source facility. For example, details could include a the name of a particular application instance (such as a database name) or a path to a monitored log file.",
       "caption": "Facility Detail",
+      "description": "Additional detail about the source facility. For example, details could include a the name of a particular application instance (such as a database name) or a path to a monitored log file.",
       "type": "string_t"
     },
     "facility_uid": {
-      "description": "The unique identifier of the facility.",
       "caption": "Facility UID",
+      "description": "The unique identifier of the facility.",
       "type": "string_t"
     },
     "feature": {
-      "description": "The feature that reported the event.",
       "caption": "Feature",
+      "description": "The feature that reported the event.",
       "object_type": "feature",
       "type": "object_t"
     },
     "file": {
-      "description": "The file that pertains to the event or object. See specific usage.",
       "caption": "File",
+      "description": "The file that pertains to the event or object. See specific usage.",
       "object_type": "file",
       "type": "object_t"
     },
     "file_diff": {
-      "description": "File content differences used for change detection. For example, a common use case is to identify itemized changes within INI or configuration/property setting values.",
       "caption": "File Diff",
+      "description": "File content differences used for change detection. For example, a common use case is to identify itemized changes within INI or configuration/property setting values.",
       "type": "string_t"
     },
     "file_result": {
-      "description": "The result of the file change. It should contain the new values of the changed attributes.",
       "caption": "File Result",
+      "description": "The result of the file change. It should contain the new values of the changed attributes.",
       "object_type": "file",
       "type": "object_t"
     },
     "finding": {
-      "description": "Finding object provides details related to a finding generated by security tool",
       "caption": "Finding",
+      "description": "Finding object provides details related to a finding generated by security tool",
       "object_type": "finding",
       "type": "object_t"
     },
     "fingerprint": {
-      "description": "The digital fingerprint associated with an object.",
       "caption": "Fingerprint",
+      "description": "The digital fingerprint associated with an object.",
       "object_type": "fingerprint",
       "type": "object_t"
     },
     "fingerprints": {
+      "caption": "Fingerprints",
       "description": "An array of digital fingerprint objects.",
       "is_array": true,
-      "caption": "Fingerprints",
       "object_type": "fingerprint",
       "type": "object_t"
     },
     "first_occurence": {
-      "description": "Indicates when an entity is first observed.",
       "caption": "First Occurence",
+      "description": "Indicates when an entity is first observed.",
       "type": "timestamp_t"
     },
     "flag_ids": {
+      "caption": "Communication Flag IDs",
       "description": "The list of communication flag IDs.",
       "is_array": true,
-      "caption": "Communication Flag IDs",
       "type": "integer_t"
     },
     "flags": {
+      "caption": "Flags",
       "description": "The list of communication flags.",
       "is_array": true,
-      "caption": "Flags",
       "type": "string_t"
     },
     "folder": {
-      "description": "The folder that pertains to the event.",
       "caption": "Folder",
+      "description": "The folder that pertains to the event.",
       "object_type": "file",
       "type": "object_t"
     },
     "folder_result": {
-      "description": "The result of the folder change. It should contain the new values of the changed attributes.",
       "caption": "Folder Result",
+      "description": "The result of the folder change. It should contain the new values of the changed attributes.",
       "object_type": "file",
       "type": "object_t"
     },
     "full_name": {
-      "description": "The full name of a user.",
       "caption": "Full Name",
+      "description": "The full name of a user.",
       "type": "string_t"
     },
     "function_keys": {
-      "description": "The number of function keys on client keyboard.",
       "caption": "Function Keys",
+      "description": "The number of function keys on client keyboard.",
       "type": "integer_t"
     },
     "function_name": {
-      "description": "The entry-point function of the module. The system calls the entry-point function whenever a process or thread loads or unloads the module.",
       "caption": "Function Name",
+      "description": "The entry-point function of the module. The system calls the entry-point function whenever a process or thread loads or unloads the module.",
       "type": "string_t"
     },
     "gateway_ip": {
-      "description": "The gateway IP address. For example: <code>10.0.0.1</code>.",
       "caption": "Gateway IP Address",
+      "description": "The gateway IP address. For example: <code>10.0.0.1</code>.",
       "type": "ip_t"
     },
     "gateway_mac": {
-      "description": "The gateway media access control (MAC) address.",
       "caption": "Gateway MAC Address",
+      "description": "The gateway media access control (MAC) address.",
       "type": "mac_t"
     },
     "group": {
-      "description": "The group object associated with an entity such as user, policy, or rule.",
       "caption": "Group",
+      "description": "The group object associated with an entity such as user, policy, or rule.",
       "object_type": "group",
       "type": "object_t"
     },
     "group_name": {
-      "description": "The name of the group that the resource belongs to.",
       "caption": "Group Name",
+      "description": "The name of the group that the resource belongs to.",
       "type": "string_t"
     },
     "groups": {
+      "caption": "Groups",
       "description": "The groups to which an entity belongs. See specific usage.",
       "is_array": true,
-      "caption": "Groups",
       "object_type": "group",
       "type": "object_t"
     },
     "handshake_time": {
-      "description": "The amount of total time for the TLS handshake to complete after the TCP connection is established, including client-side delays, in milliseconds.",
       "caption": "Handshake Time",
+      "description": "The amount of total time for the TLS handshake to complete after the TCP connection is established, including client-side delays, in milliseconds.",
       "type": "integer_t"
     },
     "home_dir": {
-      "description": "The user's home folder.",
       "caption": "Home",
+      "description": "The user's home folder.",
       "type": "path_t"
     },
     "hostname": {
-      "description": "The hostname of an endpoint or a device.",
       "caption": "Hostname",
+      "description": "The hostname of an endpoint or a device.",
       "type": "hostname_t"
     },
     "http_cookies": {
+      "caption": "HTTP Cookies",
       "description": "The cookies object describes details about HTTP cookies",
       "is_array": true,
-      "caption": "HTTP Cookies",
       "object_type": "http_cookie",
       "type": "object_t"
     },
     "http_headers": {
+      "caption": "HTTP Headers",
       "description": "Additional HTTP headers of an HTTP request or response.",
       "is_array": true,
-      "caption": "HTTP Headers",
       "object_type": "http_header",
       "type": "object_t"
     },
     "http_method": {
-      "description": "The HTTP request method indicates the desired action to be performed for a given resource. Expected values: <ul> <li>TRACE</li> <li>CONNECT</li> <li>OPTIONS</li> <li>HEAD</li> <li>DELETE</li> <li>POST</li> <li>PUT</li> <li>GET</li></ul>",
       "caption": "HTTP Method",
+      "description": "The HTTP request method indicates the desired action to be performed for a given resource. Expected values: <ul> <li>TRACE</li> <li>CONNECT</li> <li>OPTIONS</li> <li>HEAD</li> <li>DELETE</li> <li>POST</li> <li>PUT</li> <li>GET</li></ul>",
       "type": "string_t"
     },
     "http_only": {
-      "description": "A cookie attribute to make it inaccessible via JavaScript",
       "caption": "HTTP Only",
+      "description": "A cookie attribute to make it inaccessible via JavaScript",
       "type": "boolean_t"
     },
     "http_request": {
-      "description": "The HTTP Request made to a web server.",
       "caption": "HTTP Request",
+      "description": "The HTTP Request made to a web server.",
       "object_type": "http_request",
       "type": "object_t"
     },
     "http_response": {
-      "description": "The HTTP Response from a web server to a requester.",
       "caption": "HTTP Response",
+      "description": "The HTTP Response from a web server to a requester.",
       "object_type": "http_response",
       "type": "object_t"
     },
     "http_status": {
-      "description": "The Hypertext Transfer Protocol (HTTP) <a target='_blank' href='https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml'>status code</a> returned to the client.",
       "caption": "HTTP Status",
+      "description": "The Hypertext Transfer Protocol (HTTP) <a target='_blank' href='https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml'>status code</a> returned to the client.",
       "type": "integer_t"
     },
     "http_version": {
-      "description": "The Hypertext Transfer Protocol (HTTP) version.",
       "caption": "HTTP Version",
-      "type": "string_t"
-    },
-    "bios_date": {
-      "description": "The BIOS date. For example: <code>03/31/16</code>.",
-      "caption": "BIOS Date",
-      "type": "string_t"
-    },
-    "bios_manufacturer": {
-      "description": "The BIOS manufacturer. For example: <code>LENOVO</code>.",
-      "caption": "BIOS Manufacturer",
-      "type": "string_t"
-    },
-    "bios_ver": {
-      "description": "The BIOS version. For example: <code>LENOVO G5ETA2WW (2.62)</code>.",
-      "caption": "BIOS Version",
-      "type": "string_t"
-    },
-    "cpu_count": {
-      "description": "The number of physical processors on a system. For example: <code>1</code>.",
-      "caption": "CPU Count",
-      "type": "integer_t"
-    },
-    "cpu_cores": {
-      "description": "The number of processor cores in all installed processors. For Example: <code>42</code>.",
-      "caption": "CPU Cores",
-      "type": "integer_t"
-    },
-    "cpu_speed": {
-      "description": "The speed of the processor in Mhz. For Example: <code>4200</code>.",
-      "caption": "Processor Type",
-      "type": "integer_t"
-    },
-    "cpu_type": {
-      "description": "The processor type. For example: <code>x86 Family 6 Model 37 Stepping 5</code>.",
-      "caption": "Processor Type",
+      "description": "The Hypertext Transfer Protocol (HTTP) version.",
       "type": "string_t"
     },
     "hw_info": {
-      "description": "The device hardware information.",
       "caption": "Hardware Info",
-      "type": "object_t",
-      "object_type": "device_hw_info"
+      "description": "The device hardware information.",
+      "object_type": "device_hw_info",
+      "type": "object_t"
     },
     "hypervisor": {
-      "description": "The name of the hypervisor running on the device. For example, <code>Xen</code>, <code>VMware</code>, <code>Hyper-V</code>, <code>VirtualBox</code>, etc.",
       "caption": "Hypervisor",
+      "description": "The name of the hypervisor running on the device. For example, <code>Xen</code>, <code>VMware</code>, <code>Hyper-V</code>, <code>VirtualBox</code>, etc.",
       "type": "string_t"
     },
     "identifier_cookie": {
-      "description": "The client identifier cookie during client/server exchange.",
       "caption": "Identifier Cookie",
+      "description": "The client identifier cookie during client/server exchange.",
       "type": "string_t"
     },
     "identity": {
-      "description": "Identity Object details AuthN, AuthZ information pertaining to the event",
       "caption": "identity",
+      "description": "Identity Object details AuthN, AuthZ information pertaining to the event",
       "object_type": "identity",
       "type": "object_t"
     },
     "idp": {
-      "description": "IDP object descivbes details pertaining to the Identity Provider used",
       "caption": "Identity Provider",
+      "description": "IDP object descivbes details pertaining to the Identity Provider used",
       "object_type": "idp",
       "type": "object_t"
     },
     "image": {
-      "description": "The image used as a template to run a container or virtual machine.",
       "caption": "Image",
+      "description": "The image used as a template to run a container or virtual machine.",
       "object_type": "image",
       "type": "object_t"
     },
     "ime": {
-      "description": "The Input Method Editor (IME) file name.",
       "caption": "IME",
+      "description": "The Input Method Editor (IME) file name.",
       "type": "string_t"
     },
     "imei": {
-      "description": "The International Mobile Station Equipment Identifier that is associated with the device.",
       "caption": "IMEI",
+      "description": "The International Mobile Station Equipment Identifier that is associated with the device.",
       "type": "string_t"
     },
     "injection_type": {
-      "description": "The process injection method.",
       "caption": "Injection Type",
+      "description": "The process injection method.",
       "type": "string_t"
     },
     "injection_type_id": {
+      "caption": "Injection Type ID",
       "description": "The normalized process injection type identifier.",
       "enum": {
         "-1": {
@@ -1536,550 +1553,566 @@
           "caption": "Process Manipulation APIs"
         }
       },
-      "caption": "Injection Type ID",
       "type": "integer_t"
     },
     "instance_uid": {
-      "description": "The unique identifier of a VM instance.",
       "caption": "Instance ID",
+      "description": "The unique identifier of a VM instance.",
       "type": "string_t"
     },
     "integrity": {
-      "description": "The process integrity (Windows only).",
       "caption": "Integrity",
+      "description": "The process integrity (Windows only).",
       "type": "string_t"
     },
     "integrity_id": {
-      "description": "The process integrity level (Windows only).",
       "caption": "Integrity Level",
+      "description": "The process integrity level (Windows only).",
       "type": "integer_t"
     },
     "interface_uid": {
-      "description": "The unique identifier of the network interface.",
       "caption": "Network Interface ID",
+      "description": "The unique identifier of the network interface.",
       "type": "string_t"
     },
     "intermediate_ips": {
+      "caption": "Intermediate IP Addresses",
       "description": "The intermediate IP Addresses. For example, the IP addresses in the HTTP X-Forwarded-For header.",
       "is_array": true,
-      "caption": "Intermediate IP Addresses",
       "type": "ip_t"
     },
     "invoked_by": {
-      "description": "The name of the service that made the request",
       "caption": "Invoked by",
+      "description": "The name of the service that made the request",
       "type": "string_t"
     },
     "ip": {
-      "description": "The IP address, in either IPv4 or IPv6 format.",
       "caption": "IP Address",
+      "description": "The IP address, in either IPv4 or IPv6 format.",
       "type": "ip_t"
     },
     "is_cleartext": {
-      "description": "Indicates whether the credentials were passed in clear text.<p><b>Note:</b> True if the credentials were passed in a clear text protocol such as FTP or TELNET, or if Windows detected that a user's logon password was passed to the authentication package in clear text.</p>",
       "caption": "Cleartext Credentials",
+      "description": "Indicates whether the credentials were passed in clear text.<p><b>Note:</b> True if the credentials were passed in a clear text protocol such as FTP or TELNET, or if Windows detected that a user's logon password was passed to the authentication package in clear text.</p>",
       "type": "boolean_t"
     },
     "is_compliant": {
-      "description": "The event occurred on a compliant device.",
       "caption": "Compliant Device",
+      "description": "The event occurred on a compliant device.",
       "type": "boolean_t"
     },
     "is_default": {
-      "description": "The indication of whether the value is from a default value name. For example, the value name could be missing.",
       "caption": "Default Value",
+      "description": "The indication of whether the value is from a default value name. For example, the value name could be missing.",
       "type": "boolean_t"
     },
     "is_managed": {
-      "description": "The event occurred on a managed device.",
       "caption": "Managed Device",
+      "description": "The event occurred on a managed device.",
       "type": "boolean_t"
     },
     "is_on_premises": {
-      "description": "The indication of whether the location is on premises.",
       "caption": "On Premises",
+      "description": "The indication of whether the location is on premises.",
       "type": "boolean_t"
     },
     "is_personal": {
-      "description": "The event occurred on a personal device.",
       "caption": "Personal Device",
+      "description": "The event occurred on a personal device.",
       "type": "boolean_t"
     },
     "is_remote": {
-      "description": "The indication of whether the session is remote.",
       "caption": "Remote",
+      "description": "The indication of whether the session is remote.",
       "type": "boolean_t"
     },
     "is_renewal": {
-      "description": "The indication of whether this is a lease/session renewal event.",
       "caption": "Renewal",
+      "description": "The indication of whether this is a lease/session renewal event.",
       "type": "boolean_t"
     },
     "is_system": {
-      "description": "The indication of whether the object is part of the operating system.",
       "caption": "System",
+      "description": "The indication of whether the object is part of the operating system.",
       "type": "boolean_t"
     },
     "is_trusted": {
-      "description": "The event occurred on a trusted device.",
       "caption": "Trusted Device",
+      "description": "The event occurred on a trusted device.",
       "type": "boolean_t"
     },
     "is_user_present": {
-      "description": "The indication of whether the user was logged on at event generation time.",
       "caption": "User Present",
+      "description": "The indication of whether the user was logged on at event generation time.",
       "type": "boolean_t"
     },
     "isp": {
-      "description": "The name of the Internet Service Provider (ISP).",
       "caption": "ISP",
+      "description": "The name of the Internet Service Provider (ISP).",
       "type": "string_t"
     },
     "issuer_dn": {
-      "description": "The certificate issuer distinguished name.",
       "caption": "Issuer Distinguished Name",
+      "description": "The certificate issuer distinguished name.",
       "type": "string_t"
     },
     "issuer_name": {
-      "description": "The certificate issuer name.",
       "caption": "Issuer Name",
+      "description": "The certificate issuer name.",
       "type": "string_t"
     },
     "ja3_fingerprint": {
-      "description": "The fingerprint of JA3 string.",
       "caption": "JA3 Fingerprint",
+      "description": "The fingerprint of JA3 string.",
       "object_type": "fingerprint",
       "type": "object_t"
     },
     "ja3_string": {
-      "description": "The JA3 string.",
       "caption": "JA3 String",
+      "description": "The JA3 string.",
       "type": "string_t"
     },
     "ja3s_fingerprint": {
-      "description": "The fingerprint of JAS3 string.",
       "caption": "JAS3 Fingerprint",
+      "description": "The fingerprint of JAS3 string.",
       "object_type": "fingerprint",
       "type": "object_t"
     },
     "ja3s_string": {
-      "description": "The JAS3 string.",
       "caption": "JAS3 String",
+      "description": "The JAS3 string.",
       "type": "string_t"
     },
     "job": {
-      "description": "The job object that pertains to the event.",
       "caption": "Job",
+      "description": "The job object that pertains to the event.",
       "object_type": "job",
       "type": "object_t"
     },
     "kb_articles": {
+      "caption": "Knowledgebase Articles",
       "description": "The KB article/s related to the entity",
       "is_array": true,
-      "caption": "Knowledgebase Articles",
       "type": "string_t"
     },
     "kernel": {
-      "description": "The kernel resource object that pertains to the event.",
       "caption": "Kernel",
+      "description": "The kernel resource object that pertains to the event.",
       "object_type": "kernel",
       "type": "object_t"
     },
     "key_length": {
-      "description": "The length of the encryption key.",
       "caption": "Key Length",
+      "description": "The length of the encryption key.",
       "type": "integer_t"
     },
+    "keyboard_info": {
+      "caption": "Keyboard Information",
+      "description": "The keyboard detailed information.",
+      "object_type": "keyboard_info",
+      "type": "object_t"
+    },
     "keyboard_layout": {
-      "description": "The keyboard locale identifier name (e.g., en-US).",
       "caption": "Keyboard Layout",
+      "description": "The keyboard locale identifier name (e.g., en-US).",
       "type": "string_t"
     },
     "keyboard_subtype": {
-      "description": "The keyboard numeric code.",
       "caption": "Keyboard Subtype",
+      "description": "The keyboard numeric code.",
       "type": "integer_t"
     },
     "keyboard_type": {
-      "description": "The keyboard type (e.g., xt, ico).",
       "caption": "Keyboard Type",
+      "description": "The keyboard type (e.g., xt, ico).",
       "type": "string_t"
     },
     "kill_chain_phase": {
-      "description": "The <a target='_blank' href='https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html'>Cyber Kill Chain®</a> phase.",
       "caption": "Kill Chain Phase",
+      "description": "The <a target='_blank' href='https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html'>Cyber Kill Chain®</a> phase.",
       "type": "string_t"
     },
     "kill_chain_phase_id": {
+      "caption": "Kill Chain Phase ID",
       "description": "The <a target='_blank' href='https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html'>Cyber Kill Chain®</a> phase identifier.",
       "enum": {
         "-1": {
           "caption": "Other"
         },
         "0": {
-          "description": "The kill chain phase is unknown.",
-          "caption": "Unknown"
+          "caption": "Unknown",
+          "description": "The kill chain phase is unknown."
         },
         "1": {
-          "description": "The attackers pick a target and perform a detailed analysis, start collecting information (email addresses, conferences information, etc.) and evaluate the victim’s vulnerabilities to determine how to exploit them.",
-          "caption": "Reconnaissance"
+          "caption": "Reconnaissance",
+          "description": "The attackers pick a target and perform a detailed analysis, start collecting information (email addresses, conferences information, etc.) and evaluate the victim’s vulnerabilities to determine how to exploit them."
         },
         "2": {
-          "description": "The attackers develop a malware weapon and aim to exploit the discovered vulnerabilities.",
-          "caption": "Weaponization"
+          "caption": "Weaponization",
+          "description": "The attackers develop a malware weapon and aim to exploit the discovered vulnerabilities."
         },
         "3": {
-          "description": "The intruders will use various tactics, such as phishing, infected USB drives, etc.",
-          "caption": "Delivery"
+          "caption": "Delivery",
+          "description": "The intruders will use various tactics, such as phishing, infected USB drives, etc."
         },
         "4": {
-          "description": "The intruders start leveraging vulnerabilities to executed code on the victim’s system.",
-          "caption": "Exploitation"
+          "caption": "Exploitation",
+          "description": "The intruders start leveraging vulnerabilities to executed code on the victim’s system."
         },
         "5": {
-          "description": "The intruders install malware on the victim’s system.",
-          "caption": "Installation"
+          "caption": "Installation",
+          "description": "The intruders install malware on the victim’s system."
         },
         "6": {
-          "description": "Malware opens a command channel to enable the intruders to remotely manipulate the victim's system.",
-          "caption": "Command & Control"
+          "caption": "Command & Control",
+          "description": "Malware opens a command channel to enable the intruders to remotely manipulate the victim's system."
         },
         "7": {
-          "description": "With hands-on keyboard access, intruders accomplish the mission’s goal.",
-          "caption": "Actions on Objectives"
+          "caption": "Actions on Objectives",
+          "description": "With hands-on keyboard access, intruders accomplish the mission’s goal."
         }
       },
-      "caption": "Kill Chain Phase ID",
       "type": "integer_t"
     },
     "labels": {
+      "caption": "Labels",
       "description": "The list of labels attached to an event, object, or attribute.",
       "is_array": true,
-      "caption": "Labels",
       "type": "string_t"
     },
     "lang": {
-      "description": "The two letter lower case language codes, as defined by <a target='_blank' href='https://en.wikipedia.org/wiki/ISO_639-1'>ISO 639-1</a>. For example: <code>en</code> (English), <code>de</code> (German), or <code>fr</code> (French).",
       "caption": "Language",
+      "description": "The two letter lower case language codes, as defined by <a target='_blank' href='https://en.wikipedia.org/wiki/ISO_639-1'>ISO 639-1</a>. For example: <code>en</code> (English), <code>de</code> (German), or <code>fr</code> (French).",
       "type": "string_t"
     },
     "last_occurence": {
-      "description": "Indicates when an entity was most recently observed.",
       "caption": "Last Occurence",
+      "description": "Indicates when an entity was most recently observed.",
       "type": "timestamp_t"
     },
     "last_run_time": {
-      "description": "The last run time of application or service. See specific usage.",
       "caption": "Last Run",
+      "description": "The last run time of application or service. See specific usage.",
       "type": "timestamp_t"
     },
     "latency": {
-      "description": "TODO: The HTTP response latency. In seconds, milliseconds, etc.?",
       "caption": "Latency",
+      "description": "TODO: The HTTP response latency. In seconds, milliseconds, etc.?",
       "type": "integer_t"
     },
     "lease_time": {
-      "description": "This represents the length of the DHCP lease in seconds. This is present in DHCP Ack events. (activity_id = 1)",
       "caption": "Lease Time",
+      "description": "This represents the length of the DHCP lease in seconds. This is present in DHCP Ack events. (activity_id = 1)",
       "type": "integer_t"
     },
     "length": {
-      "description": "The HTTP response length, in number of bytes.",
       "caption": "Response Length",
+      "description": "The HTTP response length, in number of bytes.",
       "type": "integer_t"
     },
     "lineage": {
+      "caption": "Lineage",
       "description": "The lineage of the process.",
       "is_array": true,
-      "caption": "Lineage",
       "type": "string_t"
     },
     "load_type": {
-      "description": "The load type describes how the module was loaded in memory.",
       "caption": "Load Type",
+      "description": "The load type describes how the module was loaded in memory.",
       "type": "string_t"
     },
     "load_type_id": {
-      "description": "The load type identifies how the module was loaded in memory.",
       "caption": "Load Type ID",
+      "description": "The load type identifies how the module was loaded in memory.",
       "type": "integer_t"
     },
     "loaded_modules": {
+      "caption": "Loaded Modules",
       "description": "The list of loaded module names.",
       "is_array": true,
-      "caption": "Loaded Modules",
       "type": "string_t"
     },
     "location": {
-      "description": "The detailed geographical location usually associated with an IP address.",
       "caption": "Detailed Geo Location",
+      "description": "The detailed geographical location usually associated with an IP address.",
       "object_type": "location",
       "type": "object_t"
     },
     "log_time": {
-      "description": "The time when the logging system collected and logged the event.</p>This attribute is distinct from the event time in that event time typically contain the time extracted from the original event. Most of the time, these two times will be different.",
       "caption": "Logged Time",
+      "description": "The time when the logging system collected and logged the event.</p>This attribute is distinct from the event time in that event time typically contain the time extracted from the original event. Most of the time, these two times will be different.",
       "type": "timestamp_t"
     },
     "logon_process": {
-      "description": "The trusted process that validated the authentication credentials.",
       "caption": "Logon Process",
+      "description": "The trusted process that validated the authentication credentials.",
       "object_type": "process",
       "type": "object_t"
     },
     "logon_type": {
-      "description": "The logon type.",
       "caption": "Logon Type",
+      "description": "The logon type.",
       "type": "string_t"
     },
     "logon_type_id": {
+      "caption": "Logon Type ID",
       "description": "The normalized logon type identifier.",
       "enum": {
         "-1": {
-          "description": "Other logon type.",
-          "caption": "Other"
+          "caption": "Other",
+          "description": "Other logon type."
         },
         "0": {
-          "description": "Used only by the System account, for example at system startup.",
-          "caption": "System"
+          "caption": "System",
+          "description": "Used only by the System account, for example at system startup."
         },
         "10": {
-          "description": "A remote logon using Terminal Services or remote desktop application.",
-          "caption": "Remote Interactive"
+          "caption": "Remote Interactive",
+          "description": "A remote logon using Terminal Services or remote desktop application."
         },
         "11": {
-          "description": "A user logged on to this device with network credentials that were stored locally on the device and the domain controller was not contacted to verify the credentials.",
-          "caption": "Cached Interactive"
+          "caption": "Cached Interactive",
+          "description": "A user logged on to this device with network credentials that were stored locally on the device and the domain controller was not contacted to verify the credentials."
         },
         "12": {
-          "description": "Same as Remote Interactive. This is used for internal auditing.",
-          "caption": "Cached Remote Interactive"
+          "caption": "Cached Remote Interactive",
+          "description": "Same as Remote Interactive. This is used for internal auditing."
         },
         "13": {
-          "description": "Workstation logon.",
-          "caption": "Cached Unlock"
+          "caption": "Cached Unlock",
+          "description": "Workstation logon."
         },
         "2": {
-          "description": "A local logon to device console.",
-          "caption": "Interactive"
+          "caption": "Interactive",
+          "description": "A local logon to device console."
         },
         "3": {
-          "description": "A user or device logged onto this device from the network.",
-          "caption": "Network"
+          "caption": "Network",
+          "description": "A user or device logged onto this device from the network."
         },
         "4": {
-          "description": "A batch server logon, where processes may be executing on behalf of a user without their direct intervention.",
-          "caption": "Batch"
+          "caption": "Batch",
+          "description": "A batch server logon, where processes may be executing on behalf of a user without their direct intervention."
         },
         "5": {
-          "description": "A logon by a service or daemon that was started by the OS.",
-          "caption": "OS Service"
+          "caption": "OS Service",
+          "description": "A logon by a service or daemon that was started by the OS."
         },
         "7": {
-          "description": "A user unlocked the device.",
-          "caption": "Unlock"
+          "caption": "Unlock",
+          "description": "A user unlocked the device."
         },
         "8": {
-          "description": "A user logged on to this device from the network. The user's password in the authentication package was not hashed.",
-          "caption": "Network Cleartext"
+          "caption": "Network Cleartext",
+          "description": "A user logged on to this device from the network. The user's password in the authentication package was not hashed."
         },
         "9": {
-          "description": "A caller cloned its current token and specified new credentials for outbound connections. The new logon session has the same local identity, but uses different credentials for other network connections.",
-          "caption": "New Credentials"
+          "caption": "New Credentials",
+          "description": "A caller cloned its current token and specified new credentials for outbound connections. The new logon session has the same local identity, but uses different credentials for other network connections."
         }
       },
-      "caption": "Logon Type ID",
       "type": "integer_t"
     },
     "mac": {
-      "description": "The Media Access Control (MAC) address that is associated with the network interface.",
       "caption": "MAC Address",
+      "description": "The Media Access Control (MAC) address that is associated with the network interface.",
       "type": "mac_t"
     },
     "malware": {
-      "description": "The primary malware identified by the event.<p><b>Note:</b> The primary malware may be the first malware found by the detection engine, or it may be the most severe malware found.</p>",
       "caption": "Malware",
+      "description": "The primary malware identified by the event.<p><b>Note:</b> The primary malware may be the first malware found by the detection engine, or it may be the most severe malware found.</p>",
       "object_type": "malware",
       "type": "object_t"
     },
     "md5": {
-      "description": "The MD5 checksum of the file content.",
       "caption": "MD5",
+      "description": "The MD5 checksum of the file content.",
       "type": "file_hash_t"
     },
     "message": {
-      "description": "The description of the event, as defined by the event source.",
       "caption": "Message",
+      "description": "The description of the event, as defined by the event source.",
       "type": "string_t"
     },
     "metadata": {
-      "description": "The metadata associated with the event.",
       "caption": "Metadata",
+      "description": "The metadata associated with the event.",
       "object_type": "metadata",
       "type": "object_t"
     },
     "mfa": {
-      "description": "The Multi Factor Authentication was used during authentication.",
       "caption": "Multi Factor Authentication",
+      "description": "The Multi Factor Authentication was used during authentication.",
       "type": "boolean_t"
     },
     "mime_type": {
-      "description": "The Multipurpose Internet Mail Extensions (MIME) type of the file, if applicable.",
       "caption": "MIME type",
+      "description": "The Multipurpose Internet Mail Extensions (MIME) type of the file, if applicable.",
       "type": "string_t"
     },
     "model": {
-      "description": "The peripheral device model.",
       "caption": "Model",
+      "description": "The peripheral device model.",
       "type": "string_t"
     },
     "modified_time": {
-      "description": "The time when the object was last modified. See specific usage.",
       "caption": "Modified Time",
+      "description": "The time when the object was last modified. See specific usage.",
       "type": "timestamp_t"
     },
     "modifier": {
-      "description": "The user that last modified the object associated with the event. See specific usage.",
       "caption": "Modifier",
+      "description": "The user that last modified the object associated with the event. See specific usage.",
       "type": "string_t"
     },
     "module": {
-      "description": "The module that pertains to the event.",
       "caption": "Module",
+      "description": "The module that pertains to the event.",
       "object_type": "module",
       "type": "object_t"
     },
     "name": {
-      "description": "The name of the entity. See specific usage.",
       "caption": "Name",
+      "description": "The name of the entity. See specific usage.",
       "type": "string_t"
     },
     "namespace": {
-      "description": "The namespace is useful in merger or acquisition situations. For example, when similar entities exists that you need to keep separate.",
       "caption": "Namespace",
+      "description": "The namespace is useful in merger or acquisition situations. For example, when similar entities exists that you need to keep separate.",
       "type": "string_t"
     },
     "network_driver": {
-      "description": "The network driver used by the container. For example, bridge, overlay, host, none, etc.",
       "caption": "Network Driver",
+      "description": "The network driver used by the container. For example, bridge, overlay, host, none, etc.",
       "type": "string_t"
     },
     "network_interface": {
-      "description": "The network interface that is associated with the device.",
       "caption": "Network Interface",
+      "description": "The network interface that is associated with the device.",
       "object_type": "network_interface",
       "type": "object_t"
     },
     "network_interfaces": {
+      "caption": "Network Interfaces",
       "description": "The network interfaces that are associated with the device, one for each MAC address/IP address combination.<p><b>Note:</b> The first element of the array is the network information that pertains to the event.</p>",
       "is_array": true,
-      "caption": "Network Interfaces",
       "object_type": "network_interface",
       "type": "object_t"
     },
     "next_run_time": {
-      "description": "The next run time. See specific usage.",
       "caption": "Next Run",
+      "description": "The next run time. See specific usage.",
       "type": "timestamp_t"
     },
     "nist": {
+      "caption": "NIST List",
       "description": "The NIST Cybersecurity Framework recommendations for managing the cybersecurity risk.",
       "is_array": true,
-      "caption": "NIST List",
       "type": "string_t"
     },
     "observables": {
+      "caption": "Observables",
       "description": "The observables associated with the event.",
       "is_array": true,
-      "caption": "Observables",
       "object_type": "observable",
       "type": "object_t"
     },
     "opcode": {
+      "caption": "DNS Opcode",
       "description": "The DNS opcode specifies the type of the query message.",
       "enum": {
         "0": {
-          "description": "Standard query",
-          "caption": "Query"
+          "caption": "Query",
+          "description": "Standard query"
         },
         "1": {
-          "description": "Inverse query, obsolete",
-          "caption": "Inverse Query"
+          "caption": "Inverse Query",
+          "description": "Inverse query, obsolete"
         },
         "2": {
-          "description": "Server status request",
-          "caption": "Status"
+          "caption": "Status",
+          "description": "Server status request"
         },
         "3": {
-          "description": "Reserved, not used",
-          "caption": "Reserved"
+          "caption": "Reserved",
+          "description": "Reserved, not used"
         },
         "4": {
-          "description": "Zone change notification",
-          "caption": "Notify"
+          "caption": "Notify",
+          "description": "Zone change notification"
         },
         "5": {
-          "description": "Dynamic DNS update",
-          "caption": "Update"
+          "caption": "Update",
+          "description": "Dynamic DNS update"
         },
         "6": {
-          "description": "DNS Stateful Operations (DSO)",
-          "caption": "DSO Message"
+          "caption": "DSO Message",
+          "description": "DNS Stateful Operations (DSO)"
         }
       },
-      "caption": "DNS Opcode",
       "type": "integer_t"
     },
     "open_mask": {
-      "description": "The Windows options needed to open a registry key.",
       "caption": "Open Mask",
+      "description": "The Windows options needed to open a registry key.",
       "type": "integer_t"
     },
-    "operation": {
-      "description": "Verb/Operation associated with the request",
-      "caption": "Operation",
+    "open_type": {
+      "description": "The file open type.",
+      "caption": "Open Type",
       "type": "string_t"
     },
+    "operation": {
+      "caption": "Operation",
+      "description": "Verb/Operation associated with the request",
+      "type": "string_t"
+    },
+    "opnum": {
+      "description": "An operation number used to identify a specific remote procedure call (RPC) method or a method in an interface.",
+      "caption": "Opnum",
+      "type": "integer_t"
+    },
     "orchestrator": {
-      "description": "The orchestrator managing the container, such as ECS, EKS, K8s, OpenShift, None.",
       "caption": "Orchestrator",
+      "description": "The orchestrator managing the container, such as ECS, EKS, K8s, OpenShift, None.",
       "type": "string_t"
     },
     "org_uid": {
-      "description": "The unique identifier of the organization to which the user belongs. For example, Active Directory or AWS Org ID.",
       "caption": "Org ID",
+      "description": "The unique identifier of the organization to which the user belongs. For example, Active Directory or AWS Org ID.",
       "type": "string_t"
     },
     "org_unit": {
-      "description": "The name of the organization to which the user belongs.",
       "caption": "Org Unit",
+      "description": "The name of the organization to which the user belongs.",
       "type": "string_t"
     },
     "origin": {
-      "description": "The origin of the event, where the event was created.",
       "caption": "Origin",
+      "description": "The origin of the event, where the event was created.",
       "object_type": "event_origin",
       "type": "object_t"
     },
     "os": {
-      "description": "The device operation system.",
       "caption": "OS",
+      "description": "The device operation system.",
       "object_type": "os",
       "type": "object_t"
     },
     "other_malware": {
+      "caption": "Other Malware",
       "description": "The additional malware that was detected.",
       "is_array": true,
-      "caption": "Other Malware",
       "object_type": "malware",
       "type": "object_t"
     },
     "outcome": {
-      "description": "The outcome of the event, as defined by the event source.",
       "caption": "Outcome",
+      "description": "The outcome of the event, as defined by the event source.",
       "type": "string_t"
     },
     "outcome_id": {
+      "caption": "Outcome ID",
       "description": "The outcome ID of the event.",
       "enum": {
         "-1": {
@@ -2089,557 +2122,562 @@
           "caption": "Unknown"
         }
       },
-      "caption": "Outcome ID",
       "type": "integer_t"
     },
     "owner": {
-      "description": "The user that owns the file.",
       "caption": "Owner",
+      "description": "The user that owns the file.",
       "type": "string_t"
     },
     "owner_name": {
-      "description": "The name of the service or user account that owns the resource.",
       "caption": "Owner Name",
+      "description": "The name of the service or user account that owns the resource.",
       "type": "string_t"
     },
     "packages": {
+      "caption": "Related Packages",
       "description": "List of vulnerable packages as identified by the security product",
       "is_array": true,
-      "caption": "Related Packages",
       "type": "string_t"
     },
     "packets": {
+      "caption": "Total Packets",
       "default": 0,
       "description": "The total number of packets (in and out).",
-      "caption": "Total Packets",
       "type": "long_t"
     },
     "packets_in": {
+      "caption": "Packets In",
       "default": 0,
       "description": "The number of packets sent from the destination to the source.",
-      "caption": "Packets In",
       "type": "long_t"
     },
     "packets_out": {
+      "caption": "Packets Out",
       "default": 0,
       "description": "The number of packets sent from the source to the destination.",
-      "caption": "Packets Out",
       "type": "long_t"
     },
     "parent_categories": {
+      "caption": "Parent Categories",
       "description": "An array of parent URL categories.",
       "is_array": true,
-      "caption": "Parent Categories",
       "type": "string_t"
     },
     "parent_folder": {
-      "description": "The parent folder in which the file resides. For example: <code>c:\\windows\\system32</code>",
       "caption": "Parent Folder",
+      "description": "The parent folder in which the file resides. For example: <code>c:\\windows\\system32</code>",
       "type": "path_t"
     },
     "parent_process": {
-      "description": "The parent process of the <code>actor</code> process.",
       "caption": "Parent Process",
+      "description": "The parent process of the <code>actor</code> process.",
       "object_type": "process",
       "type": "object_t"
     },
     "path": {
-      "description": "The path that pertains to the event or object. See specific usage.",
       "caption": "Path",
+      "description": "The path that pertains to the event or object. See specific usage.",
       "type": "path_t"
     },
     "peripheral_device": {
-      "description": "The peripheral device that triggered the event.",
       "caption": "Peripheral Device",
+      "description": "The peripheral device that triggered the event.",
       "object_type": "peripheral_device",
       "type": "object_t"
     },
     "permission": {
-      "description": "The IAM permission related to an event",
       "caption": "Permission",
+      "description": "The IAM permission related to an event",
       "type": "string_t"
     },
     "physical_height": {
-      "description": "The numeric physical height of display.",
       "caption": "Physical Height",
+      "description": "The numeric physical height of display.",
       "type": "integer_t"
     },
     "physical_orientation": {
-      "description": "The numeric physical orientation of display.",
       "caption": "Physical Orientation",
+      "description": "The numeric physical orientation of display.",
       "type": "integer_t"
     },
     "physical_width": {
-      "description": "The numeric physical width of display.",
       "caption": "Physical Width",
+      "description": "The numeric physical width of display.",
       "type": "integer_t"
     },
     "pid": {
-      "description": "The process identifier, as reported by the operating system. Process ID (PID) is a number used by the operating system to uniquely identify an active process.",
       "caption": "Process ID",
+      "description": "The process identifier, as reported by the operating system. Process ID (PID) is a number used by the operating system to uniquely identify an active process.",
       "type": "integer_t"
     },
     "port": {
-      "description": "The IP port number associated with a connection. See specific usage.",
       "caption": "Port",
+      "description": "The IP port number associated with a connection. See specific usage.",
       "type": "port_t"
     },
     "postal_code": {
-      "description": "The postal code of the location.",
       "caption": "Postal Code",
+      "description": "The postal code of the location.",
       "type": "string_t"
     },
     "prefix": {
-      "description": "The domain prefix.",
       "caption": "Prefix",
+      "description": "The domain prefix.",
       "type": "string_t"
     },
     "priority": {
-      "description": "The original priority, as defined by the event source.",
       "caption": "Priority",
+      "description": "The original priority, as defined by the event source.",
       "type": "integer_t"
     },
     "priority_id": {
+      "caption": "Priority ID",
       "description": "The normalized priority. See specific usage.",
       "enum": {},
-      "caption": "Priority ID",
       "type": "integer_t"
     },
     "privileges": {
+      "caption": "Privileges",
       "description": "The user or group privileges.",
       "is_array": true,
-      "caption": "Privileges",
       "type": "string_t"
     },
     "privileges_required_id": {
+      "caption": "Privileges Required",
       "description": "The level of privileges an attacker must possess before successfully exploiting the vulnerability.",
       "enum": {},
-      "caption": "Privileges Required",
       "type": "integer_t"
     },
     "process": {
-      "description": "The process object.",
       "caption": "Process",
+      "description": "The process object.",
       "object_type": "process",
       "type": "object_t"
     },
     "processed_time": {
-      "description": "The event processed time, such as an ETL operation.",
       "caption": "Processed Time",
+      "description": "The event processed time, such as an ETL operation.",
       "type": "timestamp_t"
     },
     "product": {
-      "description": "The product that reported the event.",
       "caption": "Product",
+      "description": "The product that reported the event.",
       "object_type": "product",
       "type": "object_t"
     },
     "product_uid": {
-      "description": "Unique Identifier of a product.",
       "caption": "Product Identifier",
+      "description": "Unique Identifier of a product.",
       "type": "string_t"
     },
     "profiles": {
-      "description": "The list of profiles used to create the event.",
       "caption": "Profiles",
-      "type": "string_t",
-      "is_array": true
+      "description": "The list of profiles used to create the event.",
+      "is_array": true,
+      "type": "string_t"
     },
     "project_uid": {
-      "description": "Cloud project identifier.",
       "caption": "Project ID",
+      "description": "Cloud project identifier.",
       "type": "string_t"
     },
     "protocol_name": {
-      "description": "The TCP/IP protocol name in lowercase, as defined by the Internet Assigned Numbers Authority (IANA). See <a target='_blank' href='https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml'>Protocol Numbers</a>. For example: <code>tcp</code> or <code>udp</code>.",
       "caption": "Protocol Name",
+      "description": "The TCP/IP protocol name in lowercase, as defined by the Internet Assigned Numbers Authority (IANA). See <a target='_blank' href='https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml'>Protocol Numbers</a>. For example: <code>tcp</code> or <code>udp</code>.",
       "type": "string_t"
     },
     "protocol_num": {
-      "description": "The TCP/IP protocol number, as defined by the Internet Assigned Numbers Authority (IANA). Use -1 if the protocol is not defined by IANA. See <a target='_blank' href='https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml'>Protocol Numbers</a>. For example: <code>6</code> for TCP and <code>17</code> for UDP.",
       "caption": "Protocol Number",
+      "description": "The TCP/IP protocol number, as defined by the Internet Assigned Numbers Authority (IANA). Use -1 if the protocol is not defined by IANA. See <a target='_blank' href='https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml'>Protocol Numbers</a>. For example: <code>6</code> for TCP and <code>17</code> for UDP.",
       "type": "integer_t"
     },
     "protocol_ver": {
-      "description": "The Protocol version.",
       "caption": "Protocol Version",
+      "description": "The Protocol version.",
       "type": "string_t"
     },
     "protocol_ver_id": {
-      "description": "The Protocol version identifier.",
       "caption": "Protocol Version ID",
+      "description": "The Protocol version identifier.",
       "type": "integer_t"
     },
     "provider": {
-      "description": "The origin of information associated with the event. See specific usage.",
       "caption": "Provider",
+      "description": "The origin of information associated with the event. See specific usage.",
       "type": "string_t"
     },
     "proxy": {
-      "description": "If a proxy connection is present, the connection from the client to the proxy server.",
       "caption": "Proxy",
+      "description": "If a proxy connection is present, the connection from the client to the proxy server.",
       "object_type": "network_proxy",
       "type": "object_t"
     },
     "public_ip": {
-      "description": "The public IP address.<p><b>Note:</b> The <b>Device Public IP</b> is populated with the value of the <i>x-forwarded-for</i> message header, if present.</p>.",
       "caption": "Public IP",
+      "description": "The public IP address.<p><b>Note:</b> The <b>Device Public IP</b> is populated with the value of the <i>x-forwarded-for</i> message header, if present.</p>.",
       "type": "ip_t"
     },
     "quarantine_uid": {
-      "description": "The unique identifier of the item that was quarantined or restored from quarantine.",
       "caption": "Quarantine UID",
+      "description": "The unique identifier of the item that was quarantined or restored from quarantine.",
       "type": "string_t"
     },
     "query": {
-      "description": "The Domain Name System (DNS) query.",
       "caption": "DNS Query",
+      "description": "The Domain Name System (DNS) query.",
       "object_type": "dns_query",
       "type": "object_t"
     },
     "query_string": {
-      "description": "The query portion of the URL. For example: the query portion of the URL <code>http://www.example.com/search?q=bad&sort=date</code> is <code>q=bad&sort=date</code>.",
       "caption": "HTTP Query String",
+      "description": "The query portion of the URL. For example: the query portion of the URL <code>http://www.example.com/search?q=bad&sort=date</code> is <code>q=bad&sort=date</code>.",
       "type": "string_t"
     },
     "query_time": {
-      "description": "The Domain Name System (DNS) query time.",
       "caption": "Query Time",
+      "description": "The Domain Name System (DNS) query time.",
       "type": "timestamp_t"
     },
+    "ram_size": {
+      "caption": "RAM Size",
+      "description": "The ctotal amount of installed RAM, in Megabytes. For example: <code>2048</code>.",
+      "type": "integer_t"
+    },
     "raw_data": {
-      "description": "The event data as received from the event source.",
       "caption": "Raw Data",
+      "description": "The event data as received from the event source.",
       "type": "string_t"
     },
     "rcode": {
-      "description": "The DNS server response code. See <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc6895'>RFC-6895</a>.",
       "caption": "Response Code",
+      "description": "The DNS server response code. See <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc6895'>RFC-6895</a>.",
       "type": "string_t"
     },
     "rcode_id": {
-      "description": "The DNS server response code id. See <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc6895'>RFC-6895</a>.",
       "caption": "Response Code ID",
-      "type": "integer_t",
+      "description": "The DNS server response code id. See <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc6895'>RFC-6895</a>.",
       "enum": {
         "-1": {
-          "description": "The dns response code is not defined by the RFC.",
-          "caption": "Other"
+          "caption": "Other",
+          "description": "The dns response code is not defined by the RFC."
         },
         "0": {
-          "description": "No Error.",
-          "caption": "NoError"
+          "caption": "NoError",
+          "description": "No Error."
         },
         "1": {
-          "description": "Format Error.",
-          "caption": "FormError"
-        },
-        "2": {
-          "description": "Server Failure.",
-          "caption": "ServError"
-        },
-        "3": {
-          "description": "Non-Existent Domain.",
-          "caption": "NXDomain"
-        },
-        "4": {
-          "description": "Not Implemented.",
-          "caption": "NotImp"
-        },
-        "5": {
-          "description": "Query Refused.",
-          "caption": "Refused"
-        },
-        "6": {
-          "description": "Name Exists when it should not.",
-          "caption": "YXDomain"
-        },
-        "7": {
-          "description": "RR Set Exists when it should not.",
-          "caption": "YXRRSet"
-        },
-        "8": {
-          "description": "RR Set that should exist does not.",
-          "caption": "NXRRSet"
-        },
-        "9": {
-          "description": "Not Authorized or Server Not Authoritative for zone.",
-          "caption": "NotAuth"
+          "caption": "FormError",
+          "description": "Format Error."
         },
         "10": {
-          "description": "Name not contained in zone.",
-          "caption": "NotZone"
+          "caption": "NotZone",
+          "description": "Name not contained in zone."
         },
         "11": {
-          "description": "DSO-TYPE Not Implemented.",
-          "caption": "DSOTYPENI"
+          "caption": "DSOTYPENI",
+          "description": "DSO-TYPE Not Implemented."
         },
         "16": {
-          "description": "TSIG Signature Failure or Bad OPT Version.",
-          "caption": "BADSIG_VERS"
+          "caption": "BADSIG_VERS",
+          "description": "TSIG Signature Failure or Bad OPT Version."
         },
         "17": {
-          "description": "Key not recognized.",
-          "caption": "BADKEY"
+          "caption": "BADKEY",
+          "description": "Key not recognized."
         },
         "18": {
-          "description": "Signature out of time window.",
-          "caption": "BADTIME"
+          "caption": "BADTIME",
+          "description": "Signature out of time window."
         },
         "19": {
-          "description": "Bad TKEY Mode.",
-          "caption": "BADMODE"
+          "caption": "BADMODE",
+          "description": "Bad TKEY Mode."
+        },
+        "2": {
+          "caption": "ServError",
+          "description": "Server Failure."
         },
         "20": {
-          "description": "Duplicate key name.",
-          "caption": "BADNAME"
+          "caption": "BADNAME",
+          "description": "Duplicate key name."
         },
         "21": {
-          "description": "Algorithm not supported.",
-          "caption": "BADALG"
+          "caption": "BADALG",
+          "description": "Algorithm not supported."
         },
         "22": {
-          "description": "Bad Truncation.",
-          "caption": "BADTRUNC"
+          "caption": "BADTRUNC",
+          "description": "Bad Truncation."
         },
         "23": {
-          "description": "Bad/missing Server Cookie.",
-          "caption": "BADCOOKIE"
+          "caption": "BADCOOKIE",
+          "description": "Bad/missing Server Cookie."
         },
         "24": {
-          "description": "The codes deemed to be unassigned by the RFC (unassigned codes: 12-15, 24-3840, 4096-65534).",
-          "caption": "Unassigned"
+          "caption": "Unassigned",
+          "description": "The codes deemed to be unassigned by the RFC (unassigned codes: 12-15, 24-3840, 4096-65534)."
         },
         "25": {
-          "description": "The codes deemed to be reserved by the RFC (codes: 3841-4095, 65535).",
-          "caption": "Reserved"
+          "caption": "Reserved",
+          "description": "The codes deemed to be reserved by the RFC (codes: 3841-4095, 65535)."
+        },
+        "3": {
+          "caption": "NXDomain",
+          "description": "Non-Existent Domain."
+        },
+        "4": {
+          "caption": "NotImp",
+          "description": "Not Implemented."
+        },
+        "5": {
+          "caption": "Refused",
+          "description": "Query Refused."
+        },
+        "6": {
+          "caption": "YXDomain",
+          "description": "Name Exists when it should not."
+        },
+        "7": {
+          "caption": "YXRRSet",
+          "description": "RR Set Exists when it should not."
+        },
+        "8": {
+          "caption": "NXRRSet",
+          "description": "RR Set that should exist does not."
+        },
+        "9": {
+          "caption": "NotAuth",
+          "description": "Not Authorized or Server Not Authoritative for zone."
         }
-      }
+      },
+      "type": "integer_t"
     },
     "rdata": {
-      "description": "The data describing the DNS resource. The meaning of this data depends on the type and class of the resource record.",
       "caption": "DNS RData",
+      "description": "The data describing the DNS resource. The meaning of this data depends on the type and class of the resource record.",
       "type": "string_t"
     },
     "ref_event_code": {
-      "description": "The event code/ID, as defined by the event source. It is used to identify the type of event. For example, the Windows event Code or ID.",
       "caption": "Reference Event Code",
+      "description": "The event code/ID, as defined by the event source. It is used to identify the type of event. For example, the Windows event Code or ID.",
       "type": "string_t"
     },
     "ref_event_name": {
-      "description": "The event name, as defined by the event source.",
       "caption": "Reference Event Name",
+      "description": "The event name, as defined by the event source.",
       "type": "string_t"
     },
     "ref_event_uid": {
-      "description": "The event instance identifier, as defined by the event source. It is the index of the event in an external event log. For example, the Windows EventRecordID.",
       "caption": "Reference Event ID",
+      "description": "The event instance identifier, as defined by the event source. It is the index of the event in an external event log. For example, the Windows EventRecordID.",
       "type": "string_t"
     },
     "ref_time": {
-      "description": "The original event time as reported by the event source.",
       "caption": "Original Time",
+      "description": "The original event time as reported by the event source.",
       "type": "string_t"
     },
     "ref_uid": {
-      "description": "The reference to a unique identifier, managed by an external system.",
       "caption": "Reference UID",
+      "description": "The reference to a unique identifier, managed by an external system.",
       "type": "string_t"
     },
     "references": {
+      "caption": "References",
       "description": "Supporting reference URLs",
       "is_array": true,
-      "caption": "References",
       "type": "string_t"
     },
     "referrer": {
-      "description": "The request header that identifies the address of the previous web page, which is linked to the current web page or resource being requested.",
       "caption": "HTTP Referrer",
+      "description": "The request header that identifies the address of the previous web page, which is linked to the current web page or resource being requested.",
       "type": "string_t"
     },
     "reg_key": {
-      "description": "The registry key.",
       "caption": "Registry Key",
+      "description": "The registry key.",
       "object_type": "registry_key",
       "type": "object_t"
     },
     "reg_key_result": {
-      "description": "The result of the registry key change. It should contain the new values of the changed attributes.",
       "caption": "Registry Key Result",
+      "description": "The result of the registry key change. It should contain the new values of the changed attributes.",
       "object_type": "registry_key",
       "type": "object_t"
     },
     "reg_value": {
-      "description": "The registry value.",
       "caption": "Registry Value",
+      "description": "The registry value.",
       "object_type": "registry_value",
       "type": "object_t"
     },
     "reg_value_result": {
-      "description": "The result of the registry value change. It should contain the new values of the changed attributes.",
       "caption": "Registry Value Result",
+      "description": "The result of the registry value change. It should contain the new values of the changed attributes.",
       "object_type": "registry_value",
       "type": "object_t"
     },
     "region": {
-      "description": "The name or the code of a region. See specific usage.",
       "caption": "Region",
+      "description": "The name or the code of a region. See specific usage.",
       "type": "string_t"
     },
     "related_findings": {
-      "description": "Describes findings related to a finding as identified by the security product.",
       "caption": "Related Findings",
+      "description": "Describes findings related to a finding as identified by the security product.",
+      "is_array": true,
       "object_type": "related_findings",
-      "type": "object_t",
-      "is_array": true
+      "type": "object_t"
     },
     "related_vulns": {
+      "caption": "Related Vulnerabilities",
       "description": "List of vulnerabilities that are related to this vulnerability.",
       "is_array": true,
-      "caption": "Related Vulnerabilities",
       "type": "string_t"
     },
     "relay": {
-      "description": "The network relay that is associated with the event.",
       "caption": "Relay",
+      "description": "The network relay that is associated with the event.",
       "object_type": "network_interface",
       "type": "object_t"
     },
     "remediation_details": {
-      "description": "The Remediation object describes details about recommended remediation strategies.",
       "caption": "Remediation Details",
+      "description": "The Remediation object describes details about recommended remediation strategies.",
       "object_type": "remediation_details",
       "type": "object_t"
     },
     "remote_display": {
-      "description": "The remote display affiliated with the event",
       "caption": "Remote Display",
+      "description": "The remote display affiliated with the event",
       "object_type": "display",
       "type": "object_t"
     },
     "rep_score": {
-      "description": "The original reputation score as reported by the event source.",
       "caption": "Reputation Score",
+      "description": "The original reputation score as reported by the event source.",
       "type": "integer_t"
     },
     "rep_score_id": {
+      "caption": "Reputation Score ID",
       "description": "The normalized reputation score identifier.",
       "enum": {
         "-1": {
-          "description": "The reputation score is not mapped. See the <code>rep_score</code> attribute, which contains a data source specific value.",
-          "caption": "Other"
+          "caption": "Other",
+          "description": "The reputation score is not mapped. See the <code>rep_score</code> attribute, which contains a data source specific value."
         },
         "0": {
-          "description": "The reputation score is unknown.",
-          "caption": "Unknown"
+          "caption": "Unknown",
+          "description": "The reputation score is unknown."
         },
         "1": {
-          "description": "Long history of good behavior.",
-          "caption": "Very Safe"
+          "caption": "Very Safe",
+          "description": "Long history of good behavior."
         },
         "10": {
-          "description": "Proven evidence of maliciousness.",
-          "caption": "Malicious"
+          "caption": "Malicious",
+          "description": "Proven evidence of maliciousness."
         },
         "2": {
-          "description": "Consistently good behavior.",
-          "caption": "Safe"
+          "caption": "Safe",
+          "description": "Consistently good behavior."
         },
         "3": {
-          "description": "Reasonable history of good behavior.",
-          "caption": "Probably Safe"
+          "caption": "Probably Safe",
+          "description": "Reasonable history of good behavior."
         },
         "4": {
-          "description": "Starting to establish a history of normal behavior.",
-          "caption": "Leans Safe"
+          "caption": "Leans Safe",
+          "description": "Starting to establish a history of normal behavior."
         },
         "5": {
-          "description": "No established history of normal behavior.",
-          "caption": "May not be Safe"
+          "caption": "May not be Safe",
+          "description": "No established history of normal behavior."
         },
         "6": {
-          "description": "Starting to establish a history of suspicious or risky behavior.",
-          "caption": "Exercise Caution"
+          "caption": "Exercise Caution",
+          "description": "Starting to establish a history of suspicious or risky behavior."
         },
         "8": {
-          "description": "Strong possibility of maliciousness.",
-          "caption": "Possibly Malicious"
+          "caption": "Possibly Malicious",
+          "description": "Strong possibility of maliciousness."
         },
         "9": {
-          "description": "Indicators of maliciousness.",
-          "caption": "Probably Malicious"
+          "caption": "Probably Malicious",
+          "description": "Indicators of maliciousness."
         }
       },
-      "caption": "Reputation Score ID",
       "type": "integer_t"
     },
     "request": {
-      "description": "General Purpose API Request Object. See specific usage",
       "caption": "API Request Details",
+      "description": "General Purpose API Request Object. See specific usage",
       "object_type": "request",
       "type": "object_t"
     },
     "requested_permissions": {
-      "description": "The permissions mask that were requested by the process.",
       "caption": "Requested Permissions",
+      "description": "The permissions mask that were requested by the process.",
       "type": "integer_t"
     },
     "requirements": {
+      "caption": "Requirements",
       "description": "A list of applicable compliance requirements for which this finding is related to.",
       "is_array": true,
-      "caption": "Requirements",
       "type": "string_t"
     },
     "resolved_ip": {
-      "description": "The resolved IP address, in either IPv4 or IPv6 format. For example, Layer 4 load balancer translated IP address.",
       "caption": "IP Address",
+      "description": "The resolved IP address, in either IPv4 or IPv6 format. For example, Layer 4 load balancer translated IP address.",
       "type": "ip_t"
     },
     "resource": {
-      "description": "The target resource.",
       "caption": "Resource",
+      "description": "The target resource.",
       "object_type": "resource",
       "type": "object_t"
     },
-    "resources": {
-      "description": "A list of resources associated to an event.",
-      "caption": "Resources Array",
-      "object_type": "resource",
-      "type": "object_t",
-      "is_array": true
-    },
     "resource_type": {
-      "description": "The context in which a resource was retrieved in a web request.",
       "caption": "Resource Type",
+      "description": "The context in which a resource was retrieved in a web request.",
       "type": "string_t"
     },
     "resource_uid": {
-      "description": "The unique identifier of a cloud resource. For example, S3 Bucket name, EC2 Instance Id.",
       "caption": "Resource ID",
+      "description": "The unique identifier of a cloud resource. For example, S3 Bucket name, EC2 Instance Id.",
       "type": "resource_uid_t"
     },
+    "resources": {
+      "caption": "Resources Array",
+      "description": "A list of resources associated to an event.",
+      "is_array": true,
+      "object_type": "resource",
+      "type": "object_t"
+    },
     "response": {
-      "description": "General Purpose API Response Object. See specific usage.",
       "caption": "API Response Details",
+      "description": "General Purpose API Response Object. See specific usage.",
       "object_type": "response",
       "type": "object_t"
     },
     "response_time": {
-      "description": "The Domain Name System (DNS) response time.",
       "caption": "Response Time",
+      "description": "The Domain Name System (DNS) response time.",
       "type": "timestamp_t"
     },
     "risk": {
-      "description": "The Common Vulnerability Scoring System (CVSS) calculated risk.",
       "caption": "Risk",
+      "description": "The Common Vulnerability Scoring System (CVSS) calculated risk.",
       "type": "float_t"
     },
     "risk_level": {
-      "description": "The normalized risk level.",
       "caption": "Risk Level",
+      "description": "The normalized risk level.",
       "type": "string_t"
     },
     "risk_level_id": {
+      "caption": "Risk Level ID",
       "description": "The normalized risk level id.",
       "enum": {
         "0": {
@@ -2658,244 +2696,260 @@
           "caption": "Critical"
         }
       },
-      "caption": "Risk Level ID",
       "type": "integer_t"
     },
     "risk_score": {
-      "description": "The original risk score as reported by the event source.",
       "caption": "Risk Score",
+      "description": "The original risk score as reported by the event source.",
       "type": "integer_t"
     },
     "rule": {
-      "description": "The rules that reported the events.",
       "caption": "Rule",
+      "description": "The rules that reported the events.",
       "object_type": "rule",
       "type": "object_t"
     },
     "run_as": {
-      "description": "The user account the process is running as.",
       "caption": "Run-As User",
+      "description": "The user account the process is running as.",
       "object_type": "user",
       "type": "object_t"
     },
     "run_state": {
-      "description": "The state of the job or service. See specific usage.",
       "caption": "Run State",
+      "description": "The state of the job or service. See specific usage.",
       "type": "string_t"
     },
     "run_state_id": {
-      "description": "The state of the job or service. See specific usage.",
       "caption": "Run State ID",
+      "description": "The state of the job or service. See specific usage.",
       "type": "integer_t"
     },
     "runtime": {
-      "description": "The runtime managing this container.",
       "caption": "Runtime",
+      "description": "The runtime managing this container.",
       "type": "string_t"
     },
     "samesite": {
-      "description": "The cookie attribute that lets servers specify whether/when cookies are sent with cross-site requests. Values are: Strict, Lax or None",
       "caption": "SameSite",
+      "description": "The cookie attribute that lets servers specify whether/when cookies are sent with cross-site requests. Values are: Strict, Lax or None",
       "type": "string_t"
     },
     "sandbox": {
-      "description": "The name of the containment jail (i.e., sandbox). For example, hardened_ps, high_security_ps, oracle_ps, netsvcs_ps, or default_ps.",
       "caption": "Sandbox",
+      "description": "The name of the containment jail (i.e., sandbox). For example, hardened_ps, high_security_ps, oracle_ps, netsvcs_ps, or default_ps.",
       "type": "string_t"
     },
     "sans": {
-      "description": "The list of subject alternative names that are secured by a specific certificate.",
       "caption": "Subject Alternative Names",
+      "description": "The list of subject alternative names that are secured by a specific certificate.",
       "is_array": true,
       "object_type": "san",
       "type": "object_t"
     },
     "scale_factor": {
-      "description": "The numeric scale factor of display.",
       "caption": "Scale Factor",
+      "description": "The numeric scale factor of display.",
       "type": "integer_t"
     },
     "scheme": {
-      "description": "The scheme portion of the URL. For example: <code>http</code>, <code>https</code>, <code>ftp</code>, or <code>sftp</code>.",
       "caption": "Scheme",
+      "description": "The scheme portion of the URL. For example: <code>http</code>, <code>https</code>, <code>ftp</code>, or <code>sftp</code>.",
       "type": "string_t"
     },
     "secure": {
-      "description": "The cookie attribute to only send cookies to the server with an encrypted request over the HTTPS protocol.",
       "caption": "Secure",
+      "description": "The cookie attribute to only send cookies to the server with an encrypted request over the HTTPS protocol.",
       "type": "boolean_t"
     },
     "security_descriptor": {
-      "description": "The object security descriptor.",
       "caption": "Security Descriptor",
+      "description": "The object security descriptor.",
       "type": "string_t"
     },
     "sequence": {
-      "description": "Sequence number of the event. The sequence number is a value available in some events, to make the exact ordering of events unambiguous, regardless of the event time precision.",
       "caption": "Sequence Number",
+      "description": "Sequence number of the event. The sequence number is a value available in some events, to make the exact ordering of events unambiguous, regardless of the event time precision.",
       "type": "integer_t"
     },
     "serial_number": {
-      "description": "The serial number that pertains to the object. See specific usage.",
       "caption": "Serial Number",
+      "description": "The serial number that pertains to the object. See specific usage.",
       "type": "string_t"
     },
+    "server": {
+      "description": "The server object pertaining to the client/server exchange.",
+      "caption": "Server",
+      "object_type": "server",
+      "type": "object_t"
+    },
     "server_ciphers": {
+      "caption": "Server Cipher Suites",
       "description": "The server cipher suites that were exchanged during the TLS handshake negotiation.",
       "is_array": true,
-      "caption": "Server Cipher Suites",
       "type": "string_t"
     },
     "service": {
-      "description": "The service that pertains to the event.",
       "caption": "Service",
+      "description": "The service that pertains to the event.",
       "object_type": "service",
       "type": "object_t"
     },
     "session": {
-      "description": "The session information.",
       "caption": "Session",
+      "description": "The session information.",
       "object_type": "session",
       "type": "object_t"
     },
     "session_uid": {
-      "description": "The unique ID of the user session, as reported by the OS.",
       "caption": "Session UID",
+      "description": "The unique ID of the user session, as reported by the OS.",
       "type": "string_t"
     },
     "severity": {
-      "description": "The original event severity, as defined by the event source.</p>The severity is a measurement the effort and expense required to manage and resolve an event or incident.",
       "caption": "Severity",
+      "description": "The original event severity, as defined by the event source.</p>The severity is a measurement the effort and expense required to manage and resolve an event or incident.",
       "type": "string_t"
     },
     "severity_id": {
+      "caption": "Severity ID",
       "description": "The normalized event severity.</p>The normalized severity is a measurement the effort and expense required to manage and resolve an event or incident. Smaller numerical values represent lower impact events, and larger numerical values represent higher impact events.",
       "enum": {
         "-1": {
-          "description": "The event severity is not mapped. See the <code>severity</code> attribute, which contains a data source specific value.",
-          "caption": "Other"
+          "caption": "Other",
+          "description": "The event severity is not mapped. See the <code>severity</code> attribute, which contains a data source specific value."
         },
         "0": {
-          "description": "The event severity is not known.",
-          "caption": "Unknown"
+          "caption": "Unknown",
+          "description": "The event severity is not known."
         },
         "1": {
-          "description": "Informational message. No action required.",
-          "caption": "Informational"
+          "caption": "Informational",
+          "description": "Informational message. No action required."
         },
         "2": {
-          "description": "The user decides if action is needed.",
-          "caption": "Low"
+          "caption": "Low",
+          "description": "The user decides if action is needed."
         },
         "3": {
-          "description": "Action is required but the situation is not serious at this time.",
-          "caption": "Medium"
+          "caption": "Medium",
+          "description": "Action is required but the situation is not serious at this time."
         },
         "4": {
-          "description": "Action is required immediately.",
-          "caption": "High"
+          "caption": "High",
+          "description": "Action is required immediately."
         },
         "5": {
-          "description": "Action is required immediately and the scope is broad.",
-          "caption": "Critical"
+          "caption": "Critical",
+          "description": "Action is required immediately and the scope is broad."
         },
         "6": {
-          "description": "An error occurred but it is too late to take remedial action.",
-          "caption": "Fatal"
+          "caption": "Fatal",
+          "description": "An error occurred but it is too late to take remedial action."
         }
       },
-      "caption": "Severity ID",
       "type": "integer_t"
     },
+    "share": {
+      "description": "The SMB share name.",
+      "caption": "Share",
+      "type": "string_t"
+    },
+    "share_type": {
+      "description": "The SMB share type.",
+      "caption": "Share Type",
+      "type": "string_t"
+    },
     "sha1": {
-      "description": "The SHA-1 checksum of the file content.",
       "caption": "SHA-1",
+      "description": "The SHA-1 checksum of the file content.",
       "type": "file_hash_t"
     },
     "sha2": {
-      "description": "The SHA-256 checksum of the file content.",
       "caption": "SHA-256",
+      "description": "The SHA-256 checksum of the file content.",
       "type": "file_hash_t"
     },
     "shell": {
-      "description": "The user's login shell.",
       "caption": "Shell",
+      "description": "The user's login shell.",
       "type": "string_t"
     },
     "signature": {
-      "description": "The digital signature of the file.",
       "caption": "Digital Signature",
+      "description": "The digital signature of the file.",
       "object_type": "digital_signature",
       "type": "object_t"
     },
     "size": {
-      "description": "The size of data, in bytes.",
       "caption": "Size",
+      "description": "The size of data, in bytes.",
       "type": "long_t"
     },
     "sni": {
-      "description": " The Server Name Indication (SNI) extension sent by the client.",
       "caption": "Server Name Indication",
+      "description": " The Server Name Indication (SNI) extension sent by the client.",
       "type": "string_t"
     },
     "sp_name": {
-      "description": "The name of the latest Service Pack.",
       "caption": "OS Service Pack",
+      "description": "The name of the latest Service Pack.",
       "type": "string_t"
     },
     "sp_ver": {
-      "description": "The version number of the latest Service Pack.",
       "caption": "OS Service Pack Version",
+      "description": "The version number of the latest Service Pack.",
       "type": "string_t"
     },
     "src_endpoint": {
-      "description": "The network source endpoint.",
       "caption": "Source Endpoint",
+      "description": "The network source endpoint.",
       "object_type": "network_endpoint",
       "type": "object_t"
     },
     "src_url": {
-      "description": "The URL pointing towards the source of an entity. See specific usage.",
       "caption": "Source URL",
+      "description": "The URL pointing towards the source of an entity. See specific usage.",
       "type": "string_t"
     },
     "src_user": {
-      "description": "The existing user from which an activity was initiated.",
       "caption": "Source User",
+      "description": "The existing user from which an activity was initiated.",
       "object_type": "user",
       "type": "object_t"
     },
     "start_time": {
-      "description": "The start time of a time period. See specific usage.",
       "caption": "Start Time",
+      "description": "The start time of a time period. See specific usage.",
       "type": "timestamp_t"
     },
     "state": {
-      "description": "The state of the event or object, as defined by the event source. See specific usage.",
       "caption": "State",
+      "description": "The state of the event or object, as defined by the event source. See specific usage.",
       "type": "string_t"
     },
     "state_id": {
-      "description": "The state ID of the event or object. See specific usage.",
       "caption": "State ID",
+      "description": "The state ID of the event or object. See specific usage.",
       "type": "integer_t"
     },
     "status": {
-      "description": "The event status, as reported by the event source.",
       "caption": "Status",
+      "description": "The event status, as reported by the event source.",
       "type": "string_t"
     },
     "status_detail": {
-      "description": "The status details contains additional information about the event outcome.",
       "caption": "Status Details",
+      "description": "The status details contains additional information about the event outcome.",
       "type": "string_t"
     },
     "status_id": {
+      "caption": "Status ID",
       "description": "The cross-platform normalized status of the activity or alert reported by the event.",
       "enum": {
         "-1": {
-          "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value.",
-          "caption": "Other"
+          "caption": "Other",
+          "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
         },
         "0": {
           "caption": "Unknown"
@@ -2907,445 +2961,460 @@
           "caption": "Failure"
         }
       },
-      "caption": "Status ID",
       "type": "integer_t"
     },
     "subject_dn": {
-      "description": "The certificate subject distinguished name.",
       "caption": "Subject Distinguished Name",
+      "description": "The certificate subject distinguished name.",
       "type": "string_t"
     },
     "subnet": {
-      "description": "The subnet mask.",
       "caption": "Subnet",
+      "description": "The subnet mask.",
       "type": "subnet_t"
     },
     "subnet_uid": {
-      "description": "The unique identifier of a virtual subnet.",
       "caption": "Subnet UID",
+      "description": "The unique identifier of a virtual subnet.",
       "type": "string_t"
     },
     "supporting_data": {
+      "caption": "Supporting Data",
       "description": "Additional data supporting a finding as provided by security tool",
       "is_array": true,
-      "caption": "Supporting Data",
       "type": "json_t"
     },
     "svc_name": {
-      "description": "The service name in service-to-service connections. For example, AWS VPC logs the pkt-src-aws-service and pkt-dst-aws-service fields identify the connection is coming from or going to an AWS service.",
       "caption": "Service Name",
+      "description": "The service name in service-to-service connections. For example, AWS VPC logs the pkt-src-aws-service and pkt-dst-aws-service fields identify the connection is coming from or going to an AWS service.",
       "type": "string_t"
     },
     "system_call": {
-      "description": "The system call that was invoked.",
       "caption": "System Call",
+      "description": "The system call that was invoked.",
       "type": "string_t"
     },
     "tactics": {
+      "caption": "Tactics",
       "description": "The a list of tactic ID's that are associated with the attack technique, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>.",
       "is_array": true,
-      "caption": "Tactics",
       "type": "string_t"
     },
     "tag": {
-      "description": "The image tag. For example: <code>1.11-alpine</code>.",
       "caption": "Image Tag",
+      "description": "The image tag. For example: <code>1.11-alpine</code>.",
       "type": "string_t"
     },
     "tcp_flags": {
-      "description": "The network connection TCP header flags (i.e., control bits).",
       "caption": "TCP Flags",
+      "description": "The network connection TCP header flags (i.e., control bits).",
       "type": "integer_t"
     },
     "technique_name": {
-      "description": "The name of the attack technique, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>. For example: <code>Drive-by Compromise</code>.",
       "caption": "Technique Name",
+      "description": "The name of the attack technique, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>. For example: <code>Drive-by Compromise</code>.",
       "type": "string_t"
     },
     "technique_uid": {
-      "description": "The unique identifier of the attack technique, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>. For example: <code>T1189</code>.",
       "caption": "Technique ID",
+      "description": "The unique identifier of the attack technique, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>. For example: <code>T1189</code>.",
       "type": "string_t"
     },
     "termination_time": {
-      "description": "The time that the entity was terminated. See specific usage.",
       "caption": "Termination Time",
+      "description": "The time that the entity was terminated. See specific usage.",
       "type": "timestamp_t"
     },
     "text": {
-      "description": "The URL. For example: <code>http://www.example.com/download/trouble.exe</code>.",
       "caption": "URL Text",
+      "description": "The URL. For example: <code>http://www.example.com/download/trouble.exe</code>.",
       "type": "url_t"
     },
     "tid": {
-      "description": "The Identifier of the thread associated with the event, as returned by the operating system.",
       "caption": "Thread ID",
+      "description": "The Identifier of the thread associated with the event, as returned by the operating system.",
       "type": "integer_t"
     },
     "time": {
-      "description": "The normalized event occurrence time <p><b>Note:</b> The format is yet undecided",
       "caption": "Event Time",
+      "description": "The normalized event occurrence time <p><b>Note:</b> The format is yet undecided",
       "type": "timestamp_t"
     },
     "timezone_offset": {
-      "description": "The number of minutes that the reported event <code>time</code> is ahead or behind UTC, in the range -1,080 to +1,080.",
       "caption": "Timezone Offset",
+      "description": "The number of minutes that the reported event <code>time</code> is ahead or behind UTC, in the range -1,080 to +1,080.",
       "type": "integer_t"
     },
     "title": {
-      "description": "The title of an entity. See specific usage.",
       "caption": "Title",
+      "description": "The title of an entity. See specific usage.",
       "type": "string_t"
     },
     "tls": {
-      "description": "The Transport Layer Security (TLS) attributes.",
       "caption": "TLS",
+      "description": "The Transport Layer Security (TLS) attributes.",
       "object_type": "tls",
       "type": "object_t"
     },
     "traffic": {
-      "description": "The network traffic refers to the amount of data moving across a network at a given point of time. Intended to be used alongside Network Connection.",
       "caption": "Traffic",
+      "description": "The network traffic refers to the amount of data moving across a network at a given point of time. Intended to be used alongside Network Connection.",
       "object_type": "network_traffic",
       "type": "object_t"
     },
     "traffic_path": {
-      "description": "The boundary of the connection. For cloud connections, this translates to the traffic-path (same VPC, through IGW, etc.). For traditional networks, this is described as Local, Internal, or External.",
       "caption": "Traffic Path",
+      "description": "The boundary of the connection. For cloud connections, this translates to the traffic-path (same VPC, through IGW, etc.). For traditional networks, this is described as Local, Internal, or External.",
       "type": "string_t"
     },
     "traffic_path_id": {
+      "caption": "Traffic Path ID",
       "description": "The boundary of the connection. For cloud connections, this translates to the traffic-path (same VPC, through IGW, etc.). For traditional networks, this is described as Local, Internal, or External.",
       "enum": {
         "0": {
           "caption": "Unknown"
         },
         "1": {
-          "description": "Local network traffic on the same endpoint.",
-          "caption": "Local"
+          "caption": "Local",
+          "description": "Local network traffic on the same endpoint."
         },
         "10": {
-          "description": "Through a gateway VPC endpoint (Nitro-based instances only)",
-          "caption": "Gateway VPC"
+          "caption": "Gateway VPC",
+          "description": "Through a gateway VPC endpoint (Nitro-based instances only)"
         },
         "11": {
-          "description": "Through an Internet gateway (Nitro-based instances only)",
-          "caption": "Internet Gateway"
+          "caption": "Internet Gateway",
+          "description": "Through an Internet gateway (Nitro-based instances only)"
         },
         "2": {
-          "description": "Internal network traffic between two endpoints inside network.",
-          "caption": "Internal"
+          "caption": "Internal",
+          "description": "Internal network traffic between two endpoints inside network."
         },
         "3": {
-          "description": "External network traffic between two endpoints on the Internet or outside the network.",
-          "caption": "External"
+          "caption": "External",
+          "description": "External network traffic between two endpoints on the Internet or outside the network."
         },
         "4": {
-          "description": "Through another resource in the same VPC",
-          "caption": "Same VPC"
+          "caption": "Same VPC",
+          "description": "Through another resource in the same VPC"
         },
         "5": {
-          "description": "Through an Internet gateway or a gateway VPC endpoint",
-          "caption": "Internet/VPC Gateway"
+          "caption": "Internet/VPC Gateway",
+          "description": "Through an Internet gateway or a gateway VPC endpoint"
         },
         "6": {
-          "description": "Through a virtual private gateway",
-          "caption": "Virtual Private Gateway"
+          "caption": "Virtual Private Gateway",
+          "description": "Through a virtual private gateway"
         },
         "7": {
-          "description": "Through an intra-region VPC peering connection",
-          "caption": "Intra-region VPC"
+          "caption": "Intra-region VPC",
+          "description": "Through an intra-region VPC peering connection"
         },
         "8": {
-          "description": "Through an inter-region VPC peering connection",
-          "caption": "Inter-region VPC"
+          "caption": "Inter-region VPC",
+          "description": "Through an inter-region VPC peering connection"
         },
         "9": {
-          "description": "Through a local gateway",
-          "caption": "Local Gateway"
+          "caption": "Local Gateway",
+          "description": "Through a local gateway"
         }
       },
-      "caption": "Traffic Path ID",
       "type": "integer_t"
     },
     "transaction_uid": {
-      "description": "The unique identifier of the transaction.",
       "caption": "Transaction UID",
+      "description": "The unique identifier of the transaction.",
+      "type": "string_t"
+    },
+    "tree_uid": {
+      "description": "The tree id is a unique SMB identifier which represents an open connection to a share.",
+      "caption": "Tree UID",
       "type": "string_t"
     },
     "ttl": {
-      "description": "The time interval that the resource record may be cached. Zero value means that the resource record can only be used for the transaction in progress, and should not be cached.",
       "caption": "TTL",
+      "description": "The time interval that the resource record may be cached. Zero value means that the resource record can only be used for the transaction in progress, and should not be cached.",
       "type": "integer_t"
     },
     "type": {
-      "description": "The type of an object or value. See specific usage.",
       "caption": "Type",
+      "description": "The type of an object or value. See specific usage.",
       "type": "string_t"
     },
     "type_id": {
+      "caption": "Type ID",
       "default": 0,
       "description": "The type identifier of an object. See specific usage.",
       "enum": {
         "-1": {
-          "description": "The type is not mapped. See the <code>type</code> attribute, which may contain a data source specific value.",
-          "caption": "Other"
+          "caption": "Other",
+          "description": "The type is not mapped. See the <code>type</code> attribute, which may contain a data source specific value."
         },
         "0": {
-          "description": "The type is unknown.",
-          "caption": "Unknown"
+          "caption": "Unknown",
+          "description": "The type is unknown."
         }
       },
+      "type": "integer_t"
+    },
+    "type_name": {
+      "caption": "Type Name",
+      "description": "The event type name, as defined by the type_uid.",
+      "type": "string_t"
+    },
+    "type_uid": {
       "caption": "Type ID",
+      "description": "The event type ID identifies the event's semantics and structure. The value is calculated by the logging system as: <code>class_uid * 100 + activity_id</code>.",
+      "sibling": "type_name",
       "type": "integer_t"
     },
     "types": {
+      "caption": "Types",
       "description": "The type/s of an entity. See specific usage.",
       "is_array": true,
-      "caption": "Types",
       "type": "string_t"
     },
     "uid": {
-      "description": "The unique identifier. See specific usage.",
       "caption": "Unique ID",
+      "description": "The unique identifier. See specific usage.",
       "type": "string_t"
     },
     "unmapped": {
-      "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
       "caption": "Unmapped Data",
+      "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
       "object_type": "object",
       "type": "object_t"
     },
     "update_time": {
-      "description": "A Timestamp indicating when an entity was last updated.",
       "caption": "Update Time",
+      "description": "A Timestamp indicating when an entity was last updated.",
       "type": "timestamp_t"
     },
     "url": {
-      "description": "The URL object that pertains to the event or object. See specific usage.",
       "caption": "URL",
+      "description": "The URL object that pertains to the event or object. See specific usage.",
       "object_type": "url",
       "type": "object_t"
     },
     "user": {
-      "description": "The user that pertains to the event or object.",
       "caption": "User",
+      "description": "The user that pertains to the event or object.",
       "object_type": "user",
       "type": "object_t"
     },
     "user_agent": {
-      "description": "The request header that identifies the operating system and web browser.",
       "caption": "HTTP User-Agent",
+      "description": "The request header that identifies the operating system and web browser.",
       "type": "string_t"
     },
     "user_interaction_id": {
-      "description": "The requirement for a user, other than the attacker, to participate in the successful compromise of the vulnerable component.",
       "caption": "User Interaction",
+      "description": "The requirement for a user, other than the attacker, to participate in the successful compromise of the vulnerable component.",
       "type": "integer_t"
     },
     "user_result": {
-      "description": "The result of the user account change. It should contain the new values of the changed attributes.",
       "caption": "User Result",
+      "description": "The result of the user account change. It should contain the new values of the changed attributes.",
       "object_type": "user",
       "type": "object_t"
     },
     "uuid": {
-      "description": "The universally unique identifier. See specific usage.",
       "caption": "UUID",
+      "description": "The universally unique identifier. See specific usage.",
       "type": "string_t"
     },
     "value": {
-      "description": "The value that pertains to the object. See specific usage.",
       "caption": "Value",
+      "description": "The value that pertains to the object. See specific usage.",
       "type": "string_t"
     },
     "vendor": {
-      "description": "The vendor that pertains to the object. See specific usage.",
       "caption": "Vendor",
+      "description": "The vendor that pertains to the object. See specific usage.",
       "type": "string_t"
     },
     "version": {
-      "description": "The version that pertains to the event or object. See specific usage.",
       "caption": "Version",
+      "description": "The version that pertains to the event or object. See specific usage.",
       "type": "string_t"
     },
     "vlan_uid": {
-      "description": "The Virtual LAN identifier.",
       "caption": "VLAN",
+      "description": "The Virtual LAN identifier.",
       "type": "string_t"
     },
     "vpc_uid": {
-      "description": "The unique identifier of the Virtual Private Cloud (VPC).",
       "caption": "VPC UID",
+      "description": "The unique identifier of the Virtual Private Cloud (VPC).",
       "type": "string_t"
     },
     "vulnerability": {
-      "description": "The vulnerability object describes details related to the observed vulnerability",
       "caption": "Vulnerability",
+      "description": "The vulnerability object describes details related to the observed vulnerability",
       "object_type": "vulnerability",
       "type": "object_t"
     },
     "x_forwarded_for": {
+      "caption": "X-Forwarded-For",
       "description": "The X-Forwarded-For header identifying the originating IP address(es) of a client connecting to a web server through an HTTP proxy or a load balancer.",
       "is_array": true,
-      "caption": "X-Forwarded-For",
       "type": "ip_t"
     },
     "xattributes": {
-      "description": "An unordered collection of zero or more name/value pairs where each pair represents a file or folder extended attribute.</p>For example: Windows alternate data stream attributes (ADS stream name, ADS size, etc.), user-defined or application-defined attributes, ACL, owner, primary group, etc. Examples from DCS: </p><ul><li><strong>ads_name</strong></li><li><strong>ads_size</strong></li><li><strong>dacl</strong></li><li><strong>owner</strong></li><li><strong>primary_group</strong></li><li><strong>link_name</strong> - name of the link associated to the file.</li><li><strong>hard_link_count</strong> - the number of links that are associated to the file.</li></ul>",
       "caption": "Extended Attributes",
+      "description": "An unordered collection of zero or more name/value pairs where each pair represents a file or folder extended attribute.</p>For example: Windows alternate data stream attributes (ADS stream name, ADS size, etc.), user-defined or application-defined attributes, ACL, owner, primary group, etc. Examples from DCS: </p><ul><li><strong>ads_name</strong></li><li><strong>ads_size</strong></li><li><strong>dacl</strong></li><li><strong>owner</strong></li><li><strong>primary_group</strong></li><li><strong>link_name</strong> - name of the link associated to the file.</li><li><strong>hard_link_count</strong> - the number of links that are associated to the file.</li></ul>",
       "object_type": "object",
       "type": "object_t"
     },
     "zone": {
-      "description": "The network zone or LAN segment.",
       "caption": "Network Zone",
+      "description": "The network zone or LAN segment.",
       "type": "string_t"
     }
   },
   "types": {
-    "description": "The predefined data types. The data type specifies what kind of data a value can have.",
-    "caption": "Data Types",
     "attributes": {
       "boolean_t": {
-        "description": "Boolean value. One of <code>true</code> or <code>false</code>.",
         "caption": "Boolean",
+        "description": "Boolean value. One of <code>true</code> or <code>false</code>.",
         "values": [
           false,
           true
         ]
       },
       "email_t": {
-        "observable": 5,
-        "description": "Email address. For example: <code>john_doe@example.com</code>.",
         "caption": "Email Address",
+        "description": "Email address. For example: <code>john_doe@example.com</code>.",
+        "observable": 5,
         "regex": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
         "type": "string_t",
         "type_name": "String"
       },
+      "file_hash_t": {
+        "caption": "File Hash",
+        "description": "File hash. A unique value that corresponds to the content of the file.",
+        "max_len": 64,
+        "observable": 8,
+        "type_name": "String"
+      },
       "file_name_t": {
-        "observable": 7,
-        "description": "File name. For example: <code>text-file.txt</code>.",
         "caption": "File Name",
+        "description": "File name. For example: <code>text-file.txt</code>.",
+        "observable": 7,
         "regex": "^[a-zA-Z0-9._ -]+$",
         "type": "string_t",
         "type_name": "String"
       },
       "float_t": {
-        "description": "Real floating-point value. For example: <code>3.14</code>.",
-        "caption": "Float"
-      },
-      "file_hash_t": {
-        "max_len": 64,
-        "observable": 8,
-        "description": "File hash. A unique value that corresponds to the content of the file.",
-        "caption": "File Hash",
-        "type_name": "String"
+        "caption": "Float",
+        "description": "Real floating-point value. For example: <code>3.14</code>."
       },
       "hostname_t": {
-        "observable": 1,
-        "description": "Unique name assigned to a device connected to a computer network. A domain name in general is an Internet address that can be resolved through the Domain Name System (DNS). For example: <code>r2-d2.example.com</code>.",
         "caption": "Hostname",
+        "description": "Unique name assigned to a device connected to a computer network. A domain name in general is an Internet address that can be resolved through the Domain Name System (DNS). For example: <code>r2-d2.example.com</code>.",
+        "observable": 1,
         "regex": "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\\-]*[a-zA-Z0-9])\\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\\-]*[A-Za-z0-9])$",
         "type": "string_t",
         "type_name": "String"
       },
       "integer_t": {
-        "description": "Signed integer value.",
-        "caption": "Integer"
+        "caption": "Integer",
+        "description": "Signed integer value."
       },
       "ip_t": {
+        "caption": "IP Address",
+        "description": "Internet Protocol address (IP address), in either IPv4 or IPv6 format.",
         "max_len": 40,
         "observable": 2,
-        "description": "Internet Protocol address (IP address), in either IPv4 or IPv6 format.",
-        "caption": "IP Address",
         "regex": "/^(?>(?>([a-f0-9]{1,4})(?>:(?1)){7}|(?!(?:.*[a-f0-9](?>:|$)){8,})((?1)(?>:(?1)){0,6})?::(?2)?)|(?>(?>(?1)(?>:(?1)){5}:|(?!(?:.*[a-f0-9]:){6,})(?3)?::(?>((?1)(?>:(?1)){0,4}):)?)?(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(?>\\.(?4)){3}))$/iD",
         "type": "string_t",
         "type_name": "String"
       },
       "json_t": {
-        "description": "Embedded JSON value. A value can be a string, or a number, or true or false or null, or an object or an array. These structures can be nested. See <a target='_blank' href='https://www.json.org'>www.json.org</a>.",
-        "caption": "JSON"
+        "caption": "JSON",
+        "description": "Embedded JSON value. A value can be a string, or a number, or true or false or null, or an object or an array. These structures can be nested. See <a target='_blank' href='https://www.json.org'>www.json.org</a>."
       },
       "long_t": {
-        "description": "8-byte long, signed integer value.",
-        "caption": "Long"
+        "caption": "Long",
+        "description": "8-byte long, signed integer value."
       },
       "mac_t": {
+        "caption": "MAC Address",
+        "description": "Media Access Control (MAC) address. For example: <code>18:36:F3:98:4F:9A</code>.",
         "max_len": 32,
         "observable": 3,
-        "description": "Media Access Control (MAC) address. For example: <code>18:36:F3:98:4F:9A</code>.",
-        "caption": "MAC Address",
         "regex": "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$",
         "type": "string_t",
         "type_name": "String"
       },
       "object_t": {
-        "description": "Object is an unordered set of name/value pairs. For example: <code>{ip: 92.24.47.250, type: IP Address}</code>",
-        "caption": "Object"
+        "caption": "Object",
+        "description": "Object is an unordered set of name/value pairs. For example: <code>{ip: 92.24.47.250, type: IP Address}</code>"
       },
       "path_t": {
-        "description": "File or folder full path name. For example: <code>/home/user/tmp/text-file.txt</code>.",
         "caption": "Path Name",
+        "description": "File or folder full path name. For example: <code>/home/user/tmp/text-file.txt</code>.",
         "regex": "^[\\pL0-9_]+[\\pL0-9 ~!@#%&*\\-./_]*$",
         "type": "string_t",
         "type_name": "String"
       },
       "port_t": {
-        "description": "IP TCP/UDP port number. For example: <code>80</code> or <code>22</code>.",
         "caption": "IP Port",
-        "type": "integer_t",
-        "type_name": "Integer",
+        "description": "IP TCP/UDP port number. For example: <code>80</code> or <code>22</code>.",
         "range": [
           0,
           65535
-        ]
+        ],
+        "type": "integer_t",
+        "type_name": "Integer"
       },
       "process_name_t": {
-        "observable": 9,
-        "description": "Process name. For example: <code>Notepad</code>.",
         "caption": "Process Name",
+        "description": "Process name. For example: <code>Notepad</code>.",
+        "observable": 9,
         "type": "string_t",
         "type_name": "String"
       },
       "resource_uid_t": {
+        "caption": "Resource UID",
         "description": "Resource unique identifier. For example, S3 Bucket name or EC2 Instance ID.",
         "max_len": 64,
-        "caption": "Resource UID",
         "observable": 10,
         "type_name": "String"
       },
       "string_t": {
-        "max_len": 65535,
+        "caption": "String",
         "description": "UTF-8 encoded byte sequence.",
-        "caption": "String"
+        "max_len": 65535
       },
       "subnet_t": {
-        "max_len": 40,
-        "description": "Subnet mask in Classless Inter-Domain Routing (CIDR) notation. For example <code>192.168.200.0/24</code>.",
         "caption": "Subnet",
+        "description": "Subnet mask in Classless Inter-Domain Routing (CIDR) notation. For example <code>192.168.200.0/24</code>.",
+        "max_len": 40,
         "type_name": "String"
       },
       "timestamp_t": {
-        "description": "The time format is the number of milliseconds since the Epoch 01/01/1970 00:00:00 UTC. For example <code>1618524549901</code>.",
         "caption": "Timestamp",
+        "description": "The time format is the number of milliseconds since the Epoch 01/01/1970 00:00:00 UTC. For example <code>1618524549901</code>.",
         "type": "long_t",
         "type_name": "Long"
       },
       "url_t": {
-        "observable": 6,
-        "description": "Uniform Resource Locator (URL) string. For example: <code>http://www.example.com/download/trouble.exe</code>.",
         "caption": "URL String",
+        "description": "Uniform Resource Locator (URL) string. For example: <code>http://www.example.com/download/trouble.exe</code>.",
+        "observable": 6,
         "type": "string_t",
         "type_name": "String"
       },
       "username_t": {
-        "observable": 4,
-        "description": "User name. For example: <code>john_doe</code>.",
         "caption": "User Name",
+        "description": "User name. For example: <code>john_doe</code>.",
+        "observable": 4,
         "type": "string_t",
         "type_name": "String"
       }
-    }
+    },
+    "caption": "Data Types",
+    "description": "The predefined data types. The data type specifies what kind of data a value can have."
   }
 }

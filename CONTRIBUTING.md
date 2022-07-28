@@ -167,19 +167,50 @@ All contributors should submit their changes via pull requests. If you're not fa
 3. Push the changes to the forked repo
 4. Create a **Pull Request** to merge changes into the main repo, request at least one approver.
     1. Limit the number of commits in a single PR to aid reviewers, be as specific with the change as possible. A single PR must contain related changes.
-    2. Describe your change in as much detail as possible.
-    3. Confirm that you have tested the changes, and the server run was error free.
-    4. Check the Preview tab to ensure everything looks as expected.
-    5. Once the PR is ready, request an approver and submit it.
+    2. Each commit must include a DCO [Developer's Certificate of Origin](#developers-certificate-of-origin-11)
+    3. Describe your change in as much detail as possible.
+    4. Confirm that you have tested the changes, and the server run was error free.
+    5. Check the Preview tab to ensure everything looks as expected.
+    6. Once the PR is ready, request an approver and submit it.
 
 * * *
 
+### Developer's Certificate of Origin 1.1
 
-# NEXT
+By making a contribution to this project, I certify that:
 
-### GitHub Issues
+(a) The contribution was created in whole or in part by me and I
+    have the right to submit it under the open source license
+    indicated in the file; or
 
-Add guidelines for usage of github issues
+(b) The contribution is based upon previous work that, to the
+    best of my knowledge, is covered under an appropriate open
+    source license and I have the right under that license to
+    submit that work with modifications, whether created in whole
+    or in part by me, under the same open source license (unless
+    I am permitted to submit under a different license), as
+    indicated in the file; or
+
+(c) The contribution was provided directly to me by some other
+    person who certified (a), (b) or (c) and I have not modified
+    it.
+
+(d) I understand and agree that this project and the contribution
+    are public and that a record of the contribution (including
+    all personal information I submit with it, including my
+    sign-off) is maintained indefinitely and may be redistributed
+    consistent with this project or the open source license(s)
+    involved.
+
+---
+We require that every contribution to this repository is signed with a Developer Certificate of Origin. Additionally, please use your real name. We do not accept anonymous contributors nor those utilizing pseudonyms.
+
+Each commit must include a DCO which looks like this
+
+Signed-off-by: Jane Smith <jane.smith@email.com>
+
+You may type this line on your own when writing your commit messages. However, if your user.name and user.email are set in your git configs, you can use -s or --signoff to add the Signed-off-by line to the end of the commit message.
+
 
 
 

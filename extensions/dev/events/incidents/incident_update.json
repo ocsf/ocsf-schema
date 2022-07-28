@@ -1,18 +1,10 @@
 {
   "caption": "Incident Update",
-  "uid": 4,
-  "name": "incident_update",
-  "extends": "incident",
   "description": "Incident updates events report when an incident has been updated.",
+  "extends": "incident",
+  "name": "incident_update",
+  "uid": 4,
   "attributes": {
-    "assignee": {
-      "requirement": "optional",
-      "group": "primary"
-    },
-    "data": {
-      "requirement": "optional",
-      "group": "primary"
-    },
     "activity_id": {
       "enum": {
         "1": {
@@ -20,20 +12,24 @@
         }
       }
     },
+    "assignee": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "data": {
+      "description": "The additional data that is associated with the incident",
+      "group": "primary",
+      "requirement": "optional"
+    },
     "modified_time": {
       "description": "The time that the incident was modified.",
-      "requirement": "required",
-      "group": "occurrence"
+      "group": "occurrence",
+      "requirement": "required"
     },
     "modifier": {
       "description": "The name of the user that last modified the incident.",
-      "requirement": "optional",
-      "group": "primary"
+      "group": "primary",
+      "requirement": "optional"
     }
-  },
-  "see_also": [
-    "incident_create",
-    "incident_close",
-    "incident_associate"
-  ]
+  }
 }

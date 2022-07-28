@@ -1,31 +1,10 @@
 {
   "caption": "Incident Creation",
-  "uid": 3,
-  "name": "incident_create",
-  "extends": "incident",
   "description": "Incident creation events report the creation of an incident.",
+  "extends": "incident",
+  "name": "incident_create",
+  "uid": 3,
   "attributes": {
-    "assignee": {
-      "requirement": "optional",
-      "group": "primary"
-    },
-    "attacks": {
-      "requirement": "optional",
-      "group": "primary"
-    },
-    "creator_name": {
-      "requirement": "optional",
-      "group": "primary"
-    },
-    "data": {
-      "requirement": "optional",
-      "group": "primary"
-    },
-    "desc": {
-      "description": "The description of the rule that created the incident.",
-      "requirement": "optional",
-      "group": "primary"
-    },
     "activity_id": {
       "enum": {
         "1": {
@@ -33,12 +12,34 @@
         }
       }
     },
+    "assignee": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "attacks": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "creator_name": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "data": {
+      "description": "The additional data that is associated with the incident",
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "desc": {
+      "description": "The description of the rule that created the incident.",
+      "group": "primary",
+      "requirement": "optional"
+    },
     "end_time": {
       "description": "The time of the most recent event included in the incident."
     },
     "ref_incident_uid": {
-      "requirement": "optional",
-      "group": "primary"
+      "group": "primary",
+      "requirement": "optional"
     },
     "rule": {
       "description": "The rule that triggered the incident.",
@@ -50,10 +51,5 @@
     "time": {
       "description": "The time when the incident was created."
     }
-  },
-  "see_also": [
-    "incident_update",
-    "incident_close",
-    "incident_associate"
-  ]
+  }
 }

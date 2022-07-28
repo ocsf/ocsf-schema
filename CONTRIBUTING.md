@@ -167,10 +167,11 @@ All contributors should submit their changes via pull requests. If you're not fa
 3. Push the changes to the forked repo
 4. Create a **Pull Request** to merge changes into the main repo, request at least one approver.
     1. Limit the number of commits in a single PR to aid reviewers, be as specific with the change as possible. A single PR must contain related changes.
-    2. Describe your change in as much detail as possible.
-    3. Confirm that you have tested the changes, and the server run was error free.
-    4. Check the Preview tab to ensure everything looks as expected.
-    5. Once the PR is ready, request an approver and submit it.
+    2. Each commit must include a DCO [Developer's Certificate of Origin](#developers-certificate-of-origin-11)
+    3. Describe your change in as much detail as possible.
+    4. Confirm that you have tested the changes, and the server run was error free.
+    5. Check the Preview tab to ensure everything looks as expected.
+    6. Once the PR is ready, request an approver and submit it.
 
 * * *
 
@@ -210,12 +211,6 @@ Signed-off-by: Jane Smith <jane.smith@email.com>
 
 You may type this line on your own when writing your commit messages. However, if your user.name and user.email are set in your git configs, you can use -s or --signoff to add the Signed-off-by line to the end of the commit message.
 
----
-# NEXT
-
-### GitHub Issues
-
-Add guidelines for usage of github issues
 
 
 

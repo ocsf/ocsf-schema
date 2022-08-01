@@ -3,6 +3,26 @@
   "description": "The Attribute Dictionary defines attributes and includes references to the events and objects in which they are used.",
   "name": "dictionary",
   "attributes": {
+    "_logged_time": {
+      "caption": "Logged Time",
+      "description": "The time when the logging system collected and logged the event.</p>This attribute is distinct from the event time in that event time typically contain the time extracted from the original event. Most of the time, these two times will be different.",
+      "type": "timestamp_t"
+    },
+    "_raw_data": {
+      "caption": "Raw Data",
+      "description": "The event data as received from the event source.",
+      "type": "string_t"
+    },
+    "_time": {
+      "caption": "Event Time",
+      "description": "The normalized event occurrence time <p><b>Note:</b> The format is yet undecided",
+      "type": "timestamp_t"
+    },
+    "_uid": {
+      "caption": "Event UID",
+      "description": "The logging system-assigned unique identifier of an event instance.",
+      "type": "string_t"
+    },
     "access_list": {
       "caption": "Access List",
       "description": "The list of requested access rights.",
@@ -1776,11 +1796,6 @@
       "description": "The detailed geographical location usually associated with an IP address.",
       "type": "location"
     },
-    "log_time": {
-      "caption": "Logged Time",
-      "description": "The time when the logging system collected and logged the event.</p>This attribute is distinct from the event time in that event time typically contain the time extracted from the original event. Most of the time, these two times will be different.",
-      "type": "timestamp_t"
-    },
     "logon_process": {
       "caption": "Logon Process",
       "description": "The trusted process that validated the authentication credentials.",
@@ -2260,11 +2275,6 @@
       "caption": "RAM Size",
       "description": "The ctotal amount of installed RAM, in Megabytes. For example: <code>2048</code>.",
       "type": "integer_t"
-    },
-    "raw_data": {
-      "caption": "Raw Data",
-      "description": "The event data as received from the event source.",
-      "type": "string_t"
     },
     "rcode": {
       "caption": "Response Code",
@@ -2955,11 +2965,6 @@
       "caption": "Thread ID",
       "description": "The Identifier of the thread associated with the event, as returned by the operating system.",
       "type": "integer_t"
-    },
-    "time": {
-      "caption": "Event Time",
-      "description": "The normalized event occurrence time <p><b>Note:</b> The format is yet undecided",
-      "type": "timestamp_t"
     },
     "timezone_offset": {
       "caption": "Timezone Offset",

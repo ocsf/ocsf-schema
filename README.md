@@ -6,7 +6,7 @@ This is the Open Cybersecurity Schema Framework (OCSF) schema repository. The re
 
 A production logging architecture is likely to use multiple *devices* and *services* working together to handle log data. Some will generate log data, and they are called **Origin**. Some will collect data from multiple origins and forward the log data to a logger, they are called **Relay**. Finally, centralized logging systems receive and store the log data, those are called **Logger**. The Event Schema is defined from the point of view of the centralized event logging system. 
 
-The *Logger* adds the **reserved** attributes to the event `metadata` such as `uid`, `version`, `log_time`, and `log_name`.
+The *Logger* adds the **reserved** attributes to the event `metadata` such as `uid`, `version`, and `_logged_time`.
 
 The following diagrams show some common logging scenarios that the OCFS coverts.
 

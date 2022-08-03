@@ -1,36 +1,21 @@
 {
-    "category": "inventory",
-    "description": "Basic attributes that describe endpoint inventory data.",
-    "extends": "base_event",
-    "caption": "Base Inventory",
-    "name": "base_inventory",
-    "uid": 1,
-    "attributes": {
-        "mac": {
-            "description": "The device Media Access Control (MAC) address.",
-            "group": "primary",
-            "requirement": "recommended"
-        },
-        "ip": {
-            "description": "The device IP address, in either IPv4 or IPv6 format.",
-            "group": "context",
-            "requirement": "optional"
-        },
-        "hostname": {
-            "description": "The device hostname.",
-            "group": "context",
-            "requirement": "optional"
-        },
-        "name": {
-            "description": "The alternate device name, ordinarily as assigned by an administrator. ",
-            "group": "context",
-            "requirement": "optional"
-        },
-        "hw_info": {
-            "requirement": "optional"
-        },
-        "os": {
-          "requirement": "optional"
-        }
+  "caption": "Device Inventory",
+  "category": "inventory",
+  "description": "Device Inventory events report device inventory data.",
+  "extends": "base_event",
+  "name": "inventory",
+  "uid": 1,
+  "attributes": {
+    "cis_benchmark_result": {
+      "group": "primary"
+    },
+    "device": {
+      "group": "primary",
+      "requirement": "required"
+    },
+    "hw_info": {
+      "group": "primary",
+      "requirement": "recommended"
     }
+  }
 }

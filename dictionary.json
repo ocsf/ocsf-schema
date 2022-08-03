@@ -99,9 +99,9 @@
       "description": "The permissions that were granted to the in a platform-native format.",
       "type": "integer_t"
     },
-    "additional_vulnerabilities": {
-      "caption": "Additional Vulnerbailities",
-      "description": "This object describes additional vulnerabilities reported in a security finding",
+    "vulnerabilities": {
+      "caption": "Vulnerbailities",
+      "description": "This object describes vulnerabilities reported in a security finding",
       "is_array": true,
       "type": "vulnerability"
     },
@@ -298,8 +298,8 @@
       "type": "string_t"
     },
     "categories": {
-      "caption": "Categories",
-      "description": "A list of categories.",
+      "caption": "Domain/URL Categories",
+      "description": "A list of Domain or URL categories.",
       "is_array": true,
       "type": "string_t"
     },
@@ -309,16 +309,16 @@
       "type": "string_t"
     },
     "category_ids": {
-      "caption": "URL Category IDs",
-      "description": "An array of URL category identifies.",
+      "caption": "Domain/URL Category IDs",
+      "description": "An array of domain or URL category identifies.",
       "enum": {
         "-1": {
           "caption": "Other",
-          "description": "The URL category is not mapped. See the <code>categories</code> attribute, which may contain a data source specific value."
+          "description": "The Domain/URL category is not mapped. See the <code>categories</code> attribute, which may contain a data source specific value."
         },
         "0": {
           "caption": "Unknown",
-          "description": "The URL category is unknown."
+          "description": "The Domain/URL category is unknown."
         },
         "1": {
           "caption": "Adult/Mature Content"
@@ -577,7 +577,8 @@
         }
       },
       "is_array": true,
-      "type": "integer_t"
+      "type": "integer_t",
+      "sibling": "categories"
     },
     "category_name": {
       "caption": "Category",
@@ -682,7 +683,7 @@
     },
     "cmd_line": {
       "caption": "Command Line",
-      "description": "The full command line used to launch an application, service, process, or job. For example: <code>ssh user@10.0.0.10</code>",
+      "description": "The full command line used to launch an application, service, process, or job. For example: <code>ssh user@10.0.0.10</code>. If the command line is unavailable or missing, the empty string <code>''</code> is to be used",
       "type": "string_t"
     },
     "code": {
@@ -911,7 +912,7 @@
     },
     "cvss": {
       "caption": "CVSS Scores",
-      "description": "The CVSS object details Common Vulnerability Scoring System (CVSS) scores from the advisory that are related to the vulnerability.",
+      "description": "The CVSS object details Common Vulnerability Scoring System (<a target='_blank' href='https://www.first.org/cvss/'>CVSS</a>) scores from the advisory that are related to the vulnerability.",
       "type": "cvss"
     },
     "cvss_access_complexity_id": {
@@ -1193,6 +1194,11 @@
       "description": "The name of the domain.",
       "type": "string_t"
     },
+    "domain_info": {
+      "caption": "Domain Information",
+      "description": "The registration information pertaining to a domain.",
+      "type": "domain_info"
+    },
     "dst_endpoint": {
       "caption": "Destination Endpoint",
       "description": "The network destination endpoint.",
@@ -1398,6 +1404,11 @@
       "caption": "Handshake Time",
       "description": "The amount of total time for the TLS handshake to complete after the TCP connection is established, including client-side delays, in milliseconds.",
       "type": "integer_t"
+    },
+    "hassh": {
+      "caption": "HASSH",
+      "description": "The HASSH fingerprinting object.",
+      "type": "hassh"
     },
     "home_dir": {
       "caption": "Home",
@@ -1770,7 +1781,7 @@
     },
     "lineage": {
       "caption": "Lineage",
-      "description": "The lineage of the process.",
+      "description": "The lineage of the process, represented by a list of paths for each ancestor process. For example: <code>['/usr/sbin/sshd', '/usr/bin/bash', '/usr/bin/whoami']</code>",
       "is_array": true,
       "type": "string_t"
     },
@@ -1876,8 +1887,9 @@
     },
     "malware": {
       "caption": "Malware",
-      "description": "The primary malware identified by the event.<p><b>Note:</b> The primary malware may be the first malware found by the detection engine, or it may be the most severe malware found.</p>",
-      "type": "malware"
+      "description": "The list of malware identified by a finding.",
+      "type": "malware",
+      "is_array": true
     },
     "md5": {
       "caption": "MD5",
@@ -1938,6 +1950,11 @@
       "caption": "Network Driver",
       "description": "The network driver used by the container. For example, bridge, overlay, host, none, etc.",
       "type": "string_t"
+    },
+    "network_endpoint": {
+      "caption": "Network Endpoint",
+      "description": "The network endpoint.",
+      "type": "network_endpoint"
     },
     "network_interface": {
       "caption": "Network Interface",
@@ -2037,11 +2054,6 @@
       "description": "The name of the organization to which the user belongs.",
       "type": "string_t"
     },
-    "origin": {
-      "caption": "Origin",
-      "description": "The origin of the event, where the event was created.",
-      "type": "event_origin"
-    },
     "os": {
       "caption": "OS",
       "description": "The device operation system.",
@@ -2112,7 +2124,7 @@
     },
     "parent_process": {
       "caption": "Parent Process",
-      "description": "The parent process of the <code>actor</code> process.",
+      "description": "The parent process of this process object. It is recommended to only populate this field for the first process object, to prevent deep nesting.",
       "type": "process"
     },
     "path": {
@@ -2454,19 +2466,18 @@
       "description": "The name or the code of a region. See specific usage.",
       "type": "string_t"
     },
+    "registrar": {
+      "caption": "Domain Registrar",
+      "description": "The domain registrar.",
+      "type": "string_t"
+    },
     "related_findings": {
       "caption": "Related Findings",
       "description": "Describes findings related to a finding as identified by the security product.",
       "is_array": true,
       "type": "related_findings"
     },
-    "related_malware": {
-      "caption": "Related Malware",
-      "description": "The additional malware that was detected.",
-      "is_array": true,
-      "type": "malware"
-    },
-    "related_vulns": {
+    "related_vulnerabilities": {
       "caption": "Related Vulnerabilities",
       "description": "List of vulnerabilities that are related to this vulnerability.",
       "is_array": true,
@@ -2477,71 +2488,20 @@
       "description": "The network relay that is associated with the event.",
       "type": "network_interface"
     },
-    "remediation_details": {
+    "remediation": {
       "caption": "Remediation Details",
       "description": "The Remediation object describes details about recommended remediation strategies.",
-      "type": "remediation_details"
+      "type": "remediation"
     },
     "remote_display": {
       "caption": "Remote Display",
       "description": "The remote display affiliated with the event",
       "type": "display"
     },
-    "rep_score": {
-      "caption": "Reputation Score",
-      "description": "The original reputation score as reported by the event source.",
-      "type": "integer_t"
-    },
-    "rep_score_id": {
-      "caption": "Reputation Score ID",
-      "description": "The normalized reputation score identifier.",
-      "enum": {
-        "-1": {
-          "caption": "Other",
-          "description": "The reputation score is not mapped. See the <code>rep_score</code> attribute, which contains a data source specific value."
-        },
-        "0": {
-          "caption": "Unknown",
-          "description": "The reputation score is unknown."
-        },
-        "1": {
-          "caption": "Very Safe",
-          "description": "Long history of good behavior."
-        },
-        "10": {
-          "caption": "Malicious",
-          "description": "Proven evidence of maliciousness."
-        },
-        "2": {
-          "caption": "Safe",
-          "description": "Consistently good behavior."
-        },
-        "3": {
-          "caption": "Probably Safe",
-          "description": "Reasonable history of good behavior."
-        },
-        "4": {
-          "caption": "Leans Safe",
-          "description": "Starting to establish a history of normal behavior."
-        },
-        "5": {
-          "caption": "May not be Safe",
-          "description": "No established history of normal behavior."
-        },
-        "6": {
-          "caption": "Exercise Caution",
-          "description": "Starting to establish a history of suspicious or risky behavior."
-        },
-        "8": {
-          "caption": "Possibly Malicious",
-          "description": "Strong possibility of maliciousness."
-        },
-        "9": {
-          "caption": "Probably Malicious",
-          "description": "Indicators of maliciousness."
-        }
-      },
-      "type": "integer_t"
+    "reputation": {
+      "caption": "Original and Normalized Reputation Scores",
+      "description": "Contains the original and normalized reputation scores.",
+      "type": "reputation"
     },
     "request": {
       "caption": "API Request Details",
@@ -2639,7 +2599,7 @@
     },
     "run_as": {
       "caption": "Run-As User",
-      "description": "The user account the process is running as.",
+      "description": "The user account the process is running as, for when a user is impersonating another user.",
       "type": "user"
     },
     "run_state": {
@@ -2682,6 +2642,62 @@
       "caption": "Scheme",
       "description": "The scheme portion of the URL. For example: <code>http</code>, <code>https</code>, <code>ftp</code>, or <code>sftp</code>.",
       "type": "string_t"
+    },
+    "score": {
+      "caption": "Reputation Score",
+      "description": "The original reputation score as reported by the event source.",
+      "type": "integer_t"
+    },
+    "score_id": {
+      "caption": "Reputation Score ID",
+      "description": "The normalized reputation score identifier.",
+      "enum": {
+        "-1": {
+          "caption": "Other",
+          "description": "The reputation score is not mapped. See the <code>rep_score</code> attribute, which contains a data source specific value."
+        },
+        "0": {
+          "caption": "Unknown",
+          "description": "The reputation score is unknown."
+        },
+        "1": {
+          "caption": "Very Safe",
+          "description": "Long history of good behavior."
+        },
+        "10": {
+          "caption": "Malicious",
+          "description": "Proven evidence of maliciousness."
+        },
+        "2": {
+          "caption": "Safe",
+          "description": "Consistently good behavior."
+        },
+        "3": {
+          "caption": "Probably Safe",
+          "description": "Reasonable history of good behavior."
+        },
+        "4": {
+          "caption": "Leans Safe",
+          "description": "Starting to establish a history of normal behavior."
+        },
+        "5": {
+          "caption": "May not be Safe",
+          "description": "No established history of normal behavior."
+        },
+        "6": {
+          "caption": "Exercise Caution",
+          "description": "Starting to establish a history of suspicious or risky behavior."
+        },
+        "8": {
+          "caption": "Possibly Malicious",
+          "description": "Strong possibility of maliciousness."
+        },
+        "9": {
+          "caption": "Probably Malicious",
+          "description": "Indicators of maliciousness."
+        }
+      },
+      "type": "integer_t"
     },
     "secure": {
       "caption": "Secure",
@@ -2811,6 +2827,11 @@
     "sni": {
       "caption": "Server Name Indication",
       "description": " The Server Name Indication (SNI) extension sent by the client.",
+      "type": "string_t"
+    },
+    "software_ver": {
+      "caption": "Software Version",
+      "description": "The Software version.",
       "type": "string_t"
     },
     "sp_name": {

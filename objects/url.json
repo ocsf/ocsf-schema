@@ -2,22 +2,16 @@
   "caption": "Uniform Resource Locator",
   "observable": 23,
   "name": "url",
+  "profiles": ["domain_security"],
   "description": "The Uniform Resource Locator (URL) object describes the path and reputation of a URL.",
   "extends": "object",
   "attributes": {
-    "categories": {
-      "description": "A list of URL categories as defined by the event source.",
-      "requirement": "optional"
-    },
-    "category_ids": {
-      "requirement": "recommended"
-    },
+    "$include": [
+      "profiles/domain_security.json"
+    ],
     "hostname": {
       "description": "The URL host as extracted from the URL. For example: www.example.com.",
       "requirement": "required"
-    },
-    "parent_categories": {
-      "requirement": "recommended"
     },
     "path": {
       "description": "The URL path as extracted from the URL. For example: <code>/download/trouble</code>.",
@@ -27,17 +21,7 @@
       "description": "The URL port. For example: <code>80</code>.",
       "requirement": "recommended"
     },
-    "provider": {
-      "description": "The provider of the reputation and category information.",
-      "requirement": "recommended"
-    },
     "query_string": {
-      "requirement": "recommended"
-    },
-    "rep_score": {
-      "requirement": "recommended"
-    },
-    "rep_score_id": {
       "requirement": "recommended"
     },
     "resource_type": {

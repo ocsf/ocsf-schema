@@ -1,12 +1,9 @@
 {
   "caption": "Domain Information",
   "name": "domain_info",
-  "profiles": ["reputation"],
   "description": "The registration information pertaining to a domain.",
+  "extends": "object",
   "attributes": {
-    "$include": [
-      "profiles/reputation.json"
-    ],
     "creation_time": {
       "description": "The domain registration time.",
       "requirement": "recommended"
@@ -19,9 +16,12 @@
       "description": "The domain expiration time.",
       "requirement": "recommended"
     },
-    "name": {
-      "description": "The domain registrar name.",
+    "registrar": {
       "requirement": "recommended"
+    },
+    "reputation": {
+      "description": "The domain reputation.",
+      "requirement": "optional"
     },
     "update_time": {
       "description": "The time at which the domain was last updated.",

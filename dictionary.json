@@ -683,7 +683,7 @@
     },
     "cmd_line": {
       "caption": "Command Line",
-      "description": "The full command line used to launch an application, service, process, or job. For example: <code>ssh user@10.0.0.10</code>",
+      "description": "The full command line used to launch an application, service, process, or job. For example: <code>ssh user@10.0.0.10</code>. If the command line is unavailable or missing, the empty string <code>''</code> is to be used",
       "type": "string_t"
     },
     "code": {
@@ -1769,7 +1769,7 @@
     },
     "lineage": {
       "caption": "Lineage",
-      "description": "The lineage of the process.",
+      "description": "The lineage of the process, represented by a list of paths for each ancestor process. For example: <code>['/usr/sbin/sshd', '/usr/bin/bash', '/usr/bin/whoami']</code>",
       "is_array": true,
       "type": "string_t"
     },
@@ -2112,7 +2112,7 @@
     },
     "parent_process": {
       "caption": "Parent Process",
-      "description": "The parent process of the <code>actor</code> process.",
+      "description": "The parent process of this process object. It is recommended to only populate this field for the first process object, to prevent deep nesting.",
       "type": "process"
     },
     "path": {
@@ -2587,7 +2587,7 @@
     },
     "run_as": {
       "caption": "Run-As User",
-      "description": "The user account the process is running as.",
+      "description": "The user account the process is running as, for when a user is impersonating another user.",
       "type": "user"
     },
     "run_state": {

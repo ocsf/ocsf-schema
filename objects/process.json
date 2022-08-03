@@ -6,11 +6,11 @@
   "extends": "object",
   "attributes": {
     "cmd_line": {
-      "requirement": "recommended"
+      "requirement": "required"
     },
     "creation_time": {
       "description": "The time when the process was created/started.",
-      "requirement": "optional"
+      "requirement": "recommended"
     },
     "file": {
       "description": "The process file object.",
@@ -60,11 +60,11 @@
       "name": "process_name_t"
     },
     "parent_process": {
-      "requirement": "optional"
+      "requirement": "recommended"
     },
     "path": {
       "description": "The filesystem path of the process that was observed.",
-      "requirement": "recommended"
+      "requirement": "required"
     },
     "pid": {
       "requirement": "required"
@@ -83,20 +83,13 @@
       "requirement": "optional"
     },
     "uid": {
-      "description": "The process unique identifier, as reported by the event source. For examples a process-generated UUID or Sysmon Process GUIDs, which  some uniquely identifies the process.",
+      "description": "The process unique identifier, as reported by the event source, such as a UUID. Allows correlation of a process event with other events for that process.",
       "caption": "Process UID",
-      "requirement": "optional"
+      "requirement": "recommended"
     },
     "xattributes": {
       "description": "An unordered collection of zero or more name/value pairs that represent a process extended attribute.",
       "requirement": "optional"
     }
-  },
-  "constraints": {
-    "at_least_one": [
-      "file",
-      "name",
-      "cmd_line"
-    ]
   }
 }

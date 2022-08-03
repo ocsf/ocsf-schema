@@ -99,9 +99,9 @@
       "description": "The permissions that were granted to the in a platform-native format.",
       "type": "integer_t"
     },
-    "additional_vulnerabilities": {
-      "caption": "Additional Vulnerbailities",
-      "description": "This object describes additional vulnerabilities reported in a security finding",
+    "vulnerabilities": {
+      "caption": "Vulnerbailities",
+      "description": "This object describes vulnerabilities reported in a security finding",
       "is_array": true,
       "type": "vulnerability"
     },
@@ -1875,8 +1875,9 @@
     },
     "malware": {
       "caption": "Malware",
-      "description": "The primary malware identified by the event.<p><b>Note:</b> The primary malware may be the first malware found by the detection engine, or it may be the most severe malware found.</p>",
-      "type": "malware"
+      "description": "The list of malware identified by a finding.",
+      "type": "malware",
+      "is_array": true
     },
     "md5": {
       "caption": "MD5",
@@ -2464,13 +2465,7 @@
       "is_array": true,
       "type": "related_findings"
     },
-    "related_malware": {
-      "caption": "Related Malware",
-      "description": "The additional malware that was detected.",
-      "is_array": true,
-      "type": "malware"
-    },
-    "related_vulns": {
+    "related_vulnerabilities": {
       "caption": "Related Vulnerabilities",
       "description": "List of vulnerabilities that are related to this vulnerability.",
       "is_array": true,
@@ -2481,10 +2476,10 @@
       "description": "The network relay that is associated with the event.",
       "type": "network_interface"
     },
-    "remediation_details": {
+    "remediation": {
       "caption": "Remediation Details",
       "description": "The Remediation object describes details about recommended remediation strategies.",
-      "type": "remediation_details"
+      "type": "remediation"
     },
     "remote_display": {
       "caption": "Remote Display",

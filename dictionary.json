@@ -298,8 +298,8 @@
       "type": "string_t"
     },
     "categories": {
-      "caption": "Categories",
-      "description": "A list of categories.",
+      "caption": "Domain/URL Categories",
+      "description": "A list of Domain or URL categories.",
       "is_array": true,
       "type": "string_t"
     },
@@ -309,16 +309,16 @@
       "type": "string_t"
     },
     "category_ids": {
-      "caption": "URL Category IDs",
-      "description": "An array of URL category identifies.",
+      "caption": "Domain/URL Category IDs",
+      "description": "An array of domain or URL category identifies.",
       "enum": {
         "-1": {
           "caption": "Other",
-          "description": "The URL category is not mapped. See the <code>categories</code> attribute, which may contain a data source specific value."
+          "description": "The Domain/URL category is not mapped. See the <code>categories</code> attribute, which may contain a data source specific value."
         },
         "0": {
           "caption": "Unknown",
-          "description": "The URL category is unknown."
+          "description": "The Domain/URL category is unknown."
         },
         "1": {
           "caption": "Adult/Mature Content"
@@ -577,7 +577,8 @@
         }
       },
       "is_array": true,
-      "type": "integer_t"
+      "type": "integer_t",
+      "sibling": "categories"
     },
     "category_name": {
       "caption": "Category",
@@ -2452,6 +2453,11 @@
       "description": "The name or the code of a region. See specific usage.",
       "type": "string_t"
     },
+    "registrar": {
+      "caption": "Domain Registrar",
+      "description": "The domain registrar.",
+      "type": "string_t"
+    },
     "related_findings": {
       "caption": "Related Findings",
       "description": "Describes findings related to a finding as identified by the security product.",
@@ -2489,62 +2495,6 @@
       "caption": "Original and Normalized Reputation Scores",
       "description": "Contains the original and normalized reputation scores.",
       "type": "reputation"
-    },
-    "rep_score": {
-      "caption": "Reputation Score",
-      "description": "The original reputation score as reported by the event source.",
-      "type": "integer_t"
-    },
-    "rep_score_id": {
-      "caption": "Reputation Score ID",
-      "description": "The normalized reputation score identifier.",
-      "enum": {
-        "-1": {
-          "caption": "Other",
-          "description": "The reputation score is not mapped. See the <code>rep_score</code> attribute, which contains a data source specific value."
-        },
-        "0": {
-          "caption": "Unknown",
-          "description": "The reputation score is unknown."
-        },
-        "1": {
-          "caption": "Very Safe",
-          "description": "Long history of good behavior."
-        },
-        "10": {
-          "caption": "Malicious",
-          "description": "Proven evidence of maliciousness."
-        },
-        "2": {
-          "caption": "Safe",
-          "description": "Consistently good behavior."
-        },
-        "3": {
-          "caption": "Probably Safe",
-          "description": "Reasonable history of good behavior."
-        },
-        "4": {
-          "caption": "Leans Safe",
-          "description": "Starting to establish a history of normal behavior."
-        },
-        "5": {
-          "caption": "May not be Safe",
-          "description": "No established history of normal behavior."
-        },
-        "6": {
-          "caption": "Exercise Caution",
-          "description": "Starting to establish a history of suspicious or risky behavior."
-        },
-        "8": {
-          "caption": "Possibly Malicious",
-          "description": "Strong possibility of maliciousness."
-        },
-        "9": {
-          "caption": "Probably Malicious",
-          "description": "Indicators of maliciousness."
-        }
-      },
-      "type": "integer_t"
     },
     "request": {
       "caption": "API Request Details",
@@ -2685,6 +2635,62 @@
       "caption": "Scheme",
       "description": "The scheme portion of the URL. For example: <code>http</code>, <code>https</code>, <code>ftp</code>, or <code>sftp</code>.",
       "type": "string_t"
+    },
+    "score": {
+      "caption": "Reputation Score",
+      "description": "The original reputation score as reported by the event source.",
+      "type": "integer_t"
+    },
+    "score_id": {
+      "caption": "Reputation Score ID",
+      "description": "The normalized reputation score identifier.",
+      "enum": {
+        "-1": {
+          "caption": "Other",
+          "description": "The reputation score is not mapped. See the <code>rep_score</code> attribute, which contains a data source specific value."
+        },
+        "0": {
+          "caption": "Unknown",
+          "description": "The reputation score is unknown."
+        },
+        "1": {
+          "caption": "Very Safe",
+          "description": "Long history of good behavior."
+        },
+        "10": {
+          "caption": "Malicious",
+          "description": "Proven evidence of maliciousness."
+        },
+        "2": {
+          "caption": "Safe",
+          "description": "Consistently good behavior."
+        },
+        "3": {
+          "caption": "Probably Safe",
+          "description": "Reasonable history of good behavior."
+        },
+        "4": {
+          "caption": "Leans Safe",
+          "description": "Starting to establish a history of normal behavior."
+        },
+        "5": {
+          "caption": "May not be Safe",
+          "description": "No established history of normal behavior."
+        },
+        "6": {
+          "caption": "Exercise Caution",
+          "description": "Starting to establish a history of suspicious or risky behavior."
+        },
+        "8": {
+          "caption": "Possibly Malicious",
+          "description": "Strong possibility of maliciousness."
+        },
+        "9": {
+          "caption": "Probably Malicious",
+          "description": "Indicators of maliciousness."
+        }
+      },
+      "type": "integer_t"
     },
     "secure": {
       "caption": "Secure",

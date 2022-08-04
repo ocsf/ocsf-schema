@@ -36,7 +36,7 @@ This documentation is about making changes to OCSF schema itself.
 
 1. All the available `attributes` - `fields` & `objects` in OCSF are and will need to be defined in the attribute dictionary, the [dictionary.json](https://github.com/ocsf/ocsf-schema/blob/main/dictionary.json) file and [/objects](https://github.com/ocsf/ocsf-schema/tree/main/objects) folder if defining an object.
 2. Determine if a new attribute is required for your change, it might already be defined in the attribute dictionary and/or the [/objects](https://github.com/ocsf/ocsf-schema/tree/main/objects) folder.
-3. Before adding a new attribute, review OCSF grammar & conventions || TASK - Add a grammar.md 
+3. Before adding a new attribute, review OCSF grammar & conventions available [here](https://schema.ocsf.io/guidelines).
 
 #### How to define a `field` in the dictionary?
 
@@ -62,8 +62,8 @@ Choose a **unique** field you want to add, `uid` in the example above and popula
         1.  `uid` : `The unique identifier. See specific usage.`
     3. Specific description of `uid` in the `vulnerability` object -
         1. `uid` : `Unique Identifier/s of the reported vulnerability. e.g. CVE ID/s"`
-3. `type` → Review OCSF data_types and ensure you utilize appropriate types while defining new fields. | not allowed to change...
-    1. All the available data_types can be accessed here || TASK - Create a data_types.md file in the repo
+3. `type` → Review OCSF data_types and ensure you utilize appropriate types while defining new fields.
+    1. All the available data_types can be accessed [here](https://schema.ocsf.io/data_types).
     2. They are also accessible in your local instance of the ocsf-server - http://localhost:8000/data_types
 4. `is_array` → This a boolean key:value pair that you would need to add if the field you are defining is an array.
     1. e.g. `"is_array": true`

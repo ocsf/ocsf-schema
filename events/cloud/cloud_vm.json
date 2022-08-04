@@ -1,0 +1,34 @@
+{
+  "uid": 3,
+  "description": "Cloud Virtual Machine (VM) events describe the usage of compute resources. e.g. (AWS EC2/EMR, AWS workspaces, etc.)",
+  "extends": "cloud_api",
+  "caption": "Cloud Virtual Machine",
+  "name": "cloud_vm",
+  "attributes": {
+    "activity_id": {
+    "enum": {
+      "1": {
+        "caption": "Launch",
+        "description": "The event pertains to the launch of one or multiple VM's."
+      },
+      "2": {
+        "caption": "Terminate",
+        "description": "The event pertains to the termination of one or multiple VM's."
+      },
+      "3": {
+        "caption": "Enumerate",
+        "description": "The event pertains to describing or enumerating VM attributes."
+      }
+    }
+  },
+    "count": {
+      "description": "The number of virtual machines associated with the event.",
+      "group": "primary",
+      "requirement": "required"
+    },
+    "virtual_machines": {
+      "group": "primary",
+      "requirement": "required"
+    }
+  }
+}

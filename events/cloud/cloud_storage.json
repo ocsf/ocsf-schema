@@ -1,0 +1,74 @@
+{
+  "uid": 2,
+  "description": "Cloud Storage events describe Cloud Storage Activities. For example the bucket name for AWS/GCP and the blob name for Azure.",
+  "caption": "Cloud Storage Activity",
+  "name": "cloud_storage",
+  "extends": "cloud_api",
+  "attributes": {
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Create Container",
+          "description": "Create a data container."
+        },
+        "2": {
+          "caption": "Delete Container",
+          "description": "Delete a data container"
+        },
+        "3": {
+          "caption": "Upload",
+          "description": "Upload data to a container."
+        },
+        "4": {
+          "caption": "Download",
+          "description": "Download data from a container."
+        },
+        "5": {
+          "caption": "Enumerate",
+          "description": "Enumerate storage containers or data within them."
+        },
+        "6": {
+          "caption": "Policy Change",
+          "description": "Data storage policy change."
+        },
+        "7": {
+          "caption": "Permission Change",
+          "description": "Data storage permission change."
+        },
+        "8": {
+          "caption": "Encrypt",
+          "description": "Encrypt data."
+        },
+        "9": {
+          "caption": "Decrypt",
+          "description": "Decrypt data."
+        },
+        "10": {
+          "caption": "Delete Data",
+          "description": "Delete data within a container"
+        }
+      }
+    },
+    "bytes": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "bytes_in": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "bytes_out": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "data_container": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "path": {
+      "description": "The full path within the data container corresponding to current activity.",
+      "group": "context",
+      "requirement": "recommended"
+    }
+  }
+}

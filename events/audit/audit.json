@@ -1,7 +1,16 @@
 {
   "caption": "Audit",
-  "name": "audit",
   "category": "audit",
   "extends": "base_event",
-  "attributes": {}
+  "name": "audit",
+  "profiles": [
+    "user",
+    "host"
+  ],
+  "attributes": {
+    "$include": [
+      "profiles/host.json",
+      "profiles/user.json"
+    ]
+  }
 }

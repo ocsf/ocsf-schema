@@ -1,10 +1,18 @@
 {
   "caption": "Device Inventory/Configuration Events",
   "category": "inventory",
-  "description": "Device Inventory/Config events report device inventory data.",
+  "description": "This is a base class for the device inventory and config classes.",
   "extends": "base_event",
   "name": "inventory",
+  "profiles": [
+    "user",
+    "host"
+  ],
   "attributes": {
+    "$include": [
+      "profiles/host.json",
+      "profiles/user.json"
+    ],
     "device": {
       "group": "primary",
       "requirement": "required"

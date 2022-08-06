@@ -1,14 +1,35 @@
 {
   "caption": "System Activity classes",
   "category": "system",
-  "name": "system",
   "extends": "base_event",
-  "profiles": ["user", "host", "malware"],
-  "attributes": {
-    "$include": ["profiles/host.json", "profiles/user.json", "profiles/malware.json"]
-  },
+  "name": "system",
+  "profiles": [
+    "user",
+    "host",
+    "malware"
+  ],
   "associations": {
-    "origin.device": ["user"],
-    "user": ["origin.device"]
-  } 
+    "origin.device": [
+      "user"
+    ],
+    "user": [
+      "origin.device"
+    ]
+  },
+  "attributes": {
+    "$include": [
+      "profiles/host.json",
+      "profiles/user.json",
+      "profiles/malware.json"
+    ],
+    "device": {
+      "group": "primary",
+      "requirement": "required",
+      "profile": null
+    },
+    "actor_process": {
+      "requirement": "required",
+      "profile": null
+    }
+  }
 }

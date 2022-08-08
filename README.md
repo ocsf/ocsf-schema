@@ -1,49 +1,24 @@
-# Open Cybersecurity Schema Framework 
+# Open Cybersecurity Schema Framework
 
-This is the Open Cybersecurity Schema Framework (OCSF) schema repository. The repository contains  JSON files of the Open Cybersecurity Schema Framework (OCSF).
+This repository defines the Open Cybersecurity Schema Framework (OCSF) schema. OCSF is a framework for creating schemas and it also delivers a cybersecurity event schema built with the framework.
 
-## OCSF Architecture
+The framework is made up of a set of categories, event classes, data types, and an attribute dictionary. The framework is not restricted to cybersecurity nor to events, however the initial focus of the framework has been a schema for cybersecurity events. A schema browser for the cybersecurity schema can be found at [schema.ocsf.io](schema.ocsf.io). This is the recommended way to explore the schema.
+OCSF is agnostic to storage format, data collection and ETL processes. The core schema for cybersecurity events is intended to be agnostic to implementations. The schema framework definition files and the resulting schema are written as JSON.
 
-A production logging architecture is likely to use multiple *devices* and *services* working together to handle log data. Some will generate log data, and they are called **Origin**. Some will collect data from multiple origins and forward the log data to a logger, they are called **Relay**. Finally, centralized logging systems receive and store the log data, those are called **Logger**. The Event Schema is defined from the point of view of the centralized event logging system. 
-
-The *Logger* adds the **reserved** attributes to the event `metadata` such as `uid`, `version`, and `_logged_time`.
-
-The following diagrams show some common logging scenarios that the OCFS coverts.
-
-1. A device (Origin) creates events and directly sends them to the Logger. Or, the Logger directly collects event data from the device that created the events.
-
-```mermaid
-graph LR
-origin1(Origin) -->| logs to | logger(Logger)
-origin2(Origin) -->| logs to | logger
-```
-
-2. A device (Origin) creates events and forwards them to an intermediate server (Relay), which relays the log data to the Logger. For example, this is the case of syslog server or Windows domain controller that collects log data from multiple devices.
-
-```mermaid
-graph LR
-origin1(Origin) -->| sends | relay(Relay)
-origin2(Origin) -->| sends | relay
-
-relay -->| relays | logger(Logger)
-```
-
-
-
-3. A device (Origin) creates events and sends them to an intermediate server (Relay), which relays the events to a Forwarder server, which forwards the events to the Logger server. For example, this is the case when data is generated on premises and forwarded to a cloud-based centralized logging system.
-
-```mermaid
-graph TD
-origin1(Origin) -->| sends | relay(Relay)
-origin2(Origin) -->| sends | relay
-relay -->| relays | forwarder(Forwarder)
-forwarder -->| forwards | logger(Logger)
-```
-
-
+OCSF is intended to be used by both products and devices which produce log events, analytic systems, and logging systems which retain log events.
 
 ## Extending the Schema
-The OCSF Schema can be extended by adding new attributes, objects, classes, and profiles.
+
+Extensions are additional categories, event classes, attributes, objects or profiles. The Open
+Cybersecurity Schema Framework can be extended by adding new attributes, objects, categories
+and event classes. A schema is the aggregation of core schema entities and extensions.
+Extensions allow a particular vendor or customer to create a new schema or augment an existing
+schema. Extensions can also be used to factor out non-essential schema domains keeping a
+schema small. Extensions use the framework in the same way as a new schema, optionally
+creating categories, profiles or event classes from the dictionary. Extensions can add new
+attributes to the dictionary, including new objects. As with categories, event classes and profiles,
+extensions have unique IDs within the framework as well as versioning.
+
 
 To extend the schema create a new directory in the `schema/extensions` directory. The directory structure is the same as the top level schema directory, and it may contain the following files and subdirectories.
 
@@ -53,3 +28,13 @@ To extend the schema create a new directory in the `schema/extensions` directory
 | `dictionary.json` | Create it to define new attributes.                          |
 | `events`          | Create it to define new event classes.                       |
 | `objects`         | Create it to define new objects.                             |
+
+For more information on extending the schema, please refer to the contribution guide, [CONTRIBUTING.md](https://github.com/ocsf/ocsf-schema/blob/main/CONTRIBUTING.md)
+
+## Versioning
+
+Updates to OCSF follow [semantic versioning](https://semver.org/).
+
+## License
+
+This software is licensed under the Apache License, version 2 ("ALv2").

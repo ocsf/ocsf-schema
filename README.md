@@ -1,11 +1,22 @@
 # Open Cybersecurity Schema Framework
 
-This repository defines the Open Cybersecurity Schema Framework (OCSF) schema. OCSF is a framework for creating schemas and it also delivers a cybersecurity event schema built with the framework.
+This repository defines the Open Cybersecurity Schema Framework (OCSF) schema.
+OCSF is a framework for creating schemas and it also delivers a cybersecurity
+event schema built with the framework.
 
-The framework is made up of a set of categories, event classes, data types, and an attribute dictionary. The framework is not restricted to cybersecurity nor to events, however the initial focus of the framework has been a schema for cybersecurity events. A schema browser for the cybersecurity schema can be found at [schema.ocsf.io](schema.ocsf.io). This is the recommended way to explore the schema.
-OCSF is agnostic to storage format, data collection and ETL processes. The core schema for cybersecurity events is intended to be agnostic to implementations. The schema framework definition files and the resulting schema are written as JSON.
+The framework is made up of a set of categories, event classes, data types,
+and an attribute dictionary. The framework is not restricted to cybersecurity
+nor to events, however the initial focus of the framework has been a schema
+for cybersecurity events. A schema browser for the cybersecurity schema can
+be found at [schema.ocsf.io](https://schema.ocsf.io). This is the recommended
+way to explore the schema.
 
-OCSF is intended to be used by both products and devices which produce log events, analytic systems, and logging systems which retain log events.
+OCSF is agnostic to storage format, data collection and ETL processes. The core
+schema for cybersecurity events is intended to be agnostic to implementations.
+The schema framework definition files and the resulting schema are written as JSON.
+
+OCSF is intended to be used by both products and devices which produce log events,
+analytic systems, and logging systems which retain log events.
 
 ## Extending the Schema
 
@@ -20,7 +31,9 @@ attributes to the dictionary, including new objects. As with categories, event c
 extensions have unique IDs within the framework as well as versioning.
 
 
-To extend the schema create a new directory in the `schema/extensions` directory. The directory structure is the same as the top level schema directory, and it may contain the following files and subdirectories.
+To extend the schema create a new directory in the `schema/extensions` directory. The directory
+structure is the same as the top level schema directory, and it may contain the following files
+and subdirectories.
 
 | Name              | Description                                                  |
 | ----------------- | ------------------------------------------------------------ |
@@ -29,7 +42,8 @@ To extend the schema create a new directory in the `schema/extensions` directory
 | `events`          | Create it to define new event classes.                       |
 | `objects`         | Create it to define new objects.                             |
 
-For more information on extending the schema, please refer to the contribution guide, [CONTRIBUTING.md](https://github.com/ocsf/ocsf-schema/blob/main/CONTRIBUTING.md)
+For more information on extending the schema, please refer to the contribution guide,
+[CONTRIBUTING.md](https://github.com/ocsf/ocsf-schema/blob/main/CONTRIBUTING.md)
 
 ## Versioning
 

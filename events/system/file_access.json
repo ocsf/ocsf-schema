@@ -1,11 +1,23 @@
 {
-  "caption": "File Access Activity",
+  "caption": "File Access Check",
   "uid": 1,
-  "name": "file_access_activity",
+  "name": "file_access_check",
   "extends": "system",
-  "description": "File Access Activity events report when a network share object was checked to see whether client can be granted desired access on a file.",
+  "description": "File Access Check events report when a network share object was checked to see whether client can be granted desired access on a file.",
   "attributes": {
-    "$include": "includes/file_access.json",
+    "access_list": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "access_mask": {
+      "description": "The sum of hexadecimal values of requested access rights.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "access_result": {
+      "group": "primary",
+      "requirement": "optional"
+    },
     "activity_id": {
       "description": "The activity ID of the event.",
       "enum": {
@@ -16,6 +28,16 @@
           "caption": "Block"
         }
       }
+    },
+    "file": {
+      "description": "The file that is the target of the activity.",
+      "group": "primary",
+      "requirement": "required"
+    },
+    "src_endpoint": {
+      "description": "The Endpoint from which the file access was requested.",
+      "group": "primary",
+      "requirement": "required"
     }
   },
   "associations": {

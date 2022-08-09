@@ -1,9 +1,12 @@
 {
-  "caption": "File Access Check",
-  "uid": 1,
-  "name": "file_access_check",
-  "extends": "system",
-  "description": "File Access Check events report when a network share object was checked to see whether client can be granted desired access on a file.",
+  "associations": {
+    "origin.device": [
+      "user"
+    ],
+    "user": [
+      "origin.device"
+    ]
+  },
   "attributes": {
     "access_list": {
       "group": "primary",
@@ -40,12 +43,9 @@
       "requirement": "required"
     }
   },
-  "associations": {
-    "origin.device": [
-      "user"
-    ],
-    "user": [
-      "origin.device"
-    ]
-  }
+  "caption": "File Access Check",
+  "description": "File Access Check events report when a network share object was checked to see whether client can be granted desired access on a file.",
+  "extends": "system",
+  "name": "file_access_check",
+  "uid": 1
 }

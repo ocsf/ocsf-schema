@@ -1,4 +1,4 @@
-# OCSF Contribution Guide - draft
+# OCSF Contribution Guide
 
 ## Using OCSF as a consumer 
 

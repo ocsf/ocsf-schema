@@ -1,4 +1,4 @@
-# Open Cybersecurity Schema Framework
+# Open Cybersecurity Schema Framework ![OCSF Logo](ocsf.png "Open Cybersecurity Schema Framework") 
 
 This repository defines the Open Cybersecurity Schema Framework (OCSF) schema.
 OCSF is a framework for creating schemas and it also delivers a cybersecurity

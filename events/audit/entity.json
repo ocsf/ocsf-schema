@@ -1,9 +1,9 @@
 {
-  "caption": "Entity Audit",
+  "caption": "Entity Management Audit",
   "uid": 3,
-  "name": "entity_audit",
+  "name": "entity_management_audit",
   "extends": "audit",
-  "description": "Entity Audit events report activity by a managed client, a micro service, or a user at a management console. The activity can be a create, update, and delete operation on a managed entity.",
+  "description": "Entity Audit events report activity by a managed client, a micro service, or a user at a management console. The activity can be a create, read, update, and delete operation on a managed entity.",
   "attributes": {
     "comment": {
       "description": "The user provided comment about why the entity was changed.",
@@ -16,16 +16,13 @@
           "caption": "Created"
         },
         "2": {
-          "caption": "Updated"
+          "caption": "Read"
         },
         "3": {
-          "caption": "Deleted"
+          "caption": "Updated"
         },
         "4": {
-          "caption": "Moved"
-        },
-        "5": {
-          "caption": "Accessed"
+          "caption": "Deleted"
         }
       }
     },
@@ -39,11 +36,12 @@
     },
     "src_user": {
       "requirement": "recommended",
+      "description": "Use for when the entity acting upon another entity is a user",
+      "group": "context"
+    },
+    "actor_process": {
+      "description": "Use for when the entity acting upon another entity is a process",
       "group": "context"
     }
-  },
-  "associations": {
-    "origin.device": ["src_user"],
-    "src_user": ["origin.device"]
   }
 }

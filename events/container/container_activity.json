@@ -1,0 +1,45 @@
+{
+	"caption": "Base Container Activity",
+	"category": "container",
+	"description": "This is a base class for the container activity classes.",
+	"extends": "base_event",
+	"name": "container_activity",
+	"profiles": [
+		"cloud"
+	],
+	"attributes": {
+		"$include": [
+			"profiles/cloud.json"
+		],
+		"http_method": {
+			"description": "The request type for remote API event. e.g. GET, POST etc.",
+			"group": "context",
+			"requirement": "optional"
+		},
+		"message": {
+			"description": "Details about event or simply log message.",
+			"group": "primary",
+			"requirement": "required"
+		},
+		"network_driver": {
+			"description": "Name of driver being used in event log. e.g. overlay, aufs.",
+			"group": "context",
+			"requirement": "optional"
+		},
+		"sha2": {
+			"description": "Commit hash of image created for docker or the SHA256 hash of the container. For example: a3bf90e006b2.",
+			"group": "context",
+			"requirement": "optional"
+		},
+		"status_detail": {
+			"description": "Details about the request, including the return type in the log.",
+			"group": "context",
+			"requirement": "optional"
+		},
+		"version": {
+			"description": "Remote API version from remote API event for docker or docker version being used.",
+			"group": "primary",
+			"requirement": "recommended"
+		}
+	}
+}

@@ -1,4 +1,4 @@
-#  ![OCSF Logo](ocsf.png "Open Cybersecurity Schema Framework") Open Cybersecurity Schema Framework
+# <img src="ocsf.png" alt="OCSF Logo" width="32"/> Open Cybersecurity Schema Framework
 
 This repository defines the Open Cybersecurity Schema Framework (OCSF) schema.
 OCSF is a framework for creating schemas and it also delivers a cybersecurity
@@ -30,17 +30,16 @@ creating categories, profiles or event classes from the dictionary. Extensions c
 attributes to the dictionary, including new objects. As with categories, event classes and profiles,
 extensions have unique IDs within the framework as well as versioning.
 
-
 To extend the schema create a new directory in the `schema/extensions` directory. The directory
 structure is the same as the top level schema directory, and it may contain the following files
 and subdirectories.
 
-| Name              | Description                                                  |
-| ----------------- | ------------------------------------------------------------ |
+| Name              | Description                                                               |
+| ----------------- | ------------------------------------------------------------------------- |
 | `categories.json` | Create it to define a new event category to reserve a range of class IDs. |
-| `dictionary.json` | Create it to define new attributes.                          |
-| `events`          | Create it to define new event classes.                       |
-| `objects`         | Create it to define new objects.                             |
+| `dictionary.json` | Create it to define new attributes.                                       |
+| `events`          | Create it to define new event classes.                                    |
+| `objects`         | Create it to define new objects.                                          |
 
 For more information on extending the schema, please refer to the contribution guide,
 [CONTRIBUTING.md](https://github.com/ocsf/ocsf-schema/blob/main/CONTRIBUTING.md)

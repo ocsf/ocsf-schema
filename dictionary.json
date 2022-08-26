@@ -2145,7 +2145,7 @@
     },
     "port": {
       "caption": "Port",
-      "description": "The Internet protocol port number associated with a connection. See specific usage.",
+      "description": "The TCP/UDP port number associated with a connection. See specific usage.",
       "type": "port_t"
     },
     "postal_code": {
@@ -2265,6 +2265,11 @@
     "ram_size": {
       "caption": "RAM Size",
       "description": "The ctotal amount of installed RAM, in Megabytes. For example: <code>2048</code>.",
+      "type": "integer_t"
+    },
+    "raw_score": {
+      "caption": "Reputation Score",
+      "description": "The original reputation score as reported by the event source.",
       "type": "integer_t"
     },
     "rcode": {
@@ -2480,7 +2485,7 @@
       "type": "integer_t"
     },
     "reputation": {
-      "caption": "Original and Normalized Reputation Scores",
+      "caption": "Reputation Scores",
       "description": "Contains the original and normalized reputation scores.",
       "type": "reputation"
     },
@@ -2630,9 +2635,9 @@
       "type": "integer_t"
     },
     "score": {
-      "caption": "Reputation Score",
-      "description": "The original reputation score as reported by the event source.",
-      "type": "integer_t"
+      "caption": "Reputation Score Name",
+      "description": "The reputation score caption.",
+      "type": "string_t"
     },
     "score_id": {
       "caption": "Reputation Score ID",
@@ -2683,6 +2688,7 @@
           "description": "Indicators of maliciousness."
         }
       },
+      "sibling": "score",
       "type": "integer_t"
     },
     "secure": {
@@ -3298,7 +3304,7 @@
       },
       "port_t": {
         "caption": "Port",
-        "description": "The Internet protocol port number. For example: <code>80</code> or <code>22</code>.",
+        "description": "The TCP/UDP port number. For example: <code>80</code> or <code>22</code>.",
         "range": [
           0,
           65535

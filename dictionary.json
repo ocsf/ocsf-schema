@@ -188,11 +188,6 @@
       "description": "The arguments sent along with the HTTP request.",
       "type": "string_t"
     },
-    "assignee": {
-      "caption": "Assignee",
-      "description": "The name of the user who is assigned to the incident.",
-      "type": "string_t"
-    },
     "attack_complexity_id": {
       "caption": "Attack Complexity",
       "description": "The conditions beyond the attacker's control that must exist in order to exploit the vulnerability.",
@@ -662,12 +657,6 @@
       "description": "The negotiated cipher suite.",
       "type": "string_t"
     },
-    "cis20": {
-      "caption": "CIS 20 List",
-      "description": "The CIS 20 is a list of 20 actions and practices an organization’s security team can take on such that cyber attacks or malware, are minimized and prevented.",
-      "is_array": true,
-      "type": "string_t"
-    },
     "cis_benchmark_result": {
       "caption": "CIS Benchmark Result",
       "description": "The CIS benchmark result.",
@@ -802,30 +791,6 @@
       "description": "The confidence of the reported finding as a percentage: 0%-100%.",
       "type": "integer_t"
     },
-    "confidence_id": {
-      "caption": "Confidence ID",
-      "description": "The normalized confidence level refers to the accuracy of the rule that created the finding. A rule with a low confidence level means that the detection scope is wide and may create finding reports that may not be malicious in nature.",
-      "enum": {
-        "-1": {
-          "caption": "Other",
-          "description": "The confidence is not mapped to the defined enum values. See the <code>confidence</code> attribute, which contains a data source specific value."
-        },
-        "0": {
-          "caption": "Unknown",
-          "description": "No confidence is assigned."
-        },
-        "1": {
-          "caption": "Low"
-        },
-        "2": {
-          "caption": "Medium"
-        },
-        "3": {
-          "caption": "High"
-        }
-      },
-      "type": "integer_t"
-    },
     "confidentiality": {
       "caption": "Confidentiality",
       "description": "The file content confidentiality.",
@@ -951,11 +916,6 @@
     "creator": {
       "caption": "Creator",
       "description": "The user that created the object associated with event. See specific usage.",
-      "type": "string_t"
-    },
-    "creator_name": {
-      "caption": "Creator Name",
-      "description": "The name of the user who created the incident.",
       "type": "string_t"
     },
     "credential_uid": {
@@ -1128,11 +1088,6 @@
       },
       "type": "integer_t"
     },
-    "dn": {
-      "caption": "Distinguished Name",
-      "description": "The distinguished name.",
-      "type": "string_t"
-    },
     "domain": {
       "caption": "Domain",
       "description": "The name of the domain.",
@@ -1199,11 +1154,6 @@
       "description": "Error Message",
       "type": "string_t"
     },
-    "event_source": {
-      "caption": "Event Source",
-      "description": "The event source from which the event originates.",
-      "type": "event_source"
-    },
     "exit_code": {
       "caption": "Exit Code",
       "description": "The exit code reported by a process when it terminates. The convention is that zero indicates success and any non-zero exit code indicates that some error occurred.",
@@ -1234,21 +1184,6 @@
       "description": "The list of TLS extensions",
       "is_array": true,
       "type": "tls_extension"
-    },
-    "facility": {
-      "caption": "Facility",
-      "description": "The subsystem or application that is providing the event data.",
-      "type": "string_t"
-    },
-    "facility_detail": {
-      "caption": "Facility Detail",
-      "description": "Additional detail about the source facility. For example, details could include a the name of a particular application instance (such as a database name) or a path to a monitored log file.",
-      "type": "string_t"
-    },
-    "facility_uid": {
-      "caption": "Facility UID",
-      "description": "The unique identifier of the facility.",
-      "type": "string_t"
     },
     "feature": {
       "caption": "Feature",
@@ -1313,11 +1248,6 @@
       "description": "The result of the folder change. It should contain the new values of the changed attributes.",
       "type": "file"
     },
-    "full_name": {
-      "caption": "Full Name",
-      "description": "The full name of a user.",
-      "type": "string_t"
-    },
     "function_keys": {
       "caption": "Function Keys",
       "description": "The number of function keys on client keyboard.",
@@ -1327,16 +1257,6 @@
       "caption": "Function Name",
       "description": "The entry-point function of the module. The system calls the entry-point function whenever a process or thread loads or unloads the module.",
       "type": "string_t"
-    },
-    "gateway_ip": {
-      "caption": "Gateway IP Address",
-      "description": "The gateway IP address. For example: <code>10.0.0.1</code>.",
-      "type": "ip_t"
-    },
-    "gateway_mac": {
-      "caption": "Gateway MAC Address",
-      "description": "The gateway media access control (MAC) address.",
-      "type": "mac_t"
     },
     "group": {
       "caption": "Group",
@@ -1363,11 +1283,6 @@
       "caption": "HASSH",
       "description": "The HASSH fingerprinting object.",
       "type": "hassh"
-    },
-    "home_dir": {
-      "caption": "Home",
-      "description": "The user's home folder.",
-      "type": "path_t"
     },
     "hostname": {
       "caption": "Hostname",
@@ -1660,53 +1575,6 @@
       "description": "The keyboard type (e.g., xt, ico).",
       "type": "string_t"
     },
-    "kill_chain_phase": {
-      "caption": "Kill Chain Phase",
-      "description": "The <a target='_blank' href='https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html'>Cyber Kill Chain®</a> phase.",
-      "type": "string_t"
-    },
-    "kill_chain_phase_id": {
-      "caption": "Kill Chain Phase ID",
-      "description": "The <a target='_blank' href='https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html'>Cyber Kill Chain®</a> phase identifier.",
-      "enum": {
-        "-1": {
-          "caption": "Other"
-        },
-        "0": {
-          "caption": "Unknown",
-          "description": "The kill chain phase is unknown."
-        },
-        "1": {
-          "caption": "Reconnaissance",
-          "description": "The attackers pick a target and perform a detailed analysis, start collecting information (email addresses, conferences information, etc.) and evaluate the victim’s vulnerabilities to determine how to exploit them."
-        },
-        "2": {
-          "caption": "Weaponization",
-          "description": "The attackers develop a malware weapon and aim to exploit the discovered vulnerabilities."
-        },
-        "3": {
-          "caption": "Delivery",
-          "description": "The intruders will use various tactics, such as phishing, infected USB drives, etc."
-        },
-        "4": {
-          "caption": "Exploitation",
-          "description": "The intruders start leveraging vulnerabilities to executed code on the victim’s system."
-        },
-        "5": {
-          "caption": "Installation",
-          "description": "The intruders install malware on the victim’s system."
-        },
-        "6": {
-          "caption": "Command & Control",
-          "description": "Malware opens a command channel to enable the intruders to remotely manipulate the victim's system."
-        },
-        "7": {
-          "caption": "Actions on Objectives",
-          "description": "With hands-on keyboard access, intruders accomplish the mission’s goal."
-        }
-      },
-      "type": "integer_t"
-    },
     "labels": {
       "caption": "Labels",
       "description": "The list of labels attached to an event, object, or attribute.",
@@ -1970,12 +1838,6 @@
       "caption": "Next Run",
       "description": "The next run time. See specific usage.",
       "type": "timestamp_t"
-    },
-    "nist": {
-      "caption": "NIST List",
-      "description": "The NIST Cybersecurity Framework recommendations for managing the cybersecurity risk.",
-      "is_array": true,
-      "type": "string_t"
     },
     "observables": {
       "caption": "Observables",
@@ -2505,11 +2367,6 @@
       "is_array": true,
       "type": "string_t"
     },
-    "resolved_ip": {
-      "caption": "IP Address",
-      "description": "The resolved IP address, in either IPv4 or IPv6 format. For example, Layer 4 load balancer translated IP address.",
-      "type": "ip_t"
-    },
     "resource": {
       "caption": "Resource",
       "description": "The target resource.",
@@ -2540,11 +2397,6 @@
       "caption": "Response Time",
       "description": "The Domain Name System (DNS) response time.",
       "type": "timestamp_t"
-    },
-    "risk": {
-      "caption": "Risk",
-      "description": "The Common Vulnerability Scoring System (CVSS) calculated risk.",
-      "type": "float_t"
     },
     "risk_level": {
       "caption": "Risk Level",
@@ -2796,11 +2648,6 @@
       "description": "The SMB share type.",
       "type": "string_t"
     },
-    "shell": {
-      "caption": "Shell",
-      "description": "The user's login shell.",
-      "type": "string_t"
-    },
     "signature": {
       "caption": "Digital Signature",
       "description": "The digital signature of the file.",
@@ -2845,16 +2692,6 @@
       "caption": "Start Time",
       "description": "The start time of a time period. See specific usage.",
       "type": "timestamp_t"
-    },
-    "state": {
-      "caption": "State",
-      "description": "The state of the event or object, as defined by the event source. See specific usage.",
-      "type": "string_t"
-    },
-    "state_id": {
-      "caption": "State ID",
-      "description": "The state ID of the event or object. See specific usage.",
-      "type": "integer_t"
     },
     "status": {
       "caption": "Status",

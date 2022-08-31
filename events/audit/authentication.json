@@ -1,13 +1,80 @@
 {
-  "caption": "Authentication Audit",
+  "caption": "Authentication",
   "uid": 2,
-  "name": "authentication_audit",
+  "name": "authentication",
   "extends": "audit",
-  "description": "Authentication Audit events report authentication session activities such as user attempts a logon or logoff, successfully or otherwise.",
+  "description": "Authentication events report authentication session activities such as user attempts a logon or logoff, successfully or otherwise.",
   "attributes": {
-    "$include": "includes/authentication.json",
     "activity_id": {
-      "$include": "enums/authentication.json"
+      "1": {
+        "description": "A new logon session was requested.",
+        "caption": "Logon"
+      },
+      "2": {
+        "description": "A logon session was terminated and no longer exists.",
+        "caption": "Logoff"
+      },
+      "3": {
+        "description": "A Kerberos authentication ticket (TGT) was requested.",
+        "caption": "Authentication Ticket"
+      },
+      "4": {
+        "description": "A Kerberos service ticket was requested.",
+        "caption": "Service Ticket"
+      }
+    },
+    "actor_process": {
+      "description": "The process that requested the authentication.",
+      "group": "context"
+    },
+    "auth_protocol": {
+      "requirement": "recommended",
+      "group": "primary"
+    },
+    "auth_protocol_id": {
+      "requirement": "recommended",
+      "group": "primary"
+    },
+    "dst_endpoint": {
+      "description": "The Endpoint for which the authentication was targeted.",
+      "requirement": "required",
+      "group": "primary"
+    },
+    "dst_user": {
+      "description": "The destination user to authenticate.",
+      "requirement": "required",
+      "group": "primary"
+    },
+    "is_cleartext": {
+      "requirement": "optional",
+      "group": "primary"
+    },
+    "is_remote": {
+      "requirement": "recommended",
+      "group": "primary"
+    },
+    "logon_process": {
+      "group": "context"
+    },
+    "logon_type": {
+      "requirement": "recommended",
+      "group": "primary"
+    },
+    "logon_type_id": {
+      "requirement": "recommended",
+      "group": "primary"
+    },
+    "src_endpoint": {
+      "description": "The Endpoint from which the authentication was requested.",
+      "requirement": "optional",
+      "group": "primary"
+    },
+    "src_user": {
+      "requirement": "optional",
+      "group": "primary"
+    },
+    "status_detail": {
+      "description": "The details about the authentication request. For example, possible details for Windows logon or logoff events are:<ul><li>Success</li><ul><li>LOGOFF_USER_INITIATED</li><li>LOGOFF_OTHER</li></ul><li>Failure</li><ul><li>USER_DOES_NOT_EXIST</li><li>INVALID_CREDENTIALS</li><li>ACCOUNT_DISABLED</li><li>ACCOUNT_LOCKED_OUT</li><li>PASSWORD_EXPIRED</li></ul></ul>"
     }
   },
   "associations": {

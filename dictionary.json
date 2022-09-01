@@ -307,6 +307,65 @@
       "description": "The BIOS version. For example: <code>LENOVO G5ETA2WW (2.62)</code>.",
       "type": "string_t"
     },
+    "boundary": {
+      "caption": "Boundary",
+      "description": "The boundary of the connection. For cloud connections, this translates to the traffic-boundary(same VPC, through IGW, etc.). For traditional networks, this is described as Local, Internal, or External.",
+      "type": "string_t"
+    },
+    "boundary_id": {
+      "caption": "Boundary ID",
+      "description": "The boundary of the connection. For cloud connections, this translates to the traffic-boundary (same VPC, through IGW, etc.). For traditional networks, this is described as Local, Internal, or External.",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Local",
+          "description": "Local network traffic on the same endpoint."
+        },
+        "10": {
+          "caption": "Gateway VPC",
+          "description": "Through a gateway VPC endpoint (Nitro-based instances only)"
+        },
+        "11": {
+          "caption": "Internet Gateway",
+          "description": "Through an Internet gateway (Nitro-based instances only)"
+        },
+        "2": {
+          "caption": "Internal",
+          "description": "Internal network traffic between two endpoints inside network."
+        },
+        "3": {
+          "caption": "External",
+          "description": "External network traffic between two endpoints on the Internet or outside the network."
+        },
+        "4": {
+          "caption": "Same VPC",
+          "description": "Through another resource in the same VPC"
+        },
+        "5": {
+          "caption": "Internet/VPC Gateway",
+          "description": "Through an Internet gateway or a gateway VPC endpoint"
+        },
+        "6": {
+          "caption": "Virtual Private Gateway",
+          "description": "Through a virtual private gateway"
+        },
+        "7": {
+          "caption": "Intra-region VPC",
+          "description": "Through an intra-region VPC peering connection"
+        },
+        "8": {
+          "caption": "Inter-region VPC",
+          "description": "Through an inter-region VPC peering connection"
+        },
+        "9": {
+          "caption": "Local Gateway",
+          "description": "Through a local gateway"
+        }
+      },
+      "type": "integer_t"
+    },
     "build": {
       "caption": "OS Build",
       "description": "The operating system build number.",
@@ -2830,65 +2889,6 @@
       "caption": "Traffic",
       "description": "The network traffic refers to the amount of data moving across a network at a given point of time. Intended to be used alongside Network Connection.",
       "type": "network_traffic"
-    },
-    "traffic_path": {
-      "caption": "Traffic Path",
-      "description": "The boundary of the connection. For cloud connections, this translates to the traffic-path (same VPC, through IGW, etc.). For traditional networks, this is described as Local, Internal, or External.",
-      "type": "string_t"
-    },
-    "traffic_path_id": {
-      "caption": "Traffic Path ID",
-      "description": "The boundary of the connection. For cloud connections, this translates to the traffic-path (same VPC, through IGW, etc.). For traditional networks, this is described as Local, Internal, or External.",
-      "enum": {
-        "0": {
-          "caption": "Unknown"
-        },
-        "1": {
-          "caption": "Local",
-          "description": "Local network traffic on the same endpoint."
-        },
-        "10": {
-          "caption": "Gateway VPC",
-          "description": "Through a gateway VPC endpoint (Nitro-based instances only)"
-        },
-        "11": {
-          "caption": "Internet Gateway",
-          "description": "Through an Internet gateway (Nitro-based instances only)"
-        },
-        "2": {
-          "caption": "Internal",
-          "description": "Internal network traffic between two endpoints inside network."
-        },
-        "3": {
-          "caption": "External",
-          "description": "External network traffic between two endpoints on the Internet or outside the network."
-        },
-        "4": {
-          "caption": "Same VPC",
-          "description": "Through another resource in the same VPC"
-        },
-        "5": {
-          "caption": "Internet/VPC Gateway",
-          "description": "Through an Internet gateway or a gateway VPC endpoint"
-        },
-        "6": {
-          "caption": "Virtual Private Gateway",
-          "description": "Through a virtual private gateway"
-        },
-        "7": {
-          "caption": "Intra-region VPC",
-          "description": "Through an intra-region VPC peering connection"
-        },
-        "8": {
-          "caption": "Inter-region VPC",
-          "description": "Through an inter-region VPC peering connection"
-        },
-        "9": {
-          "caption": "Local Gateway",
-          "description": "Through a local gateway"
-        }
-      },
-      "type": "integer_t"
     },
     "transaction_uid": {
       "caption": "Transaction UID",

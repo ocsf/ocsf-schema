@@ -4,6 +4,8 @@
   "description": "The network connection information object.",
   "extends": "object",
   "attributes": {
+    "boundary": {},
+    "boundary_id": {},
     "direction": {
       "description": "The direction of the initiated connection.",
       "requirement": "required"
@@ -11,6 +13,9 @@
     "direction_id": {
       "description": "The direction of the initiated connection.",
       "enum": {
+        "-1": {
+          "caption": "Other"
+        },
         "0": {
           "description": "Connection direction is unknown.",
           "caption": "Unknown"
@@ -22,6 +27,10 @@
         "2": {
           "description": "Outbound network connection. The connection was originated from inside the network, destined for services on the Internet or outside network.",
           "caption": "Outbound"
+        },
+        "3": {
+          "description": "Lateral network connection. The connection was originated from inside the network, destined for services on the inside network.",
+          "caption": "Lateral"
         }
       },
       "requirement": "required"
@@ -53,8 +62,6 @@
       "caption": "IP Version ID"
     },
     "tcp_flags": {},
-    "boundary": {},
-    "boundary_id": {},
     "uid": {
       "description": "The unique identifier of the connection.",
       "caption": "Connection UID"

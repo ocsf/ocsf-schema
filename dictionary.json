@@ -316,20 +316,16 @@
       "caption": "Boundary ID",
       "description": "The boundary of the connection. For cloud connections, this translates to the traffic-boundary (same VPC, through IGW, etc.). For traditional networks, this is described as Local, Internal, or External.",
       "enum": {
+        "-1": {
+          "caption": "Other"
+        },
         "0": {
-          "caption": "Unknown"
+          "caption": "Unknown",
+          "description": "The connection boundary is unknown."
         },
         "1": {
-          "caption": "Local",
+          "caption": "Localhost",
           "description": "Local network traffic on the same endpoint."
-        },
-        "10": {
-          "caption": "Gateway VPC",
-          "description": "Through a gateway VPC endpoint (Nitro-based instances only)"
-        },
-        "11": {
-          "caption": "Internet Gateway",
-          "description": "Through an Internet gateway (Nitro-based instances only)"
         },
         "2": {
           "caption": "Internal",
@@ -362,6 +358,14 @@
         "9": {
           "caption": "Local Gateway",
           "description": "Through a local gateway"
+        },
+        "10": {
+          "caption": "Gateway VPC",
+          "description": "Through a gateway VPC endpoint (Nitro-based instances only)"
+        },
+        "11": {
+          "caption": "Internet Gateway",
+          "description": "Through an Internet gateway (Nitro-based instances only)"
         }
       },
       "type": "integer_t"
@@ -1078,6 +1082,9 @@
       "caption": "Direction ID",
       "description": "The direction of the initiated connection, traffic, or email.",
       "enum": {
+        "-1": {
+          "caption": "Other"
+        },
         "0": {
           "caption": "Unknown",
           "description": "The direction is unknown."

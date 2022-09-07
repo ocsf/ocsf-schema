@@ -5,7 +5,6 @@
   "extends": "system",
   "uid": 7,
   "attributes": {
-    "$include": "includes/process.json",
     "activity_id": {
       "1": {
         "caption": "Launch"
@@ -22,6 +21,42 @@
       "5": {
         "caption": "Set User ID"
       }
+    },
+    "actor_process": {
+      "description": "The process that performed the operation or action on the target <code>process</code>. For example, the process that could have started a new process or injected code into another process."
+    },
+    "actual_permissions": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "exit_code": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "injection_type": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "injection_type_id": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "module": {
+      "description": "The module that was injected by the actor process.",
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "process": {
+      "description": "The process that was launched, injected into, opened, or terminated.",
+      "group": "primary",
+      "requirement": "required"
+    },
+    "requested_permissions": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "user": {
+      "description": "The user that started/created the new process."
     }
   }
 }

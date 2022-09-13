@@ -31,7 +31,7 @@ attributes to the dictionary, including new objects. As with categories, event c
 extensions have unique IDs within the framework as well as versioning.
 
 To extend the schema, create a new directory with same structure the top level schema directory. 
-The directory may contain the following optinal files and subdirectories.
+The directory may contain the following optional files and subdirectories.
 
 | Name              | Description                                                               |
 |-------------------|---------------------------------------------------------------------------|

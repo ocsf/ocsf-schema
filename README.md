@@ -30,10 +30,8 @@ creating categories, profiles or event classes from the dictionary. Extensions c
 attributes to the dictionary, including new objects. As with categories, event classes and profiles,
 extensions have unique IDs within the framework as well as versioning.
 
-To extend the schema create a new directory in the `schema/extensions` directory. The directory
-structure is the same as the top level schema directory, and it may contain the following files
-and subdirectories.
-
+To extend the schema, create a new directory with same structure the top level schema directory. 
+The directory may contain the following optional files and subdirectories.
 
 | Name              | Description                                                               |
 |-------------------|---------------------------------------------------------------------------|

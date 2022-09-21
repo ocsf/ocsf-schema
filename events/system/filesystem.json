@@ -1,0 +1,43 @@
+{
+  "attributes": {
+    "access_mask": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "activity_id": {
+      "$include": "enums/file_activity.json",
+      "description": "The activity ID of the event."
+    },
+    "component": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "connection_uid": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "create_mask": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "file": {
+      "description": "The file that is the target of the activity.",
+      "group": "primary",
+      "requirement": "required"
+    },
+    "file_diff": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "file_result": {
+      "description": "The resulting file object when the activity was allowed and successful.",
+      "group": "primary",
+      "requirement": "optional"
+    }
+  },
+  "caption": "File System Activity",
+  "description": "File System Activity events report when a process performs an action on a file or folder.",
+  "extends": "system",
+  "name": "file_activity",
+  "uid": 0
+}

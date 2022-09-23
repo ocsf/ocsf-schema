@@ -715,6 +715,12 @@
       "sibling": "category_name",
       "type": "integer_t"
     },
+    "cc": {
+      "caption": "Cc",
+      "description": "The email header Cc values, as defined by RFC 5322.",
+      "is_array": true,
+      "type": "email_t"
+    },
     "certificate": {
       "caption": "Certificate",
       "description": "The certificate object containing information about the digital certificate.",
@@ -1139,6 +1145,11 @@
       "sibling": "direction",
       "type": "integer_t"
     },
+    "delivered_to": {
+      "caption": "Delivered To",
+      "description": "The <strong>Delivered-To</strong> email header field.",
+      "type": "email_t"
+    },
     "disposition": {
       "caption": "Disposition",
       "description": "When malware is detected, then <code>disposition_id</code> describes the action taken by the security product.",
@@ -1229,6 +1240,11 @@
       "caption": "OS Edition",
       "description": "The operating system edition. For example: <code>Professional</code>.",
       "type": "string_t"
+    },
+    "email": {
+      "caption": "Email",
+      "description": "The email object.",
+      "type": "email"
     },
     "email_addr": {
       "caption": "Email Address",
@@ -1366,6 +1382,11 @@
       "caption": "Frame Buffer",
       "description": "The frame buffer object describes the details pertaining to the color/pixel data associated with the computer display.",
       "type": "frame_buffer"
+    },
+    "from": {
+      "caption": "From",
+      "description": "The email header From values, as defined by RFC 5322.",
+      "type": "email_t"
     },
     "function_keys": {
       "caption": "Function Keys",
@@ -1853,6 +1874,11 @@
     "message": {
       "caption": "Message",
       "description": "The description of the event, as defined by the event source.",
+      "type": "string_t"
+    },
+    "message_uid": {
+      "caption": "Message UID",
+      "description": "The email header Message-Id value, as defined by RFC 5322.",
       "type": "string_t"
     },
     "metadata": {
@@ -2482,6 +2508,11 @@
       "description": "The remote display affiliated with the event",
       "type": "display"
     },
+    "reply_to": {
+      "caption": "Reply To",
+      "description": "The email header Reply-To values, as defined by RFC 5322.",
+      "type": "email_t"
+    },
     "report_confidence_id": {
       "caption": "Report Confidence (RC)",
       "description": "The Report Confidence Common Vulnerability Scoring System (CVSS) metric.",
@@ -2803,6 +2834,22 @@
       "description": "The size of data, in bytes.",
       "type": "long_t"
     },
+    "smtp_from": {
+      "caption": "SMTP From",
+      "description": "The value of the SMTP MAIL FROM command.",
+      "type": "email_t"
+    },
+    "smtp_hello": {
+      "caption": "SMTP Hello",
+      "description": "The value of the SMTP HELO or EHLO command.",
+      "type": "string_t"
+    },
+    "smtp_to": {
+      "caption": "SMTP To",
+      "description": "The value of the SMTP envelope RCPT TO command.",
+      "is_array": true,
+      "type": "email_t"
+    },
     "sni": {
       "caption": "Server Name Indication",
       "description": " The Server Name Indication (SNI) extension sent by the client.",
@@ -2878,6 +2925,11 @@
       },
       "sibling": "status",
       "type": "integer_t"
+    },
+    "subject": {
+      "caption": "Subject",
+      "description": "The email header Subject value, as defined by RFC 5322.",
+      "type": "string_t"
     },
     "subject_dn": {
       "caption": "Subject Distinguished Name",
@@ -2970,6 +3022,12 @@
       "caption": "TLS",
       "description": "The Transport Layer Security (TLS) attributes.",
       "type": "tls"
+    },
+    "to": {
+      "caption": "To",
+      "description": "The email header To values, as defined by RFC 5322.",
+      "is_array": true,
+      "type": "email_t"
     },
     "traffic": {
       "caption": "Traffic",
@@ -3124,6 +3182,12 @@
     "x_forwarded_for": {
       "caption": "X-Forwarded-For",
       "description": "The X-Forwarded-For header identifying the originating IP address(es) of a client connecting to a web server through an HTTP proxy or a load balancer.",
+      "is_array": true,
+      "type": "ip_t"
+    },
+    "x_originating_ip": {
+      "caption": "X-Originating-IP",
+      "description": "The X-Originating-IP header identifying the emails originating IP address(es).",
       "is_array": true,
       "type": "ip_t"
     },

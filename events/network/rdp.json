@@ -3,21 +3,22 @@
   "uid": 5,
   "name": "rdp_activity",
   "profiles": [
-    "user",
-    "host"
+    "user"
   ],
   "category": "network",
   "description": "Remote Desktop Protocol (RDP) Activity events report remote client connections to a server as seen on the network.",
   "extends": "network_activity",
   "attributes": {
+    "capabilities": {
+      "requirement": "optional"
+    },
     "certificate_chain": {
       "description": "The list of observed certificates in an RDP TLS connection.",
       "group": "primary",
       "requirement": "optional"
     },
-    "client": {
-      "description": "The client information in an RDP network connection.",
-      "group": "context",
+    "device": {
+      "description": "The device instigating the RDP connection.",
       "requirement": "optional"
     },
     "identifier_cookie": {
@@ -30,14 +31,17 @@
       "group": "context",
       "requirement": "recommended"
     },
+    "ref_event_name": {
+      "description": "The RDP event name (e.g. initial_request, initial_response, connect_request, connect_response, tls_handshake).",
+      "caption": "RDP Event Name"
+    },
+    "remote_display": {
+      "requirement": "optional"
+    },
     "request": {
       "description": "The client request in an RDP network connection.",
       "requirement": "required",
       "group": "primary"
-    },
-    "ref_event_name": {
-      "description": "The RDP event name (e.g. initial_request, initial_response, connect_request, connect_response, tls_handshake).",
-      "caption": "RDP Event Name"
     },
     "response": {
       "description": "The server response in an RDP network connection.",

@@ -50,13 +50,13 @@
       "type": "string_t"
     },
     "account_type": {
-      "caption": "Account Type ID",
-      "description": "The user account type (e.g. AWS, LDAP, Windows account, etc.).",
+      "caption": "Account Type",
+      "description": "The user account type, as defined by the event source.",
       "type": "string_t"
     },
     "account_type_id": {
       "caption": "Account Type ID",
-      "description": "The user account type identifier (e.g. AWS, LDAP, Windows account, etc.).",
+      "description": "The normalized user account type identifier.",
       "enum": {
         "-1": {
           "caption": "Other",
@@ -90,9 +90,9 @@
       "description": "The unique identifier of the account(e.g. AWS Account ID).",
       "type": "string_t"
     },
-    "activity": {
+    "activity_name": {
       "caption": "Activity",
-      "description": "The original activity that triggered the alert event.",
+      "description": "The event activity name, as defined by the activity_id.",
       "type": "string_t"
     },
     "activity_id": {
@@ -108,7 +108,7 @@
           "description": "The event activity is unknown."
         }
       },
-      "sibling": "activity",
+      "sibling": "activity_name",
       "type": "integer_t"
     },
     "actor_process": {
@@ -128,7 +128,7 @@
     },
     "algorithm": {
       "caption": "Algorithm",
-      "description": "The original hash algorithm, as reported by the event source, which was used to create the digital fingerprint.",
+      "description": "The hash algorithm, as reported by the event source, which was used to create the digital fingerprint.",
       "type": "string_t"
     },
     "algorithm_id": {
@@ -214,7 +214,7 @@
     },
     "auth_protocol_id": {
       "caption": "Auth Protocol ID",
-      "description": "The authentication protocol used to create the user session.",
+      "description": "The normalized identifier of the authentication protocol used to create the user session.",
       "enum": {
         "-1": {
           "caption": "Other"
@@ -324,12 +324,12 @@
     },
     "boundary": {
       "caption": "Boundary",
-      "description": "The boundary of the connection. For cloud connections, this translates to the traffic-boundary(same VPC, through IGW, etc.). For traditional networks, this is described as Local, Internal, or External.",
+      "description": "The boundary of the connection, as defined by the event source. <p> For cloud connections, this translates to the traffic-boundary(same VPC, through IGW, etc.). For traditional networks, this is described as Local, Internal, or External.</p>",
       "type": "string_t"
     },
     "boundary_id": {
       "caption": "Boundary ID",
-      "description": "The boundary of the connection. For cloud connections, this translates to the traffic-boundary (same VPC, through IGW, etc.). For traditional networks, this is described as Local, Internal, or External.",
+      "description": "The normalized identifier of the boundary of the connection. </p> For cloud connections, this translates to the traffic-boundary (same VPC, through IGW, etc.). For traditional networks, this is described as Local, Internal, or External.</p>",
       "enum": {
         "-1": {
           "caption": "Other"
@@ -769,19 +769,19 @@
     },
     "class_name": {
       "caption": "Class",
-      "description": "The class name of the event.",
+      "description": "The event class name, as defined by class_uid. A Class describes the attributes available in an event.",
       "type": "string_t"
     },
     "class_uid": {
       "caption": "Class ID",
       "default": 0,
-      "description": "The class identifier describes the attributes available in an event.",
+      "description": "The unique identifier of a class. A Class describes the attributes available in an event.",
       "sibling": "class_name",
       "type": "integer_t"
     },
     "classification_ids": {
       "caption": "Classification IDs",
-      "description": "An array of malware classifications. Reference: <a target='_blank' href='https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_oxlc4df65spl'>STIX Malware Types</a> ",
+      "description": "The list of normalzied identifiers of the malware classifications. Reference: <a target='_blank' href='https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_oxlc4df65spl'>STIX Malware Types</a> ",
       "enum": {},
       "is_array": true,
       "sibling": "classifications",
@@ -789,7 +789,7 @@
     },
     "classifications": {
       "caption": "Classifications",
-      "description": "The malware classifications.",
+      "description": "The list of malware classifications, as defined by the event source.",
       "is_array": true,
       "type": "string_t"
     },
@@ -812,7 +812,7 @@
     },
     "cloud": {
       "caption": "Cloud",
-      "description": "The cloud where the event was originally created or logged.",
+      "description": "Describes details about the Cloud enviroment where the event was originally created or logged.",
       "type": "cloud"
     },
     "cloud_partition": {
@@ -899,12 +899,12 @@
     },
     "confidentiality": {
       "caption": "Confidentiality",
-      "description": "The file content confidentiality.",
+      "description": "The file content confidentiality, as defined by the event source.",
       "type": "string_t"
     },
     "confidentiality_id": {
       "caption": "Confidentiality ID",
-      "description": "The file content confidentiality indicator.",
+      "description": "The normalized identifier of the file content confidentiality indicator.",
       "enum": {
         "-1": {
           "caption": "Other"
@@ -1119,12 +1119,12 @@
     },
     "direction": {
       "caption": "Direction",
-      "description": "The direction of the initiated connection, traffic, or email.",
+      "description": "The direction of the initiated connection, traffic, or email, as defined by the event source.",
       "type": "string_t"
     },
     "direction_id": {
       "caption": "Direction ID",
-      "description": "The direction of the initiated connection, traffic, or email.",
+      "description": "The normalized identifier of the direction of the initiated connection, traffic, or email.",
       "enum": {
         "-1": {
           "caption": "Other"
@@ -1356,7 +1356,7 @@
     },
     "flag_ids": {
       "caption": "Communication Flag IDs",
-      "description": "The list of communication flag IDs.",
+      "description": "The list of normalized identifiers of the communication flag IDs.",
       "enum": {},
       "is_array": true,
       "sibling": "flags",
@@ -1364,7 +1364,7 @@
     },
     "flags": {
       "caption": "Flags",
-      "description": "The list of communication flags.",
+      "description": "The list of communication flags, as defined by the event source.",
       "is_array": true,
       "type": "string_t"
     },
@@ -1508,12 +1508,12 @@
     },
     "injection_type": {
       "caption": "Injection Type",
-      "description": "The process injection method.",
+      "description": "The process injection method, as defined by the event source.",
       "type": "string_t"
     },
     "injection_type_id": {
       "caption": "Injection Type ID",
-      "description": "The normalized process injection type identifier.",
+      "description": "The normalized identifier of the process injection method.",
       "enum": {
         "-1": {
           "caption": "Other"
@@ -1538,13 +1538,13 @@
     },
     "integrity": {
       "caption": "Integrity",
-      "description": "The process integrity (Windows only).",
+      "description": "The process integrity level, as defined by the event source. (Windows only).",
       "sibling": "integrity",
       "type": "string_t"
     },
     "integrity_id": {
       "caption": "Integrity Level",
-      "description": "The process integrity level (Windows only).",
+      "description": "The normalized identifier of the process integrity level (Windows only).",
       "enum": {},
       "type": "integer_t"
     },
@@ -1759,12 +1759,12 @@
     },
     "load_type": {
       "caption": "Load Type",
-      "description": "The load type describes how the module was loaded in memory.",
+      "description": "The load type, as defined by the event source. It describes how the module was loaded in memory.",
       "type": "string_t"
     },
     "load_type_id": {
       "caption": "Load Type ID",
-      "description": "The load type identifies how the module was loaded in memory.",
+      "description": "The normalized identifier of the load type. It identifies how the module was loaded in memory.",
       "enum": {},
       "sibling": "load_type",
       "type": "integer_t"
@@ -1792,7 +1792,7 @@
     },
     "logon_type": {
       "caption": "Logon Type",
-      "description": "The logon type.",
+      "description": "The logon type, as defined by the event source.",
       "type": "string_t"
     },
     "logon_type_id": {
@@ -2180,7 +2180,7 @@
     },
     "priority": {
       "caption": "Priority",
-      "description": "The original priority, as defined by the event source.",
+      "description": "The priority, as defined by the event source. See specific usage.",
       "type": "integer_t"
     },
     "priority_id": {
@@ -2245,12 +2245,12 @@
     },
     "protocol_ver": {
       "caption": "Protocol Version",
-      "description": "The Protocol version.",
+      "description": "The Protocol version, as defined by the event source.",
       "type": "string_t"
     },
     "protocol_ver_id": {
       "caption": "Protocol Version ID",
-      "description": "The Protocol version identifier.",
+      "description": "The normalied identifier of the Protocol version.",
       "enum": {},
       "sibling": "protocol_ver",
       "type": "integer_t"
@@ -2287,17 +2287,17 @@
     },
     "raw_score": {
       "caption": "Reputation Score",
-      "description": "The original reputation score as reported by the event source.",
+      "description": "The reputation score as reported by the event source.",
       "type": "float_t"
     },
     "rcode": {
       "caption": "Response Code",
-      "description": "The DNS server response code. See <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc6895'>RFC-6895</a>.",
+      "description": "The DNS server response code, as defined by the event source.",
       "type": "string_t"
     },
     "rcode_id": {
       "caption": "Response Code ID",
-      "description": "The DNS server response code id. See <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc6895'>RFC-6895</a>.",
+      "description": "The normalized identifier of the DNS server response code. See <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc6895'>RFC-6895</a>.",
       "enum": {
         "-1": {
           "caption": "Other",
@@ -2567,7 +2567,7 @@
     },
     "risk_level": {
       "caption": "Risk Level",
-      "description": "The normalized risk level.",
+      "description": "The risk level, as defined by the event source.",
       "type": "string_t"
     },
     "risk_level_id": {
@@ -2595,7 +2595,7 @@
     },
     "risk_score": {
       "caption": "Risk Score",
-      "description": "The original risk score as reported by the event source.",
+      "description": "The risk score as reported by the event source.",
       "type": "integer_t"
     },
     "rule": {
@@ -2610,12 +2610,12 @@
     },
     "run_state": {
       "caption": "Run State",
-      "description": "The state of the job or service. See specific usage.",
+      "description": "The state of the job or service, as defined by the event source. See specific usage.",
       "type": "string_t"
     },
     "run_state_id": {
       "caption": "Run State ID",
-      "description": "The state of the job or service. See specific usage.",
+      "description": "The normalized identifier of the state of the job or service. See specific usage.",
       "enum": {},
       "sibling": "run_state",
       "type": "integer_t"
@@ -2657,8 +2657,8 @@
       "type": "integer_t"
     },
     "score": {
-      "caption": "Reputation Score Name",
-      "description": "The reputation score caption.",
+      "caption": "Reputation Score",
+      "description": "The reputation score, as defined by the event source.",
       "type": "string_t"
     },
     "score_id": {
@@ -2766,12 +2766,12 @@
     },
     "severity": {
       "caption": "Severity",
-      "description": "The original event severity, as defined by the event source.</p>The severity is a measurement the effort and expense required to manage and resolve an event or incident.",
+      "description": "The event severity, as defined by the event source.",
       "type": "string_t"
     },
     "severity_id": {
       "caption": "Severity ID",
-      "description": "The normalized event severity.</p>The normalized severity is a measurement the effort and expense required to manage and resolve an event or incident. Smaller numerical values represent lower impact events, and larger numerical values represent higher impact events.",
+      "description": "The normalized identifier of the event severity.</p>The normalized severity is a measurement the effort and expense required to manage and resolve an event or incident. Smaller numerical values represent lower impact events, and larger numerical values represent higher impact events.",
       "enum": {
         "-1": {
           "caption": "Other",
@@ -2892,7 +2892,17 @@
     },
     "state_id": {
       "caption": "State ID",
-      "description": "The state ID of the event or object. See specific usage.",
+      "description": "The normalized state ID of the event or object. See specific usage.",
+      "enum": {
+        "-1": {
+          "caption": "Other",
+          "description": "The state is not mapped. See the <code>state</code> attribute, which contains a data source specific value."
+        },
+        "0": {
+          "caption": "Unknown"
+        }
+      },
+      "sibling": "state",
       "type": "integer_t"
     },
     "status": {
@@ -2912,7 +2922,7 @@
     },
     "status_id": {
       "caption": "Status ID",
-      "description": "The cross-platform normalized status of the activity or alert reported by the event.",
+      "description": "The normalized identifier of the event status.",
       "enum": {
         "-1": {
           "caption": "Other",
@@ -3061,13 +3071,13 @@
     },
     "type": {
       "caption": "Type",
-      "description": "The type of an object or value. See specific usage.",
+      "description": "The type of an object or value, as defined by the event source. See specific usage.",
       "type": "string_t"
     },
     "type_id": {
       "caption": "Type ID",
       "default": 0,
-      "description": "The type identifier of an object. See specific usage.",
+      "description": "The normalized type identifier of an object. See specific usage.",
       "enum": {
         "-1": {
           "caption": "Other",
@@ -3088,7 +3098,7 @@
     },
     "type_uid": {
       "caption": "Type ID",
-      "description": "The event type ID identifies the event's semantics and structure. The value is calculated by the logging system as: <code>class_uid * 100 + activity_id</code>.",
+      "description": "The event type ID. It identifies the event's semantics and structure. The value is calculated by the logging system as: <code>class_uid * 100 + activity_id</code>.",
       "sibling": "type_name",
       "type": "integer_t"
     },

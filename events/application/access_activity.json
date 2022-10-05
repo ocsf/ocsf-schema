@@ -1,0 +1,62 @@
+{
+    "uid": 1,
+    "category": "application",
+    "description": "Access activity events describe successful/failed attempts to access an application.",
+    "extends": "base_event",
+    "caption": "Access Activity",
+    "name": "access_activity",
+    "profiles": [
+        "host"
+      ],
+    "attributes": {
+        "$include": [
+            "profiles/host.json"
+          ],
+        "activity_id": {
+            "enum": {
+                "1": {
+                    "caption": "Access Granted",
+                    "description": "The incoming request has permission to the application resource."
+                },
+                "2": {
+                    "caption": "Access Denied",
+                    "description": "The incoming request does not have permission to the application resource."
+                },
+                "3": {
+                    "caption": "Access Revoked",
+                    "description": "The incoming request's access has been revoked due to security policy enforcements/changes. (i.e. security state of device changes)"
+                },
+                "4": {
+                    "caption": "Access Error",
+                    "description": "An error occurred during processing the request."
+                }
+            }
+        },
+        "http_request": {
+            "requirement": "required",
+            "group": "primary"
+        },
+        "http_response": {
+            "requirement": "required",
+            "group": "primary"
+        },
+        "identity": {
+            "requirement": "optional",
+            "group": "context"
+        },
+        "src_endpoint": {
+            "description": "Details about the source endpoint of the connection.",
+            "requirement": "recommended",
+            "group": "primary"
+        },
+        "proxy": {
+            "description": "Details about the proxy if available.",
+            "requirement": "optional",
+            "group": "context"
+        },
+        "tls": {
+            "requirement": "optional",
+            "group": "context"
+        }
+    }
+}

@@ -63,7 +63,7 @@
       "requirement": "recommended"
     },
     "pid": {
-      "requirement": "required"
+      "requirement": "recommended"
     },
     "run_as": {
       "requirement": "optional"
@@ -75,7 +75,7 @@
       "requirement": "optional"
     },
     "uid": {
-      "description": "The process unique identifier, as reported by the event source, such as a UUID. Allows correlation of a process event with other events for that process.",
+      "description": "A unique identifier for this process assigned by the producer (tool).  Facilitates correlation of a process event with other events for that process.",
       "caption": "Process UID",
       "requirement": "recommended"
     },
@@ -83,5 +83,11 @@
       "description": "An unordered collection of zero or more name/value pairs that represent a process extended attribute.",
       "requirement": "optional"
     }
+  },
+  "constraints": {
+    "at_least_one": [
+      "pid",
+      "uid"
+    ]
   }
 }

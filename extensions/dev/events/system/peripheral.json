@@ -1,13 +1,37 @@
 {
-  "attributes": {
-    "$include": "includes/peripheral.json",
-    "activity_id": {
-      "$include": "enums/peripheral_activity.json"
-    }
-  },
   "caption": "Peripheral Activity",
   "description": "Peripheral Activity events report peripheral device activity.",
   "extends": "system",
   "name": "peripheral_activity",
-  "uid": 6
+  "uid": 6,
+  "attributes": {
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Read"
+        },
+        "2": {
+          "caption": "Write"
+        },
+        "3": {
+          "caption": "Delete"
+        },
+        "4": {
+          "caption": "Device Mount"
+        },
+        "5": {
+          "caption": "Execute"
+        }
+      }
+    },
+    "file": {
+      "description": "The file that pertains to the event.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "peripheral_device": {
+      "group": "primary",
+      "requirement": "required"
+    }
+  }
 }

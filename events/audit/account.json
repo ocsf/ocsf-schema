@@ -1,14 +1,10 @@
 {
   "caption": "Account Change",
-  "uid": 1,
-  "name": "account_change",
-  "extends": "audit",
   "description": "Account Change events report when specific user account management tasks are performed, such as a user account is created, changed, deleted, renamed, disabled, enabled, locked out or unlocked.",
+  "extends": "audit",
+  "name": "account_change",
+  "uid": 1,
   "attributes": {
-    "actor_process": {
-      "description": "The process that requested the account changes.",
-      "group": "context"
-    },
     "activity_id": {
       "enum": {
         "1": {
@@ -45,17 +41,18 @@
         }
       }
     },
-    "dst_user": {
-      "requirement": "required",
-      "group": "primary"
+    "actor": {
+      "description": "The actor that requested the account changes.",
+      "group": "context"
     },
-    "src_user": {
-      "requirement": "optional",
-      "group": "primary"
+    "user": {
+      "description": "The user that was a target of an activity.",
+      "group": "primary",
+      "requirement": "required"
     },
     "user_result": {
-      "requirement": "optional",
-      "group": "primary"
+      "group": "primary",
+      "requirement": "optional"
     }
   }
 }

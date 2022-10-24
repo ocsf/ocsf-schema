@@ -4,23 +4,22 @@
   "extends": "base_event",
   "name": "system",
   "profiles": [
-    "user",
     "host",
     "malware"
   ],
   "associations": {
-    "origin.device": [
-      "user"
+    "device": [
+      "actor.user"
     ],
-    "user": [
-      "origin.device"
+    "actor.user": [
+      "device"
     ]
   },
   "attributes": {
     "$include": [
       "profiles/malware.json"
     ],
-    "actor_process": {
+    "actor": {
       "group": "primary",
       "requirement": "required"
     },
@@ -30,11 +29,6 @@
     },
     "is_user_present": {
       "group": "context"
-    },
-    "user": {
-      "description": "The user that pertains to the event.",
-      "group": "context",
-      "requirement": "recommended"
     }
   }
 }

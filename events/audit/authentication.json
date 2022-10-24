@@ -1,88 +1,92 @@
 {
   "caption": "Authentication",
-  "uid": 2,
-  "name": "authentication",
-  "extends": "audit",
   "description": "Authentication events report authentication session activities such as user attempts a logon or logoff, successfully or otherwise.",
+  "extends": "audit",
+  "name": "authentication",
+  "uid": 2,
+  "associations": {
+    "dst_endpoint": [
+      "user"
+    ],
+    "user": [
+      "dst_endpoint"
+    ],
+    "src_endpoint": [
+      "actor.user"
+    ],
+    "actor.user": [
+      "src_endpoint"
+    ]
+  },
   "attributes": {
     "activity_id": {
       "enum": {
         "1": {
-          "description": "A new logon session was requested.",
-          "caption": "Logon"
+          "caption": "Logon",
+          "description": "A new logon session was requested."
         },
         "2": {
-          "description": "A logon session was terminated and no longer exists.",
-          "caption": "Logoff"
+          "caption": "Logoff",
+          "description": "A logon session was terminated and no longer exists."
         },
         "3": {
-          "description": "A Kerberos authentication ticket (TGT) was requested.",
-          "caption": "Authentication Ticket"
+          "caption": "Authentication Ticket",
+          "description": "A Kerberos authentication ticket (TGT) was requested."
         },
         "4": {
-          "description": "A Kerberos service ticket was requested.",
-          "caption": "Service Ticket"
+          "caption": "Service Ticket",
+          "description": "A Kerberos service ticket was requested."
         }
       }
     },
-    "actor_process": {
-      "description": "The process that requested the authentication.",
+    "actor": {
+      "description": "The actor that requested the authentication.",
       "group": "context"
     },
     "auth_protocol": {
-      "requirement": "recommended",
-      "group": "primary"
+      "group": "primary",
+      "requirement": "recommended"
     },
     "auth_protocol_id": {
-      "requirement": "recommended",
-      "group": "primary"
+      "group": "primary",
+      "requirement": "recommended"
     },
     "dst_endpoint": {
       "description": "The Endpoint for which the authentication was targeted.",
-      "requirement": "required",
-      "group": "primary"
+      "group": "primary",
+      "requirement": "required"
     },
-    "dst_user": {
+    "user": {
       "description": "The destination user to authenticate.",
-      "requirement": "required",
-      "group": "primary"
+      "group": "primary",
+      "requirement": "required"
     },
     "is_cleartext": {
-      "requirement": "optional",
-      "group": "primary"
+      "group": "primary",
+      "requirement": "optional"
     },
     "is_remote": {
-      "requirement": "recommended",
-      "group": "primary"
+      "group": "primary",
+      "requirement": "recommended"
     },
     "logon_process": {
       "group": "context"
     },
     "logon_type": {
-      "requirement": "recommended",
-      "group": "primary"
+      "group": "primary",
+      "requirement": "recommended"
     },
     "logon_type_id": {
-      "requirement": "recommended",
-      "group": "primary"
+      "group": "primary",
+      "requirement": "recommended"
     },
     "src_endpoint": {
       "description": "The Endpoint from which the authentication was requested.",
-      "requirement": "optional",
-      "group": "primary"
-    },
-    "src_user": {
-      "requirement": "optional",
-      "group": "primary"
+      "group": "primary",
+      "requirement": "optional"
     },
     "status_detail": {
       "description": "The details about the authentication request. For example, possible details for Windows logon or logoff events are:<ul><li>Success</li><ul><li>LOGOFF_USER_INITIATED</li><li>LOGOFF_OTHER</li></ul><li>Failure</li><ul><li>USER_DOES_NOT_EXIST</li><li>INVALID_CREDENTIALS</li><li>ACCOUNT_DISABLED</li><li>ACCOUNT_LOCKED_OUT</li><li>PASSWORD_EXPIRED</li></ul></ul>"
     }
-  },
-  "associations": {
-    "src_endpoint": ["src_user"],
-    "dst_endpoint": ["dst_user"],
-    "src_user": ["src_endpoint"],
-    "dst_user": ["dst_endpoint"]
   }
 }

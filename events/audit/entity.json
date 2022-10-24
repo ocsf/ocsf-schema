@@ -5,43 +5,38 @@
   "extends": "audit",
   "description": "Entity Audit events report activity by a managed client, a micro service, or a user at a management console. The activity can be a create, read, update, and delete operation on a managed entity.",
   "attributes": {
-    "comment": {
-      "description": "The user provided comment about why the entity was changed.",
-      "requirement": "optional",
-      "group": "primary"
-    },
     "activity_id": {
       "enum": {
         "1": {
-          "caption": "Created"
+          "caption": "Create"
         },
         "2": {
           "caption": "Read"
         },
         "3": {
-          "caption": "Updated"
+          "caption": "Update"
         },
         "4": {
-          "caption": "Deleted"
+          "caption": "Delete"
         }
       }
     },
+    "actor": {
+      "description": "Use for when the entity acting upon another entity is a process or user.",
+      "group": "context"
+    },
+    "comment": {
+      "description": "The user provided comment about why the entity was changed.",
+      "group": "primary",
+      "requirement": "optional"
+    },
     "entity": {
-      "requirement": "required",
-      "group": "primary"
+      "group": "primary",
+      "requirement": "required"
     },
     "entity_result": {
-      "requirement": "optional",
-      "group": "primary"
-    },
-    "src_user": {
-      "requirement": "recommended",
-      "description": "Use for when the entity acting upon another entity is a user",
-      "group": "context"
-    },
-    "actor_process": {
-      "description": "Use for when the entity acting upon another entity is a process",
-      "group": "context"
+      "group": "primary",
+      "requirement": "optional"
     }
   }
 }

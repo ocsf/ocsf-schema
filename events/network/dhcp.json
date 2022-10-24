@@ -1,58 +1,55 @@
 {
   "caption": "DHCP Activity",
-  "uid": 4,
-  "name": "dhcp_activity",
   "category": "network",
   "description": "DHCP Activity events report MAC to IP assignment via DHCP.",
   "extends": "base_event",
+  "name": "dhcp_activity",
   "profiles": [
-    "cloud",
-    "host",
-    "user"
+    "host"
   ],
+  "uid": 4,
   "attributes": {
     "$include": [
       "profiles/cloud.json",
-      "profiles/host.json",
-      "profiles/user.json"
+      "profiles/host.json"
     ],
     "activity_id": {
       "enum": {
         "1": {
-          "description": "DHCPDISCOVER",
-          "caption": "Discover"
+          "caption": "Discover",
+          "description": "DHCPDISCOVER"
         },
         "2": {
-          "description": "DHCPOFFER",
-          "caption": "Offer"
+          "caption": "Offer",
+          "description": "DHCPOFFER"
         },
         "3": {
-          "description": "DHCPREQUEST",
-          "caption": "Request"
+          "caption": "Request",
+          "description": "DHCPREQUEST"
         },
         "4": {
-          "description": "DHCPDECLINE",
-          "caption": "Decline"
+          "caption": "Decline",
+          "description": "DHCPDECLINE"
         },
         "5": {
-          "description": "DHCPACK: The server accepts the request by sending the client a DHCP Acknowledgment message.",
-          "caption": "Ack"
+          "caption": "Ack",
+          "description": "DHCPACK: The server accepts the request by sending the client a DHCP Acknowledgment message."
         },
         "6": {
-          "description": "DHCPNAK",
-          "caption": "Nak"
+          "caption": "Nak",
+          "description": "DHCPNAK"
         },
         "7": {
-          "description": "DHCPRELEASE: A DHCP client sends a DHCPRELEASE packet to the server to release the IP address and cancel any remaining lease.",
-          "caption": "Release"
+          "caption": "Release",
+          "description": "DHCPRELEASE: A DHCP client sends a DHCPRELEASE packet to the server to release the IP address and cancel any remaining lease."
         },
         "8": {
-          "description": "DHCPINFORM",
-          "caption": "Inform"
+          "caption": "Inform",
+          "description": "DHCPINFORM"
         },
         "9": {
-          "description": "DHCPEXPIRE: A DHCP lease expired.",
-          "caption": "Expire"
+          "caption": "Expire",
+          "description": "DHCPEXPIRE: A DHCP lease expired."
         }
       },
       "requirement": "required"

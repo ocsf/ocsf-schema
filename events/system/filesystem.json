@@ -1,4 +1,9 @@
 {
+  "caption": "File System Activity",
+  "description": "File System Activity events report when a process performs an action on a file or folder.",
+  "extends": "system",
+  "name": "file_activity",
+  "uid": 0,
   "attributes": {
     "access_mask": {
       "group": "context",
@@ -8,8 +13,8 @@
       "$include": "enums/file_activity.json",
       "description": "The activity ID of the event."
     },
-    "actor_process": {
-      "description": "The process that performed the activity on the <code>file</code> object",
+    "actor": {
+      "description": "The actor that performed the activity on the <code>file</code> object",
       "requirement": "required"
     },
     "component": {
@@ -38,10 +43,5 @@
       "group": "primary",
       "requirement": "optional"
     }
-  },
-  "caption": "File System Activity",
-  "description": "File System Activity events report when a process performs an action on a file or folder.",
-  "extends": "system",
-  "name": "file_activity",
-  "uid": 0
+  }
 }

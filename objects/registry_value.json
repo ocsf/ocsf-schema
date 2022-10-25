@@ -1,12 +1,30 @@
 {
   "caption": "Registry Value",
-  "observable": 29,
-  "name": "registry_value",
   "description": "The registry value object describes a Windows registry value.",
   "extends": "object",
+  "name": "registry_value",
+  "observable": 29,
   "attributes": {
+    "data": {
+      "description": "The data of the registry value.",
+      "requirement": "optional"
+    },
+    "is_default": {
+      "requirement": "optional"
+    },
+    "is_system": {
+      "requirement": "optional"
+    },
+    "modified_time": {
+      "description": "The time when the registry value was last modified.",
+      "requirement": "optional"
+    },
     "name": {
       "description": "The name of the registry value.",
+      "requirement": "required"
+    },
+    "path": {
+      "description": "The full path to the registry key, where the value is located.",
       "requirement": "required"
     },
     "type": {
@@ -18,6 +36,9 @@
       "enum": {
         "1": {
           "caption": "REG_BINARY"
+        },
+        "10": {
+          "caption": "REG_SZ"
         },
         "2": {
           "caption": "REG_DWORD"
@@ -42,30 +63,9 @@
         },
         "9": {
           "caption": "REG_QWORD_LITTLE_ENDIAN"
-        },
-        "10": {
-          "caption": "REG_SZ"
         }
       },
       "requirement": "recommended"
-    },
-    "data": {
-      "description": "The data of the registry value.",
-      "requirement": "optional"
-    },
-    "is_default": {
-      "requirement": "optional"
-    },
-    "is_system": {
-      "requirement": "optional"
-    },
-    "modified_time": {
-      "description": "The time when the registry value was last modified.",
-      "requirement": "optional"
-    },
-    "path": {
-      "description": "The full path to the registry key, where the value is located.",
-      "requirement": "required"
     }
   }
 }

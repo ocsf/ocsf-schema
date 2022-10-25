@@ -1,13 +1,36 @@
 {
-  "attributes": {
-    "$include": "includes/registry_key.json",
-    "activity_id": {
-      "$include": "enums/registry_key_activity.json"
-    }
-  },
   "caption": "Registry Key Activity",
   "description": "Registry Key Activity events report when a process performs an action on a Windows registry key.",
   "extends": "system",
   "name": "registry_key_activity",
-  "uid": 8
+  "uid": 8,
+  "attributes": {
+    "access_mask": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "activity_id": {
+      "$include": "enums/registry_key_activity.json"
+    },
+    "actor": {
+      "description": "The actor that performed the activity on the <code>reg_key</code> object.",
+      "requirement": "required"
+    },
+    "create_mask": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "open_mask": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "reg_key": {
+      "group": "primary",
+      "requirement": "required"
+    },
+    "reg_key_result": {
+      "group": "primary",
+      "requirement": "optional"
+    }
+  }
 }

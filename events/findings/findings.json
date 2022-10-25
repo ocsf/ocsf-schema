@@ -5,6 +5,17 @@
   "extends": "base_event",
   "description": "Findings events report findings, detections, and possible resolutions of malware, anomalies, or actions performed by security products.",
   "attributes": {
-    "$include": "profiles/malware.json"
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Generate",
+          "description": "A security finding is generated."
+        },
+        "2": {
+          "caption": "Update",
+          "description": "A security finding is updated."
+        }
+      }
+    }
   }
 }

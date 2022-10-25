@@ -50,13 +50,13 @@
       "type": "string_t"
     },
     "account_type": {
-      "caption": "Account Type ID",
-      "description": "The user account type (e.g. AWS, LDAP, Windows account, etc.).",
+      "caption": "Account Type",
+      "description": "The user account type, as defined by the event source.",
       "type": "string_t"
     },
     "account_type_id": {
       "caption": "Account Type ID",
-      "description": "The user account type identifier (e.g. AWS, LDAP, Windows account, etc.).",
+      "description": "The normalized user account type identifier.",
       "enum": {
         "-1": {
           "caption": "Other",
@@ -82,6 +82,7 @@
           "caption": "Azure AD Account"
         }
       },
+      "sibling": "account_type",
       "type": "integer_t"
     },
     "account_uid": {
@@ -89,9 +90,9 @@
       "description": "The unique identifier of the account(e.g. AWS Account ID).",
       "type": "string_t"
     },
-    "activity": {
+    "activity_name": {
       "caption": "Activity",
-      "description": "The original activity that triggered the alert event.",
+      "description": "The event activity name, as defined by the activity_id.",
       "type": "string_t"
     },
     "activity_id": {
@@ -105,14 +106,19 @@
         "0": {
           "caption": "Unknown",
           "description": "The event activity is unknown."
+        },
+        "1": {
+          "caption": "Logged",
+          "description": "The event activity is logged."
         }
       },
+      "sibling": "activity_name",
       "type": "integer_t"
     },
-    "actor_process": {
-      "caption": "Actor Process",
-      "description": "The process that performed the operation or action on the target object. For example, the process that could have created a new file or violated a policy.",
-      "type": "process"
+    "actor": {
+      "caption": "Actor",
+      "description": "The actor that performed the operation or the action.",
+      "type": "actor"
     },
     "actual_permissions": {
       "caption": "Actual Permissions",
@@ -126,7 +132,7 @@
     },
     "algorithm": {
       "caption": "Algorithm",
-      "description": "The original hash algorithm, as reported by the event source, which was used to create the digital fingerprint.",
+      "description": "The hash algorithm, as reported by the event source, which was used to create the digital fingerprint.",
       "type": "string_t"
     },
     "algorithm_id": {
@@ -160,6 +166,7 @@
           "description": "The ssdeep generated fuzzy checksum. Also known as Context Triggered Piecewise Hash (CTPH)."
         }
       },
+      "sibling": "algorithm",
       "type": "integer_t"
     },
     "answers": {
@@ -211,7 +218,7 @@
     },
     "auth_protocol_id": {
       "caption": "Auth Protocol ID",
-      "description": "The authentication protocol used to create the user session.",
+      "description": "The normalized identifier of the authentication protocol used to create the user session.",
       "enum": {
         "-1": {
           "caption": "Other"
@@ -250,17 +257,24 @@
           "caption": "EAP"
         }
       },
+      "sibling": "auth_protocol",
       "type": "integer_t"
+    },
+    "auth_type": {
+      "caption": "Authentication Type",
+      "description": "The agreed upon authentication type.",
+      "type": "string_t"
     },
     "authentication_id": {
       "caption": "Authentication (Au)",
       "description": "The Authentication Common Vulnerability Scoring System (CVSS) metric.",
       "type": "integer_t"
     },
-    "authorization": {
+    "authorizations": {
       "caption": "Authorization Information",
       "description": "Authorization object provides details related to Authorization",
-      "type": "authorization"
+      "type": "authorization",
+      "is_array": true
     },
     "autoscale_uid": {
       "caption": "Autoscale UID",
@@ -287,6 +301,11 @@
       "description": "The memory address where the module was loaded.",
       "type": "string_t"
     },
+    "big_endian": {
+      "caption": "Big Endian",
+      "description": "A boolean indicating whether the most significant byte is stored/transmitted first.",
+      "type": "boolean_t"
+    },
     "bios_date": {
       "caption": "BIOS Date",
       "description": "The BIOS date. For example: <code>03/31/16</code>.",
@@ -302,14 +321,19 @@
       "description": "The BIOS version. For example: <code>LENOVO G5ETA2WW (2.62)</code>.",
       "type": "string_t"
     },
+    "blue_pixel": {
+      "caption": "Blue Pixel Info",
+      "description": "The information pertaining to how a blue pixel was transmitted.",
+      "type": "pixel_info"
+    },
     "boundary": {
       "caption": "Boundary",
-      "description": "The boundary of the connection. For cloud connections, this translates to the traffic-boundary(same VPC, through IGW, etc.). For traditional networks, this is described as Local, Internal, or External.",
+      "description": "The boundary of the connection, as defined by the event source. <p> For cloud connections, this translates to the traffic-boundary(same VPC, through IGW, etc.). For traditional networks, this is described as Local, Internal, or External.</p>",
       "type": "string_t"
     },
     "boundary_id": {
       "caption": "Boundary ID",
-      "description": "The boundary of the connection. For cloud connections, this translates to the traffic-boundary (same VPC, through IGW, etc.). For traditional networks, this is described as Local, Internal, or External.",
+      "description": "The normalized identifier of the boundary of the connection. </p> For cloud connections, this translates to the traffic-boundary (same VPC, through IGW, etc.). For traditional networks, this is described as Local, Internal, or External.</p>",
       "enum": {
         "-1": {
           "caption": "Other"
@@ -363,6 +387,7 @@
           "description": "Through an Internet gateway (Nitro-based instances only)"
         }
       },
+      "sibling": "boundary",
       "type": "integer_t"
     },
     "build": {
@@ -400,8 +425,8 @@
       "type": "string_t"
     },
     "categories": {
-      "caption": "Domain/URL Categories",
-      "description": "A list of Domain or URL categories.",
+      "caption": "Website Categorization",
+      "description": "The Website categorization names, as defined by <code>category_ids</code> enum values.",
       "is_array": true,
       "type": "string_t"
     },
@@ -411,8 +436,8 @@
       "type": "string_t"
     },
     "category_ids": {
-      "caption": "Domain/URL Category IDs",
-      "description": "An array of domain or URL category identifies.",
+      "caption": "Website Categorization IDs",
+      "description": "The Website categorization identifies.",
       "enum": {
         "-1": {
           "caption": "Other",
@@ -684,7 +709,7 @@
     },
     "category_name": {
       "caption": "Category",
-      "description": "The category name of the event.",
+      "description": "The event category name, as defined by category_uid value.",
       "type": "string_t"
     },
     "category_uid": {
@@ -693,6 +718,12 @@
       "description": "The category unique identifier of the event.",
       "sibling": "category_name",
       "type": "integer_t"
+    },
+    "cc": {
+      "caption": "Cc",
+      "description": "The email header Cc values, as defined by RFC 5322.",
+      "is_array": true,
+      "type": "email_t"
     },
     "certificate": {
       "caption": "Certificate",
@@ -703,6 +734,16 @@
       "caption": "Certificate Chain",
       "description": "The Chain of Certificate Serial Numbers field provides a chain of Certificate Issuer Serial Numbers leading to the Root Certificate Issuer.",
       "is_array": true,
+      "type": "string_t"
+    },
+    "challenge": {
+      "caption": "Challenge",
+      "description": "The VNC challenge",
+      "type": "string_t"
+    },
+    "challenge_response": {
+      "caption": "Challenge Response",
+      "description": "The VNC challenge response",
       "type": "string_t"
     },
     "chassis": {
@@ -732,33 +773,29 @@
     },
     "class_name": {
       "caption": "Class",
-      "description": "The class name of the event.",
+      "description": "The event class name, as defined by class_uid value.",
       "type": "string_t"
     },
     "class_uid": {
       "caption": "Class ID",
       "default": 0,
-      "description": "The class identifier describes the attributes available in an event.",
+      "description": "The unique identifier of a class. A Class describes the attributes available in an event.",
       "sibling": "class_name",
       "type": "integer_t"
     },
     "classification_ids": {
       "caption": "Classification IDs",
-      "description": "An array of malware classifications. Reference: <a target='_blank' href='https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_oxlc4df65spl'>STIX Malware Types</a> ",
+      "description": "The list of normalzied identifiers of the malware classifications. Reference: <a target='_blank' href='https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_oxlc4df65spl'>STIX Malware Types</a> ",
+      "enum": {},
       "is_array": true,
       "sibling": "classifications",
       "type": "integer_t"
     },
     "classifications": {
       "caption": "Classifications",
-      "description": "The malware classifications.",
+      "description": "The list of malware classifications, as defined by the event source.",
       "is_array": true,
       "type": "string_t"
-    },
-    "client": {
-      "caption": "Client",
-      "description": "The client object pertaining to the client/server exchange.",
-      "type": "client"
     },
     "client_ciphers": {
       "caption": "Client Cipher Suites",
@@ -772,9 +809,14 @@
       "is_array": true,
       "type": "string_t"
     },
+    "client_hassh": {
+      "caption": "Client HASSH",
+      "description": "The Client HASSH fingerprinting object.",
+      "type": "hassh"
+    },
     "cloud": {
       "caption": "Cloud",
-      "description": "The cloud where the event was originally created or logged.",
+      "description": "Describes details about the Cloud enviroment where the event was originally created or logged.",
       "type": "cloud"
     },
     "cloud_partition": {
@@ -806,6 +848,16 @@
     "color_depth": {
       "caption": "Color Depth",
       "description": "The numeric color depth.",
+      "type": "integer_t"
+    },
+    "color_max": {
+      "caption": "Color Maximum",
+      "description": "The maximum color value (with 'n' bits this would result in a 2^n-1 maximum value).",
+      "type": "integer_t"
+    },
+    "color_shift": {
+      "caption": "Color Shift",
+      "description": "The color shift value represents the number of shifts needed in order to get the color value in a pixel to the least significant bit.",
       "type": "integer_t"
     },
     "command": {
@@ -851,12 +903,12 @@
     },
     "confidentiality": {
       "caption": "Confidentiality",
-      "description": "The file content confidentiality.",
+      "description": "The file content confidentiality, as defined by the event source.",
       "type": "string_t"
     },
     "confidentiality_id": {
       "caption": "Confidentiality ID",
-      "description": "The file content confidentiality indicator.",
+      "description": "The normalized identifier of the file content confidentiality indicator.",
       "enum": {
         "-1": {
           "caption": "Other"
@@ -877,6 +929,7 @@
           "caption": "Top Secret"
         }
       },
+      "sibling": "confidentiality",
       "type": "integer_t"
     },
     "confidentiality_impact_id": {
@@ -1070,12 +1123,12 @@
     },
     "direction": {
       "caption": "Direction",
-      "description": "The direction of the initiated connection, traffic, or email.",
+      "description": "The direction of the initiated connection, traffic, or email, as defined by the event source.",
       "type": "string_t"
     },
     "direction_id": {
       "caption": "Direction ID",
-      "description": "The direction of the initiated connection, traffic, or email.",
+      "description": "The normalized identifier of the direction of the initiated connection, traffic, or email.",
       "enum": {
         "-1": {
           "caption": "Other"
@@ -1093,16 +1146,22 @@
           "description": "Outbound, from inside the network destined for services on the Internet or outside network."
         }
       },
+      "sibling": "direction",
       "type": "integer_t"
+    },
+    "delivered_to": {
+      "caption": "Delivered To",
+      "description": "The <strong>Delivered-To</strong> email header field.",
+      "type": "email_t"
     },
     "disposition": {
       "caption": "Disposition",
-      "description": "When malware is detected, then <code>disposition_id</code> describes the action taken by the security product.",
+      "description": "The event disposition name, as defined by the disposition_id.",
       "type": "string_t"
     },
     "disposition_id": {
       "caption": "Disposition ID",
-      "description": "When malware is detected, then <code>disposition_id</code> describes the action taken by the security product.",
+      "description": "When security issues, such as malware or policy violations, are detected and possibly corrected, then <code>disposition_id</code> describes the action taken by the security product.",
       "enum": {
         "0": {
           "caption": "Unknown"
@@ -1153,6 +1212,7 @@
           "caption": "Tagged"
         }
       },
+      "sibling": "disposition",
       "type": "integer_t"
     },
     "domain": {
@@ -1170,11 +1230,6 @@
       "description": "The network destination endpoint.",
       "type": "network_endpoint"
     },
-    "dst_user": {
-      "caption": "Destination User",
-      "description": "The user that was a target of an activity.",
-      "type": "user"
-    },
     "duration": {
       "caption": "Duration",
       "description": "The event duration or aggregate time, the amount of time the event covers from <code>start_time</code> to <code>end_time</code> in milliseconds.",
@@ -1184,6 +1239,11 @@
       "caption": "OS Edition",
       "description": "The operating system edition. For example: <code>Professional</code>.",
       "type": "string_t"
+    },
+    "email": {
+      "caption": "Email",
+      "description": "The email object.",
+      "type": "email"
     },
     "email_addr": {
       "caption": "Email Address",
@@ -1295,13 +1355,15 @@
     },
     "flag_ids": {
       "caption": "Communication Flag IDs",
-      "description": "The list of communication flag IDs.",
+      "description": "The list of normalized identifiers of the communication flag IDs.",
+      "enum": {},
       "is_array": true,
+      "sibling": "flags",
       "type": "integer_t"
     },
     "flags": {
       "caption": "Flags",
-      "description": "The list of communication flags.",
+      "description": "The list of communication flags, as defined by the event source.",
       "is_array": true,
       "type": "string_t"
     },
@@ -1310,10 +1372,15 @@
       "description": "The folder that pertains to the event.",
       "type": "file"
     },
-    "folder_result": {
-      "caption": "Folder Result",
-      "description": "The result of the folder change. It should contain the new values of the changed attributes.",
-      "type": "file"
+    "frame_buffer": {
+      "caption": "Frame Buffer",
+      "description": "The frame buffer object describes the details pertaining to the color/pixel data associated with the computer display.",
+      "type": "frame_buffer"
+    },
+    "from": {
+      "caption": "From",
+      "description": "The email header From values, as defined by RFC 5322.",
+      "type": "email_t"
     },
     "function_keys": {
       "caption": "Function Keys",
@@ -1324,6 +1391,11 @@
       "caption": "Function Name",
       "description": "The entry-point function of the module. The system calls the entry-point function whenever a process or thread loads or unloads the module.",
       "type": "string_t"
+    },
+    "green_pixel": {
+      "caption": "Green Pixel Info",
+      "description": "The information pertaining to how a green pixel was transmitted.",
+      "type": "pixel_info"
     },
     "group": {
       "caption": "Group",
@@ -1345,11 +1417,6 @@
       "caption": "Handshake Duration",
       "description": "The amount of total time for the TLS handshake to complete after the TCP connection is established, including client-side delays, in milliseconds.",
       "type": "integer_t"
-    },
-    "hassh": {
-      "caption": "HASSH",
-      "description": "The HASSH fingerprinting object.",
-      "type": "hassh"
     },
     "hostname": {
       "caption": "Hostname",
@@ -1435,12 +1502,12 @@
     },
     "injection_type": {
       "caption": "Injection Type",
-      "description": "The process injection method.",
+      "description": "The process injection method, as defined by the event source.",
       "type": "string_t"
     },
     "injection_type_id": {
       "caption": "Injection Type ID",
-      "description": "The normalized process injection type identifier.",
+      "description": "The normalized identifier of the process injection method.",
       "enum": {
         "-1": {
           "caption": "Other"
@@ -1455,6 +1522,7 @@
           "caption": "Load Library"
         }
       },
+      "sibling": "injection_type",
       "type": "integer_t"
     },
     "instance_uid": {
@@ -1464,12 +1532,14 @@
     },
     "integrity": {
       "caption": "Integrity",
-      "description": "The process integrity (Windows only).",
+      "description": "The process integrity level, as defined by the event source. (Windows only).",
+      "sibling": "integrity",
       "type": "string_t"
     },
     "integrity_id": {
       "caption": "Integrity Level",
-      "description": "The process integrity level (Windows only).",
+      "description": "The normalized identifier of the process integrity level (Windows only).",
+      "enum": {},
       "type": "integer_t"
     },
     "integrity_impact_id": {
@@ -1683,12 +1753,14 @@
     },
     "load_type": {
       "caption": "Load Type",
-      "description": "The load type describes how the module was loaded in memory.",
+      "description": "The load type, as defined by the event source. It describes how the module was loaded in memory.",
       "type": "string_t"
     },
     "load_type_id": {
       "caption": "Load Type ID",
-      "description": "The load type identifies how the module was loaded in memory.",
+      "description": "The normalized identifier of the load type. It identifies how the module was loaded in memory.",
+      "enum": {},
+      "sibling": "load_type",
       "type": "integer_t"
     },
     "loaded_modules": {
@@ -1714,7 +1786,7 @@
     },
     "logon_type": {
       "caption": "Logon Type",
-      "description": "The logon type.",
+      "description": "The logon type, as defined by the event source.",
       "type": "string_t"
     },
     "logon_type_id": {
@@ -1774,6 +1846,7 @@
           "description": "A caller cloned its current token and specified new credentials for outbound connections. The new logon session has the same local identity, but uses different credentials for other network connections."
         }
       },
+      "sibling": "logon_type",
       "type": "integer_t"
     },
     "mac": {
@@ -1790,6 +1863,11 @@
     "message": {
       "caption": "Message",
       "description": "The description of the event, as defined by the event source.",
+      "type": "string_t"
+    },
+    "message_uid": {
+      "caption": "Message UID",
+      "description": "The email header Message-Id value, as defined by RFC 5322.",
       "type": "string_t"
     },
     "metadata": {
@@ -1882,11 +1960,6 @@
       "description": "The network driver used by the container. For example, bridge, overlay, host, none, etc.",
       "type": "string_t"
     },
-    "network_endpoint": {
-      "caption": "Network Endpoint",
-      "description": "The network endpoint.",
-      "type": "network_endpoint"
-    },
     "network_interface": {
       "caption": "Network Interface",
       "description": "The network interface that is associated with the device.",
@@ -1912,6 +1985,11 @@
     "opcode": {
       "caption": "DNS Opcode",
       "description": "The DNS opcode specifies the type of the query message.",
+      "type": "string_t"
+    },
+    "opcode_id": {
+      "caption": "DNS Opcode ID",
+      "description": "The DNS opcode ID specifies the normalized query message type.",
       "enum": {
         "0": {
           "caption": "Query",
@@ -2018,12 +2096,6 @@
       "description": "The number of packets sent from the source to the destination.",
       "type": "long_t"
     },
-    "parent_categories": {
-      "caption": "Parent Categories",
-      "description": "An array of parent URL categories.",
-      "is_array": true,
-      "type": "string_t"
-    },
     "parent_folder": {
       "caption": "Parent Folder",
       "description": "The parent folder in which the file resides. For example: <code>c:\\windows\\system32</code>",
@@ -2069,6 +2141,16 @@
       "description": "The process identifier, as reported by the operating system. Process ID (PID) is a number used by the operating system to uniquely identify an active process.",
       "type": "integer_t"
     },
+    "pixel_bits": {
+      "caption": "Pixel Bits",
+      "description": "The number of bits per pixel.",
+      "type": "integer_t"
+    },
+    "policy": {
+      "caption": "Policy",
+      "description": "Describes details of a policy. See specific usage.",
+      "type": "policy"
+    },
     "port": {
       "caption": "Port",
       "description": "The TCP/UDP port number associated with a connection. See specific usage.",
@@ -2086,13 +2168,14 @@
     },
     "priority": {
       "caption": "Priority",
-      "description": "The original priority, as defined by the event source.",
+      "description": "The priority, as defined by the event source. See specific usage.",
       "type": "integer_t"
     },
     "priority_id": {
       "caption": "Priority ID",
       "description": "The normalized priority. See specific usage.",
       "enum": {},
+      "sibling": "priority",
       "type": "integer_t"
     },
     "privileges": {
@@ -2150,12 +2233,14 @@
     },
     "protocol_ver": {
       "caption": "Protocol Version",
-      "description": "The Protocol version.",
+      "description": "The Protocol version, as defined by the event source.",
       "type": "string_t"
     },
     "protocol_ver_id": {
       "caption": "Protocol Version ID",
-      "description": "The Protocol version identifier.",
+      "description": "The normalized identifier of the Protocol version.",
+      "enum": {},
+      "sibling": "protocol_ver",
       "type": "integer_t"
     },
     "provider": {
@@ -2190,17 +2275,17 @@
     },
     "raw_score": {
       "caption": "Reputation Score",
-      "description": "The original reputation score as reported by the event source.",
-      "type": "integer_t"
+      "description": "The reputation score as reported by the event source.",
+      "type": "float_t"
     },
     "rcode": {
       "caption": "Response Code",
-      "description": "The DNS server response code. See <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc6895'>RFC-6895</a>.",
+      "description": "The DNS server response code, as defined by the event source.",
       "type": "string_t"
     },
     "rcode_id": {
       "caption": "Response Code ID",
-      "description": "The DNS server response code id. See <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc6895'>RFC-6895</a>.",
+      "description": "The normalized identifier of the DNS server response code. See <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc6895'>RFC-6895</a>.",
       "enum": {
         "-1": {
           "caption": "Other",
@@ -2295,12 +2380,18 @@
           "description": "Not Authorized or Server Not Authoritative for zone."
         }
       },
+      "sibling": "rcode",
       "type": "integer_t"
     },
     "rdata": {
       "caption": "DNS RData",
       "description": "The data describing the DNS resource. The meaning of this data depends on the type and class of the resource record.",
       "type": "string_t"
+    },
+    "red_pixel": {
+      "caption": "Red Pixel Info",
+      "description": "The information pertaining to how a red pixel was transmitted.",
+      "type": "pixel_info"
     },
     "ref_event_code": {
       "caption": "Reference Event Code",
@@ -2400,6 +2491,11 @@
       "description": "The remote display affiliated with the event",
       "type": "display"
     },
+    "reply_to": {
+      "caption": "Reply To",
+      "description": "The email header Reply-To values, as defined by RFC 5322.",
+      "type": "email_t"
+    },
     "report_confidence_id": {
       "caption": "Report Confidence (RC)",
       "description": "The Report Confidence Common Vulnerability Scoring System (CVSS) metric.",
@@ -2459,7 +2555,7 @@
     },
     "risk_level": {
       "caption": "Risk Level",
-      "description": "The normalized risk level.",
+      "description": "The risk level, as defined by the event source.",
       "type": "string_t"
     },
     "risk_level_id": {
@@ -2482,11 +2578,12 @@
           "caption": "Critical"
         }
       },
+      "sibling": "risk_level",
       "type": "integer_t"
     },
     "risk_score": {
       "caption": "Risk Score",
-      "description": "The original risk score as reported by the event source.",
+      "description": "The risk score as reported by the event source.",
       "type": "integer_t"
     },
     "rule": {
@@ -2494,19 +2591,16 @@
       "description": "The rules that reported the events.",
       "type": "rule"
     },
-    "run_as": {
-      "caption": "Run-As User",
-      "description": "The user account the process is running as, for when a user is impersonating another user.",
-      "type": "user"
-    },
     "run_state": {
       "caption": "Run State",
-      "description": "The state of the job or service. See specific usage.",
+      "description": "The state of the job or service, as defined by the event source. See specific usage.",
       "type": "string_t"
     },
     "run_state_id": {
       "caption": "Run State ID",
-      "description": "The state of the job or service. See specific usage.",
+      "description": "The normalized identifier of the state of the job or service. See specific usage.",
+      "enum": {},
+      "sibling": "run_state",
       "type": "integer_t"
     },
     "runtime": {
@@ -2546,8 +2640,8 @@
       "type": "integer_t"
     },
     "score": {
-      "caption": "Reputation Score Name",
-      "description": "The reputation score caption.",
+      "caption": "Reputation Score",
+      "description": "The reputation score, as defined by the event source.",
       "type": "string_t"
     },
     "score_id": {
@@ -2622,16 +2716,16 @@
       "description": "The serial number that pertains to the object. See specific usage.",
       "type": "string_t"
     },
-    "server": {
-      "caption": "Server",
-      "description": "The server object pertaining to the client/server exchange.",
-      "type": "server"
-    },
     "server_ciphers": {
       "caption": "Server Cipher Suites",
       "description": "The server cipher suites that were exchanged during the TLS handshake negotiation.",
       "is_array": true,
       "type": "string_t"
+    },
+    "server_hassh": {
+      "caption": "Server HASSH",
+      "description": "The Server HASSH fingerprinting object.",
+      "type": "hassh"
     },
     "service": {
       "caption": "Service",
@@ -2655,12 +2749,12 @@
     },
     "severity": {
       "caption": "Severity",
-      "description": "The original event severity, as defined by the event source.</p>The severity is a measurement the effort and expense required to manage and resolve an event or incident.",
+      "description": "The event severity, as defined by the event source.",
       "type": "string_t"
     },
     "severity_id": {
       "caption": "Severity ID",
-      "description": "The normalized event severity.</p>The normalized severity is a measurement the effort and expense required to manage and resolve an event or incident. Smaller numerical values represent lower impact events, and larger numerical values represent higher impact events.",
+      "description": "The normalized identifier of the event severity.</p>The normalized severity is a measurement the effort and expense required to manage and resolve an event or incident. Smaller numerical values represent lower impact events, and larger numerical values represent higher impact events.",
       "enum": {
         "-1": {
           "caption": "Other",
@@ -2695,6 +2789,7 @@
           "description": "An error occurred but it is too late to take remedial action."
         }
       },
+      "sibling": "severity",
       "type": "integer_t"
     },
     "share": {
@@ -2716,6 +2811,22 @@
       "caption": "Size",
       "description": "The size of data, in bytes.",
       "type": "long_t"
+    },
+    "smtp_from": {
+      "caption": "SMTP From",
+      "description": "The value of the SMTP MAIL FROM command.",
+      "type": "email_t"
+    },
+    "smtp_hello": {
+      "caption": "SMTP Hello",
+      "description": "The value of the SMTP HELO or EHLO command.",
+      "type": "string_t"
+    },
+    "smtp_to": {
+      "caption": "SMTP To",
+      "description": "The value of the SMTP envelope RCPT TO command.",
+      "is_array": true,
+      "type": "email_t"
     },
     "sni": {
       "caption": "Server Name Indication",
@@ -2742,11 +2853,6 @@
       "description": "The URL pointing towards the source of an entity. See specific usage.",
       "type": "string_t"
     },
-    "src_user": {
-      "caption": "Source User",
-      "description": "The existing user from which an activity was initiated.",
-      "type": "user"
-    },
     "start_address": {
       "caption": "Start Address",
       "description": "The start address of the execution.",
@@ -2756,6 +2862,26 @@
       "caption": "Start Time",
       "description": "The start time of a time period. See specific usage.",
       "type": "timestamp_t"
+    },
+    "state": {
+      "caption": "State",
+      "description": "The state of the event or object, as defined by the event source. See specific usage.",
+      "type": "string_t"
+    },
+    "state_id": {
+      "caption": "State ID",
+      "description": "The normalized state ID of the event or object. See specific usage.",
+      "enum": {
+        "-1": {
+          "caption": "Other",
+          "description": "The state is not mapped. See the <code>state</code> attribute, which contains a data source specific value."
+        },
+        "0": {
+          "caption": "Unknown"
+        }
+      },
+      "sibling": "state",
+      "type": "integer_t"
     },
     "status": {
       "caption": "Status",
@@ -2774,7 +2900,7 @@
     },
     "status_id": {
       "caption": "Status ID",
-      "description": "The cross-platform normalized status of the activity or alert reported by the event.",
+      "description": "The normalized identifier of the event status.",
       "enum": {
         "-1": {
           "caption": "Other",
@@ -2790,7 +2916,13 @@
           "caption": "Failure"
         }
       },
+      "sibling": "status",
       "type": "integer_t"
+    },
+    "subject": {
+      "caption": "Subject",
+      "description": "The email header Subject value, as defined by RFC 5322.",
+      "type": "string_t"
     },
     "subject_dn": {
       "caption": "Subject Distinguished Name",
@@ -2854,11 +2986,6 @@
       "description": "The unique identifier of the attack technique, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>. For example: <code>T1189</code>.",
       "type": "string_t"
     },
-    "terminated_time": {
-      "caption": "Terminated Time",
-      "description": "The time when the entity was terminated. See specific usage.",
-      "type": "timestamp_t"
-    },
     "text": {
       "caption": "URL Text",
       "description": "The URL. For example: <code>http://www.example.com/download/trouble.exe</code>.",
@@ -2884,6 +3011,12 @@
       "description": "The Transport Layer Security (TLS) attributes.",
       "type": "tls"
     },
+    "to": {
+      "caption": "To",
+      "description": "The email header To values, as defined by RFC 5322.",
+      "is_array": true,
+      "type": "email_t"
+    },
     "traffic": {
       "caption": "Traffic",
       "description": "The network traffic refers to the amount of data moving across a network at a given point of time. Intended to be used alongside Network Connection.",
@@ -2899,6 +3032,11 @@
       "description": "The tree id is a unique SMB identifier which represents an open connection to a share.",
       "type": "string_t"
     },
+    "true_color": {
+      "caption": "True Color",
+      "description": "A boolean indicating whether to extract pixel values through red/green/blue intensities.",
+      "type": "boolean_t"
+    },
     "ttl": {
       "caption": "TTL",
       "description": "The time interval that the resource record may be cached. Zero value means that the resource record can only be used for the transaction in progress, and should not be cached.",
@@ -2906,13 +3044,13 @@
     },
     "type": {
       "caption": "Type",
-      "description": "The type of an object or value. See specific usage.",
+      "description": "The type of an object or value, as defined by the event source. See specific usage.",
       "type": "string_t"
     },
     "type_id": {
       "caption": "Type ID",
       "default": 0,
-      "description": "The type identifier of an object. See specific usage.",
+      "description": "The normalized type identifier of an object. See specific usage.",
       "enum": {
         "-1": {
           "caption": "Other",
@@ -2923,6 +3061,7 @@
           "description": "The type is unknown."
         }
       },
+      "sibling": "type",
       "type": "integer_t"
     },
     "type_name": {
@@ -2932,7 +3071,7 @@
     },
     "type_uid": {
       "caption": "Type ID",
-      "description": "The event type ID identifies the event's semantics and structure. The value is calculated by the logging system as: <code>class_uid * 100 + activity_id</code>.",
+      "description": "The event type ID. It identifies the event's semantics and structure. The value is calculated by the logging system as: <code>class_uid * 100 + activity_id</code>.",
       "sibling": "type_name",
       "type": "integer_t"
     },
@@ -3007,13 +3146,18 @@
       "description": "The Virtual LAN identifier.",
       "type": "string_t"
     },
+    "vnc_auth": {
+      "caption": "VNC Authentication",
+      "description": "The Virtual Network Computing (VNC) authentication object describes the VNC authentication values.",
+      "type": "vnc_auth"
+    },
     "vpc_uid": {
       "caption": "VPC UID",
       "description": "The unique identifier of the Virtual Private Cloud (VPC).",
       "type": "string_t"
     },
     "vulnerabilities": {
-      "caption": "Vulnerbailities",
+      "caption": "Vulnerabilities",
       "description": "This object describes vulnerabilities reported in a security finding",
       "is_array": true,
       "type": "vulnerability"
@@ -3029,6 +3173,12 @@
       "is_array": true,
       "type": "ip_t"
     },
+    "x_originating_ip": {
+      "caption": "X-Originating-IP",
+      "description": "The X-Originating-IP header identifying the emails originating IP address(es).",
+      "is_array": true,
+      "type": "ip_t"
+    },
     "xattributes": {
       "caption": "Extended Attributes",
       "description": "An unordered collection of zero or more name/value pairs where each pair represents a file or folder extended attribute.</p>For example: Windows alternate data stream attributes (ADS stream name, ADS size, etc.), user-defined or application-defined attributes, ACL, owner, primary group, etc. Examples from DCS: </p><ul><li><strong>ads_name</strong></li><li><strong>ads_size</strong></li><li><strong>dacl</strong></li><li><strong>owner</strong></li><li><strong>primary_group</strong></li><li><strong>link_name</strong> - name of the link associated to the file.</li><li><strong>hard_link_count</strong> - the number of links that are associated to the file.</li></ul>",
@@ -3038,6 +3188,11 @@
       "caption": "Network Zone",
       "description": "The network zone or LAN segment.",
       "type": "string_t"
+    },
+    "driver": {
+      "caption": "Kernel Driver",
+      "type": "kernel_driver",
+      "description": "The driver that was loaded/unloaded into the kernel"
     }
   },
   "types": {

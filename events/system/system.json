@@ -4,32 +4,31 @@
   "extends": "base_event",
   "name": "system",
   "profiles": [
-    "user",
     "host",
     "malware"
   ],
   "associations": {
-    "origin.device": [
-      "user"
+    "device": [
+      "actor.user"
     ],
-    "user": [
-      "origin.device"
+    "actor.user": [
+      "device"
     ]
   },
   "attributes": {
     "$include": [
-      "profiles/host.json",
-      "profiles/user.json",
       "profiles/malware.json"
     ],
+    "actor": {
+      "group": "primary",
+      "requirement": "required"
+    },
     "device": {
       "group": "primary",
-      "requirement": "required",
-      "profile": null
+      "requirement": "required"
     },
-    "actor_process": {
-      "requirement": "required",
-      "profile": null
+    "is_user_present": {
+      "group": "context"
     }
   }
 }

@@ -1,17 +1,11 @@
 {
   "category": "findings",
   "description": "Security Finding events describe findings, detections, anomalies, alerts and/or actions performed by security products",
-  "extends": "base_event",
+  "extends": "findings",
   "caption": "Security Finding",
   "name": "security_finding",
-  "profiles": [
-    "cloud"
-  ],
   "uid": 1,
   "attributes": {
-    "$include": [
-      "profiles/cloud.json"
-    ],
     "attacks": {
       "group": "context",
       "requirement": "optional",
@@ -36,6 +30,34 @@
     "resources": {
       "group": "primary",
       "requirement": "recommended"
+    },
+    "state":{
+      "description": "The normalized state of a security finding.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "state_id": {
+      "group": "context",
+      "requirement": "required",
+      "description": "The normalized state identifier of a security finding.",
+      "enum": {
+        "1": {
+          "caption": "New",
+          "description": "The finding is new and yet to be reviewed."
+        },
+        "2": {
+          "caption": "In Progress",
+          "description": "The finding is under review."
+        },
+        "3": {
+          "caption": "Suppressed",
+          "description": "The finding was reviewed, considered as a false positive and is now suppressed."
+        },
+        "4": {
+          "caption": "Resolved",
+          "description": "The finding was reviewed and remediated and is now considered resolved."
+        }
+      }
     },
     "vulnerabilities": {
       "group": "context",

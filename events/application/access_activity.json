@@ -1,0 +1,62 @@
+{
+  "caption": "Access Activity",
+  "category": "application",
+  "description": "Access activity events describe successful/failed attempts to access an application.",
+  "extends": "base_event",
+  "name": "access_activity",
+  "profiles": [
+    "host"
+  ],
+  "uid": 1,
+  "attributes": {
+    "$include": [
+      "profiles/host.json"
+    ],
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Access Granted",
+          "description": "The incoming request has permission to the application resource."
+        },
+        "2": {
+          "caption": "Access Denied",
+          "description": "The incoming request does not have permission to the application resource."
+        },
+        "3": {
+          "caption": "Access Revoked",
+          "description": "The incoming request's access has been revoked due to security policy enforcements/changes. (i.e. security state of device changes)"
+        },
+        "4": {
+          "caption": "Access Error",
+          "description": "An error occurred during processing the request."
+        }
+      }
+    },
+    "http_request": {
+      "group": "primary",
+      "requirement": "required"
+    },
+    "http_response": {
+      "group": "primary",
+      "requirement": "required"
+    },
+    "identity": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "proxy": {
+      "description": "Details about the proxy if available.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "src_endpoint": {
+      "description": "Details about the source endpoint of the connection.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "tls": {
+      "group": "context",
+      "requirement": "optional"
+    }
+  }
+}

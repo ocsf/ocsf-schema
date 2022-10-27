@@ -4,9 +4,6 @@
   "name": "metadata",
   "extends": "object",
   "attributes": {
-    "uid": {
-      "requirement": "optional"
-    },
     "correlation_uid": {},
     "labels": {
       "description": "The list of category labels attached to the event or specific attributes. Labels are user defined tags or aliases added at normalization time.</p>For example: <code>[\"network\", \"connection.ip:destination\", \"device.ip:source\"]</code>"
@@ -16,7 +13,16 @@
       "description": "The time when the event was last modified or enriched."
     },
     "processed_time": {},
+    "product": {
+      "requirement": "required"
+    },
+    "profiles": {},
     "sequence": {},
+    "uid": {
+      "caption": "Event UID",
+      "description": "The logging system-assigned unique identifier of an event instance.",
+      "requirement": "optional"
+    },
     "version": {
       "default": "1.0.0",
       "description": "The version of the event class, using Semantic Versioning Specification (SemVer). For example: 1.0.0. Event consumers use the version to determine the available event attributes.",

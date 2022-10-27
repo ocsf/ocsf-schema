@@ -4,33 +4,45 @@
   "description": "The Email object describes the email metadata such as sender, recipients, and direction.",
   "observable": 22,
   "attributes": {
+    "cc": {
+      "requirement": "optional"
+    },
     "delivered_to": {
       "requirement": "optional"
     },
     "direction_id": {
       "description": "The direction of the email relative to the scanning host or organization.</p>Email scanned at an internet gateway might be characterized as inbound to the organization from the Internet, outbound from the organization to the Internet, or internal within the organization. Email scanned at a workstation might be characterized as inbound to, or outbound from the workstation.",
-      "requirement": "required",
       "enum": {
-        "4": {
-          "description": "Internal email.",
-          "caption": "Internal"
+        "-1": {
+          "caption": "Other"
+        },
+        "0": {
+          "caption": "Unknown",
+          "description": "The email direction is unknown."
+        },
+        "1": {
+          "caption": "Inbound",
+          "description": "Email Inbound, from the Internet or outside network destined for an entity inside network."
+        },
+        "2": {
+          "caption": "Outbound",
+          "description": "Email Outbound, from inside the network destined for an entity outside network."
+        },
+        "3": {
+          "caption": "Internal",
+          "description": "Email Internal, from inside the network destined for an entity inside network."
         }
-      }
+      },
+      "requirement": "required"
     },
     "from": {
       "requirement": "required"
     },
-    "message_id": {
+    "message_uid": {
       "requirement": "recommended"
     },
     "reply_to": {
       "requirement": "recommended"
-    },
-    "subject": {
-      "requirement": "required"
-    },
-    "to": {
-      "requirement": "required"
     },
     "size": {
       "description": "The size in bytes of the email, including attachments.",
@@ -45,8 +57,14 @@
     "smtp_to": {
       "requirement": "recommended"
     },
-    "smtp_tls": {
-      "requirement": "recommended"
-    }    
+    "subject": {
+      "requirement": "required"
+    },
+    "to": {
+      "requirement": "required"
+    },
+    "x_originating_ip": {
+      "requirement": "optional"
+    }
   }
 }

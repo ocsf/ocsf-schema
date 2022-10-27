@@ -1,18 +1,21 @@
 {
   "caption": "Base Event",
-  "name": "base_event",
   "description": "The base event is a generic concrete event and it also defines a set of attributes available in most event classes. As a generic event that does not belong to any event category, it could be used to log events that are not otherwise defined by the schema.",
+  "name": "base_event",
   "profiles": [
-    "cloud"
+    "cloud",
+    "datetime"
   ],
   "attributes": {
     "$include": [
       "includes/occurrence.json",
       "includes/classification.json",
+      "profiles/datetime.json",
       "profiles/cloud.json"
     ],
-    "raw_data": {
-      "group": "context"
+    "data": {
+      "description": "Additional data that is associated with the event.",
+      "requirement": "optional"
     },
     "enrichments": {
       "group": "context"
@@ -29,9 +32,8 @@
       "group": "primary",
       "requirement": "optional"
     },
-    "product": {
-      "group": "context",
-      "requirement": "recommended"
+    "raw_data": {
+      "group": "context"
     },
     "ref_event_code": {
       "group": "context"

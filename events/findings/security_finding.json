@@ -1,15 +1,18 @@
 {
+  "caption": "Security Finding",
   "category": "findings",
   "description": "Security Finding events describe findings, detections, anomalies, alerts and/or actions performed by security products",
   "extends": "findings",
-  "caption": "Security Finding",
   "name": "security_finding",
+  "profiles": [
+    "malware"
+  ],
   "uid": 1,
   "attributes": {
     "attacks": {
+      "description": "The attack object describes the technique and associated tactics as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>.",
       "group": "context",
-      "requirement": "optional",
-      "description": "The attack object describes the technique and associated tactics as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>."
+      "requirement": "optional"
     },
     "compliance": {
       "group": "context",
@@ -31,14 +34,12 @@
       "group": "primary",
       "requirement": "recommended"
     },
-    "state":{
+    "state": {
       "description": "The normalized state of a security finding.",
       "group": "context",
       "requirement": "optional"
     },
     "state_id": {
-      "group": "context",
-      "requirement": "required",
       "description": "The normalized state identifier of a security finding.",
       "enum": {
         "1": {
@@ -57,7 +58,9 @@
           "caption": "Resolved",
           "description": "The finding was reviewed and remediated and is now considered resolved."
         }
-      }
+      },
+      "group": "context",
+      "requirement": "required"
     },
     "vulnerabilities": {
       "group": "context",

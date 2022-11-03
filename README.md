@@ -35,7 +35,7 @@ The directory may contain the following optional files and subdirectories.
 
 | Name              | Description                                                               |
 |-------------------|---------------------------------------------------------------------------|
-| `categories.json` | Create it to define a new event category to reserve a range of class IDs. |
+| `categories.json` | Create it to define new categories. Note, to avoid collisions with the categories defined in the core schema, the category IDs must be greater than or equal to 30. |
 | `dictionary.json` | Create it to define new attributes.                                       |
 | `enums`           | Create it to define new enumerations.                                     |
 | `events`          | Create it to define new event classes.                                    |

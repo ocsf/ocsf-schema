@@ -3,16 +3,6 @@
   "description": "The Attribute Dictionary defines attributes and includes references to the events and objects in which they are used.",
   "name": "dictionary",
   "attributes": {
-    "raw_data": {
-      "caption": "Raw Data",
-      "description": "The event data as received from the event source.",
-      "type": "string_t"
-    },
-    "time": {
-      "caption": "Event Time",
-      "description": "The normalized event occurrence time.",
-      "type": "timestamp_t"
-    },
     "access_list": {
       "caption": "Access List",
       "description": "The list of requested access rights.",
@@ -80,11 +70,6 @@
       "description": "The unique identifier of the account(e.g. AWS Account ID).",
       "type": "string_t"
     },
-    "activity_name": {
-      "caption": "Activity",
-      "description": "The event activity name, as defined by the activity_id.",
-      "type": "string_t"
-    },
     "activity_id": {
       "caption": "Activity ID",
       "description": "The normalized identifier of the activity that triggered the event.",
@@ -100,6 +85,11 @@
       },
       "sibling": "activity_name",
       "type": "integer_t"
+    },
+    "activity_name": {
+      "caption": "Activity",
+      "description": "The event activity name, as defined by the activity_id.",
+      "type": "string_t"
     },
     "actor": {
       "caption": "Actor",
@@ -244,8 +234,8 @@
     "authorizations": {
       "caption": "Authorization Information",
       "description": "Authorization object provides details related to Authorization",
-      "type": "authorization",
-      "is_array": true
+      "is_array": true,
+      "type": "authorization"
     },
     "autoscale_uid": {
       "caption": "Autoscale UID",
@@ -256,6 +246,11 @@
       "caption": "Base Address",
       "description": "The memory address where the module was loaded.",
       "type": "string_t"
+    },
+    "base_score": {
+      "caption": "Base Score",
+      "description": "The base score as reported by the event source. See specific usage.",
+      "type": "float_t"
     },
     "big_endian": {
       "caption": "Big Endian",
@@ -302,6 +297,14 @@
           "caption": "Localhost",
           "description": "Local network traffic on the same endpoint."
         },
+        "10": {
+          "caption": "Gateway VPC",
+          "description": "Through a gateway VPC endpoint (Nitro-based instances only)"
+        },
+        "11": {
+          "caption": "Internet Gateway",
+          "description": "Through an Internet gateway (Nitro-based instances only)"
+        },
         "2": {
           "caption": "Internal",
           "description": "Internal network traffic between two endpoints inside network."
@@ -333,14 +336,6 @@
         "9": {
           "caption": "Local Gateway",
           "description": "Through a local gateway"
-        },
-        "10": {
-          "caption": "Gateway VPC",
-          "description": "Through a gateway VPC endpoint (Nitro-based instances only)"
-        },
-        "11": {
-          "caption": "Internet Gateway",
-          "description": "Through an Internet gateway (Nitro-based instances only)"
         }
       },
       "sibling": "boundary",
@@ -1031,6 +1026,27 @@
       "description": "Decision/outcome of the authorization mechanism (e.g. Approved, Denied)",
       "type": "string_t"
     },
+    "delivered_to": {
+      "caption": "Delivered To",
+      "description": "The <strong>Delivered-To</strong> email header field.",
+      "type": "email_t"
+    },
+    "depth": {
+      "caption": "CVSS Depth",
+      "description": "The CVSS depth represents a depth of the equation used to calculate CVSS score.",
+      "enum": {
+        "Base": {
+          "caption": "Base"
+        },
+        "Environmental": {
+          "caption": "Environmental"
+        },
+        "Temporal": {
+          "caption": "Temporal"
+        }
+      },
+      "type": "string_t"
+    },
     "desc": {
       "caption": "Description",
       "description": "The description that pertains to the object or event. See specific usage.",
@@ -1100,11 +1116,6 @@
       "sibling": "direction",
       "type": "integer_t"
     },
-    "delivered_to": {
-      "caption": "Delivered To",
-      "description": "The <strong>Delivered-To</strong> email header field.",
-      "type": "email_t"
-    },
     "disposition": {
       "caption": "Disposition",
       "description": "The event disposition name, as defined by the disposition_id.",
@@ -1122,6 +1133,27 @@
         },
         "1": {
           "caption": "Blocked"
+        },
+        "10": {
+          "caption": "Delayed",
+          "description": "Requires reboot to finish the operation."
+        },
+        "11": {
+          "caption": "Detected"
+        },
+        "12": {
+          "caption": "Quarantined"
+        },
+        "13": {
+          "caption": "Restored"
+        },
+        "14": {
+          "caption": "Exonerated",
+          "description": "No longer suspicious (re-scored)."
+        },
+        "15": {
+          "caption": "Tagged",
+          "description": "Marked with extended attributes."
         },
         "2": {
           "caption": "Allowed"
@@ -1143,27 +1175,6 @@
         },
         "8": {
           "caption": "Uncorrected"
-        },
-        "10": {
-          "description": "Requires reboot to finish the operation.",
-          "caption": "Delayed"
-        },
-        "11": {
-          "caption": "Detected"
-        },
-        "12": {
-          "caption": "Quarantined"
-        },
-        "13": {
-          "caption": "Restored"
-        },
-        "14": {
-          "description": "No longer suspicious (re-scored).",
-          "caption": "Exonerated"
-        },
-        "15": {
-          "description": "Marked with extended attributes.",
-          "caption": "Tagged"
         }
       },
       "sibling": "disposition",
@@ -1178,6 +1189,11 @@
       "caption": "Domain Information",
       "description": "The registration information pertaining to a domain.",
       "type": "domain_info"
+    },
+    "driver": {
+      "caption": "Kernel Driver",
+      "description": "The driver that was loaded/unloaded into the kernel",
+      "type": "kernel_driver"
     },
     "dst_endpoint": {
       "caption": "Destination Endpoint",
@@ -1555,11 +1571,6 @@
     "is_trusted": {
       "caption": "Trusted Device",
       "description": "The event occurred on a trusted device.",
-      "type": "boolean_t"
-    },
-    "is_user_present": {
-      "caption": "User Present",
-      "description": "The indication of whether the user was logged on at event generation time.",
       "type": "boolean_t"
     },
     "isp": {
@@ -1957,10 +1968,20 @@
       "description": "The name of the organization to which the user belongs.",
       "type": "string_t"
     },
+    "original_time": {
+      "caption": "Original Time",
+      "description": "The original event time as reported by the event source.",
+      "type": "string_t"
+    },
     "os": {
       "caption": "OS",
       "description": "The device operation system.",
       "type": "os"
+    },
+    "overall_score": {
+      "caption": "Overall Score",
+      "description": "The overall score as reported by the event source. See specific usage.",
+      "type": "float_t"
     },
     "owner": {
       "caption": "Owner",
@@ -2167,10 +2188,10 @@
       "description": "The ctotal amount of installed RAM, in Megabytes. For example: <code>2048</code>.",
       "type": "integer_t"
     },
-    "base_score": {
-      "caption": "Base Score",
-      "description": "The base score as reported by the event source. See specific usage.",
-      "type": "float_t"
+    "raw_data": {
+      "caption": "Raw Data",
+      "description": "The event data as received from the event source.",
+      "type": "string_t"
     },
     "rcode": {
       "caption": "Response Code",
@@ -2286,11 +2307,6 @@
       "caption": "Red Pixel Info",
       "description": "The information pertaining to how a red pixel was transmitted.",
       "type": "pixel_info"
-    },
-    "original_time": {
-      "caption": "Original Time",
-      "description": "The original event time as reported by the event source.",
-      "type": "string_t"
     },
     "references": {
       "caption": "References",
@@ -2849,6 +2865,11 @@
       "description": "The Identifier of the thread associated with the event, as returned by the operating system.",
       "type": "integer_t"
     },
+    "time": {
+      "caption": "Event Time",
+      "description": "The normalized event occurrence time.",
+      "type": "timestamp_t"
+    },
     "timezone_offset": {
       "caption": "Timezone Offset",
       "description": "The number of minutes that the reported event <code>time</code> is ahead or behind UTC, in the range -1,080 to +1,080.",
@@ -3036,11 +3057,6 @@
       "caption": "Network Zone",
       "description": "The network zone or LAN segment.",
       "type": "string_t"
-    },
-    "driver": {
-      "caption": "Kernel Driver",
-      "type": "kernel_driver",
-      "description": "The driver that was loaded/unloaded into the kernel"
     }
   },
   "types": {

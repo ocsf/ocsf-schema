@@ -67,7 +67,12 @@
     },
     "account_uid": {
       "caption": "Account UID",
-      "description": "The unique identifier of the account(e.g. AWS Account ID).",
+      "description": "The unique identifier of the account (e.g. AWS Account ID).",
+      "type": "string_t"
+    },
+    "account_name": {
+      "caption": "Account Name",
+      "description": "The name of the account (e.g. AWS Account Name).",
       "type": "string_t"
     },
     "activity_id": {
@@ -159,6 +164,11 @@
     "app_name": {
       "caption": "Application Name",
       "description": "The name of the application that is associated with the event or object.",
+      "type": "string_t"
+    },
+    "architecture": {
+      "caption": "Architecture",
+      "description": "Architecture is a shorthand name describing the type of computer hardware the packaged software is meant to run on.",
       "type": "string_t"
     },
     "args": {
@@ -1259,6 +1269,11 @@
       "description": "The updated managed entity.",
       "type": "managed_entity"
     },
+    "epoch": {
+      "caption": "Epoch",
+      "description": "The software package epoch. Epoch is a way to define weighted dependencies based on version numbers.",
+      "type": "integer_t"
+    },
     "error": {
       "caption": "Error Code",
       "description": "Error Code",
@@ -2007,10 +2022,10 @@
       "type": "string_t"
     },
     "packages": {
-      "caption": "Related Packages",
+      "caption": "Software Packages",
       "description": "List of vulnerable packages as identified by the security product",
       "is_array": true,
-      "type": "string_t"
+      "type": "package"
     },
     "packet_uid": {
       "caption": "Packet UID",
@@ -2383,6 +2398,11 @@
       "caption": "Relay",
       "description": "The network relay that is associated with the event.",
       "type": "network_interface"
+    },
+    "release": {
+      "caption": "Software Release Details",
+      "description": "Release is the number of times a version of the software has been packaged.",
+      "type": "string_t"
     },
     "remediation": {
       "caption": "Remediation",

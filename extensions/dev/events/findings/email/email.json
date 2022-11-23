@@ -3,8 +3,16 @@
   "name": "email_finding",
   "extends": "findings",
   "description": "Email Security finding events report the detections and resolutions of email malicious activity.",
+  "profiles": [
+    "host",
+    "malware"
+  ],
   "attributes": {
-    "$include": "includes/email.json",
+    "$include": [
+      "includes/email.json",
+      "profiles/host.json",
+      "profiles/malware.json"
+    ],
     "disposition": {
       "requirement": "optional",
       "group": "classification"

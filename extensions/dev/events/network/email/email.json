@@ -1,0 +1,25 @@
+{
+  "caption": "Email Activity",
+  "category": "network",
+  "name": "email_activity",
+  "extends": "base_event",
+  "description": "Email Activity events report email activity.",
+  "profiles": [
+    "host",
+    "malware"
+  ],
+  "attributes": {
+    "$include": [
+      "includes/email.json",
+      "profiles/host.json",
+      "profiles/malware.json"
+    ],
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Allowed"
+        }
+      }
+    }
+  }
+}

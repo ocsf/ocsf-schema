@@ -1,11 +1,17 @@
 {
   "caption": "Virtual Machine Activity",
-	"category": "virtualization",
+  "category": "virtualization",
   "description": "Virtual Machine (VM) events describe the usage of virtual machine(s) on a system or in the cloud.",
-	"extends": "base_event",
+  "extends": "base_event",
   "name": "virtual_machine_activity",
   "uid": 2,
+  "profiles": [
+    "host"
+  ],
   "attributes": {
+    "$include": [
+      "profiles/host.json"
+    ],
     "activity_id": {
       "enum": {
         "1": {

@@ -1,9 +1,10 @@
 {
-  "caption": "Email Activity",
-  "category": "network",
-  "name": "email_activity",
+  "description": "Email events report activities of emails.",
   "extends": "base_event",
-  "description": "Email Activity events report email activity.",
+  "caption": "Email Activity",
+  "name": "email_activity",
+  "category": "network",
+  "uid": 0,
   "profiles": [
     "host",
     "malware"
@@ -17,9 +18,53 @@
     "activity_id": {
       "enum": {
         "1": {
-          "caption": "Allowed"
+          "caption": "Delivered"
+        },
+        "2": {
+          "caption": "Failed"
+        },
+        "3": {
+          "caption": "Temporary Failure"
         }
       }
+    },
+    "attempt": {
+      "requirement": "recommended",
+      "group": "context"
+    },
+    "banner": {
+      "requirement": "optional",
+      "group": "context"
+    },
+    "connection_uid": {
+      "requirement": "optional",
+      "group": "context"
+    },
+    "dkim_signature": {
+      "requirement": "recommended",
+      "group": "context"
+    },
+    "dst_endpoint": {
+      "description": "The responder (server) receiving the email.",
+      "requirement": "optional",
+      "group": "primary"
+    },
+    "email": {
+      "requirement": "required",
+      "group": "primary"
+    },
+    "email_auth": {
+      "requirement": "recommended",
+      "group": "primary"
+    },
+    "email_uid": {
+      "requirement": "recommended",
+      "group": "primary"
+    },
+    "src_endpoint": {
+      "description": "The initiator (client) sending the email.",
+      "requirement": "optional",
+      "group": "primary"
     }
   }
 }

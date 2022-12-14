@@ -1,10 +1,20 @@
 {
   "description": "Email URL Activity events report URLs within an email.",
-  "extends": "email_activity",
+  "extends": "base_event",
   "caption": "Email URL Activity",
   "name": "email_url_activity",
+  "category": "network",
   "uid": 2,
+  "profiles": [
+    "host",
+    "malware"
+  ],
   "attributes": {
+    "$include": [
+      "includes/email.json",
+      "profiles/host.json",
+      "profiles/malware.json"
+    ],
     "url": {
       "description": "The URL included in the email content.",
       "group": "primary",

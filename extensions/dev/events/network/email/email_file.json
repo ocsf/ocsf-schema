@@ -1,10 +1,20 @@
 {
   "description": "Email File Activity events report files within emails.",
-  "extends": "email_activity",
+  "extends": "base_event",
   "caption": "Email File Activity",
   "name": "email_file_activity",
+  "category": "network",
   "uid": 1,
+  "profiles": [
+    "host",
+    "malware"
+  ],
   "attributes": {
+    "$include": [
+      "includes/email.json",
+      "profiles/host.json",
+      "profiles/malware.json"
+    ],
     "file": {
       "description": "The email file attachment.",
       "group": "primary",

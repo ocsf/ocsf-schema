@@ -1,4 +1,4 @@
-name: Schema Validation
+name: OCSF Schema Validation
 
 on:
   push:
@@ -10,22 +10,9 @@ permissions:
   contents: read
 
 jobs:
-  debug:
-    name: Debug
+   build:
+    name: Validate the schema
     runs-on: ubuntu-latest
-    steps:
-      - name: Dump env
-        run: env | sort
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
-
-  build:
-
-    name: Build and test
-    runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Clone schema server repository
@@ -33,7 +20,7 @@ jobs:
       with:
         repository: ocsf/ocsf-server
         path: server
-    - name: Set up Elixir
+    - name: Set up elixir
       uses: erlef/setup-beam@v1
       with:
         elixir-version: '1.14.0' # Define the elixir version [required]

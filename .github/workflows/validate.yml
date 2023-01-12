@@ -6,9 +6,6 @@ on:
   pull_request:
     branches: [ "main" ]
 
-permissions:
-  contents: read
-
 jobs:
    build:
     name: Validate the schema
@@ -37,3 +34,5 @@ jobs:
     - name: Run tests
       working-directory: server
       run: SCHEMA_DIR=.. mix test
+    - name: Update version file
+      run: elixir .github/workflows/update_version.exs

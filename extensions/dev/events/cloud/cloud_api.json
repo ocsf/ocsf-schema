@@ -1,0 +1,46 @@
+{
+  "uid": 1,
+  "caption": "Cloud API",
+  "category": "cloud",
+  "description": "Cloud API events describe the Cloud Control & Data Plane Activity. e.g. (AWS Cloudtrail, GCP Cloud Audit Logs)",
+  "extends": "base_event",
+  "name": "cloud_api",
+  "attributes": {
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Login",
+          "description": "The event pertains to login activity."
+        },
+        "2": {
+          "caption": "IAM",
+          "description": "The event pertains to Identity and Access Management (IAM) activity (e.g. policy updates, user creations, etc.)."
+        },
+        "3": {
+          "caption": "Operational",
+          "description": "The event pertains to cloud resource operations activity (e.g. data downloads, launched virtual machines, etc.)."
+        }
+      }
+    },
+    "api": {
+      "group": "primary",
+      "requirement": "required"
+    },
+    "http_request": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "identity": {
+      "group": "primary",
+      "requirement": "required"
+    },
+    "resources": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "src_endpoint": {
+      "group": "primary",
+      "requirement": "required"
+    }
+  }
+}

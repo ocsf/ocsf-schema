@@ -30,16 +30,42 @@
       }
     },
     "attempt": {
-      "requirement": "recommended",
+      "requirement": "optional",
+      "description": "The attempt number for attempting to deliver the email.",
       "group": "context"
     },
     "banner": {
       "requirement": "optional",
       "group": "context"
     },
-    "dkim_signature": {
-      "requirement": "recommended",
-      "group": "context"
+    "direction": {
+      "description": "The direction of the email, as defined by the <code>direction_id</code> value.",
+      "requirement": "optional"
+    },
+    "direction_id": {
+      "description": "The direction of the email relative to the scanning host or organization.</p>Email scanned at an internet gateway might be characterized as inbound to the organization from the Internet, outbound from the organization to the Internet, or internal within the organization. Email scanned at a workstation might be characterized as inbound to, or outbound from the workstation.",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The email direction is unknown."
+        },
+        "1": {
+          "caption": "Inbound",
+          "description": "Email Inbound, from the Internet or outside network destined for an entity inside network."
+        },
+        "2": {
+          "caption": "Outbound",
+          "description": "Email Outbound, from inside the network destined for an entity outside network."
+        },
+        "3": {
+          "caption": "Internal",
+          "description": "Email Internal, from inside the network destined for an entity inside network."
+        },
+        "99": {
+          "caption": "Other"
+        }
+      },
+      "requirement": "required"
     },
     "dst_endpoint": {
       "description": "The responder (server) receiving the email.",
@@ -58,6 +84,10 @@
       "description": "The initiator (client) sending the email.",
       "requirement": "optional",
       "group": "primary"
+    },
+    "src_smtp_hello": {
+      "description": "The initiator (client) SMTP hello banner.",
+      "requirement": "recommended"
     }
   }
 }

@@ -16,6 +16,7 @@
       "profiles/security_control.json"
     ],
     "activity_id": {
+      "requirement": "optional",
       "enum": {
         "1": {
           "caption": "Send"
@@ -27,7 +28,8 @@
           "caption": "Scan",
           "description": "Email being scanned (example: security scanning)"
         }
-      }
+      },
+      "group": "context"
     },
     "attempt": {
       "requirement": "optional",
@@ -40,6 +42,7 @@
     },
     "direction": {
       "description": "The direction of the email, as defined by the <code>direction_id</code> value.",
+      "group": "context",
       "requirement": "optional"
     },
     "direction_id": {
@@ -65,6 +68,7 @@
           "caption": "Other"
         }
       },
+      "group": "context",
       "requirement": "required"
     },
     "dst_endpoint": {
@@ -88,6 +92,7 @@
     "src_smtp_hello": {
       "description": "The initiator (client) SMTP hello banner.",
       "requirement": "recommended"
+      "group": "primary"
     }
   }
 }

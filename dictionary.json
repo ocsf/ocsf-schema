@@ -31,7 +31,7 @@
     },
     "account_type": {
       "caption": "Account Type",
-      "description": "The user account type, as defined by the event source.",
+      "description": "The user account type, normalized to the caption of 'account_type_id'. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "account_type_id": {
@@ -53,12 +53,15 @@
           "caption": "Windows Account"
         },
         "3": {
-          "caption": "AWS IAM Account"
+          "caption": "AWS IAM User"
         },
         "4": {
-          "caption": "GCP Account"
+          "caption": "AWS IAM Role"
         },
         "5": {
+          "caption": "GCP Account"
+        },
+        "6": {
           "caption": "Azure AD Account"
         }
       },
@@ -98,7 +101,7 @@
     },
     "actor": {
       "caption": "Actor",
-      "description": "The actor that performed the operation or the action.",
+      "description": "The actor object describes details about the user/role/process that was the source of the activity.",
       "type": "actor"
     },
     "actual_permissions": {
@@ -113,7 +116,7 @@
     },
     "algorithm": {
       "caption": "Algorithm",
-      "description": "The hash algorithm, as reported by the event source, which was used to create the digital fingerprint.",
+      "description": "The hash algorithm used to create the digital fingerprint, normalized to the caption of 'algorithm_id'. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "algorithm_id": {
@@ -189,7 +192,7 @@
     },
     "auth_protocol": {
       "caption": "Auth Protocol",
-      "description": "The authentication protocol as reported by the event source.",
+      "description": "The authentication protocol as defined by the caption of 'auth_protocol_id'. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "auth_protocol_id": {
@@ -238,7 +241,7 @@
     },
     "auth_type": {
       "caption": "Authentication Type",
-      "description": "The agreed upon authentication type.",
+      "description": "The agreed upon authentication type, normalized to the caption of 'auth_type_id'. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "auth_type_id": {
@@ -257,7 +260,7 @@
     },
     "authorizations": {
       "caption": "Authorization Information",
-      "description": "Authorization object provides details related to Authorization.",
+      "description": "This object provides details such as authorization outcome, associated policies related to activity/event.",
       "is_array": true,
       "type": "authorization"
     },
@@ -298,7 +301,7 @@
     },
     "boundary": {
       "caption": "Boundary",
-      "description": "The boundary of the connection, as defined by the event source. <p> For cloud connections, this translates to the traffic-boundary(same VPC, through IGW, etc.). For traditional networks, this is described as Local, Internal, or External.</p>",
+      "description": "The boundary of the connection, normalized to the caption of 'boundary_id'. In the case of 'Other', it is defined by the event source. <p> For cloud connections, this translates to the traffic-boundary(same VPC, through IGW, etc.). For traditional networks, this is described as Local, Internal, or External.</p>",
       "type": "string_t"
     },
     "boundary_id": {
@@ -763,7 +766,7 @@
     },
     "classifications": {
       "caption": "Classifications",
-      "description": "The list of malware classifications, as defined by the event source.",
+      "description": "The list of malware classifications, normalized to the captions of the classifcation_id values. In the case of 'Other', they are defined by the event source.",
       "is_array": true,
       "type": "string_t"
     },
@@ -868,7 +871,7 @@
     },
     "confidentiality": {
       "caption": "Confidentiality",
-      "description": "The file content confidentiality, as defined by the event source.",
+      "description": "The file content confidentiality, normalized to the confidentiality_id value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "confidentiality_id": {
@@ -1109,7 +1112,7 @@
     },
     "direction": {
       "caption": "Direction",
-      "description": "The direction of the initiated connection, traffic, or email, as defined by the event source.",
+      "description": "The direction of the initiated connection, traffic, or email, normalized to the caption of the direction_id value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "direction_id": {
@@ -1137,7 +1140,7 @@
     },
     "disposition": {
       "caption": "Disposition",
-      "description": "The event disposition name, as defined by the disposition_id.",
+      "description": "The event disposition name, normalized to the caption of the disposition_id value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "disposition_id": {
@@ -1360,7 +1363,7 @@
     },
     "flags": {
       "caption": "Flags",
-      "description": "The list of communication flags, as defined by the event source.",
+      "description": "The list of communication flags, normalized to the captions of the flag_ids values. In the case of 'Other', they are defined by the event source.",
       "is_array": true,
       "type": "string_t"
     },
@@ -1462,14 +1465,9 @@
       "description": "The client identifier cookie during client/server exchange.",
       "type": "string_t"
     },
-    "identity": {
-      "caption": "Identity",
-      "description": "Identity Object details AuthN, AuthZ information pertaining to the event",
-      "type": "identity"
-    },
     "idp": {
       "caption": "Identity Provider",
-      "description": "IDP object descivbes details pertaining to the Identity Provider used",
+      "description": "This object describes details about the Identity Provider used.",
       "type": "idp"
     },
     "image": {
@@ -1489,7 +1487,7 @@
     },
     "injection_type": {
       "caption": "Injection Type",
-      "description": "The process injection method, as defined by the event source.",
+      "description": "The process injection method, normalized to the caption of the injection_type_id value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "injection_type_id": {
@@ -1519,7 +1517,7 @@
     },
     "integrity": {
       "caption": "Integrity",
-      "description": "The process integrity level, as defined by the event source. (Windows only).",
+      "description": "The process integrity level, normalized to the caption of the direction_id value. In the case of 'Other', it is defined by the event source (Windows only).",
       "type": "string_t"
     },
     "integrity_id": {
@@ -1547,7 +1545,7 @@
     },
     "invoked_by": {
       "caption": "Invoked by",
-      "description": "The name of the service that made the request",
+      "description": "The name of the service that invoked the activity as described in the event.",
       "type": "string_t"
     },
     "ip": {
@@ -1735,7 +1733,7 @@
     },
     "load_type": {
       "caption": "Load Type",
-      "description": "The load type, as defined by the event source. It describes how the module was loaded in memory.",
+      "description": "The load type, normalized to the caption of the load_type_id value. In the case of 'Other', it is defined by the event source. It describes how the module was loaded in memory.",
       "type": "string_t"
     },
     "load_type_id": {
@@ -1768,7 +1766,7 @@
     },
     "logon_type": {
       "caption": "Logon Type",
-      "description": "The logon type, as defined by the event source.",
+      "description": "The logon type, normalized to the caption of the logon_type_id value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "logon_type_id": {
@@ -1865,7 +1863,7 @@
     },
     "mfa": {
       "caption": "Multi Factor Authentication",
-      "description": "The Multi Factor Authentication was used during authentication.",
+      "description": "Indicates whether Multi Factor Authentication was used during authentication.",
       "type": "boolean_t"
     },
     "mime_type": {
@@ -2126,7 +2124,7 @@
     },
     "priority": {
       "caption": "Priority",
-      "description": "The priority, as defined by the event source. See specific usage.",
+      "description": "The priority, normalized to the caption of the priority_id value. In the case of 'Other', it is defined by the event source. See specific usage.",
       "type": "integer_t"
     },
     "priority_id": {
@@ -2185,7 +2183,7 @@
     },
     "protocol_ver": {
       "caption": "Protocol Version",
-      "description": "The Protocol version, as defined by the event source.",
+      "description": "The Protocol version, normalized to the caption of the protocol_ver_id value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "protocol_ver_id": {
@@ -2232,7 +2230,7 @@
     },
     "rcode": {
       "caption": "Response Code",
-      "description": "The server response code, as defined by the event source.",
+      "description": "The server response code, normalized to the caption of the rcode_id value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "rcode_id": {
@@ -2371,7 +2369,7 @@
     },
     "resources": {
       "caption": "Resources Array",
-      "description": "A list of resources associated to an event.",
+      "description": "Describes details about resources that were affected by the activity/event.",
       "is_array": true,
       "type": "resource"
     },
@@ -2387,7 +2385,7 @@
     },
     "risk_level": {
       "caption": "Risk Level",
-      "description": "The risk level, as defined by the event source.",
+      "description": "The risk level, normalized to the caption of the risk_level_id value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "risk_level_id": {
@@ -2425,7 +2423,7 @@
     },
     "run_state": {
       "caption": "Run State",
-      "description": "The state of the job or service, as defined by the event source. See specific usage.",
+      "description": "The state of the job or service, normalized to the caption of the run_state_id value. In the case of 'Other', it is defined by the event source. See specific usage.",
       "type": "string_t"
     },
     "run_state_id": {
@@ -2468,7 +2466,7 @@
     },
     "score": {
       "caption": "Reputation Score",
-      "description": "The reputation score, as defined by the event source.",
+      "description": "The reputation score, normalized to the caption of the score_id value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "score_id": {
@@ -2565,22 +2563,12 @@
     },
     "session": {
       "caption": "Session",
-      "description": "The session information.",
+      "description": "This object describes details about an authenticated session. e.g. Session Creation Time, Session Issuer.",
       "type": "session"
-    },
-    "session_uid": {
-      "caption": "Session UID",
-      "description": "The unique ID of the user session, as reported by the OS.<br /><br /><u>Examples:</u> <ul><li><i><b>*nix: </b><i>Aug 10 17:31:16 ip-192-168-1-1 systemd[1]: Started Session 222 of User ubuntu.</li><ul><li><b>session_uid</b> == 222</li></ul><li><b>Windows:</b> Logon ID:       0xd22e9734</li><ul><li><b>session_uid</b> == 0xd22e9734</li></ul></ul>",
-      "type": "string_t"
-    },
-    "session_uuid": {
-      "caption": "Session UUID",
-      "description": "The universally unique ID of the user session, as reported by the OS. For example, in Windows this is the Login GUID.",
-      "type": "string_t"
     },
     "severity": {
       "caption": "Severity",
-      "description": "The event severity, as defined by the event source.",
+      "description": "The event severity, normalized to the caption of the severity_id value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "severity_id": {
@@ -2696,7 +2684,7 @@
     },
     "state": {
       "caption": "State",
-      "description": "The state of the event or object, as defined by the event source. See specific usage.",
+      "description": "The state of the event or object, normalized to the caption of the state_id value. In the case of 'Other', it is defined by the event source. See specific usage.",
       "type": "string_t"
     },
     "state_id": {
@@ -2716,7 +2704,7 @@
     },
     "status": {
       "caption": "Status",
-      "description": "The event status, as reported by the event source.",
+      "description": "The event status, normalized to the caption of the status_id value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "status_code": {
@@ -2875,7 +2863,7 @@
     },
     "type": {
       "caption": "Type",
-      "description": "The type of an object or value, as defined by the event source. See specific usage.",
+      "description": "The type of an object or value, normalized to the caption of the type_id value. In the case of 'Other', it is defined by the event source. See specific usage.",
       "type": "string_t"
     },
     "type_id": {

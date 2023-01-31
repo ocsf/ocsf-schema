@@ -16,6 +16,7 @@
       "profiles/security_control.json"
     ],
     "activity_id": {
+      "requirement": "optional",
       "enum": {
         "1": {
           "caption": "Send"
@@ -27,19 +28,48 @@
           "caption": "Scan",
           "description": "Email being scanned (example: security scanning)"
         }
-      }
+      },
+      "group": "context"
     },
     "attempt": {
-      "requirement": "recommended",
+      "requirement": "optional",
+      "description": "The attempt number for attempting to deliver the email.",
       "group": "context"
     },
     "banner": {
       "requirement": "optional",
       "group": "context"
     },
-    "dkim_signature": {
-      "requirement": "recommended",
-      "group": "context"
+    "direction": {
+      "description": "The direction of the email, as defined by the <code>direction_id</code> value.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "direction_id": {
+      "description": "<p>The direction of the email relative to the scanning host or organization.</p>Email scanned at an internet gateway might be characterized as inbound to the organization from the Internet, outbound from the organization to the Internet, or internal within the organization. Email scanned at a workstation might be characterized as inbound to, or outbound from the workstation.",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The email direction is unknown."
+        },
+        "1": {
+          "caption": "Inbound",
+          "description": "Email Inbound, from the Internet or outside network destined for an entity inside network."
+        },
+        "2": {
+          "caption": "Outbound",
+          "description": "Email Outbound, from inside the network destined for an entity outside network."
+        },
+        "3": {
+          "caption": "Internal",
+          "description": "Email Internal, from inside the network destined for an entity inside network."
+        },
+        "99": {
+          "caption": "Other"
+        }
+      },
+      "group": "context",
+      "requirement": "required"
     },
     "dst_endpoint": {
       "description": "The responder (server) receiving the email.",
@@ -57,6 +87,11 @@
     "src_endpoint": {
       "description": "The initiator (client) sending the email.",
       "requirement": "optional",
+      "group": "primary"
+    },
+    "smtp_hello": {
+      "description": "The value of the SMTP HELO or EHLO command sent by the initiator (client).",
+      "requirement": "recommended",
       "group": "primary"
     }
   }

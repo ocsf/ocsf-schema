@@ -1,6 +1,6 @@
 {
   "caption": "Account Change",
-  "description": "Account Change events report when specific user account management tasks are performed, such as a user account is created, changed, deleted, renamed, disabled, enabled, locked out or unlocked.",
+  "description": "Account Change events report when specific user account management tasks are performed, such as a user/role being created, changed, deleted, renamed, disabled, enabled, locked out or unlocked.",
   "extends": "audit",
   "name": "account_change",
   "uid": 1,
@@ -9,11 +9,11 @@
       "enum": {
         "1": {
           "caption": "Create",
-          "description": "A user account was created."
+          "description": "A user/role was created."
         },
         "2": {
           "caption": "Enable",
-          "description": "A user account was enabled."
+          "description": "A user/role was enabled."
         },
         "3": {
           "caption": "Password Change",
@@ -25,15 +25,15 @@
         },
         "5": {
           "caption": "Disable",
-          "description": "A user account was disabled."
+          "description": "A user/role was disabled."
         },
         "6": {
           "caption": "Delete",
-          "description": "A user account was deleted."
+          "description": "A user/role was deleted."
         },
         "7": {
           "caption": "Change",
-          "description": "A user account was changed."
+          "description": "A user/role was changed."
         },
         "8": {
           "caption": "Lock",
@@ -42,13 +42,29 @@
       }
     },
     "actor": {
-      "description": "The actor that requested the account changes.",
-      "group": "context"
+      "group": "context",
+      "requirement": "required",
+      "profile": null
+    },
+    "http_request": {
+      "description": "Details about the underlying http request.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "src_endpoint": {
+      "description": "Details about the source of the activity.",
+      "group": "primary",
+      "requirement": "recommended"
     },
     "user": {
       "description": "The user that was a target of an activity.",
       "group": "primary",
-      "requirement": "required"
+      "requirement": "recommended"
+    },
+    "resources": {
+      "description": "Details about resources that were affected by the activity/event.",
+      "group": "primary",
+      "requirement": "recommended"
     },
     "user_result": {
       "group": "primary",

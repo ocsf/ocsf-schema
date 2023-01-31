@@ -179,6 +179,16 @@
       "description": "The arguments sent along with the HTTP request.",
       "type": "string_t"
     },
+    "attempt": {
+      "caption": "Attempt",
+      "description": "The delivery attempt.",
+      "type": "integer_t"
+    },
+    "banner": {
+      "caption": "SMTP Banner",
+      "description": "The initial SMTP connection response that a messaging server receives after it connects to a email server.",
+      "type": "string_t"
+    },
     "attacks": {
       "caption": "Attacks",
       "description": "An array of attacks associated with an event.",
@@ -1215,6 +1225,36 @@
       "sibling": "disposition",
       "type": "integer_t"
     },
+    "dkim": {
+      "caption": "DKIM Status",
+      "description": "The DomainKeys Identified Mail (DKIM) status of the email.",
+      "type": "string_t"
+    },
+    "dkim_domain": {
+      "caption": "DKIM Domain",
+      "description": "The DomainKeys Identified Mail (DKIM) signing domain of the email.",
+      "type": "string_t"
+    },
+    "dkim_signature": {
+      "caption": "DKIM Signature",
+      "description": "The DomainKeys Identified Mail (DKIM) signature used by the sending/receiving system.",
+      "type": "string_t"
+    },
+    "dmarc": {
+      "caption": "DMARC Status",
+      "description": "The Domain-based Message Authentication, Reporting and Conformance (DMARC) status of the email.",
+      "type": "string_t"
+    },
+    "dmarc_override": {
+      "caption": "DMARC Override",
+      "description": "The Domain-based Message Authentication, Reporting and Conformance (DMARC) override action.",
+      "type": "string_t"
+    },
+    "dmarc_policy": {
+      "caption": "DMARC Policy",
+      "description": "The Domain-based Message Authentication, Reporting and Conformance (DMARC) policy status.",
+      "type": "string_t"
+    },
     "domain": {
       "caption": "Domain",
       "description": "The name of the domain.",
@@ -1254,6 +1294,11 @@
       "caption": "Email Address",
       "description": "The user's email address.",
       "type": "email_t"
+    },
+    "email_auth": {
+      "caption": "Email Authentication",
+      "description": "The SPF, DKIM and DMARC attributes of an email.",
+      "type": "email_auth"
     },
     "end_time": {
       "caption": "End Time",
@@ -2223,6 +2268,11 @@
       "description": "The ctotal amount of installed RAM, in Megabytes. For example: <code>2048</code>.",
       "type": "integer_t"
     },
+    "raw_header": {
+      "caption": "Raw Header",
+      "description": "The email authentication header.",
+      "type": "string_t"
+    },
     "raw_data": {
       "caption": "Raw Data",
       "description": "The event data as received from the event source.",
@@ -2650,6 +2700,11 @@
     "sni": {
       "caption": "Server Name Indication",
       "description": " The Server Name Indication (SNI) extension sent by the client.",
+      "type": "string_t"
+    },
+    "spf": {
+      "caption": "SPF Status",
+      "description": "The Sender Policy Framework (SPF) status of the email.",
       "type": "string_t"
     },
     "sp_name": {

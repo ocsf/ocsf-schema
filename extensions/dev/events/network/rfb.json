@@ -1,0 +1,65 @@
+{
+  "caption": "RFB Activity",
+  "description": "Remote Frame Buffer Protocol (RFB) Activity events report remote client connections to a server as seen on the network.",
+  "extends": "network_activity",
+  "name": "rfb_activity",
+  "uid": 9,
+  "attributes": {
+    "auth_type": {
+      "requirement": "optional"
+    },
+    "auth_type_id": {
+      "description": "The normalized identifier of the agreed upon RFB authentication type. See <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc6143.html'>RFC-6143</a>.",
+      "enum": {
+        "99": {
+          "caption": "Other"
+        },
+        "0": {
+          "caption": "Invalid"
+        },
+        "1": {
+          "caption": "None"
+        },
+        "2": {
+          "caption": "VNC Authentication"
+        },
+        "3": {
+          "caption": "RealVNC",
+          "description": "The RealVNC codes: 3 to 15, 128 to 255."
+        },
+        "16": {
+          "caption": "Tight"
+        },
+        "17": {
+          "caption": "Ultra"
+        },
+        "18": {
+          "caption": "TLS"
+        },
+        "19": {
+          "caption": "VeNCrypt"
+        },
+        "20": {
+          "caption": "GTK-VNC SASL"
+        },
+        "21": {
+          "caption": "MD5 hash authentication"
+        },
+        "22": {
+          "caption": "Colin Dean xvp"
+        }
+      },
+      "requirement": "recommended"
+    },
+    "error": {
+      "description": "The result of the authentication attempt.",
+      "requirement": "optional"
+    },
+    "frame_buffer": {
+      "requirement": "optional"
+    },
+    "vnc_auth": {
+      "requirement": "optional"
+    }
+  }
+}

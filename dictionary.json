@@ -17,7 +17,7 @@
     "access_result": {
       "caption": "Access Check Result",
       "description": "The list of access check results.",
-      "type": "object"
+      "type": "json_t"
     },
     "accessed_time": {
       "caption": "Accessed Time",
@@ -27,18 +27,18 @@
     "accessor": {
       "caption": "Accessor",
       "description": "The name of the user who last accessed the object.",
-      "type": "string_t"
+      "type": "user"
     },
     "account_type": {
       "caption": "Account Type",
-      "description": "The user account type, as defined by the event source.",
+      "description": "The user account type, normalized to the caption of 'account_type_id'. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "account_type_id": {
       "caption": "Account Type ID",
       "description": "The normalized user account type identifier.",
       "enum": {
-        "-1": {
+        "99": {
           "caption": "Other",
           "description": "The user account type is not mapped."
         },
@@ -53,12 +53,15 @@
           "caption": "Windows Account"
         },
         "3": {
-          "caption": "AWS IAM Account"
+          "caption": "AWS IAM User"
         },
         "4": {
-          "caption": "GCP Account"
+          "caption": "AWS IAM Role"
         },
         "5": {
+          "caption": "GCP Account"
+        },
+        "6": {
           "caption": "Azure AD Account"
         }
       },
@@ -79,7 +82,7 @@
       "caption": "Activity ID",
       "description": "The normalized identifier of the activity that triggered the event.",
       "enum": {
-        "-1": {
+        "99": {
           "caption": "Other",
           "description": "The event activity is not mapped."
         },
@@ -98,7 +101,7 @@
     },
     "actor": {
       "caption": "Actor",
-      "description": "The actor that performed the operation or the action.",
+      "description": "The actor object describes details about the user/role/process that was the source of the activity.",
       "type": "actor"
     },
     "actual_permissions": {
@@ -113,14 +116,14 @@
     },
     "algorithm": {
       "caption": "Algorithm",
-      "description": "The hash algorithm, as reported by the event source, which was used to create the digital fingerprint.",
+      "description": "The hash algorithm used to create the digital fingerprint, normalized to the caption of 'algorithm_id'. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "algorithm_id": {
       "caption": "Algorithm ID",
       "description": "The identifier of the normalized hash algorithm, which was used to create the digital fingerprint.",
       "enum": {
-        "-1": {
+        "99": {
           "caption": "Other"
         },
         "0": {
@@ -176,6 +179,16 @@
       "description": "The arguments sent along with the HTTP request.",
       "type": "string_t"
     },
+    "attempt": {
+      "caption": "Attempt",
+      "description": "The delivery attempt.",
+      "type": "integer_t"
+    },
+    "banner": {
+      "caption": "SMTP Banner",
+      "description": "The initial SMTP connection response that a messaging server receives after it connects to a email server.",
+      "type": "string_t"
+    },
     "attacks": {
       "caption": "Attacks",
       "description": "An array of attacks associated with an event.",
@@ -189,14 +202,14 @@
     },
     "auth_protocol": {
       "caption": "Auth Protocol",
-      "description": "The authentication protocol as reported by the event source.",
+      "description": "The authentication protocol as defined by the caption of 'auth_protocol_id'. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "auth_protocol_id": {
       "caption": "Auth Protocol ID",
       "description": "The normalized identifier of the authentication protocol used to create the user session.",
       "enum": {
-        "-1": {
+        "99": {
           "caption": "Other"
         },
         "0": {
@@ -238,12 +251,26 @@
     },
     "auth_type": {
       "caption": "Authentication Type",
-      "description": "The agreed upon authentication type.",
+      "description": "The agreed upon authentication type, normalized to the caption of 'auth_type_id'. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
+    },
+    "auth_type_id": {
+      "caption": "Authentication Type ID",
+      "description": "The normalized identifier of the agreed upon authentication type. See specific usage.",
+      "enum": {
+        "99": {
+          "caption": "Other"
+        },
+        "0": {
+          "caption": "Unknown"
+        }
+      },
+      "sibling": "auth_type",
+      "type": "integer_t"
     },
     "authorizations": {
       "caption": "Authorization Information",
-      "description": "Authorization object provides details related to Authorization",
+      "description": "This object provides details such as authorization outcome, associated policies related to activity/event.",
       "is_array": true,
       "type": "authorization"
     },
@@ -282,21 +309,16 @@
       "description": "The BIOS version. For example: <code>LENOVO G5ETA2WW (2.62)</code>.",
       "type": "string_t"
     },
-    "blue_pixel": {
-      "caption": "Blue Pixel Info",
-      "description": "The information pertaining to how a blue pixel was transmitted.",
-      "type": "pixel_info"
-    },
     "boundary": {
       "caption": "Boundary",
-      "description": "The boundary of the connection, as defined by the event source. <p> For cloud connections, this translates to the traffic-boundary(same VPC, through IGW, etc.). For traditional networks, this is described as Local, Internal, or External.</p>",
+      "description": "The boundary of the connection, normalized to the caption of 'boundary_id'. In the case of 'Other', it is defined by the event source. <p> For cloud connections, this translates to the traffic-boundary(same VPC, through IGW, etc.). For traditional networks, this is described as Local, Internal, or External.</p>",
       "type": "string_t"
     },
     "boundary_id": {
       "caption": "Boundary ID",
       "description": "The normalized identifier of the boundary of the connection. </p> For cloud connections, this translates to the traffic-boundary (same VPC, through IGW, etc.). For traditional networks, this is described as Local, Internal, or External.</p>",
       "enum": {
-        "-1": {
+        "99": {
           "caption": "Other"
         },
         "0": {
@@ -400,7 +422,7 @@
       "caption": "Website Categorization IDs",
       "description": "The Website categorization identifies.",
       "enum": {
-        "-1": {
+        "99": {
           "caption": "Other",
           "description": "The Domain/URL category is not mapped. See the <code>categories</code> attribute, which may contain a data source specific value."
         },
@@ -754,7 +776,7 @@
     },
     "classifications": {
       "caption": "Classifications",
-      "description": "The list of malware classifications, as defined by the event source.",
+      "description": "The list of malware classifications, normalized to the captions of the classifcation_id values. In the case of 'Other', they are defined by the event source.",
       "is_array": true,
       "type": "string_t"
     },
@@ -859,14 +881,14 @@
     },
     "confidentiality": {
       "caption": "Confidentiality",
-      "description": "The file content confidentiality, as defined by the event source.",
+      "description": "The file content confidentiality, normalized to the confidentiality_id value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "confidentiality_id": {
       "caption": "Confidentiality ID",
       "description": "The normalized identifier of the file content confidentiality indicator.",
       "enum": {
-        "-1": {
+        "99": {
           "caption": "Other"
         },
         "0": {
@@ -973,7 +995,7 @@
     "creator": {
       "caption": "Creator",
       "description": "The user that created the object associated with event. See specific usage.",
-      "type": "string_t"
+      "type": "user"
     },
     "credential_uid": {
       "caption": "User Credential ID",
@@ -1100,27 +1122,31 @@
     },
     "direction": {
       "caption": "Direction",
-      "description": "The direction of the initiated connection, traffic, or email, as defined by the event source.",
+      "description": "The direction of the initiated connection, traffic, or email, normalized to the caption of the direction_id value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "direction_id": {
       "caption": "Direction ID",
       "description": "The normalized identifier of the direction of the initiated connection, traffic, or email.",
       "enum": {
-        "-1": {
-          "caption": "Other"
-        },
         "0": {
-          "caption": "Unknown",
-          "description": "The direction is unknown."
+          "description": "Connection direction is unknown.",
+          "caption": "Unknown"
         },
         "1": {
-          "caption": "Inbound",
-          "description": "Inbound, from the Internet or outside network destined for services on the inside network."
+          "description": "Inbound network connection. The connection was originated from the Internet or outside network, destined for services on the inside network.",
+          "caption": "Inbound"
         },
         "2": {
-          "caption": "Outbound",
-          "description": "Outbound, from inside the network destined for services on the Internet or outside network."
+          "description": "Outbound network connection. The connection was originated from inside the network, destined for services on the Internet or outside network.",
+          "caption": "Outbound"
+        },
+        "3": {
+          "description": "Lateral network connection. The connection was originated from inside the network, destined for services on the inside network.",
+          "caption": "Lateral"
+        },
+        "99": {
+          "caption": "Other"
         }
       },
       "sibling": "direction",
@@ -1128,14 +1154,14 @@
     },
     "disposition": {
       "caption": "Disposition",
-      "description": "The event disposition name, as defined by the disposition_id.",
+      "description": "The event disposition name, normalized to the caption of the disposition_id value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "disposition_id": {
       "caption": "Disposition ID",
       "description": "When security issues, such as malware or policy violations, are detected and possibly corrected, then <code>disposition_id</code> describes the action taken by the security product.",
       "enum": {
-        "-1": {
+        "99": {
           "caption": "Other"
         },
         "0": {
@@ -1161,7 +1187,7 @@
         },
         "7": {
           "caption": "Custom Action",
-          "description": "Excecuted custom action such as run a command script."
+          "description": "Executed custom action such as run a command script."
         },
         "8": {
           "caption": "Approved"
@@ -1203,6 +1229,36 @@
       "sibling": "disposition",
       "type": "integer_t"
     },
+    "dkim": {
+      "caption": "DKIM Status",
+      "description": "The DomainKeys Identified Mail (DKIM) status of the email.",
+      "type": "string_t"
+    },
+    "dkim_domain": {
+      "caption": "DKIM Domain",
+      "description": "The DomainKeys Identified Mail (DKIM) signing domain of the email.",
+      "type": "string_t"
+    },
+    "dkim_signature": {
+      "caption": "DKIM Signature",
+      "description": "The DomainKeys Identified Mail (DKIM) signature used by the sending/receiving system.",
+      "type": "string_t"
+    },
+    "dmarc": {
+      "caption": "DMARC Status",
+      "description": "The Domain-based Message Authentication, Reporting and Conformance (DMARC) status of the email.",
+      "type": "string_t"
+    },
+    "dmarc_override": {
+      "caption": "DMARC Override",
+      "description": "The Domain-based Message Authentication, Reporting and Conformance (DMARC) override action.",
+      "type": "string_t"
+    },
+    "dmarc_policy": {
+      "caption": "DMARC Policy",
+      "description": "The Domain-based Message Authentication, Reporting and Conformance (DMARC) policy status.",
+      "type": "string_t"
+    },
     "domain": {
       "caption": "Domain",
       "description": "The name of the domain.",
@@ -1242,6 +1298,11 @@
       "caption": "Email Address",
       "description": "The user's email address.",
       "type": "email_t"
+    },
+    "email_auth": {
+      "caption": "Email Authentication",
+      "description": "The SPF, DKIM and DMARC attributes of an email.",
+      "type": "email_auth"
     },
     "end_time": {
       "caption": "End Time",
@@ -1351,7 +1412,7 @@
     },
     "flags": {
       "caption": "Flags",
-      "description": "The list of communication flags, as defined by the event source.",
+      "description": "The list of communication flags, normalized to the captions of the flag_ids values. In the case of 'Other', they are defined by the event source.",
       "is_array": true,
       "type": "string_t"
     },
@@ -1359,11 +1420,6 @@
       "caption": "Folder",
       "description": "The folder that pertains to the event.",
       "type": "file"
-    },
-    "frame_buffer": {
-      "caption": "Frame Buffer",
-      "description": "The frame buffer object describes the details pertaining to the color/pixel data associated with the computer display.",
-      "type": "frame_buffer"
     },
     "from": {
       "caption": "From",
@@ -1379,11 +1435,6 @@
       "caption": "Function Name",
       "description": "The entry-point function of the module. The system calls the entry-point function whenever a process or thread loads or unloads the module.",
       "type": "string_t"
-    },
-    "green_pixel": {
-      "caption": "Green Pixel Info",
-      "description": "The information pertaining to how a green pixel was transmitted.",
-      "type": "pixel_info"
     },
     "group": {
       "caption": "Group",
@@ -1463,14 +1514,9 @@
       "description": "The client identifier cookie during client/server exchange.",
       "type": "string_t"
     },
-    "identity": {
-      "caption": "Identity",
-      "description": "Identity Object details AuthN, AuthZ information pertaining to the event",
-      "type": "identity"
-    },
     "idp": {
       "caption": "Identity Provider",
-      "description": "IDP object descivbes details pertaining to the Identity Provider used",
+      "description": "This object describes details about the Identity Provider used.",
       "type": "idp"
     },
     "image": {
@@ -1490,14 +1536,14 @@
     },
     "injection_type": {
       "caption": "Injection Type",
-      "description": "The process injection method, as defined by the event source.",
+      "description": "The process injection method, normalized to the caption of the injection_type_id value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "injection_type_id": {
       "caption": "Injection Type ID",
       "description": "The normalized identifier of the process injection method.",
       "enum": {
-        "-1": {
+        "99": {
           "caption": "Other"
         },
         "0": {
@@ -1520,15 +1566,20 @@
     },
     "integrity": {
       "caption": "Integrity",
-      "description": "The process integrity level, as defined by the event source. (Windows only).",
-      "sibling": "integrity",
+      "description": "The process integrity level, normalized to the caption of the direction_id value. In the case of 'Other', it is defined by the event source (Windows only).",
       "type": "string_t"
     },
     "integrity_id": {
       "caption": "Integrity Level",
       "description": "The normalized identifier of the process integrity level (Windows only).",
+      "sibling": "integrity",
       "enum": {},
       "type": "integer_t"
+    },
+    "interface_name": {
+      "caption": "Network Interface Name",
+      "description": "The name of the network interface (e.g. eth2).",
+      "type": "string_t"
     },
     "interface_uid": {
       "caption": "Network Interface ID",
@@ -1543,7 +1594,7 @@
     },
     "invoked_by": {
       "caption": "Invoked by",
-      "description": "The name of the service that made the request",
+      "description": "The name of the service that invoked the activity as described in the event.",
       "type": "string_t"
     },
     "ip": {
@@ -1731,7 +1782,7 @@
     },
     "load_type": {
       "caption": "Load Type",
-      "description": "The load type, as defined by the event source. It describes how the module was loaded in memory.",
+      "description": "The load type, normalized to the caption of the load_type_id value. In the case of 'Other', it is defined by the event source. It describes how the module was loaded in memory.",
       "type": "string_t"
     },
     "load_type_id": {
@@ -1764,14 +1815,14 @@
     },
     "logon_type": {
       "caption": "Logon Type",
-      "description": "The logon type, as defined by the event source.",
+      "description": "The logon type, normalized to the caption of the logon_type_id value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "logon_type_id": {
       "caption": "Logon Type ID",
       "description": "The normalized logon type identifier.",
       "enum": {
-        "-1": {
+        "99": {
           "caption": "Other",
           "description": "Other logon type."
         },
@@ -1861,7 +1912,7 @@
     },
     "mfa": {
       "caption": "Multi Factor Authentication",
-      "description": "The Multi Factor Authentication was used during authentication.",
+      "description": "Indicates whether Multi Factor Authentication was used during authentication.",
       "type": "boolean_t"
     },
     "mime_type": {
@@ -1882,7 +1933,7 @@
     "modifier": {
       "caption": "Modifier",
       "description": "The user that last modified the object associated with the event. See specific usage.",
-      "type": "string_t"
+      "type": "user"
     },
     "module": {
       "caption": "Module",
@@ -2019,7 +2070,7 @@
     "owner": {
       "caption": "Owner",
       "description": "The user that owns the file/object.",
-      "type": "string_t"
+      "type": "user"
     },
     "packages": {
       "caption": "Software Packages",
@@ -2122,7 +2173,7 @@
     },
     "priority": {
       "caption": "Priority",
-      "description": "The priority, as defined by the event source. See specific usage.",
+      "description": "The priority, normalized to the caption of the priority_id value. In the case of 'Other', it is defined by the event source. See specific usage.",
       "type": "integer_t"
     },
     "priority_id": {
@@ -2166,7 +2217,7 @@
     },
     "project_uid": {
       "caption": "Project ID",
-      "description": "Cloud project identifier.",
+      "description": "The unique identifier of a Cloud project.",
       "type": "string_t"
     },
     "protocol_name": {
@@ -2181,7 +2232,7 @@
     },
     "protocol_ver": {
       "caption": "Protocol Version",
-      "description": "The Protocol version, as defined by the event source.",
+      "description": "The Protocol version, normalized to the caption of the protocol_ver_id value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "protocol_ver_id": {
@@ -2221,6 +2272,11 @@
       "description": "The ctotal amount of installed RAM, in Megabytes. For example: <code>2048</code>.",
       "type": "integer_t"
     },
+    "raw_header": {
+      "caption": "Raw Header",
+      "description": "The email authentication header.",
+      "type": "string_t"
+    },
     "raw_data": {
       "caption": "Raw Data",
       "description": "The event data as received from the event source.",
@@ -2228,104 +2284,19 @@
     },
     "rcode": {
       "caption": "Response Code",
-      "description": "The DNS server response code, as defined by the event source.",
+      "description": "The server response code, normalized to the caption of the rcode_id value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "rcode_id": {
       "caption": "Response Code ID",
-      "description": "The normalized identifier of the DNS server response code. See <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc6895'>RFC-6895</a>.",
+      "description": "The normalized identifier of the server response code. See specific usage.",
       "enum": {
-        "-1": {
+        "99": {
           "caption": "Other",
           "description": "The dns response code is not defined by the RFC."
         },
         "0": {
-          "caption": "NoError",
-          "description": "No Error."
-        },
-        "1": {
-          "caption": "FormError",
-          "description": "Format Error."
-        },
-        "10": {
-          "caption": "NotZone",
-          "description": "Name not contained in zone."
-        },
-        "11": {
-          "caption": "DSOTYPENI",
-          "description": "DSO-TYPE Not Implemented."
-        },
-        "16": {
-          "caption": "BADSIG_VERS",
-          "description": "TSIG Signature Failure or Bad OPT Version."
-        },
-        "17": {
-          "caption": "BADKEY",
-          "description": "Key not recognized."
-        },
-        "18": {
-          "caption": "BADTIME",
-          "description": "Signature out of time window."
-        },
-        "19": {
-          "caption": "BADMODE",
-          "description": "Bad TKEY Mode."
-        },
-        "2": {
-          "caption": "ServError",
-          "description": "Server Failure."
-        },
-        "20": {
-          "caption": "BADNAME",
-          "description": "Duplicate key name."
-        },
-        "21": {
-          "caption": "BADALG",
-          "description": "Algorithm not supported."
-        },
-        "22": {
-          "caption": "BADTRUNC",
-          "description": "Bad Truncation."
-        },
-        "23": {
-          "caption": "BADCOOKIE",
-          "description": "Bad/missing Server Cookie."
-        },
-        "24": {
-          "caption": "Unassigned",
-          "description": "The codes deemed to be unassigned by the RFC (unassigned codes: 12-15, 24-3840, 4096-65534)."
-        },
-        "25": {
-          "caption": "Reserved",
-          "description": "The codes deemed to be reserved by the RFC (codes: 3841-4095, 65535)."
-        },
-        "3": {
-          "caption": "NXDomain",
-          "description": "Non-Existent Domain."
-        },
-        "4": {
-          "caption": "NotImp",
-          "description": "Not Implemented."
-        },
-        "5": {
-          "caption": "Refused",
-          "description": "Query Refused."
-        },
-        "6": {
-          "caption": "YXDomain",
-          "description": "Name Exists when it should not."
-        },
-        "7": {
-          "caption": "YXRRSet",
-          "description": "RR Set Exists when it should not."
-        },
-        "8": {
-          "caption": "NXRRSet",
-          "description": "RR Set that should exist does not."
-        },
-        "9": {
-          "caption": "NotAuth",
-          "description": "Not Authorized or Server Not Authoritative for zone."
+          "caption": "Unknown"
         }
       },
       "sibling": "rcode",
@@ -2335,11 +2306,6 @@
       "caption": "DNS RData",
       "description": "The data describing the DNS resource. The meaning of this data depends on the type and class of the resource record.",
       "type": "string_t"
-    },
-    "red_pixel": {
-      "caption": "Red Pixel Info",
-      "description": "The information pertaining to how a red pixel was transmitted.",
-      "type": "pixel_info"
     },
     "references": {
       "caption": "References",
@@ -2357,9 +2323,9 @@
       "description": "The registry key.",
       "type": "registry_key"
     },
-    "reg_key_result": {
-      "caption": "Registry Key Result",
-      "description": "The result of the registry key change. It should contain the new values of the changed attributes.",
+    "prev_reg_key": {
+      "caption": "Previous Registry Key",
+      "description": "The registry key before the mutation",
       "type": "registry_key"
     },
     "reg_value": {
@@ -2367,9 +2333,9 @@
       "description": "The registry value.",
       "type": "registry_value"
     },
-    "reg_value_result": {
-      "caption": "Registry Value Result",
-      "description": "The result of the registry value change. It should contain the new values of the changed attributes.",
+    "prev_reg_value": {
+      "caption": "Previous Registry Value",
+      "description": "The registry value before the mutation",
       "type": "registry_value"
     },
     "region": {
@@ -2457,7 +2423,7 @@
     },
     "resources": {
       "caption": "Resources Array",
-      "description": "A list of resources associated to an event.",
+      "description": "Describes details about resources that were affected by the activity/event.",
       "is_array": true,
       "type": "resource"
     },
@@ -2473,7 +2439,7 @@
     },
     "risk_level": {
       "caption": "Risk Level",
-      "description": "The risk level, as defined by the event source.",
+      "description": "The risk level, normalized to the caption of the risk_level_id value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "risk_level_id": {
@@ -2511,7 +2477,7 @@
     },
     "run_state": {
       "caption": "Run State",
-      "description": "The state of the job or service, as defined by the event source. See specific usage.",
+      "description": "The state of the job or service, normalized to the caption of the run_state_id value. In the case of 'Other', it is defined by the event source. See specific usage.",
       "type": "string_t"
     },
     "run_state_id": {
@@ -2554,14 +2520,14 @@
     },
     "score": {
       "caption": "Reputation Score",
-      "description": "The reputation score, as defined by the event source.",
+      "description": "The reputation score, normalized to the caption of the score_id value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "score_id": {
       "caption": "Reputation Score ID",
       "description": "The normalized reputation score identifier.",
       "enum": {
-        "-1": {
+        "99": {
           "caption": "Other",
           "description": "The reputation score is not mapped. See the <code>rep_score</code> attribute, which contains a data source specific value."
         },
@@ -2650,30 +2616,20 @@
       "type": "service"
     },
     "session": {
-      "caption": "Session",
-      "description": "The session information.",
+      "caption": "User Session",
+      "description": "The authenticated user session.",
       "type": "session"
-    },
-    "session_uid": {
-      "caption": "Session UID",
-      "description": "The unique ID of the user session, as reported by the OS.<br /><br /><u>Examples:</u> <ul><li><i><b>*nix: </b><i>Aug 10 17:31:16 ip-192-168-1-1 systemd[1]: Started Session 222 of User ubuntu.</li><ul><li><b>session_uid</b> == 222</li></ul><li><b>Windows:</b> Logon ID:       0xd22e9734</li><ul><li><b>session_uid</b> == 0xd22e9734</li></ul></ul>",
-      "type": "string_t"
-    },
-    "session_uuid": {
-      "caption": "Session UUID",
-      "description": "The universally unique ID of the user session, as reported by the OS. For example, in Windows this is the Login GUID.",
-      "type": "string_t"
     },
     "severity": {
       "caption": "Severity",
-      "description": "The event severity, as defined by the event source.",
+      "description": "The event severity, normalized to the caption of the severity_id value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "severity_id": {
       "caption": "Severity ID",
       "description": "The normalized identifier of the event severity.</p>The normalized severity is a measurement the effort and expense required to manage and resolve an event or incident. Smaller numerical values represent lower impact events, and larger numerical values represent higher impact events.",
       "enum": {
-        "-1": {
+        "99": {
           "caption": "Other",
           "description": "The event severity is not mapped. See the <code>severity</code> attribute, which contains a data source specific value."
         },
@@ -2750,6 +2706,11 @@
       "description": " The Server Name Indication (SNI) extension sent by the client.",
       "type": "string_t"
     },
+    "spf": {
+      "caption": "SPF Status",
+      "description": "The Sender Policy Framework (SPF) status of the email.",
+      "type": "string_t"
+    },
     "sp_name": {
       "caption": "OS Service Pack",
       "description": "The name of the latest Service Pack.",
@@ -2782,14 +2743,14 @@
     },
     "state": {
       "caption": "State",
-      "description": "The state of the event or object, as defined by the event source. See specific usage.",
+      "description": "The state of the event or object, normalized to the caption of the state_id value. In the case of 'Other', it is defined by the event source. See specific usage.",
       "type": "string_t"
     },
     "state_id": {
       "caption": "State ID",
       "description": "The normalized state ID of the event or object. See specific usage.",
       "enum": {
-        "-1": {
+        "99": {
           "caption": "Other",
           "description": "The state is not mapped. See the <code>state</code> attribute, which contains a data source specific value."
         },
@@ -2802,7 +2763,7 @@
     },
     "status": {
       "caption": "Status",
-      "description": "The event status, as reported by the event source.",
+      "description": "The event status, normalized to the caption of the status_id value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "status_code": {
@@ -2819,7 +2780,7 @@
       "caption": "Status ID",
       "description": "The normalized identifier of the event status.",
       "enum": {
-        "-1": {
+        "99": {
           "caption": "Other",
           "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
         },
@@ -2961,7 +2922,7 @@
     },
     "type": {
       "caption": "Type",
-      "description": "The type of an object or value, as defined by the event source. See specific usage.",
+      "description": "The type of an object or value, normalized to the caption of the type_id value. In the case of 'Other', it is defined by the event source. See specific usage.",
       "type": "string_t"
     },
     "type_id": {
@@ -2969,7 +2930,7 @@
       "default": 0,
       "description": "The normalized type identifier of an object. See specific usage.",
       "enum": {
-        "-1": {
+        "99": {
           "caption": "Other",
           "description": "The type is not mapped. See the <code>type</code> attribute, which may contain a data source specific value."
         },
@@ -3070,7 +3031,7 @@
     },
     "vulnerabilities": {
       "caption": "Vulnerabilities",
-      "description": "This object describes vulnerabilities reported in a security finding",
+      "description": "This object describes vulnerabilities reported in a security finding.",
       "is_array": true,
       "type": "vulnerability"
     },
@@ -3078,6 +3039,11 @@
       "caption": "Vulnerability",
       "description": "The vulnerability object describes details related to the observed vulnerability",
       "type": "vulnerability"
+    },
+    "win_resource": {
+      "caption": "Windows Resource",
+      "description": "The Windows resource object that was accessed, such as a mutant or timer.",
+      "type": "win_resource"
     },
     "x_forwarded_for": {
       "caption": "X-Forwarded-For",

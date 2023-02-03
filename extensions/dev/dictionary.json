@@ -24,15 +24,10 @@
       "description": "The name of the user who is assigned to the incident.",
       "type": "string_t"
     },
-    "attempt": {
-      "caption": "Attempt",
-      "description": "The delivery attempt.",
-      "type": "integer_t"
-    },
-    "banner": {
-      "caption": "SMTP Banner",
-      "description": "The initial SMTP connection response that a messaging server receives after it connects to a email server.",
-      "type": "string_t"
+    "blue_pixel": {
+      "caption": "Blue Pixel Info",
+      "description": "The information pertaining to how a blue pixel was transmitted.",
+      "type": "pixel_info"
     },
     "channel": {
       "caption": "Channel",
@@ -94,45 +89,10 @@
       "description": "The information that is displayed to the user that describes the impact of a client side override action.",
       "type": "string_t"
     },
-    "dkim": {
-      "caption": "DKIM Status",
-      "description": "The DomainKeys Identified Mail (DKIM) status of the email.",
-      "type": "string_t"
-    },
-    "dkim_domain": {
-      "caption": "DKIM Domain",
-      "description": "The DomainKeys Identified Mail (DKIM) signing domain of the email.",
-      "type": "string_t"
-    },
-    "dkim_signature": {
-      "caption": "DKIM Signature",
-      "description": "The DomainKeys Identified Mail (DKIM) signature used by the sending/receiving system.",
-      "type": "string_t"
-    },
-    "dmarc": {
-      "caption": "DMARC Status",
-      "description": "The Domain-based Message Authentication, Reporting and Conformance (DMARC) status of the email.",
-      "type": "string_t"
-    },
-    "dmarc_override": {
-      "caption": "DMARC Override",
-      "description": "The Domain-based Message Authentication, Reporting and Conformance (DMARC) override action.",
-      "type": "string_t"
-    },
-    "dmarc_policy": {
-      "caption": "DMARC Policy",
-      "description": "The Domain-based Message Authentication, Reporting and Conformance (DMARC) policy status.",
-      "type": "string_t"
-    },
     "effective_time": {
       "caption": "Effective Date",
       "description": "The date and time that the specific policy and rule was applied and became operational. ",
       "type": "timestamp_t"
-    },
-    "email_auth": {
-      "caption": "Email Authentication",
-      "description": "The SPF, DKIM and DMARC attributes of an email.",
-      "type": "email_auth"
     },
     "email_uid": {
       "caption": "Email UID",
@@ -158,6 +118,16 @@
       "caption": "Facility UID",
       "description": "The unique identifier of the facility.",
       "type": "string_t"
+    },
+    "frame_buffer": {
+      "caption": "Frame Buffer",
+      "description": "The frame buffer object describes the details pertaining to the color/pixel data associated with the computer display.",
+      "type": "frame_buffer"
+    },
+    "green_pixel": {
+      "caption": "Green Pixel Info",
+      "description": "The information pertaining to how a green pixel was transmitted.",
+      "type": "pixel_info"
     },
     "incident_uid": {
       "caption": "Incident UID",
@@ -333,25 +303,15 @@
       "description": "The unique identifier of the item that was quarantined or restored from quarantine.",
       "type": "string_t"
     },
-    "raw_header": {
-      "caption": "Raw Header",
-      "description": "The email authentication header.",
-      "type": "string_t"
-    },
-    "receiver_hostname": {
-      "caption": "Sender Host Name",
-      "description": "The host name of the receiving email server.",
-      "type": "hostname_t"
-    },
-    "receiver_ip": {
-      "caption": "Sender IP Address",
-      "description": "The IP address of the receiving email server, in either IPv4 or IPv6 format.",
-      "type": "ip_t"
-    },
     "recovery_key_uid": {
       "caption": "Recovery Key UID",
       "description": "The unique identifier of the recovery key of the volume.",
       "type": "string_t"
+    },
+    "red_pixel": {
+      "caption": "Red Pixel Info",
+      "description": "The information pertaining to how a red pixel was transmitted.",
+      "type": "pixel_info"
     },
     "request_obj": {
       "caption": "Request Object",
@@ -388,13 +348,13 @@
       "caption": "Scan Type ID",
       "description": "The type of scan.",
       "enum": {
-        "-1": {
-          "caption": "Other",
-          "description": "The scan type is not mapped."
-        },
         "0": {
           "caption": "Unknown",
           "description": "The scan type is unknown."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The scan type is not mapped."
         }
       },
       "type": "integer_t"
@@ -419,24 +379,14 @@
       "description": "The email address of the sender.",
       "type": "email_t"
     },
-    "sender_hostname": {
-      "caption": "Sender Host Name",
-      "description": "The host name of the sending email server.",
-      "type": "hostname_t"
-    },
-    "sender_ip": {
-      "caption": "Sender IP Address",
-      "description": "The IP address of the sending email server, in either IPv4 or IPv6 format.",
-      "type": "ip_t"
-    },
     "smtp_tls": {
       "caption": "SMTP TLS",
       "description": "The SMTP Transport Layer Security (TLS) attributes.",
       "type": "smtp_tls"
     },
-    "spf": {
-      "caption": "SPF Status",
-      "description": "The Sender Policy Framework (SPF) status of the email.",
+    "session_uid": {
+      "caption": "Session UID",
+      "description": "The unique ID of the user session, as reported by the OS.<br /><br /><u>Examples:</u> <ul><li><i><b>*nix: </b><i>Aug 10 17:31:16 ip-192-168-1-1 systemd[1]: Started Session 222 of User ubuntu.</li><ul><li><b>session_uid</b> == 222</li></ul><li><b>Windows:</b> Logon ID:       0xd22e9734</li><ul><li><b>session_uid</b> == 0xd22e9734</li></ul></ul>",
       "type": "string_t"
     },
     "start_type": {
@@ -448,10 +398,6 @@
       "caption": "Start Type ID",
       "description": "The start type ID of the service or startup application.",
       "enum": {
-        "-1": {
-          "caption": "Other",
-          "description": "The start type is not mapped. See the <code>start_type</code> attribute, which contains a data source specific value."
-        },
         "0": {
           "caption": "Unknown",
           "description": "The startup type is unknown."
@@ -495,6 +441,10 @@
         "9": {
           "caption": "Scheduled",
           "description": "Stared according to a schedule."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The start type is not mapped. See the <code>start_type</code> attribute, which contains a data source specific value."
         }
       },
       "type": "integer_t"
@@ -573,10 +523,6 @@
       "caption": "Type IDs",
       "description": "The service type identifiers.",
       "enum": {
-        "-1": {
-          "caption": "Other",
-          "description": "The service type is not mapped. See the <code>types</code> attribute, which contains a data source specific values."
-        },
         "0": {
           "caption": "Unknown",
           "description": "The type is unknown"
@@ -616,6 +562,10 @@
         "9": {
           "caption": "Autoload",
           "description": "The Mac OS X Autoload Application"
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The service type is not mapped. See the <code>types</code> attribute, which contains a data source specific values."
         }
       },
       "is_array": true,

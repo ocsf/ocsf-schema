@@ -55,7 +55,7 @@
     "name": {
       "description": "The name of the file. For example: <code>svchost.exe</code>",
       "requirement": "required",
-      "name": "file_name_t"
+      "type": "file_name_t"
     },
     "owner": {
       "requirement": "optional"
@@ -65,7 +65,7 @@
     },
     "path": {
       "description": "The full path to the file. For example: <code>c:\\windows\\system32\\svchost.exe</code>.",
-      "requirement": "optional"
+      "requirement": "recommended"
     },
     "product": {
       "description": "The product that created or installed the file.",
@@ -87,9 +87,6 @@
     "type_id": {
       "description": "The file type ID.",
       "enum": {
-        "-1": {
-          "caption": "Other"
-        },
         "0": {
           "caption": "Unknown"
         },
@@ -113,6 +110,9 @@
         },
         "7": {
           "caption": "Symbolic Link"
+        },
+        "99": {
+          "caption": "Other"
         }
       },
       "requirement": "required"

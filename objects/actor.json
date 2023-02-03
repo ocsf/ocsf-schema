@@ -1,11 +1,24 @@
 {
-  "description": "The actor that performed some operation.",
   "caption": "Actor",
+  "description": "The actor object describes details about the user/role/process that was the source of the activity.",
   "name": "actor",
   "attributes": {
+    "authorizations": {
+      "requirement": "optional"
+    },
+    "idp": {
+      "requirement": "optional"
+    },
+    "invoked_by": {
+      "requirement": "optional"
+    },
     "process": {
       "description": "The process that initiated the activity.",
       "requirement": "recommended"
+    },
+    "session": {
+      "description": "The user session from which the activity was initiated.",
+      "requirement": "optional"
     },
     "user": {
       "description": "The user that initiated the activity or the user context from which the activity was initiated.",
@@ -15,7 +28,9 @@
   "constraints": {
     "at_least_one": [
       "process",
-      "user"
+      "user",
+      "invoked_by",
+      "session"
     ]
   }
 }

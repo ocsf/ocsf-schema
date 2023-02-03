@@ -1,13 +1,9 @@
 {
   "caption": "Network Interface",
   "name": "network_interface",
-  "profiles": ["reputation"],
   "description": "The network interface object describes the type and associated addresses of a network interface.",
   "extends": "object",
   "attributes": {
-    "$include": [
-      "profiles/reputation.json"
-    ],
     "hostname": {
       "description": "The hostname associated with the network interface.",
       "requirement": "recommended"
@@ -38,9 +34,6 @@
     "type_id": {
       "description": "The network interface type identifier.",
       "enum": {
-        "-1": {
-          "caption": "Other"
-        },
         "0": {
           "caption": "Unknown"
         },
@@ -52,6 +45,9 @@
         },
         "3": {
           "caption": "Mobile"
+        },
+        "99": {
+          "caption": "Other"
         }
       },
       "requirement": "required"

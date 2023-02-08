@@ -170,9 +170,8 @@ All contributors should submit their changes via pull requests. If you're not fa
     2. Each commit must include a DCO [Developer's Certificate of Origin](#developers-certificate-of-origin-11)
     3. Describe your change in as much detail as possible.
     4. Confirm that you have tested the changes, and the server run was error free.
-    5. Update the schema version in `/version.json` file. Updates to the version string must follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
-    6. Check the Preview tab to ensure everything looks as expected.
-    7. Once the PR is ready, request an approver and submit it.
+    5. Check the Preview tab to ensure everything looks as expected.
+    6. Once the PR is ready, request an approver and submit it.
 
 * * *
 

@@ -1,6 +1,6 @@
 
 Query extension is added in `query` directory instead of extensions folder so that changes are additive only
-and can be applied to other extensions with minimal change
+and can be applied to other extensions with minimal change.
 
 ## Extending the Schema
 

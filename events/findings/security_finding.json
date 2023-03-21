@@ -9,8 +9,16 @@
   ],
   "uid": 1,
   "attributes": {
+    "analytic": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
     "attacks": {
       "description": "The attack object describes the technique and associated tactics as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "cis_csc": {
       "group": "context",
       "requirement": "optional"
     },
@@ -18,13 +26,51 @@
       "group": "context",
       "requirement": "optional"
     },
+    "confidence": {
+      "group": "primary",
+      "requirement":"optional"
+    },
+    "confidence_id": {
+      "group": "primary",
+      "requirement": "recommended",
+      "sibling": "confidence"
+    },
+    "data_sources": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "evidence": {
+      "group": "context",
+      "requirement": "optional"
+    },
     "finding": {
       "group": "primary",
       "requirement": "required"
     },
+    "impact": {
+      "group": "primary",
+      "requirement":"optional"
+    },
+    "impact_id": {
+      "group": "primary",
+      "requirement": "recommended",
+      "sibling": "impact"
+    },
+    "impact_score": {
+      "group": "primary",
+      "requirement":"optional"
+    },
+    "kill_chain": {
+      "group": "context",
+      "requirement": "optional"
+    },
     "malware": {
       "group": "context",
       "requirement": "optional"
+    },
+    "nist": {
+      "group": "context",
+      "requirement":"optional"
     },
     "process": {
       "group": "context",
@@ -33,6 +79,19 @@
     "resources": {
       "group": "primary",
       "requirement": "recommended"
+    },
+    "risk_level": {
+      "group": "primary",
+      "requirement":"optional"
+    },
+    "risk_level_id": {
+      "group": "primary",
+      "requirement": "optional",
+      "sibling": "risk_level"
+    },
+    "risk_score": {
+      "group": "primary",
+      "requirement": "optional"
     },
     "state": {
       "description": "The normalized state of a security finding.",

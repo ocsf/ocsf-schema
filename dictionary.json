@@ -153,6 +153,11 @@
       "sibling": "algorithm",
       "type": "integer_t"
     },
+    "analytic": {
+      "caption": "Analytic",
+      "description": "The analytic technique used to create the finding or detection",
+      "type": "analytic"
+    },
     "answers": {
       "caption": "DNS Answer",
       "description": "The Domain Name System (DNS) answers.",
@@ -744,6 +749,12 @@
       "description": "The CIS benchmark result.",
       "type": "cis_benchmark_result"
     },
+    "cis_csc": {
+      "caption": "CIS CSC",
+      "description": "The CIS Critical Security Controls is a list of top 20 actions and practices an organization’s security team can take on such that cyber attacks or malware, are minimized and prevented.",
+      "is_array": true,
+      "type": "cis_control"
+    },
     "city": {
       "caption": "City",
       "description": "The name of the city.",
@@ -879,6 +890,30 @@
       "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
       "type": "integer_t"
     },
+    "confidence_id": {
+      "caption": "Confidence ID",
+      "description": "The normalized confidence level refers to the accuracy of the rule that created the finding. A rule with a low confidence level means that the finding scope is wide and may create finding reports that may not be malicious in nature.",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "No confidence is assigned."
+        },
+        "1": {
+          "caption": "Low"
+        },
+        "2": {
+          "caption": "Medium"
+        },
+        "3": {
+          "caption": "High"
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The confidence is not mapped to the defined enum values. See the <code>confidence</code> attribute, which contains a data source specific value."
+        }
+      },
+      "type": "integer_t"
+    },
     "confidentiality": {
       "caption": "Confidentiality",
       "description": "The file content confidentiality, normalized to the confidentiality_id value. In the case of 'Other', it is defined by the event source.",
@@ -933,6 +968,11 @@
     "continent": {
       "caption": "Continent",
       "description": "The name of the continent.",
+      "type": "string_t"
+    },
+    "control": {
+      "caption": "Control",
+      "description": "The CIS critical security control.",
       "type": "string_t"
     },
     "coordinates": {
@@ -1046,6 +1086,12 @@
     "data_bucket": {
       "caption": "Data Bucket",
       "description": "The name of the data bucket (e.g. bucket name for AWS/GCP and blob name for Azure).",
+      "type": "string_t"
+    },
+    "data_sources": {
+      "caption": "Data Sources",
+      "description": "The data sources for the finding.",
+      "is_array": true,
       "type": "string_t"
     },
     "dce_rpc": {
@@ -1340,6 +1386,11 @@
       "description": "Error Message",
       "type": "string_t"
     },
+    "evidence": {
+      "caption": "Evidence",
+      "description": "The data the finding exposes to the analyst.",
+      "type": "json_t"
+    },
     "exit_code": {
       "caption": "Exit Code",
       "description": "The exit code reported by a process when it terminates. The convention is that zero indicates success and any non-zero exit code indicates that some error occurred.",
@@ -1555,6 +1606,43 @@
       "description": "The International Mobile Station Equipment Identifier that is associated with the device.",
       "type": "string_t"
     },
+    "impact": {
+      "caption": "Impact",
+      "description": "The impact of the finding, valid range 0-100.",
+      "type": "string_t"
+    },
+    "impact_id": {
+      "caption": "Impact ID",
+      "description": "The normalized impact of the finding.",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Low"
+        },
+        "2": {
+          "caption": "Medium"
+        },
+        "3": {
+          "caption": "High"
+        },
+        "4": {
+          "caption": "Critical"
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The detection impact is not mapped. See the <code>impact</code> attribute, which contains a data source specific value."
+        }
+      },
+      "sibling": "impact",
+      "type": "integer_t"
+    },
+    "impact_score": {
+      "caption": "Impact",
+      "description": "The impact of the finding, valid range 0-100.",
+      "type": "integer_t"
+    },
     "injection_type": {
       "caption": "Injection Type",
       "description": "The process injection method, normalized to the caption of the injection_type_id value. In the case of 'Other', it is defined by the event source.",
@@ -1748,6 +1836,12 @@
       "caption": "Keyboard Type",
       "description": "The keyboard type (e.g., xt, ico).",
       "type": "string_t"
+    },
+    "kill_chain": {
+      "caption": "Kill Chain",
+      "description": "The <a target='_blank' href='https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html'>Cyber Kill Chain®</a>.",
+      "is_array": true,
+      "type": "kill_chain"
     },
     "labels": {
       "caption": "Labels",
@@ -1987,6 +2081,12 @@
       "description": "The next run time. See specific usage.",
       "type": "timestamp_t"
     },
+    "nist": {
+      "caption": "NIST List",
+      "description": "The NIST Cybersecurity Framework recommendations for managing the cybersecurity risk.",
+      "is_array": true,
+      "type": "string_t"
+    },
     "observables": {
       "caption": "Observables",
       "description": "The observables associated with the event.",
@@ -2141,6 +2241,54 @@
       "caption": "Permission",
       "description": "The IAM permission related to an event",
       "type": "string_t"
+    },
+    "phase": {
+      "caption": "Kill Chain Phase",
+      "description": "The cyber kill chain phase.",
+      "type": "string_t"
+    },
+    "phase_id": {
+      "caption": "Kill Chain Phase ID",
+      "description": "The cyber kill chain phase identifier.",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The kill chain phase is unknown."
+        },
+        "1": {
+          "caption": "Reconnaissance",
+          "description": "The attackers pick a target and perform a detailed analysis, start collecting information (email addresses, conferences information, etc.) and evaluate the victim’s vulnerabilities to determine how to exploit them."
+        },
+        "2": {
+          "caption": "Weaponization",
+          "description": "The attackers develop a malware weapon and aim to exploit the discovered vulnerabilities."
+        },
+        "3": {
+          "caption": "Delivery",
+          "description": "The intruders will use various tactics, such as phishing, infected USB drives, etc."
+        },
+        "4": {
+          "caption": "Exploitation",
+          "description": "The intruders start leveraging vulnerabilities to executed code on the victim’s system."
+        },
+        "5": {
+          "caption": "Installation",
+          "description": "The intruders install malware on the victim’s system."
+        },
+        "6": {
+          "caption": "Command & Control",
+          "description": "Malware opens a command channel to enable the intruders to remotely manipulate the victim's system."
+        },
+        "7": {
+          "caption": "Actions on Objectives",
+          "description": "With hands-on keyboard access, intruders accomplish the mission’s goal."
+        },
+        "99": {
+          "caption": "Other"
+        }
+      },
+      "type": "integer_t",
+      "sibling": "phase"
     },
     "physical_height": {
       "caption": "Physical Height",

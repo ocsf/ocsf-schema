@@ -1,11 +1,17 @@
 {
     "uid": 1,
-    "description": "Application Activity events describe actions executed within an application",
+    "description": "Application Activity events describe actions executed within an application.",
     "extends": "application",
     "caption": "Application Activity",
     "name": "application_activity",
     "category": "application",
+    "profiles": [
+        "host"
+    ],
     "attributes": {
+        "$include": [
+            "profiles/host.json"
+        ],
         "activity_id": {
             "enum": {
                 "1": {
@@ -42,16 +48,8 @@
                 }
             }
         },
-        "actor": {
-            "group": "primary",
-            "requirement": "required"
-        },
-        "src_endpoint": {
-            "description": "Details about the source of the activity.",
-            "group": "primary",
-            "requirement": "optional"
-        },
         "dst_endpoint": {
+            "description": "The destination endpoint for a network connection.",
             "group": "primary",
             "requirement": "recommended"
         },

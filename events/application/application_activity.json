@@ -1,0 +1,69 @@
+{
+    "uid": 1,
+    "description": "Application Activity events describe actions executed within an application",
+    "extends": "base_event",
+    "caption": "Application Activity",
+    "name": "application_activity",
+    "category": "application",
+    "attributes": {
+        "activity_id": {
+            "enum": {
+                "1": {
+                    "caption": "Create",
+                    "description": "One or more resources were created."
+                },
+                "2": {
+                    "caption": "Read",
+                    "description": "One or more resources were read."
+                },
+                "3": {
+                    "caption": "Update",
+                    "description": "One or more resources were updated."
+                },
+                "4": {
+                    "caption": "Delete",
+                    "description": "One or more resources were deleted."
+                },
+                "5": {
+                    "caption": "Search",
+                    "description": "A search was performed."
+                },
+                "6": {
+                    "caption": "Import",
+                    "description": "An import was performed into an Application."
+                },
+                "7": {
+                    "caption": "Export",
+                    "description": "An export was performed from an Application."
+                },
+                "8": {
+                    "caption": "Share",
+                    "description": "One or more resources were shared."
+                }
+            }
+        },
+        "actor": {
+            "group": "primary",
+            "requirement": "required"
+        },
+        "src_endpoint": {
+            "description": "Details about the source of the activity.",
+            "group": "primary",
+            "requirement": "optional"
+        },
+        "dst_endpoint": {
+            "group": "primary",
+            "requirement": "recommended"
+        },
+        "resources": {
+            "description": "Details about resources that were affected by the activity/event.",
+            "group": "primary",
+            "requirement": "recommended"
+        },
+        "resources_result": {
+            "description": "Details on the resources resulting from the activity.",
+            "group": "primary",
+            "requirement": "optional"
+        }
+    }
+}

@@ -116,38 +116,18 @@
     },
     "algorithm": {
       "caption": "Algorithm",
-      "description": "The hash algorithm used to create the digital fingerprint, normalized to the caption of 'algorithm_id'. In the case of 'Other', it is defined by the event source.",
+      "description": "The applicable algorithm, normalized to the caption of 'algorithm_id'. See specific usage.",
       "type": "string_t"
     },
     "algorithm_id": {
       "caption": "Algorithm ID",
-      "description": "The identifier of the normalized hash algorithm, which was used to create the digital fingerprint.",
+      "description": "The identifier of the normalized algorithm. See specific usage.",
       "enum": {
         "99": {
           "caption": "Other"
         },
         "0": {
           "caption": "Unknown"
-        },
-        "1": {
-          "caption": "MD5",
-          "description": "MD5 message-digest algorithm producing a 128-bit (16-byte) hash value."
-        },
-        "2": {
-          "caption": "SHA-1",
-          "description": "Secure Hash Algorithm 1 producing a 160-bit (20-byte) hash value."
-        },
-        "3": {
-          "caption": "SHA-256",
-          "description": "Secure Hash Algorithm 2 producing a 256-bit (32-byte) hash value."
-        },
-        "4": {
-          "caption": "SHA-512",
-          "description": "Secure Hash Algorithm 2 producing a 512-bit (64-byte) hash value."
-        },
-        "5": {
-          "caption": "CTPH",
-          "description": "The ssdeep generated fuzzy checksum. Also known as Context Triggered Piecewise Hash (CTPH)."
         }
       },
       "sibling": "algorithm",
@@ -1130,6 +1110,11 @@
       "caption": "Dialect",
       "description": "The negotiated protocol dialect.",
       "type": "string_t"
+    },
+    "digest": {
+      "caption": "Message Digest",
+      "description": "The message digest attribute contains the fixed length message hash representation and the corresponding hashing algorithm information.",
+      "type": "fingerprint"
     },
     "direction": {
       "caption": "Direction",

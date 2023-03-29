@@ -5,9 +5,39 @@
   "extends": "object",
   "attributes": {
     "algorithm": {
+      "description": "The hash algorithm used to create the digital fingerprint, normalized to the caption of 'algorithm_id'. In the case of 'Other', it is defined by the event source.",
       "requirement": "optional"
     },
     "algorithm_id": {
+      "description": "The identifier of the normalized hash algorithm, which was used to create the digital fingerprint.",
+      "enum": {
+        "99": {
+          "caption": "Other"
+        },
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "MD5",
+          "description": "MD5 message-digest algorithm producing a 128-bit (16-byte) hash value."
+        },
+        "2": {
+          "caption": "SHA-1",
+          "description": "Secure Hash Algorithm 1 producing a 160-bit (20-byte) hash value."
+        },
+        "3": {
+          "caption": "SHA-256",
+          "description": "Secure Hash Algorithm 2 producing a 256-bit (32-byte) hash value."
+        },
+        "4": {
+          "caption": "SHA-512",
+          "description": "Secure Hash Algorithm 2 producing a 512-bit (64-byte) hash value."
+        },
+        "5": {
+          "caption": "CTPH",
+          "description": "The ssdeep generated fuzzy checksum. Also known as Context Triggered Piecewise Hash (CTPH)."
+        }
+      },
       "requirement": "required"
     },
     "value": {

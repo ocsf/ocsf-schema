@@ -4,14 +4,6 @@
   "extends": "access_control",
   "name": "authorization",
   "uid": 3,
-  "associations": {
-    "dst_endpoint": [
-      "user"
-    ],
-    "user": [
-      "dst_endpoint"
-    ]
-  },
   "attributes": {
     "activity_id": {
       "$include": "enums/authorization.json"
@@ -21,23 +13,18 @@
       "group": "context",
       "requirement": "optional"
     },
+    "principal": {
+      "description": "The entity to which permissions were granted.",
+      "group": "primary",
+      "requirement": "required"
+    },
+    "grants": {
+      "description": "The permissions or privileges that were assigned to or revoked from a principal.",
+      "group": "primary",
+      "requirement": "required"
+    },
     "dst_endpoint": {
       "description": "The Endpoint for which the authorization was targeted.",
-      "group": "primary",
-      "requirement": "recommended"
-    },
-    "group": {
-      "description": "The group to which new privileges, groups or roles were assigned or removed.",
-      "group": "primary",
-      "requirement": "recommended"
-    },
-    "assigned_groups": {
-      "description": "The list of groups or roles that were assigned to a user, user session, or group.",
-      "group": "primary",
-      "requirement": "recommended"
-    },
-    "privileges": {
-      "description": "The list of privileges assigned to the user, user session, or group.",
       "group": "primary",
       "requirement": "recommended"
     },
@@ -45,21 +32,12 @@
       "description": "The resource that was the target of the authorization change.",
       "group": "primary",
       "requirement": "recommended"
-    },
-    "session": {
-      "description": "The modified user session.",
-      "requirement": "optional"
-    },
-    "user": {
-      "description": "The user to which new privileges, groups or roles were assigned or removed.",
-      "group": "primary",
-      "requirement": "recommended"
     }
   },
   "constraints": {
     "at_least_one": [
-      "assigned_groups",
-      "privileges"
+      "dst_endpoint",
+      "resource"
     ]
   }
 }

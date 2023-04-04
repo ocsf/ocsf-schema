@@ -1,0 +1,28 @@
+{
+  "description": "The attributes that identify Windows Event Log entries.",
+  "meta": "profile",
+  "caption": "Windows Log",
+  "name": "winlog",
+  "annotations": {
+    "group": "context"
+  },
+  "attributes": {
+    "event_code": {
+      "description": "The Event ID or Code that Windows uses to describe the event. Ex: EventCode=4624 (multiline) or EventID=4624 (xml).",
+      "requirement": "required",
+      "group": "primary"
+    },
+    "log_name": {
+      "description": "The Windows logging subsystem. Ex: Channel=Security (xml) or LogName=Security (multiline)",
+      "requirement": "recommended"
+    },
+    "log_version": {
+      "description": "The version of the event log template. Ex: Version=1 (xml). Note: Multiline formatted windows events do not record this attribute. For more information, refer to 'Event Versions' in <a target='_blank' href='https://learn.microsoft.com/en-us/windows/security/threat-protection/auditing/event-4624'>this page</a>.",
+      "requirement": "optional"
+    },
+    "provider": {
+      "description": "The service that logged the Windows event. Ex: Microsoft-Windows-Security-Auditing (xml) or Microsoft Windows security auditing. (multiline).",
+      "requirement": "required"
+    }
+  }
+}

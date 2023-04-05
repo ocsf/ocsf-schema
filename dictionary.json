@@ -116,38 +116,18 @@
     },
     "algorithm": {
       "caption": "Algorithm",
-      "description": "The hash algorithm used to create the digital fingerprint, normalized to the caption of 'algorithm_id'. In the case of 'Other', it is defined by the event source.",
+      "description": "The applicable algorithm, normalized to the caption of 'algorithm_id'. See specific usage.",
       "type": "string_t"
     },
     "algorithm_id": {
       "caption": "Algorithm ID",
-      "description": "The identifier of the normalized hash algorithm, which was used to create the digital fingerprint.",
+      "description": "The identifier of the normalized algorithm. See specific usage.",
       "enum": {
         "99": {
           "caption": "Other"
         },
         "0": {
           "caption": "Unknown"
-        },
-        "1": {
-          "caption": "MD5",
-          "description": "MD5 message-digest algorithm producing a 128-bit (16-byte) hash value."
-        },
-        "2": {
-          "caption": "SHA-1",
-          "description": "Secure Hash Algorithm 1 producing a 160-bit (20-byte) hash value."
-        },
-        "3": {
-          "caption": "SHA-256",
-          "description": "Secure Hash Algorithm 2 producing a 256-bit (32-byte) hash value."
-        },
-        "4": {
-          "caption": "SHA-512",
-          "description": "Secure Hash Algorithm 2 producing a 512-bit (64-byte) hash value."
-        },
-        "5": {
-          "caption": "CTPH",
-          "description": "The ssdeep generated fuzzy checksum. Also known as Context Triggered Piecewise Hash (CTPH)."
         }
       },
       "sibling": "algorithm",
@@ -293,11 +273,6 @@
       "caption": "Base Score",
       "description": "The base score as reported by the event source. See specific usage.",
       "type": "float_t"
-    },
-    "big_endian": {
-      "caption": "Big Endian",
-      "description": "A boolean indicating whether the most significant byte is stored/transmitted first.",
-      "type": "boolean_t"
     },
     "bios_date": {
       "caption": "BIOS Date",
@@ -724,16 +699,6 @@
       "is_array": true,
       "type": "string_t"
     },
-    "challenge": {
-      "caption": "Challenge",
-      "description": "The VNC challenge",
-      "type": "string_t"
-    },
-    "challenge_response": {
-      "caption": "Challenge Response",
-      "description": "The VNC challenge response",
-      "type": "string_t"
-    },
     "chassis": {
       "caption": "Chassis",
       "description": "The chassis type describes the system enclosure or physical form factor. Such as the following examples for Windows <a target='_blank' href='https://docs.microsoft.com/en-us/windows/win32/cimwin32prov/win32-systemenclosure'>Windows Chassis Types</a>",
@@ -837,16 +802,6 @@
     "color_depth": {
       "caption": "Color Depth",
       "description": "The numeric color depth.",
-      "type": "integer_t"
-    },
-    "color_max": {
-      "caption": "Color Maximum",
-      "description": "The maximum color value (with 'n' bits this would result in a 2^n-1 maximum value).",
-      "type": "integer_t"
-    },
-    "color_shift": {
-      "caption": "Color Shift",
-      "description": "The color shift value represents the number of shifts needed in order to get the color value in a pixel to the least significant bit.",
       "type": "integer_t"
     },
     "command": {
@@ -954,11 +909,6 @@
       "caption": "Connection Identifier",
       "description": "The network connection identifier.",
       "type": "string_t"
-    },
-    "container": {
-      "caption": "Container",
-      "description": "The container information.",
-      "type": "container"
     },
     "content_type": {
       "caption": "HTTP Content Type",
@@ -1083,11 +1033,6 @@
       "description": "The additional data that is associated with the event or object. See specific usage.",
       "type": "json_t"
     },
-    "data_bucket": {
-      "caption": "Data Bucket",
-      "description": "The name of the data bucket (e.g. bucket name for AWS/GCP and blob name for Azure).",
-      "type": "string_t"
-    },
     "data_sources": {
       "caption": "Data Sources",
       "description": "The data sources for the finding.",
@@ -1165,6 +1110,11 @@
       "caption": "Dialect",
       "description": "The negotiated protocol dialect.",
       "type": "string_t"
+    },
+    "digest": {
+      "caption": "Message Digest",
+      "description": "The message digest attribute contains the fixed length message hash representation and the corresponding hashing algorithm information.",
+      "type": "fingerprint"
     },
     "direction": {
       "caption": "Direction",
@@ -1310,11 +1260,6 @@
       "description": "The name of the domain.",
       "type": "string_t"
     },
-    "domain_info": {
-      "caption": "Domain Information",
-      "description": "The registration information pertaining to a domain.",
-      "type": "domain_info"
-    },
     "driver": {
       "caption": "Kernel Driver",
       "description": "The driver that was loaded/unloaded into the kernel",
@@ -1386,6 +1331,10 @@
       "description": "Error Message",
       "type": "string_t"
     },
+    "event_code": {
+      "description": "The Event ID or Code that the product uses to describe the event. See specific usage.",
+      "type": "string_t"
+    },
     "evidence": {
       "caption": "Evidence",
       "description": "The data the finding exposes to the analyst.",
@@ -1400,11 +1349,6 @@
       "caption": "Expiration Time",
       "description": "The expiration time. See specific usage.",
       "type": "timestamp_t"
-    },
-    "exposed_port": {
-      "caption": "Port",
-      "description": "The IP port number exposed by container. For example 0.0.0.0:49155-> <<exposed_port>>/tcp",
-      "type": "port_t"
     },
     "extension": {
       "caption": "Schema Extension",
@@ -1520,12 +1464,12 @@
     },
     "hash": {
       "caption": "Hash",
-      "description":  "The hash attribute is the value of a digital fingerprint including information about its algorithm.",
+      "description": "The hash attribute is the value of a digital fingerprint including information about its algorithm.",
       "type": "fingerprint"
     },
     "hashes": {
       "caption": "Hashes",
-      "description":  "An array of hash attributes.",
+      "description": "An array of hash attributes.",
       "is_array": true,
       "type": "fingerprint"
     },
@@ -1913,6 +1857,14 @@
       "description": "The detailed geographical location usually associated with an IP address.",
       "type": "location"
     },
+    "log_name": {
+      "description": "The logging subsystem the product uses for the event. See specific usage.",
+      "type": "string_t"
+    },
+    "log_version": {
+      "description": "The version of the event log template which the product uses for the event. See specific usage.",
+      "type": "string_t"
+    },
     "logged_time": {
       "caption": "Logged Time",
       "description": "The time when the logging system collected and logged the event.</p>This attribute is distinct from the event time in that event time typically contain the time extracted from the original event. Most of the time, these two times will be different.",
@@ -2060,16 +2012,6 @@
       "description": "The namespace is useful in merger or acquisition situations. For example, when similar entities exists that you need to keep separate.",
       "type": "string_t"
     },
-    "network_driver": {
-      "caption": "Network Driver",
-      "description": "The network driver used by the container. For example, bridge, overlay, host, none, etc.",
-      "type": "string_t"
-    },
-    "network_interface": {
-      "caption": "Network Interface",
-      "description": "The network interface that is associated with the device.",
-      "type": "network_interface"
-    },
     "network_interfaces": {
       "caption": "Network Interfaces",
       "description": "The network interfaces that are associated with the device, one for each MAC address/IP address combination.<p><b>Note:</b> The first element of the array is the network information that pertains to the event.</p>",
@@ -2152,11 +2094,6 @@
       "caption": "Opnum",
       "description": "An operation number used to identify a specific remote procedure call (RPC) method or a method in an interface.",
       "type": "integer_t"
-    },
-    "orchestrator": {
-      "caption": "Orchestrator",
-      "description": "The orchestrator managing the container, such as ECS, EKS, K8s, OpenShift, None.",
-      "type": "string_t"
     },
     "org_uid": {
       "caption": "Org ID",
@@ -2308,11 +2245,6 @@
     "pid": {
       "caption": "Process ID",
       "description": "The process identifier, as reported by the operating system. Process ID (PID) is a number used by the operating system to uniquely identify an active process.",
-      "type": "integer_t"
-    },
-    "pixel_bits": {
-      "caption": "Pixel Bits",
-      "description": "The number of bits per pixel.",
       "type": "integer_t"
     },
     "policy": {
@@ -2653,6 +2585,12 @@
       "is_array": true,
       "type": "resource"
     },
+    "resources_result": {
+      "caption": "Resource Results Array",
+      "description": "Updated resources after an activity/event.",
+      "is_array": true,
+      "type": "resource"
+    },
     "response": {
       "caption": "API Response Details",
       "description": "General Purpose API Response Object. See specific usage.",
@@ -2712,11 +2650,6 @@
       "enum": {},
       "sibling": "run_state",
       "type": "integer_t"
-    },
-    "runtime": {
-      "caption": "Runtime",
-      "description": "The runtime managing this container.",
-      "type": "string_t"
     },
     "samesite": {
       "caption": "SameSite",
@@ -3136,11 +3069,6 @@
       "description": "The tree id is a unique SMB identifier which represents an open connection to a share.",
       "type": "string_t"
     },
-    "true_color": {
-      "caption": "True Color",
-      "description": "A boolean indicating whether to extract pixel values through red/green/blue intensities.",
-      "type": "boolean_t"
-    },
     "ttl": {
       "caption": "TTL",
       "description": "The time interval that the resource record may be cached. Zero value means that the resource record can only be used for the transaction in progress, and should not be cached.",
@@ -3244,11 +3172,6 @@
       "caption": "VLAN",
       "description": "The Virtual LAN identifier.",
       "type": "string_t"
-    },
-    "vnc_auth": {
-      "caption": "VNC Authentication",
-      "description": "The Virtual Network Computing (VNC) authentication object describes the VNC authentication values.",
-      "type": "vnc_auth"
     },
     "vpc_uid": {
       "caption": "VPC UID",

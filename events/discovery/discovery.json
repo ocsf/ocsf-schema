@@ -1,0 +1,26 @@
+{
+  "caption": "Discovery",
+  "category": "discovery",
+  "description": "The Discovery event is a generic event that defines a set of attributes available in Discvoery category events. As a generic event, it could be used to log events that are not otherwise defined by the Discovery specific event classes.",
+  "extends": "base_event",
+  "name": "discovery",
+  "profiles": [
+    "host"
+  ],
+  "attributes": {
+    "$include": [
+      "profiles/host.json"
+    ],
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Log"
+        }
+      }
+    },
+    "device": {
+      "group": "primary",
+      "requirement": "required"
+    }
+  }
+}

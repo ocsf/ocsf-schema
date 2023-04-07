@@ -29,54 +29,10 @@
       "description": "The name of the user who last accessed the object.",
       "type": "user"
     },
-    "account_type": {
-      "caption": "Account Type",
-      "description": "The user account type, normalized to the caption of 'account_type_id'. In the case of 'Other', it is defined by the event source.",
-      "type": "string_t"
-    },
-    "account_type_id": {
-      "caption": "Account Type ID",
-      "description": "The normalized user account type identifier.",
-      "enum": {
-        "99": {
-          "caption": "Other",
-          "description": "The user account type is not mapped."
-        },
-        "0": {
-          "caption": "Unknown",
-          "description": "The user account type is unknown."
-        },
-        "1": {
-          "caption": "LDAP Account"
-        },
-        "2": {
-          "caption": "Windows Account"
-        },
-        "3": {
-          "caption": "AWS IAM User"
-        },
-        "4": {
-          "caption": "AWS IAM Role"
-        },
-        "5": {
-          "caption": "GCP Account"
-        },
-        "6": {
-          "caption": "Azure AD Account"
-        }
-      },
-      "sibling": "account_type",
-      "type": "integer_t"
-    },
-    "account_uid": {
-      "caption": "Account UID",
-      "description": "The unique identifier of the account (e.g. AWS Account ID).",
-      "type": "string_t"
-    },
-    "account_name": {
-      "caption": "Account Name",
-      "description": "The name of the account (e.g. AWS Account Name).",
-      "type": "string_t"
+    "account": {
+      "caption": "Account",
+      "description": "The account object describes details about the account that was the source or target of the activity.",
+      "type": "account"
     },
     "activity_id": {
       "caption": "Activity ID",

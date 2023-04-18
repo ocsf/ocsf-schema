@@ -3,25 +3,45 @@
     "description": "The Attribute Dictionary defines schema attributes and includes references to the events and objects in which they are used.",
     "name": "dictionary",
     "attributes": {
-      "actor": {
-        "caption": "Actor",
-        "description": "The actor object describes details about the user/role/process that was the source of the activity.",
-        "type": "linux_actor"
-      },
-      "process": {
-        "caption": "Process",
-        "description": "The linux process object.",
-        "type": "linux_process"
-      },
-      "parent_process": {
-        "caption": "Parent Process",
-        "description": "The linux process object.",
-        "type": "linux_process"
+      "audit_user": {
+        "caption": "Audit User",
+        "description": "The audit user assigned at login by the audit subsystem.",
+        "type": "user"
       },
       "container": {
         "caption": "Container",
         "description": "The container information.",
         "type": "container"
+      },
+      "effective_user": {
+        "caption": "Effective User",
+        "description": "The effective user under which this process is running.",
+        "type": "user"
+      },
+      "effective_group": {
+        "caption": "Effective Group",
+        "description": "The effective group under which this process is running.",
+        "type": "group"
+      },
+      "namespace_pid": {
+        "caption": "Namespace PID",
+        "description": "If running under a process namespace (such as in a container), the process identifier within that process namespace.",
+        "type": "integer_t"
+      },
+      "orchestrator": {
+        "caption": "Orchestrator",
+        "description": "The orchestrator managing the container, such as ECS, EKS, K8s, or OpenShift.",
+        "type": "string_t"
+      },
+      "pod_id": {
+        "caption": "Pod ID",
+        "description": "The unique identifer of the pod (or equivalent) that the container is executing on.",
+        "type": "string_t"
+      },
+      "runtime": {
+        "caption": "Runtime",
+        "description": "The backend running the container, such as containerd or docker.",
+        "type": "string_t"
       }
     }
   }

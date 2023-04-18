@@ -3198,6 +3198,19 @@
           true
         ]
       },
+      "bytestring_t": {
+        "caption": "Byte String",
+        "description": "Base64 encoded immutable byte sequence.",
+        "type": "string_t",
+        "type_name": "String"
+      },
+      "datetime_t": {
+        "caption": "Datetime",
+        "description": "The Internet Date/Time format as defined in <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc3339.html'>RFC-3339</a>. For example <code>1985-04-12T23:20:50.52Z</code>.",
+        "regex": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}%3A\\d{2}(?:.\\d+)?[A-Z]?(?:[.-](?:08:\\d{2}|\\d{2}[A-Z]))?$",
+        "type": "string_t",
+        "type_name": "String"
+      },
       "email_t": {
         "caption": "Email Address",
         "description": "Email address. For example: <code>john_doe@example.com</code>.",
@@ -3296,6 +3309,7 @@
         "description": "Resource unique identifier. For example, S3 Bucket name or EC2 Instance ID.",
         "max_len": 64,
         "observable": 10,
+        "type": "string_t",
         "type_name": "String"
       },
       "string_t": {
@@ -3307,12 +3321,6 @@
         "caption": "Subnet",
         "description": "Subnet mask in Classless Inter-Domain Routing (CIDR) notation. For example <code>192.168.200.0/24</code>.",
         "max_len": 40,
-        "type_name": "String"
-      },
-      "datetime_t": {
-        "caption": "Datetime",
-        "description": "The Internet Date/Time format as defined in <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc3339.html'>RFC-3339</a>. For example <code>1985-04-12T23:20:50.52Z</code>.",
-        "regex": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}%3A\\d{2}(?:.\\d+)?[A-Z]?(?:[.-](?:08:\\d{2}|\\d{2}[A-Z]))?$",
         "type": "string_t",
         "type_name": "String"
       },
@@ -3336,14 +3344,10 @@
         "type": "string_t",
         "type_name": "String"
       },
-      "bytestring_t": {
-        "caption": "Byte String",
-        "description": "Base64 encoded immutable byte sequence."
-      },
       "uuid_t": {
         "caption": "UUID",
-        "regex": "[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}",
         "description": "128-bit universal unique identifier. For example: <code>123e4567-e89b-12d3-a456-42661417400</code>.",
+        "regex": "[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}",
         "type": "string_t",
         "type_name": "String"
       }

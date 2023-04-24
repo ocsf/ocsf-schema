@@ -2,28 +2,27 @@
   "caption": "Account",
   "description": "The account object describes details about the account that was the source of the activity.",
   "name": "account",
+  "extends": "entity",
   "attributes": {
     "name": {
-      "caption": "Account Name",
-      "description": "The name of the account (e.g. GCP Account Name).",
-      "requirement": "recommended"
+      "description": "The name of the account (e.g. GCP Account Name)."
     },
     "type": {
-      "caption": "Account Type",
-      "description": "The user account type, normalized to the caption of 'account_type_id'. In the case of 'Other', it is defined by the event source.",
+      "caption": "Type",
+      "description": "The account type, normalized to the caption of 'account_type_id'. In the case of 'Other', it is defined by the event source.",
       "requirement": "optional"
     },
     "type_id": {
-      "caption": "Account Type ID",
-      "description": "The normalized user account type identifier.",
+      "caption": "Type ID",
+      "description": "The normalized account type identifier.",
       "enum": {
         "99": {
           "caption": "Other",
-          "description": "The user account type is not mapped."
+          "description": "The account type is not mapped."
         },
         "0": {
           "caption": "Unknown",
-          "description": "The user account type is unknown."
+          "description": "The account type is unknown."
         },
         "1": {
           "caption": "LDAP Account"
@@ -59,15 +58,7 @@
       "requirement": "recommended"
     },
     "uid": {
-      "caption": "Account UID",
-      "description": "The unique identifier of the account (e.g. AWS Account ID).",
-      "requirement": "recommended"
+      "description": "The unique identifier of the account (e.g. AWS Account ID)."
     }
-  },
-  "constraints": {
-    "at_least_one": [
-      "name",
-      "uid"
-    ]
   }
 }

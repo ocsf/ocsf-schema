@@ -3,7 +3,7 @@
   "observable": 21,
   "name": "user",
   "description": "The user object describes the identity of a user. Defined by D3FEND <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:UserAccount/'>d3f:UserAccount</a>.",
-  "extends": "object",
+  "extends": "entity",
   "attributes": {
     "account": {
       "requirement": "optional"
@@ -24,7 +24,6 @@
     },
     "name": {
       "description": "The username. For example, <code>janedoe1</code>.",
-      "requirement": "recommended",
       "type": "username_t"
     },
     "org_uid": {
@@ -32,7 +31,6 @@
     },
     "type": {
       "description": "The type of the user. For example, System, AWS IAM User, etc.",
-      "caption": "Type",
       "requirement": "optional"
     },
     "type_id": {
@@ -57,23 +55,15 @@
           "caption": "Other"
         }
       },
-      "caption": "Type ID",
-      "requirement": "optional",
+      "requirement": "required",
       "name": "integer_t"
     },
     "uid": {
-      "description": "The unique user identifier. For example, AWS PrincipalID or Windows user SID.",
-      "requirement": "recommended"
+      "description": "The unique user identifier. For example, AWS PrincipalID or Windows user SID."
     },
     "uuid": {
       "description": "The universally unique identifier of the user. For example, Windows user GUID.",
       "requirement": "optional"
     }
-  },
-  "constraints": {
-    "at_least_one": [
-      "name",
-      "uid"
-    ]
   }
 }

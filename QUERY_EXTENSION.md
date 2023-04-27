@@ -6,6 +6,7 @@ and can be applied to other extensions with minimal change.
 
 Query extension can be use to extend events, objects, attributes of any of the namespace schema.
 extends can be a list wherein first element denotes namepsace while second element the parent object,event or include.
+
 Query Extensions have additional categories, event classes, attributes, objects or profiles. 
 Existing categories, events, attributes, objects or profile can also be modified although we should minimize it for better forward compatibility.
 

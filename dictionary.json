@@ -3,21 +3,6 @@
   "description": "The Attribute Dictionary defines attributes and includes references to the events and objects in which they are used.",
   "name": "dictionary",
   "attributes": {
-    "raw_data": {
-      "caption": "Raw Data",
-      "description": "The event data as received from the event source.",
-      "type": "string_t"
-    },
-    "time": {
-      "caption": "Event Time",
-      "description": "The normalized event occurrence time.",
-      "type": "timestamp_t"
-    },
-    "access_complexity_id": {
-      "caption": "Access Complexity (AC)",
-      "description": "The Access Complexity Common Vulnerability Scoring System (CVSS) metric.",
-      "type": "integer_t"
-    },
     "access_list": {
       "caption": "Access List",
       "description": "The list of requested access rights.",
@@ -33,11 +18,6 @@
       "caption": "Access Check Result",
       "description": "The list of access check results.",
       "type": "object"
-    },
-    "access_vector_id": {
-      "caption": "Access Vector (AV)",
-      "description": "The Access Vector Common Vulnerability Scoring System (CVSS) metric.",
-      "type": "integer_t"
     },
     "accessed_time": {
       "caption": "Accessed Time",
@@ -90,11 +70,6 @@
       "description": "The unique identifier of the account(e.g. AWS Account ID).",
       "type": "string_t"
     },
-    "activity_name": {
-      "caption": "Activity",
-      "description": "The event activity name, as defined by the activity_id.",
-      "type": "string_t"
-    },
     "activity_id": {
       "caption": "Activity ID",
       "description": "The normalized identifier of the activity that triggered the event.",
@@ -110,6 +85,11 @@
       },
       "sibling": "activity_name",
       "type": "integer_t"
+    },
+    "activity_name": {
+      "caption": "Activity",
+      "description": "The event activity name, as defined by the activity_id.",
+      "type": "string_t"
     },
     "actor": {
       "caption": "Actor",
@@ -186,16 +166,6 @@
       "description": "The arguments sent along with the HTTP request.",
       "type": "string_t"
     },
-    "attack_complexity_id": {
-      "caption": "Attack Complexity",
-      "description": "The conditions beyond the attacker's control that must exist in order to exploit the vulnerability.",
-      "type": "integer_t"
-    },
-    "attack_vector_id": {
-      "caption": "Attack Vector (AV)",
-      "description": "The Attack Vector Common Vulnerability Scoring System (CVSS) metric.",
-      "type": "integer_t"
-    },
     "attacks": {
       "caption": "Attacks",
       "description": "An array of attacks associated with an event.",
@@ -261,41 +231,26 @@
       "description": "The agreed upon authentication type.",
       "type": "string_t"
     },
-    "authentication_id": {
-      "caption": "Authentication (Au)",
-      "description": "The Authentication Common Vulnerability Scoring System (CVSS) metric.",
-      "type": "integer_t"
-    },
     "authorizations": {
       "caption": "Authorization Information",
       "description": "Authorization object provides details related to Authorization",
-      "type": "authorization",
-      "is_array": true
+      "is_array": true,
+      "type": "authorization"
     },
     "autoscale_uid": {
       "caption": "Autoscale UID",
       "description": "The unique identifier of the cloud autoscale configuration.",
       "type": "string_t"
     },
-    "availability_id": {
-      "caption": "Availability (A)",
-      "description": "The Availability Common Vulnerability Scoring System (CVSS) metric.",
-      "type": "integer_t"
-    },
-    "availability_impact_id": {
-      "caption": "Availability Impact (A)",
-      "description": "The Availability Impact Common Vulnerability Scoring System (CVSS) metric.",
-      "type": "integer_t"
-    },
-    "availability_requirement_id": {
-      "caption": "Availability Requirement (AR)",
-      "description": "The Availability Requirement Common Vulnerability Scoring System (CVSS) metric.",
-      "type": "integer_t"
-    },
     "base_address": {
       "caption": "Base Address",
       "description": "The memory address where the module was loaded.",
       "type": "string_t"
+    },
+    "base_score": {
+      "caption": "Base Score",
+      "description": "The base score as reported by the event source. See specific usage.",
+      "type": "float_t"
     },
     "big_endian": {
       "caption": "Big Endian",
@@ -342,6 +297,14 @@
           "caption": "Localhost",
           "description": "Local network traffic on the same endpoint."
         },
+        "10": {
+          "caption": "Gateway VPC",
+          "description": "Through a gateway VPC endpoint (Nitro-based instances only)"
+        },
+        "11": {
+          "caption": "Internet Gateway",
+          "description": "Through an Internet gateway (Nitro-based instances only)"
+        },
         "2": {
           "caption": "Internal",
           "description": "Internal network traffic between two endpoints inside network."
@@ -373,14 +336,6 @@
         "9": {
           "caption": "Local Gateway",
           "description": "Through a local gateway"
-        },
-        "10": {
-          "caption": "Gateway VPC",
-          "description": "Through a gateway VPC endpoint (Nitro-based instances only)"
-        },
-        "11": {
-          "caption": "Internet Gateway",
-          "description": "Through an Internet gateway (Nitro-based instances only)"
         }
       },
       "sibling": "boundary",
@@ -836,11 +791,6 @@
       "is_array": true,
       "type": "integer_t"
     },
-    "collateral_damage_potential_id": {
-      "caption": "Collateral Damage Potential (CDP)",
-      "description": "The Collateral Damage Potential Common Vulnerability Scoring System (CVSS) metric.",
-      "type": "integer_t"
-    },
     "color_depth": {
       "caption": "Color Depth",
       "description": "The numeric color depth.",
@@ -926,16 +876,6 @@
         }
       },
       "sibling": "confidentiality",
-      "type": "integer_t"
-    },
-    "confidentiality_impact_id": {
-      "caption": "Confidentiality Impact (C)",
-      "description": "The Confidentiality Impact Common Vulnerability Scoring System (CVSS) metric.",
-      "type": "integer_t"
-    },
-    "confidentiality_requirement_id": {
-      "caption": "Confidentiality Requirement (CR)",
-      "description": "The Confidentiality Requirement Common Vulnerability Scoring System (CVSS) metric.",
       "type": "integer_t"
     },
     "connection_info": {
@@ -1040,16 +980,31 @@
       "description": "The unique customer identifier.",
       "type": "string_t"
     },
-    "cve_uids": {
-      "caption": "CVE UIDs",
-      "description": "The common vulnerabilities and exposures (<a target='_blank' href='https://cve.mitre.org/'>CVE</a>) unique identifiers.",
+    "cve": {
+      "caption": "CVE",
+      "description": "The Common Vulnerabilities and Exposures (<a target='_blank' href='https://cve.mitre.org/'>CVE</a>).",
+      "type": "cve"
+    },
+    "cves": {
+      "caption": "CVE List",
+      "description": "List of Common Vulnerabilities and Exposures (<a target='_blank' href='https://cve.mitre.org/'>CVE</a>).",
       "is_array": true,
-      "type": "string_t"
+      "type": "cve"
     },
     "cvss": {
-      "caption": "CVSS Scores",
+      "caption": "CVSS Score",
       "description": "The CVSS object details Common Vulnerability Scoring System (<a target='_blank' href='https://www.first.org/cvss/'>CVSS</a>) scores from the advisory that are related to the vulnerability.",
       "type": "cvss"
+    },
+    "cwe_uid": {
+      "caption": "CWE UID",
+      "description": "The <a target='_blank' href='https://cwe.mitre.org/'>Common Weakness Enumeration (CWE)</a> unique identifier. For example: <code>CWE-787</code>.",
+      "type": "string_t"
+    },
+    "cwe_url": {
+      "caption": "CWE URL",
+      "description": "Common Weakness Enumiration (CWE) definition URL. For example: <code>https://cwe.mitre.org/data/definitions/787.html</code>.",
+      "type": "url_t"
     },
     "data": {
       "caption": "Data",
@@ -1071,10 +1026,26 @@
       "description": "Decision/outcome of the authorization mechanism (e.g. Approved, Denied)",
       "type": "string_t"
     },
-    "depth_id": {
+    "delivered_to": {
+      "caption": "Delivered To",
+      "description": "The <strong>Delivered-To</strong> email header field.",
+      "type": "email_t"
+    },
+    "depth": {
       "caption": "CVSS Depth",
-      "description": "The Depth of the equation used to calculate Common Vulnerability Scoring System (CVSS) score.",
-      "type": "integer_t"
+      "description": "The CVSS depth represents a depth of the equation used to calculate CVSS score.",
+      "enum": {
+        "Base": {
+          "caption": "Base"
+        },
+        "Environmental": {
+          "caption": "Environmental"
+        },
+        "Temporal": {
+          "caption": "Temporal"
+        }
+      },
+      "type": "string_t"
     },
     "desc": {
       "caption": "Description",
@@ -1145,11 +1116,6 @@
       "sibling": "direction",
       "type": "integer_t"
     },
-    "delivered_to": {
-      "caption": "Delivered To",
-      "description": "The <strong>Delivered-To</strong> email header field.",
-      "type": "email_t"
-    },
     "disposition": {
       "caption": "Disposition",
       "description": "The event disposition name, as defined by the disposition_id.",
@@ -1167,6 +1133,27 @@
         },
         "1": {
           "caption": "Blocked"
+        },
+        "10": {
+          "caption": "Delayed",
+          "description": "Requires reboot to finish the operation."
+        },
+        "11": {
+          "caption": "Detected"
+        },
+        "12": {
+          "caption": "Quarantined"
+        },
+        "13": {
+          "caption": "Restored"
+        },
+        "14": {
+          "caption": "Exonerated",
+          "description": "No longer suspicious (re-scored)."
+        },
+        "15": {
+          "caption": "Tagged",
+          "description": "Marked with extended attributes."
         },
         "2": {
           "caption": "Allowed"
@@ -1188,27 +1175,6 @@
         },
         "8": {
           "caption": "Uncorrected"
-        },
-        "10": {
-          "description": "Requires reboot to finish the operation.",
-          "caption": "Delayed"
-        },
-        "11": {
-          "caption": "Detected"
-        },
-        "12": {
-          "caption": "Quarantined"
-        },
-        "13": {
-          "caption": "Restored"
-        },
-        "14": {
-          "description": "No longer suspicious (re-scored).",
-          "caption": "Exonerated"
-        },
-        "15": {
-          "description": "Marked with extended attributes.",
-          "caption": "Tagged"
         }
       },
       "sibling": "disposition",
@@ -1223,6 +1189,11 @@
       "caption": "Domain Information",
       "description": "The registration information pertaining to a domain.",
       "type": "domain_info"
+    },
+    "driver": {
+      "caption": "Kernel Driver",
+      "description": "The driver that was loaded/unloaded into the kernel",
+      "type": "kernel_driver"
     },
     "dst_endpoint": {
       "caption": "Destination Endpoint",
@@ -1289,16 +1260,6 @@
       "caption": "Expiration Time",
       "description": "The expiration time. See specific usage.",
       "type": "timestamp_t"
-    },
-    "exploit_code_maturity_id": {
-      "caption": "Exploit Code Maturity (E)",
-      "description": "The Exploit Code Maturity Common Vulnerability Scoring System (CVSS) metric.",
-      "type": "integer_t"
-    },
-    "exploitability_id": {
-      "caption": "Exploitability (E)",
-      "description": "The Exploitability Common Vulnerability Scoring System (CVSS) metric.",
-      "type": "integer_t"
     },
     "exposed_port": {
       "caption": "Port",
@@ -1539,16 +1500,6 @@
       "caption": "Integrity Level",
       "description": "The normalized identifier of the process integrity level (Windows only).",
       "enum": {},
-      "type": "integer_t"
-    },
-    "integrity_impact_id": {
-      "caption": "Integrity Impact (I)",
-      "description": "The Integrity Impact Common Vulnerability Scoring System (CVSS) metric.",
-      "type": "integer_t"
-    },
-    "integrity_requirement_id": {
-      "caption": "Integrity Requirement (IR)",
-      "description": "The Integrity Requirement Common Vulnerability Scoring System (CVSS) metric.",
       "type": "integer_t"
     },
     "interface_uid": {
@@ -1869,6 +1820,12 @@
       "description": "The metadata associated with the event.",
       "type": "metadata"
     },
+    "metrics": {
+      "caption": "Metrics",
+      "description": "The general purpose metrics associated with the event. See specific usage.",
+      "is_array": true,
+      "type": "metric"
+    },
     "mfa": {
       "caption": "Multi Factor Authentication",
       "description": "The Multi Factor Authentication was used during authentication.",
@@ -1884,50 +1841,10 @@
       "description": "The peripheral device model.",
       "type": "string_t"
     },
-    "modified_attack_complexity_id": {
-      "caption": "Modified Attack Complexity (MAC)",
-      "description": "The Modified Attack Complexity Common Vulnerability Scoring System (CVSS) metric.",
-      "type": "integer_t"
-    },
-    "modified_attack_vector_id": {
-      "caption": "Modified Attack Vector (MAV)",
-      "description": "The Modified Attack Vector Common Vulnerability Scoring System (CVSS) metric.",
-      "type": "integer_t"
-    },
-    "modified_availability_id": {
-      "caption": "Modified Availability (MA)",
-      "description": "The Modified Availability Common Vulnerability Scoring System (CVSS) metric.",
-      "type": "integer_t"
-    },
-    "modified_confidentiality_id": {
-      "caption": "Modified Confidentiality (MC)",
-      "description": "The Modified Confidentiality Common Vulnerability Scoring System (CVSS) metric.",
-      "type": "integer_t"
-    },
-    "modified_integrity_id": {
-      "caption": "Modified Integrity (MI)",
-      "description": "The Modified Integrity Common Vulnerability Scoring System (CVSS) metric.",
-      "type": "integer_t"
-    },
-    "modified_privileges_required_id": {
-      "caption": "Modified Privileges Required (MPR)",
-      "description": "The Modified Privileges Required Common Vulnerability Scoring System (CVSS) metric.",
-      "type": "integer_t"
-    },
-    "modified_scope_id": {
-      "caption": "Modified Scope (MS)",
-      "description": "The Modified Scope Common Vulnerability Scoring System (CVSS) metric.",
-      "type": "integer_t"
-    },
     "modified_time": {
       "caption": "Modified Time",
       "description": "The time when the object was last modified. See specific usage.",
       "type": "timestamp_t"
-    },
-    "modified_user_interaction_id": {
-      "caption": "Modified User Interaction (MUI)",
-      "description": "The Modified User Interaction Common Vulnerability Scoring System (CVSS) metric.",
-      "type": "integer_t"
     },
     "modifier": {
       "caption": "Modifier",
@@ -2051,10 +1968,20 @@
       "description": "The name of the organization to which the user belongs.",
       "type": "string_t"
     },
+    "original_time": {
+      "caption": "Original Time",
+      "description": "The original event time as reported by the event source.",
+      "type": "string_t"
+    },
     "os": {
       "caption": "OS",
       "description": "The device operation system.",
       "type": "os"
+    },
+    "overall_score": {
+      "caption": "Overall Score",
+      "description": "The overall score as reported by the event source. See specific usage.",
+      "type": "float_t"
     },
     "owner": {
       "caption": "Owner",
@@ -2178,12 +2105,6 @@
       "is_array": true,
       "type": "string_t"
     },
-    "privileges_required_id": {
-      "caption": "Privileges Required",
-      "description": "The level of privileges an attacker must possess before successfully exploiting the vulnerability.",
-      "enum": {},
-      "type": "integer_t"
-    },
     "process": {
       "caption": "Process",
       "description": "The process object.",
@@ -2267,10 +2188,10 @@
       "description": "The ctotal amount of installed RAM, in Megabytes. For example: <code>2048</code>.",
       "type": "integer_t"
     },
-    "raw_score": {
-      "caption": "Reputation Score",
-      "description": "The reputation score as reported by the event source.",
-      "type": "float_t"
+    "raw_data": {
+      "caption": "Raw Data",
+      "description": "The event data as received from the event source.",
+      "type": "string_t"
     },
     "rcode": {
       "caption": "Response Code",
@@ -2387,11 +2308,6 @@
       "description": "The information pertaining to how a red pixel was transmitted.",
       "type": "pixel_info"
     },
-    "original_time": {
-      "caption": "Original Time",
-      "description": "The original event time as reported by the event source.",
-      "type": "string_t"
-    },
     "references": {
       "caption": "References",
       "description": "Supporting reference URLs",
@@ -2455,11 +2371,6 @@
       "description": "The remediation recommendations on how to fix the identified issue(s).",
       "type": "remediation"
     },
-    "remediation_level_id": {
-      "caption": "Remediation Level (RL)",
-      "description": "The Remediation Level Common Vulnerability Scoring System (CVSS) metric.",
-      "type": "integer_t"
-    },
     "remote_display": {
       "caption": "Remote Display",
       "description": "The remote display affiliated with the event",
@@ -2469,11 +2380,6 @@
       "caption": "Reply To",
       "description": "The email header Reply-To values, as defined by RFC 5322.",
       "type": "email_t"
-    },
-    "report_confidence_id": {
-      "caption": "Report Confidence (RC)",
-      "description": "The Report Confidence Common Vulnerability Scoring System (CVSS) metric.",
-      "type": "integer_t"
     },
     "reputation": {
       "caption": "Reputation Scores",
@@ -2607,11 +2513,6 @@
       "caption": "Scheme",
       "description": "The scheme portion of the URL. For example: <code>http</code>, <code>https</code>, <code>ftp</code>, or <code>sftp</code>.",
       "type": "string_t"
-    },
-    "scope_id": {
-      "caption": "Scope (S)",
-      "description": "The Scope Common Vulnerability Scoring System (CVSS) metric.",
-      "type": "integer_t"
     },
     "score": {
       "caption": "Reputation Score",
@@ -2944,11 +2845,6 @@
       "description": "The image tag. For example: <code>1.11-alpine</code>.",
       "type": "string_t"
     },
-    "target_distribution_id": {
-      "caption": "Target Distribution (TD)",
-      "description": "The Target Distribution Common Vulnerability Scoring System (CVSS) metric.",
-      "type": "integer_t"
-    },
     "tcp_flags": {
       "caption": "TCP Flags",
       "description": "The network connection TCP header flags (i.e., control bits).",
@@ -2959,6 +2855,11 @@
       "description": "The attack technique.",
       "type": "technique"
     },
+    "terminated_time": {
+      "caption": "Terminated Time",
+      "description": "The time when the entity was terminated. See specific usage.",
+      "type": "timestamp_t"
+    },
     "text": {
       "caption": "URL Text",
       "description": "The URL. For example: <code>http://www.example.com/download/trouble.exe</code>.",
@@ -2968,6 +2869,11 @@
       "caption": "Thread ID",
       "description": "The Identifier of the thread associated with the event, as returned by the operating system.",
       "type": "integer_t"
+    },
+    "time": {
+      "caption": "Event Time",
+      "description": "The normalized event occurrence time.",
+      "type": "timestamp_t"
     },
     "timezone_offset": {
       "caption": "Timezone Offset",
@@ -3079,11 +2985,6 @@
       "description": "The request header that identifies the operating system and web browser.",
       "type": "string_t"
     },
-    "user_interaction_id": {
-      "caption": "User Interaction",
-      "description": "The requirement for a user, other than the attacker, to participate in the successful compromise of the vulnerable component.",
-      "type": "integer_t"
-    },
     "user_result": {
       "caption": "User Result",
       "description": "The result of the user account change. It should contain the new values of the changed attributes.",
@@ -3101,11 +3002,11 @@
     },
     "vector_string": {
       "caption": "Vector String",
-      "description": "The CVSS vector string is a text representation of a set of CVSS metrics. It is commonly used to record or transfer CVSS metric information in a concise form.",
+      "description": "The CVSS vector string is a text representation of a set of CVSS metrics. It is commonly used to record or transfer CVSS metric information in a concise form. For example: <code>3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H</code>.",
       "type": "string_t"
     },
     "vendor_name": {
-      "caption": "Vendor name",
+      "caption": "Vendor Name",
       "description": "The name of the vendor. See specific usage.",
       "type": "string_t"
     },
@@ -3161,11 +3062,6 @@
       "caption": "Network Zone",
       "description": "The network zone or LAN segment.",
       "type": "string_t"
-    },
-    "driver": {
-      "caption": "Kernel Driver",
-      "type": "kernel_driver",
-      "description": "The driver that was loaded/unloaded into the kernel"
     }
   },
   "types": {

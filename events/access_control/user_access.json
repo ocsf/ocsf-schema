@@ -1,0 +1,36 @@
+{
+  "caption": "User Access Management",
+  "description": "User Access Management events report management updates to a user's privileges.",
+  "extends": "access_control",
+  "name": "user_access",
+  "uid": 7,
+  "attributes": {
+    "activity_id": {
+      "enum": {
+        "1": {
+          "description": "Assign privileges to a user.",
+          "caption": "Assign Privileges"
+        },
+        "2": {
+          "description": "Revoke privileges from a user.",
+          "caption": "Revoke Privileges"
+        }
+      }
+    },
+    "privileges": {
+      "description": "List of privileges assigned to a user.",
+      "group": "primary",
+      "requirement": "required"
+    },
+    "resource": {
+      "description": "A resource that was the target of the privileges.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "user": {
+      "description": "User to which privileges were assigned.",
+      "group": "primary",
+      "requirement": "required"
+    }
+  }
+}

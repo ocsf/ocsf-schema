@@ -1,0 +1,49 @@
+{
+  "caption": "Group Management",
+  "description": "Group Management events report management updates to a group, including updates to membership and permissions.",
+  "extends": "access_control",
+  "name": "group_management",
+  "uid": 8,
+  "attributes": {
+    "activity_id": {
+      "enum": {
+        "1": {
+          "description": "Assign privileges to a group.",
+          "caption": "Assign Privileges"
+        },
+        "2": {
+          "description": "Revoke privileges from a group.",
+          "caption": "Revoke Privileges"
+        },
+        "3": {
+          "description": "Add user to a group.",
+          "caption": "Add User"
+        },
+        "4": {
+          "description": "Remove user from a group.",
+          "caption": "Remove User"
+        }
+      }
+    },
+    "group": {
+      "description": "Group that was the target of the event.",
+      "group": "primary",
+      "requirement": "required"
+    },
+    "privileges": {
+      "description": "A list of privileges assigned to the group.",
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "resource": {
+      "description": "The resource that was the target of the privileges.",
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "user": {
+      "description": "A user that was added to or removed from the group.",
+      "group": "primary",
+      "requirement": "recommended"
+    }
+  }
+}

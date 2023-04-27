@@ -1,10 +1,22 @@
 {
   "caption": "Device Config State",
-  "description": "Device Config State events report device inventory data.",
+  "description": "Device Config State events report device configuration data.",
   "extends": "discovery",
   "name": "config_state",
   "uid": 2,
+  "profiles": [
+    "host"
+  ],
   "attributes": {
+    "actor": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "device": {
+      "group": "primary",
+      "requirement": "required",
+      "description": "The device that is being discovered by an inventory process."
+    },
     "cis_benchmark_result": {
       "group": "primary"
     }

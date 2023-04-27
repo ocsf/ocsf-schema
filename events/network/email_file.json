@@ -4,7 +4,7 @@
   "caption": "Email File Activity",
   "name": "email_file_activity",
   "category": "network",
-  "uid": 1,
+  "uid": 11,
   "profiles": [
     "host",
     "security_control"
@@ -14,14 +14,30 @@
       "profiles/host.json",
       "profiles/security_control.json"
     ],
+    "activity_id": {
+      "requirement": "optional",
+      "enum": {
+        "1": {
+          "caption": "Send"
+        },
+        "2": {
+          "caption": "Receive"
+        },
+        "3": {
+          "caption": "Scan",
+          "description": "Email file being scanned (example: security scanning)."
+        }
+      },
+      "group": "context"
+    },
+    "email_uid": {
+      "requirement": "required",
+      "group": "primary"
+    },
     "file": {
       "description": "The email file attachment.",
       "group": "primary",
       "requirement": "required"
-    },
-    "email_uid": {
-      "requirement": "recommended",
-      "group": "primary"
     }
   }
 }

@@ -1256,6 +1256,11 @@
       "description": "The SPF, DKIM and DMARC attributes of an email.",
       "type": "email_auth"
     },
+    "email_uid": {
+      "caption": "Email UID",
+      "description": "The unique identifier of the email, used to correlate related email alert and activity events.",
+      "type": "string_t"
+    },
     "end_time": {
       "caption": "End Time",
       "description": "The end time of a time period. See specific usage.",
@@ -1815,7 +1820,7 @@
       "type": "string_t"
     },
     "location": {
-      "caption": "Detailed Geo Location",
+      "caption": "Geo Location",
       "description": "The detailed geographical location usually associated with an IP address.",
       "type": "location"
     },
@@ -1949,11 +1954,6 @@
     "mime_type": {
       "caption": "MIME type",
       "description": "The Multipurpose Internet Mail Extensions (MIME) type of the file, if applicable.",
-      "type": "string_t"
-    },
-    "model": {
-      "caption": "Model",
-      "description": "The peripheral device model.",
       "type": "string_t"
     },
     "modified_time": {
@@ -2096,7 +2096,7 @@
     },
     "original_time": {
       "caption": "Original Time",
-      "description": "The original event time as reported by the event source.",
+      "description": "The original event time as reported by the event source. For example, the time in the orignal format from system event log such as Syslog on Unix/Linux and the System event file on Windows. Omit if event is generated instead of collected via logs.",
       "type": "string_t"
     },
     "os": {
@@ -2157,11 +2157,6 @@
       "caption": "Path",
       "description": "The path that pertains to the event or object. See specific usage.",
       "type": "path_t"
-    },
-    "peripheral_device": {
-      "caption": "Peripheral Device",
-      "description": "The peripheral device that triggered the event.",
-      "type": "peripheral_device"
     },
     "permission": {
       "caption": "Permission",
@@ -3145,7 +3140,7 @@
     "uuid": {
       "caption": "UUID",
       "description": "The universally unique identifier. See specific usage.",
-      "type": "string_t"
+      "type": "uuid_t"
     },
     "value": {
       "caption": "Value",
@@ -3227,6 +3222,19 @@
           false,
           true
         ]
+      },
+      "bytestring_t": {
+        "caption": "Byte String",
+        "description": "Base64 encoded immutable byte sequence.",
+        "type": "string_t",
+        "type_name": "String"
+      },
+      "datetime_t": {
+        "caption": "Datetime",
+        "description": "The Internet Date/Time format as defined in <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc3339.html'>RFC-3339</a>. For example <code>1985-04-12T23:20:50.52Z</code>.",
+        "regex": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}%3A\\d{2}(?:.\\d+)?[A-Z]?(?:[.-](?:08:\\d{2}|\\d{2}[A-Z]))?$",
+        "type": "string_t",
+        "type_name": "String"
       },
       "email_t": {
         "caption": "Email Address",
@@ -3326,6 +3334,7 @@
         "description": "Resource unique identifier. For example, S3 Bucket name or EC2 Instance ID.",
         "max_len": 64,
         "observable": 10,
+        "type": "string_t",
         "type_name": "String"
       },
       "string_t": {
@@ -3337,12 +3346,6 @@
         "caption": "Subnet",
         "description": "Subnet mask in Classless Inter-Domain Routing (CIDR) notation. For example <code>192.168.200.0/24</code>.",
         "max_len": 40,
-        "type_name": "String"
-      },
-      "datetime_t": {
-        "caption": "Datetime",
-        "description": "The Internet Date/Time format as defined in <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc3339.html'>RFC-3339</a>. For example <code>1985-04-12T23:20:50.52Z</code>.",
-        "regex": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}%3A\\d{2}(?:.\\d+)?[A-Z]?(?:[.-](?:08:\\d{2}|\\d{2}[A-Z]))?$",
         "type": "string_t",
         "type_name": "String"
       },
@@ -3366,14 +3369,12 @@
         "type": "string_t",
         "type_name": "String"
       },
-      "bytestring_t": {
-        "caption": "Byte String",
-        "description": "Base64 encoded immutable byte sequence."
-      },
       "uuid_t": {
         "caption": "UUID",
+        "description": "128-bit universal unique identifier. For example: <code>123e4567-e89b-12d3-a456-42661417400</code>.",
         "regex": "[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}",
-        "description": "128-bit universal unique identifier."
+        "type": "string_t",
+        "type_name": "String"
       }
     }
   }

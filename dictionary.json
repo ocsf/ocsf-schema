@@ -866,6 +866,11 @@
       "description": "The network connection identifier.",
       "type": "string_t"
     },
+    "container": {
+      "caption": "Container",
+      "description": "The information describing an instance of a container. A container is a prepackaged, portable system image that runs isolated on an existing system using a container runtime like containerd.",
+      "type": "container"
+    },
     "content_type": {
       "caption": "HTTP Content Type",
       "description": "The request header that identifies the original <a target='_blank' href='https://www.iana.org/assignments/media-types/media-types.xhtml'>media type </a> of the resource (prior to any content encoding applied for sending).",
@@ -1976,6 +1981,16 @@
       "description": "The namespace is useful in merger or acquisition situations. For example, when similar entities exists that you need to keep separate.",
       "type": "string_t"
     },
+    "namespace_pid": {
+      "caption": "Namespace PID",
+      "description": "If running under a process namespace (such as in a container), the process identifier within that process namespace.",
+      "type": "integer_t"
+    },
+    "network_driver": {
+      "caption": "Network Driver",
+      "description": "The network driver used by the container. For example, bridge, overlay, host, none, etc.",
+      "type": "string_t"
+    },
     "network_interfaces": {
       "caption": "Network Interfaces",
       "description": "The network interfaces that are associated with the device, one for each MAC address/IP address combination.<p><b>Note:</b> The first element of the array is the network information that pertains to the event.</p>",
@@ -2058,6 +2073,11 @@
       "caption": "Opnum",
       "description": "An operation number used to identify a specific remote procedure call (RPC) method or a method in an interface.",
       "type": "integer_t"
+    },
+    "orchestrator": {
+      "caption": "Orchestrator",
+      "description": "The orchestrator managing the container, such as ECS, EKS, K8s, or OpenShift.",
+      "type": "string_t"
     },
     "org_name": {
       "caption": "Org Name",
@@ -2210,6 +2230,11 @@
       "caption": "Process ID",
       "description": "The process identifier, as reported by the operating system. Process ID (PID) is a number used by the operating system to uniquely identify an active process.",
       "type": "integer_t"
+    },
+    "pod_uuid": {
+      "caption": "Pod UUID",
+      "description": "The unique identifer of the pod (or equivalent) that the container is executing on.",
+      "type": "uuid_t"
     },
     "policy": {
       "caption": "Policy",
@@ -2614,6 +2639,11 @@
       "enum": {},
       "sibling": "run_state",
       "type": "integer_t"
+    },
+    "runtime": {
+      "caption": "Runtime",
+      "description": "The backend running the container, such as containerd or cri-o.",
+      "type": "string_t"
     },
     "samesite": {
       "caption": "SameSite",

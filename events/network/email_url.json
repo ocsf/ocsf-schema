@@ -4,7 +4,7 @@
   "caption": "Email URL Activity",
   "name": "email_url_activity",
   "category": "network",
-  "uid": 2,
+  "uid": 12,
   "profiles": [
     "host",
     "security_control"
@@ -14,8 +14,24 @@
       "profiles/host.json",
       "profiles/security_control.json"
     ],
+    "activity_id": {
+      "requirement": "optional",
+      "enum": {
+        "1": {
+          "caption": "Send"
+        },
+        "2": {
+          "caption": "Receive"
+        },
+        "3": {
+          "caption": "Scan",
+          "description": "Email URL being scanned (example: security scanning)."
+        }
+      },
+      "group": "context"
+    },
     "email_uid": {
-      "requirement": "recommended",
+      "requirement": "required",
       "group": "primary"
     },
     "url": {

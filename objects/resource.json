@@ -2,52 +2,52 @@
   "description": "Describes details about resources that were affected by the activity/event.",
   "caption": "Resource",
   "name": "resource",
-  "extends": "object",
+  "extends": "entity",
   "attributes": {
-    "account_uid":{
-      "description": "The unique identifier of the account that owns the resource (e.g. AWS Account ID).",
-      "requirement": "optional"
-    },
     "cloud_partition": {
-      "requirement": "optional"
+      "requirement": "optional",
+      "profile": "cloud"
     },
     "criticality": {
       "description": "The criticality of the resource.",
       "requirement": "optional"
     },
-    "details": {
-      "description": "Additional details describing the resource.",
+    "data": {
+      "description": "Additional data describing the resource.",
       "requirement": "optional"
     },
-    "device":{
-      "description": "The device specific details, if the resource is a host/device.",
-      "requirement": "optional"
-    },
-    "group_name": {
+    "group": {
       "requirement": "recommended"
     },
     "labels": {
       "requirement": "optional"
     },
     "name": {
-      "description": "The name of the resource.",
-      "requirement": "recommended"
+      "description": "The name of the Resource."
     },
     "owner": {
-      "description" : "The identity of the service or user account that owns the resource",
+      "description": "The identity of the service or user account that owns the resource",
       "requirement": "recommended"
     },
     "region": {
       "description": "The region of the resource.",
+      "requirement": "optional",
+      "profile": "cloud"
+    },
+    "resource_type": {
+      "description": "The resource type, normalized to the caption of the resource_type_id value. In the case of 'Other', it is defined by the event source.",
       "requirement": "optional"
     },
-    "type": {
-      "description": "The type of the resource.",
-      "requirement": "optional"
+    "resource_type_id": {
+      "description": "The normalized type identifier of the Resource.",
+      "requirement": "recommended"
     },
     "uid": {
-      "description": "The unique identifier of the resource.",
-      "requirement": "recommended"
+      "description": "The unique identifier of the resource."
+    },
+    "version": {
+      "description": "The version of the resource. For example <code>1.2.3</code>.",
+      "requirement": "optional"
     }
   }
 }

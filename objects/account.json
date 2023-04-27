@@ -1,0 +1,64 @@
+{
+  "caption": "Account",
+  "description": "The account object describes details about the account that was the source of the activity.",
+  "name": "account",
+  "extends": "entity",
+  "attributes": {
+    "name": {
+      "description": "The name of the account (e.g. GCP Account Name)."
+    },
+    "type": {
+      "caption": "Type",
+      "description": "The account type, normalized to the caption of 'account_type_id'. In the case of 'Other', it is defined by the event source.",
+      "requirement": "optional"
+    },
+    "type_id": {
+      "caption": "Type ID",
+      "description": "The normalized account type identifier.",
+      "enum": {
+        "99": {
+          "caption": "Other",
+          "description": "The account type is not mapped."
+        },
+        "0": {
+          "caption": "Unknown",
+          "description": "The account type is unknown."
+        },
+        "1": {
+          "caption": "LDAP Account"
+        },
+        "2": {
+          "caption": "Windows Account"
+        },
+        "3": {
+          "caption": "AWS IAM User"
+        },
+        "4": {
+          "caption": "AWS IAM Role"
+        },
+        "5": {
+          "caption": "GCP Account"
+        },
+        "6": {
+          "caption": "Azure AD Account"
+        },
+        "7": {
+          "caption": "Mac OS Account"
+        },
+        "8": {
+          "caption": "Apple Account"
+        },
+        "9": {
+          "caption": "Linux Account"
+        },
+        "10": {
+          "caption": "AWS Account"
+        }
+      },
+      "requirement": "recommended"
+    },
+    "uid": {
+      "description": "The unique identifier of the account (e.g. AWS Account ID)."
+    }
+  }
+}

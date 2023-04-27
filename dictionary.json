@@ -29,54 +29,10 @@
       "description": "The name of the user who last accessed the object.",
       "type": "user"
     },
-    "account_type": {
-      "caption": "Account Type",
-      "description": "The user account type, normalized to the caption of 'account_type_id'. In the case of 'Other', it is defined by the event source.",
-      "type": "string_t"
-    },
-    "account_type_id": {
-      "caption": "Account Type ID",
-      "description": "The normalized user account type identifier.",
-      "enum": {
-        "99": {
-          "caption": "Other",
-          "description": "The user account type is not mapped."
-        },
-        "0": {
-          "caption": "Unknown",
-          "description": "The user account type is unknown."
-        },
-        "1": {
-          "caption": "LDAP Account"
-        },
-        "2": {
-          "caption": "Windows Account"
-        },
-        "3": {
-          "caption": "AWS IAM User"
-        },
-        "4": {
-          "caption": "AWS IAM Role"
-        },
-        "5": {
-          "caption": "GCP Account"
-        },
-        "6": {
-          "caption": "Azure AD Account"
-        }
-      },
-      "sibling": "account_type",
-      "type": "integer_t"
-    },
-    "account_uid": {
-      "caption": "Account UID",
-      "description": "The unique identifier of the account (e.g. AWS Account ID).",
-      "type": "string_t"
-    },
-    "account_name": {
-      "caption": "Account Name",
-      "description": "The name of the account (e.g. AWS Account Name).",
-      "type": "string_t"
+    "account": {
+      "caption": "Account",
+      "description": "The account object describes details about the account that was the source or target of the activity.",
+      "type": "account"
     },
     "activity_id": {
       "caption": "Activity ID",
@@ -116,42 +72,27 @@
     },
     "algorithm": {
       "caption": "Algorithm",
-      "description": "The hash algorithm used to create the digital fingerprint, normalized to the caption of 'algorithm_id'. In the case of 'Other', it is defined by the event source.",
+      "description": "The applicable algorithm, normalized to the caption of 'algorithm_id'. See specific usage.",
       "type": "string_t"
     },
     "algorithm_id": {
       "caption": "Algorithm ID",
-      "description": "The identifier of the normalized hash algorithm, which was used to create the digital fingerprint.",
+      "description": "The identifier of the normalized algorithm. See specific usage.",
       "enum": {
         "99": {
           "caption": "Other"
         },
         "0": {
           "caption": "Unknown"
-        },
-        "1": {
-          "caption": "MD5",
-          "description": "MD5 message-digest algorithm producing a 128-bit (16-byte) hash value."
-        },
-        "2": {
-          "caption": "SHA-1",
-          "description": "Secure Hash Algorithm 1 producing a 160-bit (20-byte) hash value."
-        },
-        "3": {
-          "caption": "SHA-256",
-          "description": "Secure Hash Algorithm 2 producing a 256-bit (32-byte) hash value."
-        },
-        "4": {
-          "caption": "SHA-512",
-          "description": "Secure Hash Algorithm 2 producing a 512-bit (64-byte) hash value."
-        },
-        "5": {
-          "caption": "CTPH",
-          "description": "The ssdeep generated fuzzy checksum. Also known as Context Triggered Piecewise Hash (CTPH)."
         }
       },
       "sibling": "algorithm",
       "type": "integer_t"
+    },
+    "analytic": {
+      "caption": "Analytic",
+      "description": "The analytic technique used to create the finding or detection",
+      "type": "analytic"
     },
     "answers": {
       "caption": "DNS Answer",
@@ -288,11 +229,6 @@
       "caption": "Base Score",
       "description": "The base score as reported by the event source. See specific usage.",
       "type": "float_t"
-    },
-    "big_endian": {
-      "caption": "Big Endian",
-      "description": "A boolean indicating whether the most significant byte is stored/transmitted first.",
-      "type": "boolean_t"
     },
     "bios_date": {
       "caption": "BIOS Date",
@@ -719,16 +655,6 @@
       "is_array": true,
       "type": "string_t"
     },
-    "challenge": {
-      "caption": "Challenge",
-      "description": "The VNC challenge",
-      "type": "string_t"
-    },
-    "challenge_response": {
-      "caption": "Challenge Response",
-      "description": "The VNC challenge response",
-      "type": "string_t"
-    },
     "chassis": {
       "caption": "Chassis",
       "description": "The chassis type describes the system enclosure or physical form factor. Such as the following examples for Windows <a target='_blank' href='https://docs.microsoft.com/en-us/windows/win32/cimwin32prov/win32-systemenclosure'>Windows Chassis Types</a>",
@@ -743,6 +669,12 @@
       "caption": "CIS Benchmark Result",
       "description": "The CIS benchmark result.",
       "type": "cis_benchmark_result"
+    },
+    "cis_csc": {
+      "caption": "CIS CSC",
+      "description": "The CIS Critical Security Controls is a list of top 20 actions and practices an organization’s security team can take on such that cyber attacks or malware, are minimized and prevented.",
+      "is_array": true,
+      "type": "cis_control"
     },
     "city": {
       "caption": "City",
@@ -828,16 +760,6 @@
       "description": "The numeric color depth.",
       "type": "integer_t"
     },
-    "color_max": {
-      "caption": "Color Maximum",
-      "description": "The maximum color value (with 'n' bits this would result in a 2^n-1 maximum value).",
-      "type": "integer_t"
-    },
-    "color_shift": {
-      "caption": "Color Shift",
-      "description": "The color shift value represents the number of shifts needed in order to get the color value in a pixel to the least significant bit.",
-      "type": "integer_t"
-    },
     "command": {
       "caption": "Command",
       "description": "The command name.",
@@ -877,6 +799,30 @@
     "confidence": {
       "caption": "Confidence",
       "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
+      "type": "integer_t"
+    },
+    "confidence_id": {
+      "caption": "Confidence ID",
+      "description": "The normalized confidence level refers to the accuracy of the rule that created the finding. A rule with a low confidence level means that the finding scope is wide and may create finding reports that may not be malicious in nature.",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "No confidence is assigned."
+        },
+        "1": {
+          "caption": "Low"
+        },
+        "2": {
+          "caption": "Medium"
+        },
+        "3": {
+          "caption": "High"
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The confidence is not mapped to the defined enum values. See the <code>confidence</code> attribute, which contains a data source specific value."
+        }
+      },
       "type": "integer_t"
     },
     "confidentiality": {
@@ -922,7 +868,7 @@
     },
     "container": {
       "caption": "Container",
-      "description": "The container information.",
+      "description": "The information describing an instance of a container. A container is a prepackaged, portable system image that runs isolated on an existing system using a container runtime like containerd.",
       "type": "container"
     },
     "content_type": {
@@ -933,6 +879,11 @@
     "continent": {
       "caption": "Continent",
       "description": "The name of the continent.",
+      "type": "string_t"
+    },
+    "control": {
+      "caption": "Control",
+      "description": "The CIS critical security control.",
       "type": "string_t"
     },
     "coordinates": {
@@ -1043,9 +994,10 @@
       "description": "The additional data that is associated with the event or object. See specific usage.",
       "type": "json_t"
     },
-    "data_bucket": {
-      "caption": "Data Bucket",
-      "description": "The name of the data bucket (e.g. bucket name for AWS/GCP and blob name for Azure).",
+    "data_sources": {
+      "caption": "Data Sources",
+      "description": "The data sources for the finding.",
+      "is_array": true,
       "type": "string_t"
     },
     "dce_rpc": {
@@ -1119,6 +1071,11 @@
       "caption": "Dialect",
       "description": "The negotiated protocol dialect.",
       "type": "string_t"
+    },
+    "digest": {
+      "caption": "Message Digest",
+      "description": "The message digest attribute contains the fixed length message hash representation and the corresponding hashing algorithm information.",
+      "type": "fingerprint"
     },
     "direction": {
       "caption": "Direction",
@@ -1264,11 +1221,6 @@
       "description": "The name of the domain.",
       "type": "string_t"
     },
-    "domain_info": {
-      "caption": "Domain Information",
-      "description": "The registration information pertaining to a domain.",
-      "type": "domain_info"
-    },
     "driver": {
       "caption": "Kernel Driver",
       "description": "The driver that was loaded/unloaded into the kernel",
@@ -1303,6 +1255,11 @@
       "caption": "Email Authentication",
       "description": "The SPF, DKIM and DMARC attributes of an email.",
       "type": "email_auth"
+    },
+    "email_uid": {
+      "caption": "Email UID",
+      "description": "The unique identifier of the email, used to correlate related email alert and activity events.",
+      "type": "string_t"
     },
     "end_time": {
       "caption": "End Time",
@@ -1340,6 +1297,16 @@
       "description": "Error Message",
       "type": "string_t"
     },
+    "event_code": {
+      "caption": "Event Code",
+      "description": "The Event ID or Code that the product uses to describe the event.",
+      "type": "string_t"
+    },
+    "evidence": {
+      "caption": "Evidence",
+      "description": "The data the finding exposes to the analyst.",
+      "type": "json_t"
+    },
     "exit_code": {
       "caption": "Exit Code",
       "description": "The exit code reported by a process when it terminates. The convention is that zero indicates success and any non-zero exit code indicates that some error occurred.",
@@ -1350,14 +1317,14 @@
       "description": "The expiration time. See specific usage.",
       "type": "timestamp_t"
     },
-    "exposed_port": {
-      "caption": "Port",
-      "description": "The IP port number exposed by container. For example 0.0.0.0:49155-> <<exposed_port>>/tcp",
-      "type": "port_t"
+    "extension": {
+      "caption": "Schema Extension",
+      "description": "The schema extension used to create the event.",
+      "type": "extension"
     },
     "extension_list": {
       "caption": "Extension List",
-      "description": "The list of TLS extensions",
+      "description": "The list of TLS extensions.",
       "is_array": true,
       "type": "tls_extension"
     },
@@ -1401,6 +1368,11 @@
       "caption": "First Seen",
       "description": "The initial detection time of the activity or object. See specific usage",
       "type": "timestamp_t"
+    },
+    "fix_available": {
+      "caption": "Fix Availability",
+      "description": "Indicates if a fix is available for the reported vulnerability.",
+      "type": "boolean_t"
     },
     "flag_ids": {
       "caption": "Communication Flag IDs",
@@ -1456,6 +1428,17 @@
       "caption": "Handshake Duration",
       "description": "The amount of total time for the TLS handshake to complete after the TCP connection is established, including client-side delays, in milliseconds.",
       "type": "integer_t"
+    },
+    "hash": {
+      "caption": "Hash",
+      "description": "The hash attribute is the value of a digital fingerprint including information about its algorithm.",
+      "type": "fingerprint"
+    },
+    "hashes": {
+      "caption": "Hashes",
+      "description": "An array of hash attributes.",
+      "is_array": true,
+      "type": "fingerprint"
     },
     "hostname": {
       "caption": "Hostname",
@@ -1533,6 +1516,43 @@
       "caption": "IMEI",
       "description": "The International Mobile Station Equipment Identifier that is associated with the device.",
       "type": "string_t"
+    },
+    "impact": {
+      "caption": "Impact",
+      "description": "The impact of the finding, valid range 0-100.",
+      "type": "string_t"
+    },
+    "impact_id": {
+      "caption": "Impact ID",
+      "description": "The normalized impact of the finding.",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Low"
+        },
+        "2": {
+          "caption": "Medium"
+        },
+        "3": {
+          "caption": "High"
+        },
+        "4": {
+          "caption": "Critical"
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The detection impact is not mapped. See the <code>impact</code> attribute, which contains a data source specific value."
+        }
+      },
+      "sibling": "impact",
+      "type": "integer_t"
+    },
+    "impact_score": {
+      "caption": "Impact",
+      "description": "The impact of the finding, valid range 0-100.",
+      "type": "integer_t"
     },
     "injection_type": {
       "caption": "Injection Type",
@@ -1622,6 +1642,11 @@
       "description": "The event occurred on a managed device.",
       "type": "boolean_t"
     },
+    "is_new_logon": {
+      "caption": "New Logon",
+      "description": "Indicates logon is from a device not seen before or a first time account logon.",
+      "type": "boolean_t"
+    },
     "is_on_premises": {
       "caption": "On Premises",
       "description": "The indication of whether the location is on premises.",
@@ -1672,25 +1697,15 @@
       "description": "The certificate issuer name.",
       "type": "string_t"
     },
-    "ja3_fingerprint": {
-      "caption": "JA3 Fingerprint",
-      "description": "The fingerprint of JA3 string.",
+    "ja3_hash": {
+      "caption": "JA3 Hash",
+      "description": "The MD5 hash of a JA3 string.",
       "type": "fingerprint"
     },
-    "ja3_string": {
-      "caption": "JA3 String",
-      "description": "The JA3 string.",
-      "type": "string_t"
-    },
-    "ja3s_fingerprint": {
-      "caption": "JAS3 Fingerprint",
-      "description": "The fingerprint of JAS3 string.",
+    "ja3s_hash": {
+      "caption": "JA3S Hash",
+      "description": "The MD5 hash of a JA3S string.",
       "type": "fingerprint"
-    },
-    "ja3s_string": {
-      "caption": "JAS3 String",
-      "description": "The JAS3 string.",
-      "type": "string_t"
     },
     "job": {
       "caption": "Job",
@@ -1732,6 +1747,12 @@
       "caption": "Keyboard Type",
       "description": "The keyboard type (e.g., xt, ico).",
       "type": "string_t"
+    },
+    "kill_chain": {
+      "caption": "Kill Chain",
+      "description": "The <a target='_blank' href='https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html'>Cyber Kill Chain®</a>.",
+      "is_array": true,
+      "type": "kill_chain"
     },
     "labels": {
       "caption": "Labels",
@@ -1799,9 +1820,24 @@
       "type": "string_t"
     },
     "location": {
-      "caption": "Detailed Geo Location",
+      "caption": "Geo Location",
       "description": "The detailed geographical location usually associated with an IP address.",
       "type": "location"
+    },
+    "log_name": {
+      "caption": "Log Name",
+      "description": "The event log name. For example, syslog file name or Windows logging subsystem: Security.",
+      "type": "string_t"
+    },
+    "log_provider": {
+      "caption": "Log Provider",
+      "description": "The logging provider or logging service that logged the event. For example, Microsoft-Windows-Security-Auditing.",
+      "type": "string_t"
+    },
+    "log_version": {
+      "caption": "Log Version",
+      "description": "The event log schema version that specifies the format of the original event. For example syslog version or Cisco Log Schema Version.",
+      "type": "string_t"
     },
     "logged_time": {
       "caption": "Logged Time",
@@ -1920,11 +1956,6 @@
       "description": "The Multipurpose Internet Mail Extensions (MIME) type of the file, if applicable.",
       "type": "string_t"
     },
-    "model": {
-      "caption": "Model",
-      "description": "The peripheral device model.",
-      "type": "string_t"
-    },
     "modified_time": {
       "caption": "Modified Time",
       "description": "The time when the object was last modified. See specific usage.",
@@ -1950,15 +1981,15 @@
       "description": "The namespace is useful in merger or acquisition situations. For example, when similar entities exists that you need to keep separate.",
       "type": "string_t"
     },
+    "namespace_pid": {
+      "caption": "Namespace PID",
+      "description": "If running under a process namespace (such as in a container), the process identifier within that process namespace.",
+      "type": "integer_t"
+    },
     "network_driver": {
       "caption": "Network Driver",
       "description": "The network driver used by the container. For example, bridge, overlay, host, none, etc.",
       "type": "string_t"
-    },
-    "network_interface": {
-      "caption": "Network Interface",
-      "description": "The network interface that is associated with the device.",
-      "type": "network_interface"
     },
     "network_interfaces": {
       "caption": "Network Interfaces",
@@ -1970,6 +2001,12 @@
       "caption": "Next Run",
       "description": "The next run time. See specific usage.",
       "type": "timestamp_t"
+    },
+    "nist": {
+      "caption": "NIST List",
+      "description": "The NIST Cybersecurity Framework recommendations for managing the cybersecurity risk.",
+      "is_array": true,
+      "type": "string_t"
     },
     "observables": {
       "caption": "Observables",
@@ -2039,27 +2076,32 @@
     },
     "orchestrator": {
       "caption": "Orchestrator",
-      "description": "The orchestrator managing the container, such as ECS, EKS, K8s, OpenShift, None.",
+      "description": "The orchestrator managing the container, such as ECS, EKS, K8s, or OpenShift.",
+      "type": "string_t"
+    },
+    "org_name": {
+      "caption": "Org Name",
+      "description": "The name of the organization. For example, Widget, Inc",
       "type": "string_t"
     },
     "org_uid": {
       "caption": "Org ID",
-      "description": "The unique identifier of the organization to which the user belongs. For example, Active Directory or AWS Org ID.",
+      "description": "The unique identifier of the organization. For example, its Active Directory or AWS Org ID.",
       "type": "string_t"
     },
     "org_unit": {
       "caption": "Org Unit",
-      "description": "The name of the organization to which the user belongs.",
+      "description": "The name of the organizational unit, withiin an organization.  For example, Finance, IT, R&D",
       "type": "string_t"
     },
     "original_time": {
       "caption": "Original Time",
-      "description": "The original event time as reported by the event source.",
+      "description": "The original event time as reported by the event source. For example, the time in the orignal format from system event log such as Syslog on Unix/Linux and the System event file on Windows. Omit if event is generated instead of collected via logs.",
       "type": "string_t"
     },
     "os": {
       "caption": "OS",
-      "description": "The device operation system.",
+      "description": "The device operating system.",
       "type": "os"
     },
     "overall_score": {
@@ -2116,15 +2158,58 @@
       "description": "The path that pertains to the event or object. See specific usage.",
       "type": "path_t"
     },
-    "peripheral_device": {
-      "caption": "Peripheral Device",
-      "description": "The peripheral device that triggered the event.",
-      "type": "peripheral_device"
-    },
     "permission": {
       "caption": "Permission",
       "description": "The IAM permission related to an event",
       "type": "string_t"
+    },
+    "phase": {
+      "caption": "Kill Chain Phase",
+      "description": "The cyber kill chain phase.",
+      "type": "string_t"
+    },
+    "phase_id": {
+      "caption": "Kill Chain Phase ID",
+      "description": "The cyber kill chain phase identifier.",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The kill chain phase is unknown."
+        },
+        "1": {
+          "caption": "Reconnaissance",
+          "description": "The attackers pick a target and perform a detailed analysis, start collecting information (email addresses, conferences information, etc.) and evaluate the victim’s vulnerabilities to determine how to exploit them."
+        },
+        "2": {
+          "caption": "Weaponization",
+          "description": "The attackers develop a malware weapon and aim to exploit the discovered vulnerabilities."
+        },
+        "3": {
+          "caption": "Delivery",
+          "description": "The intruders will use various tactics, such as phishing, infected USB drives, etc."
+        },
+        "4": {
+          "caption": "Exploitation",
+          "description": "The intruders start leveraging vulnerabilities to executed code on the victim’s system."
+        },
+        "5": {
+          "caption": "Installation",
+          "description": "The intruders install malware on the victim’s system."
+        },
+        "6": {
+          "caption": "Command & Control",
+          "description": "Malware opens a command channel to enable the intruders to remotely manipulate the victim's system."
+        },
+        "7": {
+          "caption": "Actions on Objectives",
+          "description": "With hands-on keyboard access, intruders accomplish the mission’s goal."
+        },
+        "99": {
+          "caption": "Other"
+        }
+      },
+      "type": "integer_t",
+      "sibling": "phase"
     },
     "physical_height": {
       "caption": "Physical Height",
@@ -2146,10 +2231,10 @@
       "description": "The process identifier, as reported by the operating system. Process ID (PID) is a number used by the operating system to uniquely identify an active process.",
       "type": "integer_t"
     },
-    "pixel_bits": {
-      "caption": "Pixel Bits",
-      "description": "The number of bits per pixel.",
-      "type": "integer_t"
+    "pod_uuid": {
+      "caption": "Pod UUID",
+      "description": "The unique identifer of the pod (or equivalent) that the container is executing on.",
+      "type": "uuid_t"
     },
     "policy": {
       "caption": "Policy",
@@ -2348,6 +2433,12 @@
       "description": "The domain registrar.",
       "type": "string_t"
     },
+    "related_analytics": {
+      "caption": "Related Analytics",
+      "description": "Describes analytics related to the analytic of a finding or detection as identified by the security product.",
+      "is_array": true,
+      "type": "analytic"
+    },
     "related_events": {
       "caption": "Related Events",
       "description": "Describes events related to a finding or detection as identified by the security product.",
@@ -2413,8 +2504,64 @@
     },
     "resource_type": {
       "caption": "Resource Type",
-      "description": "The context in which a resource was retrieved in a web request.",
+      "description": "The type of the resource.",
       "type": "string_t"
+    },
+    "resource_type_id": {
+      "caption": "Resource Type ID",
+      "description": "The normalized type identifier of the resource.",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Audit Log"
+        },
+        "2": {
+          "caption": "Cloud Resource"
+        },
+        "3": {
+          "caption": "Configuration"
+        },
+        "4": {
+          "caption": "Device"
+        },
+        "5": {
+          "caption": "Document"
+        },
+        "6": {
+          "caption": "File"
+        },
+        "7": {
+          "caption": "Folder"
+        },
+        "8": {
+          "caption": "Group"
+        },
+        "9": {
+          "caption": "OS"
+        },
+        "10": {
+          "caption": "Security Policy"
+        },
+        "11": {
+          "caption": "Service"
+        },
+        "12": {
+          "caption": "System"
+        },
+        "13": {
+          "caption": "User"
+        },
+        "14": {
+          "caption": "Webpage"
+        },
+        "99": {
+          "caption": "Other"
+        }
+      },
+      "sibling": "resource_type",
+      "type": "integer_t"
     },
     "resource_uid": {
       "caption": "Resource ID",
@@ -2424,6 +2571,12 @@
     "resources": {
       "caption": "Resources Array",
       "description": "Describes details about resources that were affected by the activity/event.",
+      "is_array": true,
+      "type": "resource"
+    },
+    "resources_result": {
+      "caption": "Resource Results Array",
+      "description": "Updated resources after an activity/event.",
       "is_array": true,
       "type": "resource"
     },
@@ -2489,7 +2642,7 @@
     },
     "runtime": {
       "caption": "Runtime",
-      "description": "The runtime managing this container.",
+      "description": "The backend running the container, such as containerd or cri-o.",
       "type": "string_t"
     },
     "samesite": {
@@ -2729,7 +2882,7 @@
     "src_url": {
       "caption": "Source URL",
       "description": "The URL pointing towards the source of an entity. See specific usage.",
-      "type": "string_t"
+      "type": "url_t"
     },
     "start_address": {
       "caption": "Start Address",
@@ -2910,11 +3063,6 @@
       "description": "The tree id is a unique SMB identifier which represents an open connection to a share.",
       "type": "string_t"
     },
-    "true_color": {
-      "caption": "True Color",
-      "description": "A boolean indicating whether to extract pixel values through red/green/blue intensities.",
-      "type": "boolean_t"
-    },
     "ttl": {
       "caption": "TTL",
       "description": "The time interval that the resource record may be cached. Zero value means that the resource record can only be used for the transaction in progress, and should not be cached.",
@@ -2992,7 +3140,7 @@
     "uuid": {
       "caption": "UUID",
       "description": "The universally unique identifier. See specific usage.",
-      "type": "string_t"
+      "type": "uuid_t"
     },
     "value": {
       "caption": "Value",
@@ -3018,11 +3166,6 @@
       "caption": "VLAN",
       "description": "The Virtual LAN identifier.",
       "type": "string_t"
-    },
-    "vnc_auth": {
-      "caption": "VNC Authentication",
-      "description": "The Virtual Network Computing (VNC) authentication object describes the VNC authentication values.",
-      "type": "vnc_auth"
     },
     "vpc_uid": {
       "caption": "VPC UID",
@@ -3079,6 +3222,19 @@
           false,
           true
         ]
+      },
+      "bytestring_t": {
+        "caption": "Byte String",
+        "description": "Base64 encoded immutable byte sequence.",
+        "type": "string_t",
+        "type_name": "String"
+      },
+      "datetime_t": {
+        "caption": "Datetime",
+        "description": "The Internet Date/Time format as defined in <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc3339.html'>RFC-3339</a>. For example <code>1985-04-12T23:20:50.52Z</code>.",
+        "regex": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}%3A\\d{2}(?:.\\d+)?[A-Z]?(?:[.-](?:08:\\d{2}|\\d{2}[A-Z]))?$",
+        "type": "string_t",
+        "type_name": "String"
       },
       "email_t": {
         "caption": "Email Address",
@@ -3178,6 +3334,7 @@
         "description": "Resource unique identifier. For example, S3 Bucket name or EC2 Instance ID.",
         "max_len": 64,
         "observable": 10,
+        "type": "string_t",
         "type_name": "String"
       },
       "string_t": {
@@ -3189,12 +3346,6 @@
         "caption": "Subnet",
         "description": "Subnet mask in Classless Inter-Domain Routing (CIDR) notation. For example <code>192.168.200.0/24</code>.",
         "max_len": 40,
-        "type_name": "String"
-      },
-      "datetime_t": {
-        "caption": "Datetime",
-        "description": "The Internet Date/Time format as defined in <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc3339.html'>RFC-3339</a>. For example <code>1985-04-12T23:20:50.52Z</code>.",
-        "regex": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}%3A\\d{2}(?:.\\d+)?[A-Z]?(?:[.-](?:08:\\d{2}|\\d{2}[A-Z]))?$",
         "type": "string_t",
         "type_name": "String"
       },
@@ -3218,14 +3369,12 @@
         "type": "string_t",
         "type_name": "String"
       },
-      "bytestring_t": {
-        "caption": "Byte String",
-        "description": "Base64 encoded immutable byte sequence."
-      },
       "uuid_t": {
         "caption": "UUID",
+        "description": "128-bit universal unique identifier. For example: <code>123e4567-e89b-12d3-a456-42661417400</code>.",
         "regex": "[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}",
-        "description": "128-bit universal unique identifier."
+        "type": "string_t",
+        "type_name": "String"
       }
     }
   }

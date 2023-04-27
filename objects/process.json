@@ -1,10 +1,16 @@
 {
   "observable": 25,
-  "description": "The process object describes a running instance of a launched program.",
+  "description": "The process object describes a running instance of a launched program. Defined by D3FEND <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:Process/'>d3f:Process</a>.",
   "caption": "Process",
   "name": "process",
-  "extends": "object",
+  "extends": "entity",
+  "profiles": [
+    "container"
+  ],
   "attributes": {
+    "$include": [
+      "profiles/container.json"
+    ],
     "cmd_line": {
       "requirement": "recommended"
     },
@@ -56,7 +62,6 @@
     },
     "name": {
       "description": "The friendly name of the process, for example: <code>Notepad++</code>.",
-      "requirement": "recommended",
       "type": "process_name_t"
     },
     "parent_process": {
@@ -80,13 +85,10 @@
       "requirement": "optional"
     },
     "uid": {
-      "description": "A unique identifier for this process assigned by the producer (tool).  Facilitates correlation of a process event with other events for that process.",
-      "caption": "Process UID",
-      "requirement": "recommended"
+      "description": "A unique identifier for this process assigned by the producer (tool).  Facilitates correlation of a process event with other events for that process."
     },
     "user": {
       "description": "The user under which this process is running.",
-      "caption": "User",
       "requirement": "recommended"
     },
     "xattributes": {

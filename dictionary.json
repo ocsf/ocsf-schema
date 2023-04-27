@@ -801,8 +801,13 @@
       "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
       "type": "integer_t"
     },
-    "confidence_id": {
-      "caption": "Confidence ID",
+    "confidence_level": {
+      "caption": "Confidence Level",
+      "description": "The confidence level, normalized to the caption of the confidence_level_id value. In the case of 'Other', it is defined by the event source.",
+      "type": "string_t"
+    },
+    "confidence_level_id": {
+      "caption": "Confidence Level ID",
       "description": "The normalized confidence level refers to the accuracy of the rule that created the finding. A rule with a low confidence level means that the finding scope is wide and may create finding reports that may not be malicious in nature.",
       "enum": {
         "0": {
@@ -824,6 +829,11 @@
         }
       },
       "type": "integer_t"
+    },
+    "confidence_score": {
+      "caption": "Confidence Score",
+      "description": "The confidence score as reported by the event source.",
+      "type": "integerg_t"
     },
     "confidentiality": {
       "caption": "Confidentiality",
@@ -1519,7 +1529,7 @@
     },
     "impact": {
       "caption": "Impact",
-      "description": "The impact of the finding, valid range 0-100.",
+      "description": "The impact , normalized to the caption of the impact_id value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "impact_id": {

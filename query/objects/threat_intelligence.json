@@ -1,0 +1,41 @@
+{
+    "description": "Insights from threat intelligence platforms",
+    "caption": "Threat Intelligence",
+    "name": "threat_intelligence",
+    "extends": "object",
+    "attributes": {
+      "provider": {
+        "description": "Threat intelligence data provider name e.g. AlienVaultOTX",
+        "requirement": "required"
+      },
+      "reputation": {
+        "description": "Reputation score as reported by provider",
+        "requirement": "optional"
+      },
+      "type_id": {
+        "description": "Type of entity for which threat info is provided e.g. IP",
+        "requirement": "required",
+        "enum": {
+          "0": {
+            "caption": "Unknown"
+          },
+          "1": {
+            "caption": "IP"
+          },
+          "2": {
+            "caption": "Domain"
+          },
+          "3": {
+            "caption": "Url"
+          },
+          "4": {
+            "caption": "Hash"
+          }
+        }
+      },
+      "value": {
+        "description": "Entity value for which threat info is provided",
+        "requirement": "required"
+      }
+    }
+  }

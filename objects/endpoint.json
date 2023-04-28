@@ -2,8 +2,8 @@
   "caption": "Endpoint",
   "observable": 20,
   "name": "endpoint",
-  "description": "The endpoint object describes an addressable entity that has name and IP address.",
-  "extends": "object",
+  "description": "The endpoint object describes an entity that has name, uid, and IP address.",
+  "extends": "entity",
   "attributes": {
     "domain": {
       "requirement": "optional"
@@ -34,15 +34,13 @@
       "requirement": "optional"
     },
     "name": {
-      "description": "The short name of the endpoint.",
-      "requirement": "recommended"
+      "description": "The short name of the endpoint."
     },
     "subnet_uid": {
       "requirement": "optional"
     },
     "uid": {
-      "description": "The unique identifier of the endpoint.",
-      "requirement": "recommended"
+      "description": "The unique identifier of the endpoint."
     },
     "vlan_uid": {
       "requirement": "optional"
@@ -53,12 +51,13 @@
   },
   "constraints": {
     "at_least_one": [
-      "hostname",
       "ip",
+      "uid",
       "name",
+      "hostname",
       "instance_uid",
-      "interface_name",
-      "interface_uid"
+      "interface_uid",
+      "interface_name"
     ]
   }
 }

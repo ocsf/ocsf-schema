@@ -2,7 +2,7 @@
   "caption": "Network Interface",
   "name": "network_interface",
   "description": "The network interface object describes the type and associated addresses of a network interface.",
-  "extends": "object",
+  "extends": "entity",
   "attributes": {
     "hostname": {
       "description": "The hostname associated with the network interface.",
@@ -17,8 +17,7 @@
       "requirement": "recommended"
     },
     "name": {
-      "description": "The name of the network interface.",
-      "requirement": "recommended"
+      "description": "The name of the network interface."
     },
     "namespace": {
       "requirement": "optional"
@@ -55,10 +54,10 @@
   },
   "constraints": {
     "at_least_one": [
-      "hostname",
       "ip",
       "mac",
-      "name"
+      "name",
+      "hostname"
     ]
   }
 }

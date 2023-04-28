@@ -4,6 +4,14 @@
   "extends": "access_control",
   "name": "group_management",
   "uid": 8,
+  "associations": {
+    "privileges": [
+      "user"
+    ],
+    "user": [
+      "privileges"
+    ]
+  },
   "attributes": {
     "activity_id": {
       "enum": {
@@ -33,10 +41,10 @@
     "privileges": {
       "description": "A list of privileges assigned to the group.",
       "group": "primary",
-      "requirement": "optional"
+      "requirement": "recommended"
     },
     "resource": {
-      "description": "The resource that was the target of the privileges.",
+      "description": "Resource that the privileges give access to.",
       "group": "primary",
       "requirement": "optional"
     },

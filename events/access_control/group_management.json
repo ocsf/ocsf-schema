@@ -4,14 +4,6 @@
   "extends": "access_control",
   "name": "group_management",
   "uid": 8,
-  "associations": {
-    "privileges": [
-      "user"
-    ],
-    "user": [
-      "privileges"
-    ]
-  },
   "attributes": {
     "activity_id": {
       "enum": {
@@ -53,5 +45,11 @@
       "group": "primary",
       "requirement": "recommended"
     }
+  },
+  "constraints": {
+    "at_least_one": [
+      "privileges",
+      "user"
+    ]
   }
 }

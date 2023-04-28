@@ -866,6 +866,11 @@
       "description": "The network connection identifier.",
       "type": "string_t"
     },
+    "container": {
+      "caption": "Container",
+      "description": "The information describing an instance of a container. A container is a prepackaged, portable system image that runs isolated on an existing system using a container runtime like containerd.",
+      "type": "container"
+    },
     "content_type": {
       "caption": "HTTP Content Type",
       "description": "The request header that identifies the original <a target='_blank' href='https://www.iana.org/assignments/media-types/media-types.xhtml'>media type </a> of the resource (prior to any content encoding applied for sending).",
@@ -1250,6 +1255,11 @@
       "caption": "Email Authentication",
       "description": "The SPF, DKIM and DMARC attributes of an email.",
       "type": "email_auth"
+    },
+    "email_uid": {
+      "caption": "Email UID",
+      "description": "The unique identifier of the email, used to correlate related email alert and activity events.",
+      "type": "string_t"
     },
     "end_time": {
       "caption": "End Time",
@@ -1810,7 +1820,7 @@
       "type": "string_t"
     },
     "location": {
-      "caption": "Detailed Geo Location",
+      "caption": "Geo Location",
       "description": "The detailed geographical location usually associated with an IP address.",
       "type": "location"
     },
@@ -1946,11 +1956,6 @@
       "description": "The Multipurpose Internet Mail Extensions (MIME) type of the file, if applicable.",
       "type": "string_t"
     },
-    "model": {
-      "caption": "Model",
-      "description": "The peripheral device model.",
-      "type": "string_t"
-    },
     "modified_time": {
       "caption": "Modified Time",
       "description": "The time when the object was last modified. See specific usage.",
@@ -1974,6 +1979,16 @@
     "namespace": {
       "caption": "Namespace",
       "description": "The namespace is useful in merger or acquisition situations. For example, when similar entities exists that you need to keep separate.",
+      "type": "string_t"
+    },
+    "namespace_pid": {
+      "caption": "Namespace PID",
+      "description": "If running under a process namespace (such as in a container), the process identifier within that process namespace.",
+      "type": "integer_t"
+    },
+    "network_driver": {
+      "caption": "Network Driver",
+      "description": "The network driver used by the container. For example, bridge, overlay, host, none, etc.",
       "type": "string_t"
     },
     "network_interfaces": {
@@ -2059,6 +2074,11 @@
       "description": "An operation number used to identify a specific remote procedure call (RPC) method or a method in an interface.",
       "type": "integer_t"
     },
+    "orchestrator": {
+      "caption": "Orchestrator",
+      "description": "The orchestrator managing the container, such as ECS, EKS, K8s, or OpenShift.",
+      "type": "string_t"
+    },
     "org_name": {
       "caption": "Org Name",
       "description": "The name of the organization. For example, Widget, Inc",
@@ -2076,7 +2096,7 @@
     },
     "original_time": {
       "caption": "Original Time",
-      "description": "The original event time as reported by the event source.",
+      "description": "The original event time as reported by the event source. For example, the time in the orignal format from system event log such as Syslog on Unix/Linux and the System event file on Windows. Omit if event is generated instead of collected via logs.",
       "type": "string_t"
     },
     "os": {
@@ -2137,11 +2157,6 @@
       "caption": "Path",
       "description": "The path that pertains to the event or object. See specific usage.",
       "type": "path_t"
-    },
-    "peripheral_device": {
-      "caption": "Peripheral Device",
-      "description": "The peripheral device that triggered the event.",
-      "type": "peripheral_device"
     },
     "permission": {
       "caption": "Permission",
@@ -2215,6 +2230,11 @@
       "caption": "Process ID",
       "description": "The process identifier, as reported by the operating system. Process ID (PID) is a number used by the operating system to uniquely identify an active process.",
       "type": "integer_t"
+    },
+    "pod_uuid": {
+      "caption": "Pod UUID",
+      "description": "The unique identifer of the pod (or equivalent) that the container is executing on.",
+      "type": "uuid_t"
     },
     "policy": {
       "caption": "Policy",
@@ -2619,6 +2639,11 @@
       "enum": {},
       "sibling": "run_state",
       "type": "integer_t"
+    },
+    "runtime": {
+      "caption": "Runtime",
+      "description": "The backend running the container, such as containerd or cri-o.",
+      "type": "string_t"
     },
     "samesite": {
       "caption": "SameSite",

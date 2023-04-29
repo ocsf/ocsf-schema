@@ -5,6 +5,11 @@
   "name": "authentication",
   "uid": 2,
   "attributes": {
+    "account": {
+      "description": "The account of the subject of the authentication",
+      "group": "primary",
+      "requirement": "recommended"
+    },
     "activity_id": {
       "enum": {
         "1": {
@@ -38,10 +43,15 @@
       "group": "primary",
       "requirement": "recommended"
     },
-    "dst_endpoint": {
-      "description": "The Endpoint for which the authentication was targeted.",
+    "certificate": {
+      "description": "The certificate associated with the authentication or pre-authentication (Kerberos).",
       "group": "primary",
-      "requirement": "required"
+      "requirement": "optional"
+    },
+    "dst_endpoint": {
+      "description": "The endpoint to which the authentication was targeted.",
+      "group": "primary",
+      "requirement": "recommended"
     },
     "http_request": {
       "description": "Details about the underlying http request.",
@@ -50,6 +60,10 @@
     },
     "is_cleartext": {
       "group": "context",
+      "requirement": "optional"
+    },
+    "is_mfa": {
+      "group": "primary",
       "requirement": "optional"
     },
     "is_new_logon": {
@@ -71,12 +85,13 @@
       "group": "primary",
       "requirement": "recommended"
     },
-    "mfa": {
+    "service": {
+      "description": "The service or gateway to which the user or process is being authenticated",
       "group": "primary",
-      "requirement": "optional"
+      "requirement": "recommended"
     },
     "session": {
-      "description": "The new session of the authenticated user.",
+      "group": "primary",
       "requirement": "optional"
     },
     "src_endpoint": {
@@ -88,7 +103,7 @@
       "description": "The details about the authentication request. For example, possible details for Windows logon or logoff events are:<ul><li>Success</li><ul><li>LOGOFF_USER_INITIATED</li><li>LOGOFF_OTHER</li></ul><li>Failure</li><ul><li>USER_DOES_NOT_EXIST</li><li>INVALID_CREDENTIALS</li><li>ACCOUNT_DISABLED</li><li>ACCOUNT_LOCKED_OUT</li><li>PASSWORD_EXPIRED</li></ul></ul>"
     },
     "user": {
-      "description": "The target identity (user/role) to authenticate.",
+      "description": "The subject (user/role) to authenticate.",
       "group": "primary",
       "requirement": "required"
     }
@@ -104,6 +119,12 @@
       "actor.user"
     ],
     "user": [
+      "dst_endpoint"
+    ]
+  },
+  "constraints": {
+    "at_least_one": [
+      "service",
       "dst_endpoint"
     ]
   }

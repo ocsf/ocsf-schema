@@ -1474,7 +1474,7 @@
     },
     "http_request": {
       "caption": "HTTP Request",
-      "description": "The HTTP Request made to a web server.",
+      "description": "The HTTP Request Object documents attributes of a request made to a web server.",
       "type": "http_request"
     },
     "http_response": {
@@ -2524,64 +2524,8 @@
     },
     "resource_type": {
       "caption": "Resource Type",
-      "description": "The type of the resource.",
+      "description": "The resource type as defined by the event source.",
       "type": "string_t"
-    },
-    "resource_type_id": {
-      "caption": "Resource Type ID",
-      "description": "The normalized type identifier of the resource.",
-      "enum": {
-        "0": {
-          "caption": "Unknown"
-        },
-        "1": {
-          "caption": "Audit Log"
-        },
-        "2": {
-          "caption": "Cloud Resource"
-        },
-        "3": {
-          "caption": "Configuration"
-        },
-        "4": {
-          "caption": "Device"
-        },
-        "5": {
-          "caption": "Document"
-        },
-        "6": {
-          "caption": "File"
-        },
-        "7": {
-          "caption": "Folder"
-        },
-        "8": {
-          "caption": "Group"
-        },
-        "9": {
-          "caption": "OS"
-        },
-        "10": {
-          "caption": "Security Policy"
-        },
-        "11": {
-          "caption": "Service"
-        },
-        "12": {
-          "caption": "System"
-        },
-        "13": {
-          "caption": "User"
-        },
-        "14": {
-          "caption": "Webpage"
-        },
-        "99": {
-          "caption": "Other"
-        }
-      },
-      "sibling": "resource_type",
-      "type": "integer_t"
     },
     "resource_uid": {
       "caption": "Resource ID",
@@ -2845,8 +2789,33 @@
     },
     "share_type": {
       "caption": "Share Type",
-      "description": "The SMB share type.",
+      "description": "The SMB share type, normalized to the caption of the share_type_id value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
+    },
+    "share_type_id": {
+      "caption": "Share Type Id",
+      "description": "The normalized identifier of the SMB share type.",
+      "enum": {
+        "99": {
+          "caption": "Other",
+          "description": "The share type is not mapped."
+        },
+        "0": {
+          "caption": "Unknown",
+          "description": "The share type is not known."
+        },
+        "1": {
+          "caption": "File"
+        },
+        "2": {
+          "caption": "Pipe"
+        },
+        "3": {
+          "caption": "Print"
+        }
+      },
+      "sibling": "share_type",
+      "type": "integer_t"
     },
     "signature": {
       "caption": "Digital Signature",

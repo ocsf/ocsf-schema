@@ -2789,8 +2789,33 @@
     },
     "share_type": {
       "caption": "Share Type",
-      "description": "The SMB share type.",
+      "description": "The SMB share type, normalized to the caption of the share_type_id value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
+    },
+    "share_type_id": {
+      "caption": "Share Type Id",
+      "description": "The normalized identifier of the SMB share type.",
+      "enum": {
+        "99": {
+          "caption": "Other",
+          "description": "The share type is not mapped."
+        },
+        "0": {
+          "caption": "Unknown",
+          "description": "The share type is not known."
+        },
+        "1": {
+          "caption": "File"
+        },
+        "2": {
+          "caption": "Pipe"
+        },
+        "3": {
+          "caption": "Print"
+        }
+      },
+      "sibling": "share_type",
+      "type": "integer_t"
     },
     "signature": {
       "caption": "Digital Signature",

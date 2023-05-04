@@ -18,6 +18,8 @@ This documentation is about making changes to OCSF schema itself.
 4. **Event Class**: An event is represented by an Event Class, which are a particular set of attributes (including fields & objects) representing a log line or telemetry submission at a point in time.
 5. **Category:** A Category organizes event classes that represent a particular domain.
 
+More details about OCSF concepts, terminology and use-cases can be found in [Understanding OCSF.](https://github.com/ocsf/ocsf-docs/blob/main/Understanding%20OCSF.md)
+
 ## How do I add an event_class? 
 
 ### In brief -
@@ -101,7 +103,7 @@ A sample .json object file,
 5. `extends` → Ensure the value is `object` (All objects in OCSF extend a base definition of object)
 6. `name` → Add a **unique** name of the object
 7.  `attributes` → Add the attributes that you want to define in the object, 
-    1. `requirement` →  For each attribute ensure you add a requirement value. Valid values are `optional`, `required`, `reserved`, `recommended` 
+    1. `requirement` →  For each attribute ensure you add a requirement value. Valid values are `optional`, `required`, `recommended` 
 
 
 
@@ -141,7 +143,18 @@ Choose a **unique** object you want to add, `vulnerability` in the example above
     7. `extends` → Ensure the value is `base_event`.
     8. `attributes` → Add the attributes that you want to define in the event_class, 
         1. `group` → For each attribute ensure you add a group value. Valid values are - `classification`, `context`, `occurrence`, `primary`
-        2. `requirement` →  For each attribute ensure you add a requirement value. Valid values are `optional`, `required`, `reserved`, `recommended` 
+        2. `requirement` →  For each attribute ensure you add a requirement value. Valid values are `optional`, `required`, `recommended`
+    9. `constraints` → For each class you can add constraints on the attribute requirements. Valid constraint types are `at_least_one`, `just_one`. e.g.
+        ```
+         "constraints": {
+            "at_least_one": [
+                "uid",
+                "name"
+             ]
+        }
+        ```
+    
+        _(A Constraint is a documented rule subject to validation that requires at least one of the specified recommended attributes of a class to be populated.)_ 
 
 * * *
 
@@ -165,13 +178,14 @@ All contributors should submit their changes via pull requests. If you're not fa
 1. Fork the repo that you want to contribute to ([ocsf-schema](https://github.com/ocsf/ocsf-schema), [ocsf-docs](https://github.com/ocsf/ocsf-docs), [ocsf-server](https://github.com/ocsf/ocsf-server))
 2. Make desired changes in the forked repo, test if everything works as expected and is error-free, a local instance of the [ocsf-server](https://github.com/ocsf/ocsf-server) would be essential.
 3. Push the changes to the forked repo
-4. Create a **Pull Request** to merge changes into the main repo, request at least one approver.
+4. Create a **Pull Request** to merge changes into the main repo, request at least 3 approvers.
     1. Limit the number of commits in a single PR to aid reviewers, be as specific with the change as possible. A single PR must contain related changes.
     2. Each commit must include a DCO [Developer's Certificate of Origin](#developers-certificate-of-origin-11)
     3. Describe your change in as much detail as possible.
     4. Confirm that you have tested the changes, and the server run was error free.
     5. Check the Preview tab to ensure everything looks as expected.
-    6. Once the PR is ready, request an approver and submit it.
+    6. Once the PR is ready, add relevant labels, request approvers and submit it.
+    7. Pay attention to any automated CI failures, warnings reported in the pull request, and stay involved in the conversation.
 
 * * *
 

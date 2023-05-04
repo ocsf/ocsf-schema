@@ -18,6 +18,8 @@ This documentation is about making changes to OCSF schema itself.
 4. **Event Class**: An event is represented by an Event Class, which are a particular set of attributes (including fields & objects) representing a log line or telemetry submission at a point in time.
 5. **Category:** A Category organizes event classes that represent a particular domain.
 
+More details about OCSF concepts, terminology and use-cases can be found in [Understanding OCSF.](https://github.com/ocsf/ocsf-docs/blob/main/Understanding%20OCSF.md)
+
 ## How do I add an event_class? 
 
 ### In brief -

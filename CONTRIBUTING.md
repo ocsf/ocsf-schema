@@ -26,10 +26,10 @@ More details about OCSF concepts, terminology and use-cases can be found in [Und
 
 1. Determine all the `attributes` (including fields and objects) you would want to add in the `event_class`
 2. Check the [dictionary](https://github.com/ocsf/ocsf-schema/blob/main/dictionary.json) and the [/objects](https://github.com/ocsf/ocsf-schema/tree/main/objects) folder, many of your desired attributes may already be present.
-3. Define the missing attributes → Adding a `field` , Adding an `object`.
+3. Define the missing attributes → [Adding/Modifying an `attribute`](#addingmodifying-an-attribute)
 4. Determine which category you would want to add your event_class in, note it’s  `name`
 5. Create a new file →  `<event_class_name.json>` inside the category specific subfolder in the [/events](https://github.com/ocsf/ocsf-schema/tree/main/events) folder. Template available [here](https://github.com/ocsf/ocsf-schema/blob/main/templates/event_class_name.json)
-6. Define the `event_class` itself → Adding an `event_class`.
+6. Define the `event_class` itself → [Adding/Modifying an `event_class`](#addingmodifying-an-event_class)
 7. Finally, verify the changes are working as expected in your local [ocsf-server](https://github.com/ocsf/ocsf-server).
 
 * * *
@@ -80,8 +80,8 @@ A sample .json object file,
 
 ```
 {
-  "caption": "Vulnerability Details", // "previously name"
-  "name": "vulnerability", // "previously type"
+  "caption": "Vulnerability Details",
+  "name": "vulnerability",
   "description": "The vulnerability object describes details related to the observed vulnerability.",
   "extends": "object",
   "attributes": {
@@ -100,7 +100,7 @@ A sample .json object file,
 2. Use the template available [here](https://github.com/ocsf/ocsf-schema/blob/main/templates/object_name.json), to get started with .json file definition.
 3. `caption` → Add a user friendly name to the object
 4. `description` → Add a concise description to define the object.
-5. `extends` → Ensure the value is `object` (All objects in OCSF extend a base definition of object)
+5. `extends` → Ensure the value is `object` or an existing object, e.g. `entity` (All objects in OCSF must extend a base definition of `object` or another existing object.)
 6. `name` → Add a **unique** name of the object
 7.  `attributes` → Add the attributes that you want to define in the object, 
     1. `requirement` →  For each attribute ensure you add a requirement value. Valid values are `optional`, `required`, `recommended` 
@@ -112,7 +112,7 @@ Sample entry in the dictionary,
 ```
     "vulnerability": 
     {
-      "caption": "Vulnerability", // "previously name"
+      "caption": "Vulnerability",
       "description": "The vulnerability object describes details related to the observed vulnerability",
       "type": "vulnerability"
     }

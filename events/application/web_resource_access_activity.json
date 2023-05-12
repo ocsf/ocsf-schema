@@ -1,0 +1,65 @@
+{
+  "caption": "Web Resource Access Activity",
+  "category": "application",
+  "description": "Web Resource Access Activity events describe successful/failed attempts to access a web resource over HTTP.",
+  "extends": "access_control",
+  "name": "web_resource_access_activity",
+  "uid": 4,
+  "profiles": [
+    "host"
+  ],
+  "attributes": {
+    "$include": [
+      "profiles/host.json"
+    ],
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Access Grant",
+          "description": "The incoming request has permission to the web resource."
+        },
+        "2": {
+          "caption": "Access Deny",
+          "description": "The incoming request does not have permission to the web resource."
+        },
+        "3": {
+          "caption": "Access Revoke",
+          "description": "The incoming request's access has been revoked due to security policy enforcements."
+        },
+        "4": {
+          "caption": "Access Error",
+          "description": "An error occurred during processing the request."
+        }
+      }
+    },
+    "http_request": {
+      "description": "",
+      "group": "context",
+      "requirement": "required"
+    },
+    "http_response": {
+      "description": "",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "proxy": {
+      "description": "Details about the proxy if available.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "resource": {
+      "description": "Details about the resource that is the target of the activity. Note: This will be replaced by Web Resource once the object is available.",
+      "group": "primary",
+      "requirement": "required"
+    },
+    "src_endpoint": {
+      "description": "Details about the source endpoint of the request.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "tls": {
+      "group": "context",
+      "requirement": "optional"
+    }
+  }
+}

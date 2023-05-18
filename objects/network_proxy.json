@@ -8,9 +8,13 @@
       "description": "The proxy hostname.",
       "requirement": "optional"
     },
-    "ip": {
-      "description": "The proxy IP address.",
-      "requirement": "required"
+    "ipv4": {
+      "description": "The proxy IPv4 address.",
+      "requirement": "recommended"
+    },
+    "ipv6": {
+      "description": "The proxy IPv6 address.",
+      "requirement": "recommended"
     },
     "port": {
       "description": "The proxy IP port.",
@@ -24,5 +28,11 @@
       "description": "The unique identifier of the proxy.",
       "requirement": "recommended"
     }
+  },
+  "constraints": {
+    "at_least_one": [
+      "ipv4",
+      "ipv6"
+    ]
   }
 }

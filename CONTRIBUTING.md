@@ -100,7 +100,7 @@ A sample .json object file,
 - If creating a new object that will only extend an existing object, create a new file → `<object_name.json>` in the relevant folder depending on what object the new object is extending - use the [/objects](https://github.com/ocsf/ocsf-schema/tree/main/objects) folder if extending the base `object` object, otherwise use the relevant folder in the hierarchy (eg. if extending the `entity` object, create the json file in the `entity` folder)
 - If creating a new obejct that other objects will use as a base object, create a folder of that name in the relevant hierarchy and create a file in that folder prefixed by an underscore and named as the object - `.\objects\<object_name>\_object_name.json`
 
-Example: the `device` object extends the `endpoint` object which extends the `entity` object, which extends the base `object` object, so the structure is as follows:
+**Example:** the `device` object extends the `endpoint` object which extends the `entity` object, which extends the base `object` object, so the structure is as follows:
 ```
 .\objects\
 .\objects\_object.json <<-- defines the "object" object that other objects extend

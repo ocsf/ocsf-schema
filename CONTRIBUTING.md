@@ -110,6 +110,7 @@ A sample .json object file,
 .\objects\entity\endpoint\_endpoint.json <<-- defines the "endpoint" object that objects in this folder extend
 .\objects\entity\endpoint\device.json <<-- defines the "device" object that extends the "endpoint" object.
 ```
+**NOTE:** object names should not be prefixed with an underscore in the json file if creating a base object that will be extended, only the file name should be prefixed.
 2. Use the template available [here](https://github.com/ocsf/ocsf-schema/blob/main/templates/object_name.json), to get started with .json file definition.
 3. `caption` → Add a user friendly name to the object
 4. `description` → Add a concise description to define the object.

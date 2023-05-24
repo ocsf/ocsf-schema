@@ -1,0 +1,72 @@
+{
+    "uid": 1,
+    "description": "Web Resource Activity events describe actions executed on a Web Resource.",
+    "extends": "base_event",
+    "caption": "Web Resource Activity",
+    "name": "web_resource_activity",
+    "category": "application",
+    "profiles": [
+        "host"
+    ],
+    "attributes": {
+        "$include": [
+            "profiles/host.json"
+        ],
+        "activity_id": {
+            "enum": {
+                "1": {
+                    "caption": "Create",
+                    "description": "One or more web resources were created."
+                },
+                "2": {
+                    "caption": "Read",
+                    "description": "One or more web resources were read / viewed."
+                },
+                "3": {
+                    "caption": "Update",
+                    "description": "One or more web resources were updated."
+                },
+                "4": {
+                    "caption": "Delete",
+                    "description": "One or more web resources were deleted."
+                },
+                "5": {
+                    "caption": "Search",
+                    "description": "A search was performed on a web resource."
+                },
+                "6": {
+                    "caption": "Import",
+                    "description": "A web resource import was performed into an Application."
+                },
+                "7": {
+                    "caption": "Export",
+                    "description": "A web resource export was performed from an Application."
+                },
+                "8": {
+                    "caption": "Share",
+                    "description": "One or more web resources were shared."
+                }
+            }
+        },
+        "dst_endpoint": {
+            "description":"Details about server providing the web resources.",
+            "group": "primary",
+            "requirement": "recommended"
+        },
+        "http_request": {
+            "description":"Details about the underlying http request.",
+            "group": "primary",
+            "requirement": "optional"
+        },
+        "web_resources": {
+            "description": "Details about web resources that were affected by the activity/event.",
+            "group": "primary",
+            "requirement": "required"
+        },
+        "web_resources_result": {
+            "description": "Details on the web resources resulting from the activity.",
+            "group": "primary",
+            "requirement": "optional"
+        }
+    }
+}

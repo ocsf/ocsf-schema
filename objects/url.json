@@ -2,7 +2,7 @@
   "caption": "Uniform Resource Locator",
   "observable": 23,
   "name": "url",
-  "description": "The Uniform Resource Locator (URL) object describes the path and reputation of a URL. Defined by D3FEND <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:URL/'>d3f:URL</a>.",
+  "description": "The Uniform Resource Locator (URL) object describes the path and category of a URL. See RFC 1738.  Defined by D3FEND <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:URL/'>d3f:URL</a>.",
   "extends": "object",
   "attributes": {
     "categories": {
@@ -11,11 +11,11 @@
       "requirement": "recommended"
     },
     "hostname": {
-      "description": "The URL host as extracted from the URL. For example: www.example.com.",
+      "description": "The URL host as extracted from the URL. For example: <code>www.example.com</code> from <code>www.example.com/download/trouble</code>.",
       "requirement": "required"
     },
     "path": {
-      "description": "The URL path as extracted from the URL. For example: <code>/download/trouble</code>.",
+      "description": "The URL path as extracted from the URL. For example: <code>/download/trouble</code> from <code>www.example.com/download/trouble</code>.",
       "requirement": "required"
     },
     "port": {
@@ -31,7 +31,10 @@
     "scheme": {
       "requirement": "recommended"
     },
-    "text": {
+    "subdomain": {
+      "requirement": "optional"
+    },
+    "url_string": {
       "requirement": "required"
     }
   }

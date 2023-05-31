@@ -74,9 +74,9 @@ Choose a **unique** field you want to add, `uid` in the example above and popula
 
 1. All the available `objects` need to be defined as individual field entries in the dictionary, the [dictionary.json](https://github.com/ocsf/ocsf-schema/blob/main/dictionary.json) file and as distinct .json files in the [/objects](https://github.com/ocsf/ocsf-schema/tree/main/objects) folder. 
 2. Review existing Objects, determine if a modification of the existing object would be sufficient or if there’s a need for a completely new object.
+3. Use the template available [here](https://github.com/ocsf/ocsf-schema/blob/main/templates/object_name.json), to get started with .json file definition.
 
-
-A sample .json object file,
+An example `vulnerability.json` object file,
 
 ```
 {
@@ -95,39 +95,22 @@ A sample .json object file,
   }
 }
 ```
-
-1. Determine where in the object hierarchy to create the object, this is dependent on what the object is using as a base object and whether this new object will be a base object for other objects. 
-- If creating a new object that will only extend an existing object, create a new file → `<object_name.json>` in the relevant folder depending on what object the new object is extending - use the [/objects](https://github.com/ocsf/ocsf-schema/tree/main/objects) folder if extending the base `object` object, otherwise use the relevant folder in the hierarchy (eg. if extending the `entity` object, create the json file in the `entity` folder)
-- If creating a new obejct that other objects will use as a base object, create a folder of that name in the relevant hierarchy and create a file in that folder prefixed by an underscore and named as the object - `.\objects\<object_name>\_object_name.json`
-
-**Example:** the `device` object extends the `endpoint` object which extends the `entity` object, which extends the base `object` object, so the structure is as follows:
-```
-.\objects\
-.\objects\_object.json <<-- defines the "object" object that other objects extend
-.\objects\entity\ <<-- indicates that other objects extend this object. All those objects should be created in this folder.
-.\objects\entity\_entity.json <<-- defines the "entity" object that objects in this folder extend
-.\objects\entity\endpoint\ <<-- indicates that other objects extend this object. All those objects should be created in this folder.
-.\objects\entity\endpoint\_endpoint.json <<-- defines the "endpoint" object that objects in this folder extend
-.\objects\entity\endpoint\device.json <<-- defines the "device" object that extends the "endpoint" object.
-```
-**NOTE:** object names should not be prefixed with an underscore in the json file if creating a base object that will be extended, only the file name should be prefixed.
-2. Use the template available [here](https://github.com/ocsf/ocsf-schema/blob/main/templates/object_name.json), to get started with .json file definition.
-3. `caption` → Add a user friendly name to the object
-4. `description` → Add a concise description to define the object.
-5. `extends` → Ensure the value is `object` or an existing object, e.g. `entity` (All objects in OCSF must extend a base definition of `object` or another existing object.)
-6. `name` → Add a **unique** name of the object
-7.  `attributes` → Add the attributes that you want to define in the object, 
+4. `caption` → Add a user friendly name to the object.
+5. `description` → Add a concise description to define the object.
+6. `extends` → Ensure the value is `object` or an existing object, e.g. `entity` (All objects in OCSF must extend a base definition of `object` or another existing object.)
+7. `name` → Add a **unique** name of the object. `name` must match the filename of the actual `.json` file.
+8.  `attributes` → Add the attributes that you want to define in the object, 
     1. `requirement` →  For each attribute ensure you add a requirement value. Valid values are `optional`, `required`, `recommended` 
 
+**Note:** If you want to create an object which would act only as a base for other objects, you must prefix the object `name` and the actual `json` filename with an `_`. The resultant object will not be visible in the [OCSF Server.](https://schema.ocsf.io/1.0.0-rc.2/objects) For example, take a look at the [entity](https://github.com/ocsf/ocsf-schema/blob/main/objects/_entity.json) object. 
 
-
-Sample entry in the dictionary,
+Sample entry in the `dictionary.json`,
 
 ```
     "vulnerability": 
     {
       "caption": "Vulnerability",
-      "description": "The vulnerability object describes details related to the observed vulnerability",
+      "description": "The vulnerability object describes details related to the observed vulnerability.",
       "type": "vulnerability"
     }
 ```

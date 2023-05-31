@@ -1,0 +1,105 @@
+{
+  "caption": "Process",
+  "description": "The process object describes a running instance of a launched program. Defined by D3FEND <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:Process/'>d3f:Process</a>.",
+  "extends": "_entity",
+  "name": "process",
+  "observable": 25,
+  "profiles": [
+    "container"
+  ],
+  "attributes": {
+    "$include": [
+      "profiles/container.json"
+    ],
+    "cmd_line": {
+      "requirement": "recommended"
+    },
+    "created_time": {
+      "description": "The time when the process was created/started.",
+      "requirement": "recommended"
+    },
+    "file": {
+      "description": "The process file object.",
+      "requirement": "recommended"
+    },
+    "integrity": {
+      "requirement": "optional"
+    },
+    "integrity_id": {
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Untrusted"
+        },
+        "2": {
+          "caption": "Low"
+        },
+        "3": {
+          "caption": "Medium"
+        },
+        "4": {
+          "caption": "High"
+        },
+        "5": {
+          "caption": "System"
+        },
+        "6": {
+          "caption": "Protected"
+        },
+        "99": {
+          "caption": "Other"
+        }
+      },
+      "requirement": "optional"
+    },
+    "lineage": {
+      "requirement": "optional"
+    },
+    "loaded_modules": {
+      "requirement": "optional"
+    },
+    "name": {
+      "description": "The friendly name of the process, for example: <code>Notepad++</code>.",
+      "type": "process_name_t"
+    },
+    "parent_process": {
+      "requirement": "recommended"
+    },
+    "pid": {
+      "requirement": "recommended"
+    },
+    "sandbox": {
+      "requirement": "optional"
+    },
+    "session": {
+      "description": "The user session under which this process is running.",
+      "requirement": "optional"
+    },
+    "terminated_time": {
+      "description": "The time when the process was terminated.",
+      "requirement": "optional"
+    },
+    "tid": {
+      "requirement": "optional"
+    },
+    "uid": {
+      "description": "A unique identifier for this process assigned by the producer (tool).  Facilitates correlation of a process event with other events for that process."
+    },
+    "user": {
+      "description": "The user under which this process is running.",
+      "requirement": "recommended"
+    },
+    "xattributes": {
+      "description": "An unordered collection of zero or more name/value pairs that represent a process extended attribute.",
+      "requirement": "optional"
+    }
+  },
+  "constraints": {
+    "at_least_one": [
+      "pid",
+      "uid"
+    ]
+  }
+}

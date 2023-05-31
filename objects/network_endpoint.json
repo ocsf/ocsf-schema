@@ -1,0 +1,30 @@
+{
+  "caption": "Network Endpoint",
+  "name": "network_endpoint",
+  "extends": "_endpoint",
+  "description": "The network endpoint object describes source or destination of a network connection.",
+  "attributes": {
+    "intermediate_ips": {
+      "requirement": "optional"
+    },
+    "port": {
+      "description": "The port used for communication within the network connection.",
+      "requirement": "recommended"
+    },
+    "svc_name": {
+      "requirement": "recommended"
+    }
+  },
+  "constraints": {
+    "at_least_one": [
+      "ip",
+      "uid",
+      "name",
+      "hostname",
+      "svc_name",
+      "instance_uid",
+      "interface_uid",
+      "interface_name"
+    ]
+  }
+}

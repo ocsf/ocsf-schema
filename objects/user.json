@@ -2,10 +2,11 @@
   "caption": "User",
   "observable": 21,
   "name": "user",
-  "description": "The user object describes the identity of a user. Defined by D3FEND <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:UserAccount/'>d3f:UserAccount</a>.",
-  "extends": "entity",
+  "description": "The user object represents the identity of a person or security principal. Defined by D3FEND <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:UserAccount/'>d3f:UserAccount</a>.",
+  "extends": "_entity",
   "attributes": {
     "account": {
+      "description": "The user's account or the account associated with the user.",
       "requirement": "optional"
     },
     "credential_uid": {
@@ -16,6 +17,9 @@
       "requirement": "optional"
     },
     "email_addr": {
+      "requirement": "optional"
+    },
+    "full_name": {
       "requirement": "optional"
     },
     "groups": {
@@ -60,10 +64,10 @@
       "name": "integer_t"
     },
     "uid": {
-      "description": "The unique user identifier. For example, AWS PrincipalID or Windows user SID."
+      "description": "The unique user identifier. For example, the Windows user SID, ActiveDirectory DN or AWS user ARN."
     },
-    "uuid": {
-      "description": "The universally unique identifier of the user. For example, Windows user GUID.",
+    "uid_alt": {
+      "description": "The alternate user identifier. For example, the Active Directory user GUID or AWS user Principal ID.",
       "requirement": "optional"
     }
   }

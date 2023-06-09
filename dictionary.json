@@ -105,6 +105,11 @@
       "description": "API object details information pertaining to the API calls",
       "type": "api"
     },
+    "app": {
+      "caption": "Application",
+      "description": "The application that reported the event.",
+      "type": "product"
+    },
     "app_name": {
       "caption": "Application Name",
       "description": "The name of the application that is associated with the event or object.",
@@ -700,7 +705,7 @@
     },
     "classification_ids": {
       "caption": "Classification IDs",
-      "description": "The list of normalzied identifiers of the malware classifications. Reference: <a target='_blank' href='https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_oxlc4df65spl'>STIX Malware Types</a> ",
+      "description": "The list of normalized identifiers of the malware classifications. Reference: <a target='_blank' href='https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_oxlc4df65spl'>STIX Malware Types</a> ",
       "enum": {},
       "is_array": true,
       "sibling": "classifications",
@@ -708,7 +713,7 @@
     },
     "classifications": {
       "caption": "Classifications",
-      "description": "The list of malware classifications, normalized to the captions of the classifcation_id values. In the case of 'Other', they are defined by the event source.",
+      "description": "The list of malware classifications, normalized to the captions of the classification_id values. In the case of 'Other', they are defined by the event source.",
       "is_array": true,
       "type": "string_t"
     },
@@ -731,7 +736,7 @@
     },
     "cloud": {
       "caption": "Cloud",
-      "description": "Describes details about the Cloud enviroment where the event was originally created or logged.",
+      "description": "Describes details about the Cloud environment where the event was originally created or logged.",
       "type": "cloud"
     },
     "cloud_partition": {
@@ -788,7 +793,7 @@
     },
     "compliance": {
       "caption": "Compliance",
-      "description": "The complaince object provides context to compliance findings (e.g., a check against a specific regulatory or best practice framework such as CIS or NIST) and contains compliance related details.",
+      "description": "The compliance object provides context to compliance findings (e.g., a check against a specific regulatory or best practice framework such as CIS or NIST) and contains compliance related details.",
       "type": "compliance"
     },
     "component": {
@@ -929,7 +934,7 @@
       "type": "integer_t"
     },
     "cpu_speed": {
-      "caption": "Processor Type",
+      "caption": "Processor Speed",
       "description": "The speed of the processor in Mhz. For Example: <code>4200</code>.",
       "type": "integer_t"
     },
@@ -991,7 +996,7 @@
     },
     "cwe_url": {
       "caption": "CWE URL",
-      "description": "Common Weakness Enumiration (CWE) definition URL. For example: <code>https://cwe.mitre.org/data/definitions/787.html</code>.",
+      "description": "Common Weakness Enumeration (CWE) definition URL. For example: <code>https://cwe.mitre.org/data/definitions/787.html</code>.",
       "type": "url_t"
     },
     "data": {
@@ -1063,7 +1068,7 @@
     },
     "device": {
       "caption": "Device",
-      "description": "The device that reported the event.",
+      "description": "An addressable device, computer system or host.",
       "type": "device"
     },
     "devices": {
@@ -1403,6 +1408,11 @@
       "description": "The email header From values, as defined by RFC 5322.",
       "type": "email_t"
     },
+    "full_name": {
+      "caption": "Full Name",
+      "description": "The full name of the person, as per the LDAP Common Name attribute (cn).",
+      "type": "string_t"
+    },
     "function_keys": {
       "caption": "Function Keys",
       "description": "The number of function keys on client keyboard.",
@@ -1647,6 +1657,11 @@
       "description": "The event occurred on a managed device.",
       "type": "boolean_t"
     },
+    "is_mfa": {
+      "caption": "Multi Factor Authentication",
+      "description": "Indicates whether Multi Factor Authentication was used during authentication.",
+      "type": "boolean_t"
+    },
     "is_new_logon": {
       "caption": "New Logon",
       "description": "Indicates logon is from a device not seen before or a first time account logon.",
@@ -1689,17 +1704,7 @@
     },
     "issuer": {
       "caption": "Issuer Details",
-      "description": "The identifier of the session issuer.",
-      "type": "string_t"
-    },
-    "issuer_dn": {
-      "caption": "Issuer Distinguished Name",
-      "description": "The certificate issuer distinguished name.",
-      "type": "string_t"
-    },
-    "issuer_name": {
-      "caption": "Issuer Name",
-      "description": "The certificate issuer name.",
+      "description": "The identifier of the issuer. See specific usage.",
       "type": "string_t"
     },
     "ja3_hash": {
@@ -1951,11 +1956,6 @@
       "is_array": true,
       "type": "metric"
     },
-    "mfa": {
-      "caption": "Multi Factor Authentication",
-      "description": "Indicates whether Multi Factor Authentication was used during authentication.",
-      "type": "boolean_t"
-    },
     "mime_type": {
       "caption": "MIME type",
       "description": "The Multipurpose Internet Mail Extensions (MIME) type of the file, if applicable.",
@@ -2089,21 +2089,6 @@
       "description": "The orchestrator managing the container, such as ECS, EKS, K8s, or OpenShift.",
       "type": "string_t"
     },
-    "org_name": {
-      "caption": "Org Name",
-      "description": "The name of the organization. For example, Widget, Inc",
-      "type": "string_t"
-    },
-    "org_uid": {
-      "caption": "Org Unit ID",
-      "description": "The unique identifier of the organizational unit. For example, its Active Directory OU DN or AWS OU ID.",
-      "type": "string_t"
-    },
-    "org_unit": {
-      "caption": "Org Unit Name",
-      "description": "The name of the organizational unit, within an organization.  For example, Finance, IT, R&D",
-      "type": "string_t"
-    },
     "ou_name": {
       "caption": "Org Unit Name",
       "description": "The name of the organizational unit, within an organization.  For example, Finance, IT, R&D",
@@ -2111,12 +2096,12 @@
     },
     "ou_uid": {
       "caption": "Org Unit ID",
-      "description": "The unique identifier of the organizational unit. For example, its Active Directory OU DN or AWS OU ID.",
+      "description": "The alternate identifier for an entity's unique identifier. For example, its Active Directory OU DN or AWS OU ID.",
       "type": "string_t"
     },
     "original_time": {
       "caption": "Original Time",
-      "description": "The original event time as reported by the event source. For example, the time in the orignal format from system event log such as Syslog on Unix/Linux and the System event file on Windows. Omit if event is generated instead of collected via logs.",
+      "description": "The original event time as reported by the event source. For example, the time in the original format from system event log such as Syslog on Unix/Linux and the System event file on Windows. Omit if event is generated instead of collected via logs.",
       "type": "string_t"
     },
     "os": {
@@ -2166,7 +2151,7 @@
     "parent_folder": {
       "caption": "Parent Folder",
       "description": "The parent folder in which the file resides. For example: <code>c:\\windows\\system32</code>",
-      "type": "path_t"
+      "type": "string_t"
     },
     "parent_process": {
       "caption": "Parent Process",
@@ -2176,7 +2161,7 @@
     "path": {
       "caption": "Path",
       "description": "The path that pertains to the event or object. See specific usage.",
-      "type": "path_t"
+      "type": "string_t"
     },
     "permission": {
       "caption": "Permission",
@@ -2253,7 +2238,7 @@
     },
     "pod_uuid": {
       "caption": "Pod UUID",
-      "description": "The unique identifer of the pod (or equivalent) that the container is executing on.",
+      "description": "The unique identifier of the pod (or equivalent) that the container is executing on.",
       "type": "uuid_t"
     },
     "policy": {
@@ -2269,11 +2254,6 @@
     "postal_code": {
       "caption": "Postal Code",
       "description": "The postal code of the location.",
-      "type": "string_t"
-    },
-    "prefix": {
-      "caption": "Prefix",
-      "description": "The domain prefix.",
       "type": "string_t"
     },
     "priority": {
@@ -2374,7 +2354,7 @@
     },
     "ram_size": {
       "caption": "RAM Size",
-      "description": "The ctotal amount of installed RAM, in Megabytes. For example: <code>2048</code>.",
+      "description": "The total amount of installed RAM, in Megabytes. For example: <code>2048</code>.",
       "type": "integer_t"
     },
     "raw_header": {
@@ -2422,26 +2402,6 @@
       "caption": "HTTP Referrer",
       "description": "The request header that identifies the address of the previous web page, which is linked to the current web page or resource being requested.",
       "type": "string_t"
-    },
-    "reg_key": {
-      "caption": "Registry Key",
-      "description": "The registry key.",
-      "type": "registry_key"
-    },
-    "prev_reg_key": {
-      "caption": "Previous Registry Key",
-      "description": "The registry key before the mutation",
-      "type": "registry_key"
-    },
-    "reg_value": {
-      "caption": "Registry Value",
-      "description": "The registry value.",
-      "type": "registry_value"
-    },
-    "prev_reg_value": {
-      "caption": "Previous Registry Value",
-      "description": "The registry value before the mutation",
-      "type": "registry_value"
     },
     "region": {
       "caption": "Region",
@@ -2520,7 +2480,7 @@
     "resource": {
       "caption": "Resource",
       "description": "The target resource.",
-      "type": "resource"
+      "type": "resource_details"
     },
     "resource_type": {
       "caption": "Resource Type",
@@ -2531,13 +2491,13 @@
       "caption": "Resources Array",
       "description": "Describes details about resources that were affected by the activity/event.",
       "is_array": true,
-      "type": "resource"
+      "type": "resource_details"
     },
     "resources_result": {
       "caption": "Resource Results Array",
       "description": "Updated resources after an activity/event.",
       "is_array": true,
-      "type": "resource"
+      "type": "resource_details"
     },
     "response": {
       "caption": "API Response Details",
@@ -2728,8 +2688,8 @@
       "type": "service"
     },
     "session": {
-      "caption": "User Session",
-      "description": "The authenticated user session.",
+      "caption": "Session",
+      "description": "The authenticated user or service session.",
       "type": "session"
     },
     "severity": {
@@ -2934,14 +2894,14 @@
       "sibling": "status",
       "type": "integer_t"
     },
-    "subject": {
-      "caption": "Subject",
-      "description": "The email header Subject value, as defined by RFC 5322.",
+    "subdomain": {
+      "caption": "Subdomain",
+      "description": "The subdomain portion of the URL. For example: <code>sub</code> in <code>https://sub.example.com</code> or <code>sub2.sub1</code> in <code>https://sub2.sub1.example.com</code>.",
       "type": "string_t"
     },
-    "subject_dn": {
-      "caption": "Subject Distinguished Name",
-      "description": "The certificate subject distinguished name.",
+    "subject": {
+      "caption": "Subject Details",
+      "description": "The identifier of the subject. See specific usage.",
       "type": "string_t"
     },
     "subnet": {
@@ -2957,7 +2917,6 @@
     "supporting_data": {
       "caption": "Supporting Data",
       "description": "Additional data supporting a finding as provided by security tool",
-      "is_array": true,
       "type": "json_t"
     },
     "svc_name": {
@@ -2995,11 +2954,6 @@
       "caption": "Terminated Time",
       "description": "The time when the entity was terminated. See specific usage.",
       "type": "timestamp_t"
-    },
-    "text": {
-      "caption": "URL Text",
-      "description": "The URL. For example: <code>http://www.example.com/download/trouble.exe</code>.",
-      "type": "url_t"
     },
     "tid": {
       "caption": "Thread ID",
@@ -3096,6 +3050,11 @@
       "description": "The unique identifier. See specific usage.",
       "type": "string_t"
     },
+    "uid_alt": {
+      "caption": "Alternate ID",
+      "description": "The alternate unique identifier. See specific usage.",
+      "type": "string_t"
+    },
     "unmapped": {
       "caption": "Unmapped Data",
       "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
@@ -3105,6 +3064,11 @@
       "caption": "URL",
       "description": "The URL object that pertains to the event or object. See specific usage.",
       "type": "url"
+    },
+    "url_string": {
+      "caption": "URL String",
+      "description": "The URL string.  See RFC 1738. For example: <code>http://www.example.com/download/trouble.exe</code>.",
+      "type": "url_t"
     },
     "user": {
       "caption": "User",
@@ -3167,10 +3131,17 @@
       "description": "The vulnerability object describes details related to the observed vulnerability",
       "type": "vulnerability"
     },
-    "win_resource": {
-      "caption": "Windows Resource",
-      "description": "The Windows resource object that was accessed, such as a mutant or timer.",
-      "type": "win_resource"
+    "web_resources": {
+      "caption": "Web Resources",
+      "description": "Describes details about web resources that were affected by an activity/event.",
+      "is_array": true,
+      "type": "web_resource"
+    },
+    "web_resources_result": {
+      "caption": "Web Resources Result",
+      "description": "The results of the activity on web resources. It should contain the new values of the changed attributes of the web resources.",
+      "is_array": true,      
+      "type": "web_resource"
     },
     "x_forwarded_for": {
       "caption": "X-Forwarded-For",
@@ -3239,7 +3210,6 @@
         "caption": "File Name",
         "description": "File name. For example: <code>text-file.txt</code>.",
         "observable": 7,
-        "regex": "^[a-zA-Z0-9._ -]+$",
         "type": "string_t",
         "type_name": "String"
       },
@@ -3282,17 +3252,6 @@
         "max_len": 32,
         "observable": 3,
         "regex": "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$",
-        "type": "string_t",
-        "type_name": "String"
-      },
-      "object_t": {
-        "caption": "Object",
-        "description": "Object is an unordered set of name/value pairs. For example: <code>{ip: 92.24.47.250, type: IP Address}</code>"
-      },
-      "path_t": {
-        "caption": "Path Name",
-        "description": "File or folder full path name. For example: <code>/home/user/tmp/text-file.txt</code>.",
-        "regex": "^[\\pL0-9_]+[\\pL0-9 ~!@#%&*\\-./_]*$",
         "type": "string_t",
         "type_name": "String"
       },

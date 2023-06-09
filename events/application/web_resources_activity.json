@@ -1,0 +1,70 @@
+{
+    "uid": 1,
+    "description": "Web Resources Activity events describe actions executed on a set of Web Resources.",
+    "extends": "base_event",
+    "caption": "Web Resources Activity",
+    "name": "web_resources_activity",
+    "category": "application",
+    "profiles": [
+        "host"
+    ],
+    "attributes": {
+        "$include": [
+            "profiles/host.json"
+        ],
+        "activity_id": {
+            "enum": {
+                "1": {
+                    "caption": "Create",
+                    "description": "One or more web resources were created."
+                },
+                "2": {
+                    "caption": "Read",
+                    "description": "One or more web resources were read / viewed."
+                },
+                "3": {
+                    "caption": "Update",
+                    "description": "One or more web resources were updated."
+                },
+                "4": {
+                    "caption": "Delete",
+                    "description": "One or more web resources were deleted."
+                },
+                "5": {
+                    "caption": "Search",
+                    "description": "A search was performed on one or more web resources."
+                },
+                "6": {
+                    "caption": "Import",
+                    "description": "One or more web resources were imported into an Application."
+                },
+                "7": {
+                    "caption": "Export",
+                    "description": "One or more web resources were exported from an Application."
+                },
+                "8": {
+                    "caption": "Share",
+                    "description": "One or more web resources were shared."
+                }
+            }
+        },
+        "dst_endpoint": {
+             "description":"Details about server providing the web resources.",
+             "group": "primary",
+             "requirement": "recommended"
+         },        
+        "src_endpoint": {
+            "description": "Details about the endpoint from which the request originated.",
+            "group": "primary",
+            "requirement": "recommended"
+        },
+        "web_resources": {
+            "group": "primary",
+            "requirement": "required"
+        },
+        "web_resources_result": {
+            "group": "primary",
+            "requirement": "optional"
+        }
+    }
+}

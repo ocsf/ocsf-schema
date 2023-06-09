@@ -1,0 +1,127 @@
+{
+  "caption": "Authentication",
+  "description": "Authentication events report authentication session activities such as user attempts a logon or logoff, successfully or otherwise.",
+  "extends": "iam",
+  "name": "authentication",
+  "uid": 2,
+  "attributes": {
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Logon",
+          "description": "A new logon session was requested."
+        },
+        "2": {
+          "caption": "Logoff",
+          "description": "A logon session was terminated and no longer exists."
+        },
+        "3": {
+          "caption": "Authentication Ticket",
+          "description": "A Kerberos authentication ticket (TGT) was requested."
+        },
+        "4": {
+          "caption": "Service Ticket",
+          "description": "A Kerberos service ticket was requested."
+        }
+      }
+    },
+    "actor": {
+      "description": "The actor that requested the authentication.",
+      "group": "context",
+      "profile": null
+    },
+    "auth_protocol": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "auth_protocol_id": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "certificate": {
+      "description": "The certificate associated with the authentication or pre-authentication (Kerberos).",
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "dst_endpoint": {
+      "description": "The endpoint to which the authentication was targeted.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "http_request": {
+      "description": "Details about the underlying http request.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "is_cleartext": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "is_mfa": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "is_new_logon": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "is_remote": {
+      "group": "primary",
+      "requirement": "recommended",
+      "description": "The attempted authentication is over a remote connection."
+    },
+    "logon_process": {
+      "group": "context"
+    },
+    "logon_type": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "logon_type_id": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "service": {
+      "description": "The service or gateway to which the user or process is being authenticated",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "session": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "src_endpoint": {
+      "description": "The Endpoint from which the authentication was requested.",
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "status_detail": {
+      "description": "The details about the authentication request. For example, possible details for Windows logon or logoff events are:<ul><li>Success</li><ul><li>LOGOFF_USER_INITIATED</li><li>LOGOFF_OTHER</li></ul><li>Failure</li><ul><li>USER_DOES_NOT_EXIST</li><li>INVALID_CREDENTIALS</li><li>ACCOUNT_DISABLED</li><li>ACCOUNT_LOCKED_OUT</li><li>PASSWORD_EXPIRED</li></ul></ul>"
+    },
+    "user": {
+      "description": "The subject (user/role or account) to authenticate.",
+      "group": "primary",
+      "requirement": "required"
+    }
+  },
+  "associations": {
+    "actor.user": [
+      "src_endpoint"
+    ],
+    "dst_endpoint": [
+      "user"
+    ],
+    "src_endpoint": [
+      "actor.user"
+    ],
+    "user": [
+      "dst_endpoint"
+    ]
+  },
+  "constraints": {
+    "at_least_one": [
+      "service",
+      "dst_endpoint"
+    ]
+  }
+}

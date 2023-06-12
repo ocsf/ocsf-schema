@@ -1,21 +1,20 @@
 # Schema Extensions
 
 ## Extending the Schema
-The Event Schema can be extended by adding new attributes, objects, and event classes.
+The OCSF Schema can be extended by adding an extension that defines new attributes, objects, profiles, and event classes.
 
-To extend the schema create a new directory in the `schema/extensions` directory and add `extension.json` file. 
-For example:
+To extend the schema create a new subdirectory in the `extensions` directory, and add a new `extension.json` file, which defines the extension's `name` and `uid`. For example:
+
 ```json
 {
   "caption": "New Extension",
-  "meta": "profile",
   "name": "new_ex",
-  "version": "0.0.0",
-  "uid": 123
+  "uid": 123,
+  "version": "0.0.0"
 }
 ```
 
-The directory structure is the same as the top level schema directory and it may contain the following files and subdirectories.
+The extension's directory structure is the same as the top level schema directory, and it may contain the following files and subdirectories.
 
 | Name              | Description                                                               |
 |-------------------|---------------------------------------------------------------------------|
@@ -23,5 +22,6 @@ The directory structure is the same as the top level schema directory and it may
 | `dictionary.json` | Create it to define new attributes.                                       |
 | `enums`           | Create it to define new enumerations.                                     |
 | `events`          | Create it to define new event classes.                                    |
-| `includes`        | Create it to define new shared data.                                      |
 | `objects`         | Create it to define new objects.                                          |
+| `includes`        | Create it to define new shared data.                                      |
+| `profiles`        | Create it to define new profiles.                                         |

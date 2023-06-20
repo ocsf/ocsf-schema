@@ -907,6 +907,11 @@
       "description": "The unique identifier used to correlate events.",
       "type": "string_t"
     },
+    "cost_center": {
+      "caption": "Cost Center",
+      "description": "The cost center associated with the user.",
+      "type": "string_t"
+    },
     "count": {
       "caption": "Count",
       "default": 1,
@@ -1019,6 +1024,11 @@
       "caption": "Authorization Decision/Outcome",
       "description": "Decision/outcome of the authorization mechanism (e.g. Approved, Denied)",
       "type": "string_t"
+    },
+    "deleted_time": {
+      "caption": "Deleted Time",
+      "description": "The timestamp when the user was deleted. In Active Directory (AD), when a user is deleted they are moved to a temporary container and then removed after 30 days. So, this field can be populated even after a user is deleted for the next 30 days.",
+      "type": "timestamp_t"
     },
     "delivered_to": {
       "caption": "Delivered To",
@@ -1258,8 +1268,14 @@
     },
     "email_addr": {
       "caption": "Email Address",
-      "description": "The user's email address.",
+      "description": "The user's primary email address.",
       "type": "email_t"
+    },
+    "email_addresses": {
+      "caption": "Email Addresses",
+      "description": "A list of additional email addresses for the user.",
+      "type": "email_t",
+      "is_array": true
     },
     "email_auth": {
       "caption": "Email Authentication",
@@ -1269,6 +1285,11 @@
     "email_uid": {
       "caption": "Email UID",
       "description": "The unique identifier of the email, used to correlate related email alert and activity events.",
+      "type": "string_t"
+    },
+    "employee_uid": {
+      "caption": "Employee ID",
+      "description": "The employee identifier assigned to the user by the organization.",
       "type": "string_t"
     },
     "end_time": {
@@ -1423,6 +1444,11 @@
       "description": "The entry-point function of the module. The system calls the entry-point function whenever a process or thread loads or unloads the module.",
       "type": "string_t"
     },
+    "given_name": {
+      "caption": "Given Name",
+      "description": "The given or first name of the user.",
+      "type": "string_t"
+    },
     "group": {
       "caption": "Group",
       "description": "The group object associated with an entity such as user, policy, or rule.",
@@ -1454,6 +1480,11 @@
       "description": "An array of hash attributes.",
       "is_array": true,
       "type": "fingerprint"
+    },
+    "hire_datetime": {
+      "caption": "Hire Date",
+      "description": "The datetime when the user was/will be hired",
+      "type": "datetime_t"
     },
     "hostname": {
       "caption": "Hostname",
@@ -1722,6 +1753,12 @@
       "description": "The job object that pertains to the event.",
       "type": "job"
     },
+    "job_title": {
+      "caption": "Job Title",
+      "group": "context",
+      "description": "The user's job title.",
+      "type": "string_t"
+    },
     "kb_articles": {
       "caption": "Knowledgebase Articles",
       "description": "The KB article/s related to the entity",
@@ -1775,6 +1812,11 @@
       "description": "The two letter lower case language codes, as defined by <a target='_blank' href='https://en.wikipedia.org/wiki/ISO_639-1'>ISO 639-1</a>. For example: <code>en</code> (English), <code>de</code> (German), or <code>fr</code> (French).",
       "type": "string_t"
     },
+    "last_login_time": {
+      "caption": "Last Login",
+      "description": "The last time when the user logged in. This is usually populated by <code>user_inventory</code> events where a collection method provides this account information. It may not be populated in other event types and doesn't need populated in those cases.",
+      "type": "timestamp_t"
+    },
     "last_run_time": {
       "caption": "Last Run",
       "description": "The last run time of application or service. See specific usage.",
@@ -1794,6 +1836,11 @@
       "caption": "Lease Duration",
       "description": "This represents the length of the DHCP lease in seconds. This is present in DHCP Ack events. (activity_id = 1)",
       "type": "integer_t"
+    },
+    "leave_datetime": {
+      "caption": "Leave Date",
+      "description": "The datetime when the user left/will be leaving the organization",
+      "type": "datetime_t"
     },
     "length": {
       "caption": "Response Length",
@@ -1935,6 +1982,11 @@
       "is_array": true,
       "type": "malware"
     },
+    "manager": {
+      "caption": "Manager",
+      "description": "The user's manager. This helps in understanding an org hierarchy. This should only ever be populated once in an event. I.e. there should not be a manager's manager in an event.",
+      "type": "user"
+    },
     "message": {
       "caption": "Message",
       "description": "The description of the event, as defined by the event source.",
@@ -2018,6 +2070,11 @@
       "description": "The observables associated with the event.",
       "is_array": true,
       "type": "observable"
+    },
+    "office_location": {
+      "caption": "Office Location",
+      "description": "The primary office location associated with the user. This could be any string and isn't a specific address. For example, <code>South East Virtual</code>.",
+      "type": "string_t"
     },
     "opcode": {
       "caption": "DNS Opcode",
@@ -2215,6 +2272,12 @@
       },
       "type": "integer_t",
       "sibling": "phase"
+    },
+    "phones": {
+      "caption": "Phones",
+      "description": "The phone numbers associated with the user",
+      "type": "string_t",
+      "is_array": true
     },
     "physical_height": {
       "caption": "Physical Height",
@@ -2918,6 +2981,11 @@
       "caption": "Supporting Data",
       "description": "Additional data supporting a finding as provided by security tool",
       "type": "json_t"
+    },
+    "surname": {
+      "caption": "Surname",
+      "description": "The last or family name for the user.",
+      "type": "string_t"
     },
     "svc_name": {
       "caption": "Service Name",

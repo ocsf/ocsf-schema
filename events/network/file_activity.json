@@ -1,8 +1,8 @@
 {
   "caption": "Network File Activity",
-  "description": "Network File Activity events report activities on a cloud file storage service such as Box, MS OneDrive, or Google Drive.",
+  "description": "Network File Activity events report file activities traversing the network, including file storage services such as Box, MS OneDrive, or Google Drive.",
   "category": "network",
-  "extends": "base_event",
+  "extends": "network_activity",
   "name": "network_file_activity",
   "uid": 10,
   "attributes": {
@@ -56,6 +56,15 @@
       "description": "The actor that performed the activity on the target file.",
       "group": "primary",
       "requirement": "required"
+    },
+    "connection_info": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "dst_endpoint": {
+      "description": "The endpoint that received the activity on the target file.",
+      "requirement": "recommended",
+      "group": "primary"
     },
     "expiration_time": {
       "description": "The share expiration time.",

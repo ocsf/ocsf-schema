@@ -125,6 +125,11 @@
       "description": "The arguments sent along with the HTTP request.",
       "type": "string_t"
     },
+    "assignee": {
+      "caption": "Assignee",
+      "description": "The name of the assigned person.",
+      "type": "string_t"
+    },
     "attempt": {
       "caption": "Attempt",
       "description": "The delivery attempt.",
@@ -1066,6 +1071,11 @@
       "description": "Details of an entity. See specific usage",
       "type": "string_t"
     },
+    "detection_type": {
+      "caption": "Detection Type",
+      "description": "The originating technology that triggered the incident creation.  E.g., Sandbox, Cloud Analytics",
+      "type": "string_t"
+    },
     "detection_uid": {
       "caption": "Detection UID",
       "description": "The associated unique detection event identifier. For example: detection response events include the <b>Detection ID</b> of the original event.",
@@ -1599,6 +1609,16 @@
       "caption": "Impact",
       "description": "The impact of the finding, valid range 0-100.",
       "type": "integer_t"
+    },
+    "incident_uid": {
+      "caption": "Incident ID",
+      "description": "The unique identifier of the incident.",
+      "type": "string_t"
+    },
+    "incident_url": {
+      "caption": "Incident URL",
+      "description": "A URL link used to access the original incident.",
+      "type": "string_t"
     },
     "injection_type": {
       "caption": "Injection Type",
@@ -2455,6 +2475,11 @@
       "description": "The data describing the DNS resource. The meaning of this data depends on the type and class of the resource record.",
       "type": "string_t"
     },
+    "recommended_action": {
+      "caption": "Recommended Action",
+      "description": "A description of recommended step(s) to take to resolve the issue(s) captured in the event.",
+      "type": "string_t"
+    },
     "references": {
       "caption": "References",
       "description": "Supporting reference URLs",
@@ -2539,6 +2564,43 @@
       "description": "A list of applicable compliance requirements for which this finding is related to.",
       "is_array": true,
       "type": "string_t"
+    },
+    "resolution": {
+      "caption": "Resolution",
+      "description": "The resolution detail for closing the incident.",
+      "type": "string_t"
+    },
+    "resolution_id": {
+      "caption": "Resolution Id",
+      "description": "The normalized identifier of the resolution detail.",
+      "enum": {
+        "99": {
+          "caption": "Other"
+        },
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Insufficient data"
+        },
+        "2": {
+          "caption": "Security risk"
+        },
+        "3": {
+          "caption": "False positive"
+        },
+        "4": {
+          "caption": "Managed externally"
+        },
+        "5": {
+          "caption": "Benign"
+        },
+        "6": {
+          "caption": "Test"
+        }
+      },
+      "sibling": "resolution",
+      "type": "integer_t"
     },
     "resource": {
       "caption": "Resource",
@@ -2986,6 +3048,11 @@
       "caption": "Surname",
       "description": "The last or family name for the user.",
       "type": "string_t"
+    },
+    "suspected_breach": {
+      "caption": "Suspected Breach",
+      "description": "A determination based on analytics whether a potential breach was found.",
+      "type": "boolean_t"
     },
     "svc_name": {
       "caption": "Service Name",

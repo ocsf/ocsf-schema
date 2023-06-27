@@ -1,0 +1,67 @@
+{
+  "caption": "Incident Creation",
+  "description": "Incident creation events report the creation of an incident as a result of detections and/or analytics.",
+  "extends": "incident",
+  "name": "incident_create",
+  "uid": 4,
+  "attributes": {
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Logged"
+        }
+      }
+    },
+    "assignee": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "attacks": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "creator": {
+      "description": "The creator of the rule that triggered the incident.",
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "data": {
+      "description": "The additional data that is associated with the incident.",
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "desc": {
+      "description": "The description of the rule that created the incident.",
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "detection_type": {
+      "description": "The originating technology that triggered the incident creation.",
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "end_time": {
+      "description": "The time of the most recent event included in the incident."
+    },
+    "incident_uid": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "recommended_action": {
+      "description": "A description of the recommended step(s) to take in order to resolve the incident.",
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "rule": {
+      "description": "The rule that triggered the incident.",
+      "requirement": "required"
+    },
+    "start_time": {
+      "description": "The time of the least recent event included in the incident."
+    },
+    "suspected_breach": {
+      "group": "primary",
+      "requirement": "optional"
+    }
+  }
+}

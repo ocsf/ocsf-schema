@@ -4,12 +4,15 @@
   "name": "http_activity",
   "extends": "network_activity",
   "description": "HTTP Activity events report HTTP connection and traffic information.",
+  "profiles": [
+    "firewall"
+  ],
   "attributes": {
+    "$include": [
+      "profiles/firewall.json",
+    ],
     "activity_id": {
-      "$include": [
-	      "enums/http_activity.json",
-	      "profiles/firewall.json"
-      ]
+      "$include": "enums/http_activity.json"
     },
     "http_status": {
       "group": "primary"

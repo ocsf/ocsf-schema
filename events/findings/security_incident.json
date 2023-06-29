@@ -1,0 +1,94 @@
+{
+  "caption": "Security Incident",
+  "description": "Security Incident events report the creation, update, or closure of incidents as a result of detections and/or analytics.",
+  "extends": "incident",
+  "name": "incident_create",
+  "uid": 2,
+  "attributes": {
+    "activity_id": {
+      "$include": "enums/incident_activity.json",
+      "group": "primary",
+      "requirement": "required"
+    },
+    "activity_name": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "assignee": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "attacks": {
+      "description": "An array of attacks associated with the incident.",
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "cis_csc": {
+      "description": "The recommended mitigations to take in order to resolve the incident.",
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "comment": {
+      "description": "Additional user supplied details for updating or closing the incident.",
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "confidence": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "confidence_id": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "user": {
+      "description": "The creator of the rule that triggered the incident, or the user associated with an incident update or closure.",
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "desc": {
+      "description": "The short description of the incident.",
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "end_time": {
+      "description": "The time of the most recent event included in the incident."
+    },
+    "impact": {
+      "group": "primary",
+      "requirement":"optional"
+    },
+    "impact_id": {
+      "group": "primary",
+      "requirement": "recommended",
+      "sibling": "impact"
+    },
+    "impact_score": {
+      "group": "primary",
+      "requirement":"optional"
+    },
+    "incident_uid": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "kill_chain": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "resolution": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "resolution_id": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "start_time": {
+      "description": "The time of the least recent event included in the incident."
+    },
+    "suspected_breach": {
+      "group": "primary",
+      "requirement": "optional"
+    }
+  }
+}

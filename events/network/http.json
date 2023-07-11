@@ -1,10 +1,17 @@
 {
-  "caption": "HTTP Activity",
-  "uid": 2,
-  "name": "http_activity",
-  "extends": "network_activity",
   "description": "HTTP Activity events report HTTP connection and traffic information.",
+  "extends": "network_activity",
+  "caption": "HTTP Activity",
+  "name": "http_activity",
+  "category": "network",
+  "uid": 2,
+  "profiles": [
+    "firewall"
+  ],
   "attributes": {
+    "$include": [
+      "profiles/firewall.json"
+    ],
     "activity_id": {
       "$include": "enums/http_activity.json"
     },

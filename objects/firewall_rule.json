@@ -1,0 +1,40 @@
+{
+  "caption": "Firewall Rule",
+  "name": "firewall_rule",
+  "description": "The firewall rule object associated with a policy or event.",
+  "extends": "rule",
+  "attributes": {
+    "condition": {
+      "description": "The rule trigger condition for the rule. For example: SQL_INJECTION.",
+      "requirement": "optional"
+    },
+    "sensitivity": {
+      "description": "The location in the request where the rule matched. For example: HIGH.",
+      "requirement": "optional"
+    },	
+    "rule_location": {
+      "description": "The location in the request where the rule matched. For example: HEADER.",
+      "requirement": "optional"
+    },	
+    "match_details": {
+      "description": "The data in a request that rule matched. For example: '[\"10\",\"and\",\"1\"]'.",
+      "requirement": "optional"
+    },	
+    "rate_limit": {
+      "description": "The rate limit for a rate-based rule.",
+      "requirement": "optional"
+    },	
+    "status_code": {
+      "description": "The firewall event status code, detailing the rule action of the event source.",
+      "requirement": "optional"
+    },	
+    "response_time": {
+      "description": "The rule response time, usually used for challenge completion time.",
+      "requirement": "optional"
+    },	
+    "message": {
+      "description": "The description of the firewall event rule action, as defined by the event source.",
+      "requirement": "optional"
+    }
+  }
+}

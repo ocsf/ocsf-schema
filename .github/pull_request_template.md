@@ -1,6 +1,6 @@
 #### Related Issue: 
 
-#### Precise description of changes:
+#### Description of changes:
 
 ### Delete once you have confirmed the following: 
 1. Have you followed the [contribution guidelines](https://github.com/ocsf/ocsf-schema/blob/main/CONTRIBUTING.md)?

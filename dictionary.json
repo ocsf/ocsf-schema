@@ -319,6 +319,11 @@
       "description": "The operating system build number.",
       "type": "string_t"
     },
+    "bulletin": {
+      "caption": "Patch Bulletin",
+      "description": "The vendor bulletin identfier.",
+      "type": "string_t"
+    },
     "bytes": {
       "caption": "Total Bytes",
       "default": 0,
@@ -921,6 +926,11 @@
     "country": {
       "caption": "Country",
       "description": "The ISO 3166-1 Alpha-2 country code. For the complete list of country codes see <a target='_blank' href='https://www.iso.org/obp/ui/#iso:pub:PUB500001:en' >ISO 3166-1 alpha-2 codes</a>.<p><b>Note:</b> The two letter country code should be capitalized. For example: <code>US</code> or <code>CA</code>.</p>",
+      "type": "string_t"
+    },
+    "cpe": {
+      "caption": "The product CPE identifier",
+      "description": "The Common Platform Enumeration (CPE) name.",
       "type": "string_t"
     },
     "cpu_bits": {
@@ -2477,6 +2487,12 @@
       "is_array": true,
       "type": "analytic"
     },
+    "related_cves": {
+      "caption": "Related CVE's",
+      "description": "A list of related Common Vulnerabilty Exporsure (CVE) id's.",
+      "is_array": true,
+      "type": "related_event"
+    },
     "related_events": {
       "caption": "Related Events",
       "description": "Describes events related to a finding or detection as identified by the security product.",
@@ -2977,6 +2993,11 @@
       "description": "The unique identifier of a virtual subnet.",
       "type": "string_t"
     },
+    "superseded": {
+      "caption": "The patch is superseded.",
+      "description": "The vendor patch has been replaced by another.",
+      "type": "boolean_t"
+      },
     "supporting_data": {
       "caption": "Supporting Data",
       "description": "Additional data supporting a finding as provided by security tool",

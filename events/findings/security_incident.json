@@ -2,7 +2,7 @@
   "caption": "Security Incident",
   "category": "findings",
   "description": "Security Incident events report the creation, update, or closure of incidents as a result of detections and/or analytics.",
-  "extends": "incident",
+  "extends": "base_event",
   "name": "security_incident",
   "uid": 2,
   "attributes": {
@@ -33,6 +33,10 @@
       "description": "Additional user supplied details for updating or closing the incident.",
       "group": "primary",
       "requirement": "optional"
+    },
+    "conclusions": {
+      "group": "primary",
+      "requirement": "required"
     },
     "confidence": {
       "group": "primary",
@@ -71,6 +75,16 @@
       "group": "context",
       "requirement": "optional"
     },
+    "priority": {
+      "description": "The priority name, as defined by <code>priority_id</code> enum value.",
+      "group": "primary"
+    },
+    "priority_id": {
+      "description": "The normalized priority.</p>Priority identifies the relative importance of the finding. It is a measurement of urgency.",
+      "group": "primary",
+      "requirement": "recommended",
+      "$include": "enums/priority.json"
+    },
     "resolution": {
       "group": "primary",
       "requirement": "optional"
@@ -79,8 +93,24 @@
       "group": "primary",
       "requirement": "optional"
     },
+    "src_url": {
+      "description": "A Url link used to access the original incident.",
+      "group": "primary",
+      "requirement": "optional"
+    },
     "start_time": {
       "description": "The time of the least recent event included in the incident."
+    },
+    "state": {
+      "description": "The incident state.",
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "state_id": {
+      "description": "The incident state identifier.",
+      "group": "primary",
+      "requirement": "required",
+      "$include": "enums/incident_state.json"
     },
     "suspected_breach": {
       "group": "primary",

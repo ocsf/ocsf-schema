@@ -12,19 +12,19 @@
           "description": "Not used in standard NTP implementations."
         },
         "1": {
-          "caption": "Symmetric Active",
+          "caption": "Symmetric Active Exchange",
           "description": "Bidirectional time exchange between devices."
         },
         "2": {
-          "caption": "Symmetric Passive",
+          "caption": "Symmetric Passive Response",
           "description": "Device responds as a server to peers in symmetric active mode."
         },
         "3": {
-          "caption": "Client",
+          "caption": "Client Synchronization",
           "description": "NTP client, syncs with servers."
         },
         "4": {
-          "caption": "Server",
+          "caption": "Server Response",
           "description": "Dedicated NTP time server, responds to clients."
         },
         "5": {
@@ -32,18 +32,36 @@
           "description": "Broadcast time info to network devices."
         },
         "6": {
-          "caption": "Control Message",
+          "caption": "Control",
           "description": "Monitoring and control messaging."
         },
         "7": {
-          "caption": "Reserved - Private Use",
-          "description": "Not defined in standard NTP specifications."
-        },
-        "8": {
-          "caption": "Reserved - Authentication",
-          "description": "Reserved for potential authentication use."
+          "caption": "Private Use Case",
+          "description": "Reserved - Not defined in standard NTP specifications."
         }
       }
+    },
+    "delay": {
+      "caption": "Root Delay",
+      "description": "The total round-trip delay to the reference clock.",
+      "requirement": "optional"
+    },
+    "dispersion": {
+      "requirement": "optional"
+    },
+    "precision": {
+      "description": "The precision quantifies a clock's accuracy and stability in log2 seconds, as defined in RFC-5905.",
+      "requirement": "recommended"
+    },
+    "stratum": {
+      "requirement": "optional"
+    },
+    "stratum_id": {
+      "requirement": "recommended"
+    },
+    "version": {
+      "description": "The version number of the NTP protocol.",
+      "requirement": "required"
     }
   }
 }

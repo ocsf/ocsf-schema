@@ -1052,6 +1052,11 @@
       "description": "Decision/outcome of the authorization mechanism (e.g. Approved, Denied)",
       "type": "string_t"
     },
+    "delay": {
+      "caption": "Time Delay",
+      "description": "The time delay. See specific usage.",
+      "type": "integer_t"
+    },
     "deleted_time": {
       "caption": "Deleted Time",
       "description": "The timestamp when the user was deleted. In Active Directory (AD), when a user is deleted they are moved to a temporary container and then removed after 30 days. So, this field can be populated even after a user is deleted for the next 30 days.",
@@ -1154,6 +1159,11 @@
         }
       },
       "sibling": "direction",
+      "type": "integer_t"
+    },
+    "dispersion": {
+      "caption": "Root Dispersion",
+      "description": "The total dispersion to the reference clock in the NTP protocol.",
       "type": "integer_t"
     },
     "disposition": {
@@ -2355,6 +2365,11 @@
       "description": "The postal code of the location.",
       "type": "string_t"
     },
+    "precision": {
+      "caption": "Precision",
+      "description": "The time precision. See specific usage.",
+      "type":  "integer_t"
+    },
     "priority": {
       "caption": "Priority",
       "description": "The priority, normalized to the caption of the priority_id value. In the case of 'Other', it is defined by the event source. See specific usage.",
@@ -3014,6 +3029,38 @@
       "sibling": "status",
       "type": "integer_t"
     },
+    "stratum": {
+      "caption": "Stratum",
+      "description": "The stratum level of the NTP server's time source, normalized to the caption of the stratum_id value.",
+      "type": "string_t"
+    },
+    "stratum_id": {
+      "caption": "Stratum ID",
+      "description": "The normalized identifier of the stratum level, as defined in <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc5905.html'>RFC-5905</a>.",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description":  "Unspecified or invalid."
+        },
+        "1": {
+          "caption": "Primary Server",
+          "description": "The highest precision primary server (e.g atomic clock or GPS)."
+        },
+        "2": {
+          "caption": "Secondary Server",
+          "description": "A secondary level server (possible values: 2-15)."
+        },
+        "16": {
+          "caption": "Unsynchronized"
+        },
+        "17": {
+          "caption": "Reserved",
+          "description": "Reserved stratum (possible values: 17-255)."
+        }
+      },
+      "sibling": "stratum",
+      "type": "integer_t"
+    },
     "subdomain": {
       "caption": "Subdomain",
       "description": "The subdomain portion of the URL. For example: <code>sub</code> in <code>https://sub.example.com</code> or <code>sub2.sub1</code> in <code>https://sub2.sub1.example.com</code>.",
@@ -3270,7 +3317,7 @@
     "web_resources_result": {
       "caption": "Web Resources Result",
       "description": "The results of the activity on web resources. It should contain the new values of the changed attributes of the web resources.",
-      "is_array": true,      
+      "is_array": true,
       "type": "web_resource"
     },
     "x_forwarded_for": {

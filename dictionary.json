@@ -1417,6 +1417,11 @@
       "description": "The initial detection time of the activity or object. See specific usage",
       "type": "timestamp_t"
     },
+    "fixed_in_version": {
+      "caption": "Fixed In Version",
+      "description": "The software package version in which a reported vulnerability was patched/fixed.",
+      "type": "string_t"
+    },
     "fix_available": {
       "caption": "Fix Availability",
       "description": "Indicates if a fix is available for the reported vulnerability.",
@@ -1776,16 +1781,11 @@
       "description": "The user's job title.",
       "type": "string_t"
     },
-    "kb_article": {
-      "caption": "The KB Article object contains metadata that describes the patch or update.",
-      "description": "The KB article data related to the entity",
-      "type": "kb_article"
-    },
     "kb_articles": {
       "caption": "Knowledgebase Articles",
-      "description": "The KB article/s related to the entity",
+      "description": "The KB article/s related to the entity. A KB Article contains metadata that describes the patch or an update.",
       "is_array": true,
-      "type": "string_t"
+      "type": "kb_article"
     },
     "kernel": {
       "caption": "Kernel",
@@ -2926,6 +2926,12 @@
       "caption": "Source URL",
       "description": "The URL pointing towards the source of an entity. See specific usage.",
       "type": "url_t"
+    },
+    "standards":{
+      "caption": "Security Standards",
+      "description": "A list of security standards associated to a compliance finding.",
+      "is_array": true,
+      "type": "string_t"
     },
     "start_address": {
       "caption": "Start Address",

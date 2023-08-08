@@ -1,0 +1,106 @@
+{
+  "caption": "Security Alert",
+  "category": "findings",
+  "description": "Security Alert events report the creation, update, or closure of alerts as a result of detections and/or analytics.",
+  "extends": "finding",
+  "name": "security_alert",
+  "uid": 3,
+  "attributes": {
+    "alert_uid": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "assignee": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "attacks": {
+      "description": "An array of attacks associated with the alert.",
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "comment": {
+      "description": "Additional user supplied details for creating, updating or closing the alert.",
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "confidence": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "confidence_id": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "impact": {
+      "group": "primary",
+      "requirement":"optional"
+    },
+    "impact_id": {
+      "group": "primary",
+      "requirement": "recommended",
+      "sibling": "impact"
+    },
+    "impact_score": {
+      "group": "primary",
+      "requirement":"optional"
+    },
+    "kill_chain": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "priority": {
+      "description": "The priority name, as defined by <code>priority_id</code> enum value.",
+      "group": "primary"
+    },
+    "priority_id": {
+      "description": "The normalized priority.</p>Priority identifies the relative importance of the alert. It is a measurement of urgency.",
+      "group": "primary",
+      "requirement": "recommended",
+      "$include": "enums/priority.json"
+    },
+    "resolution": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "resolution_id": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "state": {
+      "description": "The alert state.",
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "state_id": {
+      "description": "The alert state identifier.",
+      "group": "primary",
+      "requirement": "required",
+      "$include": "enums/incident_state.json"
+    },
+    "suspected_breach": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "rule_id": {
+      "description": "The identifier of the rule that triggered the alert",
+      "group": "classification",
+      "requirement": "optional"
+    },
+    "rule_name": {
+      "description": "The name of the rule that triggered the alert",
+      "group": "classification",
+      "requirement": "optional"
+    },
+    "rule_type": {
+      "description": "The type of rule that triggered the alert, e.g. custom-defined or built-in",
+      "group": "classification",
+      "requirement": "optional"
+    },
+    "user": {
+      "description": "The creator of the rule that triggered the alert, or the user associated with an alert update or closure.",
+      "group": "primary",
+      "requirement": "optional"
+    }
+  }
+}

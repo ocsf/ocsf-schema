@@ -2,7 +2,7 @@
   "caption": "Security Alert",
   "category": "findings",
   "description": "Security Alert events report the creation, update, or closure of alerts as a result of detections and/or analytics.",
-  "extends": "finding",
+  "extends": "base_event",
   "name": "security_alert",
   "uid": 3,
   "attributes": {
@@ -32,6 +32,10 @@
       "group": "primary",
       "requirement": "optional"
     },
+    "finding": {
+      "group": "primary",
+      "requirement": "required"
+    },
     "impact": {
       "group": "primary",
       "requirement":"optional"
@@ -59,6 +63,10 @@
       "requirement": "recommended",
       "$include": "enums/priority.json"
     },
+    "remediation": {
+      "group": "context",
+      "requirement": "optional"
+    },
     "resolution": {
       "group": "primary",
       "requirement": "optional"
@@ -66,6 +74,10 @@
     "resolution_id": {
       "group": "primary",
       "requirement": "optional"
+    },
+    "rule": {
+      "group": "primary",
+      "requirement": "recommended"
     },
     "state": {
       "description": "The alert state.",
@@ -80,21 +92,6 @@
     },
     "suspected_breach": {
       "group": "primary",
-      "requirement": "optional"
-    },
-    "rule_id": {
-      "description": "The identifier of the rule that triggered the alert",
-      "group": "classification",
-      "requirement": "optional"
-    },
-    "rule_name": {
-      "description": "The name of the rule that triggered the alert",
-      "group": "classification",
-      "requirement": "optional"
-    },
-    "rule_type": {
-      "description": "The type of rule that triggered the alert, e.g. custom-defined or built-in",
-      "group": "classification",
       "requirement": "optional"
     },
     "user": {

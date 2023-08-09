@@ -86,6 +86,11 @@
       "description": "The integer value of TLS alert if present. The alerts are defined in the TLS specification in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc2246'>RFC-2246</a>.",
       "type": "integer_t"
     },
+    "alert_uid": {
+      "caption": "Alert UID",
+      "description": "The unique identifier of the alert.",
+      "type": "integer_t"
+    },
     "algorithm": {
       "caption": "Algorithm",
       "description": "The applicable algorithm, normalized to the caption of 'algorithm_id'. See specific usage.",
@@ -139,6 +144,11 @@
     "args": {
       "caption": "HTTP Arguments",
       "description": "The arguments sent along with the HTTP request.",
+      "type": "string_t"
+    },
+    "assignee": {
+      "caption": "Assignee",
+      "description": "The name of the assigned person.",
       "type": "string_t"
     },
     "attempt": {
@@ -2581,6 +2591,43 @@
       "is_array": true,
       "type": "string_t"
     },
+    "resolution": {
+      "caption": "Resolution",
+      "description": "The resolution detail for closing the incident.",
+      "type": "string_t"
+    },
+    "resolution_id": {
+      "caption": "Resolution ID",
+      "description": "The normalized identifier of the resolution detail, populated when closing an incident.",
+      "enum": {
+        "99": {
+          "caption": "Other"
+        },
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Insufficient data"
+        },
+        "2": {
+          "caption": "Security risk"
+        },
+        "3": {
+          "caption": "False positive"
+        },
+        "4": {
+          "caption": "Managed externally"
+        },
+        "5": {
+          "caption": "Benign"
+        },
+        "6": {
+          "caption": "Test"
+        }
+      },
+      "sibling": "resolution",
+      "type": "integer_t"
+    },
     "resource": {
       "caption": "Resource",
       "description": "The target resource.",
@@ -3042,6 +3089,11 @@
       "caption": "Surname",
       "description": "The last or family name for the user.",
       "type": "string_t"
+    },
+    "suspected_breach": {
+      "caption": "Suspected Breach",
+      "description": "A determination based on analytics whether a potential breach was found.",
+      "type": "boolean_t"
     },
     "svc_name": {
       "caption": "Service Name",

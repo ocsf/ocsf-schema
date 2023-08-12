@@ -2,10 +2,26 @@
   "caption": "Security Finding",
   "category": "findings",
   "description": "Security Finding events describe findings, detections, anomalies, alerts and/or actions performed by security products",
-  "extends": "finding",
+  "extends": "base_event",
   "name": "security_finding",
   "uid": 1,
   "attributes": {
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Create",
+          "description": "A new security finding has been created."
+        },
+        "2": {
+          "caption": "Update",
+          "description": "An existing security finding has been updated."
+        },
+        "3": {
+          "caption": "Close",
+          "description": "A security finding has been resolved and closed."
+        }
+      }
+    },
     "analytic": {
       "group": "primary",
       "requirement": "recommended"

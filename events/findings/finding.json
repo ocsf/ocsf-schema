@@ -1,21 +1,144 @@
 {
   "caption": "Finding",
   "category": "findings",
-  "description": "Findings events report findings, detections, and possible resolutions of malware, anomalies, or actions performed by security products.",
+  "description": "Finding events report findings, detections, and possible resolutions of malware, anomalies, or actions performed by security products.",
   "extends": "base_event",
   "name": "finding",
+  "uid": 0,
   "attributes": {
     "activity_id": {
       "enum": {
         "1": {
           "caption": "Create",
-          "description": "A security finding is created."
+          "description": "A new security finding has been created."
         },
         "2": {
           "caption": "Update",
-          "description": "A security finding is updated."
+          "description": "An existing security finding has been updated."
+        },
+        "3": {
+          "caption": "Close",
+          "description": "A security finding has been resolved and closed."
         }
       }
+    },
+    "assignee": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "confidence": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "confidence_id": {
+      "group": "context",
+      "requirement": "recommended"
+    },
+    "confidence_score": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "detection_uid": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "disposition": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "disposition_id": {
+      "enum": {
+        "1": {
+          "caption": "Insufficient data"
+        },
+        "2": {
+          "caption": "Security risk"
+        },
+        "3": {
+          "caption": "False positive"
+        },
+        "4": {
+          "caption": "Managed externally"
+        },
+        "5": {
+          "caption": "Benign"
+        },
+        "6": {
+          "caption": "Test"
+        }
+      },
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "end_time": {
+      "description": "The time of the most recent event included in the finding."
+    },
+    "impact": {
+      "requirement": "optional"
+    },
+    "impact_id": {
+      "requirement": "recommended"
+    },
+    "impact_score": {
+      "requirement": "optional"
+    },
+    "priority": {
+      "group": "primary"
+    },
+    "priority_id": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "remediation": {
+      "requirement": "optional"
+    },
+    "src_url": {
+      "description": "The URL pointing to the source of the finding.",
+      "requirement": "optional"
+    },
+    "start_time": {
+      "description": "The time of the least recent event included in the finding."
+    },
+    "state": {
+      "description": "The state text, normalized to the caption of the state_id value. In the case of <code>Other</code>, it is defined by the data source.",
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "state_id": {
+      "description": "The normalized state identifier.",
+      "enum": {
+        "1": {
+          "caption": "New",
+          "description": "The service desk has received the finding but has not assigned it to an agent."
+        },
+        "2": {
+          "caption": "In Progress",
+          "description": "The finding has been assigned to an agent but has not been resolved. The agent is actively working with the user to diagnose and resolve the finding."
+        },
+        "3": {
+          "caption": "On Hold",
+          "description": "The finding requires some information or response from the user or from a third party."
+        },
+        "4": {
+          "caption": "Resolved",
+          "description": "The service desk has confirmed that the finding is resolved."
+        },
+        "5": {
+          "caption": "Closed",
+          "description": "The finding is resolved and no further action is necessary."
+        }
+      },
+      "group": "primary",
+      "requirement": "required"
+    },
+    "suspected_breach": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "user": {
+      "description": "The user that created or modified the finding.",
+      "group": "primary",
+      "requirement": "optional"
     }
   }
 }

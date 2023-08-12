@@ -1,7 +1,7 @@
 {
   "caption": "Analytic",
   "name": "analytic",
-  "description": "The Analytic object contains details about the analytic technique used to analyze and derive insights from the data or information that led to the finding or conclusion.",
+  "description": "The Analytic object describes the technique used for the analysis and extraction of insights from event data or information, ultimately contributing to the creation of findings or conclusions.",
   "extends": "_entity",
   "attributes": {
     "category": {
@@ -9,22 +9,18 @@
       "requirement": "optional"
     },
     "desc": {
-      "description": "The description of the analytic that generated the finding.",
+      "description": "The analytic description.",
       "requirement": "optional"
     },
     "name": {
-      "description": "The name of the analytic that generated the finding."
-    },
-    "related_analytics": {
-      "description:": "Other analytics related to this analytic ",
-      "requirement": "optional"
+      "description": "The analytic name."
     },
     "type": {
       "description": "The analytic type.",
       "requirement": "optional"
     },
     "type_id": {
-      "description": "The analytic type ID.",
+      "description": "The analytic type identifier.",
       "requirement": "required",
       "enum": {
         "0": {
@@ -42,13 +38,20 @@
         "4": {
           "caption": "Learning (ML/DL)"
         },
+        "5": {
+          "caption": "Policy"
+        },
         "99": {
           "caption": "Other"
         }
       }
     },
     "uid": {
-      "description": "The unique identifier of the analytic that generated the finding."
+      "description": "The analytic unique identifier."
+    },
+    "creator": {
+      "description": "The user that created the analytic.",
+      "requirement": "optional"
     },
     "version": {
       "description": "The analytic version. For example: <code>1.1</code>.",

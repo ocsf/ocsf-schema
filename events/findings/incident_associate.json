@@ -1,0 +1,28 @@
+{
+  "caption": "Incident Associate",
+  "uid": 5,
+  "category": "findings",
+  "name": "incident_associate",
+  "extends": "base_event",
+  "description": "Incident Associate events report when additional events are associated with an existing incident.",
+  "attributes": {
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Associate",
+          "description": "Associate events with existing incident."
+        }
+      }
+    },
+    "incident_uid": {
+      "requirement": "required",
+      "group": "primary"
+    },
+    "related_events": {
+      "caption": "Related Events",
+      "description": "The new event(s) to bind to the incident.  The event(s) captured in this field are bound to the incident_uid.",
+      "requirement": "required",
+      "group": "primary"
+    }
+  }
+}

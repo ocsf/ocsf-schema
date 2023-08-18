@@ -34,6 +34,16 @@
       "description": "The account object describes details about the account that was the source or target of the activity.",
       "type": "account"
     },
+    "ack_reason": {
+      "caption": "Acknowledgement Reason",
+      "description": "An integer that provides a reason code or additional information about the acknowledgment result.",
+      "type": "integer_t"
+    },
+    "ack_result": {
+      "caption": "Acknowledgement Result",
+      "description": "An integer that denotes the acknowledgment result of the DCE/RPC call.",
+      "type": "integer_t"
+    },
     "activity_id": {
       "caption": "Activity ID",
       "description": "The normalized identifier of the activity that triggered the event.",
@@ -1042,6 +1052,11 @@
       "description": "Decision/outcome of the authorization mechanism (e.g. Approved, Denied)",
       "type": "string_t"
     },
+    "delay": {
+      "caption": "Root Delay",
+      "description": "The total round-trip delay to the reference clock in milliseconds.",
+      "type": "integer_t"
+    },
     "deleted_time": {
       "caption": "Deleted Time",
       "description": "The timestamp when the user was deleted. In Active Directory (AD), when a user is deleted they are moved to a temporary container and then removed after 30 days. So, this field can be populated even after a user is deleted for the next 30 days.",
@@ -1144,6 +1159,11 @@
         }
       },
       "sibling": "direction",
+      "type": "integer_t"
+    },
+    "dispersion": {
+      "caption": "Root Dispersion",
+      "description": "The dispersion in the NTP protocol is the estimated time error or uncertainty relative to the reference clock in milliseconds.",
       "type": "integer_t"
     },
     "disposition": {
@@ -1416,6 +1436,11 @@
       "caption": "First Seen",
       "description": "The initial detection time of the activity or object. See specific usage",
       "type": "timestamp_t"
+    },
+    "fixed_in_version": {
+      "caption": "Fixed In Version",
+      "description": "The software package version in which a reported vulnerability was patched/fixed.",
+      "type": "string_t"
     },
     "fix_available": {
       "caption": "Fix Availability",
@@ -1776,16 +1801,11 @@
       "description": "The user's job title.",
       "type": "string_t"
     },
-    "kb_article": {
-      "caption": "The KB Article object contains metadata that describes the patch or update.",
-      "description": "The KB article data related to the entity",
-      "type": "kb_article"
-    },
     "kb_articles": {
       "caption": "Knowledgebase Articles",
-      "description": "The KB article/s related to the entity",
+      "description": "The KB article/s related to the entity. A KB Article contains metadata that describes the patch or an update.",
       "is_array": true,
-      "type": "string_t"
+      "type": "kb_article"
     },
     "kernel": {
       "caption": "Kernel",
@@ -2072,7 +2092,7 @@
     },
     "network_interfaces": {
       "caption": "Network Interfaces",
-      "description": "The network interfaces that are associated with the device, one for each MAC address/IP address combination.<p><b>Note:</b> The first element of the array is the network information that pertains to the event.</p>",
+      "description": "The network interfaces that are associated with the device, one for each unique MAC address/IP address/hostname/name combination.<p><b>Note:</b> The first element of the array is the network information that pertains to the event.</p>",
       "is_array": true,
       "type": "network_interface"
     },
@@ -2344,6 +2364,11 @@
       "caption": "Postal Code",
       "description": "The postal code of the location.",
       "type": "string_t"
+    },
+    "precision": {
+      "caption": "Precision",
+      "description": "The numeric precision. See specific usage.",
+      "type":  "integer_t"
     },
     "priority": {
       "caption": "Priority",
@@ -2636,6 +2661,11 @@
       "description": "The risk score as reported by the event source.",
       "type": "integer_t"
     },
+    "rpc_interface": {
+      "caption": "Remote Procedure Call Interface",
+      "description": "The RPC Interface object describes the details pertaining to the remote procedure call interface.",
+      "type": "rpc_interface"
+    },
     "rule": {
       "caption": "Rule",
       "description": "The rules that reported the events.",
@@ -2927,6 +2957,12 @@
       "description": "The URL pointing towards the source of an entity. See specific usage.",
       "type": "url_t"
     },
+    "standards":{
+      "caption": "Security Standards",
+      "description": "A list of security standards associated to a compliance finding.",
+      "is_array": true,
+      "type": "string_t"
+    },
     "start_address": {
       "caption": "Start Address",
       "description": "The start address of the execution.",
@@ -2993,6 +3029,42 @@
       "sibling": "status",
       "type": "integer_t"
     },
+    "stratum": {
+      "caption": "Stratum",
+      "description": "The stratum level of the NTP server's time source, normalized to the caption of the stratum_id value.",
+      "type": "string_t"
+    },
+    "stratum_id": {
+      "caption": "Stratum ID",
+      "description": "The normalized identifier of the stratum level, as defined in <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc5905.html'>RFC-5905</a>.",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description":  "Unspecified or invalid."
+        },
+        "1": {
+          "caption": "Primary Server",
+          "description": "The highest precision primary server (e.g atomic clock or GPS)."
+        },
+        "2": {
+          "caption": "Secondary Server",
+          "description": "A secondary level server (possible values: 2-15)."
+        },
+        "16": {
+          "caption": "Unsynchronized"
+        },
+        "17": {
+          "caption": "Reserved",
+          "description": "Reserved stratum (possible values: 17-255)."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The stratum level is not mapped. See the <code>stratum</code> attribute, which may contain a data source specific value."
+        }
+      },
+      "sibling": "stratum",
+      "type": "integer_t"
+    },
     "subdomain": {
       "caption": "Subdomain",
       "description": "The subdomain portion of the URL. For example: <code>sub</code> in <code>https://sub.example.com</code> or <code>sub2.sub1</code> in <code>https://sub2.sub1.example.com</code>.",
@@ -3007,6 +3079,11 @@
       "caption": "Subnet",
       "description": "The subnet mask.",
       "type": "subnet_t"
+    },
+    "subnet_prefix": {
+      "caption": "Subnet Prefix Length",
+      "description": "The subnet prefix length determines the number of bits used to represent the network part of the IP address. The remaining bits are reserved for identifying individual hosts within that subnet.",
+      "type": "integer_t"
     },
     "subnet_uid": {
       "caption": "Subnet UID",
@@ -3244,7 +3321,7 @@
     "web_resources_result": {
       "caption": "Web Resources Result",
       "description": "The results of the activity on web resources. It should contain the new values of the changed attributes of the web resources.",
-      "is_array": true,      
+      "is_array": true,
       "type": "web_resource"
     },
     "x_forwarded_for": {

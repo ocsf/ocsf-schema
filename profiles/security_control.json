@@ -1,5 +1,5 @@
 {
-  "description": "The attributes that identify security controls such as malware or policy violations.",
+  "description": "The attributes reported by security solutions that represent detections, alerts or policy violations.",
   "meta": "profile",
   "caption": "Security Control",
   "name": "security_control",
@@ -16,8 +16,84 @@
     "disposition_id": {
       "requirement": "required"
     },
+    "firewall_rule": {
+      "requirement": "optional"
+    },
+    "is_alert": {
+      "description": "The security control considered the event alertable.",
+      "requirement": "optional"
+    },
     "malware": {
       "requirement": "optional"
+    },
+    "reason": {
+      "description": "The reason for the outcome, normalized to the caption of the reason_id value. In the case of 'Other', it is defined by the event source.",
+      "requirement": "optional"
+    },
+    "reason_id": {
+      "description": "The normalized identifier of the reason why the security control reported the disposition or the outcome.",
+      "enum":{
+        "0": {
+          "caption": "Unknown"
+        },
+        "1":{
+          "caption": "Malware Found"
+        },
+        "2":{
+          "caption": "Instrusion Detected"
+        },
+        "3":{
+          "caption": "Policy Violation"
+        },
+        "4":{
+          "caption": "Vulnerability"
+        },
+        "5":{
+          "caption": "Exposure"
+        },
+        "99":{
+          "caption": "Other"
+        }
+      },
+      "requirement": "recommended"
+    },
+    "sec_control_type": {
+      "description": "The type of security control solution that produced the event, normalized to the caption of the sec_control_type_id value. In the case of 'Other', it is defined by the event source.",
+      "requirement": "optional"
+    },
+    "sec_control_type_id": {
+      "description": "The normalized type of security control solution that produced the event.",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The type of security control is unknown."
+        },
+        "1": {
+          "caption": "Firewall",
+          "description": "The event was produced by a Firewall."
+        },
+        "2": {
+          "caption": "Email Service",
+          "description": "The event was produced by an Email Security solution."
+        },
+        "3": {
+          "caption": "Endpoint Security",
+          "description": "The event was produced by an Endpoint Security solution."
+        },
+        "4": {
+          "caption": "Gateway",
+          "description": "The event was produced by a Gateway or Proxy service."
+        },
+        "5":{
+          "caption": "DLP",
+          "description:": "The event was produced by a Data Loss Prevention solution."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The security control is not mapped."
+        }
+      },
+      "requirement": "required"
+      }
     }
   }
-}

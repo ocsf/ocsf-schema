@@ -1700,6 +1700,11 @@
       "description": "The IP address, in either IPv4 or IPv6 format.",
       "type": "ip_t"
     },
+    "is_alert": {
+      "caption": "Alertable event",
+      "description": "The the event is alertable. See specific usage.",
+      "type": "boolean_t"
+    },
     "is_cleartext": {
       "caption": "Cleartext Credentials",
       "description": "Indicates whether the credentials were passed in clear text.<p><b>Note:</b> True if the credentials were passed in a clear text protocol such as FTP or TELNET, or if Windows detected that a user's logon password was passed to the authentication package in clear text.</p>",
@@ -2496,6 +2501,18 @@
       "description": "The data describing the DNS resource. The meaning of this data depends on the type and class of the resource record.",
       "type": "string_t"
     },
+    "reason": {
+      "caption": "Reason",
+      "description": "The reason for the outcome, normalized to the caption of the reason_id value. In the case of 'Other', it is defined by the event source.",
+      "type": "string_t"
+    },
+    "reason_id": {
+      "caption": "Reason ID",
+      "description": "The normalized identifier of the reason why the security control reported the disposition or the outcome.",
+      "enum":{},
+      "sibling": "reason",
+      "type": "integer_t"
+    },
     "references": {
       "caption": "References",
       "description": "A list of reference URLs supporting the finding/detection.",
@@ -2763,6 +2780,16 @@
         }
       },
       "sibling": "score",
+      "type": "integer_t"
+    },
+    "sec_control_type": {
+      "description": "The type of security control solution that produced the event, normalized to the caption of the sec_control_type_id value. In the case of 'Other', it is defined by the event source.",
+      "type": "string_t"
+    },
+    "sec_control_type_id": {
+      "description": "The normalized type of security control solution that produced the event.",
+      "enum": {},
+      "sibling": "sec_control_type",
       "type": "integer_t"
     },
     "secure": {

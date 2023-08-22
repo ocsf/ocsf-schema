@@ -1,0 +1,30 @@
+{
+    "$id": "https://schema.ocsf.io/event.schema.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Event",
+    "allOf": [
+        {
+            "$ref": "object.schema.json"
+        },
+        {
+            "type": "object",
+            "properties": {
+                "category": {
+                    "type": "string",
+                    "description": "The category that the event belongs to.",
+                    "enum": ["system", "findings", "iam", "network", "discovery", "application", "other"]
+                },
+                "extends": {
+                    "type": "string",
+                    "description": "An event class that this one extends from."
+                },
+                "uid": {
+                    "type": "integer",
+                    "description": "A unique identifier for this event, must be unique within the category.",
+                    "minimum": 0
+                }
+            }
+        }
+    ]
+    
+}

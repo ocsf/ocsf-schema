@@ -1,0 +1,68 @@
+{
+    "$id": "https://schema.ocsf.io/object.schema.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Object",
+    "type": "object",
+    "required": [
+        "description",
+        "caption",
+        "name",
+        "attributes"
+    ],
+    "properties": {
+        "description": {
+          "type": "string",
+          "description": "A concise description of the object."
+        },
+        "caption": {
+          "type": "string",
+          "description": "A short, human friendly name for the object."
+        },
+        "name": {
+          "type": "string",
+          "description": "A name of the object. It must be a unique name. The name is all lower case letters, combine words using underscore.",
+          "pattern": "[a-z_]*"
+        },
+        "attributes": {
+            "type": "object",
+            "description": "A dictionary of attributes for the object.",
+            "properties": {
+                "$include": {
+                    "description": "A reference to another schema for attributes to include.",
+                    "oneOf": [
+                        {
+                            "type": "string",
+                            "format": "uri"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "format": "uri"
+                            }
+                        }
+                    ]
+                }
+            },
+            "additionalProperties": {
+                "type": "object",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the attribute."
+                    },
+                    "group": {
+                        "type": "string",
+                        "description": "The group that the attribute is a part of.",
+                        "enum": ["context", "classification", "occurrence", "primary"]
+                    },
+                    "requirement": {
+                        "type": "string",
+                        "description": "The requirement placed on the attribute for inclusion in the schema.",
+                        "enum": ["optional", "recommended", "required"]
+                    }
+                }
+            }
+        }
+    }
+}

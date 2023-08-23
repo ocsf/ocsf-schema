@@ -955,9 +955,9 @@
       "description": "The ISO 3166-1 Alpha-2 country code. For the complete list of country codes see <a target='_blank' href='https://www.iso.org/obp/ui/#iso:pub:PUB500001:en' >ISO 3166-1 alpha-2 codes</a>.<p><b>Note:</b> The two letter country code should be capitalized. For example: <code>US</code> or <code>CA</code>.</p>",
       "type": "string_t"
     },
-    "cpe": {
+    "cpe_name": {
       "caption": "The product CPE identifier",
-      "description": "The Common Platform Enumeration (CPE) name as described by (<a target='_blank' href='https://nvd.nist.gov/products/cpe'>NIST</a>).",
+      "description": "The Common Platform Enumeration (CPE) name as described by (<a target='_blank' href='https://nvd.nist.gov/products/cpe'>NIST</a>) For example: <code>cpe:/a:apple:safari:16.2</code>.",
       "type": "string_t"
     },
     "cpu_bits": {
@@ -1057,6 +1057,11 @@
       "caption": "Authorization Decision/Outcome",
       "description": "Decision/outcome of the authorization mechanism (e.g. Approved, Denied)",
       "type": "string_t"
+    },
+    "delay": {
+      "caption": "Root Delay",
+      "description": "The total round-trip delay to the reference clock in milliseconds.",
+      "type": "integer_t"
     },
     "deleted_time": {
       "caption": "Deleted Time",
@@ -1162,6 +1167,11 @@
       "sibling": "direction",
       "type": "integer_t"
     },
+    "dispersion": {
+      "caption": "Root Dispersion",
+      "description": "The dispersion in the NTP protocol is the estimated time error or uncertainty relative to the reference clock in milliseconds.",
+      "type": "integer_t"
+    },
     "disposition": {
       "caption": "Disposition",
       "description": "The event disposition name, normalized to the caption of the disposition_id value. In the case of 'Other', it is defined by the event source.",
@@ -1176,64 +1186,6 @@
         },
         "0": {
           "caption": "Unknown"
-        },
-        "1": {
-          "caption": "Allowed"
-        },
-        "2": {
-          "caption": "Blocked"
-        },
-        "3": {
-          "caption": "Quarantined"
-        },
-        "4": {
-          "caption": "Isolated"
-        },
-        "5": {
-          "caption": "Deleted"
-        },
-        "6": {
-          "caption": "Dropped"
-        },
-        "7": {
-          "caption": "Custom Action",
-          "description": "Executed custom action such as run a command script."
-        },
-        "8": {
-          "caption": "Approved"
-        },
-        "9": {
-          "caption": "Restored"
-        },
-        "10": {
-          "caption": "Exonerated",
-          "description": "No longer suspicious (re-scored)."
-        },
-        "11": {
-          "caption": "Corrected"
-        },
-        "12": {
-          "caption": "Partially Corrected"
-        },
-        "13": {
-          "caption": "Uncorrected"
-        },
-        "14": {
-          "caption": "Delayed",
-          "description": "Requires reboot to finish the operation."
-        },
-        "15": {
-          "caption": "Detected"
-        },
-        "16": {
-          "caption": "No Action"
-        },
-        "17": {
-          "caption": "Logged"
-        },
-        "18": {
-          "caption": "Tagged",
-          "description": "Marked with extended attributes."
         }
       },
       "sibling": "disposition",
@@ -1432,6 +1384,11 @@
       "caption": "First Seen",
       "description": "The initial detection time of the activity or object. See specific usage",
       "type": "timestamp_t"
+    },
+    "fixed_in_version": {
+      "caption": "Fixed In Version",
+      "description": "The software package version in which a reported vulnerability was patched/fixed.",
+      "type": "string_t"
     },
     "fix_available": {
       "caption": "Fix Availability",
@@ -1792,16 +1749,11 @@
       "description": "The user's job title.",
       "type": "string_t"
     },
-    "kb_article": {
-      "caption": "The KB Article object contains metadata that describes the patch or update.",
-      "description": "The KB article data related to the entity",
-      "type": "kb_article"
-    },
     "kb_articles": {
       "caption": "Knowledgebase Articles",
-      "description": "The KB article/s related to the entity",
+      "description": "The KB article/s related to the entity. A KB Article contains metadata that describes the patch or an update.",
       "is_array": true,
-      "type": "string_t"
+      "type": "kb_article"
     },
     "kernel": {
       "caption": "Kernel",
@@ -2365,6 +2317,11 @@
       "caption": "Postal Code",
       "description": "The postal code of the location.",
       "type": "string_t"
+    },
+    "precision": {
+      "caption": "Precision",
+      "description": "The numeric precision. See specific usage.",
+      "type":  "integer_t"
     },
     "priority": {
       "caption": "Priority",
@@ -2953,6 +2910,12 @@
       "description": "The URL pointing towards the source of an entity. See specific usage.",
       "type": "url_t"
     },
+    "standards":{
+      "caption": "Security Standards",
+      "description": "A list of security standards associated to a compliance finding.",
+      "is_array": true,
+      "type": "string_t"
+    },
     "start_address": {
       "caption": "Start Address",
       "description": "The start address of the execution.",
@@ -3017,6 +2980,42 @@
         }
       },
       "sibling": "status",
+      "type": "integer_t"
+    },
+    "stratum": {
+      "caption": "Stratum",
+      "description": "The stratum level of the NTP server's time source, normalized to the caption of the stratum_id value.",
+      "type": "string_t"
+    },
+    "stratum_id": {
+      "caption": "Stratum ID",
+      "description": "The normalized identifier of the stratum level, as defined in <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc5905.html'>RFC-5905</a>.",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description":  "Unspecified or invalid."
+        },
+        "1": {
+          "caption": "Primary Server",
+          "description": "The highest precision primary server (e.g atomic clock or GPS)."
+        },
+        "2": {
+          "caption": "Secondary Server",
+          "description": "A secondary level server (possible values: 2-15)."
+        },
+        "16": {
+          "caption": "Unsynchronized"
+        },
+        "17": {
+          "caption": "Reserved",
+          "description": "Reserved stratum (possible values: 17-255)."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The stratum level is not mapped. See the <code>stratum</code> attribute, which may contain a data source specific value."
+        }
+      },
+      "sibling": "stratum",
       "type": "integer_t"
     },
     "subdomain": {
@@ -3275,7 +3274,7 @@
     "web_resources_result": {
       "caption": "Web Resources Result",
       "description": "The results of the activity on web resources. It should contain the new values of the changed attributes of the web resources.",
-      "is_array": true,      
+      "is_array": true,
       "type": "web_resource"
     },
     "x_forwarded_for": {

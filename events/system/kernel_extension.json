@@ -6,7 +6,16 @@
   "description": "Kernel Extension events report when a driver/extension is loaded or unloaded into the kernel",
   "attributes": {
     "activity_id": {
-      "$include": "enums/kernel_extension_activity.json"
+      "enum": {
+        "1": {
+          "caption": "Load",
+          "description": "A driver/extension was loaded into the kernel"
+        },
+        "2": {
+          "caption": "Unload",
+          "description": "A driver/extension was unloaded (removed) from the kernel"
+        }
+      }
     },
     "actor": {
       "description": "The actor process that loaded or unloaded the driver/extension.",

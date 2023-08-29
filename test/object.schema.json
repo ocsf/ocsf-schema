@@ -21,7 +21,7 @@
         "name": {
           "type": "string",
           "description": "A name of the object. It must be a unique name. The name is all lower case letters, combine words using underscore.",
-          "pattern": "[a-z_]*"
+          "pattern": "^[a-z_]*$"
         },
         "attributes": {
             "type": "object",
@@ -32,13 +32,13 @@
                     "oneOf": [
                         {
                             "type": "string",
-                            "format": "uri"
+                            "format": "uri-reference"
                         },
                         {
                             "type": "array",
                             "items": {
                                 "type": "string",
-                                "format": "uri"
+                                "format": "uri-reference"
                             }
                         }
                     ]

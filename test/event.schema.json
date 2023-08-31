@@ -19,6 +19,44 @@
                         }
                     }
                 },
+                "attributes": {
+                    "type": "object",
+                    "description": "A dictionary of attributes for the event.",
+                    "properties": {
+                        "$include": {
+                            "description": "A reference to another schema for attributes to include.",
+                            "oneOf": [
+                                {
+                                    "type": "string",
+                                    "format": "uri-reference"
+                                },
+                                {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string",
+                                        "format": "uri-reference"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "additionalProperties": {
+                        "allOf": [
+                            {
+                                "$ref": "attribute.schema.json"
+                            }, 
+                            {
+                                "properties": {
+                                    "group": {
+                                        "type": "string",
+                                        "description": "The group that the attribute is a part of.",
+                                        "enum": ["context", "classification", "occurrence", "primary"]
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                },
                 "category": {
                     "type": "string",
                     "description": "The category that the event belongs to.",

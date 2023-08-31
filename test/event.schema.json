@@ -9,6 +9,16 @@
         {
             "type": "object",
             "properties": {
+                "associations": {
+                    "type": "object",
+                    "description": "Associations indicate attributes in a schema which 'go together'. For example, if a schema has multiple users and multiple endpoints, associations can indicate which user attribute goes with which endpoint.",
+                    "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
                 "category": {
                     "type": "string",
                     "description": "The category that the event belongs to.",
@@ -22,5 +32,6 @@
                 }
             }
         }
-    ]
+    ],
+    "unevaluatedProperties": false
 }

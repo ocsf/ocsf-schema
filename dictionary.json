@@ -34,6 +34,16 @@
       "description": "The account object describes details about the account that was the source or target of the activity.",
       "type": "account"
     },
+    "ack_reason": {
+      "caption": "Acknowledgement Reason",
+      "description": "An integer that provides a reason code or additional information about the acknowledgment result.",
+      "type": "integer_t"
+    },
+    "ack_result": {
+      "caption": "Acknowledgement Result",
+      "description": "An integer that denotes the acknowledgment result of the DCE/RPC call.",
+      "type": "integer_t"
+    },
     "activity_id": {
       "caption": "Activity ID",
       "description": "The normalized identifier of the activity that triggered the event.",
@@ -64,6 +74,12 @@
       "caption": "Actual Permissions",
       "description": "The permissions that were granted to the in a platform-native format.",
       "type": "integer_t"
+    },
+    "affected_packages": {
+      "caption": "Affected Software Packages",
+      "description": "List of software packages identified as affected by a vulnerability/vulnerabilities.",
+      "is_array": true,
+      "type": "affected_package"
     },
     "alert": {
       "caption": "Client TLS Alert",
@@ -101,8 +117,8 @@
       "type": "dns_answer"
     },
     "api": {
-      "caption": "API details",
-      "description": "API object details information pertaining to the API calls",
+      "caption": "API Details",
+      "description": "Describes details about a typical API (Application Programming Interface) call.",
       "type": "api"
     },
     "app": {
@@ -257,7 +273,7 @@
     },
     "boundary_id": {
       "caption": "Boundary ID",
-      "description": "The normalized identifier of the boundary of the connection. </p> For cloud connections, this translates to the traffic-boundary (same VPC, through IGW, etc.). For traditional networks, this is described as Local, Internal, or External.</p>",
+      "description": "<p>The normalized identifier of the boundary of the connection. </p><p> For cloud connections, this translates to the traffic-boundary (same VPC, through IGW, etc.). For traditional networks, this is described as Local, Internal, or External.</p>",
       "enum": {
         "99": {
           "caption": "Other"
@@ -317,6 +333,11 @@
     "build": {
       "caption": "OS Build",
       "description": "The operating system build number.",
+      "type": "string_t"
+    },
+    "bulletin": {
+      "caption": "Patch Bulletin",
+      "description": "The vendor bulletin identfier.",
       "type": "string_t"
     },
     "bytes": {
@@ -675,9 +696,20 @@
       "description": "The CIS benchmark result.",
       "type": "cis_benchmark_result"
     },
+    "cis_benchmark": {
+      "caption": "CIS Benchmark",
+      "description": "The CIS Benchmark describes best practices for securely configuring IT systems, software, networks, and cloud infrastructure as defined by the Center for Internet Security (<a target='_blank' href='https://www.cisecurity.org/cis-benchmarks/'>CIS</a>).",
+      "type": "cis_benchmark"
+    },
     "cis_csc": {
       "caption": "CIS CSC",
       "description": "The CIS Critical Security Controls is a list of top 20 actions and practices an organization’s security team can take on such that cyber attacks or malware, are minimized and prevented.",
+      "is_array": true,
+      "type": "cis_csc"
+    },
+    "cis_controls": {
+      "caption": "CIS Controls",
+      "description": "The CIS Critical Security Controls is a prioritized set of actions to protect your organization and data from cyber-attack vectors.",
       "is_array": true,
       "type": "cis_control"
     },
@@ -710,6 +742,11 @@
       "is_array": true,
       "sibling": "classifications",
       "type": "integer_t"
+    },
+    "classification": {
+      "caption": "Classification",
+      "description": "The classification as defined by the vendor.",
+      "type": "string_t"
     },
     "classifications": {
       "caption": "Classifications",
@@ -798,7 +835,7 @@
     },
     "component": {
       "caption": "Component",
-      "description": "The name or relative pathname of a sub-component of the data object, if applicable. </p>For example: <code>attachment.doc</code>, <code>attachment.zip/bad.doc</code>, or <code>part.mime/part.cab/part.uue/part.doc</code>.",
+      "description": "<p>The name or relative pathname of a sub-component of the data object, if applicable. </p>For example: <code>attachment.doc</code>, <code>attachment.zip/bad.doc</code>, or <code>part.mime/part.cab/part.uue/part.doc</code>.",
       "type": "string_t"
     },
     "confidence": {
@@ -881,6 +918,12 @@
       "description": "The information describing an instance of a container. A container is a prepackaged, portable system image that runs isolated on an existing system using a container runtime like containerd.",
       "type": "container"
     },
+    "containers": {
+      "caption": "Containers",
+      "description": "When working with containerized applications, the set of containers which write to the standard the output of a particular logging driver. For example, this may be the set of containers involved in handling api requests and responses for a containerized application.",
+      "is_array": true,
+      "type": "container"
+    },
     "content_type": {
       "caption": "HTTP Content Type",
       "description": "The request header that identifies the original <a target='_blank' href='https://www.iana.org/assignments/media-types/media-types.xhtml'>media type </a> of the resource (prior to any content encoding applied for sending).",
@@ -907,6 +950,11 @@
       "description": "The unique identifier used to correlate events.",
       "type": "string_t"
     },
+    "cost_center": {
+      "caption": "Cost Center",
+      "description": "The cost center associated with the user.",
+      "type": "string_t"
+    },
     "count": {
       "caption": "Count",
       "default": 1,
@@ -916,6 +964,11 @@
     "country": {
       "caption": "Country",
       "description": "The ISO 3166-1 Alpha-2 country code. For the complete list of country codes see <a target='_blank' href='https://www.iso.org/obp/ui/#iso:pub:PUB500001:en' >ISO 3166-1 alpha-2 codes</a>.<p><b>Note:</b> The two letter country code should be capitalized. For example: <code>US</code> or <code>CA</code>.</p>",
+      "type": "string_t"
+    },
+    "cpe_name": {
+      "caption": "The product CPE identifier",
+      "description": "The Common Platform Enumeration (CPE) name as described by (<a target='_blank' href='https://nvd.nist.gov/products/cpe'>NIST</a>) For example: <code>cpe:/a:apple:safari:16.2</code>.",
       "type": "string_t"
     },
     "cpu_bits": {
@@ -987,17 +1040,13 @@
     "cvss": {
       "caption": "CVSS Score",
       "description": "The CVSS object details Common Vulnerability Scoring System (<a target='_blank' href='https://www.first.org/cvss/'>CVSS</a>) scores from the advisory that are related to the vulnerability.",
+      "is_array": true,
       "type": "cvss"
     },
-    "cwe_uid": {
-      "caption": "CWE UID",
-      "description": "The <a target='_blank' href='https://cwe.mitre.org/'>Common Weakness Enumeration (CWE)</a> unique identifier. For example: <code>CWE-787</code>.",
-      "type": "string_t"
-    },
-    "cwe_url": {
-      "caption": "CWE URL",
-      "description": "Common Weakness Enumeration (CWE) definition URL. For example: <code>https://cwe.mitre.org/data/definitions/787.html</code>.",
-      "type": "url_t"
+    "cwe": {
+      "caption": "CWE",
+      "description": "The CWE object represents a weakness in a software system that can be exploited by a threat actor to perform an attack. The CWE object is based on the <a target='_blank' href='https://cwe.mitre.org/'>Common Weakness Enumeration (CWE)</a> catalog.",
+      "type": "cwe"
     },
     "data": {
       "caption": "Data",
@@ -1019,6 +1068,16 @@
       "caption": "Authorization Decision/Outcome",
       "description": "Decision/outcome of the authorization mechanism (e.g. Approved, Denied)",
       "type": "string_t"
+    },
+    "delay": {
+      "caption": "Root Delay",
+      "description": "The total round-trip delay to the reference clock in milliseconds.",
+      "type": "integer_t"
+    },
+    "deleted_time": {
+      "caption": "Deleted Time",
+      "description": "The timestamp when the user was deleted. In Active Directory (AD), when a user is deleted they are moved to a temporary container and then removed after 30 days. So, this field can be populated even after a user is deleted for the next 30 days.",
+      "type": "timestamp_t"
     },
     "delivered_to": {
       "caption": "Delivered To",
@@ -1119,6 +1178,11 @@
       "sibling": "direction",
       "type": "integer_t"
     },
+    "dispersion": {
+      "caption": "Root Dispersion",
+      "description": "The dispersion in the NTP protocol is the estimated time error or uncertainty relative to the reference clock in milliseconds.",
+      "type": "integer_t"
+    },
     "disposition": {
       "caption": "Disposition",
       "description": "The event disposition name, normalized to the caption of the disposition_id value. In the case of 'Other', it is defined by the event source.",
@@ -1133,64 +1197,6 @@
         },
         "0": {
           "caption": "Unknown"
-        },
-        "1": {
-          "caption": "Allowed"
-        },
-        "2": {
-          "caption": "Blocked"
-        },
-        "3": {
-          "caption": "Quarantined"
-        },
-        "4": {
-          "caption": "Isolated"
-        },
-        "5": {
-          "caption": "Deleted"
-        },
-        "6": {
-          "caption": "Dropped"
-        },
-        "7": {
-          "caption": "Custom Action",
-          "description": "Executed custom action such as run a command script."
-        },
-        "8": {
-          "caption": "Approved"
-        },
-        "9": {
-          "caption": "Restored"
-        },
-        "10": {
-          "caption": "Exonerated",
-          "description": "No longer suspicious (re-scored)."
-        },
-        "11": {
-          "caption": "Corrected"
-        },
-        "12": {
-          "caption": "Partially Corrected"
-        },
-        "13": {
-          "caption": "Uncorrected"
-        },
-        "14": {
-          "caption": "Delayed",
-          "description": "Requires reboot to finish the operation."
-        },
-        "15": {
-          "caption": "Detected"
-        },
-        "16": {
-          "caption": "No Action"
-        },
-        "17": {
-          "caption": "Logged"
-        },
-        "18": {
-          "caption": "Tagged",
-          "description": "Marked with extended attributes."
         }
       },
       "sibling": "disposition",
@@ -1258,8 +1264,14 @@
     },
     "email_addr": {
       "caption": "Email Address",
-      "description": "The user's email address.",
+      "description": "The user's primary email address.",
       "type": "email_t"
+    },
+    "email_addresses": {
+      "caption": "Email Addresses",
+      "description": "A list of additional email addresses for the user.",
+      "type": "email_t",
+      "is_array": true
     },
     "email_auth": {
       "caption": "Email Authentication",
@@ -1269,6 +1281,11 @@
     "email_uid": {
       "caption": "Email UID",
       "description": "The unique identifier of the email, used to correlate related email alert and activity events.",
+      "type": "string_t"
+    },
+    "employee_uid": {
+      "caption": "Employee ID",
+      "description": "The employee identifier assigned to the user by the organization.",
       "type": "string_t"
     },
     "end_time": {
@@ -1296,6 +1313,11 @@
       "caption": "Epoch",
       "description": "The software package epoch. Epoch is a way to define weighted dependencies based on version numbers.",
       "type": "integer_t"
+    },
+    "epss": {
+      "caption": "EPSS",
+      "description": "The Exploit Prediction Scoring System (EPSS) object describes the estimated probability a vulnerability will be exploited. EPSS is a community-driven effort to combine descriptive information about vulnerabilities (CVEs) with evidence of actual exploitation in-the-wild. (<a target='_blank' href='https://www.first.org/epss/'>EPSS</a>).",
+      "type": "epss"
     },
     "error": {
       "caption": "Error Code",
@@ -1360,7 +1382,7 @@
     },
     "finding": {
       "caption": "Finding",
-      "description": "Finding object provides details related to a finding generated by security tool",
+      "description": "The Finding object provides details about a finding/detection generated by a security tool.",
       "type": "finding"
     },
     "fingerprint": {
@@ -1378,6 +1400,11 @@
       "caption": "First Seen",
       "description": "The initial detection time of the activity or object. See specific usage",
       "type": "timestamp_t"
+    },
+    "fixed_in_version": {
+      "caption": "Fixed In Version",
+      "description": "The software package version in which a reported vulnerability was patched/fixed.",
+      "type": "string_t"
     },
     "fix_available": {
       "caption": "Fix Availability",
@@ -1423,6 +1450,11 @@
       "description": "The entry-point function of the module. The system calls the entry-point function whenever a process or thread loads or unloads the module.",
       "type": "string_t"
     },
+    "given_name": {
+      "caption": "Given Name",
+      "description": "The given or first name of the user.",
+      "type": "string_t"
+    },
     "group": {
       "caption": "Group",
       "description": "The group object associated with an entity such as user, policy, or rule.",
@@ -1454,6 +1486,11 @@
       "description": "An array of hash attributes.",
       "is_array": true,
       "type": "fingerprint"
+    },
+    "hire_datetime": {
+      "caption": "Hire Date",
+      "description": "The datetime when the user was/will be hired",
+      "type": "datetime_t"
     },
     "hostname": {
       "caption": "Hostname",
@@ -1722,11 +1759,17 @@
       "description": "The job object that pertains to the event.",
       "type": "job"
     },
+    "job_title": {
+      "caption": "Job Title",
+      "group": "context",
+      "description": "The user's job title.",
+      "type": "string_t"
+    },
     "kb_articles": {
       "caption": "Knowledgebase Articles",
-      "description": "The KB article/s related to the entity",
+      "description": "The KB article/s related to the entity. A KB Article contains metadata that describes the patch or an update.",
       "is_array": true,
-      "type": "string_t"
+      "type": "kb_article"
     },
     "kernel": {
       "caption": "Kernel",
@@ -1775,6 +1818,11 @@
       "description": "The two letter lower case language codes, as defined by <a target='_blank' href='https://en.wikipedia.org/wiki/ISO_639-1'>ISO 639-1</a>. For example: <code>en</code> (English), <code>de</code> (German), or <code>fr</code> (French).",
       "type": "string_t"
     },
+    "last_login_time": {
+      "caption": "Last Login",
+      "description": "The last time when the user logged in. This is usually populated by <code>user_inventory</code> events where a collection method provides this account information. It may not be populated in other event types and doesn't need populated in those cases.",
+      "type": "timestamp_t"
+    },
     "last_run_time": {
       "caption": "Last Run",
       "description": "The last run time of application or service. See specific usage.",
@@ -1790,10 +1838,25 @@
       "description": "TODO: The HTTP response latency. In seconds, milliseconds, etc.?",
       "type": "integer_t"
     },
+    "ldap_cn": {
+      "caption": "LDAP Common Name",
+      "description": "The LDAP and X.500 commonName attribute, from RFC4517: 'typically the full name of the person.'",
+      "type": "string_t"
+    },
+    "ldap_dn": {
+      "caption": "LDAP Distinguished Name",
+      "description": "The LDAP distinguished name , from RFC4517",
+      "type": "string_t"
+    },
     "lease_dur": {
       "caption": "Lease Duration",
       "description": "This represents the length of the DHCP lease in seconds. This is present in DHCP Ack events. (activity_id = 1)",
       "type": "integer_t"
+    },
+    "leave_datetime": {
+      "caption": "Leave Date",
+      "description": "The datetime when the user left/will be leaving the organization",
+      "type": "datetime_t"
     },
     "length": {
       "caption": "Response Length",
@@ -1834,6 +1897,11 @@
       "description": "The detailed geographical location usually associated with an IP address.",
       "type": "location"
     },
+    "log_level": {
+      "caption": "Log Level",
+      "description": "The audit level at which an event was generated.",
+      "type": "string_t"
+    },
     "log_name": {
       "caption": "Log Name",
       "description": "The event log name. For example, syslog file name or Windows logging subsystem: Security.",
@@ -1851,7 +1919,7 @@
     },
     "logged_time": {
       "caption": "Logged Time",
-      "description": "The time when the logging system collected and logged the event.</p>This attribute is distinct from the event time in that event time typically contain the time extracted from the original event. Most of the time, these two times will be different.",
+      "description": "<p>The time when the logging system collected and logged the event.</p>This attribute is distinct from the event time in that event time typically contain the time extracted from the original event. Most of the time, these two times will be different.",
       "type": "timestamp_t"
     },
     "logon_process": {
@@ -1935,6 +2003,11 @@
       "is_array": true,
       "type": "malware"
     },
+    "manager": {
+      "caption": "Manager",
+      "description": "The user's manager. This helps in understanding an org hierarchy. This should only ever be populated once in an event. I.e. there should not be a manager's manager in an event.",
+      "type": "user"
+    },
     "message": {
       "caption": "Message",
       "description": "The description of the event, as defined by the event source.",
@@ -1983,7 +2056,7 @@
     },
     "namespace": {
       "caption": "Namespace",
-      "description": "The namespace is useful in merger or acquisition situations. For example, when similar entities exists that you need to keep separate.",
+      "description": "The namespace is useful in merger or acquisition situations. For example, when similar entities exist that you need to keep separate.",
       "type": "string_t"
     },
     "namespace_pid": {
@@ -1998,7 +2071,7 @@
     },
     "network_interfaces": {
       "caption": "Network Interfaces",
-      "description": "The network interfaces that are associated with the device, one for each MAC address/IP address combination.<p><b>Note:</b> The first element of the array is the network information that pertains to the event.</p>",
+      "description": "The network interfaces that are associated with the device, one for each unique MAC address/IP address/hostname/name combination.<p><b>Note:</b> The first element of the array is the network information that pertains to the event.</p>",
       "is_array": true,
       "type": "network_interface"
     },
@@ -2018,6 +2091,11 @@
       "description": "The observables associated with the event.",
       "is_array": true,
       "type": "observable"
+    },
+    "office_location": {
+      "caption": "Office Location",
+      "description": "The primary office location associated with the user. This could be any string and isn't a specific address. For example, <code>South East Virtual</code>.",
+      "type": "string_t"
     },
     "opcode": {
       "caption": "DNS Opcode",
@@ -2119,11 +2197,15 @@
       "description": "The user that owns the file/object.",
       "type": "user"
     },
-    "packages": {
+    "package": {
       "caption": "Software Packages",
-      "description": "List of vulnerable packages as identified by the security product",
-      "is_array": true,
+      "description": "The Software Package object describes details about a software package. Defined by D3FEND <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:SoftwarePackage/'>d3f:SoftwarePackage</a>.",
       "type": "package"
+    },
+    "package_manager": {
+      "caption": "Package Manager",
+      "description": "The software packager manager utilized to manage a package on a system, e.g. npm, yum, dpkg etc.",
+      "type": "string_t"
     },
     "packet_uid": {
       "caption": "Packet UID",
@@ -2216,6 +2298,12 @@
       "type": "integer_t",
       "sibling": "phase"
     },
+    "phones": {
+      "caption": "Phones",
+      "description": "The phone numbers associated with the user",
+      "type": "string_t",
+      "is_array": true
+    },
     "physical_height": {
       "caption": "Physical Height",
       "description": "The numeric physical height of display.",
@@ -2255,6 +2343,11 @@
       "caption": "Postal Code",
       "description": "The postal code of the location.",
       "type": "string_t"
+    },
+    "precision": {
+      "caption": "Precision",
+      "description": "The numeric precision. See specific usage.",
+      "type":  "integer_t"
     },
     "priority": {
       "caption": "Priority",
@@ -2334,8 +2427,38 @@
     },
     "proxy": {
       "caption": "Proxy",
-      "description": "If a proxy connection is present, the connection from the client to the proxy server.",
+      "description": "The proxy (server) in a network connection.",
       "type": "network_proxy"
+    },
+    "purl":{
+      "caption": "Package URL",
+      "description": "A purl is a URL string used to identify and locate a software package in a mostly universal and uniform way across programing languages, package managers, packaging conventions, tools, APIs and databases.",
+      "type": "string_t"
+    },
+    "proxy_connection_info": {
+      "caption": "Proxy Connection Info",
+      "description": "The connection information from the proxy server to the remote server.",
+      "type": "network_connection_info"
+    },
+    "proxy_http_request": {
+      "caption": "Proxy HTTP Request",
+      "description": "The HTTP Request from the proxy server to the remote server.",
+      "type": "http_request"
+    },
+    "proxy_http_response": {
+      "caption": "Proxy HTTP Response",
+      "description": "The HTTP Response from the remote server to the proxy server.",
+      "type": "http_response"
+    },
+    "proxy_tls": {
+      "caption": "Proxy TLS",
+      "description": "The TLS protocol negotiated between the proxy server and the remote server.",
+      "type": "tls"
+    },
+    "proxy_traffic": {
+      "caption": "Proxy Traffic",
+      "description": "The network traffic refers to the amount of data moving across a network, from proxy to remote server at a given point of time.",
+      "type": "network_traffic"
     },
     "query": {
       "caption": "DNS Query",
@@ -2394,7 +2517,7 @@
     },
     "references": {
       "caption": "References",
-      "description": "Supporting reference URLs",
+      "description": "A list of reference URLs supporting the finding/detection.",
       "is_array": true,
       "type": "string_t"
     },
@@ -2542,10 +2665,20 @@
       "description": "The risk score as reported by the event source.",
       "type": "integer_t"
     },
+    "rpc_interface": {
+      "caption": "Remote Procedure Call Interface",
+      "description": "The RPC Interface object describes the details pertaining to the remote procedure call interface.",
+      "type": "rpc_interface"
+    },
     "rule": {
       "caption": "Rule",
       "description": "The rules that reported the events.",
       "type": "rule"
+    },
+    "firewall_rule": {
+      "caption": "Firewall Rule",
+      "description": "The firewall rules that triggered the events.",
+      "type": "firewall_rule"
     },
     "run_state": {
       "caption": "Run State",
@@ -2699,7 +2832,7 @@
     },
     "severity_id": {
       "caption": "Severity ID",
-      "description": "The normalized identifier of the event severity.</p>The normalized severity is a measurement the effort and expense required to manage and resolve an event or incident. Smaller numerical values represent lower impact events, and larger numerical values represent higher impact events.",
+      "description": "<p>The normalized identifier of the event severity.</p>The normalized severity is a measurement the effort and expense required to manage and resolve an event or incident. Smaller numerical values represent lower impact events, and larger numerical values represent higher impact events.",
       "enum": {
         "99": {
           "caption": "Other",
@@ -2828,6 +2961,12 @@
       "description": "The URL pointing towards the source of an entity. See specific usage.",
       "type": "url_t"
     },
+    "standards":{
+      "caption": "Security Standards",
+      "description": "A list of security standards associated to a compliance finding.",
+      "is_array": true,
+      "type": "string_t"
+    },
     "start_address": {
       "caption": "Start Address",
       "description": "The start address of the execution.",
@@ -2894,6 +3033,42 @@
       "sibling": "status",
       "type": "integer_t"
     },
+    "stratum": {
+      "caption": "Stratum",
+      "description": "The stratum level of the NTP server's time source, normalized to the caption of the stratum_id value.",
+      "type": "string_t"
+    },
+    "stratum_id": {
+      "caption": "Stratum ID",
+      "description": "The normalized identifier of the stratum level, as defined in <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc5905.html'>RFC-5905</a>.",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description":  "Unspecified or invalid."
+        },
+        "1": {
+          "caption": "Primary Server",
+          "description": "The highest precision primary server (e.g atomic clock or GPS)."
+        },
+        "2": {
+          "caption": "Secondary Server",
+          "description": "A secondary level server (possible values: 2-15)."
+        },
+        "16": {
+          "caption": "Unsynchronized"
+        },
+        "17": {
+          "caption": "Reserved",
+          "description": "Reserved stratum (possible values: 17-255)."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The stratum level is not mapped. See the <code>stratum</code> attribute, which may contain a data source specific value."
+        }
+      },
+      "sibling": "stratum",
+      "type": "integer_t"
+    },
     "subdomain": {
       "caption": "Subdomain",
       "description": "The subdomain portion of the URL. For example: <code>sub</code> in <code>https://sub.example.com</code> or <code>sub2.sub1</code> in <code>https://sub2.sub1.example.com</code>.",
@@ -2909,15 +3084,25 @@
       "description": "The subnet mask.",
       "type": "subnet_t"
     },
+    "subnet_prefix": {
+      "caption": "Subnet Prefix Length",
+      "description": "The subnet prefix length determines the number of bits used to represent the network part of the IP address. The remaining bits are reserved for identifying individual hosts within that subnet.",
+      "type": "integer_t"
+    },
     "subnet_uid": {
       "caption": "Subnet UID",
       "description": "The unique identifier of a virtual subnet.",
       "type": "string_t"
     },
-    "supporting_data": {
-      "caption": "Supporting Data",
-      "description": "Additional data supporting a finding as provided by security tool",
-      "type": "json_t"
+    "superseded": {
+      "caption": "The patch is superseded.",
+      "description": "The vendor patch has been replaced by another.",
+      "type": "boolean_t"
+    },
+    "surname": {
+      "caption": "Surname",
+      "description": "The last or family name for the user.",
+      "type": "string_t"
     },
     "svc_name": {
       "caption": "Service Name",
@@ -3067,7 +3252,7 @@
     },
     "url_string": {
       "caption": "URL String",
-      "description": "The URL string.  See RFC 1738. For example: <code>http://www.example.com/download/trouble.exe</code>.",
+      "description": "The URL string. See RFC 1738. For example: <code>http://www.example.com/download/trouble.exe</code>.",
       "type": "url_t"
     },
     "user": {
@@ -3140,7 +3325,7 @@
     "web_resources_result": {
       "caption": "Web Resources Result",
       "description": "The results of the activity on web resources. It should contain the new values of the changed attributes of the web resources.",
-      "is_array": true,      
+      "is_array": true,
       "type": "web_resource"
     },
     "x_forwarded_for": {
@@ -3164,6 +3349,32 @@
       "caption": "Network Zone",
       "description": "The network zone or LAN segment.",
       "type": "string_t"
+    },
+    "condition": {
+      "caption": "Condition",
+      "description": "The rule trigger condition for the rule. For example: SQL_INJECTION.",
+      "type": "string_t"
+    },
+    "sensitivity": {
+      "caption": "Sensitivity",
+      "description": "The sensitivity of the firewall rule in the matched event. For example: HIGH.",
+      "type": "string_t"
+    },
+    "match_location": {
+      "caption": "Match Location",
+      "description": "The location of the matched data in the source which resulted in the triggered firewall rule. For example: HEADER.",
+      "type": "string_t"
+    },
+    "match_details": {
+      "caption": "Match Details",
+      "description": "The data in a request that rule matched. For example: '[\"10\",\"and\",\"1\"]'.",
+      "is_array": true,
+      "type": "string_t"
+    },
+    "rate_limit": {
+      "caption": "Rate Limit",
+      "description": "The rate limit for a rate-based rule.",
+      "type": "integer_t"
     }
   },
   "types": {
@@ -3187,7 +3398,7 @@
       "datetime_t": {
         "caption": "Datetime",
         "description": "The Internet Date/Time format as defined in <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc3339.html'>RFC-3339</a>. For example <code>1985-04-12T23:20:50.52Z</code>.",
-        "regex": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}%3A\\d{2}(?:.\\d+)?[A-Z]?(?:[.-](?:08:\\d{2}|\\d{2}[A-Z]))?$",
+        "regex": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(Z|[\\+-]\\d{2}:\\d{2})?$",
         "type": "string_t",
         "type_name": "String"
       },
@@ -3204,6 +3415,7 @@
         "description": "File hash. A unique value that corresponds to the content of the file.",
         "max_len": 64,
         "observable": 8,
+        "type": "string_t",
         "type_name": "String"
       },
       "file_name_t": {

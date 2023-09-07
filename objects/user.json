@@ -1,9 +1,12 @@
 {
-  "observable": 21,
   "caption": "User",
   "description": "The User object describes the characteristics of a user/person or a security principal. Defined by D3FEND <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:UserAccount/'>d3f:UserAccount</a>.",
   "extends": "_entity",
   "name": "user",
+  "observable": 21,
+  "profiles": [
+    "person"
+  ],
   "attributes": {
     "$include": "profiles/person.json",
     "account": {
@@ -41,7 +44,6 @@
     },
     "type_id": {
       "description": "The account type identifier.",
-      "requirement": "required",
       "enum": {
         "0": {
           "caption": "Unknown"
@@ -61,7 +63,8 @@
         "99": {
           "caption": "Other"
         }
-      }
+      },
+      "requirement": "required"
     },
     "uid": {
       "description": "The unique user identifier. For example, the Windows user SID, ActiveDirectory DN or AWS user ARN."

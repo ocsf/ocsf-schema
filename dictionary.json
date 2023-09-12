@@ -2206,8 +2206,18 @@
       "type": "user"
     },
     "package": {
-      "caption": "Software Packages",
+      "caption": "Software Package",
       "description": "The Software Package object describes details about a software package. Defined by D3FEND <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:SoftwarePackage/'>d3f:SoftwarePackage</a>.",
+      "type": "package"
+    },
+    "packages": {
+      "@deprecated": {
+        "message": "Use the <code> affected_packages </code> attribute instead.",
+        "since": "v1.0.0"
+      },
+      "caption": "Software Packages",
+      "description": "List of vulnerable packages as identified by the security product",
+      "is_array": true,
       "type": "package"
     },
     "package_manager": {
@@ -3101,6 +3111,11 @@
       "caption": "Subnet UID",
       "description": "The unique identifier of a virtual subnet.",
       "type": "string_t"
+    },
+    "supporting_data": {
+      "caption": "Supporting Data",
+      "description": "Additional data supporting a finding as provided by security tool",
+      "type": "json_t"
     },
     "superseded": {
       "caption": "The patch is superseded.",

@@ -1935,6 +1935,12 @@
       "description": "<p>The time when the logging system collected and logged the event.</p>This attribute is distinct from the event time in that event time typically contain the time extracted from the original event. Most of the time, these two times will be different.",
       "type": "timestamp_t"
     },
+    "loggers": {
+      "caption": "Loggers",
+      "description": "An array of Logger objects that describe the devices and logging products between the event source and its eventual destination. Note, this attribute can be used when there is a complex end-to-end path of event flow.",
+      "is_array": "true",
+      "type": "logger"
+    },
     "logon_process": {
       "caption": "Logon Process",
       "description": "The trusted process that validated the authentication credentials.",
@@ -3208,6 +3214,11 @@
       "caption": "Transaction UID",
       "description": "The unique identifier of the transaction.",
       "type": "string_t"
+    },
+    "transmit_time": {
+      "caption": "Transmission Time",
+      "description": "The event transmission time from one device to another.  See specific usage",
+      "type": "timestamp_t"
     },
     "tree_uid": {
       "caption": "Tree UID",

@@ -1,8 +1,8 @@
 {
   "caption": "Module",
-  "name": "module",
-  "description": "The module object describes the load attributes of a module.",
+  "description": "The Module object describes the load attributes of a module.",
   "extends": "object",
+  "name": "module",
   "attributes": {
     "base_address": {
       "requirement": "recommended"
@@ -18,35 +18,35 @@
       "requirement": "optional"
     },
     "load_type_id": {
+      "requirement": "required",
       "enum": {
         "0": {
           "caption": "Unknown"
         },
         "1": {
-          "description": "A normal module loaded by the normal windows loading mechanism i.e. LoadLibrary.",
-          "caption": "Standard"
+          "caption": "Standard",
+          "description": "A normal module loaded by the normal windows loading mechanism i.e. LoadLibrary."
         },
         "2": {
-          "description": "A module loaded in a way avoidant of normal windows procedures. i.e. Bootstrapped Loading/Manual Dll Loading.",
-          "caption": "Non Standard"
+          "caption": "Non Standard",
+          "description": "A module loaded in a way avoidant of normal windows procedures. i.e. Bootstrapped Loading/Manual Dll Loading."
         },
         "3": {
-          "description": "A raw module in process memory that is READWRITE_EXECUTE and had a thread started in its range.",
-          "caption": "ShellCode"
+          "caption": "ShellCode",
+          "description": "A raw module in process memory that is READWRITE_EXECUTE and had a thread started in its range."
         },
         "4": {
-          "description": "A memory mapped file, typically created with CreatefileMapping/MapViewOfFile.",
-          "caption": "Mapped"
+          "caption": "Mapped",
+          "description": "A memory mapped file, typically created with CreatefileMapping/MapViewOfFile."
         },
         "5": {
-          "description": "A module loaded in a non standard way. However, GetModuleFileName succeeds on this allocation.",
-          "caption": "NonStandard Backed"
+          "caption": "NonStandard Backed",
+          "description": "A module loaded in a non standard way. However, GetModuleFileName succeeds on this allocation."
         },
         "99": {
           "caption": "Other"
         }
-      },
-      "requirement": "required"
+      }
     },
     "start_address": {
       "requirement": "recommended"
@@ -57,4 +57,3 @@
     }
   }
 }
-

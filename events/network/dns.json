@@ -6,7 +6,16 @@
   "name": "dns_activity",
   "attributes": {
     "activity_id": {
-      "$include": "enums/dns_activity.json"
+      "enum": {
+        "1": {
+          "caption": "Query",
+          "description": "The DNS query request."
+        },
+        "2": {
+          "caption": "Response",
+          "description": "The DNS query response."
+        }
+      }
     },
     "answers": {
       "group": "primary",
@@ -14,10 +23,6 @@
     },
     "connection_info": {
       "group": "context",
-      "requirement": "optional"
-    },
-    "proxy": {
-      "group": "primary",
       "requirement": "optional"
     },
     "query": {

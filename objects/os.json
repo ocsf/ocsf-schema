@@ -1,17 +1,20 @@
 {
-  "caption": "OS",
-  "name": "os",
-  "description": "The OS object describes an operating system, such as Linux or Windows. Defined by D3FEND <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:OperatingSystem/'>d3f:OperatingSystem</a>.",
+  "caption": "Operating System (OS)",
+  "description": "The Operating System (OS) object describes characteristics of an OS, such as Linux or Windows. Defined by D3FEND <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:OperatingSystem/'>d3f:OperatingSystem</a>.",
   "extends": "object",
+  "name": "os",
   "attributes": {
-    "cpu_bits": {
-      "requirement": "optional"
-    },
     "build": {
       "requirement": "optional"
     },
     "country": {
       "description": "The operating system country code, as defined by the ISO 3166-1 standard (Alpha-2 code). For the complete list of country codes, see <a target='_blank' href='https://www.iso.org/obp/ui/#iso:pub:PUB500001:en'>ISO 3166-1 alpha-2 codes</a>.",
+      "requirement": "optional"
+    },
+    "cpe_name": {
+      "requirement": "optional"
+    },
+    "cpu_bits": {
       "requirement": "optional"
     },
     "edition": {
@@ -36,6 +39,7 @@
     },
     "type_id": {
       "description": "The type identifier of the operating system.",
+      "requirement": "required",
       "enum": {
         "100": {
           "caption": "Windows"
@@ -67,8 +71,7 @@
         "402": {
           "caption": "HP-UX"
         }
-      },
-      "requirement": "required"
+      }
     },
     "version": {
       "description": "The version of the OS running on the device that originated the event. For example: \"Windows 10\", \"OS X 10.7\", or \"iOS 9\".",

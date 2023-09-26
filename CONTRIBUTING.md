@@ -25,6 +25,7 @@ More details about OCSF concepts, terminology and use-cases can be found in [Und
 ### In brief -
 
 1. Determine all the `attributes` (including fields and objects) you would want to add in the `event_class`
+    1. `$include` → If you are including attributes from other places, specify an attribute called `$include` and give its value as the list of files (relative to the root of the repository) that should contribute their attributes to this event class.
 2. Check the [dictionary](https://github.com/ocsf/ocsf-schema/blob/main/dictionary.json) and the [/objects](https://github.com/ocsf/ocsf-schema/tree/main/objects) folder, many of your desired attributes may already be present.
 3. Define the missing attributes → [Adding/Modifying an `attribute`](#addingmodifying-an-attribute)
 4. Determine which category you would want to add your event_class in, note it’s  `name`
@@ -101,6 +102,7 @@ An example `vulnerability.json` object file,
 7. `name` → Add a **unique** name of the object. `name` must match the filename of the actual `.json` file.
 8.  `attributes` → Add the attributes that you want to define in the object, 
     1. `requirement` →  For each attribute ensure you add a requirement value. Valid values are `optional`, `required`, `recommended` 
+    2. `$include` → If you are including attributes from other places, specify the list of files (relative to the root of the repository) that should contribute their attributes to this object.
 
 **Note:** If you want to create an object which would act only as a base for other objects, you must prefix the object `name` and the actual `json` filename with an `_`. The resultant object will not be visible in the [OCSF Server.](https://schema.ocsf.io/1.0.0-rc.2/objects) For example, take a look at the [entity](https://github.com/ocsf/ocsf-schema/blob/main/objects/_entity.json) object. 
 

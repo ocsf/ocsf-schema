@@ -1,22 +1,21 @@
 {
-  "caption": "Uniform Resource Locator",
   "observable": 23,
-  "name": "url",
-  "description": "The Uniform Resource Locator (URL) object describes the path and category of a URL. See RFC 1738.  Defined by D3FEND <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:URL/'>d3f:URL</a>.",
+  "caption": "Uniform Resource Locator",
+  "description": "The Uniform Resource Locator(URL) object describes the characteristics of a URL. Defined in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc1738'>RFC 1738</a> and by D3FEND <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:URL/'>d3f:URL</a>.",
   "extends": "object",
+  "name": "url",
   "attributes": {
-    "categories": {
-    },
+    "categories": {},
     "category_ids": {
       "requirement": "recommended"
     },
     "hostname": {
       "description": "The URL host as extracted from the URL. For example: <code>www.example.com</code> from <code>www.example.com/download/trouble</code>.",
-      "requirement": "required"
+      "requirement": "recommended"
     },
     "path": {
       "description": "The URL path as extracted from the URL. For example: <code>/download/trouble</code> from <code>www.example.com/download/trouble</code>.",
-      "requirement": "required"
+      "requirement": "recommended"
     },
     "port": {
       "description": "The URL port. For example: <code>80</code>.",
@@ -35,7 +34,14 @@
       "requirement": "optional"
     },
     "url_string": {
-      "requirement": "required"
+      "description": "The URL string. See RFC 1738. For example: <code>http://www.example.com/download/trouble.exe</code>. Note: The URL path should not populate the URL string.",
+      "requirement": "recommended"
     }
+  },
+  "constraints": {
+    "at_least_one": [
+      "url_string",
+      "path"
+    ]
   }
 }

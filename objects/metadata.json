@@ -1,16 +1,24 @@
 {
-  "description": "The metadata associated with the event. Defined by D3FEND <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:Metadata/'>d3f:Metadata</a>.",
   "caption": "Metadata",
-  "name": "metadata",
+  "description": "The Metadata object describes the metadata associated with the event. Defined by D3FEND <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:Metadata/'>d3f:Metadata</a>.",
   "extends": "object",
+  "name": "metadata",
   "attributes": {
-    "correlation_uid": {},
+    "correlation_uid": {
+      "requirement": "optional"
+    },
     "event_code": {
       "requirement": "optional"
     },
-    "extension": {},
+    "extension": {
+      "requirement": "optional"
+    },
     "labels": {
-      "description": "The list of category labels attached to the event or specific attributes. Labels are user defined tags or aliases added at normalization time.</p>For example: <code>[\"network\", \"connection.ip:destination\", \"device.ip:source\"]</code>"
+      "description": "<p>The list of category labels attached to the event or specific attributes. Labels are user defined tags or aliases added at normalization time.</p>For example: <code>[\"network\", \"connection.ip:destination\", \"device.ip:source\"]</code>",
+      "requirement": "optional"
+    },
+    "log_level": {
+      "requirement": "optional"
     },
     "log_name": {
       "requirement": "recommended"
@@ -21,26 +29,34 @@
     "log_version": {
       "requirement": "optional"
     },
-    "logged_time": {},
+    "logged_time": {
+      "requirement": "optional"
+    },
     "modified_time": {
-      "description": "The time when the event was last modified or enriched."
+      "description": "The time when the event was last modified or enriched.",
+      "requirement": "optional"
     },
     "original_time": {
       "requirement": "recommended"
     },
-    "processed_time": {},
+    "processed_time": {
+      "requirement": "optional"
+    },
     "product": {
       "requirement": "required"
     },
-    "profiles": {},
-    "sequence": {},
+    "profiles": {
+      "requirement": "optional"
+    },
+    "sequence": {
+      "requirement": "optional"
+    },
     "uid": {
       "caption": "Event UID",
       "description": "The logging system-assigned unique identifier of an event instance.",
       "requirement": "optional"
     },
     "version": {
-      "default": "1.0.0",
       "description": "The version of the OCSF schema, using Semantic Versioning Specification (<a target='_blank' href='https://semver.org'>SemVer</a>). For example: 1.0.0. Event consumers use the version to determine the available event attributes.",
       "requirement": "required"
     }

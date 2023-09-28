@@ -1,0 +1,24 @@
+{
+  "caption": "Remediation Events",
+  "name": "remediation",
+  "category": "remediation",
+  "extends": "base_event",
+  "profiles": [
+    "host"
+  ],
+  "attributes": {
+    "$include": [
+      "profiles/host.json"
+    ],
+    "command_uid": {
+      "description": "The unique identifier of the discovery query command that pertains to this event.",
+      "group": "primary",
+      "requirement": "required"
+    },
+    "scan_uid": {
+      "description": "The unique identifier of the discovery scan request that pertains to this event.",
+      "group": "primary",
+      "requirement": "optional"
+    }
+  }
+}

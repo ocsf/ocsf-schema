@@ -101,6 +101,15 @@ An example `vulnerability.json` object file,
 7. `name` → Add a **unique** name of the object. `name` must match the filename of the actual `.json` file.
 8.  `attributes` → Add the attributes that you want to define in the object, 
     1. `requirement` →  For each attribute ensure you add a requirement value. Valid values are `optional`, `required`, `recommended` 
+    2. `$include` → You can include attributes from other places; to do so, specify a virtual attribute called `$include` and give its value as the list of files (relative to the root of the schema repository) that should contribute their attributes to this object.  _e.g._
+        ```
+        "attributes": {
+          "$include": [
+            "profiles/person.json"
+          ],
+          ...
+        }
+        ```
 
 **Note:** If you want to create an object which would act only as a base for other objects, you must prefix the object `name` and the actual `json` filename with an `_`. The resultant object will not be visible in the [OCSF Server.](https://schema.ocsf.io/1.0.0-rc.2/objects) For example, take a look at the [entity](https://github.com/ocsf/ocsf-schema/blob/main/objects/_entity.json) object. 
 
@@ -141,6 +150,17 @@ Choose a **unique** object you want to add, `vulnerability` in the example above
     8. `attributes` → Add the attributes that you want to define in the event_class, 
         1. `group` → For each attribute ensure you add a group value. Valid values are - `classification`, `context`, `occurrence`, `primary`
         2. `requirement` →  For each attribute ensure you add a requirement value. Valid values are `optional`, `required`, `recommended`
+        3. `$include` → As for objects, you can also include attributes from other places; to do so, specify the list of files (relative to the root of the schema repository) that should contribute their attributes to this object.  _e.g._
+        ```
+        "attributes": {
+          "$include": [
+            "includes/occurrence.json",
+            "profiles/cloud.json"
+          ],
+          ...
+        }
+        ```
+
     9. `constraints` → For each class you can add constraints on the attribute requirements. Valid constraint types are `at_least_one`, `just_one`. e.g.
         ```
          "constraints": {

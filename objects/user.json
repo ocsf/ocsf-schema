@@ -1,11 +1,16 @@
 {
-  "observable": 21,
   "caption": "User",
   "description": "The User object describes the characteristics of a user/person or a security principal. Defined by D3FEND <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:UserAccount/'>d3f:UserAccount</a>.",
   "extends": "_entity",
   "name": "user",
+  "observable": 21,
+  "profiles": [
+    "person"
+  ],
   "attributes": {
-    "$include": "profiles/person.json",
+    "$include": [
+      "profiles/person.json"
+    ],
     "account": {
       "description": "The user's account or the account associated with the user.",
       "requirement": "optional"
@@ -29,6 +34,7 @@
     },
     "name": {
       "description": "The username. For example, <code>janedoe1</code>.",
+      "requirement": "recommended",
       "type": "username_t"
     },
     "org": {
@@ -41,8 +47,6 @@
     },
     "type_id": {
       "description": "The account type identifier.",
-      "name": "integer_t",
-      "requirement": "required",
       "enum": {
         "0": {
           "caption": "Unknown"
@@ -62,14 +66,23 @@
         "99": {
           "caption": "Other"
         }
-      }
+      },
+      "requirement": "recommended"
     },
     "uid": {
-      "description": "The unique user identifier. For example, the Windows user SID, ActiveDirectory DN or AWS user ARN."
+      "description": "The unique user identifier. For example, the Windows user SID, ActiveDirectory DN or AWS user ARN.",
+      "requirement": "recommended"
     },
     "uid_alt": {
       "description": "The alternate user identifier. For example, the Active Directory user GUID or AWS user Principal ID.",
       "requirement": "optional"
     }
+  },
+  "constraints": {
+    "at_least_one": [
+      "account",
+      "name",
+      "uid"
+    ]
   }
 }

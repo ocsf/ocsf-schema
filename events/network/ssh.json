@@ -5,6 +5,48 @@
   "name": "ssh_activity",
   "uid": 7,
   "attributes": {
+    "auth_type": {
+      "description": "The SSH authentication type, normalized to the caption of 'auth_type_id'. In the case of 'Other', it is defined by the event source.",
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "auth_type_id": {
+      "description": "The normalized identifier of the SSH authentication type.",
+      "enum": {
+        "99": {
+          "caption": "Other"
+        },
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Certificate Based",
+          "description": "Authentication using digital certificates."
+        },
+        "2": {
+          "caption": "GSSAPI",
+          "description": "GSSAPI for centralized authentication."
+        },
+        "3": {
+          "caption": "Host Based",
+          "description": "Authentication based on the client host's identity."
+        },
+        "4": {
+          "caption": "Keyboard Interactive",
+          "description": "Multi-step, interactive authentication."
+        },
+        "5": {
+          "caption": "Password",
+          "description": "Password Authentication."
+        },
+        "6": {
+          "caption": "Public Key",
+          "description": "Paired public key authentication."
+        }
+      },
+      "group": "primary",
+      "requirement": "recommended"
+    },
     "client_hassh": {
       "group": "primary",
       "requirement": "recommended"

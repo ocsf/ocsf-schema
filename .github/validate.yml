@@ -1,0 +1,38 @@
+name: OCSF Schema Validation - Elixir Server
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+   build:
+    name: Validate the schema can be understood by the OCSF Elixir server
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Clone schema server repository
+      uses: actions/checkout@v2
+      with:
+        repository: ocsf/ocsf-server
+        path: server
+    - name: Set up elixir
+      uses: erlef/setup-beam@v1
+      with:
+        elixir-version: '1.14.0' # Define the elixir version [required]
+        otp-version: '25'        # Define the OTP version [required]
+    - name: Restore dependencies cache
+      uses: actions/cache@v3
+      with:
+        path: server/deps
+        key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
+        restore-keys: ${{ runner.os }}-mix-
+    - name: Install dependencies
+      working-directory: server
+      run: mix deps.get
+    - name: Run tests
+      working-directory: server
+      run: SCHEMA_DIR=.. mix test
+    - name: Update version file
+      run: elixir .github/workflows/update_version.exs

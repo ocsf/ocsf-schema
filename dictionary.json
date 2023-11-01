@@ -158,8 +158,8 @@
       "type": "string_t"
     },
     "attacks": {
-      "caption": "Attacks",
-      "description": "An array of attacks associated with an event.",
+      "caption": "MITRE ATT&CK® Details",
+      "description": "An array of <a target='_blank' href='https://attack.mitre.org'>MITRE ATT&CK®</a> objects describing the tactics, techniques & sub-techniques associated to a security finding.",
       "is_array": true,
       "type": "attack"
     },
@@ -3144,6 +3144,11 @@
       "sibling": "stratum",
       "type": "integer_t"
     },
+    "sub_technique": {
+      "caption": "Sub Technique",
+      "description": "The Sub Technique object describes the sub technique ID and/or name associated to an attack, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>.",
+      "type": "sub_technique"
+    },
     "subdomain": {
       "caption": "Subdomain",
       "description": "The subdomain portion of the URL. For example: <code>sub</code> in <code>https://sub.example.com</code> or <code>sub2.sub1</code> in <code>https://sub2.sub1.example.com</code>.",
@@ -3194,9 +3199,18 @@
       "description": "The system call that was invoked.",
       "type": "string_t"
     },
+    "tactic": {
+      "caption": "Tactic",
+      "description": "The Tactic object describes the tactic ID and/or name that is associated to an attack, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>.",
+      "type": "tactic"
+    },
     "tactics": {
+      "@deprecated": {
+        "message": "Use the <code> tactic </code> attribute instead.",
+        "since": "v1.0.0"
+      },
       "caption": "Tactics",
-      "description": "The a list of tactic ID's/names that are associated with the attack technique, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>.",
+      "description": "The Tactic object describes the tactic ID and/or tactic name that are associated with the attack technique, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>.",
       "is_array": true,
       "type": "tactic"
     },
@@ -3212,7 +3226,7 @@
     },
     "technique": {
       "caption": "Technique",
-      "description": "The attack technique.",
+      "description": "The Technique object describes the technique ID and/or name associated to an attack, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>.",
       "type": "technique"
     },
     "terminal": {

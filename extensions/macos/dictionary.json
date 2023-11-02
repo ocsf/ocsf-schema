@@ -1,0 +1,128 @@
+{
+  "caption": "Attribute Dictionary",
+  "description": "The Attribute Dictionary defines schema attributes and includes references to the events and objects in which they are used.",
+  "name": "dictionary",
+  "attributes": {
+    "start_type": {
+      "caption": "Start Type",
+      "description": "The start type of the service or startup application.",
+      "type": "string_t"
+    },
+    "start_type_id": {
+      "caption": "Start Type ID",
+      "description": "The start type ID of the service or startup application.",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The startup type is unknown."
+        },
+        "1": {
+          "caption": "Auto",
+          "description": "Started automatically during system startup."
+        },
+        "10": {
+          "caption": "System Changed",
+          "description": "Started when a system item, such as a file or registry key, changes."
+        },
+        "2": {
+          "caption": "Boot",
+          "description": "Started by the system loader."
+        },
+        "3": {
+          "caption": "Demand",
+          "description": "Started on demand. For example, by the Window service control manager when a process calls the <i>StartService</i> function."
+        },
+        "4": {
+          "caption": "System",
+          "description": "Started by the <i>IoInitSystem</i> function."
+        },
+        "5": {
+          "caption": "Disabled",
+          "description": "Disabled."
+        },
+        "6": {
+          "caption": "All Logins",
+          "description": "Started on any user login."
+        },
+        "7": {
+          "caption": "Specific User Login",
+          "description": "Started when on a specific user login."
+        },
+        "8": {
+          "caption": "Interactive Login",
+          "description": "Started on interactive logins."
+        },
+        "9": {
+          "caption": "Scheduled",
+          "description": "Stared according to a schedule."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The start type is not mapped. See the <code>start_type</code> attribute, which contains a data source specific value."
+        }
+      },
+      "type": "integer_t"
+    },
+    "startup_app": {
+      "caption": "Startup Application",
+      "description": "The startup application that pertains to the event.",
+      "type": "startup_app"
+    },
+    "startup_app_types": {
+      "caption": "Startup App Types",
+      "description": "The startup app service types.",
+      "type": "string_t"
+    },
+    "startup_app_type_ids": {
+      "caption": "Startup App Type IDs",
+      "description": "The startup app type identifiers.",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The type is unknown"
+        },
+        "1": {
+          "caption": "Adapter",
+          "description": "Adapter"
+        },
+        "2": {
+          "caption": "File System Driver",
+          "description": "File system driver"
+        },
+        "3": {
+          "caption": "Kernel Driver",
+          "description": "Device driver"
+        },
+        "4": {
+          "caption": "Recognized Driver",
+          "description": "Recognized Driver"
+        },
+        "5": {
+          "caption": "Own Process",
+          "description": "The application runs in its own process"
+        },
+        "6": {
+          "caption": "Shared Process",
+          "description": "The application shares a process with other services"
+        },
+        "7": {
+          "caption": "Interactive",
+          "description": "The service can interact with the desktop"
+        },
+        "8": {
+          "caption": "Other",
+          "description": "U/X, macOS service"
+        },
+        "9": {
+          "caption": "Autoload",
+          "description": "The macOS Autoload Application"
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The service type is not mapped. See the <code>types</code> attribute, which contains a data source specific values."
+        }
+      },
+      "type": "integer_t"
+    }
+  }
+}

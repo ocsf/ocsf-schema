@@ -75,6 +75,12 @@
       "description": "The permissions that were granted to the in a platform-native format.",
       "type": "integer_t"
     },
+    "affected_code": {
+      "caption": "Affected Code",
+      "description": "List of Affected Code objects that describe details about code blocks identified as vulnerable.",
+      "is_array": true,
+      "type": "affected_code"
+    },
     "affected_packages": {
       "caption": "Affected Software Packages",
       "description": "List of software packages identified as affected by a vulnerability/vulnerabilities.",
@@ -830,7 +836,7 @@
     },
     "compliance": {
       "caption": "Compliance",
-      "description": "The compliance object provides context to compliance findings (e.g., a check against a specific regulatory or best practice framework such as CIS or NIST) and contains compliance related details.",
+      "description": "The compliance object provides context to compliance findings (e.g., a check against a specific regulatory or best practice framework such as CIS, NIST etc.) and contains compliance related details.",
       "type": "compliance"
     },
     "component": {
@@ -935,8 +941,8 @@
       "type": "string_t"
     },
     "control": {
-      "caption": "Control",
-      "description": "The CIS critical security control.",
+      "caption": "Security Control",
+      "description": "A Control is prescriptive, prioritized, and simplified set of best practices that one can use to strengthen their cybersecurity posture. e.g. AWS SecurityHub Controls, CIS Controls.",
       "type": "string_t"
     },
     "coordinates": {
@@ -1288,6 +1294,11 @@
       "description": "The employee identifier assigned to the user by the organization.",
       "type": "string_t"
     },
+    "end_line": {
+      "caption": "End Line",
+      "description": "The line number of the last line of code block identified as vulnerable.",
+      "type": "integer_t"
+    },
     "end_time": {
       "caption": "End Time",
       "description": "The end time of a time period. See specific usage.",
@@ -1354,6 +1365,12 @@
       "description": "The schema extension used to create the event.",
       "type": "extension"
     },
+    "extensions": {
+      "caption": "Schema Extensions",
+      "description": "The schema extensions used to create the event.",
+      "is_array": true,
+      "type": "extension"
+    },
     "extension_list": {
       "caption": "Extension List",
       "description": "The list of TLS extensions.",
@@ -1412,6 +1429,10 @@
       "type": "string_t"
     },
     "fix_available": {
+      "@deprecated": {
+        "message": "Use the <code> is_fix_available </code> attribute instead.",
+        "since": "v1.0.0"
+      },
       "caption": "Fix Availability",
       "description": "Indicates if a fix is available for the reported vulnerability.",
       "type": "boolean_t"
@@ -1703,6 +1724,11 @@
       "description": "Indicates if an exploit or a PoC (proof-of-concept) is available for the reported vulnerability.",
       "type": "boolean_t"
     },
+    "is_fix_available": {
+      "caption": "Fix Availability",
+      "description": "Indicates if a fix is available for the reported vulnerability.",
+      "type": "boolean_t"
+    },
     "is_managed": {
       "caption": "Managed Device",
       "description": "The event occurred on a managed device.",
@@ -1934,6 +1960,12 @@
       "caption": "Logged Time",
       "description": "<p>The time when the logging system collected and logged the event.</p>This attribute is distinct from the event time in that event time typically contain the time extracted from the original event. Most of the time, these two times will be different.",
       "type": "timestamp_t"
+    },
+    "loggers": {
+      "caption": "Loggers",
+      "description": "An array of Logger objects that describe the devices and logging products between the event source and its eventual destination. Note, this attribute can be used when there is a complex end-to-end path of event flow.",
+      "is_array": "true",
+      "type": "logger"
     },
     "logon_process": {
       "caption": "Logon Process",
@@ -2273,6 +2305,11 @@
       "description": "The path that pertains to the event or object. See specific usage.",
       "type": "string_t"
     },
+    "percentile": {
+      "caption": "EPSS Percentile",
+      "description": "The EPSS score's percentile representing relative importance and ranking of the score in the larger EPSS dataset.",
+      "type": "float_t"
+    },
     "peripheral_device": {
       "caption": "Peripheral Device",
       "description": "The peripheral device that triggered the event.",
@@ -2599,7 +2636,7 @@
     },
     "remediation": {
       "caption": "Remediation",
-      "description": "The remediation recommendations on how to fix the identified issue(s).",
+      "description": "The Remediation object describes the recommended remediation steps to address identified issue(s).",
       "type": "remediation"
     },
     "remote_display": {
@@ -2628,8 +2665,8 @@
       "type": "integer_t"
     },
     "requirements": {
-      "caption": "Requirements",
-      "description": "A list of applicable compliance requirements for which this finding is related to.",
+      "caption": "Compliance Requirements",
+      "description": "A list of requirements associated to a specific control in an industry or regulatory framework. e.g. <code> NIST.800-53.r5 AU-10 </code>",
       "is_array": true,
       "type": "string_t"
     },
@@ -2996,7 +3033,7 @@
     },
     "standards":{
       "caption": "Security Standards",
-      "description": "A list of security standards associated to a compliance finding.",
+      "description": "Security standards are a set of criteria organizations can follow to protect sensitive and confidential information. e.g. <code>NIST SP 800-53, CIS AWS Foundations Benchmark v1.4.0, ISO/IEC 27001</code>",
       "is_array": true,
       "type": "string_t"
     },
@@ -3004,6 +3041,11 @@
       "caption": "Start Address",
       "description": "The start address of the execution.",
       "type": "string_t"
+    },
+    "start_line": {
+      "caption": "Start Line",
+      "description": "The line number of the first line of code block identified as vulnerable.",
+      "type": "integer_t"
     },
     "start_time": {
       "caption": "Start Time",
@@ -3173,6 +3215,11 @@
       "description": "The attack technique.",
       "type": "technique"
     },
+    "terminal": {
+      "caption": "Terminal",
+      "description": "The Pseudo Terminal. Ex: the tty or pts value.",
+      "type": "string_t"
+    },
     "terminated_time": {
       "caption": "Terminated Time",
       "description": "The time when the entity was terminated. See specific usage.",
@@ -3218,6 +3265,11 @@
       "caption": "Transaction UID",
       "description": "The unique identifier of the transaction.",
       "type": "string_t"
+    },
+    "transmit_time": {
+      "caption": "Transmission Time",
+      "description": "The event transmission time from one device to another.  See specific usage",
+      "type": "timestamp_t"
     },
     "tree_uid": {
       "caption": "Tree UID",

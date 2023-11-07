@@ -1,13 +1,7 @@
 # OCSF Contribution Guide
 
-## Using OCSF as a consumer 
+This documentation presents guidelines and expected etiquettes to successfully contribute to the developement of OCSF Schemas and the framework itself.
 
-See [ocsf-server](https://github.com/ocsf/ocsf-server) documentation.
-* * *
-
-## Contributing to OCSF
-
-This documentation is about making changes to OCSF schema itself.
 * * *
 
 ### Key Terminology
@@ -20,11 +14,11 @@ This documentation is about making changes to OCSF schema itself.
 
 More details about OCSF concepts, terminology and use-cases can be found in [Understanding OCSF.](https://github.com/ocsf/ocsf-docs/blob/main/Understanding%20OCSF.md)
 
-## How do I add an event_class? 
+## How do I add an `event_class`? 
 
 ### In brief -
 
-1. Determine all the `attributes` (including fields and objects) you would want to add in the `event_class`
+1. Determine all the `attributes` (including fields and objects) you would want to add in the `event_class`.
 2. Check the [dictionary](https://github.com/ocsf/ocsf-schema/blob/main/dictionary.json) and the [/objects](https://github.com/ocsf/ocsf-schema/tree/main/objects) folder, many of your desired attributes may already be present.
 3. Define the missing attributes → [Adding/Modifying an `attribute`](#addingmodifying-an-attribute)
 4. Determine which category you would want to add your event_class in, note it’s  `name`
@@ -38,7 +32,17 @@ More details about OCSF concepts, terminology and use-cases can be found in [Und
 
 1. All the available `attributes` - `fields` & `objects` in OCSF are and will need to be defined in the attribute dictionary, the [dictionary.json](https://github.com/ocsf/ocsf-schema/blob/main/dictionary.json) file and [/objects](https://github.com/ocsf/ocsf-schema/tree/main/objects) folder if defining an object.
 2. Determine if a new attribute is required for your change, it might already be defined in the attribute dictionary and/or the [/objects](https://github.com/ocsf/ocsf-schema/tree/main/objects) folder.
-3. Before adding a new attribute, review OCSF grammar & conventions available [here](https://schema.ocsf.io/guidelines).
+3. Before adding a new attribute, review the following OCSF attribute conventions -
+
+   * Attribute names must be a valid UTF-8 sequence.
+   * Attribute names must be all lower case.
+   * Combine words using underscore.
+   * No special characters except underscore.
+   * Use present tense unless the attribute describes historical information.
+   * Use singular and plural names properly to reflect the field content. Example: use `events_per_sec` rather than `event_per_sec`.
+   * When attribute represents multiple entities, the attribute name should be pluralized and the value type should be an array. Example: `process.loaded_modules` includes multiple values -- a loaded module names list.
+   * Avoid repetition of words. Example: `src_endpoint.src_ip` should be `src_endpoint.ip`.
+   * Avoid abbreviations when possible. Some exceptions can be made for well-accepted abbreviation. Example: `ip`, `os`, `cve` etc.
 
 #### How to define a `field` in the dictionary?
 
@@ -281,7 +285,11 @@ Signed-off-by: Jane Smith <jane.smith@email.com>
 
 You may type this line on your own when writing your commit messages. However, if your user.name and user.email are set in your git configs, you can use -s or --signoff to add the Signed-off-by line to the end of the commit message.
 
+## Looking to contribute to OCSF Server?
 
+See the [ocsf-server](https://github.com/ocsf/ocsf-server) project documentation.
+
+* * *
 
 
 

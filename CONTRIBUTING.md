@@ -105,7 +105,7 @@ An example `vulnerability.json` object file,
         ```
         "attributes": {
           "$include": [
-            "profiles/person.json"
+            "profiles/host.json"
           ],
           ...
         }

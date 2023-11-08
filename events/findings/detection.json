@@ -1,0 +1,78 @@
+{
+  "uid": 4,
+  "caption": "Detection Finding",
+  "category": "findings",
+  "description": "Security Detection events describe findings, detections, anomalies, alerts and/or actions performed by security products.",
+  "extends": "finding",
+  "name": "detection",
+  "attributes": {
+    "data_sources": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "evidences": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "impact": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "impact_id": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "impact_score": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "malware": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "risk_level": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "risk_level_id": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "risk_score": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "status": {
+      "description": "The normalized state of a security detection.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "status_id": {
+      "description": "The normalized state identifier of a security detection.",
+      "group": "context",
+      "requirement": "required",
+      "enum": {
+        "1": {
+          "caption": "New",
+          "description": "The detection is new and yet to be reviewed."
+        },
+        "2": {
+          "caption": "In Progress",
+          "description": "The detection is under review."
+        },
+        "3": {
+          "caption": "Suppressed",
+          "description": "The detection was reviewed, considered as a false positive and is now suppressed."
+        },
+        "4": {
+          "caption": "Resolved",
+          "description": "The detection was reviewed and remediated and is now considered resolved."
+        }
+      }
+    },
+    "vulnerabilities": {
+      "group": "context",
+      "requirement": "optional"
+    }
+  }
+}

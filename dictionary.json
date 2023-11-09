@@ -1545,6 +1545,10 @@
       "type": "string_t"
     },
     "http_only": {
+      "@deprecated": {
+        "message": "Use the <code> is_http_only </code> attribute instead.",
+        "since": "v1.1.0"
+      },
       "caption": "HTTP Only",
       "description": "A cookie attribute to make it inaccessible via JavaScript",
       "type": "boolean_t"
@@ -1733,6 +1737,11 @@
       "description": "Indicates if a fix is available for the reported vulnerability.",
       "type": "boolean_t"
     },
+    "is_http_only": {
+      "caption": "HTTP Only",
+      "description": "This attribute prevents the cookie from being accessed via JavaScript.",
+      "type": "boolean_t"
+    },
     "is_managed": {
       "caption": "Managed Device",
       "description": "The event occurred on a managed device.",
@@ -1766,6 +1775,16 @@
     "is_renewal": {
       "caption": "Renewal",
       "description": "The indication of whether this is a lease/session renewal event.",
+      "type": "boolean_t"
+    },
+    "is_secure": {
+      "caption": "Secure",
+      "description": "The cookie attribute indicates that cookies are sent to the server only when the request is encrypted using the HTTPS protocol.",
+      "type": "boolean_t"
+    },
+    "is_superseded": {
+      "caption": "The patch is superseded.",
+      "description": "The vendor patch has been replaced by another.",
       "type": "boolean_t"
     },
     "is_system": {
@@ -2864,6 +2883,10 @@
       "type": "integer_t"
     },
     "secure": {
+      "@deprecated": {
+        "message": "Use the <code> is_secure </code> attribute instead.",
+        "since": "v1.1.0"
+      },
       "caption": "Secure",
       "description": "The cookie attribute to only send cookies to the server with an encrypted request over the HTTPS protocol.",
       "type": "boolean_t"
@@ -3187,11 +3210,6 @@
       "caption": "Supporting Data",
       "description": "Additional data supporting a finding as provided by security tool",
       "type": "json_t"
-    },
-    "superseded": {
-      "caption": "The patch is superseded.",
-      "description": "The vendor patch has been replaced by another.",
-      "type": "boolean_t"
     },
     "surname": {
       "caption": "Surname",

@@ -147,21 +147,16 @@
       "description": "The arguments sent along with the HTTP request.",
       "type": "string_t"
     },
+    "attacks": {
+      "caption": "MITRE ATT&CK® Details",
+      "description": "An array of <a target='_blank' href='https://attack.mitre.org'>MITRE ATT&CK®</a> objects describing the tactics, techniques & sub-techniques identified by a security control or finding.",
+      "is_array": true,
+      "type": "attack"
+    },
     "attempt": {
       "caption": "Attempt",
       "description": "The delivery attempt.",
       "type": "integer_t"
-    },
-    "banner": {
-      "caption": "SMTP Banner",
-      "description": "The initial SMTP connection response that a messaging server receives after it connects to a email server.",
-      "type": "string_t"
-    },
-    "attacks": {
-      "caption": "MITRE ATT&CK® Details",
-      "description": "An array of <a target='_blank' href='https://attack.mitre.org'>MITRE ATT&CK®</a> objects describing the tactics, techniques & sub-techniques associated to a security finding.",
-      "is_array": true,
-      "type": "attack"
     },
     "attributes": {
       "caption": "Attributes",
@@ -238,13 +233,18 @@
     },
     "authorizations": {
       "caption": "Authorization Information",
-      "description": "This object provides details such as authorization outcome, associated policies related to activity/event.",
+      "description": "Provides details about an authorization, such as authorization outcome, and any associated policies related to the activity/event.",
       "is_array": true,
       "type": "authorization"
     },
     "autoscale_uid": {
       "caption": "Autoscale UID",
       "description": "The unique identifier of the cloud autoscale configuration.",
+      "type": "string_t"
+    },
+    "banner": {
+      "caption": "SMTP Banner",
+      "description": "The initial SMTP connection response that a messaging server receives after it connects to a email server.",
       "type": "string_t"
     },
     "base_address": {
@@ -1195,12 +1195,12 @@
     },
     "disposition": {
       "caption": "Disposition",
-      "description": "The event disposition name, normalized to the caption of the disposition_id value. In the case of 'Other', it is defined by the event source.",
+      "description": "The disposition name, normalized to the caption of the disposition_id value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "disposition_id": {
       "caption": "Disposition ID",
-      "description": "When security issues, such as malware or policy violations, are detected and possibly corrected, then <code>disposition_id</code> describes the action taken by the security product.",
+      "description": "Describes the outcome or action taken by a security control, such as access control checks, malware detections or various types of policy violations.",
       "enum": {
         "99": {
           "caption": "Other"
@@ -1421,6 +1421,11 @@
       "description": "An array of digital fingerprint objects.",
       "is_array": true,
       "type": "fingerprint"
+    },
+    "firewall_rule": {
+      "caption": "Firewall Rule",
+      "description": "The firewall rule that triggered the event.",
+      "type": "firewall_rule"
     },
     "first_seen_time": {
       "caption": "First Seen",
@@ -2072,7 +2077,7 @@
     },
     "malware": {
       "caption": "Malware",
-      "description": "The list of malware identified by a finding.",
+      "description": "The list of malware identified by a security control or finding.",
       "is_array": true,
       "type": "malware"
     },
@@ -2772,11 +2777,6 @@
       "caption": "Rule",
       "description": "The rules that reported the events.",
       "type": "rule"
-    },
-    "firewall_rule": {
-      "caption": "Firewall Rule",
-      "description": "The firewall rules that triggered the events.",
-      "type": "firewall_rule"
     },
     "run_state": {
       "caption": "Run State",

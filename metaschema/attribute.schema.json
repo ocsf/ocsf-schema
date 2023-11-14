@@ -1,0 +1,42 @@
+{
+    "$id": "https://schema.ocsf.io/attribute.schema.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Attribute",
+    "type": "object",
+    "properties": {
+        "caption": {
+            "type": "string",
+            "description": "A short, more specific identifier for this attribute."
+        },
+        "description": {
+            "type": "string",
+            "description": "The description of the attribute."
+        },
+        "enum": {
+            "type": "object",
+            "description": "An enumeration of options for this attribute.",
+            "additionalProperties": {
+                "type": "object",
+                "required": [
+                    "caption"
+                ],
+                "properties": {
+                    "caption": {
+                        "type": "string",
+                        "description": "The caption of this enum value."
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of this enum value."
+                    },
+                    "additionalProperties": false
+                }
+            }
+        },
+        "requirement": {
+            "type": "string",
+            "description": "The requirement placed on the attribute for inclusion in the schema.",
+            "enum": ["optional", "recommended", "required"]
+        }
+    }
+}

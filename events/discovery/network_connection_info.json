@@ -1,0 +1,73 @@
+{
+  "caption": "Network Connection Info",
+  "description": "Network Connection Info events report information about active network connections.",
+  "extends": "discovery_result",
+  "name": "network_connection_info",
+  "uid": 12,
+  "attributes": {
+    "connection_info": {
+      "requirement": "required",
+      "group": "primary"
+    },
+    "process": {
+      "description": "The process that owns the socket.",
+      "requirement": "required",
+      "group": "primary"
+    },
+    "state_id": {
+      "description": "The state of the socket.",
+      "requirement": "required",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The socket state is unknown."
+        },
+        "1": {
+          "caption": "ESTABLISHED",
+          "description": "The socket has an established connection between a local application and a remote peer."
+        },
+        "2": {
+          "caption": "SYN_SENT",
+          "description": "The socket is actively trying to establish a connection to a remote peer."
+        },
+        "3": {
+          "caption": "SYN_RECV",
+          "description": "The socket has passively received a connection request from a remote peer."
+        },
+        "4": {
+          "caption": "FIN_WAIT1",
+          "description": "The socket connection has been closed by the local application, the remote peer has not yet acknowledged the close, and the system is waiting for it to close its half of the connection."
+        },
+        "5": {
+          "caption": "FIN_WAIT2",
+          "description": "The socket connection has been closed by the local application, the remote peer has acknowledged the close, and the system is waiting for it to close its half of the connection."
+        },
+        "6": {
+          "caption": "TIME_WAIT",
+          "description": "The socket connection has been closed by the local application, the remote peer has closed its half of the connection, and the system is waiting to be sure that the remote peer received the last acknowledgement."
+        },
+        "7": {
+          "caption": "CLOSED",
+          "description": "The socket is not in use."
+        },
+        "8": {
+          "caption": "CLOSE_WAIT",
+          "description": "The socket connection has been closed by the remote peer, and the system is waiting for the local application to close its half of the connection."
+        },
+        "9": {
+          "caption": "LAST_ACK",
+          "description": "The socket connection has been closed by the remote peer, the local application has closed its half of the connection, and the system is waiting for the remote peer to acknowledge the close."
+        },
+        "10": {
+          "caption": "LISTEN",
+          "description": "The socket is listening for incoming connections."
+        },
+        "11": {
+          "caption": "CLOSING",
+          "description": "The socket connection has been closed by the local application and the remote peer simultaneously, and the remote peer has not yet acknowledged the close attempt of the local application."
+        }
+      },
+      "group": "primary"
+    }
+  }
+}

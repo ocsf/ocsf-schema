@@ -75,6 +75,12 @@
       "description": "The permissions that were granted to the in a platform-native format.",
       "type": "integer_t"
     },
+    "affected_code": {
+      "caption": "Affected Code",
+      "description": "List of Affected Code objects that describe details about code blocks identified as vulnerable.",
+      "is_array": true,
+      "type": "affected_code"
+    },
     "affected_packages": {
       "caption": "Affected Software Packages",
       "description": "List of software packages identified as affected by a vulnerability/vulnerabilities.",
@@ -152,8 +158,8 @@
       "type": "string_t"
     },
     "attacks": {
-      "caption": "Attacks",
-      "description": "An array of attacks associated with an event.",
+      "caption": "MITRE ATT&CK® Details",
+      "description": "An array of <a target='_blank' href='https://attack.mitre.org'>MITRE ATT&CK®</a> objects describing the tactics, techniques & sub-techniques associated to a security finding.",
       "is_array": true,
       "type": "attack"
     },
@@ -830,7 +836,7 @@
     },
     "compliance": {
       "caption": "Compliance",
-      "description": "The compliance object provides context to compliance findings (e.g., a check against a specific regulatory or best practice framework such as CIS or NIST) and contains compliance related details.",
+      "description": "The compliance object provides context to compliance findings (e.g., a check against a specific regulatory or best practice framework such as CIS, NIST etc.) and contains compliance related details.",
       "type": "compliance"
     },
     "component": {
@@ -935,8 +941,8 @@
       "type": "string_t"
     },
     "control": {
-      "caption": "Control",
-      "description": "The CIS critical security control.",
+      "caption": "Security Control",
+      "description": "A Control is prescriptive, prioritized, and simplified set of best practices that one can use to strengthen their cybersecurity posture. e.g. AWS SecurityHub Controls, CIS Controls.",
       "type": "string_t"
     },
     "coordinates": {
@@ -1022,6 +1028,10 @@
       "type": "string_t"
     },
     "customer_uid": {
+      "@deprecated": {
+        "message": "Use the <code> tenant_uid </code> attribute instead.",
+        "since": "v1.1.0"
+      },
       "caption": "Customer UID",
       "description": "The unique customer identifier.",
       "type": "string_t"
@@ -1267,11 +1277,11 @@
       "description": "The user's primary email address.",
       "type": "email_t"
     },
-    "email_addresses": {
+    "email_addrs": {
       "caption": "Email Addresses",
       "description": "A list of additional email addresses for the user.",
-      "type": "email_t",
-      "is_array": true
+      "is_array": true,
+      "type": "email_t"
     },
     "email_auth": {
       "caption": "Email Authentication",
@@ -1287,6 +1297,11 @@
       "caption": "Employee ID",
       "description": "The employee identifier assigned to the user by the organization.",
       "type": "string_t"
+    },
+    "end_line": {
+      "caption": "End Line",
+      "description": "The line number of the last line of code block identified as vulnerable.",
+      "type": "integer_t"
     },
     "end_time": {
       "caption": "End Time",
@@ -1354,6 +1369,12 @@
       "description": "The schema extension used to create the event.",
       "type": "extension"
     },
+    "extensions": {
+      "caption": "Schema Extensions",
+      "description": "The schema extensions used to create the event.",
+      "is_array": true,
+      "type": "extension"
+    },
     "extension_list": {
       "caption": "Extension List",
       "description": "The list of TLS extensions.",
@@ -1412,6 +1433,10 @@
       "type": "string_t"
     },
     "fix_available": {
+      "@deprecated": {
+        "message": "Use the <code> is_fix_available </code> attribute instead.",
+        "since": "v1.0.0"
+      },
       "caption": "Fix Availability",
       "description": "Indicates if a fix is available for the reported vulnerability.",
       "type": "boolean_t"
@@ -1520,6 +1545,10 @@
       "type": "string_t"
     },
     "http_only": {
+      "@deprecated": {
+        "message": "Use the <code> is_http_only </code> attribute instead.",
+        "since": "v1.1.0"
+      },
       "caption": "HTTP Only",
       "description": "A cookie attribute to make it inaccessible via JavaScript",
       "type": "boolean_t"
@@ -1703,6 +1732,16 @@
       "description": "Indicates if an exploit or a PoC (proof-of-concept) is available for the reported vulnerability.",
       "type": "boolean_t"
     },
+    "is_fix_available": {
+      "caption": "Fix Availability",
+      "description": "Indicates if a fix is available for the reported vulnerability.",
+      "type": "boolean_t"
+    },
+    "is_http_only": {
+      "caption": "HTTP Only",
+      "description": "This attribute prevents the cookie from being accessed via JavaScript.",
+      "type": "boolean_t"
+    },
     "is_managed": {
       "caption": "Managed Device",
       "description": "The event occurred on a managed device.",
@@ -1736,6 +1775,16 @@
     "is_renewal": {
       "caption": "Renewal",
       "description": "The indication of whether this is a lease/session renewal event.",
+      "type": "boolean_t"
+    },
+    "is_secure": {
+      "caption": "Secure",
+      "description": "The cookie attribute indicates that cookies are sent to the server only when the request is encrypted using the HTTPS protocol.",
+      "type": "boolean_t"
+    },
+    "is_superseded": {
+      "caption": "The patch is superseded.",
+      "description": "The vendor patch has been replaced by another.",
       "type": "boolean_t"
     },
     "is_system": {
@@ -1861,6 +1910,11 @@
       "description": "The X.500 Distinguished Name (DN) is a structured string that uniquely identifies an entry, such as a user, in an X.500 directory service For example, <code>cn=John Doe,ou=People,dc=example,dc=com</code>.",
       "type": "string_t"
     },
+    "ldap_person": {
+      "caption": "LDAP Person",
+      "description": "The additonal LDAP attributes that describe a person.",
+      "type": "ldap_person"
+    },
     "lease_dur": {
       "caption": "Lease Duration",
       "description": "This represents the length of the DHCP lease in seconds. This is present in DHCP Ack events.",
@@ -1934,6 +1988,12 @@
       "caption": "Logged Time",
       "description": "<p>The time when the logging system collected and logged the event.</p>This attribute is distinct from the event time in that event time typically contain the time extracted from the original event. Most of the time, these two times will be different.",
       "type": "timestamp_t"
+    },
+    "loggers": {
+      "caption": "Loggers",
+      "description": "An array of Logger objects that describe the devices and logging products between the event source and its eventual destination. Note, this attribute can be used when there is a complex end-to-end path of event flow.",
+      "is_array": "true",
+      "type": "logger"
     },
     "logon_process": {
       "caption": "Logon Process",
@@ -2045,6 +2105,11 @@
     "mime_type": {
       "caption": "MIME type",
       "description": "The Multipurpose Internet Mail Extensions (MIME) type of the file, if applicable.",
+      "type": "string_t"
+    },
+    "model": {
+      "caption": "Model",
+      "description": "The peripheral device model.",
       "type": "string_t"
     },
     "modified_time": {
@@ -2267,6 +2332,16 @@
       "caption": "Path",
       "description": "The path that pertains to the event or object. See specific usage.",
       "type": "string_t"
+    },
+    "percentile": {
+      "caption": "EPSS Percentile",
+      "description": "The EPSS score's percentile representing relative importance and ranking of the score in the larger EPSS dataset.",
+      "type": "float_t"
+    },
+    "peripheral_device": {
+      "caption": "Peripheral Device",
+      "description": "The peripheral device that triggered the event.",
+      "type": "peripheral_device"
     },
     "permission": {
       "caption": "Permission",
@@ -2589,7 +2664,7 @@
     },
     "remediation": {
       "caption": "Remediation",
-      "description": "The remediation recommendations on how to fix the identified issue(s).",
+      "description": "The Remediation object describes the recommended remediation steps to address identified issue(s).",
       "type": "remediation"
     },
     "remote_display": {
@@ -2618,8 +2693,8 @@
       "type": "integer_t"
     },
     "requirements": {
-      "caption": "Requirements",
-      "description": "A list of applicable compliance requirements for which this finding is related to.",
+      "caption": "Compliance Requirements",
+      "description": "A list of requirements associated to a specific control in an industry or regulatory framework. e.g. <code> NIST.800-53.r5 AU-10 </code>",
       "is_array": true,
       "type": "string_t"
     },
@@ -2808,6 +2883,10 @@
       "type": "integer_t"
     },
     "secure": {
+      "@deprecated": {
+        "message": "Use the <code> is_secure </code> attribute instead.",
+        "since": "v1.1.0"
+      },
       "caption": "Secure",
       "description": "The cookie attribute to only send cookies to the server with an encrypted request over the HTTPS protocol.",
       "type": "boolean_t"
@@ -2986,7 +3065,7 @@
     },
     "standards":{
       "caption": "Security Standards",
-      "description": "A list of security standards associated to a compliance finding.",
+      "description": "Security standards are a set of criteria organizations can follow to protect sensitive and confidential information. e.g. <code>NIST SP 800-53, CIS AWS Foundations Benchmark v1.4.0, ISO/IEC 27001</code>",
       "is_array": true,
       "type": "string_t"
     },
@@ -2994,6 +3073,11 @@
       "caption": "Start Address",
       "description": "The start address of the execution.",
       "type": "string_t"
+    },
+    "start_line": {
+      "caption": "Start Line",
+      "description": "The line number of the first line of code block identified as vulnerable.",
+      "type": "integer_t"
     },
     "start_time": {
       "caption": "Start Time",
@@ -3092,6 +3176,11 @@
       "sibling": "stratum",
       "type": "integer_t"
     },
+    "sub_technique": {
+      "caption": "Sub Technique",
+      "description": "The Sub Technique object describes the sub technique ID and/or name associated to an attack, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>.",
+      "type": "sub_technique"
+    },
     "subdomain": {
       "caption": "Subdomain",
       "description": "The subdomain portion of the URL. For example: <code>sub</code> in <code>https://sub.example.com</code> or <code>sub2.sub1</code> in <code>https://sub2.sub1.example.com</code>.",
@@ -3122,11 +3211,6 @@
       "description": "Additional data supporting a finding as provided by security tool",
       "type": "json_t"
     },
-    "superseded": {
-      "caption": "The patch is superseded.",
-      "description": "The vendor patch has been replaced by another.",
-      "type": "boolean_t"
-    },
     "surname": {
       "caption": "Surname",
       "description": "The last or family name for the user.",
@@ -3142,9 +3226,18 @@
       "description": "The system call that was invoked.",
       "type": "string_t"
     },
+    "tactic": {
+      "caption": "Tactic",
+      "description": "The Tactic object describes the tactic ID and/or name that is associated to an attack, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>.",
+      "type": "tactic"
+    },
     "tactics": {
+      "@deprecated": {
+        "message": "Use the <code> tactic </code> attribute instead.",
+        "since": "v1.0.0"
+      },
       "caption": "Tactics",
-      "description": "The a list of tactic ID's/names that are associated with the attack technique, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>.",
+      "description": "The Tactic object describes the tactic ID and/or tactic name that are associated with the attack technique, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>.",
       "is_array": true,
       "type": "tactic"
     },
@@ -3160,13 +3253,12 @@
     },
     "technique": {
       "caption": "Technique",
-      "description": "The attack technique.",
+      "description": "The Technique object describes the technique ID and/or name associated to an attack, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>.",
       "type": "technique"
     },
     "terminal": {
       "caption": "Terminal",
       "description": "The Pseudo Terminal. Ex: the tty or pts value.",
-      "requirement": "optional",
       "type": "string_t"
     },
     "terminated_time": {
@@ -3188,6 +3280,11 @@
       "caption": "Timezone Offset",
       "description": "The number of minutes that the reported event <code>time</code> is ahead or behind UTC, in the range -1,080 to +1,080.",
       "type": "integer_t"
+    },
+    "tenant_uid": {
+      "caption": "Tenant UID",
+      "description": "The unique tenant identifier.",
+      "type": "string_t"
     },
     "title": {
       "caption": "Title",
@@ -3214,6 +3311,11 @@
       "caption": "Transaction UID",
       "description": "The unique identifier of the transaction.",
       "type": "string_t"
+    },
+    "transmit_time": {
+      "caption": "Transmission Time",
+      "description": "The event transmission time from one device to another.  See specific usage",
+      "type": "timestamp_t"
     },
     "tree_uid": {
       "caption": "Tree UID",
@@ -3292,6 +3394,12 @@
     "user": {
       "caption": "User",
       "description": "The user that pertains to the event or object.",
+      "type": "user"
+    },
+    "users": {
+      "caption": "Users",
+      "description": "The users that pertain to the event or object.",
+      "is_array": true,
       "type": "user"
     },
     "user_agent": {

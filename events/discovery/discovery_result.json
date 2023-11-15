@@ -1,0 +1,39 @@
+{
+  "caption": "Discovery Result",
+  "category": "discovery",
+  "name": "discovery_result",
+  "extends": "base_event",
+  "description": "Discovery Result events report the results of a discovery request.",
+  "profiles": [
+    "host"
+  ],
+  "attributes": {
+    "$include": [
+      "profiles/host.json"
+    ],
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Exists",
+          "description": "The target was found."
+        },
+        "2": {
+          "caption": "Partial",
+          "description": "The target was partially found."
+        },
+        "3": {
+          "caption": "Does not exist",
+          "description": "The target was not found."
+        },
+        "4": {
+          "caption": "Error",
+          "description": "The discovery attempt failed."
+        },
+        "5": {
+          "caption": "Unsupported",
+          "description": "Discovery of the target was not supported."
+        }
+      }
+    }
+  }
+}

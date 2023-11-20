@@ -4,13 +4,7 @@
   "extends": "_entity",
   "name": "user",
   "observable": 21,
-  "profiles": [
-    "person"
-  ],
   "attributes": {
-    "$include": [
-      "profiles/person.json"
-    ],
     "account": {
       "description": "The user's account or the account associated with the user.",
       "requirement": "optional"
@@ -30,6 +24,10 @@
     },
     "groups": {
       "description": "The administrative groups to which the user belongs.",
+      "requirement": "optional"
+    },
+    "ldap_person": {
+      "description": "The additonal LDAP attributes that describe a person.",
       "requirement": "optional"
     },
     "name": {

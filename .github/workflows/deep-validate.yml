@@ -1,0 +1,26 @@
+name: Validate (ocsf-validator)
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  validate:
+    name: Validate the schema
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository content
+      uses: actions/checkout@v3
+
+    - name: Setup python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install validator
+      run: python -m pip install 'ocsf-validator>=0.1.1,<0.2'
+
+    - name: Run validator
+      run: python -m ocsf_validator .

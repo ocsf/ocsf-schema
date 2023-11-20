@@ -1,0 +1,45 @@
+{
+    "$id": "https://schema.ocsf.io/profile.schema.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Profile",
+    "type": "object",
+    "required": [
+        "caption",
+        "description",
+        "meta",
+        "name",
+        "attributes"
+    ],
+    "properties": {
+        "annotations": {
+            "type": "object",
+            "description": "Annotations for this profile describing categories it belongs in."
+        },
+        "caption": {
+            "type": "string",
+            "description": "A short, human friendly name for the profile."
+        },
+        "description": {
+          "type": "string",
+          "description": "A concise description of the profile."
+        },
+        "meta": {
+            "type": "string",
+            "description": "A value indicating the type of this profile.",
+            "enum": ["profile"]
+        },
+        "name": {
+            "type": "string",
+            "description": "A name of the profile. It must be a unique name. The name is all lower case letters, combine words using underscore.",
+            "pattern": "^[a-z0-9_]*$"
+        },
+        "attributes": {
+            "type": "object",
+            "description": "A dictionary of attributes for the profile.",
+            "additionalProperties": {
+                "$ref": "attribute.schema.json"
+            }
+        }
+    },
+    "additionalProperties": false
+}

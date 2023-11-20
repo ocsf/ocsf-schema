@@ -3,12 +3,21 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "Profile",
     "type": "object",
-    "required": [
-        "caption",
-        "description",
-        "meta",
-        "name",
-        "attributes"
+    "anyOf": [
+        {
+            "required": [
+                "description",
+                "caption",
+                "meta",
+                "name",
+                "attributes"
+            ]
+        },
+        {
+            "required": [
+                "extends"
+            ]
+        }
     ],
     "properties": {
         "annotations": {
@@ -23,6 +32,10 @@
           "type": "string",
           "description": "A concise description of the profile."
         },
+        "extends": {
+            "type": "string",
+            "description": "A profile that this one extends from."
+        },
         "meta": {
             "type": "string",
             "description": "A value indicating the type of this profile.",
@@ -36,6 +49,24 @@
         "attributes": {
             "type": "object",
             "description": "A dictionary of attributes for the profile.",
+            "properties": {
+                "$include": {
+                    "description": "A reference to another schema for attributes to include.",
+                    "oneOf": [
+                        {
+                            "type": "string",
+                            "format": "uri-reference"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "format": "uri-reference"
+                            }
+                        }
+                    ]
+                }
+            },
             "additionalProperties": {
                 "$ref": "attribute.schema.json"
             }

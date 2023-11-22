@@ -4,6 +4,10 @@
     "title": "Dictionary",
     "description": "An attribute dictionary of all available attributes and their types. Event classes are particular sets of attributes from the dictionary.",
     "type": "object",
+    "required": [
+        "caption",
+        "name"
+    ],
     "properties": {
         "description": {
             "type": "string",
@@ -44,6 +48,9 @@
         "types": {
             "type": "object",
             "description": "A set of data types defined by the dictionary.",
+            "required": [
+                "caption"
+            ],
             "properties": {
                 "caption": {
                     "type": "string",
@@ -55,49 +62,52 @@
                 },
                 "attributes": {
                     "type": "object",
-                    "description": "A set of type attributes defined by the dictionary.",
-                    "additionalProperties": {
-                        "allOf": [
-                            {
-                                "$ref": "attribute.schema.json"
-                            }, 
-                            {
-                                "properties": {
-                                    "max_len": {
-                                        "type": "integer",
-                                        "description": "The maximum length of this data type.",
-                                        "minimum": 0
-                                    },
-                                    "observable": {
-                                        "$ref": "observable.schema.json"
-                                    },
-                                    "range": {
-                                        "type": "array",
-                                        "description": "A range of values that are valid for this data type.",
-                                        "minItems": 2,
-                                        "maxItems": 2
-                                    },
-                                    "regex": {
-                                        "type": "string",
-                                        "description": "A regular expression constraint for this data type.",
-                                        "format": "regex"
-                                    },
-                                    "type": {
-                                        "type": "string",
-                                        "description": "The data type for this attribute. Should reference another defined type."
-                                    },
-                                    "type_name": {
-                                        "type": "string",
-                                        "description": "The human-readable name of the data type for this attribute."
-                                    },
-                                    "values": {
-                                        "type": "array",
-                                        "description": "A set of fixed values for this data type."
+                    "description": "A set of type attributes defined by the dictionary.  Type attributes must be all lowercase and end in '_t' by convention.",
+                    "patternProperties": {
+                        "^[a-z0-9_]*$": {
+                            "allOf": [
+                                {
+                                    "$ref": "attribute.schema.json"
+                                }, 
+                                {
+                                    "properties": {
+                                        "max_len": {
+                                            "type": "integer",
+                                            "description": "The maximum length of this data type.",
+                                            "minimum": 0
+                                        },
+                                        "observable": {
+                                            "$ref": "observable.schema.json"
+                                        },
+                                        "range": {
+                                            "type": "array",
+                                            "description": "A range of values that are valid for this data type.",
+                                            "minItems": 2,
+                                            "maxItems": 2
+                                        },
+                                        "regex": {
+                                            "type": "string",
+                                            "description": "A regular expression constraint for this data type.",
+                                            "format": "regex"
+                                        },
+                                        "type": {
+                                            "type": "string",
+                                            "description": "The data type for this attribute. Should reference another defined type."
+                                        },
+                                        "type_name": {
+                                            "type": "string",
+                                            "description": "The human-readable name of the data type for this attribute."
+                                        },
+                                        "values": {
+                                            "type": "array",
+                                            "description": "A set of fixed values for this data type."
+                                        }
                                     }
                                 }
-                            }
-                        ]
-                    }
+                            ]
+                        }
+                    },
+                    "additionalProperties": false
                 }
             }
         }

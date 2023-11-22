@@ -52,7 +52,12 @@
             "description": "A dictionary of attributes for the profile.",
             "properties": {
                 "$include": {
-                    "$ref": "include.schema.json"
+                    "description": "A reference to another schema for attributes to include.",
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "format": "uri-reference"
+                    }
                 }
             },
             "patternProperties": {

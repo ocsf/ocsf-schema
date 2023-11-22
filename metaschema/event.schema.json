@@ -28,22 +28,25 @@
                             "$ref": "include.schema.json"
                         }
                     },
-                    "additionalProperties": {
-                        "allOf": [
-                            {
-                                "$ref": "attribute.schema.json"
-                            }, 
-                            {
-                                "properties": {
-                                    "group": {
-                                        "type": "string",
-                                        "description": "The group that the attribute is a part of.",
-                                        "enum": ["context", "classification", "occurrence", "primary"]
+                    "patternProperties": {
+                        "^[a-z0-9_]*$": {
+                            "allOf": [
+                                {
+                                    "$ref": "attribute.schema.json"
+                                }, 
+                                {
+                                    "properties": {
+                                        "group": {
+                                            "type": "string",
+                                            "description": "The group that the attribute is a part of.",
+                                            "enum": ["context", "classification", "occurrence", "primary"]
+                                        }
                                     }
                                 }
-                            }
-                        ]
-                    }
+                            ]
+                        }
+                    },
+                    "additionalProperties": false
                 },
                 "category": {
                     "type": "string",

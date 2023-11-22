@@ -25,25 +25,28 @@
         "attributes": {
             "type": "object",
             "description": "A set of attributes defined by the dictionary.",
-            "additionalProperties": {
-                "allOf": [
-                    {
-                        "$ref": "attribute.schema.json"
-                    }, 
-                    {
-                        "properties": {
-                            "type": {
-                                "type": "string",
-                                "description": "The data type for this attribute."
-                            },
-                            "is_array": {
-                                "type": "boolean",
-                                "description": "A flag used when the attribute represents an array of values rather than a single value."
+            "patternProperties": {
+                "^[a-z0-9_]*$": {
+                    "allOf": [
+                        {
+                            "$ref": "attribute.schema.json"
+                        }, 
+                        {
+                            "properties": {
+                                "type": {
+                                    "type": "string",
+                                    "description": "The data type for this attribute."
+                                },
+                                "is_array": {
+                                    "type": "boolean",
+                                    "description": "A flag used when the attribute represents an array of values rather than a single value."
+                                }
                             }
                         }
-                    }
-                ]
-            }
+                    ]
+                }
+            },
+            "additionalProperties": false
         },
         "types": {
             "type": "object",

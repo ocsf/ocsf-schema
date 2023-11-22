@@ -55,9 +55,12 @@
                     "$ref": "include.schema.json"
                 }
             },
-            "additionalProperties": {
-                "$ref": "attribute.schema.json"
-            }
+            "patternProperties": {
+                "^[a-z0-9_]*$": {
+                    "$ref": "attribute.schema.json"
+                }
+            },
+            "additionalProperties": false
         }
     },
     "additionalProperties": false

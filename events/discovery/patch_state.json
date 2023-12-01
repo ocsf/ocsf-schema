@@ -1,0 +1,26 @@
+{
+  "caption": "Operating System Patch State",
+  "description": "Operating System Patch State reports the installation of an OS patch.",
+  "extends": "discovery",
+  "name": "patch_state",
+  "uid": 4,
+  "profiles": [
+    "host"
+  ],
+  "attributes": {
+    "device": {
+      "group": "primary",
+      "requirement": "required"
+    },
+    "kb_articles": {
+      "group": "primary"
+    }
+  },
+    "constraints": {
+        "at_least_one": [
+            "device.os.sp_name",
+            "device.os.sp_ver",
+            "device.os.version"
+    ]
+  }
+}

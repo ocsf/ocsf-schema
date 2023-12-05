@@ -188,7 +188,7 @@ To deprecate an attribute (`field`, `object`) follow the steps below -
     ```
           "@deprecated": {
             "message": "Use the <code> ALTERNATE_ATTRIBUTE </code> attribute instead.",
-            "since": "VERSION" 
+            "since": "semver" 
           }
     ```
 3. Example of a deprecated field
@@ -196,7 +196,7 @@ To deprecate an attribute (`field`, `object`) follow the steps below -
     "packages": {
       "@deprecated": {
         "message": "Use the <code> affected_packages </code> attribute instead.",
-        "since": "v1.0.0"
+        "since": "1.0.0"
       },
       "caption": "Software Packages",
       "description": "List of vulnerable packages as identified by the security product",
@@ -212,7 +212,7 @@ To deprecate an attribute (`field`, `object`) follow the steps below -
       "name": "finding",
       "@deprecated": {
         "message": "Use the new <code>finding_info</code> object.",
-        "since": "v1.0.0"
+        "since": "1.0.0"
       },
       "attributes": {...}
     }

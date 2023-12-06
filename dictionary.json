@@ -65,6 +65,35 @@
       "description": "The event activity name, as defined by the activity_id.",
       "type": "string_t"
     },
+    "action": {
+      "caption": "Action",
+      "description": "The normalized caption of 'action_id' or the source specific action.",
+      "type": "string_t" 
+    },
+    "action_id": {
+      "caption": "Action ID",
+      "description": "The normalized action taken by a control or other policy-based system leading to an outcome or disposition.",
+      "enum": {
+        "99": {
+          "caption": "Other",
+          "description": "The action was not mapped. See the <code>action</code> attribute, which contains a data source specific value."
+        },
+        "0": {
+          "caption": "Unknown",
+          "description": "The action was unknown."
+        },
+        "1": {
+          "caption": "Allowed",
+          "description": "The activity was allowed."
+        },
+        "2": {
+          "caption": "Denied",
+          "description": "The attempted activity was denied."
+        }
+      },
+      "type": "integer_t",
+      "sibling": "action"
+    },
     "actor": {
       "caption": "Actor",
       "description": "The actor object describes details about the user/role/process that was the source of the activity.",

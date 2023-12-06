@@ -7,6 +7,30 @@
     "group": "primary"
   },
   "attributes": {
+    "action": {
+      "caption": "Action",
+      "description": "The normalized caption of 'action_id' or the source specific action.",
+      "requirement": "optional"
+    },
+    "action_id": {
+      "caption": "Action ID",
+      "description": "The normalized action taken by a control or other policy-based system leading to an outcome or disposition. Note that <code>Other</code> is not an option. No action would equate to <code>Allowed</code>. Refer to <code>disposition_id</code> for the outcome of the action.",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The action was unknown. The <code>disposition_id</code> attribute may still be set to a non-unknown value."
+        },
+        "1": {
+          "caption": "Allowed",
+          "description": "The activity was allowed. The <code>disposition_id</code> attribute must be set to a value that conforms to this action, for example 'Allowed', 'Approved', 'No Action', 'Count' etc."
+        },
+        "2": {
+          "caption": "Denied",
+          "description": "The attempted activity was denied. The <code>disposition_id</code> attribute must be set to a value that conforms to this action, for example 'Blocked', 'Quarantined', 'Isolated', 'Dropped', 'Access Revoked, 'Rejected',  etc."
+        }
+      },
+      "requirement": "required"
+    },
     "attacks": {
       "requirement": "optional"
     },

@@ -1,0 +1,72 @@
+{
+    "$id": "https://schema.ocsf.io/profile.schema.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Profile",
+    "description": "Profiles are overlays on event classes and objects, effectively a dynamic mix-in class of attributes with their requirements and constraints.",
+    "type": "object",
+    "anyOf": [
+        {
+            "required": [
+                "description",
+                "caption",
+                "meta",
+                "name",
+                "attributes"
+            ]
+        },
+        {
+            "required": [
+                "extends"
+            ]
+        }
+    ],
+    "properties": {
+        "annotations": {
+            "type": "object",
+            "description": "Annotations for this profile describing categories it belongs in."
+        },
+        "caption": {
+            "type": "string",
+            "description": "A short, human friendly name for the profile."
+        },
+        "description": {
+          "type": "string",
+          "description": "A concise description of the profile."
+        },
+        "extends": {
+            "type": "string",
+            "description": "A profile that this one extends from."
+        },
+        "meta": {
+            "type": "string",
+            "description": "A value indicating the type of this profile.",
+            "enum": ["profile"]
+        },
+        "name": {
+            "type": "string",
+            "description": "A name of the profile. It must be a unique name. The name is all lower case letters, combine words using underscore.",
+            "pattern": "^[a-z0-9_]*$"
+        },
+        "attributes": {
+            "type": "object",
+            "description": "A dictionary of attributes for the profile.",
+            "properties": {
+                "$include": {
+                    "description": "A reference to another schema for attributes to include.",
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "format": "uri-reference"
+                    }
+                }
+            },
+            "patternProperties": {
+                "^[a-z0-9_]*$": {
+                    "$ref": "attribute.schema.json"
+                }
+            },
+            "additionalProperties": false
+        }
+    },
+    "additionalProperties": false
+}

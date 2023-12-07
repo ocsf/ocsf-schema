@@ -50,7 +50,7 @@
       "enum": {
         "99": {
           "caption": "Other",
-          "description": "The event activity is not mapped."
+          "description": "The event activity is not mapped. See the <code>activity_name</code> attribute, which contains a data source specific value."
         },
         "0": {
           "caption": "Unknown",
@@ -64,6 +64,35 @@
       "caption": "Activity",
       "description": "The event activity name, as defined by the activity_id.",
       "type": "string_t"
+    },
+    "action": {
+      "caption": "Action",
+      "description": "The normalized caption of 'action_id' or the source specific action.",
+      "type": "string_t" 
+    },
+    "action_id": {
+      "caption": "Action ID",
+      "description": "The normalized action taken by a control or other policy-based system leading to an outcome or disposition.",
+      "enum": {
+        "99": {
+          "caption": "Other",
+          "description": "The action was not mapped. See the <code>action</code> attribute, which contains a data source specific value."
+        },
+        "0": {
+          "caption": "Unknown",
+          "description": "The action was unknown."
+        },
+        "1": {
+          "caption": "Allowed",
+          "description": "The activity was allowed."
+        },
+        "2": {
+          "caption": "Denied",
+          "description": "The attempted activity was denied."
+        }
+      },
+      "type": "integer_t",
+      "sibling": "action"
     },
     "actor": {
       "caption": "Actor",
@@ -102,10 +131,12 @@
       "description": "The identifier of the normalized algorithm. See specific usage.",
       "enum": {
         "99": {
-          "caption": "Other"
+          "caption": "Other",
+          "description": "The algorithm is not mapped. See the <code>algorithm</code> attribute, which contains a data source specific value."
         },
         "0": {
-          "caption": "Unknown"
+          "caption": "Unknown",
+          "description": "The algorithm is unknown."
         }
       },
       "sibling": "algorithm",
@@ -147,21 +178,16 @@
       "description": "The arguments sent along with the HTTP request.",
       "type": "string_t"
     },
+    "attacks": {
+      "caption": "MITRE ATT&CK® Details",
+      "description": "An array of <a target='_blank' href='https://attack.mitre.org'>MITRE ATT&CK®</a> objects describing the tactics, techniques & sub-techniques identified by a security control or finding.",
+      "is_array": true,
+      "type": "attack"
+    },
     "attempt": {
       "caption": "Attempt",
       "description": "The delivery attempt.",
       "type": "integer_t"
-    },
-    "banner": {
-      "caption": "SMTP Banner",
-      "description": "The initial SMTP connection response that a messaging server receives after it connects to a email server.",
-      "type": "string_t"
-    },
-    "attacks": {
-      "caption": "MITRE ATT&CK® Details",
-      "description": "An array of <a target='_blank' href='https://attack.mitre.org'>MITRE ATT&CK®</a> objects describing the tactics, techniques & sub-techniques associated to a security finding.",
-      "is_array": true,
-      "type": "attack"
     },
     "attributes": {
       "caption": "Attributes",
@@ -178,10 +204,12 @@
       "description": "The normalized identifier of the authentication protocol used to create the user session.",
       "enum": {
         "99": {
-          "caption": "Other"
+          "caption": "Other",
+          "description": "The authentication protocol is not mapped. See the <code>auth_protocol</code> attribute, which contains a data source specific value."
         },
         "0": {
-          "caption": "Unknown"
+          "caption": "Unknown",
+          "description": "The authentication protocol is unknown."
         },
         "1": {
           "caption": "NTLM"
@@ -227,10 +255,12 @@
       "description": "The normalized identifier of the agreed upon authentication type. See specific usage.",
       "enum": {
         "99": {
-          "caption": "Other"
+          "caption": "Other",
+          "description": "The authentication type is not mapped. See the <code>auth_type</code> attribute, which contains a data source specific value."
         },
         "0": {
-          "caption": "Unknown"
+          "caption": "Unknown",
+          "description": "The authentication type is unknown."
         }
       },
       "sibling": "auth_type",
@@ -238,13 +268,18 @@
     },
     "authorizations": {
       "caption": "Authorization Information",
-      "description": "This object provides details such as authorization outcome, associated policies related to activity/event.",
+      "description": "Provides details about an authorization, such as authorization outcome, and any associated policies related to the activity/event.",
       "is_array": true,
       "type": "authorization"
     },
     "autoscale_uid": {
       "caption": "Autoscale UID",
       "description": "The unique identifier of the cloud autoscale configuration.",
+      "type": "string_t"
+    },
+    "banner": {
+      "caption": "SMTP Banner",
+      "description": "The initial SMTP connection response that a messaging server receives after it connects to a email server.",
       "type": "string_t"
     },
     "base_address": {
@@ -282,7 +317,8 @@
       "description": "<p>The normalized identifier of the boundary of the connection. </p><p> For cloud connections, this translates to the traffic-boundary (same VPC, through IGW, etc.). For traditional networks, this is described as Local, Internal, or External.</p>",
       "enum": {
         "99": {
-          "caption": "Other"
+          "caption": "Other",
+          "description": "The boundar is not mapped. See the <code>boundary</code> attribute, which contains a data source specific value."
         },
         "0": {
           "caption": "Unknown",
@@ -389,7 +425,7 @@
       "enum": {
         "99": {
           "caption": "Other",
-          "description": "The Domain/URL category is not mapped. See the <code>categories</code> attribute, which may contain a data source specific value."
+          "description": "The Domain/URL category is not mapped. See the <code>categories</code> attribute, which contains a data source specific value."
         },
         "0": {
           "caption": "Unknown",
@@ -850,7 +886,7 @@
       "enum": {
         "0": {
           "caption": "Unknown",
-          "description": "No confidence is assigned."
+          "description": "The normalized confidence is unknown."
         },
         "1": {
           "caption": "Low"
@@ -883,10 +919,12 @@
       "description": "The normalized identifier of the file content confidentiality indicator.",
       "enum": {
         "99": {
-          "caption": "Other"
+          "caption": "Other",
+          "description": "The confidentiality is not mapped. See the <code>confidentiality</code> attribute, which contains a data source specific value."
         },
         "0": {
-          "caption": "Unknown"
+          "caption": "Unknown",
+          "description": "The confidentiality is unknown."
         },
         "1": {
           "caption": "Not Confidential"
@@ -1160,7 +1198,7 @@
       "description": "The normalized identifier of the direction of the initiated connection, traffic, or email.",
       "enum": {
         "0": {
-          "description": "Connection direction is unknown.",
+          "description": "The connection direction is unknown.",
           "caption": "Unknown"
         },
         "1": {
@@ -1176,7 +1214,8 @@
           "caption": "Lateral"
         },
         "99": {
-          "caption": "Other"
+          "caption": "Other",
+          "description": "The direction is not mapped. See the <code>direction</code> attribute, which contains a data source specific value."
         }
       },
       "sibling": "direction",
@@ -1189,18 +1228,20 @@
     },
     "disposition": {
       "caption": "Disposition",
-      "description": "The event disposition name, normalized to the caption of the disposition_id value. In the case of 'Other', it is defined by the event source.",
+      "description": "The disposition name, normalized to the caption of the disposition_id value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "disposition_id": {
       "caption": "Disposition ID",
-      "description": "When security issues, such as malware or policy violations, are detected and possibly corrected, then <code>disposition_id</code> describes the action taken by the security product.",
+      "description": "Describes the outcome or action taken by a security control, such as access control checks, malware detections or various types of policy violations.",
       "enum": {
         "99": {
-          "caption": "Other"
+          "caption": "Other",
+          "description": "The disposition is not mapped. See the <code>disposition</code> attribute, which contains a data source specific value."
         },
         "0": {
-          "caption": "Unknown"
+          "caption": "Unknown",
+          "description": "The disposition is unknown."
         }
       },
       "sibling": "disposition",
@@ -1426,6 +1467,11 @@
       "is_array": true,
       "type": "fingerprint"
     },
+    "firewall_rule": {
+      "caption": "Firewall Rule",
+      "description": "The firewall rule that triggered the event.",
+      "type": "firewall_rule"
+    },
     "first_seen_time": {
       "caption": "First Seen",
       "description": "The initial detection time of the activity or object. See specific usage",
@@ -1625,7 +1671,8 @@
       "description": "The normalized impact of the finding.",
       "enum": {
         "0": {
-          "caption": "Unknown"
+          "caption": "Unknown",
+          "description": "The normalized impact is unknwon."
         },
         "1": {
           "caption": "Low"
@@ -1641,7 +1688,7 @@
         },
         "99": {
           "caption": "Other",
-          "description": "The detection impact is not mapped. See the <code>impact</code> attribute, which contains a data source specific value."
+          "description": "The impact is not mapped. See the <code>impact</code> attribute, which contains a data source specific value."
         }
       },
       "sibling": "impact",
@@ -1662,10 +1709,12 @@
       "description": "The normalized identifier of the process injection method.",
       "enum": {
         "99": {
-          "caption": "Other"
+          "caption": "Other",
+          "description": "The injection type is not mapped. See the <code>injection_type</code> attribute, which contains a data source specific value."
         },
         "0": {
-          "caption": "Unknown"
+          "caption": "Unknown",
+          "description": "The injection type is unknown."
         },
         "1": {
           "caption": "Remote Thread"
@@ -2019,7 +2068,7 @@
       "enum": {
         "99": {
           "caption": "Other",
-          "description": "Other logon type."
+          "description": "The logon type is not mapped. See the <code>logon_type</code> attribute, which contains a data source specific value."
         },
         "0": {
           "caption": "System",
@@ -2080,7 +2129,7 @@
     },
     "malware": {
       "caption": "Malware",
-      "description": "A list of Malware objects, decribing details about the identified malware..",
+      "description": "A list of Malware objects, decribing details about the identified malware.",
       "is_array": true,
       "type": "malware"
     },
@@ -2395,7 +2444,8 @@
           "description": "With hands-on keyboard access, intruders accomplish the mission’s goal."
         },
         "99": {
-          "caption": "Other"
+          "caption": "Other",
+          "description": "The kill chain phase is not mapped. See the <code>phase</code> attribute, which contains a data source specific value."
         }
       },
       "type": "integer_t",
@@ -2613,10 +2663,11 @@
       "enum": {
         "99": {
           "caption": "Other",
-          "description": "The dns response code is not defined by the RFC."
+          "description": "The DNS response code is not defined by the RFC. See the <code>rcode</code> attribute, which contains a data source specific value."
         },
         "0": {
-          "caption": "Unknown"
+          "caption": "Unknown",
+          "description": "The DNS response code is unknown."
         }
       },
       "sibling": "rcode",
@@ -2787,11 +2838,6 @@
       "description": "The rules that reported the events.",
       "type": "rule"
     },
-    "firewall_rule": {
-      "caption": "Firewall Rule",
-      "description": "The firewall rules that triggered the events.",
-      "type": "firewall_rule"
-    },
     "run_state": {
       "caption": "Run State",
       "description": "The state of the job or service, normalized to the caption of the run_state_id value. In the case of 'Other', it is defined by the event source. See specific usage.",
@@ -2956,7 +3002,7 @@
         },
         "0": {
           "caption": "Unknown",
-          "description": "The event severity is not known."
+          "description": "The event severity is unknown."
         },
         "1": {
           "caption": "Informational",
@@ -3002,11 +3048,11 @@
       "enum": {
         "99": {
           "caption": "Other",
-          "description": "The share type is not mapped."
+          "description": "The share type is not mapped. See the <code>share_type</code> attribute, which contains a data source specific value."
         },
         "0": {
           "caption": "Unknown",
-          "description": "The share type is not known."
+          "description": "The share type is unknown."
         },
         "1": {
           "caption": "File"
@@ -3112,7 +3158,8 @@
           "description": "The state is not mapped. See the <code>state</code> attribute, which contains a data source specific value."
         },
         "0": {
-          "caption": "Unknown"
+          "caption": "Unknown",
+          "description": "The state is unknown."
         }
       },
       "sibling": "state",
@@ -3142,7 +3189,8 @@
           "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
         },
         "0": {
-          "caption": "Unknown"
+          "caption": "Unknown",
+          "description": "The status is unknown."
         },
         "1": {
           "caption": "Success"
@@ -3184,7 +3232,7 @@
         },
         "99": {
           "caption": "Other",
-          "description": "The stratum level is not mapped. See the <code>stratum</code> attribute, which may contain a data source specific value."
+          "description": "The stratum level is not mapped. See the <code>stratum</code> attribute, which contains a data source specific value."
         }
       },
       "sibling": "stratum",
@@ -3352,7 +3400,7 @@
       "enum": {
         "99": {
           "caption": "Other",
-          "description": "The type is not mapped. See the <code>type</code> attribute, which may contain a data source specific value."
+          "description": "The type is not mapped. See the <code>type</code> attribute, which contains a data source specific value."
         },
         "0": {
           "caption": "Unknown",

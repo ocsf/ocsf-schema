@@ -1,0 +1,87 @@
+{
+    "$id": "https://schema.ocsf.io/object.schema.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Object",
+    "description": "An object is a collection of contextually related attributes, usually representing an entity, and may include other objects. Each object is also a data type in OCSF. Examples of object data types are Process, Device, User, Malware and File.",
+    "type": "object",
+    "anyOf": [
+        {
+            "required": [
+                "description",
+                "caption",
+                "name",
+                "attributes"
+            ]
+        },
+        {
+            "required": [
+                "extends"
+            ]
+        }
+    ],
+    "properties": {
+        "@deprecated": {
+            "$ref": "deprecated.schema.json"
+        },
+        "description": {
+          "type": "string",
+          "description": "A concise description of the object."
+        },
+        "caption": {
+          "type": "string",
+          "description": "A short, human friendly name for the object."
+        },
+        "name": {
+          "type": "string",
+          "description": "A name of the object. It must be a unique name. The name is all lower case letters, combine words using underscore.",
+          "pattern": "^[a-z0-9_]*$"
+        },
+        "extends": {
+            "type": "string",
+            "description": "An object that this one extends from."
+        },
+        "observable": {
+            "$ref": "observable.schema.json"
+        },
+        "constraints": {
+            "type": "object",
+            "description": "Constraints that apply to the attribute requirements.",
+            "properties": {
+                "at_least_one": {
+                    "type": "array",
+                    "items": {"type": "string"}
+                },
+                "just_one": {
+                    "type": "array",
+                    "items": {"type": "string"}
+                }
+            },
+            "additionalProperties": false
+        },
+        "profiles": {
+            "type": "array",
+            "items": {"type": "string"},
+            "description": "The list of profiles used to create the event."
+        },
+        "attributes": {
+            "type": "object",
+            "description": "A dictionary of attributes for the object.",
+            "properties": {
+                "$include": {
+                    "description": "A reference to another schema for attributes to include.",
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "format": "uri-reference"
+                    }
+                }
+            },
+            "patternProperties": {
+                "^[a-z0-9_]*$": {
+                    "$ref": "attribute.schema.json"
+                }
+            },
+            "additionalProperties": false
+        }
+    }
+}

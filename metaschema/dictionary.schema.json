@@ -1,0 +1,102 @@
+{
+    "$id": "https://schema.ocsf.io/dictionary.schema.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Dictionary",
+    "description": "An attribute dictionary of all available attributes and their types. Event classes are particular sets of attributes from the dictionary.",
+    "type": "object",
+    "required": [
+        "caption",
+        "name"
+    ],
+    "properties": {
+        "description": {
+            "type": "string",
+            "description": "A concise description of the dictionary."
+        },
+        "caption": {
+            "type": "string",
+            "description": "A short, human friendly name for the dictionary."
+        },
+        "name": {
+            "type": "string",
+            "description": "A name of the dictionary. It must be a unique name. The name is all lower case letters, combine words using underscore.",
+            "pattern": "^[a-z0-9_]*$"
+        },
+        "attributes": {
+            "type": "object",
+            "description": "A set of attributes defined by the dictionary.",
+            "patternProperties": {
+                "^[a-z0-9_]*$": {
+                    "$ref": "dictionary-attribute.schema.json"
+                }
+            },
+            "additionalProperties": false
+        },
+        "types": {
+            "type": "object",
+            "description": "A set of data types defined by the dictionary.",
+            "required": [
+                "caption"
+            ],
+            "properties": {
+                "caption": {
+                    "type": "string",
+                    "description": "A short, human friendly name for these data types."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A concise description of these data types."
+                },
+                "attributes": {
+                    "type": "object",
+                    "description": "A set of type attributes defined by the dictionary.  Type attributes must be all lowercase and end in '_t' by convention.",
+                    "patternProperties": {
+                        "^[a-z0-9_]*$": {
+                            "allOf": [
+                                {
+                                    "$ref": "attribute.schema.json"
+                                }, 
+                                {
+                                    "properties": {
+                                        "max_len": {
+                                            "type": "integer",
+                                            "description": "The maximum length of this data type.",
+                                            "minimum": 0
+                                        },
+                                        "observable": {
+                                            "$ref": "observable.schema.json"
+                                        },
+                                        "range": {
+                                            "type": "array",
+                                            "description": "A range of values that are valid for this data type.",
+                                            "minItems": 2,
+                                            "maxItems": 2
+                                        },
+                                        "regex": {
+                                            "type": "string",
+                                            "description": "A regular expression constraint for this data type.",
+                                            "format": "regex"
+                                        },
+                                        "type": {
+                                            "type": "string",
+                                            "description": "The data type for this attribute. Should reference another defined type."
+                                        },
+                                        "type_name": {
+                                            "type": "string",
+                                            "description": "The human-readable name of the data type for this attribute."
+                                        },
+                                        "values": {
+                                            "type": "array",
+                                            "description": "A set of fixed values for this data type."
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "additionalProperties": false
+                }
+            }
+        }
+    }
+}

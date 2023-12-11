@@ -1,0 +1,36 @@
+{
+    "$id": "https://schema.ocsf.io/include.schema.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Include",
+    "description": "An include is a collection attributes meant to be included in other objects.",
+    "type": "object",
+    "required": [
+        "description",
+        "caption",
+        "attributes"
+    ],
+    "properties": {
+        "annotations": {
+            "type": "object",
+            "description": "Annotations for this include describing categories it belongs in."
+        },
+        "description": {
+          "type": "string",
+          "description": "A concise description of the object."
+        },
+        "caption": {
+          "type": "string",
+          "description": "A short, human friendly name for the object."
+        },
+        "attributes": {
+            "type": "object",
+            "description": "A dictionary of attributes for the object.",
+            "patternProperties": {
+                "^[a-z0-9_]*$": {
+                    "$ref": "attribute.schema.json"
+                }
+            },
+            "additionalProperties": false
+        }
+    }
+}

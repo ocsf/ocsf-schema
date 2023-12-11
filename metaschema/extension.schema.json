@@ -1,0 +1,38 @@
+{
+    "$id": "https://schema.ocsf.io/extension.schema.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Extension",
+    "description": "Extensions allow the schema to be extended using the framework without modification of the core schema. New attributes, objects, event classes, categories and profiles are all available to extensions.",
+    "type": "object",
+    "required": [
+        "description",
+        "caption",
+        "name",
+        "uid"
+    ],
+    "properties": {
+        "description": {
+            "type": "string",
+            "description": "A concise description of the extension."
+        },
+        "caption": {
+            "type": "string",
+            "description": "A short, human friendly name for the extension."
+        },
+        "name": {
+            "type": "string",
+            "description": "A name of the extension. It must be a unique name. The name is all lower case letters, combine words using underscore.",
+            "pattern": "^[a-z0-9_]*$"
+        },
+        "uid": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "The unique identifier for this extension."
+        },
+        "version": {
+            "description": "The version of this extension",
+            "$ref": "semver.schema.json"
+        }
+    },
+    "additionalProperties": false
+}

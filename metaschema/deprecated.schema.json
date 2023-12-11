@@ -1,0 +1,19 @@
+{
+    "$id": "https://schema.ocsf.io/deprecated.schema.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Deprecated",
+    "type": "object",
+    "required": ["message", "since"],
+    "description": "An annotation marking an attribute or object as deprecated.",
+    "properties": {
+        "message": {
+            "description": "A message that explains the deprecation to implementors.",
+            "type": "string"
+        },
+        "since": {
+            "description": "The version after which this attribute or object is deprecated.",
+            "$ref": "semver.schema.json"
+        }
+    },
+    "additionalProperties": false
+}

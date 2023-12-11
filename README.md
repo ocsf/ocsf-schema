@@ -29,4 +29,4 @@ Updates to OCSF follow [semantic versioning](https://semver.org/).
 
 ## License
 
-This software is licensed under the [Apache License](https://github.com/ocsf/ocsf-schema/blob/main/LICENSE)https://github.com/ocsf/ocsf-schema/blob/main/LICENSE, version 2 ("ALv2").
+This software is licensed under the [Apache License](https://github.com/ocsf/ocsf-schema/blob/main/LICENSE), version 2 ("ALv2").

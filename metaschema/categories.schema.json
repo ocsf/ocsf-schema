@@ -1,0 +1,47 @@
+{
+    "$id": "https://schema.ocsf.io/categories.schema.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Categories",
+    "description": "The OCSF categories organize event classes, each aligned with a specific domain or area of focus.",
+    "type": "object",
+    "properties": {
+        "annotations": {
+            "type": "object",
+            "description": "Annotations for this include describing categories it belongs in."
+        },
+        "description": {
+          "type": "string",
+          "description": "A concise description of the object."
+        },
+        "caption": {
+          "type": "string",
+          "description": "A short, human friendly name for the object."
+        },
+        "attributes": {
+            "type": "object",
+            "description": "A dictionary of attributes for the object.",
+            "patternProperties": {
+                "^[a-z0-9_]*$": {
+                    "type": "object",
+                    "properties": {
+                        "caption": {
+                            "type": "string",
+                            "description": "A short, more specific identifier for this attribute."
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the attribute."
+                        },
+                        "uid": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "description": "The unique identifier for this attribute."
+                        }
+                    },
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false
+        }
+    }
+}

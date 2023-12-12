@@ -1,6 +1,6 @@
 {
   "caption": "Authentication Factor",
-  "description": "The authentication factor object provides information about the factor used to authenticate in an mfa request.",
+  "description": "Information on factors used to authenticate.",
   "name": "authentication factor",
   "extends": "object",
   "attributes": {
@@ -10,6 +10,9 @@
     },
     "factor_type": {
       "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
         "1": {
           "caption": "SMS"
         },
@@ -17,13 +20,13 @@
           "caption": "Security Question"
         },
         "3": {
-          "caption": "Call"
+          "caption": "Phone Call"
         },
         "4": {
           "caption": "Time-based One-time Password (totp)"
         },
         "5": {
-          "caption": "Push Factor"
+          "caption": "Push Notification"
         },
         "6": {
           "caption": "Token"
@@ -39,6 +42,9 @@
         },
         "10": {
           "caption": "WebAuthn"
+        },
+        "99": {
+          "caption": "Other"
         }
       },
       "requirement": "required"
@@ -48,7 +54,7 @@
       "requirement": "optional"
     },
     "factor_telephony_num": {
-      "description": "Phone number for then telephony based mfa request.",
+      "description": "Phone number for then telephony based MFA request.",
       "requirement": "optional"
     },
     "factor_email": {
@@ -56,21 +62,7 @@
       "requirement": "optional"
     },
     "factor_provider": {
-      "description": "Provider of mfa Factor",
-      "requirement": "recommended"
-    },
-    "outcome": {
-      "enum": {
-        "1": {
-          "description": "Authentication attempt was approved.",
-          "caption": "Authentication Allowed"
-        },
-        "2": {
-          "description": "Authentication attempt was denied.",
-          "caption": "Authentication Denied"
-        }
-      },
-      "description": "Outcome for user's authentication attempt.",
+      "description": "Provider of MFA Factor",
       "requirement": "recommended"
     }
   },

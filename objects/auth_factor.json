@@ -6,7 +6,8 @@
   "attributes": {
     "factor_device": {
       "description": "Device used to complete the authentication request.",
-      "requirement": "recommended"
+      "requirement": "recommended",
+      "type": "device"
     },
     "factor_type": {
       "enum": {
@@ -63,34 +64,39 @@
       },
       "requirement": "required"
     },
-    "factor_question": {
-      "description": "Question provided for user to answer for question based authentication factor.",
-      "requirement": "optional"
-    },
-    "factor_telephony_number": {
-      "description": "Phone number for then telephony based MFA request.",
-      "requirement": "optional"
-    },
-    "factor_email": {
-      "description": "Email that an authentication was performed with",
-      "requirement": "optional"
-    },
     "factor_provider": {
       "description": "Provider of MFA Factor",
       "requirement": "recommended"
     },
     "is_totp": {
-      "description": "Whether the authentication factor is a totp.",
-      "type": "boolean_t"
+      "description": "Whether the authentication factor is a Time-based One-time Password (TOTP).",
+      "type": "boolean_t",
+      "requirement": "recommended"
     },
-    "is_hotp" : {
-      "description": "Whether the authentication factor is a hotp.",
-      "type": "boolean_t"
+    "is_hotp": {
+      "description": "Whether the authentication factor is a HMAC-based One-time Password (HOTP).",
+      "type": "boolean_t",
+      "requirement": "recommended"
     }
   },
-  "just_one": [
-    "factor_email",
-    "factor_telephony_number",
-    "factor_question"
-  ]
+  "factor_question": {
+    "description": "Question provided for user to answer for question based authentication factor.",
+    "requirement": "optional"
+  },
+  "factor_telephony_number": {
+    "description": "Phone number for a telephony based MFA request.",
+    "requirement": "optional"
+  },
+  "factor_email": {
+    "description": "Email that an authentication was performed with",
+    "requirement": "optional",
+    "type": "email_t"
+  },
+  "constraints": {
+    "just_one": [
+      "factor_email",
+      "factor_telephony_number",
+      "factor_question"
+    ]
+  }
 }

@@ -7,7 +7,8 @@
     "factor_device": {
       "description": "Device used to complete the authentication request.",
       "requirement": "recommended",
-      "type": "device"
+      "type": "device",
+      "group": "primary"
     },
     "factor_type": {
       "enum": {
@@ -62,35 +63,42 @@
           "caption": "Other"
         }
       },
-      "requirement": "required"
+      "requirement": "required",
+      "group": "primary"
     },
     "factor_provider": {
       "description": "Provider of MFA Factor",
-      "requirement": "recommended"
+      "requirement": "recommended",
+      "group": "context"
     },
     "is_totp": {
       "description": "Whether the authentication factor is a Time-based One-time Password (TOTP).",
       "type": "boolean_t",
-      "requirement": "recommended"
+      "requirement": "recommended",
+      "group": "context"
     },
     "is_hotp": {
-      "description": "Whether the authentication factor is a HMAC-based One-time Password (HOTP).",
+      "description": "Whether the authentication factor is an HMAC-based One-time Password (HOTP).",
       "type": "boolean_t",
-      "requirement": "recommended"
+      "requirement": "recommended",
+      "group": "context"
     }
   },
   "factor_question": {
     "description": "Question provided for user to answer for question based authentication factor.",
-    "requirement": "optional"
+    "requirement": "optional",
+    "group": "context"
   },
   "factor_telephony_number": {
     "description": "Phone number for a telephony based MFA request.",
-    "requirement": "optional"
+    "requirement": "optional",
+    "group": "context"
   },
   "factor_email": {
     "description": "Email that an authentication was performed with",
     "requirement": "optional",
-    "type": "email_t"
+    "type": "email_t",
+    "group": "context"
   },
   "constraints": {
     "just_one": [

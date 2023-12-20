@@ -1345,7 +1345,7 @@
     },
     "enrichments": {
       "caption": "Enrichments",
-      "description": "The additional information from an external data source, which is associated with the event. For example add location information for the IP address in the DNS answers:</p><code>[{\"name\": \"answers.ip\", \"value\": \"92.24.47.250\", \"type\": \"location\", \"data\": {\"city\": \"Socotra\", \"continent\": \"Asia\", \"coordinates\": [-25.4153, 17.0743], \"country\": \"YE\", \"desc\": \"Yemen\"}}]</code>",
+      "description": "The additional information from an external data source, which is associated with the event or a finding. For example add location information for the IP address in the DNS answers:</p><code>[{\"name\": \"answers.ip\", \"value\": \"92.24.47.250\", \"type\": \"location\", \"data\": {\"city\": \"Socotra\", \"continent\": \"Asia\", \"coordinates\": [-25.4153, 17.0743], \"country\": \"YE\", \"desc\": \"Yemen\"}}]</code>",
       "is_array": true,
       "type": "enrichment"
     },
@@ -1387,7 +1387,7 @@
     "evidence": {
       "@deprecated": {
         "message": "Use the <code> evidences </code> attribute instead.",
-        "since": "v1.1.0"
+        "since": "1.1.0"
       },
       "caption": "Evidence",
       "description": "The data the finding exposes to the analyst.",
@@ -2140,7 +2140,7 @@
     },
     "message": {
       "caption": "Message",
-      "description": "The description of the event, as defined by the event source.",
+      "description": "The description of the event/finding, as defined by the source.",
       "type": "string_t"
     },
     "message_uid": {
@@ -2150,7 +2150,7 @@
     },
     "metadata": {
       "caption": "Metadata",
-      "description": "The metadata associated with the event.",
+      "description": "The metadata associated with the event or a finding.",
       "type": "metadata"
     },
     "metrics": {
@@ -2223,7 +2223,7 @@
     },
     "observables": {
       "caption": "Observables",
-      "description": "The observables associated with the event.",
+      "description": "The observables associated with the event or a finding.",
       "is_array": true,
       "type": "observable"
     },
@@ -2649,7 +2649,7 @@
     },
     "raw_data": {
       "caption": "Raw Data",
-      "description": "The event data as received from the event source.",
+      "description": "The raw event/finding data as received from the source.",
       "type": "string_t"
     },
     "rcode": {
@@ -2989,20 +2989,20 @@
     },
     "severity": {
       "caption": "Severity",
-      "description": "The event severity, normalized to the caption of the severity_id value. In the case of 'Other', it is defined by the event source.",
+      "description": "The event/finding severity, normalized to the caption of the severity_id value. In the case of 'Other', it is defined by the source.",
       "type": "string_t"
     },
     "severity_id": {
       "caption": "Severity ID",
-      "description": "<p>The normalized identifier of the event severity.</p>The normalized severity is a measurement the effort and expense required to manage and resolve an event or incident. Smaller numerical values represent lower impact events, and larger numerical values represent higher impact events.",
+      "description": "<p>The normalized identifier of the event/finding severity.</p>The normalized severity is a measurement the effort and expense required to manage and resolve an event or incident. Smaller numerical values represent lower impact events, and larger numerical values represent higher impact events.",
       "enum": {
         "99": {
           "caption": "Other",
-          "description": "The event severity is not mapped. See the <code>severity</code> attribute, which contains a data source specific value."
+          "description": "The event/finding severity is not mapped. See the <code>severity</code> attribute, which contains a data source specific value."
         },
         "0": {
           "caption": "Unknown",
-          "description": "The event severity is unknown."
+          "description": "The event/finding severity is unknown."
         },
         "1": {
           "caption": "Informational",
@@ -3177,7 +3177,7 @@
     },
     "status_detail": {
       "caption": "Status Details",
-      "description": "The status details contains additional information about the event outcome.",
+      "description": "The status details contains additional information about the event/finding outcome.",
       "type": "string_t"
     },
     "status_id": {
@@ -3335,7 +3335,7 @@
     },
     "time": {
       "caption": "Event Time",
-      "description": "The normalized event occurrence time.",
+      "description": "The normalized event occurrence time or the finding creation time.",
       "type": "timestamp_t"
     },
     "timezone_offset": {
@@ -3412,12 +3412,12 @@
     },
     "type_name": {
       "caption": "Type Name",
-      "description": "The event type name, as defined by the type_uid.",
+      "description": "The event/finding type name, as defined by the type_uid.",
       "type": "string_t"
     },
     "type_uid": {
       "caption": "Type ID",
-      "description": "The event type ID. It identifies the event's semantics and structure. The value is calculated by the logging system as: <code>class_uid * 100 + activity_id</code>.",
+      "description": "The event/finding type ID. It identifies the event's semantics and structure. The value is calculated by the logging system as: <code>class_uid * 100 + activity_id</code>.",
       "sibling": "type_name",
       "type": "integer_t"
     },

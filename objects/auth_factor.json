@@ -1,0 +1,110 @@
+{
+  "caption": "Authentication Factor",
+  "description": "Information on factors used to authenticate.",
+  "name": "authentication factor",
+  "extends": "object",
+  "attributes": {
+    "factor_device": {
+      "description": "Device used to complete the authentication request.",
+      "requirement": "recommended",
+      "type": "device",
+      "group": "primary"
+    },
+    "factor_type": {
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "SMS",
+          "description": "User receives and inputs code sent to their mobile device via SMS text message."
+        },
+        "2 question": {
+          "caption": "Security Question",
+          "description": "User answers a security question that only the user should know the answer to."
+        },
+        "3": {
+          "caption": "Phone Call",
+          "description": "System calls the user's registered phone number and requires the user to answer and provide a response."
+        },
+        "4": {
+          "caption": "Biometric",
+          "description": "Devices that verify identity based on user's physical identifiers, such as fingerprint scanners or retina scanners."
+        },
+        "5": {
+          "caption": "Push Notification",
+          "description": "Push notification is sent to user's device and requires the user to acknowledge."
+        },
+        "6": {
+          "caption": "Hardware Token",
+          "description": "Physical devices that generate a code to be used for authentication."
+        },
+        "7": {
+          "caption": "OTP",
+          "description": "Application generates a one-time password for use in authentication."
+        },
+        "8": {
+          "caption": "Email",
+          "description": "A code or link is sent to a user's registered email address."
+        },
+        "9": {
+          "caption": "U2F",
+          "description": "Typically involves a hardware token, which the user physically interacts with to authenticate."
+        },
+        "10": {
+          "caption": "WebAuthn",
+          "description": "Web based API that allows users to register devices as factors."
+        },
+        "11": {
+          "caption": "Password",
+          "description": "Password, that was previously created by the user, is entered."
+        },
+        "99": {
+          "caption": "Other"
+        }
+      },
+      "requirement": "required",
+      "group": "primary"
+    },
+    "factor_provider": {
+      "description": "Provider of MFA Factor",
+      "requirement": "recommended",
+      "group": "context"
+    },
+    "is_totp": {
+      "description": "Whether the authentication factor is a Time-based One-time Password (TOTP).",
+      "type": "boolean_t",
+      "requirement": "recommended",
+      "group": "context"
+    },
+    "is_hotp": {
+      "description": "Whether the authentication factor is an HMAC-based One-time Password (HOTP).",
+      "type": "boolean_t",
+      "requirement": "recommended",
+      "group": "context"
+    }
+  },
+  "factor_question": {
+    "description": "The question provided to answer for a question based authentication factor.",
+    "requirement": "optional",
+    "group": "context"
+  },
+  "factor_telephony_number": {
+    "description": "The phone number used for a telephony based MFA request.",
+    "requirement": "optional",
+    "group": "context"
+  },
+  "factor_email": {
+    "description": "The email address that used in am email based authentication factor.",
+    "requirement": "optional",
+    "type": "email_t",
+    "group": "context"
+  },
+  "constraints": {
+    "just_one": [
+      "factor_email",
+      "factor_telephony_number",
+      "factor_question"
+    ]
+  }
+}

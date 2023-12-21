@@ -5,7 +5,11 @@
   "extends": "base_event",
   "name": "finding",
   "attributes": {
+    "activity_name": {
+      "description": "The finding activity name, as defined by the <code>activity_id</code>."
+    },
     "activity_id": {
+      "description": "The normalized identifier of the finding activity.",
       "enum": {
         "1": {
           "caption": "Create",
@@ -39,14 +43,44 @@
       "requirement": "optional"
     },
     "end_time": {
-      "description": "The time of the most recent event included in the finding."
+      "description": "The time of the most recent event included in the finding.",
+      "requirement": "optional"
     },
     "finding_info": {
       "group": "primary",
       "requirement": "required"
     },
     "start_time": {
-      "description": "The time of the least recent event included in the finding."
+      "description": "The time of the least recent event included in the finding.",
+      "requirement": "optional"
+    },
+    "status": {
+      "description": "The normalized status of the Finding set by the consumer normalized to the caption of the status_id value. In the case of 'Other', it is defined by the source.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "status_id": {
+      "description": "The normalized status identifier of the Finding, set by the consumer.",
+      "group": "context",
+      "requirement": "recommended",
+      "enum": {
+        "1": {
+          "caption": "New",
+          "description": "The Finding is new and yet to be reviewed."
+        },
+        "2": {
+          "caption": "In Progress",
+          "description": "The Finding is under review."
+        },
+        "3": {
+          "caption": "Suppressed",
+          "description": "The Finding was reviewed, determined to be benign or a false positive and is now suppressed."
+        },
+        "4": {
+          "caption": "Resolved",
+          "description": "The Finding was reviewed, remediated and is now considered resolved."
+        }
+      }
     }
   }
 }

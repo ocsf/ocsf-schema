@@ -1,8 +1,13 @@
 {
-    "$id": "https://schema.ocsf.io/attribute.schema.json",
+    "$id": "https://schema.ocsf.io/dictionary-attribute.schema.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": "Attribute",
+    "title": "Dictionary Attribute",
     "type": "object",
+    "required": [
+        "caption",
+        "description",
+        "type"
+    ],
     "properties": {
         "@deprecated": {
             "$ref": "deprecated.schema.json"
@@ -36,19 +41,18 @@
                 }
             }
         },
-        "group": {
-            "type": "string",
-            "description": "The group that the attribute is a part of.",
-            "enum": ["context", "classification", "occurrence", "primary"]
-        },
-        "requirement": {
-            "type": "string",
-            "description": "The requirement placed on the attribute for inclusion in the schema.",
-            "enum": ["optional", "recommended", "required"]
-        },
         "sibling": {
             "type": "string",
             "description": "Sibling attributes are string attributes paired with a source enum id attribute. If the source attribute maps to a defined enumeration value, the sibling attribute should be populated with the label of the enum. In the case that the source attribute is `Other`, the sibling attribute is populated with a custom label."
+        },
+        "type": {
+            "type": "string",
+            "description": "The data type for this attribute."
+        },
+        "is_array": {
+            "type": "boolean",
+            "description": "A flag used when the attribute represents an array of values rather than a single value."
         }
-    }
+    },
+    "additionalProperties": false
 }

@@ -168,7 +168,7 @@
       "description": "The bitmask value that represents the file attributes.",
       "type": "integer_t"
     },
-    "auth_factor" : {
+    "auth_factor": {
       "caption": "Authentication Factor",
       "description": "Captures information about a factor used in authentication.",
       "type": "auth_factor"
@@ -1380,6 +1380,94 @@
       "is_array": true,
       "type": "tls_extension"
     },
+    "factor_device": {
+      "caption": "Factor Device",
+      "description": "Device used to complete the authentication request.",
+      "type": "device"
+    },
+    "factor_email": {
+      "caption": "Factor Email",
+      "description": "The email address that used in am email based authentication factor.",
+      "type": "email_t"
+  },
+    "factor_provider": {
+      "caption": "Factor Provider",
+      "description": "Name of provider for an authentication factor.",
+      "type": "string_t"
+    },
+    "factor_question": {
+      "caption": "Factor Question",
+      "description": "The question provided to answer for a question based authentication factor.",
+      "type": "string_t"
+    },
+    "factor_telephony_number": {
+      "caption": "Factor Telephony Number",
+      "description": "The phone number used for a telephony based MFA request.",
+      "type": "string_t"
+    },
+    "factor_type": {
+      "caption": "Factor Type",
+      "description": "Authentication factor used in an authentication attempt.",
+      "type": "string_t"
+    },
+    "factor_type_id": {
+      "caption": "Factor Type ID",
+      "description": "The normalized identifier or the authentication factor.",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "SMS",
+          "description": "User receives and inputs code sent to their mobile device via SMS text message."
+        },
+        "2 question": {
+          "caption": "Security Question",
+          "description": "User answers a security question that only the user should know the answer to."
+        },
+        "3": {
+          "caption": "Phone Call",
+          "description": "System calls the user's registered phone number and requires the user to answer and provide a response."
+        },
+        "4": {
+          "caption": "Biometric",
+          "description": "Devices that verify identity based on user's physical identifiers, such as fingerprint scanners or retina scanners."
+        },
+        "5": {
+          "caption": "Push Notification",
+          "description": "Push notification is sent to user's device and requires the user to acknowledge."
+        },
+        "6": {
+          "caption": "Hardware Token",
+          "description": "Physical devices that generate a code to be used for authentication."
+        },
+        "7": {
+          "caption": "OTP",
+          "description": "Application generates a one-time password for use in authentication."
+        },
+        "8": {
+          "caption": "Email",
+          "description": "A code or link is sent to a user's registered email address."
+        },
+        "9": {
+          "caption": "U2F",
+          "description": "Typically involves a hardware token, which the user physically interacts with to authenticate."
+        },
+        "10": {
+          "caption": "WebAuthn",
+          "description": "Web based API that allows users to register devices as factors."
+        },
+        "11": {
+          "caption": "Password",
+          "description": "Password, that was previously created by the user, is entered."
+        },
+        "99": {
+          "caption": "Other"
+        }
+      },
+      "sibling": "factor_type",
+      "type": "integer_t"
+    },
     "feature": {
       "caption": "Feature",
       "description": "The feature that reported the event.",
@@ -1730,7 +1818,7 @@
       "description": "The indication of whether the value is from a default value name. For example, the value name could be missing.",
       "type": "boolean_t"
     },
-    "is_exploit_available":{
+    "is_exploit_available": {
       "caption": "Exploit Availability",
       "description": "Indicates if an exploit or a PoC (proof-of-concept) is available for the reported vulnerability.",
       "type": "boolean_t"
@@ -1738,6 +1826,11 @@
     "is_fix_available": {
       "caption": "Fix Availability",
       "description": "Indicates if a fix is available for the reported vulnerability.",
+      "type": "boolean_t"
+    },
+    "is_hotp": {
+      "caption": "HMAC-based One-time Password (HOTP)",
+      "description": "Whether the authentication factor is an HMAC-based One-time Password (HOTP).",
       "type": "boolean_t"
     },
     "is_http_only": {
@@ -1798,6 +1891,11 @@
     "is_trusted": {
       "caption": "Trusted Device",
       "description": "The event occurred on a trusted device.",
+      "type": "boolean_t"
+    },
+    "is_totp": {
+      "caption": "Time-based One-time Password (TOTP)",
+      "description": "Whether the authentication factor is a Time-based One-time Password (TOTP).",
       "type": "boolean_t"
     },
     "isp": {
@@ -2445,7 +2543,7 @@
     "precision": {
       "caption": "Precision",
       "description": "The numeric precision. See specific usage.",
-      "type":  "integer_t"
+      "type": "integer_t"
     },
     "priority": {
       "caption": "Priority",
@@ -2537,7 +2635,7 @@
       "description": "The proxy (server) in a network connection.",
       "type": "network_proxy"
     },
-    "purl":{
+    "purl": {
       "caption": "Package URL",
       "description": "A purl is a URL string used to identify and locate a software package in a mostly universal and uniform way across programing languages, package managers, packaging conventions, tools, APIs and databases.",
       "type": "string_t"
@@ -3072,7 +3170,7 @@
       "description": "The URL pointing towards the source of an entity. See specific usage.",
       "type": "url_t"
     },
-    "standards":{
+    "standards": {
       "caption": "Security Standards",
       "description": "Security standards are a set of criteria organizations can follow to protect sensitive and confidential information. e.g. <code>NIST SP 800-53, CIS AWS Foundations Benchmark v1.4.0, ISO/IEC 27001</code>",
       "is_array": true,
@@ -3160,7 +3258,7 @@
       "enum": {
         "0": {
           "caption": "Unknown",
-          "description":  "Unspecified or invalid."
+          "description": "Unspecified or invalid."
         },
         "1": {
           "caption": "Primary Server",
@@ -3649,7 +3747,7 @@
       },
       "subnet_t": {
         "caption": "Subnet",
-      "description": "The subnet represented in a CIDR notation, using the format network_address/prefix_length. The network_address can be in either IPv4 or IPv6 format. The prefix length indicates the number of bits used for the network portion, and the remaining bits are available for host addresses within that subnet. <div>For example:<ul><li>192.168.1.0/24</li><li>2001:0db8:85a3:0000::/64</li></ul></div>",
+        "description": "The subnet represented in a CIDR notation, using the format network_address/prefix_length. The network_address can be in either IPv4 or IPv6 format. The prefix length indicates the number of bits used for the network portion, and the remaining bits are available for host addresses within that subnet. <div>For example:<ul><li>192.168.1.0/24</li><li>2001:0db8:85a3:0000::/64</li></ul></div>",
         "max_len": 42,
         "type": "string_t",
         "type_name": "String"

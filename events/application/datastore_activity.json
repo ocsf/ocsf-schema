@@ -1,0 +1,83 @@
+{
+    "uid": 5,
+    "description": "Datastore events describe general activities (Read, Update, Query, Delete, etc.) which affect datastores or data within those datastores, e.g. (AWS RDS, AWS S3).",
+    "extends": "application",
+    "caption": "Datastore Activity",
+    "name": "datastore_activity",
+    "attributes": {
+        "activity_id": {
+            "enum": {
+                "1": {
+                    "caption": "Read",
+                    "description": "The datastore activity in the event pertains to a 'Read' operation."
+                },
+                "2": {
+                    "caption": "Update",
+                    "description": "The datastore activity in the event pertains to a 'Update' operation."
+                },
+                "3": {
+                    "caption": "Connect",
+                    "description": "The datastore activity in the event pertains to a 'Connect' operation."
+                },
+                "4": {
+                    "caption": "Query",
+                    "description": "The datastore activity in the event pertains to a 'Query' operation."
+                },
+                "5": {
+                    "caption": "Write",
+                    "description": "The datastore activity in the event pertains to a 'Write' operation."
+                },
+                "6": {
+                    "caption": "Create",
+                    "description": "The datastore activity in the event pertains to a 'Create' operation."
+                },
+                "7": {
+                    "caption": "Delete",
+                    "description": "The datastore activity in the event pertains to a 'Delete' operation."
+                }
+            }
+        },
+        "database": {
+            "group": "primary",
+            "requirement": "recommended"
+        },
+        "databucket": {
+            "group": "primary",
+            "requirement": "recommended"
+        },
+        "table": {
+            "group": "primary",
+            "requirement": "optional"
+        },
+        "query_info": {
+            "group": "primary",
+            "requirement": "optional"
+        },
+        "dst_endpoint": {
+            "description": "Details about the endpoint hosting the datastore application or service.",
+            "group": "primary",
+            "requirement": "optional"
+        },
+        "http_request": {
+            "description": "Details about the underlying http request.",
+            "group": "primary",
+            "requirement": "optional"
+        },
+        "actor": {
+            "group": "primary",
+            "requirement": "required"
+        },
+        "src_endpoint": {
+            "description": "Details about the source of the activity.",
+            "group": "primary",
+            "requirement": "required"
+        }
+    },
+    "constraints": {
+      "at_least_one": [
+        "database",
+        "databucket",
+        "table"
+    ]
+  }
+}

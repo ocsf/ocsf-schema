@@ -1,0 +1,145 @@
+{
+  "uid": 3,
+  "caption": "Security Incident",
+  "category": "findings",
+  "description": "Security Incident events report the creation, update, or closure of incidents as a result of detections and/or analytics.",
+  "extends": "base_event",
+  "name": "security_incident",
+  "profiles": [
+    "security_control"
+  ],
+  "attributes": {
+    "$include": [
+      "profiles/security_control.json"
+    ],
+    "activity_id": {
+      "description": "The normalized identifier of the Incident activity.",
+      "enum": {
+        "1": {
+          "caption": "Create",
+          "description": "Reports the creation of an Incident."
+        },
+        "2": {
+          "caption": "Update",
+          "description": "Reports updates to an Incident."
+        },
+        "3": {
+          "caption": "Close",
+          "description": "Reports closure of an Incident ."
+        }
+      },
+      "requirement": "required"
+    },
+    "activity_name": {
+      "description": "The Incident activity name, as defined by the <code>activity_id</code>.",
+      "requirement": "optional"
+    },
+    "assignee": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "comment": {
+      "description": "Additional user supplied details for updating or closing the incident.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "confidence": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "confidence_id": {
+      "group": "context",
+      "requirement": "recommended"
+    },
+    "confidence_score": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "desc": {
+      "description": "The short description of the Incident.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "end_time": {
+      "description": "The time of the most recent event included in the incident.",
+      "requirement": "optional"
+    },
+    "finding_info_list": {
+      "group": "primary",
+      "requirement": "required"
+    },
+    "impact": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "impact_id": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "impact_score": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "priority": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "priority_id": {
+      "group": "context",
+      "requirement": "recommended"
+    },
+    "resolution": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "resolution_id": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "src_url": {
+      "description": "A Url link used to access the original incident.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "start_time": {
+      "description": "The time of the least recent event included in the incident.",
+      "requirement": "optional"
+    },
+    "status": {
+      "description": "The normalized status of the Incident normalized to the caption of the status_id value. In the case of 'Other', it is defined by the source.",
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "status_id": {
+      "description": "The normalized status identifier of the Incident.",
+      "enum": {
+        "1": {
+          "caption": "New",
+          "description": "The service desk has received the incident but has not assigned it to an agent."
+        },
+        "2": {
+          "caption": "In Progress",
+          "description": "The incident has been assigned to an agent but has not been resolved. The agent is actively working with the user to diagnose and resolve the incident."
+        },
+        "3": {
+          "caption": "On Hold",
+          "description": "The incident requires some information or response from the user or from a third party."
+        },
+        "4": {
+          "caption": "Resolved",
+          "description": "The service desk has confirmed that the incident is resolved."
+        },
+        "5": {
+          "caption": "Closed",
+          "description": "The incident is resolved and no further action is necessary."
+        }
+      },
+      "group": "primary",
+      "requirement": "required"
+    },
+    "is_suspected_breach": {
+      "group": "context",
+      "requirement": "optional"
+    }
+  }
+}

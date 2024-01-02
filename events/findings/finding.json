@@ -4,7 +4,13 @@
   "description": "The Finding event is a generic event that defines a set of attributes available in the Findings category.",
   "extends": "base_event",
   "name": "finding",
+  "profiles": [
+    "host"
+  ],
   "attributes": {
+    "$include": [
+      "profiles/host.json"
+    ],
     "activity_name": {
       "description": "The finding activity name, as defined by the <code>activity_id</code>."
     },
@@ -40,6 +46,11 @@
     },
     "confidence_score": {
       "group": "context",
+      "requirement": "optional"
+    },
+    "device": {
+      "description": "Describes the affected device/host. To be used in conjunction with <code>Affected Resource(s)</code>. <p> e.g. Sepcific details about an AWS EC2 instance, that is affected by the Finding.</p>",
+      "group": "primary",
       "requirement": "optional"
     },
     "end_time": {

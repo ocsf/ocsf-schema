@@ -1,10 +1,10 @@
 {
-  "uid": 3,
-  "caption": "Security Incident",
+  "uid": 5,
+  "caption": "Incident Finding",
   "category": "findings",
-  "description": "Security Incident events report the creation, update, or closure of incidents as a result of detections and/or analytics.",
+  "description": "An Incident Finding reports the creation, update, or closure of security incidents as a result of detections and/or analytics.",
   "extends": "base_event",
-  "name": "security_incident",
+  "name": "incident_finding",
   "profiles": [
     "security_control"
   ],
@@ -35,6 +35,10 @@
       "requirement": "optional"
     },
     "assignee": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "assignee_group": {
       "group": "context",
       "requirement": "optional"
     },
@@ -141,5 +145,11 @@
       "group": "context",
       "requirement": "optional"
     }
+  },
+  "constraints": {
+    "at_least_one" :[
+      "assignee",
+      "assignee_group"
+    ]
   }
 }

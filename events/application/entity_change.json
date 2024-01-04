@@ -1,0 +1,51 @@
+{
+  "caption": "Entity Change",
+  "category": "application",
+  "uid": 6,
+  "name": "entity_change",
+  "extends": "base_event",
+  "description": "Entity Change events report when an entity state changes that impact the security of the entity.",
+  "attributes": {
+    "$include": [
+      "profiles/host.json"
+    ],
+    "activity_id": {
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Logged"
+        }
+      }
+    },
+    "current_security_level": {
+      "group": "primary"
+    },
+    "current_security_level_id": {
+      "group": "primary"
+    },
+    "current_security_states": {
+      "group": "primary"
+    },
+    "current_security_state_ids": {
+      "group": "primary"
+    },
+    "previous_security_level": {
+      "group": "primary"
+    },
+    "previous_security_level_id": {
+      "group": "primary"
+    },
+    "previous_security_states": {
+      "group": "primary"
+    },
+    "previous_security_state_ids": {
+      "group": "primary"
+    },
+    "entity": {
+      "group": "primary",
+      "requirement": "required"
+    }
+  }
+}

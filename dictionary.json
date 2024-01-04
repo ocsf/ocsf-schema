@@ -1059,6 +1059,129 @@
       "description": "Criticality of a resource/object in question",
       "type": "string_t"
     },
+    "current_security_level": {
+      "caption": "Current Security Level",
+      "description": "The current security level of the entity",
+      "type": "string_t"
+    },
+    "current_security_level_id": {
+      "caption": "Current Security Level ID",
+      "description": "The current security level of the entity",
+      "enum": {
+        "99": {
+          "caption": "Other",
+          "description": "The security level is not mapped. See the <code>current_security_level</code> attribute, which contains data source specific values."
+        },
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Secure"
+        },
+        "2": {
+          "caption": "At Risk"
+        },
+        "3": {
+          "caption": "Compromised"
+        }
+      },
+      "sibling": "current_security_level",
+      "type": "integer_t"
+    },
+    "current_security_states": {
+      "caption": "Current Security States",
+      "description": "The security states, normalized to the caption of the current_security_state_ids values. In the case of 'Other', it is defined by the source.",
+      "is_array": true,
+      "type": "string_t"
+    },
+    "current_security_state_ids": {
+      "caption": "Current Security State IDs",
+      "description": "The current security states of the managed entity.",
+      "enum": {
+        "99": {
+          "caption": "Other",
+          "description": "The security state is not mapped. See the <code>current_security_states</code> attribute, which contains data source specific values."
+        },
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Missing or outdated content"
+        },
+        "2": {
+          "caption": "Policy mismatch"
+        },
+        "3": {
+          "caption": "In network quarantine"
+        },
+        "4": {
+          "caption": "Protection off"
+        },
+        "5": {
+          "caption": "Protection malfunction"
+        },
+        "6": {
+          "caption": "Protection not licensed"
+        },
+        "7": {
+          "caption": "Unremediated threat"
+        },
+        "8": {
+          "caption": "Suspicious reputation"
+        },
+        "9": {
+          "caption": "Reboot pending"
+        },
+        "10": {
+          "caption": "Content is locked"
+        },
+        "11": {
+          "caption": "Not installed"
+        },
+        "12": {
+          "caption": "Writable system partition"
+        },
+        "13": {
+          "caption": "SafetyNet failure"
+        },
+        "14": {
+          "caption": "Failed boot verify"
+        },
+        "15": {
+          "caption": "Modified execution environment"
+        },
+        "16": {
+          "caption": "SELinux disabled"
+        },
+        "17": {
+          "caption": "Elevated privilege shell"
+        },
+        "18": {
+          "caption": "iOS file system altered"
+        },
+        "19": {
+          "caption": "Open remote access"
+        },
+        "20": {
+          "caption": "OTA updates disabled"
+        },
+        "21": {
+          "caption": "iOS file system altered"
+        },
+        "22": {
+          "caption": "Rooted"
+        },
+        "23": {
+          "caption": "Android partition modified"
+        },
+        "24": {
+          "caption": "Compliance failure"
+        }
+      },
+      "sibling": "current_security_states",
+      "is_array": true,
+      "type": "integer_t"
+    },
     "customer_uid": {
       "@deprecated": {
         "message": "Use the <code> tenant_uid </code> attribute instead.",
@@ -2533,6 +2656,129 @@
       "caption": "Precision",
       "description": "The numeric precision. See specific usage.",
       "type":  "integer_t"
+    },
+    "previous_security_level": {
+      "caption": "Previous Security Level",
+      "description": "The previous security level of the entity",
+      "type": "string_t"
+    },
+    "previous_security_level_id": {
+      "caption": "Previous Security Level ID",
+      "description": "The previous security level of the entity",
+      "enum": {
+        "99": {
+          "caption": "Other",
+          "description": "The security level is not mapped. See the <code>previous_security_level</code> attribute, which contains data source specific values."
+        },
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Secure"
+        },
+        "2": {
+          "caption": "At Risk"
+        },
+        "3": {
+          "caption": "Compromised"
+        }
+      },
+      "sibling": "previous_security_level",
+      "type": "integer_t"
+    },
+    "previous_security_states": {
+      "caption": "Previous Security States",
+      "description": "The security states, normalized to the caption of the previous_security_state_ids values. In the case of 'Other', it is defined by the source.",
+      "is_array": true,
+      "type": "string_t"
+    },
+    "previous_security_state_ids": {
+      "caption": "Previous Security State IDs",
+      "description": "The current security states of the managed entity.",
+      "enum": {
+        "99": {
+          "caption": "Other",
+          "description": "The security state is not mapped. See the <code>previous_security_states</code> attribute, which contains data source specific values."
+        },
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Missing or outdated content"
+        },
+        "2": {
+          "caption": "Policy mismatch"
+        },
+        "3": {
+          "caption": "In network quarantine"
+        },
+        "4": {
+          "caption": "Protection off"
+        },
+        "5": {
+          "caption": "Protection malfunction"
+        },
+        "6": {
+          "caption": "Protection not licensed"
+        },
+        "7": {
+          "caption": "Unremediated threat"
+        },
+        "8": {
+          "caption": "Suspicious reputation"
+        },
+        "9": {
+          "caption": "Reboot pending"
+        },
+        "10": {
+          "caption": "Content is locked"
+        },
+        "11": {
+          "caption": "Not installed"
+        },
+        "12": {
+          "caption": "Writable system partition"
+        },
+        "13": {
+          "caption": "SafetyNet failure"
+        },
+        "14": {
+          "caption": "Failed boot verify"
+        },
+        "15": {
+          "caption": "Modified execution environment"
+        },
+        "16": {
+          "caption": "SELinux disabled"
+        },
+        "17": {
+          "caption": "Elevated privilege shell"
+        },
+        "18": {
+          "caption": "iOS file system altered"
+        },
+        "19": {
+          "caption": "Open remote access"
+        },
+        "20": {
+          "caption": "OTA updates disabled"
+        },
+        "21": {
+          "caption": "iOS file system altered"
+        },
+        "22": {
+          "caption": "Rooted"
+        },
+        "23": {
+          "caption": "Android partition modified"
+        },
+        "24": {
+          "caption": "Compliance failure"
+        }
+      },
+      "sibling": "previous_security_states",
+      "is_array": true,
+      "type": "integer_t"
     },
     "priority": {
       "caption": "Priority",

@@ -3,6 +3,7 @@ The purpose of this file is to keep track of and avoid collisions in Extension `
 
 | Caption     | Name     | UID | Notes |
 |-------------|----------|-----|-------|
+| DataBee     | databee  | **994** | The Comcast DataBee schema extension |
 | Symantec    | symantec | **995** | The Symantec schema extension |
 | SentinelOne | s1       | **996** | The SentinelOne schema extension |
 | Splunk      | splunk   | **997** | The Splunk schema extension |

@@ -93,7 +93,7 @@ An example `vulnerability.json` object file,
       "description": "The description of the vulnerability",
       "requirement": "recommended"
     },
-    "kb_articles": {
+    "kb_article_list": {
       "requirement": "optional"
     }
   }

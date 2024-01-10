@@ -178,6 +178,16 @@
       "description": "The arguments sent along with the HTTP request.",
       "type": "string_t"
     },
+    "assignee": {
+      "caption": "Assignee",
+      "description": "The details of the user assigned to an Incident.",
+      "type": "user"
+    },
+    "assignee_group": {
+      "caption": "Assignee Group",
+      "description": "The details of the group assigned to an Incident.",
+      "type": "group"
+    },
     "attacks": {
       "caption": "MITRE ATT&CK® Details",
       "description": "An array of <a target='_blank' href='https://attack.mitre.org'>MITRE ATT&CK®</a> objects describing the tactics, techniques & sub-techniques identified by a security control or finding.",
@@ -1472,6 +1482,12 @@
       "description": "Describes the supporting information about a generated finding.",
       "type": "finding_info"
     },
+    "finding_info_list": {
+      "caption": "Finding Information List",
+      "description": "A list of <code>finding_info</code> objects associated to an incident.",
+      "is_array": true,
+      "type": "finding_info"
+    },
     "fingerprint": {
       "caption": "Fingerprint",
       "description": "The digital fingerprint associated with an object.",
@@ -2545,13 +2561,38 @@
     },
     "priority": {
       "caption": "Priority",
-      "description": "The priority, normalized to the caption of the priority_id value. In the case of 'Other', it is defined by the event source. See specific usage.",
+      "description": "The priority, normalized to the caption of the priority_id value. In the case of 'Other', it is defined by the event source.",
       "type": "integer_t"
     },
     "priority_id": {
       "caption": "Priority ID",
-      "description": "The normalized priority. See specific usage.",
-      "enum": {},
+      "description": "The normalized priority. Priority identifies the relative importance of the finding. It is a measurement of urgency.",
+      "enum": {
+        "0": {
+          "description": "No priority is assigned.",
+          "caption": "Unknown"
+        },
+        "1": {
+          "description": "Application or personal procedure is unusable, where a workaround is available or a repair is possible.",
+          "caption": "Low"
+        },
+        "2": {
+          "description": "Non-critical function or procedure is unusable or hard to use causing operational disruptions with no direct impact on a service's availability. A workaround is available.",
+          "caption": "Medium"
+        },
+        "3": {
+          "description": "Critical functionality or network access is interrupted, degraded or unusable, having a severe impact on services availability. No acceptable alternative is possible.",
+          "caption": "High"
+        },
+        "4": {
+          "description": "Interruption making a critical functionality inaccessible or a complete network interruption causing a severe impact on services availability. There is no possible alternative.",
+          "caption": "Critical"
+        },
+        "99": {
+          "description": "The priority is not normalized.",
+          "caption": "Other"
+        }
+      },
       "sibling": "priority",
       "type": "integer_t"
     },
@@ -2808,6 +2849,43 @@
       "description": "A list of requirements associated to a specific control in an industry or regulatory framework. e.g. <code> NIST.800-53.r5 AU-10 </code>",
       "is_array": true,
       "type": "string_t"
+    },
+    "resolution": {
+      "caption": "Resolution",
+      "description": "The resolution detail for closing the incident.",
+      "type": "string_t"
+    },
+    "resolution_id": {
+      "caption": "Resolution Id",
+      "description": "The normalized identifier of the resolution detail, populated when closing an incident.",
+      "enum": {
+        "99": {
+          "caption": "Other"
+        },
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Insufficient data"
+        },
+        "2": {
+          "caption": "Security risk"
+        },
+        "3": {
+          "caption": "False positive"
+        },
+        "4": {
+          "caption": "Managed externally"
+        },
+        "5": {
+          "caption": "Benign"
+        },
+        "6": {
+          "caption": "Test"
+        }
+      },
+      "sibling": "resolution",
+      "type": "integer_t"
     },
     "resource": {
       "caption": "Resource",
@@ -3323,6 +3401,11 @@
       "caption": "Surname",
       "description": "The last or family name for the user.",
       "type": "string_t"
+    },
+    "is_suspected_breach": {
+      "caption": "Suspected Breach",
+      "description": "A determination based on analytics as to whether a potential breach was found.",
+      "type": "boolean_t"
     },
     "svc_name": {
       "caption": "Service Name",

@@ -318,7 +318,7 @@
       "enum": {
         "99": {
           "caption": "Other",
-          "description": "The boundar is not mapped. See the <code>boundary</code> attribute, which contains a data source specific value."
+          "description": "The boundary is not mapped. See the <code>boundary</code> attribute, which contains a data source specific value."
         },
         "0": {
           "caption": "Unknown",
@@ -379,7 +379,7 @@
     },
     "bulletin": {
       "caption": "Patch Bulletin",
-      "description": "The vendor bulletin identfier.",
+      "description": "The vendor bulletin identifier.",
       "type": "string_t"
     },
     "bytes": {
@@ -1095,6 +1095,16 @@
       "description": "The additional data that is associated with the event or object. See specific usage.",
       "type": "json_t"
     },
+    "database": {
+      "caption": "Database",
+      "description": "The database object is used for databases which are typically datastore services that contain an organized collection of structured and unstructured data or a types of data.",
+      "type": "database"
+    },
+    "databucket": {
+      "caption": "Databucket",
+      "description": "The data bucket object is a basic container that holds data, typically organized through the use of data partitions.",
+      "type": "databucket"
+    },
     "data_sources": {
       "caption": "Data Sources",
       "description": "A list of data sources utilized in generation of the finding.",
@@ -1342,6 +1352,12 @@
       "caption": "End Time",
       "description": "The end time of a time period. See specific usage.",
       "type": "timestamp_t"
+    },
+    "endpoint_connections": {
+      "caption": "Endpoint Connections",
+      "description": "Contains information about network connection attempts. See specific usage.",
+      "is_array": true,
+      "type": "endpoint_connection"
     },
     "enrichments": {
       "caption": "Enrichments",
@@ -1672,7 +1688,7 @@
       "enum": {
         "0": {
           "caption": "Unknown",
-          "description": "The normalized impact is unknwon."
+          "description": "The normalized impact is unknown."
         },
         "1": {
           "caption": "Low"
@@ -1854,6 +1870,11 @@
       "description": "The event occurred on a trusted device.",
       "type": "boolean_t"
     },
+    "is_vpn": {
+      "caption": "VPN Session",
+      "description": "The indication of whether the session is a VPN session.",
+      "type": "boolean_t"
+    },
     "isp": {
       "caption": "ISP",
       "description": "The name of the Internet Service Provider (ISP).",
@@ -1886,7 +1907,17 @@
     },
     "kb_articles": {
       "caption": "Knowledgebase Articles",
+      "@deprecated": {
+        "message": "Use the <code> kb_article_list </code> attribute instead.",
+        "since": "1.1.0"
+      },
       "description": "The KB article/s related to the entity. A KB Article contains metadata that describes the patch or an update.",
+      "is_array": true,
+      "type": "string_t"
+    },    
+    "kb_article_list": {
+      "caption": "Knowledgebase Articles",
+      "description": "A list of KB articles or patches related to an endpoint. A KB Article contains metadata that describes the patch or an update.",
       "is_array": true,
       "type": "kb_article"
     },
@@ -1969,7 +2000,7 @@
     },
     "ldap_person": {
       "caption": "LDAP Person",
-      "description": "The additonal LDAP attributes that describe a person.",
+      "description": "The additional LDAP attributes that describe a person.",
       "type": "ldap_person"
     },
     "lease_dur": {
@@ -1997,6 +2028,11 @@
       "caption": "Software License",
       "description": "The name or identifier of the license applied on package or software. See <a target='_blank' href='https://spdx.org/licenses/'>SPDX License List</a>.",
       "type": "string_t"
+    },
+    "load_balancer": {
+      "caption": "Load Balancer",
+      "description": "The Load Balancer object contains information related to the device that is distributing incoming traffic to specified destinations.",
+      "type": "load_balancer"
     },
     "load_type": {
       "caption": "Load Type",
@@ -2129,7 +2165,7 @@
     },
     "malware": {
       "caption": "Malware",
-      "description": "A list of Malware objects, decribing details about the identified malware.",
+      "description": "A list of Malware objects, describing details about the identified malware.",
       "is_array": true,
       "type": "malware"
     },
@@ -2203,6 +2239,11 @@
       "caption": "Network Driver",
       "description": "The network driver used by the container. For example, bridge, overlay, host, none, etc.",
       "type": "string_t"
+    },
+    "network_endpoint": {
+      "caption": "Network Endpoint",
+      "description": "The Network Endpoint object describes characteristics of a network endpoint. See specific usage.",
+      "type": "network_endpoint"
     },
     "network_interfaces": {
       "caption": "Network Interfaces",
@@ -2594,7 +2635,7 @@
     },
     "purl":{
       "caption": "Package URL",
-      "description": "A purl is a URL string used to identify and locate a software package in a mostly universal and uniform way across programing languages, package managers, packaging conventions, tools, APIs and databases.",
+      "description": "A purl is a URL string used to identify and locate a software package in a mostly universal and uniform way across programming languages, package managers, packaging conventions, tools, APIs and databases.",
       "type": "string_t"
     },
     "proxy_connection_info": {
@@ -2626,6 +2667,11 @@
       "caption": "DNS Query",
       "description": "The Domain Name System (DNS) query.",
       "type": "dns_query"
+    },
+    "query_info": {
+      "caption": "Query Info",
+      "description": "The query info object holds information related to data access within a datastore. To access, manipulate, delete, or retrieve data from a datastore, a database query must be written using a specific syntax.",
+      "type": "query_info"
     },
     "query_string": {
       "caption": "HTTP Query String",
@@ -3288,6 +3334,11 @@
       "description": "The system call that was invoked.",
       "type": "string_t"
     },
+    "table": {
+      "caption": "Table",
+      "description": "The table object represents a table within a structured relational database or datastore, which contains columns and rows of data that are able to be create, updated, deleted and queried.",
+      "type": "table"
+    },
     "tactic": {
       "caption": "Tactic",
       "description": "The Tactic object describes the tactic ID and/or name that is associated to an attack, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>.",
@@ -3419,7 +3470,7 @@
       "caption": "Type ID",
       "description": "The event/finding type ID. It identifies the event's semantics and structure. The value is calculated by the logging system as: <code>class_uid * 100 + activity_id</code>.",
       "sibling": "type_name",
-      "type": "integer_t"
+      "type": "long_t"
     },
     "types": {
       "caption": "Types",
@@ -3615,7 +3666,7 @@
       },
       "file_hash_t": {
         "caption": "Hash",
-        "description": "Hash. A unique value that corresponds to the content of the file, image, ja3_hash or hassh found in the schema. For example MD5: <code>3172ac7e2b55cbb81f04a6e65855a628</code>",
+        "description": "Hash. A unique value that corresponds to the content of the file, image, ja3_hash or hassh found in the schema. For example MD5: <code>3172ac7e2b55cbb81f04a6e65855a628</code>.",
         "max_len": 64,
         "observable": 8,
         "type": "string_t",

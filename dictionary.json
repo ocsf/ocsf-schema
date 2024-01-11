@@ -3627,6 +3627,76 @@
       "description": "The name of the vendor. See specific usage.",
       "type": "string_t"
     },
+    "verdict_type": {
+      "caption": "Verdict Type",
+      "description": "The verdict type assigned to an Incident finding.",
+      "type": "string_t"
+    },
+    "verdict_type_id": {
+      "caption": "Verdict Type ID",
+      "description": "The normalized verdict type of an Incident. This describes person or entity that passed judgment on this verdict.",
+      "enum": {
+        "99": {
+          "caption": "Other",
+          "description": "The type is not mapped. See the <code>type</code> attribute, which contains a data source specific value."
+        },
+        "1": {
+          "caption": "Analyst Verdict",
+          "description": "A internal analyst has made this verdict."
+        },
+        "2": {
+          "caption": "Provider",
+          "description": "A provider or external party has made this verdict."
+        },
+        "0": {
+          "caption": "Unknown",
+          "description": "The type is unknown."
+        }
+      },
+        "sibling": "verdict_type",
+        "type": "integer_t"
+    },
+    "verdict": {
+      "caption": "Verdict",
+      "description": "The verdict assigned to an Incident finding.",
+      "type": "string_t"
+    },
+    "verdict_id": {
+      "caption": "Verdict ID",
+      "description": "The normalized verdict of an Incident.",
+      "enum": {
+        "99": {
+          "caption": "Other",
+          "description": "The type is not mapped. See the <code>type</code> attribute, which contains a data source specific value."
+        },
+        "1": {
+          "caption": "False Positive",
+          "description": "The incident verdict is a false positive."
+        },
+        "2": {
+          "caption": "True Positive",
+          "description": "The incident verdict is a true positive."
+        },
+        "3": {
+          "caption": "Disregard",
+          "description": "The incident verdict can be disregarded"
+        },
+        "4": {
+          "caption": "suspicious",
+          "description": "The incident verdict is suspicious"
+        },
+        "5": {
+          "caption": "benign",
+          "description": "The incident verdict is benign"
+        },
+        "0": {
+          "caption": "Unknown",
+          "description": "The type is unknown."
+        }
+      },
+      "sibling": "verdict",
+      "type": "integer_t"
+    },
     "version": {
       "caption": "Version",
       "description": "The version that pertains to the event or object. See specific usage.",

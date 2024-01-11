@@ -143,6 +143,58 @@
     "is_suspected_breach": {
       "group": "context",
       "requirement": "optional"
+    },
+    "verdict_type": {
+      "description": "The normalized verdict type of the Incident normalized to the caption of the verdict_type_id value. In the case of 'Other', it is defined by the source.",
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "verdict_type_id": {
+      "description": "The normalized verdict type of an Incident. This describes person or entity that passed judgment on this verdict.",
+      "enum": {
+        "1": {
+          "caption": "Analyst Verdict",
+          "description": "A internal analyst has made this verdict."
+        },
+        "2": {
+          "caption": "Provider",
+          "description": "A provider or external party has made this verdict."
+        }
+      },
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "verdict": {
+      "description": "The normalized verdict of the Incident normalized to the caption of the verdict_id value. In the case of 'Other', it is defined by the source.",
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "verdict_id": {
+      "description": "The normalized verdict of an Incident.",
+      "enum": {
+        "1": {
+          "caption": "False Positive",
+          "description": "The incident verdict is a false positive."
+        },
+        "2": {
+          "caption": "True Positive",
+          "description": "The incident verdict is a true positive."
+        },
+        "3": {
+          "caption": "Disregard",
+          "description": "The incident verdict can be disregarded"
+        },
+        "4": {
+          "caption": "suspicious",
+          "description": "The incident verdict is suspicious"
+        },
+        "5": {
+          "caption": "benign",
+          "description": "The incident verdict is benign"
+        }
+      },
+      "group": "primary",
+      "requirement": "required"
     }
   },
   "constraints": {

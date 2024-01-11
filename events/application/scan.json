@@ -3,7 +3,7 @@
   "category": "application",
   "description": "Scan events report the start, completion, and results of a scan job. The scan event includes the number of items that were scanned and the number of detections that were resolved.",
   "extends": "base_event",
-  "name": "scan",
+  "name": "scan_activity",
   "profiles": [
     "host"
   ],
@@ -20,12 +20,15 @@
     "activity_id": {
       "enum": {
         "1": {
+          "description": "The scan was started.",
           "caption": "Started"
         },
         "2": {
+          "description": "The scan was completed.",
           "caption": "Completed"
         },
         "3": {
+          "description": "The scan was cancelled.",
           "caption": "Cancelled"
         },
         "4": {
@@ -41,6 +44,7 @@
           "caption": "Error"
         },
         "7": {
+          "description": "The scan was paused.",
           "caption": "Paused"
         },
         "8": {

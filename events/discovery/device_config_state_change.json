@@ -1,25 +1,21 @@
 {
-  "caption": "Entity State Change",
-  "description": "Entity State Change events report state changes that impact the security of the entity.",
+  "caption": "Device Config State Change",
+  "description": "Device Config State Change events report state changes that impact the security of the device.",
   "extends": "discovery",
-  "name": "entity_state_change",
+  "name": "device_config_state_change",
   "uid": 19,
   "profiles": [
     "host"
   ],
   "attributes": {
-    "$include": [
-      "profiles/host.json"
-    ],
-    "activity_id": {
-      "enum": {
-        "0": {
-          "caption": "Unknown"
-        },
-        "1": {
-          "caption": "Logged"
-        }
-      }
+    "actor": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "device": {
+      "group": "primary",
+      "requirement": "required",
+      "description": "The device that is impacted by the state change."
     },
     "current_security_level": {
       "group": "primary"
@@ -44,10 +40,6 @@
     },
     "previous_security_state_ids": {
       "group": "primary"
-    },
-    "entity": {
-      "group": "primary",
-      "requirement": "required"
     }
   }
 }

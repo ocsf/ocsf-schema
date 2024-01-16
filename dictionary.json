@@ -2870,43 +2870,6 @@
       "is_array": true,
       "type": "string_t"
     },
-    "resolution": {
-      "caption": "Resolution",
-      "description": "The resolution detail for closing the incident.",
-      "type": "string_t"
-    },
-    "resolution_id": {
-      "caption": "Resolution Id",
-      "description": "The normalized identifier of the resolution detail, populated when closing an incident.",
-      "enum": {
-        "99": {
-          "caption": "Other"
-        },
-        "0": {
-          "caption": "Unknown"
-        },
-        "1": {
-          "caption": "Insufficient data"
-        },
-        "2": {
-          "caption": "Security risk"
-        },
-        "3": {
-          "caption": "False positive"
-        },
-        "4": {
-          "caption": "Managed externally"
-        },
-        "5": {
-          "caption": "Benign"
-        },
-        "6": {
-          "caption": "Test"
-        }
-      },
-      "sibling": "resolution",
-      "type": "integer_t"
-    },
     "resource": {
       "caption": "Resource",
       "description": "The target resource.",
@@ -3646,6 +3609,67 @@
       "caption": "Vendor Name",
       "description": "The name of the vendor. See specific usage.",
       "type": "string_t"
+    },
+    "verdict": {
+      "caption": "Verdict",
+      "description": "The verdict assigned to an Incident finding.",
+      "type": "string_t"
+    },
+    "verdict_id": {
+      "caption": "Verdict ID",
+      "description": "The normalized verdict of an Incident.",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The type is unknown."
+        },
+        "1": {
+          "caption": "False Positive",
+          "description": "The incident is a false positive."
+        },
+        "2": {
+          "caption": "True Positive",
+          "description": "The incident is a true positive."
+        },
+        "3": {
+          "caption": "Disregard",
+          "description": "The incident can be disregarded as it is unimportant, an error or accident."
+        },
+        "4": {
+          "caption": "Suspicious",
+          "description": "The incident is suspicious."
+        },
+        "5": {
+          "caption": "Benign",
+          "description": "The incident is benign."
+        },
+        "6": {
+          "caption": "Test",
+          "description": "The incident is a test."
+        },
+        "7": {
+          "caption": "Insufficient Data",
+          "description": "The incident has insufficient data to make a verdict."
+        },
+        "8": {
+          "caption": "Security Risk",
+          "description": "The incident is a security risk."
+        },
+        "9": {
+          "caption": "Managed Externally",
+          "description": "The incident remediation or required actions are managed externally."
+        },
+        "10": {
+          "caption": "Duplicate",
+          "description": "The incident is a duplicate."
+        },
+        "99": {
+        "caption": "Other",
+        "description": "The type is not mapped. See the <code>type</code> attribute, which contains a data source specific value."
+        }
+      },
+      "sibling": "verdict",
+      "type": "integer_t"
     },
     "version": {
       "caption": "Version",

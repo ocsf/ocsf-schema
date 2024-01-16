@@ -734,6 +734,21 @@
       "description": "The chassis type describes the system enclosure or physical form factor. Such as the following examples for Windows <a target='_blank' href='https://docs.microsoft.com/en-us/windows/win32/cimwin32prov/win32-systemenclosure'>Windows Chassis Types</a>",
       "type": "string_t"
     },
+    "chunks": {
+      "caption": "Chunks",
+      "description": "A unit of information within an SCTP packet, consisting of a chunk header and chunk-specific content. See RFC 4960. This field can be used for the total number of chunks (in and out).",
+      "type": "long_t"
+    },
+    "chunks_in": {
+      "caption": "Chunks In",
+      "description": "A unit of information within an SCTP packet, consisting of a chunk header and chunk-specific content. See RFC 4960. This field can be used for the chunks sent from the destination to the source.",
+      "type": "long_t"
+    },
+    "chunks_out": {
+      "caption": "Chunks Out",
+      "description": "A unit of information within an SCTP packet, consisting of a chunk header and chunk-specific content. See RFC 4960. This field can be used for the chunks sent from the source to the destination.",
+      "type": "long_t"
+    },
     "cipher": {
       "caption": "Cipher Suite",
       "description": "The negotiated cipher suite.",
@@ -1430,6 +1445,11 @@
       "description": "The exit code reported by a process when it terminates. The convention is that zero indicates success and any non-zero exit code indicates that some error occurred.",
       "type": "integer_t"
     },
+    "expiration_reason": {
+      "caption": "Expiration Reason",
+      "description": "The expiration reason. See specific usage.",
+      "type": "string_t"
+    },
     "expiration_time": {
       "caption": "Expiration Time",
       "description": "The expiration time. See specific usage.",
@@ -1660,7 +1680,7 @@
     },
     "hw_info": {
       "caption": "Hardware Info",
-      "description": "The device hardware information.",
+      "description": "The endpoint hardware information.",
       "type": "device_hw_info"
     },
     "hypervisor": {
@@ -2376,7 +2396,7 @@
     },
     "os": {
       "caption": "OS",
-      "description": "The device operating system.",
+      "description": "The endpoint operating system.",
       "type": "os"
     },
     "overall_score": {

@@ -1,22 +1,18 @@
 {
   "caption": "Scan",
   "description": "The Scan object describes characteristics of a proactive scan.",
-  "extends": "object",
+  "extends": "_entity",
   "name": "scan",
   "attributes": {
     "name": {
-      "description": "The administrator-supplied or application-generated name of the scan. For example: \"Home office weekly user database scan\", \"Scan folders for viruses\", \"Full system virus scan\"",
-      "group": "primary",
-      "requirement": "recommended"
+      "description": "The administrator-supplied or application-generated name of the scan. For example: \"Home office weekly user database scan\", \"Scan folders for viruses\", \"Full system virus scan\""
     },
     "type": {
       "description": "The type of scan.",
-      "group": "primary",
       "requirement": "optional"
     },
     "type_id": {
        "description": "The type id of the scan.",
-        "group": "primary",
         "requirement": "required",
         "enum": {
           "0": {
@@ -32,7 +28,7 @@
           },
           "3": {
             "description": "The scan was triggered by a content update.",
-            "caption": "Updated Definitions"
+            "caption": "Updated Content"
           },
           "4": {
             "description": "The scan was triggered by newly quarantined items.",
@@ -60,9 +56,7 @@
       },
       "uid": {
         "description": "The application-defined unique identifier assigned to an instance of a scan.",
-        "group": "primary",
-        "caption": "Scan UID",
-        "requirement": "required"
+        "caption": "Scan UID"
       }
     }
 }

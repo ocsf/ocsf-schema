@@ -1090,97 +1090,9 @@
     },
     "current_security_states": {
       "caption": "Current Security States",
-      "description": "The security states, normalized to the caption of the current_security_state_ids values. In the case of 'Other', it is defined by the source.",
+      "description": "The current security states. See specific usage.",
       "is_array": true,
-      "type": "string_t"
-    },
-    "current_security_state_ids": {
-      "caption": "Current Security State IDs",
-      "description": "The current security states of the managed entity.",
-      "enum": {
-        "99": {
-          "caption": "Other",
-          "description": "The security state is not mapped. See the <code>current_security_states</code> attribute, which contains data source specific values."
-        },
-        "0": {
-          "caption": "Unknown"
-        },
-        "1": {
-          "caption": "Missing or outdated content"
-        },
-        "2": {
-          "caption": "Policy mismatch"
-        },
-        "3": {
-          "caption": "In network quarantine"
-        },
-        "4": {
-          "caption": "Protection off"
-        },
-        "5": {
-          "caption": "Protection malfunction"
-        },
-        "6": {
-          "caption": "Protection not licensed"
-        },
-        "7": {
-          "caption": "Unremediated threat"
-        },
-        "8": {
-          "caption": "Suspicious reputation"
-        },
-        "9": {
-          "caption": "Reboot pending"
-        },
-        "10": {
-          "caption": "Content is locked"
-        },
-        "11": {
-          "caption": "Not installed"
-        },
-        "12": {
-          "caption": "Writable system partition"
-        },
-        "13": {
-          "caption": "SafetyNet failure"
-        },
-        "14": {
-          "caption": "Failed boot verify"
-        },
-        "15": {
-          "caption": "Modified execution environment"
-        },
-        "16": {
-          "caption": "SELinux disabled"
-        },
-        "17": {
-          "caption": "Elevated privilege shell"
-        },
-        "18": {
-          "caption": "iOS file system altered"
-        },
-        "19": {
-          "caption": "Open remote access"
-        },
-        "20": {
-          "caption": "OTA updates disabled"
-        },
-        "21": {
-          "caption": "iOS file system altered"
-        },
-        "22": {
-          "caption": "Rooted"
-        },
-        "23": {
-          "caption": "Android partition modified"
-        },
-        "24": {
-          "caption": "Compliance failure"
-        }
-      },
-      "sibling": "current_security_states",
-      "is_array": true,
-      "type": "integer_t"
+      "type": "security_state"
     },
     "customer_uid": {
       "@deprecated": {
@@ -2688,97 +2600,9 @@
     },
     "previous_security_states": {
       "caption": "Previous Security States",
-      "description": "The security states, normalized to the caption of the previous_security_state_ids values. In the case of 'Other', it is defined by the source.",
+      "description": "The previous security states. See specific usage.",
       "is_array": true,
-      "type": "string_t"
-    },
-    "previous_security_state_ids": {
-      "caption": "Previous Security State IDs",
-      "description": "The current security states of the managed entity.",
-      "enum": {
-        "99": {
-          "caption": "Other",
-          "description": "The security state is not mapped. See the <code>previous_security_states</code> attribute, which contains data source specific values."
-        },
-        "0": {
-          "caption": "Unknown"
-        },
-        "1": {
-          "caption": "Missing or outdated content"
-        },
-        "2": {
-          "caption": "Policy mismatch"
-        },
-        "3": {
-          "caption": "In network quarantine"
-        },
-        "4": {
-          "caption": "Protection off"
-        },
-        "5": {
-          "caption": "Protection malfunction"
-        },
-        "6": {
-          "caption": "Protection not licensed"
-        },
-        "7": {
-          "caption": "Unremediated threat"
-        },
-        "8": {
-          "caption": "Suspicious reputation"
-        },
-        "9": {
-          "caption": "Reboot pending"
-        },
-        "10": {
-          "caption": "Content is locked"
-        },
-        "11": {
-          "caption": "Not installed"
-        },
-        "12": {
-          "caption": "Writable system partition"
-        },
-        "13": {
-          "caption": "SafetyNet failure"
-        },
-        "14": {
-          "caption": "Failed boot verify"
-        },
-        "15": {
-          "caption": "Modified execution environment"
-        },
-        "16": {
-          "caption": "SELinux disabled"
-        },
-        "17": {
-          "caption": "Elevated privilege shell"
-        },
-        "18": {
-          "caption": "iOS file system altered"
-        },
-        "19": {
-          "caption": "Open remote access"
-        },
-        "20": {
-          "caption": "OTA updates disabled"
-        },
-        "21": {
-          "caption": "iOS file system altered"
-        },
-        "22": {
-          "caption": "Rooted"
-        },
-        "23": {
-          "caption": "Android partition modified"
-        },
-        "24": {
-          "caption": "Compliance failure"
-        }
-      },
-      "sibling": "previous_security_states",
-      "is_array": true,
-      "type": "integer_t"
+      "type": "security_state"
     },
     "priority": {
       "caption": "Priority",
@@ -3238,6 +3062,18 @@
       "caption": "Security Descriptor",
       "description": "The object security descriptor.",
       "type": "string_t"
+    },
+    "security_state": {
+      "caption": "Security State",
+      "description": "The security state, normalized to the caption of the security_state_id value. In the case of 'Other', it is defined by the source.",
+      "type": "string_t"
+    },
+    "security_state_id": {
+      "caption": "Security State ID",
+      "description": "The security state of the managed entity.",
+      "enum": {},
+      "sibling": "security_state",
+      "type": "integer_t"
     },
     "sequence": {
       "caption": "Sequence Number",

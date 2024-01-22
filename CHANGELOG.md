@@ -16,17 +16,16 @@ Thankyou! -->
 <!-- All available sections in the Changelog:
 
 ### Added
-#### Categories
-#### Event Classes
-#### Profiles
-#### Objects
-#### Attributes? (Would that be too granular?)
+* #### Categories
+* #### Event Classes
+* #### Profiles
+* #### Objects
 
 ### Improved
-#### Categories
-#### Event Classes
-#### Profiles
-#### Objects
+* #### Categories
+* #### Event Classes
+* #### Profiles
+* #### Objects
 
 ### Bugfixes
 
@@ -41,27 +40,26 @@ Thankyou! -->
 ## [v1.1.0] - January 25th, 2024
 
 ### Added
-#### Categories
-`n/a`
-#### Event Classes
-1. Added OS Patch State event class. #746
-Added Detection Finding event class. #877
-2. Added Incident Finding event class. #903
-#### Profiles
-#### Objects
-#### Attributes? (Would that be too granular?)
+* #### Categories
+    `n/a`
+* #### Event Classes
+    1. Added OS Patch State event class. #746
+    2. Added Detection Finding event class. #877
+    3. Added Incident Finding event class. #903
+* #### Profiles
+* #### Objects
 
 ### Improved
-#### Categories
-1. Improved Findings Category, with new and domain specific event classes (Vulnerability Finding, Compliance Finding, Detection Finding, Incident Finding), description updates across the board. #895
-#### Event Classes
-1. Added `url` attribute to Network Activity event class. #857
-2. Added `http_request`, `http_response`, `tls` attributes, `network_proxy` profile to Web Resources Activity event class. #895 
-#### Profiles
-1. Improved `security_control` profile to include access control semantics, firewall properties. #851 #888 #889
-#### Objects
-1. Added `domain` attribute to the `group` object. #871
-2. Adjusted attribute requirements in `dns_query`, `dns_answer` objects. #879
+* #### Categories
+    1. Improved Findings Category, with new and domain specific event classes (Vulnerability Finding, Compliance Finding, Detection Finding, Incident Finding), description updates across the board. #895
+* #### Event Classes
+    1. Added `url` attribute to Network Activity event class. #857
+    2. Added `http_request`, `http_response`, `tls` attributes, `network_proxy` profile to Web Resources Activity event class. #895 
+* #### Profiles
+    1. Improved `security_control` profile to include access control semantics, firewall properties. #851 #888 #889
+* #### Objects
+    1. Added `domain` attribute to the `group` object. #871
+    2. Adjusted attribute requirements in `dns_query`, `dns_answer` objects. #879
 
 ### Bugfixes
 

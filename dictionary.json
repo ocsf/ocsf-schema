@@ -1089,6 +1089,41 @@
       "description": "Criticality of a resource/object in question",
       "type": "string_t"
     },
+    "security_level": {
+      "caption": "Security Level",
+      "description": "The current security level of the entity",
+      "type": "string_t"
+    },
+    "security_level_id": {
+      "caption": "Security Level ID",
+      "description": "The current security level of the entity",
+      "enum": {
+        "99": {
+          "caption": "Other",
+          "description": "The security level is not mapped. See the <code>security_level</code> attribute, which contains data source specific values."
+        },
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Secure"
+        },
+        "2": {
+          "caption": "At Risk"
+        },
+        "3": {
+          "caption": "Compromised"
+        }
+      },
+      "sibling": "security_level",
+      "type": "integer_t"
+    },
+    "security_states": {
+      "caption": "Security States",
+      "description": "The current security states. See specific usage.",
+      "is_array": true,
+      "type": "security_state"
+    },
     "customer_uid": {
       "@deprecated": {
         "message": "Use the <code> tenant_uid </code> attribute instead.",
@@ -2635,6 +2670,41 @@
       "caption": "Precision",
       "description": "The numeric precision. See specific usage.",
       "type":  "integer_t"
+    },
+    "prev_security_level": {
+      "caption": "Previous Security Level",
+      "description": "The previous security level of the entity",
+      "type": "string_t"
+    },
+    "prev_security_level_id": {
+      "caption": "Previous Security Level ID",
+      "description": "The previous security level of the entity",
+      "enum": {
+        "99": {
+          "caption": "Other",
+          "description": "The security level is not mapped. See the <code>prev_security_level</code> attribute, which contains data source specific values."
+        },
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Secure"
+        },
+        "2": {
+          "caption": "At Risk"
+        },
+        "3": {
+          "caption": "Compromised"
+        }
+      },
+      "sibling": "prev_security_level",
+      "type": "integer_t"
+    },
+    "prev_security_states": {
+      "caption": "Previous Security States",
+      "description": "The previous security states. See specific usage.",
+      "is_array": true,
+      "type": "security_state"
     },
     "priority": {
       "caption": "Priority",

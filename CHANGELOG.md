@@ -125,6 +125,7 @@ Thankyou! -->
 6. Added version information to the native extensions. #881
 7. Updated caption and description of Observable type - `File Hash` to read `Hash`. #900
 8. New Extension registration for DataBee. #912
+9. Changed data-type of `type_uid` to `long_t` from `int_t`. #928
 
 ## [v1.0.0]
 

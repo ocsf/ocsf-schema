@@ -99,7 +99,7 @@ Thankyou! -->
     17. Added `state` to `network_connection_info` object. #932
 
 ### Bugfixes
-1. Fixed enumeration item duplication in macOS extension. #926
+`n/a`
 
 ### Deprecated
 1. Deprecated `cwe_uid` and `cwe_url` attributes and removed from `cve` object. #678

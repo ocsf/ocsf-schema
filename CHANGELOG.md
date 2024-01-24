@@ -20,12 +20,14 @@ Thankyou! -->
 * #### Event Classes
 * #### Profiles
 * #### Objects
+* #### Platform Extensions
 
 ### Improved
 * #### Categories
 * #### Event Classes
 * #### Profiles
 * #### Objects
+* #### Platform Extensions
 
 ### Bugfixes
 

@@ -94,8 +94,8 @@ Thankyou! -->
     12. Added `is_exploit_available` to the `vulnerability` object. #777
     13. Added `domain` attribute to the `group` object. #871
     14. Adjusted attribute requirements in `dns_query`, `dns_answer` objects. #879
-    15. Added firewall, router, switch, hub to endpoint types. #921
-    16. Added is_vpn attribute to the session object. #922
+    15. Added firewall, router, switch, hub to endpoint `type_id` enum. #921
+    16. Added `is_vpn` to the `session` object. #922
     17. Added `state` to `network_connection_info` object. #932
 
 ### Bugfixes
@@ -108,7 +108,7 @@ Thankyou! -->
 4. Deprecated `proxy` attribute from the dictionary, in favor of `Network Proxy` profile. #856
 5. Deprecated `group_name` attribute. #873
 6. Deprecated `Security Finding` class to be replaced by the new specific classes according to the use-case: `Vulnerability Finding`, `Compliance Finding`, `Detection Finding`, `Incident Finding`. #877
-7. Deprecated Web Resources Access Activity event class. #890
+7. Deprecated `Web Resources Access Activity` event class. #890
 8. Deprecated `Network File Activity` event class in favor of `File Hosting Activity `#917
 9. Deprecated `extensions` attribute to be replaced by `schema_extension_list` attribute which is used in the `metadata` object. #934
 10. Deprecated `extension_list` in TLS object in favor of `tls_extension_list`. #936

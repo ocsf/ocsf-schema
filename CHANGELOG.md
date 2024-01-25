@@ -112,8 +112,7 @@ Thankyou! -->
 6. Deprecated `Security Finding` class to be replaced by the new specific classes according to the use-case: `Vulnerability Finding`, `Compliance Finding`, `Detection Finding`, `Incident Finding`. #877
 7. Deprecated `Web Resources Access Activity` event class. #890
 8. Deprecated `Network File Activity` event class in favor of `File Hosting Activity `#917
-9. Deprecated `extensions` attribute to be replaced by `schema_extension_list` attribute which is used in the `metadata` object. #934
-10. Deprecated `extension_list` in TLS object in favor of `tls_extension_list`. #936
+9. Deprecated `extension_list` in TLS object in favor of `tls_extension_list`. #936
 
 ### Breaking changes
 `n/a`

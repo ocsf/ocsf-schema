@@ -1,0 +1,41 @@
+{
+  "caption": "Device Config State Change",
+  "description": "Device Config State Change events report state changes that impact the security of the device.",
+  "extends": "discovery",
+  "name": "device_config_state_change",
+  "uid": 19,
+  "profiles": [
+    "host"
+  ],
+  "attributes": {
+    "actor": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "device": {
+      "group": "primary",
+      "requirement": "required",
+      "description": "The device that is impacted by the state change."
+    },
+    "security_level": {
+      "group": "primary"
+    },
+    "security_level_id": {
+      "group": "primary"
+    },
+    "security_states": {
+      "description": "The current security states of the device.",
+      "group": "primary"
+    },
+    "prev_security_level": {
+      "group": "primary"
+    },
+    "prev_security_level_id": {
+      "group": "primary"
+    },
+    "prev_security_states": {
+      "description": "The previous security states of the device.",
+      "group": "primary"
+    }
+  }
+}

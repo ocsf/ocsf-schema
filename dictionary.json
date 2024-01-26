@@ -178,6 +178,16 @@
       "description": "The arguments sent along with the HTTP request.",
       "type": "string_t"
     },
+    "assignee": {
+      "caption": "Assignee",
+      "description": "The details of the user assigned to an Incident.",
+      "type": "user"
+    },
+    "assignee_group": {
+      "caption": "Assignee Group",
+      "description": "The details of the group assigned to an Incident.",
+      "type": "group"
+    },
     "attacks": {
       "caption": "MITRE ATT&CK® Details",
       "description": "An array of <a target='_blank' href='https://attack.mitre.org'>MITRE ATT&CK®</a> objects describing the tactics, techniques & sub-techniques identified by a security control or finding.",
@@ -324,7 +334,7 @@
       "enum": {
         "99": {
           "caption": "Other",
-          "description": "The boundar is not mapped. See the <code>boundary</code> attribute, which contains a data source specific value."
+          "description": "The boundary is not mapped. See the <code>boundary</code> attribute, which contains a data source specific value."
         },
         "0": {
           "caption": "Unknown",
@@ -385,7 +395,7 @@
     },
     "bulletin": {
       "caption": "Patch Bulletin",
-      "description": "The vendor bulletin identfier.",
+      "description": "The vendor bulletin identifier.",
       "type": "string_t"
     },
     "bytes": {
@@ -730,6 +740,21 @@
       "description": "The chassis type describes the system enclosure or physical form factor. Such as the following examples for Windows <a target='_blank' href='https://docs.microsoft.com/en-us/windows/win32/cimwin32prov/win32-systemenclosure'>Windows Chassis Types</a>",
       "type": "string_t"
     },
+    "chunks": {
+      "caption": "Chunks",
+      "description": "A unit of information within an SCTP packet, consisting of a chunk header and chunk-specific content. See RFC 4960. This field can be used for the total number of chunks (in and out).",
+      "type": "long_t"
+    },
+    "chunks_in": {
+      "caption": "Chunks In",
+      "description": "A unit of information within an SCTP packet, consisting of a chunk header and chunk-specific content. See RFC 4960. This field can be used for the chunks sent from the destination to the source.",
+      "type": "long_t"
+    },
+    "chunks_out": {
+      "caption": "Chunks Out",
+      "description": "A unit of information within an SCTP packet, consisting of a chunk header and chunk-specific content. See RFC 4960. This field can be used for the chunks sent from the source to the destination.",
+      "type": "long_t"
+    },
     "cipher": {
       "caption": "Cipher Suite",
       "description": "The negotiated cipher suite.",
@@ -859,6 +884,11 @@
       "caption": "Command Responses",
       "description": "The responses to the command.",
       "is_array": true,
+      "type": "string_t"
+    },
+    "command_uid": {
+      "caption": "Command UID",
+      "description": "The unique command identifier.",
       "type": "string_t"
     },
     "comment": {
@@ -1065,6 +1095,41 @@
       "description": "Criticality of a resource/object in question",
       "type": "string_t"
     },
+    "security_level": {
+      "caption": "Security Level",
+      "description": "The current security level of the entity",
+      "type": "string_t"
+    },
+    "security_level_id": {
+      "caption": "Security Level ID",
+      "description": "The current security level of the entity",
+      "enum": {
+        "99": {
+          "caption": "Other",
+          "description": "The security level is not mapped. See the <code>security_level</code> attribute, which contains data source specific values."
+        },
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Secure"
+        },
+        "2": {
+          "caption": "At Risk"
+        },
+        "3": {
+          "caption": "Compromised"
+        }
+      },
+      "sibling": "security_level",
+      "type": "integer_t"
+    },
+    "security_states": {
+      "caption": "Security States",
+      "description": "The current security states. See specific usage.",
+      "is_array": true,
+      "type": "security_state"
+    },
     "customer_uid": {
       "@deprecated": {
         "message": "Use the <code> tenant_uid </code> attribute instead.",
@@ -1095,6 +1160,24 @@
       "caption": "CWE",
       "description": "The CWE object represents a weakness in a software system that can be exploited by a threat actor to perform an attack. The CWE object is based on the <a target='_blank' href='https://cwe.mitre.org/'>Common Weakness Enumeration (CWE)</a> catalog.",
       "type": "cwe"
+    },
+    "cwe_uid": {
+      "@deprecated": {
+        "message": "Use the <code> cwe </code> object attributes instead.",
+        "since": "1.1.0"
+      },
+      "caption": "CWE UID",
+      "description": "The <a target='_blank' href='https://cwe.mitre.org/'>Common Weakness Enumeration (CWE)</a> unique identifier. For example: <code>CWE-787</code>.",
+      "type": "string_t"
+    },
+    "cwe_url": {
+      "@deprecated": {
+        "message": "Use the <code> cwe </code> object attributes instead.",
+        "since": "1.1.0"
+      },
+      "caption": "CWE URL",
+      "description": "Common Weakness Enumeration (CWE) definition URL. For example: <code>https://cwe.mitre.org/data/definitions/787.html</code>.",
+      "type": "url_t"
     },
     "data": {
       "caption": "Data",
@@ -1359,6 +1442,12 @@
       "description": "The end time of a time period. See specific usage.",
       "type": "timestamp_t"
     },
+    "endpoint_connections": {
+      "caption": "Endpoint Connections",
+      "description": "Contains information about network connection attempts. See specific usage.",
+      "is_array": true,
+      "type": "endpoint_connection"
+    },
     "enrichments": {
       "caption": "Enrichments",
       "description": "The additional information from an external data source, which is associated with the event or a finding. For example add location information for the IP address in the DNS answers:</p><code>[{\"name\": \"answers.ip\", \"value\": \"92.24.47.250\", \"type\": \"location\", \"data\": {\"city\": \"Socotra\", \"continent\": \"Asia\", \"coordinates\": [-25.4153, 17.0743], \"country\": \"YE\", \"desc\": \"Yemen\"}}]</code>",
@@ -1420,12 +1509,21 @@
       "description": "The exit code reported by a process when it terminates. The convention is that zero indicates success and any non-zero exit code indicates that some error occurred.",
       "type": "integer_t"
     },
+    "expiration_reason": {
+      "caption": "Expiration Reason",
+      "description": "The expiration reason. See specific usage.",
+      "type": "string_t"
+    },
     "expiration_time": {
       "caption": "Expiration Time",
       "description": "The expiration time. See specific usage.",
       "type": "timestamp_t"
     },
     "extension": {
+      "@deprecated": {
+        "message": "Use the <code> extensions </code> attribute instead.",
+        "since": "1.1.0"
+      },
       "caption": "Schema Extension",
       "description": "The schema extension used to create the event.",
       "type": "extension"
@@ -1437,6 +1535,10 @@
       "type": "extension"
     },
     "extension_list": {
+      "@deprecated": {
+        "message": "Use the <code> tls_extension_list </code> attribute instead.",
+        "since": "1.1.0"
+      },
       "caption": "Extension List",
       "description": "The list of TLS extensions.",
       "is_array": true,
@@ -1560,6 +1662,12 @@
       "description": "Describes the supporting information about a generated finding.",
       "type": "finding_info"
     },
+    "finding_info_list": {
+      "caption": "Finding Information List",
+      "description": "A list of <code>finding_info</code> objects associated to an incident.",
+      "is_array": true,
+      "type": "finding_info"
+    },
     "fingerprint": {
       "caption": "Fingerprint",
       "description": "The digital fingerprint associated with an object.",
@@ -1589,7 +1697,7 @@
     "fix_available": {
       "@deprecated": {
         "message": "Use the <code> is_fix_available </code> attribute instead.",
-        "since": "1.0.0"
+        "since": "1.1.0"
       },
       "caption": "Fix Availability",
       "description": "Indicates if a fix is available for the reported vulnerability.",
@@ -1724,7 +1832,7 @@
     "http_status": {
       "@deprecated": {
         "message": "Use the <code> http_response.code </code> attribute instead.",
-        "since": "1.0.0"
+        "since": "1.1.0"
       },
       "caption": "HTTP Status",
       "description": "The Hypertext Transfer Protocol (HTTP) <a target='_blank' href='https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml'>status code</a> returned to the client.",
@@ -1732,7 +1840,7 @@
     },
     "hw_info": {
       "caption": "Hardware Info",
-      "description": "The device hardware information.",
+      "description": "The endpoint hardware information.",
       "type": "device_hw_info"
     },
     "hypervisor": {
@@ -1776,7 +1884,7 @@
       "enum": {
         "0": {
           "caption": "Unknown",
-          "description": "The normalized impact is unknwon."
+          "description": "The normalized impact is unknown."
         },
         "1": {
           "caption": "Low"
@@ -1966,6 +2074,9 @@
     "is_totp": {
       "caption": "Time-based One-time Password (TOTP)",
       "description": "Whether the authentication factor is a Time-based One-time Password (TOTP).",
+    "is_vpn": {
+      "caption": "VPN Session",
+      "description": "The indication of whether the session is a VPN session.",
       "type": "boolean_t"
     },
     "isp": {
@@ -2000,7 +2111,17 @@
     },
     "kb_articles": {
       "caption": "Knowledgebase Articles",
+      "@deprecated": {
+        "message": "Use the <code> kb_article_list </code> attribute instead.",
+        "since": "1.1.0"
+      },
       "description": "The KB article/s related to the entity. A KB Article contains metadata that describes the patch or an update.",
+      "is_array": true,
+      "type": "string_t"
+    },    
+    "kb_article_list": {
+      "caption": "Knowledgebase Articles",
+      "description": "A list of KB articles or patches related to an endpoint. A KB Article contains metadata that describes the patch or an update.",
       "is_array": true,
       "type": "kb_article"
     },
@@ -2083,7 +2204,7 @@
     },
     "ldap_person": {
       "caption": "LDAP Person",
-      "description": "The additonal LDAP attributes that describe a person.",
+      "description": "The additional LDAP attributes that describe a person.",
       "type": "ldap_person"
     },
     "lease_dur": {
@@ -2111,6 +2232,11 @@
       "caption": "Software License",
       "description": "The name or identifier of the license applied on package or software. See <a target='_blank' href='https://spdx.org/licenses/'>SPDX License List</a>.",
       "type": "string_t"
+    },
+    "load_balancer": {
+      "caption": "Load Balancer",
+      "description": "The Load Balancer object contains information related to the device that is distributing incoming traffic to specified destinations.",
+      "type": "load_balancer"
     },
     "load_type": {
       "caption": "Load Type",
@@ -2243,7 +2369,7 @@
     },
     "malware": {
       "caption": "Malware",
-      "description": "A list of Malware objects, decribing details about the identified malware.",
+      "description": "A list of Malware objects, describing details about the identified malware.",
       "is_array": true,
       "type": "malware"
     },
@@ -2318,6 +2444,11 @@
       "description": "The network driver used by the container. For example, bridge, overlay, host, none, etc.",
       "type": "string_t"
     },
+    "network_endpoint": {
+      "caption": "Network Endpoint",
+      "description": "The Network Endpoint object describes characteristics of a network endpoint. See specific usage.",
+      "type": "network_endpoint"
+    },
     "network_interfaces": {
       "caption": "Network Interfaces",
       "description": "The network interfaces that are associated with the device, one for each unique MAC address/IP address/hostname/name combination.<p><b>Note:</b> The first element of the array is the network information that pertains to the event.</p>",
@@ -2334,6 +2465,56 @@
       "description": "The NIST Cybersecurity Framework recommendations for managing the cybersecurity risk.",
       "is_array": true,
       "type": "string_t"
+    },
+    "num_detections": {
+      "caption": "Detections",
+      "description": "The number of detections.",
+      "type": "integer_t"
+    },
+    "num_files": {
+      "caption": "Scanned Files",
+      "description": "The number of files scanned.",
+      "type": "integer_t"
+    },
+    "num_folders": {
+      "caption": "Scanned Folders",
+      "description": "The number of folders scanned.",
+      "type": "integer_t"
+    },
+    "num_network_items": {
+      "caption": "Scanned Network Items",
+      "description": "The number of network items scanned.",
+      "type": "integer_t"
+    },
+    "num_processes": {
+      "caption": "Scanned Processes",
+      "description": "The number of processes scanned.",
+      "type": "integer_t"
+    },
+    "num_registry_items": {
+      "caption": "Scanned Registry Items",
+      "description": "The number of registry items scanned.",
+      "type": "integer_t"
+    },
+    "num_resolutions": {
+      "caption": "Resolutions",
+      "description": "The number of items that were resolved.",
+      "type": "integer_t"
+    },
+    "num_skipped_items": {
+      "caption": "Skipped",
+      "description": "The number of skipped items.",
+      "type": "integer_t"
+    },
+    "num_trusted_items": {
+      "caption": "Trusted",
+      "description": "The number of trusted items.",
+      "type": "integer_t"
+    },
+    "num_violations": {
+      "caption": "Violations",
+      "description": "The number of times the policy or rule was violated.",
+      "type": "integer_t"
     },
     "observables": {
       "caption": "Observables",
@@ -2433,7 +2614,7 @@
     },
     "os": {
       "caption": "OS",
-      "description": "The device operating system.",
+      "description": "The endpoint operating system.",
       "type": "os"
     },
     "overall_score": {
@@ -2454,7 +2635,7 @@
     "packages": {
       "@deprecated": {
         "message": "Use the <code> affected_packages </code> attribute instead.",
-        "since": "1.0.0"
+        "since": "1.1.0"
       },
       "caption": "Software Packages",
       "description": "List of vulnerable packages as identified by the security product",
@@ -2616,15 +2797,75 @@
       "description": "The numeric precision. See specific usage.",
       "type": "integer_t"
     },
+    "prev_security_level": {
+      "caption": "Previous Security Level",
+      "description": "The previous security level of the entity",
+      "type": "string_t"
+    },
+    "prev_security_level_id": {
+      "caption": "Previous Security Level ID",
+      "description": "The previous security level of the entity",
+      "enum": {
+        "99": {
+          "caption": "Other",
+          "description": "The security level is not mapped. See the <code>prev_security_level</code> attribute, which contains data source specific values."
+        },
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Secure"
+        },
+        "2": {
+          "caption": "At Risk"
+        },
+        "3": {
+          "caption": "Compromised"
+        }
+      },
+      "sibling": "prev_security_level",
+      "type": "integer_t"
+    },
+    "prev_security_states": {
+      "caption": "Previous Security States",
+      "description": "The previous security states. See specific usage.",
+      "is_array": true,
+      "type": "security_state"
+    },
     "priority": {
       "caption": "Priority",
-      "description": "The priority, normalized to the caption of the priority_id value. In the case of 'Other', it is defined by the event source. See specific usage.",
+      "description": "The priority, normalized to the caption of the priority_id value. In the case of 'Other', it is defined by the event source.",
       "type": "integer_t"
     },
     "priority_id": {
       "caption": "Priority ID",
-      "description": "The normalized priority. See specific usage.",
-      "enum": {},
+      "description": "The normalized priority. Priority identifies the relative importance of the finding. It is a measurement of urgency.",
+      "enum": {
+        "0": {
+          "description": "No priority is assigned.",
+          "caption": "Unknown"
+        },
+        "1": {
+          "description": "Application or personal procedure is unusable, where a workaround is available or a repair is possible.",
+          "caption": "Low"
+        },
+        "2": {
+          "description": "Non-critical function or procedure is unusable or hard to use causing operational disruptions with no direct impact on a service's availability. A workaround is available.",
+          "caption": "Medium"
+        },
+        "3": {
+          "description": "Critical functionality or network access is interrupted, degraded or unusable, having a severe impact on services availability. No acceptable alternative is possible.",
+          "caption": "High"
+        },
+        "4": {
+          "description": "Interruption making a critical functionality inaccessible or a complete network interruption causing a severe impact on services availability. There is no possible alternative.",
+          "caption": "Critical"
+        },
+        "99": {
+          "description": "The priority is not normalized.",
+          "caption": "Other"
+        }
+      },
       "sibling": "priority",
       "type": "integer_t"
     },
@@ -2695,7 +2936,7 @@
     "proxy": {
       "@deprecated": {
         "message": "Use the <code> proxy_endpoint </code> attribute instead.",
-        "since": "1.0.0"
+        "since": "1.1.0"
       },
       "caption": "Proxy",
       "description": "The proxy (server) in a network connection.",
@@ -2708,7 +2949,7 @@
     },
     "purl": {
       "caption": "Package URL",
-      "description": "A purl is a URL string used to identify and locate a software package in a mostly universal and uniform way across programing languages, package managers, packaging conventions, tools, APIs and databases.",
+      "description": "A purl is a URL string used to identify and locate a software package in a mostly universal and uniform way across programming languages, package managers, packaging conventions, tools, APIs and databases.",
       "type": "string_t"
     },
     "proxy_connection_info": {
@@ -2994,6 +3235,16 @@
       "caption": "Scale Factor",
       "description": "The numeric scale factor of display.",
       "type": "integer_t"
+    },
+    "scan": {
+      "caption": "Scan",
+      "description": "The Scan object describes characteristics of a scan.  See specific usage.",
+      "type": "scan"
+    },
+    "schedule_uid": {
+      "caption": "Schedule UID",
+      "description": "The unique identifier of the schedule associated with a scan job.",
+      "type": "string_t"
     },
     "scheme": {
       "caption": "Scheme",
@@ -3397,6 +3648,11 @@
       "description": "The last or family name for the user.",
       "type": "string_t"
     },
+    "is_suspected_breach": {
+      "caption": "Suspected Breach",
+      "description": "A determination based on analytics as to whether a potential breach was found.",
+      "type": "boolean_t"
+    },
     "svc_name": {
       "caption": "Service Name",
       "description": "The service name in service-to-service connections. For example, AWS VPC logs the pkt-src-aws-service and pkt-dst-aws-service fields identify the connection is coming from or going to an AWS service.",
@@ -3420,7 +3676,7 @@
     "tactics": {
       "@deprecated": {
         "message": "Use the <code> tactic </code> attribute instead.",
-        "since": "1.0.0"
+        "since": "1.1.0"
       },
       "caption": "Tactics",
       "description": "The Tactic object describes the tactic ID and/or tactic name that are associated with the attack technique, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>.",
@@ -3482,11 +3738,22 @@
       "description": "The Transport Layer Security (TLS) attributes.",
       "type": "tls"
     },
+    "tls_extension_list": {
+      "caption": "TLS Extension List",
+      "description": "The list of TLS extensions.",
+      "is_array": true,
+      "type": "tls_extension"
+    },
     "to": {
       "caption": "To",
       "description": "The email header To values, as defined by RFC 5322.",
       "is_array": true,
       "type": "email_t"
+    },
+    "total": {
+      "caption": "Total",
+      "description": "The total number of items. See specific usage.",
+      "type": "integer_t"
     },
     "traffic": {
       "caption": "Traffic",
@@ -3543,7 +3810,7 @@
       "caption": "Type ID",
       "description": "The event/finding type ID. It identifies the event's semantics and structure. The value is calculated by the logging system as: <code>class_uid * 100 + activity_id</code>.",
       "sibling": "type_name",
-      "type": "integer_t"
+      "type": "long_t"
     },
     "types": {
       "caption": "Types",
@@ -3616,6 +3883,67 @@
       "caption": "Vendor Name",
       "description": "The name of the vendor. See specific usage.",
       "type": "string_t"
+    },
+    "verdict": {
+      "caption": "Verdict",
+      "description": "The verdict assigned to an Incident finding.",
+      "type": "string_t"
+    },
+    "verdict_id": {
+      "caption": "Verdict ID",
+      "description": "The normalized verdict of an Incident.",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The type is unknown."
+        },
+        "1": {
+          "caption": "False Positive",
+          "description": "The incident is a false positive."
+        },
+        "2": {
+          "caption": "True Positive",
+          "description": "The incident is a true positive."
+        },
+        "3": {
+          "caption": "Disregard",
+          "description": "The incident can be disregarded as it is unimportant, an error or accident."
+        },
+        "4": {
+          "caption": "Suspicious",
+          "description": "The incident is suspicious."
+        },
+        "5": {
+          "caption": "Benign",
+          "description": "The incident is benign."
+        },
+        "6": {
+          "caption": "Test",
+          "description": "The incident is a test."
+        },
+        "7": {
+          "caption": "Insufficient Data",
+          "description": "The incident has insufficient data to make a verdict."
+        },
+        "8": {
+          "caption": "Security Risk",
+          "description": "The incident is a security risk."
+        },
+        "9": {
+          "caption": "Managed Externally",
+          "description": "The incident remediation or required actions are managed externally."
+        },
+        "10": {
+          "caption": "Duplicate",
+          "description": "The incident is a duplicate."
+        },
+        "99": {
+        "caption": "Other",
+        "description": "The type is not mapped. See the <code>type</code> attribute, which contains a data source specific value."
+        }
+      },
+      "sibling": "verdict",
+      "type": "integer_t"
     },
     "version": {
       "caption": "Version",
@@ -3738,8 +4066,8 @@
         "type_name": "String"
       },
       "file_hash_t": {
-        "caption": "File Hash",
-        "description": "File hash. A unique value that corresponds to the content of the file.",
+        "caption": "Hash",
+        "description": "Hash. A unique value that corresponds to the content of the file, image, ja3_hash or hassh found in the schema. For example MD5: <code>3172ac7e2b55cbb81f04a6e65855a628</code>.",
         "max_len": 64,
         "observable": 8,
         "type": "string_t",

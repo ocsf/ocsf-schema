@@ -1,0 +1,119 @@
+{
+  "caption": "Security State",
+  "description": "The Security State object describes the security related state of a managed entity.",
+  "extends": "object",
+  "name": "security_state",
+  "attributes": {
+    "state": {
+      "caption": "Security State",
+      "description": "The security state, normalized to the caption of the state_id value. In the case of 'Other', it is defined by the source.",
+      "type": "string_t"
+    },
+    "state_id": {
+      "caption": "Security State ID",
+      "description": "The security state of the managed entity.",
+      "enum": {
+        "99": {
+          "caption": "Other",
+          "description": "The security state is not mapped. See the <code>state</code> attribute, which contains data source specific values."
+        },
+        "0": {
+          "caption": "Unknown",
+          "description": "The security state is unknown."
+        },
+        "1": {
+          "caption": "Missing or outdated content",
+          "description": "The content is missing or outdated."
+        },
+        "2": {
+          "caption": "Policy mismatch",
+          "description": "Not in compliance with the expected security policy."
+        },
+        "3": {
+          "caption": "In network quarantine",
+          "description": "Isolated from the network."
+        },
+        "4": {
+          "caption": "Protection off",
+          "description": "Not protected by a security solution."
+        },
+        "5": {
+          "caption": "Protection malfunction",
+          "description": "The security solution is not functioning properly."
+        },
+        "6": {
+          "caption": "Protection not licensed",
+          "description": "The security solution does not have a valid license."
+        },
+        "7": {
+          "caption": "Unremediated threat",
+          "description": "A detected threat has not been remediated."
+        },
+        "8": {
+          "caption": "Suspicious reputation",
+          "description": "Reputation of the entity is suspicious."
+        },
+        "9": {
+          "caption": "Reboot pending",
+          "description": "A reboot is required for one or more pending actions."
+        },
+        "10": {
+          "caption": "Content is locked",
+          "description": "The content is locked to a specific version."
+        },
+        "11": {
+          "caption": "Not installed",
+          "description": "The entity is not installed."
+        },
+        "12": {
+          "caption": "Writable system partition",
+          "description": "The system partition is writeable."
+        },
+        "13": {
+          "caption": "SafetyNet failure",
+          "description": "The device has failed the SafetyNet check."
+        },
+        "14": {
+          "caption": "Failed boot verify",
+          "description": "The device has failed the boot verification process."
+        },
+        "15": {
+          "caption": "Modified execution environment",
+          "description": "The execution environment has been modified."
+        },
+        "16": {
+          "caption": "SELinux disabled",
+          "description": "The SELinux security feature has been disabled."
+        },
+        "17": {
+          "caption": "Elevated privilege shell",
+          "description": "An elevated privilege shell has been detected."
+        },
+        "18": {
+          "caption": "iOS file system altered",
+          "description": "The file system has been altered on an iOS device."
+        },
+        "19": {
+          "caption": "Open remote access",
+          "description": "Remote access is enabled."
+        },
+        "20": {
+          "caption": "OTA updates disabled",
+          "description": "Mobile OTA (Over The Air) updates have been disabled."
+        },
+        "21": {
+          "caption": "Rooted",
+          "description": "The device has been modified to allow root access."
+        },
+        "22": {
+          "caption": "Android partition modified",
+          "description": "The Android partition has been modified."
+        },
+        "23": {
+          "caption": "Compliance failure",
+          "description": "The entity is not compliant with the associated security policy."
+        }
+      }
+    }
+  }
+}

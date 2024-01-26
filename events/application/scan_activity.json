@@ -1,0 +1,132 @@
+{
+  "caption": "Scan Activity",
+  "category": "application",
+  "description": "Scan events report the start, completion, and results of a scan job. The scan event includes the number of items that were scanned and the number of detections that were resolved.",
+  "extends": "base_event",
+  "name": "scan_activity",
+  "profiles": [
+    "host"
+  ],
+  "uid": 7,
+  "attributes": {
+    "$include": [
+      "profiles/host.json"
+    ],
+    "command_uid": {
+      "description": "The command identifier that is associated with this scan event.  This ID uniquely identifies the proactive scan command, e.g., if remotely initiated.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "activity_id": {
+      "enum": {
+        "1": {
+          "description": "The scan was started.",
+          "caption": "Started"
+        },
+        "2": {
+          "description": "The scan was completed.",
+          "caption": "Completed"
+        },
+        "3": {
+          "description": "The scan was cancelled.",
+          "caption": "Cancelled"
+        },
+        "4": {
+          "description": "The allocated scan time was insufficient to complete the requested scan.",
+          "caption": "Duration Violation"
+        },
+        "5": {
+          "description": "The scan was paused, either by the user or by program constraints (e.g. scans that are suspended during certain time intervals), and not resumed within the allotted time.",
+          "caption": "Pause Violation"
+        },
+        "6": {
+          "description": "The scan could not be completed due to an internal error.",
+          "caption": "Error"
+        },
+        "7": {
+          "description": "The scan was paused.",
+          "caption": "Paused"
+        },
+        "8": {
+          "description": "The scan was resumed from the pause point.",
+          "caption": "Resumed"
+        },
+        "9": {
+          "description": "The scan restarted from the beginning of the file enumeration.",
+          "caption": "Restarted"
+        },
+        "10": {
+          "description": "The user delayed the scan.",
+          "caption": "Delayed"
+        }
+      }
+    },
+    "duration": {
+      "description": "The duration of the scan",
+      "requirement": "recommended"
+    },
+    "end_time": {
+      "description": "The end time of the scan job.",
+      "requirement": "recommended"
+    },
+    "num_detections": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "num_files": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "num_folders": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "num_network_items": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "num_processes": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "num_registry_items": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "num_resolutions": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "num_skipped_items": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "num_trusted_items": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "policy": {
+      "description": "The policy associated with this Scan event; required if the scan was initiated by a policy.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "scan": {
+      "description": "The Scan object describes characteristics of the scan job.",
+      "group": "primary",
+      "requirement": "required"
+    },
+    "schedule_uid": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "start_time": {
+      "description": "The start time of the scan job.",
+      "requirement": "recommended"
+    },
+    "total": {
+      "description": "The total number of items that were scanned; zero if no items were scanned.",
+      "group": "primary",
+      "requirement": "recommended"
+    }
+  }
+}

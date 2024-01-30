@@ -1,0 +1,217 @@
+{
+    "caption": "Data Security",
+    "description":"The Data Security object describes the characteristics, techniques and content of a Data Loss Prevention (DLP), Data Loss Detection (DLD), Data Classification, or similar tools' finding, alert, or detection mechanism(s).",
+    "extends": "object",
+    "name": "data_security",
+    "attributes": {
+      "policy": {
+        "requirement": "recommended"
+      },
+      "detection_technique_uid": {
+        "caption": "Detection Technique UID",
+        "description": "The detection technqiue type identifier. Describes the mechanism in which a data security tool identifies classified or sensitive information.",
+        "requirement": "recommended",
+        "enum": {
+          "0": {
+            "caption": "Unknown",
+            "description":"The type is not mapped. See the <code>detection_technique</code> attribute, which contains a data source specific value."
+          },
+          "1": {
+            "caption": "Fingerprinting",
+            "description": "Fingerprinting is a Data loss prevention (DLP) feature that converts a standard form or data type into a sensitive information type, which you can use to define transport rules and DLP policies. E.g., government forms, identities, or employee information forms collected by HR."
+          },
+          "2": {
+            "caption": "Tagging",
+            "description": "Tagging uses metadata 'tags' that directly identify various classification schemes or sensitive data types direclty within digital media or an information store."
+          },
+          "3": {
+            "caption": "Keyword Match",
+            "description": "Keywords are static indicators within digital media that directly match a sensitive data type."
+          },
+          "4": {
+            "caption": "Regular Expressions",
+            "description": "The use of Regular Expressions (regexp) is employed to pattern-match text in digital media or an information store."
+          },
+          "5": {
+            "caption": "Exact Data Match",
+            "description": "The use of exact matches of files, database dumps, hashes, or otherwise to identify sensitive data without analyzing the contents of digital media or an information store."
+          },
+          "6": {
+            "caption": "Partial Data Match",
+            "description": "The use of partial matches of versions files, database dumps, or otherwise to identify sensitive data without analyzing the contents of digital media or an information store."
+          },
+          "7": {
+            "caption": "Indexed Data Match",
+            "description": "The use of fingerprinting unstructured data types such as PDFs, multimedia file types, CAD, or otherwise to identify sensitive data."
+          },
+          "8": {
+            "caption": "Statistical Analysis",
+            "description": "The use of Bayesian analysis or other stasticial models is employed to pattern-match text in a fin digital media or an information store."
+          },
+          "9": {
+            "caption": "Machine Learning",
+            "description": "The use of Computer Vision (CV), Natural Language Processing (NLP), or any other form of Machine Learning (ML) or Artifical Intelligence (AI) to detect sensitive data in digital media or an information store."
+          },
+          "99": {
+            "caption": "Other",
+            "description": "Any other type of detection technique or a multi-variate detection made up of several other technqiues."
+          }
+        }
+      },
+      "detection_technique": {
+        "caption": "Detection Technique",
+        "description": "The detection technique name. E.g., Regular Expression, Machine Learning, Indexed Data Matching, etc.",
+        "requirement": "optional"
+      },
+      "detection_pattern": {
+        "caption":"Detection Pattern",
+        "description":"Specific pattern, algorithm, fingerpint, or model used for detection.",
+        "requirement": "recommended"
+      },
+      "pattern_match": {
+        "caption":"Pattern Match",
+        "description":"The name of the information store or file, or the binary or string that matched the <code>detection_pattern</code>.",
+        "requirement": "optional"
+      },
+      "data_lifecycle_state_uid": {
+        "caption": "Data Lifecycle State UID",
+        "description": "The stage or state that the data was in when it was assessed or scanned by a data security tool.",
+        "requirement": "recommended",
+        "enum": {
+          "0": {
+            "caption": "Unknown",
+            "description":"The type is not mapped. See the <code>data_lifecycle_state</code> attribute, which contains a data source specific value."
+          },
+          "1": {
+            "caption": "Data at-Rest",
+            "description": "The data was stored on physical or logcial media and was not actively moving through the network nor was being processed. E.g., data stored in a database, PDF files in a file share, or EHR records in object storage."
+          },
+          "2": {
+            "caption": "Data in-Transit",
+            "description": "The data was actively moving through the network or from one physical or logical location to another. E.g., emails being send, data replication or Change Data Capture (CDC) streams, or sensitive data processed on an API."
+          },
+          "3": {
+            "caption": "Data in-Use",
+            "description": "The data was being processed, accessed, or read by a system, making it active in memory or CPU. E.g., sensitive data in a Business Intelligence tool, ePHI being processed in an EHR application or a user viewing data stored in a spreadsheet or PDF."
+          }
+        }
+      },
+      "data_lifecycle_state": {
+        "caption":"Data Lifecycle State",
+        "description":"The name of the stage or state that the data was in. E.g., Data-at-Rest, Data-in-Transit, etc.",
+        "requirement": "optional"
+      },
+      "detection_system_uid": {
+        "caption": "Detection System UID",
+        "description": "The type of data security tool or system that the finding, detection, or alert originated from.",
+        "requirement": "recommended",
+        "enum": {
+          "0": {
+            "caption": "Unknown",
+            "description":"The type is not mapped. See the <code>detection_system</code> attribute, which contains a data source specific value."
+          },
+          "1": {
+            "caption": "Endpoint",
+            "description": "A dedicated agent or sensor installed on a device, either a dedicated data security tool or an Endpoint Detection & Response (EDR) tool that can detect sensitive data and/or enforce data security policies. E.g., Forcepoint DLP, Symantec DLP, Microsoft Defender for Endpoint (MDE)."
+          },
+          "2": {
+            "caption": "DLP Gateway",
+            "description": "A Data Loss Prevention (DLP) gateway that is positioned in-line of an information store such as a network share, a database, or otherwise that can detect sensitive data and/or enforce data security policies."
+          },
+          "3": {
+            "caption": "Mobile Device Management",
+            "description": "A Mobile Device Management (MDM) or Enterprise Mobility Management (EMM) tool that can detect sensitive data and/or enforce data security policies on mobile devices (e.g., cellphones, tablets, End User Devices [EUDs])."
+          },
+          "4": {
+            "caption": "Data Discovery & Classification",
+            "description": "A tool that actively identifies and classifies sensitive data in digitial media and information stores in accordance with a policy or automated functionality. E.g, Amazon Macie, Microsoft Purview."
+          },
+          "5": {
+            "caption": "Secure Web Gateway",
+            "description": "A Secure Web Gateway (SWG) is any tool that can detect sensitive data and/or enforce data security policies at a network-edge such as within a proxy or firewall service."
+          },
+          "6": {
+            "caption": "Secure Email Gateway",
+            "description": "A Secure Email Gateway (SEG) is any tool that can detect sensitive data and/or enforce data security policies within email systems. E.g., Microsoft Defender for Office, Google Workspaces."
+          },
+          "7": {
+            "caption": "Digital Rights Management",
+            "description": "A Digital Rights Management (DRM) or a dedicated Information Rights Management (IRM) are tools which can detect sensitive data and/or enforce data security policies on digitial media via policy or user access rights."
+          },
+          "8": {
+            "caption": "Cloud Access Security Broker",
+            "description": "A Cloud Access Security Broker (CASB) that can detect sensitive data and/or enforce data security policies in-line to cloud systems such as the public cloud or Software-as-a-Service (SaaS) tool. E.g., Forcepoint CASB, SkyHigh Security."
+          },
+          "9": {
+            "caption": "Database Activity Monitoring",
+            "description": "A Database Activity Monitoring (DAM) tool that can detect sensitive data and/or enforce data security policies as part of a dedicated database or warehouse monitoring solution."
+          },
+          "10": {
+            "caption": "Application-Level DLP",
+            "description": "A built in Data Loss Prevention (DLP) or other data security capability within a tool or platform such as an Enterprise Resource Planning (ERP) or Customer Relations Management (CRM) tool that can detect sensitive data and/or enforce data security policies."
+          },
+          "11": {
+            "caption": "Developer Security",
+            "description": "Any Developer Security tool such as an Infrastrucre-as-Securty (IAC) scanner, Secrets Detection, or Secure Software Development Lifecycle (SSDLC) tool that can detect sensitive data and/or enforce data security policies. E.g., TruffleHog, GitGuardian, Git-Secrets."
+          },
+          "12": {
+            "caption": "Data Security Posture Management",
+            "description": "A Data Security Posture Management (DSPM) tool is a continuous monitoring and data discovery solution that can detect sensitive data and/or enforce data security policies for local and cloud environments. E.g., Cyera, Sentra, IBM Polar Security."
+          },
+          "99": {
+            "caption": "Other",
+            "description": "Any other type of detection system or a multi-variate system made up of several other systems."
+          }
+        }
+      },
+      "detection_system": {
+        "caption":"Detection System",
+        "description":"The name of the type of data security tool or system that the finding, detection, or alert originated from. E.g., Endpoint, Secure Email Gateway, etc.",
+        "requirement": "optional"
+      },
+      "data_classification_category_uid": {
+        "caption":"Data Classificaiton Category UID",
+        "description": "The category or type of sensitive data as assessed or scanned by a data security tool (e.g., Personal, Govermental, Financial).",
+        "requirement": "recommended",
+        "enum": {
+          "0": {
+            "caption": "Unknown",
+            "description":"The type is not mapped. See the <code>data_classification_category</code> attribute, which contains a data source specific value."
+          },
+          "1": {
+            "caption": "Personal",
+            "description":"Any Personally Identifiable Information (PII), Electronic Personal Health Information (ePHI), or similarly personal information. E.g., full name, home address, date of birth, etc."
+          },
+          "2": {
+            "caption": "Governmental",
+            "description": "Any sensitive government identification number related to a person or other classified material. E.g., Passport numbers, driver license numbers, business identification, taxation identifiers, etc."
+          },
+          "3": {
+            "caption": "Financial",
+            "description": "Any financially-related sensitive information or Cardholder Data (CHD). E.g., banking account numbers, credit card numbers, International Banking Account Numbers (IBAN), SWIFT codes, etc."
+          },
+          "4": {
+            "caption": "Business",
+            "description": "Any business-specific sensitive data such as intellectual property, trademarks, copyrights, human resource data, Board of Directors meeting minutes, and similar."
+          },
+          "5": {
+            "caption": "Military and Law Enforcement",
+            "description": "Any mission-specific sensitive data for military, law enforcement, or other government agencies such as specifically classified data, weapon systems information, or other planning data."
+          },
+          "6": {
+            "caption": "Security",
+            "description": "Any sensitive security-related data such as passwords, passkeys, IP addresses, API keys, credentials and similar secrets. E.g., AWS Access Secret Key, SaaS API Keys, user passwords, database credentials, etc."
+          },
+          "99": {
+            "caption": "Other",
+            "description": "Any other type of data classification or a multi-variate classification made up of several other classification categories."
+          }
+        }
+      },
+      "data_classification_category": {
+        "caption":"Data Classificaiton Category",
+        "description":"The name of the data classification category that data matched into, e.g. Financial, Personal, Governmental, etc.",
+        "requirement": "optional"
+      }
+    }
+  }

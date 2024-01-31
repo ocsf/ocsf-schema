@@ -7,8 +7,8 @@
   "name": "compliance_finding",
   "attributes": {
     "compliance": {
-      "group": "context",
-      "requirement": "optional"
+      "group": "primary",
+      "requirement": "required"
     },
     "remediation": {
       "group": "context",
@@ -18,34 +18,6 @@
       "description": "Describes details about the resource that is the subject of the compliance check.",
       "group": "primary",
       "requirement": "recommended"
-    },
-    "status": {
-      "description": "The status of the compliance finding, normalized to the caption of the <code>status_id</code> value. In the case of 'Other', it is defined by the event source.",
-      "group": "context",
-      "requirement": "optional"
-    },
-    "status_id": {
-      "description": "The normalized status identifier of the compliance finding.",
-      "group": "context",
-      "requirement": "recommended",
-      "enum": {
-        "1": {
-          "caption": "New",
-          "description": "The finding is new and yet to be reviewed."
-        },
-        "2": {
-          "caption": "In Progress",
-          "description": "The finding is under review."
-        },
-        "3": {
-          "caption": "Suppressed",
-          "description": "The finding was reviewed, considered as a false positive and is now suppressed."
-        },
-        "4": {
-          "caption": "Resolved",
-          "description": "The finding was reviewed and remediated and is now considered resolved."
-        }
-      }
     }
   }
 }

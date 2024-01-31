@@ -1,0 +1,57 @@
+{
+  "caption": "Evidence Artifacts",
+  "description": "A collection of evidence artifacts associated to the activity/activities that triggered a security detection.",
+  "extends": "object",
+  "name": "evidences",
+  "attributes": {
+    "actor": {
+      "description": "Describes details about the user/role/process that was the source of the activity that triggered the detection.",
+      "requirement": "recommended"
+    },
+    "api": {
+      "description": "Describes details about the API call associated to the activity that triggered the detection.",
+      "requirement": "recommended"
+    },
+    "connection_info": {
+      "description": "Describes details about the network connection associated to the activity that triggered the detection.",
+      "requirement": "recommended"
+    },
+    "data": {
+      "description": "Additional evidence data that is not accounted for in the specific evidence attributes.<code> Use only when absolutely necessary.</code>",
+      "requirement": "optional"
+    },
+    "dst_endpoint": {
+      "description": "Describes details about the destination of the network activity that triggered the detection.",
+      "requirement": "recommended"
+    },
+    "file": {
+      "description": "Describes details about the file associated to the activity that triggered the detection.",
+      "requirement": "recommended"
+    },
+    "process": {
+      "description": "Describes details about the process associated to the activity that triggered the detection.",
+      "requirement": "recommended"
+    },
+    "query": {
+      "description": "Describes details about the DNS query associated to the activity that triggered the detection.",
+      "requirement": "recommended"
+    },
+    "src_endpoint": {
+      "description": "Describes details about the source of the network activity that triggered the detection.",
+      "requirement": "recommended"
+    }
+  },
+  "constraints": {
+    "at_least_one": [
+      "actor",
+      "api",
+      "connection_info",
+      "data",
+      "dst_endpoint",
+      "file",
+      "process",
+      "query",
+      "src_endpoint"
+    ]
+  }
+}

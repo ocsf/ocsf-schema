@@ -6,11 +6,15 @@
     "name": "web_resources_activity",
     "category": "application",
     "profiles": [
-        "host"
+        "host",
+        "network_proxy",
+        "security_control"
     ],
     "attributes": {
         "$include": [
-            "profiles/host.json"
+            "profiles/host.json",
+            "profiles/network_proxy.json",
+            "profiles/security_control.json"
         ],
         "activity_id": {
             "enum": {
@@ -52,13 +56,28 @@
              "description":"Details about server providing the web resources.",
              "group": "primary",
              "requirement": "recommended"
-         },        
+        },        
+        "http_request": {
+            "description": "Details about the underlying HTTP request.",
+            "group": "context",
+            "requirement": "recommended"
+        },
+        "http_response": {
+            "description": "Details about the HTTP response, if available.",
+            "group": "context",
+            "requirement": "optional"
+        },
         "src_endpoint": {
             "description": "Details about the endpoint from which the request originated.",
             "group": "primary",
             "requirement": "recommended"
         },
-        "web_resources": {
+        "tls": {
+            "description": "The Transport Layer Security (TLS) attributes, if available.",
+            "group": "context",
+            "requirement": "optional"
+        },
+              "web_resources": {
             "group": "primary",
             "requirement": "required"
         },

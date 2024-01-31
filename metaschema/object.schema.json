@@ -2,6 +2,7 @@
     "$id": "https://schema.ocsf.io/object.schema.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "Object",
+    "description": "An object is a collection of contextually related attributes, usually representing an entity, and may include other objects. Each object is also a data type in OCSF. Examples of object data types are Process, Device, User, Malware and File.",
     "type": "object",
     "anyOf": [
         {
@@ -19,6 +20,9 @@
         }
     ],
     "properties": {
+        "@deprecated": {
+            "$ref": "deprecated.schema.json"
+        },
         "description": {
           "type": "string",
           "description": "A concise description of the object."
@@ -35,6 +39,9 @@
         "extends": {
             "type": "string",
             "description": "An object that this one extends from."
+        },
+        "observable": {
+            "$ref": "observable.schema.json"
         },
         "constraints": {
             "type": "object",
@@ -62,24 +69,19 @@
             "properties": {
                 "$include": {
                     "description": "A reference to another schema for attributes to include.",
-                    "oneOf": [
-                        {
-                            "type": "string",
-                            "format": "uri-reference"
-                        },
-                        {
-                            "type": "array",
-                            "items": {
-                                "type": "string",
-                                "format": "uri-reference"
-                            }
-                        }
-                    ]
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "format": "uri-reference"
+                    }
                 }
             },
-            "additionalProperties": {
-                "$ref": "attribute.schema.json"
-            }
+            "patternProperties": {
+                "^[a-z0-9_]*$": {
+                    "$ref": "attribute.schema.json"
+                }
+            },
+            "additionalProperties": false
         }
     }
 }

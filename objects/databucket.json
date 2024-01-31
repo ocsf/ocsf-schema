@@ -1,0 +1,64 @@
+{
+  "caption": "Databucket",
+  "description": "The databucket object is a basic container that holds data, typically organized through the use of data partitions.",
+  "extends": "_entity",
+  "name": "databucket",
+  "attributes": {
+    "created_time": {
+      "description": "The time when the databucket was known to have been created.",
+      "requirement": "optional"
+    },
+    "modified_time": {
+      "description": "The most recent time when any changes, updates, or modifications were made within the databucket.",
+      "requirement": "optional"
+    },
+    "desc": {
+      "caption": "Description",
+      "description": "The description of the databucket.",
+      "requirement": "optional"
+    },
+    "size": {
+      "description": "The size of the databucket in bytes.",
+      "requirement": "optional"
+    },
+    "file": {
+      "description": "A file within a databucket.",
+      "requirement": "optional"
+    },
+    "groups": {
+      "description": "The group names to which the databucket belongs.",
+      "requirement": "optional"
+    },
+    "type": {
+      "description": "The databucket type.",
+      "requirement": "recommended"
+    },
+    "type_id": {
+      "description": "The normalized identifier of the databucket type.",
+      "requirement": "required",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "S3"
+        },
+        "2": {
+          "caption": "Azure Blob"
+        },
+        "3": {
+          "caption": "GCP Bucket"
+        },
+        "99": {
+          "caption": "Other"
+        }
+      }
+    },
+    "name": {
+      "description": "The databucket name."
+    },
+    "uid": {
+      "description": "The unique identifier of the databucket."
+    }
+  }
+}

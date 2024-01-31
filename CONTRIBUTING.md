@@ -1,6 +1,6 @@
 # OCSF Contribution Guide
 
-This documentation presents guidelines and expected etiquettes to successfully contribute to the developement of OCSF Schemas and the framework itself.
+This documentation presents guidelines and expected etiquettes to successfully contribute to the development of OCSF Schemas and the framework itself.
 
 * * *
 
@@ -93,7 +93,7 @@ An example `vulnerability.json` object file,
       "description": "The description of the vulnerability",
       "requirement": "recommended"
     },
-    "kb_articles": {
+    "kb_article_list": {
       "requirement": "optional"
     }
   }

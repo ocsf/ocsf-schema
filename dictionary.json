@@ -50,7 +50,7 @@
       "enum": {
         "99": {
           "caption": "Other",
-          "description": "The event activity is not mapped."
+          "description": "The event activity is not mapped. See the <code>activity_name</code> attribute, which contains a data source specific value."
         },
         "0": {
           "caption": "Unknown",
@@ -64,6 +64,35 @@
       "caption": "Activity",
       "description": "The event activity name, as defined by the activity_id.",
       "type": "string_t"
+    },
+    "action": {
+      "caption": "Action",
+      "description": "The normalized caption of 'action_id' or the source specific action.",
+      "type": "string_t" 
+    },
+    "action_id": {
+      "caption": "Action ID",
+      "description": "The normalized action taken by a control or other policy-based system leading to an outcome or disposition.",
+      "enum": {
+        "99": {
+          "caption": "Other",
+          "description": "The action was not mapped. See the <code>action</code> attribute, which contains a data source specific value."
+        },
+        "0": {
+          "caption": "Unknown",
+          "description": "The action was unknown."
+        },
+        "1": {
+          "caption": "Allowed",
+          "description": "The activity was allowed."
+        },
+        "2": {
+          "caption": "Denied",
+          "description": "The attempted activity was denied."
+        }
+      },
+      "type": "integer_t",
+      "sibling": "action"
     },
     "actor": {
       "caption": "Actor",
@@ -102,10 +131,12 @@
       "description": "The identifier of the normalized algorithm. See specific usage.",
       "enum": {
         "99": {
-          "caption": "Other"
+          "caption": "Other",
+          "description": "The algorithm is not mapped. See the <code>algorithm</code> attribute, which contains a data source specific value."
         },
         "0": {
-          "caption": "Unknown"
+          "caption": "Unknown",
+          "description": "The algorithm is unknown."
         }
       },
       "sibling": "algorithm",
@@ -147,30 +178,36 @@
       "description": "The arguments sent along with the HTTP request.",
       "type": "string_t"
     },
+    "assignee": {
+      "caption": "Assignee",
+      "description": "The details of the user assigned to an Incident.",
+      "type": "user"
+    },
+    "assignee_group": {
+      "caption": "Assignee Group",
+      "description": "The details of the group assigned to an Incident.",
+      "type": "group"
+    },
+    "attacks": {
+      "caption": "MITRE ATT&CK® Details",
+      "description": "An array of <a target='_blank' href='https://attack.mitre.org'>MITRE ATT&CK®</a> objects describing the tactics, techniques & sub-techniques identified by a security control or finding.",
+      "is_array": true,
+      "type": "attack"
+    },
     "attempt": {
       "caption": "Attempt",
       "description": "The delivery attempt.",
       "type": "integer_t"
-    },
-    "banner": {
-      "caption": "SMTP Banner",
-      "description": "The initial SMTP connection response that a messaging server receives after it connects to a email server.",
-      "type": "string_t"
-    },
-    "attacks": {
-      "caption": "MITRE ATT&CK® Details",
-      "description": "An array of <a target='_blank' href='https://attack.mitre.org'>MITRE ATT&CK®</a> objects describing the tactics, techniques & sub-techniques associated to a security finding.",
-      "is_array": true,
-      "type": "attack"
     },
     "attributes": {
       "caption": "Attributes",
       "description": "The bitmask value that represents the file attributes.",
       "type": "integer_t"
     },
-    "auth_factor": {
-      "caption": "Authentication Factor",
-      "description": "Captures information about a factor used in authentication.",
+    "auth_factors": {
+      "caption": "Authentication Factors",
+      "description": "Describes a category of methods used for identity verification in an authentication attempt.",
+      "is_array": true,
       "type": "auth_factor"
     },
     "auth_protocol": {
@@ -183,10 +220,12 @@
       "description": "The normalized identifier of the authentication protocol used to create the user session.",
       "enum": {
         "99": {
-          "caption": "Other"
+          "caption": "Other",
+          "description": "The authentication protocol is not mapped. See the <code>auth_protocol</code> attribute, which contains a data source specific value."
         },
         "0": {
-          "caption": "Unknown"
+          "caption": "Unknown",
+          "description": "The authentication protocol is unknown."
         },
         "1": {
           "caption": "NTLM"
@@ -232,10 +271,12 @@
       "description": "The normalized identifier of the agreed upon authentication type. See specific usage.",
       "enum": {
         "99": {
-          "caption": "Other"
+          "caption": "Other",
+          "description": "The authentication type is not mapped. See the <code>auth_type</code> attribute, which contains a data source specific value."
         },
         "0": {
-          "caption": "Unknown"
+          "caption": "Unknown",
+          "description": "The authentication type is unknown."
         }
       },
       "sibling": "auth_type",
@@ -243,13 +284,18 @@
     },
     "authorizations": {
       "caption": "Authorization Information",
-      "description": "This object provides details such as authorization outcome, associated policies related to activity/event.",
+      "description": "Provides details about an authorization, such as authorization outcome, and any associated policies related to the activity/event.",
       "is_array": true,
       "type": "authorization"
     },
     "autoscale_uid": {
       "caption": "Autoscale UID",
       "description": "The unique identifier of the cloud autoscale configuration.",
+      "type": "string_t"
+    },
+    "banner": {
+      "caption": "SMTP Banner",
+      "description": "The initial SMTP connection response that a messaging server receives after it connects to a email server.",
       "type": "string_t"
     },
     "base_address": {
@@ -287,7 +333,8 @@
       "description": "<p>The normalized identifier of the boundary of the connection. </p><p> For cloud connections, this translates to the traffic-boundary (same VPC, through IGW, etc.). For traditional networks, this is described as Local, Internal, or External.</p>",
       "enum": {
         "99": {
-          "caption": "Other"
+          "caption": "Other",
+          "description": "The boundary is not mapped. See the <code>boundary</code> attribute, which contains a data source specific value."
         },
         "0": {
           "caption": "Unknown",
@@ -348,7 +395,7 @@
     },
     "bulletin": {
       "caption": "Patch Bulletin",
-      "description": "The vendor bulletin identfier.",
+      "description": "The vendor bulletin identifier.",
       "type": "string_t"
     },
     "bytes": {
@@ -394,7 +441,7 @@
       "enum": {
         "99": {
           "caption": "Other",
-          "description": "The Domain/URL category is not mapped. See the <code>categories</code> attribute, which may contain a data source specific value."
+          "description": "The Domain/URL category is not mapped. See the <code>categories</code> attribute, which contains a data source specific value."
         },
         "0": {
           "caption": "Unknown",
@@ -693,6 +740,21 @@
       "description": "The chassis type describes the system enclosure or physical form factor. Such as the following examples for Windows <a target='_blank' href='https://docs.microsoft.com/en-us/windows/win32/cimwin32prov/win32-systemenclosure'>Windows Chassis Types</a>",
       "type": "string_t"
     },
+    "chunks": {
+      "caption": "Chunks",
+      "description": "A unit of information within an SCTP packet, consisting of a chunk header and chunk-specific content. See RFC 4960. This field can be used for the total number of chunks (in and out).",
+      "type": "long_t"
+    },
+    "chunks_in": {
+      "caption": "Chunks In",
+      "description": "A unit of information within an SCTP packet, consisting of a chunk header and chunk-specific content. See RFC 4960. This field can be used for the chunks sent from the destination to the source.",
+      "type": "long_t"
+    },
+    "chunks_out": {
+      "caption": "Chunks Out",
+      "description": "A unit of information within an SCTP packet, consisting of a chunk header and chunk-specific content. See RFC 4960. This field can be used for the chunks sent from the source to the destination.",
+      "type": "long_t"
+    },
     "cipher": {
       "caption": "Cipher Suite",
       "description": "The negotiated cipher suite.",
@@ -824,6 +886,11 @@
       "is_array": true,
       "type": "string_t"
     },
+    "command_uid": {
+      "caption": "Command UID",
+      "description": "The unique command identifier.",
+      "type": "string_t"
+    },
     "comment": {
       "caption": "Comment",
       "description": "The user-provided comment.",
@@ -855,7 +922,7 @@
       "enum": {
         "0": {
           "caption": "Unknown",
-          "description": "No confidence is assigned."
+          "description": "The normalized confidence is unknown."
         },
         "1": {
           "caption": "Low"
@@ -888,10 +955,12 @@
       "description": "The normalized identifier of the file content confidentiality indicator.",
       "enum": {
         "99": {
-          "caption": "Other"
+          "caption": "Other",
+          "description": "The confidentiality is not mapped. See the <code>confidentiality</code> attribute, which contains a data source specific value."
         },
         "0": {
-          "caption": "Unknown"
+          "caption": "Unknown",
+          "description": "The confidentiality is unknown."
         },
         "1": {
           "caption": "Not Confidential"
@@ -1026,10 +1095,45 @@
       "description": "Criticality of a resource/object in question",
       "type": "string_t"
     },
+    "security_level": {
+      "caption": "Security Level",
+      "description": "The current security level of the entity",
+      "type": "string_t"
+    },
+    "security_level_id": {
+      "caption": "Security Level ID",
+      "description": "The current security level of the entity",
+      "enum": {
+        "99": {
+          "caption": "Other",
+          "description": "The security level is not mapped. See the <code>security_level</code> attribute, which contains data source specific values."
+        },
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Secure"
+        },
+        "2": {
+          "caption": "At Risk"
+        },
+        "3": {
+          "caption": "Compromised"
+        }
+      },
+      "sibling": "security_level",
+      "type": "integer_t"
+    },
+    "security_states": {
+      "caption": "Security States",
+      "description": "The current security states. See specific usage.",
+      "is_array": true,
+      "type": "security_state"
+    },
     "customer_uid": {
       "@deprecated": {
         "message": "Use the <code> tenant_uid </code> attribute instead.",
-        "since": "v1.1.0"
+        "since": "1.1.0"
       },
       "caption": "Customer UID",
       "description": "The unique customer identifier.",
@@ -1057,14 +1161,42 @@
       "description": "The CWE object represents a weakness in a software system that can be exploited by a threat actor to perform an attack. The CWE object is based on the <a target='_blank' href='https://cwe.mitre.org/'>Common Weakness Enumeration (CWE)</a> catalog.",
       "type": "cwe"
     },
+    "cwe_uid": {
+      "@deprecated": {
+        "message": "Use the <code> cwe </code> object attributes instead.",
+        "since": "1.1.0"
+      },
+      "caption": "CWE UID",
+      "description": "The <a target='_blank' href='https://cwe.mitre.org/'>Common Weakness Enumeration (CWE)</a> unique identifier. For example: <code>CWE-787</code>.",
+      "type": "string_t"
+    },
+    "cwe_url": {
+      "@deprecated": {
+        "message": "Use the <code> cwe </code> object attributes instead.",
+        "since": "1.1.0"
+      },
+      "caption": "CWE URL",
+      "description": "Common Weakness Enumeration (CWE) definition URL. For example: <code>https://cwe.mitre.org/data/definitions/787.html</code>.",
+      "type": "url_t"
+    },
     "data": {
       "caption": "Data",
       "description": "The additional data that is associated with the event or object. See specific usage.",
       "type": "json_t"
     },
+    "database": {
+      "caption": "Database",
+      "description": "The database object is used for databases which are typically datastore services that contain an organized collection of structured and unstructured data or a types of data.",
+      "type": "database"
+    },
+    "databucket": {
+      "caption": "Databucket",
+      "description": "The data bucket object is a basic container that holds data, typically organized through the use of data partitions.",
+      "type": "databucket"
+    },
     "data_sources": {
       "caption": "Data Sources",
-      "description": "The data sources for the finding.",
+      "description": "A list of data sources utilized in generation of the finding.",
       "is_array": true,
       "type": "string_t"
     },
@@ -1165,7 +1297,7 @@
       "description": "The normalized identifier of the direction of the initiated connection, traffic, or email.",
       "enum": {
         "0": {
-          "description": "Connection direction is unknown.",
+          "description": "The connection direction is unknown.",
           "caption": "Unknown"
         },
         "1": {
@@ -1181,7 +1313,8 @@
           "caption": "Lateral"
         },
         "99": {
-          "caption": "Other"
+          "caption": "Other",
+          "description": "The direction is not mapped. See the <code>direction</code> attribute, which contains a data source specific value."
         }
       },
       "sibling": "direction",
@@ -1194,18 +1327,20 @@
     },
     "disposition": {
       "caption": "Disposition",
-      "description": "The event disposition name, normalized to the caption of the disposition_id value. In the case of 'Other', it is defined by the event source.",
+      "description": "The disposition name, normalized to the caption of the disposition_id value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "disposition_id": {
       "caption": "Disposition ID",
-      "description": "When security issues, such as malware or policy violations, are detected and possibly corrected, then <code>disposition_id</code> describes the action taken by the security product.",
+      "description": "Describes the outcome or action taken by a security control, such as access control checks, malware detections or various types of policy violations.",
       "enum": {
         "99": {
-          "caption": "Other"
+          "caption": "Other",
+          "description": "The disposition is not mapped. See the <code>disposition</code> attribute, which contains a data source specific value."
         },
         "0": {
-          "caption": "Unknown"
+          "caption": "Unknown",
+          "description": "The disposition is unknown."
         }
       },
       "sibling": "disposition",
@@ -1307,9 +1442,15 @@
       "description": "The end time of a time period. See specific usage.",
       "type": "timestamp_t"
     },
+    "endpoint_connections": {
+      "caption": "Endpoint Connections",
+      "description": "Contains information about network connection attempts. See specific usage.",
+      "is_array": true,
+      "type": "endpoint_connection"
+    },
     "enrichments": {
       "caption": "Enrichments",
-      "description": "The additional information from an external data source, which is associated with the event. For example add location information for the IP address in the DNS answers:</p><code>[{\"name\": \"answers.ip\", \"value\": \"92.24.47.250\", \"type\": \"location\", \"data\": {\"city\": \"Socotra\", \"continent\": \"Asia\", \"coordinates\": [-25.4153, 17.0743], \"country\": \"YE\", \"desc\": \"Yemen\"}}]</code>",
+      "description": "The additional information from an external data source, which is associated with the event or a finding. For example add location information for the IP address in the DNS answers:</p><code>[{\"name\": \"answers.ip\", \"value\": \"92.24.47.250\", \"type\": \"location\", \"data\": {\"city\": \"Socotra\", \"continent\": \"Asia\", \"coordinates\": [-25.4153, 17.0743], \"country\": \"YE\", \"desc\": \"Yemen\"}}]</code>",
       "is_array": true,
       "type": "enrichment"
     },
@@ -1349,14 +1490,29 @@
       "type": "string_t"
     },
     "evidence": {
+      "@deprecated": {
+        "message": "Use the <code> evidences </code> attribute instead.",
+        "since": "1.1.0"
+      },
       "caption": "Evidence",
       "description": "The data the finding exposes to the analyst.",
       "type": "json_t"
+    },
+    "evidences": {
+      "caption": "Evidence Artifacts",
+      "description": "Describes various evidence artifacts associated to the activity/activities that triggered a security detection.",
+      "is_array": true,
+      "type": "evidences"
     },
     "exit_code": {
       "caption": "Exit Code",
       "description": "The exit code reported by a process when it terminates. The convention is that zero indicates success and any non-zero exit code indicates that some error occurred.",
       "type": "integer_t"
+    },
+    "expiration_reason": {
+      "caption": "Expiration Reason",
+      "description": "The expiration reason. See specific usage.",
+      "type": "string_t"
     },
     "expiration_time": {
       "caption": "Expiration Time",
@@ -1364,6 +1520,10 @@
       "type": "timestamp_t"
     },
     "extension": {
+      "@deprecated": {
+        "message": "Use the <code> extensions </code> attribute instead.",
+        "since": "1.1.0"
+      },
       "caption": "Schema Extension",
       "description": "The schema extension used to create the event.",
       "type": "extension"
@@ -1375,6 +1535,10 @@
       "type": "extension"
     },
     "extension_list": {
+      "@deprecated": {
+        "message": "Use the <code> tls_extension_list </code> attribute instead.",
+        "since": "1.1.0"
+      },
       "caption": "Extension List",
       "description": "The list of TLS extensions.",
       "is_array": true,
@@ -1389,7 +1553,7 @@
       "caption": "Factor Email",
       "description": "The email address used in an email-based authentication factor.",
       "type": "email_t"
-  },
+    },
     "factor_provider": {
       "caption": "Factor Provider",
       "description": "The name of provider for an authentication factor.",
@@ -1495,7 +1659,13 @@
     },
     "finding_info": {
       "caption": "Finding Information",
-      "description": "The information about a finding or detection generated by a security tool.",
+      "description": "Describes the supporting information about a generated finding.",
+      "type": "finding_info"
+    },
+    "finding_info_list": {
+      "caption": "Finding Information List",
+      "description": "A list of <code>finding_info</code> objects associated to an incident.",
+      "is_array": true,
       "type": "finding_info"
     },
     "fingerprint": {
@@ -1508,6 +1678,11 @@
       "description": "An array of digital fingerprint objects.",
       "is_array": true,
       "type": "fingerprint"
+    },
+    "firewall_rule": {
+      "caption": "Firewall Rule",
+      "description": "The firewall rule that triggered the event.",
+      "type": "firewall_rule"
     },
     "first_seen_time": {
       "caption": "First Seen",
@@ -1522,7 +1697,7 @@
     "fix_available": {
       "@deprecated": {
         "message": "Use the <code> is_fix_available </code> attribute instead.",
-        "since": "v1.0.0"
+        "since": "1.1.0"
       },
       "caption": "Fix Availability",
       "description": "Indicates if a fix is available for the reported vulnerability.",
@@ -1638,7 +1813,7 @@
     "http_only": {
       "@deprecated": {
         "message": "Use the <code> is_http_only </code> attribute instead.",
-        "since": "v1.1.0"
+        "since": "1.1.0"
       },
       "caption": "HTTP Only",
       "description": "A cookie attribute to make it inaccessible via JavaScript",
@@ -1657,7 +1832,7 @@
     "http_status": {
       "@deprecated": {
         "message": "Use the <code> http_response.code </code> attribute instead.",
-        "since": "v1.0.0"
+        "since": "1.1.0"
       },
       "caption": "HTTP Status",
       "description": "The Hypertext Transfer Protocol (HTTP) <a target='_blank' href='https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml'>status code</a> returned to the client.",
@@ -1665,7 +1840,7 @@
     },
     "hw_info": {
       "caption": "Hardware Info",
-      "description": "The device hardware information.",
+      "description": "The endpoint hardware information.",
       "type": "device_hw_info"
     },
     "hypervisor": {
@@ -1708,7 +1883,8 @@
       "description": "The normalized impact of the finding.",
       "enum": {
         "0": {
-          "caption": "Unknown"
+          "caption": "Unknown",
+          "description": "The normalized impact is unknown."
         },
         "1": {
           "caption": "Low"
@@ -1724,7 +1900,7 @@
         },
         "99": {
           "caption": "Other",
-          "description": "The detection impact is not mapped. See the <code>impact</code> attribute, which contains a data source specific value."
+          "description": "The impact is not mapped. See the <code>impact</code> attribute, which contains a data source specific value."
         }
       },
       "sibling": "impact",
@@ -1745,10 +1921,12 @@
       "description": "The normalized identifier of the process injection method.",
       "enum": {
         "99": {
-          "caption": "Other"
+          "caption": "Other",
+          "description": "The injection type is not mapped. See the <code>injection_type</code> attribute, which contains a data source specific value."
         },
         "0": {
-          "caption": "Unknown"
+          "caption": "Unknown",
+          "description": "The injection type is unknown."
         },
         "1": {
           "caption": "Remote Thread"
@@ -1818,7 +1996,7 @@
       "description": "The indication of whether the value is from a default value name. For example, the value name could be missing.",
       "type": "boolean_t"
     },
-    "is_exploit_available": {
+    "is_exploit_available":{
       "caption": "Exploit Availability",
       "description": "Indicates if an exploit or a PoC (proof-of-concept) is available for the reported vulnerability.",
       "type": "boolean_t"
@@ -1898,6 +2076,11 @@
       "description": "Whether the authentication factor is a Time-based One-time Password (TOTP).",
       "type": "boolean_t"
     },
+    "is_vpn": {
+      "caption": "VPN Session",
+      "description": "The indication of whether the session is a VPN session.",
+      "type": "boolean_t"
+    },
     "isp": {
       "caption": "ISP",
       "description": "The name of the Internet Service Provider (ISP).",
@@ -1930,7 +2113,17 @@
     },
     "kb_articles": {
       "caption": "Knowledgebase Articles",
+      "@deprecated": {
+        "message": "Use the <code> kb_article_list </code> attribute instead.",
+        "since": "1.1.0"
+      },
       "description": "The KB article/s related to the entity. A KB Article contains metadata that describes the patch or an update.",
+      "is_array": true,
+      "type": "string_t"
+    },    
+    "kb_article_list": {
+      "caption": "Knowledgebase Articles",
+      "description": "A list of KB articles or patches related to an endpoint. A KB Article contains metadata that describes the patch or an update.",
       "is_array": true,
       "type": "kb_article"
     },
@@ -2013,7 +2206,7 @@
     },
     "ldap_person": {
       "caption": "LDAP Person",
-      "description": "The additonal LDAP attributes that describe a person.",
+      "description": "The additional LDAP attributes that describe a person.",
       "type": "ldap_person"
     },
     "lease_dur": {
@@ -2041,6 +2234,11 @@
       "caption": "Software License",
       "description": "The name or identifier of the license applied on package or software. See <a target='_blank' href='https://spdx.org/licenses/'>SPDX License List</a>.",
       "type": "string_t"
+    },
+    "load_balancer": {
+      "caption": "Load Balancer",
+      "description": "The Load Balancer object contains information related to the device that is distributing incoming traffic to specified destinations.",
+      "type": "load_balancer"
     },
     "load_type": {
       "caption": "Load Type",
@@ -2112,7 +2310,7 @@
       "enum": {
         "99": {
           "caption": "Other",
-          "description": "Other logon type."
+          "description": "The logon type is not mapped. See the <code>logon_type</code> attribute, which contains a data source specific value."
         },
         "0": {
           "caption": "System",
@@ -2173,7 +2371,7 @@
     },
     "malware": {
       "caption": "Malware",
-      "description": "The list of malware identified by a finding.",
+      "description": "A list of Malware objects, describing details about the identified malware.",
       "is_array": true,
       "type": "malware"
     },
@@ -2184,7 +2382,7 @@
     },
     "message": {
       "caption": "Message",
-      "description": "The description of the event, as defined by the event source.",
+      "description": "The description of the event/finding, as defined by the source.",
       "type": "string_t"
     },
     "message_uid": {
@@ -2194,7 +2392,7 @@
     },
     "metadata": {
       "caption": "Metadata",
-      "description": "The metadata associated with the event.",
+      "description": "The metadata associated with the event or a finding.",
       "type": "metadata"
     },
     "metrics": {
@@ -2248,6 +2446,11 @@
       "description": "The network driver used by the container. For example, bridge, overlay, host, none, etc.",
       "type": "string_t"
     },
+    "network_endpoint": {
+      "caption": "Network Endpoint",
+      "description": "The Network Endpoint object describes characteristics of a network endpoint. See specific usage.",
+      "type": "network_endpoint"
+    },
     "network_interfaces": {
       "caption": "Network Interfaces",
       "description": "The network interfaces that are associated with the device, one for each unique MAC address/IP address/hostname/name combination.<p><b>Note:</b> The first element of the array is the network information that pertains to the event.</p>",
@@ -2265,9 +2468,59 @@
       "is_array": true,
       "type": "string_t"
     },
+    "num_detections": {
+      "caption": "Detections",
+      "description": "The number of detections.",
+      "type": "integer_t"
+    },
+    "num_files": {
+      "caption": "Scanned Files",
+      "description": "The number of files scanned.",
+      "type": "integer_t"
+    },
+    "num_folders": {
+      "caption": "Scanned Folders",
+      "description": "The number of folders scanned.",
+      "type": "integer_t"
+    },
+    "num_network_items": {
+      "caption": "Scanned Network Items",
+      "description": "The number of network items scanned.",
+      "type": "integer_t"
+    },
+    "num_processes": {
+      "caption": "Scanned Processes",
+      "description": "The number of processes scanned.",
+      "type": "integer_t"
+    },
+    "num_registry_items": {
+      "caption": "Scanned Registry Items",
+      "description": "The number of registry items scanned.",
+      "type": "integer_t"
+    },
+    "num_resolutions": {
+      "caption": "Resolutions",
+      "description": "The number of items that were resolved.",
+      "type": "integer_t"
+    },
+    "num_skipped_items": {
+      "caption": "Skipped",
+      "description": "The number of skipped items.",
+      "type": "integer_t"
+    },
+    "num_trusted_items": {
+      "caption": "Trusted",
+      "description": "The number of trusted items.",
+      "type": "integer_t"
+    },
+    "num_violations": {
+      "caption": "Violations",
+      "description": "The number of times the policy or rule was violated.",
+      "type": "integer_t"
+    },
     "observables": {
       "caption": "Observables",
-      "description": "The observables associated with the event.",
+      "description": "The observables associated with the event or a finding.",
       "is_array": true,
       "type": "observable"
     },
@@ -2363,7 +2616,7 @@
     },
     "os": {
       "caption": "OS",
-      "description": "The device operating system.",
+      "description": "The endpoint operating system.",
       "type": "os"
     },
     "overall_score": {
@@ -2384,7 +2637,7 @@
     "packages": {
       "@deprecated": {
         "message": "Use the <code> affected_packages </code> attribute instead.",
-        "since": "v1.0.0"
+        "since": "1.1.0"
       },
       "caption": "Software Packages",
       "description": "List of vulnerable packages as identified by the security product",
@@ -2488,7 +2741,8 @@
           "description": "With hands-on keyboard access, intruders accomplish the mission’s goal."
         },
         "99": {
-          "caption": "Other"
+          "caption": "Other",
+          "description": "The kill chain phase is not mapped. See the <code>phase</code> attribute, which contains a data source specific value."
         }
       },
       "type": "integer_t",
@@ -2543,17 +2797,77 @@
     "precision": {
       "caption": "Precision",
       "description": "The numeric precision. See specific usage.",
+      "type":  "integer_t"
+    },
+    "prev_security_level": {
+      "caption": "Previous Security Level",
+      "description": "The previous security level of the entity",
+      "type": "string_t"
+    },
+    "prev_security_level_id": {
+      "caption": "Previous Security Level ID",
+      "description": "The previous security level of the entity",
+      "enum": {
+        "99": {
+          "caption": "Other",
+          "description": "The security level is not mapped. See the <code>prev_security_level</code> attribute, which contains data source specific values."
+        },
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Secure"
+        },
+        "2": {
+          "caption": "At Risk"
+        },
+        "3": {
+          "caption": "Compromised"
+        }
+      },
+      "sibling": "prev_security_level",
       "type": "integer_t"
+    },
+    "prev_security_states": {
+      "caption": "Previous Security States",
+      "description": "The previous security states. See specific usage.",
+      "is_array": true,
+      "type": "security_state"
     },
     "priority": {
       "caption": "Priority",
-      "description": "The priority, normalized to the caption of the priority_id value. In the case of 'Other', it is defined by the event source. See specific usage.",
+      "description": "The priority, normalized to the caption of the priority_id value. In the case of 'Other', it is defined by the event source.",
       "type": "integer_t"
     },
     "priority_id": {
       "caption": "Priority ID",
-      "description": "The normalized priority. See specific usage.",
-      "enum": {},
+      "description": "The normalized priority. Priority identifies the relative importance of the finding. It is a measurement of urgency.",
+      "enum": {
+        "0": {
+          "description": "No priority is assigned.",
+          "caption": "Unknown"
+        },
+        "1": {
+          "description": "Application or personal procedure is unusable, where a workaround is available or a repair is possible.",
+          "caption": "Low"
+        },
+        "2": {
+          "description": "Non-critical function or procedure is unusable or hard to use causing operational disruptions with no direct impact on a service's availability. A workaround is available.",
+          "caption": "Medium"
+        },
+        "3": {
+          "description": "Critical functionality or network access is interrupted, degraded or unusable, having a severe impact on services availability. No acceptable alternative is possible.",
+          "caption": "High"
+        },
+        "4": {
+          "description": "Interruption making a critical functionality inaccessible or a complete network interruption causing a severe impact on services availability. There is no possible alternative.",
+          "caption": "Critical"
+        },
+        "99": {
+          "description": "The priority is not normalized.",
+          "caption": "Other"
+        }
+      },
       "sibling": "priority",
       "type": "integer_t"
     },
@@ -2624,7 +2938,7 @@
     "proxy": {
       "@deprecated": {
         "message": "Use the <code> proxy_endpoint </code> attribute instead.",
-        "since": "v1.0.0"
+        "since": "1.1.0"
       },
       "caption": "Proxy",
       "description": "The proxy (server) in a network connection.",
@@ -2635,9 +2949,9 @@
       "description": "The proxy (server) in a network connection.",
       "type": "network_proxy"
     },
-    "purl": {
+    "purl":{
       "caption": "Package URL",
-      "description": "A purl is a URL string used to identify and locate a software package in a mostly universal and uniform way across programing languages, package managers, packaging conventions, tools, APIs and databases.",
+      "description": "A purl is a URL string used to identify and locate a software package in a mostly universal and uniform way across programming languages, package managers, packaging conventions, tools, APIs and databases.",
       "type": "string_t"
     },
     "proxy_connection_info": {
@@ -2670,6 +2984,11 @@
       "description": "The Domain Name System (DNS) query.",
       "type": "dns_query"
     },
+    "query_info": {
+      "caption": "Query Info",
+      "description": "The query info object holds information related to data access within a datastore. To access, manipulate, delete, or retrieve data from a datastore, a database query must be written using a specific syntax.",
+      "type": "query_info"
+    },
     "query_string": {
       "caption": "HTTP Query String",
       "description": "The query portion of the URL. For example: the query portion of the URL <code>http://www.example.com/search?q=bad&sort=date</code> is <code>q=bad&sort=date</code>.",
@@ -2692,7 +3011,7 @@
     },
     "raw_data": {
       "caption": "Raw Data",
-      "description": "The event data as received from the event source.",
+      "description": "The raw event/finding data as received from the source.",
       "type": "string_t"
     },
     "rcode": {
@@ -2706,10 +3025,11 @@
       "enum": {
         "99": {
           "caption": "Other",
-          "description": "The dns response code is not defined by the RFC."
+          "description": "The DNS response code is not defined by the RFC. See the <code>rcode</code> attribute, which contains a data source specific value."
         },
         "0": {
-          "caption": "Unknown"
+          "caption": "Unknown",
+          "description": "The DNS response code is unknown."
         }
       },
       "sibling": "rcode",
@@ -2749,7 +3069,7 @@
     },
     "related_events": {
       "caption": "Related Events",
-      "description": "Describes events related to a finding or detection as identified by the security product.",
+      "description": "Describes events and/or other findings related to the finding as identified by the security product.",
       "is_array": true,
       "type": "related_event"
     },
@@ -2770,8 +3090,8 @@
       "type": "string_t"
     },
     "remediation": {
-      "caption": "Remediation",
-      "description": "The Remediation object describes the recommended remediation steps to address identified issue(s).",
+      "caption": "Remediation Guidance",
+      "description": "Describes the recommended remediation steps to address identified issue(s).",
       "type": "remediation"
     },
     "remote_display": {
@@ -2880,11 +3200,6 @@
       "description": "The rules that reported the events.",
       "type": "rule"
     },
-    "firewall_rule": {
-      "caption": "Firewall Rule",
-      "description": "The firewall rules that triggered the events.",
-      "type": "firewall_rule"
-    },
     "run_state": {
       "caption": "Run State",
       "description": "The state of the job or service, normalized to the caption of the run_state_id value. In the case of 'Other', it is defined by the event source. See specific usage.",
@@ -2922,6 +3237,16 @@
       "caption": "Scale Factor",
       "description": "The numeric scale factor of display.",
       "type": "integer_t"
+    },
+    "scan": {
+      "caption": "Scan",
+      "description": "The Scan object describes characteristics of a scan.  See specific usage.",
+      "type": "scan"
+    },
+    "schedule_uid": {
+      "caption": "Schedule UID",
+      "description": "The unique identifier of the schedule associated with a scan job.",
+      "type": "string_t"
     },
     "scheme": {
       "caption": "Scheme",
@@ -2992,7 +3317,7 @@
     "secure": {
       "@deprecated": {
         "message": "Use the <code> is_secure </code> attribute instead.",
-        "since": "v1.1.0"
+        "since": "1.1.0"
       },
       "caption": "Secure",
       "description": "The cookie attribute to only send cookies to the server with an encrypted request over the HTTPS protocol.",
@@ -3036,20 +3361,20 @@
     },
     "severity": {
       "caption": "Severity",
-      "description": "The event severity, normalized to the caption of the severity_id value. In the case of 'Other', it is defined by the event source.",
+      "description": "The event/finding severity, normalized to the caption of the severity_id value. In the case of 'Other', it is defined by the source.",
       "type": "string_t"
     },
     "severity_id": {
       "caption": "Severity ID",
-      "description": "<p>The normalized identifier of the event severity.</p>The normalized severity is a measurement the effort and expense required to manage and resolve an event or incident. Smaller numerical values represent lower impact events, and larger numerical values represent higher impact events.",
+      "description": "<p>The normalized identifier of the event/finding severity.</p>The normalized severity is a measurement the effort and expense required to manage and resolve an event or incident. Smaller numerical values represent lower impact events, and larger numerical values represent higher impact events.",
       "enum": {
         "99": {
           "caption": "Other",
-          "description": "The event severity is not mapped. See the <code>severity</code> attribute, which contains a data source specific value."
+          "description": "The event/finding severity is not mapped. See the <code>severity</code> attribute, which contains a data source specific value."
         },
         "0": {
           "caption": "Unknown",
-          "description": "The event severity is not known."
+          "description": "The event/finding severity is unknown."
         },
         "1": {
           "caption": "Informational",
@@ -3095,11 +3420,11 @@
       "enum": {
         "99": {
           "caption": "Other",
-          "description": "The share type is not mapped."
+          "description": "The share type is not mapped. See the <code>share_type</code> attribute, which contains a data source specific value."
         },
         "0": {
           "caption": "Unknown",
-          "description": "The share type is not known."
+          "description": "The share type is unknown."
         },
         "1": {
           "caption": "File"
@@ -3170,7 +3495,7 @@
       "description": "The URL pointing towards the source of an entity. See specific usage.",
       "type": "url_t"
     },
-    "standards": {
+    "standards":{
       "caption": "Security Standards",
       "description": "Security standards are a set of criteria organizations can follow to protect sensitive and confidential information. e.g. <code>NIST SP 800-53, CIS AWS Foundations Benchmark v1.4.0, ISO/IEC 27001</code>",
       "is_array": true,
@@ -3205,7 +3530,8 @@
           "description": "The state is not mapped. See the <code>state</code> attribute, which contains a data source specific value."
         },
         "0": {
-          "caption": "Unknown"
+          "caption": "Unknown",
+          "description": "The state is unknown."
         }
       },
       "sibling": "state",
@@ -3223,7 +3549,7 @@
     },
     "status_detail": {
       "caption": "Status Details",
-      "description": "The status details contains additional information about the event outcome.",
+      "description": "The status details contains additional information about the event/finding outcome.",
       "type": "string_t"
     },
     "status_id": {
@@ -3235,7 +3561,8 @@
           "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
         },
         "0": {
-          "caption": "Unknown"
+          "caption": "Unknown",
+          "description": "The status is unknown."
         },
         "1": {
           "caption": "Success"
@@ -3258,7 +3585,7 @@
       "enum": {
         "0": {
           "caption": "Unknown",
-          "description": "Unspecified or invalid."
+          "description":  "Unspecified or invalid."
         },
         "1": {
           "caption": "Primary Server",
@@ -3277,7 +3604,7 @@
         },
         "99": {
           "caption": "Other",
-          "description": "The stratum level is not mapped. See the <code>stratum</code> attribute, which may contain a data source specific value."
+          "description": "The stratum level is not mapped. See the <code>stratum</code> attribute, which contains a data source specific value."
         }
       },
       "sibling": "stratum",
@@ -3323,6 +3650,11 @@
       "description": "The last or family name for the user.",
       "type": "string_t"
     },
+    "is_suspected_breach": {
+      "caption": "Suspected Breach",
+      "description": "A determination based on analytics as to whether a potential breach was found.",
+      "type": "boolean_t"
+    },
     "svc_name": {
       "caption": "Service Name",
       "description": "The service name in service-to-service connections. For example, AWS VPC logs the pkt-src-aws-service and pkt-dst-aws-service fields identify the connection is coming from or going to an AWS service.",
@@ -3333,6 +3665,11 @@
       "description": "The system call that was invoked.",
       "type": "string_t"
     },
+    "table": {
+      "caption": "Table",
+      "description": "The table object represents a table within a structured relational database or datastore, which contains columns and rows of data that are able to be create, updated, deleted and queried.",
+      "type": "table"
+    },
     "tactic": {
       "caption": "Tactic",
       "description": "The Tactic object describes the tactic ID and/or name that is associated to an attack, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>.",
@@ -3341,7 +3678,7 @@
     "tactics": {
       "@deprecated": {
         "message": "Use the <code> tactic </code> attribute instead.",
-        "since": "v1.0.0"
+        "since": "1.1.0"
       },
       "caption": "Tactics",
       "description": "The Tactic object describes the tactic ID and/or tactic name that are associated with the attack technique, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>.",
@@ -3380,7 +3717,7 @@
     },
     "time": {
       "caption": "Event Time",
-      "description": "The normalized event occurrence time.",
+      "description": "The normalized event occurrence time or the finding creation time.",
       "type": "timestamp_t"
     },
     "timezone_offset": {
@@ -3403,11 +3740,22 @@
       "description": "The Transport Layer Security (TLS) attributes.",
       "type": "tls"
     },
+    "tls_extension_list": {
+      "caption": "TLS Extension List",
+      "description": "The list of TLS extensions.",
+      "is_array": true,
+      "type": "tls_extension"
+    },
     "to": {
       "caption": "To",
       "description": "The email header To values, as defined by RFC 5322.",
       "is_array": true,
       "type": "email_t"
+    },
+    "total": {
+      "caption": "Total",
+      "description": "The total number of items. See specific usage.",
+      "type": "integer_t"
     },
     "traffic": {
       "caption": "Traffic",
@@ -3445,7 +3793,7 @@
       "enum": {
         "99": {
           "caption": "Other",
-          "description": "The type is not mapped. See the <code>type</code> attribute, which may contain a data source specific value."
+          "description": "The type is not mapped. See the <code>type</code> attribute, which contains a data source specific value."
         },
         "0": {
           "caption": "Unknown",
@@ -3457,14 +3805,14 @@
     },
     "type_name": {
       "caption": "Type Name",
-      "description": "The event type name, as defined by the type_uid.",
+      "description": "The event/finding type name, as defined by the type_uid.",
       "type": "string_t"
     },
     "type_uid": {
       "caption": "Type ID",
-      "description": "The event type ID. It identifies the event's semantics and structure. The value is calculated by the logging system as: <code>class_uid * 100 + activity_id</code>.",
+      "description": "The event/finding type ID. It identifies the event's semantics and structure. The value is calculated by the logging system as: <code>class_uid * 100 + activity_id</code>.",
       "sibling": "type_name",
-      "type": "integer_t"
+      "type": "long_t"
     },
     "types": {
       "caption": "Types",
@@ -3537,6 +3885,67 @@
       "caption": "Vendor Name",
       "description": "The name of the vendor. See specific usage.",
       "type": "string_t"
+    },
+    "verdict": {
+      "caption": "Verdict",
+      "description": "The verdict assigned to an Incident finding.",
+      "type": "string_t"
+    },
+    "verdict_id": {
+      "caption": "Verdict ID",
+      "description": "The normalized verdict of an Incident.",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The type is unknown."
+        },
+        "1": {
+          "caption": "False Positive",
+          "description": "The incident is a false positive."
+        },
+        "2": {
+          "caption": "True Positive",
+          "description": "The incident is a true positive."
+        },
+        "3": {
+          "caption": "Disregard",
+          "description": "The incident can be disregarded as it is unimportant, an error or accident."
+        },
+        "4": {
+          "caption": "Suspicious",
+          "description": "The incident is suspicious."
+        },
+        "5": {
+          "caption": "Benign",
+          "description": "The incident is benign."
+        },
+        "6": {
+          "caption": "Test",
+          "description": "The incident is a test."
+        },
+        "7": {
+          "caption": "Insufficient Data",
+          "description": "The incident has insufficient data to make a verdict."
+        },
+        "8": {
+          "caption": "Security Risk",
+          "description": "The incident is a security risk."
+        },
+        "9": {
+          "caption": "Managed Externally",
+          "description": "The incident remediation or required actions are managed externally."
+        },
+        "10": {
+          "caption": "Duplicate",
+          "description": "The incident is a duplicate."
+        },
+        "99": {
+        "caption": "Other",
+        "description": "The type is not mapped. See the <code>type</code> attribute, which contains a data source specific value."
+        }
+      },
+      "sibling": "verdict",
+      "type": "integer_t"
     },
     "version": {
       "caption": "Version",
@@ -3659,8 +4068,8 @@
         "type_name": "String"
       },
       "file_hash_t": {
-        "caption": "File Hash",
-        "description": "File hash. A unique value that corresponds to the content of the file.",
+        "caption": "Hash",
+        "description": "Hash. A unique value that corresponds to the content of the file, image, ja3_hash or hassh found in the schema. For example MD5: <code>3172ac7e2b55cbb81f04a6e65855a628</code>.",
         "max_len": 64,
         "observable": 8,
         "type": "string_t",
@@ -3747,7 +4156,7 @@
       },
       "subnet_t": {
         "caption": "Subnet",
-        "description": "The subnet represented in a CIDR notation, using the format network_address/prefix_length. The network_address can be in either IPv4 or IPv6 format. The prefix length indicates the number of bits used for the network portion, and the remaining bits are available for host addresses within that subnet. <div>For example:<ul><li>192.168.1.0/24</li><li>2001:0db8:85a3:0000::/64</li></ul></div>",
+      "description": "The subnet represented in a CIDR notation, using the format network_address/prefix_length. The network_address can be in either IPv4 or IPv6 format. The prefix length indicates the number of bits used for the network portion, and the remaining bits are available for host addresses within that subnet. <div>For example:<ul><li>192.168.1.0/24</li><li>2001:0db8:85a3:0000::/64</li></ul></div>",
         "max_len": 42,
         "type": "string_t",
         "type_name": "String"

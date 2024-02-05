@@ -4,7 +4,28 @@ This documentation presents guidelines and expected etiquettes to successfully c
 
 * * *
 
-### Key Terminology
+### Pull Request Guidelines
+
+All contributors must submit their changes via pull requests. If you're not familiar with pull requests, please read [the GitHub documentation](https://help.github.com/en/articles/about-pull-requests). Following are a few guidelines and expectations for submitting a PR.
+
+1. Fork the repo that you want to contribute to ([ocsf-schema](https://github.com/ocsf/ocsf-schema), [ocsf-docs](https://github.com/ocsf/ocsf-docs), [ocsf-server](https://github.com/ocsf/ocsf-server)).
+2. Make desired changes in the forked repo, test if [everything works as expected](#verifying-the-changes) and is error-free, a local instance of the [ocsf-server](https://github.com/ocsf/ocsf-server) would be essential.
+3. Push the changes to the forked repo.
+4. Create a **Pull Request** to merge changes into the main repo, request at least 3 approvers.
+5. Follow the guidelines in the PR template.
+    1. Limit the number of commits in a single PR to aid reviewers, be as specific with the change as possible. A single PR **must** contain related changes.
+    2. Each commit must include a DCO [Developer's Certificate of Origin](#developers-certificate-of-origin-11).
+    3. Add an entry to the `Unreleased` section in [CHANGELOG.md](https://github.com/ocsf/ocsf-schema/blob/main/CHANGELOG.md).
+    3. Describe your change in as much detail as possible.
+    5. Confirm that you have tested the changes, and the server run was error free.
+    6. Check the Preview tab to ensure everything looks as expected.
+    7. Once the PR is ready, add relevant labels, request approvers and submit it.
+    8. Resolve any github action failures, warnings reported for your pull request, and stay involved in the conversation.
+6. Thank you for your contribution!
+
+* * *
+
+### Key OCSF Terminology
 
 1. **Field**: A field is a unique identifier name for a piece of data contained in OCSF. Each field also designates a corresponding data_type.
 2. **Object**: An object is a collection of contextually related fields and other objects.  It is also a data_type in OCSF.
@@ -231,23 +252,7 @@ Sample error messages -
 ```
  Address the errors before submitting the changes, your server run should be completely error free.
 
-### Pull Request Guidelines
-
-All contributors should submit their changes via pull requests. If you're not familiar with pull requests, please read [the GitHub documentation](https://help.github.com/en/articles/about-pull-requests). Following are a few guidelines and expectations for submitting a PR.
-
-1. Fork the repo that you want to contribute to ([ocsf-schema](https://github.com/ocsf/ocsf-schema), [ocsf-docs](https://github.com/ocsf/ocsf-docs), [ocsf-server](https://github.com/ocsf/ocsf-server))
-2. Make desired changes in the forked repo, test if everything works as expected and is error-free, a local instance of the [ocsf-server](https://github.com/ocsf/ocsf-server) would be essential.
-3. Push the changes to the forked repo
-4. Create a **Pull Request** to merge changes into the main repo, request at least 3 approvers.
-    1. Limit the number of commits in a single PR to aid reviewers, be as specific with the change as possible. A single PR must contain related changes.
-    2. Each commit must include a DCO [Developer's Certificate of Origin](#developers-certificate-of-origin-11)
-    3. Describe your change in as much detail as possible.
-    4. Confirm that you have tested the changes, and the server run was error free.
-    5. Check the Preview tab to ensure everything looks as expected.
-    6. Once the PR is ready, add relevant labels, request approvers and submit it.
-    7. Pay attention to any automated CI failures, warnings reported in the pull request, and stay involved in the conversation.
-
-* * *
+***
 
 ### Developer's Certificate of Origin 1.1
 

@@ -40,7 +40,7 @@ Thankyou! -->
 -->
 
 ### Misc
-    1. Changed datatype of `priority` from `integer_t` to `string_t`
+    1. Changed datatype of `priority` from `integer_t` to `string_t` #959
 
 ## [v1.1.0] - January 25th, 2024
 

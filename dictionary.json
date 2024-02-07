@@ -4028,7 +4028,8 @@
           65535
         ],
         "type": "integer_t",
-        "type_name": "Integer"
+        "type_name": "Integer",
+		"observable": 11
       },
       "process_name_t": {
         "caption": "Process Name",
@@ -4055,7 +4056,8 @@
       "description": "The subnet represented in a CIDR notation, using the format network_address/prefix_length. The network_address can be in either IPv4 or IPv6 format. The prefix length indicates the number of bits used for the network portion, and the remaining bits are available for host addresses within that subnet. <div>For example:<ul><li>192.168.1.0/24</li><li>2001:0db8:85a3:0000::/64</li></ul></div>",
         "max_len": 42,
         "type": "string_t",
-        "type_name": "String"
+        "type_name": "String",
+		"observable": 12
       },
       "timestamp_t": {
         "caption": "Timestamp",
@@ -4083,7 +4085,56 @@
         "regex": "[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}",
         "type": "string_t",
         "type_name": "String"
-      }
+      },
+	  "user_id_t": {
+		  "caption": "User ID",
+		  "description": "User identifier. For example, a Microsoft Active Directory UPN or Google Workspaces Unique ID.",
+		  "type": "string_t",
+		  "type_name": "String",
+		  "observable": 13
+	  },
+	  "group_name_t": {
+		  "caption": "Group Name",
+		  "description": "Group Name. For example: <code>it_users</code>",
+		  "type": "string_t",
+		  "type_name": "String",
+		  "observable": 14
+	  },
+	  "group_id_t": {
+		  "caption": "Group ID",
+		  "description": "Group identifier.",
+		  "type": "string_t",
+		  "type_name": "String",
+		  "observable": 15
+	  },
+	  "vulnerability_id_t": {
+		  "caption": "Vulnerability ID",
+		  "description": "A unique identifier for a reported vulnerability such as a CVE or CWE ID.",
+		  "type": "string_t",
+		  "type_name": "String",
+		  "observable": 16
+	  },
+	  "process_id_t": {
+		  "caption": "Process ID",
+		  "description": "A unique identifier for a process",
+		  "type": "string_t",
+		  "type_name": "String",
+		  "observable": 17,
+	  },
+	  "resource_name_t": {
+		  "caption": "Resource Name",
+		  "description": "The name of a resource",
+		  "type": "string_t",
+		  "type_name": "String",
+		  "observable": 18
+	  },
+	  "user_agent_t": {
+		  "caption": "HTTP User Agent",
+		  "description": "An HTTP User Agent. For example <code>AppleWebKit/537.36 (KHTML, like Gecko)</code>",
+		  "type": "string_t",
+		  "type_name": "String",
+		  "observable": 19
+		}
     }
   }
 }

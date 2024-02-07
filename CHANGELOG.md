@@ -60,9 +60,6 @@ Thankyou! -->
 ### Misc
 
 -->
-
-## [v1.2.0-dev] - February 7th, 2024
-
 ### Added
 * #### Event Classes
     1. Added `Data Security Finding` event class.

@@ -13,6 +13,15 @@ Thankyou! -->
 
 ## [Unreleased]
 
+### Added
+#### Data Types
+* New data types and observables for User ID, Group Name, Group ID, Vulnerability ID, Process ID, Resource Name, and User Agent.
+
+### Improved
+#### Objects
+* Added observables for `port_t` and `subnet_t`.
+* Added new observables to User, Group, CWE, CVE, Resource Details, Device, Endpoint, Resource Details, and HTTP Request. 
+
 <!-- All available sections in the Changelog:
 
 ### Added

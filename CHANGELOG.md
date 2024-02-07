@@ -39,6 +39,18 @@ Thankyou! -->
 
 -->
 
+## [v1.2.0-dev] - February 7th, 2024
+
+### Added
+* #### Event Classes
+    1. Added `Data Security Finding` event class.
+* #### Objects
+    1. Added new `data_security` object.
+
+### Improved
+* #### Objects
+    1. Added two new enums to `confidentiality` object: `5 - Private` and `6 - Restricted`
+
 ## [v1.1.0] - January 25th, 2024
 
 ### Added

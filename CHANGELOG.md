@@ -36,6 +36,7 @@ Thankyou! -->
 ### Breaking changes
 
 ### Misc
+1. New Extension registration for Sedara. #951
 
 -->
 

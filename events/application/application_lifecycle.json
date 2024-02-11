@@ -1,0 +1,37 @@
+{
+  "uid": 2,
+  "description": "Application Lifecycle events report installation, removal, start, stop of an application or service.",
+  "extends": "application",
+  "caption": "Application Lifecycle",
+  "name": "application_lifecycle",
+  "profiles": [
+    "host"
+  ],
+  "attributes": {
+    "$include": [
+      "profiles/host.json"
+    ],
+    "activity_id": {
+      "requirement": "required",
+      "enum": {
+        "1": {
+          "caption": "Install"
+        },
+        "2": {
+          "caption": "Remove"
+        },
+        "3": {
+          "caption": "Start"
+        },
+        "4": {
+          "caption": "Stop"
+        }
+      }
+    },
+    "app": {
+      "description": "The application that was affected by the lifecycle event.  This also applies to self-updating application systems.",
+      "group": "primary",
+      "requirement": "required"
+    }
+  }
+}

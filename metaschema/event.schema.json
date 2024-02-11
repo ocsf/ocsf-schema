@@ -1,0 +1,45 @@
+{
+    "$id": "https://schema.ocsf.io/event.schema.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Event",
+    "description": "Event classes are particular sets of attributes and objects representing a log line or telemetry submission at a point in time. Event classes have semantics that describe what happened: either a particular activity, disposition or both.",
+    "allOf": [
+        {
+            "$ref": "object.schema.json"
+        },
+        {
+            "properties": {
+                "@deprecated": true,
+                "description": true,
+                "caption": true,
+                "name": true,
+                "extends": true,
+                "constraints": true,
+                "profiles": true,
+                "attributes": true,
+                "associations": {
+                    "type": "object",
+                    "description": "Associations indicate attributes in a schema which 'go together'. For example, if a schema has multiple users and multiple endpoints, associations can indicate which user attribute goes with which endpoint.",
+                    "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "category": {
+                    "type": "string",
+                    "description": "The category that the event belongs to.",
+                    "enum": ["system", "findings", "iam", "network", "discovery", "application", "other"]
+                },
+                "uid": {
+                    "type": "integer",
+                    "description": "A unique identifier for this event, must be unique within the category.",
+                    "minimum": 0,
+                    "maximum": 999
+                }
+            },
+            "additionalProperties": false
+        }
+    ]
+}

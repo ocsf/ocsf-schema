@@ -1,18 +1,58 @@
 {
   "caption": "Fingerprint",
-  "name": "fingerprint",
-  "description": "The fingerprint object describes the algorithm and value of digital fingerprint. A fingerprint is a short sequence of bytes used to identify a longer public key or file content.",
+  "description": "The Fingerprint object provides detailed information about a digital fingerprint, which is a compact representation of data used to identify a longer piece of information, such as a public key or file content. It contains the algorithm and value of the fingerprint, enabling efficient and reliable identification of the associated data.",
   "extends": "object",
+  "name": "fingerprint",
+  "observable": 30,
   "attributes": {
     "algorithm": {
+      "description": "The hash algorithm used to create the digital fingerprint, normalized to the caption of 'algorithm_id'. In the case of 'Other', it is defined by the event source.",
       "requirement": "optional"
     },
     "algorithm_id": {
+      "description": "The identifier of the normalized hash algorithm, which was used to create the digital fingerprint.",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "MD5",
+          "description": "MD5 message-digest algorithm producing a 128-bit (16-byte) hash value."
+        },
+        "2": {
+          "caption": "SHA-1",
+          "description": "Secure Hash Algorithm 1 producing a 160-bit (20-byte) hash value."
+        },
+        "3": {
+          "caption": "SHA-256",
+          "description": "Secure Hash Algorithm 2 producing a 256-bit (32-byte) hash value."
+        },
+        "4": {
+          "caption": "SHA-512",
+          "description": "Secure Hash Algorithm 2 producing a 512-bit (64-byte) hash value."
+        },
+        "5": {
+          "caption": "CTPH",
+          "description": "The ssdeep generated fuzzy checksum. Also known as Context Triggered Piecewise Hash (CTPH)."
+        },
+        "6": {
+          "caption": "TLSH",
+          "description": "The TLSH fuzzy hashing algorithm."
+        },
+        "7": {
+          "caption": "quickXorHash",
+          "description": "Microsoft simple non-cryptographic hash algorithm that works by XORing the bytes in a circular-shifting fashion."
+        },
+        "99": {
+          "caption": "Other"
+        }
+      },
       "requirement": "required"
     },
     "value": {
       "description": "The digital fingerprint value.",
-      "requirement": "required"
+      "requirement": "required",
+      "type": "file_hash_t"
     }
   }
 }

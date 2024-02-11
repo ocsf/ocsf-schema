@@ -1,13 +1,9 @@
 {
   "caption": "Network Interface",
+  "description": "The Network Interface object describes the type and associated attributes of a network interface.",
+  "extends": "_entity",
   "name": "network_interface",
-  "profiles": ["reputation"],
-  "description": "The network interface object describes the type and associated addresses of a network interface.",
-  "extends": "object",
   "attributes": {
-    "$include": [
-      "profiles/reputation.json"
-    ],
     "hostname": {
       "description": "The hostname associated with the network interface.",
       "requirement": "recommended"
@@ -21,14 +17,12 @@
       "requirement": "recommended"
     },
     "name": {
-      "description": "The name of the network interface.",
-      "requirement": "recommended"
+      "description": "The name of the network interface."
     },
     "namespace": {
       "requirement": "optional"
     },
-    "uid": {
-      "description": "The unique identifier for the network interface.",
+    "subnet_prefix": {
       "requirement": "optional"
     },
     "type": {
@@ -38,9 +32,6 @@
     "type_id": {
       "description": "The network interface type identifier.",
       "enum": {
-        "-1": {
-          "caption": "Other"
-        },
         "0": {
           "caption": "Unknown"
         },
@@ -52,17 +43,27 @@
         },
         "3": {
           "caption": "Mobile"
+        },
+        "4": {
+          "caption": "Tunnel"
+        },
+        "99": {
+          "caption": "Other"
         }
       },
       "requirement": "required"
+    },
+    "uid": {
+      "description": "The unique identifier for the network interface.",
+      "requirement": "optional"
     }
   },
   "constraints": {
     "at_least_one": [
-      "hostname",
       "ip",
       "mac",
-      "name"
+      "name",
+      "hostname"
     ]
   }
 }

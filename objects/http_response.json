@@ -1,15 +1,18 @@
 {
   "caption": "HTTP Response",
-  "name": "http_response",
-  "description": "The HTTP Response Object details a response from a web server to a requester.",
+  "description": "The HTTP Response object contains detailed information about the response sent from a web server to the requester. It encompasses attributes and metadata that describe the response status, headers, body content, and other relevant information.",
   "extends": "object",
+  "name": "http_response",
   "attributes": {
     "code": {
-      "description": "The numeric code sent from the web server to the requester.",
+      "description": "The Hypertext Transfer Protocol (HTTP) status code returned from the web server to the client. For example, 200.",
       "requirement": "required"
     },
     "content_type": {
       "requirement": "optional"
+    },
+    "http_headers": {
+      "requirement": "recommended"
     },
     "latency": {
       "requirement": "optional"
@@ -22,7 +25,7 @@
     },
     "status": {
       "requirement": "optional",
-      "description": "The response status. For example: Kubernetes responseStatus.status."
+      "description": "The response status. For example: A successful HTTP status of 'OK' which corresponds to a code of 200."
     }
   }
 }

@@ -2,8 +2,8 @@
   "caption": "File",
   "observable": 24,
   "name": "file",
-  "description": "The file object describes files, folders, links and mounts, including the reputation information, if applicable.",
-  "extends": "object",
+  "description": "The File object represents the metadata associated with a file stored in a computer system. It encompasses information about the file itself, including its attributes, properties, and organizational details. Defined by D3FEND <a target='_blank' href='https://next.d3fend.mitre.org/dao/artifact/d3f:File/'>d3f:File</a>.",
+  "extends": "_entity",
   "attributes": {
     "accessed_time": {
       "requirement": "optional"
@@ -35,7 +35,7 @@
       "description": "The description of the file, as returned by file system. For example: the description as returned by the Unix file command or the Windows file type.",
       "requirement": "optional"
     },
-    "fingerprints": {
+    "hashes": {
       "requirement": "recommended"
     },
     "is_system": {
@@ -55,7 +55,7 @@
     "name": {
       "description": "The name of the file. For example: <code>svchost.exe</code>",
       "requirement": "required",
-      "name": "file_name_t"
+      "type": "file_name_t"
     },
     "owner": {
       "requirement": "optional"
@@ -65,7 +65,7 @@
     },
     "path": {
       "description": "The full path to the file. For example: <code>c:\\windows\\system32\\svchost.exe</code>.",
-      "requirement": "optional"
+      "requirement": "recommended"
     },
     "product": {
       "description": "The product that created or installed the file.",
@@ -87,9 +87,6 @@
     "type_id": {
       "description": "The file type ID.",
       "enum": {
-        "-1": {
-          "caption": "Other"
-        },
         "0": {
           "caption": "Unknown"
         },
@@ -113,6 +110,9 @@
         },
         "7": {
           "caption": "Symbolic Link"
+        },
+        "99": {
+          "caption": "Other"
         }
       },
       "requirement": "required"
@@ -128,5 +128,6 @@
     "xattributes": {
       "requirement": "optional"
     }
-  }
+  },
+  "constraints": {}
 }

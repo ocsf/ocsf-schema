@@ -1,0 +1,71 @@
+{
+  "caption": "Registry Value",
+  "description": "The registry value object describes a Windows registry value.",
+  "extends": "object",
+  "name": "reg_value",
+  "observable": 29,
+  "attributes": {
+    "data": {
+      "description": "The data of the registry value.",
+      "requirement": "optional"
+    },
+    "is_default": {
+      "requirement": "optional"
+    },
+    "is_system": {
+      "requirement": "optional"
+    },
+    "modified_time": {
+      "description": "The time when the registry value was last modified.",
+      "requirement": "optional"
+    },
+    "name": {
+      "description": "The name of the registry value.",
+      "requirement": "required"
+    },
+    "path": {
+      "description": "The full path to the registry key, where the value is located.",
+      "requirement": "required"
+    },
+    "type": {
+      "description": "A string representation of the value type as specified in <a target='_blank' href='https://learn.microsoft.com/en-us/windows/win32/sysinfo/registry-value-types'>Registry Value Types</a>.",
+      "requirement": "optional"
+    },
+    "type_id": {
+      "description": "The value type ID.",
+      "enum": {
+        "1": {
+          "caption": "REG_BINARY"
+        },
+        "10": {
+          "caption": "REG_SZ"
+        },
+        "2": {
+          "caption": "REG_DWORD"
+        },
+        "3": {
+          "caption": "REG_DWORD_BIG_ENDIAN"
+        },
+        "4": {
+          "caption": "REG_EXPAND_SZ"
+        },
+        "5": {
+          "caption": "REG_LINK"
+        },
+        "6": {
+          "caption": "REG_MULTI_SZ"
+        },
+        "7": {
+          "caption": "REG_NONE"
+        },
+        "8": {
+          "caption": "REG_QWORD"
+        },
+        "9": {
+          "caption": "REG_QWORD_LITTLE_ENDIAN"
+        }
+      },
+      "requirement": "recommended"
+    }
+  }
+}

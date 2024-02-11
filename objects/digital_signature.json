@@ -1,0 +1,53 @@
+{
+  "caption": "Digital Signature",
+  "name": "digital_signature",
+  "description": "The Digital Signature object contains information about the cryptographic mechanism used to verify the authenticity, integrity, and origin of the file or application.",
+  "extends": "object",
+  "attributes": {
+    "algorithm": {
+      "description": "The digital signature algorithm used to create the signature, normalized to the caption of 'algorithm_id'. In the case of 'Other', it is defined by the event source.",
+      "requirement": "optional"
+    },
+    "algorithm_id": {
+      "description": "The identifier of the normalized digital signature algorithm.",
+      "enum": {
+        "99": {
+          "caption": "Other"
+        },
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "DSA",
+          "description": "Digital Signature Algorithm (DSA)."
+        },
+        "2": {
+          "caption": "RSA",
+          "description": "Rivest-Shamir-Adleman (RSA) Algorithm."
+        },
+        "3": {
+          "caption": "ECDSA",
+          "description": "Elliptic Curve Digital Signature Algorithm."
+        },
+        "4": {
+          "caption": "Authenticode",
+          "description": "Microsoft Authenticode Digital Signature Algorithm."
+        }
+      },
+      "requirement": "required"
+    },
+    "certificate": {
+      "requirement": "recommended"
+    },
+    "created_time": {
+      "description": "The time when the digital signature was created.",
+      "requirement": "optional"
+    },
+    "developer_uid": {
+      "requirement": "optional"
+    },
+    "digest": {
+      "requirement": "optional"
+    }
+  }
+}

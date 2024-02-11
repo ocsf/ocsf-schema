@@ -18,32 +18,10 @@ The schema framework definition files and the resulting schema are written as JS
 OCSF is intended to be used by both products and devices which produce log events,
 analytic systems, and logging systems which retain log events.
 
-## Extending the Schema
+For more information about concepts in OCSF, please refer to the OCSF White paper, [Understanding OCSF](https://github.com/ocsf/ocsf-docs/blob/main/Understanding%20OCSF.pdf).
 
-Extensions are additional categories, event classes, attributes, objects or profiles. The Open
-Cybersecurity Schema Framework can be extended by adding new attributes, objects, categories
-and event classes. A schema is the aggregation of core schema entities and extensions.
-Extensions allow a particular vendor or customer to create a new schema or augment an existing
-schema. Extensions can also be used to factor out non-essential schema domains keeping a
-schema small. Extensions use the framework in the same way as a new schema, optionally
-creating categories, profiles or event classes from the dictionary. Extensions can add new
-attributes to the dictionary, including new objects. As with categories, event classes and profiles,
-extensions have unique IDs within the framework as well as versioning.
-
-To extend the schema, create a new directory with same structure the top level schema directory. 
-The directory may contain the following optional files and subdirectories.
-
-| Name              | Description                                                               |
-|-------------------|---------------------------------------------------------------------------|
-| `categories.json` | Create it to define new categories. Note, to avoid collisions with the categories defined in the core schema, the category IDs must be greater than or equal to 30. |
-| `dictionary.json` | Create it to define new attributes.                                       |
-| `enums`           | Create it to define new enumerations.                                     |
-| `events`          | Create it to define new event classes.                                    |
-| `includes`        | Create it to define new shared data.                                      |
-| `objects`         | Create it to define new objects.                                          |
-
-For more information on extending the schema, please refer to the contribution guide,
-[CONTRIBUTING.md](https://github.com/ocsf/ocsf-schema/blob/main/CONTRIBUTING.md)
+Looking to contribute? Please refer to the contribution guide,
+[CONTRIBUTING.md](https://github.com/ocsf/ocsf-schema/blob/main/CONTRIBUTING.md).
 
 ## Versioning
 
@@ -51,4 +29,4 @@ Updates to OCSF follow [semantic versioning](https://semver.org/).
 
 ## License
 
-This software is licensed under the Apache License, version 2 ("ALv2").
+This software is licensed under the [Apache License](https://github.com/ocsf/ocsf-schema/blob/main/LICENSE), version 2 ("ALv2").

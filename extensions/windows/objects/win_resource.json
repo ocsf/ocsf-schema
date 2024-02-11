@@ -1,0 +1,151 @@
+{
+  "description": "The Windows resource object describes a resource object managed by Windows, such as mutant or timer.",
+  "caption": "Windows Resource",
+  "name": "win_resource",
+  "extends": "_resource",
+  "attributes": {
+    "name": {
+      "description": "The name of the resource object."
+    },
+    "details": {
+      "description": "The string detailing the attributes of the resource object."
+    },
+    "svc_name": {
+      "description": "The Windows service acting as the object server for the resource object, such as Security or Security Account Manager."
+    },
+    "type": {
+      "description": "The type of the Windows resource object.",
+      "requirement": "optional"
+    },
+    "type_id": {
+      "description": "The normalized type identifier of the Windows resource object accessed.",
+      "enum": {
+        "99": {
+          "caption": "Other",
+          "description": "The resource object type is not mapped. See the <code>type</code> attribute, which may contain a data source specific value."
+        },
+        "0": {
+          "caption": "Unknown",
+          "description": "The resource object type is unknown."
+        },
+        "1": {
+          "caption": "Directory"
+        },
+        "2": {
+          "caption": "Event"
+        },
+        "3": {
+          "caption": "Timer"
+        },
+        "4": {
+          "caption": "Device"
+        },
+        "5": {
+          "caption": "Mutant"
+        },
+        "6": {
+          "caption": "Type"
+        },
+        "7": {
+          "caption": "File"
+        },
+        "8": {
+          "caption": "Token"
+        },
+        "9": {
+          "caption": "Thread"
+        },
+        "10": {
+          "caption": "Section"
+        },
+        "11": {
+          "caption": "WindowStation"
+        },
+        "12": {
+          "caption": "DebugObject"
+        },
+        "13": {
+          "caption": "FilterCommunicationPort"
+        },
+        "14": {
+          "caption": "EventPair"
+        },
+        "15": {
+          "caption": "Driver"
+        },
+        "16": {
+          "caption": "IoCompletion"
+        },
+        "17": {
+          "caption": "Controller"
+        },
+        "18": {
+          "caption": "SymbolicLink"
+        },
+        "19": {
+          "caption": "WmiGuid"
+        },
+        "20": {
+          "caption": "Process"
+        },
+        "21": {
+          "caption": "Profile"
+        },
+        "22": {
+          "caption": "Desktop"
+        },
+        "23": {
+          "caption": "KeyedEvent"
+        },
+        "24": {
+          "caption": "Adapter"
+        },
+        "25": {
+          "caption": "Key"
+        },
+        "26": {
+          "caption": "WaitablePort"
+        },
+        "27": {
+          "caption": "Callback"
+        },
+        "28": {
+          "caption": "Semaphore"
+        },
+        "29": {
+          "caption": "Job"
+        },
+        "30": {
+          "caption": "Port"
+        },
+        "31": {
+          "caption": "FilterConnectionPort"
+        },
+        "32": {
+          "caption": "ALPC Port"
+        },
+        "33": {
+          "caption": "SAM_ALIAS"
+        },
+        "34": {
+          "caption": "SAM_GROUP"
+        },
+        "35": {
+          "caption": "SAM_USER"
+        },
+        "36": {
+          "caption": "SAM_DOMAIN"
+        },
+        "37": {
+          "caption": "SAM_SERVER"
+        }
+      },
+      "sibling": "type",
+      "requirement": "required",
+      "type": "integer_t"
+    },
+    "uid": {
+      "description": "The Windows provided handle identifier for the resource object"
+    }
+  }
+}

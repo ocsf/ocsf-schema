@@ -1,0 +1,60 @@
+{
+  "caption": "Authorize Session",
+  "description": "Authorize Session events report privileges or groups assigned to a new user session, usually at login time.",
+  "extends": "iam",
+  "name": "authorize_session",
+  "uid": 3,
+  "attributes": {
+    "activity_id": {
+      "enum": {
+        "1": {
+          "description": "Assign special privileges to a new logon.",
+          "caption": "Assign Privileges"
+        },
+        "2": {
+          "description": "Assign special groups to a new logon.",
+          "caption": "Assign Groups"
+        }
+      }
+    },
+    "dst_endpoint": {
+      "description": "The Endpoint for which the user session was targeted.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "group": {
+      "description": "Group that was assigned to the new user session.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "privileges": {
+      "description": "The list of sensitive privileges, assigned to the new user session.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "session": {
+      "description": "The user session with the assigned privileges.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "user": {
+      "description": "The user to which new privileges were assigned.",
+      "group": "primary",
+      "requirement": "required"
+    }
+  },
+  "associations": {
+    "session": [
+      "user"
+    ],
+    "user": [
+      "session"
+    ]
+  },
+  "constraints": {
+    "just_one": [
+      "privileges",
+      "group"
+    ]
+  }
+}

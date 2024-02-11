@@ -1,16 +1,19 @@
 {
   "caption": "Group",
+  "description": "The Group object represents a collection or association of entities, such as users, policies, or devices. It serves as a logical grouping mechanism to organize and manage entities with similar characteristics or permissions within a system or organization.",
   "name": "group",
-  "description": "The group object associated with an entity such as policy or rule.",
-  "extends": "object",
+  "extends": "_entity",
   "attributes": {
     "desc": {
       "description": "The group description.",
       "requirement": "optional"
     },
+    "domain": {
+      "description": "The domain where the group is defined. For example: the LDAP or Active Directory domain.",
+      "requirement": "optional"
+    },
     "name": {
-      "description": "The group name.",
-      "requirement": "required"
+      "description": "The group name."
     },
     "privileges": {
       "description": "The group privileges.",
@@ -22,9 +25,7 @@
       "requirement": "optional"
     },
     "uid": {
-      "description": "The unique identifier of the group. For example, for Windows events this is the security identifier (SID) of the group.",
-      "caption": "Unique ID",
-      "requirement": "recommended"
+      "description": "The unique identifier of the group. For example, for Windows events this is the security identifier (SID) of the group."
     }
   }
 }

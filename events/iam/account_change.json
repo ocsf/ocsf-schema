@@ -1,0 +1,86 @@
+{
+  "caption": "Account Change",
+  "description": "Account Change events report when specific user account management tasks are performed, such as a user/role being created, changed, deleted, renamed, disabled, enabled, locked out or unlocked.",
+  "extends": "iam",
+  "name": "account_change",
+  "uid": 1,
+  "attributes": {
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Create",
+          "description": "A user/role was created."
+        },
+        "2": {
+          "caption": "Enable",
+          "description": "A user/role was enabled."
+        },
+        "3": {
+          "caption": "Password Change",
+          "description": "An attempt was made to change an account's password."
+        },
+        "4": {
+          "caption": "Password Reset",
+          "description": "An attempt was made to reset an account's password."
+        },
+        "5": {
+          "caption": "Disable",
+          "description": "A user/role was disabled."
+        },
+        "6": {
+          "caption": "Delete",
+          "description": "A user/role was deleted."
+        },
+        "7": {
+          "caption": "Attach Policy",
+          "description": "An IAM Policy was attached to a user/role."
+        },
+        "8": {
+          "caption": "Detach Policy",
+          "description": "An IAM Policy was detached from a user/role."
+        },
+        "9": {
+          "caption": "Lock",
+          "description": "A user account was locked out."
+        },
+        "10": {
+          "caption": "MFA Factor Enable",
+          "description": "An authentication factor was enabled for an account."
+        },
+        "11": {
+          "caption": "MFA Factor Disable",
+          "description": "An authentication factor was disabled for an account."
+        }
+      }
+    },
+    "actor": {
+      "group": "context",
+      "requirement": "recommended",
+      "profile": null
+    },
+    "http_request": {
+      "description": "Details about the underlying http request.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "policy": {
+      "description": "Details about the IAM policy associated to the Attach/Detach Policy activities.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "src_endpoint": {
+      "description": "Details about the source of the activity.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "user": {
+      "description": "The user that was a target of an activity.",
+      "group": "primary",
+      "requirement": "required"
+    },
+    "user_result": {
+      "group": "primary",
+      "requirement": "optional"
+    }
+  }
+}

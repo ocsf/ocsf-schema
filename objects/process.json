@@ -1,10 +1,16 @@
 {
-  "observable": 25,
-  "description": "The process object describes a running instance of a launched program.",
   "caption": "Process",
+  "description": "The Process object describes a running instance of a launched program. Defined by D3FEND <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:Process/'>d3f:Process</a>.",
+  "extends": "_entity",
   "name": "process",
-  "extends": "object",
+  "observable": 25,
+  "profiles": [
+    "container"
+  ],
   "attributes": {
+    "$include": [
+      "profiles/container.json"
+    ],
     "cmd_line": {
       "requirement": "recommended"
     },
@@ -20,7 +26,6 @@
       "requirement": "optional"
     },
     "integrity_id": {
-      "requirement": "optional",
       "enum": {
         "0": {
           "caption": "Unknown"
@@ -43,10 +48,11 @@
         "6": {
           "caption": "Protected"
         },
-        "-1": {
+        "99": {
           "caption": "Other"
         }
-      }
+      },
+      "requirement": "optional"
     },
     "lineage": {
       "requirement": "optional"
@@ -56,8 +62,7 @@
     },
     "name": {
       "description": "The friendly name of the process, for example: <code>Notepad++</code>.",
-      "requirement": "recommended",
-      "name": "process_name_t"
+      "type": "process_name_t"
     },
     "parent_process": {
       "requirement": "recommended"
@@ -68,17 +73,22 @@
     "sandbox": {
       "requirement": "optional"
     },
+    "session": {
+      "description": "The user session under which this process is running.",
+      "requirement": "optional"
+    },
+    "terminated_time": {
+      "description": "The time when the process was terminated.",
+      "requirement": "optional"
+    },
     "tid": {
       "requirement": "optional"
     },
     "uid": {
-      "description": "A unique identifier for this process assigned by the producer (tool).  Facilitates correlation of a process event with other events for that process.",
-      "caption": "Process UID",
-      "requirement": "recommended"
+      "description": "A unique identifier for this process assigned by the producer (tool).  Facilitates correlation of a process event with other events for that process."
     },
     "user": {
-      "description": "The user context under which this process is running.",
-      "caption": "Process user context",
+      "description": "The user under which this process is running.",
       "requirement": "recommended"
     },
     "xattributes": {

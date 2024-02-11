@@ -1,22 +1,50 @@
 {
-  "caption": "Network Activity",
+  "caption": "Network",
   "category": "network",
-  "description": "Network Activity events report network connection and traffic activity.",
+  "description": "Network event is a generic event that defines a set of attributes available in the Network category.",
   "extends": "base_event",
-  "name": "network_activity",
+  "name": "network",
   "profiles": [
     "host",
-    "malware"
+    "network_proxy",
+    "security_control",
+    "load_balancer"
   ],
-  "uid": 1,
   "attributes": {
     "$include": [
-      "includes/network.json",
       "profiles/host.json",
-      "profiles/malware.json"
+      "profiles/network_proxy.json",
+      "profiles/security_control.json",
+      "profiles/load_balancer.json"
     ],
-    "activity_id": {
-      "$include": "enums/network_activity.json"
+    "app_name": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "connection_info": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "dst_endpoint": {
+      "description": "The responder (server) in a network connection.",
+      "group": "primary",
+      "requirement": "required"
+    },
+    "proxy": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "src_endpoint": {
+      "description": "The initiator (client) of the network connection.",
+      "group": "primary",
+      "requirement": "required"
+    },
+    "tls": {
+      "group": "primary"
+    },
+    "traffic": {
+      "group": "primary",
+      "requirement": "optional"
     }
   }
 }

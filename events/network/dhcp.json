@@ -1,8 +1,8 @@
 {
   "caption": "DHCP Activity",
   "category": "network",
-  "description": "DHCP Activity events report MAC to IP assignment via DHCP.",
-  "extends": "base_event",
+  "description": "DHCP Activity events report MAC to IP assignment via DHCP from a client or server.",
+  "extends": "network",
   "name": "dhcp_activity",
   "profiles": [
     "host"
@@ -54,6 +54,11 @@
       },
       "requirement": "required"
     },
+    "dst_endpoint": {
+      "description": "The responder (server) of the DHCP connection.",
+      "requirement": "recommended",
+      "group": "primary"
+    },
     "is_renewal": {
       "group": "primary",
       "requirement": "optional"
@@ -62,9 +67,10 @@
       "group": "primary",
       "requirement": "optional"
     },
-    "network_interface": {
-      "group": "primary",
-      "requirement": "required"
+    "src_endpoint": {
+      "description": "The initiator (client) of the DHCP connection.",
+      "requirement": "recommended",
+      "group": "primary"
     },
     "relay": {
       "group": "primary",

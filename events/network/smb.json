@@ -1,7 +1,7 @@
 {
   "caption": "SMB Activity",
   "description": "Server Message Block (SMB) Protocol Activity events report client/server connections sharing resources within the network.",
-  "extends": "network_activity",
+  "extends": "network",
   "name": "smb_activity",
   "uid": 6,
   "attributes": {
@@ -40,7 +40,7 @@
     "command": {
       "description": "The command name (e.g. SMB2_COMMAND_CREATE, SMB1_COMMAND_WRITE_ANDX).",
       "group": "primary",
-      "requirement": "required"
+      "requirement": "recommended"
     },
     "dce_rpc": {
       "group": "context",
@@ -63,7 +63,7 @@
     "response": {
       "description": "The server response in an SMB network connection.",
       "group": "primary",
-      "requirement": "required"
+      "requirement": "recommended"
     },
     "share": {
       "group": "primary",
@@ -72,6 +72,10 @@
     "share_type": {
       "group": "primary",
       "requirement": "optional"
+    },
+    "share_type_id": {
+      "group": "primary",
+      "requirement": "recommended"
     },
     "tree_uid": {
       "group": "primary",

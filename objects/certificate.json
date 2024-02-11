@@ -2,7 +2,7 @@
   "caption": "Digital Certificate",
   "name": "certificate",
   "extends": "object",
-  "description": "The Public Key Certificate, or a digital certificate, is used to prove the ownership of a public key. The certificate includes information about its lifetime, about the identity of its owner (called the subject) and the digital signature of an entity that has verified the certificate's contents (called the issuer).",
+  "description": "The Digital Certificate, also known as a Public Key Certificate, object contains information about the ownership and usage of a public key. It serves as a means to establish trust in the authenticity and integrity of the public key and the associated entity. Defined by D3FEND <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:Certificate/'>d3f:Certificate</a>.",
   "attributes": {
     "created_time": {
       "description": "The time when the certificate was created.",
@@ -12,20 +12,28 @@
       "description": "The expiration time of the certificate.",
       "requirement": "recommended"
     },
-    "fingerprint": {
-      "description": "The fingerprint of the certificate.",
+    "fingerprints": {
+      "description": "The fingerprint list of the certificate.",
       "requirement": "required"
     },
-    "issuer_dn": {
+    "issuer": {
+      "caption": "Issuer Distinguished Name",
+      "description": "The certificate issuer distinguished name.",
       "requirement": "required"
     },
     "serial_number": {
-      "description": "The serial number of the certificate.",
+      "description": "The serial number of the certificate used to create the digital signature.",
       "caption": "Certificate Serial Number",
       "requirement": "required"
     },
-    "subject_dn": {
+    "subject": {
+      "caption": "Subject Distinguished Name",
+      "description": "The certificate subject distinguished name.",
       "requirement": "recommended"
+    },
+    "uid": {
+      "description": "The unique identifier of the certificate.",
+      "requirement": "optional"
     },
     "version": {
       "description": "The certificate version.",

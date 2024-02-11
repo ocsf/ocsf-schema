@@ -1,14 +1,14 @@
 {
   "caption": "Network Endpoint",
-  "name": "network_endpoint",
+  "description": "The Network Endpoint object describes characteristics of a network endpoint. These can be a source or destination of a network connection.",
   "extends": "endpoint",
-  "observable": 0,
-  "description": "The network endpoint object describes source or destination of a network connection.",
+  "name": "network_endpoint",
   "attributes": {
     "intermediate_ips": {
       "requirement": "optional"
     },
-    "name": {
+    "proxy_endpoint": {
+      "description": "The network proxy information pertaining to a specific endpoint. This can be used to describe information pertaining to network address translation (NAT).",
       "requirement": "optional"
     },
     "port": {
@@ -17,15 +17,24 @@
     },
     "svc_name": {
       "requirement": "recommended"
+    },
+    "type": {
+      "description": "The network endpoint type. For example: <code>unknown</code>, <code>server</code>, <code>desktop</code>, <code>laptop</code>, <code>tablet</code>, <code>mobile</code>, <code>virtual</code>, <code>browser</code>, or <code>other</code>."
+    },
+    "type_id": {
+      "description": "The network endpoint type ID."
     }
   },
   "constraints": {
     "at_least_one": [
-      "hostname",
       "ip",
+      "uid",
+      "name",
+      "hostname",
       "svc_name",
       "instance_uid",
-      "interface_uid"
+      "interface_uid",
+      "interface_name"
     ]
   }
 }

@@ -1,12 +1,15 @@
 {
   "caption": "Observable",
-  "name": "observable",
   "description": "The observable object is a pivot element that contains related information found in many places in the event.",
   "extends": "object",
+  "name": "observable",
   "attributes": {
     "name": {
-      "description": "The name of the observable attribute. For example: <code>file.name</code>.",
+      "description": "The full name of the observable attribute. The <code>name</code> is a pointer/reference to an attribute within the event data. For example: <code>file.name</code>.",
       "requirement": "required"
+    },
+    "reputation": {
+      "requirement": "optional"
     },
     "type": {
       "description": "The observable value type name.",
@@ -20,14 +23,14 @@
           "caption": "Unknown",
           "description": "Unknown observable data type."
         },
-        "-1": {
+        "99": {
           "caption": "Other",
           "description": "The observable data type is not mapped. See the <code>type</code> attribute, which may contain data source specific value."
         }
       }
     },
     "value": {
-      "description": "The value associated with the observable attribute. The meaning of the data depends on the observable type.",
+      "description": "The value associated with the observable attribute. The meaning of the value depends on the observable type.<br/>If the <code>name</code> refers to a scalar attribute, then the <code>value</code> is the value of the attribute.<br/>If the <code>name</code> refers to an object attribute, then the <code>value</code> is not populated.",
       "requirement": "optional"
     }
   }

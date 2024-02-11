@@ -1,18 +1,38 @@
 {
   "caption": "Network Traffic",
-  "name": "network_traffic",
-  "description": "The object describes network data traffic. Network traffic refers to the amount of data moving across a network at a given point of time.",
+  "description": "The Network Traffic object describes characteristics of network traffic. Network traffic refers to data moving across a network at a given point of time. Defined by D3FEND <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:NetworkTraffic/'>d3f:NetworkTraffic</a>.",
   "extends": "object",
+  "name": "network_traffic",
   "attributes": {
     "bytes": {
       "requirement": "recommended"
     },
-    "bytes_in": {},
-    "bytes_out": {},
+    "bytes_in": {
+      "requirement": "optional"
+    },
+    "bytes_out": {
+      "requirement": "optional"
+    },
     "packets": {
       "requirement": "recommended"
     },
-    "packets_in": {},
-    "packets_out": {}
+    "packets_in": {
+      "requirement": "optional"
+    },
+    "packets_out": {
+      "requirement": "optional"
+    },
+    "chunks": {
+      "description": "The total number of chunks (in and out).",
+      "requirement": "optional"
+    },
+    "chunks_in": {
+      "description": "The number of chunks sent from the destination to the source.",
+      "requirement": "optional"
+    },
+    "chunks_out": {
+      "description": "The number of chunks sent from the source to the destination.",
+      "requirement": "optional"
+    }
   }
 }

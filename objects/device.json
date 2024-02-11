@@ -1,23 +1,27 @@
 {
   "caption": "Device",
-  "name": "device",
-  "observable": 0,
-  "description": "Addressable device where events occurred.",
+  "description": "The Device object represents an addressable computer system or host, which is typically connected to a computer network and participates in the transmission or processing of data within the computer network. Defined by D3FEND <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:Host/'>d3f:Host</a>.",
   "extends": "endpoint",
+  "name": "device",
   "attributes": {
     "autoscale_uid": {
       "requirement": "optional"
     },
-    "desc": {
-      "description": "The description of the device, ordinarily as reported by the operating system.",
-      "caption": "Description",
+    "created_time": {
+      "description": "The time when the device was known to have been created.",
       "requirement": "optional"
     },
-    "hw_info": {
+    "desc": {
+      "caption": "Description",
+      "description": "The description of the device, ordinarily as reported by the operating system.",
       "requirement": "optional"
     },
     "domain": {
       "description": "The network domain where the device resides. For example: <code>work.example.com</code>."
+    },
+    "first_seen_time": {
+      "description": "The initial discovery time of the device.",
+      "requirement": "optional"
     },
     "groups": {
       "description": "The group names to which the device belongs. For example: <code>[\"Windows Laptops\", \"Engineering\"]<code/>.",
@@ -51,11 +55,16 @@
     "is_trusted": {
       "requirement": "optional"
     },
-    "location": {
-      "description": "The geographical location of the endpoint."
+    "last_seen_time": {
+      "description": "The most recent discovery time of the device.",
+      "requirement": "optional"
     },
-    "mac": {
-      "description": "The device Media Access Control (MAC) address."
+    "location": {
+      "description": "The geographical location of the device."
+    },
+    "modified_time": {
+      "description": "The time when the device was last known to have been modified.",
+      "requirement": "optional"
     },
     "name": {
       "description": "The alternate device name, ordinarily as assigned by an administrator. <p><b>Note:</b> The <b>Name</b> could be any other string that helps to identify the device, such as a phone number; for example <code>310-555-1234</code>.</p>"
@@ -63,10 +72,8 @@
     "network_interfaces": {
       "requirement": "optional"
     },
-    "org_unit": {
-      "requirement": "optional"
-    },
-    "os": {
+    "org": {
+      "description": "Organization and org unit related to the device.",
       "requirement": "optional"
     },
     "region": {
@@ -86,43 +93,17 @@
       "requirement": "optional"
     },
     "type": {
-      "description": "The device type. For example: <code>unknown</code>, <code>server</code>, <code>desktop</code>, <code>laptop</code>, <code>tablet</code>, <code>mobile</code>, <code>virtual</code>, <code>browser</code>, or <code>other</code>.",
-      "caption": "Type",
-      "requirement": "optional"
+      "description": "The device type. For example: <code>unknown</code>, <code>server</code>, <code>desktop</code>, <code>laptop</code>, <code>tablet</code>, <code>mobile</code>, <code>virtual</code>, <code>browser</code>, or <code>other</code>."
     },
     "type_id": {
       "description": "The device type ID.",
-      "enum": {
-        "1": {
-          "caption": "Server"
-        },
-        "2": {
-          "caption": "Desktop"
-        },
-        "3": {
-          "caption": "Laptop"
-        },
-        "4": {
-          "caption": "Tablet"
-        },
-        "5": {
-          "caption": "Mobile"
-        },
-        "6": {
-          "caption": "Virtual"
-        },
-        "7": {
-          "caption": "IOT"
-        },
-        "8": {
-          "caption": "Browser"
-        }
-      },
-      "caption": "Type ID",
       "requirement": "required"
     },
     "uid": {
-      "description": "The unique identifier of the device."
+      "description": "The unique identifier of the device. For example the Windows TargetSID or AWS EC2 ARN."
+    },
+    "uid_alt": {
+      "description": "An alternate unique identifier of the device if any. For example the ActiveDirectory DN."
     }
   }
 }

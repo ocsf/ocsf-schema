@@ -1,18 +1,31 @@
 {
-  "caption": "Attack",
+  "caption": "MITRE ATT&CK®",
   "name": "attack",
-  "description": "The attack object describes the technique and associated tactics related to an attack.",
+  "description": "The <a target='_blank' href='https://attack.mitre.org'>MITRE ATT&CK®</a> object describes the tactic, technique & sub-technique associated to an attack as defined in <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>.",
   "extends": "object",
   "attributes": {
+    "tactic": {
+      "requirement": "optional"
+    },
     "tactics": {
-      "requirement": "required"
+      "requirement": "optional"
     },
     "technique": {
-      "requirement": "required"
+      "requirement": "optional"
+    },
+    "sub_technique": {
+      "requirement": "optional"
     },
     "version": {
-      "description": "The ATT&CK Matrix version.",
-      "requirement": "required"
+      "description": "The <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a> version.",
+      "requirement": "recommended"
     }
+  },
+  "constraints": {
+    "at_least_one": [
+      "tactic",
+      "technique",
+      "sub_technique"
+    ]
   }
 }

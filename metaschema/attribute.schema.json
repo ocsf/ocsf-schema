@@ -1,0 +1,54 @@
+{
+    "$id": "https://schema.ocsf.io/attribute.schema.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Attribute",
+    "type": "object",
+    "properties": {
+        "@deprecated": {
+            "$ref": "deprecated.schema.json"
+        },
+        "caption": {
+            "type": "string",
+            "description": "A short, more specific identifier for this attribute."
+        },
+        "description": {
+            "type": "string",
+            "description": "The description of the attribute."
+        },
+        "enum": {
+            "type": "object",
+            "description": "An enumeration of options for this attribute.",
+            "additionalProperties": {
+                "type": "object",
+                "required": [
+                    "caption"
+                ],
+                "properties": {
+                    "caption": {
+                        "type": "string",
+                        "description": "The caption of this enum value."
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of this enum value."
+                    },
+                    "additionalProperties": false
+                }
+            }
+        },
+        "group": {
+            "type": "string",
+            "description": "The group that the attribute is a part of.",
+            "enum": ["context", "classification", "occurrence", "primary"]
+        },
+        "requirement": {
+            "type": "string",
+            "description": "The requirement placed on the attribute for inclusion in the schema.",
+            "enum": ["optional", "recommended", "required"]
+        },
+        "sibling": {
+            "type": "string",
+            "description": "Sibling attributes are string attributes paired with a source enum id attribute. If the source attribute maps to a defined enumeration value, the sibling attribute should be populated with the label of the enum. In the case that the source attribute is `Other`, the sibling attribute is populated with a custom label."
+        }
+    }
+}

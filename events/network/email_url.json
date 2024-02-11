@@ -1,0 +1,42 @@
+{
+  "description": "Email URL Activity events report URLs within an email.",
+  "extends": "base_event",
+  "caption": "Email URL Activity",
+  "name": "email_url_activity",
+  "category": "network",
+  "uid": 12,
+  "profiles": [
+    "host",
+    "security_control"
+  ],
+  "attributes": {
+    "$include": [
+      "profiles/host.json",
+      "profiles/security_control.json"
+    ],
+    "activity_id": {
+      "requirement": "optional",
+      "enum": {
+        "1": {
+          "caption": "Send"
+        },
+        "2": {
+          "caption": "Receive"
+        },
+        "3": {
+          "caption": "Scan",
+          "description": "Email URL being scanned (example: security scanning)."
+        }
+      }
+    },
+    "email_uid": {
+      "requirement": "required",
+      "group": "primary"
+    },
+    "url": {
+      "description": "The URL included in the email content.",
+      "group": "primary",
+      "requirement": "required"
+    }
+  }
+}

@@ -1,6 +1,7 @@
 {
   "caption": "Base Event",
-  "description": "The base event is a generic concrete event and it also defines a set of attributes available in most event classes. As a generic event that does not belong to any event category, it could be used to log events that are not otherwise defined by the schema.",
+  "category": "other",
+  "description": "The base event is a generic and concrete event. It also defines a set of attributes available in most event classes. As a generic event that does not belong to any event category, it could be used to log events that are not otherwise defined by the schema.",
   "name": "base_event",
   "profiles": [
     "cloud",
@@ -8,21 +9,14 @@
   ],
   "attributes": {
     "$include": [
-      "includes/occurrence.json",
       "includes/classification.json",
-      "profiles/datetime.json",
-      "profiles/cloud.json"
+      "includes/occurrence.json",
+      "profiles/cloud.json",
+      "profiles/datetime.json"
     ],
-    "confidence": {
-      "group": "classification",
-      "requirement": "optional"
-    },
-    "data": {
-      "description": "Additional data that is associated with the event.",
-      "requirement": "optional"
-    },
     "enrichments": {
-      "group": "context"
+      "group": "context",
+      "requirement": "optional"
     },
     "message": {
       "group": "primary",
@@ -37,7 +31,8 @@
       "requirement": "optional"
     },
     "raw_data": {
-      "group": "context"
+      "group": "context",
+      "requirement": "optional"
     },
     "severity": {
       "group": "classification",
@@ -52,17 +47,20 @@
       "requirement": "optional"
     },
     "status_code": {
-      "group": "primary"
+      "group": "primary",
+      "requirement": "optional"
     },
     "status_detail": {
-      "group": "primary"
+      "group": "primary",
+      "requirement": "optional"
     },
     "status_id": {
       "group": "primary",
       "requirement": "recommended"
     },
     "unmapped": {
-      "group": "context"
+      "group": "context",
+      "requirement": "optional"
     }
   }
 }

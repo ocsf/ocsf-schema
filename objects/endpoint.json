@@ -1,13 +1,15 @@
 {
   "caption": "Endpoint",
-  "observable": 20,
+  "description": "The Endpoint object describes a physical or virtual device that connects to and exchanges information with a computer network. Some examples of endpoints are mobile devices, desktop computers, virtual machines, embedded devices, and servers. Internet-of-Things devices—like cameras, lighting, refrigerators, security systems, smart speakers, and thermostats—are also endpoints.",
+  "extends": "_entity",
   "name": "endpoint",
-  "description": "The endpoint object describes an addressable entity that has name and IP address.",
-  "profiles": ["reputation"],
-  "extends": "object",
+  "observable": 20,
+  "profiles": [
+    "container"
+  ],
   "attributes": {
     "$include": [
-      "profiles/reputation.json"
+      "profiles/container.json"
     ],
     "domain": {
       "requirement": "optional"
@@ -16,7 +18,13 @@
       "description": "The fully qualified name of the endpoint.",
       "requirement": "recommended"
     },
+    "hw_info": {
+      "requirement": "optional"
+    },
     "instance_uid": {
+      "requirement": "recommended"
+    },
+    "interface_name": {
       "requirement": "recommended"
     },
     "interface_uid": {
@@ -35,30 +43,93 @@
       "requirement": "optional"
     },
     "name": {
-      "description": "The short name of the endpoint.",
-      "requirement": "recommended"
+      "description": "The short name of the endpoint."
+    },
+    "os": {
+      "description": "The endpoint operating system.",
+      "requirement": "optional"
     },
     "subnet_uid": {
       "requirement": "optional"
     },
-    "uid": {
-      "description": "The unique identifier of the endpoint.",
+    "type": {
+      "caption": "Type",
+      "description": "The endpoint type. For example: <code>unknown</code>, <code>server</code>, <code>desktop</code>, <code>laptop</code>, <code>tablet</code>, <code>mobile</code>, <code>virtual</code>, <code>browser</code>, or <code>other</code>.",
+      "requirement": "optional"
+    },
+    "type_id": {
+      "caption": "Type ID",
+      "description": "The endpoint type ID.",
+      "enum": {
+        "1": {
+          "caption": "Server",
+          "description": "A <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:Server/'>server</a>."
+        },
+        "2": {
+          "caption": "Desktop",
+          "description": "A <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:DesktopComputer/'>desktop computer</a>."
+        },
+        "3": {
+          "caption": "Laptop",
+          "description": "A <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:LaptopComputer/'>laptop computer</a>."
+        },
+        "4": {
+          "caption": "Tablet",
+          "description": "A <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:TabletComputer/'>tablet computer</a>."
+        },
+        "5": {
+          "caption": "Mobile",
+          "description": "A <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:MobilePhone/'>mobile phone</a>."
+        },
+        "6": {
+          "caption": "Virtual",
+          "description": "A <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:VirtualizationSoftware/'>virtual machine</a>."
+        },
+        "7": {
+          "caption": "IOT",
+          "description": "A <a target='_blank' href='https://www.techtarget.com/iotagenda/definition/IoT-device'>IOT (Internet of Things) device</a>."
+        },
+        "8": {
+          "caption": "Browser",
+          "description": "A <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:Browser/'>web browser</a>."
+        },
+        "9": {
+          "caption": "Firewall",
+          "description": "A <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:Firewall/'>networking firewall</a>."
+        },
+        "10": {
+          "caption": "Switch",
+          "description": "A <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:Switch/'>networking switch</a>."
+        },
+        "11": {
+          "caption": "Hub",
+          "description": "A <a target='_blank' href='https://en.wikipedia.org/wiki/Ethernet_hub'>networking hub</a>."
+        }
+      },
       "requirement": "recommended"
+    },
+    "uid": {
+      "description": "The unique identifier of the endpoint."
     },
     "vlan_uid": {
       "requirement": "optional"
     },
     "vpc_uid": {
       "requirement": "optional"
+    },
+    "zone": {
+      "requirement": "optional"
     }
   },
   "constraints": {
     "at_least_one": [
-      "hostname",
       "ip",
+      "uid",
       "name",
+      "hostname",
       "instance_uid",
-      "interface_uid"
+      "interface_uid",
+      "interface_name"
     ]
   }
 }

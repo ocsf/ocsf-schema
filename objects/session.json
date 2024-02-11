@@ -1,15 +1,15 @@
 {
-  "description": "The Session detailed information.",
   "caption": "Session",
-  "name": "session",
+  "description": "The Session object describes details about an authenticated session. e.g. Session Creation Time, Session Issuer. Defined by D3FEND <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:Session/'>d3f:Session</a>.",
   "extends": "object",
+  "name": "session",
   "attributes": {
+    "count": {
+      "description": "The number of identical sessions spawned from the same source IP, destination IP, application, and content/threat type seen over a period of time.",
+      "requirement": "optional"
+    },
     "created_time": {
       "description": "The time when the session was created.",
-      "requirement": "recommended"
-    },
-    "issuer": {
-      "description": "The identifier of the session issuer.",
       "requirement": "recommended"
     },
     "credential_uid": {
@@ -19,12 +19,38 @@
       "description": "The session expiration time.",
       "requirement": "optional"
     },
-    "mfa": {
+    "expiration_reason": {
+      "description": "The reason which triggered the session expiration.",
+      "requirement": "optional"
+    },
+    "is_remote": {
+      "requirement": "recommended"
+    },
+    "is_mfa":{
+      "requirement": "optional"
+    },
+    "is_vpn": {
+      "requirement": "optional"
+    },
+    "issuer": {
+      "description": "The identifier of the session issuer.",
+      "requirement": "recommended"
+    },
+    "terminal": {
+      "description": "The Pseudo Terminal associated with the session. Ex: the tty or pts value.",
       "requirement": "optional"
     },
     "uid": {
-      "description": "Unique identifier of the session",
+      "description": "The unique identifier of the session.",
       "requirement": "recommended"
+    },
+    "uid_alt": {
+      "description": "The alternate unique identifier of the session. e.g. AWS ARN - <code>arn:aws:sts::123344444444:assumed-role/Admin/example-session</code>.",
+      "requirement": "optional"
+    },
+    "uuid": {
+      "description": "The universally unique identifier of the session.",
+      "requirement": "optional"
     }
   }
 }

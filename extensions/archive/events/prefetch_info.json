@@ -1,0 +1,80 @@
+{
+    "attributes": {
+        "confidence": {
+            "group": "classification",
+            "requirement": "optional",
+            "caption": "Confidence",
+            "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
+            "type": "integer_t"
+        },
+        "class_uid": {
+            "default": 0,
+            "enum": {
+                "-1": {
+                    "caption": "Other"
+                }
+            }
+        },
+        "severity_id": {
+            "enum": {
+                "-1": {
+                    "caption": "Other",
+                    "description": "The event severity is not mapped. See the <code>severity</code> attribute, which contains a data source specific value."
+                },
+                "0": {
+                    "description": "The event severity is not known."
+                }
+            }
+        },
+        "command_uid": {
+            "description": "The unique identifier of the discovery command that pertains to this event.",
+            "group": "primary",
+            "requirement": "required",
+            "caption": "Command UID",
+            "type": "string_t"
+        },
+        "data": {
+            "description": "Additional data that is associated with the event.",
+            "requirement": "optional",
+            "caption": "Data",
+            "type": "json_t"
+        },
+        "count": {
+            "default": 1
+        },
+        "activity_id": {
+            "enum": {
+                "-1": {
+                    "caption": "Other",
+                    "description": "The event activity is not mapped."
+                }
+            }
+        },
+        "status_id": {
+            "enum": {
+                "-1": {
+                    "caption": "Other",
+                    "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
+                }
+            }
+        },
+        "category_uid": {
+            "default": 0,
+            "enum": {
+                "-1": {
+                    "caption": "Other"
+                }
+            }
+        },
+        "scan_uid": {
+            "description": "The unique identifier of the discovery scan request that pertains to this event.",
+            "group": "primary",
+            "requirement": "optional",
+            "caption": "Scan UID",
+            "type": "string_t"
+        },
+        "type_uid": {
+            "type": "integer_t"
+        }
+    }
+}

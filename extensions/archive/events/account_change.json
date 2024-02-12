@@ -1,0 +1,87 @@
+{
+    "attributes": {
+        "category_uid": {
+            "default": 0,
+            "enum": {
+                "-1": {
+                    "caption": "Other"
+                }
+            }
+        },
+        "class_uid": {
+            "default": 0,
+            "enum": {
+                "-1": {
+                    "caption": "Other"
+                }
+            }
+        },
+        "severity_id": {
+            "enum": {
+                "-1": {
+                    "caption": "Other",
+                    "description": "The event severity is not mapped. See the <code>severity</code> attribute, which contains a data source specific value."
+                },
+                "0": {
+                    "description": "The event severity is not known."
+                }
+            }
+        },
+        "activity_id": {
+            "enum": {
+                "-1": {
+                    "caption": "Other",
+                    "description": "The event activity is not mapped."
+                },
+                "1": {
+                    "description": "A user account was created."
+                },
+                "8": {
+                    "description": "A user account was locked out.",
+                    "caption": "Locked Out"
+                },
+                "5": {
+                    "description": "A user account was disabled."
+                },
+                "6": {
+                    "description": "A user account was deleted."
+                },
+                "2": {
+                    "description": "A user account was enabled."
+                },
+                "7": {
+                    "description": "A user account was changed.",
+                    "caption": "Change"
+                }
+            }
+        },
+        "confidence": {
+            "group": "classification",
+            "requirement": "optional",
+            "caption": "Confidence",
+            "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
+            "type": "integer_t"
+        },
+        "status_id": {
+            "enum": {
+                "-1": {
+                    "caption": "Other",
+                    "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
+                }
+            }
+        },
+        "count": {
+            "default": 1
+        },
+        "data": {
+            "description": "Additional data that is associated with the event.",
+            "requirement": "optional",
+            "caption": "Data",
+            "type": "json_t"
+        },
+        "type_uid": {
+            "type": "integer_t"
+        }
+    },
+    "category": "audit"
+}

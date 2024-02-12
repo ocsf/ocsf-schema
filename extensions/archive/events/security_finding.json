@@ -1,0 +1,150 @@
+{
+    "attributes": {
+        "category_uid": {
+            "enum": {
+                "-1": {
+                    "caption": "Other"
+                }
+            },
+            "default": 0
+        },
+        "disposition_id": {
+            "requirement": "required",
+            "caption": "Disposition ID",
+            "description": "When security issues, such as malware or policy violations, are detected and possibly corrected, then <code>disposition_id</code> describes the action taken by the security product.",
+            "enum": {
+                "-1": {
+                    "caption": "Other"
+                },
+                "0": {
+                    "caption": "Unknown"
+                },
+                "1": {
+                    "caption": "Blocked"
+                },
+                "2": {
+                    "caption": "Allowed"
+                },
+                "3": {
+                    "caption": "No Action"
+                },
+                "4": {
+                    "caption": "Logged"
+                },
+                "5": {
+                    "caption": "Command Script Run"
+                },
+                "6": {
+                    "caption": "Corrected"
+                },
+                "7": {
+                    "caption": "Partially Corrected"
+                },
+                "8": {
+                    "caption": "Uncorrected"
+                },
+                "10": {
+                    "description": "Requires reboot to finish the operation.",
+                    "caption": "Delayed"
+                },
+                "11": {
+                    "caption": "Detected"
+                },
+                "12": {
+                    "caption": "Quarantined"
+                },
+                "13": {
+                    "caption": "Restored"
+                },
+                "14": {
+                    "description": "No longer suspicious (re-scored).",
+                    "caption": "Exonerated"
+                },
+                "15": {
+                    "description": "Marked with extended attributes.",
+                    "caption": "Tagged"
+                }
+            },
+            "sibling": "disposition",
+            "type": "integer_t"
+        },
+        "class_uid": {
+            "enum": {
+                "-1": {
+                    "caption": "Other"
+                }
+            },
+            "default": 0
+        },
+        "count": {
+            "default": 1
+        },
+        "status_id": {
+            "enum": {
+                "-1": {
+                    "caption": "Other",
+                    "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
+                }
+            }
+        },
+        "disposition": {
+            "requirement": "optional",
+            "caption": "Disposition",
+            "description": "The event disposition name, as defined by the disposition_id.",
+            "type": "string_t"
+        },
+        "activity_id": {
+            "enum": {
+                "-1": {
+                    "caption": "Other",
+                    "description": "The event activity is not mapped."
+                },
+                "1": {
+                    "description": "A security finding is generated.",
+                    "caption": "Generate"
+                },
+                "2": {
+                    "description": "A security finding is updated."
+                }
+            }
+        },
+        "state_id": {
+            "enum": {
+                "-1": {
+                    "caption": "Other",
+                    "description": "The state is not mapped. See the <code>state</code> attribute, which contains a data source specific value."
+                }
+            }
+        },
+        "severity_id": {
+            "enum": {
+                "-1": {
+                    "caption": "Other",
+                    "description": "The event severity is not mapped. See the <code>severity</code> attribute, which contains a data source specific value."
+                },
+                "0": {
+                    "description": "The event severity is not known."
+                }
+            }
+        },
+        "data": {
+            "description": "Additional data that is associated with the event.",
+            "requirement": "optional",
+            "caption": "Data",
+            "type": "json_t"
+        },
+        "confidence": {
+            "group": "classification",
+            "type": "integer_t"
+        },
+        "attacks": {
+            "caption": "Attacks"
+        },
+        "resources": {
+            "type": "resource"
+        },
+        "type_uid": {
+            "type": "integer_t"
+        }
+    }
+}

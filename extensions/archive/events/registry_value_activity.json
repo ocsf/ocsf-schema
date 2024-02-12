@@ -1,0 +1,131 @@
+{
+    "attributes": {
+        "activity_id": {
+            "enum": {
+                "-1": {
+                    "caption": "Other",
+                    "description": "The event activity is not mapped."
+                }
+            }
+        },
+        "confidence": {
+            "group": "classification",
+            "requirement": "optional",
+            "caption": "Confidence",
+            "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
+            "type": "integer_t"
+        },
+        "status_id": {
+            "enum": {
+                "-1": {
+                    "caption": "Other",
+                    "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
+                }
+            }
+        },
+        "disposition_id": {
+            "enum": {
+                "-1": {
+                    "caption": "Other"
+                },
+                "14": {
+                    "description": "No longer suspicious (re-scored).",
+                    "caption": "Exonerated"
+                },
+                "10": {
+                    "description": "Requires reboot to finish the operation.",
+                    "caption": "Delayed"
+                },
+                "15": {
+                    "description": "Marked with extended attributes.",
+                    "caption": "Tagged"
+                },
+                "12": {
+                    "caption": "Quarantined"
+                },
+                "2": {
+                    "caption": "Allowed"
+                },
+                "5": {
+                    "caption": "Command Script Run"
+                },
+                "1": {
+                    "caption": "Blocked"
+                },
+                "7": {
+                    "caption": "Partially Corrected"
+                },
+                "6": {
+                    "caption": "Corrected"
+                },
+                "13": {
+                    "caption": "Restored"
+                },
+                "3": {
+                    "caption": "No Action"
+                },
+                "4": {
+                    "caption": "Logged"
+                },
+                "11": {
+                    "caption": "Detected"
+                },
+                "8": {
+                    "caption": "Uncorrected"
+                }
+            }
+        },
+        "class_uid": {
+            "enum": {
+                "-1": {
+                    "caption": "Other"
+                }
+            },
+            "default": 0
+        },
+        "category_uid": {
+            "default": 0,
+            "enum": {
+                "-1": {
+                    "caption": "Other"
+                }
+            }
+        },
+        "count": {
+            "default": 1
+        },
+        "data": {
+            "description": "Additional data that is associated with the event.",
+            "requirement": "optional",
+            "caption": "Data",
+            "type": "json_t"
+        },
+        "reg_value_result": {
+            "requirement": "optional",
+            "caption": "Registry Value Result",
+            "description": "The result of the registry value change. It should contain the new values of the changed attributes.",
+            "type": "registry_value"
+        },
+        "severity_id": {
+            "enum": {
+                "-1": {
+                    "caption": "Other",
+                    "description": "The event severity is not mapped. See the <code>severity</code> attribute, which contains a data source specific value."
+                },
+                "0": {
+                    "description": "The event severity is not known."
+                }
+            }
+        },
+        "attacks": {
+            "caption": "Attacks"
+        },
+        "reg_value": {
+            "type": "registry_value"
+        },
+        "type_uid": {
+            "type": "integer_t"
+        }
+    },
+    "category": "windows"
+}

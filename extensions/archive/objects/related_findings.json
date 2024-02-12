@@ -1,0 +1,33 @@
+{
+    "description": "Related Findings object describes findings related to a finding as identified by the security product.",
+    "caption": "Related Findings",
+    "name": "related_findings",
+    "extends": "object",
+    "attributes": {
+        "product_uid": {
+            "description": "The unique identifier of the product that reported the finding.",
+            "requirement": "optional",
+            "caption": "Product Identifier",
+            "type": "string_t"
+        },
+        "uid": {
+            "description": "The unique identifier of the related finding.",
+            "requirement": "required",
+            "caption": "Unique ID",
+            "type": "string_t"
+        },
+        "raw_data": {
+            "group": "context",
+            "caption": "Raw Data",
+            "description": "The event data as received from the event source.",
+            "type": "json_t"
+        },
+        "record_id": {
+            "description": "Unique identifier for the object",
+            "group": "primary",
+            "requirement": "required",
+            "caption": "Record ID",
+            "type": "string_t"
+        }
+    }
+}

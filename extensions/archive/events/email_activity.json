@@ -1,0 +1,139 @@
+{
+    "attributes": {
+        "count": {
+            "default": 1
+        },
+        "disposition_id": {
+            "enum": {
+                "-1": {
+                    "caption": "Other"
+                },
+                "10": {
+                    "description": "Requires reboot to finish the operation.",
+                    "caption": "Delayed"
+                },
+                "15": {
+                    "description": "Marked with extended attributes.",
+                    "caption": "Tagged"
+                },
+                "14": {
+                    "description": "No longer suspicious (re-scored).",
+                    "caption": "Exonerated"
+                },
+                "11": {
+                    "caption": "Detected"
+                },
+                "4": {
+                    "caption": "Logged"
+                },
+                "5": {
+                    "caption": "Command Script Run"
+                },
+                "1": {
+                    "caption": "Blocked"
+                },
+                "12": {
+                    "caption": "Quarantined"
+                },
+                "8": {
+                    "caption": "Uncorrected"
+                },
+                "2": {
+                    "caption": "Allowed"
+                },
+                "13": {
+                    "caption": "Restored"
+                },
+                "6": {
+                    "caption": "Corrected"
+                },
+                "7": {
+                    "caption": "Partially Corrected"
+                },
+                "3": {
+                    "caption": "No Action"
+                }
+            }
+        },
+        "status_id": {
+            "enum": {
+                "-1": {
+                    "caption": "Other",
+                    "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
+                }
+            }
+        },
+        "actor": {
+            "group": "primary"
+        },
+        "category_uid": {
+            "default": 0,
+            "enum": {
+                "-1": {
+                    "caption": "Other"
+                }
+            }
+        },
+        "device": {
+            "group": "primary"
+        },
+        "severity_id": {
+            "enum": {
+                "-1": {
+                    "caption": "Other",
+                    "description": "The event severity is not mapped. See the <code>severity</code> attribute, which contains a data source specific value."
+                },
+                "0": {
+                    "description": "The event severity is not known."
+                }
+            }
+        },
+        "class_uid": {
+            "enum": {
+                "-1": {
+                    "caption": "Other"
+                }
+            },
+            "default": 0
+        },
+        "activity_id": {
+            "enum": {
+                "-1": {
+                    "caption": "Other",
+                    "description": "The event activity is not mapped."
+                },
+                "1": {
+                    "caption": "Allowed"
+                }
+            }
+        },
+        "confidence": {
+            "group": "classification",
+            "requirement": "optional",
+            "caption": "Confidence",
+            "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
+            "type": "integer_t"
+        },
+        "data": {
+            "description": "Additional data that is associated with the event.",
+            "requirement": "optional",
+            "caption": "Data",
+            "type": "json_t"
+        },
+        "attacks": {
+            "caption": "Attacks"
+        },
+        "type_uid": {
+            "type": "integer_t"
+        }
+    },
+    "associations": {
+        "device": [
+            "actor.user"
+        ],
+        "actor.user": [
+            "device"
+        ]
+    },
+    "category": "email"
+}

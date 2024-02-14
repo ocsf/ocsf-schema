@@ -20,6 +20,7 @@ Thankyou! -->
 * #### Event Classes
 * #### Profiles
 * #### Objects
+  1. Added `auth_factor` object. #949
 * #### Platform Extensions
 
 ### Improved

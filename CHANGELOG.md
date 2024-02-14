@@ -26,6 +26,7 @@ Thankyou! -->
 ### Improved
 * #### Categories
 * #### Event Classes
+  1. Added `auth_factors` array to Authentication event class. #949
 * #### Profiles
 * #### Objects
 * #### Platform Extensions

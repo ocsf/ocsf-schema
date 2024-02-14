@@ -9,6 +9,12 @@
       "is_array": true,
       "type": "string_t"
     },
+    "auth_factors": {
+      "caption": "Authentication Factors",
+      "description": "Describes a category of methods used for identity verification in an authentication attempt.",
+      "is_array": true,
+      "type": "auth_factor"
+    },
     "access_mask": {
       "caption": "Access Mask",
       "description": "The access mask in a platform-native format.",
@@ -203,12 +209,6 @@
       "caption": "Attributes",
       "description": "The bitmask value that represents the file attributes.",
       "type": "integer_t"
-    },
-    "auth_factors": {
-      "caption": "Authentication Factors",
-      "description": "Describes a category of methods used for identity verification in an authentication attempt.",
-      "is_array": true,
-      "type": "auth_factor"
     },
     "auth_protocol": {
       "caption": "Auth Protocol",
@@ -1544,31 +1544,6 @@
       "is_array": true,
       "type": "tls_extension"
     },
-    "factor_device": {
-      "caption": "Factor Device",
-      "description": "Device used to complete an authentication request.",
-      "type": "device"
-    },
-    "factor_email": {
-      "caption": "Factor Email",
-      "description": "The email address used in an email-based authentication factor.",
-      "type": "email_t"
-    },
-    "factor_provider": {
-      "caption": "Factor Provider",
-      "description": "The name of provider for an authentication factor.",
-      "type": "string_t"
-    },
-    "factor_question": {
-      "caption": "Factor Question",
-      "description": "The question provided to user for a question-based authentication factor.",
-      "type": "string_t"
-    },
-    "factor_telephony_number": {
-      "caption": "Factor Telephony Number",
-      "description": "The phone number used for a telephony-based authentication request.",
-      "type": "string_t"
-    },
     "factor_type": {
       "caption": "Factor Type",
       "description": "The type of authentication factor used in an authentication attempt.",
@@ -2120,7 +2095,7 @@
       "description": "The KB article/s related to the entity. A KB Article contains metadata that describes the patch or an update.",
       "is_array": true,
       "type": "string_t"
-    },    
+    },
     "kb_article_list": {
       "caption": "Knowledgebase Articles",
       "description": "A list of KB articles or patches related to an endpoint. A KB Article contains metadata that describes the patch or an update.",
@@ -2748,6 +2723,11 @@
       "type": "integer_t",
       "sibling": "phase"
     },
+    "phone_number": {
+        "caption": "Phone Number",
+        "description": "The number associated with the phone.",
+        "type": "string_t"
+    },
     "phones": {
       "caption": "Phones",
       "description": "The phone numbers associated with the user",
@@ -3327,6 +3307,12 @@
       "caption": "Security Descriptor",
       "description": "The object security descriptor.",
       "type": "string_t"
+    },
+    "security_questions": {
+        "caption": "Security Questions",
+        "description": "The question(s) provided to user for a question-based authentication factor.",
+        "is_array": true,
+        "type": "string_t"
     },
     "sequence": {
       "caption": "Sequence Number",

@@ -13,6 +13,14 @@ Thankyou! -->
 
 ## [Unreleased]
 
+### Added 
+* #### Objects
+  1. Added `auth_factor` object. #949
+
+### Improved
+* #### Event Classes
+  1. Added `auth_factors` array to Authentication event class. #949
+
 <!-- All available sections in the Changelog:
 
 ### Added

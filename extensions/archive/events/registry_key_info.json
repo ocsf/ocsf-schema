@@ -1,5 +1,13 @@
 {
     "attributes": {
+        "class_uid": {
+            "default": 0,
+            "enum": {
+                "-1": {
+                    "caption": "Other"
+                }
+            }
+        },
         "status_id": {
             "enum": {
                 "-1": {
@@ -8,14 +16,17 @@
                 }
             }
         },
-        "count": {
-            "default": 1
+        "data": {
+            "description": "Additional data that is associated with the event.",
+            "requirement": "optional",
+            "caption": "Data",
+            "type": "json_t"
         },
-        "class_uid": {
-            "default": 0,
+        "activity_id": {
             "enum": {
                 "-1": {
-                    "caption": "Other"
+                    "caption": "Other",
+                    "description": "The event activity is not mapped."
                 }
             }
         },
@@ -25,21 +36,6 @@
             "caption": "Confidence",
             "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
             "type": "integer_t"
-        },
-        "command_uid": {
-            "description": "The unique identifier of the discovery command that pertains to this event.",
-            "group": "primary",
-            "requirement": "required",
-            "caption": "Command UID",
-            "type": "string_t"
-        },
-        "category_uid": {
-            "enum": {
-                "-1": {
-                    "caption": "Other"
-                }
-            },
-            "default": 0
         },
         "severity_id": {
             "enum": {
@@ -52,11 +48,12 @@
                 }
             }
         },
-        "data": {
-            "description": "Additional data that is associated with the event.",
-            "requirement": "optional",
-            "caption": "Data",
-            "type": "json_t"
+        "command_uid": {
+            "description": "The unique identifier of the discovery command that pertains to this event.",
+            "group": "primary",
+            "requirement": "required",
+            "caption": "Command UID",
+            "type": "string_t"
         },
         "scan_uid": {
             "description": "The unique identifier of the discovery scan request that pertains to this event.",
@@ -65,13 +62,16 @@
             "caption": "Scan UID",
             "type": "string_t"
         },
-        "activity_id": {
+        "count": {
+            "default": 1
+        },
+        "category_uid": {
             "enum": {
                 "-1": {
-                    "caption": "Other",
-                    "description": "The event activity is not mapped."
+                    "caption": "Other"
                 }
-            }
+            },
+            "default": 0
         },
         "type_uid": {
             "type": "integer_t"

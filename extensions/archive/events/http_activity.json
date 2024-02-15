@@ -1,64 +1,12 @@
 {
     "attributes": {
-        "disposition_id": {
+        "category_uid": {
+            "default": 0,
             "enum": {
                 "-1": {
                     "caption": "Other"
-                },
-                "10": {
-                    "description": "Requires reboot to finish the operation.",
-                    "caption": "Delayed"
-                },
-                "15": {
-                    "description": "Marked with extended attributes.",
-                    "caption": "Tagged"
-                },
-                "14": {
-                    "description": "No longer suspicious (re-scored).",
-                    "caption": "Exonerated"
-                },
-                "6": {
-                    "caption": "Corrected"
-                },
-                "5": {
-                    "caption": "Command Script Run"
-                },
-                "8": {
-                    "caption": "Uncorrected"
-                },
-                "2": {
-                    "caption": "Allowed"
-                },
-                "1": {
-                    "caption": "Blocked"
-                },
-                "3": {
-                    "caption": "No Action"
-                },
-                "11": {
-                    "caption": "Detected"
-                },
-                "13": {
-                    "caption": "Restored"
-                },
-                "7": {
-                    "caption": "Partially Corrected"
-                },
-                "12": {
-                    "caption": "Quarantined"
-                },
-                "4": {
-                    "caption": "Logged"
                 }
             }
-        },
-        "category_uid": {
-            "enum": {
-                "-1": {
-                    "caption": "Other"
-                }
-            },
-            "default": 0
         },
         "class_uid": {
             "default": 0,
@@ -75,20 +23,55 @@
             "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
             "type": "integer_t"
         },
-        "data": {
-            "description": "Additional data that is associated with the event.",
-            "requirement": "optional",
-            "caption": "Data",
-            "type": "json_t"
-        },
-        "count": {
-            "default": 1
-        },
-        "status_id": {
+        "disposition_id": {
             "enum": {
                 "-1": {
-                    "caption": "Other",
-                    "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
+                    "caption": "Other"
+                },
+                "7": {
+                    "caption": "Partially Corrected"
+                },
+                "11": {
+                    "caption": "Detected"
+                },
+                "3": {
+                    "caption": "No Action"
+                },
+                "10": {
+                    "caption": "Delayed",
+                    "description": "Requires reboot to finish the operation."
+                },
+                "1": {
+                    "caption": "Blocked"
+                },
+                "5": {
+                    "caption": "Command Script Run"
+                },
+                "15": {
+                    "description": "Marked with extended attributes.",
+                    "caption": "Tagged"
+                },
+                "2": {
+                    "caption": "Allowed"
+                },
+                "8": {
+                    "caption": "Uncorrected"
+                },
+                "4": {
+                    "caption": "Logged"
+                },
+                "14": {
+                    "caption": "Exonerated",
+                    "description": "No longer suspicious (re-scored)."
+                },
+                "13": {
+                    "caption": "Restored"
+                },
+                "6": {
+                    "caption": "Corrected"
+                },
+                "12": {
+                    "caption": "Quarantined"
                 }
             }
         },
@@ -103,35 +86,52 @@
                 }
             }
         },
+        "count": {
+            "default": 1
+        },
+        "status_id": {
+            "enum": {
+                "-1": {
+                    "caption": "Other",
+                    "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
+                }
+            }
+        },
+        "data": {
+            "description": "Additional data that is associated with the event.",
+            "requirement": "optional",
+            "caption": "Data",
+            "type": "json_t"
+        },
         "activity_id": {
             "enum": {
                 "-1": {
                     "caption": "Other",
                     "description": "The event activity is not mapped."
                 },
+                "2": {
+                    "caption": "Close",
+                    "description": "The network connection was closed."
+                },
                 "3": {
-                    "description": "The network connection was abnormally terminated or closed by a middle device like firewalls.",
-                    "caption": "Reset"
+                    "caption": "Reset",
+                    "description": "The network connection was abnormally terminated or closed by a middle device like firewalls."
                 },
                 "1": {
                     "description": "A new network connection was opened.",
                     "caption": "Open"
                 },
                 "4": {
-                    "description": "Network traffic report.",
-                    "caption": "Traffic"
-                },
-                "2": {
-                    "description": "The network connection was closed.",
-                    "caption": "Close"
+                    "caption": "Traffic",
+                    "description": "Network traffic report."
                 }
             }
         },
-        "attacks": {
-            "caption": "Attacks"
-        },
         "type_uid": {
             "type": "integer_t"
+        },
+        "attacks": {
+            "caption": "Attacks"
         }
     }
 }

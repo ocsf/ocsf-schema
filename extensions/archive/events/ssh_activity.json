@@ -1,62 +1,74 @@
 {
     "attributes": {
-        "disposition_id": {
-            "enum": {
-                "-1": {
-                    "caption": "Other"
-                },
-                "10": {
-                    "description": "Requires reboot to finish the operation.",
-                    "caption": "Delayed"
-                },
-                "15": {
-                    "description": "Marked with extended attributes.",
-                    "caption": "Tagged"
-                },
-                "14": {
-                    "description": "No longer suspicious (re-scored).",
-                    "caption": "Exonerated"
-                },
-                "8": {
-                    "caption": "Uncorrected"
-                },
-                "3": {
-                    "caption": "No Action"
-                },
-                "13": {
-                    "caption": "Restored"
-                },
-                "2": {
-                    "caption": "Allowed"
-                },
-                "4": {
-                    "caption": "Logged"
-                },
-                "6": {
-                    "caption": "Corrected"
-                },
-                "1": {
-                    "caption": "Blocked"
-                },
-                "7": {
-                    "caption": "Partially Corrected"
-                },
-                "11": {
-                    "caption": "Detected"
-                },
-                "5": {
-                    "caption": "Command Script Run"
-                },
-                "12": {
-                    "caption": "Quarantined"
-                }
-            }
-        },
         "status_id": {
             "enum": {
                 "-1": {
                     "caption": "Other",
                     "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
+                }
+            }
+        },
+        "disposition_id": {
+            "enum": {
+                "-1": {
+                    "caption": "Other"
+                },
+                "14": {
+                    "description": "No longer suspicious (re-scored).",
+                    "caption": "Exonerated"
+                },
+                "11": {
+                    "caption": "Detected"
+                },
+                "4": {
+                    "caption": "Logged"
+                },
+                "7": {
+                    "caption": "Partially Corrected"
+                },
+                "15": {
+                    "caption": "Tagged",
+                    "description": "Marked with extended attributes."
+                },
+                "12": {
+                    "caption": "Quarantined"
+                },
+                "3": {
+                    "caption": "No Action"
+                },
+                "5": {
+                    "caption": "Command Script Run"
+                },
+                "8": {
+                    "caption": "Uncorrected"
+                },
+                "2": {
+                    "caption": "Allowed"
+                },
+                "10": {
+                    "description": "Requires reboot to finish the operation.",
+                    "caption": "Delayed"
+                },
+                "1": {
+                    "caption": "Blocked"
+                },
+                "13": {
+                    "caption": "Restored"
+                },
+                "6": {
+                    "caption": "Corrected"
+                }
+            }
+        },
+        "activity_id": {
+            "enum": {
+                "-1": {
+                    "caption": "Other",
+                    "description": "The event activity is not mapped."
+                },
+                "4": {
+                    "description": "Network traffic report.",
+                    "caption": "Traffic"
                 }
             }
         },
@@ -67,17 +79,6 @@
                 }
             },
             "default": 0
-        },
-        "severity_id": {
-            "enum": {
-                "-1": {
-                    "caption": "Other",
-                    "description": "The event severity is not mapped. See the <code>severity</code> attribute, which contains a data source specific value."
-                },
-                "0": {
-                    "description": "The event severity is not known."
-                }
-            }
         },
         "confidence": {
             "group": "classification",
@@ -97,15 +98,14 @@
         "count": {
             "default": 1
         },
-        "activity_id": {
+        "severity_id": {
             "enum": {
                 "-1": {
                     "caption": "Other",
-                    "description": "The event activity is not mapped."
+                    "description": "The event severity is not mapped. See the <code>severity</code> attribute, which contains a data source specific value."
                 },
-                "4": {
-                    "description": "Network traffic report.",
-                    "caption": "Traffic"
+                "0": {
+                    "description": "The event severity is not known."
                 }
             }
         },

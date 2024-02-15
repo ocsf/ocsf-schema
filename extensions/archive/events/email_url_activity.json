@@ -1,5 +1,13 @@
 {
     "attributes": {
+        "status_id": {
+            "enum": {
+                "-1": {
+                    "caption": "Other",
+                    "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
+                }
+            }
+        },
         "severity_id": {
             "enum": {
                 "-1": {
@@ -11,6 +19,9 @@
                 }
             }
         },
+        "count": {
+            "default": 1
+        },
         "category_uid": {
             "enum": {
                 "-1": {
@@ -18,6 +29,19 @@
                 }
             },
             "default": 0
+        },
+        "device": {
+            "group": "primary"
+        },
+        "actor": {
+            "group": "primary"
+        },
+        "confidence": {
+            "group": "classification",
+            "requirement": "optional",
+            "caption": "Confidence",
+            "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
+            "type": "integer_t"
         },
         "class_uid": {
             "default": 0,
@@ -27,67 +51,61 @@
                 }
             }
         },
-        "actor": {
-            "group": "primary"
-        },
         "data": {
             "description": "Additional data that is associated with the event.",
             "requirement": "optional",
             "caption": "Data",
             "type": "json_t"
         },
-        "device": {
-            "group": "primary"
-        },
         "disposition_id": {
             "enum": {
                 "-1": {
                     "caption": "Other"
                 },
-                "14": {
-                    "description": "No longer suspicious (re-scored).",
-                    "caption": "Exonerated"
+                "13": {
+                    "caption": "Restored"
                 },
-                "15": {
-                    "description": "Marked with extended attributes.",
-                    "caption": "Tagged"
+                "7": {
+                    "caption": "Partially Corrected"
+                },
+                "11": {
+                    "caption": "Detected"
                 },
                 "10": {
                     "description": "Requires reboot to finish the operation.",
                     "caption": "Delayed"
                 },
-                "11": {
-                    "caption": "Detected"
-                },
-                "13": {
-                    "caption": "Restored"
-                },
                 "4": {
                     "caption": "Logged"
-                },
-                "6": {
-                    "caption": "Corrected"
-                },
-                "3": {
-                    "caption": "No Action"
-                },
-                "1": {
-                    "caption": "Blocked"
                 },
                 "2": {
                     "caption": "Allowed"
                 },
-                "5": {
-                    "caption": "Command Script Run"
+                "8": {
+                    "caption": "Uncorrected"
+                },
+                "15": {
+                    "description": "Marked with extended attributes.",
+                    "caption": "Tagged"
+                },
+                "1": {
+                    "caption": "Blocked"
+                },
+                "3": {
+                    "caption": "No Action"
+                },
+                "14": {
+                    "description": "No longer suspicious (re-scored).",
+                    "caption": "Exonerated"
                 },
                 "12": {
                     "caption": "Quarantined"
                 },
-                "8": {
-                    "caption": "Uncorrected"
+                "6": {
+                    "caption": "Corrected"
                 },
-                "7": {
-                    "caption": "Partially Corrected"
+                "5": {
+                    "caption": "Command Script Run"
                 }
             }
         },
@@ -102,29 +120,11 @@
                 }
             }
         },
-        "confidence": {
-            "group": "classification",
-            "requirement": "optional",
-            "caption": "Confidence",
-            "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
+        "type_uid": {
             "type": "integer_t"
-        },
-        "count": {
-            "default": 1
-        },
-        "status_id": {
-            "enum": {
-                "-1": {
-                    "caption": "Other",
-                    "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
-                }
-            }
         },
         "attacks": {
             "caption": "Attacks"
-        },
-        "type_uid": {
-            "type": "integer_t"
         }
     },
     "associations": {

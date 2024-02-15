@@ -1,28 +1,38 @@
 {
     "attributes": {
-        "resource": {
-            "description": "The resource that was accessed.",
-            "group": "primary",
-            "requirement": "required",
-            "caption": "Resource",
-            "type": "resource"
+        "data": {
+            "description": "Additional data that is associated with the event.",
+            "requirement": "optional",
+            "caption": "Data",
+            "type": "json_t"
         },
         "disposition_id": {
             "enum": {
                 "-1": {
                     "caption": "Other"
                 },
-                "10": {
-                    "description": "Requires reboot to finish the operation.",
-                    "caption": "Delayed"
+                "13": {
+                    "caption": "Restored"
+                },
+                "4": {
+                    "caption": "Logged"
+                },
+                "2": {
+                    "caption": "Allowed"
                 },
                 "14": {
                     "description": "No longer suspicious (re-scored).",
                     "caption": "Exonerated"
                 },
-                "15": {
-                    "description": "Marked with extended attributes.",
-                    "caption": "Tagged"
+                "10": {
+                    "caption": "Delayed",
+                    "description": "Requires reboot to finish the operation."
+                },
+                "12": {
+                    "caption": "Quarantined"
+                },
+                "8": {
+                    "caption": "Uncorrected"
                 },
                 "1": {
                     "caption": "Blocked"
@@ -30,53 +40,30 @@
                 "3": {
                     "caption": "No Action"
                 },
-                "7": {
-                    "caption": "Partially Corrected"
+                "11": {
+                    "caption": "Detected"
                 },
                 "6": {
                     "caption": "Corrected"
                 },
-                "2": {
-                    "caption": "Allowed"
-                },
-                "4": {
-                    "caption": "Logged"
-                },
-                "13": {
-                    "caption": "Restored"
-                },
-                "12": {
-                    "caption": "Quarantined"
-                },
                 "5": {
                     "caption": "Command Script Run"
                 },
-                "11": {
-                    "caption": "Detected"
+                "7": {
+                    "caption": "Partially Corrected"
                 },
-                "8": {
-                    "caption": "Uncorrected"
+                "15": {
+                    "caption": "Tagged",
+                    "description": "Marked with extended attributes."
                 }
             }
         },
-        "activity_id": {
-            "enum": {
-                "-1": {
-                    "caption": "Other",
-                    "description": "The event activity is not mapped."
-                }
-            }
-        },
-        "class_uid": {
-            "default": 0,
-            "enum": {
-                "-1": {
-                    "caption": "Other"
-                }
-            }
-        },
-        "count": {
-            "default": 1
+        "resource": {
+            "description": "The resource that was accessed.",
+            "group": "primary",
+            "requirement": "required",
+            "caption": "Resource",
+            "type": "resource"
         },
         "status_id": {
             "enum": {
@@ -93,19 +80,24 @@
             "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
             "type": "integer_t"
         },
+        "count": {
+            "default": 1
+        },
         "category_uid": {
+            "default": 0,
             "enum": {
                 "-1": {
                     "caption": "Other"
                 }
-            },
-            "default": 0
+            }
         },
-        "data": {
-            "description": "Additional data that is associated with the event.",
-            "requirement": "optional",
-            "caption": "Data",
-            "type": "json_t"
+        "activity_id": {
+            "enum": {
+                "-1": {
+                    "caption": "Other",
+                    "description": "The event activity is not mapped."
+                }
+            }
         },
         "severity_id": {
             "enum": {
@@ -118,11 +110,19 @@
                 }
             }
         },
-        "attacks": {
-            "caption": "Attacks"
+        "class_uid": {
+            "enum": {
+                "-1": {
+                    "caption": "Other"
+                }
+            },
+            "default": 0
         },
         "type_uid": {
             "type": "integer_t"
+        },
+        "attacks": {
+            "caption": "Attacks"
         }
     },
     "category": "windows"

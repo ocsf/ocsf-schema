@@ -1,12 +1,47 @@
 {
     "attributes": {
+        "activity_id": {
+            "enum": {
+                "-1": {
+                    "caption": "Other",
+                    "description": "The event activity is not mapped."
+                },
+                "1": {
+                    "caption": "Logged"
+                }
+            }
+        },
+        "count": {
+            "default": 1
+        },
         "class_uid": {
+            "default": 0,
+            "enum": {
+                "-1": {
+                    "caption": "Other"
+                }
+            }
+        },
+        "category_uid": {
             "enum": {
                 "-1": {
                     "caption": "Other"
                 }
             },
             "default": 0
+        },
+        "data": {
+            "description": "Additional data that is associated with the event.",
+            "requirement": "optional",
+            "caption": "Data",
+            "type": "json_t"
+        },
+        "confidence": {
+            "group": "classification",
+            "requirement": "optional",
+            "caption": "Confidence",
+            "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
+            "type": "integer_t"
         },
         "status_id": {
             "enum": {
@@ -16,9 +51,6 @@
                 }
             }
         },
-        "count": {
-            "default": 1
-        },
         "severity_id": {
             "enum": {
                 "-1": {
@@ -27,38 +59,6 @@
                 },
                 "0": {
                     "description": "The event severity is not known."
-                }
-            }
-        },
-        "confidence": {
-            "group": "classification",
-            "requirement": "optional",
-            "caption": "Confidence",
-            "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
-            "type": "integer_t"
-        },
-        "data": {
-            "description": "Additional data that is associated with the event.",
-            "requirement": "optional",
-            "caption": "Data",
-            "type": "json_t"
-        },
-        "category_uid": {
-            "default": 0,
-            "enum": {
-                "-1": {
-                    "caption": "Other"
-                }
-            }
-        },
-        "activity_id": {
-            "enum": {
-                "-1": {
-                    "caption": "Other",
-                    "description": "The event activity is not mapped."
-                },
-                "1": {
-                    "caption": "Logged"
                 }
             }
         },

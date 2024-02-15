@@ -1,18 +1,48 @@
 {
     "attributes": {
+        "confidence": {
+            "group": "classification",
+            "requirement": "optional",
+            "caption": "Confidence",
+            "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
+            "type": "integer_t"
+        },
+        "count": {
+            "default": 1
+        },
         "category_uid": {
-            "default": 0,
             "enum": {
                 "-1": {
                     "caption": "Other"
                 }
-            }
+            },
+            "default": 0
         },
-        "class_uid": {
-            "default": 0,
+        "activity_id": {
             "enum": {
                 "-1": {
-                    "caption": "Other"
+                    "caption": "Other",
+                    "description": "The event activity is not mapped."
+                },
+                "8": {
+                    "description": "A user account was locked out.",
+                    "caption": "Locked Out"
+                },
+                "6": {
+                    "description": "A user account was deleted."
+                },
+                "7": {
+                    "caption": "Change",
+                    "description": "A user account was changed."
+                },
+                "1": {
+                    "description": "A user account was created."
+                },
+                "5": {
+                    "description": "A user account was disabled."
+                },
+                "2": {
+                    "description": "A user account was enabled."
                 }
             }
         },
@@ -27,40 +57,19 @@
                 }
             }
         },
-        "activity_id": {
+        "data": {
+            "description": "Additional data that is associated with the event.",
+            "requirement": "optional",
+            "caption": "Data",
+            "type": "json_t"
+        },
+        "class_uid": {
             "enum": {
                 "-1": {
-                    "caption": "Other",
-                    "description": "The event activity is not mapped."
-                },
-                "1": {
-                    "description": "A user account was created."
-                },
-                "8": {
-                    "description": "A user account was locked out.",
-                    "caption": "Locked Out"
-                },
-                "5": {
-                    "description": "A user account was disabled."
-                },
-                "6": {
-                    "description": "A user account was deleted."
-                },
-                "2": {
-                    "description": "A user account was enabled."
-                },
-                "7": {
-                    "description": "A user account was changed.",
-                    "caption": "Change"
+                    "caption": "Other"
                 }
-            }
-        },
-        "confidence": {
-            "group": "classification",
-            "requirement": "optional",
-            "caption": "Confidence",
-            "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
-            "type": "integer_t"
+            },
+            "default": 0
         },
         "status_id": {
             "enum": {
@@ -69,15 +78,6 @@
                     "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
                 }
             }
-        },
-        "count": {
-            "default": 1
-        },
-        "data": {
-            "description": "Additional data that is associated with the event.",
-            "requirement": "optional",
-            "caption": "Data",
-            "type": "json_t"
         },
         "type_uid": {
             "type": "integer_t"

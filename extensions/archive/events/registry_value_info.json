@@ -1,59 +1,5 @@
 {
     "attributes": {
-        "scan_uid": {
-            "description": "The unique identifier of the discovery scan request that pertains to this event.",
-            "group": "primary",
-            "requirement": "optional",
-            "caption": "Scan UID",
-            "type": "string_t"
-        },
-        "activity_id": {
-            "enum": {
-                "-1": {
-                    "caption": "Other",
-                    "description": "The event activity is not mapped."
-                }
-            }
-        },
-        "confidence": {
-            "group": "classification",
-            "requirement": "optional",
-            "caption": "Confidence",
-            "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
-            "type": "integer_t"
-        },
-        "category_uid": {
-            "enum": {
-                "-1": {
-                    "caption": "Other"
-                }
-            },
-            "default": 0
-        },
-        "command_uid": {
-            "description": "The unique identifier of the discovery command that pertains to this event.",
-            "group": "primary",
-            "requirement": "required",
-            "caption": "Command UID",
-            "type": "string_t"
-        },
-        "class_uid": {
-            "enum": {
-                "-1": {
-                    "caption": "Other"
-                }
-            },
-            "default": 0
-        },
-        "count": {
-            "default": 1
-        },
-        "data": {
-            "description": "Additional data that is associated with the event.",
-            "requirement": "optional",
-            "caption": "Data",
-            "type": "json_t"
-        },
         "status_id": {
             "enum": {
                 "-1": {
@@ -61,6 +7,30 @@
                     "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
                 }
             }
+        },
+        "count": {
+            "default": 1
+        },
+        "category_uid": {
+            "default": 0,
+            "enum": {
+                "-1": {
+                    "caption": "Other"
+                }
+            }
+        },
+        "data": {
+            "description": "Additional data that is associated with the event.",
+            "requirement": "optional",
+            "caption": "Data",
+            "type": "json_t"
+        },
+        "confidence": {
+            "group": "classification",
+            "requirement": "optional",
+            "caption": "Confidence",
+            "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
+            "type": "integer_t"
         },
         "severity_id": {
             "enum": {
@@ -72,6 +42,36 @@
                     "description": "The event severity is not known."
                 }
             }
+        },
+        "class_uid": {
+            "default": 0,
+            "enum": {
+                "-1": {
+                    "caption": "Other"
+                }
+            }
+        },
+        "command_uid": {
+            "description": "The unique identifier of the discovery command that pertains to this event.",
+            "group": "primary",
+            "requirement": "required",
+            "caption": "Command UID",
+            "type": "string_t"
+        },
+        "activity_id": {
+            "enum": {
+                "-1": {
+                    "caption": "Other",
+                    "description": "The event activity is not mapped."
+                }
+            }
+        },
+        "scan_uid": {
+            "description": "The unique identifier of the discovery scan request that pertains to this event.",
+            "group": "primary",
+            "requirement": "optional",
+            "caption": "Scan UID",
+            "type": "string_t"
         },
         "reg_value": {
             "type": "registry_value"

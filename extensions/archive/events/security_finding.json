@@ -1,12 +1,27 @@
 {
     "attributes": {
-        "category_uid": {
+        "severity_id": {
             "enum": {
                 "-1": {
-                    "caption": "Other"
+                    "caption": "Other",
+                    "description": "The event severity is not mapped. See the <code>severity</code> attribute, which contains a data source specific value."
+                },
+                "0": {
+                    "description": "The event severity is not known."
                 }
-            },
-            "default": 0
+            }
+        },
+        "disposition": {
+            "requirement": "optional",
+            "caption": "Disposition",
+            "description": "The event disposition name, as defined by the disposition_id.",
+            "type": "string_t"
+        },
+        "data": {
+            "description": "Additional data that is associated with the event.",
+            "requirement": "optional",
+            "caption": "Data",
+            "type": "json_t"
         },
         "disposition_id": {
             "requirement": "required",
@@ -68,17 +83,6 @@
             "sibling": "disposition",
             "type": "integer_t"
         },
-        "class_uid": {
-            "enum": {
-                "-1": {
-                    "caption": "Other"
-                }
-            },
-            "default": 0
-        },
-        "count": {
-            "default": 1
-        },
         "status_id": {
             "enum": {
                 "-1": {
@@ -87,11 +91,8 @@
                 }
             }
         },
-        "disposition": {
-            "requirement": "optional",
-            "caption": "Disposition",
-            "description": "The event disposition name, as defined by the disposition_id.",
-            "type": "string_t"
+        "count": {
+            "default": 1
         },
         "activity_id": {
             "enum": {
@@ -108,6 +109,14 @@
                 }
             }
         },
+        "category_uid": {
+            "default": 0,
+            "enum": {
+                "-1": {
+                    "caption": "Other"
+                }
+            }
+        },
         "state_id": {
             "enum": {
                 "-1": {
@@ -116,35 +125,26 @@
                 }
             }
         },
-        "severity_id": {
+        "class_uid": {
+            "default": 0,
             "enum": {
                 "-1": {
-                    "caption": "Other",
-                    "description": "The event severity is not mapped. See the <code>severity</code> attribute, which contains a data source specific value."
-                },
-                "0": {
-                    "description": "The event severity is not known."
+                    "caption": "Other"
                 }
             }
         },
-        "data": {
-            "description": "Additional data that is associated with the event.",
-            "requirement": "optional",
-            "caption": "Data",
-            "type": "json_t"
+        "attacks": {
+            "caption": "Attacks"
+        },
+        "type_uid": {
+            "type": "integer_t"
         },
         "confidence": {
             "group": "classification",
             "type": "integer_t"
         },
-        "attacks": {
-            "caption": "Attacks"
-        },
         "resources": {
             "type": "resource"
-        },
-        "type_uid": {
-            "type": "integer_t"
         }
     }
 }

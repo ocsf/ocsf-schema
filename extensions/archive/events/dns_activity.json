@@ -1,12 +1,128 @@
 {
     "attributes": {
-        "class_uid": {
+        "confidence": {
+            "group": "classification",
+            "requirement": "optional",
+            "caption": "Confidence",
+            "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
+            "type": "integer_t"
+        },
+        "activity_id": {
+            "enum": {
+                "4": {
+                    "caption": "Traffic",
+                    "description": "Network traffic report."
+                },
+                "-1": {
+                    "caption": "Other",
+                    "description": "The event activity is not mapped."
+                },
+                "3": {
+                    "caption": "Query",
+                    "description": "The DNS query request."
+                },
+                "2": {
+                    "caption": "Unresolved",
+                    "description": "The DNS request was unresolved."
+                },
+                "1": {
+                    "description": "The DNS request was successfully resolved.",
+                    "caption": "Resolved"
+                }
+            }
+        },
+        "data": {
+            "description": "Additional data that is associated with the event.",
+            "requirement": "optional",
+            "caption": "Data",
+            "type": "json_t"
+        },
+        "category_uid": {
             "enum": {
                 "-1": {
                     "caption": "Other"
                 }
             },
             "default": 0
+        },
+        "rcode_id": {
+            "enum": {
+                "-1": {
+                    "caption": "Other",
+                    "description": "The dns response code is not defined by the RFC."
+                }
+            }
+        },
+        "count": {
+            "default": 1
+        },
+        "class_uid": {
+            "default": 0,
+            "enum": {
+                "-1": {
+                    "caption": "Other"
+                }
+            }
+        },
+        "disposition_id": {
+            "enum": {
+                "-1": {
+                    "caption": "Other"
+                },
+                "8": {
+                    "caption": "Uncorrected"
+                },
+                "12": {
+                    "caption": "Quarantined"
+                },
+                "11": {
+                    "caption": "Detected"
+                },
+                "10": {
+                    "caption": "Delayed",
+                    "description": "Requires reboot to finish the operation."
+                },
+                "4": {
+                    "caption": "Logged"
+                },
+                "7": {
+                    "caption": "Partially Corrected"
+                },
+                "15": {
+                    "caption": "Tagged",
+                    "description": "Marked with extended attributes."
+                },
+                "14": {
+                    "description": "No longer suspicious (re-scored).",
+                    "caption": "Exonerated"
+                },
+                "1": {
+                    "caption": "Blocked"
+                },
+                "2": {
+                    "caption": "Allowed"
+                },
+                "3": {
+                    "caption": "No Action"
+                },
+                "6": {
+                    "caption": "Corrected"
+                },
+                "5": {
+                    "caption": "Command Script Run"
+                },
+                "13": {
+                    "caption": "Restored"
+                }
+            }
+        },
+        "status_id": {
+            "enum": {
+                "-1": {
+                    "caption": "Other",
+                    "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
+                }
+            }
         },
         "severity_id": {
             "enum": {
@@ -19,127 +135,11 @@
                 }
             }
         },
-        "confidence": {
-            "group": "classification",
-            "requirement": "optional",
-            "caption": "Confidence",
-            "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
+        "type_uid": {
             "type": "integer_t"
-        },
-        "rcode_id": {
-            "enum": {
-                "-1": {
-                    "caption": "Other",
-                    "description": "The dns response code is not defined by the RFC."
-                }
-            }
-        },
-        "activity_id": {
-            "enum": {
-                "-1": {
-                    "caption": "Other",
-                    "description": "The event activity is not mapped."
-                },
-                "3": {
-                    "caption": "Query",
-                    "description": "The DNS query request."
-                },
-                "4": {
-                    "caption": "Traffic",
-                    "description": "Network traffic report."
-                },
-                "1": {
-                    "description": "The DNS request was successfully resolved.",
-                    "caption": "Resolved"
-                },
-                "2": {
-                    "description": "The DNS request was unresolved.",
-                    "caption": "Unresolved"
-                }
-            }
-        },
-        "disposition_id": {
-            "enum": {
-                "-1": {
-                    "caption": "Other"
-                },
-                "10": {
-                    "description": "Requires reboot to finish the operation.",
-                    "caption": "Delayed"
-                },
-                "14": {
-                    "description": "No longer suspicious (re-scored).",
-                    "caption": "Exonerated"
-                },
-                "15": {
-                    "description": "Marked with extended attributes.",
-                    "caption": "Tagged"
-                },
-                "8": {
-                    "caption": "Uncorrected"
-                },
-                "3": {
-                    "caption": "No Action"
-                },
-                "1": {
-                    "caption": "Blocked"
-                },
-                "7": {
-                    "caption": "Partially Corrected"
-                },
-                "4": {
-                    "caption": "Logged"
-                },
-                "11": {
-                    "caption": "Detected"
-                },
-                "12": {
-                    "caption": "Quarantined"
-                },
-                "6": {
-                    "caption": "Corrected"
-                },
-                "2": {
-                    "caption": "Allowed"
-                },
-                "13": {
-                    "caption": "Restored"
-                },
-                "5": {
-                    "caption": "Command Script Run"
-                }
-            }
-        },
-        "category_uid": {
-            "default": 0,
-            "enum": {
-                "-1": {
-                    "caption": "Other"
-                }
-            }
-        },
-        "count": {
-            "default": 1
-        },
-        "data": {
-            "description": "Additional data that is associated with the event.",
-            "requirement": "optional",
-            "caption": "Data",
-            "type": "json_t"
-        },
-        "status_id": {
-            "enum": {
-                "-1": {
-                    "caption": "Other",
-                    "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
-                }
-            }
         },
         "attacks": {
             "caption": "Attacks"
-        },
-        "type_uid": {
-            "type": "integer_t"
         }
     }
 }

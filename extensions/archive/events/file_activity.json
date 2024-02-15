@@ -1,18 +1,22 @@
 {
     "attributes": {
-        "class_uid": {
-            "default": 0,
-            "enum": {
-                "-1": {
-                    "caption": "Other"
-                }
-            }
+        "data": {
+            "description": "Additional data that is associated with the event.",
+            "requirement": "optional",
+            "caption": "Data",
+            "type": "json_t"
         },
-        "category_uid": {
-            "default": 0,
+        "activity_id": {
             "enum": {
                 "-1": {
-                    "caption": "Other"
+                    "caption": "Other",
+                    "description": "The event activity is not mapped."
+                },
+                "12": {
+                    "caption": "Mounted"
+                },
+                "13": {
+                    "caption": "Unmounted"
                 }
             }
         },
@@ -24,28 +28,37 @@
                 }
             }
         },
-        "confidence": {
-            "group": "classification",
-            "requirement": "optional",
-            "caption": "Confidence",
-            "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
-            "type": "integer_t"
-        },
-        "count": {
-            "default": 1
+        "category_uid": {
+            "enum": {
+                "-1": {
+                    "caption": "Other"
+                }
+            },
+            "default": 0
         },
         "disposition_id": {
             "enum": {
                 "-1": {
                     "caption": "Other"
                 },
-                "10": {
-                    "description": "Requires reboot to finish the operation.",
-                    "caption": "Delayed"
+                "2": {
+                    "caption": "Allowed"
                 },
                 "14": {
-                    "description": "No longer suspicious (re-scored).",
-                    "caption": "Exonerated"
+                    "caption": "Exonerated",
+                    "description": "No longer suspicious (re-scored)."
+                },
+                "1": {
+                    "caption": "Blocked"
+                },
+                "4": {
+                    "caption": "Logged"
+                },
+                "3": {
+                    "caption": "No Action"
+                },
+                "12": {
+                    "caption": "Quarantined"
                 },
                 "15": {
                     "description": "Marked with extended attributes.",
@@ -54,35 +67,24 @@
                 "11": {
                     "caption": "Detected"
                 },
-                "2": {
-                    "caption": "Allowed"
-                },
-                "12": {
-                    "caption": "Quarantined"
-                },
-                "6": {
-                    "caption": "Corrected"
+                "8": {
+                    "caption": "Uncorrected"
                 },
                 "5": {
                     "caption": "Command Script Run"
                 },
-                "1": {
-                    "caption": "Blocked"
-                },
-                "3": {
-                    "caption": "No Action"
-                },
-                "4": {
-                    "caption": "Logged"
-                },
                 "7": {
                     "caption": "Partially Corrected"
+                },
+                "10": {
+                    "caption": "Delayed",
+                    "description": "Requires reboot to finish the operation."
                 },
                 "13": {
                     "caption": "Restored"
                 },
-                "8": {
-                    "caption": "Uncorrected"
+                "6": {
+                    "caption": "Corrected"
                 }
             }
         },
@@ -97,31 +99,29 @@
                 }
             }
         },
-        "activity_id": {
+        "class_uid": {
             "enum": {
                 "-1": {
-                    "caption": "Other",
-                    "description": "The event activity is not mapped."
-                },
-                "13": {
-                    "caption": "Unmounted"
-                },
-                "12": {
-                    "caption": "Mounted"
+                    "caption": "Other"
                 }
-            }
+            },
+            "default": 0
         },
-        "data": {
-            "description": "Additional data that is associated with the event.",
+        "count": {
+            "default": 1
+        },
+        "confidence": {
+            "group": "classification",
             "requirement": "optional",
-            "caption": "Data",
-            "type": "json_t"
-        },
-        "attacks": {
-            "caption": "Attacks"
+            "caption": "Confidence",
+            "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
+            "type": "integer_t"
         },
         "type_uid": {
             "type": "integer_t"
+        },
+        "attacks": {
+            "caption": "Attacks"
         }
     }
 }

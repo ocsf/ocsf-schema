@@ -1,5 +1,8 @@
 {
     "attributes": {
+        "count": {
+            "default": 1
+        },
         "confidence": {
             "group": "classification",
             "requirement": "optional",
@@ -7,13 +10,29 @@
             "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
             "type": "integer_t"
         },
-        "class_uid": {
+        "activity_id": {
+            "enum": {
+                "-1": {
+                    "caption": "Other",
+                    "description": "The event activity is not mapped."
+                }
+            }
+        },
+        "category_uid": {
             "default": 0,
             "enum": {
                 "-1": {
                     "caption": "Other"
                 }
             }
+        },
+        "class_uid": {
+            "enum": {
+                "-1": {
+                    "caption": "Other"
+                }
+            },
+            "default": 0
         },
         "severity_id": {
             "enum": {
@@ -33,23 +52,6 @@
             "caption": "Command UID",
             "type": "string_t"
         },
-        "data": {
-            "description": "Additional data that is associated with the event.",
-            "requirement": "optional",
-            "caption": "Data",
-            "type": "json_t"
-        },
-        "count": {
-            "default": 1
-        },
-        "activity_id": {
-            "enum": {
-                "-1": {
-                    "caption": "Other",
-                    "description": "The event activity is not mapped."
-                }
-            }
-        },
         "status_id": {
             "enum": {
                 "-1": {
@@ -58,13 +60,11 @@
                 }
             }
         },
-        "category_uid": {
-            "default": 0,
-            "enum": {
-                "-1": {
-                    "caption": "Other"
-                }
-            }
+        "data": {
+            "description": "Additional data that is associated with the event.",
+            "requirement": "optional",
+            "caption": "Data",
+            "type": "json_t"
         },
         "scan_uid": {
             "description": "The unique identifier of the discovery scan request that pertains to this event.",

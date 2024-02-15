@@ -1,9 +1,7 @@
 {
     "caption": "Authorization",
     "description": "Authorization events report special privileges or groups assigned to a session.",
-    "extends": "audit",
     "name": "authorization",
-    "uid": 3,
     "associations": {
         "dst_endpoint": [
             "user"
@@ -32,7 +30,6 @@
                     "description": "The event activity is unknown."
                 }
             },
-            "$include": "enums/defaults.json",
             "requirement": "required",
             "caption": "Activity ID",
             "description": "The normalized identifier of the activity that triggered the event.",
@@ -61,9 +58,6 @@
             "caption": "User",
             "type": "user"
         },
-        "$include": [
-            "profiles/host.json"
-        ],
         "device": {
             "requirement": "recommended",
             "caption": "Device",
@@ -325,8 +319,5 @@
             "type": "string_t"
         }
     },
-    "category": "audit",
-    "profiles": [
-        "host"
-    ]
+    "category": "audit"
 }

@@ -1,30 +1,34 @@
 {
     "attributes": {
+        "class_uid": {
+            "default": 0,
+            "enum": {
+                "-1": {
+                    "caption": "Other"
+                }
+            }
+        },
+        "confidence": {
+            "group": "classification",
+            "requirement": "optional",
+            "caption": "Confidence",
+            "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
+            "type": "integer_t"
+        },
         "disposition_id": {
             "enum": {
                 "-1": {
                     "caption": "Other"
                 },
+                "1": {
+                    "caption": "Blocked"
+                },
                 "14": {
                     "description": "No longer suspicious (re-scored).",
                     "caption": "Exonerated"
                 },
-                "10": {
-                    "description": "Requires reboot to finish the operation.",
-                    "caption": "Delayed"
-                },
-                "15": {
-                    "description": "Marked with extended attributes.",
-                    "caption": "Tagged"
-                },
-                "6": {
-                    "caption": "Corrected"
-                },
-                "7": {
-                    "caption": "Partially Corrected"
-                },
-                "12": {
-                    "caption": "Quarantined"
+                "11": {
+                    "caption": "Detected"
                 },
                 "5": {
                     "caption": "Command Script Run"
@@ -35,20 +39,31 @@
                 "13": {
                     "caption": "Restored"
                 },
-                "1": {
-                    "caption": "Blocked"
-                },
                 "3": {
                     "caption": "No Action"
                 },
-                "11": {
-                    "caption": "Detected"
+                "12": {
+                    "caption": "Quarantined"
+                },
+                "10": {
+                    "caption": "Delayed",
+                    "description": "Requires reboot to finish the operation."
+                },
+                "15": {
+                    "caption": "Tagged",
+                    "description": "Marked with extended attributes."
+                },
+                "7": {
+                    "caption": "Partially Corrected"
+                },
+                "4": {
+                    "caption": "Logged"
                 },
                 "8": {
                     "caption": "Uncorrected"
                 },
-                "4": {
-                    "caption": "Logged"
+                "6": {
+                    "caption": "Corrected"
                 }
             }
         },
@@ -58,55 +73,31 @@
                     "caption": "Other",
                     "description": "The event activity is not mapped."
                 },
-                "1": {
-                    "description": "A new network connection was opened.",
-                    "caption": "Open"
+                "2": {
+                    "caption": "Close",
+                    "description": "The network connection was closed."
                 },
                 "3": {
                     "description": "The network connection was abnormally terminated or closed by a middle device like firewalls.",
                     "caption": "Reset"
                 },
-                "4": {
-                    "description": "Network traffic report.",
-                    "caption": "Traffic"
+                "1": {
+                    "caption": "Open",
+                    "description": "A new network connection was opened."
                 },
-                "2": {
-                    "description": "The network connection was closed.",
-                    "caption": "Close"
+                "4": {
+                    "caption": "Traffic",
+                    "description": "Network traffic report."
                 }
             }
         },
         "category_uid": {
-            "default": 0,
-            "enum": {
-                "-1": {
-                    "caption": "Other"
-                }
-            }
-        },
-        "data": {
-            "description": "Additional data that is associated with the event.",
-            "requirement": "optional",
-            "caption": "Data",
-            "type": "json_t"
-        },
-        "confidence": {
-            "group": "classification",
-            "requirement": "optional",
-            "caption": "Confidence",
-            "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
-            "type": "integer_t"
-        },
-        "class_uid": {
             "enum": {
                 "-1": {
                     "caption": "Other"
                 }
             },
             "default": 0
-        },
-        "count": {
-            "default": 1
         },
         "severity_id": {
             "enum": {
@@ -119,6 +110,9 @@
                 }
             }
         },
+        "count": {
+            "default": 1
+        },
         "status_id": {
             "enum": {
                 "-1": {
@@ -126,6 +120,12 @@
                     "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
                 }
             }
+        },
+        "data": {
+            "description": "Additional data that is associated with the event.",
+            "requirement": "optional",
+            "caption": "Data",
+            "type": "json_t"
         },
         "attacks": {
             "caption": "Attacks"

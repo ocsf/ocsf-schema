@@ -1,5 +1,68 @@
 {
     "attributes": {
+        "device": {
+            "group": "primary"
+        },
+        "disposition_id": {
+            "enum": {
+                "-1": {
+                    "caption": "Other"
+                },
+                "15": {
+                    "description": "Marked with extended attributes.",
+                    "caption": "Tagged"
+                },
+                "13": {
+                    "caption": "Restored"
+                },
+                "12": {
+                    "caption": "Quarantined"
+                },
+                "2": {
+                    "caption": "Allowed"
+                },
+                "4": {
+                    "caption": "Logged"
+                },
+                "8": {
+                    "caption": "Uncorrected"
+                },
+                "10": {
+                    "description": "Requires reboot to finish the operation.",
+                    "caption": "Delayed"
+                },
+                "6": {
+                    "caption": "Corrected"
+                },
+                "11": {
+                    "caption": "Detected"
+                },
+                "1": {
+                    "caption": "Blocked"
+                },
+                "3": {
+                    "caption": "No Action"
+                },
+                "7": {
+                    "caption": "Partially Corrected"
+                },
+                "14": {
+                    "caption": "Exonerated",
+                    "description": "No longer suspicious (re-scored)."
+                },
+                "5": {
+                    "caption": "Command Script Run"
+                }
+            }
+        },
+        "category_uid": {
+            "default": 0,
+            "enum": {
+                "-1": {
+                    "caption": "Other"
+                }
+            }
+        },
         "severity_id": {
             "enum": {
                 "-1": {
@@ -10,6 +73,38 @@
                     "description": "The event severity is not known."
                 }
             }
+        },
+        "actor": {
+            "group": "primary"
+        },
+        "status_id": {
+            "enum": {
+                "-1": {
+                    "caption": "Other",
+                    "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
+                }
+            }
+        },
+        "confidence": {
+            "group": "classification",
+            "requirement": "optional",
+            "caption": "Confidence",
+            "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
+            "type": "integer_t"
+        },
+        "class_uid": {
+            "enum": {
+                "-1": {
+                    "caption": "Other"
+                }
+            },
+            "default": 0
+        },
+        "data": {
+            "description": "Additional data that is associated with the event.",
+            "requirement": "optional",
+            "caption": "Data",
+            "type": "json_t"
         },
         "count": {
             "default": 1
@@ -24,101 +119,6 @@
                     "caption": "Allowed"
                 }
             }
-        },
-        "category_uid": {
-            "default": 0,
-            "enum": {
-                "-1": {
-                    "caption": "Other"
-                }
-            }
-        },
-        "class_uid": {
-            "enum": {
-                "-1": {
-                    "caption": "Other"
-                }
-            },
-            "default": 0
-        },
-        "device": {
-            "group": "primary"
-        },
-        "confidence": {
-            "group": "classification",
-            "requirement": "optional",
-            "caption": "Confidence",
-            "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
-            "type": "integer_t"
-        },
-        "data": {
-            "description": "Additional data that is associated with the event.",
-            "requirement": "optional",
-            "caption": "Data",
-            "type": "json_t"
-        },
-        "status_id": {
-            "enum": {
-                "-1": {
-                    "caption": "Other",
-                    "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
-                }
-            }
-        },
-        "disposition_id": {
-            "enum": {
-                "-1": {
-                    "caption": "Other"
-                },
-                "14": {
-                    "description": "No longer suspicious (re-scored).",
-                    "caption": "Exonerated"
-                },
-                "15": {
-                    "description": "Marked with extended attributes.",
-                    "caption": "Tagged"
-                },
-                "10": {
-                    "description": "Requires reboot to finish the operation.",
-                    "caption": "Delayed"
-                },
-                "12": {
-                    "caption": "Quarantined"
-                },
-                "5": {
-                    "caption": "Command Script Run"
-                },
-                "2": {
-                    "caption": "Allowed"
-                },
-                "8": {
-                    "caption": "Uncorrected"
-                },
-                "6": {
-                    "caption": "Corrected"
-                },
-                "3": {
-                    "caption": "No Action"
-                },
-                "1": {
-                    "caption": "Blocked"
-                },
-                "7": {
-                    "caption": "Partially Corrected"
-                },
-                "11": {
-                    "caption": "Detected"
-                },
-                "4": {
-                    "caption": "Logged"
-                },
-                "13": {
-                    "caption": "Restored"
-                }
-            }
-        },
-        "actor": {
-            "group": "primary"
         },
         "attacks": {
             "caption": "Attacks"

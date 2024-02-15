@@ -6,21 +6,24 @@
             "caption": "Data",
             "type": "json_t"
         },
-        "activity_id": {
+        "status_id": {
             "enum": {
                 "-1": {
                     "caption": "Other",
-                    "description": "The event activity is not mapped."
+                    "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
                 }
             }
         },
-        "class_uid": {
+        "category_uid": {
             "enum": {
                 "-1": {
                     "caption": "Other"
                 }
             },
             "default": 0
+        },
+        "count": {
+            "default": 1
         },
         "severity_id": {
             "enum": {
@@ -33,14 +36,6 @@
                 }
             }
         },
-        "status_id": {
-            "enum": {
-                "-1": {
-                    "caption": "Other",
-                    "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
-                }
-            }
-        },
         "confidence": {
             "group": "classification",
             "requirement": "optional",
@@ -48,42 +43,39 @@
             "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
             "type": "integer_t"
         },
-        "category_uid": {
-            "default": 0,
+        "activity_id": {
             "enum": {
                 "-1": {
-                    "caption": "Other"
+                    "caption": "Other",
+                    "description": "The event activity is not mapped."
                 }
             }
-        },
-        "count": {
-            "default": 1
         },
         "disposition_id": {
             "enum": {
                 "-1": {
                     "caption": "Other"
                 },
-                "14": {
-                    "description": "No longer suspicious (re-scored).",
-                    "caption": "Exonerated"
+                "4": {
+                    "caption": "Logged"
                 },
                 "15": {
                     "description": "Marked with extended attributes.",
                     "caption": "Tagged"
                 },
-                "10": {
-                    "description": "Requires reboot to finish the operation.",
-                    "caption": "Delayed"
+                "7": {
+                    "caption": "Partially Corrected"
                 },
-                "1": {
-                    "caption": "Blocked"
+                "14": {
+                    "description": "No longer suspicious (re-scored).",
+                    "caption": "Exonerated"
                 },
                 "8": {
                     "caption": "Uncorrected"
                 },
-                "4": {
-                    "caption": "Logged"
+                "10": {
+                    "caption": "Delayed",
+                    "description": "Requires reboot to finish the operation."
                 },
                 "5": {
                     "caption": "Command Script Run"
@@ -91,31 +83,39 @@
                 "3": {
                     "caption": "No Action"
                 },
-                "13": {
-                    "caption": "Restored"
-                },
-                "7": {
-                    "caption": "Partially Corrected"
-                },
-                "12": {
-                    "caption": "Quarantined"
-                },
-                "2": {
-                    "caption": "Allowed"
+                "6": {
+                    "caption": "Corrected"
                 },
                 "11": {
                     "caption": "Detected"
                 },
-                "6": {
-                    "caption": "Corrected"
+                "2": {
+                    "caption": "Allowed"
+                },
+                "13": {
+                    "caption": "Restored"
+                },
+                "1": {
+                    "caption": "Blocked"
+                },
+                "12": {
+                    "caption": "Quarantined"
                 }
             }
         },
-        "attacks": {
-            "caption": "Attacks"
+        "class_uid": {
+            "enum": {
+                "-1": {
+                    "caption": "Other"
+                }
+            },
+            "default": 0
         },
         "type_uid": {
             "type": "integer_t"
+        },
+        "attacks": {
+            "caption": "Attacks"
         }
     }
 }

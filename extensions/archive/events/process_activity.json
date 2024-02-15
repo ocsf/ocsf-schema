@@ -1,5 +1,20 @@
 {
     "attributes": {
+        "class_uid": {
+            "enum": {
+                "-1": {
+                    "caption": "Other"
+                }
+            },
+            "default": 0
+        },
+        "injection_type_id": {
+            "enum": {
+                "-1": {
+                    "caption": "Other"
+                }
+            }
+        },
         "severity_id": {
             "enum": {
                 "-1": {
@@ -11,30 +26,55 @@
                 }
             }
         },
-        "status_id": {
-            "enum": {
-                "-1": {
-                    "caption": "Other",
-                    "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
-                }
-            }
-        },
-        "count": {
-            "default": 1
-        },
-        "category_uid": {
-            "default": 0,
+        "disposition_id": {
             "enum": {
                 "-1": {
                     "caption": "Other"
-                }
-            }
-        },
-        "class_uid": {
-            "default": 0,
-            "enum": {
-                "-1": {
-                    "caption": "Other"
+                },
+                "15": {
+                    "caption": "Tagged",
+                    "description": "Marked with extended attributes."
+                },
+                "5": {
+                    "caption": "Command Script Run"
+                },
+                "1": {
+                    "caption": "Blocked"
+                },
+                "10": {
+                    "description": "Requires reboot to finish the operation.",
+                    "caption": "Delayed"
+                },
+                "11": {
+                    "caption": "Detected"
+                },
+                "12": {
+                    "caption": "Quarantined"
+                },
+                "8": {
+                    "caption": "Uncorrected"
+                },
+                "6": {
+                    "caption": "Corrected"
+                },
+                "4": {
+                    "caption": "Logged"
+                },
+                "13": {
+                    "caption": "Restored"
+                },
+                "14": {
+                    "description": "No longer suspicious (re-scored).",
+                    "caption": "Exonerated"
+                },
+                "7": {
+                    "caption": "Partially Corrected"
+                },
+                "3": {
+                    "caption": "No Action"
+                },
+                "2": {
+                    "caption": "Allowed"
                 }
             }
         },
@@ -53,59 +93,19 @@
             "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
             "type": "integer_t"
         },
-        "disposition_id": {
+        "status_id": {
             "enum": {
                 "-1": {
-                    "caption": "Other"
-                },
-                "10": {
-                    "description": "Requires reboot to finish the operation.",
-                    "caption": "Delayed"
-                },
-                "14": {
-                    "description": "No longer suspicious (re-scored).",
-                    "caption": "Exonerated"
-                },
-                "15": {
-                    "description": "Marked with extended attributes.",
-                    "caption": "Tagged"
-                },
-                "1": {
-                    "caption": "Blocked"
-                },
-                "12": {
-                    "caption": "Quarantined"
-                },
-                "7": {
-                    "caption": "Partially Corrected"
-                },
-                "8": {
-                    "caption": "Uncorrected"
-                },
-                "11": {
-                    "caption": "Detected"
-                },
-                "13": {
-                    "caption": "Restored"
-                },
-                "6": {
-                    "caption": "Corrected"
-                },
-                "5": {
-                    "caption": "Command Script Run"
-                },
-                "3": {
-                    "caption": "No Action"
-                },
-                "2": {
-                    "caption": "Allowed"
-                },
-                "4": {
-                    "caption": "Logged"
+                    "caption": "Other",
+                    "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
                 }
             }
         },
-        "injection_type_id": {
+        "count": {
+            "default": 1
+        },
+        "category_uid": {
+            "default": 0,
             "enum": {
                 "-1": {
                     "caption": "Other"

@@ -2664,6 +2664,43 @@
       "description": "The query info object holds information related to data access within a datastore. To access, manipulate, delete, or retrieve data from a datastore, a database query must be written using a specific syntax.",
       "type": "query_info"
     },
+    "query_result": {
+      "caption": "Query Result",
+      "description": "The result of the query.",
+      "type": "string_t"
+    },
+    "query_result_id": {
+      "caption": "The normalized id of the query result.",
+      "description": "The result of the query.",
+      "enum": {
+        "1": {
+          "caption": "Exists",
+          "description": "The target was found."
+        },
+        "2": {
+          "caption": "Partial",
+          "description": "The target was partially found."
+        },
+        "3": {
+          "caption": "Does not exist",
+          "description": "The target was not found."
+        },
+        "4": {
+          "caption": "Error",
+          "description": "The discovery attempt failed."
+        },
+        "5": {
+          "caption": "Unsupported",
+          "description": "Discovery of the target was not supported."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The query result is not mapped. See the <code>query_result</code> attribute, which contains a data source specific value."
+        }
+      },
+      "type": "integer_t",
+      "sibling": "query_result"
+    },
     "query_string": {
       "caption": "HTTP Query String",
       "description": "The query portion of the URL. For example: the query portion of the URL <code>http://www.example.com/search?q=bad&sort=date</code> is <code>q=bad&sort=date</code>.",

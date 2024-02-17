@@ -4,13 +4,22 @@
   "extends": "_entity",
   "name": "endpoint",
   "observable": 20,
+  "profiles": [
+    "container"
+  ],
   "attributes": {
+    "$include": [
+      "profiles/container.json"
+    ],
     "domain": {
       "requirement": "optional"
     },
     "hostname": {
       "description": "The fully qualified name of the endpoint.",
       "requirement": "recommended"
+    },
+    "hw_info": {
+      "requirement": "optional"
     },
     "instance_uid": {
       "requirement": "recommended"
@@ -36,6 +45,10 @@
     "name": {
       "description": "The short name of the endpoint."
     },
+    "os": {
+      "description": "The endpoint operating system.",
+      "requirement": "optional"
+    },
     "subnet_uid": {
       "requirement": "optional"
     },
@@ -49,28 +62,48 @@
       "description": "The endpoint type ID.",
       "enum": {
         "1": {
-          "caption": "Server"
+          "caption": "Server",
+          "description": "A <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:Server/'>server</a>."
         },
         "2": {
-          "caption": "Desktop"
+          "caption": "Desktop",
+          "description": "A <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:DesktopComputer/'>desktop computer</a>."
         },
         "3": {
-          "caption": "Laptop"
+          "caption": "Laptop",
+          "description": "A <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:LaptopComputer/'>laptop computer</a>."
         },
         "4": {
-          "caption": "Tablet"
+          "caption": "Tablet",
+          "description": "A <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:TabletComputer/'>tablet computer</a>."
         },
         "5": {
-          "caption": "Mobile"
+          "caption": "Mobile",
+          "description": "A <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:MobilePhone/'>mobile phone</a>."
         },
         "6": {
-          "caption": "Virtual"
+          "caption": "Virtual",
+          "description": "A <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:VirtualizationSoftware/'>virtual machine</a>."
         },
         "7": {
-          "caption": "IOT"
+          "caption": "IOT",
+          "description": "A <a target='_blank' href='https://www.techtarget.com/iotagenda/definition/IoT-device'>IOT (Internet of Things) device</a>."
         },
         "8": {
-          "caption": "Browser"
+          "caption": "Browser",
+          "description": "A <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:Browser/'>web browser</a>."
+        },
+        "9": {
+          "caption": "Firewall",
+          "description": "A <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:Firewall/'>networking firewall</a>."
+        },
+        "10": {
+          "caption": "Switch",
+          "description": "A <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:Switch/'>networking switch</a>."
+        },
+        "11": {
+          "caption": "Hub",
+          "description": "A <a target='_blank' href='https://en.wikipedia.org/wiki/Ethernet_hub'>networking hub</a>."
         }
       },
       "requirement": "recommended"
@@ -82,6 +115,9 @@
       "requirement": "optional"
     },
     "vpc_uid": {
+      "requirement": "optional"
+    },
+    "zone": {
       "requirement": "optional"
     }
   },

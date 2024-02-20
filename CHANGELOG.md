@@ -21,6 +21,9 @@ Thankyou! -->
 * #### Event Classes
   1. Added `auth_factors` array to Authentication event class. #949
 
+  #### Objects
+  1. Added `risk_score`, `risk_level_id`, `risk_level` to the User object. Issue #972.
+
 <!-- All available sections in the Changelog:
 
 ### Added

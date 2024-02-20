@@ -24,10 +24,10 @@ Thankyou! -->
     1. Added `lat`, `long`, `geohash` attributes to `location`  object. #971
 
 ### Bugfixes
-    1. Changed datatype of `priority` from `integer_t` to `string_t` #959
+1. Changed datatype of `priority` from `integer_t` to `string_t` #959
 
 ### Deprecated
-    1. Deprecated `coordinates` attrubute in favor of specific `lat`, `long` attributes. #971
+1. Deprecated `coordinates` attrubute in favor of specific `lat`, `long` attributes. #971
 
 ### Misc
 1. New Extension registration for Sedara. #951

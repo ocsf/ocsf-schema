@@ -9,6 +9,12 @@
       "is_array": true,
       "type": "string_t"
     },
+    "auth_factors": {
+      "caption": "Authentication Factors",
+      "description": "Describes a category of methods used for identity verification in an authentication attempt.",
+      "is_array": true,
+      "type": "auth_factor"
+    },
     "access_mask": {
       "caption": "Access Mask",
       "description": "The access mask in a platform-native format.",
@@ -1538,6 +1544,69 @@
       "is_array": true,
       "type": "tls_extension"
     },
+    "factor_type": {
+      "caption": "Factor Type",
+      "description": "The type of authentication factor used in an authentication attempt.",
+      "type": "string_t"
+    },
+    "factor_type_id": {
+      "caption": "Factor Type ID",
+      "description": "The normalized identifier for the authentication factor.",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "SMS",
+          "description": "User receives and inputs a code sent to their mobile device via SMS text message."
+        },
+        "2": {
+          "caption": "Security Question",
+          "description": "The user responds to a security question as part of a question-based authentication factor"
+        },
+        "3": {
+          "caption": "Phone Call",
+          "description": "System calls the user's registered phone number and requires the user to answer and provide a response."
+        },
+        "4": {
+          "caption": "Biometric",
+          "description": "Devices that verify identity-based on user's physical identifiers, such as fingerprint scanners or retina scanners."
+        },
+        "5": {
+          "caption": "Push Notification",
+          "description": "Push notification is sent to user's registered device and requires the user to acknowledge."
+        },
+        "6": {
+          "caption": "Hardware Token",
+          "description": "Physical device that generates a code to be used for authentication."
+        },
+        "7": {
+          "caption": "OTP",
+          "description": "Application generates a one-time password (OTP) for use in authentication."
+        },
+        "8": {
+          "caption": "Email",
+          "description": "A code or link is sent to a user's registered email address."
+        },
+        "9": {
+          "caption": "U2F",
+          "description": "Typically involves a hardware token, which the user physically interacts with to authenticate."
+        },
+        "10": {
+          "caption": "WebAuthn",
+          "description": "Web-based API that enables users to register devices as authentication factors."
+        },
+        "11": {
+          "caption": "Password",
+          "description": "The user enters a password that they have previously established."
+        },
+        "99": {
+          "caption": "Other"
+        }
+      },
+      "sibling": "factor_type",
+      "type": "integer_t"
+    },
     "feature": {
       "caption": "Feature",
       "description": "The feature that reported the event.",
@@ -1912,6 +1981,11 @@
       "description": "Indicates if a fix is available for the reported vulnerability.",
       "type": "boolean_t"
     },
+    "is_hotp": {
+      "caption": "HMAC-based One-time Password (HOTP)",
+      "description": "Whether the authentication factor is an HMAC-based One-time Password (HOTP).",
+      "type": "boolean_t"
+    },
     "is_http_only": {
       "caption": "HTTP Only",
       "description": "This attribute prevents the cookie from being accessed via JavaScript.",
@@ -1972,6 +2046,11 @@
       "description": "The event occurred on a trusted device.",
       "type": "boolean_t"
     },
+    "is_totp": {
+      "caption": "Time-based One-time Password (TOTP)",
+      "description": "Whether the authentication factor is a Time-based One-time Password (TOTP).",
+      "type": "boolean_t"
+    },
     "is_vpn": {
       "caption": "VPN Session",
       "description": "The indication of whether the session is a VPN session.",
@@ -2016,7 +2095,7 @@
       "description": "The KB article/s related to the entity. A KB Article contains metadata that describes the patch or an update.",
       "is_array": true,
       "type": "string_t"
-    },    
+    },
     "kb_article_list": {
       "caption": "Knowledgebase Articles",
       "description": "A list of KB articles or patches related to an endpoint. A KB Article contains metadata that describes the patch or an update.",
@@ -2644,6 +2723,11 @@
       "type": "integer_t",
       "sibling": "phase"
     },
+    "phone_number": {
+        "caption": "Phone Number",
+        "description": "The number associated with the phone.",
+        "type": "string_t"
+    },
     "phones": {
       "caption": "Phones",
       "description": "The phone numbers associated with the user",
@@ -3223,6 +3307,12 @@
       "caption": "Security Descriptor",
       "description": "The object security descriptor.",
       "type": "string_t"
+    },
+    "security_questions": {
+        "caption": "Security Questions",
+        "description": "The question(s) provided to user for a question-based authentication factor.",
+        "is_array": true,
+        "type": "string_t"
     },
     "sequence": {
       "caption": "Sequence Number",

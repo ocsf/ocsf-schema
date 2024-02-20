@@ -59,6 +59,23 @@ Thankyou! -->
     7. Added `Device Config Sate Change` event class. #914
     8. Added `Scan Activity` event class. #915
     9. Added `File Hosting Activity` event class. #917
+    10. Added `File Query` event class. #967
+    11. Added `Folder Query` event class. #967
+    12. Added `Group Query` event class. #967
+    13. Added `Job Query` event class. #967
+    14. Added `Kernel Object Query` event class. #967
+    15. Added `Module Query` event class. #967
+    16. Added `Network Connection Query` event class. #967
+    17. Added `Networks Query` event class. #967
+    18. Added `Peripheral Device Query` event class. #967
+    19. Added `Prefetch Query` event class. #967
+    20. Added `Process Query` event class. #967
+    21. Added `Registry Key Query` event class. #967
+    22. Added `Registry Value Query` event class. #967
+    23. Added `Service Query` event class. #967
+    24. Added `Session Query` event class. #967
+    25. Added `Startup Application Query` event class. #967
+    26. Added `User Query` event class. #967
 
 * #### Profiles
 	1. Added `Network Proxy` Profile for the `Network Activity` and `Application Activity` classes. #705 

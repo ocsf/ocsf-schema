@@ -15,11 +15,22 @@ Thankyou! -->
 
 ### Added 
 * #### Objects
-  1. Added `auth_factor` object. #949
+    1. Added `auth_factor` object. #949
 
 ### Improved
 * #### Event Classes
-  1. Added `auth_factors` array to Authentication event class. #949
+    1. Added `auth_factors` array to Authentication event class. #949
+* #### Objects
+    1. Added `lat`, `long`, `geohash` attributes to `location`  object. #971
+
+### Bugfixes
+1. Changed datatype of `priority` from `integer_t` to `string_t` #959
+
+### Deprecated
+1. Deprecated `coordinates` attrubute in favor of specific `lat`, `long` attributes. #971
+
+### Misc
+1. New Extension registration for Sedara. #951
 
   #### Objects
   1. Added `risk_score`, `risk_level_id`, `risk_level` to the User object. Issue #972.
@@ -47,12 +58,8 @@ Thankyou! -->
 ### Breaking changes
 
 ### Misc
-1. New Extension registration for Sedara. #951
 
 -->
-
-### Bugfixes
-    1. Changed datatype of `priority` from `integer_t` to `string_t` #959
 
 ## [v1.1.0] - January 25th, 2024
 

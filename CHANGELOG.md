@@ -13,29 +13,46 @@ Thankyou! -->
 
 ## [Unreleased]
 
-### Added 
+### Added
+* #### Categories
+* #### Event Classes
+    1. Added `Data Security Finding` event class. #953
+* #### Profiles
 * #### Objects
     1. Added `auth_factor` object. #949
+    2. Added `data_security` object. #953
+* #### Platform Extensions
 
 ### Improved
-
+* #### Categories
 * #### Event Classes
     1. Added `auth_factors` array to Authentication event class. #949
-    1. Modified all classes such that primary attributes are at least recommended. #664
-* #### Objects
-    1. Added `lat`, `long`, `geohash` attributes to `location`  object. #971
+    2. Modified all classes such that primary attributes are at least recommended. #974
+    3. Added `src_endpoint`, `http_request` attributes to all IAM category classes. #976
+* #### Profiles
+* #### Objects 
+    1. Expanded `type_id` enum in `analytic` object to account for more use-cases: #953
+        - `5 - Fingerprinting`
+        - `6 - Tagging`
+        - `7 - Keyword Match`
+        - `8 - Regular Expressions`
+        - `9 - Exact Data Match`
+        - `10 - Partial Data Match`
+        - `11 - Indexed Data Match`
+    2. Added `lat`, `long`, `geohash` attributes to `location` object. #971
+    3. Added `risk_score`, `risk_level_id`, `risk_level` to `user` object. Issue #972.
+* #### Platform Extensions
 
 ### Bugfixes
-1. Changed datatype of `priority` from `integer_t` to `string_t` #959
+1. Changed datatype of `priority` attribute, from `integer_t` to `string_t` #959
 
 ### Deprecated
-1. Deprecated `coordinates` attrubute in favor of specific `lat`, `long` attributes. #971
+1. Deprecated `coordinates` attribute in favor of specific `lat`, `long` attributes. #971
+
+### Breaking changes
 
 ### Misc
 1. New Extension registration for Sedara. #951
-
-  #### Objects
-  1. Added `risk_score`, `risk_level_id`, `risk_level` to the User object. Issue #972.
 
 <!-- All available sections in the Changelog:
 
@@ -62,21 +79,6 @@ Thankyou! -->
 ### Misc
 
 -->
-### Added
-* #### Event Classes
-    1. Added `Data Security Finding` event class. - [#953](https://github.com/ocsf/ocsf-schema/pull/953)
-* #### Objects
-    1. Added new `data_security` object. - [#953](https://github.com/ocsf/ocsf-schema/pull/953)
-
-### Improved
-* #### Objects
-    1. Added two new enums to `confidentiality` object: `5 - Private` and `6 - Restricted` - [#953](https://github.com/ocsf/ocsf-schema/pull/953)
-    2. Expand `analytic.type_id` enum with descriptions and added several new enums to broaden the types of rules and use cases `analytic` can be used for - [#953](https://github.com/ocsf/ocsf-schema/pull/953)
-        - `Fingerprinting`
-        - `Tagging`
-        - `Exact Data Match`
-        - `Partial Data Match`
-        - `Indexed Data Match`
 
 ## [v1.1.0] - January 25th, 2024
 

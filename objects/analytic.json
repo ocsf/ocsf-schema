@@ -1,62 +1,90 @@
 {
-  "caption": "Analytic",
-  "name": "analytic",
-  "description": "The Analytic object contains details about the analytic technique used to analyze and derive insights from the data or information that led to the creation of a finding or conclusion.",
-  "extends": "_entity",
-  "attributes": {
-    "category": {
-      "description": "The analytic category.",
-      "requirement": "optional"
-    },
-    "desc": {
-      "description": "The description of the analytic that generated the finding.",
-      "requirement": "optional"
-    },
-    "name": {
-      "description": "The name of the analytic that generated the finding."
-    },
-    "related_analytics": {
-      "@deprecated": {
-        "message": "Related Analytics has been decoupled from this object, instead use <code>finding_info.related_analytics</code>.",
-        "since": "1.0.0"
+    "caption": "Analytic",
+    "name": "analytic",
+    "description": "The Analytic object contains details about the analytic technique used to analyze and derive insights from the data or information that led to the creation of a finding or conclusion.",
+    "extends": "_entity",
+    "attributes": {
+      "category": {
+        "description": "The analytic category.",
+        "requirement": "optional"
       },
-      "description": "Other analytics related to this analytic.",
-      "requirement": "optional"
-    },
-    "type": {
-      "description": "The analytic type.",
-      "requirement": "optional"
-    },
-    "type_id": {
-      "description": "The analytic type ID.",
-      "requirement": "required",
-      "enum": {
-        "0": {
-          "caption": "Unknown"
+      "desc": {
+        "description": "The description of the analytic that generated the finding.",
+        "requirement": "optional"
+      },
+      "name": {
+        "description": "The name of the analytic that generated the finding."
+      },
+      "related_analytics": {
+        "@deprecated": {
+          "message": "Related Analytics has been decoupled from this object, instead use <code>finding_info.related_analytics</code>.",
+          "since": "1.0.0"
         },
-        "1": {
-          "caption": "Rule"
-        },
-        "2": {
-          "caption": "Behavioral"
-        },
-        "3": {
-          "caption": "Statistical"
-        },
-        "4": {
-          "caption": "Learning (ML/DL)"
-        },
-        "99": {
-          "caption": "Other"
+        "description": "Other analytics related to this analytic.",
+        "requirement": "optional"
+      },
+      "type": {
+        "description": "The analytic type.",
+        "requirement": "optional"
+      },
+      "type_id": {
+        "description": "The analytic type ID.",
+        "requirement": "required",
+        "enum": {
+          "0": {
+            "caption": "Unknown"
+          },
+          "1": {
+            "caption": "Rule",
+            "description": "A Rule in security analytics refers to predefined criteria or conditions set to monitor, alert, or enforce policies, playing a crucial role in access control, threat detection, and regulatory compliance across security systems."
+          },
+          "2": {
+            "caption": "Behavioral",
+            "description": "Behavioral analytics focus on monitoring and analyzing user or system actions to identify deviations from established patterns, aiding in the detection of insider threats, fraud, and advanced persistent threats (APTs)."
+          },
+          "3": {
+            "caption": "Statistical",
+            "description": "Statistical analytics pertains to analyzing data patterns and anomalies using statistical models to predict, detect, and respond to potential threats, enhancing overall security posture through informed decision-making."
+          },
+          "5": {
+            "caption": "Fingerprinting",
+            "description": "Fingerprinting is the technique of collecting detailed system data, including software versions and configurations, to enhance threat detection, data loss prevention (DLP), and endpoint detection and response (EDR) capabilities."
+          },
+          "6": {
+            "caption": "Tagging",
+            "description": "Tagging refers to the practice of assigning labels or identifiers to data, users, assets, or activities to monitor, control access, and facilitate incident response across various security domains such as DLP and EDR."
+          },
+          "7": {
+            "caption": "Keyword Match",
+            "description": "Keyword Match involves scanning content for specific terms to identify sensitive information, potential threats, or policy violations, aiding in DLP and compliance monitoring."
+          },
+          "8": {
+            "caption": "Regular Expressions",
+            "description": "Regular Expressions are used to define complex search patterns for identifying, validating, and extracting specific data sets or threats within digital content, enhancing DLP, EDR, and threat detection mechanisms."
+          },
+          "9": {
+            "caption": "Exact Data Match",
+            "description": "Exact Data Match is a precise comparison technique used to detect the unauthorized use or exposure of specific, sensitive information, crucial for enforcing DLP policies and protecting against data breaches."
+          },
+          "10": {
+            "caption": "Partial Data Match",
+            "description": "Partial Data Match involves identifying instances where segments of sensitive information or patterns match, facilitating nuanced DLP and threat detection without requiring complete data conformity."
+          },
+          "11": {
+            "caption": "Indexed Data Match",
+            "description": "Indexed Data Match refers to comparing content against a pre-compiled index of sensitive information to efficiently detect and prevent unauthorized access or breaches, streamlining DLP and compliance efforts."
+          },
+          "99": {
+            "caption": "Other"
+          }
         }
+      },
+      "uid": {
+        "description": "The unique identifier of the analytic that generated the finding."
+      },
+      "version": {
+        "description": "The analytic version. For example: <code>1.1</code>.",
+        "requirement": "optional"
       }
-    },
-    "uid": {
-      "description": "The unique identifier of the analytic that generated the finding."
-    },
-    "version": {
-      "description": "The analytic version. For example: <code>1.1</code>.",
-      "requirement": "optional"
     }
   }
-}

@@ -13,6 +13,30 @@ Thankyou! -->
 
 ## [Unreleased]
 
+### Added 
+* #### Objects
+    1. Added `auth_factor` object. #949
+
+### Improved
+
+* #### Event Classes
+    1. Added `auth_factors` array to Authentication event class. #949
+    1. Modified all classes such that primary attributes are at least recommended. #664
+* #### Objects
+    1. Added `lat`, `long`, `geohash` attributes to `location`  object. #971
+
+### Bugfixes
+1. Changed datatype of `priority` from `integer_t` to `string_t` #959
+
+### Deprecated
+1. Deprecated `coordinates` attrubute in favor of specific `lat`, `long` attributes. #971
+
+### Misc
+1. New Extension registration for Sedara. #951
+
+  #### Objects
+  1. Added `risk_score`, `risk_level_id`, `risk_level` to the User object. Issue #972.
+
 <!-- All available sections in the Changelog:
 
 ### Added
@@ -36,12 +60,23 @@ Thankyou! -->
 ### Breaking changes
 
 ### Misc
-1. New Extension registration for Sedara. #951
 
 -->
+### Added
+* #### Event Classes
+    1. Added `Data Security Finding` event class. - [#953](https://github.com/ocsf/ocsf-schema/pull/953)
+* #### Objects
+    1. Added new `data_security` object. - [#953](https://github.com/ocsf/ocsf-schema/pull/953)
 
-### Misc
-    1. Changed datatype of `priority` from `integer_t` to `string_t` #959
+### Improved
+* #### Objects
+    1. Added two new enums to `confidentiality` object: `5 - Private` and `6 - Restricted` - [#953](https://github.com/ocsf/ocsf-schema/pull/953)
+    2. Expand `analytic.type_id` enum with descriptions and added several new enums to broaden the types of rules and use cases `analytic` can be used for - [#953](https://github.com/ocsf/ocsf-schema/pull/953)
+        - `Fingerprinting`
+        - `Tagging`
+        - `Exact Data Match`
+        - `Partial Data Match`
+        - `Indexed Data Match`
 
 ## [v1.1.0] - January 25th, 2024
 

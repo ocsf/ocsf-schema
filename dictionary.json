@@ -9,6 +9,12 @@
       "is_array": true,
       "type": "string_t"
     },
+    "auth_factors": {
+      "caption": "Authentication Factors",
+      "description": "Describes a category of methods used for identity verification in an authentication attempt.",
+      "is_array": true,
+      "type": "auth_factor"
+    },
     "access_mask": {
       "caption": "Access Mask",
       "description": "The access mask in a platform-native format.",
@@ -967,6 +973,12 @@
         },
         "4": {
           "caption": "Top Secret"
+        },
+        "5": {
+          "caption": "Private"
+        },
+        "6": {
+          "caption": "Restricted"
         }
       },
       "sibling": "confidentiality",
@@ -1009,6 +1021,10 @@
       "type": "string_t"
     },
     "coordinates": {
+      "@deprecated": {
+        "message": "Use specific <code> lat, long </code> attributes instead.",
+        "since": "1.2.0"
+      },
       "caption": "Coordinates",
       "description": "A two-element array, containing a longitude/latitude pair. The format conforms with <a target='_blank' href='https://geojson.org'>GeoJSON</a>. For example: <code>[-73.983, 40.719]</code>.",
       "is_array": true,
@@ -1188,11 +1204,90 @@
       "description": "The data bucket object is a basic container that holds data, typically organized through the use of data partitions.",
       "type": "databucket"
     },
+    "data_type": {
+      "caption":"Data Type",
+      "description":"The name of the data classification category that data matched into, e.g. Financial, Personal, Governmental, etc.",
+      "type": "string_t"
+    },
+    "data_type_id": {
+      "caption":"Data Type ID",
+      "description": "The category or type of sensitive data as assessed or scanned by a data security tool (e.g., Personal, Govermental, Financial).",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description":"The type is not mapped. See the <code>data_type</code> attribute, which contains a data source specific value."
+        },
+        "1": {
+          "caption": "Personal",
+          "description":"Any Personally Identifiable Information (PII), Electronic Personal Health Information (ePHI), or similarly personal information. E.g., full name, home address, date of birth, etc."
+        },
+        "2": {
+          "caption": "Governmental",
+          "description": "Any sensitive government identification number related to a person or other classified material. E.g., Passport numbers, driver license numbers, business identification, taxation identifiers, etc."
+        },
+        "3": {
+          "caption": "Financial",
+          "description": "Any financially-related sensitive information or Cardholder Data (CHD). E.g., banking account numbers, credit card numbers, International Banking Account Numbers (IBAN), SWIFT codes, etc."
+        },
+        "4": {
+          "caption": "Business",
+          "description": "Any business-specific sensitive data such as intellectual property, trademarks, copyrights, human resource data, Board of Directors meeting minutes, and similar."
+        },
+        "5": {
+          "caption": "Military and Law Enforcement",
+          "description": "Any mission-specific sensitive data for military, law enforcement, or other government agencies such as specifically classified data, weapon systems information, or other planning data."
+        },
+        "6": {
+          "caption": "Security",
+          "description": "Any sensitive security-related data such as passwords, passkeys, IP addresses, API keys, credentials and similar secrets. E.g., AWS Access Secret Key, SaaS API Keys, user passwords, database credentials, etc."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "Any other type of data classification or a multi-variate classification made up of several other classification categories."
+        }
+      },
+      "sibling": "data_type",
+      "type": "integer_t"
+    },
+    "data_lifecycle_state": {
+      "caption":"Data Lifecycle State",
+      "description":"The name of the stage or state that the data was in. E.g., Data-at-Rest, Data-in-Transit, etc.",
+      "type": "string_t"
+    },
+    "data_lifecycle_state_id": {
+      "caption": "Data Lifecycle State ID",
+      "description": "The stage or state that the data was in when it was assessed or scanned by a data security tool.",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description":"The type is not mapped. See the <code>data_lifecycle_state</code> attribute, which contains a data source specific value."
+        },
+        "1": {
+          "caption": "Data at-Rest",
+          "description": "The data was stored on physical or logcial media and was not actively moving through the network nor was being processed. E.g., data stored in a database, PDF files in a file share, or EHR records in object storage."
+        },
+        "2": {
+          "caption": "Data in-Transit",
+          "description": "The data was actively moving through the network or from one physical or logical location to another. E.g., emails being send, data replication or Change Data Capture (CDC) streams, or sensitive data processed on an API."
+        },
+        "3": {
+          "caption": "Data in-Use",
+          "description": "The data was being processed, accessed, or read by a system, making it active in memory or CPU. E.g., sensitive data in a Business Intelligence tool, ePHI being processed in an EHR application or a user viewing data stored in a spreadsheet or PDF."
+        }
+      },
+      "sibling": "data_lifecycle_state",
+      "type": "integer_t"
+    },
     "data_sources": {
       "caption": "Data Sources",
       "description": "A list of data sources utilized in generation of the finding.",
       "is_array": true,
       "type": "string_t"
+    },
+    "data_security": {
+      "caption": "Data Security",
+      "description": "The Data Security object describes the characteristics, techniques and content of a Data Loss Prevention (DLP), Data Loss Detection (DLD), Data Classification, or similar tools' finding, alert, or detection mechanism(s).",
+      "type": "data_security"
     },
     "dce_rpc": {
       "caption": "Distributed Computing Environment/Remote Procedure Call (DCE/RPC)",
@@ -1249,6 +1344,80 @@
       "caption": "Details",
       "description": "Details of an entity. See specific usage",
       "type": "string_t"
+    },
+    "detection_pattern": {
+      "caption":"Detection Pattern",
+      "description":"Specific pattern, algorithm, fingerpint, or model used for detection.",
+      "type": "string_t"
+    },
+    "detection_system": {
+      "caption":"Detection System",
+      "description":"The name of the type of data security tool or system that the finding, detection, or alert originated from. E.g., Endpoint, Secure Email Gateway, etc.",
+      "type": "string_t"
+    },
+    "detection_system_id": {
+      "caption": "Detection System ID",
+      "description": "The type of data security tool or system that the finding, detection, or alert originated from.",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description":"The type is not mapped. See the <code>detection_system</code> attribute, which contains a data source specific value."
+        },
+        "1": {
+          "caption": "Endpoint",
+          "description": "A dedicated agent or sensor installed on a device, either a dedicated data security tool or an Endpoint Detection & Response (EDR) tool that can detect sensitive data and/or enforce data security policies. E.g., Forcepoint DLP, Symantec DLP, Microsoft Defender for Endpoint (MDE)."
+        },
+        "2": {
+          "caption": "DLP Gateway",
+          "description": "A Data Loss Prevention (DLP) gateway that is positioned in-line of an information store such as a network share, a database, or otherwise that can detect sensitive data and/or enforce data security policies."
+        },
+        "3": {
+          "caption": "Mobile Device Management",
+          "description": "A Mobile Device Management (MDM) or Enterprise Mobility Management (EMM) tool that can detect sensitive data and/or enforce data security policies on mobile devices (e.g., cellphones, tablets, End User Devices [EUDs])."
+        },
+        "4": {
+          "caption": "Data Discovery & Classification",
+          "description": "A tool that actively identifies and classifies sensitive data in digitial media and information stores in accordance with a policy or automated functionality. E.g, Amazon Macie, Microsoft Purview."
+        },
+        "5": {
+          "caption": "Secure Web Gateway",
+          "description": "A Secure Web Gateway (SWG) is any tool that can detect sensitive data and/or enforce data security policies at a network-edge such as within a proxy or firewall service."
+        },
+        "6": {
+          "caption": "Secure Email Gateway",
+          "description": "A Secure Email Gateway (SEG) is any tool that can detect sensitive data and/or enforce data security policies within email systems. E.g., Microsoft Defender for Office, Google Workspaces."
+        },
+        "7": {
+          "caption": "Digital Rights Management",
+          "description": "A Digital Rights Management (DRM) or a dedicated Information Rights Management (IRM) are tools which can detect sensitive data and/or enforce data security policies on digitial media via policy or user access rights."
+        },
+        "8": {
+          "caption": "Cloud Access Security Broker",
+          "description": "A Cloud Access Security Broker (CASB) that can detect sensitive data and/or enforce data security policies in-line to cloud systems such as the public cloud or Software-as-a-Service (SaaS) tool. E.g., Forcepoint CASB, SkyHigh Security."
+        },
+        "9": {
+          "caption": "Database Activity Monitoring",
+          "description": "A Database Activity Monitoring (DAM) tool that can detect sensitive data and/or enforce data security policies as part of a dedicated database or warehouse monitoring solution."
+        },
+        "10": {
+          "caption": "Application-Level DLP",
+          "description": "A built in Data Loss Prevention (DLP) or other data security capability within a tool or platform such as an Enterprise Resource Planning (ERP) or Customer Relations Management (CRM) tool that can detect sensitive data and/or enforce data security policies."
+        },
+        "11": {
+          "caption": "Developer Security",
+          "description": "Any Developer Security tool such as an Infrastrucre-as-Securty (IAC) scanner, Secrets Detection, or Secure Software Development Lifecycle (SSDLC) tool that can detect sensitive data and/or enforce data security policies. E.g., TruffleHog, GitGuardian, Git-Secrets."
+        },
+        "12": {
+          "caption": "Data Security Posture Management",
+          "description": "A Data Security Posture Management (DSPM) tool is a continuous monitoring and data discovery solution that can detect sensitive data and/or enforce data security policies for local and cloud environments. E.g., Cyera, Sentra, IBM Polar Security."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "Any other type of detection system or a multi-variate system made up of several other systems."
+        }
+      },
+      "sibling": "detection_system",
+      "type": "integer_t"
     },
     "detection_uid": {
       "caption": "Detection UID",
@@ -1538,6 +1707,69 @@
       "is_array": true,
       "type": "tls_extension"
     },
+    "factor_type": {
+      "caption": "Factor Type",
+      "description": "The type of authentication factor used in an authentication attempt.",
+      "type": "string_t"
+    },
+    "factor_type_id": {
+      "caption": "Factor Type ID",
+      "description": "The normalized identifier for the authentication factor.",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "SMS",
+          "description": "User receives and inputs a code sent to their mobile device via SMS text message."
+        },
+        "2": {
+          "caption": "Security Question",
+          "description": "The user responds to a security question as part of a question-based authentication factor"
+        },
+        "3": {
+          "caption": "Phone Call",
+          "description": "System calls the user's registered phone number and requires the user to answer and provide a response."
+        },
+        "4": {
+          "caption": "Biometric",
+          "description": "Devices that verify identity-based on user's physical identifiers, such as fingerprint scanners or retina scanners."
+        },
+        "5": {
+          "caption": "Push Notification",
+          "description": "Push notification is sent to user's registered device and requires the user to acknowledge."
+        },
+        "6": {
+          "caption": "Hardware Token",
+          "description": "Physical device that generates a code to be used for authentication."
+        },
+        "7": {
+          "caption": "OTP",
+          "description": "Application generates a one-time password (OTP) for use in authentication."
+        },
+        "8": {
+          "caption": "Email",
+          "description": "A code or link is sent to a user's registered email address."
+        },
+        "9": {
+          "caption": "U2F",
+          "description": "Typically involves a hardware token, which the user physically interacts with to authenticate."
+        },
+        "10": {
+          "caption": "WebAuthn",
+          "description": "Web-based API that enables users to register devices as authentication factors."
+        },
+        "11": {
+          "caption": "Password",
+          "description": "The user enters a password that they have previously established."
+        },
+        "99": {
+          "caption": "Other"
+        }
+      },
+      "sibling": "factor_type",
+      "type": "integer_t"
+    },
     "feature": {
       "caption": "Feature",
       "description": "The feature that reported the event.",
@@ -1646,6 +1878,11 @@
     "function_name": {
       "caption": "Function Name",
       "description": "The entry-point function of the module. The system calls the entry-point function whenever a process or thread loads or unloads the module.",
+      "type": "string_t"
+    },
+    "geohash": {
+      "caption": "Geohash",
+      "description": "<p>Geohash of the geo-coordinates (latitude and longitude).</p><a target='_blank' href='https://en.wikipedia.org/wiki/Geohash'>Geohashing</a> is a geocoding system used to encode geographic coordinates in decimal degrees, to a single string.",
       "type": "string_t"
     },
     "given_name": {
@@ -1912,6 +2149,11 @@
       "description": "Indicates if a fix is available for the reported vulnerability.",
       "type": "boolean_t"
     },
+    "is_hotp": {
+      "caption": "HMAC-based One-time Password (HOTP)",
+      "description": "Whether the authentication factor is an HMAC-based One-time Password (HOTP).",
+      "type": "boolean_t"
+    },
     "is_http_only": {
       "caption": "HTTP Only",
       "description": "This attribute prevents the cookie from being accessed via JavaScript.",
@@ -1972,6 +2214,11 @@
       "description": "The event occurred on a trusted device.",
       "type": "boolean_t"
     },
+    "is_totp": {
+      "caption": "Time-based One-time Password (TOTP)",
+      "description": "Whether the authentication factor is a Time-based One-time Password (TOTP).",
+      "type": "boolean_t"
+    },
     "is_vpn": {
       "caption": "VPN Session",
       "description": "The indication of whether the session is a VPN session.",
@@ -2016,7 +2263,7 @@
       "description": "The KB article/s related to the entity. A KB Article contains metadata that describes the patch or an update.",
       "is_array": true,
       "type": "string_t"
-    },    
+    },
     "kb_article_list": {
       "caption": "Knowledgebase Articles",
       "description": "A list of KB articles or patches related to an endpoint. A KB Article contains metadata that describes the patch or an update.",
@@ -2084,6 +2331,11 @@
       "caption": "Last Seen",
       "description": "The most recent detection time of the activity or object. See specific usage.",
       "type": "timestamp_t"
+    },
+    "lat": {
+      "caption": "Latitude",
+      "description": "The geographical Latitude coordinate represented in Decimal Degrees (DD). For example: <code>42.361145</code>.",
+      "type": "float_t"
     },
     "latency": {
       "caption": "Latency",
@@ -2259,6 +2511,11 @@
       },
       "sibling": "logon_type",
       "type": "integer_t"
+    },
+    "long": {
+      "caption": "Longitude",
+      "description": "The geographical Longitude coordinate represented in Decimal Degrees (DD). For example: <code>-71.057083</code>.",
+      "type": "float_t"
     },
     "mac": {
       "caption": "MAC Address",
@@ -2580,6 +2837,11 @@
       "description": "The path that pertains to the event or object. See specific usage.",
       "type": "string_t"
     },
+    "pattern_match": {
+      "caption":"Pattern Match",
+      "description":"A text, binary, file name, or datastore that matched against a detection rule.",
+      "type": "string_t"
+    },
     "percentile": {
       "caption": "EPSS Percentile",
       "description": "The EPSS score's percentile representing relative importance and ranking of the score in the larger EPSS dataset.",
@@ -2643,6 +2905,11 @@
       },
       "type": "integer_t",
       "sibling": "phase"
+    },
+    "phone_number": {
+        "caption": "Phone Number",
+        "description": "The number associated with the phone.",
+        "type": "string_t"
     },
     "phones": {
       "caption": "Phones",
@@ -3260,6 +3527,12 @@
       "caption": "Security Descriptor",
       "description": "The object security descriptor.",
       "type": "string_t"
+    },
+    "security_questions": {
+        "caption": "Security Questions",
+        "description": "The question(s) provided to user for a question-based authentication factor.",
+        "is_array": true,
+        "type": "string_t"
     },
     "sequence": {
       "caption": "Sequence Number",

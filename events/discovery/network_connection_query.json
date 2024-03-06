@@ -1,8 +1,8 @@
 {
-  "caption": "Network Connection Info",
-  "description": "Network Connection Info events report information about active network connections.",
+  "caption": "Network Connection Query",
+  "description": "Network Connection Query events report information about active network connections.",
   "extends": "discovery_result",
-  "name": "network_connection_info",
+  "name": "network_connection_query",
   "uid": 12,
   "attributes": {
     "connection_info": {
@@ -17,11 +17,12 @@
     "state": {
       "description": "The state of the socket, normalized to the caption of the state_id value. In the case of 'Other', it is defined by the event source.",
       "requirement": "recommended",
-      "group": "primary"
+      "group":"primary"
     },
     "state_id": {
       "description": "The state of the socket.",
       "requirement": "required",
+      "group": "primary",
       "enum": {
         "0": {
           "caption": "Unknown",
@@ -71,8 +72,7 @@
           "caption": "CLOSING",
           "description": "The socket connection has been closed by the local application and the remote peer simultaneously, and the remote peer has not yet acknowledged the close attempt of the local application."
         }
-      },
-      "group": "primary"
+      }
     }
   }
 }

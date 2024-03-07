@@ -22,7 +22,7 @@ Thankyou! -->
     1. Added `auth_factor` object. #949
     2. Added `data_security` object. #953
 * #### Attributes
-    1. Added `app_uid` attribute
+    1. Added `app_uid` attribute, Issue #966
 * #### Platform Extensions
 
 ### Improved
@@ -41,9 +41,9 @@ Thankyou! -->
         - `9 - Exact Data Match`
         - `10 - Partial Data Match`
         - `11 - Indexed Data Match`
-    2. Added `lat`, `long`, `geohash` attributes to `location` object. #971
+    2. Added `lat`, `long`, `geohash` attributes to `location` object. #971.
     3. Added `risk_score`, `risk_level_id`, `risk_level` to `user` object. Issue #972.
-    4. Added `app_name`, `app_uid` to `actor` object.
+    4. Added `app_name`, `app_uid` to `actor` object.  Issue #966.
 * #### Platform Extensions
 
 ### Bugfixes

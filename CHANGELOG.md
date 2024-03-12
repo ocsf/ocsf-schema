@@ -53,6 +53,7 @@ Thankyou! -->
 
 ### Misc
 1. New Extension registration for Sedara. #951
+2. Add new ways to define observables to metaschema. #982
 
 <!-- All available sections in the Changelog:
 

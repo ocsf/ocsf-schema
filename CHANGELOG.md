@@ -21,8 +21,7 @@ Thankyou! -->
 * #### Objects
     1. Added `auth_factor` object. #949
     2. Added `data_security` object. #953
-* #### Attributes
-    1. Added `app_uid` attribute, Issue #966, PR #979
+    3. Added `autonomous_system` object. #978
 * #### Platform Extensions
 
 ### Improved
@@ -31,6 +30,7 @@ Thankyou! -->
     1. Added `auth_factors` array to Authentication event class. #949
     2. Modified all classes such that primary attributes are at least recommended. #974
     3. Added `src_endpoint`, `http_request` attributes to all IAM category classes. #976
+    4. Added `autonomous_system` to `network_endpoint` objects. #978
 * #### Profiles
 * #### Objects 
     1. Expanded `type_id` enum in `analytic` object to account for more use-cases: #953

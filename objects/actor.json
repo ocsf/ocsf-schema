@@ -1,9 +1,17 @@
 {
   "caption": "Actor",
-  "description": "The Actor object contains details about the user, role, or process that initiated or performed a specific activity.",
+  "description": "The Actor object contains details about the user, role, application, service, or process that initiated or performed a specific activity.",
   "name": "actor",
   "extends": "object",
   "attributes": {
+    "app_name": {
+      "description": "The client application or service that initiated the activity. This can be in conjunction with the <code>user</code> if present.  Note that <code>app_name</code> is distinct from the <code>process</code> if present.",
+      "requirement": "optional"
+    },
+    "app_uid": {
+      "description": "The unique identifier of the client application or service that initiated the activity. This can be in conjunction with the <code>user</code> if present. Note that <code>app_name</code> is distinct from the <code>process.pid</code> or <code>process.uid</code> if present.",
+      "requirement": "optional"
+    },
     "authorizations": {
       "requirement": "optional"
     },
@@ -11,6 +19,10 @@
       "requirement": "optional"
     },
     "invoked_by": {
+      "@deprecated": {
+        "message": "Use <code> app_name, app_uid </code> attributes instead.",
+        "since": "1.2.0"
+      },
       "requirement": "optional"
     },
     "process": {
@@ -31,7 +43,9 @@
       "process",
       "user",
       "invoked_by",
-      "session"
+      "session",
+      "app_name",
+      "app_uid"
     ]
   }
 }

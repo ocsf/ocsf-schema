@@ -47,7 +47,9 @@ Thankyou! -->
     4. Added `app_name`, `app_uid` to `actor` object.  Issue #966, PR #979.
     5. Added `owner` to `device`, `endpoint`, and `network_endpoint` object. #987
     6. Added `is_applied` Boolean attribute to `policy` object. #987
-    7. Added `agent` to `device`, `resource`, and `endpoint`. #987
+    7. Added `agent_list` as an array of `agent` objects. #987
+    8. Added `manufacturer` generic attribute to `dictionary.json` to use with `agent`. #987
+    9. Added `agent` to `device`, `resource`, and `endpoint`. #987 
 * #### Platform Extensions
 
 ### Bugfixes

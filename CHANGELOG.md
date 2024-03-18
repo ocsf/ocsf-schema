@@ -23,7 +23,8 @@ Thankyou! -->
     2. Added `data_security` object. #953
     3. Added `autonomous_system` object. #978
     4. Added `threat_intelligence` object.
-    5. Added `signatures` object, an array of `signature` objects..
+    5. Added `signatures` object, an array of `signature` objects.
+    6. Added `subdomains` object, an array of `subdomain` used to enumerate DGA-generated domains.
 * #### Platform Extensions
 
 ### Improved

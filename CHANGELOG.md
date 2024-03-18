@@ -48,7 +48,7 @@ Thankyou! -->
     5. Added `owner` to `device`, `endpoint`, and `network_endpoint` object. #987
     6. Added `is_applied` Boolean attribute to `policy` object. #987
     7. Added `agent_list` as an array of `agent` objects. #987
-    8. Added `manufacturer` generic attribute to `dictionary.json` to use with `agent`. #987
+    8. Added `policies` object as an array of `policy` objects. #987
     9. Added `agent` to `device`, `resource`, and `endpoint`. #987 
 * #### Platform Extensions
 

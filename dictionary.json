@@ -1004,6 +1004,17 @@
       "description": "The network connection identifier.",
       "type": "string_t"
     },
+    "contact": {
+      "caption": "Domain Contact",
+      "description": "The contact information related to a domain registration, e.g., registrant, administrator, abuse, billing, or technical contact.",
+      "type": "contact"
+    },
+    "contacts": {
+      "caption": "Domain Contacts",
+      "description": "An array of <code>Domain Contact</code> objects.",
+      "is_array": true,
+      "type": "contact"
+    },
     "container": {
       "caption": "Container",
       "description": "The information describing an instance of a container. A container is a prepackaged, portable system image that runs isolated on an existing system using a container runtime like containerd.",
@@ -1547,6 +1558,35 @@
     "dmarc_policy": {
       "caption": "DMARC Policy",
       "description": "The Domain-based Message Authentication, Reporting and Conformance (DMARC) policy status.",
+      "type": "string_t"
+    },
+    "dnssec_status_id": {
+      "caption": "DNSSEC Status ID",
+      "description": "Describes the normalized status of DNS Security Extensions (DNSSEC) for a domain.",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The disposition is unknown."
+        },
+        "1": {
+          "caption": "Signed",
+          "description": "The related domain enables the signing of DNS records using DNSSEC."
+        },
+        "2": {
+          "caption": "Unsigned",
+          "description": "The related domain does not enable the signing of DNS records using DNSSEC."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The DNSSEC status is not mapped. See the <code>dnssec_status</code> attribute, which contains a data source specific value."
+        }
+      },
+      "sibling": "dnssec_status",
+      "type": "integer_t"
+    },
+    "dnssec_status": {
+      "caption": "DNSSEC Status",
+      "description": "The normalized value of dnssec_status_id.",
       "type": "string_t"
     },
     "domain": {
@@ -2608,6 +2648,12 @@
       "caption": "Namespace PID",
       "description": "If running under a process namespace (such as in a container), the process identifier within that process namespace.",
       "type": "integer_t"
+    },
+    "name_servers": {
+      "caption": "Name Servers",
+      "description": "A collection of name servers related to a domain registration or other record.",
+      "is_array": true,
+      "type": "string_t"
     },
     "network_driver": {
       "caption": "Network Driver",

@@ -1,0 +1,102 @@
+{
+    "caption": "Threat Intelligence",
+    "name": "threat_intelligence",
+    "description": "The Threat Intelligence object contains details related to an indicator such as the indicator itself, related indicators, open source intelligence (geolocation, registrar information, subdomains, etc.) and analyst commentary and potential attribution information. This information can be used to further enrich a detection or finding by providing decision-supporting intelligence to other analysts and engineers.",
+    "extends": "_entity",
+    "attributes": {
+			"type_id": {
+				"caption": "Indicator Type ID",
+				"description": "The threat intelligence indicator type ID.",
+				"requirement": "required",
+				"enum": {
+					"0": {
+						"caption": "Unknown",
+						"description": "Use this when the indicator type is ambiguous or there is not a related indicator for the threat intelligence object."
+					},
+					"1": {
+						"caption": "IP Address",
+						"description": "An IPv4 or IPv6 address."
+					},
+					"2": {
+						"caption": "Domain",
+						"description": "A full-qualified domain name (FQDN), subdomain, or partial domain."
+					},
+					"3": {
+						"caption": "Hostname",
+						"description": "A hostname or computer name."
+					},
+					"4": {
+						"caption": "Hash",
+						"description": "Any type of hash e.g., MD5, SHA1, SHA2, BLAKE, BLAKE2, etc. generated from a file, malware sample, request header, or otherwise."
+					},
+					"5": {
+						"caption": "URL",
+						"description": "A Uniform Resource Locator (URL) or Uniform Resource Indicator (URI)."
+					},
+					"6": {
+						"caption": "User Agent",
+						"description": "A User Agent typically seen in HTTP request headers."
+					},
+					"7": {
+						"caption": "Digital Certificate",
+						"description": "The serial number, fingerprint, or full content of an X.509 digital certificate."
+					},
+					"8": {
+						"caption": "Email",
+						"description": "The contents of an email or any related information to an email object."
+					},
+					"99": {
+						"caption": "Other"
+					}
+				}
+      },
+			"type": {
+        "description": "The threat intelligence indicator type.",
+        "requirement": "optional"
+      },
+			"value": {
+				"caption": "Indicator",
+				"description": "The actual indicator value in scope, e.g., a SHA-256 hash hexdigest or a domain name.",
+				"requirement": "required"
+			},
+      "confidence_id": {
+        "description": "The normalized confidence refers to the accuracy of collected information related to the threat intelligence or how pertinent an indicator or analysis is to a specific event or finding. A low confidence means that the information collected or analysis conducted lacked detail or is not accurate enough to qualify an indicator as fully malicious.",
+        "requirement": "recommended"
+      },
+			"confidence": {
+        "description": "The confidence of an indicator being malicious and/or pertinent, normalized to the caption of the confidence_id value. In the case of 'Other', it is defined by the event source or analyst.",
+        "requirement": "optional"
+      },
+      "vendor_name": {
+        "description": "The vendor name of a tool which generates intelligence or provides indicators.",
+        "requirement": "optional"
+      },
+      "src_url": {
+        "description": "The source URL of an indicator or threat intelligence product, e.g., a URL back to a TIP, report, or otherwise.",
+				"requirement": "optional"
+      },
+			"kill_chain": {
+				"requirement": "optional"
+			},
+			"attacks": {
+				"requirement": "optional"
+			},
+      "vulnerabilities": {
+				"caption": "Related Vulnerabilities",
+				"description": "Any vulnerabilities related to an indicator or threat intelligence product.",
+				"requirement": "optional"
+			},
+			"signatures": {
+				"caption": "Related Digital Signatures",
+				"description": "Any digital signatures or hashes related to an indicator or threat intelligence product.",
+				"requirement": "optional"
+			},
+      "uid": {
+        "description": "The unique identifier of the analytic that generated the finding."
+      },
+      "version": {
+        "description": "The analytic version. For example: <code>1.1</code>.",
+        "requirement": "optional"
+      }
+    }
+  }

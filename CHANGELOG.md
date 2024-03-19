@@ -52,6 +52,7 @@ Thankyou! -->
     4. Added `autonomous_system` to `network_endpoint` objects. #978
     5. Added `List`, `Encrypt` and `Decrypt` activities to `datastore` event class. #989 
     6. Added `file` object to `http`, `rdp`, `smb`, `ssh`, and `ftp` event classes. #985
+
 * #### Profiles
 * #### Objects 
     1. Expanded `type_id` enum in `analytic` object to account for more use-cases: #953

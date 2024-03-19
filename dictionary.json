@@ -148,6 +148,12 @@
       "sibling": "algorithm",
       "type": "integer_t"
     },
+    "aliases": {
+      "caption": "Aliases",
+      "description": "Alternative names used to identify a Campaign.",
+      "is_array": true,
+      "type": "string_t"
+    },
     "analytic": {
       "caption": "Analytic",
       "description": "The analytic technique used to analyze and derive insights from the data or information that led to the finding or conclusion.",
@@ -1111,6 +1117,11 @@
       "description": "The time when the object was created. See specific usage.",
       "type": "timestamp_t"
     },
+    "created_by_ref": {
+      "caption": "Created By Reference",
+      "description": "The created_by_ref property specifies the id property of the identity object that describes the entity that created this object. If this attribute is omitted, the source of this information is undefined. This may be used by object creators who wish to remain anonymous.",
+      "type": "string_t"
+    },
     "creator": {
       "caption": "Creator",
       "description": "The user that created the object associated with event. See specific usage.",
@@ -1319,6 +1330,11 @@
       "caption": "Authorization Decision/Outcome",
       "description": "Decision/outcome of the authorization mechanism (e.g. Approved, Denied)",
       "type": "string_t"
+    },
+    "defanged": {
+      "caption": "Defanged",
+      "description": "This STIX property defines whether or not the data contained within the object has been defanged. The default value for this property is <code>false</code>.",
+      "type": "boolean_t"
     },
     "delay": {
       "caption": "Root Delay",
@@ -1938,6 +1954,12 @@
     "given_name": {
       "caption": "Given Name",
       "description": "The given or first name of the user.",
+      "type": "string_t"
+    },
+    "granular_markings": {
+      "caption": "STIX Granular Markings",
+      "description": "The <code>granular_markings</code> property specifies a list of granular markings applied to this object. In some cases, though uncommon, marking definitions themselves may be marked with sharing or handling guidance. In this case, this property MUST NOT contain any references to the same Marking Definition object (i.e., it cannot contain any circular references).",
+      "is_array": true,
       "type": "string_t"
     },
     "group": {
@@ -2737,6 +2759,17 @@
       "description": "The number of the entity. See specific usage.",
       "type": "integer_t"
     },
+    "objective": {
+      "caption": "Objective",
+      "description": "The Campaign's primary goal, objective, desired outcome, or intended effect — what the Threat Actor or Intrusion Set hopes to accomplish with this Campaign.",
+      "type": "string_t"
+    },
+    "object_marking_refs": {
+      "caption": "STIX Object Marking References",
+      "description": "The <code>object_marking_refs</code> property specifies a list of <code>id</code> properties of STIX <code>marking-definition</code> objects that apply to this object.",
+      "is_array": true,
+      "type": "string_t"
+    },
     "observables": {
       "caption": "Observables",
       "description": "The observables associated with the event or a finding.",
@@ -3423,6 +3456,11 @@
       "description": "The Domain Name System (DNS) response time.",
       "type": "timestamp_t"
     },
+    "revoked": {
+      "caption": "Revoked",
+      "description": "The revoked property is only used by STIX Objects that support versioning and indicates whether the object has been revoked. Revoked objects are no longer considered valid by the object creator. Revoking an object is permanent; future versions of the object with this id MUST NOT be created.",
+      "type": "boolean_t"
+    },
     "risk_level": {
       "caption": "Risk Level",
       "description": "The risk level, normalized to the caption of the risk_level_id value. In the case of 'Other', it is defined by the event source.",
@@ -3851,6 +3889,21 @@
       },
       "sibling": "status",
       "type": "integer_t"
+    },
+    "stix_campaign": {
+      "caption": "Campaign",
+      "description": "The <a target='_blank' href='https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_pcpvfz4ik6d6'>Campaign</a> object describes a grouping of adversarial behaviors that describes a set of malicious activities or attacks (sometimes called waves) that occur over a period of time against a specific set of targets as defined in <a target='_blank' href='https://oasis-open.github.io/cti-documentation/stix/intro.html#stix-21-objects'>STIX 2.1 STIX Domain Objects (SDOs)</a>.",
+      "type": "stix_campaign"
+    },
+    "stix_extensions": {
+      "caption": "STIX Extensions",
+      "description": "Specifies any extensions of the object, as a dictionary. Dictionary keys SHOULD be the id of a STIX Extension object or the name of a predefined object extension found in this specification, depending on the type of extension being used. The corresponding dictionary values MUST contain the contents of the extension instance. Each extension dictionary MAY contain the property extension_type. The value of this property MUST come from the <code>extension-type-enum</code> enumeration. If the extension_type property is not present, then this is a predefined extension which does not use the extension facility described in section 7.3. When this extension facility is used the extension_type property MUST be present.",
+      "type": "json_t"
+    },
+    "stix_object": {
+      "caption": "STIX Object",
+      "description": "The STIX Object defines the common properties that MAY exist on a STIX Objects. While some STIX Objects use all of these common properties, not all object types do as defined in Section 3.2 Common Properties in the <a target='_blank' href='https://oasis-open.github.io/cti-documentation/stix/intro.html#stix-21-objects'>STIX 2.1 STIX Domain Objects (SDOs)</a> specification.",
+      "type": "stix_object"
     },
     "stratum": {
       "caption": "Stratum",

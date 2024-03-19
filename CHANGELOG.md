@@ -27,6 +27,8 @@ Thankyou! -->
     6. Added `subdomains` object, an array of `subdomain` used to enumerate DGA-generated domains.
     7. Added `whois` object.
     8. Added `contact` and array-typed `contacts` object for use with `whois` object.
+    9. Added `stix_object` object to serve as a base STIX Object that contains mandatory and optional common properties.
+    10. Added `stix_campaign` object based on the STIX Campaign SDO.
 * #### Platform Extensions
 
 ### Improved
@@ -64,7 +66,6 @@ Thankyou! -->
 ### Misc
 1. New Extension registration for Sedara. #951
 2. Add new ways to define observables to metaschema. #982
-3. Added new DNSSEC-related attributes to dictionary.
 
 <!-- All available sections in the Changelog:
 

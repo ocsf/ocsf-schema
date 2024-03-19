@@ -1,0 +1,35 @@
+{
+  "caption": "STIX Tool",
+  "description": "The <a target='_blank' href='https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_z4voa9ndw8v'>Tool</a> object characterizes the properties of these software tools and can be used as a basis for making an assertion about how a Threat Actor uses them during an attack. It contains properties to name and describe the tool, a list of Kill Chain Phases the tool can be used to carry out, and the version of the tool as defined in <a target='_blank' href='https://oasis-open.github.io/cti-documentation/stix/intro.html#stix-21-objects'>STIX 2.1 STIX Domain Objects (SDOs)</a>. This object MUST NOT be used to characterize malware. Further, STIX Tool MUST NOT be used to characterize tools used as part of a course of action in response to an attack.",
+  "extends": "stix_object",
+  "name": "stix_tool",
+  "attributes": {
+    "name": {
+			"description": "A name used to identify the Tool.",
+      "requirement": "required"
+    },
+    "desc": {
+			"description": "A description that provides more details and context about the Tool, potentially including its purpose and its key characteristics.",
+      "requirement": "optional"
+    },
+		"types": {
+			"caption": "Tool Types",
+			"description": "The kind(s) of tool(s) being described. The values for this property SHOULD come from the <code>tool-type-ov</code> open vocabulary.",
+			"requirement": "optional"
+		},
+    "aliases": {
+			"description": "Alternative names used to identify this Tool.",
+      "requirement": "optional"
+    },
+		"kill_chain": {
+			"caption": "Kill Chain Phases",
+			"description": "The list of kill chain phases for which this Tool can be used.",
+			"requirement": "optional"
+		},
+		"release": {
+			"caption": "Tool Version",
+			"description": "The version identifier associated with the Tool.",
+      "requirement": "optional"
+    }
+  }
+}

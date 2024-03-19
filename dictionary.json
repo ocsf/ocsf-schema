@@ -1988,6 +1988,12 @@
       "description": "The given or first name of the user.",
       "type": "string_t"
     },
+    "goals": {
+      "caption": "Goals",
+      "description": "The high-level goals of this Threat Actor, namely, what are they trying to do. For example, they may be motivated by personal gain, but their goal is to steal credit card numbers. To do this, they may execute specific Campaigns that have detailed objectives like compromising point of sale systems at a large retailer.",
+      "is_array": true,
+      "type": "string_t"
+    },
     "granular_markings": {
       "caption": "STIX Granular Markings",
       "description": "The <code>granular_markings</code> property specifies a list of granular markings applied to this object. In some cases, though uncommon, marking definitions themselves may be marked with sharing or handling guidance. In this case, this property MUST NOT contain any references to the same Marking Definition object (i.e., it cannot contain any circular references).",
@@ -2721,6 +2727,16 @@
       "caption": "Modules",
       "description": "The module that pertains to the event. See specific usage.",
       "type": "module"
+    },
+    "motivation": {
+      "caption": "Motivation",
+      "description": "Motivation of a threat actor. See specific usage.",
+      "type": "string_t"
+    },
+    "motivations": {
+      "caption": "Motivations",
+      "description": "An array of <code>motivation</code> objects. See specific usage.",
+      "type": "string_t"
     },
     "name": {
       "caption": "Name",
@@ -3501,6 +3517,11 @@
       "description": "The target resource.",
       "type": "resource_details"
     },
+    "resource_level": {
+      "caption": "Resource Level",
+      "description": "The organizational level at which this Threat Actor typically works, which in turn determines the resources available to this Threat Actor for use in an attack. This attribute is linked to the sophistication property — a specific resource level implies that the Threat Actor has access to at least a specific sophistication level. The value for this property SHOULD come from the <code>attack-resource-level-ov</code> open vocabulary.",
+      "type": "string_t"
+    },
     "resource_type": {
       "caption": "Resource Type",
       "description": "The resource type as defined by the event source.",
@@ -3565,6 +3586,12 @@
       "caption": "Risk Score",
       "description": "The risk score as reported by the event source.",
       "type": "integer_t"
+    },
+    "roles": {
+      "caption": "Roles",
+      "description": "A list of roles. See specific usage.",
+      "is_array": true,
+      "type": "string_t"
     },
     "rpc_interface": {
       "caption": "Remote Procedure Call Interface",
@@ -3864,6 +3891,11 @@
       "description": " The Server Name Indication (SNI) extension sent by the client.",
       "type": "string_t"
     },
+    "sophistication": {
+      "caption": "Sophistication",
+      "description": "The skill, specific knowledge, special training, or expertise a Threat Actor must have to perform the attack. The value for this property SHOULD come from the <code>threat-actor-sophistication-ov</code> open vocabulary.",
+      "type": "string_t"
+    },
     "spf": {
       "caption": "SPF Status",
       "description": "The Sender Policy Framework (SPF) status of the email.",
@@ -3992,6 +4024,16 @@
       "caption": "STIX Object",
       "description": "The STIX Object defines the common properties that MAY exist on a STIX Objects. While some STIX Objects use all of these common properties, not all object types do as defined in Section 3.2 Common Properties in the <a target='_blank' href='https://oasis-open.github.io/cti-documentation/stix/intro.html#stix-21-objects'>STIX 2.1 STIX Domain Objects (SDOs)</a> specification.",
       "type": "stix_object"
+    },
+    "stix_threat_actor": {
+      "caption": "STIX Threat Actor",
+      "description": "The <a target='_blank' href='https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_k017w16zutw'>Threat Actor</a> object describes actual individuals, groups, or organizations believed to be operating with malicious intent. A Threat Actor is not an Intrusion Set but may support or be affiliated with various Intrusion Sets, groups, or organizations over time as defined in <a target='_blank' href='https://oasis-open.github.io/cti-documentation/stix/intro.html#stix-21-objects'>STIX 2.1 STIX Domain Objects (SDOs)</a>. Threat Actors leverage their resources, and possibly the resources of an Intrusion Set, to conduct attacks and run Campaigns against targets. Threat Actors can be characterized by their motives, capabilities, goals, sophistication level, past activities, resources they have access to, and their role in the organization.",
+      "type": "stix_threat_actor"
+    },
+    "stix_tool": {
+      "caption": "STIX Tool",
+      "description": "The <a target='_blank' href='https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_z4voa9ndw8v'>Tool</a> object characterizes the properties of these software tools and can be used as a basis for making an assertion about how a Threat Actor uses them during an attack. It contains properties to name and describe the tool, a list of Kill Chain Phases the tool can be used to carry out, and the version of the tool. as defined in <a target='_blank' href='https://oasis-open.github.io/cti-documentation/stix/intro.html#stix-21-objects'>STIX 2.1 STIX Domain Objects (SDOs)</a>. This object MUST NOT be used to characterize malware. Further, STIX Tool MUST NOT be used to characterize tools used as part of a course of action in response to an attack.",
+      "type": "stix_tool"
     },
     "stratum": {
       "caption": "Stratum",

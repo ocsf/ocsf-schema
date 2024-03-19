@@ -1,0 +1,56 @@
+{
+  "caption": "STIX Threat Actor",
+  "description": "The <a target='_blank' href='https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_k017w16zutw'>Threat Actor</a> object describes actual individuals, groups, or organizations believed to be operating with malicious intent. A Threat Actor is not an Intrusion Set but may support or be affiliated with various Intrusion Sets, groups, or organizations over time as defined in <a target='_blank' href='https://oasis-open.github.io/cti-documentation/stix/intro.html#stix-21-objects'>STIX 2.1 STIX Domain Objects (SDOs)</a>. Threat Actors leverage their resources, and possibly the resources of an Intrusion Set, to conduct attacks and run Campaigns against targets. Threat Actors can be characterized by their motives, capabilities, goals, sophistication level, past activities, resources they have access to, and their role in the organization.",
+  "extends": "stix_object",
+  "name": "stix_threat_actor",
+  "attributes": {
+    "name": {
+			"description": "A name used to identify this Threat Actor or Threat Actor group.",
+      "requirement": "required"
+    },
+    "desc": {
+			"description": "A description that provides more details and context about the Threat Actor, potentially including its purpose and its key characteristics.",
+      "requirement": "optional"
+    },
+		"types": {
+			"caption": "Threat Actor Types",
+			"description": "The type(s) of this threat actor. The values for this property SHOULD come from the <code>hreat-actor-type-ov</code> open vocabulary.",
+			"requirement": "optional"
+		},
+    "aliases": {
+			"description": "Alternative names used to identify this Tool.",
+      "requirement": "optional"
+    },
+		"first_seen_time": {
+			"description": "The time that this Threat Actor was first seen. This property is a summary property of data from sightings and other data that may or may not be available in STIX. If new sightings are received that are earlier than the first seen timestamp, the object may be updated to account for the new data.",
+			"requirement": "optional"
+		},
+		"last_seen_time": {
+			"description": "The time that this Threat Actor was last seen. This property is a summary property of data from sightings and other data that may or may not be available in STIX. If new sightings are received that are later than the last seen timestamp, the object may be updated to account for the new data. If this property and the first_seen property are both defined, then this property MUST be greater than or equal to the timestamp in the first_seen property.",
+			"requirement": "optional"
+		},
+		"roles": {
+			"description": "A list of roles the Threat Actor plays. The values for this property SHOULD come from the <code>threat-actor-role-ov</code> open vocabulary.",
+			"requirement": "optional"
+		},
+		"goals": {
+			"requirement": "optional"
+		},
+		"sophistication": {
+			"requirement": "optional"
+		},
+		"resource_level": {
+			"requirement": "optional"
+		},
+		"motivation": {
+			"caption": "Primary Motivation",
+			"description": "The primary reason, motivation, or purpose behind this Threat Actor. The motivation is why the Threat Actor wishes to achieve the goal (what they are trying to achieve). For example, a Threat Actor with a goal to disrupt the finance sector in a country might be motivated by ideological hatred of capitalism. The value for this property SHOULD come from the <code>attack-motivation-ov</code> open vocabulary.",
+			"requirement": "optional"
+		},
+		"motivations": {
+			"caption": "Personal Motivations",
+			"description": "The personal reasons, motivations, or purposes of the Threat Actor regardless of organizational goals. Personal motivation, which is independent of the organization’s goals, describes what impels an individual to carry out an attack. Personal motivation may align with the organization’s motivation—as is common with activists—but more often it supports personal goals. For example, an individual analyst may join a Data Miner corporation because his or her skills may align with the corporation’s objectives. But the analyst most likely performs his or her daily work toward those objectives for personal reward in the form of a paycheck. The motivation of personal reward may be even stronger for Threat Actors who commit illegal acts, as it is more difficult for someone to cross that line purely for altruistic reasons. The position in the list has no significance. The value for this property SHOULD come from the <code>attack-motivation-ov</code> open vocabulary.",
+			"requirement": "optional"
+		}
+  }
+}

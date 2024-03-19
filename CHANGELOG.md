@@ -45,11 +45,11 @@ Thankyou! -->
     2. Added `lat`, `long`, `geohash` attributes to `location` object. #971.
     3. Added `risk_score`, `risk_level_id`, `risk_level` to `user` object. Issue #972.
     4. Added `app_name`, `app_uid` to `actor` object.  Issue #966, PR #979.
-    5. Added `owner` to `device`, `endpoint`, and `network_endpoint` object. #987
+    5. Added `owner` to `endpoint` object. #987
     6. Added `is_applied` Boolean attribute to `policy` object. #987
     7. Added `agent_list` as an array of `agent` objects. #987
     8. Added `policies` object as an array of `policy` objects. #987
-    9. Added `agent` to `device`, `resource`, and `endpoint`. #987 
+    9. Added `agent_list` to `endpoint` object. #987 
 * #### Platform Extensions
 
 ### Bugfixes

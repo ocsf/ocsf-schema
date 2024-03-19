@@ -150,7 +150,7 @@
     },
     "aliases": {
       "caption": "Aliases",
-      "description": "Alternative names used to identify a Campaign.",
+      "description": "Alternative names. See specific usage.",
       "is_array": true,
       "type": "string_t"
     },
@@ -188,6 +188,12 @@
     "architecture": {
       "caption": "Architecture",
       "description": "Architecture is a shorthand name describing the type of computer hardware the packaged software is meant to run on.",
+      "type": "string_t"
+    },
+    "architecture_execution_envs": {
+      "caption": "STIX Architecture Execution Environments",
+      "description": "The processor architectures (e.g., x86, ARM, etc.) that the malware instance or family is executable on. The values for this property SHOULD come from the <code>processor-architecture-ov</code> open vocabulary.",
+      "is_array": true,
       "type": "string_t"
     },
     "args": {
@@ -2126,6 +2132,12 @@
       "description": "The impact of the finding, valid range 0-100.",
       "type": "integer_t"
     },
+    "implementation_languages": {
+      "caption": "STIX Implementation Languages",
+      "description": "The programming language(s) used to implement the malware instance or family. The values for this property SHOULD come from the <code>implementation-language-ov</code> open vocabulary.",
+      "is_array": true,
+      "type": "string_t"
+    },
     "injection_type": {
       "caption": "Injection Type",
       "description": "The process injection method, normalized to the caption of the injection_type_id value. In the case of 'Other', it is defined by the event source.",
@@ -2214,6 +2226,11 @@
     "is_exploit_available": {
       "caption": "Exploit Availability",
       "description": "Indicates if an exploit or a PoC (proof-of-concept) is available for the reported vulnerability.",
+      "type": "boolean_t"
+    },
+    "is_family": {
+      "caption": "Is Malware Family",
+      "description": "Whether the object represents a malware family (if <code>true</code>) or a malware instance (if <code>false</code>).",
       "type": "boolean_t"
     },
     "is_fix_available": {
@@ -2605,6 +2622,12 @@
       "is_array": true,
       "type": "malware"
     },
+    "malware_types": {
+      "caption": "Malware Types",
+      "description": "A set of categorizations for the malware being described.",
+      "is_array": true,
+      "type": "string_t"
+    },
     "manager": {
       "caption": "Manager",
       "description": "The user's manager. This helps in understanding an org hierarchy. This should only ever be populated once in an event. I.e. there should not be a manager's manager in an event.",
@@ -2834,6 +2857,12 @@
     "operation": {
       "caption": "Operation",
       "description": "Verb/Operation associated with the request",
+      "type": "string_t"
+    },
+    "operating_system_refs": {
+      "caption": "STIX Operating System References",
+      "description": "The operating systems that the malware family or malware instance is executable on. This applies to virtualized operating systems as well as those running on bare metal. The value of this property MUST be the <code>identifier</code> for a SCO <code>software</code> object.",
+      "is_array": true,
       "type": "string_t"
     },
     "opnum": {
@@ -3524,6 +3553,12 @@
     "samesite": {
       "caption": "SameSite",
       "description": "The cookie attribute that lets servers specify whether/when cookies are sent with cross-site requests. Values are: Strict, Lax or None",
+      "type": "string_t"
+    },
+    "sample_refs": {
+      "caption": "STIX Sample References",
+      "description": "The sample_refs property specifies a list of <code>identifiers</code> of the SCO <code>file</code> or <code>artifact</code> objects associated with this malware instance(s) or family. If <code>is_family</code> is <code>false</code>, then all samples listed in sample_refs MUST refer to the same binary data.",
+      "is_array": true,
       "type": "string_t"
     },
     "sandbox": {

@@ -36,6 +36,7 @@ Thankyou! -->
     18. Added `User Query` event class. #967
 
 * #### Profiles
+    1. Added `File` profile. #985
 * #### Objects
     1. Added `auth_factor` object. #949
     2. Added `data_security` object. #953
@@ -51,6 +52,7 @@ Thankyou! -->
     3. Added `src_endpoint`, `http_request` attributes to all IAM category classes. #976
     4. Added `autonomous_system` to `network_endpoint` objects. #978
     5. Added `List`, `Encrypt` and `Decrypt` activities to `datastore` event class. #989 
+    6. Added `file` object to `http`, `rdp`, `smb`, `ssh`, and `ftp` event classes. #985
 * #### Profiles
 * #### Objects 
     1. Expanded `type_id` enum in `analytic` object to account for more use-cases: #953
@@ -128,15 +130,15 @@ Thankyou! -->
     `n/a`
 * #### Event Classes
     1. Added `User Inventory Info` event class. #667
-    2. Added `Vulnerability Finding` event class. #698
-    2. Added `NTP Activity` event class #705
-    3. Added `OS Patch State` event class. #746
-    4. Added `Datastore Activity` event class 6005. #874
-    5. Added `Detection Finding` event class. #877
-    6. Added `Incident Finding` event class. #903
-    7. Added `Device Config Sate Change` event class. #914
-    8. Added `Scan Activity` event class. #915
-    9. Added `File Hosting Activity` event class. #917
+    2. Added `Vulnerability Finding` event class. #698 
+    3. Added `NTP Activity` event class #705
+    4. Added `OS Patch State` event class. #746
+    5. Added `Datastore Activity` event class 6005. #874
+    6. Added `Detection Finding` event class. #877
+    7. Added `Incident Finding` event class. #903
+    8. Added `Device Config Sate Change` event class. #914
+    9. Added `Scan Activity` event class. #915
+    10. Added `File Hosting Activity` event class. #917
    
 * #### Profiles
 	1. Added `Network Proxy` Profile for the `Network Activity` and `Application Activity` classes. #705 

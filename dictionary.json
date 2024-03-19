@@ -159,6 +159,27 @@
       "description": "The analytic technique used to analyze and derive insights from the data or information that led to the finding or conclusion.",
       "type": "analytic"
     },
+    "analysis_definition_version": {
+      "caption": "Analysis Definition Version",
+      "description": "The version of the analysis definitions used by the analysis tool (including AV tools).",
+      "type": "string_t"
+    },
+    "analysis_engine_version": {
+      "caption": "Analysis Engine Version",
+      "description": "The version of the analysis engine or product (including AV engines) that was used to perform the analysis.",
+      "type": "string_t"
+    },
+    "analysis_result": {
+      "caption": "Analysis Result",
+      "description": "The classification result as determined by the scanner or tool analysis process. See specific usage.",
+      "type": "string_t"
+    },
+    "analysis_sco_refs": {
+      "caption": "STIX Cyber-observable Object (SCO) References",
+      "description": "This property contains the references to the STIX Cyber-observable Objects that were captured during the analysis process.",
+      "is_array": true,
+      "type": "string_t"
+    },
     "answers": {
       "caption": "DNS Answer",
       "description": "The Domain Name System (DNS) answers.",
@@ -1005,6 +1026,11 @@
       },
       "sibling": "confidentiality",
       "type": "integer_t"
+    },
+    "configuration_version": {
+      "caption": "Configuration Version",
+      "description": "The named configuration of additional product configuration parameters. See specific usage.",
+      "type": "string_t"
     },
     "connection_info": {
       "caption": "Connection Info",
@@ -2014,6 +2040,12 @@
       "description": "The hostname of an endpoint or a device.",
       "type": "hostname_t"
     },
+    "host_vm_ref": {
+      "caption": "STIX Host Virtual Machine References",
+      "description": "A description of the virtual machine environment used to host the guest operating system (if applicable) that was used for the dynamic analysis of the malware instance or family. If this value is not included in conjunction with the operating_system_ref property, this means that the dynamic analysis may have been performed on bare metal (i.e. without virtualization) or the information was redacted. The value of this property MUST be the <code>identifier</code> for a SCO <code>software</code> object.",
+      "is_array": true,
+      "type": "string_t"
+    },
     "http_cookies": {
       "caption": "HTTP Cookies",
       "description": "The cookies object describes details about HTTP cookies",
@@ -2164,6 +2196,12 @@
       },
       "sibling": "injection_type",
       "type": "integer_t"
+    },
+    "installed_software_refs": {
+      "caption": "STIX Installed Software References",
+      "description": "Any non-standard software installed on the operating system (specified through the operating-system value) used for the dynamic analysis of the malware instance or family. The value of this property MUST be the <code>identifier</code> for a SCO <code>software</code> object.",
+      "is_array": true,
+      "type": "string_t"
     },
     "instance_uid": {
       "caption": "Instance ID",
@@ -2677,6 +2715,11 @@
     "module": {
       "caption": "Module",
       "description": "The module that pertains to the event.",
+      "type": "module"
+    },
+    "modules": {
+      "caption": "Modules",
+      "description": "The module that pertains to the event. See specific usage.",
       "type": "module"
     },
     "name": {
@@ -3935,6 +3978,16 @@
       "description": "Specifies any extensions of the object, as a dictionary. Dictionary keys SHOULD be the id of a STIX Extension object or the name of a predefined object extension found in this specification, depending on the type of extension being used. The corresponding dictionary values MUST contain the contents of the extension instance. Each extension dictionary MAY contain the property extension_type. The value of this property MUST come from the <code>extension-type-enum</code> enumeration. If the extension_type property is not present, then this is a predefined extension which does not use the extension facility described in section 7.3. When this extension facility is used the extension_type property MUST be present.",
       "type": "json_t"
     },
+    "stix_malware": {
+      "caption": "STIX Malware",
+      "description": "The <a target='_blank' href='https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_s5l7katgbp09'>Malware</a> object describes a grouping of adversarial behaviors that describes a set of malicious activities or attacks (sometimes called waves) that occur over a period of time against a specific set of targets as defined in <a target='_blank' href='https://oasis-open.github.io/cti-documentation/stix/intro.html#stix-21-objects'>STIX 2.1 STIX Domain Objects (SDOs)</a>.",
+      "type": "stix_malware"
+    },
+    "stix_malware_analysis": {
+      "caption": "STIX Malware Analysis",
+      "description": "The <a target='_blank' href='https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_6hdrixb3ua4j'>Malware Analysis</a> object captures the metadata and results of a particular static or dynamic analysis performed on a malware instance or family. as defined in <a target='_blank' href='https://oasis-open.github.io/cti-documentation/stix/intro.html#stix-21-objects'>STIX 2.1 STIX Domain Objects (SDOs)</a>.",
+      "type": "stix_malware_analysis"
+    },
     "stix_object": {
       "caption": "STIX Object",
       "description": "The STIX Object defines the common properties that MAY exist on a STIX Objects. While some STIX Objects use all of these common properties, not all object types do as defined in Section 3.2 Common Properties in the <a target='_blank' href='https://oasis-open.github.io/cti-documentation/stix/intro.html#stix-21-objects'>STIX 2.1 STIX Domain Objects (SDOs)</a> specification.",
@@ -3996,6 +4049,11 @@
       "caption": "Subject Details",
       "description": "The identifier of the subject. See specific usage.",
       "type": "string_t"
+    },
+    "submitted_time": {
+      "caption": "Submitted Time",
+      "description": "The time when a file/object was submtited. See specific usage.",
+      "type": "timestamp_t"
     },
     "subnet": {
       "caption": "Subnet",

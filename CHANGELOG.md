@@ -18,18 +18,18 @@ Thankyou! -->
 * #### Event Classes
     1. Added `Data Security Finding` event class. #953
 * #### Profiles
-    1. Added `threat_intelligence` Profile based on `threat_intelligence` object.
+    1. Added `threat_intelligence` Profile based on `threat_intelligence` object. #992
 * #### Objects
     1. Added `auth_factor` object. #949
     2. Added `data_security` object. #953
     3. Added `autonomous_system` object. #978
-    8. Added `threat_intelligence` object.
-    9. Added `signatures` object, an array of `signature` objects.
-    10. Added `subdomains` object, an array of `subdomain` used to enumerate DGA-generated domains.
-    11. Added `whois` object.
-    12. Added `contact` and array-typed `contacts` object for use with `whois` object.
-    13. Added `stix_object` object to serve as a base STIX Object that contains mandatory and optional common properties.
-    14. Added several STIX 2.1 SDO-based objects: `stix_campaign`, `stix_malware`, `stix_malware_analysis`, `stix_intrusion_set`, `stix_threat_actor`, and `stix_tool` corresponding to the following SDOs, respectively: Campaign, Malware, Malware Analysis, Intrusion Set, Threat Actor, and Tool.
+    8. Added `threat_intelligence` object. #992
+    9. Added `signatures` object, an array of `signature` objects. #992
+    10. Added `subdomains` object, an array of `subdomain` used to enumerate DGA-generated domains. #992
+    11. Added `whois` object. #992
+    12. Added `contact` and array-typed `contacts` object for use with `whois` object. #992
+    13. Added `stix_object` object to serve as a base STIX Object that contains mandatory and optional common properties. #992
+    14. Added several STIX 2.1 SDO-based objects: `stix_campaign`, `stix_malware`, `stix_malware_analysis`, `stix_intrusion_set`, `stix_threat_actor`, and `stix_tool` corresponding to the following SDOs, respectively: Campaign, Malware, Malware Analysis, Intrusion Set, Threat Actor, and Tool. #992
 * #### Platform Extensions
 
 ### Improved
@@ -52,7 +52,7 @@ Thankyou! -->
     2. Added `lat`, `long`, `geohash` attributes to `location` object. #971.
     3. Added `risk_score`, `risk_level_id`, `risk_level` to `user` object. Issue #972.
     4. Added `app_name`, `app_uid` to `actor` object.  Issue #966, PR #979.
-    5. Added `is_self_signed` Boolean attribute to `certificate` object.
+    5. Added `is_self_signed` Boolean attribute to `certificate` object. #992
 * #### Platform Extensions
 
 ### Bugfixes

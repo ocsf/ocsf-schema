@@ -18,17 +18,18 @@ Thankyou! -->
 * #### Event Classes
     1. Added `Data Security Finding` event class. #953
 * #### Profiles
+    1. Added `threat_intelligence` Profile based on `threat_intelligence` object.
 * #### Objects
     1. Added `auth_factor` object. #949
     2. Added `data_security` object. #953
     3. Added `autonomous_system` object. #978
-    4. Added `threat_intelligence` object.
-    5. Added `signatures` object, an array of `signature` objects.
-    6. Added `subdomains` object, an array of `subdomain` used to enumerate DGA-generated domains.
-    7. Added `whois` object.
-    8. Added `contact` and array-typed `contacts` object for use with `whois` object.
-    9. Added `stix_object` object to serve as a base STIX Object that contains mandatory and optional common properties.
-    10. Added `stix_campaign` object based on the STIX Campaign SDO.
+    8. Added `threat_intelligence` object.
+    9. Added `signatures` object, an array of `signature` objects.
+    10. Added `subdomains` object, an array of `subdomain` used to enumerate DGA-generated domains.
+    11. Added `whois` object.
+    12. Added `contact` and array-typed `contacts` object for use with `whois` object.
+    13. Added `stix_object` object to serve as a base STIX Object that contains mandatory and optional common properties.
+    14. Added several STIX 2.1 SDO-based objects: `stix_campaign`, `stix_malware`, `stix_malware_analysis`, `stix_intrusion_set`, `stix_threat_actor`, and `stix_tool` corresponding to the following SDOs, respectively: Campaign, Malware, Malware Analysis, Intrusion Set, Threat Actor, and Tool.
 * #### Platform Extensions
 
 ### Improved

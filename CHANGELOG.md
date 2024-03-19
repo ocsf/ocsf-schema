@@ -49,6 +49,7 @@ Thankyou! -->
     2. Modified all classes such that primary attributes are at least recommended. #974
     3. Added `src_endpoint`, `http_request` attributes to all IAM category classes. #976
     4. Added `autonomous_system` to `network_endpoint` objects. #978
+    5. Added `List`, `Encrypt` and `Decrypt` activities to `datastore` event class. #989 
 * #### Profiles
 * #### Objects 
     1. Expanded `type_id` enum in `analytic` object to account for more use-cases: #953

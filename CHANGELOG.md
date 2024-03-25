@@ -45,7 +45,7 @@ Thankyou! -->
     3. Added `risk_score`, `risk_level_id`, `risk_level` to `user` object. Issue #972.
     4. Added `app_name`, `app_uid` to `actor` object.  Issue #966, PR #979.
     5. Added `container`, `database`, `databucket` to the `evidences` object. #984
-    6. Added `network_interface` object as observable type `31`. #997
+    6. Made `network_interface` object an `observable` with `type_id` `31`. #997
 * #### Platform Extensions
 
 ### Bugfixes

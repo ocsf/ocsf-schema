@@ -1,121 +1,48 @@
 {
     "attributes": {
-        "data": {
-            "description": "Additional data that is associated with the event.",
-            "requirement": "optional",
-            "caption": "Data",
-            "type": "json_t"
-        },
-        "status_id": {
-            "enum": {
-                "-1": {
-                    "caption": "Other",
-                    "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
-                }
-            }
-        },
-        "category_uid": {
-            "enum": {
-                "-1": {
-                    "caption": "Other"
-                }
-            },
-            "default": 0
-        },
-        "count": {
-            "default": 1
-        },
-        "severity_id": {
-            "enum": {
-                "-1": {
-                    "caption": "Other",
-                    "description": "The event severity is not mapped. See the <code>severity</code> attribute, which contains a data source specific value."
-                },
-                "0": {
-                    "description": "The event severity is not known."
-                }
-            }
-        },
         "confidence": {
             "group": "classification",
             "requirement": "optional",
             "caption": "Confidence",
             "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
-            "type": "integer_t"
+            "type": "integer_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
         },
-        "activity_id": {
-            "enum": {
-                "-1": {
-                    "caption": "Other",
-                    "description": "The event activity is not mapped."
-                }
+        "count": {
+            "default": 1
+        },
+        "data": {
+            "description": "Additional data that is associated with the event.",
+            "requirement": "optional",
+            "caption": "Data",
+            "type": "json_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
             }
         },
         "disposition_id": {
             "enum": {
-                "-1": {
-                    "caption": "Other"
-                },
-                "4": {
-                    "caption": "Logged"
-                },
-                "15": {
-                    "description": "Marked with extended attributes.",
-                    "caption": "Tagged"
-                },
-                "7": {
-                    "caption": "Partially Corrected"
-                },
-                "14": {
-                    "description": "No longer suspicious (re-scored).",
-                    "caption": "Exonerated"
-                },
-                "8": {
-                    "caption": "Uncorrected"
-                },
                 "10": {
-                    "caption": "Delayed",
                     "description": "Requires reboot to finish the operation."
                 },
-                "5": {
-                    "caption": "Command Script Run"
+                "15": {
+                    "description": "Marked with extended attributes."
                 },
-                "3": {
-                    "caption": "No Action"
-                },
-                "6": {
-                    "caption": "Corrected"
-                },
-                "11": {
-                    "caption": "Detected"
-                },
-                "2": {
-                    "caption": "Allowed"
-                },
-                "13": {
-                    "caption": "Restored"
-                },
-                "1": {
-                    "caption": "Blocked"
-                },
-                "12": {
-                    "caption": "Quarantined"
+                "14": {
+                    "description": "No longer suspicious (re-scored)."
                 }
             }
         },
-        "class_uid": {
+        "severity_id": {
             "enum": {
-                "-1": {
-                    "caption": "Other"
+                "0": {
+                    "description": "The event severity is not known."
                 }
-            },
-            "default": 0
-        },
-        "type_uid": {
-            "type": "integer_t"
-        },
-        "attacks": {
-            "caption": "Attacks"
+            }
         }
     }
 }

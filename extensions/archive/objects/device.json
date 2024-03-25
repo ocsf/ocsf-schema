@@ -1,29 +1,27 @@
 {
     "attributes": {
-        "type_id": {
-            "enum": {
-                "-1": {
-                    "caption": "Other",
-                    "description": "The type is not mapped. See the <code>type</code> attribute, which may contain a data source specific value."
-                }
-            },
-            "default": 0
-        },
         "reputation": {
             "requirement": "optional",
             "caption": "Reputation Scores",
             "description": "Contains the original and normalized reputation scores.",
-            "type": "reputation"
+            "type": "reputation",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
         },
         "org_unit": {
             "requirement": "optional",
             "caption": "Org Unit",
             "description": "The name of the organization to which the user belongs.",
-            "type": "string_t"
+            "type": "string_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
         },
-        "location": {
-            "caption": "Detailed Geo Location"
+        "type_id": {
+            "default": 0
         }
-    },
-    "observable": 0
+    }
 }

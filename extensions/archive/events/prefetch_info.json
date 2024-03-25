@@ -3,46 +3,15 @@
         "count": {
             "default": 1
         },
-        "confidence": {
-            "group": "classification",
+        "scan_uid": {
+            "description": "The unique identifier of the discovery scan request that pertains to this event.",
+            "group": "primary",
             "requirement": "optional",
-            "caption": "Confidence",
-            "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
-            "type": "integer_t"
-        },
-        "activity_id": {
-            "enum": {
-                "-1": {
-                    "caption": "Other",
-                    "description": "The event activity is not mapped."
-                }
-            }
-        },
-        "category_uid": {
-            "default": 0,
-            "enum": {
-                "-1": {
-                    "caption": "Other"
-                }
-            }
-        },
-        "class_uid": {
-            "enum": {
-                "-1": {
-                    "caption": "Other"
-                }
-            },
-            "default": 0
-        },
-        "severity_id": {
-            "enum": {
-                "-1": {
-                    "caption": "Other",
-                    "description": "The event severity is not mapped. See the <code>severity</code> attribute, which contains a data source specific value."
-                },
-                "0": {
-                    "description": "The event severity is not known."
-                }
+            "caption": "Scan UID",
+            "type": "string_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
             }
         },
         "command_uid": {
@@ -50,31 +19,39 @@
             "group": "primary",
             "requirement": "required",
             "caption": "Command UID",
-            "type": "string_t"
-        },
-        "status_id": {
-            "enum": {
-                "-1": {
-                    "caption": "Other",
-                    "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
-                }
+            "type": "string_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
             }
         },
         "data": {
             "description": "Additional data that is associated with the event.",
             "requirement": "optional",
             "caption": "Data",
-            "type": "json_t"
+            "type": "json_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
         },
-        "scan_uid": {
-            "description": "The unique identifier of the discovery scan request that pertains to this event.",
-            "group": "primary",
+        "confidence": {
+            "group": "classification",
             "requirement": "optional",
-            "caption": "Scan UID",
-            "type": "string_t"
+            "caption": "Confidence",
+            "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
+            "type": "integer_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
         },
-        "type_uid": {
-            "type": "integer_t"
+        "severity_id": {
+            "enum": {
+                "0": {
+                    "description": "The event severity is not known."
+                }
+            }
         }
     }
 }

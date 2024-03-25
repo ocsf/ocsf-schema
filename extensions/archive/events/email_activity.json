@@ -1,130 +1,76 @@
 {
     "attributes": {
-        "severity_id": {
-            "enum": {
-                "-1": {
-                    "caption": "Other",
-                    "description": "The event severity is not mapped. See the <code>severity</code> attribute, which contains a data source specific value."
-                },
-                "0": {
-                    "description": "The event severity is not known."
-                }
+        "email_uid": {
+            "requirement": "recommended",
+            "group": "primary",
+            "caption": "Email UID",
+            "description": "The unique identifier of the email, used to correlate related email alert and activity events.",
+            "type": "string_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
             }
         },
-        "class_uid": {
-            "default": 0,
-            "enum": {
-                "-1": {
-                    "caption": "Other"
-                }
-            }
-        },
-        "actor": {
+        "device": {
             "group": "primary"
-        },
-        "status_id": {
-            "enum": {
-                "-1": {
-                    "caption": "Other",
-                    "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
-                }
-            }
         },
         "count": {
             "default": 1
         },
-        "category_uid": {
-            "enum": {
-                "-1": {
-                    "caption": "Other"
-                }
-            },
-            "default": 0
-        },
-        "device": {
+        "actor": {
             "group": "primary"
         },
         "data": {
             "description": "Additional data that is associated with the event.",
             "requirement": "optional",
             "caption": "Data",
-            "type": "json_t"
+            "type": "json_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
+        },
+        "connection_uid": {
+            "requirement": "optional",
+            "group": "context",
+            "caption": "Connection Identifier",
+            "description": "The network connection identifier.",
+            "type": "string_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
         },
         "confidence": {
             "group": "classification",
             "requirement": "optional",
             "caption": "Confidence",
             "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
-            "type": "integer_t"
+            "type": "integer_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
         },
         "disposition_id": {
             "enum": {
-                "-1": {
-                    "caption": "Other"
-                },
-                "7": {
-                    "caption": "Partially Corrected"
-                },
                 "14": {
-                    "caption": "Exonerated",
                     "description": "No longer suspicious (re-scored)."
                 },
                 "15": {
-                    "caption": "Tagged",
                     "description": "Marked with extended attributes."
                 },
-                "4": {
-                    "caption": "Logged"
-                },
                 "10": {
-                    "caption": "Delayed",
                     "description": "Requires reboot to finish the operation."
-                },
-                "1": {
-                    "caption": "Blocked"
-                },
-                "2": {
-                    "caption": "Allowed"
-                },
-                "8": {
-                    "caption": "Uncorrected"
-                },
-                "3": {
-                    "caption": "No Action"
-                },
-                "5": {
-                    "caption": "Command Script Run"
-                },
-                "12": {
-                    "caption": "Quarantined"
-                },
-                "6": {
-                    "caption": "Corrected"
-                },
-                "11": {
-                    "caption": "Detected"
-                },
-                "13": {
-                    "caption": "Restored"
                 }
             }
         },
-        "activity_id": {
+        "severity_id": {
             "enum": {
-                "-1": {
-                    "caption": "Other",
-                    "description": "The event activity is not mapped."
-                },
-                "1": {
-                    "caption": "Allowed"
+                "0": {
+                    "description": "The event severity is not known."
                 }
             }
-        },
-        "attacks": {
-            "caption": "Attacks"
-        },
-        "type_uid": {
-            "type": "integer_t"
         }
     },
     "associations": {
@@ -134,6 +80,5 @@
         "actor.user": [
             "device"
         ]
-    },
-    "category": "email"
+    }
 }

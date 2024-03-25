@@ -1,27 +1,24 @@
 {
     "attributes": {
-        "severity_id": {
-            "enum": {
-                "-1": {
-                    "caption": "Other",
-                    "description": "The event severity is not mapped. See the <code>severity</code> attribute, which contains a data source specific value."
-                },
-                "0": {
-                    "description": "The event severity is not known."
-                }
+        "data": {
+            "description": "Additional data that is associated with the event.",
+            "requirement": "optional",
+            "caption": "Data",
+            "type": "json_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
             }
         },
         "disposition": {
             "requirement": "optional",
             "caption": "Disposition",
             "description": "The event disposition name, as defined by the disposition_id.",
-            "type": "string_t"
-        },
-        "data": {
-            "description": "Additional data that is associated with the event.",
-            "requirement": "optional",
-            "caption": "Data",
-            "type": "json_t"
+            "type": "string_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
         },
         "disposition_id": {
             "requirement": "required",
@@ -81,70 +78,29 @@
                 }
             },
             "sibling": "disposition",
-            "type": "integer_t"
-        },
-        "status_id": {
-            "enum": {
-                "-1": {
-                    "caption": "Other",
-                    "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
-                }
+            "type": "integer_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
             }
         },
         "count": {
             "default": 1
         },
-        "activity_id": {
+        "resources": {
+            "description": "A list of resources associated to an event.",
+            "type": "resource"
+        },
+        "severity_id": {
             "enum": {
-                "-1": {
-                    "caption": "Other",
-                    "description": "The event activity is not mapped."
-                },
-                "1": {
-                    "description": "A security finding is generated.",
-                    "caption": "Generate"
-                },
-                "2": {
-                    "description": "A security finding is updated."
+                "0": {
+                    "description": "The event severity is not known."
                 }
             }
-        },
-        "category_uid": {
-            "default": 0,
-            "enum": {
-                "-1": {
-                    "caption": "Other"
-                }
-            }
-        },
-        "state_id": {
-            "enum": {
-                "-1": {
-                    "caption": "Other",
-                    "description": "The state is not mapped. See the <code>state</code> attribute, which contains a data source specific value."
-                }
-            }
-        },
-        "class_uid": {
-            "default": 0,
-            "enum": {
-                "-1": {
-                    "caption": "Other"
-                }
-            }
-        },
-        "attacks": {
-            "caption": "Attacks"
-        },
-        "type_uid": {
-            "type": "integer_t"
         },
         "confidence": {
-            "group": "classification",
-            "type": "integer_t"
-        },
-        "resources": {
-            "type": "resource"
+            "type": "integer_t",
+            "group": "classification"
         }
     }
 }

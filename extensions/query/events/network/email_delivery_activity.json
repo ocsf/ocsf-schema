@@ -1,0 +1,350 @@
+{
+  "description": "Email Delivery events report the delivery status of emails.",
+	"@deprecated": {
+		"since": "1.1.0",
+		"message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+	},
+  "caption": "Email Delivery Activity",
+  "name": "email_delivery_activity",
+  "category": "network",
+  "uid": 30,
+  "attributes": {
+    "file": {
+      "description": "The email file attachment.",
+      "group": "primary",
+      "requirement": "required"
+    },
+    "url": {
+      "description": "The URL included in the email content.",
+      "group": "primary",
+      "requirement": "required"
+    },
+        "status_detail": {
+            "group": "primary",
+            "caption": "Status Details",
+            "description": "The status details contains additional information about the event outcome.",
+            "type": "string_t"
+        },
+        "activity_id": {
+            "enum": {
+                "1": {
+                    "caption": "Delivered"
+                },
+                "2": {
+                    "caption": "Failed"
+                },
+                "3": {
+                    "caption": "Temporary Failure"
+                },
+                "-1": {
+                    "caption": "Other",
+                    "description": "The event activity is not mapped."
+                },
+                "0": {
+                    "caption": "Unknown",
+                    "description": "The event activity is unknown."
+                }
+            },
+            "requirement": "required",
+            "caption": "Activity ID",
+            "description": "The normalized identifier of the activity that triggered the event.",
+            "sibling": "activity_name",
+            "type": "integer_t"
+        },
+        "duration": {
+            "caption": "Duration",
+            "description": "The event duration or aggregate time, the amount of time the event covers from <code>start_time</code> to <code>end_time</code> in milliseconds.",
+            "type": "integer_t"
+        },
+        "attacks": {
+            "requirement": "optional",
+            "caption": "Attacks",
+            "description": "An array of attacks associated with an event.",
+            "is_array": true,
+            "type": "attack"
+        },
+        "type_name": {
+            "requirement": "optional",
+            "caption": "Type Name",
+            "description": "The event type name, as defined by the type_uid.",
+            "type": "string_t"
+        },
+        "status_id": {
+            "group": "primary",
+            "requirement": "recommended",
+            "caption": "Status ID",
+            "description": "The normalized identifier of the event status.",
+            "enum": {
+                "-1": {
+                    "caption": "Other",
+                    "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
+                },
+                "0": {
+                    "caption": "Unknown"
+                },
+                "1": {
+                    "caption": "Success"
+                },
+                "2": {
+                    "caption": "Failure"
+                }
+            },
+            "sibling": "status",
+            "type": "integer_t"
+        },
+        "confidence": {
+            "group": "classification",
+            "requirement": "optional",
+            "caption": "Confidence",
+            "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
+            "type": "integer_t"
+        },
+        "device": {
+            "group": "primary",
+            "requirement": "recommended",
+            "caption": "Device",
+            "description": "The device that reported the event.",
+            "type": "device"
+        },
+        "raw_data": {
+            "group": "context",
+            "caption": "Raw Data",
+            "description": "The event data as received from the event source.",
+            "type": "json_t"
+        },
+        "timezone_offset": {
+            "requirement": "recommended",
+            "caption": "Timezone Offset",
+            "description": "The number of minutes that the reported event <code>time</code> is ahead or behind UTC, in the range -1,080 to +1,080.",
+            "type": "integer_t"
+        },
+        "observables": {
+            "group": "primary",
+            "requirement": "optional",
+            "caption": "Observables",
+            "description": "The observables associated with the event.",
+            "is_array": true,
+            "type": "observable"
+        },
+        "severity_id": {
+            "group": "classification",
+            "requirement": "required",
+            "caption": "Severity ID",
+            "description": "The normalized identifier of the event severity.</p>The normalized severity is a measurement the effort and expense required to manage and resolve an event or incident. Smaller numerical values represent lower impact events, and larger numerical values represent higher impact events.",
+            "enum": {
+                "-1": {
+                    "caption": "Other",
+                    "description": "The event severity is not mapped. See the <code>severity</code> attribute, which contains a data source specific value."
+                },
+                "0": {
+                    "caption": "Unknown",
+                    "description": "The event severity is not known."
+                },
+                "1": {
+                    "caption": "Informational",
+                    "description": "Informational message. No action required."
+                },
+                "2": {
+                    "caption": "Low",
+                    "description": "The user decides if action is needed."
+                },
+                "3": {
+                    "caption": "Medium",
+                    "description": "Action is required but the situation is not serious at this time."
+                },
+                "4": {
+                    "caption": "High",
+                    "description": "Action is required immediately."
+                },
+                "5": {
+                    "caption": "Critical",
+                    "description": "Action is required immediately and the scope is broad."
+                },
+                "6": {
+                    "caption": "Fatal",
+                    "description": "An error occurred but it is too late to take remedial action."
+                }
+            },
+            "sibling": "severity",
+            "type": "integer_t"
+        },
+        "severity": {
+            "group": "classification",
+            "requirement": "optional",
+            "caption": "Severity",
+            "description": "The event severity, as defined by the event source.",
+            "type": "string_t"
+        },
+        "message": {
+            "group": "primary",
+            "requirement": "recommended",
+            "caption": "Message",
+            "description": "The description of the event, as defined by the event source.",
+            "type": "string_t"
+        },
+        "end_time": {
+            "description": "The end time of a time period, or the time of the most recent event included in the aggregate event.",
+            "caption": "End Time",
+            "type": "timestamp_t"
+        },
+        "count": {
+            "caption": "Count",
+            "default": 1,
+            "description": "The number of times that events in the same logical group occurred during the event <strong>Start Time</strong> to <strong>End Time</strong> period.",
+            "type": "integer_t"
+        },
+        "disposition_id": {
+            "requirement": "required",
+            "caption": "Disposition ID",
+            "description": "When security issues, such as malware or policy violations, are detected and possibly corrected, then <code>disposition_id</code> describes the action taken by the security product.",
+            "enum": {
+                "-1": {
+                    "caption": "Other"
+                },
+                "0": {
+                    "caption": "Unknown"
+                },
+                "1": {
+                    "caption": "Blocked"
+                },
+                "2": {
+                    "caption": "Allowed"
+                },
+                "3": {
+                    "caption": "No Action"
+                },
+                "4": {
+                    "caption": "Logged"
+                },
+                "5": {
+                    "caption": "Command Script Run"
+                },
+                "6": {
+                    "caption": "Corrected"
+                },
+                "7": {
+                    "caption": "Partially Corrected"
+                },
+                "8": {
+                    "caption": "Uncorrected"
+                },
+                "10": {
+                    "description": "Requires reboot to finish the operation.",
+                    "caption": "Delayed"
+                },
+                "11": {
+                    "caption": "Detected"
+                },
+                "12": {
+                    "caption": "Quarantined"
+                },
+                "13": {
+                    "caption": "Restored"
+                },
+                "14": {
+                    "description": "No longer suspicious (re-scored).",
+                    "caption": "Exonerated"
+                },
+                "15": {
+                    "description": "Marked with extended attributes.",
+                    "caption": "Tagged"
+                }
+            },
+            "sibling": "disposition",
+            "type": "integer_t"
+        },
+        "cloud": {
+            "requirement": "required",
+            "caption": "Cloud",
+            "description": "Describes details about the Cloud enviroment where the event was originally created or logged.",
+            "type": "cloud"
+        },
+        "enrichments": {
+            "group": "context",
+            "caption": "Enrichments",
+            "description": "The additional information from an external data source, which is associated with the event. For example add location information for the IP address in the DNS answers:</p><code>[{\"name\": \"answers.ip\", \"value\": \"92.24.47.250\", \"type\": \"location\", \"data\": {\"city\": \"Socotra\", \"continent\": \"Asia\", \"coordinates\": [-25.4153, 17.0743], \"country\": \"YE\", \"desc\": \"Yemen\"}}]</code>",
+            "is_array": true,
+            "type": "enrichment"
+        },
+        "metadata": {
+            "group": "context",
+            "requirement": "required",
+            "caption": "Metadata",
+            "description": "The metadata associated with the event.",
+            "type": "metadata"
+        },
+        "data": {
+            "description": "Additional data that is associated with the event.",
+            "requirement": "optional",
+            "caption": "Data",
+            "type": "json_t"
+        },
+        "disposition": {
+            "requirement": "optional",
+            "caption": "Disposition",
+            "description": "The event disposition name, as defined by the disposition_id.",
+            "type": "string_t"
+        },
+        "time": {
+            "requirement": "required",
+            "caption": "Event Time",
+            "description": "The normalized event occurrence time.",
+            "type": "timestamp_t"
+        },
+        "record_id": {
+            "description": "Unique idenifier for the event",
+            "group": "primary",
+            "requirement": "required",
+            "caption": "Record ID",
+            "type": "string_t"
+        },
+        "activity_name": {
+            "requirement": "optional",
+            "caption": "Activity",
+            "description": "The event activity name, as defined by the activity_id.",
+            "type": "string_t"
+        },
+        "unmapped": {
+            "group": "context",
+            "caption": "Unmapped Data",
+            "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
+            "type": "object"
+        },
+        "actor": {
+            "group": "primary",
+            "requirement": "optional",
+            "caption": "Actor",
+            "description": "The actor that performed the operation or the action.",
+            "type": "actor"
+        },
+        "status_code": {
+            "group": "primary",
+            "caption": "Status Code",
+            "description": "The event status code, as reported by the event source.<br /><br />For example, in a Windows Failed Authentication event, this would be the value of 'Failure Code', e.g. 0x18.",
+            "type": "string_t"
+        },
+        "start_time": {
+            "description": "The start time of a time period, or the time of the least recent event included in the aggregate event.",
+            "caption": "Start Time",
+            "type": "timestamp_t"
+        },
+        "status": {
+            "group": "primary",
+            "requirement": "optional",
+            "caption": "Status",
+            "description": "The event status, as reported by the event source.",
+            "type": "string_t"
+        },
+        "malware": {
+            "requirement": "recommended",
+            "caption": "Malware",
+            "description": "The list of malware identified by a finding.",
+            "is_array": true,
+            "type": "malware"
+        }
+    },
+    "profiles": [
+        "host",
+        "malware"
+    ]
+}

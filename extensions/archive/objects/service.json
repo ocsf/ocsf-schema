@@ -1,19 +1,103 @@
 {
     "attributes": {
+        "run_state_id": {
+            "description": "The service run state ID.",
+            "requirement": "required",
+            "enum": {
+                "0": {
+                    "caption": "Unknown",
+                    "description": "The service run state is unknown."
+                },
+                "1": {
+                    "caption": "Stopped",
+                    "description": "The service is not running."
+                },
+                "2": {
+                    "caption": "Start Pending",
+                    "description": "The service is starting."
+                },
+                "3": {
+                    "caption": "Stop Pending",
+                    "description": "The service is stopping."
+                },
+                "4": {
+                    "caption": "Running",
+                    "description": "The service is running."
+                },
+                "5": {
+                    "caption": "Continue Pending",
+                    "description": "The service continue is pending."
+                },
+                "6": {
+                    "caption": "Pause Pending",
+                    "description": "The service pause is pending."
+                },
+                "7": {
+                    "caption": "Paused",
+                    "description": "The service is paused."
+                },
+                "-1": {
+                    "caption": "Other",
+                    "description": "The service run state is other."
+                }
+            },
+            "caption": "Run State ID",
+            "sibling": "run_state",
+            "type": "integer_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
+        },
         "loaded_module_name": {
-            "requirement": "recommended"
+            "requirement": "recommended",
+            "caption": "Loaded Module",
+            "description": "The name of the module loaded by the service.",
+            "type": "string_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
         },
         "start_type": {
             "description": "The service start type.",
             "requirement": "optional",
             "caption": "Start Type",
-            "type": "string_t"
+            "type": "string_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
+        },
+        "cmd_line": {
+            "requirement": "recommended",
+            "caption": "Command Line",
+            "description": "The full command line used to launch an application, service, process, or job. For example: <code>ssh user@10.0.0.10</code>. If the command line is unavailable or missing, the empty string <code>''</code> is to be used",
+            "type": "string_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
+        },
+        "run_state": {
+            "description": "The service run state.",
+            "requirement": "optional",
+            "caption": "Run State",
+            "type": "string_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
         },
         "file": {
             "description": "The service file object.",
             "requirement": "required",
             "caption": "File",
-            "type": "file"
+            "type": "file",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
         },
         "start_type_id": {
             "description": "The service start type ID.",
@@ -69,58 +153,21 @@
                     "description": "Stared according to a schedule."
                 }
             },
-            "type": "integer_t"
+            "type": "integer_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
         },
-        "cmd_line": {
-            "requirement": "recommended",
-            "caption": "Command Line",
-            "description": "The full command line used to launch an application, service, process, or job. For example: <code>ssh user@10.0.0.10</code>. If the command line is unavailable or missing, the empty string <code>''</code> is to be used",
-            "type": "string_t"
-        },
-        "run_state": {
-            "description": "The service run state.",
-            "requirement": "optional"
-        },
-        "run_state_id": {
-            "description": "The service run state ID.",
-            "requirement": "required",
-            "enum": {
-                "0": {
-                    "caption": "Unknown",
-                    "description": "The service run state is unknown."
-                },
-                "1": {
-                    "caption": "Stopped",
-                    "description": "The service is not running."
-                },
-                "2": {
-                    "caption": "Start Pending",
-                    "description": "The service is starting."
-                },
-                "3": {
-                    "caption": "Stop Pending",
-                    "description": "The service is stopping."
-                },
-                "4": {
-                    "caption": "Running",
-                    "description": "The service is running."
-                },
-                "5": {
-                    "caption": "Continue Pending",
-                    "description": "The service continue is pending."
-                },
-                "6": {
-                    "caption": "Pause Pending",
-                    "description": "The service pause is pending."
-                },
-                "7": {
-                    "caption": "Paused",
-                    "description": "The service is paused."
-                },
-                "-1": {
-                    "caption": "Other",
-                    "description": "The service run state is other."
-                }
+        "types": {
+            "description": "The service types.",
+            "requirement": "optional",
+            "caption": "Types",
+            "is_array": true,
+            "type": "string_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
             }
         },
         "type_ids": {
@@ -174,14 +221,11 @@
                 }
             },
             "is_array": true,
-            "type": "integer_t"
-        },
-        "types": {
-            "description": "The service types.",
-            "requirement": "optional",
-            "caption": "Types",
-            "is_array": true,
-            "type": "string_t"
+            "type": "integer_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
         }
     }
 }

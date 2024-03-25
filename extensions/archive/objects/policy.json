@@ -1,18 +1,15 @@
 {
     "attributes": {
-        "rule": {
-            "description": "The primary rule that triggered the policy event.",
-            "requirement": "recommended"
-        },
         "rules": {
             "description": "Additional rules that triggered the policy event.",
-            "requirement": "recommended"
-        },
-        "effective_time": {
-            "requirement": "recommended"
-        },
-        "label": {
-            "requirement": "recommended"
+            "requirement": "recommended",
+            "caption": "Rules",
+            "is_array": true,
+            "type": "rule",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
         },
         "type_id": {
             "description": "The policy type identifier; one of:",
@@ -85,11 +82,63 @@
                 "17": {
                     "caption": "System",
                     "description": "System policy"
+                },
+                "-1": {
+                    "caption": "Other",
+                    "description": "The type is not mapped. See the <code>type</code> attribute, which may contain a data source specific value."
+                },
+                "0": {
+                    "caption": "Unknown",
+                    "description": "The type is unknown."
                 }
+            },
+            "caption": "Type ID",
+            "default": 0,
+            "sibling": "type",
+            "type": "integer_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
+        },
+        "effective_time": {
+            "requirement": "recommended",
+            "caption": "Effective Date",
+            "description": "The date and time that the specific policy and rule was applied and became operational. ",
+            "type": "timestamp_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
+        },
+        "label": {
+            "requirement": "recommended",
+            "caption": "Label",
+            "description": "The label set for the policy.",
+            "type": "string_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
+        },
+        "rule": {
+            "description": "The primary rule that triggered the policy event.",
+            "requirement": "recommended",
+            "caption": "Rule",
+            "type": "rule",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
             }
         },
         "type": {
-            "description": "The type of the policy."
+            "description": "The type of the policy.",
+            "caption": "Type",
+            "type": "string_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
         }
     }
 }

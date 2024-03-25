@@ -5,66 +5,31 @@
             "requirement": "optional",
             "caption": "Confidence",
             "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
-            "type": "integer_t"
-        },
-        "category_uid": {
-            "default": 0,
-            "enum": {
-                "-1": {
-                    "caption": "Other"
-                }
-            }
-        },
-        "status_id": {
-            "enum": {
-                "-1": {
-                    "caption": "Other",
-                    "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
-                }
-            }
-        },
-        "activity_id": {
-            "enum": {
-                "-1": {
-                    "caption": "Other",
-                    "description": "The event activity is not mapped."
-                },
-                "1": {
-                    "caption": "Logged"
-                }
-            }
-        },
-        "class_uid": {
-            "enum": {
-                "-1": {
-                    "caption": "Other"
-                }
-            },
-            "default": 0
-        },
-        "data": {
-            "description": "Additional data that is associated with the event.",
-            "requirement": "optional",
-            "caption": "Data",
-            "type": "json_t"
-        },
-        "severity_id": {
-            "enum": {
-                "-1": {
-                    "caption": "Other",
-                    "description": "The event severity is not mapped. See the <code>severity</code> attribute, which contains a data source specific value."
-                },
-                "0": {
-                    "description": "The event severity is not known."
-                }
+            "type": "integer_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
             }
         },
         "count": {
             "default": 1
         },
-        "type_uid": {
-            "type": "integer_t"
+        "data": {
+            "description": "Additional data that is associated with the event.",
+            "requirement": "optional",
+            "caption": "Data",
+            "type": "json_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
+        },
+        "severity_id": {
+            "enum": {
+                "0": {
+                    "description": "The event severity is not known."
+                }
+            }
         }
-    },
-    "category": "inventory"
+    }
 }

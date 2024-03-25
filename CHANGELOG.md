@@ -45,7 +45,12 @@ Thankyou! -->
     3. Added `risk_score`, `risk_level_id`, `risk_level` to `user` object. Issue #972.
     4. Added `app_name`, `app_uid` to `actor` object.  Issue #966, PR #979.
     5. Added `container`, `database`, `databucket` to the `evidences` object. #984
-    6. Made `network_interface` object an `observable` with `type_id` `31`. #997
+    6. Added `owner` to `endpoint` object. #987
+    7. Added `is_applied` Boolean attribute to `policy` object. #987
+    8. Added `agent_list` as an array of `agent` objects. #987
+    9. Added `policies` object as an array of `policy` objects. #987
+    10. Added `agent_list` to `endpoint` object. #987 
+    11. Made `network_interface` object an `observable` with `type_id` `31`. #997
 * #### Platform Extensions
 
 ### Bugfixes

@@ -1,14 +1,10 @@
 {
     "attributes": {
-        "count": {
-            "default": 1
-        },
-        "command_uid": {
-            "description": "The unique identifier of the discovery command that pertains to this event.",
-            "group": "primary",
-            "requirement": "required",
-            "caption": "Command UID",
-            "type": "string_t",
+        "data": {
+            "description": "Additional data that is associated with the event.",
+            "requirement": "optional",
+            "caption": "Data",
+            "type": "json_t",
             "@deprecated": {
                 "since": "1.1.0",
                 "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
@@ -36,15 +32,19 @@
                 "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
             }
         },
-        "data": {
-            "description": "Additional data that is associated with the event.",
-            "requirement": "optional",
-            "caption": "Data",
-            "type": "json_t",
+        "command_uid": {
+            "description": "The unique identifier of the discovery command that pertains to this event.",
+            "group": "primary",
+            "requirement": "required",
+            "caption": "Command UID",
+            "type": "string_t",
             "@deprecated": {
                 "since": "1.1.0",
                 "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
             }
+        },
+        "count": {
+            "default": 1
         },
         "severity_id": {
             "enum": {

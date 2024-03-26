@@ -1,11 +1,22 @@
 {
     "attributes": {
-        "dkim_signature": {
+        "email_auth": {
             "requirement": "recommended",
+            "group": "primary",
+            "caption": "Email Authentication",
+            "description": "The SPF, DKIM and DMARC attributes of an email.",
+            "type": "email_auth",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
+        },
+        "sender_ip": {
+            "requirement": "optional",
             "group": "context",
-            "caption": "DKIM Signature",
-            "description": "The DomainKeys Identified Mail (DKIM) signature used by the sending/receiving system.",
-            "type": "string_t",
+            "caption": "Sender IP Address",
+            "description": "The IP address of the sending email server, in either IPv4 or IPv6 format.",
+            "type": "ip_t",
             "@deprecated": {
                 "since": "1.1.0",
                 "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
@@ -22,11 +33,22 @@
                 "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
             }
         },
-        "banner": {
+        "receiver_hostname": {
             "requirement": "optional",
             "group": "context",
-            "caption": "SMTP Banner",
-            "description": "The initial SMTP connection response that a messaging server receives after it connects to a email server.",
+            "caption": "Sender Host Name",
+            "description": "The host name of the receiving email server.",
+            "type": "hostname_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
+        },
+        "dkim_signature": {
+            "requirement": "recommended",
+            "group": "context",
+            "caption": "DKIM Signature",
+            "description": "The DomainKeys Identified Mail (DKIM) signature used by the sending/receiving system.",
             "type": "string_t",
             "@deprecated": {
                 "since": "1.1.0",
@@ -54,17 +76,6 @@
                 "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
             }
         },
-        "sender_ip": {
-            "requirement": "optional",
-            "group": "context",
-            "caption": "Sender IP Address",
-            "description": "The IP address of the sending email server, in either IPv4 or IPv6 format.",
-            "type": "ip_t",
-            "@deprecated": {
-                "since": "1.1.0",
-                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
-            }
-        },
         "connection_uid": {
             "requirement": "optional",
             "group": "context",
@@ -87,28 +98,6 @@
                 "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
             }
         },
-        "receiver_hostname": {
-            "requirement": "optional",
-            "group": "context",
-            "caption": "Sender Host Name",
-            "description": "The host name of the receiving email server.",
-            "type": "hostname_t",
-            "@deprecated": {
-                "since": "1.1.0",
-                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
-            }
-        },
-        "email": {
-            "requirement": "required",
-            "group": "primary",
-            "caption": "Email",
-            "description": "The email object.",
-            "type": "email",
-            "@deprecated": {
-                "since": "1.1.0",
-                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
-            }
-        },
         "email_uid": {
             "requirement": "recommended",
             "group": "primary",
@@ -120,22 +109,33 @@
                 "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
             }
         },
-        "email_auth": {
-            "requirement": "recommended",
-            "group": "primary",
-            "caption": "Email Authentication",
-            "description": "The SPF, DKIM and DMARC attributes of an email.",
-            "type": "email_auth",
-            "@deprecated": {
-                "since": "1.1.0",
-                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
-            }
-        },
         "class_name": {
             "requirement": "optional",
             "caption": "Class",
             "description": "The event class name, as defined by class_uid value.",
             "type": "string_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
+        },
+        "banner": {
+            "requirement": "optional",
+            "group": "context",
+            "caption": "SMTP Banner",
+            "description": "The initial SMTP connection response that a messaging server receives after it connects to a email server.",
+            "type": "string_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
+        },
+        "email": {
+            "requirement": "required",
+            "group": "primary",
+            "caption": "Email",
+            "description": "The email object.",
+            "type": "email",
             "@deprecated": {
                 "since": "1.1.0",
                 "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"

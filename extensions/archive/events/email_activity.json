@@ -1,5 +1,30 @@
 {
+    "associations": {
+        "device": [
+            "actor.user"
+        ],
+        "actor.user": [
+            "device"
+        ]
+    },
     "attributes": {
+        "confidence": {
+            "group": "classification",
+            "requirement": "optional",
+            "caption": "Confidence",
+            "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
+            "type": "integer_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
+        },
+        "count": {
+            "default": 1
+        },
+        "actor": {
+            "group": "primary"
+        },
         "email_uid": {
             "requirement": "recommended",
             "group": "primary",
@@ -10,15 +35,6 @@
                 "since": "1.1.0",
                 "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
             }
-        },
-        "device": {
-            "group": "primary"
-        },
-        "count": {
-            "default": 1
-        },
-        "actor": {
-            "group": "primary"
         },
         "data": {
             "description": "Additional data that is associated with the event.",
@@ -41,27 +57,19 @@
                 "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
             }
         },
-        "confidence": {
-            "group": "classification",
-            "requirement": "optional",
-            "caption": "Confidence",
-            "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
-            "type": "integer_t",
-            "@deprecated": {
-                "since": "1.1.0",
-                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
-            }
+        "device": {
+            "group": "primary"
         },
         "disposition_id": {
             "enum": {
-                "14": {
-                    "description": "No longer suspicious (re-scored)."
+                "10": {
+                    "description": "Requires reboot to finish the operation."
                 },
                 "15": {
                     "description": "Marked with extended attributes."
                 },
-                "10": {
-                    "description": "Requires reboot to finish the operation."
+                "14": {
+                    "description": "No longer suspicious (re-scored)."
                 }
             }
         },
@@ -72,13 +80,5 @@
                 }
             }
         }
-    },
-    "associations": {
-        "device": [
-            "actor.user"
-        ],
-        "actor.user": [
-            "device"
-        ]
     }
 }

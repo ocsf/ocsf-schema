@@ -1,42 +1,10 @@
 {
-    "associations": {
-        "device": [
-            "actor.user"
-        ],
-        "actor.user": [
-            "device"
-        ]
-    },
     "attributes": {
-        "device": {
-            "group": "primary"
-        },
         "actor": {
             "group": "primary"
         },
-        "data": {
-            "description": "Additional data that is associated with the event.",
-            "requirement": "optional",
-            "caption": "Data",
-            "type": "json_t",
-            "@deprecated": {
-                "since": "1.1.0",
-                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
-            }
-        },
-        "count": {
-            "default": 1
-        },
-        "connection_uid": {
-            "requirement": "optional",
-            "group": "context",
-            "caption": "Connection Identifier",
-            "description": "The network connection identifier.",
-            "type": "string_t",
-            "@deprecated": {
-                "since": "1.1.0",
-                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
-            }
+        "device": {
+            "group": "primary"
         },
         "confidence": {
             "group": "classification",
@@ -49,17 +17,28 @@
                 "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
             }
         },
-        "disposition_id": {
-            "enum": {
-                "15": {
-                    "description": "Marked with extended attributes."
-                },
-                "10": {
-                    "description": "Requires reboot to finish the operation."
-                },
-                "14": {
-                    "description": "No longer suspicious (re-scored)."
-                }
+        "connection_uid": {
+            "requirement": "optional",
+            "group": "context",
+            "caption": "Connection Identifier",
+            "description": "The network connection identifier.",
+            "type": "string_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
+        },
+        "count": {
+            "default": 1
+        },
+        "data": {
+            "description": "Additional data that is associated with the event.",
+            "requirement": "optional",
+            "caption": "Data",
+            "type": "json_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
             }
         },
         "severity_id": {
@@ -68,6 +47,27 @@
                     "description": "The event severity is not known."
                 }
             }
+        },
+        "disposition_id": {
+            "enum": {
+                "14": {
+                    "description": "No longer suspicious (re-scored)."
+                },
+                "15": {
+                    "description": "Marked with extended attributes."
+                },
+                "10": {
+                    "description": "Requires reboot to finish the operation."
+                }
+            }
         }
+    },
+    "associations": {
+        "device": [
+            "actor.user"
+        ],
+        "actor.user": [
+            "device"
+        ]
     }
 }

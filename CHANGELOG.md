@@ -38,6 +38,21 @@ Thankyou! -->
 ### Misc
 
 -->
+### Added
+* #### Event Classes
+    1. Added `Data Security Finding` event class. - [#953](https://github.com/ocsf/ocsf-schema/pull/953)
+* #### Objects
+    1. Added new `data_security` object. - [#953](https://github.com/ocsf/ocsf-schema/pull/953)
+
+### Improved
+* #### Objects
+    1. Added two new enums to `confidentiality` object: `5 - Private` and `6 - Restricted` - [#953](https://github.com/ocsf/ocsf-schema/pull/953)
+    2. Expand `analytic.type_id` enum with descriptions and added several new enums to broaden the types of rules and use cases `analytic` can be used for - [#953](https://github.com/ocsf/ocsf-schema/pull/953)
+        - `Fingerprinting`
+        - `Tagging`
+        - `Exact Data Match`
+        - `Partial Data Match`
+        - `Indexed Data Match`
 
 ## [v1.1.0] - January 25th, 2024
 

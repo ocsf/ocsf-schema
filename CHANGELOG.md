@@ -52,7 +52,7 @@ Thankyou! -->
     3. Added `src_endpoint`, `http_request` attributes to all IAM category classes. #976
     4. Added `autonomous_system` to `network_endpoint` objects. #978
     5. Added `List`, `Encrypt` and `Decrypt` activities to `datastore` event class. #989 
-    6. Added `file` object to `http`, `rdp`, `smb`, `ssh`, and `ftp` event classes. #985
+    6. Added `file` attribute to `http`, `rdp`, `smb`, `ssh`, and `ftp` event classes. #985
 
 * #### Profiles
 * #### Objects 

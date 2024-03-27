@@ -36,7 +36,7 @@ Thankyou! -->
     18. Added `User Query` event class. #967
 
 * #### Profiles
-    1. Added `File` profile. #985
+
 * #### Objects
     1. Added `auth_factor` object. #949
     2. Added `data_security` object. #953

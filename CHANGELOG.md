@@ -85,6 +85,7 @@ Thankyou! -->
 ### Misc
     1. New Extension registration for Sedara. #951
     2. Add new ways to define observables to metaschema. #982
+    3. Corrected punctuation for the `transmit_time` attribute. #1001
 
 <!-- All available sections in the Changelog:
 

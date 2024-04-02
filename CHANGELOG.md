@@ -34,13 +34,12 @@ Thankyou! -->
     16. Added `Session Query` event class. #967
     17. Added `Startup Application Query` event class. #967
     18. Added `User Query` event class. #967
-
 * #### Profiles
 * #### Objects
     1. Added `auth_factor` object. #949
     2. Added `data_security` object. #953
     3. Added `autonomous_system` object. #978
-    4. Added `agent` object. #987
+    3. Added `startup_app` object #981
 * #### Platform Extensions
 
 ### Improved
@@ -50,7 +49,6 @@ Thankyou! -->
     2. Modified all classes such that primary attributes are at least recommended. #974
     3. Added `src_endpoint`, `http_request` attributes to all IAM category classes. #976
     4. Added `autonomous_system` to `network_endpoint` objects. #978
-    5. Added `List`, `Encrypt` and `Decrypt` activities to `datastore` event class. #989 
 * #### Profiles
 * #### Objects 
     1. Expanded `type_id` enum in `analytic` object to account for more use-cases: #953
@@ -64,28 +62,20 @@ Thankyou! -->
     2. Added `lat`, `long`, `geohash` attributes to `location` object. #971.
     3. Added `risk_score`, `risk_level_id`, `risk_level` to `user` object. Issue #972.
     4. Added `app_name`, `app_uid` to `actor` object.  Issue #966, PR #979.
-    5. Added `container`, `database`, `databucket` to the `evidences` object. #984
-    6. Added `owner` to `endpoint` object. #987
-    7. Added `is_applied` Boolean attribute to `policy` object. #987
-    8. Added `agent_list` as an array of `agent` objects. #987
-    9. Added `policies` object as an array of `policy` objects. #987
-    10. Added `agent_list` to `endpoint` object. #987 
-
 * #### Platform Extensions
 
 ### Bugfixes
-    1. Changed datatype of `priority` attribute, from `integer_t` to `string_t` #959
+1. Changed datatype of `priority` attribute, from `integer_t` to `string_t` #959
 
 ### Deprecated
-    1. Deprecated `coordinates` attribute in favor of specific `lat`, `long` attributes. #971
-    2. Deprecated `invoked_by` attribute in the `Actor` object in favor of `app_name`. #979.
+1. Deprecated `coordinates` attribute in favor of specific `lat`, `long` attributes. #971
+2. Deprecated `invoked_by` attribute in the `Actor` object in favor of `app_name`. #979.
 
 ### Breaking changes
 
 ### Misc
-    1. New Extension registration for Sedara. #951
-    2. Add new ways to define observables to metaschema. #982
-    3. Corrected punctuation for the `transmit_time` attribute. #1001
+1. New Extension registration for Sedara. #951
+2. Add new ways to define observables to metaschema. #982
 
 <!-- All available sections in the Changelog:
 
@@ -129,7 +119,7 @@ Thankyou! -->
     7. Added `Device Config Sate Change` event class. #914
     8. Added `Scan Activity` event class. #915
     9. Added `File Hosting Activity` event class. #917
-   
+
 * #### Profiles
 	1. Added `Network Proxy` Profile for the `Network Activity` and `Application Activity` classes. #705 
     2. Added `Load Balancer` Profile for the Network Activity classes. #897 

@@ -36,12 +36,15 @@ Thankyou! -->
     18. Added `User Query` event class. #967
 
 * #### Profiles
+    1. Added `data_classification` profile. #998
 
 * #### Objects
     1. Added `auth_factor` object. #949
     2. Added `data_security` object. #953
     3. Added `autonomous_system` object. #978
     4. Added `agent` object. #987
+    5. Added `data_classification` object. #998
+
 * #### Platform Extensions
 
 ### Improved
@@ -75,7 +78,8 @@ Thankyou! -->
     8. Added `agent_list` as an array of `agent` objects. #987
     9. Added `policies` object as an array of `policy` objects. #987
     10. Added `agent_list` to `endpoint` object. #987 
-    11. Added `labels` to the `Account` object. #1028
+    11. Added `labels` to the `Account` object. #1028 
+    12. Added `data_classification` profile to `_resource`, `database`, `databucket`, `email`, `file` and `metadata` objects. #998
 
 * #### Platform Extensions
 

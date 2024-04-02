@@ -41,6 +41,7 @@ Thankyou! -->
     2. Added `data_security` object. #953
     3. Added `autonomous_system` object. #978
     4. Added `agent` object. #987
+    5. Added `startup_app` object. #1011
 * #### Platform Extensions
 
 ### Improved

@@ -1,0 +1,72 @@
+{
+  "caption": "Network Tunnel Activity",
+  "description": "Network Tunnel Activity events report secure tunnel establishment, teardowns, renewals, and other network tunnel specific actions.",
+  "category": "network",
+  "extends": "network",
+  "name": "network_tunnel_activity",
+  "uid": 14,
+  "attributes": {
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Open",
+          "description": "Open a tunnel."
+        },
+        "2": {
+          "caption": "Close",
+          "description": "Close a tunnel."
+        },
+        "3": {
+          "caption": "Renew",
+          "description": "Renew a tunnel."
+        }
+      },
+      "requirement": "required"
+    },
+    "client_interface": {
+      "description": "The client interface of the tunnel. In a tunnelled session, this is the interface of the client which requested the tunnel. Ex: <code>en0</code>.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "connection_info": {
+      "description": "The tunnel connection information.",
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "device": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "dst_endpoint": {
+      "description": "The destination endpoint of the tunnel activity.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "src_endpoint": {
+      "description": "The source endpoint of the tunnel activity.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "session": {
+      "caption": "Tunnel Session",
+      "description": "The session associated with the tunnel activity.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "traffic": {
+      "description": "Traffic refers to the amount of data moving across the tunnel at a given point of time. Ex: <code>bytes_in</code> and <code>bytes_out</code>.",
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "tunnel_interface": {
+      "description": "The interface of the tunnel. In a tunnelled session, this is the virtual interface. Ex: <code>utun1</code>.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "user": {
+      "description": "The user associated with the tunnel activity.",
+      "group": "primary",
+      "requirement": "recommended"
+    }
+  }
+}

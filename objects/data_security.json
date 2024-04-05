@@ -4,22 +4,10 @@
   "extends": "data_classification",
   "name": "data_security",
   "attributes": {
-    "confidentiality": {
-      "requirement": "optional"
-    },
-    "confidentiality_id": {
-      "requirement": "optional"
-    },
     "data_lifecycle_state": {
       "requirement": "optional"
     },
     "data_lifecycle_state_id": {
-      "requirement": "recommended"
-    },
-    "data_type": {
-      "requirement": "optional"
-    },
-    "data_type_id": {
       "requirement": "recommended"
     },
     "detection_pattern": {
@@ -38,5 +26,13 @@
       "description": "Details about the policy that triggered the finding.",
       "requirement": "recommended"
     }
+  },
+  "constraints": {
+    "at_least_one": [
+      "data_lifecycle_state_id",
+      "detection_pattern",
+      "detection_system_id",
+      "policy"
+    ]
   }
 }

@@ -53,6 +53,7 @@ Thankyou! -->
     4. Added `autonomous_system` to `network_endpoint` objects. #978
     5. Added `List`, `Encrypt` and `Decrypt` activities to `datastore` event class. #989 
     6. Added `file` attribute to `http`, `rdp`, `ssh`, and `ftp` event classes. #985
+    7. Added a `Preauth` `activity_id` to the `Authentication` class.
 
 * #### Profiles
 * #### Objects 

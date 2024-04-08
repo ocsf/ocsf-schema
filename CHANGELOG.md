@@ -33,6 +33,7 @@ Thankyou! -->
     15. Added `Service Query` event class. #967
     16. Added `Session Query` event class. #967
     17. Added `User Query` event class. #967
+    18. Added `Tunnel Activity` event class. #1012
 
 * #### Profiles
     1. Added `data_classification` profile. #998

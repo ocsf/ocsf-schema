@@ -54,7 +54,6 @@ Thankyou! -->
     5. Added `List`, `Encrypt` and `Decrypt` activities to `datastore` event class. #989 
     6. Added `file` attribute to `http`, `rdp`, `ssh`, and `ftp` event classes. #985
     7. Added a `Preauth` `activity_id` to the `Authentication` class. #1018
-    8. Added a `labels` to the `Account` object.
 
 * #### Profiles
 * #### Objects 
@@ -75,6 +74,7 @@ Thankyou! -->
     8. Added `agent_list` as an array of `agent` objects. #987
     9. Added `policies` object as an array of `policy` objects. #987
     10. Added `agent_list` to `endpoint` object. #987 
+    11. Added a `labels` to the `Account` object. #1028
 
 * #### Platform Extensions
 

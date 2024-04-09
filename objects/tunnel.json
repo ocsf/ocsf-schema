@@ -1,0 +1,68 @@
+{
+  "caption": "Tunnel",
+  "name": "tunnel",
+  "description": "The tunnel object.",
+  "extends": "object",
+  "attributes": {
+    "client": {
+      "description": "The information about the client host for the tunnel. This is usually associated with the public (WAN) ip of the tunnel.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "connection_info": {
+      "description": "The tunnel connection information.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "interface": {
+      "description": "The information about the tunnel interface, e.g. <code>utun0</code>. This is usually associated with the private (rfc-1918) ip of the tunnel.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "session": {
+      "caption": "Tunnel Session",
+      "description": "The session associated with the tunnel activity.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "traffic": {
+      "description": "Traffic refers to the amount of data moving across the tunnel at a given point of time. Ex: <code>bytes_in</code> and <code>bytes_out</code>.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "type": {
+      "description": "The tunnel type.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "type_id": {
+      "description": "The file type ID.",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Split Tunnel"
+        },
+        "2": {
+          "caption": "Full Tunnel"
+        },
+        "99": {
+          "caption": "Other"
+        }
+      },
+      "group": "primary",
+      "requirement": "recommended"
+    }
+  },
+	"constraints": {
+		"at_least_one": [
+			"client",
+			"interface",
+			"connection_info",
+      "session",
+      "traffic",
+      "type_id"
+		]
+	}
+}

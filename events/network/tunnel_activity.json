@@ -1,7 +1,7 @@
 {
   "caption": "Tunnel Activity",
   "description": "Tunnel Activity events report secure tunnel establishment, teardowns, renewals, and other network tunnel specific actions.",
-  "extends": "network",
+  "extends": "base_event",
   "name": "tunnel_activity",
   "uid": 14,
   "attributes": {
@@ -22,48 +22,20 @@
       },
       "requirement": "required"
     },
-    "client_interface": {
-      "description": "The client interface of the tunnel. In a tunnelled session, this is the interface of the client which requested the tunnel. Ex: <code>en0</code>. The IP is usually a public (WAN) IP.",
-      "group": "primary",
-      "requirement": "recommended"
-    },
-    "connection_info": {
-      "description": "The tunnel connection information.",
-      "group": "primary",
-      "requirement": "recommended"
-    },
     "device": {
       "group": "primary",
       "requirement": "recommended"
     },
-    "session": {
-      "caption": "Tunnel Session",
-      "description": "The session associated with the tunnel activity.",
+    "tunnel": {
+      "caption": "Tunnel",
+      "description": "The properties of the tunnel, such as client, interface, and type.",
       "group": "primary",
-      "requirement": "recommended"
-    },
-    "traffic": {
-      "description": "Traffic refers to the amount of data moving across the tunnel at a given point of time. Ex: <code>bytes_in</code> and <code>bytes_out</code>.",
-      "group": "context",
-      "requirement": "optional"
-    },
-    "tunnel_interface": {
-      "description": "The interface of a tunnel. In a tunnelled session, this is the virtual interface. Ex: <code>utun1</code>. The IP is usually a private (local rfc-1918) IP.",
-      "group": "primary",
-      "requirement": "recommended"
+      "requirement": "required"
     },
     "user": {
       "description": "The user associated with the tunnel activity.",
       "group": "primary",
       "requirement": "recommended"
     }
-  },
-	"constraints": {
-		"at_least_one": [
-			"client_interface",
-			"tunnel_interface",
-			"connection_info",
-      "session"
-		]
-	}
+  }
 }

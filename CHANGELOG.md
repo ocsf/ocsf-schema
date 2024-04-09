@@ -74,7 +74,7 @@ Thankyou! -->
     8. Added `agent_list` as an array of `agent` objects. #987
     9. Added `policies` object as an array of `policy` objects. #987
     10. Added `agent_list` to `endpoint` object. #987 
-    11. Added a `labels` to the `Account` object. #1028
+    11. Added `labels` to the `Account` object. #1028
 
 * #### Platform Extensions
 

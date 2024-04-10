@@ -5,6 +5,9 @@
   "extends": "base_event",
   "name": "tunnel_activity",
   "uid": 14,
+  "profiles": [
+    "network_proxy"
+  ],
   "attributes": {
     "activity_id": {
       "enum": {
@@ -31,15 +34,15 @@
       },
       "requirement": "required"
     },
-    "client": {
-      "description": "The information about the client host (remote endpoint) for the tunnel. This is usually associated with the public (WAN) ip of the tunnel. This is where the data is forwarded and undergoes decapsulation.",
-      "group": "primary",
-      "requirement": "recommended"
-    },
     "connection_info": {
       "description": "The tunnel connection information.",
       "group": "context",
       "requirement": "optional"
+    },
+    "dst_endpoint": {
+      "description": "The server responding to the tunnel connection.",
+      "group": "primary",
+      "requirement": "recommended"
     },
     "device": {
       "description": "The device that reported the event.",
@@ -97,6 +100,11 @@
       "description": "The networking protocol associated with the tunnel.",
       "group": "context",
       "requirement": "optional"
+    },
+    "src_endpoint": {
+      "description": "The initiator (client) of the tunnel connection.",
+      "group": "primary",
+      "requirement": "recommended"
     },
     "session": {
       "caption": "Tunnel Session",

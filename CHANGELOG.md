@@ -78,8 +78,8 @@ Thankyou! -->
     8. Added `agent_list` as an array of `agent` objects. #987
     9. Added `policies` object as an array of `policy` objects. #987
     10. Added `agent_list` to `endpoint` object. #987 
-    11. Added `labels` to the `Account` object. #1028 
-    12. Added `data_classification` profile to `_resource`, `database`, `databucket`, `email`, `file` and `metadata` objects. #998
+    11. Added `labels` to the `Account` object. #1028
+    12. Added `data_classification` profile to `database`, `databucket`, `email`, `file`, `metadata`, `product`, `resource_details` and `web_resource` objects. #998
 
 * #### Platform Extensions
 

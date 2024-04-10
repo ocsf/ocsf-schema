@@ -99,6 +99,8 @@ Thankyou! -->
     4. Metaschema improvements. #993 
         * Detect unexpected top-level properties in object and event class definitions. This was added at this point to detect invalid observable definitions: invalid `observable` property in event classes, and invalid `observables` property in objects.
         * Remove hard-coded list of categories from `metaschema/categories.schema.json`, leaving this to the `ocsf-validator`. This change makes testing with alternate schemas that may add extra categories easier, as well as making it possible to validate private extensions that contain new categories.
+    5. Metaschema error reporting #1027
+        * Updated the definition of `object` and `event` so that metaschema errors reported by the validator with nested properties correctly attribute the error to the property with the error, rather than the top-level class.
 <!-- All available sections in the Changelog:
 
 ### Added

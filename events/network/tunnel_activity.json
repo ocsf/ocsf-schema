@@ -1,0 +1,172 @@
+{
+  "caption": "Tunnel Activity",
+  "category": "network",
+  "description": "Tunnel Activity events report secure tunnel establishment (such as VPN), teardowns, renewals, and other network tunnel specific actions.",
+  "extends": "network",
+  "name": "tunnel_activity",
+  "uid": 14,
+  "attributes": {
+    "activity_id": {
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The event activity is unknown."
+        },
+        "1": {
+          "caption": "Open",
+          "description": "Open a tunnel."
+        },
+        "2": {
+          "caption": "Close",
+          "description": "Close a tunnel."
+        },
+        "3": {
+          "caption": "Renew",
+          "description": "Renew a tunnel."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The event activity is not mapped. See the <code>activity_name</code> attribute, which contains a data source specific value."
+        }
+      },
+      "requirement": "required"
+    },
+    "connection_info": {
+      "description": "The tunnel connection information.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "dst_endpoint": {
+      "description": "The server responding to the tunnel connection.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "device": {
+      "description": "The device that reported the event.",
+      "group": "primary",
+      "profile": null,
+      "requirement": "recommended"
+    },
+    "protocol_id": {
+      "caption": "Tunnel Protocol ID",
+      "description": "The normalized networking protocol ID associated with the tunnel.",
+      "group": "context",
+      "requirement": "optional",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "IPsec",
+          "description": "Internet Protocol Security"
+        },
+        "2": {
+          "caption": "SSL/TLS",
+          "description": "Secure Sockets Layer/Transport Layer Security"
+        },
+        "3": {
+          "caption": "GRE",
+          "description": "Generic Routing Encapsulation"
+        },
+        "4": {
+          "caption": "L2TP",
+          "description": "Layer 2 Tunneling Protocol"
+        },
+        "5": {
+          "caption": "PPTP",
+          "description": "Point-to-Point Tunneling Protocol"
+        },
+        "6": {
+          "caption": "SSTP",
+          "description": "Secure Socket Tunneling Protocol"
+        },
+        "7": {
+          "caption": "OpenVPN",
+          "description": "OpenVPN Protocol"
+        },
+        "8": {
+          "caption": "WireGuard",
+          "description": "Wireguard Protocol"
+        },
+        "99": {
+          "caption": "Other"
+        }
+      }
+    },
+    "protocol_name": {
+      "caption": "Tunnel Protocol",
+      "description": "The networking protocol associated with the tunnel.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "src_endpoint": {
+      "description": "The initiator (client) of the tunnel connection.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "session": {
+      "caption": "Tunnel Session",
+      "description": "The session associated with the tunnel.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "traffic": {
+      "description": "Traffic refers to the amount of data moving across the tunnel at a given point of time. Ex: <code>bytes_in</code> and <code>bytes_out</code>.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "tunnel_interface": {
+      "caption": "Tunnel Interface",
+      "description": "The information about the virtual tunnel interface, e.g. <code>utun0</code>. This is usually associated with the private (rfc-1918) ip of the tunnel.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "tunnel_type": {
+      "description": "The tunnel type. Example: <code>Split</code> or <code>Full</code>.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "tunnel_type_id": {
+      "description": "The normalized tunnel type ID.",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Split Tunnel"
+        },
+        "2": {
+          "caption": "Full Tunnel"
+        },
+        "99": {
+          "caption": "Other"
+        }
+      },
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "user": {
+      "description": "The user associated with the tunnel activity.",
+      "group": "primary",
+      "requirement": "recommended"
+    }
+  },
+  "associations": {
+    "user": [
+      "client"
+    ],
+    "client": [
+      "user"
+    ]
+  },
+	"constraints": {
+		"at_least_one": [
+			"client",
+			"connection_info",
+      "session",
+      "traffic",
+      "tunnel_interface",
+      "tunnel_type_id"
+		]
+	}
+}

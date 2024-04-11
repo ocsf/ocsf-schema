@@ -878,7 +878,8 @@
     },
     "cmd_line": {
       "caption": "Command Line",
-      "description": "The full command line used to launch an application, service, process, or job. For example: <code>ssh user@10.0.0.10</code>. If the command line is unavailable or missing, the empty string <code>''</code> is to be used",
+      "observable": 13,
+      "description": "The full command line used to launch an application, service, process, or job. For example: <code>ssh user@10.0.0.10</code>. If the command line is unavailable or missing, the empty string <code>''</code> is to be used.",
       "type": "string_t"
     },
     "code": {
@@ -1074,6 +1075,7 @@
     },
     "country": {
       "caption": "Country",
+      "observable": 14,
       "description": "The ISO 3166-1 Alpha-2 country code. For the complete list of country codes see <a target='_blank' href='https://www.iso.org/obp/ui/#iso:pub:PUB500001:en' >ISO 3166-1 alpha-2 codes</a>.<p><b>Note:</b> The two letter country code should be capitalized. For example: <code>US</code> or <code>CA</code>.</p>",
       "type": "string_t"
     },
@@ -1132,41 +1134,6 @@
       "description": "Criticality of a resource/object in question",
       "type": "string_t"
     },
-    "security_level": {
-      "caption": "Security Level",
-      "description": "The current security level of the entity",
-      "type": "string_t"
-    },
-    "security_level_id": {
-      "caption": "Security Level ID",
-      "description": "The current security level of the entity",
-      "enum": {
-        "99": {
-          "caption": "Other",
-          "description": "The security level is not mapped. See the <code>security_level</code> attribute, which contains data source specific values."
-        },
-        "0": {
-          "caption": "Unknown"
-        },
-        "1": {
-          "caption": "Secure"
-        },
-        "2": {
-          "caption": "At Risk"
-        },
-        "3": {
-          "caption": "Compromised"
-        }
-      },
-      "sibling": "security_level",
-      "type": "integer_t"
-    },
-    "security_states": {
-      "caption": "Security States",
-      "description": "The current security states. See specific usage.",
-      "is_array": true,
-      "type": "security_state"
-    },
     "customer_uid": {
       "@deprecated": {
         "message": "Use the <code> tenant_uid </code> attribute instead.",
@@ -1204,6 +1171,7 @@
         "since": "1.1.0"
       },
       "caption": "CWE UID",
+      "observable": 16,
       "description": "The <a target='_blank' href='https://cwe.mitre.org/'>Common Weakness Enumeration (CWE)</a> unique identifier. For example: <code>CWE-787</code>.",
       "type": "string_t"
     },
@@ -2931,6 +2899,7 @@
     },
     "pid": {
       "caption": "Process ID",
+      "observable": 15,
       "description": "The process identifier, as reported by the operating system. Process ID (PID) is a number used by the operating system to uniquely identify an active process.",
       "type": "integer_t"
     },
@@ -3541,11 +3510,46 @@
       "description": "The object security descriptor.",
       "type": "string_t"
     },
+    "security_level": {
+      "caption": "Security Level",
+      "description": "The current security level of the entity",
+      "type": "string_t"
+    },
+    "security_level_id": {
+      "caption": "Security Level ID",
+      "description": "The current security level of the entity",
+      "enum": {
+        "99": {
+          "caption": "Other",
+          "description": "The security level is not mapped. See the <code>security_level</code> attribute, which contains data source specific values."
+        },
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Secure"
+        },
+        "2": {
+          "caption": "At Risk"
+        },
+        "3": {
+          "caption": "Compromised"
+        }
+      },
+      "sibling": "security_level",
+      "type": "integer_t"
+    },
     "security_questions": {
       "caption": "Security Questions",
       "description": "The question(s) provided to user for a question-based authentication factor.",
       "is_array": true,
       "type": "string_t"
+    },
+    "security_states": {
+      "caption": "Security States",
+      "description": "The current security states. See specific usage.",
+      "is_array": true,
+      "type": "security_state"
     },
     "sequence": {
       "caption": "Sequence Number",
@@ -4092,6 +4096,7 @@
     },
     "user_agent": {
       "caption": "HTTP User-Agent",
+      "observable": 17,
       "description": "The request header that identifies the operating system and web browser.",
       "type": "string_t"
     },
@@ -4360,6 +4365,7 @@
       },
       "port_t": {
         "caption": "Port",
+        "observable": 11,
         "description": "The TCP/UDP port number. For example: <code>80</code> or <code>22</code>.",
         "range": [
           0,
@@ -4390,6 +4396,7 @@
       },
       "subnet_t": {
         "caption": "Subnet",
+        "observable": 12,
         "description": "The subnet represented in a CIDR notation, using the format network_address/prefix_length. The network_address can be in either IPv4 or IPv6 format. The prefix length indicates the number of bits used for the network portion, and the remaining bits are available for host addresses within that subnet. <div>For example:<ul><li>192.168.1.0/24</li><li>2001:0db8:85a3:0000::/64</li></ul></div>",
         "max_len": 42,
         "type": "string_t",

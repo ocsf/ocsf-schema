@@ -86,6 +86,7 @@ Thankyou! -->
 
 ### Bugfixes
     1. Changed datatype of `priority` attribute, from `integer_t` to `string_t` #959
+    2. Extended `email_t` regexp to allow characters from RFC5322 before @.
 
 ### Deprecated
     1. Deprecated `coordinates` attribute in favor of specific `lat`, `long` attributes. #971

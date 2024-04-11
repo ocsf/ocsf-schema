@@ -32,8 +32,7 @@ Thankyou! -->
     14. Added `Registry Value Query` event class. #967
     15. Added `Service Query` event class. #967
     16. Added `Session Query` event class. #967
-    17. Added `Startup Application Query` event class. #967
-    18. Added `User Query` event class. #967
+    17. Added `User Query` event class. #967
 
 * #### Profiles
 

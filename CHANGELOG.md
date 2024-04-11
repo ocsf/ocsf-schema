@@ -58,6 +58,7 @@ Thankyou! -->
     6. Added `file` attribute to `http`, `rdp`, `ssh`, and `ftp` event classes. #985
     7. Added a `Preauth` `activity_id` to the `Authentication` class. #1018
     8. Added the `Security Control` profile to the `Datastore Activity` class. #1030
+    9. Added `risk_details` to Detection Finding. #1032
 
 * #### Profiles
 * #### Objects 

@@ -2,16 +2,10 @@
   "caption": "Tunnel Activity",
   "category": "network",
   "description": "Tunnel Activity events report secure tunnel establishment (such as VPN), teardowns, renewals, and other network tunnel specific actions.",
-  "extends": "base_event",
+  "extends": "network",
   "name": "tunnel_activity",
   "uid": 14,
-  "profiles": [
-    "network_proxy"
-  ],
   "attributes": {
-    "$include": [
-      "profiles/network_proxy.json"
-    ],
     "activity_id": {
       "enum": {
         "0": {
@@ -50,6 +44,7 @@
     "device": {
       "description": "The device that reported the event.",
       "group": "primary",
+      "profile": null,
       "requirement": "recommended"
     },
     "protocol_id": {

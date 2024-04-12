@@ -46,7 +46,7 @@ Thankyou! -->
     5. Added `data_classification` object. #998
 
 * #### Observables
-    1. Added `port_t` `subnet_t` `cmd_line` `country` `pid` ``cwe.uid` `cve.uid`, `user_agent` enum items. #1035
+    1. Added `port_t` `subnet_t` `cmd_line` `country` `pid` `cwe.uid` `cve.uid` `user_agent` enum items. #1035
 
 * #### Platform Extensions
 

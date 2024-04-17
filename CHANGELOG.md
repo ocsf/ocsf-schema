@@ -52,6 +52,8 @@ Thankyou! -->
     1. Added `file_result` to File Hosting Activity. #1045
 * #### Profiles
 * #### Objects
+    1.  Added `ext` to `File` object. #1046
+
 * #### Platform Extensions
 
 ### Bugfixes

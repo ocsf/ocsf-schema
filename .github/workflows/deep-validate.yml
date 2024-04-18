@@ -19,14 +19,9 @@ jobs:
       with:
         python-version: '3.11'
 
-    - name: Set colorized output
-      shell: bash
-      run: echo "TERM=xterm" >> $GITHUB_ENV
-
     - name: Install validator
-      shell: bash
       run: python -m pip install 'ocsf-validator>=0.1.1,<0.2'
 
     - name: Run validator
       shell: bash
-      run: python -m ocsf_validator .
+      run: export TERM=xterm && python -m ocsf_validator .

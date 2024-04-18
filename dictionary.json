@@ -2390,6 +2390,35 @@
       "description": "The event log schema version that specifies the format of the original event. For example syslog version or Cisco Log Schema Version.",
       "type": "string_t"
     },
+    "log_type": {
+      "caption": "Log Type",
+      "description": "The log type, normalized to the caption of the <code>log_type_id</code> value. In the case of 'Other', it is defined by the event source.",
+      "type": "string_t"
+    },
+    "log_type_id": {
+      "caption": "Log Type ID",
+      "description": "The normalized log type identifier.",
+      "enum": {
+        "99": {
+          "caption": "Other",
+          "description": "The log type is not mapped. See the <code>log_type</code> attribute, which contains a data source specific value."
+        },
+        "0": {
+          "caption": "Unknown",
+          "description": "The log type is unknown."
+        },
+        "1": {
+          "caption": "OS",
+          "description": "The log type is an Operating System log."
+        },
+        "2": {
+          "caption": "Application",
+          "description": "The log type is an Application log."
+        }
+      },
+      "sibling": "logon_type",
+      "type": "integer_t"
+    },
     "logged_time": {
       "caption": "Logged Time",
       "description": "<p>The time when the logging system collected and logged the event.</p>This attribute is distinct from the event time in that event time typically contain the time extracted from the original event. Most of the time, these two times will be different.",

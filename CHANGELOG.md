@@ -113,6 +113,8 @@ Thankyou! -->
         * Remove hard-coded list of categories from `metaschema/categories.schema.json`, leaving this to the `ocsf-validator`. This change makes testing with alternate schemas that may add extra categories easier, as well as making it possible to validate private extensions that contain new categories.
     5. Metaschema error reporting #1027
         * Updated the definition of `object` and `event` so that metaschema errors reported by the validator with nested properties correctly attribute the error to the property with the error, rather than the top-level class.
+    6. Clarify how to reference profiles in metadata #1056
+        * Updated the description of `metadata.profiles` to clarify the correct way to reference a profile in that list.
 <!-- All available sections in the Changelog:
 
 ### Added

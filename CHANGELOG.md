@@ -39,7 +39,7 @@ Thankyou! -->
 
 -->
 
-## [v1.2.0] - April 25th?, 2024
+## [v1.2.0] - April 23rd, 2024
 
 ### Added
 * #### Categories

@@ -13,8 +13,37 @@ Thankyou! -->
 
 ## [Unreleased]
 
+<!-- All available sections in the Changelog:
+
 ### Added
 * #### Categories
+* #### Event Classes
+* #### Profiles
+* #### Objects
+* #### Platform Extensions
+
+### Improved
+* #### Categories
+* #### Event Classes
+* #### Profiles
+* #### Objects
+* #### Platform Extensions
+
+### Bugfixes
+
+### Deprecated
+
+### Breaking changes
+
+### Misc
+
+-->
+
+## [v1.2.0] - April 23rd, 2024
+
+### Added
+* #### Categories
+    n/a
 * #### Event Classes
     1. Added `Data Security Finding` event class. #953
     2. Added `File Query` event class. #967
@@ -49,9 +78,11 @@ Thankyou! -->
     1. Added `port_t` `subnet_t` `cmd_line` `country` `pid` `cwe.uid` `cve.uid` `user_agent` enum items. #1035
 
 * #### Platform Extensions
+    n/a
 
 ### Improved
 * #### Categories
+    n/a
 * #### Event Classes
     1. Added `auth_factors` array to Authentication event class. #949
     2. Modified all classes such that primary attributes are at least recommended. #974
@@ -64,6 +95,7 @@ Thankyou! -->
     9. Added `risk_details` to Detection Finding. #1032
 
 * #### Profiles
+    n/a
 * #### Objects 
     1. Expanded `type_id` enum in `analytic` object to account for more use-cases: #953
         - `5 - Fingerprinting`
@@ -86,57 +118,34 @@ Thankyou! -->
     12. Added `data_classification` profile to `database`, `databucket`, `email`, `file`, `metadata`, `product`, `resource_details` and `web_resource` objects. #998
 
 * #### Platform Extensions
+    n/a
 
 ### Bugfixes
-    1. Changed datatype of `priority` attribute, from `integer_t` to `string_t` #959
-    2. Extended `email_t` regexp to allow characters from RFC5322 before @.
+1. Changed datatype of `priority` attribute, from `integer_t` to `string_t` #959
+2. Extended `email_t` regexp to allow characters from RFC5322 before @.
+3. Updated `logon_type_id` enum to include `0` as `Unknown`. Added enum item `1` as `System`. #1055
 
 ### Deprecated
-    1. Deprecated `coordinates` attribute in favor of specific `lat`, `long` attributes. #971
-    2. Deprecated `invoked_by` attribute in the `Actor` object in favor of `app_name`. #979.
+1. Deprecated `coordinates` attribute in favor of specific `lat`, `long` attributes. #971
+2. Deprecated `invoked_by` attribute in the `Actor` object in favor of `app_name`. #979.
 
 ### Breaking changes
 
 ### Misc
-    1. New Extension registration for Sedara. #951
-    2. Corrected punctuation for the `transmit_time` attribute. #1001
-    3. New ways to define observables in the metaschema. #982 and #993
-        * (Current) Dictionary types using `observable` property in dictionary types. This allows defining all occurrences of attributes of this type as an observable.
-        * (Current) Objects using top-level `observable` property. This allows defining all occurrences attributes whose type is this object as an observable.
-        * _**(New)**_ Dictionary attributes using `observable` property in attribute. This allows defining all occurrences of this attribute as an observable.
-        * _**(New)**_ Object-specific attributes using `observable` property class's attributes. This allows defining object attributes as observables _only_ within instances of this specific object.
-        * _**(New)**_ Event class-specific attributes using `observable` property class's attributes. This allows defining class attributes as observables _only_ within instances of this specific class.
-        * _**(New)**_ Event class-specific attribute _paths_ using top-level `observables` property. The `observables` property holds an object mapping from an dotted attribute path to an observable `type_id`. This allows defining an observables _only_ within instances of this specific class, and only for the attributes at these paths, even for attributes that are within nested objects and arrays. This can also be used for top-level class attributes, which can be more convenient that defining a class attribute observable for classes that extend another, but don't otherwise change a attribute definition.
-    4. Metaschema improvements. #993 
-        * Detect unexpected top-level properties in object and event class definitions. This was added at this point to detect invalid observable definitions: invalid `observable` property in event classes, and invalid `observables` property in objects.
-        * Remove hard-coded list of categories from `metaschema/categories.schema.json`, leaving this to the `ocsf-validator`. This change makes testing with alternate schemas that may add extra categories easier, as well as making it possible to validate private extensions that contain new categories.
-    5. Metaschema error reporting #1027
-        * Updated the definition of `object` and `event` so that metaschema errors reported by the validator with nested properties correctly attribute the error to the property with the error, rather than the top-level class.
-<!-- All available sections in the Changelog:
-
-### Added
-* #### Categories
-* #### Event Classes
-* #### Profiles
-* #### Objects
-* #### Platform Extensions
-
-### Improved
-* #### Categories
-* #### Event Classes
-* #### Profiles
-* #### Objects
-* #### Platform Extensions
-
-### Bugfixes
-
-### Deprecated
-
-### Breaking changes
-
-### Misc
-
--->
+1. New Extension registration for Sedara. #951
+2. Corrected punctuation for the `transmit_time` attribute. #1001
+3. New ways to define observables in the metaschema. #982 and #993
+    * (Current) Dictionary types using `observable` property in dictionary types. This allows defining all occurrences of attributes of this type as an observable.
+    * (Current) Objects using top-level `observable` property. This allows defining all occurrences attributes whose type is this object as an observable.
+    * _**(New)**_ Dictionary attributes using `observable` property in attribute. This allows defining all occurrences of this attribute as an observable.
+    * _**(New)**_ Object-specific attributes using `observable` property class's attributes. This allows defining object attributes as observables _only_ within instances of this specific object.
+    * _**(New)**_ Event class-specific attributes using `observable` property class's attributes. This allows defining class attributes as observables _only_ within instances of this specific class.
+    * _**(New)**_ Event class-specific attribute _paths_ using top-level `observables` property. The `observables` property holds an object mapping from a dotted attribute path to an observable `type_id`. This allows defining an observable _only_ within instances of this specific class, and only for the attributes at these paths, even for attributes that are within nested objects and arrays. This can also be used for top-level class attributes, which can be more convenient that defining a class attribute observable for classes that extend another, but don't otherwise change an attribute definition.
+4. Metaschema improvements. #993 
+    * Detect unexpected top-level properties in object and event class definitions. This was added at this point to detect invalid observable definitions: invalid `observable` property in event classes, and invalid `observables` property in objects.
+    * Remove hard-coded list of categories from `metaschema/categories.schema.json`, leaving this to the `ocsf-validator`. This change makes testing with alternate schemas that may add extra categories easier, as well as making it possible to validate private extensions that contain new categories.
+5. Metaschema error reporting #1027
+    * Updated the definition of `object` and `event` so that metaschema errors reported by the validator with nested properties correctly attribute the error to the property with the error, rather than the top-level class.
 
 ## [v1.1.0] - January 25th, 2024
 

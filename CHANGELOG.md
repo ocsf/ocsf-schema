@@ -115,6 +115,8 @@ Thankyou! -->
         * Updated the definition of `object` and `event` so that metaschema errors reported by the validator with nested properties correctly attribute the error to the property with the error, rather than the top-level class.
     6. Colorized validator output #1048
         * Updated the GitHub workflow for the `ocsf-validator` to print colorized output.
+    7. Clarify how to reference profiles in metadata #1056
+        * Updated the description of `metadata.profiles` to clarify the correct way to reference a profile in that list.
 <!-- All available sections in the Changelog:
 
 ### Added

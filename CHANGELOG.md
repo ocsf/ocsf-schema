@@ -123,7 +123,7 @@ Thankyou! -->
 ### Bugfixes
 1. Changed datatype of `priority` attribute, from `integer_t` to `string_t` #959
 2. Extended `email_t` regexp to allow characters from RFC5322 before @.
-3. Updated `logon_type_id` enum to include `0` as `Unknown`. Added enum item `1` as `System`.
+3. Updated `logon_type_id` enum to include `0` as `Unknown`. Added enum item `1` as `System`. #1055
 
 ### Deprecated
 1. Deprecated `coordinates` attribute in favor of specific `lat`, `long` attributes. #971

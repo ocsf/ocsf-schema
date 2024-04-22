@@ -1,6 +1,6 @@
 {
   "caption": "Related Event",
-  "description": "The Related Event object describes an event related to a finding or detection as identified by the security product.",
+  "description": "The Related Event object describes an OCSF event related to a finding.",
   "extends": "object",
   "name": "related_event",
   "attributes": {
@@ -18,15 +18,23 @@
       "requirement": "optional"
     },
     "type": {
-      "description": "The type of the related event. For example: Process Activity: Launch.",
+      "@deprecated": {
+        "message": "Use <code>type_name</code> attribute instead.",
+        "since": "1.2.0"
+      },
+      "description": "The type of the related event, as defined by <code>type_uid</code>. <p>For example: <code>Process Activity: Launch.</code></p>",
+      "requirement": "optional"
+    },
+    "type_name": {
+      "description": "The type of the related OCSF event, as defined by <code>type_uid</code>. <p>For example: <code>Process Activity: Launch.</code></p>",
       "requirement": "optional"
     },
     "type_uid": {
-      "description": "The unique identifier of the related event type. For example: 100701.",
+      "description": "The unique identifier of the related OCSF event type. <p>For example: <code>100701.</code></p>",
       "requirement": "recommended"
     },
     "uid": {
-      "description": "The unique identifier of the related event.",
+      "description": "The unique identifier of the related OCSF event. This value must be equal to <code>metadata.uid</code> in the corresponding related event.",
       "requirement": "required"
     }
   }

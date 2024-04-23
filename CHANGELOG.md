@@ -11,10 +11,67 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Thankyou! -->
 
+<!-- All available sections in the Changelog:
+
+### Added
+* #### Categories
+* #### Event Classes
+* #### Profiles
+* #### Objects
+* #### Platform Extensions
+
+### Improved
+* #### Categories
+* #### Event Classes
+* #### Profiles
+* #### Objects
+* #### Platform Extensions
+
+### Bugfixes
+
+### Deprecated
+
+### Breaking changes
+
+### Misc
+
+-->
+
 ## [Unreleased]
 
 ### Added
 * #### Categories
+* #### Event Classes
+* #### Profiles
+* #### Objects
+* #### Platform Extensions
+
+### Improved
+* #### Categories
+* #### Event Classes
+    1. Added `file_result` to File Hosting Activity. #1045
+* #### Profiles
+* #### Objects
+* #### Platform Extensions
+
+### Bugfixes
+
+### Deprecated
+
+### Breaking changes
+
+### Misc
+    1. Colorized validator output #1048
+        * Updated the GitHub workflow for the `ocsf-validator` to print colorized output.
+    2. Clarify how to reference profiles in metadata #1056
+        * Updated the description of `metadata.profiles` to clarify the correct way to reference a profile in that list.
+
+
+## [v1.2.0] - April 23rd, 2024
+
+### Added
+* #### Categories
+    n/a
 * #### Event Classes
     1. Added `Data Security Finding` event class. #953
     2. Added `File Query` event class. #967
@@ -49,6 +106,7 @@ Thankyou! -->
     1. Added `port_t` `subnet_t` `cmd_line` `country` `pid` `cwe.uid` `cve.uid` `user_agent` enum items. #1035
 
 * #### Platform Extensions
+    n/a
 
 ### Improved
 * #### Categories
@@ -62,9 +120,9 @@ Thankyou! -->
     7. Added a `Preauth` `activity_id` to the `Authentication` class. #1018
     8. Added the `Security Control` profile to the `Datastore Activity` class. #1030
     9. Added `risk_details` to Detection Finding. #1032
-    10. Added `file_result` to File Hosting Activity. #1045
 
 * #### Profiles
+    n/a
 * #### Objects 
     1. Expanded `type_id` enum in `analytic` object to account for more use-cases: #953
         - `5 - Fingerprinting`
@@ -87,16 +145,19 @@ Thankyou! -->
     12. Added `data_classification` profile to `database`, `databucket`, `email`, `file`, `metadata`, `product`, `resource_details` and `web_resource` objects. #998
 
 * #### Platform Extensions
+    n/a
 
 ### Bugfixes
     1. Changed datatype of `priority` attribute, from `integer_t` to `string_t` #959
     2. Extended `email_t` regexp to allow characters from RFC5322 before @.
+    3. Updated `logon_type_id` enum to include `0` as `Unknown`. Added enum item `1` as `System`. #1055
 
 ### Deprecated
     1. Deprecated `coordinates` attribute in favor of specific `lat`, `long` attributes. #971
     2. Deprecated `invoked_by` attribute in the `Actor` object in favor of `app_name`. #979.
 
 ### Breaking changes
+    n/a
 
 ### Misc
     1. New Extension registration for Sedara. #951
@@ -113,35 +174,6 @@ Thankyou! -->
         * Remove hard-coded list of categories from `metaschema/categories.schema.json`, leaving this to the `ocsf-validator`. This change makes testing with alternate schemas that may add extra categories easier, as well as making it possible to validate private extensions that contain new categories.
     5. Metaschema error reporting #1027
         * Updated the definition of `object` and `event` so that metaschema errors reported by the validator with nested properties correctly attribute the error to the property with the error, rather than the top-level class.
-    6. Colorized validator output #1048
-        * Updated the GitHub workflow for the `ocsf-validator` to print colorized output.
-    7. Clarify how to reference profiles in metadata #1056
-        * Updated the description of `metadata.profiles` to clarify the correct way to reference a profile in that list.
-<!-- All available sections in the Changelog:
-
-### Added
-* #### Categories
-* #### Event Classes
-* #### Profiles
-* #### Objects
-* #### Platform Extensions
-
-### Improved
-* #### Categories
-* #### Event Classes
-* #### Profiles
-* #### Objects
-* #### Platform Extensions
-
-### Bugfixes
-
-### Deprecated
-
-### Breaking changes
-
-### Misc
-
--->
 
 ## [v1.1.0] - January 25th, 2024
 

@@ -1,0 +1,247 @@
+new_repo = "../ocsf/qdm1_1"
+old_repo = "../ocsf/qdm"
+
+log_level = "DEBUG"
+
+# Update paths
+#   Any matching paths below will be updated in the schema patch. The "new"
+#   version of these paths will win out over the old.
+update = [
+    "?.?.description", # The community is better at updating descriptions and captions than Query
+    "*.attributes.?.description", # The community is better at updating descriptions and captions than Query
+    "*.caption", 
+    "*.constraints.?", # QDM doesn't enforce constraints
+    "*.attributes.?.requirement", # QDM doesn't enforce OCSF requirements
+
+    "events.?.category", # Events have been recategorized; Keep the changes
+    "dictionary.types.attributes.?.*", # Accept new type attributes
+
+    "objects.device.observable", # Accept new observable type IDs
+    "objects.network_endpoint.observable", # Accept new observable type IDs
+    "objects.observable.attributes.type_id.default", # This has been removed
+
+    # We're taking it on the chin and updating a few enums that changed between 0.3 and 1.0
+    "events.?.attributes.activity_id.enum.*",
+    "?.?.attributes.?.enum.-1", # Ditch the old -1 enums
+    "objects.observable.attributes.type_id.enum.-1", # Need a really specific match for this one to beat the ignore list.
+
+    # A lot of enums changed between 0.3 and 1.0; accept changes by default.
+    "?.?.attributes.?.?.enum.*",
+    "?.?.attributes.?.?.enum",
+
+    # The elements below were in early versions of OCSF/QDM 
+    # but unaddressable by Query's search.
+    "events.access_activity",
+    "events.admin_group_info",
+    "events.authorization",
+    "events.application",
+    "events.application_log",
+    "events.audit",
+    "events.base_event",
+    "events.bit_locker",
+    "events.clipboard_content_protection",
+    "events.cloud",
+    "events.cloud_api",
+    "events.cloud_storage",
+    "events.command_activity",
+    "events.compliance",
+    "events.compliance_scan",
+    "events.conclusion",
+    "events.config_state",
+    "events.container_lifecycle",
+    "events.cpu_usage",
+    "events.database",
+    "events.database_lifecycle",
+    "events.dhcp_activity",
+    "events.diagnostic",
+    "events.discovery",
+    "events.discovery_no_result",
+    "events.discovery_result",
+    "events.email_activity",
+    "events.email_content_protection",
+    "events.email_delivery_finding",
+    "events.email_file_activity",
+    "events.email_file_finding",
+    "events.email_finding",
+    "events.email_url_activity",
+    "events.email_url_finding",
+    "events.entity_management_audit",
+    "events.file_content_protection",
+    "events.file_info",
+    "events.file_remediation_result",
+    "events.findings",
+    "events.folder_info",
+    "events.folder_remediation_result",
+    "events.ftp_activity",
+    "events.im_content_protection",
+    "events.incident",
+    "events.incident_associate",
+    "events.incident_close",
+    "events.incident_create",
+    "events.incident_update",
+    "events.information_protection",
+    "events.inventory",
+    "events.inventory_info",
+    "events.job_info",
+    "events.job_remediation_result",
+    "events.kernel_activity",
+    "events.kernel_extension",
+    "events.kernel_object_info",
+    "events.kernel_remediation_result",
+    "events.license",
+    "events.license_count",
+    "events.license_lifecycle",
+    "events.mem_usage",
+    "events.memory_activity",
+    "events.module_activity",
+    "events.module_info",
+    "events.module_remediation_result",
+    "events.network_connection_info",
+    "events.network_policy",
+    "events.network_remediation_result",
+    "events.networks_info",
+    "events.peripheral_activity",
+    "events.peripheral_device_info",
+    "events.policy",
+    "events.policy_audit",
+    "events.policy_change",
+    "events.prefetch_info",
+    "events.print_content_protection",
+    "events.process_info",
+    "events.process_remediation_result",
+    "events.public_key_cert_lifecycle",
+    "events.rdp_activity",
+    "events.registration",
+    "events.registry_key_activity",
+    "events.registry_key_info",
+    "events.registry_key_remediation_result",
+    "events.registry_value_activity",
+    "events.registry_value_info",
+    "events.registry_value_remediation_result",
+    "events.remediation",
+    "events.remediation_no_result",
+    "events.remediation_result",
+    "events.resource_activity",
+    "events.rfb_activity",
+    "events.scan",
+    "events.scheduled_job_activity",
+    "events.service_info",
+    "events.service_remediation_result",
+    "events.session_info",
+    "events.session_remediation_result",
+    "events.smb_activity",
+    "events.smtp_activity",
+    "events.ssh_activity",
+    "events.startup_app_info",
+    "events.startup_app_remediation_result",
+    "events.status",
+    "events.system",
+    "events.throughput",
+    "events.unscannable_file",
+    "events.update",
+    "events.update_available",
+    "events.user_info",
+    "events.virtual_machine_activity",
+    "events.virtualization_activity",
+    "objects._base_threat_intelligence",
+    "objects._dns",
+    "objects.api",
+    "objects.authorization",
+    "objects.cis_benchmark_result",
+    "objects.container",
+    "objects.dce_rpc",
+    "objects.email",
+    "objects.email_auth",
+    "objects.endpoint",
+    "objects.event_source",
+    "objects.frame_buffer",
+    "objects.hassh",
+    "objects.http_cookie",
+    "objects.identity",
+    "objects.idp",
+    "objects.job",
+    "objects.kernel",
+    "objects.kernel_driver",
+    "objects.license_info",
+    "objects.managed_entity",
+    "objects.os_service",
+    "objects.peripheral_device",
+    "objects.pixel_info",
+    "objects.policy",
+    "objects.printer",
+    "objects.public_key_certificate",
+    "objects.request",
+    "objects.response",
+    "objects.rule",
+    "objects.service",
+    "objects.session",
+    "objects.smtp_tls",
+    "objects.startup_app",
+    "objects.vnc_auth",
+]
+
+# Preserve paths
+#   Any matching paths below will be preserved in the schema patch. In other
+#   words, the "old" version of the schema will be used.
+preserve = [
+    #"*.type", # Not so sure about this one...
+    #"?.?.attributes.?.enum.*", # Keep all enums by default
+    "*.@deprecated.*", # Don't update @deprecated messages
+
+    # The lines below are specific paths that we want to preserve because they were deleted in OCSF 
+    # but otherwise match less specific paths in the update list above.
+    #"objects.authorization.attributes.decision.requirement",
+    #"objects.authorization.attributes.policy.requirement",
+    "objects.http_request.attributes.http_method.requirement",
+    "objects.email.attributes.subject.requirement",
+    "objects.domain_intelligence.attributes.domain_info.description",
+    "events.security_finding.attributes.resources.*",
+]
+
+# Deprecate paths
+#   Any matching paths below will be deprecated in the schema patch. They will
+#   be preserved in the new schema, but with an @deprecated annotation.
+deprecate = [
+    #"events.email_delivery_activity.*",
+    "?.?.attributes.*", # Deprecate all attributes by default
+    "?.?", # Deprecate all removed records by default
+    "dictionary.types.attributes.?", # Deprecate all types by default
+    "objects.registry_key",
+    "objects.registry_value",
+    "?.?.attributes.disposition_id",
+    "?.?.attributes.disposition_id.*",
+    "?.?.attributes.disposition_id.enum.*",
+]
+
+# Ignore paths
+#   Any matching paths below will be ignored and not included in the schema
+#   patch.
+ignore = [
+    "*.$include",
+    "?.?.profiles",
+    "?.?.attributes.?.profile",
+    "?.?.extension", # This is added by Query and changes based on the order of extensions
+    "?.?.extends",
+    "?.?.uid",
+
+    # Dynamically generated schema elements
+    "objects.observable.attributes.type_id.enum.*",
+    "events.?.attributes.class_uid",
+    "events.?.attributes.class_uid.*",
+    "events.?.attributes.type_uid",
+    "events.?.attributes.type_uid.*",
+    "events.?.attributes.category_uid",
+    "events.?.attributes.category_uid.*",
+
+    "objects.service.name",
+]
+
+# Clarify paths
+#   Any matching paths below will be flagged for clarification. The preserve and
+#   order steps curation will halt if anything is flagged in a schema patch.
+#clarify = ["*.type"]
+
+# No Clarify paths
+#   Any matching paths below will NOT be flagged for clarification. This list
+#   overrules the clarify list above.
+#no_clarify = ["?.?.attributes.type_uid.type"]

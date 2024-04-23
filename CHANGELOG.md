@@ -120,6 +120,7 @@ Thankyou! -->
     7. Added a `Preauth` `activity_id` to the `Authentication` class. #1018
     8. Added the `Security Control` profile to the `Datastore Activity` class. #1030
     9. Added `risk_details` to Detection Finding. #1032
+    10. Added entries to `injection_type_id` enum (`Process Activity`) and `activity_id` enum (`Memory Activity`). #1060
 
 * #### Profiles
     n/a

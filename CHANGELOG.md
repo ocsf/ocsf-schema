@@ -50,6 +50,7 @@ Thankyou! -->
 * #### Categories
 * #### Event Classes
     1. Added `file_result` to File Hosting Activity. #1045
+    2. Added entries to `injection_type_id` enum (`Process Activity`) and `activity_id` enum (`Memory Activity`). #1060
 * #### Profiles
 * #### Objects
 * #### Platform Extensions

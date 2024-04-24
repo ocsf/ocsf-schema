@@ -65,7 +65,9 @@ Thankyou! -->
         * Updated the GitHub workflow for the `ocsf-validator` to print colorized output.
     2. Clarify how to reference profiles in metadata #1056
         * Updated the description of `metadata.profiles` to clarify the correct way to reference a profile in that list.
-
+    3. Adds support for `lint` controls in attributes to allow tools to automatically validate conventions
+        * Updated several attributes that do not follow conventions to disable linting for them
+        * Updated `data_lifecycle_state_id` to add a 99(Other) enumerand to follow convention
 
 ## [v1.2.0] - April 23rd, 2024
 

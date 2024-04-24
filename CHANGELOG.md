@@ -38,6 +38,7 @@ Thankyou! -->
 -->
 
 ## [Unreleased]
+* #### Added account, device, email, url, user to evidences in detection finding.
 
 ### Added
 * #### Categories

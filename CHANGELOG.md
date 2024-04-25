@@ -53,6 +53,8 @@ Thankyou! -->
     2. Added entries to `injection_type_id` enum (`Process Activity`) and `activity_id` enum (`Memory Activity`). #1060
 * #### Profiles
 * #### Objects
+    1.  Added `ext` to `File` object. #1046
+
 * #### Platform Extensions
 
 ### Bugfixes

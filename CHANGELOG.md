@@ -42,6 +42,7 @@ Thankyou! -->
 ### Added
 * #### Categories
 * #### Event Classes
+    1. Added `Event Log Activity` event class. #1014
 * #### Profiles
 * #### Objects
 * #### Platform Extensions

@@ -41,10 +41,13 @@ Thankyou! -->
 
 ### Added
 * #### Categories
+    1. Added `Remediation` category. #1066
 * #### Event Classes
     1. Added `Event Log Activity` event class. #1014
+    2. Added `Remediation Activity` `File Remediation Activity` `Process Remediation Activity` `Network Remediation Activity` event classes. #1066
 * #### Profiles
 * #### Objects
+    1. Added `d3fend` MITRE object. #1066
 * #### Platform Extensions
 
 ### Improved

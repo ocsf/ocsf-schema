@@ -1,0 +1,75 @@
+{
+    "caption": "Remediation Activity",
+    "description": "Remediation Activity events report on attempts at remediating a compromised device or computer network. It follows the MITRE countermeasures defined by the D3FEND™ <a target='_blank' href='https://d3fend.mitre.org/'>Matrix</a>..",
+    "name": "remediation",
+    "category": "remediation",
+    "extends": "base_event",
+    "uid": 1,
+    "profiles": [
+      "host"
+    ],
+    "attributes": {
+      "$include": [
+        "profiles/host.json"
+      ],
+      "activity_id": {
+        "enum": {
+          "1": {
+            "caption": "Isolate",
+            "description": "Creates logical or physical barriers in a system which reduces opportunities for adversaries to create further accesses. Defined by D3FEND™ <a target='_blank' href='https://d3fend.mitre.org/d3f:Isolate/'>d3f:Isolate</a>."
+          },
+          "2": {
+            "caption": "Evict",
+            "description": "Removes an adversary or malicious resource from a device or computer network. Defined by D3FEND™ <a target='_blank' href='https://d3fend.mitre.org/d3f:Evict/'>d3f:Evict</a>."
+          },
+          "3": {
+            "caption": "Restore",
+            "description": "Returns the system to a better state. Defined by D3FEND™ <a target='_blank' href='https://d3fend.mitre.org/d3f:Restore/'>d3f:Restore</a>."
+          },
+          "4": {
+            "caption": "Harden",
+            "description": " Increases the opportunity cost of computer network exploitation. Defined by D3FEND™ <a target='_blank' href='https://d3fend.mitre.org/d3f:Harden/'>d3f:Harden</a>."
+          }
+        },
+        "description": "Matches the MITRE D3FEND™ Tactic. Note: the Model and Detect Tactics are not supported as remediations by the OCSF Remediation event class."
+    },
+      "command_uid": {
+        "description": "The unique identifier of the remediation command that pertains to this event.",
+        "group": "primary",
+        "requirement": "required"
+      },
+      "countermeasures": {
+        "group": "primary",
+        "requirement": "recommended"
+      },
+      "remediation": {
+        "group": "primary",
+        "requirement": "optional"
+      },
+      "scan": {
+        "group": "primary",
+        "description": "The remediation scan that pertains to this event.",
+        "requirement": "optional"
+      },
+      "status_id": {
+        "enum": {
+            "3": {
+                "caption": "Does Not Exist",
+                "description": "The target of the remediation does not exist."
+            },
+            "4": {
+                "caption": "Partial",
+                "description": "The remediation was partially completed."
+            },
+            "5": {
+                "caption": "Unsupported",
+                "description": "The remediation was not supported."
+            },
+            "6": {
+                "caption": "Error",
+                "description": "There was an error during the remediation process."
+            }
+        }
+      }
+    }
+  }

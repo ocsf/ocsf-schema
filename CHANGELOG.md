@@ -53,7 +53,6 @@ Thankyou! -->
 * #### Profiles
 * #### Objects
     1. Added account, device, email, url, user to evidences in detection finding.
-
 * #### Platform Extensions
 
 ### Bugfixes

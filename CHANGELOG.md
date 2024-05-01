@@ -38,7 +38,6 @@ Thankyou! -->
 -->
 
 ## [Unreleased]
-* #### Added account, device, email, url, user to evidences in detection finding.
 
 ### Added
 * #### Categories
@@ -53,6 +52,8 @@ Thankyou! -->
     1. Added `file_result` to File Hosting Activity. #1045
 * #### Profiles
 * #### Objects
+    1. Added account, device, email, url, user to evidences in detection finding.
+
 * #### Platform Extensions
 
 ### Bugfixes

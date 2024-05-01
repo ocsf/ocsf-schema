@@ -42,6 +42,7 @@ Thankyou! -->
 ### Added
 * #### Categories
 * #### Event Classes
+    1. Added `Event Log Activity` event class. #1014
 * #### Profiles
 * #### Objects
 * #### Platform Extensions
@@ -50,8 +51,11 @@ Thankyou! -->
 * #### Categories
 * #### Event Classes
     1. Added `file_result` to File Hosting Activity. #1045
+    2. Added entries to `injection_type_id` enum (`Process Activity`) and `activity_id` enum (`Memory Activity`). #1060
+    3. Added a `Restart`, `Enable`, `Disable`, and `Update` `activity_id` to the `Application Lifecycle` class. #1064
 * #### Profiles
 * #### Objects
+    1.  Added `ext` to `File` object. #1046
     2. Added account, device, email, url, user to evidences in detection finding. #1000
 * #### Platform Extensions
 

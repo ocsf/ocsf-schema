@@ -1636,6 +1636,11 @@
       "description": "The expiration time. See specific usage.",
       "type": "timestamp_t"
     },
+    "ext": {
+      "caption": "Extension",
+      "description": "The extension. See specific usage.",
+      "type": "string_t"
+    },
     "extension": {
       "@deprecated": {
         "message": "Use the <code> extensions </code> attribute instead.",
@@ -2030,6 +2035,9 @@
         },
         "2": {
           "caption": "Load Library"
+        },
+        "3": {
+          "caption": "Queue APC"
         }
       },
       "sibling": "injection_type",
@@ -2389,6 +2397,35 @@
       "caption": "Log Version",
       "description": "The event log schema version that specifies the format of the original event. For example syslog version or Cisco Log Schema Version.",
       "type": "string_t"
+    },
+    "log_type": {
+      "caption": "Log Type",
+      "description": "The log type, normalized to the caption of the <code>log_type_id</code> value. In the case of 'Other', it is defined by the event source.",
+      "type": "string_t"
+    },
+    "log_type_id": {
+      "caption": "Log Type ID",
+      "description": "The normalized log type identifier.",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The log type is unknown."
+        },
+        "1": {
+          "caption": "OS",
+          "description": "The log type is an Operating System log."
+        },
+        "2": {
+          "caption": "Application",
+          "description": "The log type is an Application log."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The log type is not mapped. See the <code>log_type</code> attribute, which contains a data source specific value."
+        }
+      },
+      "sibling": "log_type",
+      "type": "integer_t"
     },
     "logged_time": {
       "caption": "Logged Time",

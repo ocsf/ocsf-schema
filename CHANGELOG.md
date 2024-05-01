@@ -52,7 +52,7 @@ Thankyou! -->
     1. Added `file_result` to File Hosting Activity. #1045
 * #### Profiles
 * #### Objects
-    1. Added account, device, email, url, user to evidences in detection finding.
+    2. Added account, device, email, url, user to evidences in detection finding. #1000
 * #### Platform Extensions
 
 ### Bugfixes

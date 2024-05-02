@@ -3706,6 +3706,37 @@
       "description": "The digital signature of the file.",
       "type": "digital_signature"
     },
+    "signature_state": {
+      "caption": "Signature state",
+      "description": "The digital signature state defines the signature state, normalized to the caption of 'signature_state_id'. In the case of 'Other', it is defined by the event source.",
+      "type": "string_t"
+    },
+    "signature_state_id": {
+      "caption": "Signature State ID",
+      "description": "The normalized identifier of the signature state.",
+      "enum": {
+        "99": {
+          "caption": "Other"
+        },
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Valid",
+          "description": "The digital signature is valid."
+        },
+        "2": {
+          "caption": "Expired",
+          "description": "The digital signature is not valid due to expiration of certificate."
+        },
+        "3": {
+          "caption": "Revoked",
+          "description": "The digital signature is invalid due to certificate revocation."
+        }
+      },
+      "sibling": "signature_state",
+      "type": "integer_t"
+    },
     "size": {
       "caption": "Size",
       "description": "The size of data, in bytes.",

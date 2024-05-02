@@ -43,7 +43,7 @@ Thankyou! -->
 * #### Categories
 * #### Event Classes
     1. Added `Event Log Activity` event class. #1014
-#### Profiles
+* #### Profiles
     1. Added `open_source_intelligence` Profile based on `open_source_intelligence` object. #992
 * #### Objects
     1. Added `open_source_intelligence` object. #992

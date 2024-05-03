@@ -70,7 +70,7 @@ Thankyou! -->
         * Updated the GitHub workflow for the `ocsf-validator` to print colorized output.
     2. Clarify how to reference profiles in metadata #1056
         * Updated the description of `metadata.profiles` to clarify the correct way to reference a profile in that list.
-
+    3. Added a `gitignore` file. #1071
 
 ## [v1.2.0] - April 23rd, 2024
 

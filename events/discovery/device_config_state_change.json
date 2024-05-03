@@ -1,41 +1,47 @@
 {
+  "uid": 19,
   "caption": "Device Config State Change",
   "description": "Device Config State Change events report state changes that impact the security of the device.",
   "extends": "discovery",
   "name": "device_config_state_change",
-  "uid": 19,
-  "profiles": [
-    "host"
-  ],
   "attributes": {
     "actor": {
       "group": "context",
       "requirement": "optional"
     },
     "device": {
+      "description": "The device that is impacted by the state change.",
       "group": "primary",
-      "requirement": "required",
-      "description": "The device that is impacted by the state change."
-    },
-    "security_level": {
-      "group": "primary"
-    },
-    "security_level_id": {
-      "group": "primary"
-    },
-    "security_states": {
-      "description": "The current security states of the device.",
-      "group": "primary"
+      "requirement": "required"
     },
     "prev_security_level": {
-      "group": "primary"
+      "group": "primary",
+      "requirement": "recommended"
     },
     "prev_security_level_id": {
-      "group": "primary"
+      "group": "primary",
+      "requirement": "recommended"
     },
     "prev_security_states": {
       "description": "The previous security states of the device.",
-      "group": "primary"
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "security_level": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "security_level_id": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "security_states": {
+      "description": "The current security states of the device.",
+      "group": "primary",
+      "requirement": "recommended"
     }
-  }
+  },
+  "profiles": [
+    "host"
+  ]
 }

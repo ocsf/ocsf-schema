@@ -4,17 +4,13 @@
     "description": "The <a target='_blank' href='https://d3fend.mitre.org'>MITRE D3FEND™</a> object describes the tactic, technique & sub-technique associated with a countermeasure as defined in <a target='_blank' href='https://https://d3fend.mitre.org/'>DEFEND Matrix<sup>TM</sup></a>.",
     "extends": "object",
     "attributes": {
-      "tactic": {
+      "d3f_tactic": {
         "description": "The Tactic object describes the tactic ID and/or name that is associated with a countermeasure, as defined by <a target='_blank' href='https://d3fend.mitre.org'>D3FEND Matrix<sup>TM</sup></a>.",
-        "requirement": "optional"
+        "requirement": "recommended"
       },
-      "technique": {
-        "description": "The Technique object describes the technique ID and/or name associated with a countermeasure, as defined by <a target='_blank' href='https://d3fend.mitre.org'>D3FEND Matrix<sup>TM</sup></a>.",
-        "requirement": "optional"
-      },
-      "sub_technique": {
-        "description": "The Sub Technique object describes the sub-technique ID and/or name associated with a countermeasure, as defined by <a target='_blank' href='https://d3fend.mitre.org'>D3FEND Matrix<sup>TM</sup></a>.",
-        "requirement": "optional"
+      "d3f_technique": {
+        "description": "The Defend Technique object describes the technique ID and/or name associated with a countermeasure, as defined by <a target='_blank' href='https://d3fend.mitre.org'>D3FEND Matrix<sup>TM</sup></a>.",
+        "requirement": "recommended"
       },
       "version": {
         "description": "The <a target='_blank' href='https://d3fend.mitre.org'>D3FEND Matrix<sup>TM</sup></a> version.",
@@ -23,9 +19,8 @@
     },
     "constraints": {
       "at_least_one": [
-        "tactic",
-        "technique",
-        "sub_technique"
+        "d3f_tactic",
+        "d3f_technique"
       ]
     }
   }

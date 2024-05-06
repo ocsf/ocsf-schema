@@ -45,7 +45,7 @@ Thankyou! -->
     1. Added `Event Log Activity` event class. #1014
 * #### Profiles
 * #### Objects
-    1. Added `external_ticket` object. #1068
+    1. Added `ticket` object. #1068
 * #### Platform Extensions
 
 ### Improved
@@ -57,7 +57,7 @@ Thankyou! -->
 * #### Profiles
 * #### Objects
     1.  Added `ext` to `File` object. #1046
-    2.  Added `external_ticket` to `Incident Findind` object. external_ticket. #1068
+    2.  Added `ticket` to `Incident Findind` object. ticket. #1068
 
 * #### Platform Extensions
 

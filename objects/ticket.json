@@ -1,0 +1,32 @@
+{
+  "caption": "Ticket",
+  "name": "ticket",
+  "description": "The Ticket object represents ticket in the customer's systems like Salesforce, jira etc.",
+  "extends": "object",
+  "attributes": {
+    "src_url": {
+      "description": "The url of a ticket in the ticket system.",
+      "requirement": "recommended"
+    },
+    "uid": {
+      "description": "Unique ticket identifier like ticket id.",
+      "requirement": "recommended"
+    },
+    "ticket_type": {
+      "requirement": "optional"
+    },
+    "ticket_type_id": {
+      "requirement": "optional"
+    },
+    "title": {
+      "description": "The title of the ticket.",
+      "requirement": "optional"
+    }
+  },
+  "constraints": {
+    "at_least_one": [
+      "src_url",
+      "uid"
+    ]
+  }
+}

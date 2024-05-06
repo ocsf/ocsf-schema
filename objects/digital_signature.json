@@ -49,10 +49,26 @@
     "digest": {
       "requirement": "optional"
     },
-    "signature_state": {
+    "status": {
+      "description": "The digital signature state defines the signature state, normalized to the caption of 'signature_state_id'. In the case of 'Other', it is defined by the event source.",
       "requirement": "optional"
     },
-    "signature_state_id": {
+    "status_id": {
+      "description": "The normalized identifier of the signature state.",
+      "enum": {
+        "1": {
+          "caption": "Valid",
+          "description": "The digital signature is valid."
+        },
+        "2": {
+          "caption": "Expired",
+          "description": "The digital signature is not valid due to expiration of certificate."
+        },
+        "3": {
+          "caption": "Revoked",
+          "description": "The digital signature is invalid due to certificate revocation."
+        }
+      },
       "requirement": "optional"
     }
   }

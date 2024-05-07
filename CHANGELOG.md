@@ -44,9 +44,9 @@ Thankyou! -->
 * #### Event Classes
     1. Added `Event Log Activity` event class. #1014
 * #### Profiles
-    1. Added `open_source_intelligence` Profile based on `open_source_intelligence` object. #992
+    1. Added `osint` Profile based on `osint` object. #992
 * #### Objects
-    1. Added `open_source_intelligence` object. #992
+    1. Added `osint` object. #992
     2. Added `signatures` object, an array of `signature` objects. #992
     3. Added `subdomains` object, an array of `subdomain` used to enumerate DGA-generated domains. #992
     4. Added `whois` object. #992
@@ -78,7 +78,6 @@ Thankyou! -->
         * Updated the description of `metadata.profiles` to clarify the correct way to reference a profile in that list.
     3. Added a `gitignore` file. #1071
     4. New Extension registration for Cisco #1074
-
 
 ## [v1.2.0] - April 23rd, 2024
 

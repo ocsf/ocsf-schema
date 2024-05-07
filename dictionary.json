@@ -174,12 +174,6 @@
       "description": "The classification result as determined by the scanner or tool analysis process. See specific usage.",
       "type": "string_t"
     },
-    "analysis_sco_refs": {
-      "caption": "STIX Cyber-observable Object (SCO) References",
-      "description": "This property contains the references to the STIX Cyber-observable Objects that were captured during the analysis process.",
-      "is_array": true,
-      "type": "string_t"
-    },
     "answers": {
       "caption": "DNS Answer",
       "description": "The Domain Name System (DNS) answers.",
@@ -209,12 +203,6 @@
     "architecture": {
       "caption": "Architecture",
       "description": "Architecture is a shorthand name describing the type of computer hardware the packaged software is meant to run on.",
-      "type": "string_t"
-    },
-    "architecture_execution_envs": {
-      "caption": "STIX Architecture Execution Environments",
-      "description": "The processor architectures (e.g., x86, ARM, etc.) that the malware instance or family is executable on. The values for this property SHOULD come from the <code>processor-architecture-ov</code> open vocabulary.",
-      "is_array": true,
       "type": "string_t"
     },
     "args": {
@@ -846,23 +834,9 @@
       "sibling": "class_name",
       "type": "integer_t"
     },
-    "classification_ids": {
-      "caption": "Classification IDs",
-      "description": "The list of normalized identifiers of the malware classifications. Reference: <a target='_blank' href='https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_oxlc4df65spl'>STIX Malware Types</a> ",
-      "enum": {},
-      "is_array": true,
-      "sibling": "classifications",
-      "type": "integer_t"
-    },
     "classification": {
       "caption": "Classification",
       "description": "The classification as defined by the vendor.",
-      "type": "string_t"
-    },
-    "classifications": {
-      "caption": "Classifications",
-      "description": "The list of malware classifications, normalized to the captions of the classification_id values. In the case of 'Other', they are defined by the event source.",
-      "is_array": true,
       "type": "string_t"
     },
     "client_ciphers": {
@@ -1351,11 +1325,6 @@
       "caption": "Authorization Decision/Outcome",
       "description": "Decision/outcome of the authorization mechanism (e.g. Approved, Denied)",
       "type": "string_t"
-    },
-    "defanged": {
-      "caption": "Defanged",
-      "description": "This STIX property defines whether or not the data contained within the object has been defanged. The default value for this property is <code>false</code>.",
-      "type": "boolean_t"
     },
     "delay": {
       "caption": "Root Delay",
@@ -1994,12 +1963,6 @@
       "is_array": true,
       "type": "string_t"
     },
-    "granular_markings": {
-      "caption": "STIX Granular Markings",
-      "description": "The <code>granular_markings</code> property specifies a list of granular markings applied to this object. In some cases, though uncommon, marking definitions themselves may be marked with sharing or handling guidance. In this case, this property MUST NOT contain any references to the same Marking Definition object (i.e., it cannot contain any circular references).",
-      "is_array": true,
-      "type": "string_t"
-    },
     "group": {
       "caption": "Group",
       "description": "The group object associated with an entity such as user, policy, or rule.",
@@ -2045,12 +2008,6 @@
       "caption": "Hostname",
       "description": "The hostname of an endpoint or a device.",
       "type": "hostname_t"
-    },
-    "host_vm_ref": {
-      "caption": "STIX Host Virtual Machine References",
-      "description": "A description of the virtual machine environment used to host the guest operating system (if applicable) that was used for the dynamic analysis of the malware instance or family. If this value is not included in conjunction with the operating_system_ref property, this means that the dynamic analysis may have been performed on bare metal (i.e. without virtualization) or the information was redacted. The value of this property MUST be the <code>identifier</code> for a SCO <code>software</code> object.",
-      "is_array": true,
-      "type": "string_t"
     },
     "http_cookies": {
       "caption": "HTTP Cookies",
@@ -2170,12 +2127,6 @@
       "description": "The impact of the finding, valid range 0-100.",
       "type": "integer_t"
     },
-    "implementation_languages": {
-      "caption": "STIX Implementation Languages",
-      "description": "The programming language(s) used to implement the malware instance or family. The values for this property SHOULD come from the <code>implementation-language-ov</code> open vocabulary.",
-      "is_array": true,
-      "type": "string_t"
-    },
     "injection_type": {
       "caption": "Injection Type",
       "description": "The process injection method, normalized to the caption of the injection_type_id value. In the case of 'Other', it is defined by the event source.",
@@ -2202,12 +2153,6 @@
       },
       "sibling": "injection_type",
       "type": "integer_t"
-    },
-    "installed_software_refs": {
-      "caption": "STIX Installed Software References",
-      "description": "Any non-standard software installed on the operating system (specified through the operating-system value) used for the dynamic analysis of the malware instance or family. The value of this property MUST be the <code>identifier</code> for a SCO <code>software</code> object.",
-      "is_array": true,
-      "type": "string_t"
     },
     "instance_uid": {
       "caption": "Instance ID",
@@ -2846,12 +2791,6 @@
       "description": "The Campaign's primary goal, objective, desired outcome, or intended effect — what the Threat Actor or Intrusion Set hopes to accomplish with this Campaign.",
       "type": "string_t"
     },
-    "object_marking_refs": {
-      "caption": "STIX Object Marking References",
-      "description": "The <code>object_marking_refs</code> property specifies a list of <code>id</code> properties of STIX <code>marking-definition</code> objects that apply to this object.",
-      "is_array": true,
-      "type": "string_t"
-    },
     "observables": {
       "caption": "Observables",
       "description": "The observables associated with the event or a finding.",
@@ -2916,12 +2855,6 @@
     "operation": {
       "caption": "Operation",
       "description": "Verb/Operation associated with the request",
-      "type": "string_t"
-    },
-    "operating_system_refs": {
-      "caption": "STIX Operating System References",
-      "description": "The operating systems that the malware family or malware instance is executable on. This applies to virtualized operating systems as well as those running on bare metal. The value of this property MUST be the <code>identifier</code> for a SCO <code>software</code> object.",
-      "is_array": true,
       "type": "string_t"
     },
     "opnum": {
@@ -3549,11 +3482,6 @@
       "description": "The Domain Name System (DNS) response time.",
       "type": "timestamp_t"
     },
-    "revoked": {
-      "caption": "Revoked",
-      "description": "The revoked property is only used by STIX Objects that support versioning and indicates whether the object has been revoked. Revoked objects are no longer considered valid by the object creator. Revoking an object is permanent; future versions of the object with this id MUST NOT be created.",
-      "type": "boolean_t"
-    },
     "risk_level": {
       "caption": "Risk Level",
       "description": "The risk level, normalized to the caption of the risk_level_id value. In the case of 'Other', it is defined by the event source.",
@@ -3628,12 +3556,6 @@
     "samesite": {
       "caption": "SameSite",
       "description": "The cookie attribute that lets servers specify whether/when cookies are sent with cross-site requests. Values are: Strict, Lax or None",
-      "type": "string_t"
-    },
-    "sample_refs": {
-      "caption": "STIX Sample References",
-      "description": "The sample_refs property specifies a list of <code>identifiers</code> of the SCO <code>file</code> or <code>artifact</code> objects associated with this malware instance(s) or family. If <code>is_family</code> is <code>false</code>, then all samples listed in sample_refs MUST refer to the same binary data.",
-      "is_array": true,
       "type": "string_t"
     },
     "sandbox": {
@@ -4004,46 +3926,6 @@
       },
       "sibling": "status",
       "type": "integer_t"
-    },
-    "stix_campaign": {
-      "caption": "Campaign",
-      "description": "The <a target='_blank' href='https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_pcpvfz4ik6d6'>Campaign</a> object describes a grouping of adversarial behaviors that describes a set of malicious activities or attacks (sometimes called waves) that occur over a period of time against a specific set of targets as defined in <a target='_blank' href='https://oasis-open.github.io/cti-documentation/stix/intro.html#stix-21-objects'>STIX 2.1 STIX Domain Objects (SDOs)</a>.",
-      "type": "stix_campaign"
-    },
-    "stix_extensions": {
-      "caption": "STIX Extensions",
-      "description": "Specifies any extensions of the object, as a dictionary. Dictionary keys SHOULD be the id of a STIX Extension object or the name of a predefined object extension found in this specification, depending on the type of extension being used. The corresponding dictionary values MUST contain the contents of the extension instance. Each extension dictionary MAY contain the property extension_type. The value of this property MUST come from the <code>extension-type-enum</code> enumeration. If the extension_type property is not present, then this is a predefined extension which does not use the extension facility described in section 7.3. When this extension facility is used the extension_type property MUST be present.",
-      "type": "json_t"
-    },
-    "stix_intrusion_set": {
-      "caption": "STIX Intrusion Set",
-      "description": "The <a target='_blank' href='https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_5ol9xlbbnrdn'>Intrusion Set</a> object describes a grouped set of adversarial behaviors and resources with common properties that is believed to be orchestrated by a single organization. An Intrusion Set may capture multiple Campaigns or other activities that are all tied together by shared attributes indicating a commonly known or unknown Threat Actor. New activity can be attributed to an Intrusion Set even if the Threat Actors behind the attack are not known. Threat Actors can move from supporting one Intrusion Set to supporting another, or they may support multiple Intrusion Sets. as defined in <a target='_blank' href='https://oasis-open.github.io/cti-documentation/stix/intro.html#stix-21-objects'>STIX 2.1 STIX Domain Objects (SDOs)</a>. Where a Campaign is a set of attacks over a period of time against a specific set of targets to achieve some objective, an Intrusion Set is the entire attack package and may be used over a very long period of time in multiple Campaigns to achieve potentially multiple purposes. While sometimes an Intrusion Set is not active, or changes focus, it is usually difficult to know if it has truly disappeared or ended. Analysts may have varying level of fidelity on attributing an Intrusion Set back to Threat Actors and may be able to only attribute it back to a nation state or perhaps back to an organization within that nation state.",
-      "type": "stix_intrusion_set"
-    },
-    "stix_malware": {
-      "caption": "STIX Malware",
-      "description": "The <a target='_blank' href='https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_s5l7katgbp09'>Malware</a> object describes a grouping of adversarial behaviors that describes a set of malicious activities or attacks (sometimes called waves) that occur over a period of time against a specific set of targets as defined in <a target='_blank' href='https://oasis-open.github.io/cti-documentation/stix/intro.html#stix-21-objects'>STIX 2.1 STIX Domain Objects (SDOs)</a>.",
-      "type": "stix_malware"
-    },
-    "stix_malware_analysis": {
-      "caption": "STIX Malware Analysis",
-      "description": "The <a target='_blank' href='https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_6hdrixb3ua4j'>Malware Analysis</a> object captures the metadata and results of a particular static or dynamic analysis performed on a malware instance or family. as defined in <a target='_blank' href='https://oasis-open.github.io/cti-documentation/stix/intro.html#stix-21-objects'>STIX 2.1 STIX Domain Objects (SDOs)</a>.",
-      "type": "stix_malware_analysis"
-    },
-    "stix_object": {
-      "caption": "STIX Object",
-      "description": "The STIX Object defines the common properties that MAY exist on a STIX Objects. While some STIX Objects use all of these common properties, not all object types do as defined in Section 3.2 Common Properties in the <a target='_blank' href='https://oasis-open.github.io/cti-documentation/stix/intro.html#stix-21-objects'>STIX 2.1 STIX Domain Objects (SDOs)</a> specification.",
-      "type": "stix_object"
-    },
-    "stix_threat_actor": {
-      "caption": "STIX Threat Actor",
-      "description": "The <a target='_blank' href='https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_k017w16zutw'>Threat Actor</a> object describes actual individuals, groups, or organizations believed to be operating with malicious intent. A Threat Actor is not an Intrusion Set but may support or be affiliated with various Intrusion Sets, groups, or organizations over time as defined in <a target='_blank' href='https://oasis-open.github.io/cti-documentation/stix/intro.html#stix-21-objects'>STIX 2.1 STIX Domain Objects (SDOs)</a>. Threat Actors leverage their resources, and possibly the resources of an Intrusion Set, to conduct attacks and run Campaigns against targets. Threat Actors can be characterized by their motives, capabilities, goals, sophistication level, past activities, resources they have access to, and their role in the organization.",
-      "type": "stix_threat_actor"
-    },
-    "stix_tool": {
-      "caption": "STIX Tool",
-      "description": "The <a target='_blank' href='https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_z4voa9ndw8v'>Tool</a> object characterizes the properties of these software tools and can be used as a basis for making an assertion about how a Threat Actor uses them during an attack. It contains properties to name and describe the tool, a list of Kill Chain Phases the tool can be used to carry out, and the version of the tool. as defined in <a target='_blank' href='https://oasis-open.github.io/cti-documentation/stix/intro.html#stix-21-objects'>STIX 2.1 STIX Domain Objects (SDOs)</a>. This object MUST NOT be used to characterize malware. Further, STIX Tool MUST NOT be used to characterize tools used as part of a course of action in response to an attack.",
-      "type": "stix_tool"
     },
     "stratum": {
       "caption": "Stratum",

@@ -56,7 +56,7 @@ Thankyou! -->
 * #### Profiles
 * #### Objects
     1.  Added `ext` to `File` object. #1046
-
+    2. Added account, device, email, url, user to evidences in detection finding. #1000
 * #### Platform Extensions
 
 ### Bugfixes

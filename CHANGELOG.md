@@ -56,7 +56,7 @@ Thankyou! -->
 * #### Profiles
 * #### Objects
     1.  Added `ext` to `File` object. #1046
-    2.  Added `status_id`, `status` to `Digital Signature` object. #1069
+    2.  Added `state_id`, `state` to `Digital Signature` object. #1069
 
 * #### Platform Extensions
 

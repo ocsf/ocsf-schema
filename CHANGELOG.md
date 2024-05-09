@@ -42,6 +42,7 @@ Thankyou! -->
 ### Added
 * #### Categories
 * #### Event Classes
+    1. Added `Event Log Activity` event class. #1014
 * #### Profiles
 * #### Objects
 * #### Platform Extensions
@@ -50,8 +51,12 @@ Thankyou! -->
 * #### Categories
 * #### Event Classes
     1. Added `file_result` to File Hosting Activity. #1045
+    2. Added entries to `injection_type_id` enum (`Process Activity`) and `activity_id` enum (`Memory Activity`). #1060
+    3. Added a `Restart`, `Enable`, `Disable`, and `Update` `activity_id` to the `Application Lifecycle` class. #1064
 * #### Profiles
 * #### Objects
+    1.  Added `ext` to `File` object. #1046
+    2. Added account, device, email, url, user to evidences in detection finding. #1000
 * #### Platform Extensions
 
 ### Bugfixes
@@ -65,7 +70,9 @@ Thankyou! -->
         * Updated the GitHub workflow for the `ocsf-validator` to print colorized output.
     2. Clarify how to reference profiles in metadata #1056
         * Updated the description of `metadata.profiles` to clarify the correct way to reference a profile in that list.
-    3. Adds support for `lint` controls in attributes to allow tools to automatically validate conventions
+    3. Added a `gitignore` file. #1071
+    4. New Extension registration for Cisco #1074
+    5. Adds support for `lint` controls in attributes to allow tools to automatically validate conventions
         * Updated several attributes that do not follow conventions to disable linting for them
         * Updated `data_lifecycle_state_id` to add a 99(Other) enumerand to follow convention
 

@@ -57,7 +57,7 @@ Thankyou! -->
 * #### Profiles
 * #### Objects
     1.  Added `ext` to `File` object. #1046
-    2.  Added `ticket` to `Incident Findind` object. ticket. #1068
+    2.  Added `ticket` to `Incident Finding` object. ticket. #1068
 
 * #### Platform Extensions
 

@@ -56,8 +56,8 @@ Thankyou! -->
 * #### Profiles
 * #### Objects
     1.  Added `ext` to `File` object. #1046
-    2.  Added `state_id`, `state` to `Digital Signature` object. #1069
-
+    2. Added account, device, email, url, user to evidences in detection finding. #1000
+    3. Added `state_id`, `state` to `Digital Signature` object. #1069
 * #### Platform Extensions
 
 ### Bugfixes
@@ -71,7 +71,8 @@ Thankyou! -->
         * Updated the GitHub workflow for the `ocsf-validator` to print colorized output.
     2. Clarify how to reference profiles in metadata #1056
         * Updated the description of `metadata.profiles` to clarify the correct way to reference a profile in that list.
-
+    3. Added a `gitignore` file. #1071
+    4. New Extension registration for Cisco #1074
 
 ## [v1.2.0] - April 23rd, 2024
 

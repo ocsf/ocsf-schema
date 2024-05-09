@@ -1,0 +1,106 @@
+{
+    "attributes": {
+        "data": {
+            "description": "Additional data that is associated with the event.",
+            "requirement": "optional",
+            "caption": "Data",
+            "type": "json_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
+        },
+        "disposition": {
+            "requirement": "optional",
+            "caption": "Disposition",
+            "description": "The event disposition name, as defined by the disposition_id.",
+            "type": "string_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
+        },
+        "disposition_id": {
+            "requirement": "required",
+            "caption": "Disposition ID",
+            "description": "When security issues, such as malware or policy violations, are detected and possibly corrected, then <code>disposition_id</code> describes the action taken by the security product.",
+            "enum": {
+                "-1": {
+                    "caption": "Other"
+                },
+                "0": {
+                    "caption": "Unknown"
+                },
+                "1": {
+                    "caption": "Blocked"
+                },
+                "2": {
+                    "caption": "Allowed"
+                },
+                "3": {
+                    "caption": "No Action"
+                },
+                "4": {
+                    "caption": "Logged"
+                },
+                "5": {
+                    "caption": "Command Script Run"
+                },
+                "6": {
+                    "caption": "Corrected"
+                },
+                "7": {
+                    "caption": "Partially Corrected"
+                },
+                "8": {
+                    "caption": "Uncorrected"
+                },
+                "10": {
+                    "description": "Requires reboot to finish the operation.",
+                    "caption": "Delayed"
+                },
+                "11": {
+                    "caption": "Detected"
+                },
+                "12": {
+                    "caption": "Quarantined"
+                },
+                "13": {
+                    "caption": "Restored"
+                },
+                "14": {
+                    "description": "No longer suspicious (re-scored).",
+                    "caption": "Exonerated"
+                },
+                "15": {
+                    "description": "Marked with extended attributes.",
+                    "caption": "Tagged"
+                }
+            },
+            "sibling": "disposition",
+            "type": "integer_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
+        },
+        "count": {
+            "default": 1
+        },
+        "confidence": {
+            "group": "classification",
+            "type": "integer_t"
+        },
+        "resources": {
+            "type": "resource",
+            "description": "A list of resources associated to an event."
+        },
+        "severity_id": {
+            "enum": {
+                "0": {
+                    "description": "The event severity is not known."
+                }
+            }
+        }
+    }
+}

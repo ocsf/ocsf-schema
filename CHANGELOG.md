@@ -56,9 +56,9 @@ Thankyou! -->
     3. Added a `Restart`, `Enable`, `Disable`, and `Update` `activity_id` to the `Application Lifecycle` class. #1064
 * #### Profiles
 * #### Objects
-    1.  Added `ext` to `File` object. #1046
-    2.  Added `ticket` to `Incident Finding` object. ticket. #1068
-
+    1. Added `ext` to `File` object. #1046  
+    2. Added account, device, email, url, user to evidences in detection finding. #1000
+    3. Added `ticket` to `Incident Finding` object. ticket. #1068
 * #### Platform Extensions
 
 ### Bugfixes

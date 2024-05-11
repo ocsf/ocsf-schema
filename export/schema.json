@@ -9546,12 +9546,16 @@
           "type": "string_t"
         },
         "category_uid": {
+          "caption": "Category ID",
+          "description": "The category unique identifier of the event.",
           "enum": {
             "4": {
               "caption": "Network Activity",
               "description": "Network Activity events."
             }
-          }
+          },
+          "sibling": "category_name",
+          "type": "integer_t"
         },
         "class_name": {
           "@deprecated": {
@@ -9564,12 +9568,16 @@
           "type": "string_t"
         },
         "class_uid": {
+          "caption": "Class ID",
+          "description": "The unique identifier of a class. A class describes the attributes available in an event.",
           "enum": {
             "10104030": {
               "caption": "Email Delivery Activity",
               "description": "Email Delivery events report the delivery status of emails."
             }
-          }
+          },
+          "sibling": "class_name",
+          "type": "integer_t"
         },
         "cloud": {
           "caption": "Cloud",
@@ -9963,6 +9971,8 @@
           "type": "string_t"
         },
         "type_uid": {
+          "caption": "Type ID",
+          "description": "The event/finding type ID. It identifies the event's semantics and structure. The value is calculated by the logging system as: <code>class_uid * 100 + activity_id</code>.",
           "enum": {
             "1010402999": {
               "caption": "Email Delivery Activity: Other"
@@ -9982,7 +9992,9 @@
             "1010403099": {
               "caption": "Email Delivery Activity: Other"
             }
-          }
+          },
+          "sibling": "type_name",
+          "type": "integer_t"
         },
         "unmapped": {
           "caption": "Unmapped Data",

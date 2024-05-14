@@ -9,6 +9,12 @@
       "is_array": true,
       "type": "string_t"
     },
+    "auth_factors": {
+      "caption": "Authentication Factors",
+      "description": "Describes a category of methods used for identity verification in an authentication attempt.",
+      "is_array": true,
+      "type": "auth_factor"
+    },
     "access_mask": {
       "caption": "Access Mask",
       "description": "The access mask in a platform-native format.",
@@ -68,7 +74,7 @@
     "action": {
       "caption": "Action",
       "description": "The normalized caption of 'action_id' or the source specific action.",
-      "type": "string_t" 
+      "type": "string_t"
     },
     "action_id": {
       "caption": "Action ID",
@@ -123,7 +129,7 @@
     },
     "agent_list": {
       "caption": "Agent List",
-      "description": "A list of <code>agent</code> objects associated with a device, endpoint, or resource",
+      "description": "A list of <code>agent</code> objects associated with a device, endpoint, or resource.",
       "is_array": true,
       "type": "agent"
     },
@@ -176,7 +182,12 @@
     },
     "app_name": {
       "caption": "Application Name",
-      "description": "The name of the application that is associated with the event or object.",
+      "description": "The name of the application associated with the event or object.",
+      "type": "string_t"
+    },
+    "app_uid": {
+      "caption": "Application ID",
+      "description": "The unique ID of the application associated with the event or object.",
       "type": "string_t"
     },
     "architecture": {
@@ -292,6 +303,11 @@
       "description": "Provides details about an authorization, such as authorization outcome, and any associated policies related to the activity/event.",
       "is_array": true,
       "type": "authorization"
+    },
+    "autonomous_system": {
+      "caption": "Autonomous System",
+      "description": "The Autonomous System details associated with an IP address.",
+      "type": "autonomous_system"
     },
     "autoscale_uid": {
       "caption": "Autoscale UID",
@@ -437,12 +453,18 @@
     },
     "category": {
       "caption": "Category",
-      "description": "The object category. See specific usage.",
+      "description": "The object category, normalized to the caption of <code>category_id</code>. See specific usage.",
       "type": "string_t"
+    },
+    "category_id": {
+      "caption": "Category ID",
+      "description": "The normalized identifier of the object category. See specific usage.",
+      "sibling": "category",
+      "type": "integer_t"
     },
     "category_ids": {
       "caption": "Website Categorization IDs",
-      "description": "The Website categorization identifies.",
+      "description": "The Website categorization identifiers.",
       "enum": {
         "99": {
           "caption": "Other",
@@ -804,7 +826,7 @@
     },
     "class_uid": {
       "caption": "Class ID",
-      "description": "The unique identifier of a class. A Class describes the attributes available in an event.",
+      "description": "The unique identifier of a class. A class describes the attributes available in an event.",
       "sibling": "class_name",
       "type": "integer_t"
     },
@@ -856,7 +878,8 @@
     },
     "cmd_line": {
       "caption": "Command Line",
-      "description": "The full command line used to launch an application, service, process, or job. For example: <code>ssh user@10.0.0.10</code>. If the command line is unavailable or missing, the empty string <code>''</code> is to be used",
+      "observable": 13,
+      "description": "The full command line used to launch an application, service, process, or job. For example: <code>ssh user@10.0.0.10</code>. If the command line is unavailable or missing, the empty string <code>''</code> is to be used.",
       "type": "string_t"
     },
     "code": {
@@ -1026,6 +1049,10 @@
       "type": "string_t"
     },
     "coordinates": {
+      "@deprecated": {
+        "message": "Use specific <code> lat, long </code> attributes instead.",
+        "since": "1.2.0"
+      },
       "caption": "Coordinates",
       "description": "A two-element array, containing a longitude/latitude pair. The format conforms with <a target='_blank' href='https://geojson.org'>GeoJSON</a>. For example: <code>[-73.983, 40.719]</code>.",
       "is_array": true,
@@ -1048,6 +1075,7 @@
     },
     "country": {
       "caption": "Country",
+      "observable": 14,
       "description": "The ISO 3166-1 Alpha-2 country code. For the complete list of country codes see <a target='_blank' href='https://www.iso.org/obp/ui/#iso:pub:PUB500001:en' >ISO 3166-1 alpha-2 codes</a>.<p><b>Note:</b> The two letter country code should be capitalized. For example: <code>US</code> or <code>CA</code>.</p>",
       "type": "string_t"
     },
@@ -1105,41 +1133,6 @@
       "caption": "Criticality",
       "description": "Criticality of a resource/object in question",
       "type": "string_t"
-    },
-    "security_level": {
-      "caption": "Security Level",
-      "description": "The current security level of the entity",
-      "type": "string_t"
-    },
-    "security_level_id": {
-      "caption": "Security Level ID",
-      "description": "The current security level of the entity",
-      "enum": {
-        "99": {
-          "caption": "Other",
-          "description": "The security level is not mapped. See the <code>security_level</code> attribute, which contains data source specific values."
-        },
-        "0": {
-          "caption": "Unknown"
-        },
-        "1": {
-          "caption": "Secure"
-        },
-        "2": {
-          "caption": "At Risk"
-        },
-        "3": {
-          "caption": "Compromised"
-        }
-      },
-      "sibling": "security_level",
-      "type": "integer_t"
-    },
-    "security_states": {
-      "caption": "Security States",
-      "description": "The current security states. See specific usage.",
-      "is_array": true,
-      "type": "security_state"
     },
     "customer_uid": {
       "@deprecated": {
@@ -1205,54 +1198,14 @@
       "description": "The data bucket object is a basic container that holds data, typically organized through the use of data partitions.",
       "type": "databucket"
     },
-    "data_type": {
-      "caption":"Data Type",
-      "description":"The name of the data classification category that data matched into, e.g. Financial, Personal, Governmental, etc.",
-      "type": "string_t"
-    },
-    "data_type_id": {
-      "caption":"Data Type ID",
-      "description": "The category or type of sensitive data as assessed or scanned by a data security tool (e.g., Personal, Govermental, Financial).",
-      "enum": {
-        "0": {
-          "caption": "Unknown",
-          "description":"The type is not mapped. See the <code>data_type</code> attribute, which contains a data source specific value."
-        },
-        "1": {
-          "caption": "Personal",
-          "description":"Any Personally Identifiable Information (PII), Electronic Personal Health Information (ePHI), or similarly personal information. E.g., full name, home address, date of birth, etc."
-        },
-        "2": {
-          "caption": "Governmental",
-          "description": "Any sensitive government identification number related to a person or other classified material. E.g., Passport numbers, driver license numbers, business identification, taxation identifiers, etc."
-        },
-        "3": {
-          "caption": "Financial",
-          "description": "Any financially-related sensitive information or Cardholder Data (CHD). E.g., banking account numbers, credit card numbers, International Banking Account Numbers (IBAN), SWIFT codes, etc."
-        },
-        "4": {
-          "caption": "Business",
-          "description": "Any business-specific sensitive data such as intellectual property, trademarks, copyrights, human resource data, Board of Directors meeting minutes, and similar."
-        },
-        "5": {
-          "caption": "Military and Law Enforcement",
-          "description": "Any mission-specific sensitive data for military, law enforcement, or other government agencies such as specifically classified data, weapon systems information, or other planning data."
-        },
-        "6": {
-          "caption": "Security",
-          "description": "Any sensitive security-related data such as passwords, passkeys, IP addresses, API keys, credentials and similar secrets. E.g., AWS Access Secret Key, SaaS API Keys, user passwords, database credentials, etc."
-        },
-        "99": {
-          "caption": "Other",
-          "description": "Any other type of data classification or a multi-variate classification made up of several other classification categories."
-        }
-      },
-      "sibling": "data_type",
-      "type": "integer_t"
+    "data_classification": {
+      "caption": "Data Classification",
+      "description": "The Data Classification object includes information about data classification levels and data category types.",
+      "type": "data_classification"
     },
     "data_lifecycle_state": {
-      "caption":"Data Lifecycle State",
-      "description":"The name of the stage or state that the data was in. E.g., Data-at-Rest, Data-in-Transit, etc.",
+      "caption": "Data Lifecycle State",
+      "description": "The name of the stage or state that the data was in. E.g., Data-at-Rest, Data-in-Transit, etc.",
       "type": "string_t"
     },
     "data_lifecycle_state_id": {
@@ -1261,7 +1214,7 @@
       "enum": {
         "0": {
           "caption": "Unknown",
-          "description":"The type is not mapped. See the <code>data_lifecycle_state</code> attribute, which contains a data source specific value."
+          "description": "The type is not mapped. See the <code>data_lifecycle_state</code> attribute, which contains a data source specific value."
         },
         "1": {
           "caption": "Data at-Rest",
@@ -1347,13 +1300,13 @@
       "type": "string_t"
     },
     "detection_pattern": {
-      "caption":"Detection Pattern",
-      "description":"Specific pattern, algorithm, fingerpint, or model used for detection.",
+      "caption": "Detection Pattern",
+      "description": "Specific pattern, algorithm, fingerpint, or model used for detection.",
       "type": "string_t"
     },
     "detection_system": {
-      "caption":"Detection System",
-      "description":"The name of the type of data security tool or system that the finding, detection, or alert originated from. E.g., Endpoint, Secure Email Gateway, etc.",
+      "caption": "Detection System",
+      "description": "The name of the type of data security tool or system that the finding, detection, or alert originated from. E.g., Endpoint, Secure Email Gateway, etc.",
       "type": "string_t"
     },
     "detection_system_id": {
@@ -1362,7 +1315,7 @@
       "enum": {
         "0": {
           "caption": "Unknown",
-          "description":"The type is not mapped. See the <code>detection_system</code> attribute, which contains a data source specific value."
+          "description": "The type is not mapped. See the <code>detection_system</code> attribute, which contains a data source specific value."
         },
         "1": {
           "caption": "Endpoint",
@@ -1708,6 +1661,69 @@
       "is_array": true,
       "type": "tls_extension"
     },
+    "factor_type": {
+      "caption": "Factor Type",
+      "description": "The type of authentication factor used in an authentication attempt.",
+      "type": "string_t"
+    },
+    "factor_type_id": {
+      "caption": "Factor Type ID",
+      "description": "The normalized identifier for the authentication factor.",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "SMS",
+          "description": "User receives and inputs a code sent to their mobile device via SMS text message."
+        },
+        "2": {
+          "caption": "Security Question",
+          "description": "The user responds to a security question as part of a question-based authentication factor"
+        },
+        "3": {
+          "caption": "Phone Call",
+          "description": "System calls the user's registered phone number and requires the user to answer and provide a response."
+        },
+        "4": {
+          "caption": "Biometric",
+          "description": "Devices that verify identity-based on user's physical identifiers, such as fingerprint scanners or retina scanners."
+        },
+        "5": {
+          "caption": "Push Notification",
+          "description": "Push notification is sent to user's registered device and requires the user to acknowledge."
+        },
+        "6": {
+          "caption": "Hardware Token",
+          "description": "Physical device that generates a code to be used for authentication."
+        },
+        "7": {
+          "caption": "OTP",
+          "description": "Application generates a one-time password (OTP) for use in authentication."
+        },
+        "8": {
+          "caption": "Email",
+          "description": "A code or link is sent to a user's registered email address."
+        },
+        "9": {
+          "caption": "U2F",
+          "description": "Typically involves a hardware token, which the user physically interacts with to authenticate."
+        },
+        "10": {
+          "caption": "WebAuthn",
+          "description": "Web-based API that enables users to register devices as authentication factors."
+        },
+        "11": {
+          "caption": "Password",
+          "description": "The user enters a password that they have previously established."
+        },
+        "99": {
+          "caption": "Other"
+        }
+      },
+      "sibling": "factor_type",
+      "type": "integer_t"
+    },
     "feature": {
       "caption": "Feature",
       "description": "The feature that reported the event.",
@@ -1816,6 +1832,11 @@
     "function_name": {
       "caption": "Function Name",
       "description": "The entry-point function of the module. The system calls the entry-point function whenever a process or thread loads or unloads the module.",
+      "type": "string_t"
+    },
+    "geohash": {
+      "caption": "Geohash",
+      "description": "<p>Geohash of the geo-coordinates (latitude and longitude).</p><a target='_blank' href='https://en.wikipedia.org/wiki/Geohash'>Geohashing</a> is a geocoding system used to encode geographic coordinates in decimal degrees, to a single string.",
       "type": "string_t"
     },
     "given_name": {
@@ -2077,7 +2098,7 @@
       "description": "The indication of whether the value is from a default value name. For example, the value name could be missing.",
       "type": "boolean_t"
     },
-    "is_exploit_available":{
+    "is_exploit_available": {
       "caption": "Exploit Availability",
       "description": "Indicates if an exploit or a PoC (proof-of-concept) is available for the reported vulnerability.",
       "type": "boolean_t"
@@ -2085,6 +2106,11 @@
     "is_fix_available": {
       "caption": "Fix Availability",
       "description": "Indicates if a fix is available for the reported vulnerability.",
+      "type": "boolean_t"
+    },
+    "is_hotp": {
+      "caption": "HMAC-based One-time Password (HOTP)",
+      "description": "Whether the authentication factor is an HMAC-based One-time Password (HOTP).",
       "type": "boolean_t"
     },
     "is_http_only": {
@@ -2147,6 +2173,11 @@
       "description": "The event occurred on a trusted device.",
       "type": "boolean_t"
     },
+    "is_totp": {
+      "caption": "Time-based One-time Password (TOTP)",
+      "description": "Whether the authentication factor is a Time-based One-time Password (TOTP).",
+      "type": "boolean_t"
+    },
     "is_vpn": {
       "caption": "VPN Session",
       "description": "The indication of whether the session is a VPN session.",
@@ -2191,7 +2222,7 @@
       "description": "The KB article/s related to the entity. A KB Article contains metadata that describes the patch or an update.",
       "is_array": true,
       "type": "string_t"
-    },    
+    },
     "kb_article_list": {
       "caption": "Knowledgebase Articles",
       "description": "A list of KB articles or patches related to an endpoint. A KB Article contains metadata that describes the patch or an update.",
@@ -2259,6 +2290,11 @@
       "caption": "Last Seen",
       "description": "The most recent detection time of the activity or object. See specific usage.",
       "type": "timestamp_t"
+    },
+    "lat": {
+      "caption": "Latitude",
+      "description": "The geographical Latitude coordinate represented in Decimal Degrees (DD). For example: <code>42.361145</code>.",
+      "type": "float_t"
     },
     "latency": {
       "caption": "Latency",
@@ -2384,6 +2420,10 @@
           "description": "The logon type is not mapped. See the <code>logon_type</code> attribute, which contains a data source specific value."
         },
         "0": {
+          "caption": "Unknown",
+          "description": "The logon type is unknown."
+        },
+        "1": {
           "caption": "System",
           "description": "Used only by the System account, for example at system startup."
         },
@@ -2434,6 +2474,11 @@
       },
       "sibling": "logon_type",
       "type": "integer_t"
+    },
+    "long": {
+      "caption": "Longitude",
+      "description": "The geographical Longitude coordinate represented in Decimal Degrees (DD). For example: <code>-71.057083</code>.",
+      "type": "float_t"
     },
     "mac": {
       "caption": "MAC Address",
@@ -2587,6 +2632,11 @@
     "num_violations": {
       "caption": "Violations",
       "description": "The number of times the policy or rule was violated.",
+      "type": "integer_t"
+    },
+    "number": {
+      "caption": "Number",
+      "description": "The number of the entity. See specific usage.",
       "type": "integer_t"
     },
     "observables": {
@@ -2756,8 +2806,8 @@
       "type": "string_t"
     },
     "pattern_match": {
-      "caption":"Pattern Match",
-      "description":"A text, binary, file name, or datastore that matched against a detection rule.",
+      "caption": "Pattern Match",
+      "description": "A text, binary, file name, or datastore that matched against a detection rule.",
       "type": "string_t"
     },
     "percentile": {
@@ -2824,6 +2874,11 @@
       "type": "integer_t",
       "sibling": "phase"
     },
+    "phone_number": {
+      "caption": "Phone Number",
+      "description": "The number associated with the phone.",
+      "type": "string_t"
+    },
     "phones": {
       "caption": "Phones",
       "description": "The phone numbers associated with the user",
@@ -2847,6 +2902,7 @@
     },
     "pid": {
       "caption": "Process ID",
+      "observable": 15,
       "description": "The process identifier, as reported by the operating system. Process ID (PID) is a number used by the operating system to uniquely identify an active process.",
       "type": "integer_t"
     },
@@ -2879,7 +2935,7 @@
     "precision": {
       "caption": "Precision",
       "description": "The numeric precision. See specific usage.",
-      "type":  "integer_t"
+      "type": "integer_t"
     },
     "prev_security_level": {
       "caption": "Previous Security Level",
@@ -2919,7 +2975,7 @@
     "priority": {
       "caption": "Priority",
       "description": "The priority, normalized to the caption of the priority_id value. In the case of 'Other', it is defined by the event source.",
-      "type": "integer_t"
+      "type": "string_t"
     },
     "priority_id": {
       "caption": "Priority ID",
@@ -3031,7 +3087,7 @@
       "description": "The proxy (server) in a network connection.",
       "type": "network_proxy"
     },
-    "purl":{
+    "purl": {
       "caption": "Package URL",
       "description": "A purl is a URL string used to identify and locate a software package in a mostly universal and uniform way across programming languages, package managers, packaging conventions, tools, APIs and databases.",
       "type": "string_t"
@@ -3070,6 +3126,47 @@
       "caption": "Query Info",
       "description": "The query info object holds information related to data access within a datastore. To access, manipulate, delete, or retrieve data from a datastore, a database query must be written using a specific syntax.",
       "type": "query_info"
+    },
+    "query_result": {
+      "caption": "Query Result",
+      "description": "The result of the query.",
+      "type": "string_t"
+    },
+    "query_result_id": {
+      "caption": "Query Result ID",
+      "description": "The normalized identifier of the query result.",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The query result is unknown."
+        },
+        "1": {
+          "caption": "Exists",
+          "description": "The target was found."
+        },
+        "2": {
+          "caption": "Partial",
+          "description": "The target was partially found."
+        },
+        "3": {
+          "caption": "Does not exist",
+          "description": "The target was not found."
+        },
+        "4": {
+          "caption": "Error",
+          "description": "The discovery attempt failed."
+        },
+        "5": {
+          "caption": "Unsupported",
+          "description": "Discovery of the target was not supported."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The query result is not mapped. See the <code>query_result</code> attribute, which contains a data source specific value."
+        }
+      },
+      "type": "integer_t",
+      "sibling": "query_result"
     },
     "query_string": {
       "caption": "HTTP Query String",
@@ -3272,6 +3369,11 @@
       "description": "The risk score as reported by the event source.",
       "type": "integer_t"
     },
+    "risk_details": {
+      "caption": "Risk Details",
+      "description": "Describes the risk associated with the finding.",
+      "type": "string_t"
+    },
     "rpc_interface": {
       "caption": "Remote Procedure Call Interface",
       "description": "The RPC Interface object describes the details pertaining to the remote procedure call interface.",
@@ -3410,6 +3512,47 @@
       "description": "The object security descriptor.",
       "type": "string_t"
     },
+    "security_level": {
+      "caption": "Security Level",
+      "description": "The current security level of the entity",
+      "type": "string_t"
+    },
+    "security_level_id": {
+      "caption": "Security Level ID",
+      "description": "The current security level of the entity",
+      "enum": {
+        "99": {
+          "caption": "Other",
+          "description": "The security level is not mapped. See the <code>security_level</code> attribute, which contains data source specific values."
+        },
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Secure"
+        },
+        "2": {
+          "caption": "At Risk"
+        },
+        "3": {
+          "caption": "Compromised"
+        }
+      },
+      "sibling": "security_level",
+      "type": "integer_t"
+    },
+    "security_questions": {
+      "caption": "Security Questions",
+      "description": "The question(s) provided to user for a question-based authentication factor.",
+      "is_array": true,
+      "type": "string_t"
+    },
+    "security_states": {
+      "caption": "Security States",
+      "description": "The current security states. See specific usage.",
+      "is_array": true,
+      "type": "security_state"
+    },
     "sequence": {
       "caption": "Sequence Number",
       "description": "Sequence number of the event. The sequence number is a value available in some events, to make the exact ordering of events unambiguous, regardless of the event time precision.",
@@ -3488,17 +3631,17 @@
     },
     "share": {
       "caption": "Share",
-      "description": "The SMB share name.",
+      "description": "The share name. See specific usage.",
       "type": "string_t"
     },
     "share_type": {
       "caption": "Share Type",
-      "description": "The SMB share type, normalized to the caption of the share_type_id value. In the case of 'Other', it is defined by the event source.",
+      "description": "The share type, normalized to the caption of the share_type_id value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "share_type_id": {
       "caption": "Share Type Id",
-      "description": "The normalized identifier of the SMB share type.",
+      "description": "The normalized identifier of the share type.",
       "enum": {
         "99": {
           "caption": "Other",
@@ -3577,7 +3720,7 @@
       "description": "The URL pointing towards the source of an entity. See specific usage.",
       "type": "url_t"
     },
-    "standards":{
+    "standards": {
       "caption": "Security Standards",
       "description": "Security standards are a set of criteria organizations can follow to protect sensitive and confidential information. e.g. <code>NIST SP 800-53, CIS AWS Foundations Benchmark v1.4.0, ISO/IEC 27001</code>",
       "is_array": true,
@@ -3667,7 +3810,7 @@
       "enum": {
         "0": {
           "caption": "Unknown",
-          "description":  "Unspecified or invalid."
+          "description": "Unspecified or invalid."
         },
         "1": {
           "caption": "Primary Server",
@@ -3851,7 +3994,7 @@
     },
     "transmit_time": {
       "caption": "Transmission Time",
-      "description": "The event transmission time from one device to another.  See specific usage",
+      "description": "The event transmission time from one device to another.  See specific usage.",
       "type": "timestamp_t"
     },
     "tree_uid": {
@@ -3862,6 +4005,22 @@
     "ttl": {
       "caption": "TTL",
       "description": "The time interval that the resource record may be cached. Zero value means that the resource record can only be used for the transaction in progress, and should not be cached.",
+      "type": "integer_t"
+    },
+    "tunnel_interface": {
+      "caption": "Interface",
+      "description": "The information about the tunnel interface. See specific usage.",
+      "type": "network_interface"
+    },
+    "tunnel_type": {
+      "caption": "Type",
+      "description": "The tunnel type. See specific usage.",
+      "type": "string_t"
+    },
+    "tunnel_type_id": {
+      "caption": "Type",
+      "description": "The normalized tunnel type ID.",
+      "sibling": "tunnel_type",
       "type": "integer_t"
     },
     "type": {
@@ -3940,6 +4099,7 @@
     },
     "user_agent": {
       "caption": "HTTP User-Agent",
+      "observable": 16,
       "description": "The request header that identifies the operating system and web browser.",
       "type": "string_t"
     },
@@ -4022,8 +4182,8 @@
           "description": "The incident is a duplicate."
         },
         "99": {
-        "caption": "Other",
-        "description": "The type is not mapped. See the <code>type</code> attribute, which contains a data source specific value."
+          "caption": "Other",
+          "description": "The type is not mapped. See the <code>type</code> attribute, which contains a data source specific value."
         }
       },
       "sibling": "verdict",
@@ -4145,7 +4305,7 @@
         "caption": "Email Address",
         "description": "Email address. For example: <code>john_doe@example.com</code>.",
         "observable": 5,
-        "regex": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
+        "regex": "^[a-zA-Z0-9!#$%&'*+-/=?^_`{|}~.]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
         "type": "string_t",
         "type_name": "String"
       },
@@ -4208,6 +4368,7 @@
       },
       "port_t": {
         "caption": "Port",
+        "observable": 11,
         "description": "The TCP/UDP port number. For example: <code>80</code> or <code>22</code>.",
         "range": [
           0,
@@ -4238,7 +4399,8 @@
       },
       "subnet_t": {
         "caption": "Subnet",
-      "description": "The subnet represented in a CIDR notation, using the format network_address/prefix_length. The network_address can be in either IPv4 or IPv6 format. The prefix length indicates the number of bits used for the network portion, and the remaining bits are available for host addresses within that subnet. <div>For example:<ul><li>192.168.1.0/24</li><li>2001:0db8:85a3:0000::/64</li></ul></div>",
+        "observable": 12,
+        "description": "The subnet represented in a CIDR notation, using the format network_address/prefix_length. The network_address can be in either IPv4 or IPv6 format. The prefix length indicates the number of bits used for the network portion, and the remaining bits are available for host addresses within that subnet. <div>For example:<ul><li>192.168.1.0/24</li><li>2001:0db8:85a3:0000::/64</li></ul></div>",
         "max_len": 42,
         "type": "string_t",
         "type_name": "String"

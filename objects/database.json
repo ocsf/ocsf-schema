@@ -3,7 +3,13 @@
   "description": "The database object is used for databases which are typically datastore services that contain an organized collection of structured and unstructured data or a types of data.",
   "extends": "_entity",
   "name": "database",
+  "profiles": [
+    "data_classification"
+  ],
   "attributes": {
+    "$include": [
+      "profiles/data_classification.json"
+    ],
     "created_time": {
       "description": "The time when the database was known to have been created.",
       "requirement": "optional"
@@ -13,7 +19,7 @@
       "requirement": "optional"
     },
     "desc": {
-      "caption": "Description",
+      "description": "The description of the database.",
       "requirement": "optional"
     },
     "size": {
@@ -43,9 +49,6 @@
         },
         "3": {
           "caption": "Object Oriented"
-        },
-        "3": {
-          "caption": "Cloud"
         },
         "4": {
           "caption": "Centralized"

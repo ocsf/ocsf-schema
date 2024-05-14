@@ -1,0 +1,55 @@
+{
+  "caption": "Authentication Factor",
+  "description": "An Authentication Factor object describes a category of methods used for identity verification in an authentication attempt.",
+  "name": "auth_factor",
+  "extends": "object",
+  "attributes": {
+    "factor_type": {
+      "requirement": "recommended",
+      "group": "primary"
+    },
+    "factor_type_id": {
+      "requirement": "required",
+      "group": "primary"
+    },
+    "device": {
+      "description": "Device used to complete an authentication request.",
+      "requirement": "recommended",
+      "group": "primary"
+    },
+    "provider": {
+      "description": "The name of provider for an authentication factor.",
+      "requirement": "recommended",
+      "group": "context"
+    },
+    "is_totp": {
+      "requirement": "recommended",
+      "group": "context"
+    },
+    "is_hotp": {
+      "requirement": "recommended",
+      "group": "context"
+    },
+    "security_questions": {
+      "requirement": "optional",
+      "group": "context"
+    },
+    "phone_number": {
+      "description": "The phone number used for a telephony-based authentication request.",
+      "requirement": "optional",
+      "group": "context"
+    },
+    "email_addr": {
+      "description": "The email address used in an email-based authentication factor.",
+      "requirement": "optional",
+      "group": "context"
+    }
+  },
+  "constraints": {
+    "just_one": [
+      "email_addr",
+      "phone_number",
+      "security_questions"
+    ]
+  }
+}

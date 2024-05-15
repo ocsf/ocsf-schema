@@ -60,6 +60,7 @@ Thankyou! -->
 * #### Objects
     1.  Added `ext` to `File` object. #1046
     2. Added account, device, email, url, user to evidences in detection finding. #1000
+    3. Added `state_id`, `state` to `Digital Signature` object. #1069
 * #### Platform Extensions
 
 ### Bugfixes

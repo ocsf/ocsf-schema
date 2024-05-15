@@ -64,8 +64,8 @@ Thankyou! -->
 * #### Platform Extensions
 
 ### Bugfixes
-    1. Fixed the host profile construction in `patch_state` event class.
-    2. Removed the optional requirement overrides for `name` and `uid` in `_resource` as they are part of a constraint.
+    1. Fixed the host profile construction in `patch_state` event class. #1087
+    2. Removed the optional requirement overrides for `name` and `uid` in `_resource` as they are part of a constraint. #1087
 
 ### Deprecated
 

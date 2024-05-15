@@ -289,7 +289,7 @@
         "group": "context",
         "is_array": true,
         "requirement": "optional",
-        "type": "object"
+        "type": "unmapped"
       }
     },
     "caption": "Base Event",
@@ -755,7 +755,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         },
         "user": {
           "caption": "User",
@@ -1161,7 +1161,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "API Activity",
@@ -1486,7 +1486,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "Application Activity",
@@ -1853,7 +1853,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "Application Lifecycle",
@@ -2451,7 +2451,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         },
         "user": {
           "caption": "User",
@@ -2857,7 +2857,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         },
         "user": {
           "caption": "User",
@@ -3173,7 +3173,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "Base Event",
@@ -3604,7 +3604,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "Compliance Finding",
@@ -3974,7 +3974,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "Device Config State",
@@ -4718,7 +4718,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "Data Security Finding",
@@ -5395,7 +5395,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "Datastore Activity",
@@ -6111,7 +6111,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         },
         "vulnerabilities": {
           "caption": "Vulnerabilities",
@@ -6558,7 +6558,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "Device Config State Change",
@@ -7268,7 +7268,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "DHCP Activity",
@@ -7602,7 +7602,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "Discovery",
@@ -8015,7 +8015,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "Discovery Result",
@@ -8781,7 +8781,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "DNS Activity",
@@ -9435,7 +9435,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "Email Activity",
@@ -9467,10 +9467,6 @@
           "caption": "Activity ID",
           "description": "The normalized identifier of the activity that triggered the event.",
           "enum": {
-            "-1": {
-              "caption": "Other",
-              "description": "The event activity is not mapped."
-            },
             "0": {
               "caption": "Unknown",
               "description": "The event activity is unknown."
@@ -9632,9 +9628,6 @@
           "caption": "Disposition ID",
           "description": "When security issues, such as malware or policy violations, are detected and possibly corrected, then <code>disposition_id</code> describes the action taken by the security product.",
           "enum": {
-            "-1": {
-              "caption": "Other"
-            },
             "0": {
               "caption": "Unknown",
               "description": "The disposition is unknown."
@@ -9858,10 +9851,6 @@
           "caption": "Severity ID",
           "description": "The normalized identifier of the event severity.</p>The normalized severity is a measurement the effort and expense required to manage and resolve an event or incident. Smaller numerical values represent lower impact events, and larger numerical values represent higher impact events.",
           "enum": {
-            "-1": {
-              "caption": "Other",
-              "description": "The event severity is not mapped. See the <code>severity</code> attribute, which contains a data source specific value."
-            },
             "0": {
               "caption": "Unknown",
               "description": "The event severity is not known."
@@ -9928,10 +9917,6 @@
           "caption": "Status ID",
           "description": "The normalized identifier of the event status.",
           "enum": {
-            "-1": {
-              "caption": "Other",
-              "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
-            },
             "0": {
               "caption": "Unknown",
               "description": "The status is unknown."
@@ -9974,9 +9959,6 @@
           "caption": "Type ID",
           "description": "The event/finding type ID. It identifies the event's semantics and structure. The value is calculated by the logging system as: <code>class_uid * 100 + activity_id</code>.",
           "enum": {
-            "1010402999": {
-              "caption": "Email Delivery Activity: Other"
-            },
             "1010403000": {
               "caption": "Email Delivery Activity: Unknown"
             },
@@ -10577,7 +10559,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "Email File Activity",
@@ -11139,7 +11121,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         },
         "url": {
           "caption": "URL",
@@ -11535,7 +11517,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "Entity Management",
@@ -12209,7 +12191,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "File System Activity",
@@ -12690,7 +12672,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "File Hosting Activity",
@@ -13080,7 +13062,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "Finding",
@@ -13780,7 +13762,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "FTP Activity",
@@ -14189,7 +14171,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         },
         "user": {
           "caption": "User",
@@ -14905,7 +14887,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "HTTP Activity",
@@ -15241,7 +15223,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "Identity & Access Management",
@@ -15764,7 +15746,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         },
         "verdict": {
           "caption": "Verdict",
@@ -16199,7 +16181,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "Device Inventory Info",
@@ -16757,7 +16739,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "Kernel Activity",
@@ -17306,7 +17288,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "Kernel Extension Activity",
@@ -17920,7 +17902,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "Memory Activity",
@@ -18467,7 +18449,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "Module Activity",
@@ -19067,7 +19049,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "Network",
@@ -19719,7 +19701,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         },
         "url": {
           "caption": "URL",
@@ -20468,7 +20450,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "Network File Activity",
@@ -21189,7 +21171,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         },
         "version": {
           "caption": "Version",
@@ -21569,7 +21551,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "Operating System Patch State",
@@ -22020,7 +22002,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "Peripheral Device Query",
@@ -22478,7 +22460,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "Prefetch Query",
@@ -23102,7 +23084,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "Process Activity",
@@ -23809,7 +23791,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "RDP Activity",
@@ -24439,7 +24421,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "Registry Key Activity",
@@ -24885,7 +24867,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "Registry Key Query",
@@ -25459,7 +25441,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "Registry Value Activity",
@@ -25905,7 +25887,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "Registry Value Query",
@@ -26450,7 +26432,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         },
         "win_resource": {
           "caption": "Windows Resource",
@@ -26955,7 +26937,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "Scan Activity",
@@ -27525,7 +27507,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "Scheduled Job Activity",
@@ -28202,7 +28184,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         },
         "vulnerabilities": {
           "caption": "Vulnerabilities",
@@ -28658,7 +28640,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "User Session Query",
@@ -29406,7 +29388,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "SMB Activity",
@@ -30136,7 +30118,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "SSH Activity",
@@ -30657,7 +30639,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         }
       },
       "caption": "System Activity",
@@ -31346,7 +31328,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         },
         "user": {
           "caption": "User",
@@ -31737,7 +31719,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         },
         "user": {
           "caption": "User",
@@ -32100,7 +32082,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         },
         "user": {
           "caption": "User",
@@ -32545,7 +32527,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         },
         "user": {
           "caption": "User",
@@ -32966,7 +32948,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         },
         "vulnerabilities": {
           "caption": "Vulnerabilities",
@@ -33414,7 +33396,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         },
         "web_resources": {
           "caption": "Web Resources",
@@ -34064,7 +34046,7 @@
           "group": "context",
           "is_array": true,
           "requirement": "optional",
-          "type": "object"
+          "type": "unmapped"
         },
         "web_resources": {
           "caption": "Web Resources",

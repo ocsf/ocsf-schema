@@ -1078,6 +1078,12 @@
       "description": "The number of times that events in the same logical group occurred during the event <strong>Start Time</strong> to <strong>End Time</strong> period.",
       "type": "integer_t"
     },
+    "countermeasures": {
+      "caption": "Countermeasures",
+      "description": "The MITRE DEFEND™ Matrix Countermeasures associated with a remediation.",
+      "type": "d3fend",
+      "is_array": true
+    },
     "country": {
       "observable": 14,
       "caption": "Country",
@@ -1187,6 +1193,16 @@
         "message": "Use the <code> cwe </code> object attributes instead.",
         "since": "1.1.0"
       }
+    },
+    "d3f_tactic": {
+      "caption": "MITRE DEFEND™ Tactic",
+      "description": "The D3FEND Tactic object describes the defensive tactic name associated with a countermeasure, as defined by <a target='_blank' href='https://d3fend.mitre.org'>D3FEND<sup>TM</sup> Matrix</a>.",
+      "type": "d3f_tactic"
+    },
+    "d3f_technique": {
+      "caption": "MITRE DEFEND™ Technique",
+      "description": "The D3FEND Technique object describes the defensive technique ID and/or name associated with a countermeasure, as defined by <a target='_blank' href='https://d3fend.mitre.org'>D3FEND<sup>TM</sup> Matrix</a>.",
+      "type": "d3f_technique"
     },
     "data": {
       "caption": "Data",
@@ -3905,7 +3921,7 @@
     },
     "sub_technique": {
       "caption": "Sub Technique",
-      "description": "The Sub Technique object describes the sub technique ID and/or name associated to an attack, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>.",
+      "description": "The Sub Technique object describes the sub technique ID and/or name associated to an attack, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK® Matrix</a>.",
       "type": "sub_technique"
     },
     "subdomain": {
@@ -3960,12 +3976,12 @@
     },
     "tactic": {
       "caption": "Tactic",
-      "description": "The Tactic object describes the tactic ID and/or name that is associated to an attack, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>.",
+      "description": "The Tactic object describes the tactic ID and/or name that is associated to an attack, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK® Matrix</a>.",
       "type": "tactic"
     },
     "tactics": {
       "caption": "Tactics",
-      "description": "The Tactic object describes the tactic ID and/or tactic name that are associated with the attack technique, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>.",
+      "description": "The Tactic object describes the tactic ID and/or tactic name that are associated with the attack technique, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK® Matrix</a>.",
       "type": "tactic",
       "@deprecated": {
         "message": "Use the <code> tactic </code> attribute instead.",
@@ -3985,7 +4001,7 @@
     },
     "technique": {
       "caption": "Technique",
-      "description": "The Technique object describes the technique ID and/or name associated to an attack, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>.",
+      "description": "The Technique object describes the technique ID and/or name associated to an attack, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK® Matrix</a>.",
       "type": "technique"
     },
     "tenant_uid": {

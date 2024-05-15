@@ -41,10 +41,13 @@ Thankyou! -->
 
 ### Added
 * #### Categories
+    1. Added `Remediation` category. #1066
 * #### Event Classes
     1. Added `Event Log Activity` event class. #1014
+    2. Added `Remediation Activity` `File Remediation Activity` `Process Remediation Activity` `Network Remediation Activity` event classes. #1066
 * #### Profiles
 * #### Objects
+    1. Added `d3fend` `d3f_tactic` `d3f_technique` MITRE objects. #1066
 * #### Platform Extensions
 
 ### Improved
@@ -72,6 +75,7 @@ Thankyou! -->
         * Updated the description of `metadata.profiles` to clarify the correct way to reference a profile in that list.
     3. Added a `gitignore` file. #1071
     4. New Extension registration for Cisco #1074
+    5. Cleaned up MITRE trademarks and registrations for captions and descriptions.
 
 ## [v1.2.0] - April 23rd, 2024
 

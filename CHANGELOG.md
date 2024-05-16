@@ -56,6 +56,7 @@ Thankyou! -->
     1. Added `file_result` to File Hosting Activity. #1045
     2. Added entries to `injection_type_id` enum (`Process Activity`) and `activity_id` enum (`Memory Activity`). #1060
     3. Added a `Restart`, `Enable`, `Disable`, and `Update` `activity_id` to the `Application Lifecycle` class. #1064
+    4. Added more  `status_id` opptions on the `dictionary.json` for `Base Event` [0] Class. 
 * #### Profiles
 * #### Objects
     1.  Added `ext` to `File` object. #1046

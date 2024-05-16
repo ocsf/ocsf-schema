@@ -48,9 +48,8 @@ Thankyou! -->
 * #### Profiles
 * #### Objects
     1. Added `d3fend` `d3f_tactic` `d3f_technique` MITRE objects. #1066 
-    2. Added `ja4_component`,`ja4_fingerprint` objects. #834
+    2. Added `ja4_fingerprint` object. #834
     3. Added `ja4_fingerprint_list` as a list of `ja4_fingerprint` objects.  #834
-    4. Added `ja4_component_list` as a list of `ja4_component` objects.  #834
 * #### Platform Extensions
 
 ### Improved

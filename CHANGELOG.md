@@ -41,11 +41,14 @@ Thankyou! -->
 
 ### Added
 * #### Categories
+    1. Added `Remediation` category. #1066
 * #### Event Classes
     1. Added `Event Log Activity` event class. #1014
+    2. Added `Remediation Activity` `File Remediation Activity` `Process Remediation Activity` `Network Remediation Activity` event classes. #1066
 * #### Profiles
 * #### Objects
-    1. Added `ticket` object. #1068
+    1. Added `d3fend` `d3f_tactic` `d3f_technique` MITRE objects. #1066
+    2. Added `ticket` object. #1068
 * #### Platform Extensions
 
 ### Improved
@@ -58,7 +61,8 @@ Thankyou! -->
 * #### Objects
     1. Added `ext` to `File` object. #1046  
     2. Added account, device, email, url, user to evidences in detection finding. #1000
-    3. Added `ticket` to `Incident Finding` object. ticket. #1068
+    3. Added `state_id`, `state` to `Digital Signature` object. #1069
+    4. Added `ticket` to `Incident Finding` object. ticket. #1068
 * #### Platform Extensions
 
 ### Bugfixes
@@ -74,6 +78,7 @@ Thankyou! -->
         * Updated the description of `metadata.profiles` to clarify the correct way to reference a profile in that list.
     3. Added a `gitignore` file. #1071
     4. New Extension registration for Cisco #1074
+    5. Cleaned up MITRE trademarks and registrations for captions and descriptions.
 
 ## [v1.2.0] - April 23rd, 2024
 

@@ -47,7 +47,9 @@ Thankyou! -->
     2. Added `Remediation Activity` `File Remediation Activity` `Process Remediation Activity` `Network Remediation Activity` event classes. #1066
 * #### Profiles
 * #### Objects
-    1. Added `d3fend` `d3f_tactic` `d3f_technique` MITRE objects. #1066
+    1. Added `d3fend` `d3f_tactic` `d3f_technique` MITRE objects. #1066 
+    2. Added `ja4_fingerprint` object. #834
+    3. Added `ja4_fingerprint_list` as a list of `ja4_fingerprint` objects.  #834
 * #### Platform Extensions
 
 ### Improved
@@ -56,10 +58,11 @@ Thankyou! -->
     1. Added `file_result` to File Hosting Activity. #1045
     2. Added entries to `injection_type_id` enum (`Process Activity`) and `activity_id` enum (`Memory Activity`). #1060
     3. Added a `Restart`, `Enable`, `Disable`, and `Update` `activity_id` to the `Application Lifecycle` class. #1064
+    4. Added `ja4_fingerprint_list` to base network event class. #834 
 * #### Profiles
 * #### Objects
-    1.  Added `ext` to `File` object. #1046
-    2. Added account, device, email, url, user to evidences in detection finding. #1000
+    1. Added `ext` to `File` object. #1046
+    2. Added `account`, `device`, `email`, `url`, `user` to `evidences` in detection finding. #1000
     3. Added `state_id`, `state` to `Digital Signature` object. #1069
 * #### Platform Extensions
 

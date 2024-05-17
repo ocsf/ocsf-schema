@@ -50,6 +50,7 @@ Thankyou! -->
     1. Added `d3fend` `d3f_tactic` `d3f_technique` MITRE objects. #1066 
     2. Added `ja4_fingerprint` object. #834
     3. Added `ja4_fingerprint_list` as a list of `ja4_fingerprint` objects.  #834
+    4. Added `ticket` object. #1068
 * #### Platform Extensions
 
 ### Improved
@@ -64,6 +65,7 @@ Thankyou! -->
     1. Added `ext` to `File` object. #1046
     2. Added `account`, `device`, `email`, `url`, `user` to `evidences` in detection finding. #1000
     3. Added `state_id`, `state` to `Digital Signature` object. #1069
+    4. Added `ticket` to `Incident Finding` object. ticket. #1068
 * #### Platform Extensions
 
 ### Bugfixes

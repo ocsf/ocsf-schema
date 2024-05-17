@@ -62,10 +62,10 @@ Thankyou! -->
     4. Added `ja4_fingerprint_list` to base network event class. #834 
 * #### Profiles
 * #### Objects
-    1. Added `ext` to `File` object. #1046  
-    2. Added `account`, `device`, `email`, `url`, `user` to `evidences` in detection finding. #1000    
+    1. Added `ext` to `File` object. #1046
+    2. Added `account`, `device`, `email`, `url`, `user` to `evidences` in detection finding. #1000
     3. Added `state_id`, `state` to `Digital Signature` object. #1069
-    4. Added `ticket` to `Incident Finding` object. ticket. #1068    
+    4. Added `ticket` to `Incident Finding` object. ticket. #1068
 * #### Platform Extensions
 
 ### Bugfixes

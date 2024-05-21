@@ -159,21 +159,6 @@
       "description": "The analytic technique used to analyze and derive insights from the data or information that led to the finding or conclusion.",
       "type": "analytic"
     },
-    "analysis_definition_version": {
-      "caption": "Analysis Definition Version",
-      "description": "The version of the analysis definitions used by the analysis tool (including AV tools).",
-      "type": "string_t"
-    },
-    "analysis_engine_version": {
-      "caption": "Analysis Engine Version",
-      "description": "The version of the analysis engine or product (including AV engines) that was used to perform the analysis.",
-      "type": "string_t"
-    },
-    "analysis_result": {
-      "caption": "Analysis Result",
-      "description": "The classification result as determined by the scanner or tool analysis process. See specific usage.",
-      "type": "string_t"
-    },
     "answers": {
       "caption": "DNS Answer",
       "description": "The Domain Name System (DNS) answers.",
@@ -839,20 +824,6 @@
       "description": "The classification as defined by the vendor.",
       "type": "string_t"
     },
-    "classification_ids": {
-      "caption": "Classification IDs",
-      "description": "The list of normalized identifiers of the malware classifications. Reference: <a target='_blank' href='https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_oxlc4df65spl'>STIX Malware Types</a> ",
-      "sibling": "classifications",
-      "type": "integer_t",
-      "enum": {},
-      "is_array": true
-    },
-    "classifications": {
-      "caption": "Classifications",
-      "description": "The list of malware classifications, normalized to the captions of the classification_id values. In the case of 'Other', they are defined by the event source.",
-      "type": "string_t",
-      "is_array": true
-    },
     "client_ciphers": {
       "caption": "Client Cipher Suites",
       "description": "The client cipher suites that were exchanged during the TLS handshake negotiation.",
@@ -1015,11 +986,6 @@
       "sibling": "confidentiality",
       "type": "integer_t"
     },
-    "configuration_version": {
-      "caption": "Configuration Version",
-      "description": "The named configuration of additional product configuration parameters. See specific usage.",
-      "type": "string_t"
-    },
     "connection_info": {
       "caption": "Connection Info",
       "description": "The network connection information.",
@@ -1125,11 +1091,6 @@
       "caption": "Created Time",
       "description": "The time when the object was created. See specific usage.",
       "type": "timestamp_t"
-    },
-    "created_by_ref": {
-      "caption": "Created By Reference",
-      "description": "The created_by_ref property specifies the id property of the identity object that describes the entity that created this object. If this attribute is omitted, the source of this information is undefined. This may be used by object creators who wish to remain anonymous.",
-      "type": "string_t"
     },
     "creator": {
       "caption": "Creator",
@@ -1971,12 +1932,6 @@
       "description": "The given or first name of the user.",
       "type": "string_t"
     },
-    "goals": {
-      "caption": "Goals",
-      "description": "The high-level goals of this Threat Actor, namely, what are they trying to do. For example, they may be motivated by personal gain, but their goal is to steal credit card numbers. To do this, they may execute specific Campaigns that have detailed objectives like compromising point of sale systems at a large retailer.",
-      "is_array": true,
-      "type": "string_t"
-    },
     "group": {
       "caption": "Group",
       "description": "The group object associated with an entity such as user, policy, or rule.",
@@ -2229,11 +2184,6 @@
     "is_exploit_available": {
       "caption": "Exploit Availability",
       "description": "Indicates if an exploit or a PoC (proof-of-concept) is available for the reported vulnerability.",
-      "type": "boolean_t"
-    },
-    "is_family": {
-      "caption": "Is Malware Family",
-      "description": "Whether the object represents a malware family (if <code>true</code>) or a malware instance (if <code>false</code>).",
       "type": "boolean_t"
     },
     "is_fix_available": {
@@ -2625,12 +2575,6 @@
       "is_array": true,
       "type": "malware"
     },
-    "malware_types": {
-      "caption": "Malware Types",
-      "description": "A set of categorizations for the malware being described.",
-      "is_array": true,
-      "type": "string_t"
-    },
     "manager": {
       "caption": "Manager",
       "description": "The user's manager. This helps in understanding an org hierarchy. This should only ever be populated once in an event. I.e. there should not be a manager's manager in an event.",
@@ -2681,21 +2625,6 @@
       "caption": "Module",
       "description": "The module that pertains to the event.",
       "type": "module"
-    },
-    "modules": {
-      "caption": "Modules",
-      "description": "The module that pertains to the event. See specific usage.",
-      "type": "module"
-    },
-    "motivation": {
-      "caption": "Motivation",
-      "description": "Motivation of a threat actor. See specific usage.",
-      "type": "string_t"
-    },
-    "motivations": {
-      "caption": "Motivations",
-      "description": "An array of <code>motivation</code> objects. See specific usage.",
-      "type": "string_t"
     },
     "name": {
       "caption": "Name",
@@ -2799,11 +2728,6 @@
       "caption": "Number",
       "description": "The number of the entity. See specific usage.",
       "type": "integer_t"
-    },
-    "objective": {
-      "caption": "Objective",
-      "description": "The Campaign's primary goal, objective, desired outcome, or intended effect — what the Threat Actor or Intrusion Set hopes to accomplish with this Campaign.",
-      "type": "string_t"
     },
     "observables": {
       "caption": "Observables",
@@ -3524,17 +3448,6 @@
       "description": "The risk score as reported by the event source.",
       "type": "integer_t"
     },
-    "roles": {
-      "caption": "Roles",
-      "description": "A list of roles. See specific usage.",
-      "is_array": true,
-      "type": "string_t"
-    },
-    "risk_details": {
-      "caption": "Risk Details",
-      "description": "Describes the risk associated with the finding.",
-      "type": "string_t"
-    },
     "rpc_interface": {
       "caption": "Remote Procedure Call Interface",
       "description": "The RPC Interface object describes the details pertaining to the remote procedure call interface.",
@@ -3988,11 +3901,6 @@
       "description": "The identifier of the subject. See specific usage.",
       "type": "string_t"
     },
-    "submitted_time": {
-      "caption": "Submitted Time",
-      "description": "The time when a file/object was submtited. See specific usage.",
-      "type": "timestamp_t"
-    },
     "subnet": {
       "caption": "Subnet",
       "description": "The subnet mask.",
@@ -4078,11 +3986,11 @@
       "description": "The time when the entity was terminated. See specific usage.",
       "type": "timestamp_t"
     },
-    "threat_intelligence": {
+    "osint": {
       "caption": "Threat Intelligence",
       "description": "The Threat Intelligence object contains details related to an indicator such as the indicator itself, related indicators, open source intelligence (geolocation, registrar information, subdomains, etc.) and analyst commentary and potential attribution information. This information can be used to further enrich a detection or finding by providing decision-supporting intelligence to other analysts and engineers.",
       "is_array": true,
-      "type": "threat_intelligence"
+      "type": "osint"
     },
     "tid": {
       "caption": "Thread ID",

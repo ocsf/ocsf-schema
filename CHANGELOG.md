@@ -42,6 +42,8 @@ Thankyou! -->
 ### Added
 * #### Categories
     1. Added `Remediation` category. #1066
+* #### Dictionary
+    1. Added `win_resources` as an array of win_resource objects. #1090
 * #### Event Classes
     1. Added `Event Log Activity` event class. #1014
     2. Added `Remediation Activity` `File Remediation Activity` `Process Remediation Activity` `Network Remediation Activity` event classes. #1066
@@ -67,7 +69,10 @@ Thankyou! -->
     3. Added `state_id`, `state` to `Digital Signature` object. #1069
     4. Added `ticket` to `Incident Finding` object. ticket. #1068
 * #### Platform Extensions
-
+    1. Removed `win_resource` object from Windows Resource Activity class. #1090   
+    2. Added `win_resources` to Windows Resource Activity class. #1090   
+    3. Added `access_mask` to Windows Resource Activity class. #1090   
+    4. Added `access_list` to Windows Resource Activity class. #1090
 ### Bugfixes
 
 ### Deprecated

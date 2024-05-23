@@ -53,9 +53,8 @@ Thankyou! -->
     4. Added `ticket` object. #1068
     5. Added `osint` object. #992
     6. Added `signatures` object, an array of `signature` objects. #992
-    7. Added `subdomains` object, an array of `subdomain` used to enumerate DGA-generated domains. #992
-    8. Added `whois` object. #992
-    9. Added `domain_contact` and array-typed `domain_contacts` object for use with `whois` object. #992
+    7. Added `whois` object. #992
+    8. Added `domain_contact` and array-typed `domain_contacts` object for use with `whois` object. #992
 * #### Platform Extensions
 
 ### Improved
@@ -71,6 +70,7 @@ Thankyou! -->
     2. Added `account`, `device`, `email`, `url`, `user` to `evidences` in detection finding. #1000
     3. Added `state_id`, `state` to `Digital Signature` object. #1069
     4. Added `ticket` to `Incident Finding` object. ticket. #1068
+    5. Added `domain` to `Uniform Resource Locator` object. #1096
 * #### Platform Extensions
 
 ### Bugfixes

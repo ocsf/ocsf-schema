@@ -295,7 +295,10 @@
     "caption": "Base Event",
     "category": "other",
     "description": "The base event is a generic concrete event and it also defines a set of attributes available in most event classes. As a generic event that does not belong to any event category, it could be used to log events that are not otherwise defined by the schema.",
-    "extends": null,
+    "extends": [
+      null,
+      "base_event"
+    ],
     "name": "base_event",
     "profiles": [
       "cloud",
@@ -339,6 +342,9 @@
   "classes": {
     "account_change": {
       "attributes": {
+        "$include": [
+          "profiles/host.json"
+        ],
         "activity_id": {
           "caption": "Activity ID",
           "description": "The normalized identifier of the activity that triggered the event.",
@@ -1495,6 +1501,9 @@
     },
     "application_lifecycle": {
       "attributes": {
+        "$include": [
+          "profiles/host.json"
+        ],
         "activity_id": {
           "caption": "Activity ID",
           "description": "The normalized identifier of the activity that triggered the event.",
@@ -1873,6 +1882,9 @@
         ]
       },
       "attributes": {
+        "$include": [
+          "profiles/host.json"
+        ],
         "activity_id": {
           "caption": "Activity ID",
           "description": "The normalized identifier of the activity that triggered the event.",
@@ -2150,7 +2162,6 @@
           "caption": "Logon Process",
           "description": "The trusted process that validated the authentication credentials.",
           "group": "context",
-          "requirement": "optional",
           "type": "process"
         },
         "logon_type": {
@@ -2476,6 +2487,9 @@
         ]
       },
       "attributes": {
+        "$include": [
+          "profiles/host.json"
+        ],
         "activity_id": {
           "caption": "Activity ID",
           "description": "The normalized identifier of the activity that triggered the event.",
@@ -3165,7 +3179,10 @@
       "caption": "Base Event",
       "category": "other",
       "description": "The base event is a generic concrete event and it also defines a set of attributes available in most event classes. As a generic event that does not belong to any event category, it could be used to log events that are not otherwise defined by the schema.",
-      "extends": null,
+      "extends": [
+        null,
+        "base_event"
+      ],
       "name": "base_event",
       "profiles": [
         "cloud",
@@ -3174,6 +3191,9 @@
     },
     "compliance_finding": {
       "attributes": {
+        "$include": [
+          "profiles/host.json"
+        ],
         "activity_id": {
           "caption": "Activity ID",
           "description": "The normalized identifier of the finding activity.",
@@ -3969,6 +3989,9 @@
     },
     "data_security_finding": {
       "attributes": {
+        "$include": [
+          "profiles/security_control.json"
+        ],
         "action": {
           "caption": "Action",
           "description": "The normalized caption of <code>action_id</code>.",
@@ -4710,6 +4733,9 @@
     },
     "datastore_activity": {
       "attributes": {
+        "$include": [
+          "profiles/security_control.json"
+        ],
         "action": {
           "caption": "Action",
           "description": "The normalized caption of <code>action_id</code>.",
@@ -5391,6 +5417,9 @@
     },
     "detection_finding": {
       "attributes": {
+        "$include": [
+          "profiles/security_control.json"
+        ],
         "action": {
           "caption": "Action",
           "description": "The normalized caption of <code>action_id</code>.",
@@ -6287,7 +6316,6 @@
           "caption": "Previous Security Level",
           "description": "The previous security level of the entity",
           "group": "primary",
-          "requirement": "optional",
           "type": "string_t"
         },
         "prev_security_level_id": {
@@ -6312,7 +6340,6 @@
             }
           },
           "group": "primary",
-          "requirement": "optional",
           "sibling": "prev_security_level",
           "type": "integer_t"
         },
@@ -6321,7 +6348,6 @@
           "description": "The previous security states of the device.",
           "group": "primary",
           "is_array": true,
-          "requirement": "optional",
           "type": "security_state"
         },
         "raw_data": {
@@ -6353,7 +6379,6 @@
           "caption": "Security Level",
           "description": "The current security level of the entity",
           "group": "primary",
-          "requirement": "optional",
           "type": "string_t"
         },
         "security_level_id": {
@@ -6378,7 +6403,6 @@
             }
           },
           "group": "primary",
-          "requirement": "optional",
           "sibling": "security_level",
           "type": "integer_t"
         },
@@ -6387,7 +6411,6 @@
           "description": "The current security states of the device.",
           "group": "primary",
           "is_array": true,
-          "requirement": "optional",
           "type": "security_state"
         },
         "severity": {
@@ -7175,7 +7198,6 @@
           "caption": "TLS",
           "description": "The Transport Layer Security (TLS) attributes.",
           "group": "primary",
-          "requirement": "optional",
           "type": "tls"
         },
         "traffic": {
@@ -7595,6 +7617,9 @@
     },
     "discovery_result": {
       "attributes": {
+        "$include": [
+          "profiles/host.json"
+        ],
         "activity_id": {
           "caption": "Activity ID",
           "description": "The normalized identifier of the activity that triggered the event.",
@@ -8711,7 +8736,6 @@
           "caption": "TLS",
           "description": "The Transport Layer Security (TLS) attributes.",
           "group": "primary",
-          "requirement": "optional",
           "type": "tls"
         },
         "traffic": {
@@ -9526,7 +9550,6 @@
               "description": "Network Activity events."
             }
           },
-          "requirement": "optional",
           "sibling": "category_name",
           "type": "integer_t"
         },
@@ -9543,7 +9566,12 @@
         "class_uid": {
           "caption": "Class ID",
           "description": "The unique identifier of a class. A class describes the attributes available in an event.",
-          "requirement": "optional",
+          "enum": {
+            "10104030": {
+              "caption": "Email Delivery Activity",
+              "description": "Email Delivery events report the delivery status of emails."
+            }
+          },
           "sibling": "class_name",
           "type": "integer_t"
         },
@@ -9575,7 +9603,6 @@
           "caption": "Count",
           "default": 1,
           "description": "The number of times that events in the same logical group occurred during the event <strong>Start Time</strong> to <strong>End Time</strong> period.",
-          "requirement": "optional",
           "type": "integer_t"
         },
         "data": {
@@ -9673,7 +9700,6 @@
         "duration": {
           "caption": "Duration",
           "description": "The event duration or aggregate time, the amount of time the event covers from <code>start_time</code> to <code>end_time</code> in milliseconds.",
-          "requirement": "optional",
           "type": "integer_t"
         },
         "email": {
@@ -9712,7 +9738,6 @@
         "end_time": {
           "caption": "End Time",
           "description": "The end time of a time period, or the time of the most recent event included in the aggregate event.",
-          "requirement": "optional",
           "type": "timestamp_t"
         },
         "enrichments": {
@@ -9720,7 +9745,6 @@
           "description": "The additional information from an external data source, which is associated with the event. For example add location information for the IP address in the DNS answers:</p><code>[{\"name\": \"answers.ip\", \"value\": \"92.24.47.250\", \"type\": \"location\", \"data\": {\"city\": \"Socotra\", \"continent\": \"Asia\", \"coordinates\": [-25.4153, 17.0743], \"country\": \"YE\", \"desc\": \"Yemen\"}}]</code>",
           "group": "context",
           "is_array": true,
-          "requirement": "optional",
           "type": "enrichment"
         },
         "file": {
@@ -9763,7 +9787,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "receiver_hostname": {
@@ -9869,7 +9892,6 @@
         "start_time": {
           "caption": "Start Time",
           "description": "The start time of a time period, or the time of the least recent event included in the aggregate event.",
-          "requirement": "optional",
           "type": "timestamp_t"
         },
         "status": {
@@ -9883,14 +9905,12 @@
           "caption": "Status Code",
           "description": "The event status code, as reported by the event source.<br /><br />For example, in a Windows Failed Authentication event, this would be the value of 'Failure Code', e.g. 0x18.",
           "group": "primary",
-          "requirement": "optional",
           "type": "string_t"
         },
         "status_detail": {
           "caption": "Status Details",
           "description": "The status details contains additional information about the event outcome.",
           "group": "primary",
-          "requirement": "optional",
           "type": "string_t"
         },
         "status_id": {
@@ -9938,7 +9958,23 @@
         "type_uid": {
           "caption": "Type ID",
           "description": "The event/finding type ID. It identifies the event's semantics and structure. The value is calculated by the logging system as: <code>class_uid * 100 + activity_id</code>.",
-          "requirement": "optional",
+          "enum": {
+            "1010403000": {
+              "caption": "Email Delivery Activity: Unknown"
+            },
+            "1010403001": {
+              "caption": "Email Delivery Activity: Delivered"
+            },
+            "1010403002": {
+              "caption": "Email Delivery Activity: Failed"
+            },
+            "1010403003": {
+              "caption": "Email Delivery Activity: Temporary Failure"
+            },
+            "1010403099": {
+              "caption": "Email Delivery Activity: Other"
+            }
+          },
           "sibling": "type_name",
           "type": "integer_t"
         },
@@ -9947,7 +9983,6 @@
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "group": "context",
           "is_array": true,
-          "requirement": "optional",
           "type": "object"
         },
         "url": {
@@ -9961,7 +9996,7 @@
       "caption": "Email Delivery Activity",
       "category": "network",
       "description": "Email Delivery events report the delivery status of emails.",
-      "extension": "archive",
+      "extension": "query",
       "name": "email_delivery_activity",
       "profiles": [
         "host",
@@ -11109,6 +11144,9 @@
     },
     "entity_management": {
       "attributes": {
+        "$include": [
+          "profiles/host.json"
+        ],
         "activity_id": {
           "caption": "Activity ID",
           "description": "The normalized identifier of the activity that triggered the event.",
@@ -11502,6 +11540,9 @@
         ]
       },
       "attributes": {
+        "$include": [
+          "profiles/security_control.json"
+        ],
         "access_mask": {
           "caption": "Access Mask",
           "description": "The access mask in a platform-native format.",
@@ -12647,6 +12688,9 @@
     },
     "finding": {
       "attributes": {
+        "$include": [
+          "profiles/host.json"
+        ],
         "activity_id": {
           "caption": "Activity ID",
           "description": "The normalized identifier of the finding activity.",
@@ -13657,7 +13701,6 @@
           "caption": "TLS",
           "description": "The Transport Layer Security (TLS) attributes.",
           "group": "primary",
-          "requirement": "optional",
           "type": "tls"
         },
         "traffic": {
@@ -13737,6 +13780,9 @@
     },
     "group_management": {
       "attributes": {
+        "$include": [
+          "profiles/host.json"
+        ],
         "activity_id": {
           "caption": "Activity ID",
           "description": "The normalized identifier of the activity that triggered the event.",
@@ -14560,7 +14606,6 @@
           "caption": "HTTP Status",
           "description": "The Hypertext Transfer Protocol (HTTP) <a target='_blank' href='https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml'>status code</a> returned to the client.",
           "group": "primary",
-          "requirement": "optional",
           "type": "integer_t"
         },
         "load_balancer": {
@@ -14782,7 +14827,6 @@
           "caption": "TLS",
           "description": "The Transport Layer Security (TLS) attributes.",
           "group": "primary",
-          "requirement": "optional",
           "type": "tls"
         },
         "traffic": {
@@ -14861,6 +14905,9 @@
     },
     "iam": {
       "attributes": {
+        "$include": [
+          "profiles/host.json"
+        ],
         "activity_id": {
           "caption": "Activity ID",
           "description": "The normalized identifier of the activity that triggered the event.",
@@ -16157,6 +16204,9 @@
         ]
       },
       "attributes": {
+        "$include": [
+          "profiles/security_control.json"
+        ],
         "action": {
           "caption": "Action",
           "description": "The normalized caption of <code>action_id</code>.",
@@ -16713,6 +16763,9 @@
         ]
       },
       "attributes": {
+        "$include": [
+          "profiles/security_control.json"
+        ],
         "action": {
           "caption": "Action",
           "description": "The normalized caption of <code>action_id</code>.",
@@ -17259,6 +17312,9 @@
         ]
       },
       "attributes": {
+        "$include": [
+          "profiles/security_control.json"
+        ],
         "action": {
           "caption": "Action",
           "description": "The normalized caption of <code>action_id</code>.",
@@ -17730,7 +17786,6 @@
           "caption": "Size",
           "description": "The memory size that was access or requested.",
           "group": "primary",
-          "requirement": "optional",
           "type": "long_t"
         },
         "start_time": {
@@ -17871,6 +17926,9 @@
         ]
       },
       "attributes": {
+        "$include": [
+          "profiles/security_control.json"
+        ],
         "action": {
           "caption": "Action",
           "description": "The normalized caption of <code>action_id</code>.",
@@ -18963,7 +19021,6 @@
           "caption": "TLS",
           "description": "The Transport Layer Security (TLS) attributes.",
           "group": "primary",
-          "requirement": "optional",
           "type": "tls"
         },
         "traffic": {
@@ -19590,7 +19647,6 @@
           "caption": "TLS",
           "description": "The Transport Layer Security (TLS) attributes.",
           "group": "primary",
-          "requirement": "optional",
           "type": "tls"
         },
         "traffic": {
@@ -20310,7 +20366,6 @@
           "caption": "TLS",
           "description": "The Transport Layer Security (TLS) attributes.",
           "group": "primary",
-          "requirement": "optional",
           "type": "tls"
         },
         "traffic": {
@@ -21059,7 +21114,6 @@
           "caption": "TLS",
           "description": "The Transport Layer Security (TLS) attributes.",
           "group": "primary",
-          "requirement": "optional",
           "type": "tls"
         },
         "traffic": {
@@ -21519,6 +21573,9 @@
     },
     "peripheral_device_query": {
       "attributes": {
+        "$include": [
+          "profiles/host.json"
+        ],
         "activity_id": {
           "caption": "Activity ID",
           "description": "The normalized identifier of the activity that triggered the event.",
@@ -21960,6 +22017,9 @@
     },
     "prefetch_query": {
       "attributes": {
+        "$include": [
+          "profiles/host.json"
+        ],
         "activity_id": {
           "caption": "Activity ID",
           "description": "The normalized identifier of the activity that triggered the event.",
@@ -22424,6 +22484,9 @@
         ]
       },
       "attributes": {
+        "$include": [
+          "profiles/security_control.json"
+        ],
         "action": {
           "caption": "Action",
           "description": "The normalized caption of <code>action_id</code>.",
@@ -23674,7 +23737,6 @@
           "caption": "TLS",
           "description": "The Transport Layer Security (TLS) attributes.",
           "group": "primary",
-          "requirement": "optional",
           "type": "tls"
         },
         "traffic": {
@@ -23755,6 +23817,9 @@
         ]
       },
       "attributes": {
+        "$include": [
+          "profiles/security_control.json"
+        ],
         "access_mask": {
           "caption": "Access Mask",
           "description": "The access mask in a platform-native format.",
@@ -24373,6 +24438,9 @@
     },
     "registry_key_query": {
       "attributes": {
+        "$include": [
+          "profiles/host.json"
+        ],
         "activity_id": {
           "caption": "Activity ID",
           "description": "The normalized identifier of the activity that triggered the event.",
@@ -24823,6 +24891,9 @@
         ]
       },
       "attributes": {
+        "$include": [
+          "profiles/security_control.json"
+        ],
         "action": {
           "caption": "Action",
           "description": "The normalized caption of <code>action_id</code>.",
@@ -25387,6 +25458,9 @@
     },
     "registry_value_query": {
       "attributes": {
+        "$include": [
+          "profiles/host.json"
+        ],
         "activity_id": {
           "caption": "Activity ID",
           "description": "The normalized identifier of the activity that triggered the event.",
@@ -25837,6 +25911,9 @@
         ]
       },
       "attributes": {
+        "$include": [
+          "profiles/security_control.json"
+        ],
         "action": {
           "caption": "Action",
           "description": "The normalized caption of <code>action_id</code>.",
@@ -26379,6 +26456,9 @@
     },
     "scan_activity": {
       "attributes": {
+        "$include": [
+          "profiles/host.json"
+        ],
         "activity_id": {
           "caption": "Activity ID",
           "description": "The normalized identifier of the activity that triggered the event.",
@@ -26880,6 +26960,9 @@
         ]
       },
       "attributes": {
+        "$include": [
+          "profiles/security_control.json"
+        ],
         "action": {
           "caption": "Action",
           "description": "The normalized caption of <code>action_id</code>.",
@@ -28115,7 +28198,10 @@
       "caption": "Security Finding",
       "category": "findings",
       "description": "Security Finding events describe findings, detections, anomalies, alerts and/or actions performed by security products",
-      "extends": null,
+      "extends": [
+        null,
+        "security_finding"
+      ],
       "name": "security_finding",
       "profiles": [
         "cloud",
@@ -28125,6 +28211,9 @@
     },
     "session_query": {
       "attributes": {
+        "$include": [
+          "profiles/host.json"
+        ],
         "activity_id": {
           "caption": "Activity ID",
           "description": "The normalized identifier of the activity that triggered the event.",
@@ -29238,7 +29327,6 @@
           "caption": "TLS",
           "description": "The Transport Layer Security (TLS) attributes.",
           "group": "primary",
-          "requirement": "optional",
           "type": "tls"
         },
         "traffic": {
@@ -29976,7 +30064,6 @@
           "caption": "TLS",
           "description": "The Transport Layer Security (TLS) attributes.",
           "group": "primary",
-          "requirement": "optional",
           "type": "tls"
         },
         "traffic": {
@@ -30057,6 +30144,9 @@
         ]
       },
       "attributes": {
+        "$include": [
+          "profiles/security_control.json"
+        ],
         "action": {
           "caption": "Action",
           "description": "The normalized caption of <code>action_id</code>.",
@@ -31157,7 +31247,6 @@
           "caption": "TLS",
           "description": "The Transport Layer Security (TLS) attributes.",
           "group": "primary",
-          "requirement": "optional",
           "type": "tls"
         },
         "traffic": {
@@ -31274,6 +31363,9 @@
     },
     "user_access": {
       "attributes": {
+        "$include": [
+          "profiles/host.json"
+        ],
         "activity_id": {
           "caption": "Activity ID",
           "description": "The normalized identifier of the activity that triggered the event.",
@@ -32013,6 +32105,9 @@
     },
     "user_query": {
       "attributes": {
+        "$include": [
+          "profiles/host.json"
+        ],
         "activity_id": {
           "caption": "Activity ID",
           "description": "The normalized identifier of the activity that triggered the event.",
@@ -32454,6 +32549,9 @@
     },
     "vulnerability_finding": {
       "attributes": {
+        "$include": [
+          "profiles/host.json"
+        ],
         "activity_id": {
           "caption": "Activity ID",
           "description": "The normalized identifier of the finding activity.",
@@ -34007,7 +34105,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -34035,7 +34132,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "vendor_name": {
@@ -34069,7 +34165,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -34089,7 +34184,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -34110,7 +34204,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -34130,7 +34223,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -34147,6 +34239,9 @@
     },
     "_resource": {
       "attributes": {
+        "$include": [
+          "profiles/data_classification.json"
+        ],
         "data": {
           "caption": "Data",
           "description": "Additional data describing the resource.",
@@ -34177,7 +34272,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -34203,7 +34297,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -34240,7 +34333,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -34313,7 +34405,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -34375,7 +34466,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -34395,7 +34485,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "user": {
@@ -34444,7 +34533,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -34470,7 +34558,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -34533,7 +34620,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -34559,7 +34645,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "version": {
@@ -34593,7 +34678,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -34678,7 +34762,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "vendor_name": {
@@ -34729,7 +34812,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -34823,7 +34905,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "version": {
@@ -34862,7 +34943,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -34894,7 +34974,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "version": {
@@ -34915,7 +34994,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -34958,7 +35036,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "version": {
@@ -35095,7 +35172,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -35117,7 +35193,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -35138,20 +35213,17 @@
         "decision": {
           "caption": "Authorization Decision/Outcome",
           "description": "Authorization Result/outcome, e.g. allowed, denied.",
-          "requirement": "optional",
           "type": "string_t"
         },
         "policy": {
           "caption": "Policy",
           "description": "Details about the Identity/Access management policies that are applicable.",
-          "requirement": "optional",
           "type": "policy"
         },
         "raw_data": {
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -35165,7 +35237,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -35194,7 +35265,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -35208,7 +35278,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -35274,7 +35343,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -35316,7 +35384,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "version": {
@@ -35356,7 +35423,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -35370,7 +35436,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -35397,7 +35462,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -35423,7 +35487,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -35450,7 +35513,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -35464,7 +35526,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "version": {
@@ -35491,7 +35552,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -35505,7 +35565,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "version": {
@@ -35616,7 +35675,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -35646,7 +35704,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "zone": {
@@ -35673,7 +35730,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -35748,7 +35804,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -35819,7 +35874,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -35857,7 +35911,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -35942,7 +35995,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -35982,7 +36034,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -36670,7 +36721,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "raw_score": {
@@ -36851,7 +36901,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "user_interaction_id": {
@@ -36902,7 +36951,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -36929,7 +36977,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -37038,7 +37085,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -37052,7 +37098,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -37336,7 +37381,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -37350,7 +37394,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -37369,6 +37412,9 @@
     },
     "database": {
       "attributes": {
+        "$include": [
+          "profiles/data_classification.json"
+        ],
         "created_time": {
           "caption": "Created Time",
           "description": "The time when the database was known to have been created.",
@@ -37411,7 +37457,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -37478,7 +37523,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -37498,6 +37542,9 @@
     },
     "databucket": {
       "attributes": {
+        "$include": [
+          "profiles/data_classification.json"
+        ],
         "created_time": {
           "caption": "Created Time",
           "description": "The time when the databucket was known to have been created.",
@@ -37546,7 +37593,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -37604,7 +37650,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -37664,7 +37709,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -37684,7 +37728,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -37695,6 +37738,9 @@
     },
     "device": {
       "attributes": {
+        "$include": [
+          "profiles/container.json"
+        ],
         "agent_list": {
           "caption": "Agent List",
           "description": "A list of <code>agent</code> objects associated with a device, endpoint, or resource.",
@@ -37900,7 +37946,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -38051,14 +38096,12 @@
         "uid_alt": {
           "caption": "Alternate ID",
           "description": "An alternate unique identifier of the device if any. For example the ActiveDirectory DN.",
-          "requirement": "optional",
           "type": "string_t"
         },
         "unmapped": {
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "vlan_uid": {
@@ -38178,7 +38221,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -38198,7 +38240,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -38307,7 +38348,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -38331,7 +38371,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -38370,7 +38409,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -38390,7 +38428,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -38438,7 +38475,6 @@
             }
           },
           "is_array": true,
-          "requirement": "optional",
           "sibling": "flags",
           "type": "integer_t"
         },
@@ -38446,7 +38482,6 @@
           "caption": "DNS Header Flags",
           "description": "The list of DNS answer header flags.",
           "is_array": true,
-          "requirement": "optional",
           "type": "string_t"
         },
         "packet_uid": {
@@ -38459,7 +38494,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "rdata": {
@@ -38491,7 +38525,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -38566,7 +38599,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -38586,7 +38618,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -38629,7 +38660,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -38696,7 +38726,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -38724,7 +38753,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "vendor_name": {
@@ -38742,6 +38770,9 @@
     },
     "email": {
       "attributes": {
+        "$include": [
+          "profiles/data_classification.json"
+        ],
         "cc": {
           "caption": "Cc",
           "description": "The email header Cc values, as defined by RFC 5322.",
@@ -38824,7 +38855,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "raw_header": {
@@ -38911,7 +38941,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "x_originating_ip": {
@@ -38924,7 +38953,10 @@
       },
       "caption": "Email",
       "description": "The Email object describes the email metadata such as sender, recipients, and direction.",
-      "extends": null,
+      "extends": [
+        null,
+        "email"
+      ],
       "name": "email",
       "observable": 22,
       "profiles": [
@@ -38973,7 +39005,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "raw_header": {
@@ -39003,7 +39034,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -39014,6 +39044,9 @@
     },
     "endpoint": {
       "attributes": {
+        "$include": [
+          "profiles/container.json"
+        ],
         "agent_list": {
           "caption": "Agent List",
           "description": "A list of <code>agent</code> objects associated with a device, endpoint, or resource.",
@@ -39111,7 +39144,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -39214,7 +39246,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "vlan_uid": {
@@ -39274,7 +39305,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -39288,7 +39318,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -39327,7 +39356,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -39347,7 +39375,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "value": {
@@ -39380,7 +39407,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -39400,7 +39426,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "version": {
@@ -39487,7 +39512,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -39507,7 +39531,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -39543,7 +39566,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -39563,7 +39585,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "version": {
@@ -39596,7 +39617,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -39616,7 +39636,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "version": {
@@ -39639,6 +39658,9 @@
     },
     "file": {
       "attributes": {
+        "$include": [
+          "profiles/data_classification.json"
+        ],
         "accessed_time": {
           "caption": "Accessed Time",
           "description": "The time when the file was last accessed.",
@@ -39806,7 +39828,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -39889,7 +39910,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "version": {
@@ -39929,7 +39949,6 @@
           "type": "string_t"
         },
         "filenames": {
-          "caption": "Filenames",
           "description": "The names a file is known by.",
           "is_array": true,
           "requirement": "optional",
@@ -39972,7 +39991,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -40000,7 +40018,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "vendor_name": {
@@ -40062,7 +40079,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -40132,7 +40148,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -40210,7 +40225,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -40263,7 +40277,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -40329,7 +40342,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -40343,7 +40355,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "value": {
@@ -40414,7 +40425,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -40446,7 +40456,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "version": {
@@ -40498,7 +40507,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -40524,7 +40532,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -40557,7 +40564,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -40571,7 +40577,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -40632,7 +40637,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -40662,7 +40666,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "value": {
@@ -40689,7 +40692,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -40703,7 +40705,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "value": {
@@ -40793,7 +40794,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -40819,7 +40819,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "url": {
@@ -40904,7 +40903,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -40924,7 +40922,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -40945,7 +40942,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -40965,7 +40961,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -41005,7 +41000,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -41031,7 +41025,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -41096,7 +41089,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -41130,7 +41122,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "vendor_name": {
@@ -41195,7 +41186,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -41242,7 +41232,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "user": {
@@ -41299,7 +41288,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -41343,7 +41331,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -41376,7 +41363,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -41429,7 +41415,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -41451,7 +41436,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -41465,7 +41449,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -41510,7 +41493,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -41524,7 +41506,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -41590,7 +41571,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -41604,7 +41584,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -41723,7 +41702,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -41743,7 +41721,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -41808,7 +41785,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -41834,7 +41810,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -41933,7 +41908,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -41953,7 +41927,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -42006,7 +41979,6 @@
         "logged_time": {
           "caption": "Logged Time",
           "description": "<p>The time when the logging system collected and logged the event.</p>This attribute is distinct from the event time in that event time typically contain the time extracted from the original event. Most of the time, these two times will be different.",
-          "requirement": "optional",
           "type": "timestamp_t"
         },
         "name": {
@@ -42025,7 +41997,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -42051,7 +42022,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "version": {
@@ -42200,7 +42170,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -42220,7 +42189,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -42254,7 +42222,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -42281,7 +42248,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "version": {
@@ -42304,6 +42270,9 @@
     },
     "metadata": {
       "attributes": {
+        "$include": [
+          "profiles/data_classification.json"
+        ],
         "correlation_uid": {
           "caption": "Correlation UID",
           "description": "The unique identifier used to correlate events.",
@@ -42381,7 +42350,6 @@
           "caption": "Loggers",
           "description": "An array of Logger objects that describe the devices and logging products between the event source and its eventual destination. Note, this attribute can be used when there is a complex end-to-end path of event flow.",
           "is_array": true,
-          "requirement": "optional",
           "type": "logger"
         },
         "modified_time": {
@@ -42419,7 +42387,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -42451,7 +42418,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "version": {
@@ -42482,7 +42448,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -42496,7 +42461,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "value": {
@@ -42576,7 +42540,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -42602,7 +42565,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -42616,7 +42578,6 @@
         "boundary": {
           "caption": "Boundary",
           "description": "The boundary of the connection, normalized to the caption of 'boundary_id'. In the case of 'Other', it is defined by the event source. <p> For cloud connections, this translates to the traffic-boundary(same VPC, through IGW, etc.). For traditional networks, this is described as Local, Internal, or External.</p>",
-          "requirement": "optional",
           "type": "string_t"
         },
         "boundary_id": {
@@ -42676,7 +42637,6 @@
               "description": "The boundary is not mapped. See the <code>boundary</code> attribute, which contains a data source specific value."
             }
           },
-          "requirement": "optional",
           "sibling": "boundary",
           "type": "integer_t"
         },
@@ -42718,7 +42678,6 @@
         "protocol_name": {
           "caption": "Protocol Name",
           "description": "The TCP/IP protocol name in lowercase, as defined by the Internet Assigned Numbers Authority (IANA). See <a target='_blank' href='https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml'>Protocol Numbers</a>. For example: <code>tcp</code> or <code>udp</code>.",
-          "requirement": "optional",
           "type": "string_t"
         },
         "protocol_num": {
@@ -42730,7 +42689,6 @@
         "protocol_ver": {
           "caption": "IP Version",
           "description": "The Internet Protocol version.",
-          "requirement": "optional",
           "type": "string_t"
         },
         "protocol_ver_id": {
@@ -42750,7 +42708,6 @@
               "caption": "Other"
             }
           },
-          "requirement": "optional",
           "sibling": "protocol_ver",
           "type": "integer_t"
         },
@@ -42758,7 +42715,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -42777,20 +42733,17 @@
         "tcp_flags": {
           "caption": "TCP Flags",
           "description": "The network connection TCP header flags (i.e., control bits).",
-          "requirement": "optional",
           "type": "integer_t"
         },
         "uid": {
           "caption": "Connection UID",
           "description": "The unique identifier of the connection.",
-          "requirement": "optional",
           "type": "string_t"
         },
         "unmapped": {
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -42801,6 +42754,9 @@
     },
     "network_endpoint": {
       "attributes": {
+        "$include": [
+          "profiles/container.json"
+        ],
         "agent_list": {
           "caption": "Agent List",
           "description": "A list of <code>agent</code> objects associated with a device, endpoint, or resource.",
@@ -42929,7 +42885,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -43038,7 +42993,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "vlan_uid": {
@@ -43074,7 +43028,10 @@
         ]
       },
       "description": "The network endpoint object describes source or destination of a network connection.",
-      "extends": null,
+      "extends": [
+        null,
+        "network_endpoint"
+      ],
       "name": "network_endpoint",
       "observable": 20,
       "profiles": [
@@ -43117,7 +43074,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -43189,7 +43145,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -43208,6 +43163,9 @@
     },
     "network_proxy": {
       "attributes": {
+        "$include": [
+          "profiles/container.json"
+        ],
         "agent_list": {
           "caption": "Agent List",
           "description": "A list of <code>agent</code> objects associated with a device, endpoint, or resource.",
@@ -43336,7 +43294,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -43445,7 +43402,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "vlan_uid": {
@@ -43554,7 +43510,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -43568,7 +43523,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -43583,7 +43537,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -43597,13 +43550,15 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
       "caption": "Object",
       "description": "An unordered collection of attributes. It defines a set of attributes available in all objects. It can be also used as a generic object to log objects that are not otherwise defined by the schema.",
-      "extends": null,
+      "extends": [
+        null,
+        "object"
+      ],
       "name": "object"
     },
     "observable": {
@@ -43618,7 +43573,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -43777,7 +43731,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "value": {
@@ -43816,7 +43769,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -43836,7 +43788,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -43900,7 +43851,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -43980,7 +43930,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "version": {
@@ -44031,7 +43980,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -44051,7 +43999,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "version": {
@@ -44090,7 +44037,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -44116,7 +44062,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "vendor_name": {
@@ -44164,7 +44109,6 @@
         "is_applied": {
           "caption": "Applied",
           "description": "A determination if the content of a policy was applied to a target or request, or not.",
-          "requirement": "optional",
           "type": "boolean_t"
         },
         "label": {
@@ -44187,7 +44131,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -44225,7 +44168,6 @@
           },
           "caption": "Type",
           "description": "The type of the policy.",
-          "requirement": "optional",
           "type": "string_t"
         },
         "type_id": {
@@ -44332,7 +44274,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "version": {
@@ -44355,6 +44296,9 @@
     },
     "process": {
       "attributes": {
+        "$include": [
+          "profiles/linux_users.json"
+        ],
         "auid": {
           "caption": "Audit User ID",
           "description": "The audit user assigned at login by the audit subsystem.",
@@ -44490,7 +44434,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -44534,7 +44477,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "user": {
@@ -44567,6 +44509,9 @@
     },
     "product": {
       "attributes": {
+        "$include": [
+          "profiles/data_classification.json"
+        ],
         "cpe_name": {
           "caption": "The product CPE identifier",
           "description": "The Common Platform Enumeration (CPE) name as described by (<a target='_blank' href='https://nvd.nist.gov/products/cpe'>NIST</a>) For example: <code>cpe:/a:apple:safari:16.2</code>.",
@@ -44583,7 +44528,6 @@
         "feature": {
           "caption": "Feature",
           "description": "The feature that reported the event.",
-          "requirement": "optional",
           "type": "feature"
         },
         "lang": {
@@ -44601,14 +44545,12 @@
         "path": {
           "caption": "Path",
           "description": "The installation path of the product.",
-          "requirement": "optional",
           "type": "path_t"
         },
         "raw_data": {
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -44628,13 +44570,11 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "url_string": {
           "caption": "URL String",
           "description": "The URL pointing towards the product.",
-          "requirement": "optional",
           "type": "url_t"
         },
         "vendor_name": {
@@ -44700,7 +44640,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -44720,7 +44659,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -44763,7 +44701,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -44783,7 +44720,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -44840,7 +44776,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -44912,7 +44847,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -44951,7 +44885,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -45019,7 +44952,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -45126,7 +45058,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -45169,7 +45100,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -45194,7 +45124,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -45246,7 +45175,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -45267,7 +45195,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -45294,7 +45221,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "raw_score": {
@@ -45381,7 +45307,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -45416,7 +45341,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -45436,7 +45360,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -45508,7 +45431,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -45544,6 +45466,9 @@
     },
     "resource_details": {
       "attributes": {
+        "$include": [
+          "profiles/data_classification.json"
+        ],
         "agent_list": {
           "caption": "Agent List",
           "description": "A list of <code>agent</code> objects associated with a device, endpoint, or resource.",
@@ -45626,7 +45551,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -45659,7 +45583,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "version": {
@@ -45733,7 +45656,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -45747,7 +45669,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -45774,7 +45695,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -45788,7 +45708,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "uuid": {
@@ -45833,7 +45752,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -45859,7 +45777,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "version": {
@@ -45892,7 +45809,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -45912,7 +45828,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -45933,7 +45848,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -46004,7 +45918,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -46025,7 +45938,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -46038,7 +45950,6 @@
         "state": {
           "caption": "Security State",
           "description": "The security state, normalized to the caption of the state_id value. In the case of 'Other', it is defined by the source.",
-          "requirement": "optional",
           "type": "string_t"
         },
         "state_id": {
@@ -46146,7 +46057,6 @@
               "description": "The security state is not mapped. See the <code>state</code> attribute, which contains data source specific values."
             }
           },
-          "requirement": "optional",
           "sibling": "state",
           "type": "integer_t"
         },
@@ -46154,7 +46064,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -46213,7 +46122,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -46430,7 +46338,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "version": {
@@ -46521,7 +46428,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -46553,7 +46459,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "uuid": {
@@ -46580,7 +46485,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -46606,7 +46510,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -46658,7 +46561,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -46684,7 +46586,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -46711,7 +46612,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -46737,7 +46637,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -46764,7 +46663,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -46790,7 +46688,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -46817,7 +46714,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -46867,7 +46763,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "value": {
@@ -46996,7 +46891,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -47037,7 +46931,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "version": {
@@ -47064,7 +46957,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -47186,7 +47078,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },
@@ -47239,7 +47130,6 @@
           "caption": "Website Categorization",
           "description": "The Website categorization names, as defined by <code>category_ids</code> enum values.",
           "is_array": true,
-          "requirement": "optional",
           "type": "string_t"
         },
         "category_ids": {
@@ -47543,7 +47433,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -47566,7 +47455,6 @@
         "resource_type": {
           "caption": "Resource Type",
           "description": "The context in which a resource was retrieved in a web request.",
-          "requirement": "optional",
           "type": "string_t"
         },
         "scheme": {
@@ -47595,7 +47483,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "url_string": {
@@ -47928,7 +47815,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -47956,7 +47842,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "url": {
@@ -48119,7 +48004,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -48238,7 +48122,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "uuid": {
@@ -48261,7 +48144,10 @@
         ]
       },
       "description": "The user object describes the identity of a user.",
-      "extends": null,
+      "extends": [
+        null,
+        "user"
+      ],
       "name": "user",
       "observable": 21
     },
@@ -48377,7 +48263,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -48433,7 +48318,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "vendor_name": {
@@ -48456,6 +48340,9 @@
     },
     "web_resource": {
       "attributes": {
+        "$include": [
+          "profiles/data_classification.json"
+        ],
         "data": {
           "caption": "Data",
           "description": "Details of the web resource, e.g, <code>file</code> details, <code>search</code> results or application-defined resource.",
@@ -48492,7 +48379,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -48518,7 +48404,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         },
         "url_string": {
@@ -48544,6 +48429,9 @@
     },
     "win_resource": {
       "attributes": {
+        "$include": [
+          "profiles/data_classification.json"
+        ],
         "data": {
           "caption": "Data",
           "description": "Additional data describing the resource.",
@@ -48560,7 +48448,6 @@
         "details": {
           "caption": "Details",
           "description": "The string detailing the attributes of the resource object.",
-          "requirement": "optional",
           "type": "string_t"
         },
         "labels": {
@@ -48580,7 +48467,6 @@
           "caption": "Raw Data",
           "description": "The event data as received from the event source.",
           "group": "context",
-          "requirement": "optional",
           "type": "json_t"
         },
         "record_id": {
@@ -48593,7 +48479,6 @@
         "svc_name": {
           "caption": "Service Name",
           "description": "The Windows service acting as the object server for the resource object, such as Security or Security Account Manager.",
-          "requirement": "optional",
           "type": "string_t"
         },
         "type": {
@@ -48740,7 +48625,6 @@
           "caption": "Unmapped Data",
           "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
           "is_array": true,
-          "requirement": "optional",
           "type": "unmapped"
         }
       },

@@ -66,7 +66,8 @@ Thankyou! -->
     2. Added `account`, `device`, `email`, `url`, `user` to `evidences` in detection finding. #1000
     3. Added `state_id`, `state` to `Digital Signature` object. #1069
     4. Added `ticket` to `Incident Finding` object. ticket. #1068
-    5. Added `vendor_name`, `type`, `type_id` to object `package`. #1091 
+    5. Added `domain` to `Uniform Resource Locator` object. #1096
+    6. Added `vendor_name`, `type`, `type_id` to object `package`. #1091 
 * #### Platform Extensions
 
 ### Bugfixes

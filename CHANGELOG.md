@@ -66,13 +66,10 @@ Thankyou! -->
     2. Added `account`, `device`, `email`, `url`, `user` to `evidences` in detection finding. #1000
     3. Added `state_id`, `state` to `Digital Signature` object. #1069
     4. Added `ticket` to `Incident Finding` object. ticket. #1068
-<<<<<<< HEAD
-    5. Added `type_id` and associated entity objects to `Managed Entity`. #1094
-=======
     5. Added `domain` to `Uniform Resource Locator` object. #1096
     6. Added `reg_key` and `reg_value` to `Evidence Artifacts` object. #1078
-
->>>>>>> c12527dee8ebd45df67db3ae46d4ab843b5d8ec0
+    7. Added `type_id` and associated entity objects to `Managed Entity`. #1094
+ 
 * #### Platform Extensions
 
 ### Bugfixes

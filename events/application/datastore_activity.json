@@ -4,36 +4,54 @@
 	"extends": "application",
 	"caption": "Datastore Activity",
 	"name": "datastore_activity",
+    "profiles": [
+		"security_control"
+	],
 	"attributes": {
+		"$include": [
+			"profiles/security_control.json"
+		  ],
 		"activity_id": {
 			"enum": {
 				"1": {
 					"caption": "Read",
-					"description": "The datastore activity in the event pertains to a 'Read' operation."
+					"description": "The 'Read' activity involves accessing specific data record details."
 				},
 				"2": {
 					"caption": "Update",
-					"description": "The datastore activity in the event pertains to a 'Update' operation."
+					"description": "The 'Update' activity pertains to modifying specific data record details."
 				},
 				"3": {
 					"caption": "Connect",
-					"description": "The datastore activity in the event pertains to a 'Connect' operation."
+					"description": "The 'Connect' activity involves establishing a connection to the datastore."
 				},
 				"4": {
 					"caption": "Query",
-					"description": "The datastore activity in the event pertains to a 'Query' operation."
+					"description": "The 'Query' activity involves retrieving a filtered subset of data based on specific criteria."
 				},
 				"5": {
 					"caption": "Write",
-					"description": "The datastore activity in the event pertains to a 'Write' operation."
+					"description": "The 'Write' activity involves writing specific data record details."
 				},
 				"6": {
 					"caption": "Create",
-					"description": "The datastore activity in the event pertains to a 'Create' operation."
+					"description": "The 'Create' activity involves generating new data record details."
 				},
 				"7": {
 					"caption": "Delete",
-					"description": "The datastore activity in the event pertains to a 'Delete' operation."
+					"description": "The 'Delete' activity involves removing specific data record details."
+				},
+				"8": {
+					"caption": "List",
+					"description": "The 'List' activity provides an overview of existing data records."
+				},
+				"9": {
+					"caption": "Encrypt",
+					"description": "The 'Encrypt' activity involves securing data by encrypting a specific data record."
+				},
+				"10": {
+					"caption": "Decrypt",
+					"description": "The 'Decrypt' activity involves converting encrypted data back to its original format."
 				}
 			}
 		},

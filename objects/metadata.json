@@ -3,7 +3,13 @@
   "description": "The Metadata object describes the metadata associated with the event. Defined by D3FEND <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:Metadata/'>d3f:Metadata</a>.",
   "extends": "object",
   "name": "metadata",
+  "profiles": [
+    "data_classification"
+  ],
   "attributes": {
+    "$include": [
+      "profiles/data_classification.json"
+    ],
     "correlation_uid": {
       "requirement": "optional"
     },
@@ -39,7 +45,9 @@
       "description": "The time when the event was last modified or enriched.",
       "requirement": "optional"
     },
-    "loggers": {},
+    "loggers": {
+      "requirement": "optional"
+    },
     "original_time": {
       "requirement": "recommended"
     },

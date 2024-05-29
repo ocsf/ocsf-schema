@@ -41,6 +41,7 @@ Thankyou! -->
 
 ### Added
 * #### Categories
+    1. Added `Remediation` category. #1066
 * #### Event Classes
     1. Added `Event Log Activity` event class. #1014
     2. Added `Remediation Activity` `File Remediation Activity` `Process Remediation Activity` `Network Remediation Activity` event classes. #1066
@@ -55,6 +56,7 @@ Thankyou! -->
     6. Added `signatures` object, an array of `signature` objects. #992
     7. Added `whois` object. #992
     8. Added `domain_contact` and array-typed `domain_contacts` object for use with `whois` object. #992
+
 * #### Platform Extensions
 
 ### Improved
@@ -71,9 +73,13 @@ Thankyou! -->
     3. Added `state_id`, `state` to `Digital Signature` object. #1069
     4. Added `ticket` to `Incident Finding` object. ticket. #1068
     5. Added `domain` to `Uniform Resource Locator` object. #1096
+    6. Added `reg_key` and `reg_value` to `Evidence Artifacts` object. #1078
+
 * #### Platform Extensions
 
 ### Bugfixes
+    1. Fixed the host profile construction in `patch_state` event class. #1087
+    2. Removed the optional requirement overrides for `name` and `uid` in `_resource` as they are part of a constraint. #1087
 
 ### Deprecated
 

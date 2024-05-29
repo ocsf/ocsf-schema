@@ -4,7 +4,13 @@
   "name": "email",
   "extends": "object",
   "observable": 22,
+  "profiles": [
+    "data_classification"
+  ],
   "attributes": {
+    "$include": [
+      "profiles/data_classification.json"
+    ],
     "cc": {
       "requirement": "optional"
     },
@@ -35,7 +41,8 @@
     },
     "subject": {
       "caption": "Subject",
-      "description": "The email header Subject value, as defined by RFC 5322."
+      "description": "The email header Subject value, as defined by RFC 5322.",
+      "requirement": "recommended"
     },
     "to": {
       "requirement": "required"

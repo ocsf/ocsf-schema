@@ -1,0 +1,66 @@
+{
+  "caption": "Data Classification",
+  "description": "The Data Classification object includes information about data classification levels and data category types.",
+  "extends": "object",
+  "name": "data_classification",
+  "attributes": {
+    "category": {
+      "description": "The name of the data classification category that data matched into, e.g. Financial, Personal, Governmental, etc.",
+      "requirement": "optional"
+    },
+    "category_id": {
+      "description": "The normalized identifier of the data classification category.",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The type is not mapped. See the <code>data_type</code> attribute, which contains a data source specific value."
+        },
+        "1": {
+          "caption": "Personal",
+          "description": "Any Personally Identifiable Information (PII), Electronic Personal Health Information (ePHI), or similarly personal information. E.g., full name, home address, date of birth, etc."
+        },
+        "2": {
+          "caption": "Governmental",
+          "description": "Any sensitive government identification number related to a person or other classified material. E.g., Passport numbers, driver license numbers, business identification, taxation identifiers, etc."
+        },
+        "3": {
+          "caption": "Financial",
+          "description": "Any financially-related sensitive information or Cardholder Data (CHD). E.g., banking account numbers, credit card numbers, International Banking Account Numbers (IBAN), SWIFT codes, etc."
+        },
+        "4": {
+          "caption": "Business",
+          "description": "Any business-specific sensitive data such as intellectual property, trademarks, copyrights, human resource data, Board of Directors meeting minutes, and similar."
+        },
+        "5": {
+          "caption": "Military and Law Enforcement",
+          "description": "Any mission-specific sensitive data for military, law enforcement, or other government agencies such as specifically classified data, weapon systems information, or other planning data."
+        },
+        "6": {
+          "caption": "Security",
+          "description": "Any sensitive security-related data such as passwords, passkeys, IP addresses, API keys, credentials and similar secrets. E.g., AWS Access Secret Key, SaaS API Keys, user passwords, database credentials, etc."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "Any other type of data classification or a multi-variate classification made up of several other classification categories."
+        }
+      },
+      "requirement": "recommended"
+    },
+    "confidentiality": {
+      "requirement": "optional"
+    },
+    "confidentiality_id": {
+      "requirement": "recommended"
+    },
+    "policy": {
+      "description": "Details about the data policy that governs data handling and security measures related to classification.",
+      "requirement": "optional"
+    }
+  },
+  "constraints": {
+    "at_least_one": [
+      "category_id",
+      "confidentiality_id"
+    ]
+  }
+}

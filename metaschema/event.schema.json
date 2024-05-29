@@ -5,9 +5,10 @@
     "description": "Event classes are particular sets of attributes and objects representing a log line or telemetry submission at a point in time. Event classes have semantics that describe what happened: either a particular activity, disposition or both.",
     "allOf": [
         {
-            "$ref": "object.schema.json"
+            "$ref": "common-event-object.schema.json"
         },
         {
+            "type": "object",
             "properties": {
                 "@deprecated": true,
                 "description": true,
@@ -29,8 +30,7 @@
                 },
                 "category": {
                     "type": "string",
-                    "description": "The category that the event belongs to.",
-                    "enum": ["system", "findings", "iam", "network", "discovery", "application", "other"]
+                    "description": "The category that the event belongs to."
                 },
                 "uid": {
                     "type": "integer",

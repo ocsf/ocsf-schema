@@ -41,10 +41,16 @@ Thankyou! -->
 
 ### Added
 * #### Categories
+    1. Added `Remediation` category. #1066
 * #### Event Classes
     1. Added `Event Log Activity` event class. #1014
+    2. Added `Remediation Activity` `File Remediation Activity` `Process Remediation Activity` `Network Remediation Activity` event classes. #1066
 * #### Profiles
 * #### Objects
+    1. Added `d3fend` `d3f_tactic` `d3f_technique` MITRE objects. #1066 
+    2. Added `ja4_fingerprint` object. #834
+    3. Added `ja4_fingerprint_list` as a list of `ja4_fingerprint` objects.  #834
+    4. Added `ticket` object. #1068
 * #### Platform Extensions
 
 ### Improved
@@ -53,13 +59,21 @@ Thankyou! -->
     1. Added `file_result` to File Hosting Activity. #1045
     2. Added entries to `injection_type_id` enum (`Process Activity`) and `activity_id` enum (`Memory Activity`). #1060
     3. Added a `Restart`, `Enable`, `Disable`, and `Update` `activity_id` to the `Application Lifecycle` class. #1064
+    4. Added `ja4_fingerprint_list` to base network event class. #834 
 * #### Profiles
 * #### Objects
-    1.  Added `ext` to `File` object. #1046
-    2. Added account, device, email, url, user to evidences in detection finding. #1000
+    1. Added `ext` to `File` object. #1046
+    2. Added `account`, `device`, `email`, `url`, `user` to `evidences` in detection finding. #1000
+    3. Added `state_id`, `state` to `Digital Signature` object. #1069
+    4. Added `ticket` to `Incident Finding` object. ticket. #1068
+    5. Added `domain` to `Uniform Resource Locator` object. #1096
+    6. Added `reg_key` and `reg_value` to `Evidence Artifacts` object. #1078
+
 * #### Platform Extensions
 
 ### Bugfixes
+    1. Fixed the host profile construction in `patch_state` event class. #1087
+    2. Removed the optional requirement overrides for `name` and `uid` in `_resource` as they are part of a constraint. #1087
 
 ### Deprecated
 
@@ -72,9 +86,11 @@ Thankyou! -->
         * Updated the description of `metadata.profiles` to clarify the correct way to reference a profile in that list.
     3. Added a `gitignore` file. #1071
     4. New Extension registration for Cisco #1074
-    5. Adds support for `lint` controls in attributes to allow tools to automatically validate conventions
+    5. Cleaned up MITRE trademarks and registrations for captions and descriptions.
+    6. Adds support for `suppress_checks` controls in attributes to allow tools to automatically validate conventions
         * Updated several attributes that do not follow conventions to disable linting for them
         * Updated `data_lifecycle_state_id` to add a 99(Other) enumerand to follow convention
+
 
 ## [v1.2.0] - April 23rd, 2024
 

@@ -76,7 +76,7 @@
     "activity_id": {
       "caption": "Activity ID",
       "description": "The normalized identifier of the activity that triggered the event.",
-      "lint": ["no-sibling-convention"],
+      "suppress_checks": ["sibling-convention"],
       "sibling": "activity_name",
       "type": "integer_t",
       "enum": {
@@ -937,7 +937,7 @@
     },
     "component": {
       "caption": "Component",
-      "description": "<p>The name or relative pathname of a sub-component of the data object, if applicable. </p>For example: <code>attachment.doc</code>, <code>attachment.zip/bad.doc</code>, or <code>part.mime/part.cab/part.uue/part.doc</code>.",
+      "description": "The component of a data object. See specific usage.",
       "type": "string_t"
     },
     "condition": {
@@ -1079,6 +1079,12 @@
       "description": "The number of times that events in the same logical group occurred during the event <strong>Start Time</strong> to <strong>End Time</strong> period.",
       "type": "integer_t"
     },
+    "countermeasures": {
+      "caption": "Countermeasures",
+      "description": "The MITRE DEFEND™ Matrix Countermeasures associated with a remediation.",
+      "type": "d3fend",
+      "is_array": true
+    },
     "country": {
       "observable": 14,
       "caption": "Country",
@@ -1188,6 +1194,16 @@
         "message": "Use the <code> cwe </code> object attributes instead.",
         "since": "1.1.0"
       }
+    },
+    "d3f_tactic": {
+      "caption": "MITRE DEFEND™ Tactic",
+      "description": "The D3FEND Tactic object describes the defensive tactic name associated with a countermeasure, as defined by <a target='_blank' href='https://d3fend.mitre.org'>D3FEND<sup>TM</sup> Matrix</a>.",
+      "type": "d3f_tactic"
+    },
+    "d3f_technique": {
+      "caption": "MITRE DEFEND™ Technique",
+      "description": "The D3FEND Technique object describes the defensive technique ID and/or name associated with a countermeasure, as defined by <a target='_blank' href='https://d3fend.mitre.org'>D3FEND<sup>TM</sup> Matrix</a>.",
+      "type": "d3f_technique"
     },
     "data": {
       "caption": "Data",
@@ -2226,6 +2242,12 @@
       "description": "The MD5 hash of a JA3S string.",
       "type": "fingerprint"
     },
+    "ja4_fingerprint_list": {
+      "caption": "JA4+ Fingerprints",
+      "description": "A list of the JA4+ network fingerprints.",
+      "type": "ja4_fingerprint",
+      "is_array": true
+    },
     "job": {
       "caption": "Job",
       "description": "The job object that pertains to the event.",
@@ -2721,7 +2743,7 @@
     "opcode_id": {
       "caption": "DNS Opcode ID",
       "description": "The DNS opcode ID specifies the normalized query message type.",
-      "lint": ["no-enum-convention"],
+      "suppress_checks": ["enum-convention"],
       "type": "integer_t",
       "enum": {
         "0": {
@@ -3418,7 +3440,7 @@
     "risk_level_id": {
       "caption": "Risk Level ID",
       "description": "The normalized risk level id.",
-      "lint": ["no-enum-convention"],
+      "suppress_checks": ["enum-convention"],
       "sibling": "risk_level",
       "type": "integer_t",
       "enum": {
@@ -3567,6 +3589,26 @@
           "description": "The reputation score is not mapped. See the <code>rep_score</code> attribute, which contains a data source specific value."
         }
       }
+    },
+    "section_a": {
+      "caption": "JA4 Section A",
+      "description": "The 'a' section of the JA4 fingerprint.",
+      "type": "string_t"
+    },
+    "section_b": {
+      "caption": "JA4 Section B",
+      "description": "The 'b' section of the JA4 fingerprint.",
+      "type": "string_t"
+    },
+    "section_c": {
+      "caption": "JA4 Section C",
+      "description": "The 'c' section of the JA4 fingerprint.",
+      "type": "string_t"
+    },
+    "section_d": {
+      "caption": "JA4 Section D",
+      "description": "The 'd' section of the JA4 fingerprint.",
+      "type": "string_t"
     },
     "secure": {
       "caption": "Secure",
@@ -3912,7 +3954,7 @@
     },
     "sub_technique": {
       "caption": "Sub Technique",
-      "description": "The Sub Technique object describes the sub technique ID and/or name associated to an attack, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>.",
+      "description": "The Sub Technique object describes the sub technique ID and/or name associated to an attack, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK® Matrix</a>.",
       "type": "sub_technique"
     },
     "subdomain": {
@@ -3967,12 +4009,12 @@
     },
     "tactic": {
       "caption": "Tactic",
-      "description": "The Tactic object describes the tactic ID and/or name that is associated to an attack, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>.",
+      "description": "The Tactic object describes the tactic ID and/or name that is associated to an attack, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK® Matrix</a>.",
       "type": "tactic"
     },
     "tactics": {
       "caption": "Tactics",
-      "description": "The Tactic object describes the tactic ID and/or tactic name that are associated with the attack technique, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>.",
+      "description": "The Tactic object describes the tactic ID and/or tactic name that are associated with the attack technique, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK® Matrix</a>.",
       "type": "tactic",
       "@deprecated": {
         "message": "Use the <code> tactic </code> attribute instead.",
@@ -3992,7 +4034,7 @@
     },
     "technique": {
       "caption": "Technique",
-      "description": "The Technique object describes the technique ID and/or name associated to an attack, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK Matrix<sup>TM</sup></a>.",
+      "description": "The Technique object describes the technique ID and/or name associated to an attack, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK® Matrix</a>.",
       "type": "technique"
     },
     "tenant_uid": {
@@ -4024,6 +4066,11 @@
       "caption": "Timezone Offset",
       "description": "The number of minutes that the reported event <code>time</code> is ahead or behind UTC, in the range -1,080 to +1,080.",
       "type": "integer_t"
+    },
+    "ticket": {
+      "caption": "Ticket",
+      "description": "The linked ticket in the ticketing system.",
+      "type": "ticket"
     },
     "title": {
       "caption": "Title",

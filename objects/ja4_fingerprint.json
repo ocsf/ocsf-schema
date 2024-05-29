@@ -1,0 +1,77 @@
+{
+  "caption": "JA4+ Fingerprint",
+  "description": "The JA4+ fingerprint object provides detailed fingerprint information about various aspects of network traffic which is both machine and human readable.",
+  "extends": "object",
+  "name": "ja4_fingerprint",
+  "attributes": {
+    "section_a": {
+      "requirement": "optional"
+    },
+    "section_b": {
+      "requirement": "optional"
+    },
+    "section_c": {
+      "requirement": "optional"
+    },
+    "section_d": {
+      "requirement": "optional"
+    },
+    "type": {
+      "description": "The JA4+ fingerprint type as defined by <a href='https://blog.foxio.io/ja4+-network-fingerprinting target='_blank'>FoxIO</a>, normalized to the caption of 'type_id'. In the case of 'Other', it is defined by the event source.",
+      "requirement": "optional"
+    },
+    "type_id": {
+      "description": "The identifier of the JA4+ fingerprint type.",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "JA4",
+          "description": "TLS Client Fingerprint."
+        },
+        "2": {
+          "caption": "JA4Server",
+          "description": "TLS Server Response/Session Fingerprint."
+        },
+        "3": {
+          "caption": "JA4HTTP",
+          "description": "HTTP Client Fingerprint."
+        },
+        "4": {
+          "caption": "JA4Latency",
+          "description": "Latency Measurement/Light Distance Fingerprint."
+        },
+        "5": {
+          "caption": "JA4X509",
+          "description": "X509 TLS Certificate Fingerprint."
+        },
+        "6": {
+          "caption": "JA4SSH",
+          "description": "SSH Traffic Fingerprint."
+        },
+        "7": {
+          "caption": "JA4TCP",
+          "description": "Passive TCP Client Fingerprint."
+        },
+        "8": {
+          "caption": "JA4TCPServer",
+          "description": "Passive TCP Server Fingerprint."
+        },
+        "9": {
+          "caption": "JA4TCPScan",
+          "description": "Active TCP Server Fingerprint."
+        },
+        "99": {
+          "caption": "Other"
+        }
+      },
+      "requirement": "required"
+    },
+    "value": {
+      "description": "The JA4+ fingerprint value.",
+      "requirement": "required",
+      "type": "string_t"
+    }
+  }
+}

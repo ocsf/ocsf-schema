@@ -1,0 +1,50 @@
+{
+  "caption": "Ticket",
+  "name": "ticket",
+  "description": "The Ticket object represents ticket in the customer's systems like Salesforce, jira etc.",
+  "extends": "object",
+  "attributes": {
+    "src_url": {
+      "description": "The url of a ticket in the ticket system.",
+      "requirement": "recommended"
+    },
+    "uid": {
+      "description": "Unique ticket identifier like ticket id.",
+      "requirement": "recommended"
+    },
+    "type": {
+      "caption": "Ticket Type",
+      "description": "The linked ticket type determines whether the ticket is internal or in an external ticketing system.",
+      "requirement": "optional"
+    },
+    "type_id": {
+      "caption": "Ticket Type ID",
+      "description": "The normalized identifier for the ticket type.",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Internal"
+        },
+        "2": {
+          "caption": "External"
+        },
+        "99": {
+          "caption": "Other"
+        }
+      },
+      "requirement": "optional"
+    },
+    "title": {
+      "description": "The title of the ticket.",
+      "requirement": "optional"
+    }
+  },
+  "constraints": {
+    "at_least_one": [
+      "src_url",
+      "uid"
+    ]
+  }
+}

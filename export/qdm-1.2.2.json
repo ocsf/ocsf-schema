@@ -9478,6 +9478,13 @@
           "requirement": "optional",
           "type": "actor"
         },
+        "api": {
+          "caption": "API Details",
+          "description": "Describes details about a typical API (Application Programming Interface) call.",
+          "group": "context",
+          "requirement": "optional",
+          "type": "api"
+        },
         "attacks": {
           "caption": "Attacks",
           "description": "An array of attacks associated with an event.",
@@ -9526,7 +9533,7 @@
               "description": "Network Activity events."
             }
           },
-          "requirement": "optional",
+          "requirement": "required",
           "sibling": "category_name",
           "type": "integer_t"
         },
@@ -9543,17 +9550,28 @@
         "class_uid": {
           "caption": "Class ID",
           "description": "The unique identifier of a class. A class describes the attributes available in an event.",
-          "requirement": "optional",
+          "enum": {
+            "10104030": {
+              "caption": "Email Delivery Activity",
+              "description": "Email Delivery events report the delivery status of emails."
+            }
+          },
+          "requirement": "required",
           "sibling": "class_name",
           "type": "integer_t"
         },
         "cloud": {
           "caption": "Cloud",
           "description": "Describes details about the Cloud enviroment where the event was originally created or logged.",
+          "group": "primary",
           "requirement": "required",
           "type": "cloud"
         },
         "confidence": {
+          "@deprecated": {
+            "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0",
+            "since": "1.1.0"
+          },
           "caption": "Confidence",
           "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
           "group": "classification",
@@ -9579,6 +9597,10 @@
           "type": "integer_t"
         },
         "data": {
+          "@deprecated": {
+            "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0",
+            "since": "1.1.0"
+          },
           "caption": "Data",
           "description": "Additional data that is associated with the event.",
           "requirement": "optional",
@@ -9883,14 +9905,14 @@
           "caption": "Status Code",
           "description": "The event status code, as reported by the event source.<br /><br />For example, in a Windows Failed Authentication event, this would be the value of 'Failure Code', e.g. 0x18.",
           "group": "primary",
-          "requirement": "optional",
+          "requirement": "recommended",
           "type": "string_t"
         },
         "status_detail": {
           "caption": "Status Details",
           "description": "The status details contains additional information about the event outcome.",
           "group": "primary",
-          "requirement": "optional",
+          "requirement": "recommended",
           "type": "string_t"
         },
         "status_id": {
@@ -9938,9 +9960,26 @@
         "type_uid": {
           "caption": "Type ID",
           "description": "The event/finding type ID. It identifies the event's semantics and structure. The value is calculated by the logging system as: <code>class_uid * 100 + activity_id</code>.",
-          "requirement": "optional",
+          "enum": {
+            "1010403000": {
+              "caption": "Email Delivery Activity: Unknown"
+            },
+            "1010403001": {
+              "caption": "Email Delivery Activity: Delivered"
+            },
+            "1010403002": {
+              "caption": "Email Delivery Activity: Failed"
+            },
+            "1010403003": {
+              "caption": "Email Delivery Activity: Temporary Failure"
+            },
+            "1010403099": {
+              "caption": "Email Delivery Activity: Other"
+            }
+          },
+          "requirement": "required",
           "sibling": "type_name",
-          "type": "integer_t"
+          "type": "long_t"
         },
         "unmapped": {
           "caption": "Unmapped Data",
@@ -9961,7 +10000,8 @@
       "caption": "Email Delivery Activity",
       "category": "network",
       "description": "Email Delivery events report the delivery status of emails.",
-      "extension": "archive",
+      "extends": "base_event",
+      "extension": "query",
       "name": "email_delivery_activity",
       "profiles": [
         "host",
@@ -23970,7 +24010,7 @@
           "enum": {
             "0": {
               "caption": "Unknown",
-              "description": "The disposition was not known."
+              "description": "The disposition is unknown."
             },
             "1": {
               "caption": "Allowed",
@@ -24082,7 +24122,7 @@
             },
             "99": {
               "caption": "Other",
-              "description": "The disposition is not listed. The <code>disposition</code> attribute should be populated with a source specific caption."
+              "description": "The disposition is not mapped. See the <code>disposition</code> attribute, which contains a data source specific value."
             }
           },
           "requirement": "recommended",
@@ -25009,7 +25049,7 @@
           "enum": {
             "0": {
               "caption": "Unknown",
-              "description": "The disposition was not known."
+              "description": "The disposition is unknown."
             },
             "1": {
               "caption": "Allowed",
@@ -25121,7 +25161,7 @@
             },
             "99": {
               "caption": "Other",
-              "description": "The disposition is not listed. The <code>disposition</code> attribute should be populated with a source specific caption."
+              "description": "The disposition is not mapped. See the <code>disposition</code> attribute, which contains a data source specific value."
             }
           },
           "requirement": "recommended",
@@ -26014,7 +26054,7 @@
           "enum": {
             "0": {
               "caption": "Unknown",
-              "description": "The disposition was not known."
+              "description": "The disposition is unknown."
             },
             "1": {
               "caption": "Allowed",
@@ -26126,7 +26166,7 @@
             },
             "99": {
               "caption": "Other",
-              "description": "The disposition is not listed. The <code>disposition</code> attribute should be populated with a source specific caption."
+              "description": "The disposition is not mapped. See the <code>disposition</code> attribute, which contains a data source specific value."
             }
           },
           "requirement": "recommended",
@@ -38095,7 +38135,6 @@
       "description": "The Device object represents an addressable computer system or host, which is typically connected to a computer network and participates in the transmission or processing of data within the computer network. Defined by D3FEND <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:Host/'>d3f:Host</a>.",
       "extends": "endpoint",
       "name": "device",
-      "observable": 20,
       "profiles": [
         "container"
       ]
@@ -38737,7 +38776,7 @@
       "caption": "Domain Threat Intelligence",
       "description": "Insights from threat intelligence platforms about domains",
       "extends": "_base_threat_intelligence",
-      "extension": "archive",
+      "extension": "query",
       "name": "domain_intelligence"
     },
     "email": {
@@ -43076,7 +43115,6 @@
       "description": "The network endpoint object describes source or destination of a network connection.",
       "extends": null,
       "name": "network_endpoint",
-      "observable": 20,
       "profiles": [
         "container"
       ]
@@ -43483,7 +43521,6 @@
       "description": "The network proxy endpoint object describes a proxy server, which acts as an intermediary between a client requesting a resource and the server providing that resource.  Defined by D3FEND <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:ProxyServer/'>d3f:ProxyServer</a>.",
       "extends": "network_endpoint",
       "name": "network_proxy",
-      "observable": 20,
       "profiles": [
         "container"
       ]
@@ -44970,8 +45007,7 @@
       },
       "caption": "Registry Key",
       "description": "The registry key object describes a Windows registry key.",
-      "name": "registry_key",
-      "observable": 28
+      "name": "registry_key"
     },
     "registry_value": {
       "@deprecated": {
@@ -45090,8 +45126,7 @@
       },
       "caption": "Registry Value",
       "description": "The registry value object describes a Windows registry value.",
-      "name": "registry_value",
-      "observable": 29
+      "name": "registry_value"
     },
     "related_event": {
       "attributes": {
@@ -46880,7 +46915,7 @@
       "caption": "Threat Intelligence",
       "description": "Insights from threat intelligence platforms",
       "extends": "object",
-      "extension": "archive",
+      "extension": "query",
       "name": "threat_intelligence"
     },
     "tls": {

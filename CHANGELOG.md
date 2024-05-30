@@ -69,7 +69,8 @@ Thankyou! -->
     4. Added `ticket` to `Incident Finding` object. ticket. #1068
     5. Added `domain` to `Uniform Resource Locator` object. #1096
     6. Added `reg_key` and `reg_value` to `Evidence Artifacts` object. #1078
-
+    7. Added `type_id` and associated entity objects to `Managed Entity`. #1094
+ 
 * #### Platform Extensions
 
 ### Bugfixes

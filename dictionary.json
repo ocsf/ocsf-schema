@@ -2228,10 +2228,35 @@
       "type": "boolean_t"
     },
     "is_installed": {
-      "caption": "Installed",
-      "description": "The object is installed or not installed. See specific usage.",
-      "type": "boolean_t"
-    }, 
+      "caption": "Installation State",
+      "description": "The installation state, normalized to the caption of is_installed_id. In the case of 'Other', it is defined by the event source.",
+      "type": "string_t"
+    },
+    "is_installed_id": {
+      "caption": "Installation State ID",
+      "description": "The normalized state of the installation.",
+      "sibling": "is_installed",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The normalized installation state is unknown."
+        },
+        "1": {
+          "caption": "Installed"
+        },
+        "2": {
+          "caption": "Not Installed"
+        },
+        "3": {
+          "caption": "Installed Pending Reboot"
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The state is not mapped. See the <code>is_installed</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
     "is_managed": {
       "caption": "Managed Device",
       "description": "The event occurred on a managed device.",

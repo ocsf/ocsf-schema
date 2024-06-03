@@ -46,11 +46,17 @@ Thankyou! -->
     1. Added `Event Log Activity` event class. #1014
     2. Added `Remediation Activity` `File Remediation Activity` `Process Remediation Activity` `Network Remediation Activity` event classes. #1066
 * #### Profiles
+    1. Added `osint` Profile based on `osint` object. #992
 * #### Objects
     1. Added `d3fend` `d3f_tactic` `d3f_technique` MITRE objects. #1066 
     2. Added `ja4_fingerprint` object. #834
     3. Added `ja4_fingerprint_list` as a list of `ja4_fingerprint` objects.  #834
     4. Added `ticket` object. #1068
+    5. Added `osint` object. #992
+    6. Added `signatures` object, an array of `signature` objects. #992
+    7. Added `whois` object. #992
+    8. Added `domain_contact` and array-typed `domain_contacts` object for use with `whois` object. #992
+
 * #### Platform Extensions
 
 ### Improved
@@ -60,15 +66,22 @@ Thankyou! -->
     2. Added entries to `injection_type_id` enum (`Process Activity`) and `activity_id` enum (`Memory Activity`). #1060
     3. Added a `Restart`, `Enable`, `Disable`, and `Update` `activity_id` to the `Application Lifecycle` class. #1064
     4. Added `ja4_fingerprint_list` to base network event class. #834 
+    5. Added new activities `Enroll`, `Activate`, `Deactivate`, `Suspend`, and `Resume` to the `Entity Management` class. #1095
 * #### Profiles
 * #### Objects
     1. Added `ext` to `File` object. #1046
     2. Added `account`, `device`, `email`, `url`, `user` to `evidences` in detection finding. #1000
     3. Added `state_id`, `state` to `Digital Signature` object. #1069
     4. Added `ticket` to `Incident Finding` object. ticket. #1068
+    5. Added `domain` to `Uniform Resource Locator` object. #1096
+    6. Added `reg_key` and `reg_value` to `Evidence Artifacts` object. #1078
+    7. Added `type_id` and associated entity objects to `Managed Entity`. #1094
+ 
 * #### Platform Extensions
 
 ### Bugfixes
+    1. Fixed the host profile construction in `patch_state` event class. #1087
+    2. Removed the optional requirement overrides for `name` and `uid` in `_resource` as they are part of a constraint. #1087
 
 ### Deprecated
 

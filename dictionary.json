@@ -1514,10 +1514,50 @@
       "description": "The Domain-based Message Authentication, Reporting and Conformance (DMARC) policy status.",
       "type": "string_t"
     },
+    "dnssec_status_id": {
+      "caption": "DNSSEC Status ID",
+      "description": "Describes the normalized status of DNS Security Extensions (DNSSEC) for a domain.",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The disposition is unknown."
+        },
+        "1": {
+          "caption": "Signed",
+          "description": "The related domain enables the signing of DNS records using DNSSEC."
+        },
+        "2": {
+          "caption": "Unsigned",
+          "description": "The related domain does not enable the signing of DNS records using DNSSEC."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The DNSSEC status is not mapped. See the <code>dnssec_status</code> attribute, which contains a data source specific value."
+        }
+      },
+      "sibling": "dnssec_status",
+      "type": "integer_t"
+    },
+    "dnssec_status": {
+      "caption": "DNSSEC Status",
+      "description": "The normalized value of dnssec_status_id.",
+      "type": "string_t"
+    },
     "domain": {
       "caption": "Domain",
       "description": "The name of the domain.",
       "type": "string_t"
+    },
+    "domain_contact": {
+      "caption": "Domain Contact",
+      "description": "The contact information related to a domain registration, e.g., registrant, administrator, abuse, billing, or technical contact.",
+      "type": "domain_contact"
+    },
+    "domain_contacts": {
+      "caption": "Domain Contacts",
+      "description": "An array of <code>Domain Contact</code> objects.",
+      "is_array": true,
+      "type": "domain_contact"
     },
     "driver": {
       "caption": "Kernel Driver",
@@ -2192,6 +2232,11 @@
       "description": "The cookie attribute indicates that cookies are sent to the server only when the request is encrypted using the HTTPS protocol.",
       "type": "boolean_t"
     },
+    "is_self_signed": {
+      "caption": "Certificate Self-Signed",
+      "description": "Denotes whether a digital certificate is self-signed or signed by a known certificate authority (CA).",
+      "type": "boolean_t"
+    },
     "is_superseded": {
       "caption": "The patch is superseded.",
       "description": "The vendor patch has been replaced by another.",
@@ -2646,6 +2691,12 @@
       "caption": "Namespace PID",
       "description": "If running under a process namespace (such as in a container), the process identifier within that process namespace.",
       "type": "integer_t"
+    },
+    "name_servers": {
+      "caption": "Name Servers",
+      "description": "A collection of name servers related to a domain registration or other record.",
+      "is_array": true,
+      "type": "string_t"
     },
     "network_driver": {
       "caption": "Network Driver",
@@ -3794,6 +3845,12 @@
       "description": "The digital signature of the file.",
       "type": "digital_signature"
     },
+    "signatures": {
+      "caption": "Digital Signatures",
+      "description": "A collection of <code>Digital Signature</code> objects.",
+      "is_array": true,
+      "type": "digital_signature"
+    },
     "size": {
       "caption": "Size",
       "description": "The size of data, in bytes.",
@@ -3970,6 +4027,12 @@
       "description": "The subdomain portion of the URL. For example: <code>sub</code> in <code>https://sub.example.com</code> or <code>sub2.sub1</code> in <code>https://sub2.sub1.example.com</code>.",
       "type": "string_t"
     },
+    "subdomains": {
+      "caption": "Subdomains",
+      "description": "An array of subdomain strings. Can be used to collect several subdomains such as those from Domain Generation Algorithms (DGAs).",
+      "is_array": true,
+      "type": "string_t"
+    },
     "subject": {
       "caption": "Subject Details",
       "description": "The identifier of the subject. See specific usage.",
@@ -4060,6 +4123,12 @@
       "description": "The time when the entity was terminated. See specific usage.",
       "type": "timestamp_t"
     },
+    "osint": {
+      "caption": "OSINT",
+      "description": "The OSINT (Open Source Intelligence) object contains details related to an indicator such as the indicator itself, related indicators, geolocation, registrar information, subdomains, analyst commentary, and other contextual information. This information can be used to further enrich a detection or finding by providing decisioning support to other analysts and engineers.",
+      "is_array": true,
+      "type": "osint"
+    },
     "tid": {
       "caption": "Thread ID",
       "description": "The Identifier of the thread associated with the event, as returned by the operating system.",
@@ -4083,6 +4152,11 @@
     "title": {
       "caption": "Title",
       "description": "The title of an entity. See specific usage.",
+      "type": "string_t"
+    },
+    "tlp": {
+      "caption": "Traffic Light Protocol",
+      "description": "The <a target='_blank' href='https://www.first.org/tlp/'>Traffic Light Protocol</a> was created to facilitate greater sharing of potentially sensitive information and more effective collaboration. TLP provides a simple and intuitive schema for indicating with whom potentially sensitive information can be shared.",
       "type": "string_t"
     },
     "tls": {
@@ -4351,6 +4425,11 @@
       "description": "The results of the activity on web resources. It should contain the new values of the changed attributes of the web resources.",
       "type": "web_resource",
       "is_array": true
+    },
+    "whois": {
+      "caption": "WHOIS",
+      "description": "The resources of a WHOIS record for a given domain. This can include domain names, IP address blocks, autonomous system information, and/or contact and registration information for a domain.",
+      "type": "whois"
     },
     "x_forwarded_for": {
       "caption": "X-Forwarded-For",

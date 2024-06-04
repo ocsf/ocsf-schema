@@ -74,9 +74,9 @@ Thankyou! -->
     3. Added `state_id`, `state` to `Digital Signature` object. #1069
     4. Added `ticket` to `Incident Finding` object. ticket. #1068
     5. Added `domain` to `Uniform Resource Locator` object. #1096
-    6. Added `reg_key` and `reg_value` to `Evidence Artifacts` object. #1078
+    6. Added `reg_key` and `reg_value` to `Evidence Artifacts` object. #1078  
     7. Added `type_id` and associated entity objects to `Managed Entity`. #1094
- 
+    8. Added `vendor_name`, `type`, `type_id` to object `package`. #1093
 * #### Platform Extensions
 
 ### Bugfixes

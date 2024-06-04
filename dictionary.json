@@ -2144,6 +2144,39 @@
         }
       }
     },
+    "installed_state": {
+      "caption": "Installation State",
+      "description": "The installation state, normalized to the caption of installed_state_id. In the case of 'Other', it is defined by the event source.",
+      "type": "string_t"
+    },
+    "installed_state_id": {
+      "caption": "Installation State ID",
+      "description": "The normalized state of the installation.",
+      "sibling": "installed_state",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The normalized installation state is unknown."
+        },
+        "1": {
+          "caption": "Installed",
+          "description": "The item is installed."
+        },
+        "2": {
+          "caption": "Not Installed",
+          "description": "The item is not installed."
+        },
+        "3": {
+          "caption": "Installed Pending Reboot",
+          "description": "The item is installed pending reboot operation."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The state is not mapped. See the <code>installed_state</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
     "instance_uid": {
       "caption": "Instance ID",
       "description": "The unique identifier of a VM instance.",
@@ -2226,39 +2259,6 @@
       "caption": "HTTP Only",
       "description": "This attribute prevents the cookie from being accessed via JavaScript.",
       "type": "boolean_t"
-    },
-    "is_installed": {
-      "caption": "Installation State",
-      "description": "The installation state, normalized to the caption of is_installed_id. In the case of 'Other', it is defined by the event source.",
-      "type": "string_t"
-    },
-    "is_installed_id": {
-      "caption": "Installation State ID",
-      "description": "The normalized state of the installation.",
-      "sibling": "is_installed",
-      "type": "integer_t",
-      "enum": {
-        "0": {
-          "caption": "Unknown",
-          "description": "The normalized installation state is unknown."
-        },
-        "1": {
-          "caption": "Installed",
-          "description": "The item is installed."
-        },
-        "2": {
-          "caption": "Not Installed",
-          "description": "The item is not installed."
-        },
-        "3": {
-          "caption": "Installed Pending Reboot",
-          "description": "The item is installed pending reboot operation."
-        },
-        "99": {
-          "caption": "Other",
-          "description": "The state is not mapped. See the <code>is_installed</code> attribute, which contains a data source specific value."
-        }
-      }
     },
     "is_managed": {
       "caption": "Managed Device",

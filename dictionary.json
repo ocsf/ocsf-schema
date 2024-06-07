@@ -344,6 +344,11 @@
       "description": "The BIOS version. For example: <code>LENOVO G5ETA2WW (2.62)</code>.",
       "type": "string_t"
     },
+    "boot_time": {
+      "caption": "Boot Time",
+      "description": "The time when the system was booted.",
+      "type": "timestamp_t"
+    },
     "boundary": {
       "caption": "Boundary",
       "description": "The boundary of the connection, normalized to the caption of 'boundary_id'. In the case of 'Other', it is defined by the event source. <p> For cloud connections, this translates to the traffic-boundary(same VPC, through IGW, etc.). For traditional networks, this is described as Local, Internal, or External.</p>",
@@ -2144,20 +2149,20 @@
         }
       }
     },
-    "installed_state": {
-      "caption": "Installed State",
-      "description": "The installed state, normalized to the caption of installed_state_id. In the case of 'Other', it is defined by the event source.",
+    "install_state": {
+      "caption": "Install State",
+      "description": "The install state, normalized to the caption of install_state_id. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
-    "installed_state_id": {
-      "caption": "Installed State ID",
+    "install_state_id": {
+      "caption": "Install State ID",
       "description": "The normalized state of the install.",
-      "sibling": "installed_state",
+      "sibling": "install_state",
       "type": "integer_t",
       "enum": {
         "0": {
           "caption": "Unknown",
-          "description": "The normalized installed state is unknown."
+          "description": "The normalized install state is unknown."
         },
         "1": {
           "caption": "Installed",
@@ -2173,7 +2178,7 @@
         },
         "99": {
           "caption": "Other",
-          "description": "The state is not mapped. See the <code>installed_state</code> attribute, which contains a data source specific value."
+          "description": "The install state is not mapped. See the <code>install_state</code> attribute, which contains a data source specific value."
         }
       }
     },
@@ -3427,11 +3432,6 @@
       "caption": "DNS RData",
       "description": "The data describing the DNS resource. The meaning of this data depends on the type and class of the resource record.",
       "type": "string_t"
-    },
-    "reboot_time": {
-      "caption": "Reboot Time",
-      "description": "The time when the system was rebooted.",
-      "type": "timestamp_t"
     },
     "references": {
       "caption": "References",

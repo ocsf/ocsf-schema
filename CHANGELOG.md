@@ -60,8 +60,9 @@ Thankyou! -->
     2. Added entries to `injection_type_id` enum (`Process Activity`) and `activity_id` enum (`Memory Activity`). #1060
     3. Added a `Restart`, `Enable`, `Disable`, and `Update` `activity_id` to the `Application Lifecycle` class. #1064
     4. Added `ja4_fingerprint_list` to base network event class. #834
-    5. Added `access_mask` to Entity Management class. #1090   
-    6. Added `access_list` to Entity Management class. #1090
+    5. Added new activities `Enroll`, `Activate`, `Deactivate`, `Suspend`, and `Resume` to the `Entity Management` class. #1095
+    6. Added `access_mask` to Entity Management class. #1090   
+    7. Added `access_list` to Entity Management class. #1090
 * #### Profiles
 * #### Objects
     1. Added `ext` to `File` object. #1046

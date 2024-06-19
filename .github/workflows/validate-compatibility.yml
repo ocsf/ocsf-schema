@@ -1,0 +1,64 @@
+name: Compatibility Validation
+
+# To test with `act` on Apple silicon:
+# act -s GITHUB_TOKEN="$(gh auth token)" --container-architecture linux/amd64 -W .github/workflows/validate-compatibility.yml
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  validate:
+    name: Validate that changes are backwards compatible with the last stable release
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository content
+      uses: actions/checkout@v3
+
+    - name: Clone schema server repository
+      uses: actions/checkout@v3
+      with:
+        repository: ocsf/ocsf-server
+        path: server
+
+    - name: Set up elixir
+      uses: erlef/setup-beam@v1
+      with:
+        elixir-version: '1.14.0' # Define the elixir version [required]
+        otp-version: '25.3.2'    # Define the OTP version [required]
+
+    - name: Restore server dependencies cache
+      uses: actions/cache@v4
+      with:
+        path: server/deps
+        key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
+        restore-keys: ${{ runner.os }}-mix-
+
+    - name: Install server dependencies
+      working-directory: server
+      run: mix deps.get
+
+    - name: Build the server
+      working-directory: server
+      run: mix compile
+
+    - name: Export schema
+      working-directory: server
+      run: |
+        SCHEMA_DIR=../
+        app/bin/server &
+        curl -X POST http://localhost:4000/schema/export -o schema.json
+      
+    - name: Setup python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install validator
+      run: python -m pip install 'ocsf-validate-compatibility>=${{ vars.COMPATIBILITY_VALIDATOR_VERSION || '0.2,<0.3' }}'
+
+    - name: Run validator
+      shell: bash
+      run: export FORCE_COLOR=1 && python -m ocsf.validate.compatibility ${ vars.LATEST_STABLE || "1.2.0" } schema.json

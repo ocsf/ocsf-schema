@@ -17,6 +17,12 @@ jobs:
     - name: Checkout repository content
       uses: actions/checkout@v4
 
+    - name: Clone schema server repository
+      uses: actions/checkout@v4
+      with:
+        repository: ocsf/ocsf-server
+        path: server
+
     - name: Set up elixir
       uses: erlef/setup-beam@v1
       with:

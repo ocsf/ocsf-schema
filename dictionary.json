@@ -344,6 +344,11 @@
       "description": "The BIOS version. For example: <code>LENOVO G5ETA2WW (2.62)</code>.",
       "type": "string_t"
     },
+    "boot_time": {
+      "caption": "Boot Time",
+      "description": "The time when the system was booted.",
+      "type": "timestamp_t"
+    },
     "boundary": {
       "caption": "Boundary",
       "description": "The boundary of the connection, normalized to the caption of 'boundary_id'. In the case of 'Other', it is defined by the event source. <p> For cloud connections, this translates to the traffic-boundary(same VPC, through IGW, etc.). For traditional networks, this is described as Local, Internal, or External.</p>",
@@ -1586,6 +1591,46 @@
       "description": "The event duration or aggregate time, the amount of time the event covers from <code>start_time</code> to <code>end_time</code> in milliseconds.",
       "type": "integer_t"
     },
+    "duration_avg_days": {
+      "caption": "Average Duration Days",
+      "description": "This represents the average duration of the activity in days. See specific usage.",
+      "type": "integer_t"
+    },
+    "duration_avg_hours": {
+      "caption": "Average Duration Hours",
+      "description": "This represents the average duration of the activity in hours. See specific usage.",
+      "type": "integer_t"
+    },
+    "duration_avg_mins": {
+      "caption": "Average Duration Minutes",
+      "description": "This represents the average duration of the activity in minutes. See specific usage.",
+      "type": "integer_t"
+    },
+    "duration_avg_months": {
+      "caption": "Average Duration Months",
+      "description": "This represents the average duration of the activity in months. See specific usage.",
+      "type": "integer_t"
+    },
+    "duration_avg_msecs": {
+      "caption": "Average Duration Milliseconds",
+      "description": "This represents the average duration of the activity in milliseconds. See specific usage.",
+      "type": "integer_t"
+    },
+    "duration_avg_secs": {
+      "caption": "Average Duration Seconds",
+      "description": "This represents the average duration of the activity in seconds. See specific usage.",
+      "type": "integer_t"
+    },
+    "duration_avg_weeks": {
+      "caption": "Average Duration Weeks",
+      "description": "This represents the average duration of the activity in weeks. See specific usage.",
+      "type": "integer_t"
+    },
+    "duration_avg_years": {
+      "caption": "Average Duration Years",
+      "description": "This represents the average duration of the activity in years. See specific usage.",
+      "type": "integer_t"
+    },
     "edition": {
       "caption": "OS Edition",
       "description": "The operating system edition. For example: <code>Professional</code>.",
@@ -2113,6 +2158,39 @@
         "99": {
           "caption": "Other",
           "description": "The injection type is not mapped. See the <code>injection_type</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
+    "install_state": {
+      "caption": "Install State",
+      "description": "The install state, normalized to the caption of install_state_id. In the case of 'Other', it is defined by the event source.",
+      "type": "string_t"
+    },
+    "install_state_id": {
+      "caption": "Install State ID",
+      "description": "The normalized state of the install.",
+      "sibling": "install_state",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The normalized install state is unknown."
+        },
+        "1": {
+          "caption": "Installed",
+          "description": "The item is installed."
+        },
+        "2": {
+          "caption": "Not Installed",
+          "description": "The item is not installed."
+        },
+        "3": {
+          "caption": "Installed Pending Reboot",
+          "description": "The item is installed pending reboot operation."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The install state is not mapped. See the <code>install_state</code> attribute, which contains a data source specific value."
         }
       }
     },

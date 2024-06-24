@@ -45,6 +45,7 @@ Thankyou! -->
 * #### Event Classes
     1. Added `Event Log Activity` event class. #1014
     2. Added `Remediation Activity` `File Remediation Activity` `Process Remediation Activity` `Network Remediation Activity` event classes. #1066
+    3. Added `Windows Service Activity` event class to the Windows extension. #1103
 * #### Profiles
     1. Added `osint` Profile based on `osint` object. #992
 * #### Objects
@@ -56,7 +57,9 @@ Thankyou! -->
     6. Added `signatures` object, an array of `signature` objects. #992
     7. Added `whois` object. #992
     8. Added `domain_contact` and array-typed `domain_contacts` object for use with `whois` object. #992
-    9. Added array-typed `compliacne_references` and array-typed `compliance_standards` objects as array of `kb_article` and used in `compliance` object. #1110 
+    9. Added `Windows Service` object to the Windows extension. #1103
+    10. Added array-typed `compliacne_references` and array-typed `compliance_standards` objects as array of `kb_article` and used in `compliance` object. #1110    
+
 
 * #### Platform Extensions
 

@@ -53,6 +53,22 @@
             "type": "boolean",
             "description": "A flag used when the attribute represents an array of values rather than a single value."
         },
+        "suppress_checks": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "anyOf": [
+              {
+                "const": "enum_convention",
+                "description": "Suppresses the convention that every Enum type has two common values with integer value 0 for Unknown and 99 for Other."
+              },
+              {
+                "const": "sibling_convention",
+                "description": "Suppresses the convention that a sibling field for a field that has an _id suffix should be the name with the _id suffix stripped."
+              }
+            ]
+          }
+        },
         "observable": {
             "$ref": "observable.schema.json"
         }

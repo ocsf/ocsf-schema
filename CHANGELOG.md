@@ -97,6 +97,10 @@ Thankyou! -->
     3. Added a `gitignore` file. #1071
     4. New Extension registration for Cisco #1074
     5. Cleaned up MITRE trademarks and registrations for captions and descriptions.
+    6. Adds support for `suppress_checks` controls in attributes to allow tools to automatically validate conventions
+        * Updated several attributes that do not follow conventions to disable linting for them
+        * Updated `data_lifecycle_state_id` to add a 99(Other) enumerand to follow convention
+
 
 ## [v1.2.0] - April 23rd, 2024
 

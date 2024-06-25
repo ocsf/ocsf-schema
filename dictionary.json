@@ -76,6 +76,7 @@
     "activity_id": {
       "caption": "Activity ID",
       "description": "The normalized identifier of the activity that triggered the event.",
+      "suppress_checks": ["sibling_convention"],
       "sibling": "activity_name",
       "type": "integer_t",
       "enum": {
@@ -1232,7 +1233,11 @@
       "enum": {
         "0": {
           "caption": "Unknown",
-          "description": "The type is not mapped. See the <code>data_lifecycle_state</code> attribute, which contains a data source specific value."
+          "description": "The lifecycle state is not known."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The lifecycle state is not mapped. See the <code>data_lifecycle_state</code> attribute, which contains a data source specific value."
         },
         "1": {
           "caption": "Data at-Rest",
@@ -2867,6 +2872,7 @@
     "opcode_id": {
       "caption": "DNS Opcode ID",
       "description": "The DNS opcode ID specifies the normalized query message type.",
+      "suppress_checks": ["enum_convention"],
       "type": "integer_t",
       "enum": {
         "0": {
@@ -3563,6 +3569,7 @@
     "risk_level_id": {
       "caption": "Risk Level ID",
       "description": "The normalized risk level id.",
+      "suppress_checks": ["enum_convention"],
       "sibling": "risk_level",
       "type": "integer_t",
       "enum": {

@@ -45,6 +45,7 @@ Thankyou! -->
 * #### Event Classes
     1. Added `Event Log Activity` event class. #1014
     2. Added `Remediation Activity` `File Remediation Activity` `Process Remediation Activity` `Network Remediation Activity` event classes. #1066
+    3. Added `Startup Application Query` event class. #1119
 * #### Profiles
     1. Added `osint` Profile based on `osint` object. #992
 * #### Objects

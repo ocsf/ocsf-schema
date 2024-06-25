@@ -57,9 +57,15 @@
           "type": "array",
           "items": {
             "type": "string",
-            "enum": [
-              "sibling_convention",
-              "enum_convention"
+            "anyOf": [
+              {
+                "const": "enum_convention",
+                "description": "Suppresses the convention that every Enum type has two common values with integer value 0 for Unknown and 99 for Other."
+              },
+              {
+                "const": "sibling_convention",
+                "description": "Suppresses the convention that a sibling field for a field that has an _id suffix should be the name with the _id suffix stripped."
+              }
             ]
           }
         },

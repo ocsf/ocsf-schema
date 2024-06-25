@@ -3598,6 +3598,13 @@
       "description": "The rules that reported the events.",
       "type": "rule"
     },
+    "run_mode": {
+      "caption": "Run Mode",
+      "description": "The list of normalized identifiers that describe application attributes.",
+      "type": "integer_t",
+      "enum": {},
+      "is_array": true
+    },
     "run_state": {
       "caption": "Run State",
       "description": "The state of the job or service, normalized to the caption of the run_state_id value. In the case of 'Other', it is defined by the event source. See specific usage.",
@@ -3985,6 +3992,63 @@
       "caption": "Start Time",
       "description": "The start time of a time period. See specific usage.",
       "type": "timestamp_t"
+    },
+    "start_type": {
+      "caption": "Start Type",
+      "description": "The start type of a service, driver, or application.",
+      "type": "string_t"
+    },
+    "start_type_id": {
+      "caption": "Start Type ID",
+      "description": "The start type ID of a service or application.",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The start type is unknown."
+        },
+        "1": {
+          "caption": "Auto",
+          "description": "Service started automatically during system startup."
+        },
+        "2": {
+          "caption": "Boot",
+          "description": "Device driver started by the system loader."
+        },
+        "3": {
+          "caption": "On Demand",
+          "description": "Started on demand. For example, by the Window service control manager when a process calls the <i>StartService</i> function."
+        },
+        "4": {
+          "caption": "Disabled",
+          "description": "The service is disabled, and cannot be started."
+        },
+        "5": {
+          "caption": "All Logins",
+          "description": "Started on all user logins."
+        },
+        "6": {
+          "caption": "Specific User Login",
+          "description": "Started on specific user logins."
+        },
+        "7": {
+          "caption": "Scheduled",
+          "description": "Stared according to a schedule."
+        },
+        "8": {
+          "caption": "System Changed",
+          "description": "Started when a system item, such as a file or registry key, changes."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The start type is not mapped. See the <code>start_type</code> attribute, which contains a data source specific value."
+        }
+      },
+      "type": "integer_t"
+    },
+    "startup_app": {
+      "caption": "Startup Application",
+      "description": "The startup application object describes an application that has associated startup criteria and configurations.",
+      "type": "startup_app"
     },
     "state": {
       "caption": "State",

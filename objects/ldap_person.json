@@ -3,7 +3,13 @@
   "description": "The additional LDAP attributes that describe a person.",
   "name": "ldap_person",
   "extends": "object",
+  "profiles": [
+    "active_directory"
+  ],
   "attributes": {
+    "$include": [
+      "profiles/active_directory.json"
+    ],
     "allowed_to_act_on_behalf_of_other_identity": {
       "requirement": "optional"
     },
@@ -11,6 +17,9 @@
       "requirement": "optional"
     },
     "cost_center": {
+      "requirement": "optional"
+    },
+    "creator_sid": {
       "requirement": "optional"
     },
     "created_time": {

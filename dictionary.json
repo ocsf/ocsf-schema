@@ -109,6 +109,19 @@
       "description": "The permissions that were granted to the in a platform-native format.",
       "type": "integer_t"
     },
+    "admin_count": {
+      "caption": "Admin Count",
+      "type": "integer_t",
+      "description": "Indicates that a given object is a member of a Privileged group in Active Directory.",
+      "enum": {
+        "0": {
+          "caption": "Not Member"
+        },
+        "1": {
+          "caption": "Member"
+        }
+      }
+    },
     "affected_code": {
       "caption": "Affected Code",
       "description": "List of Affected Code objects that describe details about code blocks identified as vulnerable.",
@@ -157,6 +170,17 @@
           "description": "The algorithm is not mapped. See the <code>algorithm</code> attribute, which contains a data source specific value."
         }
       }
+    },
+    "allowed_to_act_on_behalf_of_other_identity": {
+      "caption": "Allowed to Act On Behalf Of Other Identity",
+      "type": "string_t",
+      "description": "Is used for access checks to determine if a requestor has permission to act on the behalf of other identities to services running as this account."
+    },
+    "allowed_to_delegate_to": {
+      "caption": "Allowed To Delegate To",
+      "type": "string_t",
+      "description": "The list of service principal names (SPNs) corresponding to Windows services that can act on behalf of the computer or user account.",
+      "is_array": true
     },
     "analytic": {
       "caption": "Analytic",
@@ -1047,6 +1071,11 @@
       "description": "The network connection identifier.",
       "type": "string_t"
     },
+    "consistency_guid": {
+      "caption": "Consistency Guid",
+      "type": "string_t",
+      "description": "Is used to check consistency between the directory and another object, database, or application by comparing GUIDs."
+    },
     "container": {
       "caption": "Container",
       "description": "The information describing an instance of a container. A container is a prepackaged, portable system image that runs isolated on an existing system using a container runtime like containerd.",
@@ -1114,6 +1143,11 @@
       "caption": "The product CPE identifier",
       "description": "The Common Platform Enumeration (CPE) name as described by (<a target='_blank' href='https://nvd.nist.gov/products/cpe'>NIST</a>) For example: <code>cpe:/a:apple:safari:16.2</code>.",
       "type": "string_t"
+    },
+    "creator_sid": {
+      "caption": "Creator SID",
+      "type": "string_t",
+      "description": "The security ID of the creator of the object that contains this attribute."
     },
     "cpu_bits": {
       "caption": "CPU Bits",
@@ -1298,6 +1332,11 @@
       "caption": "Root Delay",
       "description": "The total round-trip delay to the reference clock in milliseconds.",
       "type": "integer_t"
+    },
+    "is_deleted": {
+      "caption": "Is Deleted",
+      "type": "boolean_t",
+      "description": "Identifies if the object has been marked for deletion and will be removed."
     },
     "deleted_time": {
       "caption": "Deleted Time",
@@ -1503,6 +1542,11 @@
           "description": "The disposition is not mapped. See the <code>disposition</code> attribute, which contains a data source specific value."
         }
       }
+    },
+    "display_name": {
+      "caption": "Display Name",
+      "type": "string_t",
+      "description": "The display name for an object."
     },
     "dkim": {
       "caption": "DKIM Status",
@@ -1939,6 +1983,11 @@
       "caption": "Folder",
       "description": "The folder that pertains to the event.",
       "type": "file"
+    },
+    "forest": {
+      "caption": "Forest",
+      "type": "string_t",
+      "description": "Name of the Active Directory Forest."
     },
     "from": {
       "caption": "From",
@@ -2454,6 +2503,11 @@
       "description": "The two letter lower case language codes, as defined by <a target='_blank' href='https://en.wikipedia.org/wiki/ISO_639-1'>ISO 639-1</a>. For example: <code>en</code> (English), <code>de</code> (German), or <code>fr</code> (French).",
       "type": "string_t"
     },
+    "last_known_parent": {
+      "caption": "Last Known Parent",
+      "type": "string_t",
+      "description": "The Distinguished Name (DN) of the last known parent of an orphaned object."
+    },
     "last_login_time": {
       "caption": "Last Login",
       "description": "The last time when the user logged in.",
@@ -2729,6 +2783,24 @@
       "description": "The location of the matched data in the source which resulted in the triggered firewall rule. For example: HEADER.",
       "type": "string_t"
     },
+    "member_of": {
+      "caption": "Member Of",
+      "type": "string_t",
+      "description": "Specifies the groups in which the object is a Member. See specific usage.",
+      "is_array": true
+    },
+    "member_of_guid": {
+      "caption": "Member Of GUID",
+      "type": "string_t",
+      "description": "Specifies the group's GUID, in which the object is a member. See specific usage.",
+      "is_array": true
+    },
+    "member_of_transitive": {
+      "caption": "Member Of Transitive",
+      "type": "string_t",
+      "description": "Specifies all the groups in which the object is a member, directly or indirectly. See specific usage.",
+      "is_array": true
+    },
     "message": {
       "caption": "Message",
       "description": "The description of the event/finding, as defined by the source.",
@@ -2822,6 +2894,11 @@
       "description": "The NIST Cybersecurity Framework recommendations for managing the cybersecurity risk.",
       "type": "string_t",
       "is_array": true
+    },
+    "nt_security_descriptor": {
+      "caption": "NT Security Descriptor",
+      "type": "string_t",
+      "description": "The Windows NT security descriptor for the schema object."
     },
     "num_detections": {
       "caption": "Detections",
@@ -3039,6 +3116,11 @@
       "description": "The parent process of this process object. It is recommended to only populate this field for the first process object, to prevent deep nesting.",
       "type": "process"
     },
+    "parent_dn": {
+      "caption": "Parent Distinguished Name",
+      "type": "string_t",
+      "description": "The distinguished name (DN) of the parent object of the current object."
+    },
     "password_last_set_time": {
       "caption": "Password Last Set Time",
       "type": "timestamp_t",
@@ -3220,6 +3302,11 @@
       "description": "The previous security states. See specific usage.",
       "type": "security_state",
       "is_array": true
+    },
+    "primary_group_id": {
+      "caption": "Primary Group ID",
+      "type": "integer_t",
+      "description": "The relative identifier (RID) for the primary group of the user."
     },
     "priority": {
       "caption": "Priority",
@@ -3473,6 +3560,11 @@
       "description": "The data describing the DNS resource. The meaning of this data depends on the type and class of the resource record.",
       "type": "string_t"
     },
+    "is_recycled": {
+      "caption": "Is Recycled",
+      "type": "boolean_t",
+      "description": "Identifies if the object has been added to the Recycle bin in Active Directory."
+    },
     "references": {
       "caption": "References",
       "description": "A list of reference URLs supporting the finding/detection.",
@@ -3590,6 +3682,11 @@
       "description": "The Domain Name System (DNS) response time.",
       "type": "timestamp_t"
     },
+    "resultant_pso": {
+      "caption": "Resultant PSO",
+      "type": "string_t",
+      "description": "The effective password policy applied on this object."
+    },
     "risk_details": {
       "caption": "Risk Details",
       "description": "Describes the risk associated with the finding.",
@@ -3654,6 +3751,16 @@
       "caption": "Runtime",
       "description": "The backend running the container, such as containerd or cri-o.",
       "type": "string_t"
+    },
+    "sam_account_name": {
+      "caption": "SAM Account Name",
+      "type": "string_t",
+      "description": "The Active Directory user logon name used to support clients and servers from a previous version of Windows ( Pre-Windows 2000)."
+    },
+    "sam_account_type": {
+      "caption": "SAM Account Type",
+      "type": "long_t",
+      "description": "This attribute contains information about every account type object."
     },
     "samesite": {
       "caption": "SameSite",
@@ -3858,6 +3965,17 @@
       "description": "The service that pertains to the event.",
       "type": "service"
     },
+    "is_service_account": {
+      "caption": "Service Account",
+      "type": "boolean_t",
+      "description": "Indicates whether the user account is a used as a Service Account."
+    },
+    "service_principal_name": {
+      "caption": "Service Principal Name",
+      "type": "string_t",
+      "description": "The unique identifiers of a service instance in Active Directory.",
+      "is_array": true
+    },
     "session": {
       "caption": "Session",
       "description": "The authenticated user or service session.",
@@ -3942,6 +4060,12 @@
           "description": "The share type is not mapped. See the <code>share_type</code> attribute, which contains a data source specific value."
         }
       }
+    },
+    "sid_history": {
+      "caption": "SID History",
+      "type": "string_t",
+      "description": "Contains previous SIDs used for the object if the object was moved from another domain.",
+      "is_array": true
     },
     "signature": {
       "caption": "Digital Signature",
@@ -4279,6 +4403,12 @@
       "type": "email_t",
       "is_array": true
     },
+    "token_groups": {
+      "caption": "Token Groups",
+      "type": "string_t",
+      "description": "The list of SIDs due to a transitive group membership expansion operation on a given user or computer.",
+      "is_array": true
+    },
     "total": {
       "caption": "Total",
       "description": "The total number of items. See specific usage.",
@@ -4393,16 +4523,41 @@
       "description": "The user that pertains to the event or object.",
       "type": "user"
     },
+    "user_account_control": {
+      "caption": "User Account Control",
+      "type": "integer_t",
+      "description": "Flags that control the behavior of the user account."
+    },
     "user_agent": {
       "observable": 16,
       "caption": "HTTP User-Agent",
       "description": "The request header that identifies the operating system and web browser.",
       "type": "string_t"
     },
+    "user_principal_name": {
+      "caption": "User Principal Name",
+      "type": "string_t",
+      "description": "The name of a system user. Like Active Directory an email address format."
+    },
     "user_result": {
       "caption": "User Result",
       "description": "The result of the user account change. It should contain the new values of the changed attributes.",
       "type": "user"
+    },
+    "user_password_expiry_computed_time": {
+      "caption": "User Password Expiry Time",
+      "type": "timestamp_t",
+      "description": "The expiry time for the user's current password."
+    },
+    "usn_changed": {
+      "caption": "USN Changed",
+      "type": "long_t",
+      "description": "The update sequence number (USN) assigned by the local directory for the latest change."
+    },
+    "usn_created": {
+      "caption": "USN Created",
+      "type": "long_t",
+      "description": "The update sequence number (USN) assigned at object creation."
     },
     "users": {
       "caption": "Users",

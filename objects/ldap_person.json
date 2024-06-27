@@ -4,6 +4,12 @@
   "name": "ldap_person",
   "extends": "object",
   "attributes": {
+    "allowed_to_act_on_behalf_of_other_identity": {
+      "requirement": "optional"
+    },
+    "allowed_to_delegate_to": {
+      "requirement": "optional"
+    },
     "cost_center": {
       "requirement": "optional"
     },
@@ -13,6 +19,13 @@
     },
     "deleted_time": {
       "requirement": "optional"
+    },
+    "display_name": {
+      "requirement": "recommended"
+    },
+    "domain": {
+      "requirement": "recommended",
+      "description": "Name of the Active Directory Domain."
     },
     "email_addrs": {
       "requirement": "optional"
@@ -31,6 +44,12 @@
     },
     "labels": {
       "description": "The labels associated with the user. For example in AD this could be the <code>userType</code>, <code>employeeType</code>. For example: <code>Member, Employee</code>.",
+      "requirement": "optional"
+    },
+    "parent_dn": {
+      "requirement": "optional"
+    },
+    "last_known_parent": {
       "requirement": "optional"
     },
     "last_login_time": {
@@ -52,6 +71,18 @@
     "manager": {
       "requirement": "optional"
     },
+    "member_of": {
+      "requirement": "optional",
+      "description": "Specifies the names of groups in Active Directory in which the user is a member."
+    },
+    "member_of_guid": {
+      "requirement": "optional",
+      "description": "Specifies the list of GUIDs of groups in Active Directory in which the user is a member."
+    },
+    "member_of_transitive": {
+      "requirement": "optional",
+      "description": "This attribute specifies the set of distinguished names (DNs) in the memberOf attribute on the current object and the DNs from the memberOf attributes of each of the objects specified in the memberOf attribute on the current object."
+    },
     "modified_time": {
       "description": "The timestamp when the user entry was last modified.",
       "requirement": "optional"
@@ -59,7 +90,34 @@
     "office_location": {
       "requirement": "optional"
     },
+    "primary_group_id": {
+      "requirement": "optional"
+    },
+    "resultant_pso": {
+      "requirement": "optional"
+    },
+    "is_service_account": {
+      "requirement": "recommended"
+    },
+    "sid_history": {
+      "requirement": "optional"
+    },
     "surname": {
+      "requirement": "optional"
+    },
+    "usn_changed": {
+      "requirement": "optional"
+    },
+    "usn_created": {
+      "requirement": "optional"
+    },
+    "user_principal_name": {
+      "requirement": "recommended"
+    },
+    "user_account_control": {
+      "requirement": "recommended"
+    },
+    "user_password_expiry_computed_time": {
       "requirement": "optional"
     }
   }

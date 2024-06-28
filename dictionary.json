@@ -1348,6 +1348,11 @@
       "description": "The <strong>Delivered-To</strong> email header field.",
       "type": "email_t"
     },
+    "department": {
+      "caption": "Department",
+      "description": "The name of the department where the user works.",
+      "type": "string_t"
+    },
     "depth": {
       "caption": "CVSS Depth",
       "description": "The CVSS depth represents a depth of the equation used to calculate CVSS score.",
@@ -1709,6 +1714,40 @@
       "description": "The unique identifier of the email, used to correlate related email alert and activity events.",
       "type": "string_t"
     },
+    "employee_type": {
+      "caption": "Employee Type",
+      "description": "The Employee Type , normalized to the caption of the employee_type_id value. In the case of 'Other', it is defined by the event source.",
+      "type": "string_t"
+    },
+    "employee_type_id": {
+      "caption": "Employee Type ID",
+      "description": "Identifier for the employee to employer relationship, such as Employee, Contractor, or Temp.",
+      "sibling": "employee_type",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Employee"
+        },
+        "2": {
+          "caption": "Contractor"
+        },
+        "3": {
+          "caption": "Consultant"
+        },
+        "4": {
+          "caption": "Vendor"
+        },
+        "5": {
+          "caption": "Temp"
+        },
+        "99": {
+          "caption": "Other"
+        }
+      }
+    },
     "employee_uid": {
       "caption": "Employee ID",
       "description": "The employee identifier assigned to the user by the organization.",
@@ -1988,6 +2027,16 @@
       "caption": "Forest",
       "type": "string_t",
       "description": "Name of the Active Directory Forest."
+    },
+    "force_change_password_next_sign_in": {
+      "caption": "Force Change Password Next SignIn",
+      "description": "Specifies if the user has to change the password in the next sign in. true if the user must change their password on the next sign-in; otherwise false. If not set, default is false",
+      "type": "boolean_t"
+    },
+    "force_change_password_next_sign_in_with_mfa": {
+      "caption": "Force Change Password Next SignIn With Mfa",
+      "description": "Specifies if the user has to change the password in the next sign in with MFA.If true, at next sign-in, the user must perform a multifactor authentication (MFA) before being forced to change their password.",
+      "type": "boolean_t"
     },
     "from": {
       "caption": "From",
@@ -2961,6 +3010,27 @@
       "type": "observable",
       "is_array": true
     },
+    "object_category": {
+      "caption": "Object Category",
+      "type": "string_t",
+      "description": "An object class name used to group objects of this or derived classes."
+    },
+    "object_class": {
+      "caption": "Object Class",
+      "type": "string_t",
+      "description": "The list of classes from which this class is derived.",
+      "is_array": true
+    },
+    "object_guid": {
+      "caption": "Object GUID",
+      "type": "string_t",
+      "description": "The unique identifier for the user."
+    },
+    "object_sid": {
+      "caption": "Object SID",
+      "type": "string_t",
+      "description": "The security identifier (SID) of the user."
+    },
     "office_location": {
       "caption": "Office Location",
       "description": "The primary office location associated with the user. This could be any string and isn't a specific address. For example, <code>South East Virtual</code>.",
@@ -3417,6 +3487,12 @@
         "message": "Use the <code> proxy_endpoint </code> attribute instead.",
         "since": "1.1.0"
       }
+    },
+    "proxy_addresses": {
+      "caption": "Proxy Addresses",
+      "description": "roxy address of a user. For example [SMTP: bob@contoso.com, smtp: bob@sales.contoso.com]",
+      "type": "string_t",
+      "is_array": true
     },
     "proxy_connection_info": {
       "caption": "Proxy Connection Info",
@@ -3892,6 +3968,11 @@
       "caption": "Security Descriptor",
       "description": "The object security descriptor.",
       "type": "string_t"
+    },
+    "is_security_group": {
+      "caption": "Security Group",
+      "type": "boolean_t",
+      "description": "Indicates whether the user account is a Security Group."
     },
     "security_level": {
       "caption": "Security Level",
@@ -4508,6 +4589,11 @@
       "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
       "type": "object"
     },
+    "unique_name": {
+      "caption": "Unique Name",
+      "description": "The unique identifier that can be assigned to a group and used as an alternate key.",
+      "type": "string_t"
+    },
     "url": {
       "caption": "URL",
       "description": "The URL object that pertains to the event or object. See specific usage.",
@@ -4650,6 +4736,25 @@
       "caption": "Version",
       "description": "The version that pertains to the event or object. See specific usage.",
       "type": "string_t"
+    },
+    "visibility": {
+      "caption": "Visibility",
+      "description": "Specifies the group join policy and group content visibility for groups. Possible values are: Private, Public, or HiddenMembership.",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Private",
+          "description": "The group is private."
+        },
+        "1": {
+          "caption": "Public",
+          "description": "The group is public."
+        },
+        "2": {
+          "caption": "HiddenMembership",
+          "description": "The group is hidden."
+        }
+      }
     },
     "vlan_uid": {
       "caption": "VLAN",

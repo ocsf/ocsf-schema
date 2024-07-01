@@ -58,6 +58,7 @@ Thankyou! -->
     7. Added `whois` object. #992
     8. Added `domain_contact` and array-typed `domain_contacts` object for use with `whois` object. #992
     9. Added `Windows Service` object to the Windows extension. #1103
+    10. Added `timespan` object and `avg_timespan` to dictionary. #1125
 
 * #### Platform Extensions
 
@@ -79,6 +80,7 @@ Thankyou! -->
     6. Added `reg_key` and `reg_value` to `Evidence Artifacts` object. #1078  
     7. Added `type_id` and associated entity objects to `Managed Entity`. #1094
     8. Added `vendor_name`, `type`, `type_id` to object `package`. #1093
+    9. Added `avg_timespan` to the `kb_article` object. #1125
 * #### Platform Extensions
 
 ### Bugfixes

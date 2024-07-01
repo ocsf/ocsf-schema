@@ -40,6 +40,31 @@
       "group": "primary",
       "requirement": "recommended"
     }
+      "state": {
+      "caption": "Application Lifecycle State",
+      "description": "The Application Lifecycle State, normalized to the caption of the state_id value. In the case of 'Other', it is defined by the source.",
+      "requirement": "optional"
+    },
+    "state_id": {
+      "caption": "Application Lifecycle ID",
+      "description": "The security state of the managed entity.",
+      "enum": {
+        "99": {
+          "caption": "Other",
+          "description": "The Application Lifecycle is not mapped. See the <code>state</code> attribute, which contains data source specific values."
+        },
+        "0": {
+          "caption": "Unknown",
+          "description": "The Application Lifecycle state is unknown."
+        },
+        "1": {
+          "caption": "Disabled",
+          "description": "Config State Changed to Disabled."
+        },
+        "2": {
+          "caption": "Enabled",
+          "description": "Config State Change to Enabled."
+        },
   },
   "profiles": [
     "host"

@@ -8,6 +8,12 @@
       "type": "string_t",
       "description": "The unique identifier of a cluster."
     },
+    "commands": {
+      "caption": "Commands",
+      "description": "The list of commands to be executed.",
+      "type": "string_t",
+      "is_array": true
+    },
     "generation_name": {
       "caption": "Generation Name",
       "type": "string_t",
@@ -34,10 +40,31 @@
       "type": "k8s_cluster_resource",
       "description": "The Kubernetes cluster resource item."
     },
+    "k8s_container": {
+      "caption": "Kubernetes container",
+      "type": "k8s_container",
+      "description": "The Kubernetes container data holder."
+    },
+    "k8s_image": {
+      "caption": "Image",
+      "type": "string_t",
+      "description": "The image name of the container."
+    },
     "k8s_metadata": {
       "caption": "Kubernetes metadata",
       "type": "k8s_metadata",
       "description": "The Kubernetes metadata describes Kubernetes items."
+    },
+    "k8s_port": {
+      "caption": "Kubernetes Port",
+      "type": "k8s_port",
+      "description": "The Kubernetes port item."
+    },
+    "k8s_ports": {
+      "caption": "Kubernetes Ports",
+      "type": "k8s_port",
+      "description": "The List of assigned ports.",
+      "is_array": true
     },
     "k8s_spec": {
       "caption": "K8s specs",
@@ -50,16 +77,31 @@
       "type": "k8s_status",
       "description": "The Kubernetes status describes the current state of k8s item."
     },
+    "k8s_workload": {
+      "caption": "Kubernetes Workload",
+      "type": "k8s_workload",
+      "description": "The Kubernetes workload item."
+    },
     "key": {
       "caption": "Key Name of a key-value pair",
       "type": "string_t",
       "description": "The name of the key."
+    },
+    "namespace_uid":{
+      "caption": "Namespace UID",
+      "description": "The unique identifier of a Kubernetes namespace.",
+      "type": "string_t"
     },
     "node_info": {
       "caption": "Node Info",
       "description": "Node labels.",
       "type": "selector_label",
       "is_array": true
+    },
+    "node_uid":{
+      "caption": "Node UID",
+      "description": "The unique identifier of a Kubernetes node.",
+      "type": "string_t"
     },
     "selector_label": {
       "caption": "SelectorLabel",
@@ -76,6 +118,11 @@
       "caption": "Pod IP Info",
       "description": "Pod IP and a pool of reserved ip addresses for it.",
       "type": "ip_usage_info"
+    },
+    "pod_uid":{
+      "caption": "POD UID",
+      "description": "The unique identifier of a Kubernetes pod.",
+      "type": "string_t"
     },
     "resource_version": {
       "caption": "Resource Version",

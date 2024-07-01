@@ -1,47 +1,75 @@
 {
-  "uid": 19,
-  "caption": "Device Config State Change",
-  "description": "Device Config State Change events report state changes that impact the security of the device.",
-  "extends": "discovery",
-  "name": "device_config_state_change",
-  "attributes": {
-    "actor": {
-      "group": "context",
-      "requirement": "optional"
-    },
-    "device": {
-      "description": "The device that is impacted by the state change.",
-      "group": "primary",
-      "requirement": "required"
-    },
-    "prev_security_level": {
-      "group": "primary",
-      "requirement": "recommended"
-    },
-    "prev_security_level_id": {
-      "group": "primary",
-      "requirement": "recommended"
-    },
-    "prev_security_states": {
-      "description": "The previous security states of the device.",
-      "group": "primary",
-      "requirement": "recommended"
-    },
-    "security_level": {
-      "group": "primary",
-      "requirement": "recommended"
-    },
-    "security_level_id": {
-      "group": "primary",
-      "requirement": "recommended"
-    },
-    "security_states": {
-      "description": "The current security states of the device.",
-      "group": "primary",
-      "requirement": "recommended"
+    "uid": 19,
+    "caption": "Device Config State Change",
+    "description": "Device Config State Change events report state changes that impact the security of the device.",
+    "extends": "discovery",
+    "name": "device_config_state_change",
+    "attributes": {
+        "actor": {
+            "group": "context",
+            "requirement": "optional"
+        },
+        "device": {
+            "description": "The device that is impacted by the state change.",
+            "group": "primary",
+            "requirement": "required"
+        },
+        "prev_security_level": {
+            "group": "primary",
+            "requirement": "recommended"
+        },
+        "prev_security_level_id": {
+            "group": "primary",
+            "requirement": "recommended"
+        },
+        "prev_security_states": {
+            "description": "The previous security states of the device.",
+            "group": "primary",
+            "requirement": "recommended"
+        },
+        "security_level": {
+            "group": "primary",
+            "requirement": "recommended"
+        },
+        "security_level_id": {
+            "group": "primary",
+            "requirement": "recommended"
+        },
+        "security_states": {
+            "description": "The current security states of the device.",
+            "group": "primary",
+            "requirement": "recommended"
+        },
+        "state": {
+            "caption": "Config Change State",
+            "description": "The Config Change Stat, normalized to the caption of the state_id value. In the case of 'Other', it is defined by the source.",
+            "requirement": "optional"
+        },
+        "state_id": {
+            "caption": "Config Change State ID",
+            "description": "The Config Change State of the managed entity.",
+            "requirement": "recommended",
+            "enum": {
+                "0": {
+                    "caption": "Unknown",
+                    "description": "The Config Change state is unknown."
+                },
+                "1": {
+                    "caption": "Disabled",
+                    "description": "Config State Changed to Disabled."
+                },
+                "2": {
+                    "caption": "Enabled",
+                    "description": "Config State Changed to Enabled."
+                },
+                "99": {
+                    "caption": "Other",
+                    "description": "The Config Change is not mapped. See the <code>state</code> attribute, which contains data source specific values."
+                }
+            }
+        },
+        "profiles": [
+            "host"
+        ]
     }
-  },
-  "profiles": [
-    "host"
-  ]
 }

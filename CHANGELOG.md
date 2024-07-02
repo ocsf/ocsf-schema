@@ -79,6 +79,7 @@ Thankyou! -->
     6. Added `reg_key` and `reg_value` to `Evidence Artifacts` object. #1078  
     7. Added `type_id` and associated entity objects to `Managed Entity`. #1094
     8. Added `vendor_name`, `type`, `type_id` to object `package`. #1093
+    9. Added `ip` to object `load_balancer`.
 * #### Platform Extensions
 
 ### Bugfixes

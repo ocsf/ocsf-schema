@@ -1,0 +1,142 @@
+{
+  "caption": "Startup Application",
+  "name": "startup_app",
+  "description": "The startup application object describes an application that has associated startup criteria and configurations.",
+  "attributes": {
+    "name": {
+      "description": "The unique name of the startup application.",
+      "requirement": "required"
+    },
+    "cmd_line": {
+      "requirement": "recommended"
+    },
+    "file": {
+      "description": "The startup application file object.",
+      "requirement": "required"
+    },
+    "run_mode": {
+      "description": "The list of normalized identifiers that describe application attributes.",
+      "requirement": "optional",
+      "enum": {
+        "0": {
+          "caption": "Interactive",
+          "description": "The application interacts with the desktop."
+        },
+        "1": {
+          "caption": "Own Process",
+          "description": "The application runs in its own process."
+        },
+        "2": {
+          "caption": "Shared Process",
+          "description": "The application runs in a shared process."
+        }
+      }
+    },
+    "run_state": {
+      "description": "The run state of the startup application.",
+      "requirement": "recommended"
+    },
+    "run_state_id": {
+      "description": "The run state ID of the startup application.",
+      "requirement": "recommended",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The run state is unknown."
+        },
+        "1": {
+          "caption": "Stopped",
+          "description": "The sercie is not running."
+        },
+        "2": {
+          "caption": "Start Pending",
+          "description": "The service is starting."
+        },
+        "3": {
+          "caption": "Stop Pending",
+          "description": "The service is stopping."
+        },
+        "4": {
+          "caption": "Running",
+          "description": "The service is running."
+        },
+        "5": {
+          "caption": "Continue Pending",
+          "description": "The service is pending continue."
+        },
+        "6": {
+          "caption": "Pause Pending",
+          "description": "The service is pending pause."
+        },
+        "7": {
+          "caption": "Paused",
+          "description": "The service is paused."
+        },
+        "8": {
+          "caption": "Restart Pending",
+          "description": "The service is pending restart."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The run state is not mapped. See the <code>run_state</code> attribute, which contains data source specific values."
+        }
+      }
+    },
+    "start_type": {
+      "description": "The start type of the startup application.",
+      "requirement": "optional"
+    },
+    "start_type_id": {
+      "description": "The start type ID of the startup application.",
+      "requirement": "required"
+    },
+    "type": {
+      "caption": "Type",
+      "description": "The startup application type.",
+      "type": "string_t"
+    },
+    "type_id": {
+      "caption": "Type ID",
+      "description": "The startup application type identifier.",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The type is unknown."
+        },
+        "1": {
+          "caption": "Kernel Mode Driver",
+          "description": "Kernel mode Operating System driver."
+        },
+        "2": {
+          "caption": "User Mode Driver",
+          "description": "User mode Operating System driver."
+        },
+        "3": {
+          "caption": "Service",
+          "description": "An executable background process typically managed by the Operating System."
+        },
+        "4": {
+          "caption": "User Mode Application",
+          "description": "An application that runs in the user space."
+        },
+        "5": {
+          "caption": "Autoload",
+          "description": "The macOS Autoload Application."
+        },
+        "6": {
+          "caption": "System Extension",
+          "description": "System extensions on macOS enables 3rd parties to extend the capabilities of macOS."
+        },
+        "7": {
+          "caption": "Kernel Extension",
+          "description": "Kernel extensions on macOS includes Apple provided pre-installs and 3rd party installs which enables support for specific hardware or software features not natively supported by macOS."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The startup application type is not mapped. See the <code>type</code> attribute, which contains data source specific values."
+        }
+      },
+      "type": "integer_t"
+    }
+  }
+}

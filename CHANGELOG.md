@@ -58,6 +58,8 @@ Thankyou! -->
     7. Added `whois` object. #992
     8. Added `domain_contact` and array-typed `domain_contacts` object for use with `whois` object. #992
     9. Added `Windows Service` object to the Windows extension. #1103
+    10. Added array-typed `compliacne_references` and array-typed `compliance_standards` objects as array of `kb_article` and used in `compliance` object. #1110    
+
 
 * #### Platform Extensions
 

@@ -107,6 +107,19 @@
       "description": "The permissions that were granted in a platform-native format. See specific usage.",
       "type": "integer_t"
     },
+    "admin_count": {
+      "caption": "Admin Count",
+      "type": "integer_t",
+      "description": "Indicates that a given object is a member of a Privileged group in Active Directory.",
+      "enum": {
+        "0": {
+          "caption": "Not Member"
+        },
+        "1": {
+          "caption": "Member"
+        }
+      }
+    },
     "advisory": {
       "caption": "Security Advisory",
       "description": "Detail about the security advisory, that is used to publicly disclose cybersecurity vulnerabilities by a vendor.",
@@ -160,6 +173,17 @@
           "description": "The algorithm is not mapped. See the <code>algorithm</code> attribute, which contains a data source specific value."
         }
       }
+    },
+    "allowed_to_act_on_behalf_of_other_identity": {
+      "caption": "Allowed to Act On Behalf Of Other Identity",
+      "type": "string_t",
+      "description": "Is used for access checks to determine if a requestor has permission to act on the behalf of other identities to services running as this account."
+    },
+    "allowed_to_delegate_to": {
+      "caption": "Allowed To Delegate To",
+      "type": "string_t",
+      "description": "The list of service principal names (SPNs) corresponding to Windows services that can act on behalf of the computer or user account.",
+      "is_array": true
     },
     "analytic": {
       "caption": "Analytic",
@@ -326,6 +350,16 @@
       "caption": "Average Timespan",
       "description": "The average time span of an activity.",
       "type": "timespan"
+    },
+    "bad_password_attempts": {
+      "caption": "Bad Password Attempts",
+      "type": "integer_t",
+      "description": "The number of times the user tried to log on to the account using an incorrect password."
+    },
+    "bad_password_time": {
+      "caption": "Bad Password Time",
+      "type": "timestamp_t",
+      "description": "The last time and date that an attempt to log on to this account was made with a password that is not valid."
     },
     "banner": {
       "caption": "SMTP Banner",
@@ -1077,6 +1111,11 @@
       "description": "The network connection identifier.",
       "type": "string_t"
     },
+    "consistency_guid": {
+      "caption": "Consistency Guid",
+      "type": "string_t",
+      "description": "Is used to check consistency between the directory and another object, database, or application by comparing GUIDs."
+    },
     "container": {
       "caption": "Container",
       "description": "The information describing an instance of a container. A container is a prepackaged, portable system image that runs isolated on an existing system using a container runtime like containerd.",
@@ -1144,6 +1183,11 @@
       "caption": "The product CPE identifier",
       "description": "The Common Platform Enumeration (CPE) name as described by (<a target='_blank' href='https://nvd.nist.gov/products/cpe'>NIST</a>) For example: <code>cpe:/a:apple:safari:16.2</code>.",
       "type": "string_t"
+    },
+    "creator_sid": {
+      "caption": "Creator SID",
+      "type": "string_t",
+      "description": "The security ID of the creator of the object that contains this attribute."
     },
     "cpu_bits": {
       "caption": "CPU Bits",
@@ -1334,6 +1378,11 @@
       "description": "The total round-trip delay to the reference clock in milliseconds.",
       "type": "integer_t"
     },
+    "is_deleted": {
+      "caption": "Is Deleted",
+      "type": "boolean_t",
+      "description": "Identifies if the object has been marked for deletion and will be removed."
+    },
     "deleted_time": {
       "caption": "Deleted Time",
       "description": "The timestamp when the user was deleted. In Active Directory (AD), when a user is deleted they are moved to a temporary container and then removed after 30 days. So, this field can be populated even after a user is deleted for the next 30 days.",
@@ -1343,6 +1392,11 @@
       "caption": "Delivered To",
       "description": "The <strong>Delivered-To</strong> email header field.",
       "type": "email_t"
+    },
+    "department": {
+      "caption": "Department",
+      "description": "The name of the department where the user works.",
+      "type": "string_t"
     },
     "depth": {
       "caption": "CVSS Depth",
@@ -1647,6 +1701,11 @@
         }
       }
     },
+    "display_name": {
+      "caption": "Display Name",
+      "type": "string_t",
+      "description": "The display name for an object."
+    },
     "dkim": {
       "caption": "DKIM Status",
       "description": "The DomainKeys Identified Mail (DKIM) status of the email.",
@@ -1802,6 +1861,40 @@
       "caption": "Email UID",
       "description": "The unique identifier of the email, used to correlate related email alert and activity events.",
       "type": "string_t"
+    },
+    "employee_type": {
+      "caption": "Employee Type",
+      "description": "The Employee Type , normalized to the caption of the employee_type_id value. In the case of 'Other', it is defined by the event source.",
+      "type": "string_t"
+    },
+    "employee_type_id": {
+      "caption": "Employee Type ID",
+      "description": "Identifier for the employee to employer relationship, such as Employee, Contractor, or Temp.",
+      "sibling": "employee_type",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Employee"
+        },
+        "2": {
+          "caption": "Contractor"
+        },
+        "3": {
+          "caption": "Consultant"
+        },
+        "4": {
+          "caption": "Vendor"
+        },
+        "5": {
+          "caption": "Temp"
+        },
+        "99": {
+          "caption": "Other"
+        }
+      }
     },
     "employee_uid": {
       "caption": "Employee ID",
@@ -2097,6 +2190,21 @@
       "caption": "Folder",
       "description": "The folder that pertains to the event.",
       "type": "file"
+    },
+    "forest": {
+      "caption": "Forest",
+      "type": "string_t",
+      "description": "Name of the Active Directory Forest."
+    },
+    "force_change_password_next_sign_in": {
+      "caption": "Force Change Password Next SignIn",
+      "description": "Specifies if the user has to change the password in the next sign in. true if the user must change their password on the next sign-in; otherwise false. If not set, default is false",
+      "type": "boolean_t"
+    },
+    "force_change_password_next_sign_in_with_mfa": {
+      "caption": "Force Change Password Next SignIn With Mfa",
+      "description": "Specifies if the user has to change the password in the next sign in with MFA.If true, at next sign-in, the user must perform a multifactor authentication (MFA) before being forced to change their password.",
+      "type": "boolean_t"
     },
     "forward_addr": {
       "caption": "Forwarding Address",
@@ -2674,6 +2782,11 @@
       "description": "The two letter lower case language codes, as defined by <a target='_blank' href='https://en.wikipedia.org/wiki/ISO_639-1'>ISO 639-1</a>. For example: <code>en</code> (English), <code>de</code> (German), or <code>fr</code> (French).",
       "type": "string_t"
     },
+    "last_known_parent": {
+      "caption": "Last Known Parent",
+      "type": "string_t",
+      "description": "The Distinguished Name (DN) of the last known parent of an orphaned object."
+    },
     "last_login_time": {
       "caption": "Last Login",
       "description": "The last time when the user logged in.",
@@ -2776,6 +2889,21 @@
       "caption": "Geo Location",
       "description": "The detailed geographical location usually associated with an IP address.",
       "type": "location"
+    },
+    "logon_count": {
+      "caption": "Logon Count",
+      "type": "integer_t",
+      "description": "The number of times the account has successfully logged on."
+    },
+    "logon_hours": {
+      "caption": "Logon Hours",
+      "type": "string_t",
+      "description": "The hours that the user is allowed to logon to the domain."
+    },
+    "lock_out_time": {
+      "caption": "Lock Out Time",
+      "type": "timestamp_t",
+      "description": "The date and time (UTC) that this account was locked out."
     },
     "log_level": {
       "caption": "Log Level",
@@ -2943,6 +3071,24 @@
       "description": "The location of the matched data in the source which resulted in the triggered firewall rule. For example: HEADER.",
       "type": "string_t"
     },
+    "member_of": {
+      "caption": "Member Of",
+      "type": "string_t",
+      "description": "Specifies the groups in which the object is a Member. See specific usage.",
+      "is_array": true
+    },
+    "member_of_guid": {
+      "caption": "Member Of GUID",
+      "type": "string_t",
+      "description": "Specifies the group's GUID, in which the object is a member. See specific usage.",
+      "is_array": true
+    },
+    "member_of_transitive": {
+      "caption": "Member Of Transitive",
+      "type": "string_t",
+      "description": "Specifies all the groups in which the object is a member, directly or indirectly. See specific usage.",
+      "is_array": true
+    },
     "message": {
       "caption": "Message",
       "description": "The description of the event/finding, as defined by the source.",
@@ -3037,6 +3183,11 @@
       "type": "string_t",
       "is_array": true
     },
+    "nt_security_descriptor": {
+      "caption": "NT Security Descriptor",
+      "type": "string_t",
+      "description": "The Windows NT security descriptor for the schema object."
+    },
     "num_detections": {
       "caption": "Detections",
       "description": "The number of detections.",
@@ -3098,9 +3249,65 @@
       "type": "observable",
       "is_array": true
     },
+    "object_category": {
+      "caption": "Object Category",
+      "type": "string_t",
+      "description": "An object class name used to group objects of this or derived classes."
+    },
+    "object_class": {
+      "caption": "Object Class",
+      "type": "string_t",
+      "description": "The list of classes from which this class is derived.",
+      "is_array": true
+    },
+    "object_guid": {
+      "caption": "Object GUID",
+      "type": "string_t",
+      "description": "The unique identifier for the user."
+    },
+    "object_sid": {
+      "caption": "Object SID",
+      "type": "string_t",
+      "description": "The security identifier (SID) of the user."
+    },
     "office_location": {
       "caption": "Office Location",
       "description": "The primary office location associated with the user. This could be any string and isn't a specific address. For example, <code>South East Virtual</code>.",
+      "type": "string_t"
+    },
+    "on_premises_distinguished_name": {
+      "caption": "On Premises Distinguished Name",
+      "description": "The distinguished name of the user in the on-premises Active Directory.",
+      "type": "string_t"
+    },
+    "on_premises_domain_name": {
+      "caption": "On Premises Domain Name",
+      "description": "The on-premises domain name of the user.",
+      "type": "string_t"
+    },
+    "on_premises_immutable_id": {
+      "caption": "On Premises Immutable ID",
+      "description": "The on-premises immutable identifier for the user.",
+      "type": "string_t"
+    },
+    "on_premises_last_sync_time": {
+      "caption": "On Premises Last Sync Time",
+      "description": "The last time at which the object was synced with the on-premises directory.",
+      "type": "timestamp_t"
+    },
+    "on_premises_sam_account_name": {
+      "caption": "On Premises SAM Account Name",
+      "description": "The on-premises Security Account Manager (SAM) account name of the user.",
+      "type": "string_t"
+    },
+    "on_premises_sync_enabled": {
+      "caption": "On Premises Sync Enabled",
+      "description": "Indicates whether the user account is enabled for synchronization.",
+      "type": "boolean_t"
+    },
+    "on_premises_user_principal_name": {
+      "caption": "On Premises User Principal Name",
+      "description": "The on-premises user principal name (UPN) of the user.",
       "type": "string_t"
     },
     "opcode": {
@@ -3266,10 +3473,25 @@
       "description": "The parent process of this process object. It is recommended to only populate this field for the first process object, to prevent deep nesting.",
       "type": "process"
     },
+    "parent_dn": {
+      "caption": "Parent Distinguished Name",
+      "type": "string_t",
+      "description": "The distinguished name (DN) of the parent object of the current object."
+    },
     "parent_uid": {
       "caption": "Parent Unique ID",
       "description": "The unique identifier of an object's parent object. See specific usage.",
       "type": "string_t"
+    },
+    "password_last_set_time": {
+      "caption": "Password Last Set Time",
+      "type": "timestamp_t",
+      "description": "The time when the user last set their password."
+    },
+    "password_never_expire": {
+      "caption": "Password Never Expire",
+      "type": "boolean_t",
+      "description": "This attribute indicates whether the password for a user account will expire or not"
     },
     "path": {
       "caption": "Path",
@@ -3443,6 +3665,11 @@
       "type": "security_state",
       "is_array": true
     },
+    "primary_group_id": {
+      "caption": "Primary Group ID",
+      "type": "integer_t",
+      "description": "The relative identifier (RID) for the primary group of the user."
+    },
     "priority": {
       "caption": "Priority",
       "description": "The priority, normalized to the caption of the priority_id value. In the case of 'Other', it is defined by the event source.",
@@ -3565,6 +3792,12 @@
         "message": "Use the <code> proxy_endpoint </code> attribute instead.",
         "since": "1.1.0"
       }
+    },
+    "proxy_addresses": {
+      "caption": "Proxy Addresses",
+      "description": "roxy address of a user. For example [SMTP: bob@contoso.com, smtp: bob@sales.contoso.com]",
+      "type": "string_t",
+      "is_array": true
     },
     "proxy_connection_info": {
       "caption": "Proxy Connection Info",
@@ -3708,6 +3941,11 @@
       "description": "The data describing the DNS resource. The meaning of this data depends on the type and class of the resource record.",
       "type": "string_t"
     },
+    "is_recycled": {
+      "caption": "Is Recycled",
+      "type": "boolean_t",
+      "description": "Identifies if the object has been added to the Recycle bin in Active Directory."
+    },
     "references": {
       "caption": "References",
       "description": "A list of reference URLs supporting the finding/detection.",
@@ -3837,6 +4075,11 @@
       "description": "The Domain Name System (DNS) response time.",
       "type": "timestamp_t"
     },
+    "resultant_pso": {
+      "caption": "Resultant PSO",
+      "type": "string_t",
+      "description": "The effective password policy applied on this object."
+    },
     "risk_details": {
       "caption": "Risk Details",
       "description": "Describes the risk associated with the finding.",
@@ -3940,6 +4183,16 @@
       "caption": "Runtime",
       "description": "The backend running the container, such as containerd or cri-o.",
       "type": "string_t"
+    },
+    "sam_account_name": {
+      "caption": "SAM Account Name",
+      "type": "string_t",
+      "description": "The Active Directory user logon name used to support clients and servers from a previous version of Windows ( Pre-Windows 2000)."
+    },
+    "sam_account_type": {
+      "caption": "SAM Account Type",
+      "type": "long_t",
+      "description": "This attribute contains information about every account type object."
     },
     "samesite": {
       "caption": "SameSite",
@@ -4083,6 +4336,11 @@
       "description": "The object security descriptor.",
       "type": "string_t"
     },
+    "is_security_group": {
+      "caption": "Security Group",
+      "type": "boolean_t",
+      "description": "Indicates whether the user account is a Security Group."
+    },
     "security_level": {
       "caption": "Security Level",
       "description": "The current security level of the entity",
@@ -4154,6 +4412,17 @@
       "caption": "Service",
       "description": "The service that pertains to the event.",
       "type": "service"
+    },
+    "is_service_account": {
+      "caption": "Service Account",
+      "type": "boolean_t",
+      "description": "Indicates whether the user account is a used as a Service Account."
+    },
+    "service_principal_name": {
+      "caption": "Service Principal Name",
+      "type": "string_t",
+      "description": "The unique identifiers of a service instance in Active Directory.",
+      "is_array": true
     },
     "session": {
       "caption": "Session",
@@ -4239,6 +4508,12 @@
           "description": "The share type is not mapped. See the <code>share_type</code> attribute, which contains a data source specific value."
         }
       }
+    },
+    "sid_history": {
+      "caption": "SID History",
+      "type": "string_t",
+      "description": "Contains previous SIDs used for the object if the object was moved from another domain.",
+      "is_array": true
     },
     "short_desc": {
       "caption": "Short Description",
@@ -4643,6 +4918,12 @@
       "type": "email_t",
       "is_array": true
     },
+    "token_groups": {
+      "caption": "Token Groups",
+      "type": "string_t",
+      "description": "The list of SIDs due to a transitive group membership expansion operation on a given user or computer.",
+      "is_array": true
+    },
     "total": {
       "caption": "Total",
       "description": "The total number of items. See specific usage.",
@@ -4742,6 +5023,11 @@
       "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
       "type": "object"
     },
+    "unique_name": {
+      "caption": "Unique Name",
+      "description": "The unique identifier that can be assigned to a group and used as an alternate key.",
+      "type": "string_t"
+    },
     "url": {
       "caption": "URL",
       "description": "The URL object that pertains to the event or object. See specific usage.",
@@ -4757,16 +5043,41 @@
       "description": "The user that pertains to the event or object.",
       "type": "user"
     },
+    "user_account_control": {
+      "caption": "User Account Control",
+      "type": "integer_t",
+      "description": "Flags that control the behavior of the user account."
+    },
     "user_agent": {
       "observable": 16,
       "caption": "HTTP User-Agent",
       "description": "The request header that identifies the operating system and web browser.",
       "type": "string_t"
     },
+    "user_principal_name": {
+      "caption": "User Principal Name",
+      "type": "string_t",
+      "description": "The name of a system user. Like Active Directory an email address format."
+    },
     "user_result": {
       "caption": "User Result",
       "description": "The result of the user account change. It should contain the new values of the changed attributes.",
       "type": "user"
+    },
+    "user_password_expiry_computed_time": {
+      "caption": "User Password Expiry Time",
+      "type": "timestamp_t",
+      "description": "The expiry time for the user's current password."
+    },
+    "usn_changed": {
+      "caption": "USN Changed",
+      "type": "long_t",
+      "description": "The update sequence number (USN) assigned by the local directory for the latest change."
+    },
+    "usn_created": {
+      "caption": "USN Created",
+      "type": "long_t",
+      "description": "The update sequence number (USN) assigned at object creation."
     },
     "users": {
       "caption": "Users",
@@ -4859,6 +5170,25 @@
       "caption": "Version",
       "description": "The version that pertains to the event or object. See specific usage.",
       "type": "string_t"
+    },
+    "visibility": {
+      "caption": "Visibility",
+      "description": "Specifies the group join policy and group content visibility for groups. Possible values are: Private, Public, or HiddenMembership.",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Private",
+          "description": "The group is private."
+        },
+        "1": {
+          "caption": "Public",
+          "description": "The group is public."
+        },
+        "2": {
+          "caption": "HiddenMembership",
+          "description": "The group is hidden."
+        }
+      }
     },
     "vlan_uid": {
       "caption": "VLAN",

@@ -1,10 +1,25 @@
 {
   "caption": "LDAP Person",
   "description": "The additional LDAP attributes that describe a person.",
-  "extends": "object",
   "name": "ldap_person",
+  "extends": "object",
+  "profiles": [
+    "active_directory"
+  ],
   "attributes": {
+    "$include": [
+      "profiles/active_directory.json"
+    ],
+    "allowed_to_act_on_behalf_of_other_identity": {
+      "requirement": "optional"
+    },
+    "allowed_to_delegate_to": {
+      "requirement": "optional"
+    },
     "cost_center": {
+      "requirement": "optional"
+    },
+    "creator_sid": {
       "requirement": "optional"
     },
     "created_time": {
@@ -14,11 +29,38 @@
     "deleted_time": {
       "requirement": "optional"
     },
+    "department": {
+      "requirement": "optional"
+    },
+    "display_name": {
+      "requirement": "recommended"
+    },
+    "domain": {
+      "requirement": "recommended",
+      "description": "Name of the Active Directory Domain."
+    },
     "email_addrs": {
       "requirement": "optional"
     },
     "employee_uid": {
       "requirement": "optional"
+    },
+    "employee_type": {
+      "requirement": "optional"
+    },
+    "employee_type_id": {
+      "requirement": "optional"
+    },
+    "expiration_time": {
+      "caption": "Expiration Time",
+      "description": "Timestamp of when the group is set to expire",
+      "type": "timestamp_t"
+    },
+    "force_change_password_next_sign_in": {
+      "requirement": "optional"
+    },
+    "force_change_password_next_sign_in_with_mfa": {
+        "requirement": "optional"
     },
     "given_name": {
       "requirement": "optional"
@@ -31,6 +73,15 @@
     },
     "labels": {
       "description": "The labels associated with the user. For example in AD this could be the <code>userType</code>, <code>employeeType</code>. For example: <code>Member, Employee</code>.",
+      "requirement": "optional"
+    },
+    "parent_dn": {
+      "requirement": "optional"
+    },
+    "proxy_addresses": {
+      "requirement": "optional"
+    },
+    "last_known_parent": {
       "requirement": "optional"
     },
     "last_login_time": {
@@ -52,9 +103,33 @@
     "manager": {
       "requirement": "optional"
     },
+    "member_of": {
+      "requirement": "optional",
+      "description": "Specifies the names of groups in Active Directory in which the user is a member."
+    },
+    "member_of_guid": {
+      "requirement": "optional",
+      "description": "Specifies the list of GUIDs of groups in Active Directory in which the user is a member."
+    },
+    "member_of_transitive": {
+      "requirement": "optional",
+      "description": "This attribute specifies the set of distinguished names (DNs) in the memberOf attribute on the current object and the DNs from the memberOf attributes of each of the objects specified in the memberOf attribute on the current object."
+    },
     "modified_time": {
       "description": "The timestamp when the user entry was last modified.",
       "requirement": "optional"
+    },
+    "object_category": {
+      "requirement": "recommended"
+    },
+    "object_class": {
+      "requirement": "recommended"
+    },
+    "object_guid": {
+      "requirement": "recommended"
+    },
+    "object_sid": {
+      "requirement": "recommended"
     },
     "office_location": {
       "requirement": "optional"
@@ -64,11 +139,44 @@
       "description": "The telephone number of the user. Corresponds to the LDAP <code>Telephone-Number</code> CN.",
       "requirement": "optional"
     },
+    "primary_group_id": {
+      "requirement": "optional"
+    },
+    "resultant_pso": {
+      "requirement": "optional"
+    },
+    "is_service_account": {
+      "requirement": "recommended"
+    },
+    "sid_history": {
+      "requirement": "optional"
+    },
     "surname": {
       "requirement": "optional"
     },
     "tags": {
       "description": "The list of tags; <code>{key:value}</code> pairs associated to the user.",
+      "requirement": "optional"
+    },
+    "unique_name": {
+      "requirement": "optional"
+    },
+    "usn_changed": {
+      "requirement": "optional"
+    },
+    "usn_created": {
+      "requirement": "optional"
+    },
+    "user_principal_name": {
+      "requirement": "recommended"
+    },
+    "user_account_control": {
+      "requirement": "recommended"
+    },
+    "user_password_expiry_computed_time": {
+      "requirement": "optional"
+    },
+    "visibility": {
       "requirement": "optional"
     }
   }

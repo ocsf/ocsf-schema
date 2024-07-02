@@ -58,9 +58,7 @@ Thankyou! -->
     7. Added `whois` object. #992
     8. Added `domain_contact` and array-typed `domain_contacts` object for use with `whois` object. #992
     9. Added `Windows Service` object to the Windows extension. #1103
-    10. Added array-typed `compliacne_references` and array-typed `compliance_standards` objects as array of `kb_article` and used in `compliance` object. #1110    
-
-
+    10. Added array-typed `compliance_references` and array-typed `compliance_standards` objects as array of `kb_article` to `compliance` object. #1110
 * #### Platform Extensions
 
 ### Improved
@@ -69,18 +67,18 @@ Thankyou! -->
     1. Added `file_result` to File Hosting Activity. #1045
     2. Added entries to `injection_type_id` enum (`Process Activity`) and `activity_id` enum (`Memory Activity`). #1060
     3. Added a `Restart`, `Enable`, `Disable`, and `Update` `activity_id` to the `Application Lifecycle` class. #1064
-    4. Added `ja4_fingerprint_list` to base network event class. #834 
-    5. Added new activities `Enroll`, `Activate`, `Deactivate`, `Suspend`, and `Resume` to the `Entity Management` class. #1095
+    4. Added `ja4_fingerprint_list` to base network event class. #834
+    5. Added `ticket` to `Incident Finding` event class. #1068
+    6. Added new activities `Enroll`, `Activate`, `Deactivate`, `Suspend`, and `Resume` to the `Entity Management` class. #1095
 * #### Profiles
 * #### Objects
     1. Added `ext` to `File` object. #1046
     2. Added `account`, `device`, `email`, `url`, `user` to `evidences` in detection finding. #1000
     3. Added `state_id`, `state` to `Digital Signature` object. #1069
-    4. Added `ticket` to `Incident Finding` object. ticket. #1068
-    5. Added `domain` to `Uniform Resource Locator` object. #1096
-    6. Added `reg_key` and `reg_value` to `Evidence Artifacts` object. #1078  
-    7. Added `type_id` and associated entity objects to `Managed Entity`. #1094
-    8. Added `vendor_name`, `type`, `type_id` to object `package`. #1093
+    4. Added `domain` to `Uniform Resource Locator` object. #1096
+    5. Added `reg_key` and `reg_value` to `Evidence Artifacts` object. #1078  
+    6. Added `type_id` and associated entity objects to `Managed Entity`. #1094
+    7. Added `vendor_name`, `type`, `type_id` to object `package`. #1093
 * #### Platform Extensions
 
 ### Bugfixes
@@ -101,6 +99,7 @@ Thankyou! -->
     4. New Extension registration for Cisco #1074
     5. Cleaned up MITRE trademarks and registrations for captions and descriptions.
     6. Declared enums in dictionary.json have sane "0" (Unknown) and "99" (Other) declarations and descriptions where appropriate #1111
+    7. Added `credential_uid` as an Observable type - type_id: 19. #1137
 
 ## [v1.2.0] - April 23rd, 2024
 

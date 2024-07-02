@@ -59,6 +59,8 @@ Thankyou! -->
     7. Added `whois` object. #992
     8. Added `domain_contact` and array-typed `domain_contacts` object for use with `whois` object. #992
     9. Added `Windows Service` object to the Windows extension. #1103
+    10. Added array-typed `compliacne_references` and array-typed `compliance_standards` objects as array of `kb_article` and used in `compliance` object. #1110    
+
 
 * #### Platform Extensions
 
@@ -85,6 +87,7 @@ Thankyou! -->
 ### Bugfixes
     1. Fixed the host profile construction in `patch_state` event class. #1087
     2. Removed the optional requirement overrides for `name` and `uid` in `_resource` as they are part of a constraint. #1087
+    3. Fixed declarations of `data_lifecycle_state_id`, `integrity`, `opcode_id`, `risk_level`, and `analytic.type_id`. #1111
 
 ### Deprecated
 
@@ -98,6 +101,7 @@ Thankyou! -->
     3. Added a `gitignore` file. #1071
     4. New Extension registration for Cisco #1074
     5. Cleaned up MITRE trademarks and registrations for captions and descriptions.
+    6. Declared enums in dictionary.json have sane "0" (Unknown) and "99" (Other) declarations and descriptions where appropriate #1111
 
 ## [v1.2.0] - April 23rd, 2024
 

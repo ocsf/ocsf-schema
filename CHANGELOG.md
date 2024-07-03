@@ -153,6 +153,7 @@ Thankyou! -->
     4. Added `Software Inventory Info` event class to the Discovery category. #1134
 * #### Profiles
     1. Added `osint` Profile based on the `osint` object. #992
+    2. Added `active_directory` profile. #1136
 * #### Objects
     1. Added `d3fend`, `d3f_tactic`, `d3f_technique` MITRE objects. #1066 
     2. Added `ja4_fingerprint` object. #834

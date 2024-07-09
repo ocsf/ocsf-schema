@@ -104,7 +104,6 @@ Thankyou! -->
     6. Declared enums in dictionary.json have sane "0" (Unknown) and "99" (Other) declarations and descriptions where appropriate #1111
     7. Adds support for `suppress_checks` controls in attributes to allow tools to automatically validate conventions #1063
         * Updated several attributes that do not follow conventions to disable linting for them
-        * Updated `data_lifecycle_state_id` to add a "99" (Other) enumerand to follow convention
 
 
 ## [v1.2.0] - April 23rd, 2024

@@ -101,7 +101,9 @@ Thankyou! -->
 4. New Extension registration for Cisco #1074
 5. Cleaned up MITRE trademarks and registrations for captions and descriptions.
 6. Declared enums in dictionary.json have sane "0" (Unknown) and "99" (Other) declarations and descriptions where appropriate #1111
-7. Added `credential_uid` as an Observable type - type_id: 19. #1137
+7. Adds support for `suppress_checks` controls in attributes to allow tools to automatically validate conventions #1063
+    * Updated several attributes that do not follow conventions to disable linting for them
+8. Added `credential_uid` as an Observable type - type_id: 19. #1137
 
 ## [v1.2.0] - April 23rd, 2024
 

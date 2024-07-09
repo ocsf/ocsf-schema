@@ -45,6 +45,8 @@ Thankyou! -->
 * #### Event Classes
     1. Added `Event Log Activity` event class. #1014
     2. Added `Remediation Activity` `File Remediation Activity` `Process Remediation Activity` `Network Remediation Activity` event classes. #1066
+    3. Added `Windows Service Activity` event class to the Windows extension. #1103
+    4. Added `Software Inventory Info` event class to the Discovery category. #1134
 * #### Profiles
     1. Added `osint` Profile based on `osint` object. #992
 * #### Objects
@@ -56,6 +58,9 @@ Thankyou! -->
     6. Added `signatures` object, an array of `signature` objects. #992
     7. Added `whois` object. #992
     8. Added `domain_contact` and array-typed `domain_contacts` object for use with `whois` object. #992
+    9. Added `Windows Service` object to the Windows extension. #1103
+    10. Added array-typed `compliacne_references` and array-typed `compliance_standards` objects as array of `kb_article` and used in `compliance` object. #1110    
+
 
 * #### Platform Extensions
 
@@ -82,6 +87,7 @@ Thankyou! -->
 ### Bugfixes
     1. Fixed the host profile construction in `patch_state` event class. #1087
     2. Removed the optional requirement overrides for `name` and `uid` in `_resource` as they are part of a constraint. #1087
+    3. Fixed declarations of `data_lifecycle_state_id`, `integrity`, `opcode_id`, `risk_level`, and `analytic.type_id`. #1111
 
 ### Deprecated
 
@@ -95,9 +101,10 @@ Thankyou! -->
     3. Added a `gitignore` file. #1071
     4. New Extension registration for Cisco #1074
     5. Cleaned up MITRE trademarks and registrations for captions and descriptions.
-    6. Adds support for `suppress_checks` controls in attributes to allow tools to automatically validate conventions
+    6. Declared enums in dictionary.json have sane "0" (Unknown) and "99" (Other) declarations and descriptions where appropriate #1111
+    7. Adds support for `suppress_checks` controls in attributes to allow tools to automatically validate conventions #1063
         * Updated several attributes that do not follow conventions to disable linting for them
-        * Updated `data_lifecycle_state_id` to add a 99(Other) enumerand to follow convention
+        * Updated `data_lifecycle_state_id` to add a "99" (Other) enumerand to follow convention
 
 
 ## [v1.2.0] - April 23rd, 2024

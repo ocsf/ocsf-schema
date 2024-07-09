@@ -80,6 +80,7 @@ Thankyou! -->
     5. Added `reg_key` and `reg_value` to `Evidence Artifacts` object. #1078  
     6. Added `type_id` and associated entity objects to `Managed Entity`. #1094
     7. Added `vendor_name`, `type`, `type_id` to object `package`. #1093
+    8. Added `router`, `ids`, and `ips` entries to `type_id` enum in the `Endpoint` object. #1121
 * #### Platform Extensions
 
 ### Bugfixes

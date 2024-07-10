@@ -1,0 +1,88 @@
+{
+  "caption": "LDAP Group",
+  "description": "The additional LDAP attributes that describe a group.",
+  "name": "ldap_group",
+  "extends": "object",
+  "profiles": [
+    "s1internal/active_directory"
+  ],
+  "attributes": {
+    "$include": [
+      "profiles/active_directory.json"
+    ],
+    "admin_count": {
+      "requirement": "recommended"
+    },
+    "ldap_cn": {
+      "requirement": "optional"
+    },
+    "ldap_dn": {
+      "requirement": "optional"
+    },
+    "display_name": {
+      "requirement": "recommended"
+    },
+    "domain": {
+      "requirement": "recommended"
+    },
+    "group_type": {
+      "requirement": "optional"
+    },
+    "members": {
+      "requirement": "recommended",
+      "description": "Specifies the names of users in Active Directory that belong to the group."
+    },
+    "members_guid": {
+      "requirement": "recommended",
+      "description": "Specifies the list of GUIDs of objects in Active Directory that belong to the group."
+    },
+    "members_transitive": {
+      "requirement": "optional",
+      "description": "Specifies the set of distinguished names (DNs) in the member attribute on the current object and the DNs from the member attribute of each of the objects specified in the member attribute on the current object."
+    },
+    "member_of": {
+      "requirement": "recommended",
+      "description": "Specifies the names of groups in Active Directory in which the group is a member."
+    },
+    "member_of_guid": {
+      "requirement": "recommended",
+      "description": "Specifies the list of GUIDs of groups in Active Directory in which the group is a member."
+    },
+    "member_of_transitive": {
+      "requirement": "optional",
+      "description": "Specifies the set of distinguished names (DNs) in the memberOf attribute on the current object and the DNs from the memberOf attributes of each of the objects specified in the memberOf attribute on the current object."
+    },
+    "parent_dn": {
+      "requirement": "optional"
+    },
+    "principal_name": {
+      "requirement": "optional"
+    },
+    "object_category": {
+      "requirement": "recommended"
+    },
+    "object_class": {
+      "requirement": "recommended"
+    },
+    "object_guid": {
+      "requirement": "recommended"
+    },
+    "service_account": {
+      "requirement": "recommended"
+    },
+    "usn_changed": {
+      "requirement": "optional"
+    },
+    "usn_created": {
+      "requirement": "optional"
+    },
+    "created_time": {
+      "requirement": "recommended",
+      "description": "The time when the group was created."
+    },
+    "modified_time": {
+      "requirement": "optional",
+      "description": "The time when the group was last modified."
+    }
+  }
+}

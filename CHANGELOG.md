@@ -104,6 +104,7 @@ Thankyou! -->
 7. Adds support for `suppress_checks` controls in attributes to allow tools to automatically validate conventions #1063
     * Updated several attributes that do not follow conventions to disable linting for them
 8. Added `credential_uid` as an Observable type - type_id: 19. #1137
+9. New Extension registration for US Gov #1140
 
 ## [v1.2.0] - April 23rd, 2024
 

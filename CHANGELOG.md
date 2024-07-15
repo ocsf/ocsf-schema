@@ -46,7 +46,8 @@ Thankyou! -->
     1. Added `Event Log Activity` event class. #1014
     2. Added `Remediation Activity` `File Remediation Activity` `Process Remediation Activity` `Network Remediation Activity` event classes. #1066
     3. Added `Windows Service Activity` event class to the Windows extension. #1103
-    4. Added `Startup Application Query` event class. #1119
+    4. Added `Software Inventory Info` event class to the Discovery category. #1134
+    5. Added `Startup Application Query` event class. #1119
 * #### Profiles
     1. Added `osint` Profile based on `osint` object. #992
 * #### Objects
@@ -59,7 +60,7 @@ Thankyou! -->
     7. Added `whois` object. #992
     8. Added `domain_contact` and array-typed `domain_contacts` object for use with `whois` object. #992
     9. Added `Windows Service` object to the Windows extension. #1103
-
+    10. Added array-typed `compliance_references` and array-typed `compliance_standards` objects as array of `kb_article` to `compliance` object. #1110
 * #### Platform Extensions
 
 ### Improved
@@ -68,36 +69,43 @@ Thankyou! -->
     1. Added `file_result` to File Hosting Activity. #1045
     2. Added entries to `injection_type_id` enum (`Process Activity`) and `activity_id` enum (`Memory Activity`). #1060
     3. Added a `Restart`, `Enable`, `Disable`, and `Update` `activity_id` to the `Application Lifecycle` class. #1064
-    4. Added `ja4_fingerprint_list` to base network event class. #834 
-    5. Added new activities `Enroll`, `Activate`, `Deactivate`, `Suspend`, and `Resume` to the `Entity Management` class. #1095
+    4. Added `ja4_fingerprint_list` to base network event class. #834
+    5. Added `ticket` to `Incident Finding` event class. #1068
+    6. Added new activities `Enroll`, `Activate`, `Deactivate`, `Suspend`, and `Resume` to the `Entity Management` class. #1095
 * #### Profiles
 * #### Objects
     1. Added `ext` to `File` object. #1046
     2. Added `account`, `device`, `email`, `url`, `user` to `evidences` in detection finding. #1000
     3. Added `state_id`, `state` to `Digital Signature` object. #1069
-    4. Added `ticket` to `Incident Finding` object. ticket. #1068
-    5. Added `domain` to `Uniform Resource Locator` object. #1096
-    6. Added `reg_key` and `reg_value` to `Evidence Artifacts` object. #1078  
-    7. Added `type_id` and associated entity objects to `Managed Entity`. #1094
-    8. Added `vendor_name`, `type`, `type_id` to object `package`. #1093
+    4. Added `domain` to `Uniform Resource Locator` object. #1096
+    5. Added `reg_key` and `reg_value` to `Evidence Artifacts` object. #1078  
+    6. Added `type_id` and associated entity objects to `Managed Entity`. #1094
+    7. Added `vendor_name`, `type`, `type_id` to object `package`. #1093
+    8. Added `router`, `ids`, and `ips` entries to `type_id` enum in the `Endpoint` object. #1121
 * #### Platform Extensions
 
 ### Bugfixes
-    1. Fixed the host profile construction in `patch_state` event class. #1087
-    2. Removed the optional requirement overrides for `name` and `uid` in `_resource` as they are part of a constraint. #1087
+1. Fixed the host profile construction in `patch_state` event class. #1087
+2. Removed the optional requirement overrides for `name` and `uid` in `_resource` as they are part of a constraint. #1087
+3. Fixed declarations of `data_lifecycle_state_id`, `integrity`, `opcode_id`, `risk_level`, and `analytic.type_id`. #1111
 
 ### Deprecated
 
 ### Breaking changes
 
 ### Misc
-    1. Colorized validator output #1048
-        * Updated the GitHub workflow for the `ocsf-validator` to print colorized output.
-    2. Clarify how to reference profiles in metadata #1056
-        * Updated the description of `metadata.profiles` to clarify the correct way to reference a profile in that list.
-    3. Added a `gitignore` file. #1071
-    4. New Extension registration for Cisco #1074
-    5. Cleaned up MITRE trademarks and registrations for captions and descriptions.
+1. Colorized validator output #1048
+    * Updated the GitHub workflow for the `ocsf-validator` to print colorized output.
+2. Clarify how to reference profiles in metadata #1056
+    * Updated the description of `metadata.profiles` to clarify the correct way to reference a profile in that list.
+3. Added a `gitignore` file. #1071
+4. New Extension registration for Cisco #1074
+5. Cleaned up MITRE trademarks and registrations for captions and descriptions.
+6. Declared enums in dictionary.json have sane "0" (Unknown) and "99" (Other) declarations and descriptions where appropriate #1111
+7. Adds support for `suppress_checks` controls in attributes to allow tools to automatically validate conventions #1063
+    * Updated several attributes that do not follow conventions to disable linting for them
+8. Added `credential_uid` as an Observable type - type_id: 19. #1137
+9. New Extension registration for US Gov #1140
 
 ## [v1.2.0] - April 23rd, 2024
 
@@ -180,32 +188,32 @@ Thankyou! -->
     n/a
 
 ### Bugfixes
-    1. Changed datatype of `priority` attribute, from `integer_t` to `string_t` #959
-    2. Extended `email_t` regexp to allow characters from RFC5322 before @.
-    3. Updated `logon_type_id` enum to include `0` as `Unknown`. Added enum item `1` as `System`. #1055
+1. Changed datatype of `priority` attribute, from `integer_t` to `string_t` #959
+2. Extended `email_t` regexp to allow characters from RFC5322 before @.
+3. Updated `logon_type_id` enum to include `0` as `Unknown`. Added enum item `1` as `System`. #1055
 
 ### Deprecated
-    1. Deprecated `coordinates` attribute in favor of specific `lat`, `long` attributes. #971
-    2. Deprecated `invoked_by` attribute in the `Actor` object in favor of `app_name`. #979.
+1. Deprecated `coordinates` attribute in favor of specific `lat`, `long` attributes. #971
+2. Deprecated `invoked_by` attribute in the `Actor` object in favor of `app_name`. #979.
 
 ### Breaking changes
-    n/a
+n/a
 
 ### Misc
-    1. New Extension registration for Sedara. #951
-    2. Corrected punctuation for the `transmit_time` attribute. #1001
-    3. New ways to define observables in the metaschema. #982 and #993
-        * (Current) Dictionary types using `observable` property in dictionary types. This allows defining all occurrences of attributes of this type as an observable.
-        * (Current) Objects using top-level `observable` property. This allows defining all occurrences attributes whose type is this object as an observable.
-        * _**(New)**_ Dictionary attributes using `observable` property in attribute. This allows defining all occurrences of this attribute as an observable.
-        * _**(New)**_ Object-specific attributes using `observable` property class's attributes. This allows defining object attributes as observables _only_ within instances of this specific object.
-        * _**(New)**_ Event class-specific attributes using `observable` property class's attributes. This allows defining class attributes as observables _only_ within instances of this specific class.
-        * _**(New)**_ Event class-specific attribute _paths_ using top-level `observables` property. The `observables` property holds an object mapping from an dotted attribute path to an observable `type_id`. This allows defining an observables _only_ within instances of this specific class, and only for the attributes at these paths, even for attributes that are within nested objects and arrays. This can also be used for top-level class attributes, which can be more convenient that defining a class attribute observable for classes that extend another, but don't otherwise change a attribute definition.
-    4. Metaschema improvements. #993 
-        * Detect unexpected top-level properties in object and event class definitions. This was added at this point to detect invalid observable definitions: invalid `observable` property in event classes, and invalid `observables` property in objects.
-        * Remove hard-coded list of categories from `metaschema/categories.schema.json`, leaving this to the `ocsf-validator`. This change makes testing with alternate schemas that may add extra categories easier, as well as making it possible to validate private extensions that contain new categories.
-    5. Metaschema error reporting #1027
-        * Updated the definition of `object` and `event` so that metaschema errors reported by the validator with nested properties correctly attribute the error to the property with the error, rather than the top-level class.
+1. New Extension registration for Sedara. #951
+2. Corrected punctuation for the `transmit_time` attribute. #1001
+3. New ways to define observables in the metaschema. #982 and #993
+    * (Current) Dictionary types using `observable` property in dictionary types. This allows defining all occurrences of attributes of this type as an observable.
+    * (Current) Objects using top-level `observable` property. This allows defining all occurrences attributes whose type is this object as an observable.
+    * _**(New)**_ Dictionary attributes using `observable` property in attribute. This allows defining all occurrences of this attribute as an observable.
+    * _**(New)**_ Object-specific attributes using `observable` property class's attributes. This allows defining object attributes as observables _only_ within instances of this specific object.
+    * _**(New)**_ Event class-specific attributes using `observable` property class's attributes. This allows defining class attributes as observables _only_ within instances of this specific class.
+    * _**(New)**_ Event class-specific attribute _paths_ using top-level `observables` property. The `observables` property holds an object mapping from an dotted attribute path to an observable `type_id`. This allows defining an observables _only_ within instances of this specific class, and only for the attributes at these paths, even for attributes that are within nested objects and arrays. This can also be used for top-level class attributes, which can be more convenient that defining a class attribute observable for classes that extend another, but don't otherwise change a attribute definition.
+4. Metaschema improvements. #993 
+    * Detect unexpected top-level properties in object and event class definitions. This was added at this point to detect invalid observable definitions: invalid `observable` property in event classes, and invalid `observables` property in objects.
+    * Remove hard-coded list of categories from `metaschema/categories.schema.json`, leaving this to the `ocsf-validator`. This change makes testing with alternate schemas that may add extra categories easier, as well as making it possible to validate private extensions that contain new categories.
+5. Metaschema error reporting #1027
+    * Updated the definition of `object` and `event` so that metaschema errors reported by the validator with nested properties correctly attribute the error to the property with the error, rather than the top-level class.
 
 ## [v1.1.0] - January 25th, 2024
 

@@ -58,8 +58,8 @@ Thankyou! -->
     7. Added `whois` object. #992
     8. Added `domain_contact` and array-typed `domain_contacts` object for use with `whois` object. #992
     9. Added `Windows Service` object to the Windows extension. #1103
-    10. Added `state` object to the Device Config State Change Event
-    11. Added `state_id` object to the Device Config State Change Event
+    10. Added `state` object to the Device Config State Change Event.
+    11. Added `state_id` object to the Device Config State Change Event.
 
 * #### Platform Extensions
 

@@ -76,6 +76,7 @@
     "activity_id": {
       "caption": "Activity ID",
       "description": "The normalized identifier of the activity that triggered the event.",
+      "suppress_checks": ["sibling_convention"],
       "sibling": "activity_name",
       "type": "integer_t",
       "enum": {
@@ -1164,7 +1165,8 @@
     "credential_uid": {
       "caption": "User Credential ID",
       "description": "The unique identifier of the user's credential. For example, AWS Access Key ID.",
-      "type": "string_t"
+      "type": "string_t",
+      "observable": 19
     },
     "criticality": {
       "caption": "Criticality",
@@ -2919,6 +2921,7 @@
     "opcode_id": {
       "caption": "DNS Opcode ID",
       "description": "The DNS opcode ID specifies the normalized query message type as defined in <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc5395.html'>RFC-5395</a>.",
+      "suppress_checks": ["enum_convention"],
       "type": "integer_t",
       "enum": {
         "0": {
@@ -3628,6 +3631,7 @@
     "risk_level_id": {
       "caption": "Risk Level ID",
       "description": "The normalized risk level id.",
+      "suppress_checks": ["enum_convention"],
       "sibling": "risk_level",
       "type": "integer_t",
       "enum": {

@@ -71,6 +71,7 @@ Thankyou! -->
     4. Added `ja4_fingerprint_list` to base network event class. #834
     5. Added `ticket` to `Incident Finding` event class. #1068
     6. Added new activities `Enroll`, `Activate`, `Deactivate`, `Suspend`, and `Resume` to the `Entity Management` class. #1095
+    7. Added new activity `Listen` to `Network Activity` and relax requirement of `src_endpoint`. #1147
 * #### Profiles
 * #### Objects
     1. Added `ext` to `File` object. #1046

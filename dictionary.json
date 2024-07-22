@@ -76,6 +76,7 @@
     "activity_id": {
       "caption": "Activity ID",
       "description": "The normalized identifier of the activity that triggered the event.",
+      "suppress_checks": ["sibling_convention"],
       "sibling": "activity_name",
       "type": "integer_t",
       "enum": {
@@ -845,7 +846,16 @@
       "description": "The list of normalized identifiers of the malware classifications. Reference: <a target='_blank' href='https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_oxlc4df65spl'>STIX Malware Types</a> ",
       "sibling": "classifications",
       "type": "integer_t",
-      "enum": {},
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The malware classification is unknown."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The malware classification is not mapped. See the <code>classifications</code> array, which contains a data source specific value."
+        }
+      },
       "is_array": true
     },
     "classifications": {
@@ -938,6 +948,18 @@
       "caption": "Compliance",
       "description": "The compliance object provides context to compliance findings (e.g., a check against a specific regulatory or best practice framework such as CIS, NIST etc.) and contains compliance related details.",
       "type": "compliance"
+    },
+    "compliance_references": {
+      "caption": "Complaince References Articles",
+      "description": "A list of sources of information or tools that help organizations understand, interpret, and implement compliance standards. They provide guidance, best practices, and examples.",
+      "type": "kb_article",
+      "is_array": true
+    },
+    "compliance_standards": {
+      "caption": "Compliance Standards Articles",
+      "description": "A list of established guidelines or criteria that define specific requirements an organization must follow.",
+      "type": "kb_article",
+      "is_array": true
     },
     "component": {
       "caption": "Component",
@@ -1143,7 +1165,8 @@
     "credential_uid": {
       "caption": "User Credential ID",
       "description": "The unique identifier of the user's credential. For example, AWS Access Key ID.",
-      "type": "string_t"
+      "type": "string_t",
+      "observable": 19
     },
     "criticality": {
       "caption": "Criticality",
@@ -1232,7 +1255,7 @@
       "enum": {
         "0": {
           "caption": "Unknown",
-          "description": "The type is not mapped. See the <code>data_lifecycle_state</code> attribute, which contains a data source specific value."
+          "description": "The data lifecycle state is unknown."
         },
         "1": {
           "caption": "Data at-Rest",
@@ -1245,6 +1268,10 @@
         "3": {
           "caption": "Data in-Use",
           "description": "The data was being processed, accessed, or read by a system, making it active in memory or CPU. E.g., sensitive data in a Business Intelligence tool, ePHI being processed in an EHR application or a user viewing data stored in a spreadsheet or PDF."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The data lifecycle state is not mapped. See the <code>data_lifecycle_state</code> attribute, which contains a data source specific value."
         }
       }
     },
@@ -1911,7 +1938,16 @@
       "description": "The list of normalized identifiers of the communication flag IDs.",
       "sibling": "flags",
       "type": "integer_t",
-      "enum": {},
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The flag is unknown."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The flag is not mapped. See the <code>flags</code> attribute, which contains a data source specific value."
+        }
+      },
       "is_array": true
     },
     "flags": {
@@ -2189,7 +2225,7 @@
     },
     "integrity": {
       "caption": "Integrity",
-      "description": "The process integrity level, normalized to the caption of the direction_id value. In the case of 'Other', it is defined by the event source (Windows only).",
+      "description": "The process integrity level, normalized to the caption of the integrity_id value. In the case of 'Other', it is defined by the event source (Windows only).",
       "type": "string_t"
     },
     "integrity_id": {
@@ -2197,7 +2233,16 @@
       "description": "The normalized identifier of the process integrity level (Windows only).",
       "sibling": "integrity",
       "type": "integer_t",
-      "enum": {}
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The integrity level is unknown."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The integrity level is not mapped. See the <code>integrity</code> attribute, which contains a data source specific value."
+        }
+      }
     },
     "interface_name": {
       "caption": "Network Interface Name",
@@ -2520,7 +2565,16 @@
       "description": "The normalized identifier of the load type. It identifies how the module was loaded in memory.",
       "sibling": "load_type",
       "type": "integer_t",
-      "enum": {}
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The load type is unknown."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The load type is not mapped. See the <code>load_type</code> attribute, which contains a data source specific value."
+        }
+      }
     },
     "loaded_modules": {
       "caption": "Loaded Modules",
@@ -2866,7 +2920,8 @@
     },
     "opcode_id": {
       "caption": "DNS Opcode ID",
-      "description": "The DNS opcode ID specifies the normalized query message type.",
+      "description": "The DNS opcode ID specifies the normalized query message type as defined in <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc5395.html'>RFC-5395</a>.",
+      "suppress_checks": ["enum_convention"],
       "type": "integer_t",
       "enum": {
         "0": {
@@ -2896,6 +2951,10 @@
         "6": {
           "caption": "DSO Message",
           "description": "DNS Stateful Operations (DSO)"
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The DNS Opcode is not defined by the RFC. See the <code>opcode</code> attribute, which contains a data source specific value."
         }
       }
     },
@@ -3275,7 +3334,16 @@
       "description": "The normalized identifier of the Protocol version.",
       "sibling": "protocol_ver",
       "type": "integer_t",
-      "enum": {}
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The protocol version is unknown."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The protocol version is not mapped. See the <code>protocol_ver</code> attribute, which contains a data source specific value."
+        }
+      }
     },
     "provider": {
       "caption": "Provider",
@@ -3557,12 +3625,13 @@
     },
     "risk_level": {
       "caption": "Risk Level",
-      "description": "The risk level, normalized to the caption of the risk_level_id value. In the case of 'Other', it is defined by the event source.",
+      "description": "The risk level, normalized to the caption of the risk_level_id value.",
       "type": "string_t"
     },
     "risk_level_id": {
       "caption": "Risk Level ID",
       "description": "The normalized risk level id.",
+      "suppress_checks": ["enum_convention"],
       "sibling": "risk_level",
       "type": "integer_t",
       "enum": {
@@ -3580,6 +3649,10 @@
         },
         "4": {
           "caption": "Critical"
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The risk level is not mapped. See the <code>risk_level</code> attribute, which contains a data source specific value."
         }
       }
     },
@@ -3608,7 +3681,16 @@
       "description": "The normalized identifier of the state of the job or service. See specific usage.",
       "sibling": "run_state",
       "type": "integer_t",
-      "enum": {}
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The run state is unknown."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The run state is not mapped. See the <code>run_state</code> attribute, which contains a data source specific value."
+        }
+      }
     },
     "runtime": {
       "caption": "Runtime",

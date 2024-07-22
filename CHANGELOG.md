@@ -79,6 +79,7 @@ Thankyou! -->
     6. Added `reg_key` and `reg_value` to `Evidence Artifacts` object. #1078  
     7. Added `type_id` and associated entity objects to `Managed Entity`. #1094
     8. Added `vendor_name`, `type`, `type_id` to object `package`. #1093
+    9. Added `time`,`desc`, `short_desc`, `reputation`, `url_string` to `enrichment` object. #1149
 * #### Platform Extensions
 
 ### Bugfixes

@@ -71,6 +71,7 @@ Thankyou! -->
     4. Added `ja4_fingerprint_list` to base network event class. #834
     5. Added `ticket` to `Incident Finding` event class. #1068
     6. Added new activities `Enroll`, `Activate`, `Deactivate`, `Suspend`, and `Resume` to the `Entity Management` class. #1095
+    7. Added new activity `Listen` to `Network Activity` and relax requirement of `src_endpoint`. #1147
 * #### Profiles
 * #### Objects
     1. Added `ext` to `File` object. #1046
@@ -161,6 +162,8 @@ Thankyou! -->
     7. Added a `Preauth` `activity_id` to the `Authentication` class. #1018
     8. Added the `Security Control` profile to the `Datastore Activity` class. #1030
     9. Added `risk_details` to Detection Finding. #1032
+   10. Added `access_mask` to Entity Management class. #1090
+   11. Added `access_list` to Entity Management class. #1090
 
 * #### Profiles
     n/a

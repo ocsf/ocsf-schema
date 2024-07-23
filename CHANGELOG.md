@@ -83,6 +83,7 @@ Thankyou! -->
     7. Added `vendor_name`, `type`, `type_id` to object `package`. #1093
     8. Added `router`, `ids`, and `ips` entries to `type_id` enum in the `Endpoint` object. #1121
     9. Added `job` to `Evidence Artifacts` object. #1130
+    10. Added `cpe_name` and `hash` to `Software Package` object. #1142
 * #### Platform Extensions
 
 ### Bugfixes

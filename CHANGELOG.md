@@ -77,14 +77,13 @@ Thankyou! -->
     1. Added `ext` to `File` object. #1046
     2. Added `account`, `device`, `email`, `url`, `user` to `evidences` in detection finding. #1000
     3. Added `state_id`, `state` to `Digital Signature` object. #1069
-    4. Added `ticket` to `Incident Finding` object. ticket. #1068
-    5. Added `domain` to `Uniform Resource Locator` object. #1096
-    6. Added `reg_key` and `reg_value` to `Evidence Artifacts` object. #1078
-    7. Added `type_id` and associated entity objects to `Managed Entity`. #1094
-    8. Added `vendor_name`, `type`, `type_id` to object `package`. #1093
-    9. Added `router`, `ids`, and `ips` entries to `type_id` enum in the `Endpoint` object. #1121
-    10. Added `job` to `Evidence Artifacts` object. #1130
-    11. Added `created_time`,`desc`, `short_desc`, `reputation`, `src_url` to `enrichment` object. #1149
+    4. Added `domain` to `Uniform Resource Locator` object. #1096
+    5. Added `reg_key` and `reg_value` to `Evidence Artifacts` object. #1078
+    6. Added `type_id` and associated entity objects to `Managed Entity`. #1094
+    7. Added `vendor_name`, `type`, `type_id` to object `package`. #1093
+    8. Added `router`, `ids`, and `ips` entries to `type_id` enum in the `Endpoint` object. #1121
+    9. Added `job` to `Evidence Artifacts` object. #1130
+    10. Added `created_time`,`desc`, `short_desc`, `reputation`, `src_url` to `enrichment` object. #1149
 * #### Platform Extensions
 
 ### Bugfixes

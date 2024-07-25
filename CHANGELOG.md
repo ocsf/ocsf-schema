@@ -107,6 +107,7 @@ Thankyou! -->
     * Updated several attributes that do not follow conventions to disable linting for them
 8. Added `credential_uid` as an Observable type - type_id: 19. #1137
 9. New Extension registration for US Gov #1140
+10. Enum definitions refactored so generic enum descriptions have "See specific usage" in the description #1146
 
 ## [v1.2.0] - April 23rd, 2024
 

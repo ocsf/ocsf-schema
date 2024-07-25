@@ -140,7 +140,7 @@
     },
     "algorithm_id": {
       "caption": "Algorithm ID",
-      "description": "The identifier of the normalized algorithm. See specific usage.",
+      "description": "The normalized identifier of the algorithm. See specific usage.",
       "sibling": "algorithm",
       "type": "integer_t",
       "enum": {
@@ -843,17 +843,17 @@
     },
     "classification_ids": {
       "caption": "Classification IDs",
-      "description": "The list of normalized identifiers of the malware classifications. Reference: <a target='_blank' href='https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_oxlc4df65spl'>STIX Malware Types</a> ",
+      "description": "The list of normalized classification identifiers. See specific usage.",
       "sibling": "classifications",
       "type": "integer_t",
       "enum": {
         "0": {
           "caption": "Unknown",
-          "description": "The malware classification is unknown."
+          "description": "The classification is unknown."
         },
         "99": {
           "caption": "Other",
-          "description": "The malware classification is not mapped. See the <code>classifications</code> array, which contains a data source specific value."
+          "description": "The classification is not mapped. See the <code>classifications</code> attribute, which contains a data source specific value."
         }
       },
       "is_array": true
@@ -1510,6 +1510,114 @@
           "caption": "Unknown",
           "description": "The disposition is unknown."
         },
+        "1": {
+          "caption": "Allowed",
+          "description": "Granted access or allowed the action to the protected resource."
+        },
+        "2": {
+          "caption": "Blocked",
+          "description": "Denied access or blocked the action to the protected resource."
+        },
+        "3": {
+          "caption": "Quarantined",
+          "description": "A suspicious file or other content was moved to a benign location."
+        },
+        "4": {
+          "caption": "Isolated",
+          "description": "A session was isolated on the network or within a browser."
+        },
+        "5": {
+          "caption": "Deleted",
+          "description": "A file or other content was deleted."
+        },
+        "6": {
+          "caption": "Dropped",
+          "description": "The request was detected as a threat and resulted in the connection being dropped."
+        },
+        "7": {
+          "caption": "Custom Action",
+          "description": "A custom action was executed such as running of a command script. Use the <code>message</code> attribute of the base class for details."
+        },
+        "8": {
+          "caption": "Approved",
+          "description": "A request or submission was approved. For example, when a form was properly filled out and submitted. This is distinct from <code>1</code> 'Allowed'."
+        },
+        "9": {
+          "caption": "Restored",
+          "description": "A quarantined file or other content was restored to its original location."
+        },
+        "10": {
+          "caption": "Exonerated",
+          "description": "A suspicious or risky entity was deemed to no longer be suspicious (re-scored)."
+        },
+        "11": {
+          "caption": "Corrected",
+          "description": "A corrupt file or configuration was corrected."
+        },
+        "12": {
+          "caption": "Partially Corrected",
+          "description": "A corrupt file or configuration was partially corrected."
+        },
+        "13": {
+          "caption": "Uncorrected",
+          "description": "A corrupt file or configuration was not corrected."
+        },
+        "14": {
+          "caption": "Delayed",
+          "description": "An operation was delayed, for example if a restart was required to finish the operation."
+        },
+        "15": {
+          "caption": "Detected",
+          "description": "Suspicious activity or a policy violation was detected without further action."
+        },
+        "16": {
+          "caption": "No Action",
+          "description": "The outcome of an operation had no action taken."
+        },
+        "17": {
+          "caption": "Logged",
+          "description": "The operation or action was logged without further action."
+        },
+        "18": {
+          "caption": "Tagged",
+          "description": "A file or other entity was marked with extended attributes."
+        },
+        "19": {
+          "caption": "Alert",
+          "description": "The request or activity was detected as a threat and resulted in a notification but request was not blocked."
+        },
+        "20": {
+          "caption": "Count",
+          "description": "Counted the request or activity but did not determine whether to allow it or block it."
+        },
+        "21": {
+          "caption": "Reset",
+          "description": "The request was detected as a threat and resulted in the connection being reset."
+        },
+        "22": {
+          "caption": "Captcha",
+          "description": "Required the end user to solve a CAPTCHA puzzle to prove that a human being is sending the request."
+        },
+        "23": {
+          "caption": "Challenge",
+          "description": "Ran a silent challenge that required the client session to verify that it's a browser, and not a bot."
+        },
+        "24": {
+          "caption": "Access Revoked",
+          "description": "The requestor's access has been revoked due to security policy enforcements. Note: use the <code>Host</code> profile if the <code>User</code> or <code>Actor</code> requestor is not present in the event class."
+        },
+        "25": {
+          "caption": "Rejected",
+          "description": "A request or submission was rejected.  For example, when a form was improperly filled out and submitted. This is distinct from <code>2</code> 'Blocked'."
+        },
+        "26": {
+          "caption": "Unauthorized",
+          "description": "An attempt to access a resource was denied due to an authorization check that failed. This is a more specific disposition than <code>2</code> 'Blocked' and can be complemented with the <code>authorizations</code> attribute for more detail."
+        },
+        "27": {
+          "caption": "Error",
+          "description": "An error occurred during the processing of the activity or request. Use the <code>message</code> attribute of the base class for details."
+        },
         "99": {
           "caption": "Other",
           "description": "The disposition is not mapped. See the <code>disposition</code> attribute, which contains a data source specific value."
@@ -1935,7 +2043,7 @@
     },
     "flag_ids": {
       "caption": "Communication Flag IDs",
-      "description": "The list of normalized identifiers of the communication flag IDs.",
+      "description": "The list of normalized identifiers of the communication flag IDs. See specific usage.",
       "sibling": "flags",
       "type": "integer_t",
       "enum": {
@@ -2237,6 +2345,24 @@
         "0": {
           "caption": "Unknown",
           "description": "The integrity level is unknown."
+        },
+        "1": {
+          "caption": "Untrusted"
+        },
+        "2": {
+          "caption": "Low"
+        },
+        "3": {
+          "caption": "Medium"
+        },
+        "4": {
+          "caption": "High"
+        },
+        "5": {
+          "caption": "System"
+        },
+        "6": {
+          "caption": "Protected"
         },
         "99": {
           "caption": "Other",
@@ -2557,12 +2683,12 @@
     },
     "load_type": {
       "caption": "Load Type",
-      "description": "The load type, normalized to the caption of the load_type_id value. In the case of 'Other', it is defined by the event source. It describes how the module was loaded in memory.",
+      "description": "The load type, normalized to the caption of the load_type_id value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "load_type_id": {
       "caption": "Load Type ID",
-      "description": "The normalized identifier of the load type. It identifies how the module was loaded in memory.",
+      "description": "The normalized identifier of the load type. See specific uasge.",
       "sibling": "load_type",
       "type": "integer_t",
       "enum": {
@@ -3331,7 +3457,7 @@
     },
     "protocol_ver_id": {
       "caption": "Protocol Version ID",
-      "description": "The normalized identifier of the Protocol version.",
+      "description": "The normalized identifier of the Protocol version. See specific usage.",
       "sibling": "protocol_ver",
       "type": "integer_t",
       "enum": {

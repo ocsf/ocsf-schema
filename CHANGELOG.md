@@ -60,6 +60,7 @@ Thankyou! -->
     8. Added `domain_contact` and array-typed `domain_contacts` object for use with `whois` object. #992
     9. Added `Windows Service` object to the Windows extension. #1103
     10. Added array-typed `compliance_references` and array-typed `compliance_standards` objects as array of `kb_article` to `compliance` object. #1110
+    11. Added `timespan` object and `avg_timespan` to dictionary. #1125
 * #### Platform Extensions
 
 ### Improved
@@ -83,7 +84,10 @@ Thankyou! -->
     7. Added `vendor_name`, `type`, `type_id` to object `package`. #1093
     8. Added `router`, `ids`, and `ips` entries to `type_id` enum in the `Endpoint` object. #1121
     9. Added `job` to `Evidence Artifacts` object. #1130
-    10. Added `created_time`,`desc`, `short_desc`, `reputation`, `src_url` to `enrichment` object. #1149
+    10. Added `ip` to object `load_balancer`. #1138
+    11. Added `cpe_name` and `hash` to `Software Package` object. #1142
+    12. Added `avg_timespan` to the `kb_article` object. #1125
+    13. 10. Added `created_time`,`desc`, `short_desc`, `reputation`, `src_url` to `enrichment` object. #1149
 * #### Platform Extensions
 
 ### Bugfixes
@@ -108,6 +112,7 @@ Thankyou! -->
     * Updated several attributes that do not follow conventions to disable linting for them
 8. Added `credential_uid` as an Observable type - type_id: 19. #1137
 9. New Extension registration for US Gov #1140
+10. Enum definitions refactored so generic enum descriptions have "See specific usage" in the description #1146
 
 ## [v1.2.0] - April 23rd, 2024
 

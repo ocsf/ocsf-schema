@@ -60,6 +60,7 @@ Thankyou! -->
     8. Added `domain_contact` and array-typed `domain_contacts` object for use with `whois` object. #992
     9. Added `Windows Service` object to the Windows extension. #1103
     10. Added array-typed `compliance_references` and array-typed `compliance_standards` objects as array of `kb_article` to `compliance` object. #1110
+    11. Added `timespan` object and `avg_timespan` to dictionary. #1125
 * #### Platform Extensions
 
 ### Improved
@@ -84,6 +85,8 @@ Thankyou! -->
     8. Added `router`, `ids`, and `ips` entries to `type_id` enum in the `Endpoint` object. #1121
     9. Added `job` to `Evidence Artifacts` object. #1130
     10. Added `ip` to object `load_balancer`. #1138
+    11. Added `cpe_name` and `hash` to `Software Package` object. #1142
+    12. Added `avg_timespan` to the `kb_article` object. #1125
 * #### Platform Extensions
 
 ### Bugfixes

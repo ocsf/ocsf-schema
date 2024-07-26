@@ -1,0 +1,94 @@
+{
+    "caption": "Time Span",
+    "name": "timespan",
+    "description": "The Time Span object represents different time period durations. If a timespan is fractional, i.e. crosses one period, e.g. a week and 3 days, more than one may may be populated since each member is of integral type. In that case <code>type_id</code> if present should be set to <code>Other</code>.",
+    "extends": "object",
+    "attributes": {
+        "duration" : {
+            "description": "The duration of the time span in milliseconds.",
+            "requirement": "recommended"
+        },
+        "duration_days": {
+            "description": "The duration of the time span in days.",
+            "requirement": "recommended"
+        },
+        "duration_hours": {
+            "description": "The duration of the time span in hours.",
+            "requirement": "recommended"
+        },
+        "duration_mins": {
+            "description": "The duration of the time span in minutes.",
+            "requirement": "recommended"
+        },
+        "duration_months": {
+            "description": "The duration of the time span in months.",
+            "requirement": "recommended"
+        },
+        "duration_secs": {
+            "description": "The duration of the time span in seconds.",
+            "requirement": "recommended"
+        },
+        "duration_weeks": {
+            "description": "The duration of the time span in weeks.",
+            "requirement": "recommended"
+        },
+        "duration_years": {
+            "description": "The duration of the time span in years.",
+            "requirement": "recommended"
+        },
+        "type": {
+            "caption": "Time Span Type",
+            "description": "The type of time span duration the object represents.",
+            "requirement": "optional"
+          },
+          "type_id": {
+            "caption": "Time Span Type ID",
+            "description": "The normalized identifier for the time span duration type.",
+            "enum": {
+              "0": {
+                "caption": "Unknown"
+              },
+              "1": {
+                "caption": "Milliseconds"
+              },
+              "2": {
+                "caption": "Seconds"
+              },
+              "3": {
+                "caption": "Minutes"
+              },
+              "4": {
+                "caption": "Hours"
+              },
+              "5": {
+                "caption": "Days"
+              },
+              "6": {
+                "caption": "Weeks"
+              },
+              "7": {
+                "caption": "Months"
+              },
+              "8": {
+                "caption": "Years"
+              },
+              "99": {
+                "caption": "Other"
+              }
+            },
+            "requirement": "recommended"
+          }
+    },
+    "constraints": {
+        "at_least_one": [
+          "duration",
+          "duration_days",
+          "duration_hours",
+          "duration_mins",
+          "duration_months",
+          "duration_secs",
+          "duration_weeks",
+          "duration_years"
+        ]
+    }
+}

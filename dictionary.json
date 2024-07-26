@@ -2209,12 +2209,12 @@
       "type": "string_t",
       "description": "Name of the Active Directory Forest."
     },
-    "force_change_password_next_sign_in": {
+    "force_pw_change": {
       "caption": "Force Change Password Next SignIn",
       "description": "Specifies if the user has to change the password in the next sign in. true if the user must change their password on the next sign-in; otherwise false. If not set, default is false",
       "type": "boolean_t"
     },
-    "force_change_password_next_sign_in_with_mfa": {
+    "force_pw_change_with_mfa": {
       "caption": "Force Change Password Next SignIn With Mfa",
       "description": "Specifies if the user has to change the password in the next sign in with MFA.If true, at next sign-in, the user must perform a multifactor authentication (MFA) before being forced to change their password.",
       "type": "boolean_t"
@@ -3293,7 +3293,7 @@
       "description": "The primary office location associated with the user. This could be any string and isn't a specific address. For example, <code>South East Virtual</code>.",
       "type": "string_t"
     },
-    "on_premises_distinguished_name": {
+    "on_prem_dn": {
       "caption": "On Premises Distinguished Name",
       "description": "The distinguished name of the user in the on-premises Active Directory.",
       "type": "string_t"
@@ -5082,7 +5082,7 @@
       "description": "The result of the user account change. It should contain the new values of the changed attributes.",
       "type": "user"
     },
-    "user_password_expiry_computed_time": {
+    "pw_expiry": {
       "caption": "User Password Expiry Time",
       "type": "timestamp_t",
       "description": "The expiry time for the user's current password."
@@ -5188,37 +5188,6 @@
       "caption": "Version",
       "description": "The version that pertains to the event or object. See specific usage.",
       "type": "string_t"
-    },
-    "visibility": {
-      "caption": "Visibility",
-      "description": "Specifies the group join policy and group content visibility for groups. Possible values are: Private, Public, or HiddenMembership.",
-      "type": "string_t"
-    },
-    "visibility_id": {
-      "caption": "Visibility ID",
-      "description": "The identifier of the normalized visibility id.",
-      "type": "integer_t",
-      "sibling": "visibility",
-      "enum": {
-        "0": {
-          "caption": "Unknown"
-        },
-        "1": {
-          "caption": "Private",
-          "description": "The group is private."
-        },
-        "2": {
-          "caption": "Public",
-          "description": "The group is public."
-        },
-        "3": {
-          "caption": "HiddenMembership",
-          "description": "The group is hidden."
-        },
-        "99": {
-          "caption": "Other"
-        }
-      }
     },
     "vlan_uid": {
       "caption": "VLAN",

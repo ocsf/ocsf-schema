@@ -49,6 +49,7 @@ Thankyou! -->
     4. Added `Software Inventory Info` event class to the Discovery category. #1134
 * #### Profiles
     1. Added `osint` Profile based on `osint` object. #992
+    2. Added `active_directory` Profile. #1136
 * #### Objects
     1. Added `d3fend` `d3f_tactic` `d3f_technique` MITRE objects. #1066 
     2. Added `ja4_fingerprint` object. #834
@@ -61,6 +62,7 @@ Thankyou! -->
     9. Added `Windows Service` object to the Windows extension. #1103
     10. Added array-typed `compliance_references` and array-typed `compliance_standards` objects as array of `kb_article` to `compliance` object. #1110
     11. Added `timespan` object and `avg_timespan` to dictionary. #1125
+    12. Added `active_directory` object. #1136
 * #### Platform Extensions
 
 ### Improved

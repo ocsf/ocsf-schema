@@ -76,6 +76,7 @@
     "activity_id": {
       "caption": "Activity ID",
       "description": "The normalized identifier of the activity that triggered the event.",
+      "suppress_checks": ["sibling_convention"],
       "sibling": "activity_name",
       "type": "integer_t",
       "enum": {
@@ -139,7 +140,7 @@
     },
     "algorithm_id": {
       "caption": "Algorithm ID",
-      "description": "The identifier of the normalized algorithm. See specific usage.",
+      "description": "The normalized identifier of the algorithm. See specific usage.",
       "sibling": "algorithm",
       "type": "integer_t",
       "enum": {
@@ -313,6 +314,11 @@
       "caption": "Autoscale UID",
       "description": "The unique identifier of the cloud autoscale configuration.",
       "type": "string_t"
+    },
+    "avg_timespan": {
+      "caption": "Average Timespan",
+      "description": "The average time span of an activity.",
+      "type": "timespan"
     },
     "banner": {
       "caption": "SMTP Banner",
@@ -842,10 +848,19 @@
     },
     "classification_ids": {
       "caption": "Classification IDs",
-      "description": "The list of normalized identifiers of the malware classifications. Reference: <a target='_blank' href='https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_oxlc4df65spl'>STIX Malware Types</a> ",
+      "description": "The list of normalized classification identifiers. See specific usage.",
       "sibling": "classifications",
       "type": "integer_t",
-      "enum": {},
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The classification is unknown."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The classification is not mapped. See the <code>classifications</code> attribute, which contains a data source specific value."
+        }
+      },
       "is_array": true
     },
     "classifications": {
@@ -938,6 +953,18 @@
       "caption": "Compliance",
       "description": "The compliance object provides context to compliance findings (e.g., a check against a specific regulatory or best practice framework such as CIS, NIST etc.) and contains compliance related details.",
       "type": "compliance"
+    },
+    "compliance_references": {
+      "caption": "Complaince References Articles",
+      "description": "A list of sources of information or tools that help organizations understand, interpret, and implement compliance standards. They provide guidance, best practices, and examples.",
+      "type": "kb_article",
+      "is_array": true
+    },
+    "compliance_standards": {
+      "caption": "Compliance Standards Articles",
+      "description": "A list of established guidelines or criteria that define specific requirements an organization must follow.",
+      "type": "kb_article",
+      "is_array": true
     },
     "component": {
       "caption": "Component",
@@ -1143,7 +1170,8 @@
     "credential_uid": {
       "caption": "User Credential ID",
       "description": "The unique identifier of the user's credential. For example, AWS Access Key ID.",
-      "type": "string_t"
+      "type": "string_t",
+      "observable": 19
     },
     "criticality": {
       "caption": "Criticality",
@@ -1232,7 +1260,7 @@
       "enum": {
         "0": {
           "caption": "Unknown",
-          "description": "The type is not mapped. See the <code>data_lifecycle_state</code> attribute, which contains a data source specific value."
+          "description": "The data lifecycle state is unknown."
         },
         "1": {
           "caption": "Data at-Rest",
@@ -1245,6 +1273,10 @@
         "3": {
           "caption": "Data in-Use",
           "description": "The data was being processed, accessed, or read by a system, making it active in memory or CPU. E.g., sensitive data in a Business Intelligence tool, ePHI being processed in an EHR application or a user viewing data stored in a spreadsheet or PDF."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The data lifecycle state is not mapped. See the <code>data_lifecycle_state</code> attribute, which contains a data source specific value."
         }
       }
     },
@@ -1483,6 +1515,114 @@
           "caption": "Unknown",
           "description": "The disposition is unknown."
         },
+        "1": {
+          "caption": "Allowed",
+          "description": "Granted access or allowed the action to the protected resource."
+        },
+        "2": {
+          "caption": "Blocked",
+          "description": "Denied access or blocked the action to the protected resource."
+        },
+        "3": {
+          "caption": "Quarantined",
+          "description": "A suspicious file or other content was moved to a benign location."
+        },
+        "4": {
+          "caption": "Isolated",
+          "description": "A session was isolated on the network or within a browser."
+        },
+        "5": {
+          "caption": "Deleted",
+          "description": "A file or other content was deleted."
+        },
+        "6": {
+          "caption": "Dropped",
+          "description": "The request was detected as a threat and resulted in the connection being dropped."
+        },
+        "7": {
+          "caption": "Custom Action",
+          "description": "A custom action was executed such as running of a command script. Use the <code>message</code> attribute of the base class for details."
+        },
+        "8": {
+          "caption": "Approved",
+          "description": "A request or submission was approved. For example, when a form was properly filled out and submitted. This is distinct from <code>1</code> 'Allowed'."
+        },
+        "9": {
+          "caption": "Restored",
+          "description": "A quarantined file or other content was restored to its original location."
+        },
+        "10": {
+          "caption": "Exonerated",
+          "description": "A suspicious or risky entity was deemed to no longer be suspicious (re-scored)."
+        },
+        "11": {
+          "caption": "Corrected",
+          "description": "A corrupt file or configuration was corrected."
+        },
+        "12": {
+          "caption": "Partially Corrected",
+          "description": "A corrupt file or configuration was partially corrected."
+        },
+        "13": {
+          "caption": "Uncorrected",
+          "description": "A corrupt file or configuration was not corrected."
+        },
+        "14": {
+          "caption": "Delayed",
+          "description": "An operation was delayed, for example if a restart was required to finish the operation."
+        },
+        "15": {
+          "caption": "Detected",
+          "description": "Suspicious activity or a policy violation was detected without further action."
+        },
+        "16": {
+          "caption": "No Action",
+          "description": "The outcome of an operation had no action taken."
+        },
+        "17": {
+          "caption": "Logged",
+          "description": "The operation or action was logged without further action."
+        },
+        "18": {
+          "caption": "Tagged",
+          "description": "A file or other entity was marked with extended attributes."
+        },
+        "19": {
+          "caption": "Alert",
+          "description": "The request or activity was detected as a threat and resulted in a notification but request was not blocked."
+        },
+        "20": {
+          "caption": "Count",
+          "description": "Counted the request or activity but did not determine whether to allow it or block it."
+        },
+        "21": {
+          "caption": "Reset",
+          "description": "The request was detected as a threat and resulted in the connection being reset."
+        },
+        "22": {
+          "caption": "Captcha",
+          "description": "Required the end user to solve a CAPTCHA puzzle to prove that a human being is sending the request."
+        },
+        "23": {
+          "caption": "Challenge",
+          "description": "Ran a silent challenge that required the client session to verify that it's a browser, and not a bot."
+        },
+        "24": {
+          "caption": "Access Revoked",
+          "description": "The requestor's access has been revoked due to security policy enforcements. Note: use the <code>Host</code> profile if the <code>User</code> or <code>Actor</code> requestor is not present in the event class."
+        },
+        "25": {
+          "caption": "Rejected",
+          "description": "A request or submission was rejected.  For example, when a form was improperly filled out and submitted. This is distinct from <code>2</code> 'Blocked'."
+        },
+        "26": {
+          "caption": "Unauthorized",
+          "description": "An attempt to access a resource was denied due to an authorization check that failed. This is a more specific disposition than <code>2</code> 'Blocked' and can be complemented with the <code>authorizations</code> attribute for more detail."
+        },
+        "27": {
+          "caption": "Error",
+          "description": "An error occurred during the processing of the activity or request. Use the <code>message</code> attribute of the base class for details."
+        },
         "99": {
           "caption": "Other",
           "description": "The disposition is not mapped. See the <code>disposition</code> attribute, which contains a data source specific value."
@@ -1575,48 +1715,43 @@
       "type": "network_endpoint"
     },
     "duration": {
-      "caption": "Duration",
-      "description": "The event duration or aggregate time, the amount of time the event covers from <code>start_time</code> to <code>end_time</code> in milliseconds.",
+      "caption": "Duration Milliseconds",
+      "description": "This represents the duration of the activity in milliseconds. See specific usage.",
       "type": "long_t"
     },
-    "duration_avg_days": {
-      "caption": "Average Duration Days",
-      "description": "This represents the average duration of the activity in days. See specific usage.",
+    "duration_days": {
+      "caption": "Duration Days",
+      "description": "Represents the duration of the activity in days. See specific usage.",
       "type": "integer_t"
     },
-    "duration_avg_hours": {
-      "caption": "Average Duration Hours",
-      "description": "This represents the average duration of the activity in hours. See specific usage.",
+    "duration_hours": {
+      "caption": "Duration Hours",
+      "description": "Represents the duration of the activity in hours. See specific usage.",
       "type": "integer_t"
     },
-    "duration_avg_mins": {
-      "caption": "Average Duration Minutes",
-      "description": "This represents the average duration of the activity in minutes. See specific usage.",
+    "duration_mins": {
+      "caption": "Duration Minutes",
+      "description": "Represents the duration of the activity in minutes. See specific usage.",
       "type": "integer_t"
     },
-    "duration_avg_months": {
-      "caption": "Average Duration Months",
-      "description": "This represents the average duration of the activity in months. See specific usage.",
+    "duration_months": {
+      "caption": "Duration Months",
+      "description": "Represents the duration of the activity in months. See specific usage.",
       "type": "integer_t"
     },
-    "duration_avg_msecs": {
-      "caption": "Average Duration Milliseconds",
-      "description": "This represents the average duration of the activity in milliseconds. See specific usage.",
+    "duration_secs": {
+      "caption": "Duration Seconds",
+      "description": "Represents the duration of the activity in seconds. See specific usage.",
       "type": "integer_t"
     },
-    "duration_avg_secs": {
-      "caption": "Average Duration Seconds",
-      "description": "This represents the average duration of the activity in seconds. See specific usage.",
+    "duration_weeks": {
+      "caption": "Duration Weeks",
+      "description": "Represents the duration of the activity in weeks. See specific usage.",
       "type": "integer_t"
     },
-    "duration_avg_weeks": {
-      "caption": "Average Duration Weeks",
-      "description": "This represents the average duration of the activity in weeks. See specific usage.",
-      "type": "integer_t"
-    },
-    "duration_avg_years": {
-      "caption": "Average Duration Years",
-      "description": "This represents the average duration of the activity in years. See specific usage.",
+    "duration_years": {
+      "caption": "Duration Years",
+      "description": "Represents the duration of the activity in years. See specific usage.",
       "type": "integer_t"
     },
     "edition": {
@@ -1908,10 +2043,19 @@
     },
     "flag_ids": {
       "caption": "Communication Flag IDs",
-      "description": "The list of normalized identifiers of the communication flag IDs.",
+      "description": "The list of normalized identifiers of the communication flag IDs. See specific usage.",
       "sibling": "flags",
       "type": "integer_t",
-      "enum": {},
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The flag is unknown."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The flag is not mapped. See the <code>flags</code> attribute, which contains a data source specific value."
+        }
+      },
       "is_array": true
     },
     "flags": {
@@ -2189,7 +2333,7 @@
     },
     "integrity": {
       "caption": "Integrity",
-      "description": "The process integrity level, normalized to the caption of the direction_id value. In the case of 'Other', it is defined by the event source (Windows only).",
+      "description": "The process integrity level, normalized to the caption of the integrity_id value. In the case of 'Other', it is defined by the event source (Windows only).",
       "type": "string_t"
     },
     "integrity_id": {
@@ -2197,7 +2341,34 @@
       "description": "The normalized identifier of the process integrity level (Windows only).",
       "sibling": "integrity",
       "type": "integer_t",
-      "enum": {}
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The integrity level is unknown."
+        },
+        "1": {
+          "caption": "Untrusted"
+        },
+        "2": {
+          "caption": "Low"
+        },
+        "3": {
+          "caption": "Medium"
+        },
+        "4": {
+          "caption": "High"
+        },
+        "5": {
+          "caption": "System"
+        },
+        "6": {
+          "caption": "Protected"
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The integrity level is not mapped. See the <code>integrity</code> attribute, which contains a data source specific value."
+        }
+      }
     },
     "interface_name": {
       "caption": "Network Interface Name",
@@ -2512,15 +2683,24 @@
     },
     "load_type": {
       "caption": "Load Type",
-      "description": "The load type, normalized to the caption of the load_type_id value. In the case of 'Other', it is defined by the event source. It describes how the module was loaded in memory.",
+      "description": "The load type, normalized to the caption of the load_type_id value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "load_type_id": {
       "caption": "Load Type ID",
-      "description": "The normalized identifier of the load type. It identifies how the module was loaded in memory.",
+      "description": "The normalized identifier of the load type. See specific uasge.",
       "sibling": "load_type",
       "type": "integer_t",
-      "enum": {}
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The load type is unknown."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The load type is not mapped. See the <code>load_type</code> attribute, which contains a data source specific value."
+        }
+      }
     },
     "loaded_modules": {
       "caption": "Loaded Modules",
@@ -2866,7 +3046,8 @@
     },
     "opcode_id": {
       "caption": "DNS Opcode ID",
-      "description": "The DNS opcode ID specifies the normalized query message type.",
+      "description": "The DNS opcode ID specifies the normalized query message type as defined in <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc5395.html'>RFC-5395</a>.",
+      "suppress_checks": ["enum_convention"],
       "type": "integer_t",
       "enum": {
         "0": {
@@ -2896,6 +3077,10 @@
         "6": {
           "caption": "DSO Message",
           "description": "DNS Stateful Operations (DSO)"
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The DNS Opcode is not defined by the RFC. See the <code>opcode</code> attribute, which contains a data source specific value."
         }
       }
     },
@@ -3272,10 +3457,19 @@
     },
     "protocol_ver_id": {
       "caption": "Protocol Version ID",
-      "description": "The normalized identifier of the Protocol version.",
+      "description": "The normalized identifier of the Protocol version. See specific usage.",
       "sibling": "protocol_ver",
       "type": "integer_t",
-      "enum": {}
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The protocol version is unknown."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The protocol version is not mapped. See the <code>protocol_ver</code> attribute, which contains a data source specific value."
+        }
+      }
     },
     "provider": {
       "caption": "Provider",
@@ -3557,12 +3751,13 @@
     },
     "risk_level": {
       "caption": "Risk Level",
-      "description": "The risk level, normalized to the caption of the risk_level_id value. In the case of 'Other', it is defined by the event source.",
+      "description": "The risk level, normalized to the caption of the risk_level_id value.",
       "type": "string_t"
     },
     "risk_level_id": {
       "caption": "Risk Level ID",
       "description": "The normalized risk level id.",
+      "suppress_checks": ["enum_convention"],
       "sibling": "risk_level",
       "type": "integer_t",
       "enum": {
@@ -3580,6 +3775,10 @@
         },
         "4": {
           "caption": "Critical"
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The risk level is not mapped. See the <code>risk_level</code> attribute, which contains a data source specific value."
         }
       }
     },
@@ -3608,7 +3807,16 @@
       "description": "The normalized identifier of the state of the job or service. See specific usage.",
       "sibling": "run_state",
       "type": "integer_t",
-      "enum": {}
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The run state is unknown."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The run state is not mapped. See the <code>run_state</code> attribute, which contains a data source specific value."
+        }
+      }
     },
     "runtime": {
       "caption": "Runtime",
@@ -3902,6 +4110,11 @@
           "description": "The share type is not mapped. See the <code>share_type</code> attribute, which contains a data source specific value."
         }
       }
+    },
+    "short_desc": {
+      "caption": "Short Description",
+      "description": "The short description that pertains to the object or event. See specific usage.",
+      "type": "string_t"
     },
     "signature": {
       "caption": "Digital Signature",

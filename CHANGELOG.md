@@ -73,6 +73,7 @@ Thankyou! -->
     5. Added `ticket` to `Incident Finding` event class. #1068
     6. Added new activities `Enroll`, `Activate`, `Deactivate`, `Suspend`, and `Resume` to the `Entity Management` class. #1095
     7. Added new activity `Listen` to `Network Activity` and relax requirement of `src_endpoint`. #1147
+    8. Added `resources` attribute to `Vulnerability Finding` and `Compliance Finding`. #1150 
 * #### Profiles
 * #### Objects
     1. Added `ext` to `File` object. #1046
@@ -96,6 +97,7 @@ Thankyou! -->
 3. Fixed declarations of `data_lifecycle_state_id`, `integrity`, `opcode_id`, `risk_level`, and `analytic.type_id`. #1111
 
 ### Deprecated
+1. Deprecated `resource` in `Vulnerability Finding` and `Compliance Finding` event classes in favor of `resources`. #1150
 
 ### Breaking changes
 

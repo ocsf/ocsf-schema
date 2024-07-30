@@ -73,7 +73,9 @@ Thankyou! -->
     5. Added `ticket` to `Incident Finding` event class. #1068
     6. Added new activities `Enroll`, `Activate`, `Deactivate`, `Suspend`, and `Resume` to the `Entity Management` class. #1095
     7. Added new activity `Listen` to `Network Activity` and relax requirement of `src_endpoint`. #1147
-    8. Added `resources` attribute to `Vulnerability Finding` and `Compliance Finding`. #1150 
+    8. Added `state` object to `Device Config State Change`. #1143
+    9. Added `state_id` object to `Device Config State Change`. #1143
+    10. Added `resources` attribute to `Vulnerability Finding` and `Compliance Finding`. #1150
 * #### Profiles
 * #### Objects
     1. Added `ext` to `File` object. #1046

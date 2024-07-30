@@ -75,6 +75,7 @@ Thankyou! -->
     7. Added new activity `Listen` to `Network Activity` and relax requirement of `src_endpoint`. #1147
     8. Added `state` object to `Device Config State Change`. #1143
     9. Added `state_id` object to `Device Config State Change`. #1143
+    10. Added `resources` attribute to `Vulnerability Finding` and `Compliance Finding`. #1150
 * #### Profiles
 * #### Objects
     1. Added `ext` to `File` object. #1046
@@ -98,6 +99,7 @@ Thankyou! -->
 3. Fixed declarations of `data_lifecycle_state_id`, `integrity`, `opcode_id`, `risk_level`, and `analytic.type_id`. #1111
 
 ### Deprecated
+1. Deprecated `resource` in `Vulnerability Finding` and `Compliance Finding` event classes in favor of `resources`. #1150
 
 ### Breaking changes
 

@@ -80,7 +80,7 @@ Thankyou! -->
     2. Added `account`, `device`, `email`, `url`, `user` to `evidences` in detection finding. #1000
     3. Added `state_id`, `state` to `Digital Signature` object. #1069
     4. Added `domain` to `Uniform Resource Locator` object. #1096
-    5. Added `reg_key` and `reg_value` to `Evidence Artifacts` object. #1078  
+    5. Added `reg_key` and `reg_value` to `Evidence Artifacts` object. #1078
     6. Added `type_id` and associated entity objects to `Managed Entity`. #1094
     7. Added `vendor_name`, `type`, `type_id` to object `package`. #1093
     8. Added `router`, `ids`, and `ips` entries to `type_id` enum in the `Endpoint` object. #1121
@@ -88,6 +88,7 @@ Thankyou! -->
     10. Added `ip` to object `load_balancer`. #1138
     11. Added `cpe_name` and `hash` to `Software Package` object. #1142
     12. Added `avg_timespan` to the `kb_article` object. #1125
+    13. 10. Added `created_time`,`desc`, `short_desc`, `reputation`, `src_url` to `enrichment` object. #1149
 * #### Platform Extensions
 
 ### Bugfixes

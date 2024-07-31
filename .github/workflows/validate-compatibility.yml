@@ -17,49 +17,17 @@ jobs:
     - name: Checkout repository content
       uses: actions/checkout@v4
 
-    - name: Clone schema server repository
-      uses: actions/checkout@v4
-      with:
-        repository: ocsf/ocsf-server
-        path: server
-
-    - name: Set up elixir
-      uses: erlef/setup-beam@v1
-      with:
-        elixir-version: 'latest' # Define the elixir version [required]
-        otp-version: 'latest'    # Define the OTP version [required]
-
-#    - name: Restore server dependencies cache
-#      uses: actions/cache@v4
-#      with:
-#        path: server/deps
-#        key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
-#        restore-keys: ${{ runner.os }}-mix-
-
-    - name: Install server dependencies
-      working-directory: server
-      run: mix clean --deps & mix deps.get
-
-    - name: Build the server
-      working-directory: server
-      run: mix compile & mix release --path dist
-
-    - name: Run the server
-      working-directory: server
-      run: |
-        SCHEMA_DIR=../
-        PORT=8080
-        ENV=prod
-        dist/bin/schema_server start &
-
     - name: Setup python
       uses: actions/setup-python@v4
       with:
         python-version: '3.11'
 
     - name: Install validator
-      run: python -m pip install 'ocsf-validate-compatibility>=${{ vars.COMPATIBILITY_VALIDATOR_VERSION || '0.3,<0.4' }}'
+      run: python -m pip install "ocsf-lib>=${{ vars.COMPATIBILITY_VALIDATOR_VERSION || '0.6,<0.7' }}"
 
     - name: Run validator
       shell: bash
-      run: export FORCE_COLOR=1 && python -m ocsf.validate.compatibility ${{ vars.LATEST_STABLE || '1.2.0' }} latest --after-url http://localhost:8080
+      run: export FORCE_COLOR=1 && python -m ocsf.validate.compatibility ${{ vars.LATEST_STABLE || '1.2.0' }} .
+        #      with:
+        #repository: ocsf/ocsf-schema
+        #path: schema

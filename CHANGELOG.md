@@ -42,8 +42,7 @@ Thankyou! -->
 ### Improved
 * #### Objects
     1. Added `phone_number` to `user` and `ldap_person` objects. #1155
-    2. Added `state_id` and `state` to `user` object to represent various user states such as active, suspended, locked out, etc. #1155
-    3. Added `has_mfa` to `user` object. #1155
+    2. Added `has_mfa` to `user` object. #1155
 
 ### Misc
 1. Added `user.uid` as an Observable type - `type_id: 31`. #1155

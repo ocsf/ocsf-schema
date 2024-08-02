@@ -39,6 +39,18 @@ Thankyou! -->
 
 ## [Unreleased]
 
+### Improved
+* #### Objects
+    1. Added `phone_number` to `user` and `ldap_person` objects.
+    2. Added `state_id` and `state` to `user` object to represent various user states such as active, suspended, locked out, etc.
+    3. Added `has_mfa` to `user` object.
+
+### Misc
+1. Added `user.uid` as an Observable type - `type_id: 31`.
+2. Added `group.name` and `group.uid` as Observable types - `type_id: 32` and `type_id: 33`, respectively.
+3. Added `account.name` and `account.uid` as Observable types - `type_id: 34` and `type_id: 35`, respectively.
+4. Added `has_mfa` boolean_t to Dictionary.
+
 ## [v1.3.0] - August 1st, 2024
 
 ### Added

@@ -39,6 +39,10 @@ Thankyou! -->
 
 ## [Unreleased]
 
+### Added
+* #### Event Classes
+    1. Added `OSINT Inventory Info` event class to the Discovery category. #1154
+
 ### Improved
 * #### Objects
     1. Added `phone_number` to `user` and `ldap_person` objects. #1155

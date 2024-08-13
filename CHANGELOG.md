@@ -39,6 +39,12 @@ Thankyou! -->
 
 -->
 
+## [Unreleased]
+
+### Added
+* #### Event Classes
+    1. Added `OSINT Inventory Info` event class to the Discovery category. #1154
+
 ## [v1.3.0] - August 1st, 2024
 
 ### Added

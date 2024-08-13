@@ -43,6 +43,17 @@ Thankyou! -->
 * #### Event Classes
     1. Added `OSINT Inventory Info` event class to the Discovery category. #1154
 
+### Improved
+* #### Objects
+    1. Added `phone_number` to `user` and `ldap_person` objects. #1155
+    2. Added `has_mfa` to `user` object. #1155
+
+### Misc
+1. Added `user.uid` as an Observable type - `type_id: 31`. #1155
+2. Added `group.name` and `group.uid` as Observable types - `type_id: 32` and `type_id: 33`, respectively. #1155
+3. Added `account.name` and `account.uid` as Observable types - `type_id: 34` and `type_id: 35`, respectively. #1155
+4. Added `has_mfa` boolean_t to Dictionary. #1155
+
 ## [v1.3.0] - August 1st, 2024
 
 ### Added

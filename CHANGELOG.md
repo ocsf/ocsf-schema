@@ -47,6 +47,7 @@ Thankyou! -->
 * #### Objects
     1. Added `phone_number` to `user` and `ldap_person` objects. #1155
     2. Added `has_mfa` to `user` object. #1155
+    3. Added `parent_process` and `grandparent_process` as standalone objects, distinct from `process`.
 
 ### Misc
 1. Added `user.uid` as an Observable type - `type_id: 31`. #1155

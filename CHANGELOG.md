@@ -42,6 +42,7 @@ Thankyou! -->
 ### Added
 * #### Event Classes
     1. Added `OSINT Inventory Info` event class to the Discovery category. #1154
+    2. Added `Script Activity` event class to the System category. #1159
 
 ### Improved
 * #### Objects

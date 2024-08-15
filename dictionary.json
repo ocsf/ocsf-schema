@@ -3799,15 +3799,24 @@
     },
     "run_mode_ids": {
       "caption": "Run Mode IDs",
-      "description": "The list of normalized identifiers that describe application attributes when it is running.",
+      "description": "The list of normalized identifiers that describe application attributes when it is running. See specific usage.",
       "type": "integer_t",
-      "enum": {},
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The run mode is unknown."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The run mode is not mapped. See the <code>run_modes</code> attribute, which contains data source specific values."
+        }
+      },
       "is_array": true,
       "sibling": "run_modes"
     },
     "run_modes": {
       "caption": "Run Modes",
-      "description": "The list of run_modes, normalized to the captions of the run_mode_ids values.  In the case of 'Other', they are defined by the event source.",
+      "description": "The list of run_modes, normalized to the captions of the run_mode_ids values.  In the case of 'Other', they are defined by the event source. See specific usage.",
       "type": "string_t",
       "is_array": true
     },

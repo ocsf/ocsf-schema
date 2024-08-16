@@ -82,11 +82,13 @@
     "type": {
       "caption": "Type",
       "description": "The startup application type.",
+      "requirement": "optional",
       "type": "string_t"
     },
     "type_id": {
       "caption": "Type ID",
       "description": "The startup application type identifier.",
+      "requirement": "recommended",
       "enum": {
         "0": {
           "caption": "Unknown",
@@ -142,19 +144,13 @@
     "process": {
       "description": "The startup application process resource.",
       "requirement": "optional"
-    },
-    "win_service": {
-      "caption": "Windows Service",
-      "description": "The startup application windows service resource.",
-      "requirement": "optional"
     }
   },
   "constraints": {
     "just_one": [
       "driver",
       "job",
-      "process",
-      "win_service"
+      "process"
     ]
   }
 }

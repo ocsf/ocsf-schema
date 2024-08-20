@@ -39,6 +39,22 @@ Thankyou! -->
 
 ## [Unreleased]
 
+### Added
+* #### Event Classes
+    1. Added `OSINT Inventory Info` event class to the Discovery category. #1154
+    2. Added `Startup Item Query` event class. #1119
+
+### Improved
+* #### Objects
+    1. Added `phone_number` to `user` and `ldap_person` objects. #1155
+    2. Added `has_mfa` to `user` object. #1155
+
+### Misc
+1. Added `user.uid` as an Observable type - `type_id: 31`. #1155
+2. Added `group.name` and `group.uid` as Observable types - `type_id: 32` and `type_id: 33`, respectively. #1155
+3. Added `account.name` and `account.uid` as Observable types - `type_id: 34` and `type_id: 35`, respectively. #1155
+4. Added `has_mfa` boolean_t to Dictionary. #1155
+
 ## [v1.3.0] - August 1st, 2024
 
 ### Added
@@ -49,7 +65,6 @@ Thankyou! -->
     2. Added `Remediation Activity`, `File Remediation Activity`, `Process Remediation Activity`, `Network Remediation Activity` event classes to the Remediation category. #1066
     3. Added `Windows Service Activity` event class to the System Activity category via Windows extension. #1103
     4. Added `Software Inventory Info` event class to the Discovery category. #1134
-    5. Added `Startup Item Query` event class. #1119
 * #### Profiles
     1. Added `osint` Profile based on the `osint` object. #992
 * #### Objects

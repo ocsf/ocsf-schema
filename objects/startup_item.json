@@ -1,10 +1,10 @@
 {
-  "caption": "Startup Application",
-  "name": "startup_app",
-  "description": "The startup application object describes an application that has associated startup criteria and configurations.",
+  "caption": "Startup Item",
+  "name": "startup_item",
+  "description": "The startup item object describes an application component that has associated startup criteria and configurations.",
   "attributes": {
     "name": {
-      "description": "The unique name of the startup application.",
+      "description": "The unique name of the startup item.",
       "requirement": "required"
     },
     "run_modes": {
@@ -12,34 +12,34 @@
       "requirement": "optional"
     },
     "run_mode_ids": {
-      "description": "The list of normalized identifiers that describe the startup applications' properties when it is running.  Use this field to capture extended information about the process, which may depend on the type of startup application.  E.g., A Windows service that interacts with the desktop.",
+      "description": "The list of normalized identifiers that describe the startup items' properties when it is running.  Use this field to capture extended information about the process, which may depend on the type of startup item.  E.g., A Windows service that interacts with the desktop.",
       "requirement": "optional",
       "enum": {
         "1": {
           "caption": "Interactive",
-          "description": "The application interacts with the desktop."
+          "description": "The startup item interacts with the desktop."
         },
         "2": {
           "caption": "Own Process",
-          "description": "The application runs in its own process."
+          "description": "The startup item runs in its own process."
         },
         "3": {
           "caption": "Shared Process",
-          "description": "The application runs in a shared process."
+          "description": "The startup item runs in a shared process."
         }
       }
     },
     "run_state": {
-      "description": "The run state of the startup application.",
+      "description": "The run state of the startup item.",
       "requirement": "optional"
     },
     "run_state_id": {
-      "description": "The run state ID of the startup application.",
+      "description": "The run state ID of the startup item.",
       "requirement": "recommended",
       "enum": {
         "1": {
           "caption": "Stopped",
-          "description": "The sercie is not running."
+          "description": "The service is not running."
         },
         "2": {
           "caption": "Start Pending",
@@ -72,22 +72,22 @@
       }
     },
     "start_type": {
-      "description": "The start type of the startup application.",
+      "description": "The start type of the startup item.",
       "requirement": "optional"
     },
     "start_type_id": {
-      "description": "The start type ID of the startup application.",
+      "description": "The start type ID of the startup item.",
       "requirement": "required"
     },
     "type": {
       "caption": "Type",
-      "description": "The startup application type.",
+      "description": "The startup item type.",
       "requirement": "optional",
       "type": "string_t"
     },
     "type_id": {
       "caption": "Type ID",
-      "description": "The startup application type identifier.",
+      "description": "The startup item type identifier.",
       "requirement": "recommended",
       "enum": {
         "0": {
@@ -128,21 +128,21 @@
         },
         "99": {
           "caption": "Other",
-          "description": "The startup application type is not mapped. See the <code>type</code> attribute, which contains data source specific values."
+          "description": "The startup item type is not mapped. See the <code>type</code> attribute, which contains data source specific values."
         }
       },
       "type": "integer_t"
     },
     "driver": {
-      "description": "The startup application kernel driver resource.",
+      "description": "The startup item kernel driver resource.",
       "requirement": "optional"
     },
     "job": {
-      "description": "The startup application job resource.",
+      "description": "The startup item job resource.",
       "requirement": "optional"
     },
     "process": {
-      "description": "The startup application process resource.",
+      "description": "The startup item process resource.",
       "requirement": "optional"
     }
   },

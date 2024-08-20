@@ -49,7 +49,7 @@ Thankyou! -->
     2. Added `Remediation Activity`, `File Remediation Activity`, `Process Remediation Activity`, `Network Remediation Activity` event classes to the Remediation category. #1066
     3. Added `Windows Service Activity` event class to the System Activity category via Windows extension. #1103
     4. Added `Software Inventory Info` event class to the Discovery category. #1134
-    5. Added `Startup Application Query` event class. #1119
+    5. Added `Startup Item Query` event class. #1119
 * #### Profiles
     1. Added `osint` Profile based on the `osint` object. #992
 * #### Objects

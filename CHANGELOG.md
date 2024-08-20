@@ -42,6 +42,7 @@ Thankyou! -->
 ### Added
 * #### Event Classes
     1. Added `OSINT Inventory Info` event class to the Discovery category. #1154
+    2. Added missing categories to 47 event classes.  #1162
 
 ### Improved
 * #### Objects

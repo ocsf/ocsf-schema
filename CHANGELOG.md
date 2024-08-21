@@ -47,7 +47,7 @@ Thankyou! -->
 * #### Objects
     1. Added `phone_number` to `user` and `ldap_person` objects. #1155
     2. Added `has_mfa` to `user` object. #1155
-    3. Added `vendor_namr` to `cvss` object. #1165
+    3. Added `vendor_name` to `cvss` object. #1165
 
 ### Misc
 1. Added `user.uid` as an Observable type - `type_id: 31`. #1155

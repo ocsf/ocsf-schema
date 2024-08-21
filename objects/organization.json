@@ -1,20 +1,22 @@
 {
   "caption": "Organization",
-  "description": "The Organization object describes characteristics of an organization or company and its division if any.",
+  "description": "The Organization object describes characteristics of an organization or company and its division if any. Additionally, it also describes cloud and Software-as-a-Service (SaaS) logical hierarchies such as AWS Organizations, Google Cloud Organizations, Oracle Cloud Tenancies, and similar constructs.",
   "extends": "_entity",
   "name": "organization",
   "attributes": {
     "name": {
-      "description": "The name of the organization. For example, Widget, Inc."
+      "description": "The name of the organization, Oracle Cloud Tenancy, Google Cloud Organization, or AWS Organization. For example, Widget, Inc. or the AWS Organization ARN."
     },
     "ou_name": {
-      "requirement": "recommended"
+      "requirement": "recommended",
+      "description": "The name an organizational unit, Oracle Cloud Compartment, Google Cloud Folder, or AWS Org Unit. For example, the AWS OU ARN, or Dev_Prod_OU."
     },
     "ou_uid": {
-      "requirement": "optional"
+      "requirement": "optional",
+      "description": "The unique identifier an organizational unit, Oracle Cloud Compartment, Google Cloud Folder, or AWS Org Unit. For example, the OCID, AWS OU ID, or GCP Folder ID."
     },
     "uid": {
-      "description": "The unique identifier of the organization. For example, its Active Directory or AWS Org ID."
+      "description": "The unique identifier of the organization, Oracle Cloud Tenancy, Google Cloud Organization, or AWS Organization. For example, the AWS Org ID or Oracle Cloud Tenancy ID."
     }
   }
 }

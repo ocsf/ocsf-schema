@@ -48,12 +48,15 @@ Thankyou! -->
 * #### Objects
     1. Added `phone_number` to `user` and `ldap_person` objects. #1155
     2. Added `has_mfa` to `user` object. #1155
+    3. Added `vendor_name` to `cvss` object. #1165
 
 ### Misc
 1. Added `user.uid` as an Observable type - `type_id: 31`. #1155
 2. Added `group.name` and `group.uid` as Observable types - `type_id: 32` and `type_id: 33`, respectively. #1155
 3. Added `account.name` and `account.uid` as Observable types - `type_id: 34` and `type_id: 35`, respectively. #1155
 4. Added `has_mfa` boolean_t to Dictionary. #1155
+5. Deprecate `project_uid`. #1166
+6. Added several new enums to `account.type_id`. #1166
 
 ## [v1.3.0] - August 1st, 2024
 

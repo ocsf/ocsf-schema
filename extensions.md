@@ -3,6 +3,8 @@ The purpose of this file is to keep track of and avoid collisions in Extension `
 
 | Caption     | Name     | UID | Notes |
 |-------------|----------|-----|-------|
+| US GOV      | usg1     | **990** | The USG-1 schema extension |
+| Cisco       | cisco    | **991** | The Cisco schema extension |
 | Sedara      | sedara   | **992** | The Sedara schema extension |
 | Sciber      | sciber   | **993** | The Sciber schema extension |
 | DataBee     | databee  | **994** | The Comcast DataBee schema extension |

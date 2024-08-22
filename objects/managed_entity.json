@@ -1,6 +1,6 @@
 {
   "caption": "Managed Entity",
-  "description": "The Managed Entity object describes the type and version of an entity, such as a policy or configuration.",
+  "description": "The Managed Entity object describes the type and version of an entity, such as a user, device, or policy.  For types in the <code>type_id</code> enum list, an associated attribute should be populated.  If the type of entity is not in the <code>type_id</code> list, information can be put into the <code>data</code> attribute and the <code>type</code> attribute should identify the entity.",
   "extends": "_entity",
   "name": "managed_entity",
   "attributes": {
@@ -15,12 +15,72 @@
       "description": "The managed entity type. For example: <code>policy</code>, <code>user</code>, <code>organizational unit</code>, <code>device</code>.",
       "requirement": "recommended"
     },
+    "type_id": {
+      "requirement": "recommended",
+      "description": "The type of the Managed Entity. It is recommended to also populate the <code>type</code> attribute with the associated label, or the source specific name if <code>Other</code>.",
+      "enum": {
+        "1": {
+          "caption": "Device",
+          "description": "A managed Device entity.  This item corresponds to population of the <code>device</code> attribute."
+        },
+        "2": {
+          "caption": "User",
+          "description": "A managed User entity.  This item corresponds to population of the <code>user</code> attribute."
+        },
+        "3": {
+          "caption": "Group",
+          "description": "A managed Group entity.  This item corresponds to population of the <code>group</code> attribute."
+        },
+        "4": {
+          "caption": "Organization",
+          "description": "A managed Organization entity.  This item corresponds to population of the <code>org</code> attribute."
+        },
+        "5": {
+          "caption": "Policy",
+          "description": "A managed Policy entity.  This item corresponds to population of the <code>policy</code> attribute."
+        },
+        "6": {
+          "caption": "Email",
+          "description": "A managed Email entity.  This item corresponds to population of the <code>email</code> attribute."
+        }
+      }
+    },
+    "device": {
+      "requirement": "recommended"
+    },
+    "email": {
+      "requirement": "recommended"
+    },
+    "group": {
+      "requirement": "recommended"
+    },
+    "org": {
+      "requirement": "recommended"
+    },
+    "policy": {
+      "requirement": "recommended",
+      "description": "Describes details of a managed policy."
+    },
     "uid": {
       "description": "The identifier of the managed entity."
+    },
+    "user": {
+      "requirement": "recommended"
     },
     "version": {
       "description": "The version of the managed entity. For example: <code>1.2.3</code>.",
       "requirement": "recommended"
     }
+  },
+  "constraints": {
+    "at_least_one": [
+      "name",
+      "uid",  
+      "device",
+      "group",
+      "org",
+      "policy",
+      "user"
+    ]
   }
 }

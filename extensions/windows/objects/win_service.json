@@ -1,0 +1,61 @@
+{
+  "caption": "Windows Service",
+  "description": "The Windows Service object describes a Windows service.",
+  "extends": "service",
+  "name": "win_service",
+  "attributes": {
+    "name": {
+      "description": "The unique name of the service.",
+      "requirement": "required"
+    },
+    "cmd_line": {
+      "description": "The full command line used to launch the service.",
+      "requirement": "recommended"
+    },
+    "load_order_group": {
+        "requirement": "recommended"
+    },
+    "service_category": {
+      "requirement": "optional"
+    },
+    "service_category_id": {
+      "requirement": "recommended"
+    },
+    "service_dependencies": {
+      "requirement": "recommended"
+    },
+    "service_error_control": {
+      "requirement": "optional"
+    },
+    "service_error_control_id": {
+      "requirement": "recommended"
+    },
+    "service_start_name": {
+      "requirement": "recommended"
+    },
+    "service_start_type": {
+      "requirement": "optional"
+    },
+    "service_start_type_id": {
+      "requirement": "recommended"
+    },
+    "service_type": {
+      "requirement": "optional"
+    },
+    "service_type_id": {
+      "requirement": "recommended"
+    }
+  },
+  "constraints": {
+    "at_least_one": [
+        "cmd_line",
+        "service_category_id",
+        "service_dependencies",
+        "service_error_control_id",
+        "service_start_name",
+        "service_start_type_id",
+        "service_type_id"
+    ]
+  }
+}
+

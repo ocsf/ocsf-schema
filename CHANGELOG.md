@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Thankyou! -->
 
-## [Unreleased]
+<!-- All available sections in the Changelog:
 
 <!-- All available sections in the Changelog:
 
@@ -38,21 +38,86 @@ Thankyou! -->
 ### Misc
 
 -->
+
+## [v1.3.0] - August 1st, 2024
+
 ### Added
+* #### Categories
+    1. Added `Remediation` category. #1066
 * #### Event Classes
-    1. Added `Data Security Finding` event class. - [#953](https://github.com/ocsf/ocsf-schema/pull/953)
+    1. Added `Event Log Activity` event class to the System Activity category. #1014
+    2. Added `Remediation Activity`, `File Remediation Activity`, `Process Remediation Activity`, `Network Remediation Activity` event classes to the Remediation category. #1066
+    3. Added `Windows Service Activity` event class to the System Activity category via Windows extension. #1103
+    4. Added `Software Inventory Info` event class to the Discovery category. #1134
+* #### Profiles
+    1. Added `osint` Profile based on the `osint` object. #992
 * #### Objects
-    1. Added new `data_security` object. - [#953](https://github.com/ocsf/ocsf-schema/pull/953)
+    1. Added `d3fend`, `d3f_tactic`, `d3f_technique` MITRE objects. #1066 
+    2. Added `ja4_fingerprint` object. #834
+    3. Added `ja4_fingerprint_list` as a list of `ja4_fingerprint` objects.  #834
+    4. Added `ticket` object. #1068
+    5. Added `osint` object. #992
+    6. Added `signatures` object, an array of `signature` objects. #992
+    7. Added `whois` object. #992
+    8. Added `domain_contact` and array-typed `domain_contacts` object for use with `whois` object. #992
+    9. Added `Windows Service` object to the Windows extension. #1103
+    10. Added `timespan` object. #1125
 
 ### Improved
+* #### Categories
+    n/a
+* #### Event Classes
+    1. Added `file_result` to File Hosting Activity. #1045
+    2. Added entries to `injection_type_id` enum (`Process Activity`) and `activity_id` enum (`Memory Activity`). #1060
+    3. Added a `Restart`, `Enable`, `Disable`, and `Update` `activity_id` to the `Application Lifecycle` class. #1064
+    4. Added `ja4_fingerprint_list` to base network event class. #834
+    5. Added `ticket` to `Incident Finding` event class. #1068
+    6. Added new activities `Enroll`, `Activate`, `Deactivate`, `Suspend`, and `Resume` to the `Entity Management` class. #1095
+    7. Added new activity `Listen` to `Network Activity` and relax requirement of `src_endpoint`. #1147
+    8. Added `state`, `state_id` to `Device Config State Change`. #1143
+    9. Added `resources` attribute to `Vulnerability Finding` and `Compliance Finding`. #1150
+* #### Profiles
+    n/a
 * #### Objects
-    1. Added two new enums to `confidentiality` object: `5 - Private` and `6 - Restricted` - [#953](https://github.com/ocsf/ocsf-schema/pull/953)
-    2. Expand `analytic.type_id` enum with descriptions and added several new enums to broaden the types of rules and use cases `analytic` can be used for - [#953](https://github.com/ocsf/ocsf-schema/pull/953)
-        - `Fingerprinting`
-        - `Tagging`
-        - `Exact Data Match`
-        - `Partial Data Match`
-        - `Indexed Data Match`
+    1. Added `ext` to `File` object. #1046
+    2. Added `account`, `device`, `email`, `url`, `user` to `evidences` in detection finding. #1000
+    3. Added `state_id`, `state` to `Digital Signature` object. #1069
+    4. Added `domain` to `Uniform Resource Locator` object. #1096
+    5. Added `reg_key` and `reg_value` to `Evidence Artifacts` object. #1078
+    6. Added `type_id` and associated entity objects to `Managed Entity`. #1094
+    7. Added `vendor_name`, `type`, `type_id` to object `package`. #1093
+    8. Added `router`, `ids`, and `ips` entries to `type_id` enum in the `Endpoint` object. #1121
+    9. Added `job` to `Evidence Artifacts` object. #1130
+    10. Added `ip` to object `load_balancer`. #1138
+    11. Added `cpe_name` and `hash` to `Software Package` object. #1142
+    12. Added `avg_timespan` to the `kb_article` object. #1125
+    13. Added `created_time`,`desc`, `short_desc`, `reputation`, `src_url` to `enrichment` object. #1149
+    14. Added `compliance_references`, `compliance_standards` to the `compliance` object. #1110
+
+### Bugfixes
+1. Fixed the host profile construction in `patch_state` event class. #1087
+2. Removed the optional requirement overrides for `name` and `uid` in `_resource` as they are part of a constraint. #1087
+3. Fixed declarations of `data_lifecycle_state_id`, `integrity`, `opcode_id`, `risk_level`, and `analytic.type_id`. #1111
+
+### Deprecated
+1. Deprecated `resource` in `Vulnerability Finding` and `Compliance Finding` event classes in favor of `resources`. #1150
+
+### Breaking changes
+n/a
+### Misc
+1. Colorized validator output #1048
+    * Updated the GitHub workflow for the `ocsf-validator` to print colorized output.
+2. Clarify how to reference profiles in metadata #1056
+    * Updated the description of `metadata.profiles` to clarify the correct way to reference a profile in that list.
+3. Added a `gitignore` file. #1071
+4. New Extension registration for Cisco #1074
+5. Cleaned up MITRE trademarks and registrations for captions and descriptions.
+6. Declared enums in dictionary.json have sane "0" (Unknown) and "99" (Other) declarations and descriptions where appropriate #1111
+7. Adds support for `suppress_checks` controls in attributes to allow tools to automatically validate conventions #1063
+    * Updated several attributes that do not follow conventions to disable linting for them
+8. Added `credential_uid` as an Observable type - `type_id: 19`. #1137
+9. New Extension registration for US Gov #1140
+10. Enum definitions are now refactored such that generic enum descriptions have "See specific usage" in the description #1146
 
 ## [v1.2.0] - April 23rd, 2024
 
@@ -108,6 +173,8 @@ Thankyou! -->
     7. Added a `Preauth` `activity_id` to the `Authentication` class. #1018
     8. Added the `Security Control` profile to the `Datastore Activity` class. #1030
     9. Added `risk_details` to Detection Finding. #1032
+   10. Added `access_mask` to Entity Management class. #1090
+   11. Added `access_list` to Entity Management class. #1090
 
 * #### Profiles
     n/a
@@ -145,6 +212,7 @@ Thankyou! -->
 2. Deprecated `invoked_by` attribute in the `Actor` object in favor of `app_name`. #979.
 
 ### Breaking changes
+n/a
 
 ### Misc
 1. New Extension registration for Sedara. #951
@@ -155,7 +223,7 @@ Thankyou! -->
     * _**(New)**_ Dictionary attributes using `observable` property in attribute. This allows defining all occurrences of this attribute as an observable.
     * _**(New)**_ Object-specific attributes using `observable` property class's attributes. This allows defining object attributes as observables _only_ within instances of this specific object.
     * _**(New)**_ Event class-specific attributes using `observable` property class's attributes. This allows defining class attributes as observables _only_ within instances of this specific class.
-    * _**(New)**_ Event class-specific attribute _paths_ using top-level `observables` property. The `observables` property holds an object mapping from a dotted attribute path to an observable `type_id`. This allows defining an observable _only_ within instances of this specific class, and only for the attributes at these paths, even for attributes that are within nested objects and arrays. This can also be used for top-level class attributes, which can be more convenient that defining a class attribute observable for classes that extend another, but don't otherwise change an attribute definition.
+    * _**(New)**_ Event class-specific attribute _paths_ using top-level `observables` property. The `observables` property holds an object mapping from an dotted attribute path to an observable `type_id`. This allows defining an observables _only_ within instances of this specific class, and only for the attributes at these paths, even for attributes that are within nested objects and arrays. This can also be used for top-level class attributes, which can be more convenient that defining a class attribute observable for classes that extend another, but don't otherwise change a attribute definition.
 4. Metaschema improvements. #993 
     * Detect unexpected top-level properties in object and event class definitions. This was added at this point to detect invalid observable definitions: invalid `observable` property in event classes, and invalid `observables` property in objects.
     * Remove hard-coded list of categories from `metaschema/categories.schema.json`, leaving this to the `ocsf-validator`. This change makes testing with alternate schemas that may add extra categories easier, as well as making it possible to validate private extensions that contain new categories.

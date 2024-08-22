@@ -45,7 +45,7 @@ Thankyou! -->
 
 ### Improved
 * #### Event Classes
-    1. Removed categories from 17 non-parent event classes.  #1162
+    1. Removed categories from non-parent event classes.  #1162
 * #### Objects
     1. Added `phone_number` to `user` and `ldap_person` objects. #1155
     2. Added `has_mfa` to `user` object. #1155

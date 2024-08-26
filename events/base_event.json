@@ -5,12 +5,66 @@
   "name": "base_event",
   "attributes": {
     "$include": [
-      "includes/classification.json",
-      "includes/occurrence.json",
       "profiles/cloud.json",
       "profiles/datetime.json",
       "profiles/osint.json"
     ],
+    "activity_id": {
+      "group": "classification",
+      "requirement": "required",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "99": {
+          "caption": "Other"
+        }
+      }
+    },
+    "activity_name": {
+      "group": "classification",
+      "requirement": "optional"
+    },
+    "category_name": {
+      "group": "classification",
+      "requirement": "optional"
+    },
+    "category_uid": {
+      "group": "classification",
+      "requirement": "required",
+      "enum": {
+        "0": {
+          "caption": "Uncategorized"
+        }
+      }
+    },
+    "class_name": {
+      "group": "classification",
+      "requirement": "optional"
+    },
+    "class_uid": {
+      "group": "classification",
+      "requirement": "required",
+      "enum": {
+        "0": {
+          "caption": "Base Event"
+        }
+      }
+    },
+    "count": {
+      "group": "occurrence",
+      "requirement": "optional"
+    },
+    "duration": {
+      "description": "The event duration or aggregate time, the amount of time the event covers from <code>start_time</code> to <code>end_time</code> in milliseconds.",
+      "group": "occurrence",
+      "requirement": "optional"
+    },
+    "end_time": {
+      "description": "The end time of a time period, or the time of the most recent event included in the aggregate event.",
+      "group": "occurrence",
+      "requirement": "optional"
+    },
     "enrichments": {
       "group": "context",
       "requirement": "optional"
@@ -39,6 +93,11 @@
       "group": "classification",
       "requirement": "required"
     },
+    "start_time": {
+      "description": "The start time of a time period, or the time of the least recent event included in the aggregate event.",
+      "group": "occurrence",
+      "requirement": "optional"
+    },
     "status": {
       "group": "primary",
       "requirement": "recommended"
@@ -54,6 +113,22 @@
     "status_id": {
       "group": "primary",
       "requirement": "recommended"
+    },
+    "time": {
+      "group": "occurrence",
+      "requirement": "required"
+    },
+    "timezone_offset": {
+      "group": "occurrence",
+      "requirement": "recommended"
+    },
+    "type_name": {
+      "group": "classification",
+      "requirement": "optional"
+    },
+    "type_uid": {
+      "group": "classification",
+      "requirement": "required"
     },
     "unmapped": {
       "group": "context",

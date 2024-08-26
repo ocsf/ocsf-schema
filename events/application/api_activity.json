@@ -1,8 +1,8 @@
 {
     "uid": 3,
+    "caption": "API Activity",
     "description": "API events describe general CRUD (Create, Read, Update, Delete) API activities, e.g. (AWS Cloudtrail)",
     "extends": "application",
-    "caption": "API Activity",
     "name": "api_activity",
     "attributes": {
         "activity_id": {
@@ -25,6 +25,10 @@
                 }
             }
         },
+        "actor": {
+            "group": "primary",
+            "requirement": "required"
+        },
         "api": {
             "group": "primary",
             "requirement": "required",
@@ -35,13 +39,9 @@
             "requirement": "recommended"
         },
         "http_request": {
-            "description":"Details about the underlying http request.",
+            "description": "Details about the underlying http request.",
             "group": "primary",
             "requirement": "recommended"
-        },
-        "actor": {
-            "group": "primary",
-            "requirement": "required"
         },
         "resources": {
             "description": "Details about resources that were affected by the activity/event.",

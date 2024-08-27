@@ -1,0 +1,60 @@
+{
+	"caption": "Domain Contact",
+	"description": "The contact information related to a domain registration, e.g., registrant, administrator, abuse, billing, or technical contact.",
+	"extends": "object",
+	"name": "domain_contact",
+	"attributes": {
+		"type_id": {
+			"caption": "Domain Contact Type ID",
+			"description": "The normalized domain contact type ID.",
+			"requirement": "required",
+			"enum": {
+				"1": {
+					"caption": "Registrant",
+					"description": "The contact information provided is for the domain registrant."
+				},
+				"2": {
+					"caption": "Administrative",
+					"description": "The contact information provided is for the domain administrator."
+				},
+				"3": {
+					"caption": "Technical",
+					"description": "The contact information provided is for the domain technical lead."
+				},
+				"4": {
+					"caption": "Billing",
+					"description": "The contact information provided is for the domain billing lead."
+				},
+				"5": {
+					"caption": "Abuse",
+					"description": "The contact information provided is for the domain abuse contact."
+				}
+			}
+		},
+		"type": {
+			"caption": "Domain Contact Type",
+			"description": "The Domain Contact type, normalized to the caption of the <code>type_id</code> value. In the case of 'Other', it is defined by the source",
+			"requirement": "optional"
+		},
+		"location": {
+			"caption": "Contact Location Information",
+			"description": "Location details for the contract such as the city, state/province, country, etc.",
+			"requirement": "recommended"
+		},
+		"email_addr": {
+			"caption": "Contact Email",
+			"requirement": "recommended"
+		},
+		"phone_number": {
+			"requirement": "optional"
+		},
+		"name": {
+			"description": "The individual or organization name for the contact.",
+			"requirement": "optional"
+		},
+		"uid": {
+			"description": "The unique identifier of the contact information, typically provided in WHOIS information.",
+			"requirement": "optional"
+		}
+	}
+}

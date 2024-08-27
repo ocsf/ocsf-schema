@@ -49,6 +49,7 @@ Thankyou! -->
     1. Added `phone_number` to `user` and `ldap_person` objects. #1155
     2. Added `has_mfa` to `user` object. #1155
     3. Added `vendor_name` to `cvss` object. #1165
+    4. Added `file`, `reputation`, `subnet`, and `script` to `osint` object. #1168
 
 ### Misc
 1. Added `user.uid` as an Observable type - `type_id: 31`. #1155
@@ -57,6 +58,7 @@ Thankyou! -->
 4. Added `has_mfa` boolean_t to Dictionary. #1155
 5. Deprecate `project_uid`. #1166
 6. Added several new enums to `account.type_id`. #1166
+7. Added new `file` enum to `osint.type_id`. #1168
 
 ## [v1.3.0] - August 1st, 2024
 

@@ -42,7 +42,8 @@ Thankyou! -->
 ### Added
 * #### Event Classes
     1. Added `OSINT Inventory Info` event class to the Discovery category. #1154
-    2. Added `Startup Item Query` event class. #1119
+    2. Added `Script Activity` event class to the System category. #1159
+    3. Added `Startup Item Query` event class. #1119
 
 ### Improved
 * #### Objects

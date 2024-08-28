@@ -1,17 +1,13 @@
 {
+  "uid": 4,
   "caption": "Web Resource Access Activity",
   "description": "Web Resource Access Activity events describe successful/failed attempts to access a web resource over HTTP.",
   "extends": "application",
   "name": "web_resource_access_activity",
-  "uid": 4,
   "@deprecated": {
     "message": "Use the <code>Web Resources Activity</code> class with the <code>Security Control</code> and/or <code>Network Proxy</code> profile instead.",
     "since": "1.0.0"
   },
-  "profiles": [
-    "host",
-    "network_proxy"
-  ],
   "attributes": {
     "$include": [
       "profiles/host.json",
@@ -52,11 +48,6 @@
       "group": "context",
       "requirement": "optional"
     },
-    "web_resources": {
-      "description": "Details about the resource that is the target of the activity.",
-      "group": "primary",
-      "requirement": "required"
-    },
     "src_endpoint": {
       "description": "Details about the source endpoint of the request.",
       "group": "primary",
@@ -66,6 +57,15 @@
       "description": "The Transport Layer Security (TLS) attributes, if available.",
       "group": "context",
       "requirement": "optional"
+    },
+    "web_resources": {
+      "description": "Details about the resource that is the target of the activity.",
+      "group": "primary",
+      "requirement": "required"
     }
-  }
+  },
+  "profiles": [
+    "host",
+    "network_proxy"
+  ]
 }

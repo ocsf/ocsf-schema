@@ -1,13 +1,14 @@
 {
   "uid": 5,
   "caption": "Incident Finding",
+  "category": "findings",
   "description": "An Incident Finding reports the creation, update, or closure of security incidents as a result of detections and/or analytics.",
   "extends": "base_event",
-  "category": "findings",
   "name": "incident_finding",
   "attributes": {
     "activity_id": {
       "description": "The normalized identifier of the Incident activity.",
+      "requirement": "required",
       "enum": {
         "1": {
           "caption": "Create",
@@ -21,8 +22,7 @@
           "caption": "Close",
           "description": "Reports closure of an Incident ."
         }
-      },
-      "requirement": "required"
+      }
     },
     "activity_name": {
       "description": "The Incident activity name, as defined by the <code>activity_id</code>.",
@@ -83,6 +83,10 @@
       "group": "primary",
       "requirement": "recommended"
     },
+    "is_suspected_breach": {
+      "group": "context",
+      "requirement": "optional"
+    },
     "priority": {
       "group": "context",
       "requirement": "optional"
@@ -107,6 +111,8 @@
     },
     "status_id": {
       "description": "The normalized status identifier of the Incident.",
+      "group": "primary",
+      "requirement": "required",
       "enum": {
         "1": {
           "caption": "New",
@@ -128,15 +134,9 @@
           "caption": "Closed",
           "description": "The incident is resolved and no further action is necessary."
         }
-      },
-      "group": "primary",
-      "requirement": "required"
+      }
     },
     "ticket": {
-      "group": "context",
-      "requirement": "optional"
-    },
-    "is_suspected_breach": {
       "group": "context",
       "requirement": "optional"
     },

@@ -1,19 +1,27 @@
 {
+  "uid": 3,
   "caption": "Authorize Session",
   "description": "Authorize Session events report privileges or groups assigned to a new user session, usually at login time.",
   "extends": "iam",
   "name": "authorize_session",
-  "uid": 3,
+  "associations": {
+    "session": [
+      "user"
+    ],
+    "user": [
+      "session"
+    ]
+  },
   "attributes": {
     "activity_id": {
       "enum": {
         "1": {
-          "description": "Assign special privileges to a new logon.",
-          "caption": "Assign Privileges"
+          "caption": "Assign Privileges",
+          "description": "Assign special privileges to a new logon."
         },
         "2": {
-          "description": "Assign special groups to a new logon.",
-          "caption": "Assign Groups"
+          "caption": "Assign Groups",
+          "description": "Assign special groups to a new logon."
         }
       }
     },
@@ -42,14 +50,6 @@
       "group": "primary",
       "requirement": "required"
     }
-  },
-  "associations": {
-    "session": [
-      "user"
-    ],
-    "user": [
-      "session"
-    ]
   },
   "constraints": {
     "just_one": [

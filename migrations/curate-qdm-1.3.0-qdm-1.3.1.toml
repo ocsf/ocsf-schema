@@ -1,0 +1,82 @@
+new_repo = "../ocsf/qdm"
+old_repo = "../ocsf/qdm-prev"
+
+log_level = "DEBUG"
+
+# Update paths
+#   Any matching paths below will be updated in the schema patch. The "new"
+#   version of these paths will win out over the old.
+update = [
+    "?.?.description", # The community is better at updating descriptions and captions than Query
+    "*.attributes.?.description", # The community is better at updating descriptions and captions than Query
+    "*.caption", 
+    "*.constraints.?", # QDM doesn't enforce constraints
+    "*.attributes.?.requirement", # QDM doesn't enforce OCSF requirements
+    "*.attributes.observable",
+
+	"objects.registry_key", "objects.registry_key.*", "objects.registry_value.name",
+	"objects.registry_value", "objects.registry_value.*", "objects.registry_value.name",
+	"*.attributes.duration.type",
+	"*.attributes.tls.group",
+	"*.attributes.*.type",
+]
+
+# Preserve paths
+#   Any matching paths below will be preserved in the schema patch. In other
+#   words, the "old" version of the schema will be used.
+preserve = [
+    #"*.type", # Not so sure about this one...
+    #"?.?.attributes.?.enum.*", # Keep all enums by default
+    "*.@deprecated.*", # Don't update @deprecated messages
+
+	"*.attributes.status_detail.caption",
+	"*.attributes.duration.caption",
+]
+
+# Deprecate paths
+#   Any matching paths below will be deprecated in the schema patch. They will
+#   be preserved in the new schema, but with an @deprecated annotation.
+deprecate = [
+    #"events.email_delivery_activity.*",
+    "?.?.attributes.*", # Deprecate all attributes by default
+    "?.?", # Deprecate all removed records by default
+]
+
+# Ignore paths
+#   Any matching paths below will be ignored and not included in the schema
+#   patch.
+ignore = [
+    "*.$include",
+    "?.?.profiles",
+    "?.?.attributes.?.profile",
+    "?.?.extension", # This is added by Query and changes based on the order of extensions
+    "?.?.extends",
+    "?.?.uid",
+
+    # Dynamically generated schema elements
+    "objects.observable.attributes.type_id.enum.*",
+    "events.?.attributes.class_uid",
+    "events.?.attributes.class_uid.*",
+    "events.?.attributes.type_uid",
+    "events.?.attributes.type_uid.*",
+    "events.?.attributes.category_uid",
+    "events.?.attributes.category_uid.*",
+
+    "objects.reg_key.name", "objects.reg_value.name",
+]
+
+# Clarify paths
+#   Any matching paths below will be flagged for clarification. The preserve and
+#   order steps curation will halt if anything is flagged in a schema patch.
+#clarify = ["*.type"]
+
+# No Clarify paths
+#   Any matching paths below will NOT be flagged for clarification. This list
+#   overrules the clarify list above.
+#no_clarify = ["?.?.attributes.type_uid.type"]
+
+# Rename paths
+[rename]
+#"events.user_info" = "events.user_query"
+#"events.registry_key_info" = "events.registry_key_query"
+#"events.prefetch_info" = "events.prefetch_query"

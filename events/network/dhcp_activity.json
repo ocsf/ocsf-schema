@@ -1,18 +1,16 @@
 {
+  "uid": 4,
   "caption": "DHCP Activity",
   "description": "DHCP Activity events report MAC to IP assignment via DHCP from a client or server.",
   "extends": "network",
   "name": "dhcp_activity",
-  "profiles": [
-    "host"
-  ],
-  "uid": 4,
   "attributes": {
     "$include": [
       "profiles/cloud.json",
       "profiles/host.json"
     ],
     "activity_id": {
+      "requirement": "required",
       "enum": {
         "1": {
           "caption": "Discover",
@@ -50,13 +48,12 @@
           "caption": "Expire",
           "description": "DHCPEXPIRE: A DHCP lease expired."
         }
-      },
-      "requirement": "required"
+      }
     },
     "dst_endpoint": {
       "description": "The responder (server) of the DHCP connection.",
-      "requirement": "recommended",
-      "group": "primary"
+      "group": "primary",
+      "requirement": "recommended"
     },
     "is_renewal": {
       "group": "primary",
@@ -66,12 +63,12 @@
       "group": "primary",
       "requirement": "recommended"
     },
+    "relay": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
     "src_endpoint": {
       "description": "The initiator (client) of the DHCP connection.",
-      "requirement": "recommended",
-      "group": "primary"
-    },
-    "relay": {
       "group": "primary",
       "requirement": "recommended"
     },
@@ -80,5 +77,8 @@
       "group": "primary",
       "requirement": "recommended"
     }
-  }
+  },
+  "profiles": [
+    "host"
+  ]
 }

@@ -1,31 +1,31 @@
 {
+  "uid": 20,
   "caption": "Software Inventory Info",
   "description": "Software Inventory Info events report device software inventory data that is either logged or proactively collected. For example, when collecting device information from a CMDB or running a network sweep of connected devices.",
   "extends": "discovery",
   "name": "software_info",
-  "uid": 20,
-  "profiles": [
-    "host"
-  ],
   "attributes": {
     "actor": {
       "group": "context",
       "requirement": "optional"
     },
     "device": {
+      "description": "The device that is being discovered by an inventory process.",
       "group": "primary",
-      "requirement": "required",
-      "description": "The device that is being discovered by an inventory process."
+      "requirement": "required"
     },
-      "package": {
+    "package": {
+      "description": "The device software that is being discovered by an inventory process.",
       "group": "primary",
-      "requirement": "required",
-      "description": "The device software that is being discovered by an inventory process."
+      "requirement": "required"
     },
-      "product": {
+    "product": {
+      "description": "Additional product attributes that have been discovered or enriched from a catalog or other external source.",
       "group": "context",
-      "requirement": "optional",
-      "description": "Additional product attributes that have been discovered or enriched from a catalog or other external source."
-    }  
-  }
+      "requirement": "optional"
+    }
+  },
+  "profiles": [
+    "host"
+  ]
 }

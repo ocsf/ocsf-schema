@@ -19,6 +19,7 @@ Thankyou! -->
 * #### Profiles
 * #### Objects
 * #### Platform Extensions
+* #### Dictionary Attributes
 
 ### Improved
 * #### Categories
@@ -26,6 +27,7 @@ Thankyou! -->
 * #### Profiles
 * #### Objects
 * #### Platform Extensions
+* #### Dictionary Attributes
 
 ### Bugfixes
 
@@ -43,6 +45,8 @@ Thankyou! -->
 * #### Event Classes
     1. Added `OSINT Inventory Info` event class to the Discovery category. #1154
     2. Added `Script Activity` event class to the System category. #1159
+* #### Dictionary Attributes
+    1. Added `has_mfa` as a `boolean_t`. #1155
 
 ### Improved
 * #### Objects
@@ -51,14 +55,16 @@ Thankyou! -->
     3. Added `vendor_name` to `cvss` object. #1165
     4. Added `file`, `reputation`, `subnet`, and `script` to `osint` object. #1168
 
+### Deprecated
+1. Deprecated `project_uid` in favor of `account.uid`. #1166
+
 ### Misc
 1. Added `user.uid` as an Observable type - `type_id: 31`. #1155
 2. Added `group.name` and `group.uid` as Observable types - `type_id: 32` and `type_id: 33`, respectively. #1155
 3. Added `account.name` and `account.uid` as Observable types - `type_id: 34` and `type_id: 35`, respectively. #1155
-4. Added `has_mfa` boolean_t to Dictionary. #1155
-5. Deprecate `project_uid`. #1166
-6. Added several new enums to `account.type_id`. #1166
-7. Added new `file` enum to `osint.type_id`. #1168
+4. Added new enumeration items to `account.type_id`. #1166
+5. Cleaned up event class definition files, removed /includes dir, simplified definition of `base_event`. #1167
+6. Added new `file` enum to `osint.type_id`. #1168
 
 ## [v1.3.0] - August 1st, 2024
 

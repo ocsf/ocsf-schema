@@ -4,16 +4,10 @@
   "description": "The Finding event is a generic event that defines a set of attributes available in the Findings category.",
   "extends": "base_event",
   "name": "finding",
-  "profiles": [
-    "host"
-  ],
   "attributes": {
     "$include": [
       "profiles/host.json"
     ],
-    "activity_name": {
-      "description": "The finding activity name, as defined by the <code>activity_id</code>."
-    },
     "activity_id": {
       "description": "The normalized identifier of the finding activity.",
       "enum": {
@@ -30,6 +24,9 @@
           "description": "A finding was closed."
         }
       }
+    },
+    "activity_name": {
+      "description": "The finding activity name, as defined by the <code>activity_id</code>."
     },
     "comment": {
       "description": "A user provided comment about the finding.",
@@ -93,5 +90,8 @@
         }
       }
     }
-  }
+  },
+  "profiles": [
+    "host"
+  ]
 }

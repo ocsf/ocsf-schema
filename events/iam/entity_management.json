@@ -1,10 +1,18 @@
 {
-  "caption": "Entity Management",
   "uid": 4,
-  "name": "entity_management",
-  "extends": "iam",
+  "caption": "Entity Management",
   "description": "Entity Management events report activity by a managed client, a micro service, or a user at a management console. The activity can be a create, read, update, and delete operation on a managed entity.",
+  "extends": "iam",
+  "name": "entity_management",
   "attributes": {
+    "access_list": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "access_mask": {
+      "group": "context",
+      "requirement": "optional"
+    },
     "activity_id": {
       "enum": {
         "1": {
@@ -77,14 +85,6 @@
     "entity_result": {
       "group": "primary",
       "requirement": "recommended"
-    },
-    "access_mask": {
-      "group": "context",
-      "requirement": "optional"
-    },
-    "access_list": {
-      "group": "context",
-      "requirement": "optional"
     }
   }
 }

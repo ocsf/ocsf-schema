@@ -1,14 +1,10 @@
 {
-  "description": "Email URL Activity events report URLs within an email.",
-  "extends": "base_event",
-  "caption": "Email URL Activity",
-  "name": "email_url_activity",
+  "uid": 11,
+  "caption": "Email File Activity",
   "category": "network",
-  "uid": 12,
-  "profiles": [
-    "host",
-    "security_control"
-  ],
+  "description": "Email File Activity events report files within emails.",
+  "extends": "base_event",
+  "name": "email_file_activity",
   "attributes": {
     "$include": [
       "profiles/host.json",
@@ -25,18 +21,22 @@
         },
         "3": {
           "caption": "Scan",
-          "description": "Email URL being scanned (example: security scanning)."
+          "description": "Email file being scanned (example: security scanning)."
         }
       }
     },
     "email_uid": {
-      "requirement": "required",
-      "group": "primary"
+      "group": "primary",
+      "requirement": "required"
     },
-    "url": {
-      "description": "The URL included in the email content.",
+    "file": {
+      "description": "The email file attachment.",
       "group": "primary",
       "requirement": "required"
     }
-  }
+  },
+  "profiles": [
+    "host",
+    "security_control"
+  ]
 }

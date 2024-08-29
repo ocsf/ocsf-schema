@@ -49,6 +49,8 @@ Thankyou! -->
     1. Added `has_mfa` as a `boolean_t`. #1155
 
 ### Improved
+* #### Event Classes
+    1. Added `evidences` to `compliance_finding` class. #1157
 * #### Objects
     1. Added `phone_number` to `user` and `ldap_person` objects. #1155
     2. Added `has_mfa` to `user` object. #1155

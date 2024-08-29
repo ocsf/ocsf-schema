@@ -1,9 +1,9 @@
 {
+  "uid": 4,
   "caption": "Memory Activity",
   "description": "Memory Activity events report when a process has memory allocated, read/modified, or other manipulation activities - such as a buffer overflow or turning off data execution protection (DEP).",
   "extends": "system",
   "name": "memory_activity",
-  "uid": 4,
   "attributes": {
     "activity_id": {
       "enum": {
@@ -20,28 +20,29 @@
           "caption": "Buffer Overflow"
         },
         "5": {
-          "description": "Data Execution Permission",
-          "caption": "Disable DEP"
+          "caption": "Disable DEP",
+          "description": "Data Execution Permission"
         },
         "6": {
-          "description": "Data Execution Permission",
-          "caption": "Enable DEP"
+          "caption": "Enable DEP",
+          "description": "Data Execution Permission"
         },
         "7": {
-          "description": "Read (Example: <code>ReadProcessMemory</code>)",
-          "caption": "Read"
+          "caption": "Read",
+          "description": "Read (Example: <code>ReadProcessMemory</code>)"
         },
         "8": {
-          "description": "Write (Example: <code>WriteProcessMemory</code>)",
-          "caption": "Write"
+          "caption": "Write",
+          "description": "Write (Example: <code>WriteProcessMemory</code>)"
         },
         "9": {
-          "description": "Map View (Example: <code>MapViewOfFile2</code>)",
-          "caption": "Map View"
+          "caption": "Map View",
+          "description": "Map View (Example: <code>MapViewOfFile2</code>)"
         }
       }
     },
     "actual_permissions": {
+      "description": "The permissions that were granted to access memory.",
       "group": "primary",
       "requirement": "recommended"
     },
@@ -50,7 +51,13 @@
       "group": "primary",
       "requirement": "recommended"
     },
+    "process": {
+      "description": "The process that had memory allocated, read/written, or had other manipulation activities performed on it.",
+      "group": "primary",
+      "requirement": "required"
+    },
     "requested_permissions": {
+      "description": "The permissions mask that was requested to access memory.",
       "group": "primary",
       "requirement": "recommended"
     },
@@ -58,11 +65,6 @@
       "description": "The memory size that was access or requested.",
       "group": "primary",
       "requirement": "recommended"
-    },
-    "process": {
-      "description": "The process that had memory allocated, read/written, or had other manipulation activities performed on it.",
-      "group": "primary",
-      "requirement": "required"
     }
   }
 }

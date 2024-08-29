@@ -1,14 +1,14 @@
 {
-  "@deprecated": {
-    "message": "Use the new specific classes according to the use-case: <code>Vulnerability Finding, Compliance Finding, Detection Finding, Incident Finding.</code>",
-    "since": "1.1.0"
-  },
+  "uid": 1,
   "caption": "Security Finding",
   "category": "findings",
   "description": "Security Finding events describe findings, detections, anomalies, alerts and/or actions performed by security products",
   "extends": "base_event",
   "name": "security_finding",
-  "uid": 1,
+  "@deprecated": {
+    "message": "Use the new specific classes according to the use-case: <code>Vulnerability Finding, Compliance Finding, Detection Finding, Incident Finding.</code>",
+    "since": "1.1.0"
+  },
   "attributes": {
     "activity_id": {
       "enum": {
@@ -45,16 +45,16 @@
     },
     "confidence": {
       "group": "primary",
-      "requirement":"recommended"
+      "requirement": "recommended"
     },
     "confidence_id": {
       "group": "primary",
       "requirement": "recommended",
       "sibling": "confidence"
     },
-     "confidence_score": {
+    "confidence_score": {
       "group": "primary",
-      "requirement":"recommended"
+      "requirement": "recommended"
     },
     "data_sources": {
       "group": "context",
@@ -70,7 +70,7 @@
     },
     "impact": {
       "group": "primary",
-      "requirement":"recommended"
+      "requirement": "recommended"
     },
     "impact_id": {
       "group": "primary",
@@ -79,7 +79,7 @@
     },
     "impact_score": {
       "group": "primary",
-      "requirement":"recommended"
+      "requirement": "recommended"
     },
     "kill_chain": {
       "group": "context",
@@ -91,7 +91,7 @@
     },
     "nist": {
       "group": "context",
-      "requirement":"optional"
+      "requirement": "optional"
     },
     "process": {
       "group": "context",
@@ -103,7 +103,7 @@
     },
     "risk_level": {
       "group": "primary",
-      "requirement":"recommended"
+      "requirement": "recommended"
     },
     "risk_level_id": {
       "group": "primary",
@@ -121,6 +121,8 @@
     },
     "state_id": {
       "description": "The normalized state identifier of a security finding.",
+      "group": "context",
+      "requirement": "required",
       "enum": {
         "1": {
           "caption": "New",
@@ -138,9 +140,7 @@
           "caption": "Resolved",
           "description": "The finding was reviewed and remediated and is now considered resolved."
         }
-      },
-      "group": "context",
-      "requirement": "required"
+      }
     },
     "vulnerabilities": {
       "group": "context",

@@ -1,9 +1,23 @@
 {
+  "uid": 2,
   "caption": "Authentication",
   "description": "Authentication events report authentication session activities such as user attempts a logon or logoff, successfully or otherwise.",
   "extends": "iam",
   "name": "authentication",
-  "uid": 2,
+  "associations": {
+    "actor.user": [
+      "src_endpoint"
+    ],
+    "dst_endpoint": [
+      "user"
+    ],
+    "src_endpoint": [
+      "actor.user"
+    ],
+    "user": [
+      "dst_endpoint"
+    ]
+  },
   "attributes": {
     "activity_id": {
       "enum": {
@@ -73,9 +87,9 @@
       "requirement": "optional"
     },
     "is_remote": {
+      "description": "The attempted authentication is over a remote connection.",
       "group": "primary",
-      "requirement": "recommended",
-      "description": "The attempted authentication is over a remote connection."
+      "requirement": "recommended"
     },
     "logon_process": {
       "group": "context",
@@ -106,20 +120,6 @@
       "group": "primary",
       "requirement": "required"
     }
-  },
-  "associations": {
-    "actor.user": [
-      "src_endpoint"
-    ],
-    "dst_endpoint": [
-      "user"
-    ],
-    "src_endpoint": [
-      "actor.user"
-    ],
-    "user": [
-      "dst_endpoint"
-    ]
   },
   "constraints": {
     "at_least_one": [

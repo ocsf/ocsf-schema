@@ -102,7 +102,7 @@
     },
     "actual_permissions": {
       "caption": "Actual Permissions",
-      "description": "The permissions that were granted to the in a platform-native format.",
+      "description": "The permissions that were granted in a platform-native format. See specific usage.",
       "type": "integer_t"
     },
     "affected_code": {
@@ -982,7 +982,7 @@
       "type": "string_t"
     },
     "confidence_id": {
-      "caption": "Confidence Id",
+      "caption": "Confidence ID",
       "description": "The normalized confidence refers to the accuracy of the rule that created the finding. A rule with a low confidence means that the finding scope is wide and may create finding reports that may not be malicious in nature.",
       "type": "integer_t",
       "enum": {
@@ -2891,7 +2891,7 @@
     },
     "message_uid": {
       "caption": "Message UID",
-      "description": "The email header Message-Id value, as defined by RFC 5322.",
+      "description": "The email header Message-ID value, as defined by RFC 5322.",
       "type": "string_t"
     },
     "metadata": {
@@ -3199,6 +3199,11 @@
       "description": "The parent process of this process object. It is recommended to only populate this field for the first process object, to prevent deep nesting.",
       "type": "process"
     },
+    "parent_uid": {
+      "caption": "Parent Unique ID",
+      "description": "The unique identifier of an object's parent object. See specific usage.",
+      "type": "string_t"
+    },
     "path": {
       "caption": "Path",
       "description": "The path that pertains to the event or object. See specific usage.",
@@ -3443,7 +3448,11 @@
     "project_uid": {
       "caption": "Project ID",
       "description": "The unique identifier of a Cloud project.",
-      "type": "string_t"
+      "type": "string_t",
+      "@deprecated": {
+        "message": "Use the <code> account.uid </code> attribute instead.",
+        "since": "1.4.0"
+      }
     },
     "protocol_name": {
       "caption": "Protocol Name",
@@ -3708,7 +3717,7 @@
     },
     "requested_permissions": {
       "caption": "Requested Permissions",
-      "description": "The permissions mask that were requested by the process.",
+      "description": "The permissions mask. See specific usage.",
       "type": "integer_t"
     },
     "requirements": {
@@ -3925,6 +3934,17 @@
         }
       }
     },
+    "script": {
+      "caption": "Script",
+      "description": "The script object.",
+      "type": "script"
+    },
+    "script_content": {
+      "observable": 36,
+      "caption": "Script Content",
+      "description": "The script content, normalized to UTF-8 encoding irrespective of its original encoding.",
+      "type": "string_t"
+    },
     "section_a": {
       "caption": "JA4 Section A",
       "description": "The 'a' section of the JA4 fingerprint.",
@@ -4092,7 +4112,7 @@
       "type": "string_t"
     },
     "share_type_id": {
-      "caption": "Share Type Id",
+      "caption": "Share Type ID",
       "description": "The normalized identifier of the share type.",
       "sibling": "share_type",
       "type": "integer_t",

@@ -1,31 +1,31 @@
 {
+  "uid": 4,
   "caption": "Operating System Patch State",
   "description": "Operating System Patch State reports the installation of an OS patch to a device and any associated knowledgebase articles.",
   "extends": "discovery",
   "name": "patch_state",
-  "uid": 4,
-  "profiles": [
-    "host"
-  ],
   "attributes": {
     "$include": [
       "profiles/host.json"
-  ],
+    ],
     "device": {
-      "profile": null,
       "group": "primary",
-      "requirement": "required"
+      "requirement": "required",
+      "profile": null
     },
     "kb_article_list": {
       "group": "primary",
       "requirement": "recommended"
     }
   },
-    "constraints": {
-        "at_least_one": [
-            "device.os.sp_name",
-            "device.os.sp_ver",
-            "device.os.version"
+  "constraints": {
+    "at_least_one": [
+      "device.os.sp_name",
+      "device.os.sp_ver",
+      "device.os.version"
     ]
-  }
+  },
+  "profiles": [
+    "host"
+  ]
 }

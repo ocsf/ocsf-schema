@@ -1,65 +1,61 @@
 {
-  "caption": "Scan Activity",
-  "category": "application",
-  "description": "Scan events report the start, completion, and results of a scan job. The scan event includes the number of items that were scanned and the number of detections that were resolved.",
-  "extends": "base_event",
-  "name": "scan_activity",
-  "profiles": [
-    "host"
-  ],
   "uid": 7,
+  "caption": "Scan Activity",
+  "description": "Scan events report the start, completion, and results of a scan job. The scan event includes the number of items that were scanned and the number of detections that were resolved.",
+  "extends": "application",
+  "name": "scan_activity",
   "attributes": {
     "$include": [
       "profiles/host.json"
     ],
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Started",
+          "description": "The scan was started."
+        },
+        "2": {
+          "caption": "Completed",
+          "description": "The scan was completed."
+        },
+        "3": {
+          "caption": "Cancelled",
+          "description": "The scan was cancelled."
+        },
+        "4": {
+          "caption": "Duration Violation",
+          "description": "The allocated scan time was insufficient to complete the requested scan."
+        },
+        "5": {
+          "caption": "Pause Violation",
+          "description": "The scan was paused, either by the user or by program constraints (e.g. scans that are suspended during certain time intervals), and not resumed within the allotted time."
+        },
+        "6": {
+          "caption": "Error",
+          "description": "The scan could not be completed due to an internal error."
+        },
+        "7": {
+          "caption": "Paused",
+          "description": "The scan was paused."
+        },
+        "8": {
+          "caption": "Resumed",
+          "description": "The scan was resumed from the pause point."
+        },
+        "9": {
+          "caption": "Restarted",
+          "description": "The scan restarted from the beginning of the file enumeration."
+        },
+        "10": {
+          "caption": "Delayed",
+          "description": "The user delayed the scan."
+        }
+      }
+    },
     "command_uid": {
       "description": "The command identifier that is associated with this scan event.  This ID uniquely identifies the proactive scan command, e.g., if remotely initiated.",
       "group": "primary",
       "requirement": "recommended"
-    },
-    "activity_id": {
-      "enum": {
-        "1": {
-          "description": "The scan was started.",
-          "caption": "Started"
-        },
-        "2": {
-          "description": "The scan was completed.",
-          "caption": "Completed"
-        },
-        "3": {
-          "description": "The scan was cancelled.",
-          "caption": "Cancelled"
-        },
-        "4": {
-          "description": "The allocated scan time was insufficient to complete the requested scan.",
-          "caption": "Duration Violation"
-        },
-        "5": {
-          "description": "The scan was paused, either by the user or by program constraints (e.g. scans that are suspended during certain time intervals), and not resumed within the allotted time.",
-          "caption": "Pause Violation"
-        },
-        "6": {
-          "description": "The scan could not be completed due to an internal error.",
-          "caption": "Error"
-        },
-        "7": {
-          "description": "The scan was paused.",
-          "caption": "Paused"
-        },
-        "8": {
-          "description": "The scan was resumed from the pause point.",
-          "caption": "Resumed"
-        },
-        "9": {
-          "description": "The scan restarted from the beginning of the file enumeration.",
-          "caption": "Restarted"
-        },
-        "10": {
-          "description": "The user delayed the scan.",
-          "caption": "Delayed"
-        }
-      }
     },
     "duration": {
       "description": "The duration of the scan",
@@ -128,5 +124,8 @@
       "group": "primary",
       "requirement": "recommended"
     }
-  }
+  },
+  "profiles": [
+    "host"
+  ]
 }

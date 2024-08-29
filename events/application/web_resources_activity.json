@@ -1,15 +1,9 @@
 {
     "uid": 1,
-    "description": "Web Resources Activity events describe actions executed on a set of Web Resources.",
-    "extends": "base_event",
     "caption": "Web Resources Activity",
+    "description": "Web Resources Activity events describe actions executed on a set of Web Resources.",
+    "extends": "application",
     "name": "web_resources_activity",
-    "category": "application",
-    "profiles": [
-        "host",
-        "network_proxy",
-        "security_control"
-    ],
     "attributes": {
         "$include": [
             "profiles/host.json",
@@ -53,10 +47,10 @@
             }
         },
         "dst_endpoint": {
-             "description":"Details about server providing the web resources.",
-             "group": "primary",
-             "requirement": "recommended"
-        },        
+            "description": "Details about server providing the web resources.",
+            "group": "primary",
+            "requirement": "recommended"
+        },
         "http_request": {
             "description": "Details about the underlying HTTP request.",
             "group": "context",
@@ -77,7 +71,7 @@
             "group": "context",
             "requirement": "optional"
         },
-              "web_resources": {
+        "web_resources": {
             "group": "primary",
             "requirement": "required"
         },
@@ -85,5 +79,10 @@
             "group": "primary",
             "requirement": "recommended"
         }
-    }
+    },
+    "profiles": [
+        "host",
+        "network_proxy",
+        "security_control"
+    ]
 }

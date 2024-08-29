@@ -1,0 +1,63 @@
+{
+  "caption": "Script",
+  "description": "The Script object describes a script or command that can be executed by a shell, script engine, or interpreter. Examples include Bash, JavsScript, PowerShell, Python, VBScript, etc. Note that the term <em>script</em> here denotes not only a script contained within a file but also a script or command typed interactively by a user, supplied on the command line, or provided by some other file-less mechanism.",
+  "extends": "object",
+  "name": "script",
+  "attributes": {
+    "file": {
+      "description": "Present if this script is associated with a file. Not present in the case of a file-less script.",
+      "requirement": "optional"
+    },
+    "hashes": {
+      "description": "An array of the script's cryptographic hashes. Note that these hashes are calculated on the script in its original encoding, and not on the normalized UTF-8 encoding found in the <code>script_content</code> attribute.",
+      "requirement": "recommended"
+    },
+    "parent_uid": {
+      "description": "When a script is a dynamically executed sub-script, and when the underlying script engine supports use of the <code>uid</code> attribute, this <code>parent_uid</code> attribute identifies the parent script.",
+      "requirement": "optional"
+    },
+    "script_content": {
+      "requirement": "required"
+    },
+    "type": {
+      "description": "The script type, normalized to the caption of the <code>type_id</code> value. In the case of 'Other', it is defined by the event source.",
+      "requirement": "optional"
+    },
+    "type_id": {
+      "description": "The normalized script type ID.",
+      "requirement": "required",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The script type is unknown."
+        },
+        "1": {
+          "caption": "Windows Command Prompt"
+        },
+        "2": {
+          "caption": "PowerShell"
+        },
+        "3": {
+          "caption": "Python"
+        },
+        "4": {
+          "caption": "JavaScript"
+        },
+        "5": {
+          "caption": "VBScript"
+        },
+        "6": {
+          "caption": "Unix Shell"
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The script type is not mapped. See the <code>type</code> attribute which contains an event source specific value."
+        }
+      }
+    },
+    "uid": {
+      "description": "Some script engines assign a unique ID to each individual execution of a given script, e.g. PowerShell's Script Block ID. This <code>uid</code> attribute enables a dynamically executed sub-script to refer to its parent.",
+      "requirement": "optional"
+    }
+  }
+}

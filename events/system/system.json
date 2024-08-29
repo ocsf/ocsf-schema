@@ -4,16 +4,12 @@
   "description": "The System Activity event is a generic event that defines a set of attributes available in the system activity events. As a generic event, it could be used to log events that are not otherwise defined by the System Activity category.",
   "extends": "base_event",
   "name": "system",
-  "profiles": [
-    "host",
-    "security_control"
-  ],
   "associations": {
-    "device": [
-      "actor.user"
-    ],
     "actor.user": [
       "device"
+    ],
+    "device": [
+      "actor.user"
     ]
   },
   "attributes": {
@@ -28,5 +24,9 @@
       "group": "primary",
       "requirement": "required"
     }
-  }
+  },
+  "profiles": [
+    "host",
+    "security_control"
+  ]
 }

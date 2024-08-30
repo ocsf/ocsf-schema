@@ -55,6 +55,7 @@ Thankyou! -->
     1. Added `phone_number` to `user` and `ldap_person` objects. #1155
     2. Added `has_mfa` to `user` object. #1155
     3. Added `vendor_name` to `cvss` object. #1165
+    4. Added `file`, `reputation`, `subnet`, and `script` to `osint` object. #1168
 
 ### Deprecated
 1. Deprecated `project_uid` in favor of `account.uid`. #1166
@@ -63,8 +64,9 @@ Thankyou! -->
 1. Added `user.uid` as an Observable type - `type_id: 31`. #1155
 2. Added `group.name` and `group.uid` as Observable types - `type_id: 32` and `type_id: 33`, respectively. #1155
 3. Added `account.name` and `account.uid` as Observable types - `type_id: 34` and `type_id: 35`, respectively. #1155
-5. Added new enumeration items to `account.type_id`. #1166
-6. Cleaned up event class definition files, removed /includes dir, simplified definition of `base_event`. #1167
+4. Added new enumeration items to `account.type_id`. #1166
+5. Cleaned up event class definition files, removed /includes dir, simplified definition of `base_event`. #1167
+6. Added new `file` enum to `osint.type_id`. #1168
 
 ## [v1.3.0] - August 1st, 2024
 

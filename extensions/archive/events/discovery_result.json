@@ -1,0 +1,86 @@
+{
+    "attributes": {
+        "confidence": {
+            "group": "classification",
+            "requirement": "optional",
+            "caption": "Confidence",
+            "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
+            "type": "integer_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
+        },
+        "count": {
+            "default": 1
+        },
+        "command_uid": {
+            "description": "The unique identifier of the discovery command that pertains to this event.",
+            "group": "primary",
+            "requirement": "required",
+            "caption": "Command UID",
+            "type": "string_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
+        },
+        "data": {
+            "description": "Additional data that is associated with the event.",
+            "requirement": "optional",
+            "caption": "Data",
+            "type": "json_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
+        },
+        "scan_uid": {
+            "description": "The unique identifier of the discovery scan request that pertains to this event.",
+            "group": "primary",
+            "requirement": "optional",
+            "caption": "Scan UID",
+            "type": "string_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
+        },
+        "severity_id": {
+            "enum": {
+                "0": {
+                    "description": "The event severity is not known."
+                }
+            }
+        },
+        "activity_id": {
+            "enum": {
+                "5": {
+                    "caption": "Unsupported",
+                    "description": "Discovery of the target was not supported."
+                },
+                "3": {
+                    "caption": "Does not exist",
+                    "description": "The target was not found."
+                },
+                "4": {
+                    "caption": "Error",
+                    "description": "The discovery attempt failed."
+                },
+                "2": {
+                    "caption": "Partial",
+                    "description": "The target was partially found."
+                },
+                "1": {
+                    "description": "The target was found."
+                }
+            }
+        },
+        "duration": {
+            "caption": "Duration"
+        },
+        "status_detail": {
+            "caption": "Status Details"
+        }
+    }
+}

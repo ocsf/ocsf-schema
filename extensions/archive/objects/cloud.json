@@ -1,0 +1,80 @@
+{
+    "attributes": {
+        "account_uid": {
+            "requirement": "recommended",
+            "caption": "Account UID",
+            "description": "The unique identifier of the account(e.g. AWS Account ID).",
+            "type": "string_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
+        },
+        "org_uid": {
+            "requirement": "optional",
+            "caption": "Org ID",
+            "description": "The unique identifier of the organization to which the user belongs. For example, Active Directory or AWS Org ID.",
+            "type": "string_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
+        },
+        "account_type": {
+            "requirement": "optional",
+            "caption": "Account Type",
+            "description": "The user account type, as defined by the event source.",
+            "type": "string_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
+        },
+        "account_type_id": {
+            "requirement": "optional",
+            "caption": "Account Type ID",
+            "description": "The normalized user account type identifier.",
+            "enum": {
+                "-1": {
+                    "caption": "Other",
+                    "description": "The user account type is not mapped."
+                },
+                "0": {
+                    "caption": "Unknown",
+                    "description": "The user account type is unknown."
+                },
+                "1": {
+                    "caption": "LDAP Account"
+                },
+                "2": {
+                    "caption": "Windows Account"
+                },
+                "3": {
+                    "caption": "AWS IAM Account"
+                },
+                "4": {
+                    "caption": "GCP Account"
+                },
+                "5": {
+                    "caption": "Azure AD Account"
+                }
+            },
+            "sibling": "account_type",
+            "type": "integer_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
+        },
+        "resource_uid": {
+            "requirement": "optional",
+            "caption": "Resource ID",
+            "description": "The unique identifier of a cloud resource. For example, S3 Bucket name, EC2 Instance Id.",
+            "type": "resource_uid_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
+        }
+    }
+}

@@ -1,0 +1,90 @@
+{
+  "caption": "Attribute Dictionary",
+  "description": "The Attribute Dictionary defines schema attributes and includes references to the events and objects in which they are used.",
+  "name": "dictionary",
+  "attributes": {
+    "raw_data": {
+      "caption": "Raw Data",
+      "description": "The event data as received from the event source.",
+      "type": "json_t"
+    },
+    "recipient_users": {
+      "caption": "Recipient Users",
+      "description": "The users receiving the email",
+      "is_array": true,
+      "type": "user"
+    },
+    "record_id": {
+      "description": "Unique identifier for record or event",
+      "caption": "Record ID",
+      "type": "string_t"
+    },
+    "sender_users": {
+      "caption": "Sender Users",
+      "description": "The user who sent the email",
+      "type": "user"
+    },
+		"reputations": {
+			"caption": "Reputations",
+			"description": "Reputation score as reported by provider",
+			"is_array": true,
+			"type": "reputation" 
+		},
+		"findings": {
+			"caption": "Findings",
+			"description": "The findings from threat intelligence platforms",
+			"type": "finding",
+			"is_array": true
+		},
+		"filenames": {
+      "caption": "Filenames",
+			"description": "The names a file is known by.",
+			"type": "string_t",
+			"is_array": true
+		},
+		"asn": {
+			"description": "The 2- or 4-byte Autonomous System Number (ASN)",
+			"type": "integer_t",
+			"caption": "ASN"
+		},
+		"asn_owner": {
+			"description": "The Autonomous System (AS) owner",
+			"type": "string_t",
+			"caption": "AS Owner"
+		},
+    "dns_entries": {
+      "caption": "DNS Entries",
+      "description": "The Domain Name System (DNS) entries from passive DNS logs or a direct query for enrichment.",
+      "is_array": true,
+      "type": "dns_answer"
+    },
+		"full_name": {
+      "caption": "Full Name",
+      "description": "The full name of the person, as per the LDAP Common Name attribute (cn).",
+      "type": "string_t"
+    },
+    "ip_intelligence": {
+      "caption": "IP Intelligence",
+      "description": "Insights from threat intelligence platforms about IP Address",
+      "type": "ip_intelligence"
+    },
+    "last_login_time": {
+      "caption": "Last Login",
+      "description": "The last time when the user logged in.",
+      "type": "timestamp_t"
+    },
+    "is_array": {
+    	"requirement": "optional",
+    	"type": "boolean_t",
+    	"caption": "Is Array",
+    	"description": "If true, the value is understood to be an array. Otherwise it is assumed to be a scalar."
+    },
+    "unmapped": {
+    	"type": "unmapped",
+    	"is_array": true
+    },
+    "xattributes": {
+      "type": "json_t"
+    }
+  }
+}

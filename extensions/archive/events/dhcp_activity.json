@@ -1,0 +1,65 @@
+{
+    "attributes": {
+        "count": {
+            "default": 1
+        },
+        "data": {
+            "description": "Additional data that is associated with the event.",
+            "requirement": "optional",
+            "caption": "Data",
+            "type": "json_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
+        },
+        "network_interface": {
+            "group": "primary",
+            "requirement": "required",
+            "caption": "Network Interface",
+            "description": "The network interface that is associated with the device.",
+            "type": "network_interface",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
+        },
+        "confidence": {
+            "group": "classification",
+            "requirement": "optional",
+            "caption": "Confidence",
+            "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
+            "type": "integer_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
+        },
+        "severity_id": {
+            "enum": {
+                "0": {
+                    "description": "The event severity is not known."
+                }
+            }
+        },
+        "disposition_id": {
+            "enum": {
+                "99": {
+                    "description": "The disposition is not listed. The <code>disposition</code> attribute should be populated with a source specific caption."
+                },
+                "0": {
+                    "description": "The disposition was not known."
+                },
+                "8": {
+                    "description": "A request or submission was approved.  For example, when a form was properly filled out and submitted. This is distinct from <code>1</code> 'Allowed'."
+                }
+            }
+        },
+        "duration": {
+            "caption": "Duration"
+        },
+        "status_detail": {
+            "caption": "Status Details"
+        }
+    }
+}

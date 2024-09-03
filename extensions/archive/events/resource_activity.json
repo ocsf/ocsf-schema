@@ -1,0 +1,68 @@
+{
+    "attributes": {
+        "data": {
+            "description": "Additional data that is associated with the event.",
+            "requirement": "optional",
+            "caption": "Data",
+            "type": "json_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
+        },
+        "resource": {
+            "description": "The resource that was accessed.",
+            "group": "primary",
+            "requirement": "required",
+            "caption": "Resource",
+            "type": "resource",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
+        },
+        "count": {
+            "default": 1
+        },
+        "confidence": {
+            "group": "classification",
+            "requirement": "optional",
+            "caption": "Confidence",
+            "description": "The confidence of the reported event severity as a percentage: 0%-100%.",
+            "type": "integer_t",
+            "@deprecated": {
+                "since": "1.1.0",
+                "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+            }
+        },
+        "disposition_id": {
+            "enum": {
+                "10": {
+                    "description": "Requires reboot to finish the operation."
+                },
+                "14": {
+                    "description": "No longer suspicious (re-scored)."
+                },
+                "15": {
+                    "description": "Marked with extended attributes."
+                },
+                "8": {
+                    "description": "A request or submission was approved.  For example, when a form was properly filled out and submitted. This is distinct from <code>1</code> 'Allowed'."
+                }
+            }
+        },
+        "severity_id": {
+            "enum": {
+                "0": {
+                    "description": "The event severity is not known."
+                }
+            }
+        },
+        "duration": {
+            "caption": "Duration"
+        },
+        "status_detail": {
+            "caption": "Status Details"
+        }
+    }
+}

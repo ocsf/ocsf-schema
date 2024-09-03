@@ -13,8 +13,6 @@ Thankyou! -->
 
 <!-- All available sections in the Changelog:
 
-<!-- All available sections in the Changelog:
-
 ### Added
 * #### Categories
 * #### Event Classes

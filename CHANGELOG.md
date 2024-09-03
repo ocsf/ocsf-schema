@@ -179,6 +179,7 @@ n/a
 
 ### Improved
 * #### Categories
+    n/a
 * #### Event Classes
     1. Added `auth_factors` array to Authentication event class. #949
     2. Modified all classes such that primary attributes are at least recommended. #974

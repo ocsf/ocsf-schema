@@ -27,7 +27,7 @@
         },
         "4":{
           "caption":"Hash",
-          "description":"Any type of hash e.g., MD5, SHA1, SHA2, BLAKE, BLAKE2, etc. generated from a file, malware sample, request header, or otherwise."
+          "description":"Any type of hash e.g., MD5, SHA1, SHA2, BLAKE, BLAKE2, SSDEEP, VHASH, etc. generated from a file, malware sample, request header, or otherwise used to identify a pertinent artifact."
         },
         "5":{
           "caption":"URL",
@@ -52,6 +52,10 @@
         "10":{
           "caption":"Vulnerability",
           "description":"A CVE ID, CWE ID, or other identifier for a weakness, exploit, bug, or misconfiguration."
+        },
+        "11":{
+          "caption":"File",
+          "description":"A file or metadata about a file."
         },
         "99":{
           "caption":"Other",
@@ -165,6 +169,25 @@
     },
     "location":{
       "description":"Any pertinent geolocation information related to an indicator or OSINT analysis.",
+      "requirement":"optional"
+    },
+    "file":{
+      "caption":"Related File",
+      "description":"Any pertinent file information related to an indicator or OSINT analysis.",
+      "requirement":"optional"
+    },
+    "reputation":{
+      "description":"Related reputational analysis from third-party engines and analysts for a given indicator or OSINT analysis.",
+      "requirement":"optional"
+    },
+    "subnet":{
+      "caption":"Related Subnet",
+      "description":"A CIDR or network block related to an indicator or OSINT analysis.",
+      "requirement":"optional"
+    },
+    "script":{
+      "caption":"Related Script Data",
+      "description":"Any pertinent script information related to an indicator or OSINT analysis.",
       "requirement":"optional"
     }
   }

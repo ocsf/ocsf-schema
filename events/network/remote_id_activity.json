@@ -26,6 +26,12 @@
       },
       "requirement": "required"
     },
+    "comment": {
+      "caption": "Operation Description",
+      "description": "This optional, free-text field enables the operator to describe the purpose of a flight, if so desired.",
+      "group": "context",
+      "requirement": "optional"
+    },
     "protocol_name": {
       "caption": "Remote ID Protocol",
       "description": "The networking protocol associated with the Remote ID device or beacon. E.g. <code>BLE</code>, <code>LTE</code>, <code>802.11</code>.",
@@ -34,11 +40,6 @@
     },
     "src_endpoint": {
       "description": "The source network endpoint of the UAS, CUAS platform, or other remote monitoring or sensing infrastructure.",
-      "group": "context",
-      "requirement": "optional"
-    },
-    "traffic": {
-      "description": "Traffic refers to the amount of data transmitted from a UAS or Counter-UAS (CUAS) system at a given point of time. Ex: <code>bytes_in</code> and <code>bytes_out</code>.",
       "group": "context",
       "requirement": "optional"
     },
@@ -79,24 +80,21 @@
           "description": "An ASTM Reserved status is reported."
         }
       }
+    },
+    "traffic": {
+      "description": "Traffic refers to the amount of data transmitted from a UAS or Counter-UAS (CUAS) system at a given point of time. Ex: <code>bytes_in</code> and <code>bytes_out</code>.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "unmanned_aerial_system": {
+      "group": "context",
+      "requirement": "required"
     }
-  },
-  "associations": {
-    "user": [
-      "src_endpoint"
-    ],
-    "src_endpoint": [
-      "user"
-    ]
   },
   "constraints": {
     "at_least_one": [
-      "connection_info",
-      "session",
-      "src_endpoint",
-      "traffic",
-      "tunnel_interface",
-      "tunnel_type_id"
+      "unmanned_aerial_system",
+      "src_endpoint"
 		]
 	}
 }

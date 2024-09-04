@@ -26,6 +26,51 @@
       },
       "requirement": "required"
     },
+    "auth_protocol": {
+      "caption": "Authentication Type",
+      "description": "The authentication type as defined by the caption of 'auth_protocol_id'. In the case of 'Other', it is defined by the event source.",
+      "type": "string_t"
+    },
+    "auth_protocol_id": {
+      "caption": "Authentication Type ID",
+      "description": "The normalized identifier of the authentication type used to authorize a flight plan or mission.",
+      "sibling": "auth_protocol",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The authentication type is unknown."
+        },
+        "1": {
+          "caption": "None"
+        },
+        "2": {
+          "caption": "UAS ID Signature"
+        },
+        "3": {
+          "caption": "Operator ID Signature"
+        },
+        "4": {
+          "caption": "Message Set Signature"
+        },
+        "5": {
+          "caption": "Authentication Provided by Network Remote ID"
+        },
+        "6": {
+          "caption": "Specific Authentication Method"
+        },
+        "7": {
+          "caption": "Reserved"
+        },
+        "8": {
+          "caption": "Private User"
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The authentication type is not mapped. See the <code>auth_protocol</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
     "comment": {
       "caption": "Operation Description",
       "description": "This optional, free-text field enables the operator to describe the purpose of a flight, if so desired.",

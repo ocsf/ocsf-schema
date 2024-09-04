@@ -16,6 +16,15 @@
         "description": "The serial number of the unanned system. This is expressed in <code>CTA-2063-A</code> format.",
         "requirement": "optional"
       },
+      "speed": {
+        "requirement": "recommended"
+      },
+      "speed_accuracy": {
+        "requirement": "recommended"
+      },
+      "track_direction": {
+        "requirement": "recommended"
+      },
       "type": {
         "description": "The type of the UA. For example, Helicopter, Gyroplane, Rocket, etc.",
         "requirement": "optional"
@@ -93,12 +102,17 @@
         "caption": "UTM (UUID)",
         "description": "TA UTM-provided universally unique ID traceable to a non-obfuscated ID where this UTM UUID acts as a 'session id' to protect exposure of operationally sensitive information.",
         "requirement": "optional"
+      },
+      "vertical_speed": {
+        "requirement": "recommended"
       }
     },
     "constraints": {
       "at_least_one": [
-        "type_id",
-        "uid"
+        "serial_number",
+        "uid",
+        "uid_alt",
+        "uuid"
       ]
     }
   }

@@ -54,6 +54,7 @@ Thankyou! -->
     5. Added `related_cves`, `related_cwes` as arrays of `cve`, `cwe` respectively. #1176
     6. Added `exploit_last_seen_time` as a `timestamp_t`. #1176
     7. Added `is_alert` as a `boolean_t`, #1179
+    8. Added `is_script_content_truncated` as a `boolean_t`. #1198
 
 * #### Objects
     1. Added `environment_variable` object. #1172
@@ -75,6 +76,8 @@ Thankyou! -->
     8. Added `advisory`, `exploit_last_seen_time` to the `vulnerability` object. #1176
     9. Added `related_cwes` to the `cve` object. #1176
     10. Added `vendor_name` and `model` to `device` object.
+    11. Added `is_script_content_truncated` to `script` object. #1198
+    12. Added entry for VBA macros to `type_id` enum in `script` object. #1198
 
 ### Bugfixes
     1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180

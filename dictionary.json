@@ -2503,6 +2503,11 @@
       "description": "The indication of whether this is a lease/session renewal event.",
       "type": "boolean_t"
     },
+    "is_script_content_truncated": {
+      "caption": "Is Script Content Truncated",
+      "description": "Indicates if the contents of the <code>script_content</code> attribute have been truncated.",
+      "type": "boolean_t"
+    },
     "is_secure": {
       "caption": "Secure",
       "description": "The cookie attribute indicates that cookies are sent to the server only when the request is encrypted using the HTTPS protocol.",
@@ -4009,7 +4014,7 @@
     "script_content": {
       "observable": 36,
       "caption": "Script Content",
-      "description": "The script content, normalized to UTF-8 encoding irrespective of its original encoding.",
+      "description": "The script content, normalized to UTF-8 encoding irrespective of its original encoding. When emitting this attribute, it may be appropriate to truncate large scripts. When consuming this attribute, large scripts should be anticipated.",
       "type": "string_t"
     },
     "section_a": {

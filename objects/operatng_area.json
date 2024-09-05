@@ -1,0 +1,43 @@
+{
+  "caption": "UAS Operating Area",
+  "description": "The UAS Operating Area object describes details about a precise area of operations for a UAS flight or mission.",
+  "extends": "package",
+  "name": "operating_area",
+  "attributes": {
+    "count": {
+      "description": "Indicates the number of UAS in the operating area.",
+      "requirement": "reccomended"
+    },
+    "locations": {
+      "caption":"Operating Polygon",
+      "description": "A list of Position Location Information (PLI) (latitude/longitude pairs) defining the area where a group or Intent-Based Network Participant operation is taking place. (This field is only applicable to Network Remote ID.)",
+      "requirement": "reccomended"
+    },
+    "type": {
+        "description": "The type of operating area. For example, <code>Takeoff Location</code>, <code>Fixed Location</code>, <code>Dynamic Location</code>.",
+        "requirement": "optional"
+    },
+    "type_id": {
+      "description": "The opearting area type identifier.",
+      "enum": {
+        "0": {
+          "caption": "Unknown/Undeclared",
+          "description": "The UA type is empty or not declared."
+        },
+        "1": {
+          "caption": "Takeoff Location"
+        },
+        "2": {
+          "caption": "Fixed Location"
+        },
+        "3": {
+          "caption": "Dynamic Location"
+        },
+        "99": {
+          "caption": "Other"
+        }
+      },
+      "requirement": "recommended"
+    }
+  }
+}

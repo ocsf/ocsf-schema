@@ -12,12 +12,8 @@
           "description": "The event activity is unknown."
         },
         "1": {
-          "caption": "Collect",
-          "description": "Remote ID information is being collected."
-        },
-        "2": {
-          "caption": "Transmit",
-          "description": "Remote ID information is being transmitted."
+          "caption": "Capture",
+          "description": "Remote ID information is being captured (collected)."
         },
         "99": {
           "caption": "Other",
@@ -76,6 +72,9 @@
       "description": "This optional, free-text field enables the operator to describe the purpose of a flight, if so desired.",
       "group": "context",
       "requirement": "optional"
+    },
+    "operator": {
+      "requirement": "required"
     },
     "protocol_name": {
       "caption": "Remote ID Protocol",
@@ -138,8 +137,9 @@
   },
   "constraints": {
     "at_least_one": [
-      "unmanned_aerial_system",
-      "src_endpoint"
+      "operator",
+      "src_endpoint",
+      "unmanned_aerial_system"
 		]
 	}
 }

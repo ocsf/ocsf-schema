@@ -58,7 +58,7 @@ Thankyou! -->
     2. Added `has_mfa` to `user` object. #1155
     3. Added `vendor_name` to `cvss` object. #1165
     4. Added `file`, `reputation`, `subnet`, and `script` to `osint` object. #1168
-    5. Added d3fend mappings to `registry_value`, `account`, `container`, `database`, `fingerprint`, `group`, `http_cookie`, `job`, and `script` #1173
+    5. Added d3fend mappings to the description field of `registry_value`, `account`, `container`, `database`, `fingerprint`, `group`, `http_cookie`, `job`, and `script` #1173
 
 ### Deprecated
 1. Deprecated `project_uid` in favor of `account.uid`. #1166

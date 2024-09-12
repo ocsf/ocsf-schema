@@ -49,6 +49,10 @@ Thankyou! -->
 
 * #### Dictionary Attributes
     1. Added `has_mfa` as a `boolean_t`. #1155
+    2. Added `environment_variables` as an array of `environment_variable`. #1172
+    3. Added `is_attribute_truncated` as a `boolean_t`. #1172
+* #### Objects
+    1. Added `environment_variable` object. #1172
 
 ### Improved
 * #### Event Classes
@@ -58,6 +62,7 @@ Thankyou! -->
     2. Added `has_mfa` to `user` object. #1155
     3. Added `vendor_name` to `cvss` object. #1165
     4. Added `file`, `reputation`, `subnet`, and `script` to `osint` object. #1168
+    5. Added `environment_variables` attribute to the `process` object. #1172
 
 ### Deprecated
 1. Deprecated `project_uid` in favor of `account.uid`. #1166

@@ -72,7 +72,7 @@ Thankyou! -->
 2. Added `group.name` and `group.uid` as Observable types - `type_id: 32` and `type_id: 33`, respectively. #1155
 3. Added `account.name` and `account.uid` as Observable types - `type_id: 34` and `type_id: 35`, respectively. #1155
 4. Added new enumeration items to `account.type_id`. #1166
-5. Cleaned up event class definition files, removed /includes dir, simplified definition of `base_event`. #1167
+5. Cleaned up event class definition files, removed /includes dir, simplified definition of `base_event`. #1167, #1171
 6. Added new `file` enum to `osint.type_id`. #1168
 
 ## [v1.3.0] - August 1st, 2024

@@ -1,5 +1,5 @@
 {
-  "description": "The attributes including disposition that represent the outcome of a security control including but not limited to access control, malware or policy violation, network proxy, firewall, or data control.  The profile is intended to augment activities or findings with an outcome where a security control has intervened.",
+  "description": "The attributes including disposition that represent the outcome of a security control including but not limited to access control, malware or policy violation, network proxy, firewall, or data control.  The profile is intended to augment activities or findings with an outcome where a security control has intervened. If the control detected a security violation, the <code>is_detection</code> flag should be set to <code>true</code>.",
   "meta": "profile",
   "caption": "Security Control",
   "name": "security_control",
@@ -45,6 +45,9 @@
     },
     "firewall_rule": {
       "requirement": "optional"
+    },
+    "is_detection": {
+      "requirement": "recommended"
     },
     "malware": {
       "requirement": "optional"

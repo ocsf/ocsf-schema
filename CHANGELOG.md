@@ -51,12 +51,14 @@ Thankyou! -->
     1. Added `has_mfa` as a `boolean_t`. #1155
     2. Added `environment_variables` as an array of `environment_variable`. #1172
     3. Added `is_attribute_truncated` as a `boolean_t`. #1172
+    4. Added `is_detection` as a `boolean_t`, #1179
 * #### Objects
     1. Added `environment_variable` object. #1172
 
 ### Improved
 * #### Event Classes
     1. Added `evidences` to `compliance_finding` class. #1157
+    2. Added `is_detection` to `detection_finding` class. #1178
 * #### Objects
     1. Added `phone_number` to `user` and `ldap_person` objects. #1155
     2. Added `has_mfa` to `user` object. #1155
@@ -64,6 +66,9 @@ Thankyou! -->
     4. Added `file`, `reputation`, `subnet`, and `script` to `osint` object. #1168
     5. Added `environment_variables` attribute to the `process` object. #1172
 
+* #### Profiles
+    1. Added `is_detection` attribute to the `security_control` profile. #1178
+    
 ### Deprecated
 1. Deprecated `project_uid` in favor of `account.uid`. #1166
 

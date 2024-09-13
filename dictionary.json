@@ -1827,6 +1827,12 @@
       "description": "The updated managed entity.",
       "type": "managed_entity"
     },
+    "environment_variables": {
+      "caption": "Environment Variables",
+      "description": "An array of environment variables.",
+      "type": "environment_variable",
+      "is_array": true
+    },
     "epoch": {
       "caption": "Epoch",
       "description": "The software package epoch. Epoch is a way to define weighted dependencies based on version numbers.",
@@ -1863,7 +1869,7 @@
     },
     "evidences": {
       "caption": "Evidence Artifacts",
-      "description": "Describes various evidence artifacts associated to the activity/activities that triggered a security detection.",
+      "description": "A collection of evidence artifacts associated to the activity/activities that triggered a finding. See specific usage.",
       "type": "evidences",
       "is_array": true
     },
@@ -2519,6 +2525,11 @@
     "is_trusted": {
       "caption": "Trusted Device",
       "description": "The event occurred on a trusted device.",
+      "type": "boolean_t"
+    },
+    "is_attribute_truncated": {
+      "caption": "Attribute Truncated",
+      "description": "The indication of whether or not an attribute is truncated.",
       "type": "boolean_t"
     },
     "is_vpn": {
@@ -3833,6 +3844,29 @@
       "description": "The rules that reported the events.",
       "type": "rule"
     },
+    "run_mode_ids": {
+      "caption": "Run Mode IDs",
+      "description": "The list of normalized identifiers that describe application attributes when it is running. See specific usage.",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The run mode is unknown."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The run mode is not mapped. See the <code>run_modes</code> attribute, which contains data source specific values."
+        }
+      },
+      "is_array": true,
+      "sibling": "run_modes"
+    },
+    "run_modes": {
+      "caption": "Run Modes",
+      "description": "The list of run_modes, normalized to the captions of the run_mode_ids values.  In the case of 'Other', they are defined by the event source. See specific usage.",
+      "type": "string_t",
+      "is_array": true
+    },
     "run_state": {
       "caption": "Run State",
       "description": "The state of the job or service, normalized to the caption of the run_state_id value. In the case of 'Other', it is defined by the event source. See specific usage.",
@@ -4245,6 +4279,64 @@
       "caption": "Start Time",
       "description": "The start time of a time period. See specific usage.",
       "type": "timestamp_t"
+    },
+    "start_type": {
+      "caption": "Start Type",
+      "description": "The start type of a service, driver, or application.",
+      "type": "string_t"
+    },
+    "start_type_id": {
+      "caption": "Start Type ID",
+      "description": "The start type ID of a service or application.",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The start type is unknown."
+        },
+        "1": {
+          "caption": "Auto",
+          "description": "Service started automatically during system startup."
+        },
+        "2": {
+          "caption": "Boot",
+          "description": "Device driver started by the system loader."
+        },
+        "3": {
+          "caption": "On Demand",
+          "description": "Started on demand. For example, by the Windows Service Control Manager when a process calls the <i>StartService</i> function."
+        },
+        "4": {
+          "caption": "Disabled",
+          "description": "The service is disabled, and cannot be started."
+        },
+        "5": {
+          "caption": "All Logins",
+          "description": "Started on all user logins."
+        },
+        "6": {
+          "caption": "Specific User Login",
+          "description": "Started on specific user logins."
+        },
+        "7": {
+          "caption": "Scheduled",
+          "description": "Stared according to a schedule."
+        },
+        "8": {
+          "caption": "System Changed",
+          "description": "Started when a system item, such as a file or registry key, changes."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The start type is not mapped. See the <code>start_type</code> attribute, which contains a data source specific value."
+        }
+      },
+      "type": "integer_t",
+      "sibling": "start_type"
+    },
+    "startup_item": {
+      "caption": "Startup Item",
+      "description": "The startup item object describes an application component that has associated startup criteria and configurations.",
+      "type": "startup_item"
     },
     "state": {
       "caption": "State",
@@ -4779,7 +4871,7 @@
   },
   "types": {
     "caption": "Data Types",
-    "description": "The predefined data types. The data type specifies what kind of data a value can have.",
+    "description": "The data types available in OCSF. Each data type specifies constraints in the form regular expressions, max lengths or value limits. Implementors of OCSF should ensure they abide to these constraints.",
     "attributes": {
       "boolean_t": {
         "caption": "Boolean",
@@ -4797,8 +4889,8 @@
       },
       "datetime_t": {
         "caption": "Datetime",
-        "description": "The Internet Date/Time format as defined in <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc3339.html'>RFC-3339</a>. For example <code>1985-04-12T23:20:50.52Z</code>.",
-        "regex": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(Z|[\\+-]\\d{2}:\\d{2})?$",
+        "description": "The Internet Date/Time format as defined in <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc3339.html'>RFC-3339</a>. For example:<br> <code>2024-09-10T23:20:50.520Z</code>,<br> <code>2024-09-10 23:20:50.520789Z</code>.",
+        "regex": "^\\d{4}-\\d{2}-\\d{2}[Tt]\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?([Zz]|[\\+-]\\d{2}:\\d{2})?$",
         "type": "string_t",
         "type_name": "String"
       },
@@ -4811,10 +4903,10 @@
         "type_name": "String"
       },
       "file_hash_t": {
-        "max_len": 64,
         "observable": 8,
         "caption": "Hash",
         "description": "Hash. A unique value that corresponds to the content of the file, image, ja3_hash or hassh found in the schema. For example MD5: <code>3172ac7e2b55cbb81f04a6e65855a628</code>.",
+        "regex": "^[a-fA-F0-9]+$",
         "type": "string_t",
         "type_name": "String"
       },
@@ -4886,7 +4978,6 @@
         "type_name": "String"
       },
       "resource_uid_t": {
-        "max_len": 64,
         "observable": 10,
         "caption": "Resource UID",
         "description": "Resource unique identifier. For example, S3 Bucket name or EC2 Instance ID.",
@@ -4894,7 +4985,6 @@
         "type_name": "String"
       },
       "string_t": {
-        "max_len": 65535,
         "caption": "String",
         "description": "UTF-8 encoded byte sequence."
       },

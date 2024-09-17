@@ -105,6 +105,11 @@
       "description": "The permissions that were granted in a platform-native format. See specific usage.",
       "type": "integer_t"
     },
+    "advisory":{
+      "caption": "Security Advisory",
+      "description": "Detail about the security advisory, that is used to publicly disclose cybersecurity vulnerabilities by a vendor.",
+      "type": "advisory"
+    },
     "affected_code": {
       "caption": "Affected Code",
       "description": "List of Affected Code objects that describe details about code blocks identified as vulnerable.",
@@ -1189,7 +1194,7 @@
     },
     "cve": {
       "caption": "CVE",
-      "description": "The Common Vulnerabilities and Exposures (<a target='_blank' href='https://cve.mitre.org/'>CVE</a>).",
+      "description": "The Common Vulnerabilities and Exposures (<a target='_blank' href='https://cve.mitre.org/'>CVE</a>) identifiers for the vulnerability.",
       "type": "cve"
     },
     "cves": {
@@ -1214,7 +1219,7 @@
       "description": "The <a target='_blank' href='https://cwe.mitre.org/'>Common Weakness Enumeration (CWE)</a> unique identifier. For example: <code>CWE-787</code>.",
       "type": "string_t",
       "@deprecated": {
-        "message": "Use the <code> cwe </code> object attributes instead.",
+        "message": "Use the <code> related_cwes </code> object attributes instead.",
         "since": "1.1.0"
       }
     },
@@ -1223,7 +1228,7 @@
       "description": "Common Weakness Enumeration (CWE) definition URL. For example: <code>https://cwe.mitre.org/data/definitions/787.html</code>.",
       "type": "url_t",
       "@deprecated": {
-        "message": "Use the <code> cwe </code> object attributes instead.",
+        "message": "Use the <code> related_cwes </code> object attributes instead.",
         "since": "1.1.0"
       }
     },
@@ -1881,6 +1886,11 @@
     "expiration_time": {
       "caption": "Expiration Time",
       "description": "The expiration time. See specific usage.",
+      "type": "timestamp_t"
+    },
+    "exploit_last_seen_time":{
+      "caption": "Exploit Last Seen Time",
+      "description": "The time when the exploit was most recently observed.",
       "type": "timestamp_t"
     },
     "ext": {
@@ -3686,9 +3696,21 @@
       "is_array": true
     },
     "related_vulnerabilities": {
-      "caption": "Related Vulnerabilities",
-      "description": "List of vulnerabilities that are related to this vulnerability.",
+      "caption": "Related Vulnerability IDs",
+      "description": "List of vulnerability IDs (e.g. CVE ID) that are related to this vulnerability.",
       "type": "string_t",
+      "is_array": true
+    },
+    "related_cves": {
+      "caption": "Related CVEs",
+      "description": "Describes Common Vulnerabilities and Exposures <a target='_blank' href='https://cve.mitre.org/'>(CVE)</a> entries that are related to an entity. See specific usage.",
+      "type": "cve",
+      "is_array": true
+    },
+    "related_cwes": {
+      "caption": "Related CWEs",
+      "description": "Describes Common Weakness Enumeration <a target='_blank' href='https://cwe.mitre.org/'>(CWE)</a> entries that are related to an entity. See specific usage.",
+      "type": "cwe",
       "is_array": true
     },
     "relay": {

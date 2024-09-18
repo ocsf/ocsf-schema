@@ -51,6 +51,7 @@ Thankyou! -->
     1. Added `has_mfa` as a `boolean_t`. #1155
     2. Added `environment_variables` as an array of `environment_variable`. #1172
     3. Added `is_attribute_truncated` as a `boolean_t`. #1172
+    4. Added `forward_addr` as an `email_t`.
 * #### Objects
     1. Added `environment_variable` object. #1172
 
@@ -63,6 +64,7 @@ Thankyou! -->
     3. Added `vendor_name` to `cvss` object. #1165
     4. Added `file`, `reputation`, `subnet`, and `script` to `osint` object. #1168
     5. Added `environment_variables` attribute to the `process` object. #1172
+    6. Added `forward_addr` to the `user` object.
 
 ### Deprecated
 1. Deprecated `project_uid` in favor of `account.uid`. #1166
@@ -75,6 +77,7 @@ Thankyou! -->
 5. Cleaned up event class definition files, removed /includes dir, simplified definition of `base_event`. #1167, #1171
 6. Added new `file` enum to `osint.type_id`. #1168
 7. Relaxed data-type constraints for `file_hash_t`, `resource_uid_t` & `string_t`. Fixed regex for `datetime_t`. #1174
+8. Added new `Email Account` enum to `account.type_id`. 
 
 ## [v1.3.0] - August 1st, 2024
 

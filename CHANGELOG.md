@@ -72,7 +72,7 @@ Thankyou! -->
     9. Added `related_cwes` to the `cve` object. #1176
 
 ### Bugfixes
-1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #
+1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180
 
 ### Deprecated
 1. Deprecated `project_uid` in favor of `account.uid`. #1166

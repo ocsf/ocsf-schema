@@ -56,6 +56,7 @@ Thankyou! -->
 * #### Objects
     1. Added `environment_variable` object. #1172
     2. Added `advisory` object. #1176
+    3. Added `zone` object. #1181
 
 ### Improved
 * #### Event Classes
@@ -70,6 +71,7 @@ Thankyou! -->
     7. Added `src_url` to the `cvss` object. #1176
     8. Added `advisory`, `exploit_last_seen_time` to the `vulnerability` object. #1176
     9. Added `related_cwes` to the `cve` object. #1176
+    10. Added `zone` to the managed_entity object. #1181
 
 ### Bugfixes
 1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180

@@ -54,6 +54,7 @@ Thankyou! -->
     5. Added `related_cves`, `related_cwes` as arrays of `cve`, `cwe` respectively. #1176
     6. Added `exploit_last_seen_time` as a `timestamp_t`. #1176
     7. Added `is_detection` as a `boolean_t`, #1179
+
 * #### Objects
     1. Added `environment_variable` object. #1172
     2. Added `advisory` object. #1176

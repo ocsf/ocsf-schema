@@ -46,14 +46,17 @@ Thankyou! -->
     1. Added `OSINT Inventory Info` event class to the Discovery category. #1154
     2. Added `Script Activity` event class to the System category. #1159
     3. Added `Startup Item Query` event class. #1119
-
 * #### Dictionary Attributes
     1. Added `has_mfa` as a `boolean_t`. #1155
     2. Added `environment_variables` as an array of `environment_variable`. #1172
     3. Added `is_attribute_truncated` as a `boolean_t`. #1172
-    4. Added `is_detection` as a `boolean_t`, #1179
+    4. Added `forward_addr` as an `email_t`. #1179
+    5. Added `related_cves`, `related_cwes` as arrays of `cve`, `cwe` respectively. #1176
+    6. Added `exploit_last_seen_time` as a `timestamp_t`. #1176
+    7. Added `is_detection` as a `boolean_t`, #1179
 * #### Objects
     1. Added `environment_variable` object. #1172
+    2. Added `advisory` object. #1176
 
 ### Improved
 * #### Event Classes
@@ -65,12 +68,21 @@ Thankyou! -->
     3. Added `vendor_name` to `cvss` object. #1165
     4. Added `file`, `reputation`, `subnet`, and `script` to `osint` object. #1168
     5. Added `environment_variables` attribute to the `process` object. #1172
+    6. Added `forward_addr` to the `user` object. #1179
+    7. Added `src_url` to the `cvss` object. #1176
+    8. Added `advisory`, `exploit_last_seen_time` to the `vulnerability` object. #1176
+    9. Added `related_cwes` to the `cve` object. #1176
+
+### Bugfixes
+1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180
 
 * #### Profiles
     1. Added `is_detection` attribute to the `security_control` profile. #1178
     
 ### Deprecated
 1. Deprecated `project_uid` in favor of `account.uid`. #1166
+2. Deprecated `kb_article_list` in favor of `advisory` in the vulnerability object. #1176
+3. Deprecated `cwe` in favor of `related_cwes` in the `cve` object. #1176
 
 ### Misc
 1. Added `user.uid` as an Observable type - `type_id: 31`. #1155
@@ -80,6 +92,7 @@ Thankyou! -->
 5. Cleaned up event class definition files, removed /includes dir, simplified definition of `base_event`. #1167, #1171
 6. Added new `file` enum to `osint.type_id`. #1168
 7. Relaxed data-type constraints for `file_hash_t`, `resource_uid_t` & `string_t`. Fixed regex for `datetime_t`. #1174
+8. Added new `Email Account` enum to `account.type_id`. #1179
 
 ## [v1.3.0] - August 1st, 2024
 

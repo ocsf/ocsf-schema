@@ -62,7 +62,7 @@ Thankyou! -->
 ### Improved
 * #### Event Classes
     1. Added `evidences` to `compliance_finding` class. #1157
-    2. Added `is_alert` to `detection_finding` class. #1178
+    2. Added `is_alert` to `detection_finding` and `data_security_finding` classes. #1178
     3. Added `risk_details` to `data_security_finding` class
 * #### Objects
     1. Added `phone_number` to `user` and `ldap_person` objects. #1155

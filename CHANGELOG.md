@@ -81,6 +81,7 @@ Thankyou! -->
 * #### Profiles
     1. Added `is_alert`, `confidence_id`, `confidence`,  `confidence_score` attributes to the `security_control` profile. #1178
     2. Added `risk_level_id`, `risk_level`, `risk_score`, `risk_details` attributes to the `security_control` profile.  #1178
+    3. Added `policy` attribute to the `security_control` profile. #1178
     
 ### Deprecated
 1. Deprecated `project_uid` in favor of `account.uid`. #1166

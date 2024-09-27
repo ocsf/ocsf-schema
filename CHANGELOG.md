@@ -97,6 +97,7 @@ Thankyou! -->
 6. Added new `file` enum to `osint.type_id`. #1168
 7. Relaxed data-type constraints for `file_hash_t`, `resource_uid_t` & `string_t`. Fixed regex for `datetime_t`. #1174
 8. Added new `Email Account` enum to `account.type_id`. #1179
+9. Removing regex for `hostname_t`, considering the vast variance in its values. #1182
 
 ## [v1.3.0] - August 1st, 2024
 

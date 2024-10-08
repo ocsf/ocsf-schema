@@ -74,9 +74,11 @@ Thankyou! -->
     7. Added `src_url` to the `cvss` object. #1176
     8. Added `advisory`, `exploit_last_seen_time` to the `vulnerability` object. #1176
     9. Added `related_cwes` to the `cve` object. #1176
+    10. Added `vendor_name` and `model` to `device` object.
 
 ### Bugfixes
-1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180
+    1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180
+    2. Added a fix (profile: null) to `OSINT Inventory Info` so that the `osint` attribute is present w/o the OSINT profile, per the class definition.
 
 * #### Profiles
     1. Added `is_alert`, `confidence_id`, `confidence`,  `confidence_score` attributes to the `security_control` profile. #1178

@@ -64,7 +64,8 @@ Thankyou! -->
 * #### Event Classes
     1. Added `evidences` to `compliance_finding` class. #1157
     2. Added `is_alert` to `detection_finding` and `data_security_finding` classes. #1178
-    3. Added `risk_details` to `data_security_finding` class
+    3. Added `risk_details` to `data_security_finding` class. #1178
+    4. Removed constraint from `group_management` class. #1193
 * #### Objects
     1. Added `phone_number` to `user` and `ldap_person` objects. #1155
     2. Added `has_mfa` to `user` object. #1155
@@ -76,8 +77,9 @@ Thankyou! -->
     8. Added `advisory`, `exploit_last_seen_time` to the `vulnerability` object. #1176
     9. Added `related_cwes` to the `cve` object. #1176
     10. Added `vendor_name` and `model` to `device` object.
-    11. Added `is_script_content_truncated` to `script` object. #1198
-    12. Added entry for VBA macros to `type_id` enum in `script` object. #1198
+    11. Added `http_headers` to `email` object. #1199
+    12. Added `is_script_content_truncated` to `script` object. #1198
+    13. Added entry for VBA macros to `type_id` enum in `script` object. #1198
 
 ### Bugfixes
     1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180

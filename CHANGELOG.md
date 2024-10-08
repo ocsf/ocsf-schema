@@ -46,7 +46,7 @@ Thankyou! -->
     1. Added `OSINT Inventory Info` event class to the Discovery category. #1154
     2. Added `Script Activity` event class to the System category. #1159
     3. Added `Startup Item Query` event class. #1119
-    4. Added `Drone Flights Activity` event class to the Network Actiivty category. #1169
+    4. Added `Drone Flights Activity` event class to the Network Activity category. #1169
 * #### Dictionary Attributes
     1. Added `has_mfa` as a `boolean_t`. #1155
     2. Added `environment_variables` as an array of `environment_variable`. #1172
@@ -58,13 +58,12 @@ Thankyou! -->
     8. Added `location` to the `managed_entity` object. #1169
     9. Added `operator` to the dictionary, extends `managed_entity`. #1169
     10. Added `locations` to the dictionary, an array type of the `location` object, used within the new `operating_area` object. #1169
-    11. Added `floor`, `height`, `radius`,`ceiling`, `geodetic_altitude`, and `pressure_altitude` to `location`. #1169
+    11. Added `ceiling`, `floor`, `geodetic_altitude`, `height`, `horizontal_accuracy`, `pressure_altitude`, `radius`, `speed`, `track_direction`, and `vertical_speed` all to support `operating_area` and `unmanned_aerial_system` objects. #1169 
 
 * #### Objects
     1. Added `environment_variable` object. #1172
     2. Added `advisory` object. #1176
-    3. Added `unmanned_aerial_system` object. #1169
-    4. Added `operating_area` object. #1169
+    3. Added `unmanned_aerial_system` and `operating_area` objects. #1169
 
 ### Improved
 * #### Event Classes
@@ -82,6 +81,8 @@ Thankyou! -->
     8. Added `advisory`, `exploit_last_seen_time` to the `vulnerability` object. #1176
     9. Added `related_cwes` to the `cve` object. #1176
     10. Added `vendor_name` and `model` to `device` object.
+    11. Added `geodetic_altitude`, `height`, `horizontal_accuracy`, and `pressure_altitude` to `location`. #1169
+    12. Added `location` to `managed_entity`. #1169
 
 ### Bugfixes
     1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180

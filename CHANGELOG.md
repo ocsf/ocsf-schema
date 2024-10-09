@@ -82,8 +82,9 @@ Thankyou! -->
     8. Added `advisory`, `exploit_last_seen_time` to the `vulnerability` object. #1176
     9. Added `related_cwes` to the `cve` object. #1176
     10. Added `vendor_name` and `model` to `device` object.
-    11. Added `geodetic_altitude`, `height`, `horizontal_accuracy`, and `pressure_altitude` to `location`. #1169
-    12. Added `location` to `managed_entity`. #1169
+    11. Added `http_headers` to `email` object. #1199
+    12. Added `geodetic_altitude`, `height`, `horizontal_accuracy`, and `pressure_altitude` to `location`. #1169
+    13. Added `location` to `managed_entity`. #1169
 
 ### Bugfixes
     1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180

@@ -78,12 +78,6 @@
       "group": "context",
       "requirement": "optional"
     },
-    "unmanned_system_operator": {
-      "requirement": "required"
-    },
-    "operating_area": {
-      "requirement": "recommended"
-    },
     "protocol_name": {
       "caption": "Remote ID Protocol",
       "description": "The networking protocol associated with the Remote ID device or beacon. E.g. <code>BLE</code>, <code>LTE</code>, <code>802.11</code>.",
@@ -141,14 +135,20 @@
     "unmanned_aerial_system": {
       "group": "context",
       "requirement": "required"
+    },
+    "unmanned_system_operator": {
+      "requirement": "required"
+    },
+    "unmanned_system_operating_area": {
+      "requirement": "recommended"
     }
   },
   "constraints": {
     "at_least_one": [
-      "operator",
-      "operating_area",
       "src_endpoint",
-      "unmanned_aerial_system"
+      "unmanned_aerial_system",
+      "unmanned_system_operator",
+      "unmanned_system_operating_area"
 		]
 	}
 }

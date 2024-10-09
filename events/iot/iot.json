@@ -1,0 +1,47 @@
+{
+  "caption": "Internet of Things (IOT)",
+  "category": "iot",
+  "description": "The Internet of Things (IOT) event is a generic event that defines a set of attributes available in the IOT category.",
+  "extends": "base_event",
+  "name": "iot",
+  "attributes": {
+    "$include": [
+      "profiles/host.json",
+      "profiles/network_proxy.json",
+      "profiles/security_control.json",
+      "profiles/load_balancer.json"
+    ],
+    "connection_info": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "dst_endpoint": {
+      "description": "The responder (server) in a network connection.",
+      "group": "primary",
+      "requirement": "required"
+    },
+    "proxy": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "src_endpoint": {
+      "description": "The initiator (client) of the network connection.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "tls": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "traffic": {
+      "group": "primary",
+      "requirement": "recommended"
+    }
+  },
+  "profiles": [
+    "host",
+    "network_proxy",
+    "security_control",
+    "load_balancer"
+  ]
+}

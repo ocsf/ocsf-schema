@@ -110,6 +110,11 @@
       "description": "Detail about the security advisory, that is used to publicly disclose cybersecurity vulnerabilities by a vendor.",
       "type": "advisory"
     },
+    "aerial_height": {
+      "caption": "Aerial Height",
+      "description": "Expressed as either height above takeoff location or height above ground level (AGL) for a UAS current location. This value is provided in meters and must have a minimum resolution of 1 m. Special Values: <code>Invalid</code>, <code>No Value</code>, or <code>Unknown: -1000 m</code>.",
+      "type": "string_t"
+    },
     "affected_code": {
       "caption": "Affected Code",
       "description": "List of Affected Code objects that describe details about code blocks identified as vulnerable.",
@@ -158,6 +163,16 @@
           "description": "The algorithm is not mapped. See the <code>algorithm</code> attribute, which contains a data source specific value."
         }
       }
+    },
+    "altitude_ceiling": {
+      "caption": "Altitude Ceiling",
+      "description": "Maximum altitude (WGS-84 HAE) for a group or an Intent-Based Network Participant. Measured in meters. Special Values: <code>Invalid</code>, <code>No Value</code>, or <code>Unknown: -1000 m</code>.",
+      "type": "string_t"
+    },
+    "altitude_floor": {
+      "caption": "Altitude Floor",
+      "description": "Minimum altitude (WGS-84 HAE) for a group or an Intent-Based Network Participant. Measured in meters. Special Values: <code>Invalid</code>, <code>No Value</code>, or <code>Unknown: -1000 m</code>.",
+      "type": "string_t"
     },
     "analytic": {
       "caption": "Analytic",
@@ -766,11 +781,6 @@
       "description": "The email header Cc values, as defined by RFC 5322.",
       "type": "email_t",
       "is_array": true
-    },
-    "ceiling": {
-      "caption": "Ceiling",
-      "description": "Maximum altitude (WGS-84 HAE) for a group or an Intent-Based Network Participant. Measured in meters. Special Values: <code>Invalid</code>, <code>No Value</code>, or <code>Unknown: -1000 m</code>.",
-      "type": "string_t"
     },
     "certificate": {
       "caption": "Certificate",
@@ -2086,11 +2096,6 @@
       "type": "string_t",
       "is_array": true
     },
-    "floor": {
-      "caption": "Floor",
-      "description": "Minimum altitude (WGS-84 HAE) for a group or an Intent-Based Network Participant. Measured in meters. Special Values: <code>Invalid</code>, <code>No Value</code>, or <code>Unknown: -1000 m</code>.",
-      "type": "string_t"
-    },
     "folder": {
       "caption": "Folder",
       "description": "The folder that pertains to the event.",
@@ -2181,11 +2186,6 @@
       "description": "An array of hash attributes.",
       "type": "fingerprint",
       "is_array": true
-    },
-    "height": {
-      "caption": "Height",
-      "description": "Expressed as either height above takeoff location or height above ground level (AGL) for a UAS current location. This value is provided in meters and must have a minimum resolution of 1 m. Special Values: <code>Invalid</code>, <code>No Value</code>, or <code>Unknown: -1000 m</code>.",
-      "type": "string_t"
     },
     "hire_time": {
       "caption": "Hire Time",
@@ -3171,16 +3171,6 @@
       "caption": "Operation",
       "description": "Verb/Operation associated with the request",
       "type": "string_t"
-    },
-    "operator": {
-      "caption": "UAS Operator",
-      "description": "The human or machine operator of an UAS",
-      "type": "managed_entity"
-    },
-    "operating_area": {
-      "caption": "UAS Operating Area",
-      "description": "The UAS Operating Area object describes details about a precise area of operations for a UAS flight or mission.",
-      "type": "operating_area"
     },
     "opnum": {
       "caption": "Opnum",
@@ -4763,6 +4753,11 @@
       "description": "The Unmanned Aerial System object describes the characteristics, Position Location Information (PLI), and other metadata of Unmanned Aerial Systems (UAS) and other unmanned and drone systems used in Remote ID. Remote ID is defined in the Standard Specification for Remote ID and Tracking (ASTM Designation: F3411-22a) <a target='_blank' href='https://cdn.standards.iteh.ai/samples/112830/71297057ac42432880a203654f213709/ASTM-F3411-22a.pdf'>ASTM F3411-22a</a>.",
       "type": "unmanned_aerial_system"
     },
+    "unmanned_system_operating_area": {
+      "caption": "UAS Operating Area",
+      "description": "The UAS Operating Area object describes details about a precise area of operations for a UAS flight or mission.",
+      "type": "unmanned_system_operating_area"
+    },
     "uid": {
       "caption": "Unique ID",
       "description": "The unique identifier. See specific usage.",
@@ -4777,6 +4772,11 @@
       "caption": "Unmapped Data",
       "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
       "type": "object"
+    },
+    "unmanned_system_operator": {
+      "caption": "Unmanned Systems Operator",
+      "description": "The human or machine operator of an UAS",
+      "type": "user"
     },
     "url": {
       "caption": "URL",

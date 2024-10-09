@@ -1,0 +1,19 @@
+{
+    "$id": "https://schema.ocsf.io/observable.schema.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Reference",
+    "description": "A hyperlink to an associated definition for the current item (attribute, event class, or object), for example where an equivalent is defined in MITRE d3fend.",
+    "type": "object",
+    "required": ["url", "description"],
+    "properties": {
+        "url": {
+            "type": "string",
+            "description": "The URL of the associated definition. In HTML this becomes the value an anchor (a) tag's href attribute. When rendered on the web, the value of this attribute should be properly escaped."
+        },
+        "description": {
+            "type": "string",
+            "description": "The description of the resource referred to by the URL. In HTML this becomes the content of the anchor (a) tag. When rendered on the web, the value of this attribute should be HTML escaped; actual HTML should not be rendered raw (as HTML)."
+        }
+    },
+    "additionalProperties": false
+}

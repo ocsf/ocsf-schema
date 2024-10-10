@@ -56,14 +56,14 @@ Thankyou! -->
     6. Added `exploit_last_seen_time` as a `timestamp_t`. #1176
     7. Added `is_alert` as a `boolean_t`, #1179
     8. Added `location` to the `managed_entity` object. #1169
-    9. Added `operator` to the dictionary, extends `managed_entity`. #1169
+    9. Added `unmanned_system_operator` to the dictionary, extends `user`. #1169
     10. Added `locations` to the dictionary, an array type of the `location` object, used within the new `operating_area` object. #1169
-    11. Added `ceiling`, `floor`, `geodetic_altitude`, `height`, `horizontal_accuracy`, `pressure_altitude`, `radius`, `speed`, `track_direction`, and `vertical_speed` all to support `operating_area` and `unmanned_aerial_system` objects. #1169 
+    11. Added `altitude_ceiling`, `altitude_floor`, `geodetic_altitude`, `aerial_height`, `horizontal_accuracy`, `pressure_altitude`, `radius`, `speed`, `track_direction`, and `vertical_speed` all to support `operating_area` and `unmanned_aerial_system` objects. #1169 
 
 * #### Objects
     1. Added `environment_variable` object. #1172
     2. Added `advisory` object. #1176
-    3. Added `unmanned_aerial_system` and `operating_area` objects. #1169
+    3. Added `unmanned_aerial_system` and `unmanned_system_operating_area` objects. #1169
 
 ### Improved
 * #### Event Classes

@@ -3,6 +3,10 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "Attribute",
     "type": "object",
+    "dependentSchemas": {
+        "reference": {"not": {"required": ["references"]}},
+        "references": {"not": {"required": ["reference"]}}
+    },
     "properties": {
         "@deprecated": {
             "$ref": "deprecated.schema.json"
@@ -58,6 +62,9 @@
         },
         "reference": {
             "$ref": "reference.schema.json"
+        },
+        "references": {
+            "$ref": "references.schema.json"
         }
     },
     "if": {

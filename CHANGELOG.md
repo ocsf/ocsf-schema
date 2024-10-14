@@ -55,6 +55,7 @@ Thankyou! -->
     6. Added `exploit_last_seen_time` as a `timestamp_t`. #1176
     7. Added `is_alert` as a `boolean_t`, #1179
     8. Added `working_directory` as a `string_t`. #1195
+    9. Added `is_deleted` a `boolean_t`. #1196
 
 * #### Objects
     1. Added `environment_variable` object. #1172
@@ -79,6 +80,7 @@ Thankyou! -->
     10. Added `vendor_name` and `model` to `device` object.
     11. Added `http_headers` to `email` object. #1199
     12. Added `working_directory` to `process` object. #1195
+    13. Added `is_deleted` to `file` object. #1196
 
 ### Bugfixes
     1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180

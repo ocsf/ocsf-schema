@@ -54,6 +54,7 @@ Thankyou! -->
     5. Added `related_cves`, `related_cwes` as arrays of `cve`, `cwe` respectively. #1176
     6. Added `exploit_last_seen_time` as a `timestamp_t`. #1176
     7. Added `is_alert` as a `boolean_t`, #1179
+    8. Added `body_length` as a `integer`. #1200
 
 * #### Objects
     1. Added `environment_variable` object. #1172
@@ -75,11 +76,12 @@ Thankyou! -->
     8. Added `advisory`, `exploit_last_seen_time` to the `vulnerability` object. #1176
     9. Added `related_cwes` to the `cve` object. #1176
     10. Added `vendor_name` and `model` to `device` object.
+    11. Added `body_length` to the `http_response` and `http_request` objects. #1200
 
 ### Bugfixes
     1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180
     2. Added a fix (profile: null) to `OSINT Inventory Info` so that the `osint` attribute is present w/o the OSINT profile, per the class definition.
-    3. Added http_response to all classes that have http_request, but no http_response object.
+    3. Added http_response to all classes that have http_request, but no http_response object. #1200
 
 * #### Profiles
     1. Added `is_alert`, `confidence_id`, `confidence`,  `confidence_score` attributes to the `security_control` profile. #1178

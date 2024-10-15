@@ -81,6 +81,7 @@ Thankyou! -->
     11. Added `http_headers` to `email` object. #1199
     12. Added `working_directory` to `process` object. #1195
     13. Added `is_deleted` to `file` object. #1196
+    14. Added `body_length` to the `http_response` and `http_request` objects. #1200
 
 ### Bugfixes
     1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180

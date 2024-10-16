@@ -12,8 +12,11 @@
       "description": "An array of the script's cryptographic hashes. Note that these hashes are calculated on the script in its original encoding, and not on the normalized UTF-8 encoding found in the <code>script_content</code> attribute.",
       "requirement": "recommended"
     },
+    "is_script_content_truncated": {
+      "requirement": "optional"
+    },
     "parent_uid": {
-      "description": "When a script is a dynamically executed sub-script, and when the underlying script engine supports use of the <code>uid</code> attribute, this <code>parent_uid</code> attribute identifies the parent script.",
+      "description": "This attribute relates a sub-script to a parent script having the matching <code>uid</code> attribute. In the case of PowerShell, sub-script execution can be identified by matching the activity correlation ID of the raw ETW events provided by the OS.",
       "requirement": "optional"
     },
     "script_content": {
@@ -49,6 +52,9 @@
         "6": {
           "caption": "Unix Shell"
         },
+        "7": {
+          "caption": "VBA"
+        },
         "99": {
           "caption": "Other",
           "description": "The script type is not mapped. See the <code>type</code> attribute which contains an event source specific value."
@@ -56,7 +62,7 @@
       }
     },
     "uid": {
-      "description": "Some script engines assign a unique ID to each individual execution of a given script, e.g. PowerShell's Script Block ID. This <code>uid</code> attribute enables a dynamically executed sub-script to refer to its parent.",
+      "description": "Some script engines assign a unique ID to each individual execution of a given script. This attribute captures that unique ID. In the case of PowerShell, the unique ID corresponds to the <code>ScriptBlockId</code> in the raw ETW events provided by the OS.",
       "requirement": "optional"
     }
   }

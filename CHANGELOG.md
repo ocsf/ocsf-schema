@@ -88,6 +88,7 @@ Thankyou! -->
 ### Bugfixes
     1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180
     2. Added a fix (profile: null) to `OSINT Inventory Info` so that the `osint` attribute is present w/o the OSINT profile, per the class definition.
+    3. Removed redundant `name` attribute from Windows extension to the `startup_item` object for consistency with other extensions. #1203
 
 * #### Profiles
     1. Added `is_alert`, `confidence_id`, `confidence`,  `confidence_score` attributes to the `security_control` profile. #1178

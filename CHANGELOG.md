@@ -58,6 +58,8 @@ Thankyou! -->
     9. Added `is_deleted` a `boolean_t`. #1196
     10. Added `is_script_content_truncated` as a `boolean_t`. #1198
     11. Added `body_length` as an `integer_t` #1200
+    12. Added `community_id` as a `string_t`. #1202
+
 * #### Objects
     1. Added `environment_variable` object. #1172
     2. Added `advisory` object. #1176

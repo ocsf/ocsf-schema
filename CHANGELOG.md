@@ -56,7 +56,7 @@ Thankyou! -->
     7. Added `is_alert` as a `boolean_t`, #1179
     8. Added `working_directory` as a `string_t`. #1195
     9. Added `is_deleted` a `boolean_t`. #1196
-    10. Added `body_length` as an `integer_t`
+    10. Added `body_length` as an `integer_t` #1200
 
 * #### Objects
     1. Added `environment_variable` object. #1172

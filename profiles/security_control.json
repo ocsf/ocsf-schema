@@ -1,5 +1,5 @@
 {
-  "description": "The attributes including disposition that represent the outcome of a security control including but not limited to access control, malware or policy violation, network proxy, firewall, or data control.  The profile is intended to augment activities or findings with an outcome where a security control has intervened.",
+  "description": "The attributes including disposition that represent the outcome of a security control including but not limited to access control, malware or policy violation, network proxy, firewall, or data control.  The profile is intended to augment activities or findings with an outcome where a security control has intervened. If the control detected a security violation, the <code>is_detection</code> flag should be set to <code>true</code>.",
   "meta": "profile",
   "caption": "Security Control",
   "name": "security_control",
@@ -37,6 +37,18 @@
     "authorizations": {
       "requirement": "optional"
     },
+    "confidence": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "confidence_id": {
+      "group": "context",
+      "requirement": "recommended"
+    },
+    "confidence_score": {
+      "group": "context",
+      "requirement": "optional"
+    },
     "disposition": {
       "requirement": "optional"
     },
@@ -44,9 +56,34 @@
       "requirement": "recommended"
     },
     "firewall_rule": {
-      "requirement": "optional"
+      "requirement": "optional",
+      "description": "The firewall rule that pertains to the control that triggered the event, if applicable."
+    },
+    "is_alert": {
+      "description": "Indicates that the event is considered to be an alertable signal. Should be set to <code>true</code> if <code>disposition_id = Alert</code> among other dispositions, and/or <code>risk_level_id</code> or <code>severity_id</code> of the event is elevated. Not all control events will be alertable, for example if <code>disposition_id = Exonerated</code> or <code>disposition_id = Allowed</code>.",
+      "requirement": "recommended"
     },
     "malware": {
+      "requirement": "optional"
+    },
+    "policy": {
+      "requirement": "optional",
+      "description": "The policy that pertains to the control that triggered the event, if applicable. For example the name of an anti-malware policy or an access control policy."
+    },
+    "risk_details": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "risk_level": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "risk_level_id": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "risk_score": {
+      "group": "context",
       "requirement": "optional"
     }
   }

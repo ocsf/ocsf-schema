@@ -53,6 +53,11 @@ Thankyou! -->
     4. Added `forward_addr` as an `email_t`. #1179
     5. Added `related_cves`, `related_cwes` as arrays of `cve`, `cwe` respectively. #1176
     6. Added `exploit_last_seen_time` as a `timestamp_t`. #1176
+    7. Added `is_alert` as a `boolean_t`, #1179
+    8. Added `working_directory` as a `string_t`. #1195
+    9. Added `is_deleted` a `boolean_t`. #1196
+    10. Added `is_script_content_truncated` as a `boolean_t`. #1198
+    11. Added `body_length` as an `integer_t` #1200
 * #### Objects
     1. Added `environment_variable` object. #1172
     2. Added `advisory` object. #1176
@@ -60,6 +65,9 @@ Thankyou! -->
 ### Improved
 * #### Event Classes
     1. Added `evidences` to `compliance_finding` class. #1157
+    2. Added `is_alert` to `detection_finding` and `data_security_finding` classes. #1178
+    3. Added `risk_details` to `data_security_finding` class. #1178
+    4. Removed constraint from `group_management` class. #1193
 * #### Objects
     1. Added `phone_number` to `user` and `ldap_person` objects. #1155
     2. Added `has_mfa` to `user` object. #1155
@@ -70,10 +78,25 @@ Thankyou! -->
     7. Added `src_url` to the `cvss` object. #1176
     8. Added `advisory`, `exploit_last_seen_time` to the `vulnerability` object. #1176
     9. Added `related_cwes` to the `cve` object. #1176
+    10. Added `vendor_name` and `model` to `device` object.
+    11. Added `http_headers` to `email` object. #1199
+    12. Added `working_directory` to `process` object. #1195
+    13. Added `is_deleted` to `file` object. #1196
+    14. Added `is_script_content_truncated` to `script` object. #1198
+    15. Added entry for VBA macros to `type_id` enum in `script` object. #1198
+    16. Added `body_length` to the `http_response` and `http_request` objects. #1200
+
 
 ### Bugfixes
-1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180
+    1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180
+    2. Added a fix (profile: null) to `OSINT Inventory Info` so that the `osint` attribute is present w/o the OSINT profile, per the class definition.
+    3. Added http_response to all classes that have http_request, but no http_response object. #1200
 
+* #### Profiles
+    1. Added `is_alert`, `confidence_id`, `confidence`,  `confidence_score` attributes to the `security_control` profile. #1178
+    2. Added `risk_level_id`, `risk_level`, `risk_score`, `risk_details` attributes to the `security_control` profile.  #1178
+    3. Added `policy` attribute to the `security_control` profile. #1178
+    
 ### Deprecated
 1. Deprecated `project_uid` in favor of `account.uid`. #1166
 2. Deprecated `kb_article_list` in favor of `advisory` in the vulnerability object. #1176

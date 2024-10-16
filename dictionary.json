@@ -118,6 +118,34 @@
       "description": "The permissions that were granted in a platform-native format. See specific usage.",
       "type": "integer_t"
     },
+    "ad_age_group": {
+      "caption": "AD Age Group",
+      "description": "The age group of the user. Allowed values: Minor, NotAdult, and Adult.",
+      "type": "string_t"
+    },
+    "ad_age_group_id": {
+      "caption": "AD Age Group ID",
+      "description": "The identifier of the normalized Ad Age Group ID.",
+      "type": "integer_t",
+      "sibling": "ad_age_group",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Minor"
+        },
+        "2": {
+          "caption": "NotAdult"
+        },
+        "3": {
+          "caption": "Adult"
+        },
+        "99": {
+          "caption": "Other"
+        }
+      }
+    },
     "admin_count": {
       "caption": "Admin Count",
       "type": "integer_t",
@@ -1933,6 +1961,11 @@
       "caption": "Entity Result",
       "description": "The updated managed entity.",
       "type": "managed_entity"
+    },
+    "entra_id_group_type": {
+      "caption": "EntraId Group Type",
+      "description": "Contains a group type like Microsoft 365 Group, Security Group, Distribution Group, or Mail Enabled Security Group.",
+      "type": "string_t"
     },
     "environment_variables": {
       "caption": "Environment Variables",

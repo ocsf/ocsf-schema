@@ -59,6 +59,7 @@ Thankyou! -->
     10. Added `is_script_content_truncated` as a `boolean_t`. #1198
     11. Added `body_length` as an `integer_t` #1200
     12. Added `is_public` as a `boolean_t` #1208
+
 * #### Objects
     1. Added `environment_variable` object. #1172
     2. Added `advisory` object. #1176
@@ -89,6 +90,7 @@ Thankyou! -->
     17. Added `is_public` to the `databucket` object. #1208
 
 
+
 ### Bugfixes
     1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180
     2. Added a fix (profile: null) to `OSINT Inventory Info` so that the `osint` attribute is present w/o the OSINT profile, per the class definition.
@@ -114,6 +116,22 @@ Thankyou! -->
 7. Relaxed data-type constraints for `file_hash_t`, `resource_uid_t` & `string_t`. Fixed regex for `datetime_t`. #1174
 8. Added new `Email Account` enum to `account.type_id`. #1179
 9. Removing regex for `hostname_t`, considering the vast variance in its values. #1182
+10. In the metaschema, added support for additional metadata fields: `source` and `references`.
+    - The `source` attribute is a string for describing the location where an attribute's value comes from.
+    - The `references` attribute is a list objects with `url` and `description` fields. These are intended to for reference to external resources. The `url` and `description` attributes are used to construct anchor (`a`) tags with the `url` used in the anchor's `href` attribute, and `description` used in the entity portion of the tag.
+    - The `source` field can be used in attributes defined anywhere in the schema, specifically:
+        - Dictionary attributes
+        - Event class attributes
+        - Object attributes
+        - Profile attributes
+    - The `references` field can also be used in attributes anywhere in the schema, as well as for event classes, objects; specifically:
+        - Dictionary attributes
+        - Event class attributes
+        - Object attributes
+        - Profile attributes
+        - Event classes; top level attribute allowing link(s) about an event class
+        - Objects; top level attribute allowing link(s) about an object
+    - The `source` and `references` attributes are also supported in when extending or patching event classes and objects.
 
 ## [v1.3.0] - August 1st, 2024
 

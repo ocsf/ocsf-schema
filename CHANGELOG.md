@@ -48,19 +48,22 @@ Thankyou! -->
     3. Added `Startup Item Query` event class. #1119
 * #### Dictionary Attributes
     1. Added `has_mfa` as a `boolean_t`. #1155
-    2. Added `environment_variables` as an array of `environment_variable`. #1172
+    2. Added `environment_variables` as an array of `environment_variable` object. #1172
     3. Added `is_attribute_truncated` as a `boolean_t`. #1172
     4. Added `forward_addr` as an `email_t`. #1179
-    5. Added `related_cves`, `related_cwes` as arrays of `cve`, `cwe` respectively. #1176
+    5. Added `related_cves`, `related_cwes` as arrays of `cve`, `cwe` objects respectively. #1176
     6. Added `exploit_last_seen_time` as a `timestamp_t`. #1176
     7. Added `is_alert` as a `boolean_t`, #1179
     8. Added `working_directory` as a `string_t`. #1195
     9. Added `is_deleted` a `boolean_t`. #1196
     10. Added `is_script_content_truncated` as a `boolean_t`. #1198
     11. Added `body_length` as an `integer_t` #1200
+    12. Added `is_public` as a `boolean_t` #1208
+    13. Added `tags` as n array of `tag` object. #1207
 * #### Objects
     1. Added `environment_variable` object. #1172
     2. Added `advisory` object. #1176
+    3. Added a `tag` object. #1207
 
 ### Improved
 * #### Event Classes
@@ -85,6 +88,8 @@ Thankyou! -->
     14. Added `is_script_content_truncated` to `script` object. #1198
     15. Added entry for VBA macros to `type_id` enum in `script` object. #1198
     16. Added `body_length` to the `http_response` and `http_request` objects. #1200
+    17. Added `is_public` to the `databucket` object. #1208
+    18. Added `tags` to the `account`, `container`, `image`, `ldap_person`, `metadata`, `resource_details`, `service`, `web_resource` objects. #1207
 
 
 ### Bugfixes
@@ -102,6 +107,7 @@ Thankyou! -->
 1. Deprecated `project_uid` in favor of `account.uid`. #1166
 2. Deprecated `kb_article_list` in favor of `advisory` in the vulnerability object. #1176
 3. Deprecated `cwe` in favor of `related_cwes` in the `cve` object. #1176
+4. Deprecated `tag` in favor of `labels` or `tags` in `image` & `container` object. #1207
 
 ### Misc
 1. Added `user.uid` as an Observable type - `type_id: 31`. #1155
@@ -113,6 +119,22 @@ Thankyou! -->
 7. Relaxed data-type constraints for `file_hash_t`, `resource_uid_t` & `string_t`. Fixed regex for `datetime_t`. #1174
 8. Added new `Email Account` enum to `account.type_id`. #1179
 9. Removing regex for `hostname_t`, considering the vast variance in its values. #1182
+10. In the metaschema, added support for additional metadata fields: `source` and `references`.
+    - The `source` attribute is a string for describing the location where an attribute's value comes from.
+    - The `references` attribute is a list objects with `url` and `description` fields. These are intended to for reference to external resources. The `url` and `description` attributes are used to construct anchor (`a`) tags with the `url` used in the anchor's `href` attribute, and `description` used in the entity portion of the tag.
+    - The `source` field can be used in attributes defined anywhere in the schema, specifically:
+        - Dictionary attributes
+        - Event class attributes
+        - Object attributes
+        - Profile attributes
+    - The `references` field can also be used in attributes anywhere in the schema, as well as for event classes, objects; specifically:
+        - Dictionary attributes
+        - Event class attributes
+        - Object attributes
+        - Profile attributes
+        - Event classes; top level attribute allowing link(s) about an event class
+        - Objects; top level attribute allowing link(s) about an object
+    - The `source` and `references` attributes are also supported in when extending or patching event classes and objects.
 
 ## [v1.3.0] - August 1st, 2024
 

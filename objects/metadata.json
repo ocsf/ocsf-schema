@@ -3,9 +3,6 @@
   "description": "The Metadata object describes the metadata associated with the event. Defined by D3FEND <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:Metadata/'>d3f:Metadata</a>.",
   "extends": "object",
   "name": "metadata",
-  "profiles": [
-    "data_classification"
-  ],
   "attributes": {
     "$include": [
       "profiles/data_classification.json"
@@ -23,7 +20,7 @@
       "requirement": "optional"
     },
     "labels": {
-      "description": "<p>The list of category labels attached to the event or specific attributes. Labels are user defined tags or aliases added at normalization time.</p>For example: <code>[\"network\", \"connection.ip:destination\", \"device.ip:source\"]</code>",
+      "description": "The list of labels attached to the event. For example: <code>[\"sample\", \"dev\"]</code>",
       "requirement": "optional"
     },
     "log_level": {
@@ -41,11 +38,11 @@
     "logged_time": {
       "requirement": "optional"
     },
-    "modified_time": {
-      "description": "The time when the event was last modified or enriched.",
+    "loggers": {
       "requirement": "optional"
     },
-    "loggers": {
+    "modified_time": {
+      "description": "The time when the event was last modified or enriched.",
       "requirement": "optional"
     },
     "original_time": {
@@ -63,6 +60,10 @@
     "sequence": {
       "requirement": "optional"
     },
+    "tags": {
+      "description": "The list of tags; <code>{key:value}</code> pairs associated to the event.",
+      "requirement": "optional"
+    },
     "tenant_uid": {
       "requirement": "recommended"
     },
@@ -75,5 +76,8 @@
       "description": "The version of the OCSF schema, using Semantic Versioning Specification (<a target='_blank' href='https://semver.org'>SemVer</a>). For example: 1.0.0. Event consumers use the version to determine the available event attributes.",
       "requirement": "required"
     }
-  }
+  },
+  "profiles": [
+    "data_classification"
+  ]
 }

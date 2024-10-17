@@ -46,6 +46,7 @@ Thankyou! -->
     1. Added `OSINT Inventory Info` event class to the Discovery category. #1154
     2. Added `Script Activity` event class to the System category. #1159
     3. Added `Startup Item Query` event class. #1119
+    4. Added `Drone Flights Activity` event class to the Network Activity category. #1169
 * #### Dictionary Attributes
     1. Added `has_mfa` as a `boolean_t`. #1155
     2. Added `environment_variables` as an array of `environment_variable`. #1172
@@ -58,9 +59,15 @@ Thankyou! -->
     9. Added `is_deleted` a `boolean_t`. #1196
     10. Added `is_script_content_truncated` as a `boolean_t`. #1198
     11. Added `body_length` as an `integer_t` #1200
+    12. 8. Added `location` to the `managed_entity` object. #1169
+    13. Added `unmanned_system_operator` to the dictionary, extends `user`. #1169
+    14. Added `locations` to the dictionary, an array type of the `location` object, used within the new `operating_area` object. #1169
+    15. Added `altitude_ceiling`, `altitude_floor`, `geodetic_altitude`, `aerial_height`, `horizontal_accuracy`, `pressure_altitude`, `radius`, `speed`, `track_direction`, and `vertical_speed` all to support `operating_area` and `unmanned_aerial_system` objects. #1169 
+
 * #### Objects
     1. Added `environment_variable` object. #1172
     2. Added `advisory` object. #1176
+    3. Added `unmanned_aerial_system` and `unmanned_system_operating_area` objects. #1169
 
 ### Improved
 * #### Event Classes
@@ -85,7 +92,8 @@ Thankyou! -->
     14. Added `is_script_content_truncated` to `script` object. #1198
     15. Added entry for VBA macros to `type_id` enum in `script` object. #1198
     16. Added `body_length` to the `http_response` and `http_request` objects. #1200
-
+    17. Added `geodetic_altitude`, `height`, `horizontal_accuracy`, and `pressure_altitude` to `location`. #1169
+    18. Added `location` to `managed_entity`. #1169
 
 ### Bugfixes
     1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180

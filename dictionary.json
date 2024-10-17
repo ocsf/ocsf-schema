@@ -76,7 +76,6 @@
     "activity_id": {
       "caption": "Activity ID",
       "description": "The normalized identifier of the activity that triggered the event.",
-      "suppress_checks": ["sibling_convention"],
       "sibling": "activity_name",
       "type": "integer_t",
       "enum": {
@@ -88,7 +87,10 @@
           "caption": "Other",
           "description": "The event activity is not mapped. See the <code>activity_name</code> attribute, which contains a data source specific value."
         }
-      }
+      },
+      "suppress_checks": [
+        "sibling_convention"
+      ]
     },
     "activity_name": {
       "caption": "Activity",
@@ -105,7 +107,7 @@
       "description": "The permissions that were granted in a platform-native format. See specific usage.",
       "type": "integer_t"
     },
-    "advisory":{
+    "advisory": {
       "caption": "Security Advisory",
       "description": "Detail about the security advisory, that is used to publicly disclose cybersecurity vulnerabilities by a vendor.",
       "type": "advisory"
@@ -1179,10 +1181,10 @@
       "type": "user"
     },
     "credential_uid": {
+      "observable": 19,
       "caption": "User Credential ID",
       "description": "The unique identifier of the user's credential. For example, AWS Access Key ID.",
-      "type": "string_t",
-      "observable": 19
+      "type": "string_t"
     },
     "criticality": {
       "caption": "Criticality",
@@ -1670,9 +1672,16 @@
       "description": "The Domain-based Message Authentication, Reporting and Conformance (DMARC) policy status.",
       "type": "string_t"
     },
+    "dnssec_status": {
+      "caption": "DNSSEC Status",
+      "description": "The normalized value of dnssec_status_id.",
+      "type": "string_t"
+    },
     "dnssec_status_id": {
       "caption": "DNSSEC Status ID",
       "description": "Describes the normalized status of DNS Security Extensions (DNSSEC) for a domain.",
+      "sibling": "dnssec_status",
+      "type": "integer_t",
       "enum": {
         "0": {
           "caption": "Unknown",
@@ -1690,14 +1699,7 @@
           "caption": "Other",
           "description": "The DNSSEC status is not mapped. See the <code>dnssec_status</code> attribute, which contains a data source specific value."
         }
-      },
-      "sibling": "dnssec_status",
-      "type": "integer_t"
-    },
-    "dnssec_status": {
-      "caption": "DNSSEC Status",
-      "description": "The normalized value of dnssec_status_id.",
-      "type": "string_t"
+      }
     },
     "domain": {
       "caption": "Domain",
@@ -1712,8 +1714,8 @@
     "domain_contacts": {
       "caption": "Domain Contacts",
       "description": "An array of <code>Domain Contact</code> objects.",
-      "is_array": true,
-      "type": "domain_contact"
+      "type": "domain_contact",
+      "is_array": true
     },
     "driver": {
       "caption": "Kernel Driver",
@@ -1894,7 +1896,7 @@
       "description": "The expiration time. See specific usage.",
       "type": "timestamp_t"
     },
-    "exploit_last_seen_time":{
+    "exploit_last_seen_time": {
       "caption": "Exploit Last Seen Time",
       "description": "The time when the exploit was most recently observed.",
       "type": "timestamp_t"
@@ -2438,6 +2440,11 @@
       "description": "A determination if a policy, rule, or enforcement action was applied.",
       "type": "boolean_t"
     },
+    "is_attribute_truncated": {
+      "caption": "Attribute Truncated",
+      "description": "The indication of whether or not an attribute is truncated.",
+      "type": "boolean_t"
+    },
     "is_cleartext": {
       "caption": "Cleartext Credentials",
       "description": "Indicates whether the credentials were passed in clear text.<p><b>Note:</b> True if the credentials were passed in a clear text protocol such as FTP or TELNET, or if Windows detected that a user's logon password was passed to the authentication package in clear text.</p>",
@@ -2553,11 +2560,6 @@
       "description": "The event occurred on a trusted device.",
       "type": "boolean_t"
     },
-    "is_attribute_truncated": {
-      "caption": "Attribute Truncated",
-      "description": "The indication of whether or not an attribute is truncated.",
-      "type": "boolean_t"
-    },
     "is_vpn": {
       "caption": "VPN Session",
       "description": "The indication of whether the session is a VPN session.",
@@ -2653,7 +2655,7 @@
     },
     "labels": {
       "caption": "Labels",
-      "description": "The list of labels attached to an event, object, or attribute.",
+      "description": "The list of labels attached to an entity. See specific usage.",
       "type": "string_t",
       "is_array": true
     },
@@ -2982,6 +2984,12 @@
       "description": "The name of the entity. See specific usage.",
       "type": "string_t"
     },
+    "name_servers": {
+      "caption": "Name Servers",
+      "description": "A collection of name servers related to a domain registration or other record.",
+      "type": "string_t",
+      "is_array": true
+    },
     "namespace": {
       "caption": "Namespace",
       "description": "The namespace is useful in merger or acquisition situations. For example, when similar entities exist that you need to keep separate.",
@@ -2991,12 +2999,6 @@
       "caption": "Namespace PID",
       "description": "If running under a process namespace (such as in a container), the process identifier within that process namespace.",
       "type": "integer_t"
-    },
-    "name_servers": {
-      "caption": "Name Servers",
-      "description": "A collection of name servers related to a domain registration or other record.",
-      "is_array": true,
-      "type": "string_t"
     },
     "network_driver": {
       "caption": "Network Driver",
@@ -3099,7 +3101,6 @@
     "opcode_id": {
       "caption": "DNS Opcode ID",
       "description": "The DNS opcode ID specifies the normalized query message type as defined in <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc5395.html'>RFC-5395</a>.",
-      "suppress_checks": ["enum_convention"],
       "type": "integer_t",
       "enum": {
         "0": {
@@ -3134,7 +3135,10 @@
           "caption": "Other",
           "description": "The DNS Opcode is not defined by the RFC. See the <code>opcode</code> attribute, which contains a data source specific value."
         }
-      }
+      },
+      "suppress_checks": [
+        "enum_convention"
+      ]
     },
     "open_mask": {
       "caption": "Open Mask",
@@ -3175,6 +3179,12 @@
       "caption": "OS",
       "description": "The endpoint operating system.",
       "type": "os"
+    },
+    "osint": {
+      "caption": "OSINT",
+      "description": "The OSINT (Open Source Intelligence) object contains details related to an indicator such as the indicator itself, related indicators, geolocation, registrar information, subdomains, analyst commentary, and other contextual information. This information can be used to further enrich a detection or finding by providing decisioning support to other analysts and engineers.",
+      "type": "osint",
+      "is_array": true
     },
     "ou_name": {
       "caption": "Org Unit Name",
@@ -3715,18 +3725,6 @@
       "type": "analytic",
       "is_array": true
     },
-    "related_events": {
-      "caption": "Related Events",
-      "description": "Describes events and/or other findings related to the finding as identified by the security product.",
-      "type": "related_event",
-      "is_array": true
-    },
-    "related_vulnerabilities": {
-      "caption": "Related Vulnerability IDs",
-      "description": "List of vulnerability IDs (e.g. CVE ID) that are related to this vulnerability.",
-      "type": "string_t",
-      "is_array": true
-    },
     "related_cves": {
       "caption": "Related CVEs",
       "description": "Describes Common Vulnerabilities and Exposures <a target='_blank' href='https://cve.mitre.org/'>(CVE)</a> entries that are related to an entity. See specific usage.",
@@ -3737,6 +3735,18 @@
       "caption": "Related CWEs",
       "description": "Describes Common Weakness Enumeration <a target='_blank' href='https://cwe.mitre.org/'>(CWE)</a> entries that are related to an entity. See specific usage.",
       "type": "cwe",
+      "is_array": true
+    },
+    "related_events": {
+      "caption": "Related Events",
+      "description": "Describes events and/or other findings related to the finding as identified by the security product.",
+      "type": "related_event",
+      "is_array": true
+    },
+    "related_vulnerabilities": {
+      "caption": "Related Vulnerability IDs",
+      "description": "List of vulnerability IDs (e.g. CVE ID) that are related to this vulnerability.",
+      "type": "string_t",
       "is_array": true
     },
     "relay": {
@@ -3830,7 +3840,6 @@
     "risk_level_id": {
       "caption": "Risk Level ID",
       "description": "The normalized risk level id.",
-      "suppress_checks": ["enum_convention"],
       "sibling": "risk_level",
       "type": "integer_t",
       "enum": {
@@ -3853,7 +3862,10 @@
           "caption": "Other",
           "description": "The risk level is not mapped. See the <code>risk_level</code> attribute, which contains a data source specific value."
         }
-      }
+      },
+      "suppress_checks": [
+        "enum_convention"
+      ]
     },
     "risk_score": {
       "caption": "Risk Score",
@@ -3873,6 +3885,7 @@
     "run_mode_ids": {
       "caption": "Run Mode IDs",
       "description": "The list of normalized identifiers that describe application attributes when it is running. See specific usage.",
+      "sibling": "run_modes",
       "type": "integer_t",
       "enum": {
         "0": {
@@ -3884,8 +3897,7 @@
           "description": "The run mode is not mapped. See the <code>run_modes</code> attribute, which contains data source specific values."
         }
       },
-      "is_array": true,
-      "sibling": "run_modes"
+      "is_array": true
     },
     "run_modes": {
       "caption": "Run Modes",
@@ -4231,8 +4243,8 @@
     "signatures": {
       "caption": "Digital Signatures",
       "description": "A collection of <code>Digital Signature</code> objects.",
-      "is_array": true,
-      "type": "digital_signature"
+      "type": "digital_signature",
+      "is_array": true
     },
     "size": {
       "caption": "Size",
@@ -4314,6 +4326,8 @@
     "start_type_id": {
       "caption": "Start Type ID",
       "description": "The start type ID of a service or application.",
+      "sibling": "start_type",
+      "type": "integer_t",
       "enum": {
         "0": {
           "caption": "Unknown",
@@ -4355,9 +4369,7 @@
           "caption": "Other",
           "description": "The start type is not mapped. See the <code>start_type</code> attribute, which contains a data source specific value."
         }
-      },
-      "type": "integer_t",
-      "sibling": "start_type"
+      }
     },
     "startup_item": {
       "caption": "Startup Item",
@@ -4471,8 +4483,8 @@
     "subdomains": {
       "caption": "Subdomains",
       "description": "An array of subdomain strings. Can be used to collect several subdomains such as those from Domain Generation Algorithms (DGAs).",
-      "is_array": true,
-      "type": "string_t"
+      "type": "string_t",
+      "is_array": true
     },
     "subject": {
       "caption": "Subject Details",
@@ -4537,7 +4549,17 @@
     "tag": {
       "caption": "Image Tag",
       "description": "The image tag. For example: <code>1.11-alpine</code>.",
-      "type": "string_t"
+      "type": "string_t",
+      "@deprecated": {
+        "message": "Use the <code> labels or tags </code> attribute instead.",
+        "since": "1.4.0"
+      }
+    },
+    "tags": {
+      "caption": "Tags",
+      "description": "The list of tags; <code>{key:value}</code> pairs attached to an entity. See specific usage.",
+      "type": "tag",
+      "is_array": true
     },
     "tcp_flags": {
       "caption": "TCP Flags",
@@ -4564,11 +4586,10 @@
       "description": "The time when the entity was terminated. See specific usage.",
       "type": "timestamp_t"
     },
-    "osint": {
-      "caption": "OSINT",
-      "description": "The OSINT (Open Source Intelligence) object contains details related to an indicator such as the indicator itself, related indicators, geolocation, registrar information, subdomains, analyst commentary, and other contextual information. This information can be used to further enrich a detection or finding by providing decisioning support to other analysts and engineers.",
-      "is_array": true,
-      "type": "osint"
+    "ticket": {
+      "caption": "Ticket",
+      "description": "The linked ticket in the ticketing system.",
+      "type": "ticket"
     },
     "tid": {
       "caption": "Thread ID",
@@ -4584,11 +4605,6 @@
       "caption": "Timezone Offset",
       "description": "The number of minutes that the reported event <code>time</code> is ahead or behind UTC, in the range -1,080 to +1,080.",
       "type": "integer_t"
-    },
-    "ticket": {
-      "caption": "Ticket",
-      "description": "The linked ticket in the ticketing system.",
-      "type": "ticket"
     },
     "title": {
       "caption": "Title",

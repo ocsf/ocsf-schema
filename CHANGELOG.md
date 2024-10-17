@@ -55,10 +55,14 @@ Thankyou! -->
     5. Added `related_cves`, `related_cwes` as arrays of `cve`, `cwe` respectively. #1176
     6. Added `exploit_last_seen_time` as a `timestamp_t`. #1176
     7. Added `is_alert` as a `boolean_t`, #1179
-    8. Added `location` to the `managed_entity` object. #1169
-    9. Added `unmanned_system_operator` to the dictionary, extends `user`. #1169
-    10. Added `locations` to the dictionary, an array type of the `location` object, used within the new `operating_area` object. #1169
-    11. Added `altitude_ceiling`, `altitude_floor`, `geodetic_altitude`, `aerial_height`, `horizontal_accuracy`, `pressure_altitude`, `radius`, `speed`, `track_direction`, and `vertical_speed` all to support `operating_area` and `unmanned_aerial_system` objects. #1169 
+    8. Added `working_directory` as a `string_t`. #1195
+    9. Added `is_deleted` a `boolean_t`. #1196
+    10. Added `is_script_content_truncated` as a `boolean_t`. #1198
+    11. Added `body_length` as an `integer_t` #1200
+    12. 8. Added `location` to the `managed_entity` object. #1169
+    13. Added `unmanned_system_operator` to the dictionary, extends `user`. #1169
+    14. Added `locations` to the dictionary, an array type of the `location` object, used within the new `operating_area` object. #1169
+    15. Added `altitude_ceiling`, `altitude_floor`, `geodetic_altitude`, `aerial_height`, `horizontal_accuracy`, `pressure_altitude`, `radius`, `speed`, `track_direction`, and `vertical_speed` all to support `operating_area` and `unmanned_aerial_system` objects. #1169 
 
 * #### Objects
     1. Added `environment_variable` object. #1172
@@ -83,12 +87,18 @@ Thankyou! -->
     9. Added `related_cwes` to the `cve` object. #1176
     10. Added `vendor_name` and `model` to `device` object.
     11. Added `http_headers` to `email` object. #1199
-    12. Added `geodetic_altitude`, `height`, `horizontal_accuracy`, and `pressure_altitude` to `location`. #1169
-    13. Added `location` to `managed_entity`. #1169
+    12. Added `working_directory` to `process` object. #1195
+    13. Added `is_deleted` to `file` object. #1196
+    14. Added `is_script_content_truncated` to `script` object. #1198
+    15. Added entry for VBA macros to `type_id` enum in `script` object. #1198
+    16. Added `body_length` to the `http_response` and `http_request` objects. #1200
+    17. Added `geodetic_altitude`, `height`, `horizontal_accuracy`, and `pressure_altitude` to `location`. #1169
+    18. Added `location` to `managed_entity`. #1169
 
 ### Bugfixes
     1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180
     2. Added a fix (profile: null) to `OSINT Inventory Info` so that the `osint` attribute is present w/o the OSINT profile, per the class definition.
+    3. Added http_response to all classes that have http_request, but no http_response object. #1200
 
 * #### Profiles
     1. Added `is_alert`, `confidence_id`, `confidence`,  `confidence_score` attributes to the `security_control` profile. #1178

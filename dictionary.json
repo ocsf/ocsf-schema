@@ -370,6 +370,11 @@
       "description": "The BIOS version. For example: <code>LENOVO G5ETA2WW (2.62)</code>.",
       "type": "string_t"
     },
+    "body_length": {
+      "caption": "Body Length not including header",
+      "description": "The actual length of the HTTP response/request body, in number of bytes, independent of a potentially existing Content-Length header.",
+      "type": "integer_t"
+    },
     "boot_time": {
       "caption": "Boot Time",
       "description": "The time when the system was booted.",
@@ -2478,6 +2483,11 @@
       "description": "The indication of whether the value is from a default value name. For example, the value name could be missing.",
       "type": "boolean_t"
     },
+    "is_deleted": {
+      "caption": "Deleted",
+      "description": "Indicates if the entity was deleted. See specific usage.",
+      "type": "boolean_t"
+    },
     "is_exploit_available": {
       "caption": "Exploit Availability",
       "description": "Indicates if an exploit or a PoC (proof-of-concept) is available for the reported vulnerability.",
@@ -2531,6 +2541,11 @@
     "is_renewal": {
       "caption": "Renewal",
       "description": "The indication of whether this is a lease/session renewal event.",
+      "type": "boolean_t"
+    },
+    "is_script_content_truncated": {
+      "caption": "Is Script Content Truncated",
+      "description": "Indicates if the contents of the <code>script_content</code> attribute have been truncated.",
       "type": "boolean_t"
     },
     "is_secure": {
@@ -4055,7 +4070,7 @@
     "script_content": {
       "observable": 36,
       "caption": "Script Content",
-      "description": "The script content, normalized to UTF-8 encoding irrespective of its original encoding.",
+      "description": "The script content, normalized to UTF-8 encoding irrespective of its original encoding. When emitting this attribute, it may be appropriate to truncate large scripts. When consuming this attribute, large scripts should be anticipated.",
       "type": "string_t"
     },
     "section_a": {
@@ -4938,6 +4953,11 @@
       "caption": "WHOIS",
       "description": "The resources of a WHOIS record for a given domain. This can include domain names, IP address blocks, autonomous system information, and/or contact and registration information for a domain.",
       "type": "whois"
+    },
+    "working_directory": {
+      "caption": "Working Directory",
+      "description": "The working directory of a process.",
+      "type": "string_t"
     },
     "x_forwarded_for": {
       "caption": "X-Forwarded-For",

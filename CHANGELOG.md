@@ -116,6 +116,22 @@ Thankyou! -->
 7. Relaxed data-type constraints for `file_hash_t`, `resource_uid_t` & `string_t`. Fixed regex for `datetime_t`. #1174
 8. Added new `Email Account` enum to `account.type_id`. #1179
 9. Removing regex for `hostname_t`, considering the vast variance in its values. #1182
+10. In the metaschema, added support for additional metadata fields: `source` and `references`.
+    - The `source` attribute is a string for describing the location where an attribute's value comes from.
+    - The `references` attribute is a list objects with `url` and `description` fields. These are intended to for reference to external resources. The `url` and `description` attributes are used to construct anchor (`a`) tags with the `url` used in the anchor's `href` attribute, and `description` used in the entity portion of the tag.
+    - The `source` field can be used in attributes defined anywhere in the schema, specifically:
+        - Dictionary attributes
+        - Event class attributes
+        - Object attributes
+        - Profile attributes
+    - The `references` field can also be used in attributes anywhere in the schema, as well as for event classes, objects; specifically:
+        - Dictionary attributes
+        - Event class attributes
+        - Object attributes
+        - Profile attributes
+        - Event classes; top level attribute allowing link(s) about an event class
+        - Objects; top level attribute allowing link(s) about an object
+    - The `source` and `references` attributes are also supported in when extending or patching event classes and objects.
 
 ## [v1.3.0] - August 1st, 2024
 

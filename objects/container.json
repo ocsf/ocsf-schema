@@ -1,24 +1,28 @@
 {
-  "caption": "Container",
   "observable": 27,
-  "name": "container",
+  "caption": "Container",
   "description": "The Container object describes an instance of a specific container. A container is a prepackaged, portable system image that runs isolated on an existing system using a container runtime like containerd.",
   "extends": "object",
+  "name": "container",
   "attributes": {
-    "name": {
-      "description": "The container name.",
+    "hash": {
+      "description": "Commit hash of image created for docker or the SHA256 hash of the container. For example: <code>13550340a8681c84c861aac2e5b440161c2b33a3e4f302ac680ca5b686de48de</code>.",
       "requirement": "recommended"
     },
     "image": {
       "description": "The container image used as a template to run the container.",
       "requirement": "recommended"
     },
-    "runtime": {
+    "labels": {
+      "description": "The list of labels associated to the container.",
       "requirement": "optional"
     },
-    "uid": {
-      "description": "The full container unique identifier for this instantiation of the container. For example: <code>ac2ea168264a08f9aaca0dfc82ff3551418dfd22d02b713142a6843caa2f61bf</code>.",
+    "name": {
+      "description": "The container name.",
       "requirement": "recommended"
+    },
+    "network_driver": {
+      "requirement": "optional"
     },
     "orchestrator": {
       "requirement": "optional"
@@ -26,20 +30,24 @@
     "pod_uuid": {
       "requirement": "optional"
     },
-    "tag": {
-      "description": "The tag used by the container. It can indicate version, format, OS.",
+    "runtime": {
       "requirement": "optional"
     },
     "size": {
       "description": "The size of the container image.",
       "requirement": "recommended"
     },
-    "hash": {
-      "description": "Commit hash of image created for docker or the SHA256 hash of the container. For example: <code>13550340a8681c84c861aac2e5b440161c2b33a3e4f302ac680ca5b686de48de</code>.",
-      "requirement": "recommended"
-    },
-    "network_driver": {
+    "tag": {
+      "description": "The tag used by the container. It can indicate version, format, OS.",
       "requirement": "optional"
+    },
+    "tags": {
+      "description": "The list of tags; <code>{key:value}</code> pairs associated to the container.",
+      "requirement": "optional"
+    },
+    "uid": {
+      "description": "The full container unique identifier for this instantiation of the container. For example: <code>ac2ea168264a08f9aaca0dfc82ff3551418dfd22d02b713142a6843caa2f61bf</code>.",
+      "requirement": "recommended"
     }
   },
   "constraints": {

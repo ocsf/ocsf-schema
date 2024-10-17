@@ -58,7 +58,8 @@ Thankyou! -->
     9. Added `is_deleted` a `boolean_t`. #1196
     10. Added `is_script_content_truncated` as a `boolean_t`. #1198
     11. Added `body_length` as an `integer_t` #1200
-    12. Added `tags` as n array of `tag` object. #1207
+    12. Added `is_public` as a `boolean_t` #1208
+    13. Added `tags` as n array of `tag` object. #1207
 * #### Objects
     1. Added `environment_variable` object. #1172
     2. Added `advisory` object. #1176
@@ -87,7 +88,8 @@ Thankyou! -->
     14. Added `is_script_content_truncated` to `script` object. #1198
     15. Added entry for VBA macros to `type_id` enum in `script` object. #1198
     16. Added `body_length` to the `http_response` and `http_request` objects. #1200
-    17. Added `tags` to the `account`, `container`, `image`, `ldap_person`, `metadata`, `resource_details`, `service`, `web_resource` objects. #1207
+    17. Added `is_public` to the `databucket` object. #1208
+    18. Added `tags` to the `account`, `container`, `image`, `ldap_person`, `metadata`, `resource_details`, `service`, `web_resource` objects. #1207
 
 
 ### Bugfixes

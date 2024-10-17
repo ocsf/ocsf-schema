@@ -86,7 +86,7 @@ Thankyou! -->
     14. Added `is_script_content_truncated` to `script` object. #1198
     15. Added entry for VBA macros to `type_id` enum in `script` object. #1198
     16. Added `body_length` to the `http_response` and `http_request` objects. #1200
-    17. Added 12. Added `is_public` to the `databucket` object. #1208
+    17. Added `is_public` to the `databucket` object. #1208
 
 
 ### Bugfixes

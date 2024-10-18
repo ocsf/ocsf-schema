@@ -58,7 +58,7 @@ Thankyou! -->
     9. Added `is_deleted` a `boolean_t`. #1196
     10. Added `is_script_content_truncated` as a `boolean_t`. #1198
     11. Added `body_length` as an `integer_t` #1200
-    12. Added `community_id` as a `string_t`. #1202
+    12. Added `community_uid` as a `string_t`. #1202
 
 * #### Objects
     1. Added `environment_variable` object. #1172
@@ -365,7 +365,7 @@ n/a
     15. Added firewall, router, switch, hub to endpoint `type_id` enum. #921
     16. Added `is_vpn` to the `session` object. #922
     17. Added `state` to `network_connection_info` object. #932
-    18. Added `community_id` to `network_connection_info` object. #1202
+    18. Added `community_uid` to `network_connection_info` object. #1202
 
 ### Bugfixes
 `n/a`

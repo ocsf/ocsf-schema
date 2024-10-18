@@ -1,0 +1,33 @@
+{
+    "$id": "https://schema.ocsf.io/references.schema.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Ontology Anchor",
+    "description": "Concept definition and anchor to D3FEND cybersecurity ontology. This enables grounding of OCSF concepts into D3FEND Ontology classes, object properties, and data properties.",
+    "type": "object",
+    "properties": {
+        "ontology_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "The URL of the associated definition. In HTML this becomes the value an anchor (a) tag's href attribute. When rendered on the web, the value of this attribute should be properly escaped (URL encoded)."
+        },
+        "label": {
+            "type": "string",
+            "description": "The display label of the associated definition. In HTML this becomes the value of an anchor (a) tag's inner text."
+        },
+        "definition": {
+            "type": "string",
+            "description": "The definition of the associated concept. In HTML this becomes the value of an anchor (a) tag's title attribute."
+        },
+        "ontology_iri": {
+            "type": "string",
+            "format": "uri",
+            "description": "The IRI of the ontology the associated definition is a part of. For example: 'd3f:File'"
+        },
+        "ontology_prefix": {
+            "type": "string",
+            "description": "The prefix of the ontology the associated definition is a part of. For example 'http://d3fend.mitre.org/ontologies/d3fend.owl#'. This is what 'd3f:' abbreviates."
+        }
+    },
+    "required": ["ontology_url", "label", "definition", "ontology_iri", "ontology_prefix"],
+    "additionalProperties": false
+}

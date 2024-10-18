@@ -61,6 +61,7 @@ Thankyou! -->
     12. Added `is_public` as a `boolean_t` #1208
     13. Added `tags` as n array of `tag` object. #1207
     14. Added `community_uid` as a `string_t`. #1202
+    15. Added `imei_alts` as an array `string_t`.
 
 * #### Objects
     1. Added `environment_variable` object. #1172
@@ -92,6 +93,7 @@ Thankyou! -->
     16. Added `body_length` to the `http_response` and `http_request` objects. #1200
     17. Added `is_public` to the `databucket` object. #1208
     18. Added `tags` to the `account`, `container`, `image`, `ldap_person`, `metadata`, `resource_details`, `service`, `web_resource` objects. #1207
+    19. Added `imei_alts` to the `device` object.
 
 
 ### Bugfixes

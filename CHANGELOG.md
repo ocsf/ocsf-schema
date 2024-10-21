@@ -49,17 +49,19 @@ Thankyou! -->
 * #### Dictionary Attributes
     1. Added `has_mfa` as a `boolean_t`. #1155
     2. Added `environment_variables` as an array of `environment_variable` object. #1172
-    3. Added `forward_addr` as an `email_t`. #1179
-    4. Added `related_cves`, `related_cwes` as arrays of `cve`, `cwe` objects respectively. #1176
-    5. Added `exploit_last_seen_time` as a `timestamp_t`. #1176
-    6. Added `is_alert` as a `boolean_t`, #1179
-    7. Added `working_directory` as a `string_t`. #1195
-    8. Added `is_deleted` a `boolean_t`. #1196
-    9. Added `is_script_content_truncated` as a `boolean_t`. #1198
-    10. Added `body_length` as an `integer_t` #1200
-    11. Added `is_public` as a `boolean_t` #1208
-    12. Added `tags` as n array of `tag` object. #1207
-    13. Added `is_name_truncated` and `is_value_truncated` as `boolean_t`s.
+    3. Added `is_name_truncated` and `is_value_truncated` as `boolean_t`s. #1214
+    4. Added `forward_addr` as an `email_t`. #1179
+    5. Added `related_cves`, `related_cwes` as arrays of `cve`, `cwe` objects respectively. #1176
+    6. Added `exploit_last_seen_time` as a `timestamp_t`. #1176
+    7. Added `is_alert` as a `boolean_t`, #1179
+    8. Added `working_directory` as a `string_t`. #1195
+    9. Added `is_deleted` a `boolean_t`. #1196
+    10. Added `is_script_content_truncated` as a `boolean_t`. #1198
+    11. Added `body_length` as an `integer_t` #1200
+    12. Added `is_public` as a `boolean_t` #1208
+    13. Added `tags` as n array of `tag` object. #1207
+    14. Added `community_uid` as a `string_t`. #1202
+
 * #### Objects
     1. Added `environment_variable` object. #1172
     2. Added `advisory` object. #1176
@@ -90,7 +92,7 @@ Thankyou! -->
     16. Added `body_length` to the `http_response` and `http_request` objects. #1200
     17. Added `is_public` to the `databucket` object. #1208
     18. Added `tags` to the `account`, `container`, `image`, `ldap_person`, `metadata`, `resource_details`, `service`, `web_resource` objects. #1207
-    19. Added `is_name_truncated` and `is_value_truncated` to the `environment_variable` object.
+    19. Added `is_name_truncated` and `is_value_truncated` to the `environment_variable` object. #1214
 
 
 ### Bugfixes
@@ -136,6 +138,7 @@ Thankyou! -->
         - Event classes; top level attribute allowing link(s) about an event class
         - Objects; top level attribute allowing link(s) about an object
     - The `source` and `references` attributes are also supported in when extending or patching event classes and objects.
+11. Added `http_request` and `http_response` to the evidences object. #1212
 
 ## [v1.3.0] - August 1st, 2024
 
@@ -387,6 +390,7 @@ n/a
     15. Added firewall, router, switch, hub to endpoint `type_id` enum. #921
     16. Added `is_vpn` to the `session` object. #922
     17. Added `state` to `network_connection_info` object. #932
+    18. Added `community_uid` to `network_connection_info` object. #1202
 
 ### Bugfixes
 `n/a`

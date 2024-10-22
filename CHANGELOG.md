@@ -49,7 +49,7 @@ Thankyou! -->
 * #### Dictionary Attributes
     1. Added `has_mfa` as a `boolean_t`. #1155
     2. Added `environment_variables` as an array of `environment_variable` object. #1172
-    3. Added `is_attribute_truncated` as a `boolean_t`. #1172
+    3. Added `is_name_truncated` and `is_value_truncated` as `boolean_t`s. #1214
     4. Added `forward_addr` as an `email_t`. #1179
     5. Added `related_cves`, `related_cwes` as arrays of `cve`, `cwe` objects respectively. #1176
     6. Added `exploit_last_seen_time` as a `timestamp_t`. #1176
@@ -92,6 +92,7 @@ Thankyou! -->
     16. Added `body_length` to the `http_response` and `http_request` objects. #1200
     17. Added `is_public` to the `databucket` object. #1208
     18. Added `tags` to the `account`, `container`, `image`, `ldap_person`, `metadata`, `resource_details`, `service`, `web_resource` objects. #1207
+    19. Added `is_name_truncated` and `is_value_truncated` to the `environment_variable` object. #1214
 
 
 ### Bugfixes

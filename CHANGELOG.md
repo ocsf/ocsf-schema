@@ -65,6 +65,10 @@ Thankyou! -->
     2. Added `advisory` object. #1176
     3. Added a `tag` object. #1207
 
+* #### Metaschema
+    1. Added `ontology` metaschema elements. #1218
+
+
 ### Improved
 * #### Event Classes
     1. Added `evidences` to `compliance_finding` class. #1157

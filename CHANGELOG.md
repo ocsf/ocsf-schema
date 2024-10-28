@@ -92,6 +92,7 @@ Thankyou! -->
     16. Added `body_length` to the `http_response` and `http_request` objects. #1200
     17. Added `is_public` to the `databucket` object. #1208
     18. Added `tags` to the `account`, `container`, `image`, `ldap_person`, `metadata`, `resource_details`, `service`, `web_resource` objects. #1207
+    19. Added constraint to `network_endpoint` object. #1224
 
 
 ### Bugfixes

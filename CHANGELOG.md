@@ -60,7 +60,7 @@ Thankyou! -->
     10. Added `is_script_content_truncated` as a `boolean_t`. #1198
     11. Added `body_length` as an `integer_t` #1200
     12. Added `is_public` as a `boolean_t` #1208
-    13. Added `tags` as n array of `tag` object. #1207
+    13. Added `tags`, `control_parameters` as an array of `key_value_object` object. #1219
     14. Added `community_uid` as a `string_t`. #1202
     15. Added `location` to the `managed_entity` object. #1169
     13. Added `unmanned_system_operator` to the dictionary, extends `user`. #1169
@@ -71,6 +71,10 @@ Thankyou! -->
     1. Added `environment_variable` object. #1172
     2. Added `advisory` object. #1176
     3. Added a `tag` object. #1207
+* #### Objects
+    1. Added `environment_variable` object. #1172
+    2. Added `advisory` object. #1176
+    3. Added a generic `key_value_object` object. #1219
     4. Added `unmanned_aerial_system` and `unmanned_system_operating_area` objects. #1169
 
 ### Improved
@@ -79,6 +83,7 @@ Thankyou! -->
     2. Added `is_alert` to `detection_finding` and `data_security_finding` classes. #1178
     3. Added `risk_details` to `data_security_finding` class. #1178
     4. Removed constraint from `group_management` class. #1193
+    5. Added `Archived|5` as an enum item to `status_id` attribute in Findings classes. #1219
 * #### Objects
     1. Added `phone_number` to `user` and `ldap_person` objects. #1155
     2. Added `has_mfa` to `user` object. #1155
@@ -98,8 +103,11 @@ Thankyou! -->
     16. Added `body_length` to the `http_response` and `http_request` objects. #1200
     17. Added `is_public` to the `databucket` object. #1208
     18. Added `tags` to the `account`, `container`, `image`, `ldap_person`, `metadata`, `resource_details`, `service`, `web_resource` objects. #1207
-    19. Added `geodetic_altitude`, `height`, `horizontal_accuracy`, and `pressure_altitude` to `location`. #1169
-    20. Added `location` to `managed_entity`. #1169
+    19. Added `domain` as a constraint to `network_endpoint` object. #1224
+    20. Added `http_request` and `http_response` to the evidences object. #1212
+    21. Added `control_parameters` and `status_details` to the compliance object. #1219
+    22. Added `geodetic_altitude`, `height`, `horizontal_accuracy`, and `pressure_altitude` to `location`. #1169
+    23. Added `location` to `managed_entity`. #1169
 
 ### Bugfixes
     1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180
@@ -117,6 +125,7 @@ Thankyou! -->
 2. Deprecated `kb_article_list` in favor of `advisory` in the vulnerability object. #1176
 3. Deprecated `cwe` in favor of `related_cwes` in the `cve` object. #1176
 4. Deprecated `tag` in favor of `labels` or `tags` in `image` & `container` object. #1207
+5. Deprecated `status_detail` in favor of `status_details` in `compliance object. #1219
 
 ### Misc
 1. Added `user.uid` as an Observable type - `type_id: 31`. #1155

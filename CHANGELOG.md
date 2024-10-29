@@ -44,84 +44,84 @@ Thankyou! -->
 ### Added
 * #### Event Classes
     1. Added `OSINT Inventory Info` event class to the Discovery category. #1154
-    2. Added `Script Activity` event class to the System category. #1159
-    3. Added `Startup Item Query` event class. #1119
+    1. Added `Script Activity` event class to the System category. #1159
+    1. Added `Startup Item Query` event class. #1119
 * #### Dictionary Attributes
     1. Added `has_mfa` as a `boolean_t`. #1155
-    2. Added `environment_variables` as an array of `environment_variable` object. #1172
-    3. Added `is_attribute_truncated` as a `boolean_t`. #1172
-    4. Added `forward_addr` as an `email_t`. #1179
-    5. Added `related_cves`, `related_cwes` as arrays of `cve`, `cwe` objects respectively. #1176
-    6. Added `exploit_last_seen_time` as a `timestamp_t`. #1176
-    7. Added `is_alert` as a `boolean_t`, #1179
-    8. Added `working_directory` as a `string_t`. #1195
-    9. Added `is_deleted` a `boolean_t`. #1196
-    10. Added `is_script_content_truncated` as a `boolean_t`. #1198
-    11. Added `body_length` as an `integer_t` #1200
-    12. Added `is_public` as a `boolean_t` #1208
-    13. Added `tags` as n array of `tag` object. #1207
-    14. Added `community_uid` as a `string_t`. #1202
+    1. Added `environment_variables` as an array of `environment_variable` object. #1172
+    1. Added `is_attribute_truncated` as a `boolean_t`. #1172
+    1. Added `forward_addr` as an `email_t`. #1179
+    1. Added `related_cves`, `related_cwes` as arrays of `cve`, `cwe` objects respectively. #1176
+    1. Added `exploit_last_seen_time` as a `timestamp_t`. #1176
+    1. Added `is_alert` as a `boolean_t`, #1179
+    1. Added `working_directory` as a `string_t`. #1195
+    1. Added `is_deleted` a `boolean_t`. #1196
+    1. Added `is_script_content_truncated` as a `boolean_t`. #1198
+    1. Added `body_length` as an `integer_t` #1200
+    1. Added `is_public` as a `boolean_t` #1208
+    1. Added `tags` as n array of `tag` object. #1207
+    1. Added `community_uid` as a `string_t`. #1202
 
 * #### Objects
     1. Added `environment_variable` object. #1172
-    2. Added `advisory` object. #1176
-    3. Added a `tag` object. #1207
+    1. Added `advisory` object. #1176
+    1. Added a `tag` object. #1207
 
 ### Improved
 * #### Event Classes
     1. Added `evidences` to `compliance_finding` class. #1157
-    2. Added `is_alert` to `detection_finding` and `data_security_finding` classes. #1178
-    3. Added `risk_details` to `data_security_finding` class. #1178
-    4. Removed constraint from `group_management` class. #1193
+    1. Added `is_alert` to `detection_finding` and `data_security_finding` classes. #1178
+    1. Added `risk_details` to `data_security_finding` class. #1178
+    1. Removed constraint from `group_management` class. #1193
 * #### Objects
     1. Added `phone_number` to `user` and `ldap_person` objects. #1155
-    2. Added `has_mfa` to `user` object. #1155
-    3. Added `vendor_name` to `cvss` object. #1165
-    4. Added `file`, `reputation`, `subnet`, and `script` to `osint` object. #1168
-    5. Added `environment_variables` attribute to the `process` object. #1172
-    6. Added `forward_addr` to the `user` object. #1179
-    7. Added `src_url` to the `cvss` object. #1176
-    8. Added `advisory`, `exploit_last_seen_time` to the `vulnerability` object. #1176
-    9. Added `related_cwes` to the `cve` object. #1176
-    10. Added `vendor_name` and `model` to `device` object.
-    11. Added `http_headers` to `email` object. #1199
-    12. Added `working_directory` to `process` object. #1195
-    13. Added `is_deleted` to `file` object. #1196
-    14. Added `is_script_content_truncated` to `script` object. #1198
-    15. Added entry for VBA macros to `type_id` enum in `script` object. #1198
-    16. Added `body_length` to the `http_response` and `http_request` objects. #1200
-    17. Added `is_public` to the `databucket` object. #1208
-    18. Added `tags` to the `account`, `container`, `image`, `ldap_person`, `metadata`, `resource_details`, `service`, `web_resource` objects. #1207
+    1. Added `has_mfa` to `user` object. #1155
+    1. Added `vendor_name` to `cvss` object. #1165
+    1. Added `file`, `reputation`, `subnet`, and `script` to `osint` object. #1168
+    1. Added `environment_variables` attribute to the `process` object. #1172
+    1. Added `forward_addr` to the `user` object. #1179
+    1. Added `src_url` to the `cvss` object. #1176
+    1. Added `advisory`, `exploit_last_seen_time` to the `vulnerability` object. #1176
+    1. Added `related_cwes` to the `cve` object. #1176
+    1. Added `vendor_name` and `model` to `device` object.
+    1. Added `http_headers` to `email` object. #1199
+    1. Added `working_directory` to `process` object. #1195
+    1. Added `is_deleted` to `file` object. #1196
+    1. Added `is_script_content_truncated` to `script` object. #1198
+    1. Added entry for VBA macros to `type_id` enum in `script` object. #1198
+    1. Added `body_length` to the `http_response` and `http_request` objects. #1200
+    1. Added `is_public` to the `databucket` object. #1208
+    1. Added `tags` to the `account`, `container`, `image`, `ldap_person`, `metadata`, `resource_details`, `service`, `web_resource` objects. #1207
 
 
 ### Bugfixes
     1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180
-    2. Added a fix (profile: null) to `OSINT Inventory Info` so that the `osint` attribute is present w/o the OSINT profile, per the class definition.
-    3. Added http_response to all classes that have http_request, but no http_response object. #1200
-    4. Removed redundant `name` attribute from Windows extension to the `startup_item` object for consistency with other extensions. #1203
+    1. Added a fix (profile: null) to `OSINT Inventory Info` so that the `osint` attribute is present w/o the OSINT profile, per the class definition.
+    1. Added http_response to all classes that have http_request, but no http_response object. #1200
+    1. Removed redundant `name` attribute from Windows extension to the `startup_item` object for consistency with other extensions. #1203
 
 * #### Profiles
     1. Added `is_alert`, `confidence_id`, `confidence`,  `confidence_score` attributes to the `security_control` profile. #1178
-    2. Added `risk_level_id`, `risk_level`, `risk_score`, `risk_details` attributes to the `security_control` profile.  #1178
-    3. Added `policy` attribute to the `security_control` profile. #1178
+    1. Added `risk_level_id`, `risk_level`, `risk_score`, `risk_details` attributes to the `security_control` profile.  #1178
+    1. Added `policy` attribute to the `security_control` profile. #1178
     
 ### Deprecated
 1. Deprecated `project_uid` in favor of `account.uid`. #1166
-2. Deprecated `kb_article_list` in favor of `advisory` in the vulnerability object. #1176
-3. Deprecated `cwe` in favor of `related_cwes` in the `cve` object. #1176
-4. Deprecated `tag` in favor of `labels` or `tags` in `image` & `container` object. #1207
+1. Deprecated `kb_article_list` in favor of `advisory` in the vulnerability object. #1176
+1. Deprecated `cwe` in favor of `related_cwes` in the `cve` object. #1176
+1. Deprecated `tag` in favor of `labels` or `tags` in `image` & `container` object. #1207
 
 ### Misc
 1. Added `user.uid` as an Observable type - `type_id: 31`. #1155
-2. Added `group.name` and `group.uid` as Observable types - `type_id: 32` and `type_id: 33`, respectively. #1155
-3. Added `account.name` and `account.uid` as Observable types - `type_id: 34` and `type_id: 35`, respectively. #1155
-4. Added new enumeration items to `account.type_id`. #1166
-5. Cleaned up event class definition files, removed /includes dir, simplified definition of `base_event`. #1167, #1171
-6. Added new `file` enum to `osint.type_id`. #1168
-7. Relaxed data-type constraints for `file_hash_t`, `resource_uid_t` & `string_t`. Fixed regex for `datetime_t`. #1174
-8. Added new `Email Account` enum to `account.type_id`. #1179
-9. Removing regex for `hostname_t`, considering the vast variance in its values. #1182
-10. In the metaschema, added support for additional metadata fields: `source` and `references`.
+1. Added `group.name` and `group.uid` as Observable types - `type_id: 32` and `type_id: 33`, respectively. #1155
+1. Added `account.name` and `account.uid` as Observable types - `type_id: 34` and `type_id: 35`, respectively. #1155
+1. Added new enumeration items to `account.type_id`. #1166
+1. Cleaned up event class definition files, removed /includes dir, simplified definition of `base_event`. #1167, #1171
+1. Added new `file` enum to `osint.type_id`. #1168
+1. Relaxed data-type constraints for `file_hash_t`, `resource_uid_t` & `string_t`. Fixed regex for `datetime_t`. #1174
+1. Added new `Email Account` enum to `account.type_id`. #1179
+1. Removing regex for `hostname_t`, considering the vast variance in its values. #1182
+1. In the metaschema, added support for additional metadata fields: `source` and `references`.
     - The `source` attribute is a string for describing the location where an attribute's value comes from.
     - The `references` attribute is a list objects with `url` and `description` fields. These are intended to for reference to external resources. The `url` and `description` attributes are used to construct anchor (`a`) tags with the `url` used in the anchor's `href` attribute, and `description` used in the entity portion of the tag.
     - The `source` field can be used in attributes defined anywhere in the schema, specifically:
@@ -137,8 +137,8 @@ Thankyou! -->
         - Event classes; top level attribute allowing link(s) about an event class
         - Objects; top level attribute allowing link(s) about an object
     - The `source` and `references` attributes are also supported in when extending or patching event classes and objects.
-11. Fixed minor spelling mistakes in attribute descriptions in `dictionary.json`. #1213
-12. Added `http_request` and `http_response` to the evidences object. #1212
+1. Fixed minor spelling mistakes in attribute descriptions in `dictionary.json`. #1213
+1. Added `http_request` and `http_response` to the evidences object. #1212
 
 
 ## [v1.3.0] - August 1st, 2024

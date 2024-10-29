@@ -2447,11 +2447,6 @@
       "description": "A determination if a policy, rule, or enforcement action was applied.",
       "type": "boolean_t"
     },
-    "is_attribute_truncated": {
-      "caption": "Attribute Truncated",
-      "description": "The indication of whether or not an attribute is truncated.",
-      "type": "boolean_t"
-    },
     "is_cleartext": {
       "caption": "Cleartext Credentials",
       "description": "Indicates whether the credentials were passed in clear text.<p><b>Note:</b> True if the credentials were passed in a clear text protocol such as FTP or TELNET, or if Windows detected that a user's logon password was passed to the authentication package in clear text.</p>",
@@ -2532,11 +2527,6 @@
       "description": "The indication of whether this is a lease/session renewal event.",
       "type": "boolean_t"
     },
-    "is_script_content_truncated": {
-      "caption": "Is Script Content Truncated",
-      "description": "Indicates if the contents of the <code>script_content</code> attribute have been truncated.",
-      "type": "boolean_t"
-    },
     "is_secure": {
       "caption": "Secure",
       "description": "The cookie attribute indicates that cookies are sent to the server only when the request is encrypted using the HTTPS protocol.",
@@ -2565,6 +2555,11 @@
     "is_totp": {
       "caption": "Time-based One-time Password (TOTP)",
       "description": "Whether the authentication factor is a Time-based One-time Password (TOTP).",
+      "type": "boolean_t"
+    },
+    "is_truncated": {
+      "caption": "Is Truncated",
+      "description": "Indicates that an attribute has been truncated. See specific usage.",
       "type": "boolean_t"
     },
     "is_trusted": {
@@ -4049,7 +4044,7 @@
       "observable": 36,
       "caption": "Script Content",
       "description": "The script content, normalized to UTF-8 encoding irrespective of its original encoding. When emitting this attribute, it may be appropriate to truncate large scripts. When consuming this attribute, large scripts should be anticipated.",
-      "type": "string_t"
+      "type": "long_string"
     },
     "section_a": {
       "caption": "JA4 Section A",
@@ -4744,6 +4739,11 @@
       "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
       "type": "object"
     },
+    "untruncated_size": {
+      "caption": "Untruncated Size",
+      "description": "The size in bytes of an attribute before truncation. See specific usage.",
+      "type": "integer_t"
+    },
     "url": {
       "caption": "URL",
       "description": "The URL object that pertains to the event or object. See specific usage.",
@@ -4785,6 +4785,16 @@
       "caption": "Value",
       "description": "The value that pertains to the object. See specific usage.",
       "type": "string_t"
+    },
+    "variable_name": {
+      "caption": "Variable Name",
+      "description": "The name of a variable. See specific usage.",
+      "type": "long_string"
+    },
+    "variable_value": {
+      "caption": "Variable Value",
+      "description": "The value of a variable. See specific usage.",
+      "type": "long_string"
     },
     "vector_string": {
       "caption": "Vector String",

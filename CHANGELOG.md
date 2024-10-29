@@ -56,16 +56,16 @@ Thankyou! -->
     7. Added `is_alert` as a `boolean_t`, #1179
     8. Added `working_directory` as a `string_t`. #1195
     9. Added `is_deleted` a `boolean_t`. #1196
-    10. Added `is_script_content_truncated` as a `boolean_t`. #1198
-    11. Added `body_length` as an `integer_t` #1200
-    12. Added `is_public` as a `boolean_t` #1208
-    13. Added `tags` as n array of `tag` object. #1207
-    14. Added `community_uid` as a `string_t`. #1202
-
+    10. Added `body_length` as an `integer_t` #1200
+    11. Added `is_public` as a `boolean_t` #1208
+    12. Added `tags` as n array of `tag` object. #1207
+    13. Added `community_uid` as a `string_t`. #1202
+    14. Added `variable_name` and `variable_value` as `long_string`. #1227
 * #### Objects
     1. Added `environment_variable` object. #1172
     2. Added `advisory` object. #1176
     3. Added a `tag` object. #1207
+    4. Added a `long_string` object. #1227
 
 ### Improved
 * #### Event Classes
@@ -87,13 +87,11 @@ Thankyou! -->
     11. Added `http_headers` to `email` object. #1199
     12. Added `working_directory` to `process` object. #1195
     13. Added `is_deleted` to `file` object. #1196
-    14. Added `is_script_content_truncated` to `script` object. #1198
-    15. Added entry for VBA macros to `type_id` enum in `script` object. #1198
-    16. Added `body_length` to the `http_response` and `http_request` objects. #1200
-    17. Added `is_public` to the `databucket` object. #1208
-    18. Added `tags` to the `account`, `container`, `image`, `ldap_person`, `metadata`, `resource_details`, `service`, `web_resource` objects. #1207
-    19. Added `domain` as a constraint to `network_endpoint` object. #1224
-
+    14. Added entry for VBA macros to `type_id` enum in `script` object. #1198
+    15. Added `body_length` to the `http_response` and `http_request` objects. #1200
+    16. Added `is_public` to the `databucket` object. #1208
+    17. Added `tags` to the `account`, `container`, `image`, `ldap_person`, `metadata`, `resource_details`, `service`, `web_resource` objects. #1207
+    18. Added `domain` as a constraint to `network_endpoint` object. #1224
 
 ### Bugfixes
     1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180

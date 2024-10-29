@@ -49,17 +49,20 @@ Thankyou! -->
     4. Added `Drone Flights Activity` event class to the Network Activity category. #1169
 * #### Dictionary Attributes
     1. Added `has_mfa` as a `boolean_t`. #1155
-    2. Added `environment_variables` as an array of `environment_variable`. #1172
+    2. Added `environment_variables` as an array of `environment_variable` object. #1172
     3. Added `is_attribute_truncated` as a `boolean_t`. #1172
     4. Added `forward_addr` as an `email_t`. #1179
-    5. Added `related_cves`, `related_cwes` as arrays of `cve`, `cwe` respectively. #1176
+    5. Added `related_cves`, `related_cwes` as arrays of `cve`, `cwe` objects respectively. #1176
     6. Added `exploit_last_seen_time` as a `timestamp_t`. #1176
     7. Added `is_alert` as a `boolean_t`, #1179
     8. Added `working_directory` as a `string_t`. #1195
     9. Added `is_deleted` a `boolean_t`. #1196
     10. Added `is_script_content_truncated` as a `boolean_t`. #1198
     11. Added `body_length` as an `integer_t` #1200
-    12. Added `location` to the `managed_entity` object. #1169
+    12. Added `is_public` as a `boolean_t` #1208
+    13. Added `tags` as n array of `tag` object. #1207
+    14. Added `community_uid` as a `string_t`. #1202
+    15. Added `location` to the `managed_entity` object. #1169
     13. Added `unmanned_system_operator` to the dictionary, extends `user`. #1169
     14. Added `locations` to the dictionary, an array type of the `location` object, used within the new `operating_area` object. #1169
     15. Added `altitude_ceiling`, `altitude_floor`, `geodetic_altitude`, `aerial_height`, `horizontal_accuracy`, `pressure_altitude`, `radius`, `speed`, `track_direction`, and `vertical_speed` all to support `operating_area` and `unmanned_aerial_system` objects. #1169 
@@ -67,7 +70,8 @@ Thankyou! -->
 * #### Objects
     1. Added `environment_variable` object. #1172
     2. Added `advisory` object. #1176
-    3. Added `unmanned_aerial_system` and `unmanned_system_operating_area` objects. #1169
+    3. Added a `tag` object. #1207
+    4. Added `unmanned_aerial_system` and `unmanned_system_operating_area` objects. #1169
 
 ### Improved
 * #### Event Classes
@@ -92,13 +96,16 @@ Thankyou! -->
     14. Added `is_script_content_truncated` to `script` object. #1198
     15. Added entry for VBA macros to `type_id` enum in `script` object. #1198
     16. Added `body_length` to the `http_response` and `http_request` objects. #1200
-    17. Added `geodetic_altitude`, `height`, `horizontal_accuracy`, and `pressure_altitude` to `location`. #1169
-    18. Added `location` to `managed_entity`. #1169
+    17. Added `is_public` to the `databucket` object. #1208
+    18. Added `tags` to the `account`, `container`, `image`, `ldap_person`, `metadata`, `resource_details`, `service`, `web_resource` objects. #1207
+    19. Added `geodetic_altitude`, `height`, `horizontal_accuracy`, and `pressure_altitude` to `location`. #1169
+    20. Added `location` to `managed_entity`. #1169
 
 ### Bugfixes
     1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180
     2. Added a fix (profile: null) to `OSINT Inventory Info` so that the `osint` attribute is present w/o the OSINT profile, per the class definition.
     3. Added http_response to all classes that have http_request, but no http_response object. #1200
+    4. Removed redundant `name` attribute from Windows extension to the `startup_item` object for consistency with other extensions. #1203
 
 * #### Profiles
     1. Added `is_alert`, `confidence_id`, `confidence`,  `confidence_score` attributes to the `security_control` profile. #1178
@@ -109,6 +116,7 @@ Thankyou! -->
 1. Deprecated `project_uid` in favor of `account.uid`. #1166
 2. Deprecated `kb_article_list` in favor of `advisory` in the vulnerability object. #1176
 3. Deprecated `cwe` in favor of `related_cwes` in the `cve` object. #1176
+4. Deprecated `tag` in favor of `labels` or `tags` in `image` & `container` object. #1207
 
 ### Misc
 1. Added `user.uid` as an Observable type - `type_id: 31`. #1155
@@ -120,7 +128,25 @@ Thankyou! -->
 7. Relaxed data-type constraints for `file_hash_t`, `resource_uid_t` & `string_t`. Fixed regex for `datetime_t`. #1174
 8. Added new `Email Account` enum to `account.type_id`. #1179
 9. Removing regex for `hostname_t`, considering the vast variance in its values. #1182
-10. Added new `unmanned_systems` Category. #1169
+10. In the metaschema, added support for additional metadata fields: `source` and `references`.
+    - The `source` attribute is a string for describing the location where an attribute's value comes from.
+    - The `references` attribute is a list objects with `url` and `description` fields. These are intended to for reference to external resources. The `url` and `description` attributes are used to construct anchor (`a`) tags with the `url` used in the anchor's `href` attribute, and `description` used in the entity portion of the tag.
+    - The `source` field can be used in attributes defined anywhere in the schema, specifically:
+        - Dictionary attributes
+        - Event class attributes
+        - Object attributes
+        - Profile attributes
+    - The `references` field can also be used in attributes anywhere in the schema, as well as for event classes, objects; specifically:
+        - Dictionary attributes
+        - Event class attributes
+        - Object attributes
+        - Profile attributes
+        - Event classes; top level attribute allowing link(s) about an event class
+        - Objects; top level attribute allowing link(s) about an object
+    - The `source` and `references` attributes are also supported in when extending or patching event classes and objects.
+11. Fixed minor spelling mistakes in attribute descriptions in `dictionary.json`. #1213
+12. Added `http_request` and `http_response` to the evidences object. #1212
+13. Added new `unmanned_systems` Category. #1169
 
 ## [v1.3.0] - August 1st, 2024
 
@@ -372,6 +398,7 @@ n/a
     15. Added firewall, router, switch, hub to endpoint `type_id` enum. #921
     16. Added `is_vpn` to the `session` object. #922
     17. Added `state` to `network_connection_info` object. #932
+    18. Added `community_uid` to `network_connection_info` object. #1202
 
 ### Bugfixes
 `n/a`

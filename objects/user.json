@@ -9,6 +9,16 @@
       "description": "The user's account or the account associated with the user.",
       "requirement": "optional"
     },
+    "bad_password_attempts": {
+      "requirement": "recommended"
+    },
+    "bad_password_time": {
+      "requirement": "optional"
+    },
+    "created_time": {
+      "requirement": "recommended",
+      "description": "The time when the user was created."
+    },
     "credential_uid": {
       "requirement": "optional"
     },
@@ -18,6 +28,11 @@
     },
     "email_addr": {
       "requirement": "optional"
+    },
+    "expiration_time": {
+      "requirement": "optional",
+      "caption": "User Account Expiration Time",
+      "description": "The time when the user account expires."
     },
     "forward_addr": {
       "requirement": "optional"
@@ -29,12 +44,28 @@
       "description": "The administrative groups to which the user belongs.",
       "requirement": "optional"
     },
+    "last_login_time": {
+      "requirement": "optional"
+    },
+    "lock_out_time": {
+      "requirement": "optional"
+    },
+    "logon_count": {
+      "requirement": "optional"
+    },
+    "logon_hours": {
+      "requirement": "optional"
+    },
     "has_mfa": {
       "requirement": "recommended"
     },
     "ldap_person": {
       "description": "The additional LDAP attributes that describe a person.",
       "requirement": "optional"
+    },
+    "modified_time": {
+      "requirement": "optional",
+      "description": "The timestamp when the user was last changed."
     },
     "name": {
       "description": "The username. For example, <code>janedoe1</code>.",
@@ -45,10 +76,21 @@
       "description": "Organization and org unit related to the user.",
       "requirement": "optional"
     },
+    "password_last_set_time": {
+      "requirement": "optional"
+    },
+    "password_never_expire": {
+      "requirement": "recommended"
+    },
     "phone_number": {
       "caption": "Telephone Number",
       "description": "The telephone number of the user.",
       "requirement": "optional"
+    },
+    "is_privileged": {
+      "requirement": "recommended",
+      "caption": "Privileged User",
+      "description": "Indicated if the user is a privileged user"
     },
     "risk_level": {
       "requirement": "optional"
@@ -58,6 +100,42 @@
     },
     "risk_score": {
       "requirement": "optional"
+    },
+    "status": {
+      "caption": "User Status",
+      "description": "The status of user. For example, Active, Disabled, Locked, etc.",
+      "requirement": "optional"
+    },
+    "status_id": {
+      "caption": "User Status ID",
+      "description": "The normalized identifier for the account status.",
+      "requirement": "recommended",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Active"
+        },
+        "2": {
+          "caption": "Disabled"
+        },
+        "3": {
+          "caption": "Locked"
+        },
+        "4": {
+          "caption": "Expired"
+        },
+        "5": {
+          "caption": "Inactive"
+        },
+        "6": {
+          "caption": "Deleted"
+        },
+        "99": {
+          "caption": "Other"
+        }
+      }
     },
     "type": {
       "description": "The type of the user. For example, System, AWS IAM User, etc.",
@@ -80,6 +158,10 @@
         "3": {
           "caption": "System",
           "description": "System account. For example, Windows computer accounts with a trailing dollar sign ($)."
+        },
+        "4": {
+          "caption": "Service",
+          "description": "Service account."
         },
         "99": {
           "caption": "Other"

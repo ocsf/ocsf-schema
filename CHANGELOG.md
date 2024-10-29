@@ -61,11 +61,10 @@ Thankyou! -->
     1. Added `is_public` as a `boolean_t` #1208
     1. Added `tags` as n array of `tag` object. #1207
     1. Added `community_uid` as a `string_t`. #1202
-
 * #### Objects
     1. Added `environment_variable` object. #1172
     1. Added `advisory` object. #1176
-    1. Added a `tag` object. #1207
+    1. Added a generic `key_value_object` object. #1219
 
 ### Improved
 * #### Event Classes
@@ -73,6 +72,7 @@ Thankyou! -->
     1. Added `is_alert` to `detection_finding` and `data_security_finding` classes. #1178
     1. Added `risk_details` to `data_security_finding` class. #1178
     1. Removed constraint from `group_management` class. #1193
+    1. Added `Archived|5` as an enum item to `status_id` attribute in Findings classes. #1219    
 * #### Objects
     1. Added `phone_number` to `user` and `ldap_person` objects. #1155
     1. Added `has_mfa` to `user` object. #1155
@@ -92,7 +92,9 @@ Thankyou! -->
     1. Added `body_length` to the `http_response` and `http_request` objects. #1200
     1. Added `is_public` to the `databucket` object. #1208
     1. Added `tags` to the `account`, `container`, `image`, `ldap_person`, `metadata`, `resource_details`, `service`, `web_resource` objects. #1207
-
+    1. Added `domain` as a constraint to `network_endpoint` object. #1224
+    1. Added `http_request` and `http_response` to the evidences object. #1212
+    1. Added `control_parameters` and `status_details` to the compliance object. #1219
 
 ### Bugfixes
     1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180
@@ -110,6 +112,7 @@ Thankyou! -->
 1. Deprecated `kb_article_list` in favor of `advisory` in the vulnerability object. #1176
 1. Deprecated `cwe` in favor of `related_cwes` in the `cve` object. #1176
 1. Deprecated `tag` in favor of `labels` or `tags` in `image` & `container` object. #1207
+1. Deprecated `status_detail` in favor of `status_details` in `compliance object. #1219
 
 ### Misc
 1. Added `user.uid` as an Observable type - `type_id: 31`. #1155
@@ -138,7 +141,6 @@ Thankyou! -->
         - Objects; top level attribute allowing link(s) about an object
     - The `source` and `references` attributes are also supported in when extending or patching event classes and objects.
 1. Fixed minor spelling mistakes in attribute descriptions in `dictionary.json`. #1213
-1. Added `http_request` and `http_response` to the evidences object. #1212
 
 
 ## [v1.3.0] - August 1st, 2024

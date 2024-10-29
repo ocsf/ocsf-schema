@@ -59,7 +59,7 @@ Thankyou! -->
     1. Added `is_script_content_truncated` as a `boolean_t`. #1198
     1. Added `body_length` as an `integer_t` #1200
     1. Added `is_public` as a `boolean_t` #1208
-    1. Added `tags` as n array of `tag` object. #1207
+    1. Added `tags`, `control_parameters` as an array of `key_value_object` object. #1219
     1. Added `community_uid` as a `string_t`. #1202
 * #### Objects
     1. Added `environment_variable` object. #1172

@@ -60,6 +60,8 @@ Thankyou! -->
     11. Added `body_length` as an `integer_t` #1200
     12. Added `is_public` as a `boolean_t` #1208
     13. Added `tags` as n array of `tag` object. #1207
+    14. Added `community_uid` as a `string_t`. #1202
+
 * #### Objects
     1. Added `environment_variable` object. #1172
     2. Added `advisory` object. #1176
@@ -90,6 +92,7 @@ Thankyou! -->
     16. Added `body_length` to the `http_response` and `http_request` objects. #1200
     17. Added `is_public` to the `databucket` object. #1208
     18. Added `tags` to the `account`, `container`, `image`, `ldap_person`, `metadata`, `resource_details`, `service`, `web_resource` objects. #1207
+    19. Added `domain` as a constraint to `network_endpoint` object. #1224
 
 
 ### Bugfixes
@@ -135,6 +138,9 @@ Thankyou! -->
         - Event classes; top level attribute allowing link(s) about an event class
         - Objects; top level attribute allowing link(s) about an object
     - The `source` and `references` attributes are also supported in when extending or patching event classes and objects.
+11. Fixed minor spelling mistakes in attribute descriptions in `dictionary.json`. #1213
+12. Added `http_request` and `http_response` to the evidences object. #1212
+
 
 ## [v1.3.0] - August 1st, 2024
 
@@ -386,6 +392,7 @@ n/a
     15. Added firewall, router, switch, hub to endpoint `type_id` enum. #921
     16. Added `is_vpn` to the `session` object. #922
     17. Added `state` to `network_connection_info` object. #932
+    18. Added `community_uid` to `network_connection_info` object. #1202
 
 ### Bugfixes
 `n/a`

@@ -92,8 +92,9 @@ Thankyou! -->
     16. Added `body_length` to the `http_response` and `http_request` objects. #1200
     17. Added `is_public` to the `databucket` object. #1208
     18. Added `tags` to the `account`, `container`, `image`, `ldap_person`, `metadata`, `resource_details`, `service`, `web_resource` objects. #1207
-    19. Added `http_request` and `http_response` to the evidences object. #1212
-    20. Added `control_parameters` and `status_details` to the compliance object. #1219
+    19. Added `domain` as a constraint to `network_endpoint` object. #1224
+    20. Added `http_request` and `http_response` to the evidences object. #1212
+    21. Added `control_parameters` and `status_details` to the compliance object. #1219
 
 ### Bugfixes
     1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180

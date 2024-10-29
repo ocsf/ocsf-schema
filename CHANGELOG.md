@@ -72,7 +72,7 @@ Thankyou! -->
     1. Added `is_alert` to `detection_finding` and `data_security_finding` classes. #1178
     1. Added `risk_details` to `data_security_finding` class. #1178
     1. Removed constraint from `group_management` class. #1193
-    1. Added `Archived|5` as an enum item to `status_id` attribute in Findings classes. #1219    
+    1. Added `Archived|5` as an enum item to `status_id` attribute in Findings classes. #1219
 * #### Objects
     1. Added `phone_number` to `user` and `ldap_person` objects. #1155
     1. Added `has_mfa` to `user` object. #1155

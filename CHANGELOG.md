@@ -60,12 +60,12 @@ Thankyou! -->
     11. Added `is_public` as a `boolean_t` #1208
     12. Added `tags` as n array of `tag` object. #1207
     13. Added `community_uid` as a `string_t`. #1202
-    14. Added `variable_name` and `variable_value` as `long_string`. #1227
+    14. Added `variable_name` and `variable_value` as `long_string`. #1228
 * #### Objects
     1. Added `environment_variable` object. #1172
     2. Added `advisory` object. #1176
     3. Added a generic `key_value_object` object. #1219
-    4. Added a `long_string` object. #1227
+    4. Added a `long_string` object. #1228
 
 ### Improved
 * #### Event Classes

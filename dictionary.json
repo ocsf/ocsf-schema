@@ -974,13 +974,13 @@
       "type": "compliance"
     },
     "compliance_references": {
-      "caption": "Compliance References Articles",
-      "description": "A list of sources of information or tools that help organizations understand, interpret, and implement compliance standards. They provide guidance, best practices, and examples.",
+      "caption": "Compliance Standard References",
+      "description": "A list of reference KB articles that provide information to help organizations understand, interpret, and implement compliance standards. They provide guidance, best practices, and examples.",
       "type": "kb_article",
       "is_array": true
     },
     "compliance_standards": {
-      "caption": "Compliance Standards Articles",
+      "caption": "Compliance Standards: Details",
       "description": "A list of established guidelines or criteria that define specific requirements an organization must follow.",
       "type": "kb_article",
       "is_array": true
@@ -1104,6 +1104,12 @@
       "caption": "Security Control",
       "description": "A Control is prescriptive, prioritized, and simplified set of best practices that one can use to strengthen their cybersecurity posture. e.g. AWS SecurityHub Controls, CIS Controls.",
       "type": "string_t"
+    },
+    "control_parameters": {
+      "caption": "Control Parameters",
+      "description": "The list of control parameters evaluated in a Compliance check.",
+      "type": "key_value_object",
+      "is_array": true
     },
     "coordinates": {
       "caption": "Coordinates",
@@ -4305,8 +4311,8 @@
       "type": "url_t"
     },
     "standards": {
-      "caption": "Security Standards",
-      "description": "Security standards are a set of criteria organizations can follow to protect sensitive and confidential information. e.g. <code>NIST SP 800-53, CIS AWS Foundations Benchmark v1.4.0, ISO/IEC 27001</code>",
+      "caption": "Compliance Standards: List",
+      "description": "Compliance standards are a set of criteria organizations can follow to protect sensitive and confidential information. e.g. <code>NIST SP 800-53, CIS AWS Foundations Benchmark v1.4.0, ISO/IEC 27001</code>",
       "type": "string_t",
       "is_array": true
     },
@@ -4418,6 +4424,12 @@
       "caption": "Status Detail",
       "description": "The status detail contains additional information about the event/finding outcome.",
       "type": "string_t"
+    },
+    "status_details": {
+      "caption": "Status Details",
+      "description": "A list of descriptions, containing additional information about the event/finding status.",
+      "type": "string_t",
+      "is_array": true
     },
     "status_id": {
       "caption": "Status ID",
@@ -4564,8 +4576,8 @@
     },
     "tags": {
       "caption": "Tags",
-      "description": "The list of tags; <code>{key:value}</code> pairs attached to an entity. See specific usage.",
-      "type": "tag",
+      "description": "The list of tags; <code>{key:value}</code> pairs attached to an entity. A Tag may be used to categorize, filter, and search for entities. For e.g. <code>\"Environment\": \"Production\"</code>, <code>\"Owner\": \"007\"</code>. See specific usage.",
+      "type": "key_value_object",
       "is_array": true
     },
     "tcp_flags": {

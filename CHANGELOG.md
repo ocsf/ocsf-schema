@@ -142,15 +142,17 @@ Thankyou! -->
         - Event class attributes
         - Object attributes
         - Profile attributes
-    - The `references` field can also be used in attributes anywhere in the schema, as well as for event classes, objects; specifically:
+    - The `references` field can also be used in attributes anywhere in the schema, as well as for event classes, objects, and enum values; specifically:
         - Dictionary attributes
         - Event class attributes
         - Object attributes
         - Profile attributes
+        - Enum values in all places where attributes occur
         - Event classes; top level attribute allowing link(s) about an event class
         - Objects; top level attribute allowing link(s) about an object
     - The `source` and `references` attributes are also supported in when extending or patching event classes and objects.
 1. Fixed minor spelling mistakes in attribute descriptions in `dictionary.json`. #1213
+1. In the metaschema, added support for `@deprecated` in enum values. #1227
 
 ## [v1.3.0] - August 1st, 2024
 

@@ -112,6 +112,11 @@
       "description": "Detail about the security advisory, that is used to publicly disclose cybersecurity vulnerabilities by a vendor.",
       "type": "advisory"
     },
+    "aerial_height": {
+      "caption": "Aerial Height",
+      "description": "Expressed as either height above takeoff location or height above ground level (AGL) for a UAS current location. This value is provided in meters and must have a minimum resolution of 1 m. Special Values: <code>Invalid</code>, <code>No Value</code>, or <code>Unknown: -1000 m</code>.",
+      "type": "string_t"
+    },
     "affected_code": {
       "caption": "Affected Code",
       "description": "List of Affected Code objects that describe details about code blocks identified as vulnerable.",
@@ -160,6 +165,16 @@
           "description": "The algorithm is not mapped. See the <code>algorithm</code> attribute, which contains a data source specific value."
         }
       }
+    },
+    "altitude_ceiling": {
+      "caption": "Altitude Ceiling",
+      "description": "Maximum altitude (WGS-84 HAE) for a group or an Intent-Based Network Participant. Measured in meters. Special Values: <code>Invalid</code>, <code>No Value</code>, or <code>Unknown: -1000 m</code>.",
+      "type": "string_t"
+    },
+    "altitude_floor": {
+      "caption": "Altitude Floor",
+      "description": "Minimum altitude (WGS-84 HAE) for a group or an Intent-Based Network Participant. Measured in meters. Special Values: <code>Invalid</code>, <code>No Value</code>, or <code>Unknown: -1000 m</code>.",
+      "type": "string_t"
     },
     "analytic": {
       "caption": "Analytic",
@@ -2131,6 +2146,16 @@
       "description": "The entry-point function of the module. The system calls the entry-point function whenever a process or thread loads or unloads the module.",
       "type": "string_t"
     },
+    "geodetic_altitude": {
+      "caption": "Geodetic Altitude",
+      "description": "The aircraft distance above or below the ellipsoid as measured along a line that passes through the aircraft and is normal to the surface of the WGS-84 ellipsoid. This value is provided in meters and must have a minimum resolution of 1 m. Special Values: <code>Invalid</code>, <code>No Value</code>, or <code>Unknown: -1000 m</code>.",
+      "type": "string_t"
+    },
+    "geodetic_vertical_accuracy": {
+      "caption": "Geodetic Vertical Accuracy",
+      "description": "Provides quality/containment on geodetic altitude. This is based on ADS-B Geodetic Vertical Accuracy (GVA). Measured in meters.",
+      "type": "string_t"
+    },
     "geohash": {
       "caption": "Geohash",
       "description": "<p>Geohash of the geo-coordinates (latitude and longitude).</p><a target='_blank' href='https://en.wikipedia.org/wiki/Geohash'>Geohashing</a> is a geocoding system used to encode geographic coordinates in decimal degrees, to a single string.",
@@ -2186,6 +2211,11 @@
       "caption": "Hire Time",
       "description": "The timestamp when the user was or will be hired by the organization.",
       "type": "timestamp_t"
+    },
+    "horizontal_accuracy": {
+      "caption": "Horizontal Accuracy",
+      "description": "Provides quality/containment on horizontal position. This is based on ADS-B NACp. Measured in meters.",
+      "type": "string_t"
     },
     "hostname": {
       "caption": "Hostname",
@@ -2778,6 +2808,12 @@
     "location": {
       "caption": "Geo Location",
       "description": "The detailed geographical location usually associated with an IP address.",
+      "type": "location"
+    },
+    "locations": {
+      "caption": "Geo Locations",
+      "description": "A list of detailed geographical locations.",
+      "is_array": true,
       "type": "location"
     },
     "log_level": {
@@ -3411,6 +3447,11 @@
       "description": "The numeric precision. See specific usage.",
       "type": "integer_t"
     },
+    "pressure_altitude": {
+      "caption": "Pressure Altitude",
+      "description": "The uncorrected barometric pressure altitude (based on reference standard 29.92 inHg, 1013.25 mb) provides a reference for algorithms that utilize 'altitude deltas' between aircraft. This value is provided in meters and must have a minimum resolution of 1 m.. Special Values: <code>Invalid</code>, <code>No Value</code>, or <code>Unknown: -1000 m</code>.",
+      "type": "string_t"
+    },
     "prev_security_level": {
       "caption": "Previous Security Level",
       "description": "The previous security level of the entity",
@@ -3664,6 +3705,11 @@
       "caption": "Query Time",
       "description": "The Domain Name System (DNS) query time.",
       "type": "timestamp_t"
+    },
+    "radius": {
+      "caption": "Radius",
+      "description": "Farthest horizontal distance from the reported location at which any UA in a group may be located (meters). Also allows defining the area where an Intent-Based Network Participant operation is taking place. Default: 0 m.",
+      "type": "string_t"
     },
     "ram_size": {
       "caption": "RAM Size",
@@ -4140,7 +4186,8 @@
     "serial_number": {
       "caption": "Serial Number",
       "description": "The serial number that pertains to the object. See specific usage.",
-      "type": "string_t"
+      "type": "string_t",
+      "observable": 37
     },
     "server_ciphers": {
       "caption": "Server Cipher Suites",
@@ -4294,6 +4341,16 @@
       "caption": "OS Service Pack Version",
       "description": "The version number of the latest Service Pack.",
       "type": "integer_t"
+    },
+    "speed": {
+      "caption": "Speed",
+      "description": "Ground speed of flight. This value is provided in meters per second with a minimum resolution of 0.25 m/s. Special Values: <code>Invalid</code>, <code>No Value</code>, or <code>Unknown: 255 m/s</code>.",
+      "type": "string_t"
+    },
+    "speed_accuracy": {
+      "caption": "Speed Accuracy",
+      "description": "Provides quality/containment on horizontal ground speed. Measured in meters/second.",
+      "type": "string_t"
     },
     "spf": {
       "caption": "SPF Status",
@@ -4657,6 +4714,11 @@
       "description": "The total number of items. See specific usage.",
       "type": "integer_t"
     },
+    "track_direction": {
+      "caption": "Track Direction",
+      "description": "Direction of flight expressed as a “True North-based” ground track angle. This value is provided in clockwise degrees with a minimum resolution of 1 degree. If aircraft is not moving horizontally, use the “Unknown” value",
+      "type": "string_t"
+    },
     "traffic": {
       "caption": "Traffic",
       "description": "The network traffic refers to the amount of data moving across a network at a given point of time. Intended to be used alongside Network Connection.",
@@ -4736,6 +4798,16 @@
       "type": "string_t",
       "is_array": true
     },
+    "unmanned_aerial_system": {
+      "caption": "Unmanned Aerial System",
+      "description": "The Unmanned Aerial System object describes the characteristics, Position Location Information (PLI), and other metadata of Unmanned Aerial Systems (UAS) and other unmanned and drone systems used in Remote ID. Remote ID is defined in the Standard Specification for Remote ID and Tracking (ASTM Designation: F3411-22a) <a target='_blank' href='https://cdn.standards.iteh.ai/samples/112830/71297057ac42432880a203654f213709/ASTM-F3411-22a.pdf'>ASTM F3411-22a</a>.",
+      "type": "unmanned_aerial_system"
+    },
+    "unmanned_system_operating_area": {
+      "caption": "UAS Operating Area",
+      "description": "The UAS Operating Area object describes details about a precise area of operations for a UAS flight or mission.",
+      "type": "unmanned_system_operating_area"
+    },
     "uid": {
       "caption": "Unique ID",
       "description": "The unique identifier. See specific usage.",
@@ -4750,6 +4822,11 @@
       "caption": "Unmapped Data",
       "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
       "type": "object"
+    },
+    "unmanned_system_operator": {
+      "caption": "Unmanned Systems Operator",
+      "description": "The human or machine operator of an UAS",
+      "type": "user"
     },
     "untruncated_size": {
       "caption": "Untruncated Size",
@@ -4882,6 +4959,11 @@
     "version": {
       "caption": "Version",
       "description": "The version that pertains to the event or object. See specific usage.",
+      "type": "string_t"
+    },
+    "vertical_speed": {
+      "caption": "Vertical Speed",
+      "description": "Vertical speed upward relative to the WGS-84 datum, measured in meters per second. Special Values: <code>Invalid</code>, <code>No Value</code>, or <code>Unknown: 63 m/s</code>.",
       "type": "string_t"
     },
     "vlan_uid": {

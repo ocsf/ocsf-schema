@@ -42,11 +42,13 @@ Thankyou! -->
 ## [Unreleased]
 
 ### Added
+* #### Categories
+    1. Added new `Unmanned Systems` Category. #1169
 * #### Event Classes
     1. Added `OSINT Inventory Info` event class to the Discovery category. #1154
     2. Added `Script Activity` event class to the System category. #1159
     3. Added `Startup Item Query` event class. #1119
-    4. Added `Drone Flights Activity` event class to the Network Activity category. #1169
+    4. Added `Drone Flights Activity` event class to the Unmanned Systems category. #1169
 * #### Dictionary Attributes
     1. Added `has_mfa` as a `boolean_t`. #1155
     2. Added `environment_variables` as an array of `environment_variable` object. #1172
@@ -155,7 +157,6 @@ Thankyou! -->
     - The `source` and `references` attributes are also supported in when extending or patching event classes and objects.
 11. Fixed minor spelling mistakes in attribute descriptions in `dictionary.json`. #1213
 12. Added `http_request` and `http_response` to the evidences object. #1212
-13. Added new `unmanned_systems` Category. #1169
 
 ## [v1.3.0] - August 1st, 2024
 

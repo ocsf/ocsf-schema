@@ -42,10 +42,13 @@ Thankyou! -->
 ## [Unreleased]
 
 ### Added
+* #### Categories
+    1. Added new `Unmanned Systems` Category. #1169
 * #### Event Classes
     1. Added `OSINT Inventory Info` event class to the Discovery category. #1154
     2. Added `Script Activity` event class to the System category. #1159
     3. Added `Startup Item Query` event class. #1119
+    4. Added `Drone Flights Activity` event class to the Unmanned Systems category. #1169
 * #### Dictionary Attributes
     1. Added `has_mfa` as a `boolean_t`. #1155
     2. Added `environment_variables` as an array of `environment_variable` object. #1172
@@ -61,10 +64,15 @@ Thankyou! -->
     12. Added `is_public` as a `boolean_t` #1208
     13. Added `tags`, `control_parameters` as an array of `key_value_object` object. #1219
     14. Added `community_uid` as a `string_t`. #1202
+    15. Added `location` to the `managed_entity` object. #1169
+    13. Added `unmanned_system_operator` to the dictionary, extends `user`. #1169
+    14. Added `locations` to the dictionary, an array type of the `location` object, used within the new `operating_area` object. #1169
+    15. Added `altitude_ceiling`, `altitude_floor`, `geodetic_altitude`, `aerial_height`, `horizontal_accuracy`, `pressure_altitude`, `radius`, `speed`, `track_direction`, and `vertical_speed` all to support `operating_area` and `unmanned_aerial_system` objects. #1169 
 * #### Objects
     1. Added `environment_variable` object. #1172
     2. Added `advisory` object. #1176
     3. Added a generic `key_value_object` object. #1219
+    4. Added `unmanned_aerial_system` and `unmanned_system_operating_area` objects. #1169
 
 ### Improved
 * #### Event Classes
@@ -95,6 +103,8 @@ Thankyou! -->
     19. Added `domain` as a constraint to `network_endpoint` object. #1224
     20. Added `http_request` and `http_response` to the evidences object. #1212
     21. Added `control_parameters` and `status_details` to the compliance object. #1219
+    22. Added `geodetic_altitude`, `height`, `horizontal_accuracy`, and `pressure_altitude` to `location`. #1169
+    23. Added `location` to `managed_entity`. #1169
 
 ### Bugfixes
     1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180
@@ -141,7 +151,7 @@ Thankyou! -->
         - Objects; top level attribute allowing link(s) about an object
     - The `source` and `references` attributes are also supported in when extending or patching event classes and objects.
 11. Fixed minor spelling mistakes in attribute descriptions in `dictionary.json`. #1213
-
+12. Added `http_request` and `http_response` to the evidences object. #1212
 
 ## [v1.3.0] - August 1st, 2024
 

@@ -68,11 +68,6 @@ Thankyou! -->
     13. Added `unmanned_system_operator` to the dictionary, extends `user`. #1169
     14. Added `locations` to the dictionary, an array type of the `location` object, used within the new `operating_area` object. #1169
     15. Added `altitude_ceiling`, `altitude_floor`, `geodetic_altitude`, `aerial_height`, `horizontal_accuracy`, `pressure_altitude`, `radius`, `speed`, `track_direction`, and `vertical_speed` all to support `operating_area` and `unmanned_aerial_system` objects. #1169 
-
-* #### Objects
-    1. Added `environment_variable` object. #1172
-    2. Added `advisory` object. #1176
-    3. Added a `tag` object. #1207
 * #### Objects
     1. Added `environment_variable` object. #1172
     2. Added `advisory` object. #1176

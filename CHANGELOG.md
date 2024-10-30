@@ -52,7 +52,6 @@ Thankyou! -->
 * #### Dictionary Attributes
     1. Added `has_mfa` as a `boolean_t`. #1155
     1. Added `environment_variables` as an array of `environment_variable` object. #1172
-    1. Added `is_attribute_truncated` as a `boolean_t`. #1172
     1. Added `forward_addr` as an `email_t`. #1179
     1. Added `related_cves`, `related_cwes` as arrays of `cve`, `cwe` objects respectively. #1176
     1. Added `exploit_last_seen_time` as a `timestamp_t`. #1176

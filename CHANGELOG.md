@@ -68,6 +68,7 @@ Thankyou! -->
     1. Added `unmanned_system_operator` to the dictionary, extends `user`. #1169
     1. Added `locations` to the dictionary, an array type of the `location` object, used within the new `operating_area` object. #1169
     1. Added `altitude_ceiling`, `altitude_floor`, `geodetic_altitude`, `aerial_height`, `horizontal_accuracy`, `pressure_altitude`, `radius`, `speed`, `track_direction`, and `vertical_speed` all to support `operating_area` and `unmanned_aerial_system` objects. #1169 
+    1. Added `bios_serial` as a `string_t`.
 * #### Objects
     1. Added `environment_variable` object. #1172
     1. Added `advisory` object. #1176
@@ -105,6 +106,7 @@ Thankyou! -->
     1. Added `control_parameters` and `status_details` to the compliance object. #1219
     1. Added `geodetic_altitude`, `height`, `horizontal_accuracy`, and `pressure_altitude` to `location`. #1169
     1. Added `location` to `managed_entity`. #1169
+    1. Added `bios_serial` to `device_hw_info`.
 
 ### Bugfixes
     1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180

@@ -14,6 +14,9 @@
       "description": "The identifier of the normalized encryption algorithm supported by the Identity Provider.",
       "requirement": "optional"
     },
+    "auth_factors": {
+      "description": "The Authentication Factors object describes the different types of Multi-Factor Authentication (MFA) methods and/or devices supported by the Identity Provider."
+    },
     "name": {
       "description": "The name of the identity provider.",
       "requirement": "recommended"
@@ -27,6 +30,10 @@
       "description": "The primary domain associated with the Identity Provider.",
       "requirement": "optional"
     },
+    "has_mfa": {
+      "caption": "MFA Enforced",
+      "description": "The Identity Provider enforces Multi Factor Authentication (MFA)."
+    },
     "issuer": {
       "description": "The unique identifier (often a URL) used by the Identity Provider as its issuer.",
       "requirement": "optional"
@@ -37,7 +44,7 @@
       "requirement": "optional"
     },
     "state": {
-      "description": "The state of the Identity Provider, normalized to the caption of the <code>state_id</code> value. In the case of <code>Other</code>, it is defined by the event source.",
+      "description": "The configuration state of the Identity Provider, normalized to the caption of the <code>state_id</code> value. In the case of <code>Other</code>, it is defined by the event source.",
       "requirement": "optional"
     },
     "state_id": {
@@ -45,11 +52,27 @@
       "enum": {
         "0": {
           "caption": "Unknown",
-          "description": "The state is unknown."
+          "description": "The configuration state of the Identity Provider is unknown."
+        },
+        "1": {
+          "caption": "Active",
+          "description": "The Identity Provider is in an Active state, or otherwise Enabled."
+        },
+        "2": {
+          "caption": "Suspended",
+          "description": "The Identity Provider is in a Suspended state."
+        },
+        "3": {
+          "caption": "Deprecated",
+          "description": "The Identity Provider is in a Deprecated state, or is otherwise Disabled."
+        },
+        "4": {
+          "caption": "Deleted",
+          "description": "The Identity Provider is in a Deleted state."
         },
         "99": {
           "caption": "Other",
-          "description": "The state is not mapped. See the <code>state</code> attribute, which contains a data source specific value."
+          "description": "The configuration state of the Identity Provider is not mapped. See the <code>state</code> attribute, which contains a data source specific value."
         }
       },
       "requirement": "optional"

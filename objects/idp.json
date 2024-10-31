@@ -5,10 +5,30 @@
   "name": "idp",
   "attributes": {
     "name": {
-      "description":"The name of the identity provider."
+      "description": "The name of the identity provider."
+    },
+    "digital_signature": {
+      "description": "Information about the X.509 certificate used by the Identity Provider.",
+      "requirement": "optional"
+    },
+    "domain": {
+      "description": "The primary domain associated with the Identity Provider."
+    },
+    "issuer": {
+      "description": "The unique identifier (often a URL) used by the Identity Provider as its issuer."
     },
     "uid": {
-      "description":"The unique identifier of the identity provider."
+      "description": "The unique identifier of the Identity Provider."
+    },
+    "url_string": {
+      "caption": "Configuration URL",
+      "description": "The URL for accessing the configuration or metadata of the Identity Provider."
     }
+  },
+  "constraints": {
+    "at_least_one": [
+      "uid",
+      "name"
+    ]
   }
 }

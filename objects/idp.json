@@ -4,8 +4,20 @@
   "extends": "_entity",
   "name": "idp",
   "attributes": {
+    "algorithm": {
+      "caption": "Encryption Algorithm",
+      "description": "The encryption algorithm supported by the Identity Provider, normalized to the caption of <code>algorithm_id</code>. In the case of <code>Other</code>, the Encryption Algorithm is defined by the event source."
+    },
+    "algorithm_id": {
+      "caption": "Encryption Algorithm ID",
+      "description": "The identifier of the normalized encryption algorithm supported by the Identity Provider."
+    },
     "name": {
       "description": "The name of the identity provider."
+    },
+    "digest": {
+      "caption": "Certificate Fingerprint",
+      "description": "The fingerprint of the X.509 certificate used by the Identity Provider."
     },
     "digital_signature": {
       "description": "Information about the X.509 certificate used by the Identity Provider.",
@@ -16,6 +28,10 @@
     },
     "issuer": {
       "description": "The unique identifier (often a URL) used by the Identity Provider as its issuer."
+    },
+    "protocol_name": {
+      "caption": "Supported Protocol",
+      "description": "The supported protocol of the Identity Provider. E.g., <code>SAML</code>, <code>OIDC</code>, or <code>OAuth2</code>."
     },
     "uid": {
       "description": "The unique identifier of the Identity Provider."

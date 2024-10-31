@@ -4,10 +4,25 @@
     "extends": "object",
     "name": "scim",
     "attributes": {
-      "value": {
-        "description": "The digital fingerprint value.",
-        "requirement": "required",
-        "type": "file_hash_t"
+      "protocol_name": {
+        "caption": "Supported Protocol",
+        "description": "The supported protocol of the Identity Provider. E.g., <code>SAML</code>, <code>OIDC</code>, or <code>OAuth2</code>.",
+        "requirement": "optional"
+      },
+      "vendor_name": {
+        "caption": "Service Provider",
+        "description": "Name of the vendor or service provider implementing SCIM. E.g., <code>Okta</code>, <code>Auth0</code>, <code>Microsoft</code>.",
+        "requirement": "optional"
+      },
+      "version": {
+        "caption": "SCIM Version",
+        "description": "SCIM protocol version supported e.g., <code>SCIM 2.0</code>.",
+        "requirement": "recommended"
+      },
+      "url_string": {
+        "caption": "SCIM Endpoint URL",
+        "description": "The primary URL for SCIM API requests.",
+        "requirement": "optional"
       }
     }
   }

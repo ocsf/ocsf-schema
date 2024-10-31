@@ -6,35 +6,66 @@
   "attributes": {
     "algorithm": {
       "caption": "Encryption Algorithm",
-      "description": "The encryption algorithm supported by the Identity Provider, normalized to the caption of <code>algorithm_id</code>. In the case of <code>Other</code>, the Encryption Algorithm is defined by the event source."
+      "description": "The encryption algorithm supported by the Identity Provider, normalized to the caption of <code>algorithm_id</code>. In the case of <code>Other</code>, the Encryption Algorithm is defined by the event source.",
+      "requirement": "optional"
     },
     "algorithm_id": {
       "caption": "Encryption Algorithm ID",
-      "description": "The identifier of the normalized encryption algorithm supported by the Identity Provider."
+      "description": "The identifier of the normalized encryption algorithm supported by the Identity Provider.",
+      "requirement": "optional"
     },
     "name": {
-      "description": "The name of the identity provider."
+      "description": "The name of the identity provider.",
+      "requirement": "recommended"
     },
     "digest": {
       "caption": "Certificate Fingerprint",
-      "description": "The fingerprint of the X.509 certificate used by the Identity Provider."
+      "description": "The fingerprint of the X.509 certificate used by the Identity Provider.",
+      "requirement": "optional"
     },
     "domain": {
-      "description": "The primary domain associated with the Identity Provider."
+      "description": "The primary domain associated with the Identity Provider.",
+      "requirement": "optional"
     },
     "issuer": {
-      "description": "The unique identifier (often a URL) used by the Identity Provider as its issuer."
+      "description": "The unique identifier (often a URL) used by the Identity Provider as its issuer.",
+      "requirement": "optional"
     },
     "protocol_name": {
       "caption": "Supported Protocol",
-      "description": "The supported protocol of the Identity Provider. E.g., <code>SAML</code>, <code>OIDC</code>, or <code>OAuth2</code>."
+      "description": "The supported protocol of the Identity Provider. E.g., <code>SAML</code>, <code>OIDC</code>, or <code>OAuth2</code>.",
+      "requirement": "optional"
+    },
+    "state": {
+      "description": "The state of the Identity Provider, normalized to the caption of the <code>state_id</code> value. In the case of <code>Other</code>, it is defined by the event source.",
+      "requirement": "optional"
+    },
+    "state_id": {
+      "description": "The normalized state ID of the Identity Provider to reflect its configuration or activation status.",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The state is unknown."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The state is not mapped. See the <code>state</code> attribute, which contains a data source specific value."
+        }
+      },
+      "requirement": "optional"
+    },
+    "tenant_uid": {
+      "description": "The tenant ID associated with the Identity Provider.",
+      "requirement": "optional"
     },
     "uid": {
-      "description": "The unique identifier of the Identity Provider."
+      "description": "The unique identifier of the Identity Provider.",
+      "requirement": "recommended"
     },
     "url_string": {
       "caption": "Configuration URL",
-      "description": "The URL for accessing the configuration or metadata of the Identity Provider."
+      "description": "The URL for accessing the configuration or metadata of the Identity Provider.",
+      "requirement": "optional"
     }
   },
   "constraints": {

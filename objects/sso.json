@@ -1,11 +1,19 @@
 {
-    "caption": "Single-Sign On (SSO)",
-    "description": "The SSO configuration object provides a structure for normalizing Single Sign-On (SSO) settings and attributes.",
+    "caption": "SSO",
+    "description": "The Single Sign-On (SSO) configuration object provides a structure for normalizing SSO settings and attributes.",
     "extends": "object",
     "name": "sso",
     "attributes": {
+      "auth_protocol": {
+        "description": "The authorization protocol as defined by the caption of <code>auth_protocol_id</code>. In the case of <code>Other</code>, it is defined by the event source.",
+        "requirement": "optional"
+      },
+      "auth_protocol_id": {
+        "description": "The normalized identifier of the authentication protocol used by the SSO resource.",
+        "requirement": "optional"
+      },
       "certificate": {
-        "caption": "X509 Certificates",
+        "caption": "SAML Certificate",
         "description": "Digital Signature associated with the SSO configuration, e.g., SAML X.509 certificate details.",
         "requirement": "recommended"
       },
@@ -31,7 +39,19 @@
         "description": "The supported protocol for the SSO resource. E.g., <code>SAML</code> or <code>OIDC</code>.",
         "requirement": "optional"
       },
+      "scopes": {
+        "requirement": "optional"
+      },
       "sso_idle_timeout": {
+        "requirement": "optional"
+      },
+      "sso_login_endpoint": {
+        "requirement": "optional"
+      },
+      "sso_logout_endpoint": {
+        "requirement": "optional"
+      },
+      "sso_metadata_url": {
         "requirement": "optional"
       },
       "vendor_name": {

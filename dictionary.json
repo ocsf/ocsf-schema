@@ -4054,6 +4054,12 @@
       "description": "The scheme portion of the URL. For example: <code>http</code>, <code>https</code>, <code>ftp</code>, or <code>sftp</code>.",
       "type": "string_t"
     },
+    "scopes": {
+      "caption": "Scopes",
+      "description": "Scopes define the specific permissions or actions that the client is allowed to perform on behalf of the user. Each scope represents a different set of permissions, and the user can selectively grant or deny access to specific scopes during the authorization process.",
+      "is_array": true,
+      "type": "string_t"
+    },
     "score": {
       "caption": "Reputation Score",
       "description": "The reputation score, normalized to the caption of the score_id value. In the case of 'Other', it is defined by the event source.",
@@ -4396,14 +4402,29 @@
       "type": "url_t"
     },
     "sso": {
-      "caption": "Single-Sign On (SSO)",
-      "description": "The SSO configuration object provides a structure for normalizing Single Sign-On (SSO) settings and attributes.",
+      "caption": "SSO",
+      "description": "The Single Sign-On (SSO) configuration object provides a structure for normalizing SSO settings and attributes.",
       "type": "sso"
     },
     "sso_idle_timeout": {
       "caption": "SSO Idle Timeout",
       "description": "Duration (in minutes) of allowed inactivity before Single Sign-On (SSO) session expiration.",
       "type": "integer_t"
+    },
+    "sso_login_endpoint": {
+      "caption": "SSO Login Endpoint",
+      "description": "URL for initiating an SSO login request.",
+      "type": "url_t"
+    },
+    "sso_logout_endpoint": {
+      "caption": "SSO Logout Endpoint",
+      "description": "URL for initiating an SSO logout request, allowing sessions to be terminated across applications.",
+      "type": "url_t"
+    },
+    "sso_metadata_url": {
+      "caption": "SSO Metadata Endpoint",
+      "description": "URL where metadata about the SSO configuration is available (e.g., for SAML configurations).",
+      "type": "url_t"
     },
     "standards": {
       "caption": "Compliance Standards: List",

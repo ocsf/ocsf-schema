@@ -81,6 +81,10 @@ Thankyou! -->
     1. Added `risk_details` to `data_security_finding` class. #1178
     1. Removed constraint from `group_management` class. #1193
     1. Added `Archived|5` as an enum item to `status_id` attribute in Findings classes. #1219
+* #### Profiles
+    1. Added `is_alert`, `confidence_id`, `confidence`,  `confidence_score` attributes to the `security_control` profile. #1178
+    1. Added `risk_level_id`, `risk_level`, `risk_score`, `risk_details` attributes to the `security_control` profile.  #1178
+    1. Added `policy` attribute to the `security_control` profile. #1178
 * #### Objects
     1. Added `phone_number` to `user` and `ldap_person` objects. #1155
     1. Added `has_mfa` to `user` object. #1155
@@ -106,15 +110,10 @@ Thankyou! -->
     1. Added `location` to `managed_entity`. #1169
 
 ### Bugfixes
-    1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180
-    1. Added a fix (profile: null) to `OSINT Inventory Info` so that the `osint` attribute is present w/o the OSINT profile, per the class definition.
-    1. Added http_response to all classes that have http_request, but no http_response object. #1200
-    1. Removed redundant `name` attribute from Windows extension to the `startup_item` object for consistency with other extensions. #1203
-
-* #### Profiles
-    1. Added `is_alert`, `confidence_id`, `confidence`,  `confidence_score` attributes to the `security_control` profile. #1178
-    1. Added `risk_level_id`, `risk_level`, `risk_score`, `risk_details` attributes to the `security_control` profile.  #1178
-    1. Added `policy` attribute to the `security_control` profile. #1178
+1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180
+1. Added a fix (profile: null) to `OSINT Inventory Info` so that the `osint` attribute is present w/o the OSINT profile, per the class definition.
+1. Added http_response to all classes that have http_request, but no http_response object. #1200
+1. Removed redundant `name` attribute from Windows extension to the `startup_item` object for consistency with other extensions. #1203
     
 ### Deprecated
 1. Deprecated `project_uid` in favor of `account.uid`. #1166

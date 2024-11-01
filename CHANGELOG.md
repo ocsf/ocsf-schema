@@ -68,7 +68,7 @@ Thankyou! -->
     1. Added `altitude_ceiling`, `altitude_floor`, `geodetic_altitude`, `aerial_height`, `horizontal_accuracy`, `pressure_altitude`, `radius`, `speed`, `track_direction`, and `vertical_speed` all to support `operating_area` and `unmanned_aerial_system` objects. #1169 
     1. Added `variable_name` and `variable_value` as `long_string`. #1228
     1. Added `altitude_ceiling`, `altitude_floor`, `geodetic_altitude`, `aerial_height`, `horizontal_accuracy`, `pressure_altitude`, `radius`, `speed`, `track_direction`, and `vertical_speed` all to support `operating_area` and `unmanned_aerial_system` objects. #1169
-    1. Added `scim_group_provisioning_enabled`, `scim_group_schema`, `scim_user_provisioning_enabled`, and `scim_user_schema` entries to the dictionary to support the new `scim` object. #1239
+    1. Added `scim_group_provisioning_enabled`, `scim_group_schema`, `scim_user_provisioning_enabled`, `scim_user_schema`, `scopes`, `sso_idle_timeout`, `sso_login_endpoint`, `sso_logout_endpoint`, and `sso_metadata_url` entries to the dictionary to support the new `scim` and `sso` objects. #1239
     1. Added new `11: Basic Authentication` enum value to `auth_protocol_id`. #1239
 * #### Objects
     1. Added `environment_variable` object. #1172
@@ -77,6 +77,7 @@ Thankyou! -->
     1. Added `unmanned_aerial_system` and `unmanned_system_operating_area` objects. #1169
     1. Added a `long_string` object. #1228
     1. Added `scim` object. #1239
+    1. Added `sso` object. #1239
 
 ### Improved
 * #### Event Classes
@@ -112,7 +113,7 @@ Thankyou! -->
     1. Added `control_parameters` and `status_details` to the compliance object. #1219
     1. Added `geodetic_altitude`, `height`, `horizontal_accuracy`, and `pressure_altitude` to `location`. #1169
     1. Added `location` to `managed_entity`. #1169
-    1. Added `auth_factors`, `digest`, `domain`, `has_mfa`, `issuer`, `protocol_name`, `scim`, `state`, `state_id`, `tenant_uid`, and `uid` to `idp`. #1239
+    1. Added `auth_factors`, `domain`, `fingerprint`, `has_mfa`, `issuer`, `protocol_name`, `scim`, `sso`, `state`, `state_id`, `tenant_uid`, and `uid` to `idp`. #1239
 
 ### Bugfixes
 1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180

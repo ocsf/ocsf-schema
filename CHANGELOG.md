@@ -52,14 +52,12 @@ Thankyou! -->
 * #### Dictionary Attributes
     1. Added `has_mfa` as a `boolean_t`. #1155
     1. Added `environment_variables` as an array of `environment_variable` object. #1172
-    1. Added `is_attribute_truncated` as a `boolean_t`. #1172
     1. Added `forward_addr` as an `email_t`. #1179
     1. Added `related_cves`, `related_cwes` as arrays of `cve`, `cwe` objects respectively. #1176
     1. Added `exploit_last_seen_time` as a `timestamp_t`. #1176
     1. Added `is_alert` as a `boolean_t`, #1179
     1. Added `working_directory` as a `string_t`. #1195
     1. Added `is_deleted` a `boolean_t`. #1196
-    1. Added `is_script_content_truncated` as a `boolean_t`. #1198
     1. Added `body_length` as an `integer_t` #1200
     1. Added `is_public` as a `boolean_t` #1208
     1. Added `tags`, `control_parameters` as an array of `key_value_object` object. #1219
@@ -67,6 +65,8 @@ Thankyou! -->
     1. Added `location` to the `managed_entity` object. #1169
     1. Added `unmanned_system_operator` to the dictionary, extends `user`. #1169
     1. Added `locations` to the dictionary, an array type of the `location` object, used within the new `operating_area` object. #1169
+    1. Added `altitude_ceiling`, `altitude_floor`, `geodetic_altitude`, `aerial_height`, `horizontal_accuracy`, `pressure_altitude`, `radius`, `speed`, `track_direction`, and `vertical_speed` all to support `operating_area` and `unmanned_aerial_system` objects. #1169 
+    1. Added `variable_name` and `variable_value` as `long_string`. #1228
     1. Added `altitude_ceiling`, `altitude_floor`, `geodetic_altitude`, `aerial_height`, `horizontal_accuracy`, `pressure_altitude`, `radius`, `speed`, `track_direction`, and `vertical_speed` all to support `operating_area` and `unmanned_aerial_system` objects. #1169
     1. Added `scim_group_provisioning_enabled`, `scim_group_schema`, `scim_user_provisioning_enabled`, and `scim_user_schema` entries to the dictionary to support the new `scim` object. #1239
     1. Added new `11: Basic Authentication` enum value to `auth_protocol_id`. #1239
@@ -75,6 +75,7 @@ Thankyou! -->
     1. Added `advisory` object. #1176
     1. Added a generic `key_value_object` object. #1219
     1. Added `unmanned_aerial_system` and `unmanned_system_operating_area` objects. #1169
+    1. Added a `long_string` object. #1228
     1. Added `scim` object. #1239
 
 ### Improved
@@ -102,7 +103,6 @@ Thankyou! -->
     1. Added `http_headers` to `email` object. #1199
     1. Added `working_directory` to `process` object. #1195
     1. Added `is_deleted` to `file` object. #1196
-    1. Added `is_script_content_truncated` to `script` object. #1198
     1. Added entry for VBA macros to `type_id` enum in `script` object. #1198
     1. Added `body_length` to the `http_response` and `http_request` objects. #1200
     1. Added `is_public` to the `databucket` object. #1208

@@ -68,13 +68,13 @@ Thankyou! -->
     1. Added `unmanned_system_operator` to the dictionary, extends `user`. #1169
     1. Added `locations` to the dictionary, an array type of the `location` object, used within the new `operating_area` object. #1169
     1. Added `altitude_ceiling`, `altitude_floor`, `geodetic_altitude`, `aerial_height`, `horizontal_accuracy`, `pressure_altitude`, `radius`, `speed`, `track_direction`, and `vertical_speed` all to support `operating_area` and `unmanned_aerial_system` objects. #1169
-    1. Added `scim_group_provisioning_enabled`, `scim_group_schema`, `scim_user_provisioning_enabled`, and `scim_user_schema` entries to the dictionary to support the new `scim` object.
+    1. Added `scim_group_provisioning_enabled`, `scim_group_schema`, `scim_user_provisioning_enabled`, and `scim_user_schema` entries to the dictionary to support the new `scim` object. #1239
 * #### Objects
     1. Added `environment_variable` object. #1172
     1. Added `advisory` object. #1176
     1. Added a generic `key_value_object` object. #1219
     1. Added `unmanned_aerial_system` and `unmanned_system_operating_area` objects. #1169
-    1. Added `scim` object.
+    1. Added `scim` object. #1239
 
 ### Improved
 * #### Event Classes
@@ -107,7 +107,7 @@ Thankyou! -->
     1. Added `control_parameters` and `status_details` to the compliance object. #1219
     1. Added `geodetic_altitude`, `height`, `horizontal_accuracy`, and `pressure_altitude` to `location`. #1169
     1. Added `location` to `managed_entity`. #1169
-    1. Added `auth_factors`, `digest`, `domain`, `has_mfa`, `issuer`, `protocol_name`, `scim`, `state`, `state_id`, `tenant_uid`, and `uid` to `idp`.
+    1. Added `auth_factors`, `digest`, `domain`, `has_mfa`, `issuer`, `protocol_name`, `scim`, `state`, `state_id`, `tenant_uid`, and `uid` to `idp`. #1239
 
 ### Bugfixes
     1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180
@@ -154,7 +154,7 @@ Thankyou! -->
         - Objects; top level attribute allowing link(s) about an object
     - The `source` and `references` attributes are also supported in when extending or patching event classes and objects.
 1. Fixed minor spelling mistakes in attribute descriptions in `dictionary.json`. #1213
-1. Fixed some more formatting of attribute descriptions in `dictionary.json` and `idp.json`.
+1. Fixed some more formatting of attribute descriptions in `dictionary.json` and `idp.json`. #1239
 
 ## [v1.3.0] - August 1st, 2024
 

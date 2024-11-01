@@ -69,6 +69,7 @@ Thankyou! -->
     1. Added `locations` to the dictionary, an array type of the `location` object, used within the new `operating_area` object. #1169
     1. Added `altitude_ceiling`, `altitude_floor`, `geodetic_altitude`, `aerial_height`, `horizontal_accuracy`, `pressure_altitude`, `radius`, `speed`, `track_direction`, and `vertical_speed` all to support `operating_area` and `unmanned_aerial_system` objects. #1169
     1. Added `scim_group_provisioning_enabled`, `scim_group_schema`, `scim_user_provisioning_enabled`, and `scim_user_schema` entries to the dictionary to support the new `scim` object. #1239
+    1. Added new `11: Basic Authentication` enum value to `auth_protocol_id`. #1239
 * #### Objects
     1. Added `environment_variable` object. #1172
     1. Added `advisory` object. #1176

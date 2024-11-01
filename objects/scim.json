@@ -12,9 +12,61 @@
         "description": "The normalized identifier of the authorization protocol used by the SCIM Configuration.",
         "requirement": "optional"
       },
+      "error_message": {
+        "caption": "Last Error Message",
+        "description": "Message or code associated with the last encountered error.",
+        "requirement": "optional"
+      },
+      "last_run_time": {
+        "caption": "Last Sync Time",
+        "description": "Timestamp of the most recent successful synchronization.",
+        "requirement": "optional"
+      },
+      "name": {
+        "description": "The name of the SCIM Configuration.",
+        "requirement": "recommended"
+      },
       "protocol_name": {
         "caption": "Supported Protocol",
         "description": "The supported protocol for the SCIM Configuration. E.g., <code>SAML</code>, <code>OIDC</code>, or <code>OAuth2</code>.",
+        "requirement": "optional"
+      },
+      "rate_limit": {
+        "description": "Maximum number of requests allowed by the SCIM Configuration within a specified time frame to avoid throttling.",
+        "requirement": "optional"
+      },
+      "state": {
+        "description": "The provisioning state of the SCIM Configuration, normalized to the caption of the <code>state_id</code> value. In the case of <code>Other</code>, it is defined by the event source.",
+        "requirement": "optional"
+      },
+      "state_id": {
+        "description": "The normalized state ID of the SCIM Configuration to reflect its activation status.",
+        "enum": {
+          "0": {
+            "caption": "Unknown",
+            "description": "The provisioning state of the SCIM Configuration is unknown."
+          },
+          "1": {
+            "caption": "Pending",
+            "description": "The SCIM Configuration is Pending activation or creation."
+          },
+          "2": {
+            "caption": "Active",
+            "description": "The SCIM Configuration is in an Active state, or otherwise enabled."
+          },
+          "3": {
+            "caption": "Failed",
+            "description": "The SCIM Configuration is in a Failed state."
+          },
+          "4": {
+            "caption": "Deleted",
+            "description": "The SCIM Configuration is in a Deleted state, or otherwise disabled."
+          },
+          "99": {
+            "caption": "Other",
+            "description": "The provisioning state of the SCIM Configuration is not mapped. See the <code>state</code> attribute, which contains a data source specific value."
+          }
+        },
         "requirement": "optional"
       },
       "vendor_name": {
@@ -25,6 +77,10 @@
       "version": {
         "caption": "SCIM Version",
         "description": "SCIM protocol version supported e.g., <code>SCIM 2.0</code>.",
+        "requirement": "recommended"
+      },
+      "uid": {
+        "description": "The unique identifier of the SCIM Configuration.",
         "requirement": "recommended"
       },
       "url_string": {

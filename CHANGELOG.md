@@ -52,14 +52,12 @@ Thankyou! -->
 * #### Dictionary Attributes
     1. Added `has_mfa` as a `boolean_t`. #1155
     1. Added `environment_variables` as an array of `environment_variable` object. #1172
-    1. Added `is_attribute_truncated` as a `boolean_t`. #1172
     1. Added `forward_addr` as an `email_t`. #1179
     1. Added `related_cves`, `related_cwes` as arrays of `cve`, `cwe` objects respectively. #1176
     1. Added `exploit_last_seen_time` as a `timestamp_t`. #1176
     1. Added `is_alert` as a `boolean_t`, #1179
     1. Added `working_directory` as a `string_t`. #1195
     1. Added `is_deleted` a `boolean_t`. #1196
-    1. Added `is_script_content_truncated` as a `boolean_t`. #1198
     1. Added `body_length` as an `integer_t` #1200
     1. Added `is_public` as a `boolean_t` #1208
     1. Added `tags`, `control_parameters` as an array of `key_value_object` object. #1219
@@ -68,12 +66,14 @@ Thankyou! -->
     1. Added `unmanned_system_operator` to the dictionary, extends `user`. #1169
     1. Added `locations` to the dictionary, an array type of the `location` object, used within the new `operating_area` object. #1169
     1. Added `altitude_ceiling`, `altitude_floor`, `geodetic_altitude`, `aerial_height`, `horizontal_accuracy`, `pressure_altitude`, `radius`, `speed`, `track_direction`, and `vertical_speed` all to support `operating_area` and `unmanned_aerial_system` objects. #1169 
+    1. Added `variable_name` and `variable_value` as `long_string`. #1228
     1. Added `imei_list` as an array `string_t`. #1225
 * #### Objects
     1. Added `environment_variable` object. #1172
     1. Added `advisory` object. #1176
     1. Added a generic `key_value_object` object. #1219
     1. Added `unmanned_aerial_system` and `unmanned_system_operating_area` objects. #1169
+    1. Added a `long_string` object. #1228
 
 ### Improved
 * #### Event Classes
@@ -82,6 +82,10 @@ Thankyou! -->
     1. Added `risk_details` to `data_security_finding` class. #1178
     1. Removed constraint from `group_management` class. #1193
     1. Added `Archived|5` as an enum item to `status_id` attribute in Findings classes. #1219
+* #### Profiles
+    1. Added `is_alert`, `confidence_id`, `confidence`,  `confidence_score` attributes to the `security_control` profile. #1178
+    1. Added `risk_level_id`, `risk_level`, `risk_score`, `risk_details` attributes to the `security_control` profile.  #1178
+    1. Added `policy` attribute to the `security_control` profile. #1178
 * #### Objects
     1. Added `phone_number` to `user` and `ldap_person` objects. #1155
     1. Added `has_mfa` to `user` object. #1155
@@ -96,7 +100,6 @@ Thankyou! -->
     1. Added `http_headers` to `email` object. #1199
     1. Added `working_directory` to `process` object. #1195
     1. Added `is_deleted` to `file` object. #1196
-    1. Added `is_script_content_truncated` to `script` object. #1198
     1. Added entry for VBA macros to `type_id` enum in `script` object. #1198
     1. Added `body_length` to the `http_response` and `http_request` objects. #1200
     1. Added `is_public` to the `databucket` object. #1208
@@ -109,15 +112,10 @@ Thankyou! -->
     1. Added `imei_list` to the `device` object. #1225
 
 ### Bugfixes
-    1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180
-    1. Added a fix (profile: null) to `OSINT Inventory Info` so that the `osint` attribute is present w/o the OSINT profile, per the class definition.
-    1. Added http_response to all classes that have http_request, but no http_response object. #1200
-    1. Removed redundant `name` attribute from Windows extension to the `startup_item` object for consistency with other extensions. #1203
-
-* #### Profiles
-    1. Added `is_alert`, `confidence_id`, `confidence`,  `confidence_score` attributes to the `security_control` profile. #1178
-    1. Added `risk_level_id`, `risk_level`, `risk_score`, `risk_details` attributes to the `security_control` profile.  #1178
-    1. Added `policy` attribute to the `security_control` profile. #1178
+1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180
+1. Added a fix (profile: null) to `OSINT Inventory Info` so that the `osint` attribute is present w/o the OSINT profile, per the class definition.
+1. Added http_response to all classes that have http_request, but no http_response object. #1200
+1. Removed redundant `name` attribute from Windows extension to the `startup_item` object for consistency with other extensions. #1203
     
 ### Deprecated
 1. Deprecated `project_uid` in favor of `account.uid`. #1166

@@ -1,6 +1,6 @@
 {
-    "caption": "System for Cross-domain Identity Management (SCIM)",
-    "description": "The SCIM Configuration object provides a structured set of attributes related to System for Cross-domain Identity Management (SCIM) protocols used for identity provisioning and management across cloud-based platforms. It standardizes user and group provisioning details, enabling identity synchronization and lifecycle management with compatible Identity Providers (IdPs) and applications.",
+    "caption": "SCIM",
+    "description": "The System for Cross-domain Identity Management (SCIM) Configuration object provides a structured set of attributes related to SCIM protocols used for identity provisioning and management across cloud-based platforms. It standardizes user and group provisioning details, enabling identity synchronization and lifecycle management with compatible Identity Providers (IdPs) and applications. SCIM is defined in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc7643'>RFC-7634</a>",
     "extends": "object",
     "name": "scim",
     "attributes": {
@@ -80,8 +80,12 @@
         "requirement": "recommended"
       },
       "uid": {
-        "description": "The unique identifier of the SCIM Configuration.",
+        "description": "A unique identifier for a SCIM resource as defined by the service provider.",
         "requirement": "recommended"
+      },
+      "uid_alt": {
+        "caption": "External ID",
+        "description": "A String that is an identifier for the resource as defined by the provisioning client. The 'externalId' may simplify identification of a resource between the provisioning client and the service provider by allowing the client to use a filter to locate the resource with an identifier from the provisioning domain, obviating the need to store a local mapping between the provisioning domain's identifier of the resource and the identifier used by the service provider."
       },
       "url_string": {
         "caption": "SCIM Endpoint URL",

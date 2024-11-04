@@ -21,25 +21,7 @@
             "description": "The description of the attribute."
         },
         "enum": {
-            "type": "object",
-            "description": "An enumeration of options for this attribute.",
-            "additionalProperties": {
-                "type": "object",
-                "required": [
-                    "caption"
-                ],
-                "properties": {
-                    "caption": {
-                        "type": "string",
-                        "description": "The caption of this enum value."
-                    },
-                    "description": {
-                        "type": "string",
-                        "description": "The description of this enum value."
-                    },
-                    "additionalProperties": false
-                }
-            }
+            "$ref": "enum.schema.json"
         },
         "sibling": {
             "type": "string",
@@ -71,6 +53,13 @@
         },
         "observable": {
             "$ref": "observable.schema.json"
+        },
+        "source": {
+            "type": "string",
+            "description": "The source attribute and its origin, for example the name from an RFC or from another well known schema, e.g. ActiveDirectory."
+        },
+        "references": {
+            "$ref": "references.schema.json"
         }
     },
     "additionalProperties": false

@@ -76,7 +76,6 @@
     "activity_id": {
       "caption": "Activity ID",
       "description": "The normalized identifier of the activity that triggered the event.",
-      "suppress_checks": ["sibling_convention"],
       "sibling": "activity_name",
       "type": "integer_t",
       "enum": {
@@ -88,7 +87,10 @@
           "caption": "Other",
           "description": "The event activity is not mapped. See the <code>activity_name</code> attribute, which contains a data source specific value."
         }
-      }
+      },
+      "suppress_checks": [
+        "sibling_convention"
+      ]
     },
     "activity_name": {
       "caption": "Activity",
@@ -105,10 +107,15 @@
       "description": "The permissions that were granted in a platform-native format. See specific usage.",
       "type": "integer_t"
     },
-    "advisory":{
+    "advisory": {
       "caption": "Security Advisory",
       "description": "Detail about the security advisory, that is used to publicly disclose cybersecurity vulnerabilities by a vendor.",
       "type": "advisory"
+    },
+    "aerial_height": {
+      "caption": "Aerial Height",
+      "description": "Expressed as either height above takeoff location or height above ground level (AGL) for a UAS current location. This value is provided in meters and must have a minimum resolution of 1 m. Special Values: <code>Invalid</code>, <code>No Value</code>, or <code>Unknown: -1000 m</code>.",
+      "type": "string_t"
     },
     "affected_code": {
       "caption": "Affected Code",
@@ -158,6 +165,16 @@
           "description": "The algorithm is not mapped. See the <code>algorithm</code> attribute, which contains a data source specific value."
         }
       }
+    },
+    "altitude_ceiling": {
+      "caption": "Altitude Ceiling",
+      "description": "Maximum altitude (WGS-84 HAE) for a group or an Intent-Based Network Participant. Measured in meters. Special Values: <code>Invalid</code>, <code>No Value</code>, or <code>Unknown: -1000 m</code>.",
+      "type": "string_t"
+    },
+    "altitude_floor": {
+      "caption": "Altitude Floor",
+      "description": "Minimum altitude (WGS-84 HAE) for a group or an Intent-Based Network Participant. Measured in meters. Special Values: <code>Invalid</code>, <code>No Value</code>, or <code>Unknown: -1000 m</code>.",
+      "type": "string_t"
     },
     "analytic": {
       "caption": "Analytic",
@@ -954,6 +971,13 @@
       "description": "The user-provided comment.",
       "type": "string_t"
     },
+    "community_uid": {
+      "caption": "Community ID",
+      "source": "community_id",
+      "references": [{"url": "https://github.com/corelight/community-id-spec", "description": "Community ID definition."}],
+      "description": "The Community ID of the network connection.",
+      "type": "string_t"
+    },
     "company_name": {
       "caption": "Company Name",
       "description": "The name of the company that published the file. For example: <code>Microsoft Corporation</code>.",
@@ -965,13 +989,13 @@
       "type": "compliance"
     },
     "compliance_references": {
-      "caption": "Complaince References Articles",
-      "description": "A list of sources of information or tools that help organizations understand, interpret, and implement compliance standards. They provide guidance, best practices, and examples.",
+      "caption": "Compliance Standard References",
+      "description": "A list of reference KB articles that provide information to help organizations understand, interpret, and implement compliance standards. They provide guidance, best practices, and examples.",
       "type": "kb_article",
       "is_array": true
     },
     "compliance_standards": {
-      "caption": "Compliance Standards Articles",
+      "caption": "Compliance Standards: Details",
       "description": "A list of established guidelines or criteria that define specific requirements an organization must follow.",
       "type": "kb_article",
       "is_array": true
@@ -1096,6 +1120,12 @@
       "description": "A Control is prescriptive, prioritized, and simplified set of best practices that one can use to strengthen their cybersecurity posture. e.g. AWS SecurityHub Controls, CIS Controls.",
       "type": "string_t"
     },
+    "control_parameters": {
+      "caption": "Control Parameters",
+      "description": "The list of control parameters evaluated in a Compliance check.",
+      "type": "key_value_object",
+      "is_array": true
+    },
     "coordinates": {
       "caption": "Coordinates",
       "description": "A two-element array, containing a longitude/latitude pair. The format conforms with <a target='_blank' href='https://geojson.org'>GeoJSON</a>. For example: <code>[-73.983, 40.719]</code>.",
@@ -1179,10 +1209,10 @@
       "type": "user"
     },
     "credential_uid": {
+      "observable": 19,
       "caption": "User Credential ID",
       "description": "The unique identifier of the user's credential. For example, AWS Access Key ID.",
-      "type": "string_t",
-      "observable": 19
+      "type": "string_t"
     },
     "criticality": {
       "caption": "Criticality",
@@ -1275,7 +1305,7 @@
         },
         "1": {
           "caption": "Data at-Rest",
-          "description": "The data was stored on physical or logcial media and was not actively moving through the network nor was being processed. E.g., data stored in a database, PDF files in a file share, or EHR records in object storage."
+          "description": "The data was stored on physical or logical media and was not actively moving through the network nor was being processed. E.g., data stored in a database, PDF files in a file share, or EHR records in object storage."
         },
         "2": {
           "caption": "Data in-Transit",
@@ -1370,7 +1400,7 @@
     },
     "detection_pattern": {
       "caption": "Detection Pattern",
-      "description": "Specific pattern, algorithm, fingerpint, or model used for detection.",
+      "description": "Specific pattern, algorithm, fingerprint, or model used for detection.",
       "type": "string_t"
     },
     "detection_system": {
@@ -1402,7 +1432,7 @@
         },
         "4": {
           "caption": "Data Discovery & Classification",
-          "description": "A tool that actively identifies and classifies sensitive data in digitial media and information stores in accordance with a policy or automated functionality. E.g, Amazon Macie, Microsoft Purview."
+          "description": "A tool that actively identifies and classifies sensitive data in digital media and information stores in accordance with a policy or automated functionality. E.g, Amazon Macie, Microsoft Purview."
         },
         "5": {
           "caption": "Secure Web Gateway",
@@ -1414,7 +1444,7 @@
         },
         "7": {
           "caption": "Digital Rights Management",
-          "description": "A Digital Rights Management (DRM) or a dedicated Information Rights Management (IRM) are tools which can detect sensitive data and/or enforce data security policies on digitial media via policy or user access rights."
+          "description": "A Digital Rights Management (DRM) or a dedicated Information Rights Management (IRM) are tools which can detect sensitive data and/or enforce data security policies on digital media via policy or user access rights."
         },
         "8": {
           "caption": "Cloud Access Security Broker",
@@ -1430,7 +1460,7 @@
         },
         "11": {
           "caption": "Developer Security",
-          "description": "Any Developer Security tool such as an Infrastrucre-as-Securty (IAC) scanner, Secrets Detection, or Secure Software Development Lifecycle (SSDLC) tool that can detect sensitive data and/or enforce data security policies. E.g., TruffleHog, GitGuardian, Git-Secrets."
+          "description": "Any Developer Security tool such as an Infrastructure-as-Code (IAC) security scanner, Secrets Detection, or Secure Software Development Lifecycle (SSDLC) tool that can detect sensitive data and/or enforce data security policies. E.g., TruffleHog, GitGuardian, Git-Secrets."
         },
         "12": {
           "caption": "Data Security Posture Management",
@@ -1670,9 +1700,16 @@
       "description": "The Domain-based Message Authentication, Reporting and Conformance (DMARC) policy status.",
       "type": "string_t"
     },
+    "dnssec_status": {
+      "caption": "DNSSEC Status",
+      "description": "The normalized value of dnssec_status_id.",
+      "type": "string_t"
+    },
     "dnssec_status_id": {
       "caption": "DNSSEC Status ID",
       "description": "Describes the normalized status of DNS Security Extensions (DNSSEC) for a domain.",
+      "sibling": "dnssec_status",
+      "type": "integer_t",
       "enum": {
         "0": {
           "caption": "Unknown",
@@ -1690,14 +1727,7 @@
           "caption": "Other",
           "description": "The DNSSEC status is not mapped. See the <code>dnssec_status</code> attribute, which contains a data source specific value."
         }
-      },
-      "sibling": "dnssec_status",
-      "type": "integer_t"
-    },
-    "dnssec_status": {
-      "caption": "DNSSEC Status",
-      "description": "The normalized value of dnssec_status_id.",
-      "type": "string_t"
+      }
     },
     "domain": {
       "caption": "Domain",
@@ -1712,8 +1742,8 @@
     "domain_contacts": {
       "caption": "Domain Contacts",
       "description": "An array of <code>Domain Contact</code> objects.",
-      "is_array": true,
-      "type": "domain_contact"
+      "type": "domain_contact",
+      "is_array": true
     },
     "driver": {
       "caption": "Kernel Driver",
@@ -1894,7 +1924,7 @@
       "description": "The expiration time. See specific usage.",
       "type": "timestamp_t"
     },
-    "exploit_last_seen_time":{
+    "exploit_last_seen_time": {
       "caption": "Exploit Last Seen Time",
       "description": "The time when the exploit was most recently observed.",
       "type": "timestamp_t"
@@ -2116,6 +2146,16 @@
       "description": "The entry-point function of the module. The system calls the entry-point function whenever a process or thread loads or unloads the module.",
       "type": "string_t"
     },
+    "geodetic_altitude": {
+      "caption": "Geodetic Altitude",
+      "description": "The aircraft distance above or below the ellipsoid as measured along a line that passes through the aircraft and is normal to the surface of the WGS-84 ellipsoid. This value is provided in meters and must have a minimum resolution of 1 m. Special Values: <code>Invalid</code>, <code>No Value</code>, or <code>Unknown: -1000 m</code>.",
+      "type": "string_t"
+    },
+    "geodetic_vertical_accuracy": {
+      "caption": "Geodetic Vertical Accuracy",
+      "description": "Provides quality/containment on geodetic altitude. This is based on ADS-B Geodetic Vertical Accuracy (GVA). Measured in meters.",
+      "type": "string_t"
+    },
     "geohash": {
       "caption": "Geohash",
       "description": "<p>Geohash of the geo-coordinates (latitude and longitude).</p><a target='_blank' href='https://en.wikipedia.org/wiki/Geohash'>Geohashing</a> is a geocoding system used to encode geographic coordinates in decimal degrees, to a single string.",
@@ -2171,6 +2211,11 @@
       "caption": "Hire Time",
       "description": "The timestamp when the user was or will be hired by the organization.",
       "type": "timestamp_t"
+    },
+    "horizontal_accuracy": {
+      "caption": "Horizontal Accuracy",
+      "description": "Provides quality/containment on horizontal position. This is based on ADS-B NACp. Measured in meters.",
+      "type": "string_t"
     },
     "hostname": {
       "caption": "Hostname",
@@ -2503,6 +2548,11 @@
       "description": "The event occurred on a personal device.",
       "type": "boolean_t"
     },
+    "is_public": {
+      "caption": "Public",
+      "description": "Determination of the public accessibility. See specific usage.",
+      "type": "boolean_t"
+    },
     "is_remote": {
       "caption": "Remote",
       "description": "The indication of whether the session is remote.",
@@ -2511,11 +2561,6 @@
     "is_renewal": {
       "caption": "Renewal",
       "description": "The indication of whether this is a lease/session renewal event.",
-      "type": "boolean_t"
-    },
-    "is_script_content_truncated": {
-      "caption": "Is Script Content Truncated",
-      "description": "Indicates if the contents of the <code>script_content</code> attribute have been truncated.",
       "type": "boolean_t"
     },
     "is_secure": {
@@ -2548,14 +2593,14 @@
       "description": "Whether the authentication factor is a Time-based One-time Password (TOTP).",
       "type": "boolean_t"
     },
+    "is_truncated": {
+      "caption": "Is Truncated",
+      "description": "Indicates that an attribute has been truncated. See specific usage.",
+      "type": "boolean_t"
+    },
     "is_trusted": {
       "caption": "Trusted Device",
       "description": "The event occurred on a trusted device.",
-      "type": "boolean_t"
-    },
-    "is_attribute_truncated": {
-      "caption": "Attribute Truncated",
-      "description": "The indication of whether or not an attribute is truncated.",
       "type": "boolean_t"
     },
     "is_vpn": {
@@ -2653,7 +2698,7 @@
     },
     "labels": {
       "caption": "Labels",
-      "description": "The list of labels attached to an event, object, or attribute.",
+      "description": "The list of labels attached to an entity. See specific usage.",
       "type": "string_t",
       "is_array": true
     },
@@ -2740,7 +2785,7 @@
     },
     "load_type_id": {
       "caption": "Load Type ID",
-      "description": "The normalized identifier of the load type. See specific uasge.",
+      "description": "The normalized identifier of the load type. See specific usage.",
       "sibling": "load_type",
       "type": "integer_t",
       "enum": {
@@ -2763,6 +2808,12 @@
     "location": {
       "caption": "Geo Location",
       "description": "The detailed geographical location usually associated with an IP address.",
+      "type": "location"
+    },
+    "locations": {
+      "caption": "Geo Locations",
+      "description": "A list of detailed geographical locations.",
+      "is_array": true,
       "type": "location"
     },
     "log_level": {
@@ -2982,6 +3033,12 @@
       "description": "The name of the entity. See specific usage.",
       "type": "string_t"
     },
+    "name_servers": {
+      "caption": "Name Servers",
+      "description": "A collection of name servers related to a domain registration or other record.",
+      "type": "string_t",
+      "is_array": true
+    },
     "namespace": {
       "caption": "Namespace",
       "description": "The namespace is useful in merger or acquisition situations. For example, when similar entities exist that you need to keep separate.",
@@ -2991,12 +3048,6 @@
       "caption": "Namespace PID",
       "description": "If running under a process namespace (such as in a container), the process identifier within that process namespace.",
       "type": "integer_t"
-    },
-    "name_servers": {
-      "caption": "Name Servers",
-      "description": "A collection of name servers related to a domain registration or other record.",
-      "is_array": true,
-      "type": "string_t"
     },
     "network_driver": {
       "caption": "Network Driver",
@@ -3099,7 +3150,6 @@
     "opcode_id": {
       "caption": "DNS Opcode ID",
       "description": "The DNS opcode ID specifies the normalized query message type as defined in <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc5395.html'>RFC-5395</a>.",
-      "suppress_checks": ["enum_convention"],
       "type": "integer_t",
       "enum": {
         "0": {
@@ -3134,7 +3184,10 @@
           "caption": "Other",
           "description": "The DNS Opcode is not defined by the RFC. See the <code>opcode</code> attribute, which contains a data source specific value."
         }
-      }
+      },
+      "suppress_checks": [
+        "enum_convention"
+      ]
     },
     "open_mask": {
       "caption": "Open Mask",
@@ -3175,6 +3228,12 @@
       "caption": "OS",
       "description": "The endpoint operating system.",
       "type": "os"
+    },
+    "osint": {
+      "caption": "OSINT",
+      "description": "The OSINT (Open Source Intelligence) object contains details related to an indicator such as the indicator itself, related indicators, geolocation, registrar information, subdomains, analyst commentary, and other contextual information. This information can be used to further enrich a detection or finding by providing decisioning support to other analysts and engineers.",
+      "type": "osint",
+      "is_array": true
     },
     "ou_name": {
       "caption": "Org Unit Name",
@@ -3387,6 +3446,11 @@
       "caption": "Precision",
       "description": "The numeric precision. See specific usage.",
       "type": "integer_t"
+    },
+    "pressure_altitude": {
+      "caption": "Pressure Altitude",
+      "description": "The uncorrected barometric pressure altitude (based on reference standard 29.92 inHg, 1013.25 mb) provides a reference for algorithms that utilize 'altitude deltas' between aircraft. This value is provided in meters and must have a minimum resolution of 1 m.. Special Values: <code>Invalid</code>, <code>No Value</code>, or <code>Unknown: -1000 m</code>.",
+      "type": "string_t"
     },
     "prev_security_level": {
       "caption": "Previous Security Level",
@@ -3642,6 +3706,11 @@
       "description": "The Domain Name System (DNS) query time.",
       "type": "timestamp_t"
     },
+    "radius": {
+      "caption": "Radius",
+      "description": "Farthest horizontal distance from the reported location at which any UA in a group may be located (meters). Also allows defining the area where an Intent-Based Network Participant operation is taking place. Default: 0 m.",
+      "type": "string_t"
+    },
     "ram_size": {
       "caption": "RAM Size",
       "description": "The total amount of installed RAM, in Megabytes. For example: <code>2048</code>.",
@@ -3715,18 +3784,6 @@
       "type": "analytic",
       "is_array": true
     },
-    "related_events": {
-      "caption": "Related Events",
-      "description": "Describes events and/or other findings related to the finding as identified by the security product.",
-      "type": "related_event",
-      "is_array": true
-    },
-    "related_vulnerabilities": {
-      "caption": "Related Vulnerability IDs",
-      "description": "List of vulnerability IDs (e.g. CVE ID) that are related to this vulnerability.",
-      "type": "string_t",
-      "is_array": true
-    },
     "related_cves": {
       "caption": "Related CVEs",
       "description": "Describes Common Vulnerabilities and Exposures <a target='_blank' href='https://cve.mitre.org/'>(CVE)</a> entries that are related to an entity. See specific usage.",
@@ -3737,6 +3794,18 @@
       "caption": "Related CWEs",
       "description": "Describes Common Weakness Enumeration <a target='_blank' href='https://cwe.mitre.org/'>(CWE)</a> entries that are related to an entity. See specific usage.",
       "type": "cwe",
+      "is_array": true
+    },
+    "related_events": {
+      "caption": "Related Events",
+      "description": "Describes events and/or other findings related to the finding as identified by the security product.",
+      "type": "related_event",
+      "is_array": true
+    },
+    "related_vulnerabilities": {
+      "caption": "Related Vulnerability IDs",
+      "description": "List of vulnerability IDs (e.g. CVE ID) that are related to this vulnerability.",
+      "type": "string_t",
       "is_array": true
     },
     "relay": {
@@ -3830,7 +3899,6 @@
     "risk_level_id": {
       "caption": "Risk Level ID",
       "description": "The normalized risk level id.",
-      "suppress_checks": ["enum_convention"],
       "sibling": "risk_level",
       "type": "integer_t",
       "enum": {
@@ -3853,7 +3921,10 @@
           "caption": "Other",
           "description": "The risk level is not mapped. See the <code>risk_level</code> attribute, which contains a data source specific value."
         }
-      }
+      },
+      "suppress_checks": [
+        "enum_convention"
+      ]
     },
     "risk_score": {
       "caption": "Risk Score",
@@ -3873,6 +3944,7 @@
     "run_mode_ids": {
       "caption": "Run Mode IDs",
       "description": "The list of normalized identifiers that describe application attributes when it is running. See specific usage.",
+      "sibling": "run_modes",
       "type": "integer_t",
       "enum": {
         "0": {
@@ -3884,8 +3956,7 @@
           "description": "The run mode is not mapped. See the <code>run_modes</code> attribute, which contains data source specific values."
         }
       },
-      "is_array": true,
-      "sibling": "run_modes"
+      "is_array": true
     },
     "run_modes": {
       "caption": "Run Modes",
@@ -4025,7 +4096,7 @@
       "observable": 36,
       "caption": "Script Content",
       "description": "The script content, normalized to UTF-8 encoding irrespective of its original encoding. When emitting this attribute, it may be appropriate to truncate large scripts. When consuming this attribute, large scripts should be anticipated.",
-      "type": "string_t"
+      "type": "long_string"
     },
     "section_a": {
       "caption": "JA4 Section A",
@@ -4115,7 +4186,8 @@
     "serial_number": {
       "caption": "Serial Number",
       "description": "The serial number that pertains to the object. See specific usage.",
-      "type": "string_t"
+      "type": "string_t",
+      "observable": 37
     },
     "server_ciphers": {
       "caption": "Server Cipher Suites",
@@ -4231,8 +4303,8 @@
     "signatures": {
       "caption": "Digital Signatures",
       "description": "A collection of <code>Digital Signature</code> objects.",
-      "is_array": true,
-      "type": "digital_signature"
+      "type": "digital_signature",
+      "is_array": true
     },
     "size": {
       "caption": "Size",
@@ -4270,6 +4342,16 @@
       "description": "The version number of the latest Service Pack.",
       "type": "integer_t"
     },
+    "speed": {
+      "caption": "Speed",
+      "description": "Ground speed of flight. This value is provided in meters per second with a minimum resolution of 0.25 m/s. Special Values: <code>Invalid</code>, <code>No Value</code>, or <code>Unknown: 255 m/s</code>.",
+      "type": "string_t"
+    },
+    "speed_accuracy": {
+      "caption": "Speed Accuracy",
+      "description": "Provides quality/containment on horizontal ground speed. Measured in meters/second.",
+      "type": "string_t"
+    },
     "spf": {
       "caption": "SPF Status",
       "description": "The Sender Policy Framework (SPF) status of the email.",
@@ -4286,8 +4368,8 @@
       "type": "url_t"
     },
     "standards": {
-      "caption": "Security Standards",
-      "description": "Security standards are a set of criteria organizations can follow to protect sensitive and confidential information. e.g. <code>NIST SP 800-53, CIS AWS Foundations Benchmark v1.4.0, ISO/IEC 27001</code>",
+      "caption": "Compliance Standards: List",
+      "description": "Compliance standards are a set of criteria organizations can follow to protect sensitive and confidential information. e.g. <code>NIST SP 800-53, CIS AWS Foundations Benchmark v1.4.0, ISO/IEC 27001</code>",
       "type": "string_t",
       "is_array": true
     },
@@ -4314,6 +4396,8 @@
     "start_type_id": {
       "caption": "Start Type ID",
       "description": "The start type ID of a service or application.",
+      "sibling": "start_type",
+      "type": "integer_t",
       "enum": {
         "0": {
           "caption": "Unknown",
@@ -4355,9 +4439,7 @@
           "caption": "Other",
           "description": "The start type is not mapped. See the <code>start_type</code> attribute, which contains a data source specific value."
         }
-      },
-      "type": "integer_t",
-      "sibling": "start_type"
+      }
     },
     "startup_item": {
       "caption": "Startup Item",
@@ -4399,6 +4481,12 @@
       "caption": "Status Detail",
       "description": "The status detail contains additional information about the event/finding outcome.",
       "type": "string_t"
+    },
+    "status_details": {
+      "caption": "Status Details",
+      "description": "A list of descriptions, containing additional information about the event/finding status.",
+      "type": "string_t",
+      "is_array": true
     },
     "status_id": {
       "caption": "Status ID",
@@ -4471,8 +4559,8 @@
     "subdomains": {
       "caption": "Subdomains",
       "description": "An array of subdomain strings. Can be used to collect several subdomains such as those from Domain Generation Algorithms (DGAs).",
-      "is_array": true,
-      "type": "string_t"
+      "type": "string_t",
+      "is_array": true
     },
     "subject": {
       "caption": "Subject Details",
@@ -4537,7 +4625,17 @@
     "tag": {
       "caption": "Image Tag",
       "description": "The image tag. For example: <code>1.11-alpine</code>.",
-      "type": "string_t"
+      "type": "string_t",
+      "@deprecated": {
+        "message": "Use the <code> labels or tags </code> attribute instead.",
+        "since": "1.4.0"
+      }
+    },
+    "tags": {
+      "caption": "Tags",
+      "description": "The list of tags; <code>{key:value}</code> pairs attached to an entity. A Tag may be used to categorize, filter, and search for entities. For e.g. <code>\"Environment\": \"Production\"</code>, <code>\"Owner\": \"007\"</code>. See specific usage.",
+      "type": "key_value_object",
+      "is_array": true
     },
     "tcp_flags": {
       "caption": "TCP Flags",
@@ -4564,11 +4662,10 @@
       "description": "The time when the entity was terminated. See specific usage.",
       "type": "timestamp_t"
     },
-    "osint": {
-      "caption": "OSINT",
-      "description": "The OSINT (Open Source Intelligence) object contains details related to an indicator such as the indicator itself, related indicators, geolocation, registrar information, subdomains, analyst commentary, and other contextual information. This information can be used to further enrich a detection or finding by providing decisioning support to other analysts and engineers.",
-      "is_array": true,
-      "type": "osint"
+    "ticket": {
+      "caption": "Ticket",
+      "description": "The linked ticket in the ticketing system.",
+      "type": "ticket"
     },
     "tid": {
       "caption": "Thread ID",
@@ -4584,11 +4681,6 @@
       "caption": "Timezone Offset",
       "description": "The number of minutes that the reported event <code>time</code> is ahead or behind UTC, in the range -1,080 to +1,080.",
       "type": "integer_t"
-    },
-    "ticket": {
-      "caption": "Ticket",
-      "description": "The linked ticket in the ticketing system.",
-      "type": "ticket"
     },
     "title": {
       "caption": "Title",
@@ -4621,6 +4713,11 @@
       "caption": "Total",
       "description": "The total number of items. See specific usage.",
       "type": "integer_t"
+    },
+    "track_direction": {
+      "caption": "Track Direction",
+      "description": "Direction of flight expressed as a “True North-based” ground track angle. This value is provided in clockwise degrees with a minimum resolution of 1 degree. If aircraft is not moving horizontally, use the “Unknown” value",
+      "type": "string_t"
     },
     "traffic": {
       "caption": "Traffic",
@@ -4701,6 +4798,16 @@
       "type": "string_t",
       "is_array": true
     },
+    "unmanned_aerial_system": {
+      "caption": "Unmanned Aerial System",
+      "description": "The Unmanned Aerial System object describes the characteristics, Position Location Information (PLI), and other metadata of Unmanned Aerial Systems (UAS) and other unmanned and drone systems used in Remote ID. Remote ID is defined in the Standard Specification for Remote ID and Tracking (ASTM Designation: F3411-22a) <a target='_blank' href='https://cdn.standards.iteh.ai/samples/112830/71297057ac42432880a203654f213709/ASTM-F3411-22a.pdf'>ASTM F3411-22a</a>.",
+      "type": "unmanned_aerial_system"
+    },
+    "unmanned_system_operating_area": {
+      "caption": "UAS Operating Area",
+      "description": "The UAS Operating Area object describes details about a precise area of operations for a UAS flight or mission.",
+      "type": "unmanned_system_operating_area"
+    },
     "uid": {
       "caption": "Unique ID",
       "description": "The unique identifier. See specific usage.",
@@ -4715,6 +4822,16 @@
       "caption": "Unmapped Data",
       "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
       "type": "object"
+    },
+    "unmanned_system_operator": {
+      "caption": "Unmanned Systems Operator",
+      "description": "The human or machine operator of an UAS",
+      "type": "user"
+    },
+    "untruncated_size": {
+      "caption": "Untruncated Size",
+      "description": "The size in bytes of an attribute before truncation. See specific usage.",
+      "type": "integer_t"
     },
     "url": {
       "caption": "URL",
@@ -4757,6 +4874,16 @@
       "caption": "Value",
       "description": "The value that pertains to the object. See specific usage.",
       "type": "string_t"
+    },
+    "variable_name": {
+      "caption": "Variable Name",
+      "description": "The name of a variable. See specific usage.",
+      "type": "long_string"
+    },
+    "variable_value": {
+      "caption": "Variable Value",
+      "description": "The value of a variable. See specific usage.",
+      "type": "long_string"
     },
     "vector_string": {
       "caption": "Vector String",
@@ -4832,6 +4959,11 @@
     "version": {
       "caption": "Version",
       "description": "The version that pertains to the event or object. See specific usage.",
+      "type": "string_t"
+    },
+    "vertical_speed": {
+      "caption": "Vertical Speed",
+      "description": "Vertical speed upward relative to the WGS-84 datum, measured in meters per second. Special Values: <code>Invalid</code>, <code>No Value</code>, or <code>Unknown: 63 m/s</code>.",
       "type": "string_t"
     },
     "vlan_uid": {

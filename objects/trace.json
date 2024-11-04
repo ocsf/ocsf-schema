@@ -5,27 +5,24 @@
   "name": "trace",
   "attributes": {
     "trace_id": {
-      "description": "The name of the metric.",
+      "description": "The unique identifier used in distributed systems and microservices architecture to track and correlate requests across various components of an application.",
       "requirement": "required"
     },
     "trace_type": {
-      "description": "Identifier for the trace type, linking related events.",
+      "description": "The trace type, as defined by the spac_type_id.",
+      "requirement": "optional"
+    },
+    "trace_type_id": {
+      "description": "Spans represent specific operations in and between systems and is defined by https://opentelemetry.io/docs/specs/semconv/general/trace/.",
       "requirement": "optional"
     },
     "span_id": {
-      "description": "Spans represent specific operations in and between systems and is defined by https://opentelemetry.io/docs/specs/semconv/general/trace/.",
+      "description": "The unique identifier representing a single operation or unit of work within a trace.",
       "requirement": "required"
     },
-    "span_name": {
-      "description": "The OTeL span name, as defined by the span_id.",
-      "requirement": "optional"
-    },
-    "desc": {
-      "description": "Explanation or additional context about the trace type.",
-      "requirement": "optional"
-    },
     "otel_attributes": {
-      "requirement": "optional"
+      "requirement": "optional",
+      "description": "A dictionary of KV pairs containing the relevant attributes present within a particular OTeL log within Span for a particular event."
     }
   }
 }

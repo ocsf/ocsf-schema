@@ -1,0 +1,34 @@
+{
+    "$id": "https://schema.ocsf.io/enum.schema.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Enumeration",
+    "description": "An enumeration of options for an attribute.",
+    "type": "object",
+    "additionalProperties": {
+        "type": "object",
+        "required": [
+            "caption"
+        ],
+        "properties": {
+            "@deprecated": {
+                "$ref": "deprecated.schema.json"
+            },
+            "caption": {
+                "type": "string",
+                "description": "The caption of this enum value."
+            },
+            "description": {
+                "type": "string",
+                "description": "The description of this enum value."
+            },
+            "source": {
+                "type": "string",
+                "description": "The source value and its origin, for example an OS-specific enumeration value."
+            },
+            "references": {
+                "$ref": "references.schema.json"
+            }
+        },
+        "additionalProperties": false
+    }
+}

@@ -3002,6 +3002,71 @@
       "description": "The attributes associated with an event containing metric data. See specific usage.",
       "type": "metric"
     },
+    "metric_type": {
+      "caption": "Metric Type",
+      "description": "The metric type, as defined by the metric_type_id.",
+      "type": "string_t"
+    },
+    "metric_type_id": {
+      "caption": "Metric Type",
+      "description": "Metrics represent specific metrics within systems as defined by defined by https://opentelemetry.io/docs/specs/semconv/general/trace/.",
+      "sibling": "metric_type",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The metric_type is unknown."
+        },
+        "1": {
+          "caption": "general",
+          "description": "General metrics guidelines."
+        },
+        "2": {
+          "caption": "database",
+          "description": "For SQL and NoSQL client metrics."
+        },
+        "3": {
+          "caption": "faas",
+          "description": "For Function as a Service metrics."
+        },
+        "4": {
+          "caption": "http",
+          "description": "For HTTP client and server metrics."
+        },
+        "5": {
+          "caption": "Messaging",
+          "description": "For messaging systems (queues, publish/subscribe, etc.) metrics."
+        },
+        "6": {
+          "caption": "rpc",
+          "description": "For RPC client and server metrics."
+        },
+        "7": {
+          "caption": "system",
+          "description": "For system metrics."
+        },
+        "8": {
+          "caption": "hardware",
+          "description": "For hardware-related metrics."
+        },
+        "9": {
+          "caption": "process",
+          "description": "For standard process metrics.."
+        },
+        "10": {
+          "caption": "runtime_environment",
+          "description": "For runtime environment metrics."
+        },
+        "11": {
+          "caption": "rpc",
+          "description": "Semantic Conventions for RPC client and server operations."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The event metric_type is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
     "mime_type": {
       "caption": "MIME type",
       "description": "The Multipurpose Internet Mail Extensions (MIME) type of the file, if applicable.",
@@ -4717,6 +4782,83 @@
       "caption": "Trace",
       "description": "The attributes associated with an event containing trace data. See specific usage.",
       "type": "trace"
+    },
+    "trace_type": {
+      "caption": "Trace Type",
+      "description": "The trace type, as defined by the trace_type_id.",
+      "type": "string_t"
+    },
+    "trace_type_id": {
+      "caption": "Trace Type",
+      "description": "Spans represent specific operations in and between systems and is defined by https://opentelemetry.io/docs/specs/semconv/general/trace/.",
+      "sibling": "trace_type",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The trace_type is unknown."
+        },
+        "1": {
+          "caption": "general",
+          "description": "General Semantic Conventions."
+        },
+        "2": {
+          "caption": "cloud_providers",
+          "description": "Semantic Conventions for cloud providers libraries."
+        },
+        "3": {
+          "caption": "cloud_events",
+          "description": "Semantic Conventions for the CloudEvents specification."
+        },
+        "4": {
+          "caption": "database",
+          "description": "Semantic Conventions for database operations."
+        },
+        "5": {
+          "caption": "exceptions",
+          "description": "Semantic Conventions for exceptions."
+        },
+        "6": {
+          "caption": "faas",
+          "description": "Semantic Conventions for Function as a Service (FaaS) operations."
+        },
+        "7": {
+          "caption": "feature_flags",
+          "description": "Semantic Conventions for feature flag evaluations."
+        },
+        "8": {
+          "caption": "generative_ai",
+          "description": "Semantic Conventions for generative AI (LLM, etc.) operations."
+        },
+        "9": {
+          "caption": "graph_ql",
+          "description": "Semantic Conventions for GraphQL implementations."
+        },
+        "10": {
+          "caption": "http",
+          "description": "Semantic Conventions for HTTP client and server operations."
+        },
+        "11": {
+          "caption": "messaging",
+          "description": "Semantic Conventions for messaging operations and systems."
+        },
+        "12": {
+          "caption": "object_stores",
+          "description": "Semantic Conventions for object stores operations."
+        },
+        "13": {
+          "caption": "rpc",
+          "description": "Semantic Conventions for RPC client and server operations."
+        },
+        "14": {
+          "caption": "System",
+          "description": "System Semantic Conventions."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The event trace_type is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
+        }
+      }
     },
     "track_direction": {
       "caption": "Track Direction",

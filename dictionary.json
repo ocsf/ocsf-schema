@@ -5144,20 +5144,30 @@
       "description": "The attributes associated with an event containing trace data. See specific usage.",
       "type": "trace"
     },
+    "trace_id": {
+      "caption": "Trace",
+      "description": "The unique identifier used in distributed systems and microservices architecture to track and correlate requests across various components of an application.",
+      "type": "string_t"
+    },
+    "span_id": {
+      "caption": "Trace",
+      "description": "The unique identifier representing a single operation or unit of work within a trace.",
+      "type": "string_t"
+    },
     "trace_type": {
       "caption": "Trace Type",
-      "description": "The trace type, as defined by the trace_type_id.",
+      "description": "The trace type, as defined by the spac_type_id.",
       "type": "string_t"
     },
     "trace_type_id": {
       "caption": "Trace Type",
       "description": "Spans represent specific operations in and between systems and is defined by https://opentelemetry.io/docs/specs/semconv/general/trace/.",
-      "sibling": "trace_type",
+      "sibling": "span_type",
       "type": "integer_t",
       "enum": {
         "0": {
           "caption": "Unknown",
-          "description": "The trace_type is unknown."
+          "description": "The span_type is unknown."
         },
         "1": {
           "caption": "general",
@@ -5217,7 +5227,7 @@
         },
         "99": {
           "caption": "Other",
-          "description": "The event trace_type is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
+          "description": "The event span_type is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
         }
       }
     },

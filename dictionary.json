@@ -3009,61 +3009,146 @@
     },
     "metric_type_id": {
       "caption": "Metric Type",
-      "description": "Metrics represent specific metrics within systems as defined by defined by https://opentelemetry.io/docs/specs/semconv/general/trace/.",
+      "description": "Metric type represent specific type of metric asociated with a metric value as defined by defined by the types in https://opentelemetry.io/docs/specs/semconv/general/trace/.",
       "sibling": "metric_type",
       "type": "integer_t",
       "enum": {
         "0": {
           "caption": "Unknown",
-          "description": "The metric_type is unknown."
+          "description": "The metric type is unknown."
         },
         "1": {
-          "caption": "general",
-          "description": "General metrics guidelines."
+          "caption": "count",
+          "description": "Represents the current count of connections in various states."
         },
         "2": {
+          "caption": "idle_max",
+          "description": "The maximum number of idle connections allowed in the pool."
+        },
+        "3": {
+          "caption": "idle_min",
+          "description": "The minimum number of idle connections allowed in the pool."
+        },
+        "4": {
+          "caption": "max",
+          "description": "The maximum number of open connections allowed in the pool."
+        },
+        "5": {
+          "caption": "pending_requests",
+          "description": "The number of pending connection requests."
+        },
+        "6": {
+          "caption": "timeouts",
+          "description": "The count of connection timeouts."
+        },
+        "7": {
+          "caption": "create_time",
+          "description": "Time taken to create a new connection."
+        },
+        "8": {
+          "caption": "wait_time",
+          "description": "Time spent waiting for a connection."
+        },
+        "9": {
+          "caption": "use_time",
+          "description": "Time duration for which a connection is in use."
+        },
+        "10": {
+          "caption": "duration",
+          "description": "Measures the duration of execution."
+        },
+        "12": {
+          "caption": "coldstarts",
+          "description": "Number of invocation cold starts."
+        },
+        "13": {
+          "caption": "errors",
+          "description": "Number of invocation errors."
+        },
+        "14": {
+          "caption": "faas.invocations",
+          "description": "Number of successful invocations."
+        },
+        "15": {
+          "caption": "timeouts",
+          "description": "Number of invocation timeouts."
+        },
+        "16": {
+          "caption": "mem_usage",
+          "description": "Distribution of max memory usage per invocation."
+        },
+        "17": {
+          "caption": "cpu_usage",
+          "description": "Distribution of CPU usage per invocation."
+        },
+        "18": {
+          "caption": "net_io",
+          "description": "Distribution of net I/O usage per invocation."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The metric type is not mapped."
+        }
+      }
+    },
+    "metric_system_type": {
+      "caption": "Metric System Type",
+      "description": "The metric system type, as defined by the metric_system_type_id.",
+      "type": "string_t"
+    },
+    "metric_system_type_id": {
+      "caption": "Metric System Type",
+      "description": "Metrics systems asociated with a metric as defined by defined by https://opentelemetry.io/docs/specs/semconv/general/trace/.",
+      "sibling": "metric_system_type",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The metric_system_type is unknown."
+        },
+        "1": {
           "caption": "database",
           "description": "For SQL and NoSQL client metrics."
         },
-        "3": {
+        "2": {
           "caption": "faas",
           "description": "For Function as a Service metrics."
         },
-        "4": {
+        "3": {
           "caption": "http",
           "description": "For HTTP client and server metrics."
         },
-        "5": {
+        "4": {
           "caption": "Messaging",
           "description": "For messaging systems (queues, publish/subscribe, etc.) metrics."
         },
-        "6": {
+        "5": {
           "caption": "rpc",
           "description": "For RPC client and server metrics."
         },
-        "7": {
+        "6": {
           "caption": "system",
           "description": "For system metrics."
         },
-        "8": {
+        "7": {
           "caption": "hardware",
           "description": "For hardware-related metrics."
         },
-        "9": {
+        "8": {
           "caption": "process",
           "description": "For standard process metrics.."
         },
-        "10": {
+        "9": {
           "caption": "runtime_environment",
           "description": "For runtime environment metrics."
         },
-        "11": {
+        "10": {
           "caption": "rpc",
           "description": "Semantic Conventions for RPC client and server operations."
         },
         "99": {
           "caption": "Other",
-          "description": "The event metric_type is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
+          "description": "The event metric_system_type is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
         }
       }
     },

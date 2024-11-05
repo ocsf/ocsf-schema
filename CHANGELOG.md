@@ -67,6 +67,7 @@ Thankyou! -->
     1. Added `locations` to the dictionary, an array type of the `location` object, used within the new `operating_area` object. #1169
     1. Added `altitude_ceiling`, `altitude_floor`, `geodetic_altitude`, `aerial_height`, `horizontal_accuracy`, `pressure_altitude`, `radius`, `speed`, `track_direction`, and `vertical_speed` all to support `operating_area` and `unmanned_aerial_system` objects. #1169 
     1. Added `variable_name` and `variable_value` as `long_string`. #1228
+    1. Added `imei_list` as an array `string_t`. #1225
     1. Added `altitude_ceiling`, `altitude_floor`, `geodetic_altitude`, `aerial_height`, `horizontal_accuracy`, `pressure_altitude`, `radius`, `speed`, `track_direction`, and `vertical_speed` all to support `operating_area` and `unmanned_aerial_system` objects. #1169
     1. Added `scim_group_provisioning_enabled`, `scim_group_schema`, `scim_user_provisioning_enabled`, `scim_user_schema`, `scopes`, `sso_idle_timeout`, `sso_login_endpoint`, `sso_logout_endpoint`, and `sso_metadata_url` entries to the dictionary to support the new `scim` and `sso` objects. #1239
     1. Added new `11: Basic Authentication` enum value to `auth_protocol_id`. #1239
@@ -113,6 +114,7 @@ Thankyou! -->
     1. Added `control_parameters` and `status_details` to the compliance object. #1219
     1. Added `geodetic_altitude`, `height`, `horizontal_accuracy`, and `pressure_altitude` to `location`. #1169
     1. Added `location` to `managed_entity`. #1169
+    1. Added `imei_list` to the `device` object. #1225
     1. Added `auth_factors`, `domain`, `fingerprint`, `has_mfa`, `issuer`, `protocol_name`, `scim`, `sso`, `state`, `state_id`, `tenant_uid`, and `uid` to `idp`. #1239
 
 ### Bugfixes
@@ -127,6 +129,7 @@ Thankyou! -->
 1. Deprecated `cwe` in favor of `related_cwes` in the `cve` object. #1176
 1. Deprecated `tag` in favor of `labels` or `tags` in `image` & `container` object. #1207
 1. Deprecated `status_detail` in favor of `status_details` in `compliance object. #1219
+1. Deprecated `imei` in favor of `imei_list` in `device` object. #1225
 
 ### Misc
 1. Added `user.uid` as an Observable type - `type_id: 31`. #1155

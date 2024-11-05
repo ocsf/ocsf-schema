@@ -1,0 +1,41 @@
+{
+  "caption": "Span",
+  "description": "The attributes associated with an event containing span data.",
+  "extends": "object",
+  "name": "span",
+  "attributes": {
+    "uid": {
+      "description": "The unique identifier of the span used in distributed systems and microservices architecture to track and correlate requests across various components of an application.",
+      "requirement": "required"
+    },
+    "service": {
+      "description": "Identifies the service or component creating the span, which helps track its path through a distributed system.",
+      "requirement": "optional"
+    },
+    "operation": {
+      "description": "Describes an actions performed in a span, such as API requests, database queries, or computations.",
+      "requirement": "optional",
+      "is_array": true
+    },
+    "parent_span": {
+      "description": "The parent span of this span object. It is recommended to only populate this field for the first process object, to prevent deep nesting.",
+      "requirement": "optional"
+    },
+    "start_time": {
+      "description": "The start timestamp of the span, essential for identifying latency and performance bottlenecks.",
+      "requirement": "optional"
+    },
+    "end_time": {
+      "description": "The end timestamp of the span, essential for identifying latency and performance bottlenecks.",
+      "requirement": "optional"
+    },
+    "duration": {
+      "description": "The span duration, the amount of time the trace covers from <code>start_time</code> to <code>end_time</code> in milliseconds.",
+      "requirement": "optional"
+    },
+    "status_code": {
+      "description": "Indicates whether the operations in the span were successful, failed, or had an error, aiding in pinpointing issues.",
+      "requirement": "optional"
+    }
+  }
+}

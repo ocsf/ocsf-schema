@@ -1,0 +1,36 @@
+{
+  "caption": "Trace",
+  "description": "The trace object contains information about distruibuted traces which are critical to observability and describe how requests move through a system, capturing each step's timing and status.",
+  "extends": "object",
+  "name": "trace",
+  "attributes": {
+    "uid": {
+      "description": "The unique identifier of the trace used in distributed systems and microservices architecture to track and correlate requests across various components of an application.",
+      "requirement": "required"
+    },
+    "span": {
+      "description": "The attributes associated with a span within a distributed trace.",
+      "requirement": "optional"
+    },
+    "service": {
+      "description": "Identifies the service or component generating the trace.",
+      "requirement": "optional"
+    },
+    "status_code": {
+      "description": "Indicates whether the operations in the trace were successful, failed, or had an error, aiding in pinpointing issues.",
+      "requirement": "optional"
+    },
+    "start_time": {
+      "description": "The start timestamp of the trace, essential for identifying latency and performance bottlenecks.",
+      "requirement": "optional"
+    },
+    "end_time": {
+      "description": "The end timestamp of the trace, essential for identifying latency and performance bottlenecks.",
+      "requirement": "optional"
+    },
+    "duration": {
+      "description": "The trace duration, the amount of time the trace covers from <code>start_time</code> to <code>end_time</code> in milliseconds.",
+      "requirement": "optional"
+    }
+  }
+}

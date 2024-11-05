@@ -1,0 +1,92 @@
+{
+  "caption": "Trace",
+  "description": "The attributes associated with an event containing trace data.",
+  "extends": "object",
+  "name": "trace",
+  "attributes": {
+    "uid": {
+      "description": "The unique identifier used in distributed systems and microservices architecture to track and correlate requests across various components of an application.",
+      "requirement": "required"
+    },
+    "type": {
+      "caption": "Trace Type",
+      "description": "The trace type, as defined by the trace_type_id.",
+      "type": "string_t"
+    },
+    "type_id": {
+      "caption": "Trace Type ID",
+      "description": "The normalized identifier of the trace type representing the type of system associated with a particular trace.",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The trace_type is unknown."
+        },
+        "1": {
+          "caption": "cloud_providers",
+          "description": "Semantic Conventions for cloud providers libraries."
+        },
+        "2": {
+          "caption": "cloud_events",
+          "description": "Semantic Conventions for the CloudEvents specification."
+        },
+        "3": {
+          "caption": "database",
+          "description": "Semantic Conventions for database operations."
+        },
+        "4": {
+          "caption": "exceptions",
+          "description": "Semantic Conventions for exceptions."
+        },
+        "5": {
+          "caption": "faas",
+          "description": "Semantic Conventions for Function as a Service (FaaS) operations."
+        },
+        "6": {
+          "caption": "feature_flags",
+          "description": "Semantic Conventions for feature flag evaluations."
+        },
+        "7": {
+          "caption": "generative_ai",
+          "description": "Semantic Conventions for generative AI (LLM, etc.) operations."
+        },
+        "8": {
+          "caption": "graph_ql",
+          "description": "Semantic Conventions for GraphQL implementations."
+        },
+        "9": {
+          "caption": "http",
+          "description": "Semantic Conventions for HTTP client and server operations."
+        },
+        "10": {
+          "caption": "messaging",
+          "description": "Semantic Conventions for messaging operations and systems."
+        },
+        "11": {
+          "caption": "object_stores",
+          "description": "Semantic Conventions for object stores operations."
+        },
+        "12": {
+          "caption": "rpc",
+          "description": "Semantic Conventions for RPC client and server operations."
+        },
+        "13": {
+          "caption": "System",
+          "description": "System Semantic Conventions."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The event trace_type is not mapped."
+        }
+      }
+    },
+    "span": {
+      "description": "The attributes associated with an event containing span data.",
+      "requirement": "optional"
+    },
+    "otel_attributes": {
+      "requirement": "optional",
+      "description": "A dictionary of KV pairs representing the OTeL attributes which describe a particular OTeL trace."
+    }
+  }
+}

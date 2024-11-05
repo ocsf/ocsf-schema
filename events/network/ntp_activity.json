@@ -5,6 +5,12 @@
   "extends": "network",
   "name": "ntp_activity",
   "attributes": {
+    "$include": [
+      "profiles/cloud.json",
+      "profiles/host.json",
+      "profiles/traces.json",
+      "profiles/metrics.json"
+    ],
     "activity_id": {
       "enum": {
         "0": {
@@ -71,5 +77,11 @@
       "group": "context",
       "requirement": "required"
     }
-  }
+  },
+  "profiles": [
+    "cloud",
+    "host",
+    "traces",
+    "metrics"
+  ]
 }

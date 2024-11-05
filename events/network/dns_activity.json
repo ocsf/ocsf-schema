@@ -5,6 +5,12 @@
   "extends": "network",
   "name": "dns_activity",
   "attributes": {
+    "$include": [
+      "profiles/cloud.json",
+      "profiles/host.json",
+      "profiles/traces.json",
+      "profiles/metrics.json"
+    ],
     "activity_id": {
       "enum": {
         "1": {
@@ -153,5 +159,11 @@
       "group": "context",
       "requirement": "optional"
     }
-  }
+  },
+  "profiles": [
+    "cloud",
+    "host",
+    "traces",
+    "metrics"
+  ]
 }

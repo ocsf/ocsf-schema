@@ -10,6 +10,7 @@
     },
     "category_id": {
       "description": "The normalized identifier of the data classification category.",
+      "requirement": "recommended",
       "enum": {
         "0": {
           "caption": "Unknown",
@@ -43,7 +44,9 @@
           "caption": "Other",
           "description": "Any other type of data classification or a multi-variate classification made up of several other classification categories."
         }
-      },
+      }
+    },
+    "classifier_detail": {
       "requirement": "recommended"
     },
     "confidentiality": {
@@ -52,8 +55,61 @@
     "confidentiality_id": {
       "requirement": "recommended"
     },
+    "discovery_details": {
+      "description": "Details about the data discovered by classification job.",
+      "requirement": "optional"
+    },
     "policy": {
       "description": "Details about the data policy that governs data handling and security measures related to classification.",
+      "requirement": "optional"
+    },
+    "size": {
+      "description": "Size of the data classified.",
+      "requirement": "optional"
+    },
+    "src_url": {
+      "description": "The source URL pointing towards the full classifcation job details.",
+      "requirement": "optional"
+    },
+    "status": {
+      "description": "The resultant status of the classification job normalized to the caption of the <code>status_id</code> value. In the case of 'Other', it is defined by the event source.",
+      "requirement": "recommended"
+    },
+    "status_details": {
+      "description": "The contextual description of the <code>status, status_id</code> value.",
+      "requirement": "optional"
+    },
+    "status_id": {
+      "description": "The normalized status identifier of the classification job.",
+      "requirement": "recommended",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Complete",
+          "description": "The classification job completed for the evaluated resource."
+        },
+        "2": {
+          "caption": "Partial",
+          "description": "The classification job partially completed for the evaluated resource."
+        },
+        "3": {
+          "caption": "Fail",
+          "description": "The classification job failed for the evaluated resource."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The classification job type id is not mapped."
+        }
+      }
+    },
+    "total": {
+      "description": "The total count of discovered hits, by the classification job.",
+      "requirement": "optional"
+    },
+    "uid": {
+      "description": "The unique identifier of the classification job.",
       "requirement": "optional"
     }
   },

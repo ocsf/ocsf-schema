@@ -67,6 +67,7 @@ Thankyou! -->
     1. Added `locations` to the dictionary, an array type of the `location` object, used within the new `operating_area` object. #1169
     1. Added `altitude_ceiling`, `altitude_floor`, `geodetic_altitude`, `aerial_height`, `horizontal_accuracy`, `pressure_altitude`, `radius`, `speed`, `track_direction`, and `vertical_speed` all to support `operating_area` and `unmanned_aerial_system` objects. #1169 
     1. Added `variable_name` and `variable_value` as `long_string`. #1228
+    1. Added `imei_list` as an array `string_t`. #1225
 * #### Objects
     1. Added `environment_variable` object. #1172
     1. Added `advisory` object. #1176
@@ -108,6 +109,7 @@ Thankyou! -->
     1. Added `control_parameters` and `status_details` to the compliance object. #1219
     1. Added `geodetic_altitude`, `height`, `horizontal_accuracy`, and `pressure_altitude` to `location`. #1169
     1. Added `location` to `managed_entity`. #1169
+    1. Added `imei_list` to the `device` object. #1225
 
 ### Bugfixes
 1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180
@@ -121,6 +123,7 @@ Thankyou! -->
 1. Deprecated `cwe` in favor of `related_cwes` in the `cve` object. #1176
 1. Deprecated `tag` in favor of `labels` or `tags` in `image` & `container` object. #1207
 1. Deprecated `status_detail` in favor of `status_details` in `compliance object. #1219
+1. Deprecated `imei` in favor of `imei_list` in `device` object. #1225
 
 ### Misc
 1. Added `user.uid` as an Observable type - `type_id: 31`. #1155

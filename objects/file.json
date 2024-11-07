@@ -41,6 +41,10 @@
       "description": "The description of the file, as returned by file system. For example: the description as returned by the Unix file command or the Windows file type.",
       "requirement": "optional"
     },
+    "encryption_details": {
+      "description": "The encryption details of the file. Should be populated if the file is encrypted.",
+      "requirement": "optional"
+    },
     "ext": {
       "caption": "File Extension",
       "description": "The extension of the file, excluding the leading dot. For example: <code>exe</code> from <code>svchost.exe</code>, or <code>gz</code> from <code>export.tar.gz</code>.",
@@ -53,8 +57,17 @@
       "description": "Indicates if the file was deleted from the filesystem.",
       "requirement": "optional"
     },
+    "is_encrypted": {
+      "description": "Indicates if the file is encrypted.",
+      "requirement": "optional"
+    },
     "is_system": {
       "requirement": "optional"
+    },
+    "is_public":{
+      "description": "Indicates if the file is publicly accessible. For example in an object's public access in AWS S3",
+      "requirement": "optional",
+      "profile": "cloud"
     },
     "mime_type": {
       "requirement": "optional"
@@ -94,6 +107,11 @@
     },
     "size": {
       "requirement": "optional"
+    },
+    "storage_class":{
+      "description": "The storage class of the file. For example in AWS S3: <code>STANDARD, STANDARD_IA, GLACIER</code>.",
+      "requirement": "optional",
+      "profile": "cloud"
     },
     "tags":{
       "description": "The list of tags; <code>{key:value}</code> pairs associated to the file.",

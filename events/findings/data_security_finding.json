@@ -26,7 +26,11 @@
                 },
                 "4": {
                     "caption": "Suppressed",
-                    "description": "An existing Data Security finding is suppressed due to inaccurate detection techniques or a known true negative."
+                    "description": "An existing Data Security finding is suppressed due to inaccurate detection techniques or a known true negative.",
+                    "@deprecated": {
+                        "message": "Use <code>status_id</code> attribute instead.",
+                        "since": "1.4.0"
+                    }
                 }
             }
         },
@@ -102,8 +106,8 @@
             "requirement": "recommended"
         },      
         "resources": {
-            "caption": "Affected Resources",
-            "description": "Describes details about resources where classified or sensitive data is stored in, or was accessed from.",
+            "caption": "Additional Resources",
+            "description": "Describes details about additional, resources where classified or sensitive data is stored in, or was accessed from. <p> Only populate this object, if the sepcific resource type objects available in the class (<code> database, databucket, file</code> aren't sufficient.",
             "group": "context",
             "requirement": "recommended"
         },
@@ -128,7 +132,6 @@
             "requirement": "optional"
         },
         "src_endpoint": {
-            "caption": "Affected Resources",
             "description": "Details about the source endpoint where classified or sensitive data was accessed from.",
             "group": "context",
             "requirement": "recommended"

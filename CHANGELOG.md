@@ -68,6 +68,7 @@ Thankyou! -->
     1. Added `altitude_ceiling`, `altitude_floor`, `geodetic_altitude`, `aerial_height`, `horizontal_accuracy`, `pressure_altitude`, `radius`, `speed`, `track_direction`, and `vertical_speed` all to support `operating_area` and `unmanned_aerial_system` objects. #1169 
     1. Added `variable_name` and `variable_value` as `long_string`. #1228
     1. Added `imei_list` as an array `string_t`. #1225
+    1. Added `cpid` as a `uuid_t`. #1246
 * #### Objects
     1. Added `environment_variable` object. #1172
     1. Added `advisory` object. #1176
@@ -110,6 +111,7 @@ Thankyou! -->
     1. Added `geodetic_altitude`, `height`, `horizontal_accuracy`, and `pressure_altitude` to `location`. #1169
     1. Added `location` to `managed_entity`. #1169
     1. Added `imei_list` to the `device` object. #1225
+    1. Added `cpid` to the `process` object. `cpid` added to process identification `at_least_one` constraint. #1246
 
 ### Bugfixes
 1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180

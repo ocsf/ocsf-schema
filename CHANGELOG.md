@@ -110,7 +110,7 @@ Thankyou! -->
     1. Added `geodetic_altitude`, `height`, `horizontal_accuracy`, and `pressure_altitude` to `location`. #1169
     1. Added `location` to `managed_entity`. #1169
     1. Added `imei_list` to the `device` object. #1225
-    1. Added `tls` and `ja4_fingerprint` object to the evidences object. #1244
+    1. Added `tls` and `ja4_fingerprint_list` object to the evidences object. #1244
 
 ### Bugfixes
 1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180

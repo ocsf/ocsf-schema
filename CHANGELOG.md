@@ -69,6 +69,8 @@ Thankyou! -->
     1. Added `variable_name` and `variable_value` as `long_string`. #1228
     1. Added `imei_list` as an array `string_t`. #1225
     1. Added `is_encrypted` as `boolean_t`; `column_name`, `cell_name`, `storage_class`, `key_uid`, `json_path` as `string_t` & `column_number`, `row_number`, `page_number`, `record_index_in_array` as `integer_t`. #1245
+    1. Added `group_provisioning_enabled`, `scim_group_schema`, `user_provisioning_enabled`, `scim_user_schema`, `scopes`, `idle_timeout`, `login_endpoint`, `logout_endpoint`, and `metadata_url` entries to the dictionary to support the new `scim` and `sso` objects. #1239
+    1. Added new `11: Basic Authentication` enum value to `auth_protocol_id`. #1239
 * #### Objects
     1. Added `environment_variable` object. #1172
     1. Added `advisory` object. #1176
@@ -76,6 +78,8 @@ Thankyou! -->
     1. Added `unmanned_aerial_system` and `unmanned_system_operating_area` objects. #1169
     1. Added a `long_string` object. #1228
     1. Added `discovery_details`, `encryption_details`, `occurrence_details` objects. #1245
+    1. Added `scim` object. #1239
+    1. Added `sso` object. #1239
 
 ### Improved
 * #### Event Classes
@@ -115,6 +119,7 @@ Thankyou! -->
     1. Added `storage_class` & `is_public` as `cloud` profile attributes to `file` object. Also added `is_encrypted`, `encryption_details`, `tags` to the `file` object. #1245
     1. Added `discovery_details`, `occurrence_details`, `status` trio, `total`, `uid`, `size`, & `src_url` to the `data_classification` object. #1245
     1. `data_bucket` object now inherits `resource_details` instead of `_entity`. Also, added `encryption_details` object to the `data_bucket` object. #1245
+    1. Added `auth_factors`, `domain`, `fingerprint`, `has_mfa`, `issuer`, `protocol_name`, `scim`, `sso`, `state`, `state_id`, `tenant_uid`, and `uid` to `idp`. #1239
 
 ### Bugfixes
 1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180
@@ -162,6 +167,8 @@ Thankyou! -->
     - The `source` and `references` attributes are also supported in when extending or patching event classes and objects.
 1. Fixed minor spelling mistakes in attribute descriptions in `dictionary.json`. #1213
 1. In the metaschema, added support for `@deprecated` in enum values. #1237
+1. Fixed some more formatting of attribute descriptions in `dictionary.json` and `idp.json`. #1239
+
 
 ## [v1.3.0] - August 1st, 2024
 

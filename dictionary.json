@@ -251,7 +251,7 @@
     },
     "auth_protocol": {
       "caption": "Auth Protocol",
-      "description": "The authentication protocol as defined by the caption of 'auth_protocol_id'. In the case of 'Other', it is defined by the event source.",
+      "description": "The authentication protocol as defined by the caption of <code>auth_protocol_id</code>. In the case of <code>Other</code>, it is defined by the event source.",
       "type": "string_t"
     },
     "auth_protocol_id": {
@@ -293,6 +293,9 @@
         },
         "10": {
           "caption": "RADIUS"
+        },
+        "11": {
+          "caption": "Basic Authentication"
         },
         "99": {
           "caption": "Other",
@@ -2319,6 +2322,11 @@
       "description": "The client identifier cookie during client/server exchange.",
       "type": "string_t"
     },
+    "idle_timeout": {
+      "caption": "SSO Idle Timeout",
+      "description": "Duration (in minutes) of allowed inactivity before a timeout See specific usage.",
+      "type": "integer_t"
+    },
     "idp": {
       "caption": "Identity Provider",
       "description": "This object describes details about the Identity Provider used.",
@@ -2565,6 +2573,11 @@
       "description": "Indicates if a fix is available for the reported vulnerability.",
       "type": "boolean_t"
     },
+    "is_group_provisioning_enabled": {
+      "caption": "Group Provisioning Enabled",
+      "description": "Indicates whether group provisioning is automated (e.g., for a SCIM resource). See specific usage.",
+      "type": "boolean_t"
+    },
     "is_hotp": {
       "caption": "HMAC-based One-time Password (HOTP)",
       "description": "Whether the authentication factor is an HMAC-based One-time Password (HOTP).",
@@ -2653,6 +2666,11 @@
     "is_trusted": {
       "caption": "Trusted Device",
       "description": "The event occurred on a trusted device.",
+      "type": "boolean_t"
+    },
+    "is_user_provisioning_enabled": {
+      "caption": "User Provisioning Enabled",
+      "description": "Indicates whether user provisioning is automated (e.g., for a SCIM resource). See specific usage.",
       "type": "boolean_t"
     },
     "is_vpn": {
@@ -3012,6 +3030,16 @@
         }
       }
     },
+    "login_endpoint": {
+      "caption": "Login Endpoint",
+      "description": "URL for initiating a login request. See specific usage.",
+      "type": "url_t"
+    },
+    "logout_endpoint": {
+      "caption": "Logout Endpoint",
+      "description": "URL for initiating a logout request. See specific usage.",
+      "type": "url_t"
+    },
     "long": {
       "caption": "Longitude",
       "description": "The geographical Longitude coordinate represented in Decimal Degrees (DD). For example: <code>-71.057083</code>.",
@@ -3058,6 +3086,11 @@
       "caption": "Metadata",
       "description": "The metadata associated with the event or a finding.",
       "type": "metadata"
+    },
+    "metadata_endpoint": {
+      "caption": "Metadata Endpoint",
+      "description": "URL where metadata about a configuration or resource is available (e.g., for SAML configurations). See specific usage.",
+      "type": "url_t"
     },
     "metrics": {
       "caption": "Metrics",
@@ -4103,9 +4136,48 @@
       "description": "The unique identifier of the schedule associated with a scan job.",
       "type": "string_t"
     },
+    "scim": {
+      "caption": "SCIM",
+      "description": "The System for Cross-domain Identity Management (SCIM) resource object provides a structured set of attributes related to SCIM protocols used for identity provisioning and management across cloud-based platforms. It standardizes user and group provisioning details, enabling identity synchronization and lifecycle management with compatible Identity Providers (IdPs) and applications. SCIM is defined in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc7643'>RFC-7634</a>",
+      "references": [
+        {
+          "url": "https://datatracker.ietf.org/doc/html/rfc7643", 
+          "description": "System for Cross-domain Identity Management (SCIM) RFC."
+        }
+      ],
+      "type": "scim"
+    },
+    "scim_group_schema": {
+      "caption": "SCIM Group Schema",
+      "description": "SCIM provides a schema for representing groups, identified using the following schema URI: <code>urn:ietf:params:scim:schemas:core:2.0:Group</code> as defined in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc7643'>RFC-7634</a>. This attribute will capture key-value pairs for the scheme implemented in a SCIM resource.",
+      "references": [
+        {
+          "url": "https://datatracker.ietf.org/doc/html/rfc7643", 
+          "description": "System for Cross-domain Identity Management (SCIM) RFC spec."
+        }
+      ],
+      "type": "json_t"
+    },
+    "scim_user_schema": {
+      "caption": "SCIM User Schema",
+      "description": "SCIM provides a resource type for user resources. The core schema for user is identified using the following schema URI: <code>urn:ietf:params:scim:schemas:core:2.0:User</code> as defined in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc7643'>RFC-7634</a>. his attribute will capture key-value pairs for the scheme implemented in a SCIM resource. This object is inclusive of both the basic and Enterprise User Schema Extension.",
+      "references": [
+        {
+          "url": "https://datatracker.ietf.org/doc/html/rfc7643", 
+          "description": "System for Cross-domain Identity Management (SCIM) RFC spec."
+        }
+      ],
+      "type": "json_t"
+    },
     "scheme": {
       "caption": "Scheme",
       "description": "The scheme portion of the URL. For example: <code>http</code>, <code>https</code>, <code>ftp</code>, or <code>sftp</code>.",
+      "type": "string_t"
+    },
+    "scopes": {
+      "caption": "Scopes",
+      "description": "Scopes define the specific permissions or actions that the client is allowed to perform on behalf of the user. Each scope represents a different set of permissions, and the user can selectively grant or deny access to specific scopes during the authorization process.",
+      "is_array": true,
       "type": "string_t"
     },
     "score": {
@@ -4448,6 +4520,11 @@
       "caption": "Source URL",
       "description": "The URL pointing towards the source of an entity. See specific usage.",
       "type": "url_t"
+    },
+    "sso": {
+      "caption": "SSO",
+      "description": "The Single Sign-On (SSO) object provides a structure for normalizing SSO attributes, configuration, and/or settings from Identity Providers.",
+      "type": "sso"
     },
     "standards": {
       "caption": "Compliance Standards: List",
@@ -4914,11 +4991,6 @@
       "caption": "Unmapped Data",
       "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
       "type": "object"
-    },
-    "unmanned_system_operator": {
-      "caption": "Unmanned Systems Operator",
-      "description": "The human or machine operator of an UAS",
-      "type": "user"
     },
     "untruncated_size": {
       "caption": "Untruncated Size",

@@ -26,7 +26,11 @@
                 },
                 "4": {
                     "caption": "Suppressed",
-                    "description": "An existing Data Security finding is suppressed due to inaccurate detection techniques or a known true negative."
+                    "description": "An existing Data Security finding is suppressed due to inaccurate detection techniques or a known true negative.",
+                    "@deprecated": {
+                        "message": "Use <code>status_id</code> attribute instead.",
+                        "since": "1.4.0"
+                    }
                 }
             }
         },
@@ -60,12 +64,12 @@
         },
         "database": {
             "description": "Describes the database where classified or sensitive data is stored in, or was accessed from. Databases are typically datastore services that contain an organized collection of structured and/or semi-structured data.",
-            "group": "context",
+            "group": "primary",
             "requirement": "recommended"
         },
         "databucket": {
             "description": "Describes the databucket where classified or sensitive data is stored in, or was accessed from. The data bucket object is a basic container that holds data, typically organized through the use of data partitions.",
-            "group": "context",
+            "group": "primary",
             "requirement": "recommended"
         },
         "device": {
@@ -80,7 +84,7 @@
         },
         "file": {
             "description": "Describes a file that contains classified or sensitive data.",
-            "group": "context",
+            "group": "primary",
             "requirement": "recommended"
         },
         "impact": {
@@ -102,9 +106,9 @@
             "requirement": "recommended"
         },      
         "resources": {
-            "caption": "Affected Resources",
-            "description": "Describes details about resources where classified or sensitive data is stored in, or was accessed from.",
-            "group": "context",
+            "caption": "Additional Resources",
+            "description": "Describes details about additional resources, where classified or sensitive data is stored in, or was accessed from. <p> You can populate this object, if the specific resource type objects available in the class (<code>database, databucket, table, file</code>) aren't sufficient; OR <br> You can also choose to duplicate <code>uid, name</code> of the specific resources objects, for a consistent access to resource uids across all findings.",
+            "group": "primary",
             "requirement": "recommended"
         },
         "risk_details": {
@@ -128,14 +132,13 @@
             "requirement": "optional"
         },
         "src_endpoint": {
-            "caption": "Affected Resources",
             "description": "Details about the source endpoint where classified or sensitive data was accessed from.",
             "group": "context",
             "requirement": "recommended"
         },
         "table": {
             "description": "Describes the table where classified or sensitive data is stored in, or was accessed from. The table object represents a table within a structured relational database, warehouse, lake, or similar.",
-            "group": "context",
+            "group": "primary",
             "requirement": "recommended"
         }
     },

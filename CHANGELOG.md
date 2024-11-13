@@ -68,12 +68,14 @@ Thankyou! -->
     1. Added `altitude_ceiling`, `altitude_floor`, `geodetic_altitude`, `aerial_height`, `horizontal_accuracy`, `pressure_altitude`, `radius`, `speed`, `track_direction`, and `vertical_speed` all to support `operating_area` and `unmanned_aerial_system` objects. #1169 
     1. Added `variable_name` and `variable_value` as `long_string`. #1228
     1. Added `imei_list` as an array `string_t`. #1225
+    1. Added `is_encrypted` as `boolean_t`; `column_name`, `cell_name`, `storage_class`, `key_uid`, `json_path` as `string_t` & `column_number`, `row_number`, `page_number`, `record_index_in_array` as `integer_t`. #1245
 * #### Objects
     1. Added `environment_variable` object. #1172
     1. Added `advisory` object. #1176
     1. Added a generic `key_value_object` object. #1219
     1. Added `unmanned_aerial_system` and `unmanned_system_operating_area` objects. #1169
     1. Added a `long_string` object. #1228
+    1. Added `discovery_details`, `encryption_details`, `occurrence_details` objects. #1245
 
 ### Improved
 * #### Event Classes
@@ -110,6 +112,9 @@ Thankyou! -->
     1. Added `geodetic_altitude`, `height`, `horizontal_accuracy`, and `pressure_altitude` to `location`. #1169
     1. Added `location` to `managed_entity`. #1169
     1. Added `imei_list` to the `device` object. #1225
+    1. Added `storage_class` & `is_public` as `cloud` profile attributes to `file` object. Also added `is_encrypted`, `encryption_details`, `tags` to the `file` object. #1245
+    1. Added `discovery_details`, `occurrence_details`, `status` trio, `total`, `uid`, `size`, & `src_url` to the `data_classification` object. #1245
+    1. `data_bucket` object now inherits `resource_details` instead of `_entity`. Also, added `encryption_details` object to the `data_bucket` object. #1245
 
 ### Bugfixes
 1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180
@@ -124,6 +129,8 @@ Thankyou! -->
 1. Deprecated `tag` in favor of `labels` or `tags` in `image` & `container` object. #1207
 1. Deprecated `status_detail` in favor of `status_details` in `compliance object. #1219
 1. Deprecated `imei` in favor of `imei_list` in `device` object. #1225
+1. Deprecated `data_classification` in favor of `data_classifications` in the `data_classification` profile. #1245
+1. Deprecated activity_id `4|Suppressed` in the Data Security Finding event class. This shouldn't have been added when we first created it, as the right place for this info is `status_id`. #1245
 
 ### Misc
 1. Added `user.uid` as an Observable type - `type_id: 31`. #1155

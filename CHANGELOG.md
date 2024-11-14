@@ -49,6 +49,7 @@ Thankyou! -->
     1. Added `Script Activity` event class to the System category. #1159
     1. Added `Startup Item Query` event class. #1119
     1. Added `Drone Flights Activity` event class to the Unmanned Systems category. #1169
+    1. Added `Cloud Resources Inventory Info` event class to the Discovery category. #1250
 * #### Dictionary Attributes
     1. Added `has_mfa` as a `boolean_t`. #1155
     1. Added `environment_variables` as an array of `environment_variable` object. #1172
@@ -121,6 +122,7 @@ Thankyou! -->
     1. Added `discovery_details`, `occurrence_details`, `status` trio, `total`, `uid`, `size`, & `src_url` to the `data_classification` object. #1245
     1. `data_bucket` object now inherits `resource_details` instead of `_entity`. Also, added `encryption_details` object to the `data_bucket` object. #1245
     1. Added `auth_factors`, `domain`, `fingerprint`, `has_mfa`, `issuer`, `protocol_name`, `scim`, `sso`, `state`, `state_id`, `tenant_uid`, and `uid` to `idp`. #1239
+    1. Added `hostname`, `ip`, and `name` to `resource_details` for purposes of assigning an Observable number. #1250
     1. Added `values` to `key_value_object`. #1251
 
 ### Bugfixes
@@ -170,7 +172,7 @@ Thankyou! -->
 1. Fixed minor spelling mistakes in attribute descriptions in `dictionary.json`. #1213
 1. In the metaschema, added support for `@deprecated` in enum values. #1237
 1. Fixed some more formatting of attribute descriptions in `dictionary.json` and `idp.json`. #1239
-
+1. Added `resource_details.name` as an Observable type `type_id: 38`. #1250
 
 ## [v1.3.0] - August 1st, 2024
 

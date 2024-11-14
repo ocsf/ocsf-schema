@@ -121,7 +121,7 @@ Thankyou! -->
     1. Added `discovery_details`, `occurrence_details`, `status` trio, `total`, `uid`, `size`, & `src_url` to the `data_classification` object. #1245
     1. `data_bucket` object now inherits `resource_details` instead of `_entity`. Also, added `encryption_details` object to the `data_bucket` object. #1245
     1. Added `auth_factors`, `domain`, `fingerprint`, `has_mfa`, `issuer`, `protocol_name`, `scim`, `sso`, `state`, `state_id`, `tenant_uid`, and `uid` to `idp`. #1239
-    1. Added `name` to `resource_details` for purposes of assigning an Observable number. #1250
+    1. Added `hostname`, `ip`, and `name` to `resource_details` for purposes of assigning an Observable number. #1250
 
 ### Bugfixes
 1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180

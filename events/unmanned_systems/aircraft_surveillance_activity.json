@@ -27,11 +27,15 @@
         "requirement": "required",
         "group": "primary"
       },
+      "aircraft": {
+        "group": "primary",
+        "requirement": "recommended"
+      },
       "protocol_name": {
         "caption": "ADS-B Protocol",
         "description": "The specific protocol associated with the ADS-B system. E.g. <code>ADS-B UAT</code> or <code>ADS-B ES</code>.",
-        "group": "context",
-        "requirement": "optional"
+        "group": "primary",
+        "requirement": "recommended"
       },
       "src_endpoint": {
         "group": "context",
@@ -41,13 +45,25 @@
         "description": "Traffic refers to the amount of data transmitted from a ADS-B remote monitoring system at a given point of time. Ex: <code>bytes_in</code> and <code>bytes_out</code>.",
         "group": "context",
         "requirement": "optional"
-      }
+      },
+      "unmanned_aerial_system": {
+				"group": "primary",
+				"requirement": "required"
+			},
+			"unmanned_system_operator": {
+				"requirement": "required",
+				"group": "primary"
+			},
+			"unmanned_system_operating_area": {
+				"requirement": "recommended",
+				"group": "primary"
+			}
     },
     "constraints": {
       "at_least_one": [
-        "aircraft",
-        "unmanned_system_operator",
-        "unmanned_system_operating_area"
+					"aircraft",
+					"unmanned_aerial_system",
+					"unmanned_system_operating_area"
         ]
       }
   }

@@ -251,7 +251,7 @@
     },
     "auth_protocol": {
       "caption": "Auth Protocol",
-      "description": "The authentication protocol as defined by the caption of 'auth_protocol_id'. In the case of 'Other', it is defined by the event source.",
+      "description": "The authentication protocol as defined by the caption of <code>auth_protocol_id</code>. In the case of <code>Other</code>, it is defined by the event source.",
       "type": "string_t"
     },
     "auth_protocol_id": {
@@ -293,6 +293,9 @@
         },
         "10": {
           "caption": "RADIUS"
+        },
+        "11": {
+          "caption": "Basic Authentication"
         },
         "99": {
           "caption": "Other",
@@ -789,6 +792,11 @@
       "type": "email_t",
       "is_array": true
     },
+    "cell_name": {
+      "caption": "Cell Name",
+      "description": "The name of the cell. See specific usage.",
+      "type": "string_t"
+    },
     "certificate": {
       "caption": "Certificate",
       "description": "The certificate object containing information about the digital certificate.",
@@ -896,6 +904,11 @@
       "type": "string_t",
       "is_array": true
     },
+    "classifier_details": {
+      "caption": "Classifier Details",
+      "description": "Describes details about the classifier used for data classification.",
+      "type": "classifier_details"
+    },
     "client_ciphers": {
       "caption": "Client Cipher Suites",
       "description": "The client cipher suites that were exchanged during the TLS handshake negotiation.",
@@ -943,6 +956,16 @@
     "color_depth": {
       "caption": "Color Depth",
       "description": "The numeric color depth.",
+      "type": "integer_t"
+    },
+    "column_name": {
+      "caption": "Column Name",
+      "description": "The name of the column. See specific usage.",
+      "type": "string_t"
+    },
+    "column_number": {
+      "caption": "Column Number",
+      "description": "The number of the column. See specific usage.",
       "type": "integer_t"
     },
     "command": {
@@ -1288,6 +1311,12 @@
       "description": "The Data Classification object includes information about data classification levels and data category types.",
       "type": "data_classification"
     },
+    "data_classifications": {
+      "caption": "Data Classification",
+      "description": "A list of Data Classification objects, that include information about data classification levels and data category types, indentified by a classifier.",
+      "type": "data_classification",
+      "is_array": true
+    },
     "data_lifecycle_state": {
       "caption": "Data Lifecycle State",
       "description": "The name of the stage or state that the data was in. E.g., Data-at-Rest, Data-in-Transit, etc.",
@@ -1535,6 +1564,12 @@
           "description": "The direction is not mapped. See the <code>direction</code> attribute, which contains a data source specific value."
         }
       }
+    },
+    "discovery_details":{
+      "caption": "Discovery Details",
+      "description": "A collection of <code>Discovery Details</code> objects. See specific usage.",
+      "type": "discovery_details",
+      "is_array": true
     },
     "dispersion": {
       "caption": "Root Dispersion",
@@ -1830,6 +1865,11 @@
       "caption": "Employee ID",
       "description": "The employee identifier assigned to the user by the organization.",
       "type": "string_t"
+    },
+    "encryption_details": {
+      "caption": "Encryption Details",
+      "description": "The encryption details of a file or other content. See specific usage.",
+      "type": "encryption_details"
     },
     "end_line": {
       "caption": "End Line",
@@ -2282,6 +2322,11 @@
       "description": "The client identifier cookie during client/server exchange.",
       "type": "string_t"
     },
+    "idle_timeout": {
+      "caption": "SSO Idle Timeout",
+      "description": "Duration (in minutes) of allowed inactivity before a timeout See specific usage.",
+      "type": "integer_t"
+    },
     "idp": {
       "caption": "Identity Provider",
       "description": "This object describes details about the Identity Provider used.",
@@ -2513,6 +2558,11 @@
       "description": "Indicates if the entity was deleted. See specific usage.",
       "type": "boolean_t"
     },
+    "is_encrypted": {
+      "caption": "Encrypted",
+      "description": "Indicates if the entity was encrypted. See specific usage.",
+      "type": "boolean_t"
+    },
     "is_exploit_available": {
       "caption": "Exploit Availability",
       "description": "Indicates if an exploit or a PoC (proof-of-concept) is available for the reported vulnerability.",
@@ -2521,6 +2571,11 @@
     "is_fix_available": {
       "caption": "Fix Availability",
       "description": "Indicates if a fix is available for the reported vulnerability.",
+      "type": "boolean_t"
+    },
+    "is_group_provisioning_enabled": {
+      "caption": "Group Provisioning Enabled",
+      "description": "Indicates whether group provisioning is automated (e.g., for a SCIM resource). See specific usage.",
       "type": "boolean_t"
     },
     "is_hotp": {
@@ -2613,6 +2668,11 @@
       "description": "The event occurred on a trusted device.",
       "type": "boolean_t"
     },
+    "is_user_provisioning_enabled": {
+      "caption": "User Provisioning Enabled",
+      "description": "Indicates whether user provisioning is automated (e.g., for a SCIM resource). See specific usage.",
+      "type": "boolean_t"
+    },
     "is_vpn": {
       "caption": "VPN Session",
       "description": "The indication of whether the session is a VPN session.",
@@ -2654,6 +2714,11 @@
       "description": "The user's job title.",
       "type": "string_t"
     },
+    "json_path": {
+      "caption": "JSON Path",
+      "description": "The JSON path of the attribute. See specific usage.",
+      "type": "string_t"
+    },
     "kb_article_list": {
       "caption": "Knowledgebase Articles",
       "description": "A list of KB articles or patches related to an endpoint. A KB Article contains metadata that describes the patch or an update.",
@@ -2679,6 +2744,11 @@
       "caption": "Key Length",
       "description": "The length of the encryption key.",
       "type": "integer_t"
+    },
+    "key_uid": {
+      "caption": "Key UID",
+      "description": "The unique identifier of the key. See specific usage.",
+      "type": "string_t"
     },
     "keyboard_info": {
       "caption": "Keyboard Information",
@@ -2960,6 +3030,16 @@
         }
       }
     },
+    "login_endpoint": {
+      "caption": "Login Endpoint",
+      "description": "URL for initiating a login request. See specific usage.",
+      "type": "url_t"
+    },
+    "logout_endpoint": {
+      "caption": "Logout Endpoint",
+      "description": "URL for initiating a logout request. See specific usage.",
+      "type": "url_t"
+    },
     "long": {
       "caption": "Longitude",
       "description": "The geographical Longitude coordinate represented in Decimal Degrees (DD). For example: <code>-71.057083</code>.",
@@ -3006,6 +3086,11 @@
       "caption": "Metadata",
       "description": "The metadata associated with the event or a finding.",
       "type": "metadata"
+    },
+    "metadata_endpoint": {
+      "caption": "Metadata Endpoint",
+      "description": "URL where metadata about a configuration or resource is available (e.g., for SAML configurations). See specific usage.",
+      "type": "url_t"
     },
     "metrics": {
       "caption": "Metrics",
@@ -3146,6 +3231,11 @@
       "description": "The observables associated with the event or a finding.",
       "type": "observable",
       "is_array": true
+    },
+    "occurrence_details": {
+      "caption": "Occurrence Details",
+      "description": "Details about where in the target entity, specified information was discovered. See specific usage.",
+      "type": "occurrence_details"
     },
     "office_location": {
       "caption": "Office Location",
@@ -3304,6 +3394,11 @@
       "caption": "Packets Out",
       "description": "The number of packets sent from the source to the destination.",
       "type": "long_t"
+    },
+    "page_number": {
+      "caption": "Page Number",
+      "description": "The page number of the document. See specific usage.",
+      "type": "integer_t"
     },
     "parent_folder": {
       "caption": "Parent Folder",
@@ -3767,6 +3862,11 @@
       "description": "The data describing the DNS resource. The meaning of this data depends on the type and class of the resource record.",
       "type": "string_t"
     },
+    "record_index_in_array": {
+      "caption": "Record Index in Array",
+      "description": "The index of the record in the array of records.",
+      "type": "integer_t"
+    },
     "references": {
       "caption": "References",
       "description": "A list of reference URLs supporting the finding/detection.",
@@ -3941,6 +4041,11 @@
       "description": "The risk score as reported by the event source.",
       "type": "integer_t"
     },
+    "row_number": {
+      "caption": "Row Number",
+      "description": "The row number. See specific usage.",
+      "type": "integer_t"
+    },
     "rpc_interface": {
       "caption": "Remote Procedure Call Interface",
       "description": "The RPC Interface object describes the details pertaining to the remote procedure call interface.",
@@ -4031,9 +4136,48 @@
       "description": "The unique identifier of the schedule associated with a scan job.",
       "type": "string_t"
     },
+    "scim": {
+      "caption": "SCIM",
+      "description": "The System for Cross-domain Identity Management (SCIM) resource object provides a structured set of attributes related to SCIM protocols used for identity provisioning and management across cloud-based platforms. It standardizes user and group provisioning details, enabling identity synchronization and lifecycle management with compatible Identity Providers (IdPs) and applications. SCIM is defined in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc7643'>RFC-7634</a>",
+      "references": [
+        {
+          "url": "https://datatracker.ietf.org/doc/html/rfc7643", 
+          "description": "System for Cross-domain Identity Management (SCIM) RFC."
+        }
+      ],
+      "type": "scim"
+    },
+    "scim_group_schema": {
+      "caption": "SCIM Group Schema",
+      "description": "SCIM provides a schema for representing groups, identified using the following schema URI: <code>urn:ietf:params:scim:schemas:core:2.0:Group</code> as defined in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc7643'>RFC-7634</a>. This attribute will capture key-value pairs for the scheme implemented in a SCIM resource.",
+      "references": [
+        {
+          "url": "https://datatracker.ietf.org/doc/html/rfc7643", 
+          "description": "System for Cross-domain Identity Management (SCIM) RFC spec."
+        }
+      ],
+      "type": "json_t"
+    },
+    "scim_user_schema": {
+      "caption": "SCIM User Schema",
+      "description": "SCIM provides a resource type for user resources. The core schema for user is identified using the following schema URI: <code>urn:ietf:params:scim:schemas:core:2.0:User</code> as defined in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc7643'>RFC-7634</a>. his attribute will capture key-value pairs for the scheme implemented in a SCIM resource. This object is inclusive of both the basic and Enterprise User Schema Extension.",
+      "references": [
+        {
+          "url": "https://datatracker.ietf.org/doc/html/rfc7643", 
+          "description": "System for Cross-domain Identity Management (SCIM) RFC spec."
+        }
+      ],
+      "type": "json_t"
+    },
     "scheme": {
       "caption": "Scheme",
       "description": "The scheme portion of the URL. For example: <code>http</code>, <code>https</code>, <code>ftp</code>, or <code>sftp</code>.",
+      "type": "string_t"
+    },
+    "scopes": {
+      "caption": "Scopes",
+      "description": "Scopes define the specific permissions or actions that the client is allowed to perform on behalf of the user. Each scope represents a different set of permissions, and the user can selectively grant or deny access to specific scopes during the authorization process.",
+      "is_array": true,
       "type": "string_t"
     },
     "score": {
@@ -4377,6 +4521,11 @@
       "description": "The URL pointing towards the source of an entity. See specific usage.",
       "type": "url_t"
     },
+    "sso": {
+      "caption": "SSO",
+      "description": "The Single Sign-On (SSO) object provides a structure for normalizing SSO attributes, configuration, and/or settings from Identity Providers.",
+      "type": "sso"
+    },
     "standards": {
       "caption": "Compliance Standards: List",
       "description": "Compliance standards are a set of criteria organizations can follow to protect sensitive and confidential information. e.g. <code>NIST SP 800-53, CIS AWS Foundations Benchmark v1.4.0, ISO/IEC 27001</code>",
@@ -4519,6 +4668,11 @@
           "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
         }
       }
+    },
+    "storage_class":{
+      "caption": "Storage Class",
+      "description": "The storage class of the entity. See specific usage.",
+      "type": "string_t"
     },
     "stratum": {
       "caption": "Stratum",
@@ -4838,11 +4992,6 @@
       "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
       "type": "object"
     },
-    "unmanned_system_operator": {
-      "caption": "Unmanned Systems Operator",
-      "description": "The human or machine operator of an UAS",
-      "type": "user"
-    },
     "untruncated_size": {
       "caption": "Untruncated Size",
       "description": "The size in bytes of an attribute before truncation. See specific usage.",
@@ -4887,8 +5036,14 @@
     },
     "value": {
       "caption": "Value",
-      "description": "The value that pertains to the object. See specific usage.",
+      "description": "The value associated to an attribute. See specific usage.",
       "type": "string_t"
+    },
+    "values": {
+      "caption": "Values",
+      "description": "An array of values associated to an attribute. See specific usage.",
+      "type": "string_t",
+      "is_array": true
     },
     "variable_name": {
       "caption": "Variable Name",

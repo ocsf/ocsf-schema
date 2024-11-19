@@ -73,6 +73,7 @@ Thankyou! -->
     1. Added `group_provisioning_enabled`, `scim_group_schema`, `user_provisioning_enabled`, `scim_user_schema`, `scopes`, `idle_timeout`, `login_endpoint`, `logout_endpoint`, and `metadata_url` entries to the dictionary to support the new `scim` and `sso` objects. #1239
     1. Added new `11: Basic Authentication` enum value to `auth_protocol_id`. #1239
     1. Added `values` as an array of `string_t`. #1251
+    1. Added `kernel_release` as a `string_t`.
     1. Added `objective` as a `string_t` to use in the new `threat_intelligence` object. #1255
 * #### Objects
     1. Added `environment_variable` object. #1172
@@ -127,6 +128,7 @@ Thankyou! -->
     1. Added `auth_factors`, `domain`, `fingerprint`, `has_mfa`, `issuer`, `protocol_name`, `scim`, `sso`, `state`, `state_id`, `tenant_uid`, and `uid` to `idp`. #1239
     1. Added `hostname`, `ip`, and `name` to `resource_details` for purposes of assigning an Observable number. #1250
     1. Added `values` to `key_value_object`. #1251
+    1. Added `kernel_release` to `os` object.
     1. Added `first_seen_at`, `last_seen_at`, `related_analytics`, and `threat_intelligence` to `osint`. Additionally, added new enums (Registry Key, Registry Value, and Command Line) to `osint.type_id`. #1255
 
 ### Bugfixes

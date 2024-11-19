@@ -1,7 +1,47 @@
 {
 	"caption": "Threat Intelligence",
-	"description": "The normalized information pertaining to a behavior, campaign, and/or specific threat related to an indicator, Open Source Intelligence (OSINT) analysis, or a generic security finding or report.",
+	"description": "The normalized information pertaining to a behavior, campaign, and/or specific threat actor related to an indicator, Open Source Intelligence (OSINT) analysis, or a generic security finding or report.",
 	"extends": "object",
 	"name": "threat_intelligence",
-	"attributes": {}
+	"attributes": {
+		"desc": {
+			"caption": "Analysis Description",
+			"description": "The description of the specific behavior, campaign, threat actor, or the overall analysis or report.",
+			"requirement": "optional"
+		},
+		"tags": {
+			"description": "Tags or labels related to a threat intelligence analysis or report.",
+			"requirement": "optional"
+		},
+		"type":{
+      "description": "The subject for a threat intelligence analysis or report, normalized to the caption of the <code>type_id</code> value. In the case of <code>Other</code>, it is defined by the event source.",
+      "requirement":"optional"
+    },
+		"type_id":{
+      "caption":"Subject Type ID",
+      "description":"The normalized value for the subject of a given threat intelligence analysis or report.",
+      "requirement":"recommended",
+      "enum":{
+        "0":{
+          "caption":"Unknown",
+          "description":"The subject is ambiguous or unknown."
+        },
+        "1":{
+          "caption":"Behavior",
+          "description":"Specific behaviors or tradecraft is described."
+        },
+        "2":{
+          "caption":"Campaign",
+          "description":"A specific threat campaign is described."
+        },
+        "3":{
+          "caption":"Threat Actor",
+          "description":"A specific threat group - regardless of its capabilities or sophistication - is described."
+        },
+        "99":{
+          "caption":"Other"
+        }
+      }
+    }
+	}
 }

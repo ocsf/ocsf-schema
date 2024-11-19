@@ -90,6 +90,7 @@ Thankyou! -->
     1. Added `risk_details` to `data_security_finding` class. #1178
     1. Removed constraint from `group_management` class. #1193
     1. Added `Archived|5` as an enum item to `status_id` attribute in Findings classes. #1219
+    1. Added a `Trace` `activity_id` to the `Email Activity` class. #1252
 * #### Profiles
     1. Added `is_alert`, `confidence_id`, `confidence`,  `confidence_score` attributes to the `security_control` profile. #1178
     1. Added `risk_level_id`, `risk_level`, `risk_score`, `risk_details` attributes to the `security_control` profile.  #1178

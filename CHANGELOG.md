@@ -50,6 +50,7 @@ Thankyou! -->
     1. Added `Startup Item Query` event class. #1119
     1. Added `Drone Flights Activity` event class to the Unmanned Systems category. #1169
     1. Added `Cloud Resources Inventory Info` event class to the Discovery category. #1250
+    1. Added `Airborne Broadcast Activity` event class to the Unmanned Systems category. #1253
 * #### Dictionary Attributes
     1. Added `has_mfa` as a `boolean_t`. #1155
     1. Added `environment_variables` as an array of `environment_variable` object. #1172
@@ -74,6 +75,7 @@ Thankyou! -->
     1. Added new `11: Basic Authentication` enum value to `auth_protocol_id`. #1239
     1. Added `values` as an array of `string_t`. #1251
     1. Added `kernel_release` as a `string_t`.
+    1. Added `objective` as a `string_t` to use in the new `threat_intelligence` object. #1255
 * #### Objects
     1. Added `environment_variable` object. #1172
     1. Added `advisory` object. #1176
@@ -83,6 +85,8 @@ Thankyou! -->
     1. Added `discovery_details`, `encryption_details`, `occurrence_details` objects. #1245
     1. Added `scim` object. #1239
     1. Added `sso` object. #1239
+    1. Added `threat_intelligence` object. #1255
+    1. Added `aircraft` object. #1253
 
 ### Improved
 * #### Event Classes
@@ -127,6 +131,8 @@ Thankyou! -->
     1. Added `hostname`, `ip`, and `name` to `resource_details` for purposes of assigning an Observable number. #1250
     1. Added `values` to `key_value_object`. #1251
     1. Added `kernel_release` to `os` object.
+    1. Added `first_seen_at`, `last_seen_at`, `related_analytics`, and `threat_intelligence` to `osint`. Additionally, added new enums (Registry Key, Registry Value, and Command Line) to `osint.type_id`. #1255
+    1. `unmanned_aerial_system` now extends from `aircraft`. #1253
 
 ### Bugfixes
 1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180

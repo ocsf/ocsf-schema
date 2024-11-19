@@ -49,6 +49,7 @@ Thankyou! -->
     1. Added `Script Activity` event class to the System category. #1159
     1. Added `Startup Item Query` event class. #1119
     1. Added `Drone Flights Activity` event class to the Unmanned Systems category. #1169
+    1. Added `Cloud Resources Inventory Info` event class to the Discovery category. #1250
 * #### Dictionary Attributes
     1. Added `has_mfa` as a `boolean_t`. #1155
     1. Added `environment_variables` as an array of `environment_variable` object. #1172
@@ -71,6 +72,7 @@ Thankyou! -->
     1. Added `is_encrypted` as `boolean_t`; `column_name`, `cell_name`, `storage_class`, `key_uid`, `json_path` as `string_t` & `column_number`, `row_number`, `page_number`, `record_index_in_array` as `integer_t`. #1245
     1. Added `group_provisioning_enabled`, `scim_group_schema`, `user_provisioning_enabled`, `scim_user_schema`, `scopes`, `idle_timeout`, `login_endpoint`, `logout_endpoint`, and `metadata_url` entries to the dictionary to support the new `scim` and `sso` objects. #1239
     1. Added new `11: Basic Authentication` enum value to `auth_protocol_id`. #1239
+    1. Added `values` as an array of `string_t`. #1251
     1. Added `kernel_release` as a `string_t`.
 * #### Objects
     1. Added `environment_variable` object. #1172
@@ -89,6 +91,7 @@ Thankyou! -->
     1. Added `risk_details` to `data_security_finding` class. #1178
     1. Removed constraint from `group_management` class. #1193
     1. Added `Archived|5` as an enum item to `status_id` attribute in Findings classes. #1219
+    1. Added a `Trace` `activity_id` to the `Email Activity` class. #1252
 * #### Profiles
     1. Added `is_alert`, `confidence_id`, `confidence`,  `confidence_score` attributes to the `security_control` profile. #1178
     1. Added `risk_level_id`, `risk_level`, `risk_score`, `risk_details` attributes to the `security_control` profile.  #1178
@@ -121,7 +124,12 @@ Thankyou! -->
     1. Added `discovery_details`, `occurrence_details`, `status` trio, `total`, `uid`, `size`, & `src_url` to the `data_classification` object. #1245
     1. `data_bucket` object now inherits `resource_details` instead of `_entity`. Also, added `encryption_details` object to the `data_bucket` object. #1245
     1. Added `auth_factors`, `domain`, `fingerprint`, `has_mfa`, `issuer`, `protocol_name`, `scim`, `sso`, `state`, `state_id`, `tenant_uid`, and `uid` to `idp`. #1239
+<<<<<<< HEAD
     1. Added `kernel_release` to `os` object.
+=======
+    1. Added `hostname`, `ip`, and `name` to `resource_details` for purposes of assigning an Observable number. #1250
+    1. Added `values` to `key_value_object`. #1251
+>>>>>>> 5ac9b788383a2ca54680aef0c205922a60249a7c
 
 ### Bugfixes
 1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180
@@ -170,7 +178,7 @@ Thankyou! -->
 1. Fixed minor spelling mistakes in attribute descriptions in `dictionary.json`. #1213
 1. In the metaschema, added support for `@deprecated` in enum values. #1237
 1. Fixed some more formatting of attribute descriptions in `dictionary.json` and `idp.json`. #1239
-
+1. Added `resource_details.name` as an Observable type `type_id: 38`. #1250
 
 ## [v1.3.0] - August 1st, 2024
 

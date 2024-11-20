@@ -229,7 +229,6 @@ Thankyou! -->
     12. Added `avg_timespan` to the `kb_article` object. #1125
     13. Added `created_time`,`desc`, `short_desc`, `reputation`, `src_url` to `enrichment` object. #1149
     14. Added `compliance_references`, `compliance_standards` to the `compliance` object. #1110
-    15. Added `sbom` to `Software Package` object. #1258
 
 ### Bugfixes
 1. Fixed the host profile construction in `patch_state` event class. #1087

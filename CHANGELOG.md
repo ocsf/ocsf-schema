@@ -74,6 +74,7 @@ Thankyou! -->
     1. Added new `11: Basic Authentication` enum value to `auth_protocol_id`. #1239
     1. Added `values` as an array of `string_t`. #1251
     1. Added `kernel_release` as a `string_t`.
+    1. Added `domains` `files` `urls` and `message_trace_uid`. #1259
 * #### Objects
     1. Added `environment_variable` object. #1172
     1. Added `advisory` object. #1176
@@ -92,6 +93,7 @@ Thankyou! -->
     1. Removed constraint from `group_management` class. #1193
     1. Added `Archived|5` as an enum item to `status_id` attribute in Findings classes. #1219
     1. Added a `Trace` `activity_id` to the `Email Activity` class. #1252
+    1. Added a `message_trace_uid` to the `Email Activity` class. #1259
 * #### Profiles
     1. Added `is_alert`, `confidence_id`, `confidence`,  `confidence_score` attributes to the `security_control` profile. #1178
     1. Added `risk_level_id`, `risk_level`, `risk_score`, `risk_details` attributes to the `security_control` profile.  #1178
@@ -127,6 +129,7 @@ Thankyou! -->
     1. Added `hostname`, `ip`, and `name` to `resource_details` for purposes of assigning an Observable number. #1250
     1. Added `values` to `key_value_object`. #1251
     1. Added `kernel_release` to `os` object.
+    1. Added `domains` `files` `urls` to the `Email` object. #1259
 
 ### Bugfixes
 1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180
@@ -143,6 +146,7 @@ Thankyou! -->
 1. Deprecated `imei` in favor of `imei_list` in `device` object. #1225
 1. Deprecated `data_classification` in favor of `data_classifications` in the `data_classification` profile. #1245
 1. Deprecated activity_id `4|Suppressed` in the Data Security Finding event class. This shouldn't have been added when we first created it, as the right place for this info is `status_id`. #1245
+1. Deprecated `email_file_activity` and `email_url_activity` in favor of updated `email_activity`. #1259
 
 ### Misc
 1. Added `user.uid` as an Observable type - `type_id: 31`. #1155

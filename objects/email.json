@@ -1,7 +1,7 @@
 {
   "caption": "Email",
   "name": "email",
-  "description": "The Email object describes the email metadata such as sender, recipients, and direction.",
+  "description": "The Email object describes the email metadata such as sender, recipients, and direction, and can include embedded URLs and files.",
   "references": [{"url": "https://d3fend.mitre.org/dao/artifact/d3f:Email/", "description": "D3FEND™ Ontology d3f:Email."}],
   "extends": "object",
   "observable": 22,
@@ -17,6 +17,14 @@
     },
     "delivered_to": {
       "requirement": "optional"
+    },
+    "domains": {
+      "requirement": "optional",
+      "description": "The domain names that pertain to the email sender or recipients."
+    },
+    "files": {
+      "requirement": "optional",
+      "description": "The files embedded or attached to the email."
     },
     "from": {
       "requirement": "required"
@@ -50,6 +58,10 @@
     },
     "to": {
       "requirement": "required"
+    },
+    "urls": {
+      "requirement": "optional",
+      "description": "The URLs embedded in the email."
     },
     "x_originating_ip": {
       "requirement": "optional"

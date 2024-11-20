@@ -129,7 +129,7 @@ Thankyou! -->
     1. Added `hostname`, `ip`, and `name` to `resource_details` for purposes of assigning an Observable number. #1250
     1. Added `values` to `key_value_object`. #1251
     1. Added `kernel_release` to `os` object.
-    1. Added `domains` `files` `urls` to the `Email` object. #1259
+    1. Added `domains` `files` `urls` to the `Email` object. Relaxed requirements on the `from` and `to` attributes and added the `at_least_one` constraint. #1259
 
 ### Bugfixes
 1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180

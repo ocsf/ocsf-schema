@@ -49,6 +49,7 @@ Thankyou! -->
     1. Added `Script Activity` event class to the System category. #1159
     1. Added `Startup Item Query` event class. #1119
     1. Added `Drone Flights Activity` event class to the Unmanned Systems category. #1169
+    1. Added `Cloud Resources Inventory Info` event class to the Discovery category. #1250
 * #### Dictionary Attributes
     1. Added `has_mfa` as a `boolean_t`. #1155
     1. Added `environment_variables` as an array of `environment_variable` object. #1172
@@ -67,12 +68,21 @@ Thankyou! -->
     1. Added `locations` to the dictionary, an array type of the `location` object, used within the new `operating_area` object. #1169
     1. Added `altitude_ceiling`, `altitude_floor`, `geodetic_altitude`, `aerial_height`, `horizontal_accuracy`, `pressure_altitude`, `radius`, `speed`, `track_direction`, and `vertical_speed` all to support `operating_area` and `unmanned_aerial_system` objects. #1169 
     1. Added `variable_name` and `variable_value` as `long_string`. #1228
+    1. Added `imei_list` as an array `string_t`. #1225
+    1. Added `is_encrypted` as `boolean_t`; `column_name`, `cell_name`, `storage_class`, `key_uid`, `json_path` as `string_t` & `column_number`, `row_number`, `page_number`, `record_index_in_array` as `integer_t`. #1245
+    1. Added `group_provisioning_enabled`, `scim_group_schema`, `user_provisioning_enabled`, `scim_user_schema`, `scopes`, `idle_timeout`, `login_endpoint`, `logout_endpoint`, and `metadata_url` entries to the dictionary to support the new `scim` and `sso` objects. #1239
+    1. Added new `11: Basic Authentication` enum value to `auth_protocol_id`. #1239
+    1. Added `values` as an array of `string_t`. #1251
+    1. Added `kernel_release` as a `string_t`.
 * #### Objects
     1. Added `environment_variable` object. #1172
     1. Added `advisory` object. #1176
     1. Added a generic `key_value_object` object. #1219
     1. Added `unmanned_aerial_system` and `unmanned_system_operating_area` objects. #1169
     1. Added a `long_string` object. #1228
+    1. Added `discovery_details`, `encryption_details`, `occurrence_details` objects. #1245
+    1. Added `scim` object. #1239
+    1. Added `sso` object. #1239
 
 ### Improved
 * #### Event Classes
@@ -81,6 +91,7 @@ Thankyou! -->
     1. Added `risk_details` to `data_security_finding` class. #1178
     1. Removed constraint from `group_management` class. #1193
     1. Added `Archived|5` as an enum item to `status_id` attribute in Findings classes. #1219
+    1. Added a `Trace` `activity_id` to the `Email Activity` class. #1252
 * #### Profiles
     1. Added `is_alert`, `confidence_id`, `confidence`,  `confidence_score` attributes to the `security_control` profile. #1178
     1. Added `risk_level_id`, `risk_level`, `risk_score`, `risk_details` attributes to the `security_control` profile.  #1178
@@ -108,6 +119,14 @@ Thankyou! -->
     1. Added `control_parameters` and `status_details` to the compliance object. #1219
     1. Added `geodetic_altitude`, `height`, `horizontal_accuracy`, and `pressure_altitude` to `location`. #1169
     1. Added `location` to `managed_entity`. #1169
+    1. Added `imei_list` to the `device` object. #1225
+    1. Added `storage_class` & `is_public` as `cloud` profile attributes to `file` object. Also added `is_encrypted`, `encryption_details`, `tags` to the `file` object. #1245
+    1. Added `discovery_details`, `occurrence_details`, `status` trio, `total`, `uid`, `size`, & `src_url` to the `data_classification` object. #1245
+    1. `data_bucket` object now inherits `resource_details` instead of `_entity`. Also, added `encryption_details` object to the `data_bucket` object. #1245
+    1. Added `auth_factors`, `domain`, `fingerprint`, `has_mfa`, `issuer`, `protocol_name`, `scim`, `sso`, `state`, `state_id`, `tenant_uid`, and `uid` to `idp`. #1239
+    1. Added `hostname`, `ip`, and `name` to `resource_details` for purposes of assigning an Observable number. #1250
+    1. Added `values` to `key_value_object`. #1251
+    1. Added `kernel_release` to `os` object.
 
 ### Bugfixes
 1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180
@@ -121,6 +140,9 @@ Thankyou! -->
 1. Deprecated `cwe` in favor of `related_cwes` in the `cve` object. #1176
 1. Deprecated `tag` in favor of `labels` or `tags` in `image` & `container` object. #1207
 1. Deprecated `status_detail` in favor of `status_details` in `compliance object. #1219
+1. Deprecated `imei` in favor of `imei_list` in `device` object. #1225
+1. Deprecated `data_classification` in favor of `data_classifications` in the `data_classification` profile. #1245
+1. Deprecated activity_id `4|Suppressed` in the Data Security Finding event class. This shouldn't have been added when we first created it, as the right place for this info is `status_id`. #1245
 
 ### Misc
 1. Added `user.uid` as an Observable type - `type_id: 31`. #1155
@@ -152,6 +174,8 @@ Thankyou! -->
     - The `source` and `references` attributes are also supported in when extending or patching event classes and objects.
 1. Fixed minor spelling mistakes in attribute descriptions in `dictionary.json`. #1213
 1. In the metaschema, added support for `@deprecated` in enum values. #1237
+1. Fixed some more formatting of attribute descriptions in `dictionary.json` and `idp.json`. #1239
+1. Added `resource_details.name` as an Observable type `type_id: 38`. #1250
 
 ## [v1.3.0] - August 1st, 2024
 

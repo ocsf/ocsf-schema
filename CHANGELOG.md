@@ -92,9 +92,10 @@ Thankyou! -->
     1. Added `risk_details` to `data_security_finding` class. #1178
     1. Removed constraint from `group_management` class. #1193
     1. Added `Archived|5` as an enum item to `status_id` attribute in Findings classes. #1219
-    1. Added a `Trace` `activity_id` to the `Email Activity` class. #1252
+    1. Added a `Trace`, `activity_id` to the `Email Activity` class. #1252
+    1. Added `vendor_attributes` to all `Findings` Category classes. #1257
 * #### Profiles
-    1. Added `is_alert`, `confidence_id`, `confidence`,  `confidence_score` attributes to the `security_control` profile. #1178
+    1. Added `is_alert`, `confidence_id`, `confidence`, `confidence_score` attributes to the `security_control` profile. #1178
     1. Added `risk_level_id`, `risk_level`, `risk_score`, `risk_details` attributes to the `security_control` profile.  #1178
     1. Added `policy` attribute to the `security_control` profile. #1178
 * #### Objects
@@ -128,7 +129,6 @@ Thankyou! -->
     1. Added `hostname`, `ip`, and `name` to `resource_details` for purposes of assigning an Observable number. #1250
     1. Added `values` to `key_value_object`. #1251
     1. Added `kernel_release` to `os` object. #1249
-    1. Added `vendor_attributes` to `finding_info` object. #1257
 
 ### Bugfixes
 1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180

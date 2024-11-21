@@ -1,7 +1,7 @@
 {
   "caption": "Email",
   "name": "email",
-  "description": "The Email object describes the email metadata such as sender, recipients, and direction, and can include embedded URLs and files.",
+  "description": "The Email object describes the email metadata such as sender, recipients, and direction.",
   "references": [{"url": "https://d3fend.mitre.org/dao/artifact/d3f:Email/", "description": "D3FEND™ Ontology d3f:Email."}],
   "extends": "object",
   "observable": 22,
@@ -18,16 +18,8 @@
     "delivered_to": {
       "requirement": "optional"
     },
-    "domains": {
-      "requirement": "optional",
-      "description": "The domain names that pertain to the email sender or recipients."
-    },
-    "files": {
-      "requirement": "optional",
-      "description": "The files embedded or attached to the email."
-    },
     "from": {
-      "requirement": "recommended"
+      "requirement": "required"
     },
     "http_headers": {
       "requirement": "optional"
@@ -57,11 +49,7 @@
       "requirement": "recommended"
     },
     "to": {
-      "requirement": "recommended"
-    },
-    "urls": {
-      "requirement": "optional",
-      "description": "The URLs embedded in the email."
+      "requirement": "required"
     },
     "x_originating_ip": {
       "requirement": "optional"
@@ -71,13 +59,5 @@
       "description": "The email unique identifier.",
       "requirement": "recommended"
     }
-  },
-  "constraints": {
-    "at_least_one": [
-      "from",
-      "to",
-      "smtp_from",
-      "smtp_to"
-    ]
   }
 }

@@ -73,6 +73,7 @@ Thankyou! -->
     1. Added `group_provisioning_enabled`, `scim_group_schema`, `user_provisioning_enabled`, `scim_user_schema`, `scopes`, `idle_timeout`, `login_endpoint`, `logout_endpoint`, and `metadata_url` entries to the dictionary to support the new `scim` and `sso` objects. #1239
     1. Added new `11: Basic Authentication` enum value to `auth_protocol_id`. #1239
     1. Added `values` as an array of `string_t`. #1251
+    1. Added `kernel_release` as a `string_t`. #1249
 * #### Objects
     1. Added `environment_variable` object. #1172
     1. Added `advisory` object. #1176
@@ -82,6 +83,7 @@ Thankyou! -->
     1. Added `discovery_details`, `encryption_details`, `occurrence_details` objects. #1245
     1. Added `scim` object. #1239
     1. Added `sso` object. #1239
+    1. Added `vendor_attributes` object. #1257
 
 ### Improved
 * #### Event Classes
@@ -90,9 +92,10 @@ Thankyou! -->
     1. Added `risk_details` to `data_security_finding` class. #1178
     1. Removed constraint from `group_management` class. #1193
     1. Added `Archived|5` as an enum item to `status_id` attribute in Findings classes. #1219
-    1. Added a `Trace` `activity_id` to the `Email Activity` class. #1252
+    1. Added a `Trace`, `activity_id` to the `Email Activity` class. #1252
+    1. Added `vendor_attributes` to all `Findings` Category classes. #1257
 * #### Profiles
-    1. Added `is_alert`, `confidence_id`, `confidence`,  `confidence_score` attributes to the `security_control` profile. #1178
+    1. Added `is_alert`, `confidence_id`, `confidence`, `confidence_score` attributes to the `security_control` profile. #1178
     1. Added `risk_level_id`, `risk_level`, `risk_score`, `risk_details` attributes to the `security_control` profile.  #1178
     1. Added `policy` attribute to the `security_control` profile. #1178
 * #### Objects
@@ -125,6 +128,7 @@ Thankyou! -->
     1. Added `auth_factors`, `domain`, `fingerprint`, `has_mfa`, `issuer`, `protocol_name`, `scim`, `sso`, `state`, `state_id`, `tenant_uid`, and `uid` to `idp`. #1239
     1. Added `hostname`, `ip`, and `name` to `resource_details` for purposes of assigning an Observable number. #1250
     1. Added `values` to `key_value_object`. #1251
+    1. Added `kernel_release` to `os` object. #1249
 
 ### Bugfixes
 1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180

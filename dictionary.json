@@ -794,6 +794,7 @@
     "cc": {
       "caption": "Cc",
       "description": "The email header Cc values, as defined by RFC 5322.",
+      "references": [{"url": "https://www.rfc-editor.org/rfc/rfc5322", "description": "RFC 5322"}],
       "type": "email_t",
       "is_array": true
     },
@@ -2180,6 +2181,7 @@
     "from": {
       "caption": "From",
       "description": "The email header From values, as defined by RFC 5322.",
+      "references": [{"url": "https://www.rfc-editor.org/rfc/rfc5322", "description": "RFC 5322"}],
       "type": "email_t"
     },
     "full_name": {
@@ -2751,6 +2753,11 @@
       "description": "The kernel resource object that pertains to the event.",
       "type": "kernel"
     },
+    "kernel_release": {
+      "caption": "Kernel Release",
+      "description": "The kernel release of the operating system. On Unix-based systems, this is determined from the <code>uname -r</code> command output, for example \"5.15.0-122-generic\".",
+      "type": "string_t"
+    },
     "key_length": {
       "caption": "Key Length",
       "description": "The length of the encryption key.",
@@ -3091,6 +3098,7 @@
     "message_uid": {
       "caption": "Message UID",
       "description": "The email header Message-ID value, as defined by RFC 5322.",
+      "references": [{"url": "https://www.rfc-editor.org/rfc/rfc5322", "description": "RFC 5322"}],
       "type": "string_t"
     },
     "metadata": {
@@ -3978,6 +3986,7 @@
     "reply_to": {
       "caption": "Reply To",
       "description": "The email header Reply-To values, as defined by RFC 5322.",
+      "references": [{"url": "https://www.rfc-editor.org/rfc/rfc5322", "description": "RFC 5322"}],
       "type": "email_t"
     },
     "reputation": {
@@ -4918,6 +4927,7 @@
     "to": {
       "caption": "To",
       "description": "The email header To values, as defined by RFC 5322.",
+      "references": [{"url": "https://www.rfc-editor.org/rfc/rfc5322", "description": "RFC 5322"}],
       "type": "email_t",
       "is_array": true
     },
@@ -5107,6 +5117,11 @@
       "caption": "Vector String",
       "description": "The CVSS vector string is a text representation of a set of CVSS metrics. It is commonly used to record or transfer CVSS metric information in a concise form. For example: <code>3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H</code>.",
       "type": "string_t"
+    },
+    "vendor_attributes":{
+      "caption": "Vendor Attributes",
+      "description": "The Vendor Attributes object can be used to represent values of attributes populated by the Vendor/Finding Provider. It can help distinguish between the vendor-prodvided values and consumer-updated values, of key attributes like <code>severity_id</code>.<br>The original finding producer should not populate this object. It should be populated by consuming systems that support data mutability.",
+      "type": "vendor_attributes"
     },
     "vendor_name": {
       "caption": "Vendor Name",

@@ -75,6 +75,7 @@ Thankyou! -->
     1. Added `values` as an array of `string_t`. #1251
     1. Added `kernel_release` as a `string_t`.
     1. Added `domains` `files` `urls` and `message_trace_uid`. #1259
+    1. Added `kernel_release` as a `string_t`. #1249
 * #### Objects
     1. Added `environment_variable` object. #1172
     1. Added `advisory` object. #1176
@@ -84,6 +85,7 @@ Thankyou! -->
     1. Added `discovery_details`, `encryption_details`, `occurrence_details` objects. #1245
     1. Added `scim` object. #1239
     1. Added `sso` object. #1239
+    1. Added `vendor_attributes` object. #1257
 
 ### Improved
 * #### Event Classes
@@ -94,8 +96,10 @@ Thankyou! -->
     1. Added `Archived|5` as an enum item to `status_id` attribute in Findings classes. #1219
     1. Added a `Trace` `activity_id` to the `Email Activity` class. #1252
     1. Added a `message_trace_uid` to the `Email Activity` class. #1259
+    1. Added a `Trace`, `activity_id` to the `Email Activity` class. #1252
+    1. Added `vendor_attributes` to all `Findings` Category classes. #1257
 * #### Profiles
-    1. Added `is_alert`, `confidence_id`, `confidence`,  `confidence_score` attributes to the `security_control` profile. #1178
+    1. Added `is_alert`, `confidence_id`, `confidence`, `confidence_score` attributes to the `security_control` profile. #1178
     1. Added `risk_level_id`, `risk_level`, `risk_score`, `risk_details` attributes to the `security_control` profile.  #1178
     1. Added `policy` attribute to the `security_control` profile. #1178
 * #### Objects
@@ -130,6 +134,7 @@ Thankyou! -->
     1. Added `values` to `key_value_object`. #1251
     1. Added `kernel_release` to `os` object.
     1. Added `domains`, `files`, `urls`, to the `Email` object. Relaxed requirements on the `from` and `to` attributes of the object and added the `at_least_one` constraint. #1259
+    1. Added `kernel_release` to `os` object. #1249
 
 ### Bugfixes
 1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180

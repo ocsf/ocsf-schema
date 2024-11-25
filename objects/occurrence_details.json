@@ -1,0 +1,57 @@
+{
+  "caption": "Occurrence Details",
+  "description": "Details about where in the target entity, specified information was discovered. Only the attributes, relevant to the target entity type should be populuated.",
+  "extends": "object",
+  "name": "occurrence_details",
+  "attributes": {
+    "cell_name": {
+      "description": "The cell name/reference in a spreadsheet. e.g <code>A2</code>",
+      "requirement": "optional"
+    },
+    "column_name": {
+      "description": "The column name in a spreadsheet, where the information was discovered.",
+      "requirement": "optional"
+    },
+    "column_number": {
+      "description": "The column number in a spreadsheet or a plain text document, where the information was discovered.",
+      "requirement": "optional"
+    },
+    "end_line": {
+      "description": "The line number of the last line of the file, where the information was discovered.",
+      "requirement": "optional"
+    },
+    "json_path": {
+      "description": "The JSON path of the attribute in a json record, where the information was discovered",
+      "requirement": "optional"
+    },
+    "page_number": {
+      "description": "The page number in a document, where the information was discovered.",
+      "requirement": "optional"
+    },
+    "record_index_in_array": {
+      "description": "The index of the record in the array of records, where the information was discovered. e.g. the index of a record in an array of JSON records in a file.",
+      "requirement": "optional"
+    },
+    "row_number": {
+      "description": "The row number in a spreadsheet, where the information was discovered.",
+      "requirement": "optional"
+    },
+    "start_line": {
+      "description": "The line number of the first line of the file, where the information was discovered.",
+      "requirement": "optional"
+    }
+  },
+  "constraints": {
+    "at_least_one": [
+      "cell_name",
+      "column_name",
+      "column_number",
+      "end_line",
+      "json_path",
+      "page_number",
+      "record_index_in_array",
+      "row_number",
+      "start_line"
+    ]
+  }
+}

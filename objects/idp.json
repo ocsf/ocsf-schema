@@ -4,11 +4,89 @@
   "extends": "_entity",
   "name": "idp",
   "attributes": {
+    "auth_factors": {
+      "description": "The Authentication Factors object describes the different types of Multi-Factor Authentication (MFA) methods and/or devices supported by the Identity Provider.",
+      "requirement": "optional"
+    },
     "name": {
-      "description":"The name of the identity provider."
+      "description": "The name of the Identity Provider.",
+      "requirement": "recommended"
+    },
+    "domain": {
+      "description": "The primary domain associated with the Identity Provider.",
+      "requirement": "optional"
+    },
+    "fingerprint": {
+      "caption": "Certificate Fingerprint",
+      "description": "The fingerprint of the X.509 certificate used by the Identity Provider.",
+      "requirement": "optional"
+    },
+    "has_mfa": {
+      "caption": "MFA Enforced",
+      "description": "The Identity Provider enforces Multi Factor Authentication (MFA).",
+      "requirement": "optional"
+    },
+    "issuer": {
+      "description": "The unique identifier (often a URL) used by the Identity Provider as its issuer.",
+      "requirement": "optional"
+    },
+    "protocol_name": {
+      "caption": "Supported Protocol",
+      "description": "The supported protocol of the Identity Provider. E.g., <code>SAML</code>, <code>OIDC</code>, or <code>OAuth2</code>.",
+      "requirement": "optional"
+    },
+    "scim": {
+      "requirement": "optional"
+    },
+    "sso": {
+      "requirement": "optional"
+    },
+    "state": {
+      "description": "The configuration state of the Identity Provider, normalized to the caption of the <code>state_id</code> value. In the case of <code>Other</code>, it is defined by the event source.",
+      "requirement": "optional"
+    },
+    "state_id": {
+      "description": "The normalized state ID of the Identity Provider to reflect its configuration or activation status.",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The configuration state of the Identity Provider is unknown."
+        },
+        "1": {
+          "caption": "Active",
+          "description": "The Identity Provider is in an Active state, or otherwise enabled."
+        },
+        "2": {
+          "caption": "Suspended",
+          "description": "The Identity Provider is in a Suspended state."
+        },
+        "3": {
+          "caption": "Deprecated",
+          "description": "The Identity Provider is in a Deprecated state, or is otherwise disabled."
+        },
+        "4": {
+          "caption": "Deleted",
+          "description": "The Identity Provider is in a Deleted state."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The configuration state of the Identity Provider is not mapped. See the <code>state</code> attribute, which contains a data source specific value."
+        }
+      },
+      "requirement": "optional"
+    },
+    "tenant_uid": {
+      "description": "The tenant ID associated with the Identity Provider.",
+      "requirement": "optional"
     },
     "uid": {
-      "description":"The unique identifier of the identity provider."
+      "description": "The unique identifier of the Identity Provider.",
+      "requirement": "recommended"
+    },
+    "url_string": {
+      "caption": "Configuration URL",
+      "description": "The URL for accessing the configuration or metadata of the Identity Provider.",
+      "requirement": "optional"
     }
   }
 }

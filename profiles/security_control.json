@@ -1,5 +1,5 @@
 {
-  "description": "The attributes including disposition that represent the outcome of a security control including but not limited to access control, malware or policy violation, network proxy, firewall, or data control.  The profile is intended to augment activities or findings with an outcome where a security control has intervened. If the control detected a security violation, the <code>is_detection</code> flag should be set to <code>true</code>.",
+  "description": "The attributes including disposition that represent the outcome of a security control including but not limited to access control, malware or policy violation, network proxy, intrusion detection, firewall, or data control.  The profile is intended to augment activities or findings with an outcome when a security control has observed or intervened. If the control detected a security violation, and the <code>disposition_id</code> or <code>action_id</code> is an alertable outcome or action, the <code>is_alert</code> flag may be set to <code>true</code>.",
   "meta": "profile",
   "caption": "Security Control",
   "name": "security_control",
@@ -18,7 +18,7 @@
       "enum": {
         "0": {
           "caption": "Unknown",
-          "description": "The action was unknown. The <code>disposition_id</code> attribute may still be set to a non-unknown value, for example 'Count', 'Uncorrected', 'Isolated', 'Quarantined' or 'Exonerated'."
+          "description": "The action was unknown. The <code>disposition_id</code> attribute may still be set to a non-unknown value, for example 'Custom Action', 'Challenge'."
         },
         "1": {
           "caption": "Allowed",
@@ -27,6 +27,18 @@
         "2": {
           "caption": "Denied",
           "description": "The attempted activity was denied. The <code>disposition_id</code> attribute should be set to a value that conforms to this action, for example 'Blocked', 'Rejected', 'Quarantined', 'Isolated', 'Dropped', 'Access Revoked, etc."
+        },
+        "3": {
+          "caption": "Observed",
+          "description": "The activity was observed, but neither explicitly allowed nor denied. This is common with IDS and EDR controls that report additional information on observed behavior such as TTPs. The <code>disposition_id</code> attribute should be set to a value that conforms to this action, for example 'Logged', 'Alert', 'Detected', 'Count', etc."
+        },
+        "4": {
+          "caption": "Modified",
+          "description": "The activity was modified, adjusted, or corrected. The <code>disposition_id</code> attribute should be set appropriately, for example 'Restored', 'Corrected', 'Delayed', 'Captcha', 'Tagged'."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The action is not mapped. See the <code>action</code> attribute which contains a data source specific value."
         }
       },
       "requirement": "required"

@@ -1,11 +1,8 @@
 {
   "caption": "Databucket",
   "description": "The databucket object is a basic container that holds data, typically organized through the use of data partitions.",
-  "extends": "_entity",
+  "extends": "resource_details",
   "name": "databucket",
-  "profiles": [
-    "data_classification"
-  ],
   "attributes": {
     "$include": [
       "profiles/data_classification.json"
@@ -14,30 +11,41 @@
       "description": "The time when the databucket was known to have been created.",
       "requirement": "optional"
     },
-    "modified_time": {
-      "description": "The most recent time when any changes, updates, or modifications were made within the databucket.",
-      "requirement": "optional"
-    },
     "desc": {
       "caption": "Description",
       "description": "The description of the databucket.",
       "requirement": "optional"
     },
-    "size": {
-      "description": "The size of the databucket in bytes.",
+    "encryption_details": {
+      "description": "The encryption details of the databucket. Should be populated if the databucket is encrypted.",
       "requirement": "optional"
     },
     "file": {
-      "description": "A file within a databucket.",
+      "description": "Details about the file/object within a databucket.",
       "requirement": "optional"
     },
     "groups": {
       "description": "The group names to which the databucket belongs.",
       "requirement": "optional"
     },
+    "is_encrypted": {
+      "description": "Indicates if the databucket is encrypted.",
+      "requirement": "optional"
+    },
     "is_public": {
       "description": "Indicates if the databucket is publicly accessible.",
       "requirement": "recommended"
+    },
+    "modified_time": {
+      "description": "The most recent time when any changes, updates, or modifications were made within the databucket.",
+      "requirement": "optional"
+    },
+    "name": {
+      "description": "The databucket name."
+    },
+    "size": {
+      "description": "The size of the databucket in bytes.",
+      "requirement": "optional"
     },
     "type": {
       "description": "The databucket type.",
@@ -64,11 +72,11 @@
         }
       }
     },
-    "name": {
-      "description": "The databucket name."
-    },
     "uid": {
       "description": "The unique identifier of the databucket."
     }
-  }
+  },
+  "profiles": [
+    "data_classification"
+  ]
 }

@@ -129,6 +129,7 @@ Thankyou! -->
     1. Added `hostname`, `ip`, and `name` to `resource_details` for purposes of assigning an Observable number. #1250
     1. Added `values` to `key_value_object`. #1251
     1. Added `kernel_release` to `os` object. #1249
+    1. Added `related_analytics` to `osint` object. #1264
 
 ### Bugfixes
 1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180
@@ -178,6 +179,7 @@ Thankyou! -->
 1. In the metaschema, added support for `@deprecated` in enum values. #1237
 1. Fixed some more formatting of attribute descriptions in `dictionary.json` and `idp.json`. #1239
 1. Added `resource_details.name` as an Observable type `type_id: 38`. #1250
+1. Added 3 new enums (Registry Value, Registry Key, Command Line) to `osint.type_id` and added TLP:WHITE to `osint.tlp` enums. #1264
 
 ## [v1.3.0] - August 1st, 2024
 

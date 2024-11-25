@@ -130,6 +130,7 @@ Thankyou! -->
     1. Added `hostname`, `ip`, and `name` to `resource_details` for purposes of assigning an Observable number. #1250
     1. Added `values` to `key_value_object`. #1251
     1. Added `kernel_release` to `os` object. #1249
+    1. Added `references` meta data for `win/reg_key`, `account`, `container`, `database`, `fingerprint`, `group`, `http_cookie`, `job`, `script` objects. #1266
 
 ### Bugfixes
 1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180

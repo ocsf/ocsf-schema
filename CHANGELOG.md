@@ -74,8 +74,7 @@ Thankyou! -->
     1. Added `group_provisioning_enabled`, `scim_group_schema`, `user_provisioning_enabled`, `scim_user_schema`, `scopes`, `idle_timeout`, `login_endpoint`, `logout_endpoint`, and `metadata_url` entries to the dictionary to support the new `scim` and `sso` objects. #1239
     1. Added new `11: Basic Authentication` enum value to `auth_protocol_id`. #1239
     1. Added `values` as an array of `string_t`. #1251
-    1. Added `kernel_release` as a `string_t`.
-    1. Added `objective` as a `string_t` to use in the new `threat_intelligence` object. #1255
+    1. Added `kernel_release` as a `string_t`. #1249
 * #### Objects
     1. Added `environment_variable` object. #1172
     1. Added `advisory` object. #1176
@@ -85,8 +84,8 @@ Thankyou! -->
     1. Added `discovery_details`, `encryption_details`, `occurrence_details` objects. #1245
     1. Added `scim` object. #1239
     1. Added `sso` object. #1239
-    1. Added `threat_intelligence` object. #1255
-    1. Added `aircraft` object. #1253
+    2. 1. Added `vendor_attributes` object. #1257
+    3. Added `aircraft` object. #1253
 
 ### Improved
 * #### Event Classes
@@ -95,11 +94,13 @@ Thankyou! -->
     1. Added `risk_details` to `data_security_finding` class. #1178
     1. Removed constraint from `group_management` class. #1193
     1. Added `Archived|5` as an enum item to `status_id` attribute in Findings classes. #1219
-    1. Added a `Trace` `activity_id` to the `Email Activity` class. #1252
+    1. Added a `Trace`, `activity_id` to the `Email Activity` class. #1252
+    1. Added `vendor_attributes` to all `Findings` Category classes. #1257
 * #### Profiles
-    1. Added `is_alert`, `confidence_id`, `confidence`,  `confidence_score` attributes to the `security_control` profile. #1178
+    1. Added `is_alert`, `confidence_id`, `confidence`, `confidence_score` attributes to the `security_control` profile. #1178
     1. Added `risk_level_id`, `risk_level`, `risk_score`, `risk_details` attributes to the `security_control` profile.  #1178
     1. Added `policy` attribute to the `security_control` profile. #1178
+    1. Added enum values to `action_id` of 'Observed', 'Modified', and 'Unknown'. #1265
 * #### Objects
     1. Added `phone_number` to `user` and `ldap_person` objects. #1155
     1. Added `has_mfa` to `user` object. #1155
@@ -124,14 +125,14 @@ Thankyou! -->
     1. Added `geodetic_altitude`, `height`, `horizontal_accuracy`, and `pressure_altitude` to `location`. #1169
     1. Added `location` to `managed_entity`. #1169
     1. Added `imei_list` to the `device` object. #1225
+    1. Added `tls` and `ja4_fingerprint_list` object to the evidences object. #1244
     1. Added `storage_class` & `is_public` as `cloud` profile attributes to `file` object. Also added `is_encrypted`, `encryption_details`, `tags` to the `file` object. #1245
     1. Added `discovery_details`, `occurrence_details`, `status` trio, `total`, `uid`, `size`, & `src_url` to the `data_classification` object. #1245
     1. `data_bucket` object now inherits `resource_details` instead of `_entity`. Also, added `encryption_details` object to the `data_bucket` object. #1245
     1. Added `auth_factors`, `domain`, `fingerprint`, `has_mfa`, `issuer`, `protocol_name`, `scim`, `sso`, `state`, `state_id`, `tenant_uid`, and `uid` to `idp`. #1239
     1. Added `hostname`, `ip`, and `name` to `resource_details` for purposes of assigning an Observable number. #1250
     1. Added `values` to `key_value_object`. #1251
-    1. Added `kernel_release` to `os` object.
-    1. Added `first_seen_at`, `last_seen_at`, `related_analytics`, and `threat_intelligence` to `osint`. Additionally, added new enums (Registry Key, Registry Value, and Command Line) to `osint.type_id`. #1255
+    1. Added `kernel_release` to `os` object. #1249
     1. `unmanned_aerial_system` now extends from `aircraft`. #1253
 
 ### Bugfixes

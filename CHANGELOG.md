@@ -98,6 +98,7 @@ Thankyou! -->
     1. Added `is_alert`, `confidence_id`, `confidence`, `confidence_score` attributes to the `security_control` profile. #1178
     1. Added `risk_level_id`, `risk_level`, `risk_score`, `risk_details` attributes to the `security_control` profile.  #1178
     1. Added `policy` attribute to the `security_control` profile. #1178
+    1. Added enum values to `action_id` of 'Observed', 'Modified', and 'Unknown'. #1265
 * #### Objects
     1. Added `phone_number` to `user` and `ldap_person` objects. #1155
     1. Added `has_mfa` to `user` object. #1155

@@ -123,6 +123,7 @@ Thankyou! -->
     1. Added `geodetic_altitude`, `height`, `horizontal_accuracy`, and `pressure_altitude` to `location`. #1169
     1. Added `location` to `managed_entity`. #1169
     1. Added `imei_list` to the `device` object. #1225
+    1. Added `tls` and `ja4_fingerprint_list` object to the evidences object. #1244
     1. Added `storage_class` & `is_public` as `cloud` profile attributes to `file` object. Also added `is_encrypted`, `encryption_details`, `tags` to the `file` object. #1245
     1. Added `discovery_details`, `occurrence_details`, `status` trio, `total`, `uid`, `size`, & `src_url` to the `data_classification` object. #1245
     1. `data_bucket` object now inherits `resource_details` instead of `_entity`. Also, added `encryption_details` object to the `data_bucket` object. #1245

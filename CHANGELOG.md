@@ -148,6 +148,7 @@ Thankyou! -->
 1. Deprecated `imei` in favor of `imei_list` in `device` object. #1225
 1. Deprecated `data_classification` in favor of `data_classifications` in the `data_classification` profile. #1245
 1. Deprecated activity_id `4|Suppressed` in the Data Security Finding event class. This shouldn't have been added when we first created it, as the right place for this info is `status_id`. #1245
+1. Deprecated `package` in `Software Inventory Info` in favour of `sbom`. #1262
 
 ### Misc
 1. Added `user.uid` as an Observable type - `type_id: 31`. #1155

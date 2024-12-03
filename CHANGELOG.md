@@ -87,8 +87,8 @@ Thankyou! -->
     1. Added `discovery_details`, `encryption_details`, `occurrence_details` objects. #1245
     1. Added `scim` object. #1239
     1. Added `sso` object. #1239
-    2. 1. Added `vendor_attributes` object. #1257
-    3. Added `aircraft` object. #1253
+    1. Added `vendor_attributes` object. #1257
+    1. Added `aircraft` object. #1253
 
 ### Improved
 * #### Event Classes

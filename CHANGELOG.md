@@ -50,6 +50,7 @@ Thankyou! -->
     1. Added `Startup Item Query` event class. #1119
     1. Added `Drone Flights Activity` event class to the Unmanned Systems category. #1169
     1. Added `Cloud Resources Inventory Info` event class to the Discovery category. #1250
+    1. Added `Airborne Broadcast Activity` event class to the Unmanned Systems category. #1253
 * #### Dictionary Attributes
     1. Added `has_mfa` as a `boolean_t`. #1155
     1. Added `environment_variables` as an array of `environment_variable` object. #1172
@@ -87,6 +88,7 @@ Thankyou! -->
     1. Added `scim` object. #1239
     1. Added `sso` object. #1239
     1. Added `vendor_attributes` object. #1257
+    1. Added `aircraft` object. #1253
 
 ### Improved
 * #### Event Classes
@@ -141,6 +143,7 @@ Thankyou! -->
     1. Added `related_analytics` to `osint` object. #1264
     1. Added `os_machine_uuid` to the `device` object. #1268
     1. Added `uuid` to the `device_hw_info` object. #1268
+    1. `unmanned_aerial_system` now extends from `aircraft`. #1253
 
 ### Bugfixes
 1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180

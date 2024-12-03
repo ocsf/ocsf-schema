@@ -76,6 +76,7 @@ Thankyou! -->
     1. Added `kernel_release` as a `string_t`.
     1. Added `domains` `files` `urls` and `message_trace_uid`. #1259
     1. Added `kernel_release` as a `string_t`. #1249
+    1. Added `os_machine_uuid` as a `uuid_t`.  #1268
 * #### Objects
     1. Added `environment_variable` object. #1172
     1. Added `advisory` object. #1176
@@ -137,6 +138,9 @@ Thankyou! -->
     1. Added `kernel_release` to `os` object.
     1. Added `domains`, `files`, `urls`, to the `Email` object. Relaxed requirements on the `from` and `to` attributes of the object and added the `at_least_one` constraint. #1259
     1. Added `kernel_release` to `os` object. #1249
+    1. Added `related_analytics` to `osint` object. #1264
+    1. Added `os_machine_uuid` to the `device` object. #1268
+    1. Added `uuid` to the `device_hw_info` object. #1268
 
 ### Bugfixes
 1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180
@@ -187,6 +191,7 @@ Thankyou! -->
 1. In the metaschema, added support for `@deprecated` in enum values. #1237
 1. Fixed some more formatting of attribute descriptions in `dictionary.json` and `idp.json`. #1239
 1. Added `resource_details.name` as an Observable type `type_id: 38`. #1250
+1. Added 3 new enums (Registry Value, Registry Key, Command Line) to `osint.type_id` and added TLP:WHITE to `osint.tlp` enums. #1264
 
 ## [v1.3.0] - August 1st, 2024
 

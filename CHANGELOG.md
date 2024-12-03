@@ -144,6 +144,7 @@ Thankyou! -->
     1. Added `os_machine_uuid` to the `device` object. #1268
     1. Added `uuid` to the `device_hw_info` object. #1268
     1. `unmanned_aerial_system` now extends from `aircraft`. #1253
+    1. Added `references` meta data for `win/reg_key`, `win/reg_value`, `account`, `container`, `database`, `fingerprint`, `group`, `http_cookie`, `job`, `script` objects. #1266
 
 ### Bugfixes
 1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180

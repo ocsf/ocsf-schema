@@ -329,6 +329,11 @@
         }
       }
     },
+    "author": {
+      "caption": "Author",
+      "description": "The author(s) who published the software component.",
+      "type": "string_t"
+    },
     "authorizations": {
       "caption": "Authorization Information",
       "description": "Provides details about an authorization, such as authorization outcome, and any associated policies related to the activity/event.",
@@ -1402,6 +1407,11 @@
       "caption": "Delivered To",
       "description": "The <strong>Delivered-To</strong> email header field.",
       "type": "email_t"
+    },
+    "related_component": {
+      "caption": "Related Component",
+      "description": "The package URL (PURL) of the component that this software component has a relationship with.",
+      "type": "string_t"
     },
     "depth": {
       "caption": "CVSS Depth",
@@ -3956,6 +3966,31 @@
       "type": "string_t",
       "is_array": true
     },
+    "relationship": {
+      "caption": "Relationship",
+      "description": "The relationship between two software components, normalized to the caption of the <code>relationship_id</code> value. In the case of 'Other', it is defined by the source.",
+      "type": "string_t"
+    },
+    "relationship_id": {
+      "caption": "Relationship ID",
+      "description": "The normalized identifier of the relationship between two software components.",
+      "sibling": "relationship",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The relationship is unknown."
+        },
+        "1": {
+          "caption": "Depends On",
+          "description": "The component is a dependency of another component. Can be used to define both direct and transitive dependencies."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The relationship is not mapped. See the <code>relationship</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
     "relay": {
       "caption": "Relay",
       "description": "The network relay that is associated with the event.",
@@ -4163,6 +4198,17 @@
       "caption": "Subject Alternative Names",
       "description": "The list of subject alternative names that are secured by a specific certificate.",
       "type": "san",
+      "is_array": true
+    },
+    "sbom": {
+      "caption": "Software Bill Of Materials",
+      "description": "The Software Bill of Materials (SBOM) object describes the characteristics of a generated SBOM for a software package.",
+      "type": "sbom"
+    },
+    "software_components": {
+      "caption": "Software Components",
+      "description": "The list of software components used in the software package.",
+      "type": "software_component",
       "is_array": true
     },
     "scale_factor": {

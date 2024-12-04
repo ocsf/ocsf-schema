@@ -78,6 +78,7 @@ Thankyou! -->
     1. Added `domains` `files` `urls` and `message_trace_uid`. #1259
     1. Added `kernel_release` as a `string_t`. #1249
     1. Added `os_machine_uuid` as a `uuid_t`.  #1268
+    1. Added `sbom`, `author`, `related_component`, `relationship`, `relationship_id` and `software_component` to support SBOMs. #1262
 * #### Objects
     1. Added `environment_variable` object. #1172
     1. Added `advisory` object. #1176
@@ -89,6 +90,7 @@ Thankyou! -->
     1. Added `sso` object. #1239
     1. Added `vendor_attributes` object. #1257
     1. Added `aircraft` object. #1253
+    1. Added `software_component` and `sbom` objects. #1262
 
 ### Improved
 * #### Event Classes
@@ -101,6 +103,7 @@ Thankyou! -->
     1. Added a `message_trace_uid` to the `Email Activity` class. #1259
     1. Added a `Trace`, `activity_id` to the `Email Activity` class. #1252
     1. Added `vendor_attributes` to all `Findings` Category classes. #1257
+    1. Added `sbom` to `Software Inventory Info` class. #1262
 * #### Profiles
     1. Added `is_alert`, `confidence_id`, `confidence`, `confidence_score` attributes to the `security_control` profile. #1178
     1. Added `risk_level_id`, `risk_level`, `risk_score`, `risk_details` attributes to the `security_control` profile.  #1178
@@ -162,6 +165,7 @@ Thankyou! -->
 1. Deprecated `data_classification` in favor of `data_classifications` in the `data_classification` profile. #1245
 1. Deprecated activity_id `4|Suppressed` in the Data Security Finding event class. This shouldn't have been added when we first created it, as the right place for this info is `status_id`. #1245
 1. Deprecated `email_file_activity` and `email_url_activity` in favor of updated `email_activity`. #1259
+1. Deprecated `package` in `Software Inventory Info` in favour of `sbom`. #1262
 
 ### Misc
 1. Added `user.uid` as an Observable type - `type_id: 31`. #1155

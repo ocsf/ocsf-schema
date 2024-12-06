@@ -1,40 +1,78 @@
 {
-  "caption": "Related Event",
-  "description": "The Related Event object describes an OCSF event related to a finding.",
+  "caption": "Related Event/Finding",
+  "description": "The Related Event object describes an event or another finding related to a finding. It may or may not be an OCSF event.",
   "extends": "object",
   "name": "related_event",
   "attributes": {
     "attacks": {
       "requirement": "optional"
     },
+    "count": {
+      "description": "The number of times that activity in the same logical group occurred, as reported by the related Finding.",
+      "requirement": "optional"
+    },
+    "created_time": {
+      "description": "The time when the related event/finding was created.",
+      "requirement": "optional"
+    },
+    "desc": {
+      "description": "A description of the related event/finding.",
+      "requirement": "optional"
+    },
+    "first_seen_time": {
+      "description": "The time when the finding was first observed. e.g. The time when a vulnerability was first observed.<br>It can differ from the <code>created_time</code> timestamp, which reflects the time this finding was created.",
+      "requirement": "optional"
+    },
     "kill_chain": {
       "requirement": "optional"
     },
+    "last_seen_time": {
+      "description": "The time when the finding was most recently observed. e.g. The time when a vulnerability was most recently observed.<br>It can differ from the <code>modified_time</code> timestamp, which reflects the time this finding was last modified.",
+      "requirement": "optional"
+    },
+    "modified_time": {
+      "description": "The time when the related event/finding was last modified.",
+      "requirement": "optional"
+    },
     "observables": {
+      "requirement": "optional"
+    },
+    "product": {
+      "description": "Details about the product that reported the related event/finding.",
       "requirement": "optional"
     },
     "product_uid": {
       "description": "The unique identifier of the product that reported the related event.",
       "requirement": "optional"
     },
+    "severity_id": {
+      "requirement": "recommended"
+    },
+    "severity": {
+      "requirement": "optional"
+    },
+    "tags": {
+      "description": "The list of tags; <code>{key:value}</code> pairs associated with the related event/finding.",
+      "requirement": "optional"
+    },
+    "title": {
+      "description": "A title or a brief phrase summarizing the related event/finding.",
+      "requirement": "optional"
+    },
     "type": {
-      "@deprecated": {
-        "message": "Use <code>type_name</code> attribute instead.",
-        "since": "1.2.0"
-      },
-      "description": "The type of the related event, as defined by <code>type_uid</code>. <p>For example: <code>Process Activity: Launch.</code></p>",
+      "description": "The type of the related event/finding.</p>Populate if the related event/finding is <code>NOT</code> in OCSF. If it is in OCSF, then utilize <code>type_name, type_uid</code> instead.",
       "requirement": "optional"
     },
     "type_name": {
-      "description": "The type of the related OCSF event, as defined by <code>type_uid</code>. <p>For example: <code>Process Activity: Launch.</code></p>",
+      "description": "The type of the related OCSF event, as defined by <code>type_uid</code>.<p>For example: <code>Process Activity: Launch.</code></p>Populate if the related event/finding is in OCSF.",
       "requirement": "optional"
     },
     "type_uid": {
-      "description": "The unique identifier of the related OCSF event type. <p>For example: <code>100701.</code></p>",
+      "description": "The unique identifier of the related OCSF event type. <p>For example: <code>100701.</code></p>Populate if the related event/finding is in OCSF.",
       "requirement": "recommended"
     },
     "uid": {
-      "description": "The unique identifier of the related OCSF event. This value must be equal to <code>metadata.uid</code> in the corresponding related event.",
+      "description": "The unique identifier of the related event/finding.</p> If the related event/finding is in OCSF, then  this value must be equal to <code>metadata.uid</code> in the corresponding event.",
       "requirement": "required"
     }
   }

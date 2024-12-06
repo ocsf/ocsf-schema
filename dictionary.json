@@ -789,7 +789,12 @@
     "cc": {
       "caption": "Cc",
       "description": "The email header Cc values, as defined by RFC 5322.",
-      "references": [{"url": "https://www.rfc-editor.org/rfc/rfc5322", "description": "RFC 5322"}],
+      "references": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc5322",
+          "description": "RFC 5322"
+        }
+      ],
       "type": "email_t",
       "is_array": true
     },
@@ -998,7 +1003,12 @@
     "community_uid": {
       "caption": "Community ID",
       "source": "community_id",
-      "references": [{"url": "https://github.com/corelight/community-id-spec", "description": "Community ID definition."}],
+      "references": [
+        {
+          "url": "https://github.com/corelight/community-id-spec",
+          "description": "Community ID definition."
+        }
+      ],
       "description": "The Community ID of the network connection.",
       "type": "string_t"
     },
@@ -1184,7 +1194,12 @@
     "country": {
       "observable": 14,
       "caption": "Country",
-      "references": [{"url": "https://www.iso.org/obp/ui/#iso:pub:PUB500001:en", "description": "ISO 3166-1 alpha-2 codes"}],
+      "references": [
+        {
+          "url": "https://www.iso.org/obp/ui/#iso:pub:PUB500001:en",
+          "description": "ISO 3166-1 alpha-2 codes"
+        }
+      ],
       "description": "The ISO 3166-1 Alpha-2 country code.<p><b>Note:</b> The two letter country code should be capitalized. For example: <code>US</code> or <code>CA</code>.</p>",
       "type": "string_t"
     },
@@ -1567,7 +1582,7 @@
         }
       }
     },
-    "discovery_details":{
+    "discovery_details": {
       "caption": "Discovery Details",
       "description": "A collection of <code>Discovery Details</code> objects. See specific usage.",
       "type": "discovery_details",
@@ -2171,7 +2186,12 @@
     "from": {
       "caption": "From",
       "description": "The email header From values, as defined by RFC 5322.",
-      "references": [{"url": "https://www.rfc-editor.org/rfc/rfc5322", "description": "RFC 5322"}],
+      "references": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc5322",
+          "description": "RFC 5322"
+        }
+      ],
       "type": "email_t"
     },
     "full_name": {
@@ -3088,7 +3108,12 @@
     "message_uid": {
       "caption": "Message UID",
       "description": "The email header Message-ID value, as defined by RFC 5322.",
-      "references": [{"url": "https://www.rfc-editor.org/rfc/rfc5322", "description": "RFC 5322"}],
+      "references": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc5322",
+          "description": "RFC 5322"
+        }
+      ],
       "type": "string_t"
     },
     "metadata": {
@@ -3238,6 +3263,12 @@
     "observables": {
       "caption": "Observables",
       "description": "The observables associated with the event or a finding.",
+      "references": [
+        {
+          "url": "https://github.com/ocsf/ocsf-docs/blob/main/Articles/Defining and Using Observables.md",
+          "description": "OCSF Observables FAQ"
+        }
+      ],
       "type": "observable",
       "is_array": true
     },
@@ -3366,7 +3397,12 @@
     },
     "package": {
       "caption": "Software Package",
-      "references": [{"url": "https://d3fend.mitre.org/dao/artifact/d3f:SoftwarePackage/", "description": "D3FEND™ Ontology d3f:SoftwarePackage."}],
+      "references": [
+        {
+          "url": "https://d3fend.mitre.org/dao/artifact/d3f:SoftwarePackage/",
+          "description": "D3FEND™ Ontology d3f:SoftwarePackage."
+        }
+      ],
       "description": "The Software Package object describes details about a software package.",
       "type": "package"
     },
@@ -3663,7 +3699,11 @@
     "product_uid": {
       "caption": "Product Identifier",
       "description": "Unique Identifier of a product.",
-      "type": "string_t"
+      "type": "string_t",
+      "@deprecated": {
+        "message": "Use the <code>uid</code> attribute in the <code>product</code> object instead. See specific usage.",
+        "since": "1.4.0"
+      }
     },
     "profiles": {
       "caption": "Profiles",
@@ -3917,10 +3957,15 @@
       "is_array": true
     },
     "related_events": {
-      "caption": "Related Events",
-      "description": "Describes events and/or other findings related to the finding as identified by the security product.",
+      "caption": "Related Events/Findings",
+      "description": "Describes events and/or other findings related to the finding as identified by the security product. Note that, these event may or may not be in OCSF.",
       "type": "related_event",
       "is_array": true
+    },
+    "related_events_count": {
+      "caption": "Related Events/Findings Count",
+      "description": "Number of related events or findings.",
+      "type": "integer_t"
     },
     "related_vulnerabilities": {
       "caption": "Related Vulnerability IDs",
@@ -3951,7 +3996,12 @@
     "reply_to": {
       "caption": "Reply To",
       "description": "The email header Reply-To values, as defined by RFC 5322.",
-      "references": [{"url": "https://www.rfc-editor.org/rfc/rfc5322", "description": "RFC 5322"}],
+      "references": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc5322",
+          "description": "RFC 5322"
+        }
+      ],
       "type": "email_t"
     },
     "reputation": {
@@ -4152,7 +4202,7 @@
       "description": "The System for Cross-domain Identity Management (SCIM) resource object provides a structured set of attributes related to SCIM protocols used for identity provisioning and management across cloud-based platforms. It standardizes user and group provisioning details, enabling identity synchronization and lifecycle management with compatible Identity Providers (IdPs) and applications. SCIM is defined in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc7643'>RFC-7634</a>",
       "references": [
         {
-          "url": "https://datatracker.ietf.org/doc/html/rfc7643", 
+          "url": "https://datatracker.ietf.org/doc/html/rfc7643",
           "description": "System for Cross-domain Identity Management (SCIM) RFC."
         }
       ],
@@ -4163,7 +4213,7 @@
       "description": "SCIM provides a schema for representing groups, identified using the following schema URI: <code>urn:ietf:params:scim:schemas:core:2.0:Group</code> as defined in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc7643'>RFC-7634</a>. This attribute will capture key-value pairs for the scheme implemented in a SCIM resource.",
       "references": [
         {
-          "url": "https://datatracker.ietf.org/doc/html/rfc7643", 
+          "url": "https://datatracker.ietf.org/doc/html/rfc7643",
           "description": "System for Cross-domain Identity Management (SCIM) RFC spec."
         }
       ],
@@ -4174,7 +4224,7 @@
       "description": "SCIM provides a resource type for user resources. The core schema for user is identified using the following schema URI: <code>urn:ietf:params:scim:schemas:core:2.0:User</code> as defined in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc7643'>RFC-7634</a>. his attribute will capture key-value pairs for the scheme implemented in a SCIM resource. This object is inclusive of both the basic and Enterprise User Schema Extension.",
       "references": [
         {
-          "url": "https://datatracker.ietf.org/doc/html/rfc7643", 
+          "url": "https://datatracker.ietf.org/doc/html/rfc7643",
           "description": "System for Cross-domain Identity Management (SCIM) RFC spec."
         }
       ],
@@ -4685,7 +4735,7 @@
         }
       }
     },
-    "storage_class":{
+    "storage_class": {
       "caption": "Storage Class",
       "description": "The storage class of the entity. See specific usage.",
       "type": "string_t"
@@ -4886,7 +4936,12 @@
     "to": {
       "caption": "To",
       "description": "The email header To values, as defined by RFC 5322.",
-      "references": [{"url": "https://www.rfc-editor.org/rfc/rfc5322", "description": "RFC 5322"}],
+      "references": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc5322",
+          "description": "RFC 5322"
+        }
+      ],
       "type": "email_t",
       "is_array": true
     },
@@ -5082,7 +5137,7 @@
       "description": "The CVSS vector string is a text representation of a set of CVSS metrics. It is commonly used to record or transfer CVSS metric information in a concise form. For example: <code>3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H</code>.",
       "type": "string_t"
     },
-    "vendor_attributes":{
+    "vendor_attributes": {
       "caption": "Vendor Attributes",
       "description": "The Vendor Attributes object can be used to represent values of attributes populated by the Vendor/Finding Provider. It can help distinguish between the vendor-prodvided values and consumer-updated values, of key attributes like <code>severity_id</code>.<br>The original finding producer should not populate this object. It should be populated by consuming systems that support data mutability.",
       "type": "vendor_attributes"

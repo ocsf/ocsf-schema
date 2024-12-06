@@ -50,6 +50,7 @@ Thankyou! -->
     1. Added `Startup Item Query` event class. #1119
     1. Added `Drone Flights Activity` event class to the Unmanned Systems category. #1169
     1. Added `Cloud Resources Inventory Info` event class to the Discovery category. #1250
+    1. Added `Airborne Broadcast Activity` event class to the Unmanned Systems category. #1253
 * #### Dictionary Attributes
     1. Added `has_mfa` as a `boolean_t`. #1155
     1. Added `environment_variables` as an array of `environment_variable` object. #1172
@@ -73,7 +74,11 @@ Thankyou! -->
     1. Added `group_provisioning_enabled`, `scim_group_schema`, `user_provisioning_enabled`, `scim_user_schema`, `scopes`, `idle_timeout`, `login_endpoint`, `logout_endpoint`, and `metadata_url` entries to the dictionary to support the new `scim` and `sso` objects. #1239
     1. Added new `11: Basic Authentication` enum value to `auth_protocol_id`. #1239
     1. Added `values` as an array of `string_t`. #1251
+    1. Added `kernel_release` as a `string_t`.
+    1. Added `domains` `files` `urls` and `message_trace_uid`. #1259
     1. Added `kernel_release` as a `string_t`. #1249
+    1. Added `os_machine_uuid` as a `uuid_t`.  #1268
+    1. Added `sbom`, `author`, `related_component`, `relationship`, `relationship_id` and `software_component` to support SBOMs. #1262
 * #### Objects
     1. Added `environment_variable` object. #1172
     1. Added `advisory` object. #1176
@@ -84,6 +89,8 @@ Thankyou! -->
     1. Added `scim` object. #1239
     1. Added `sso` object. #1239
     1. Added `vendor_attributes` object. #1257
+    1. Added `aircraft` object. #1253
+    1. Added `software_component` and `sbom` objects. #1262
 
 ### Improved
 * #### Event Classes
@@ -92,8 +99,11 @@ Thankyou! -->
     1. Added `risk_details` to `data_security_finding` class. #1178
     1. Removed constraint from `group_management` class. #1193
     1. Added `Archived|5` as an enum item to `status_id` attribute in Findings classes. #1219
+    1. Added a `Trace` `activity_id` to the `Email Activity` class. #1252
+    1. Added a `message_trace_uid` to the `Email Activity` class. #1259
     1. Added a `Trace`, `activity_id` to the `Email Activity` class. #1252
     1. Added `vendor_attributes` to all `Findings` Category classes. #1257
+    1. Added `sbom` to `Software Inventory Info` class. #1262
 * #### Profiles
     1. Added `is_alert`, `confidence_id`, `confidence`, `confidence_score` attributes to the `security_control` profile. #1178
     1. Added `risk_level_id`, `risk_level`, `risk_score`, `risk_details` attributes to the `security_control` profile.  #1178
@@ -130,7 +140,14 @@ Thankyou! -->
     1. Added `auth_factors`, `domain`, `fingerprint`, `has_mfa`, `issuer`, `protocol_name`, `scim`, `sso`, `state`, `state_id`, `tenant_uid`, and `uid` to `idp`. #1239
     1. Added `hostname`, `ip`, and `name` to `resource_details` for purposes of assigning an Observable number. #1250
     1. Added `values` to `key_value_object`. #1251
+    1. Added `kernel_release` to `os` object.
+    1. Added `domains`, `files`, `urls`, to the `Email` object. Relaxed requirements on the `from` and `to` attributes of the object and added the `at_least_one` constraint. #1259
     1. Added `kernel_release` to `os` object. #1249
+    1. Added `related_analytics` to `osint` object. #1264
+    1. Added `os_machine_uuid` to the `device` object. #1268
+    1. Added `uuid` to the `device_hw_info` object. #1268
+    1. `unmanned_aerial_system` now extends from `aircraft`. #1253
+    1. Added `references` meta data for `win/reg_key`, `win/reg_value`, `account`, `container`, `database`, `fingerprint`, `group`, `http_cookie`, `job`, `script` objects. #1266
 
 ### Bugfixes
 1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180
@@ -147,6 +164,8 @@ Thankyou! -->
 1. Deprecated `imei` in favor of `imei_list` in `device` object. #1225
 1. Deprecated `data_classification` in favor of `data_classifications` in the `data_classification` profile. #1245
 1. Deprecated activity_id `4|Suppressed` in the Data Security Finding event class. This shouldn't have been added when we first created it, as the right place for this info is `status_id`. #1245
+1. Deprecated `email_file_activity` and `email_url_activity` in favor of updated `email_activity`. #1259
+1. Deprecated `package` in `Software Inventory Info` in favour of `sbom`. #1262
 
 ### Misc
 1. Added `user.uid` as an Observable type - `type_id: 31`. #1155
@@ -180,6 +199,7 @@ Thankyou! -->
 1. In the metaschema, added support for `@deprecated` in enum values. #1237
 1. Fixed some more formatting of attribute descriptions in `dictionary.json` and `idp.json`. #1239
 1. Added `resource_details.name` as an Observable type `type_id: 38`. #1250
+1. Added 3 new enums (Registry Value, Registry Key, Command Line) to `osint.type_id` and added TLP:WHITE to `osint.tlp` enums. #1264
 
 ## [v1.3.0] - August 1st, 2024
 

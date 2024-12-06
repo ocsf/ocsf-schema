@@ -140,6 +140,11 @@
       "type": "agent",
       "is_array": true
     },
+    "aircraft": {
+      "caption": "Aircraft",
+      "description": "The Aircraft object represents any aircraft or otherwise airborne asset such as an unmanned system, airplane, balloon, spacecraft, or otherwise. The Aircraft object is intended to normalized data captured or otherwise logged from active radar, passive radar, multi-spectral systems, or the Automatic Dependant Broadcast - Surveillance (ADS-B), and/or Mode S systems.",
+      "type": "aircraft"
+    },
     "alert": {
       "caption": "Client TLS Alert",
       "description": "The integer value of TLS alert if present. The alerts are defined in the TLS specification in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc2246'>RFC-2246</a>.",
@@ -323,6 +328,11 @@
           "description": "The authentication type is not mapped. See the <code>auth_type</code> attribute, which contains a data source specific value."
         }
       }
+    },
+    "author": {
+      "caption": "Author",
+      "description": "The author(s) who published the software component.",
+      "type": "string_t"
     },
     "authorizations": {
       "caption": "Authorization Information",
@@ -1413,6 +1423,11 @@
       "description": "The <strong>Delivered-To</strong> email header field.",
       "type": "email_t"
     },
+    "related_component": {
+      "caption": "Related Component",
+      "description": "The package URL (PURL) of the component that this software component has a relationship with.",
+      "type": "string_t"
+    },
     "depth": {
       "caption": "CVSS Depth",
       "description": "The CVSS depth represents a depth of the equation used to calculate CVSS score.",
@@ -1783,7 +1798,7 @@
     },
     "domain": {
       "caption": "Domain",
-      "description": "The name of the domain.",
+      "description": "The name of the domain. See specific usage.",
       "type": "string_t"
     },
     "domain_contact": {
@@ -1795,6 +1810,12 @@
       "caption": "Domain Contacts",
       "description": "An array of <code>Domain Contact</code> objects.",
       "type": "domain_contact",
+      "is_array": true
+    },
+    "domains": {
+      "caption": "Domains",
+      "description": "The domains that pertain to the event or object. See specific usage.",
+      "type": "string_t",
       "is_array": true
     },
     "driver": {
@@ -2098,6 +2119,12 @@
       "caption": "File Result",
       "description": "The result of the file change. It should contain the new values of the changed attributes.",
       "type": "file"
+    },
+    "files": {
+      "caption": "Files",
+      "description": "The files that are part of the event or object.",
+      "type": "file",
+      "is_array": true
     },
     "finding": {
       "caption": "Finding",
@@ -3105,6 +3132,12 @@
       "description": "The description of the event/finding, as defined by the source.",
       "type": "string_t"
     },
+    "message_trace_uid": {
+      "caption": "Message Trace UID",
+      "description": "The identifier that tracks a message that travels through multiple points of a messaging service.",
+      "references": [{"url": "https://learn.microsoft.com/en-us/previous-versions/office/developer/o365-enterprise-developers/jj984335(v=office.15)", "description": "For example Office 365 Message Trace Report."}],
+      "type": "string_t"
+    },
     "message_uid": {
       "caption": "Message UID",
       "description": "The email header Message-ID value, as defined by RFC 5322.",
@@ -3374,6 +3407,11 @@
       "description": "The OSINT (Open Source Intelligence) object contains details related to an indicator such as the indicator itself, related indicators, geolocation, registrar information, subdomains, analyst commentary, and other contextual information. This information can be used to further enrich a detection or finding by providing decisioning support to other analysts and engineers.",
       "type": "osint",
       "is_array": true
+    },
+    "os_machine_uuid": {
+      "caption": "OS Machine UUID",
+      "description": "The operating system assigned Machine ID. In Windows, this is the value stored at the registry path: <code>HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography\\MachineGuid</code>. In Linux, this is stored in the file: <code>/etc/machine-id</code>.",
+      "type": "uuid_t"
     },
     "ou_name": {
       "caption": "Org Unit Name",
@@ -3973,6 +4011,31 @@
       "type": "string_t",
       "is_array": true
     },
+    "relationship": {
+      "caption": "Relationship",
+      "description": "The relationship between two software components, normalized to the caption of the <code>relationship_id</code> value. In the case of 'Other', it is defined by the source.",
+      "type": "string_t"
+    },
+    "relationship_id": {
+      "caption": "Relationship ID",
+      "description": "The normalized identifier of the relationship between two software components.",
+      "sibling": "relationship",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The relationship is unknown."
+        },
+        "1": {
+          "caption": "Depends On",
+          "description": "The component is a dependency of another component. Can be used to define both direct and transitive dependencies."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The relationship is not mapped. See the <code>relationship</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
     "relay": {
       "caption": "Relay",
       "description": "The network relay that is associated with the event.",
@@ -4112,6 +4175,11 @@
       "description": "The RPC Interface object describes the details pertaining to the remote procedure call interface.",
       "type": "rpc_interface"
     },
+    "rssi": {
+      "caption": "RSSI",
+      "description": "Received Signal Strength Indicator (RSSI) is a measurement of the power of a radio signal. See specific usage.",
+      "type": "integer_t"
+    },
     "rule": {
       "caption": "Rule",
       "description": "The rules that reported the events.",
@@ -4180,6 +4248,17 @@
       "caption": "Subject Alternative Names",
       "description": "The list of subject alternative names that are secured by a specific certificate.",
       "type": "san",
+      "is_array": true
+    },
+    "sbom": {
+      "caption": "Software Bill Of Materials",
+      "description": "The Software Bill of Materials (SBOM) object describes the characteristics of a generated SBOM for a software package.",
+      "type": "sbom"
+    },
+    "software_components": {
+      "caption": "Software Components",
+      "description": "The list of software components used in the software package.",
+      "type": "software_component",
       "is_array": true
     },
     "scale_factor": {
@@ -5083,6 +5162,12 @@
       "caption": "URL String",
       "description": "The URL string. See RFC 1738. For example: <code>http://www.example.com/download/trouble.exe</code>.",
       "type": "url_t"
+    },
+    "urls": {
+      "caption": "URLs",
+      "description": "The URLs that pertain to the event or object.",
+      "type": "url",
+      "is_array": true
     },
     "user": {
       "caption": "User",

@@ -79,6 +79,7 @@ Thankyou! -->
     1. Added `kernel_release` as a `string_t`. #1249
     1. Added `os_machine_uuid` as a `uuid_t`.  #1268
     1. Added `sbom`, `author`, `related_component`, `relationship`, `relationship_id` and `software_component` to support SBOMs. #1262
+    1. Added `related_events_count` as an `int_t`. #1271
 * #### Objects
     1. Added `environment_variable` object. #1172
     1. Added `advisory` object. #1176
@@ -149,7 +150,10 @@ Thankyou! -->
     1. Added `os_machine_uuid` to the `device` object. #1268
     1. Added `uuid` to the `device_hw_info` object. #1268
     1. `unmanned_aerial_system` now extends from `aircraft`. #1253
-    1. Added `references` meta data for `win/reg_key`, `win/reg_value`, `account`, `container`, `database`, `fingerprint`, `group`, `http_cookie`, `job`, `script` objects. #1266
+    1. Added `references` metadata for `win/reg_key`, `win/reg_value`, `account`, `container`, `database`, `fingerprint`, `group`, `http_cookie`, `job`, `script` objects. #1266
+    1. Added `cloud_partition` to the `cloud` object. #1271
+    1. Added `product`, `related_events_count`, `uid_alt`, `tags` to `finding_info` object. #1271
+    1. Added `count`, `created_time`, `desc`, `first_seen_time`, `last_seen_time`, `modified_time`, `product`, `severity`, `severity_id`, `tags` & `title` to `related_event` object. #1271
 
 ### Bugfixes
 1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180
@@ -168,6 +172,7 @@ Thankyou! -->
 1. Deprecated activity_id `4|Suppressed` in the Data Security Finding event class. This shouldn't have been added when we first created it, as the right place for this info is `status_id`. #1245
 1. Deprecated `email_file_activity` and `email_url_activity` in favor of updated `email_activity`. #1259
 1. Deprecated `package` in `Software Inventory Info` in favour of `sbom`. #1262
+1. Deprecated `product_uid` in favor of the `product` object. #1271
 
 ### Misc
 1. Added `user.uid` as an Observable type - `type_id: 31`. #1155
@@ -202,6 +207,7 @@ Thankyou! -->
 1. Fixed some more formatting of attribute descriptions in `dictionary.json` and `idp.json`. #1239
 1. Added `resource_details.name` as an Observable type `type_id: 38`. #1250
 1. Added 3 new enums (Registry Value, Registry Key, Command Line) to `osint.type_id` and added TLP:WHITE to `osint.tlp` enums. #1264
+1. Relaxed attribute requirement for `name` in `observables` object; `title` in `finding_info` object. #1271
 
 ## [v1.3.0] - August 1st, 2024
 

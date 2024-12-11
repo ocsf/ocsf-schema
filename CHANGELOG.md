@@ -93,6 +93,10 @@ Thankyou! -->
     1. Added `aircraft` object. #1253
     1. Added `software_component` and `sbom` objects. #1262
 
+* #### Metaschema
+    1. Added `ontology` metaschema elements. #1218
+
+
 ### Improved
 * #### Event Classes
     1. Added `evidences` to `compliance_finding` class. #1157

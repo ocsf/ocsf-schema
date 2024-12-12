@@ -1215,7 +1215,7 @@
     },
     "cpu_architecture": {
         "caption": "CPU Architecture",
-        "description": "The CPU architecture, as reported by the event source.",
+        "description": "The CPU architecture, normalized to the caption of the <code>cpu_architecture_id</code> value. In the case of <code>Other</code>, it is defined by the source.",
         "type": "string_t"
     },
     "cpu_architecture_id": {
@@ -1226,20 +1226,23 @@
       "enum": {
         "0": {
           "caption": "Unknown",
-          "description": "The cpu architecture is unknown."
+          "description": "The CPU architecture is unknown."
         },
         "1": {
-          "caption": "x86"
+          "caption": "x86",
+          "description": "CPU uses the x86 ISA. For bitness, refer to <code>cpu_bits</code>."
         },
         "2": {
-          "caption": "ARM"
+          "caption": "ARM",
+          "description": "CPU uses the ARM ISA. For bitness, refer to <code>cpu_bits</code>."
         },
         "3": {
-          "caption": "RISC-V"
+          "caption": "RISC-V",
+          "description": "CPU uses the RISC-V ISA. For bitness, refer to <code>cpu_bits</code>."
         },
         "99": {
           "caption": "Other",
-          "description": "The cpu architecture is not mapped. See the <code>cpu_architecture</code> attribute, which contains a data source specific value."
+          "description": "The CPU architecture is not mapped. See the <code>cpu_architecture</code> attribute, which contains a data source specific value."
         }
       }
     },

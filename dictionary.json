@@ -1818,6 +1818,47 @@
       "type": "string_t",
       "is_array": true
     },
+    "drive_type": {
+      "caption": "Drive Type",
+      "description": "The type of drive where the file is located. For example: <code>unknown</code>, <code>removable</code>, <code>fixed</code>, <code>remote</code>, or <code>other</code>.",
+      "type": "string_t"
+    },
+    "drive_type_id" : {
+      "caption": "Drive Type ID",
+      "description": "The drive type id where the file is located.",
+      "sibling": "drive_type",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The drive type is unknown."
+        },
+        "1": {
+          "caption": "Removable",
+          "description": "File is located on removable media like a USB stick."
+        },
+        "2": {
+          "caption": "Fixed",
+          "description": "File is located on a fixed drive, such as a hard disk."
+        },
+        "3": {
+          "caption": "Remote",
+          "description": "File is located on a remote drive, such as a network share."
+        },
+        "4": {
+          "caption": "CD-ROM",
+          "description": "File is located on a CD-ROM drive."
+        },
+        "5": {
+          "caption": "Ram Disk",
+          "description": "File resides on a RAM disk."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The drive type is not mapped. See the <code>drive_type</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
     "driver": {
       "caption": "Kernel Driver",
       "description": "The driver that was loaded/unloaded into the kernel",

@@ -176,6 +176,7 @@ Thankyou! -->
 1. Deprecated `email_file_activity` and `email_url_activity` in favor of updated `email_activity`. #1259
 1. Deprecated `package` in `Software Inventory Info` in favour of `sbom`. #1262
 1. Deprecated `product_uid` in favor of the `product` object. #1271
+1. Deprecated `policy` in favor of `policies` in `Account Change` class. #1282
 
 ### Misc
 1. Added `user.uid` as an Observable type - `type_id: 31`. #1155

@@ -92,6 +92,7 @@ Thankyou! -->
     1. Added `vendor_attributes` object. #1257
     1. Added `aircraft` object. #1253
     1. Added `software_component` and `sbom` objects. #1262
+    1. Added `drive_type` and `drive_type_id` objects. #1287
 
 ### Improved
 * #### Event Classes
@@ -156,6 +157,7 @@ Thankyou! -->
     1. Added `cloud_partition` to the `cloud` object. #1271
     1. Added `product`, `related_events_count`, `uid_alt`, `tags` to `finding_info` object. #1271
     1. Added `count`, `created_time`, `desc`, `first_seen_time`, `last_seen_time`, `modified_time`, `product`, `severity`, `severity_id`, `tags` & `title` to `related_event` object. #1271
+    1. Added `drive_type` and `drive_type_id` to the `file` object. #1287
 
 ### Bugfixes
 1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180

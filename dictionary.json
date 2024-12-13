@@ -1818,6 +1818,47 @@
       "type": "string_t",
       "is_array": true
     },
+    "drive_type": {
+      "caption": "Drive Type",
+      "description": "The drive type, normalized to the caption of the <code>drive_type_id</code> value. In the case of <code>Other</code>, it is defined by the source.",
+      "type": "string_t"
+    },
+    "drive_type_id" : {
+      "caption": "Drive Type ID",
+      "description": "Identifies the type of a disk drive, i.e. fixed, removable, etc.",
+      "sibling": "drive_type",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The drive type is unknown."
+        },
+        "1": {
+          "caption": "Removable",
+          "description": "The drive has removable media; for example, a floppy drive, thumb drive, or flash card reader."
+        },
+        "2": {
+          "caption": "Fixed",
+          "description": "The drive has fixed media; for example, a hard disk drive or flash drive."
+        },
+        "3": {
+          "caption": "Remote",
+          "description": "The drive is a remote (network) drive."
+        },
+        "4": {
+          "caption": "CD-ROM",
+          "description": "The drive is a CD-ROM drive."
+        },
+        "5": {
+          "caption": "RAM Disk",
+          "description": "The drive is a RAM disk."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The drive type is not mapped. See the <code>drive_type</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
     "driver": {
       "caption": "Kernel Driver",
       "description": "The driver that was loaded/unloaded into the kernel",

@@ -1820,12 +1820,12 @@
     },
     "drive_type": {
       "caption": "Drive Type",
-      "description": "The type of drive where the file is located. For example: <code>unknown</code>, <code>removable</code>, <code>fixed</code>, <code>remote</code>, or <code>other</code>.",
+      "description": "The drive type, normalized to the caption of the <code>drive_type_id</code> value. In the case of <code>Other</code>, it is defined by the source.",
       "type": "string_t"
     },
     "drive_type_id" : {
       "caption": "Drive Type ID",
-      "description": "The drive type id where the file is located.",
+      "description": "Identifies the type of a disk drive, i.e. fixed, removable, etc.",
       "sibling": "drive_type",
       "type": "integer_t",
       "enum": {
@@ -1835,19 +1835,23 @@
         },
         "1": {
           "caption": "Removable",
-          "description": "File is located on removable media like a USB stick."
+          "description": "The drive has removable media; for example, a floppy drive, thumb drive, or flash card reader."
         },
         "2": {
           "caption": "Fixed",
-          "description": "File is located on a fixed drive, such as a hard disk."
+          "description": "The drive has fixed media; for example, a hard disk drive or flash drive."
         },
         "3": {
           "caption": "Remote",
-          "description": "File is located on a remote drive, such as a network share."
+          "description": "The drive is a remote (network) drive."
         },
         "4": {
-          "caption": "Ram Disk",
-          "description": "File resides on a RAM disk."
+          "caption": "CD-ROM",
+          "description": "The drive is a CD-ROM drive."
+        },
+        "5": {
+          "caption": "RAM Disk",
+          "description": "The drive is a RAM disk."
         },
         "99": {
           "caption": "Other",

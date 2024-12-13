@@ -110,12 +110,17 @@ Thankyou! -->
     1. Relaxed requirements on the `http_request` and `http_response` attributes in the `http_activity` event class and added an `at_least_one` constraint with these attributes. #1274
     1. Add `host` profile to base_event.json and remove this profile elsewhere in the event hierarchy. #1280
     1. Add the `actor` attribute to the IAM base event. #1280
+
     1. Add `policies` to `Account Change` class. #1282
+    1. Add `security_control` profile to base_event.json and remove this profile elsewhere in the event hierarchy. #1281
+    1. Add `policies` to `Account Change` class. #1282
+    1. Add `Unlock` activity to `account_change` class. #1285
 * #### Profiles
     1. Added `is_alert`, `confidence_id`, `confidence`, `confidence_score` attributes to the `security_control` profile. #1178
     1. Added `risk_level_id`, `risk_level`, `risk_score`, `risk_details` attributes to the `security_control` profile.  #1178
     1. Added `policy` attribute to the `security_control` profile. #1178
     1. Added enum values to `action_id` of 'Observed', 'Modified', and 'Unknown'. #1265
+    1. Update `action_id` optionality to `recommended` in the `security_control` profile #1281
 * #### Objects
     1. Added `phone_number` to `user` and `ldap_person` objects. #1155
     1. Added `has_mfa` to `user` object. #1155

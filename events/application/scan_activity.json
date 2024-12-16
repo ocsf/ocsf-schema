@@ -5,9 +5,6 @@
   "extends": "application",
   "name": "scan_activity",
   "attributes": {
-    "$include": [
-      "profiles/host.json"
-    ],
     "activity_id": {
       "enum": {
         "1": {
@@ -104,7 +101,8 @@
     "policy": {
       "description": "The policy associated with this Scan event; required if the scan was initiated by a policy.",
       "group": "primary",
-      "requirement": "recommended"
+      "requirement": "recommended",
+      "profile": null
     },
     "scan": {
       "description": "The Scan object describes characteristics of the scan job.",
@@ -124,8 +122,5 @@
       "group": "primary",
       "requirement": "recommended"
     }
-  },
-  "profiles": [
-    "host"
-  ]
+  }
 }

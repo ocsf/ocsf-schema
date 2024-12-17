@@ -53,6 +53,7 @@ Thankyou! -->
     1. Added `Airborne Broadcast Activity` event class to the Unmanned Systems category. #1253
 * #### Dictionary Attributes
     1. Added `has_mfa` as a `boolean_t`. #1155
+    1. Added `environment_variables` as an array of `environment_variable` object. #1172
     1. Added `forward_addr` as an `email_t`. #1179
     1. Added `related_cves`, `related_cwes` as arrays of `cve`, `cwe` objects respectively. #1176
     1. Added `exploit_last_seen_time` as a `timestamp_t`. #1176
@@ -79,7 +80,7 @@ Thankyou! -->
     1. Added `sbom`, `author`, `related_component`, `relationship`, `relationship_id` and `software_component` to support SBOMs. #1262
     1. Added `related_events_count` as an `int_t`. #1271
 * #### Objects
-    1. Added `environment_variable` object. #1172
+    1. Added `environment_variable` object. #1172, #1288
     1. Added `advisory` object. #1176
     1. Added a generic `key_value_object` object. #1219
     1. Added `unmanned_aerial_system` and `unmanned_system_operating_area` objects. #1169

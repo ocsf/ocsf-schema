@@ -5,6 +5,9 @@
     "extends": "application",
     "name": "api_activity",
     "attributes": {
+        "$include": [
+          "profiles/trace.json"
+        ],
         "activity_id": {
             "enum": {
                 "1": {
@@ -27,7 +30,8 @@
         },
         "actor": {
             "group": "primary",
-            "requirement": "required"
+            "requirement": "required",
+            "profile": null
         },
         "api": {
             "group": "primary",
@@ -58,5 +62,8 @@
             "group": "primary",
             "requirement": "required"
         }
-    }
+    },
+    "profiles": [
+      "trace"
+  ]
 }

@@ -2,14 +2,10 @@
   "uid": 9,
   "caption": "Email Activity",
   "category": "network",
-  "description": "Email events report activities of emails.",
+  "description": "Email Activity events report SMTP protocol and email activities including those with embedded URLs and files. See the <code>Email</code> object for details.",
   "extends": "base_event",
   "name": "email_activity",
   "attributes": {
-    "$include": [
-      "profiles/host.json",
-      "profiles/security_control.json"
-    ],
     "activity_id": {
       "requirement": "optional",
       "enum": {
@@ -25,7 +21,8 @@
         },
         "4": {
           "caption": "Trace",
-          "description": "Follow an email message as it travels through an organization. For example: <a target='_blank' href='https://learn.microsoft.com/en-us/Exchange/monitoring/trace-an-email-message/message-trace-modern-eac'>O365 Email Message Trace</a>."
+          "description": "Follow an email message as it travels through an organization. The <code>message_trace_uid</code> should be populated when selected.",
+          "references": [{"url": "href='https://learn.microsoft.com/en-us/Exchange/monitoring/trace-an-email-message/message-trace-modern-eac", "description": "For example Office 365 Email Message Trace"}]
         }
       }
     },
@@ -82,6 +79,13 @@
       "group": "primary",
       "requirement": "recommended"
     },
+    "email_uid": {
+      "group": "primary"
+    },
+    "message_trace_uid": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
     "smtp_hello": {
       "description": "The value of the SMTP HELO or EHLO command sent by the initiator (client).",
       "group": "primary",
@@ -92,9 +96,5 @@
       "group": "primary",
       "requirement": "recommended"
     }
-  },
-  "profiles": [
-    "host",
-    "security_control"
-  ]
+  }
 }

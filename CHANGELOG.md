@@ -67,8 +67,7 @@ Thankyou! -->
     1. Added `location` to the `managed_entity` object. #1169
     1. Added `unmanned_system_operator` to the dictionary, extends `user`. #1169
     1. Added `locations` to the dictionary, an array type of the `location` object, used within the new `operating_area` object. #1169
-    1. Added `altitude_ceiling`, `altitude_floor`, `geodetic_altitude`, `aerial_height`, `horizontal_accuracy`, `pressure_altitude`, `radius`, `speed`, `track_direction`, and `vertical_speed` all to support `operating_area` and `unmanned_aerial_system` objects. #1169
-    1. Added `variable_name` and `variable_value` as `long_string`. #1228
+    1. Added `altitude_ceiling`, `altitude_floor`, `geodetic_altitude`, `aerial_height`, `horizontal_accuracy`, `pressure_altitude`, `radius`, `speed`, `track_direction`, and `vertical_speed` all to support `operating_area` and `unmanned_aerial_system` objects. #1169 
     1. Added `imei_list` as an array `string_t`. #1225
     1. Added `is_encrypted` as `boolean_t`; `column_name`, `cell_name`, `storage_class`, `key_uid`, `json_path` as `string_t` & `column_number`, `row_number`, `page_number`, `record_index_in_array` as `integer_t`. #1245
     1. Added `group_provisioning_enabled`, `scim_group_schema`, `user_provisioning_enabled`, `scim_user_schema`, `scopes`, `idle_timeout`, `login_endpoint`, `logout_endpoint`, and `metadata_url` entries to the dictionary to support the new `scim` and `sso` objects. #1239
@@ -81,7 +80,7 @@ Thankyou! -->
     1. Added `sbom`, `author`, `related_component`, `relationship`, `relationship_id` and `software_component` to support SBOMs. #1262
     1. Added `related_events_count` as an `int_t`. #1271
 * #### Objects
-    1. Added `environment_variable` object. #1172
+    1. Added `environment_variable` object. #1172, #1288
     1. Added `advisory` object. #1176
     1. Added a generic `key_value_object` object. #1219
     1. Added `unmanned_aerial_system` and `unmanned_system_operating_area` objects. #1169
@@ -111,8 +110,6 @@ Thankyou! -->
     1. Relaxed requirements on the `http_request` and `http_response` attributes in the `http_activity` event class and added an `at_least_one` constraint with these attributes. #1274
     1. Add `host` profile to base_event.json and remove this profile elsewhere in the event hierarchy. #1280
     1. Add the `actor` attribute to the IAM base event. #1280
-
-    1. Add `policies` to `Account Change` class. #1282
     1. Add `security_control` profile to base_event.json and remove this profile elsewhere in the event hierarchy. #1281
     1. Add `policies` to `Account Change` class. #1282
     1. Add `Unlock` activity to `account_change` class. #1285

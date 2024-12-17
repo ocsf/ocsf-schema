@@ -53,7 +53,6 @@ Thankyou! -->
     1. Added `Airborne Broadcast Activity` event class to the Unmanned Systems category. #1253
 * #### Dictionary Attributes
     1. Added `has_mfa` as a `boolean_t`. #1155
-    1. Added `environment_variables` as an array of `environment_variable` object. #1172
     1. Added `forward_addr` as an `email_t`. #1179
     1. Added `related_cves`, `related_cwes` as arrays of `cve`, `cwe` objects respectively. #1176
     1. Added `exploit_last_seen_time` as a `timestamp_t`. #1176
@@ -68,7 +67,6 @@ Thankyou! -->
     1. Added `unmanned_system_operator` to the dictionary, extends `user`. #1169
     1. Added `locations` to the dictionary, an array type of the `location` object, used within the new `operating_area` object. #1169
     1. Added `altitude_ceiling`, `altitude_floor`, `geodetic_altitude`, `aerial_height`, `horizontal_accuracy`, `pressure_altitude`, `radius`, `speed`, `track_direction`, and `vertical_speed` all to support `operating_area` and `unmanned_aerial_system` objects. #1169 
-    1. Added `variable_name` and `variable_value` as `long_string`. #1228
     1. Added `imei_list` as an array `string_t`. #1225
     1. Added `is_encrypted` as `boolean_t`; `column_name`, `cell_name`, `storage_class`, `key_uid`, `json_path` as `string_t` & `column_number`, `row_number`, `page_number`, `record_index_in_array` as `integer_t`. #1245
     1. Added `group_provisioning_enabled`, `scim_group_schema`, `user_provisioning_enabled`, `scim_user_schema`, `scopes`, `idle_timeout`, `login_endpoint`, `logout_endpoint`, and `metadata_url` entries to the dictionary to support the new `scim` and `sso` objects. #1239

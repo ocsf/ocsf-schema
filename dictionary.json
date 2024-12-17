@@ -1213,6 +1213,39 @@
       "description": "The ISO 3166-1 Alpha-2 country code.<p><b>Note:</b> The two letter country code should be capitalized. For example: <code>US</code> or <code>CA</code>.</p>",
       "type": "string_t"
     },
+    "cpu_architecture": {
+        "caption": "CPU Architecture",
+        "description": "The CPU architecture, normalized to the caption of the <code>cpu_architecture_id</code> value. In the case of <code>Other</code>, it is defined by the source.",
+        "type": "string_t"
+    },
+    "cpu_architecture_id": {
+      "caption": "CPU Architecture ID",
+      "description": "The normalized identifier of the CPU architecture.",
+      "sibling": "cpu_architecture",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The CPU architecture is unknown."
+        },
+        "1": {
+          "caption": "x86",
+          "description": "CPU uses the x86 ISA. For bitness, refer to <code>cpu_bits</code>."
+        },
+        "2": {
+          "caption": "ARM",
+          "description": "CPU uses the ARM ISA. For bitness, refer to <code>cpu_bits</code>."
+        },
+        "3": {
+          "caption": "RISC-V",
+          "description": "CPU uses the RISC-V ISA. For bitness, refer to <code>cpu_bits</code>."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The CPU architecture is not mapped. See the <code>cpu_architecture</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
     "cpe_name": {
       "caption": "The product CPE identifier",
       "description": "The Common Platform Enumeration (CPE) name as described by (<a target='_blank' href='https://nvd.nist.gov/products/cpe'>NIST</a>) For example: <code>cpe:/a:apple:safari:16.2</code>.",

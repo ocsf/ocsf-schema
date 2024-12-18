@@ -234,7 +234,7 @@
     },
     "attacks": {
       "caption": "MITRE ATT&CK® Details",
-      "description": "An array of <a target='_blank' href='https://attack.mitre.org'>MITRE ATT&CK®</a> objects describing the tactics, techniques & sub-techniques identified by a security control or finding.",
+      "description": "An array of <a target='_blank' href='https://attack.mitre.org'>MITRE ATT&CK®</a> objects describing identified tactics, techniques & sub-techniques.",
       "type": "attack",
       "is_array": true
     },
@@ -1213,6 +1213,39 @@
       "description": "The ISO 3166-1 Alpha-2 country code.<p><b>Note:</b> The two letter country code should be capitalized. For example: <code>US</code> or <code>CA</code>.</p>",
       "type": "string_t"
     },
+    "cpu_architecture": {
+        "caption": "CPU Architecture",
+        "description": "The CPU architecture, normalized to the caption of the <code>cpu_architecture_id</code> value. In the case of <code>Other</code>, it is defined by the source.",
+        "type": "string_t"
+    },
+    "cpu_architecture_id": {
+      "caption": "CPU Architecture ID",
+      "description": "The normalized identifier of the CPU architecture.",
+      "sibling": "cpu_architecture",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The CPU architecture is unknown."
+        },
+        "1": {
+          "caption": "x86",
+          "description": "CPU uses the x86 ISA. For bitness, refer to <code>cpu_bits</code>."
+        },
+        "2": {
+          "caption": "ARM",
+          "description": "CPU uses the ARM ISA. For bitness, refer to <code>cpu_bits</code>."
+        },
+        "3": {
+          "caption": "RISC-V",
+          "description": "CPU uses the RISC-V ISA. For bitness, refer to <code>cpu_bits</code>."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The CPU architecture is not mapped. See the <code>cpu_architecture</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
     "cpe_name": {
       "caption": "The product CPE identifier",
       "description": "The Common Platform Enumeration (CPE) name as described by (<a target='_blank' href='https://nvd.nist.gov/products/cpe'>NIST</a>) For example: <code>cpe:/a:apple:safari:16.2</code>.",
@@ -1817,6 +1850,47 @@
       "description": "The domains that pertain to the event or object. See specific usage.",
       "type": "string_t",
       "is_array": true
+    },
+    "drive_type": {
+      "caption": "Drive Type",
+      "description": "The drive type, normalized to the caption of the <code>drive_type_id</code> value. In the case of <code>Other</code>, it is defined by the source.",
+      "type": "string_t"
+    },
+    "drive_type_id" : {
+      "caption": "Drive Type ID",
+      "description": "Identifies the type of a disk drive, i.e. fixed, removable, etc.",
+      "sibling": "drive_type",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The drive type is unknown."
+        },
+        "1": {
+          "caption": "Removable",
+          "description": "The drive has removable media; for example, a floppy drive, thumb drive, or flash card reader."
+        },
+        "2": {
+          "caption": "Fixed",
+          "description": "The drive has fixed media; for example, a hard disk drive or flash drive."
+        },
+        "3": {
+          "caption": "Remote",
+          "description": "The drive is a remote (network) drive."
+        },
+        "4": {
+          "caption": "CD-ROM",
+          "description": "The drive is a CD-ROM drive."
+        },
+        "5": {
+          "caption": "RAM Disk",
+          "description": "The drive is a RAM disk."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The drive type is not mapped. See the <code>drive_type</code> attribute, which contains a data source specific value."
+        }
+      }
     },
     "driver": {
       "caption": "Kernel Driver",
@@ -5206,16 +5280,6 @@
       "description": "An array of values associated to an attribute. See specific usage.",
       "type": "string_t",
       "is_array": true
-    },
-    "variable_name": {
-      "caption": "Variable Name",
-      "description": "The name of a variable. See specific usage.",
-      "type": "long_string"
-    },
-    "variable_value": {
-      "caption": "Variable Value",
-      "description": "The value of a variable. See specific usage.",
-      "type": "long_string"
     },
     "vector_string": {
       "caption": "Vector String",

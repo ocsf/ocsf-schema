@@ -109,6 +109,7 @@ Thankyou! -->
     1. Relaxed requirements on the `http_request` and `http_response` attributes in the `http_activity` event class and added an `at_least_one` constraint with these attributes. #1274
     1. Add `host` profile to base_event.json and remove this profile elsewhere in the event hierarchy. #1280
     1. Add the `actor` attribute to the IAM base event. #1280
+    1. Add the `evidences` object to the `Incident Finding` class.
 * #### Profiles
     1. Added `is_alert`, `confidence_id`, `confidence`, `confidence_score` attributes to the `security_control` profile. #1178
     1. Added `risk_level_id`, `risk_level`, `risk_score`, `risk_details` attributes to the `security_control` profile.  #1178

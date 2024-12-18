@@ -163,6 +163,8 @@ Thankyou! -->
     1. Added `count`, `created_time`, `desc`, `first_seen_time`, `last_seen_time`, `modified_time`, `product`, `severity`, `severity_id`, `tags` & `title` to `related_event` object. #1271
     1. Added `drive_type` and `drive_type_id` to the `file` object. #1287
     1. Added `cpu_architecture` and `cpu_architecture_id` to `device_hw_info` object. #1278
+    1. Added `name` to `script` object. #1284
+
 
 ### Bugfixes
 1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180

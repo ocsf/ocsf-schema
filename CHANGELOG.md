@@ -79,6 +79,7 @@ Thankyou! -->
     1. Added `os_machine_uuid` as a `uuid_t`.  #1268
     1. Added `sbom`, `author`, `related_component`, `relationship`, `relationship_id` and `software_component` to support SBOMs. #1262
     1. Added `related_events_count` as an `int_t`. #1271
+    1. Added `lineage_uids` as an array of `string_t` to process object. #1276
 * #### Objects
     1. Added `environment_variable` object. #1172, #1288
     1. Added `advisory` object. #1176

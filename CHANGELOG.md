@@ -113,6 +113,7 @@ Thankyou! -->
     1. Add `security_control` profile to base_event.json and remove this profile elsewhere in the event hierarchy. #1281
     1. Add `policies` to `Account Change` class. #1282
     1. Add `Unlock` activity to `account_change` class. #1285
+    1. Add the `evidences` object to the `Incident Finding` class. #1292
 * #### Profiles
     1. Added `is_alert`, `confidence_id`, `confidence`, `confidence_score` attributes to the `security_control` profile. #1178
     1. Added `risk_level_id`, `risk_level`, `risk_score`, `risk_details` attributes to the `security_control` profile.  #1178

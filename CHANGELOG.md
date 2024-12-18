@@ -94,6 +94,10 @@ Thankyou! -->
     1. Added `drive_type` and `drive_type_id` objects. #1287
     1. Added `cpu_architecture` and `cpu_architecture_id` objects. #1278
 
+* #### Metaschema
+    1. Added `ontology` metaschema elements. #1218
+
+
 ### Improved
 * #### Event Classes
     1. Added `evidences` to `compliance_finding` class. #1157

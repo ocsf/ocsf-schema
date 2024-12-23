@@ -1,0 +1,25 @@
+{
+  "uid": 8,
+  "caption": "Application Error",
+  "description": "Application Errors events describe issues with an application that generates OCSF events.",
+  "extends": "application",
+  "name": "application_error",
+  "attributes": {
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "General Error",
+          "description": "The application generating OCSF events has experienced an error."
+        },
+        "2": {
+          "caption": "Translation Error",
+          "description": "The application generating OCSF events had encountered an error translating (mapping) a raw event to OCSF. Including the original raw event in the raw_data field is highly recommended."
+        }
+      }
+    },
+    "raw_data": {
+      "group": "primary",
+      "requirement": "recommended"
+    }
+  }
+}

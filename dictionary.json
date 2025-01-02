@@ -186,6 +186,12 @@
       "description": "The analytic technique used to analyze and derive insights from the data or information that led to the finding or conclusion.",
       "type": "analytic"
     },
+    "ancestry": {
+      "caption": "Ancestry",
+      "description": "An array of Process Entities describing the extended parentage of this process object. Direct parent information sould be expressed through the <code>parent_process</code> attribute. The first array element is the direct parent of this process object. Subsequent list elements go up the process parentage hierarchy. That is, the array is sorted from newest to oldest process. It is recommended to only populate this field for the top-level process object.",
+      "type": "process_entity",
+      "is_array": true
+    },
     "answers": {
       "caption": "DNS Answer",
       "description": "The Domain Name System (DNS) answers.",
@@ -3570,7 +3576,7 @@
     },
     "parent_process": {
       "caption": "Parent Process",
-      "description": "The parent process of this process object. It is recommended to only populate this field for the first process object, to prevent deep nesting.",
+      "description": "The parent process of this process object. It is recommended to only populate this field for the top-level process object, to prevent deep nesting. Additional ancestry information can be supplied in the <code>ancestry</code> attribute.",
       "type": "process"
     },
     "parent_uid": {

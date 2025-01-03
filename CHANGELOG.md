@@ -220,6 +220,7 @@ Thankyou! -->
 1. Added `resource_details.name` as an Observable type `type_id: 38`. #1250
 1. Added 3 new enums (Registry Value, Registry Key, Command Line) to `osint.type_id` and added TLP:WHITE to `osint.tlp` enums. #1264
 1. Relaxed attribute requirement for `name` in `observables` object; `title` in `finding_info` object. #1271
+1. Relaxed attribute requirement for `vendor_name` in the `product` object. #1300
 
 ## [v1.3.0] - August 1st, 2024
 

@@ -168,6 +168,7 @@ Thankyou! -->
     1. Added `drive_type` and `drive_type_id` to the `file` object. #1287
     1. Added `cpu_architecture` and `cpu_architecture_id` to `device_hw_info` object. #1278
     1. Added `name` to `script` object. #1284
+    1. Added optional `url` attribute to the `file` object. This was allows capturing a file's URL in the File Hosting Activity (6006) event class. #1289
 
 
 ### Bugfixes

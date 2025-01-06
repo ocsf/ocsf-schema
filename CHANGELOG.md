@@ -51,6 +51,7 @@ Thankyou! -->
     1. Added `Drone Flights Activity` event class to the Unmanned Systems category. #1169
     1. Added `Cloud Resources Inventory Info` event class to the Discovery category. #1250
     1. Added `Airborne Broadcast Activity` event class to the Unmanned Systems category. #1253
+    1. Added `Application Error` event class to the Application Activity category. #1299
 * #### Dictionary Attributes
     1. Added `has_mfa` as a `boolean_t`. #1155
     1. Added `environment_variables` as an array of `environment_variable` object. #1172

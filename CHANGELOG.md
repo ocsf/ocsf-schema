@@ -46,11 +46,12 @@ Thankyou! -->
     1. Added new `Unmanned Systems` Category. #1169
 * #### Event Classes
     1. Added `OSINT Inventory Info` event class to the Discovery category. #1154
-    1. Added `Script Activity` event class to the System category. #1159
+    1. Added `Script Activity` event class to the System Activity category. #1159
     1. Added `Startup Item Query` event class. #1119
     1. Added `Drone Flights Activity` event class to the Unmanned Systems category. #1169
     1. Added `Cloud Resources Inventory Info` event class to the Discovery category. #1250
     1. Added `Airborne Broadcast Activity` event class to the Unmanned Systems category. #1253
+    1. Added `File Access Check` event class to the System Activity category. #1297
 * #### Dictionary Attributes
     1. Added `has_mfa` as a `boolean_t`. #1155
     1. Added `environment_variables` as an array of `environment_variable` object. #1172

@@ -140,11 +140,6 @@
       "type": "agent",
       "is_array": true
     },
-    "aircraft": {
-      "caption": "Aircraft",
-      "description": "The Aircraft object represents any aircraft or otherwise airborne asset such as an unmanned system, airplane, balloon, spacecraft, or otherwise. The Aircraft object is intended to normalized data captured or otherwise logged from active radar, passive radar, multi-spectral systems, or the Automatic Dependant Broadcast - Surveillance (ADS-B), and/or Mode S systems.",
-      "type": "aircraft"
-    },
     "alert": {
       "caption": "Client TLS Alert",
       "description": "The integer value of TLS alert if present. The alerts are defined in the TLS specification in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc2246'>RFC-2246</a>.",
@@ -234,7 +229,7 @@
     },
     "attacks": {
       "caption": "MITRE ATT&CK® Details",
-      "description": "An array of <a target='_blank' href='https://attack.mitre.org'>MITRE ATT&CK®</a> objects describing identified tactics, techniques & sub-techniques.",
+      "description": "An array of <a target='_blank' href='https://attack.mitre.org'>MITRE ATT&CK®</a> objects describing the tactics, techniques & sub-techniques identified by a security control or finding.",
       "type": "attack",
       "is_array": true
     },
@@ -256,7 +251,7 @@
     },
     "auth_protocol": {
       "caption": "Auth Protocol",
-      "description": "The authentication protocol as defined by the caption of <code>auth_protocol_id</code>. In the case of <code>Other</code>, it is defined by the event source.",
+      "description": "The authentication protocol as defined by the caption of 'auth_protocol_id'. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "auth_protocol_id": {
@@ -299,9 +294,6 @@
         "10": {
           "caption": "RADIUS"
         },
-        "11": {
-          "caption": "Basic Authentication"
-        },
         "99": {
           "caption": "Other",
           "description": "The authentication protocol is not mapped. See the <code>auth_protocol</code> attribute, which contains a data source specific value."
@@ -328,11 +320,6 @@
           "description": "The authentication type is not mapped. See the <code>auth_type</code> attribute, which contains a data source specific value."
         }
       }
-    },
-    "author": {
-      "caption": "Author",
-      "description": "The author(s) who published the software component.",
-      "type": "string_t"
     },
     "authorizations": {
       "caption": "Authorization Information",
@@ -799,19 +786,8 @@
     "cc": {
       "caption": "Cc",
       "description": "The email header Cc values, as defined by RFC 5322.",
-      "references": [
-        {
-          "url": "https://www.rfc-editor.org/rfc/rfc5322",
-          "description": "RFC 5322"
-        }
-      ],
       "type": "email_t",
       "is_array": true
-    },
-    "cell_name": {
-      "caption": "Cell Name",
-      "description": "The name of the cell. See specific usage.",
-      "type": "string_t"
     },
     "certificate": {
       "caption": "Certificate",
@@ -920,11 +896,6 @@
       "type": "string_t",
       "is_array": true
     },
-    "classifier_details": {
-      "caption": "Classifier Details",
-      "description": "Describes details about the classifier used for data classification.",
-      "type": "classifier_details"
-    },
     "client_ciphers": {
       "caption": "Client Cipher Suites",
       "description": "The client cipher suites that were exchanged during the TLS handshake negotiation.",
@@ -972,16 +943,6 @@
     "color_depth": {
       "caption": "Color Depth",
       "description": "The numeric color depth.",
-      "type": "integer_t"
-    },
-    "column_name": {
-      "caption": "Column Name",
-      "description": "The name of the column. See specific usage.",
-      "type": "string_t"
-    },
-    "column_number": {
-      "caption": "Column Number",
-      "description": "The number of the column. See specific usage.",
       "type": "integer_t"
     },
     "command": {
@@ -1204,47 +1165,8 @@
     "country": {
       "observable": 14,
       "caption": "Country",
-      "references": [
-        {
-          "url": "https://www.iso.org/obp/ui/#iso:pub:PUB500001:en",
-          "description": "ISO 3166-1 alpha-2 codes"
-        }
-      ],
-      "description": "The ISO 3166-1 Alpha-2 country code.<p><b>Note:</b> The two letter country code should be capitalized. For example: <code>US</code> or <code>CA</code>.</p>",
+      "description": "The ISO 3166-1 Alpha-2 country code. For the complete list of country codes see <a target='_blank' href='https://www.iso.org/obp/ui/#iso:pub:PUB500001:en' >ISO 3166-1 alpha-2 codes</a>.<p><b>Note:</b> The two letter country code should be capitalized. For example: <code>US</code> or <code>CA</code>.</p>",
       "type": "string_t"
-    },
-    "cpu_architecture": {
-        "caption": "CPU Architecture",
-        "description": "The CPU architecture, normalized to the caption of the <code>cpu_architecture_id</code> value. In the case of <code>Other</code>, it is defined by the source.",
-        "type": "string_t"
-    },
-    "cpu_architecture_id": {
-      "caption": "CPU Architecture ID",
-      "description": "The normalized identifier of the CPU architecture.",
-      "sibling": "cpu_architecture",
-      "type": "integer_t",
-      "enum": {
-        "0": {
-          "caption": "Unknown",
-          "description": "The CPU architecture is unknown."
-        },
-        "1": {
-          "caption": "x86",
-          "description": "CPU uses the x86 ISA. For bitness, refer to <code>cpu_bits</code>."
-        },
-        "2": {
-          "caption": "ARM",
-          "description": "CPU uses the ARM ISA. For bitness, refer to <code>cpu_bits</code>."
-        },
-        "3": {
-          "caption": "RISC-V",
-          "description": "CPU uses the RISC-V ISA. For bitness, refer to <code>cpu_bits</code>."
-        },
-        "99": {
-          "caption": "Other",
-          "description": "The CPU architecture is not mapped. See the <code>cpu_architecture</code> attribute, which contains a data source specific value."
-        }
-      }
     },
     "cpe_name": {
       "caption": "The product CPE identifier",
@@ -1371,12 +1293,6 @@
       "description": "The Data Classification object includes information about data classification levels and data category types.",
       "type": "data_classification"
     },
-    "data_classifications": {
-      "caption": "Data Classification",
-      "description": "A list of Data Classification objects, that include information about data classification levels and data category types, indentified by a classifier.",
-      "type": "data_classification",
-      "is_array": true
-    },
     "data_lifecycle_state": {
       "caption": "Data Lifecycle State",
       "description": "The name of the stage or state that the data was in. E.g., Data-at-Rest, Data-in-Transit, etc.",
@@ -1455,11 +1371,6 @@
       "caption": "Delivered To",
       "description": "The <strong>Delivered-To</strong> email header field.",
       "type": "email_t"
-    },
-    "related_component": {
-      "caption": "Related Component",
-      "description": "The package URL (PURL) of the component that this software component has a relationship with.",
-      "type": "string_t"
     },
     "depth": {
       "caption": "CVSS Depth",
@@ -1629,12 +1540,6 @@
           "description": "The direction is not mapped. See the <code>direction</code> attribute, which contains a data source specific value."
         }
       }
-    },
-    "discovery_details": {
-      "caption": "Discovery Details",
-      "description": "A collection of <code>Discovery Details</code> objects. See specific usage.",
-      "type": "discovery_details",
-      "is_array": true
     },
     "dispersion": {
       "caption": "Root Dispersion",
@@ -1831,7 +1736,7 @@
     },
     "domain": {
       "caption": "Domain",
-      "description": "The name of the domain. See specific usage.",
+      "description": "The name of the domain.",
       "type": "string_t"
     },
     "domain_contact": {
@@ -1844,53 +1749,6 @@
       "description": "An array of <code>Domain Contact</code> objects.",
       "type": "domain_contact",
       "is_array": true
-    },
-    "domains": {
-      "caption": "Domains",
-      "description": "The domains that pertain to the event or object. See specific usage.",
-      "type": "string_t",
-      "is_array": true
-    },
-    "drive_type": {
-      "caption": "Drive Type",
-      "description": "The drive type, normalized to the caption of the <code>drive_type_id</code> value. In the case of <code>Other</code>, it is defined by the source.",
-      "type": "string_t"
-    },
-    "drive_type_id" : {
-      "caption": "Drive Type ID",
-      "description": "Identifies the type of a disk drive, i.e. fixed, removable, etc.",
-      "sibling": "drive_type",
-      "type": "integer_t",
-      "enum": {
-        "0": {
-          "caption": "Unknown",
-          "description": "The drive type is unknown."
-        },
-        "1": {
-          "caption": "Removable",
-          "description": "The drive has removable media; for example, a floppy drive, thumb drive, or flash card reader."
-        },
-        "2": {
-          "caption": "Fixed",
-          "description": "The drive has fixed media; for example, a hard disk drive or flash drive."
-        },
-        "3": {
-          "caption": "Remote",
-          "description": "The drive is a remote (network) drive."
-        },
-        "4": {
-          "caption": "CD-ROM",
-          "description": "The drive is a CD-ROM drive."
-        },
-        "5": {
-          "caption": "RAM Disk",
-          "description": "The drive is a RAM disk."
-        },
-        "99": {
-          "caption": "Other",
-          "description": "The drive type is not mapped. See the <code>drive_type</code> attribute, which contains a data source specific value."
-        }
-      }
     },
     "driver": {
       "caption": "Kernel Driver",
@@ -1977,11 +1835,6 @@
       "caption": "Employee ID",
       "description": "The employee identifier assigned to the user by the organization.",
       "type": "string_t"
-    },
-    "encryption_details": {
-      "caption": "Encryption Details",
-      "description": "The encryption details of a file or other content. See specific usage.",
-      "type": "encryption_details"
     },
     "end_line": {
       "caption": "End Line",
@@ -2194,12 +2047,6 @@
       "description": "The result of the file change. It should contain the new values of the changed attributes.",
       "type": "file"
     },
-    "files": {
-      "caption": "Files",
-      "description": "The files that are part of the event or object.",
-      "type": "file",
-      "is_array": true
-    },
     "finding": {
       "caption": "Finding",
       "description": "The Finding object provides details about a finding/detection generated by a security tool.",
@@ -2287,12 +2134,6 @@
     "from": {
       "caption": "From",
       "description": "The email header From values, as defined by RFC 5322.",
-      "references": [
-        {
-          "url": "https://www.rfc-editor.org/rfc/rfc5322",
-          "description": "RFC 5322"
-        }
-      ],
       "type": "email_t"
     },
     "full_name": {
@@ -2445,11 +2286,6 @@
       "caption": "Identifier Cookie",
       "description": "The client identifier cookie during client/server exchange.",
       "type": "string_t"
-    },
-    "idle_timeout": {
-      "caption": "SSO Idle Timeout",
-      "description": "Duration (in minutes) of allowed inactivity before a timeout See specific usage.",
-      "type": "integer_t"
     },
     "idp": {
       "caption": "Identity Provider",
@@ -2682,11 +2518,6 @@
       "description": "Indicates if the entity was deleted. See specific usage.",
       "type": "boolean_t"
     },
-    "is_encrypted": {
-      "caption": "Encrypted",
-      "description": "Indicates if the entity was encrypted. See specific usage.",
-      "type": "boolean_t"
-    },
     "is_exploit_available": {
       "caption": "Exploit Availability",
       "description": "Indicates if an exploit or a PoC (proof-of-concept) is available for the reported vulnerability.",
@@ -2695,11 +2526,6 @@
     "is_fix_available": {
       "caption": "Fix Availability",
       "description": "Indicates if a fix is available for the reported vulnerability.",
-      "type": "boolean_t"
-    },
-    "is_group_provisioning_enabled": {
-      "caption": "Group Provisioning Enabled",
-      "description": "Indicates whether group provisioning is automated (e.g., for a SCIM resource). See specific usage.",
       "type": "boolean_t"
     },
     "is_hotp": {
@@ -2792,11 +2618,6 @@
       "description": "The event occurred on a trusted device.",
       "type": "boolean_t"
     },
-    "is_user_provisioning_enabled": {
-      "caption": "User Provisioning Enabled",
-      "description": "Indicates whether user provisioning is automated (e.g., for a SCIM resource). See specific usage.",
-      "type": "boolean_t"
-    },
     "is_vpn": {
       "caption": "VPN Session",
       "description": "The indication of whether the session is a VPN session.",
@@ -2838,11 +2659,6 @@
       "description": "The user's job title.",
       "type": "string_t"
     },
-    "json_path": {
-      "caption": "JSON Path",
-      "description": "The JSON path of the attribute. See specific usage.",
-      "type": "string_t"
-    },
     "kb_article_list": {
       "caption": "Knowledgebase Articles",
       "description": "A list of KB articles or patches related to an endpoint. A KB Article contains metadata that describes the patch or an update.",
@@ -2864,20 +2680,10 @@
       "description": "The kernel resource object that pertains to the event.",
       "type": "kernel"
     },
-    "kernel_release": {
-      "caption": "Kernel Release",
-      "description": "The kernel release of the operating system. On Unix-based systems, this is determined from the <code>uname -r</code> command output, for example \"5.15.0-122-generic\".",
-      "type": "string_t"
-    },
     "key_length": {
       "caption": "Key Length",
       "description": "The length of the encryption key.",
       "type": "integer_t"
-    },
-    "key_uid": {
-      "caption": "Key UID",
-      "description": "The unique identifier of the key. See specific usage.",
-      "type": "string_t"
     },
     "keyboard_info": {
       "caption": "Keyboard Information",
@@ -3159,16 +2965,6 @@
         }
       }
     },
-    "login_endpoint": {
-      "caption": "Login Endpoint",
-      "description": "URL for initiating a login request. See specific usage.",
-      "type": "url_t"
-    },
-    "logout_endpoint": {
-      "caption": "Logout Endpoint",
-      "description": "URL for initiating a logout request. See specific usage.",
-      "type": "url_t"
-    },
     "long": {
       "caption": "Longitude",
       "description": "The geographical Longitude coordinate represented in Decimal Degrees (DD). For example: <code>-71.057083</code>.",
@@ -3206,32 +3002,15 @@
       "description": "The description of the event/finding, as defined by the source.",
       "type": "string_t"
     },
-    "message_trace_uid": {
-      "caption": "Message Trace UID",
-      "description": "The identifier that tracks a message that travels through multiple points of a messaging service.",
-      "references": [{"url": "https://learn.microsoft.com/en-us/previous-versions/office/developer/o365-enterprise-developers/jj984335(v=office.15)", "description": "For example Office 365 Message Trace Report."}],
-      "type": "string_t"
-    },
     "message_uid": {
       "caption": "Message UID",
       "description": "The email header Message-ID value, as defined by RFC 5322.",
-      "references": [
-        {
-          "url": "https://www.rfc-editor.org/rfc/rfc5322",
-          "description": "RFC 5322"
-        }
-      ],
       "type": "string_t"
     },
     "metadata": {
       "caption": "Metadata",
       "description": "The metadata associated with the event or a finding.",
       "type": "metadata"
-    },
-    "metadata_endpoint": {
-      "caption": "Metadata Endpoint",
-      "description": "URL where metadata about a configuration or resource is available (e.g., for SAML configurations). See specific usage.",
-      "type": "url_t"
     },
     "metrics": {
       "caption": "Metrics",
@@ -3370,19 +3149,8 @@
     "observables": {
       "caption": "Observables",
       "description": "The observables associated with the event or a finding.",
-      "references": [
-        {
-          "url": "https://github.com/ocsf/ocsf-docs/blob/main/Articles/Defining and Using Observables.md",
-          "description": "OCSF Observables FAQ"
-        }
-      ],
       "type": "observable",
       "is_array": true
-    },
-    "occurrence_details": {
-      "caption": "Occurrence Details",
-      "description": "Details about where in the target entity, specified information was discovered. See specific usage.",
-      "type": "occurrence_details"
     },
     "office_location": {
       "caption": "Office Location",
@@ -3482,11 +3250,6 @@
       "type": "osint",
       "is_array": true
     },
-    "os_machine_uuid": {
-      "caption": "OS Machine UUID",
-      "description": "The operating system assigned Machine ID. In Windows, this is the value stored at the registry path: <code>HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography\\MachineGuid</code>. In Linux, this is stored in the file: <code>/etc/machine-id</code>.",
-      "type": "uuid_t"
-    },
     "ou_name": {
       "caption": "Org Unit Name",
       "description": "The name of the organizational unit, within an organization.  For example, Finance, IT, R&D",
@@ -3509,13 +3272,7 @@
     },
     "package": {
       "caption": "Software Package",
-      "references": [
-        {
-          "url": "https://d3fend.mitre.org/dao/artifact/d3f:SoftwarePackage/",
-          "description": "D3FEND™ Ontology d3f:SoftwarePackage."
-        }
-      ],
-      "description": "The Software Package object describes details about a software package.",
+      "description": "The Software Package object describes details about a software package. Defined by D3FEND <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:SoftwarePackage/'>d3f:SoftwarePackage</a>.",
       "type": "package"
     },
     "package_manager": {
@@ -3552,11 +3309,6 @@
       "caption": "Packets Out",
       "description": "The number of packets sent from the source to the destination.",
       "type": "long_t"
-    },
-    "page_number": {
-      "caption": "Page Number",
-      "description": "The page number of the document. See specific usage.",
-      "type": "integer_t"
     },
     "parent_folder": {
       "caption": "Parent Folder",
@@ -3811,11 +3563,7 @@
     "product_uid": {
       "caption": "Product Identifier",
       "description": "Unique Identifier of a product.",
-      "type": "string_t",
-      "@deprecated": {
-        "message": "Use the <code>uid</code> attribute in the <code>product</code> object instead. See specific usage.",
-        "since": "1.4.0"
-      }
+      "type": "string_t"
     },
     "profiles": {
       "caption": "Profiles",
@@ -4024,11 +3772,6 @@
       "description": "The data describing the DNS resource. The meaning of this data depends on the type and class of the resource record.",
       "type": "string_t"
     },
-    "record_index_in_array": {
-      "caption": "Record Index in Array",
-      "description": "The index of the record in the array of records.",
-      "type": "integer_t"
-    },
     "references": {
       "caption": "References",
       "description": "A list of reference URLs supporting the finding/detection.",
@@ -4038,7 +3781,7 @@
     "referrer": {
       "caption": "HTTP Referrer",
       "description": "The request header that identifies the address of the previous web page, which is linked to the current web page or resource being requested.",
-      "type": "string_t"
+      "type": "referrer"
     },
     "region": {
       "caption": "Region",
@@ -4069,46 +3812,16 @@
       "is_array": true
     },
     "related_events": {
-      "caption": "Related Events/Findings",
-      "description": "Describes events and/or other findings related to the finding as identified by the security product. Note that these events may or may not be in OCSF.",
+      "caption": "Related Events",
+      "description": "Describes events and/or other findings related to the finding as identified by the security product.",
       "type": "related_event",
       "is_array": true
-    },
-    "related_events_count": {
-      "caption": "Related Events/Findings Count",
-      "description": "Number of related events or findings.",
-      "type": "integer_t"
     },
     "related_vulnerabilities": {
       "caption": "Related Vulnerability IDs",
       "description": "List of vulnerability IDs (e.g. CVE ID) that are related to this vulnerability.",
       "type": "string_t",
       "is_array": true
-    },
-    "relationship": {
-      "caption": "Relationship",
-      "description": "The relationship between two software components, normalized to the caption of the <code>relationship_id</code> value. In the case of 'Other', it is defined by the source.",
-      "type": "string_t"
-    },
-    "relationship_id": {
-      "caption": "Relationship ID",
-      "description": "The normalized identifier of the relationship between two software components.",
-      "sibling": "relationship",
-      "type": "integer_t",
-      "enum": {
-        "0": {
-          "caption": "Unknown",
-          "description": "The relationship is unknown."
-        },
-        "1": {
-          "caption": "Depends On",
-          "description": "The component is a dependency of another component. Can be used to define both direct and transitive dependencies."
-        },
-        "99": {
-          "caption": "Other",
-          "description": "The relationship is not mapped. See the <code>relationship</code> attribute, which contains a data source specific value."
-        }
-      }
     },
     "relay": {
       "caption": "Relay",
@@ -4133,12 +3846,6 @@
     "reply_to": {
       "caption": "Reply To",
       "description": "The email header Reply-To values, as defined by RFC 5322.",
-      "references": [
-        {
-          "url": "https://www.rfc-editor.org/rfc/rfc5322",
-          "description": "RFC 5322"
-        }
-      ],
       "type": "email_t"
     },
     "reputation": {
@@ -4239,20 +3946,10 @@
       "description": "The risk score as reported by the event source.",
       "type": "integer_t"
     },
-    "row_number": {
-      "caption": "Row Number",
-      "description": "The row number. See specific usage.",
-      "type": "integer_t"
-    },
     "rpc_interface": {
       "caption": "Remote Procedure Call Interface",
       "description": "The RPC Interface object describes the details pertaining to the remote procedure call interface.",
       "type": "rpc_interface"
-    },
-    "rssi": {
-      "caption": "RSSI",
-      "description": "Received Signal Strength Indicator (RSSI) is a measurement of the power of a radio signal. See specific usage.",
-      "type": "integer_t"
     },
     "rule": {
       "caption": "Rule",
@@ -4324,17 +4021,6 @@
       "type": "san",
       "is_array": true
     },
-    "sbom": {
-      "caption": "Software Bill Of Materials",
-      "description": "The Software Bill of Materials (SBOM) object describes the characteristics of a generated SBOM for a software package.",
-      "type": "sbom"
-    },
-    "software_components": {
-      "caption": "Software Components",
-      "description": "The list of software components used in the software package.",
-      "type": "software_component",
-      "is_array": true
-    },
     "scale_factor": {
       "caption": "Scale Factor",
       "description": "The numeric scale factor of display.",
@@ -4350,48 +4036,9 @@
       "description": "The unique identifier of the schedule associated with a scan job.",
       "type": "string_t"
     },
-    "scim": {
-      "caption": "SCIM",
-      "description": "The System for Cross-domain Identity Management (SCIM) resource object provides a structured set of attributes related to SCIM protocols used for identity provisioning and management across cloud-based platforms. It standardizes user and group provisioning details, enabling identity synchronization and lifecycle management with compatible Identity Providers (IdPs) and applications. SCIM is defined in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc7643'>RFC-7634</a>",
-      "references": [
-        {
-          "url": "https://datatracker.ietf.org/doc/html/rfc7643",
-          "description": "System for Cross-domain Identity Management (SCIM) RFC."
-        }
-      ],
-      "type": "scim"
-    },
-    "scim_group_schema": {
-      "caption": "SCIM Group Schema",
-      "description": "SCIM provides a schema for representing groups, identified using the following schema URI: <code>urn:ietf:params:scim:schemas:core:2.0:Group</code> as defined in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc7643'>RFC-7634</a>. This attribute will capture key-value pairs for the scheme implemented in a SCIM resource.",
-      "references": [
-        {
-          "url": "https://datatracker.ietf.org/doc/html/rfc7643",
-          "description": "System for Cross-domain Identity Management (SCIM) RFC spec."
-        }
-      ],
-      "type": "json_t"
-    },
-    "scim_user_schema": {
-      "caption": "SCIM User Schema",
-      "description": "SCIM provides a resource type for user resources. The core schema for user is identified using the following schema URI: <code>urn:ietf:params:scim:schemas:core:2.0:User</code> as defined in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc7643'>RFC-7634</a>. his attribute will capture key-value pairs for the scheme implemented in a SCIM resource. This object is inclusive of both the basic and Enterprise User Schema Extension.",
-      "references": [
-        {
-          "url": "https://datatracker.ietf.org/doc/html/rfc7643",
-          "description": "System for Cross-domain Identity Management (SCIM) RFC spec."
-        }
-      ],
-      "type": "json_t"
-    },
     "scheme": {
       "caption": "Scheme",
       "description": "The scheme portion of the URL. For example: <code>http</code>, <code>https</code>, <code>ftp</code>, or <code>sftp</code>.",
-      "type": "string_t"
-    },
-    "scopes": {
-      "caption": "Scopes",
-      "description": "Scopes define the specific permissions or actions that the client is allowed to perform on behalf of the user. Each scope represents a different set of permissions, and the user can selectively grant or deny access to specific scopes during the authorization process.",
-      "is_array": true,
       "type": "string_t"
     },
     "score": {
@@ -4710,11 +4357,6 @@
       "description": "The version number of the latest Service Pack.",
       "type": "integer_t"
     },
-    "span": {
-      "caption": "Span",
-      "description": "The information about the span. See specific usage.",
-      "type": "span"
-    },
     "speed": {
       "caption": "Speed",
       "description": "Ground speed of flight. This value is provided in meters per second with a minimum resolution of 0.25 m/s. Special Values: <code>Invalid</code>, <code>No Value</code>, or <code>Unknown: 255 m/s</code>.",
@@ -4739,11 +4381,6 @@
       "caption": "Source URL",
       "description": "The URL pointing towards the source of an entity. See specific usage.",
       "type": "url_t"
-    },
-    "sso": {
-      "caption": "SSO",
-      "description": "The Single Sign-On (SSO) object provides a structure for normalizing SSO attributes, configuration, and/or settings from Identity Providers.",
-      "type": "sso"
     },
     "standards": {
       "caption": "Compliance Standards: List",
@@ -4887,11 +4524,6 @@
           "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
         }
       }
-    },
-    "storage_class": {
-      "caption": "Storage Class",
-      "description": "The storage class of the entity. See specific usage.",
-      "type": "string_t"
     },
     "stratum": {
       "caption": "Stratum",
@@ -5089,12 +4721,6 @@
     "to": {
       "caption": "To",
       "description": "The email header To values, as defined by RFC 5322.",
-      "references": [
-        {
-          "url": "https://www.rfc-editor.org/rfc/rfc5322",
-          "description": "RFC 5322"
-        }
-      ],
       "type": "email_t",
       "is_array": true
     },
@@ -5122,11 +4748,6 @@
       "caption": "Transmission Time",
       "description": "The event transmission time from one device to another.  See specific usage.",
       "type": "timestamp_t"
-    },
-    "trace": {
-      "caption": "Trace",
-      "description": "The information about the trace. See specific usage.",
-      "type": "trace"
     },
     "tree_uid": {
       "caption": "Tree UID",
@@ -5222,6 +4843,11 @@
       "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
       "type": "object"
     },
+    "unmanned_system_operator": {
+      "caption": "Unmanned Systems Operator",
+      "description": "The human or machine operator of an UAS",
+      "type": "user"
+    },
     "untruncated_size": {
       "caption": "Untruncated Size",
       "description": "The size in bytes of an attribute before truncation. See specific usage.",
@@ -5236,12 +4862,6 @@
       "caption": "URL String",
       "description": "The URL string. See RFC 1738. For example: <code>http://www.example.com/download/trouble.exe</code>.",
       "type": "url_t"
-    },
-    "urls": {
-      "caption": "URLs",
-      "description": "The URLs that pertain to the event or object.",
-      "type": "url",
-      "is_array": true
     },
     "user": {
       "caption": "User",
@@ -5272,24 +4892,23 @@
     },
     "value": {
       "caption": "Value",
-      "description": "The value associated to an attribute. See specific usage.",
+      "description": "The value that pertains to the object. See specific usage.",
       "type": "string_t"
     },
-    "values": {
-      "caption": "Values",
-      "description": "An array of values associated to an attribute. See specific usage.",
-      "type": "string_t",
-      "is_array": true
+    "variable_name": {
+      "caption": "Variable Name",
+      "description": "The name of a variable. See specific usage.",
+      "type": "long_string"
+    },
+    "variable_value": {
+      "caption": "Variable Value",
+      "description": "The value of a variable. See specific usage.",
+      "type": "long_string"
     },
     "vector_string": {
       "caption": "Vector String",
       "description": "The CVSS vector string is a text representation of a set of CVSS metrics. It is commonly used to record or transfer CVSS metric information in a concise form. For example: <code>3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H</code>.",
       "type": "string_t"
-    },
-    "vendor_attributes": {
-      "caption": "Vendor Attributes",
-      "description": "The Vendor Attributes object can be used to represent values of attributes populated by the Vendor/Finding Provider. It can help distinguish between the vendor-prodvided values and consumer-updated values, of key attributes like <code>severity_id</code>.<br>The original finding producer should not populate this object. It should be populated by consuming systems that support data mutability.",
-      "type": "vendor_attributes"
     },
     "vendor_name": {
       "caption": "Vendor Name",

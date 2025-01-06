@@ -93,6 +93,8 @@ Thankyou! -->
     1. Added `software_component` and `sbom` objects. #1262
     1. Added `drive_type` and `drive_type_id` objects. #1287
     1. Added `cpu_architecture` and `cpu_architecture_id` objects. #1278
+* ### Profiles
+    1. Added `incident` profile. #1293
 
 ### Improved
 * #### Event Classes
@@ -113,6 +115,7 @@ Thankyou! -->
     1. Add `security_control` profile to base_event.json and remove this profile elsewhere in the event hierarchy. #1281
     1. Add `policies` to `Account Change` class. #1282
     1. Add `Unlock` activity to `account_change` class. #1285
+    1. Add `incident` profile to `finding` to affect classes that extend it. #1293
 * #### Profiles
     1. Added `is_alert`, `confidence_id`, `confidence`, `confidence_score` attributes to the `security_control` profile. #1178
     1. Added `risk_level_id`, `risk_level`, `risk_score`, `risk_details` attributes to the `security_control` profile.  #1178
@@ -220,6 +223,7 @@ Thankyou! -->
 1. Added `resource_details.name` as an Observable type `type_id: 38`. #1250
 1. Added 3 new enums (Registry Value, Registry Key, Command Line) to `osint.type_id` and added TLP:WHITE to `osint.tlp` enums. #1264
 1. Relaxed attribute requirement for `name` in `observables` object; `title` in `finding_info` object. #1271
+1. Relaxed attribute requirement for `vendor_name` in the `product` object. #1300
 
 ## [v1.3.0] - August 1st, 2024
 

@@ -52,7 +52,6 @@ Thankyou! -->
     1. Added `Cloud Resources Inventory Info` event class to the Discovery category. #1250
     1. Added `Airborne Broadcast Activity` event class to the Unmanned Systems category. #1253
     1. Added `Application Error` event class to the Application Activity category. #1299
-    1. Added `File Access Check` event class to the System Activity category. #1297
 * #### Dictionary Attributes
     1. Added `has_mfa` as a `boolean_t`. #1155
     1. Added `environment_variables` as an array of `environment_variable` object. #1172
@@ -106,24 +105,25 @@ Thankyou! -->
     1. Removed constraint from `group_management` class. #1193
     1. Added `Archived|5` as an enum item to `status_id` attribute in Findings classes. #1219
     1. Added a `Trace` `activity_id` to the `Email Activity` class. #1252
-    1. Added a `message_trace_uid` to the `Email Activity` class. #1259
-    1. Added a `Trace`, `activity_id` to the `Email Activity` class. #1252
+    1. Added `message_trace_uid` to the `Email Activity` class. #1259
+    1. Added a `Trace` `activity_id` to the `Email Activity` class. #1252
     1. Added `vendor_attributes` to all `Findings` Category classes. #1257
     1. Added `sbom` to `Software Inventory Info` class. #1262
     1. Relaxed requirements on the `dst_endpoint` attribute in the `network_activity` event class and added an `at_least_one` constraint with `src_endpoint` and `dst_endpoint`. #1274
     1. Relaxed requirements on the `http_request` and `http_response` attributes in the `http_activity` event class and added an `at_least_one` constraint with these attributes. #1274
-    1. Add `host` profile to base_event.json and remove this profile elsewhere in the event hierarchy. #1280
-    1. Add the `actor` attribute to the IAM base event. #1280
-    1. Add `security_control` profile to base_event.json and remove this profile elsewhere in the event hierarchy. #1281
-    1. Add `policies` to `Account Change` class. #1282
-    1. Add `Unlock` activity to `account_change` class. #1285
-    1. Add `incident` profile to `finding` to affect classes that extend it. #1293
+    1. Added `host` profile to base_event.json and remove this profile elsewhere in the event hierarchy. #1280
+    1. Added the `actor` attribute to the IAM base event. #1280
+    1. Added `security_control` profile to base_event.json and remove this profile elsewhere in the event hierarchy. #1281
+    1. Added `policies` to `Account Change` class. #1282
+    1. Added `Unlock` activity to `account_change` class. #1285
+    1. Added `incident` profile to `finding` to affect classes that extend it. #1293
+    1. Added attributes and a new Activity ID to the `File Hosting Activity` class for network file share services and authorization check result. Activity ID added: `17` - "Authorization Check". Optional `context` group attributes added: `access_mask`, `access_result`, `disposition`, `disposition_id`, `share`, `share_type`, and `share_type_id`. #1297
 * #### Profiles
     1. Added `is_alert`, `confidence_id`, `confidence`, `confidence_score` attributes to the `security_control` profile. #1178
     1. Added `risk_level_id`, `risk_level`, `risk_score`, `risk_details` attributes to the `security_control` profile.  #1178
     1. Added `policy` attribute to the `security_control` profile. #1178
     1. Added enum values to `action_id` of 'Observed', 'Modified', and 'Unknown'. #1265
-    1. Update `action_id` optionality to `recommended` in the `security_control` profile #1281
+    1. Updated `action_id` optionality to `recommended` in the `security_control` profile #1281
 * #### Objects
     1. Added `phone_number` to `user` and `ldap_person` objects. #1155
     1. Added `has_mfa` to `user` object. #1155
@@ -169,7 +169,7 @@ Thankyou! -->
     1. Added `drive_type` and `drive_type_id` to the `file` object. #1287
     1. Added `cpu_architecture` and `cpu_architecture_id` to `device_hw_info` object. #1278
     1. Added `name` to `script` object. #1284
-    1. Relax requirement of `fingerprints` in `certificate` object. #1302
+    1. Relaxed requirement of `fingerprints` in `certificate` object. #1302
     1. Added optional `url` attribute to the `file` object. This was allows capturing a file's URL in the File Hosting Activity (6006) event class. #1289
 
 

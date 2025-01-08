@@ -362,8 +362,8 @@
       "type": "timespan"
     },
     "banner": {
-      "caption": "SMTP Banner",
-      "description": "The initial SMTP connection response that a messaging server receives after it connects to a email server.",
+      "caption": "Protocol Banner",
+      "description": "The initial connection response that a messaging server receives after it connects to an email server.",
       "type": "string_t"
     },
     "base_address": {
@@ -811,7 +811,7 @@
           "description": "RFC 5322"
         }
       ],
-      "type": "email_t",
+      "type": "email_contact",
       "is_array": true
     },
     "cell_name": {
@@ -2304,7 +2304,7 @@
           "description": "RFC 5322"
         }
       ],
-      "type": "email_t"
+      "type": "email_contact"
     },
     "full_name": {
       "caption": "Full Name",
@@ -4705,18 +4705,30 @@
     "smtp_from": {
       "caption": "SMTP From",
       "description": "The value of the SMTP MAIL FROM command.",
-      "type": "email_t"
+      "type": "email_t",
+      "@deprecated": {
+        "message": "Use the <code> from </code> attribute instead.",
+        "since": "1.4.0"
+      }
     },
     "smtp_hello": {
       "caption": "SMTP Hello",
       "description": "The value of the SMTP HELO or EHLO command.",
-      "type": "string_t"
+      "type": "string_t",
+      "@deprecated": {
+        "message": "Use the <code> command </code> attribute instead.",
+        "since": "1.4.0"
+      }
     },
     "smtp_to": {
       "caption": "SMTP To",
       "description": "The value of the SMTP envelope RCPT TO command.",
       "type": "email_t",
-      "is_array": true
+      "is_array": true,
+      "@deprecated": {
+        "message": "Use the <code> to </code> attribute instead.",
+        "since": "1.4.0"
+      }
     },
     "sni": {
       "caption": "Server Name Indication",
@@ -5118,7 +5130,7 @@
           "description": "RFC 5322"
         }
       ],
-      "type": "email_t",
+      "type": "email_contact",
       "is_array": true
     },
     "total": {

@@ -169,6 +169,7 @@ Thankyou! -->
     1. Added `cpu_architecture` and `cpu_architecture_id` to `device_hw_info` object. #1278
     1. Added `name` to `script` object. #1284
     1. Relax requirement of `fingerprints` in `certificate` object. #1302
+    1. Added `debug` attribute to `metadata` object. #1308
 
 
 ### Bugfixes

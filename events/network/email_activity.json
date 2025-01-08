@@ -35,6 +35,11 @@
       "group": "context",
       "requirement": "optional"
     },
+    "command": {
+        "description": "The command issued by the initiator (client), such as SMTP HELO or EHLO.",
+        "group": "primary",
+        "requirement": "recommended"
+    },
     "direction": {
       "description": "The direction of the email, as defined by the <code>direction_id</code> value.",
       "group": "context",
@@ -86,10 +91,19 @@
       "group": "primary",
       "requirement": "recommended"
     },
+    "protocol_name": {
+      "description": "The Protocol Name specifies the email communication protocol, such as SMTP, IMAP, or POP3.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
     "smtp_hello": {
       "description": "The value of the SMTP HELO or EHLO command sent by the initiator (client).",
       "group": "primary",
-      "requirement": "recommended"
+      "requirement": "recommended",
+      "@deprecated": {
+        "message": "Use the <code> command </code> attribute instead.",
+        "since": "1.4.0"
+      }
     },
     "src_endpoint": {
       "description": "The initiator (client) sending the email.",

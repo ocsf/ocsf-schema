@@ -75,7 +75,7 @@ Thankyou! -->
     1. Added new `11: Basic Authentication` enum value to `auth_protocol_id`. #1239
     1. Added `values` as an array of `string_t`. #1251
     1. Added `kernel_release` as a `string_t`.
-    1. Added `domains` `files` `urls` and `message_trace_uid`. #1259
+    1. Added `files` `urls` and `message_trace_uid`. #1259
     1. Added `kernel_release` as a `string_t`. #1249
     1. Added `os_machine_uuid` as a `uuid_t`.  #1268
     1. Added `sbom`, `author`, `related_component`, `relationship`, `relationship_id` and `software_component` to support SBOMs. #1262
@@ -155,7 +155,7 @@ Thankyou! -->
     1. Added `hostname`, `ip`, and `name` to `resource_details` for purposes of assigning an Observable number. #1250
     1. Added `values` to `key_value_object`. #1251
     1. Added `kernel_release` to `os` object.
-    1. Added `domains`, `files`, `urls`, to the `Email` object. Relaxed requirements on the `from` and `to` attributes of the object and added the `at_least_one` constraint. #1259
+    1. Added `files`, `urls`, to the `Email` object. Relaxed requirements on the `from` and `to` attributes of the object and added the `at_least_one` constraint. #1259
     1. Added `kernel_release` to `os` object. #1249
     1. Added `related_analytics` to `osint` object. #1264
     1. Added `os_machine_uuid` to the `device` object. #1268

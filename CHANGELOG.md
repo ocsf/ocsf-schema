@@ -80,7 +80,7 @@ Thankyou! -->
     1. Added `os_machine_uuid` as a `uuid_t`.  #1268
     1. Added `sbom`, `author`, `related_component`, `relationship`, `relationship_id` and `software_component` to support SBOMs. #1262
     1. Added `related_events_count` as an `int_t`. #1271
-    1. Added `debug` attribute as a `string_t` array, using in `metadata` object. #1308
+    1. Added `debug` attribute as a `string_t` array, used in the `metadata` object. #1308
 
 * #### Objects
     1. Added `environment_variable` object. #1172, #1288

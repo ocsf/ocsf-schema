@@ -80,6 +80,7 @@ Thankyou! -->
     1. Added `os_machine_uuid` as a `uuid_t`.  #1268
     1. Added `sbom`, `author`, `related_component`, `relationship`, `relationship_id` and `software_component` to support SBOMs. #1262
     1. Added `related_events_count` as an `int_t`. #1271
+    1. Added `event_uid` as a `string_t`. #1312
 * #### Objects
     1. Added `environment_variable` object. #1172, #1288
     1. Added `advisory` object. #1176
@@ -169,6 +170,7 @@ Thankyou! -->
     1. Added `cpu_architecture` and `cpu_architecture_id` to `device_hw_info` object. #1278
     1. Added `name` to `script` object. #1284
     1. Relax requirement of `fingerprints` in `certificate` object. #1302
+    1. Added `event_uid` to the `logger` object. #1312
 
 
 ### Bugfixes

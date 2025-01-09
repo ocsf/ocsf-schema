@@ -80,6 +80,8 @@ Thankyou! -->
     1. Added `os_machine_uuid` as a `uuid_t`.  #1268
     1. Added `sbom`, `author`, `related_component`, `relationship`, `relationship_id` and `software_component` to support SBOMs. #1262
     1. Added `related_events_count` as an `int_t`. #1271
+    1. Added `debug` attribute as a `string_t` array, using in `metadata` object. #1308
+
 * #### Objects
     1. Added `environment_variable` object. #1172, #1288
     1. Added `advisory` object. #1176
@@ -94,6 +96,7 @@ Thankyou! -->
     1. Added `software_component` and `sbom` objects. #1262
     1. Added `drive_type` and `drive_type_id` objects. #1287
     1. Added `cpu_architecture` and `cpu_architecture_id` objects. #1278
+
 * ### Profiles
     1. Added `incident` profile. #1293
 

@@ -116,7 +116,7 @@ Thankyou! -->
     1. Added `policies` to `Account Change` class. #1282
     1. Added `Unlock` activity to `account_change` class. #1285
     1. Added `incident` profile to `finding` to affect classes that extend it. #1293
-    1. Added attributes and a new Activity ID to the `File Hosting Activity` class for network file share services and authorization check result. Activity ID added: `17` - "Authorization Check". Optional `context` group attributes added: `access_mask`, `access_result`, `disposition`, `disposition_id`, `share`, `share_type`, and `share_type_id`. #1297
+    1. Added attributes and a new Activity ID to the `File Hosting Activity` class for network file share services and authorization check result. Activity ID added: `17` - "Access Check". Optional `context` group attributes added: `access_mask`, `access_result`, `disposition`, `disposition_id`, `share`, `share_type`, and `share_type_id`. #1297
 * #### Profiles
     1. Added `is_alert`, `confidence_id`, `confidence`, `confidence_score` attributes to the `security_control` profile. #1178
     1. Added `risk_level_id`, `risk_level`, `risk_score`, `risk_details` attributes to the `security_control` profile.  #1178

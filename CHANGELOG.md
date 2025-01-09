@@ -106,7 +106,6 @@ Thankyou! -->
     1. Added `Archived|5` as an enum item to `status_id` attribute in Findings classes. #1219
     1. Added a `Trace` `activity_id` to the `Email Activity` class. #1252
     1. Added `message_trace_uid` to the `Email Activity` class. #1259
-    1. Added a `Trace` `activity_id` to the `Email Activity` class. #1252
     1. Added `vendor_attributes` to all `Findings` Category classes. #1257
     1. Added `sbom` to `Software Inventory Info` class. #1262
     1. Relaxed requirements on the `dst_endpoint` attribute in the `network_activity` event class and added an `at_least_one` constraint with `src_endpoint` and `dst_endpoint`. #1274

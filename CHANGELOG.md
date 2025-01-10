@@ -46,7 +46,7 @@ Thankyou! -->
     1. Added new `Unmanned Systems` Category. #1169
 * #### Event Classes
     1. Added `OSINT Inventory Info` event class to the Discovery category. #1154
-    1. Added `Script Activity` event class to the System Activity category. #1159
+    1. Added `Script Activity` event class to the System category. #1159
     1. Added `Startup Item Query` event class. #1119
     1. Added `Drone Flights Activity` event class to the Unmanned Systems category. #1169
     1. Added `Cloud Resources Inventory Info` event class to the Discovery category. #1250
@@ -80,6 +80,7 @@ Thankyou! -->
     1. Added `os_machine_uuid` as a `uuid_t`.  #1268
     1. Added `sbom`, `author`, `related_component`, `relationship`, `relationship_id` and `software_component` to support SBOMs. #1262
     1. Added `related_events_count` as an `int_t`. #1271
+    1. Added `event_uid` as a `string_t`. #1312
 * #### Objects
     1. Added `environment_variable` object. #1172, #1288
     1. Added `advisory` object. #1176
@@ -105,24 +106,25 @@ Thankyou! -->
     1. Removed constraint from `group_management` class. #1193
     1. Added `Archived|5` as an enum item to `status_id` attribute in Findings classes. #1219
     1. Added a `Trace` `activity_id` to the `Email Activity` class. #1252
-    1. Added `message_trace_uid` to the `Email Activity` class. #1259
+    1. Added a `message_trace_uid` to the `Email Activity` class. #1259
     1. Added `vendor_attributes` to all `Findings` Category classes. #1257
     1. Added `sbom` to `Software Inventory Info` class. #1262
     1. Relaxed requirements on the `dst_endpoint` attribute in the `network_activity` event class and added an `at_least_one` constraint with `src_endpoint` and `dst_endpoint`. #1274
     1. Relaxed requirements on the `http_request` and `http_response` attributes in the `http_activity` event class and added an `at_least_one` constraint with these attributes. #1274
-    1. Added `host` profile to base_event.json and remove this profile elsewhere in the event hierarchy. #1280
-    1. Added the `actor` attribute to the IAM base event. #1280
-    1. Added `security_control` profile to base_event.json and remove this profile elsewhere in the event hierarchy. #1281
-    1. Added `policies` to `Account Change` class. #1282
-    1. Added `Unlock` activity to `account_change` class. #1285
-    1. Added `incident` profile to `finding` to affect classes that extend it. #1293
+    1. Add `host` profile to base_event.json and remove this profile elsewhere in the event hierarchy. #1280
+    1. Add the `actor` attribute to the IAM base event. #1280
+    1. Add `security_control` profile to base_event.json and remove this profile elsewhere in the event hierarchy. #1281
+    1. Add `policies` to `Account Change` class. #1282
+    1. Add `Unlock` activity to `account_change` class. #1285
+    1. Add `incident` profile to `finding` to affect classes that extend it. #1293
+    1. Add `keyboard_info` object to RDP event class. #1313
     1. Added attributes and a new Activity ID to the `File Hosting Activity` class for network file share services and authorization check result. Activity ID added: `17` - "Access Check". Optional `context` group attributes added: `access_list`, `access_mask`, `access_result`, `share`, `share_type`, and `share_type_id`. #1297
 * #### Profiles
     1. Added `is_alert`, `confidence_id`, `confidence`, `confidence_score` attributes to the `security_control` profile. #1178
     1. Added `risk_level_id`, `risk_level`, `risk_score`, `risk_details` attributes to the `security_control` profile.  #1178
     1. Added `policy` attribute to the `security_control` profile. #1178
     1. Added enum values to `action_id` of 'Observed', 'Modified', and 'Unknown'. #1265
-    1. Updated `action_id` optionality to `recommended` in the `security_control` profile #1281
+    1. Update `action_id` optionality to `recommended` in the `security_control` profile #1281
 * #### Objects
     1. Added `phone_number` to `user` and `ldap_person` objects. #1155
     1. Added `has_mfa` to `user` object. #1155
@@ -168,8 +170,8 @@ Thankyou! -->
     1. Added `drive_type` and `drive_type_id` to the `file` object. #1287
     1. Added `cpu_architecture` and `cpu_architecture_id` to `device_hw_info` object. #1278
     1. Added `name` to `script` object. #1284
-    1. Relaxed requirement of `fingerprints` in `certificate` object. #1302
-    1. Added optional `url` attribute to the `file` object. This was allows capturing a file's URL in the File Hosting Activity (6006) event class. #1289
+    1. Relax requirement of `fingerprints` in `certificate` object. #1302
+    1. Added `event_uid` to the `logger` object. #1312
 
 
 ### Bugfixes

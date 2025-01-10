@@ -118,6 +118,7 @@ Thankyou! -->
     1. Add `policies` to `Account Change` class. #1282
     1. Add `Unlock` activity to `account_change` class. #1285
     1. Add `incident` profile to `finding` to affect classes that extend it. #1293
+    1. Add `keyboard_info` object to RDP event class. #1313
 * #### Profiles
     1. Added `is_alert`, `confidence_id`, `confidence`, `confidence_score` attributes to the `security_control` profile. #1178
     1. Added `risk_level_id`, `risk_level`, `risk_score`, `risk_details` attributes to the `security_control` profile.  #1178

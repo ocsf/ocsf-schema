@@ -51,6 +51,7 @@ Thankyou! -->
     1. Added `Drone Flights Activity` event class to the Unmanned Systems category. #1169
     1. Added `Cloud Resources Inventory Info` event class to the Discovery category. #1250
     1. Added `Airborne Broadcast Activity` event class to the Unmanned Systems category. #1253
+    1. Added `Application Error` event class to the Application Activity category. #1299
 * #### Dictionary Attributes
     1. Added `has_mfa` as a `boolean_t`. #1155
     1. Added `environment_variables` as an array of `environment_variable` object. #1172
@@ -74,7 +75,7 @@ Thankyou! -->
     1. Added new `11: Basic Authentication` enum value to `auth_protocol_id`. #1239
     1. Added `values` as an array of `string_t`. #1251
     1. Added `kernel_release` as a `string_t`.
-    1. Added `domains` `files` `urls` and `message_trace_uid`. #1259
+    1. Added `files` `urls` and `message_trace_uid`. #1259
     1. Added `kernel_release` as a `string_t`. #1249
     1. Added `os_machine_uuid` as a `uuid_t`.  #1268
     1. Added `sbom`, `author`, `related_component`, `relationship`, `relationship_id` and `software_component` to support SBOMs. #1262
@@ -93,6 +94,8 @@ Thankyou! -->
     1. Added `software_component` and `sbom` objects. #1262
     1. Added `drive_type` and `drive_type_id` objects. #1287
     1. Added `cpu_architecture` and `cpu_architecture_id` objects. #1278
+* ### Profiles
+    1. Added `incident` profile. #1293
 
 ### Improved
 * #### Event Classes
@@ -113,6 +116,8 @@ Thankyou! -->
     1. Add `security_control` profile to base_event.json and remove this profile elsewhere in the event hierarchy. #1281
     1. Add `policies` to `Account Change` class. #1282
     1. Add `Unlock` activity to `account_change` class. #1285
+    1. Add `incident` profile to `finding` to affect classes that extend it. #1293
+    1. Add `keyboard_info` object to RDP event class. #1313
 * #### Profiles
     1. Added `is_alert`, `confidence_id`, `confidence`, `confidence_score` attributes to the `security_control` profile. #1178
     1. Added `risk_level_id`, `risk_level`, `risk_score`, `risk_details` attributes to the `security_control` profile.  #1178
@@ -151,7 +156,7 @@ Thankyou! -->
     1. Added `hostname`, `ip`, and `name` to `resource_details` for purposes of assigning an Observable number. #1250
     1. Added `values` to `key_value_object`. #1251
     1. Added `kernel_release` to `os` object.
-    1. Added `domains`, `files`, `urls`, to the `Email` object. Relaxed requirements on the `from` and `to` attributes of the object and added the `at_least_one` constraint. #1259
+    1. Added `files`, `urls`, to the `Email` object. Relaxed requirements on the `from` and `to` attributes of the object and added the `at_least_one` constraint. #1259
     1. Added `kernel_release` to `os` object. #1249
     1. Added `related_analytics` to `osint` object. #1264
     1. Added `os_machine_uuid` to the `device` object. #1268
@@ -164,6 +169,7 @@ Thankyou! -->
     1. Added `drive_type` and `drive_type_id` to the `file` object. #1287
     1. Added `cpu_architecture` and `cpu_architecture_id` to `device_hw_info` object. #1278
     1. Added `name` to `script` object. #1284
+    1. Relax requirement of `fingerprints` in `certificate` object. #1302
 
 
 ### Bugfixes
@@ -220,6 +226,7 @@ Thankyou! -->
 1. Added `resource_details.name` as an Observable type `type_id: 38`. #1250
 1. Added 3 new enums (Registry Value, Registry Key, Command Line) to `osint.type_id` and added TLP:WHITE to `osint.tlp` enums. #1264
 1. Relaxed attribute requirement for `name` in `observables` object; `title` in `finding_info` object. #1271
+1. Relaxed attribute requirement for `vendor_name` in the `product` object. #1300
 
 ## [v1.3.0] - August 1st, 2024
 

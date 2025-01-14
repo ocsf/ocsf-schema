@@ -119,7 +119,7 @@ Thankyou! -->
     1. Add `Unlock` activity to `account_change` class. #1285
     1. Add `incident` profile to `finding` to affect classes that extend it. #1293
     1. Add `keyboard_info` object to RDP event class. #1313
-    1. Added attributes and a new Activity ID to the `File Hosting Activity` class for network file share services and authorization check result. Activity ID added: `17` - "Access Check". Optional `context` group attributes added: `access_list`, `access_mask`, `access_result`, `share`, `share_type`, and `share_type_id`. #xxxx
+    1. Added attributes and a new Activity ID to the `File Hosting Activity` class for network file share services and authorization check result. Activity ID added: `17` - "Access Check". Optional `context` group attributes added: `access_list`, `access_mask`, `access_result`, `share`, `share_type`, and `share_type_id`. #1315
 * #### Profiles
     1. Added `is_alert`, `confidence_id`, `confidence`, `confidence_score` attributes to the `security_control` profile. #1178
     1. Added `risk_level_id`, `risk_level`, `risk_score`, `risk_details` attributes to the `security_control` profile.  #1178
@@ -173,7 +173,7 @@ Thankyou! -->
     1. Added `name` to `script` object. #1284
     1. Relax requirement of `fingerprints` in `certificate` object. #1302
     1. Added `event_uid` to the `logger` object. #1312
-
+    1. Added optional `url` attribute to the `file` object. This was allows capturing a file's URL in the File Hosting Activity (6006) event class. #1289
 
 ### Bugfixes
 1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180

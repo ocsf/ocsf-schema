@@ -84,7 +84,7 @@ Thankyou! -->
     1. Added `debug` attribute as a `string_t` array, used in the `metadata` object. #1308
     1. Added `ancestry` as a list of `process_entity`. #1317
     1. Added `internal_name` as a `string_t`. #1322
-    1. Added `cc_mailbox`, `from_mailbox`, `to_mailbox`, `delivered_to_mailbox` and `reply_to_mailbox`. #1307
+    1. Added `cc_mailboxes`, `from_mailbox`, `to_mailboxes`, `delivered_to_mailbox` and `reply_to_mailbox`. #1307
 
 * #### Objects
     1. Added `environment_variable` object. #1172, #1288
@@ -187,7 +187,7 @@ Thankyou! -->
     1. Changed the `process` object to extend the `process_entity` object. #1317
     1. Added `ancestry` to the `process` object. #1317
     1. Added `internal_name` to the `file` object. #1322
-    1. Added `cc_mailbox`, `from_mailbox`, `to_mailbox`, `delivered_to_mailbox` and `reply_to_mailbox` to `email` object. #1307
+    1. Added `cc_mailboxes`, `from_mailbox`, `to_mailboxes`, `delivered_to_mailbox` and `reply_to_mailbox` to `email` object. #1307
 
 ### Bugfixes
 1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180

@@ -81,6 +81,8 @@ Thankyou! -->
     1. Added `sbom`, `author`, `related_component`, `relationship`, `relationship_id` and `software_component` to support SBOMs. #1262
     1. Added `related_events_count` as an `int_t`. #1271
     1. Added `event_uid` as a `string_t`. #1312
+    1. Added `debug` attribute as a `string_t` array, used in the `metadata` object. #1308
+
 * #### Objects
     1. Added `environment_variable` object. #1172, #1288
     1. Added `advisory` object. #1176
@@ -95,6 +97,7 @@ Thankyou! -->
     1. Added `software_component` and `sbom` objects. #1262
     1. Added `drive_type` and `drive_type_id` objects. #1287
     1. Added `cpu_architecture` and `cpu_architecture_id` objects. #1278
+
 * ### Profiles
     1. Added `incident` profile. #1293
 
@@ -172,7 +175,7 @@ Thankyou! -->
     1. Added `name` to `script` object. #1284
     1. Relax requirement of `fingerprints` in `certificate` object. #1302
     1. Added `event_uid` to the `logger` object. #1312
-
+    1. Added `debug` attribute to `metadata` object. #1308
 
 ### Bugfixes
 1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180

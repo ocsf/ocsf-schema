@@ -1478,18 +1478,17 @@
     "delivered_to": {
       "caption": "Delivered To",
       "description": "The machine-readable <strong>Delivered-To</strong> email header field. For example <code> example.user@usersdomain.com</code>",
-      "type": "email_t"
+      "type": "email_t",
+      "@deprecated": {
+        "message": "Use the <code> delivered_to_list </code> attribute instead.",
+        "since": "1.4.0"
+      }
     },
-    "delivered_to_mailbox": {
-      "caption": "Delivered To Mailbox",
-      "description": "The human-readable email header <strong>Delivered-To</strong> Mailbox value. For example <code> 'Example User &lt;example.user@usersdomain.com&gt;'</code>.",
-      "references": [
-        {
-          "url": "https://www.rfc-editor.org/rfc/rfc5322#section-3.4",
-          "description": "RFC 5322"
-        }
-      ],
-      "type": "string_t"
+    "delivered_to_list": {
+      "caption": "Delivered To",
+      "description": "The machine-readable <strong>Delivered-To</strong> email header values. For example <code> example.user@usersdomain.com</code>",
+      "type": "email_t",
+      "is_array": true
     },
     "related_component": {
       "caption": "Related Component",
@@ -4202,18 +4201,23 @@
           "description": "RFC 5322"
         }
       ],
-      "type": "email_t"
+      "type": "email_t",
+      "@deprecated": {
+        "message": "Use the <code> reply_to_mailboxes </code> attribute instead.",
+        "since": "1.4.0"
+      }
     },
-    "reply_to_mailbox": {
-      "caption": "Reply To Mailbox",
-      "description": "The human-readable email header Reply To Mailbox value. For example <code> 'Example User &lt;example.user@usersdomain.com&gt;'</code>.",
+    "reply_to_mailboxes": {
+      "caption": "Reply To Mailboxes",
+      "description": "The human-readable email header Reply To Mailbox values. For example <code> 'Example User &lt;example.user@usersdomain.com&gt;'</code>.",
       "references": [
         {
           "url": "https://www.rfc-editor.org/rfc/rfc5322#section-3.4",
           "description": "RFC 5322"
         }
       ],
-      "type": "string_t"
+      "type": "string_t",
+      "is_array": true
     },
     "reputation": {
       "caption": "Reputation Scores",

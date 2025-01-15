@@ -85,7 +85,7 @@ Thankyou! -->
     1. Added `ancestry` as a list of `process_entity`. #1317
     1. Added `internal_name` as a `string_t`. #1322
     1. Added `cc_mailboxes`, `from_mailbox`, `to_mailboxes`, `delivered_to_list`  and `reply_to_mailboxes`. #1307
-    1. Added `history` and `missing_bytes` attributes. #1316
+    1. Added `flag_history` and `missed_bytes` attributes. #1316
 
 * #### Objects
     1. Added `environment_variable` object. #1172, #1288
@@ -189,7 +189,7 @@ Thankyou! -->
     1. Added `ancestry` to the `process` object. #1317
     1. Added `internal_name` to the `file` object. #1322
     1. Added `cc_mailboxes`, `from_mailbox`, `to_mailboxes`, `delivered_to_list`  and `reply_to_mailboxes` to `email` object. #1307
-    1. Added `history` attribute to the `network_connection_info` object. #1316
+    1. Added `flag_history` attribute to the `network_connection_info` object. #1316
     1. Added `missed_bytes` attribute to the `network_traffic` object. #1316
 
 ### Bugfixes

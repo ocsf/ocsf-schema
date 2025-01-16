@@ -80,6 +80,10 @@ Thankyou! -->
     1. Added `os_machine_uuid` as a `uuid_t`.  #1268
     1. Added `sbom`, `author`, `related_component`, `relationship`, `relationship_id` and `software_component` to support SBOMs. #1262
     1. Added `related_events_count` as an `int_t`. #1271
+    1. Added `event_uid` as a `string_t`. #1312
+    1. Added `debug` attribute as a `string_t` array, used in the `metadata` object. #1308
+    1. Added `ancestry` as a list of `process_entity`. #1317
+
 * #### Objects
     1. Added `environment_variable` object. #1172, #1288
     1. Added `advisory` object. #1176
@@ -94,6 +98,8 @@ Thankyou! -->
     1. Added `software_component` and `sbom` objects. #1262
     1. Added `drive_type` and `drive_type_id` objects. #1287
     1. Added `cpu_architecture` and `cpu_architecture_id` objects. #1278
+    1. Added `process_entity` object. #1317
+
 * ### Profiles
     1. Added `incident` profile. #1293
 
@@ -118,6 +124,7 @@ Thankyou! -->
     1. Add `Unlock` activity to `account_change` class. #1285
     1. Add `incident` profile to `finding` to affect classes that extend it. #1293
     1. Add `keyboard_info` object to RDP event class. #1313
+    1. Added attributes and a new Activity ID to the `File Hosting Activity` class for network file share services and authorization check result. Activity ID added: `17` - "Access Check". Optional `context` group attributes added: `access_list`, `access_mask`, `access_result`, `share`, `share_type`, and `share_type_id`. #1315
 * #### Profiles
     1. Added `is_alert`, `confidence_id`, `confidence`, `confidence_score` attributes to the `security_control` profile. #1178
     1. Added `risk_level_id`, `risk_level`, `risk_score`, `risk_details` attributes to the `security_control` profile.  #1178
@@ -170,7 +177,11 @@ Thankyou! -->
     1. Added `cpu_architecture` and `cpu_architecture_id` to `device_hw_info` object. #1278
     1. Added `name` to `script` object. #1284
     1. Relax requirement of `fingerprints` in `certificate` object. #1302
-
+    1. Added `event_uid` to the `logger` object. #1312
+    1. Added `debug` attribute to `metadata` object. #1308
+    1. Added optional `url` attribute to the `file` object. This was allows capturing a file's URL in the File Hosting Activity (6006) event class. #1289
+    1. Changed the `process` object to extend the `process_entity` object. #1317
+    1. Added `ancestry` to the `process` object. #1317
 
 ### Bugfixes
 1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180
@@ -191,6 +202,7 @@ Thankyou! -->
 1. Deprecated `package` in `Software Inventory Info` in favour of `sbom`. #1262
 1. Deprecated `product_uid` in favor of the `product` object. #1271
 1. Deprecated `policy` in favor of `policies` in `Account Change` class. #1282
+1. Deprecated `lineage` in the `process` object. #1317
 
 ### Misc
 1. Added `user.uid` as an Observable type - `type_id: 31`. #1155

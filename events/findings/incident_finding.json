@@ -2,9 +2,12 @@
   "uid": 5,
   "caption": "Incident Finding",
   "category": "findings",
-  "description": "An Incident Finding reports the creation, update, or closure of security incidents as a result of detections and/or analytics.",
+  "description": "An Incident Finding reports the creation, update, or closure of security incidents as a result of detections and/or analytics. <br><strong>Note: </strong><code>Incident Finding</code> implicitly includes the <code>incident</code> profile and it should be added to the <code>metadata.profiles[]</code> array.",
   "extends": "base_event",
   "name": "incident_finding",
+  "profiles": [
+    "incident"
+  ],
   "attributes": {
     "activity_id": {
       "description": "The normalized identifier of the Incident activity.",
@@ -39,7 +42,8 @@
     "attacks": {
       "description": "An array of <a target='_blank' href='https://attack.mitre.org'>MITRE ATT&CK®</a> objects describing the tactics, techniques & sub-techniques associated to the Incident.",
       "group": "context",
-      "requirement": "optional"
+      "requirement": "optional",
+      "profile": null
     },
     "comment": {
       "description": "Additional user supplied details for updating or closing the incident.",
@@ -48,15 +52,18 @@
     },
     "confidence": {
       "group": "context",
-      "requirement": "optional"
+      "requirement": "optional",
+      "profile": null
     },
     "confidence_id": {
       "group": "context",
-      "requirement": "recommended"
+      "requirement": "recommended",
+      "profile": null
     },
     "confidence_score": {
       "group": "context",
-      "requirement": "optional"
+      "requirement": "optional",
+      "profile": null
     },
     "desc": {
       "description": "The short description of the Incident.",

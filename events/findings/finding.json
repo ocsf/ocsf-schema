@@ -4,7 +4,13 @@
   "description": "The Finding event is a generic event that defines a set of attributes available in the Findings category.",
   "extends": "base_event",
   "name": "finding",
+  "profiles": [
+    "incident"
+  ],
   "attributes": {
+    "$include": [
+      "profiles/incident.json"
+    ],
     "activity_id": {
       "description": "The normalized identifier of the finding activity.",
       "enum": {
@@ -32,15 +38,18 @@
     },
     "confidence": {
       "group": "context",
-      "requirement": "optional"
+      "requirement": "optional",
+      "profile": null
     },
     "confidence_id": {
       "group": "context",
-      "requirement": "recommended"
+      "requirement": "recommended",
+      "profile": null
     },
     "confidence_score": {
       "group": "context",
-      "requirement": "optional"
+      "requirement": "optional",
+      "profile": null
     },
     "device": {
       "description": "Describes the affected device/host. It can be used in conjunction with <code>Affected Resource(s)</code>. <p> e.g. Specific details about an AWS EC2 instance, that is affected by the Finding.</p>",

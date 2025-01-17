@@ -51,6 +51,7 @@ Thankyou! -->
     1. Added `Drone Flights Activity` event class to the Unmanned Systems category. #1169
     1. Added `Cloud Resources Inventory Info` event class to the Discovery category. #1250
     1. Added `Airborne Broadcast Activity` event class to the Unmanned Systems category. #1253
+    1. Added `Application Error` event class to the Application Activity category. #1299
 * #### Dictionary Attributes
     1. Added `has_mfa` as a `boolean_t`. #1155
     1. Added `environment_variables` as an array of `environment_variable` object. #1172
@@ -68,20 +69,23 @@ Thankyou! -->
     1. Added `unmanned_system_operator` to the dictionary, extends `user`. #1169
     1. Added `locations` to the dictionary, an array type of the `location` object, used within the new `operating_area` object. #1169
     1. Added `altitude_ceiling`, `altitude_floor`, `geodetic_altitude`, `aerial_height`, `horizontal_accuracy`, `pressure_altitude`, `radius`, `speed`, `track_direction`, and `vertical_speed` all to support `operating_area` and `unmanned_aerial_system` objects. #1169 
-    1. Added `variable_name` and `variable_value` as `long_string`. #1228
     1. Added `imei_list` as an array `string_t`. #1225
     1. Added `is_encrypted` as `boolean_t`; `column_name`, `cell_name`, `storage_class`, `key_uid`, `json_path` as `string_t` & `column_number`, `row_number`, `page_number`, `record_index_in_array` as `integer_t`. #1245
     1. Added `group_provisioning_enabled`, `scim_group_schema`, `user_provisioning_enabled`, `scim_user_schema`, `scopes`, `idle_timeout`, `login_endpoint`, `logout_endpoint`, and `metadata_url` entries to the dictionary to support the new `scim` and `sso` objects. #1239
     1. Added new `11: Basic Authentication` enum value to `auth_protocol_id`. #1239
     1. Added `values` as an array of `string_t`. #1251
     1. Added `kernel_release` as a `string_t`.
-    1. Added `domains` `files` `urls` and `message_trace_uid`. #1259
+    1. Added `files` `urls` and `message_trace_uid`. #1259
     1. Added `kernel_release` as a `string_t`. #1249
     1. Added `os_machine_uuid` as a `uuid_t`.  #1268
     1. Added `sbom`, `author`, `related_component`, `relationship`, `relationship_id` and `software_component` to support SBOMs. #1262
     1. Added `related_events_count` as an `int_t`. #1271
+    1. Added `event_uid` as a `string_t`. #1312
+    1. Added `debug` attribute as a `string_t` array, used in the `metadata` object. #1308
+    1. Added `ancestry` as a list of `process_entity`. #1317
+
 * #### Objects
-    1. Added `environment_variable` object. #1172
+    1. Added `environment_variable` object. #1172, #1288
     1. Added `advisory` object. #1176
     1. Added a generic `key_value_object` object. #1219
     1. Added `unmanned_aerial_system` and `unmanned_system_operating_area` objects. #1169
@@ -92,6 +96,12 @@ Thankyou! -->
     1. Added `vendor_attributes` object. #1257
     1. Added `aircraft` object. #1253
     1. Added `software_component` and `sbom` objects. #1262
+    1. Added `drive_type` and `drive_type_id` objects. #1287
+    1. Added `cpu_architecture` and `cpu_architecture_id` objects. #1278
+    1. Added `process_entity` object. #1317
+
+* ### Profiles
+    1. Added `incident` profile. #1293
 
 ### Improved
 * #### Event Classes
@@ -109,11 +119,18 @@ Thankyou! -->
     1. Relaxed requirements on the `http_request` and `http_response` attributes in the `http_activity` event class and added an `at_least_one` constraint with these attributes. #1274
     1. Add `host` profile to base_event.json and remove this profile elsewhere in the event hierarchy. #1280
     1. Add the `actor` attribute to the IAM base event. #1280
+    1. Add `security_control` profile to base_event.json and remove this profile elsewhere in the event hierarchy. #1281
+    1. Add `policies` to `Account Change` class. #1282
+    1. Add `Unlock` activity to `account_change` class. #1285
+    1. Add `incident` profile to `finding` to affect classes that extend it. #1293
+    1. Add `keyboard_info` object to RDP event class. #1313
+    1. Added attributes and a new Activity ID to the `File Hosting Activity` class for network file share services and authorization check result. Activity ID added: `17` - "Access Check". Optional `context` group attributes added: `access_list`, `access_mask`, `access_result`, `share`, `share_type`, and `share_type_id`. #1315
 * #### Profiles
     1. Added `is_alert`, `confidence_id`, `confidence`, `confidence_score` attributes to the `security_control` profile. #1178
     1. Added `risk_level_id`, `risk_level`, `risk_score`, `risk_details` attributes to the `security_control` profile.  #1178
     1. Added `policy` attribute to the `security_control` profile. #1178
     1. Added enum values to `action_id` of 'Observed', 'Modified', and 'Unknown'. #1265
+    1. Update `action_id` optionality to `recommended` in the `security_control` profile #1281
 * #### Objects
     1. Added `phone_number` to `user` and `ldap_person` objects. #1155
     1. Added `has_mfa` to `user` object. #1155
@@ -146,7 +163,7 @@ Thankyou! -->
     1. Added `hostname`, `ip`, and `name` to `resource_details` for purposes of assigning an Observable number. #1250
     1. Added `values` to `key_value_object`. #1251
     1. Added `kernel_release` to `os` object.
-    1. Added `domains`, `files`, `urls`, to the `Email` object. Relaxed requirements on the `from` and `to` attributes of the object and added the `at_least_one` constraint. #1259
+    1. Added `files`, `urls`, to the `Email` object. Relaxed requirements on the `from` and `to` attributes of the object and added the `at_least_one` constraint. #1259
     1. Added `kernel_release` to `os` object. #1249
     1. Added `related_analytics` to `osint` object. #1264
     1. Added `os_machine_uuid` to the `device` object. #1268
@@ -156,13 +173,22 @@ Thankyou! -->
     1. Added `cloud_partition` to the `cloud` object. #1271
     1. Added `product`, `related_events_count`, `uid_alt`, `tags` to `finding_info` object. #1271
     1. Added `count`, `created_time`, `desc`, `first_seen_time`, `last_seen_time`, `modified_time`, `product`, `severity`, `severity_id`, `tags` & `title` to `related_event` object. #1271
+    1. Added `drive_type` and `drive_type_id` to the `file` object. #1287
+    1. Added `cpu_architecture` and `cpu_architecture_id` to `device_hw_info` object. #1278
+    1. Added `name` to `script` object. #1284
+    1. Relax requirement of `fingerprints` in `certificate` object. #1302
+    1. Added `event_uid` to the `logger` object. #1312
+    1. Added `debug` attribute to `metadata` object. #1308
+    1. Added optional `url` attribute to the `file` object. This was allows capturing a file's URL in the File Hosting Activity (6006) event class. #1289
+    1. Changed the `process` object to extend the `process_entity` object. #1317
+    1. Added `ancestry` to the `process` object. #1317
 
 ### Bugfixes
 1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180
 1. Added a fix (profile: null) to `OSINT Inventory Info` so that the `osint` attribute is present w/o the OSINT profile, per the class definition.
 1. Added http_response to all classes that have http_request, but no http_response object. #1200
 1. Removed redundant `name` attribute from Windows extension to the `startup_item` object for consistency with other extensions. #1203
-    
+
 ### Deprecated
 1. Deprecated `project_uid` in favor of `account.uid`. #1166
 1. Deprecated `kb_article_list` in favor of `advisory` in the vulnerability object. #1176
@@ -175,6 +201,8 @@ Thankyou! -->
 1. Deprecated `email_file_activity` and `email_url_activity` in favor of updated `email_activity`. #1259
 1. Deprecated `package` in `Software Inventory Info` in favour of `sbom`. #1262
 1. Deprecated `product_uid` in favor of the `product` object. #1271
+1. Deprecated `policy` in favor of `policies` in `Account Change` class. #1282
+1. Deprecated `lineage` in the `process` object. #1317
 
 ### Misc
 1. Added `user.uid` as an Observable type - `type_id: 31`. #1155
@@ -210,6 +238,7 @@ Thankyou! -->
 1. Added `resource_details.name` as an Observable type `type_id: 38`. #1250
 1. Added 3 new enums (Registry Value, Registry Key, Command Line) to `osint.type_id` and added TLP:WHITE to `osint.tlp` enums. #1264
 1. Relaxed attribute requirement for `name` in `observables` object; `title` in `finding_info` object. #1271
+1. Relaxed attribute requirement for `vendor_name` in the `product` object. #1300
 
 ## [v1.3.0] - August 1st, 2024
 
@@ -224,7 +253,7 @@ Thankyou! -->
 * #### Profiles
     1. Added `osint` Profile based on the `osint` object. #992
 * #### Objects
-    1. Added `d3fend`, `d3f_tactic`, `d3f_technique` MITRE objects. #1066 
+    1. Added `d3fend`, `d3f_tactic`, `d3f_technique` MITRE objects. #1066
     2. Added `ja4_fingerprint` object. #834
     3. Added `ja4_fingerprint_list` as a list of `ja4_fingerprint` objects.  #834
     4. Added `ticket` object. #1068
@@ -339,7 +368,7 @@ n/a
     2. Modified all classes such that primary attributes are at least recommended. #974
     3. Added `src_endpoint`, `http_request` attributes to all IAM category classes. #976
     4. Added `autonomous_system` to `network_endpoint` objects. #978
-    5. Added `List`, `Encrypt` and `Decrypt` activities to `datastore` event class. #989 
+    5. Added `List`, `Encrypt` and `Decrypt` activities to `datastore` event class. #989
     6. Added `file` attribute to `http`, `rdp`, `ssh`, and `ftp` event classes. #985
     7. Added a `Preauth` `activity_id` to the `Authentication` class. #1018
     8. Added the `Security Control` profile to the `Datastore Activity` class. #1030
@@ -349,7 +378,7 @@ n/a
 
 * #### Profiles
     n/a
-* #### Objects 
+* #### Objects
     1. Expanded `type_id` enum in `analytic` object to account for more use-cases: #953
         - `5 - Fingerprinting`
         - `6 - Tagging`
@@ -366,7 +395,7 @@ n/a
     7. Added `is_applied` Boolean attribute to `policy` object. #987
     8. Added `agent_list` as an array of `agent` objects. #987
     9. Added `policies` object as an array of `policy` objects. #987
-    10. Added `agent_list` to `endpoint` object. #987 
+    10. Added `agent_list` to `endpoint` object. #987
     11. Added `labels` to the `Account` object. #1028
     12. Added `data_classification` profile to `database`, `databucket`, `email`, `file`, `metadata`, `product`, `resource_details` and `web_resource` objects. #998
 
@@ -395,7 +424,7 @@ n/a
     * _**(New)**_ Object-specific attributes using `observable` property class's attributes. This allows defining object attributes as observables _only_ within instances of this specific object.
     * _**(New)**_ Event class-specific attributes using `observable` property class's attributes. This allows defining class attributes as observables _only_ within instances of this specific class.
     * _**(New)**_ Event class-specific attribute _paths_ using top-level `observables` property. The `observables` property holds an object mapping from an dotted attribute path to an observable `type_id`. This allows defining an observables _only_ within instances of this specific class, and only for the attributes at these paths, even for attributes that are within nested objects and arrays. This can also be used for top-level class attributes, which can be more convenient that defining a class attribute observable for classes that extend another, but don't otherwise change a attribute definition.
-4. Metaschema improvements. #993 
+4. Metaschema improvements. #993
     * Detect unexpected top-level properties in object and event class definitions. This was added at this point to detect invalid observable definitions: invalid `observable` property in event classes, and invalid `observables` property in objects.
     * Remove hard-coded list of categories from `metaschema/categories.schema.json`, leaving this to the `ocsf-validator`. This change makes testing with alternate schemas that may add extra categories easier, as well as making it possible to validate private extensions that contain new categories.
 5. Metaschema error reporting #1027
@@ -408,7 +437,7 @@ n/a
     `n/a`
 * #### Event Classes
     1. Added `User Inventory Info` event class. #667
-    2. Added `Vulnerability Finding` event class. #698 
+    2. Added `Vulnerability Finding` event class. #698
     3. Added `NTP Activity` event class #705
     4. Added `OS Patch State` event class. #746
     5. Added `Datastore Activity` event class 6005. #874
@@ -417,29 +446,29 @@ n/a
     8. Added `Device Config Sate Change` event class. #914
     9. Added `Scan Activity` event class. #915
     10. Added `File Hosting Activity` event class. #917
-   
+
 * #### Profiles
-	1. Added `Network Proxy` Profile for the `Network Activity` and `Application Activity` classes. #705 
-    2. Added `Load Balancer` Profile for the Network Activity classes. #897 
+	1. Added `Network Proxy` Profile for the `Network Activity` and `Application Activity` classes. #705
+    2. Added `Load Balancer` Profile for the Network Activity classes. #897
 
 * #### Objects
-    1. Added new `cwe` object to `cve` and `vulnerability` objects. #678 
+    1. Added new `cwe` object to `cve` and `vulnerability` objects. #678
     2. Added Firewall Rule object. #685
-    3. Added new `kb_article` object to house Knowledgebase Article info. #709 #862 #924 
+    3. Added new `kb_article` object to house Knowledgebase Article info. #709 #862 #924
     4. Added new `epss` object to the `cve` object. #741
-    
+
 ### Improved
 * #### Categories
     1. Improved Findings Category, with new and domain specific event classes (Vulnerability Finding, Compliance Finding, Detection Finding, Incident Finding), description updates across the board. #895 #907 #903 #698 #718
 
 * #### Event Classes
     1. Added `MFA Enable` and `Disable` to `activity_id` to the Account Change event class. #724
-    2. Added `Service Ticket Renew` to `activity_id` of the Authentication event class. #765 
+    2. Added `Service Ticket Renew` to `activity_id` of the Authentication event class. #765
     3. Added `url` attribute to Network Activity event class. #857
     4. Added `http_request`, `http_response`, `tls` attributes, `network_proxy` profile to Web Resources Activity event class. #895
-    5. Adjusted requirement of `dst_endpoint` from `required` to `recommended` in the DNS Activity event class. #901 
+    5. Adjusted requirement of `dst_endpoint` from `required` to `recommended` in the DNS Activity event class. #901
     6. Added `Create` and `Delete` to `activity_id` of the Group Management event class. #929
-    
+
 * #### Profiles
     1. Improved `security_control` profile to include access control semantics, firewall properties. #851 #888 #889 #906
 

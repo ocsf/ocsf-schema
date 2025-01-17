@@ -136,7 +136,7 @@
     },
     "actor": {
       "caption": "Actor",
-      "description": "The actor object describes details about the user/role/process that was the source of the activity.",
+      "description": "The actor object describes details about the user/role/process that was the source of the activity. Note that this is not the threat actor of a campaign but may be part of a campaign.",
       "type": "actor"
     },
     "actual_permissions": {
@@ -223,6 +223,12 @@
       "description": "The analytic technique used to analyze and derive insights from the data or information that led to the finding or conclusion.",
       "type": "analytic"
     },
+    "ancestry": {
+      "caption": "Ancestry",
+      "description": "An array of Process Entities describing the extended parentage of this process object. Direct parent information sould be expressed through the <code>parent_process</code> attribute. The first array element is the direct parent of this process object. Subsequent list elements go up the process parentage hierarchy. That is, the array is sorted from newest to oldest process. It is recommended to only populate this field for the top-level process object.",
+      "type": "process_entity",
+      "is_array": true
+    },
     "answers": {
       "caption": "DNS Answer",
       "description": "The Domain Name System (DNS) answers.",
@@ -271,7 +277,7 @@
     },
     "attacks": {
       "caption": "MITRE ATT&CK® Details",
-      "description": "An array of <a target='_blank' href='https://attack.mitre.org'>MITRE ATT&CK®</a> objects describing the tactics, techniques & sub-techniques identified by a security control or finding.",
+      "description": "An array of <a target='_blank' href='https://attack.mitre.org'>MITRE ATT&CK®</a> objects describing identified tactics, techniques & sub-techniques.",
       "type": "attack",
       "is_array": true
     },
@@ -1250,6 +1256,39 @@
       "description": "The ISO 3166-1 Alpha-2 country code.<p><b>Note:</b> The two letter country code should be capitalized. For example: <code>US</code> or <code>CA</code>.</p>",
       "type": "string_t"
     },
+    "cpu_architecture": {
+        "caption": "CPU Architecture",
+        "description": "The CPU architecture, normalized to the caption of the <code>cpu_architecture_id</code> value. In the case of <code>Other</code>, it is defined by the source.",
+        "type": "string_t"
+    },
+    "cpu_architecture_id": {
+      "caption": "CPU Architecture ID",
+      "description": "The normalized identifier of the CPU architecture.",
+      "sibling": "cpu_architecture",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The CPU architecture is unknown."
+        },
+        "1": {
+          "caption": "x86",
+          "description": "CPU uses the x86 ISA. For bitness, refer to <code>cpu_bits</code>."
+        },
+        "2": {
+          "caption": "ARM",
+          "description": "CPU uses the ARM ISA. For bitness, refer to <code>cpu_bits</code>."
+        },
+        "3": {
+          "caption": "RISC-V",
+          "description": "CPU uses the RISC-V ISA. For bitness, refer to <code>cpu_bits</code>."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The CPU architecture is not mapped. See the <code>cpu_architecture</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
     "cpe_name": {
       "caption": "The product CPE identifier",
       "description": "The Common Platform Enumeration (CPE) name as described by (<a target='_blank' href='https://nvd.nist.gov/products/cpe'>NIST</a>) For example: <code>cpe:/a:apple:safari:16.2</code>.",
@@ -1444,6 +1483,12 @@
       "caption": "Authorization Decision/Outcome",
       "description": "Decision/outcome of the authorization mechanism (e.g. Approved, Denied)",
       "type": "string_t"
+    },
+    "debug": {
+      "caption": "Debug Information",
+      "description": "Debug information about non-fatal issues with this OCSF event. Each issue is a line in this string array.",
+      "type": "string_t",
+      "is_array": true
     },
     "delay": {
       "caption": "Root Delay",
@@ -1849,11 +1894,46 @@
       "type": "domain_contact",
       "is_array": true
     },
-    "domains": {
-      "caption": "Domains",
-      "description": "The domains that pertain to the event or object. See specific usage.",
-      "type": "string_t",
-      "is_array": true
+    "drive_type": {
+      "caption": "Drive Type",
+      "description": "The drive type, normalized to the caption of the <code>drive_type_id</code> value. In the case of <code>Other</code>, it is defined by the source.",
+      "type": "string_t"
+    },
+    "drive_type_id" : {
+      "caption": "Drive Type ID",
+      "description": "Identifies the type of a disk drive, i.e. fixed, removable, etc.",
+      "sibling": "drive_type",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The drive type is unknown."
+        },
+        "1": {
+          "caption": "Removable",
+          "description": "The drive has removable media; for example, a floppy drive, thumb drive, or flash card reader."
+        },
+        "2": {
+          "caption": "Fixed",
+          "description": "The drive has fixed media; for example, a hard disk drive or flash drive."
+        },
+        "3": {
+          "caption": "Remote",
+          "description": "The drive is a remote (network) drive."
+        },
+        "4": {
+          "caption": "CD-ROM",
+          "description": "The drive is a CD-ROM drive."
+        },
+        "5": {
+          "caption": "RAM Disk",
+          "description": "The drive is a RAM disk."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The drive type is not mapped. See the <code>drive_type</code> attribute, which contains a data source specific value."
+        }
+      }
     },
     "driver": {
       "caption": "Kernel Driver",
@@ -2007,6 +2087,11 @@
     "event_code": {
       "caption": "Event Code",
       "description": "The <code>Event ID, Code, or Name</code> that the product uses to primarily identify the event.",
+      "type": "string_t"
+    },
+    "event_uid": {
+      "caption": "Event UID",
+      "description": "The unique identifier of an event. See specific usage.",
       "type": "string_t"
     },
     "evidence": {
@@ -3528,7 +3613,7 @@
     },
     "parent_process": {
       "caption": "Parent Process",
-      "description": "The parent process of this process object. It is recommended to only populate this field for the first process object, to prevent deep nesting.",
+      "description": "The parent process of this process object. It is recommended to only populate this field for the top-level process object, to prevent deep nesting. Additional ancestry information can be supplied in the <code>ancestry</code> attribute.",
       "type": "process"
     },
     "parent_uid": {
@@ -5243,16 +5328,6 @@
       "description": "An array of values associated to an attribute. See specific usage.",
       "type": "string_t",
       "is_array": true
-    },
-    "variable_name": {
-      "caption": "Variable Name",
-      "description": "The name of a variable. See specific usage.",
-      "type": "long_string"
-    },
-    "variable_value": {
-      "caption": "Variable Value",
-      "description": "The value of a variable. See specific usage.",
-      "type": "long_string"
     },
     "vector_string": {
       "caption": "Vector String",

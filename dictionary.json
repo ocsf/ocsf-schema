@@ -99,7 +99,7 @@
     },
     "actor": {
       "caption": "Actor",
-      "description": "The actor object describes details about the user/role/process that was the source of the activity.",
+      "description": "The actor object describes details about the user/role/process that was the source of the activity. Note that this is not the threat actor of a campaign but may be part of a campaign.",
       "type": "actor"
     },
     "actual_permissions": {
@@ -185,6 +185,12 @@
       "caption": "Analytic",
       "description": "The analytic technique used to analyze and derive insights from the data or information that led to the finding or conclusion.",
       "type": "analytic"
+    },
+    "ancestry": {
+      "caption": "Ancestry",
+      "description": "An array of Process Entities describing the extended parentage of this process object. Direct parent information sould be expressed through the <code>parent_process</code> attribute. The first array element is the direct parent of this process object. Subsequent list elements go up the process parentage hierarchy. That is, the array is sorted from newest to oldest process. It is recommended to only populate this field for the top-level process object.",
+      "type": "process_entity",
+      "is_array": true
     },
     "answers": {
       "caption": "DNS Answer",
@@ -1213,6 +1219,39 @@
       "description": "The ISO 3166-1 Alpha-2 country code.<p><b>Note:</b> The two letter country code should be capitalized. For example: <code>US</code> or <code>CA</code>.</p>",
       "type": "string_t"
     },
+    "cpu_architecture": {
+        "caption": "CPU Architecture",
+        "description": "The CPU architecture, normalized to the caption of the <code>cpu_architecture_id</code> value. In the case of <code>Other</code>, it is defined by the source.",
+        "type": "string_t"
+    },
+    "cpu_architecture_id": {
+      "caption": "CPU Architecture ID",
+      "description": "The normalized identifier of the CPU architecture.",
+      "sibling": "cpu_architecture",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The CPU architecture is unknown."
+        },
+        "1": {
+          "caption": "x86",
+          "description": "CPU uses the x86 ISA. For bitness, refer to <code>cpu_bits</code>."
+        },
+        "2": {
+          "caption": "ARM",
+          "description": "CPU uses the ARM ISA. For bitness, refer to <code>cpu_bits</code>."
+        },
+        "3": {
+          "caption": "RISC-V",
+          "description": "CPU uses the RISC-V ISA. For bitness, refer to <code>cpu_bits</code>."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The CPU architecture is not mapped. See the <code>cpu_architecture</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
     "cpe_name": {
       "caption": "The product CPE identifier",
       "description": "The Common Platform Enumeration (CPE) name as described by (<a target='_blank' href='https://nvd.nist.gov/products/cpe'>NIST</a>) For example: <code>cpe:/a:apple:safari:16.2</code>.",
@@ -1407,6 +1446,12 @@
       "caption": "Authorization Decision/Outcome",
       "description": "Decision/outcome of the authorization mechanism (e.g. Approved, Denied)",
       "type": "string_t"
+    },
+    "debug": {
+      "caption": "Debug Information",
+      "description": "Debug information about non-fatal issues with this OCSF event. Each issue is a line in this string array.",
+      "type": "string_t",
+      "is_array": true
     },
     "delay": {
       "caption": "Root Delay",
@@ -1812,12 +1857,6 @@
       "type": "domain_contact",
       "is_array": true
     },
-    "domains": {
-      "caption": "Domains",
-      "description": "The domains that pertain to the event or object. See specific usage.",
-      "type": "string_t",
-      "is_array": true
-    },
     "drive_type": {
       "caption": "Drive Type",
       "description": "The drive type, normalized to the caption of the <code>drive_type_id</code> value. In the case of <code>Other</code>, it is defined by the source.",
@@ -2011,6 +2050,11 @@
     "event_code": {
       "caption": "Event Code",
       "description": "The <code>Event ID, Code, or Name</code> that the product uses to primarily identify the event.",
+      "type": "string_t"
+    },
+    "event_uid": {
+      "caption": "Event UID",
+      "description": "The unique identifier of an event. See specific usage.",
       "type": "string_t"
     },
     "evidence": {
@@ -2455,25 +2499,32 @@
     },
     "impact_id": {
       "caption": "Impact ID",
-      "description": "The normalized impact of the finding.",
+      "description": "The normalized impact of the incident or finding. Per NIST, this is the magnitude of harm that can be expected to result from the consequences of unauthorized disclosure, modification, destruction, or loss of information or information system availability.",
       "sibling": "impact",
       "type": "integer_t",
+      "source": "impact value; impact level",
+      "references": [{"description": "NIST SP 800-172 from FIPS 199", "url": "https://doi.org/10.6028/NIST.FIPS.199"}, 
+                     {"description": "NIST Computer Security Resource Center", "url": "https://doi.org/10.6028/NIST.FIPS.199"}],
       "enum": {
         "0": {
           "caption": "Unknown",
           "description": "The normalized impact is unknown."
         },
         "1": {
-          "caption": "Low"
+          "caption": "Low",
+          "description": "The magnitude of harm is low."
         },
         "2": {
-          "caption": "Medium"
+          "caption": "Medium",
+          "description": "The magnitude of harm is moderate."
         },
         "3": {
-          "caption": "High"
+          "caption": "High",
+          "description": "The magnitude of harm is high."
         },
         "4": {
-          "caption": "Critical"
+          "caption": "Critical",
+          "description": "The magnitude of harm is high and the scope is widespread."
         },
         "99": {
           "caption": "Other",
@@ -2482,8 +2533,8 @@
       }
     },
     "impact_score": {
-      "caption": "Impact",
-      "description": "The impact of the finding, valid range 0-100.",
+      "caption": "Impact Score",
+      "description": "The impact as an integer value of the finding, valid range 0-100.",
       "type": "integer_t"
     },
     "injection_type": {
@@ -3532,7 +3583,7 @@
     },
     "parent_process": {
       "caption": "Parent Process",
-      "description": "The parent process of this process object. It is recommended to only populate this field for the first process object, to prevent deep nesting.",
+      "description": "The parent process of this process object. It is recommended to only populate this field for the top-level process object, to prevent deep nesting. Additional ancestry information can be supplied in the <code>ancestry</code> attribute.",
       "type": "process"
     },
     "parent_uid": {
@@ -3724,7 +3775,7 @@
     },
     "priority_id": {
       "caption": "Priority ID",
-      "description": "The normalized priority. Priority identifies the relative importance of the finding. It is a measurement of urgency.",
+      "description": "The normalized priority. Priority identifies the relative importance of the incident or finding. It is a measurement of urgency.",
       "sibling": "priority",
       "type": "integer_t",
       "enum": {
@@ -5247,16 +5298,6 @@
       "description": "An array of values associated to an attribute. See specific usage.",
       "type": "string_t",
       "is_array": true
-    },
-    "variable_name": {
-      "caption": "Variable Name",
-      "description": "The name of a variable. See specific usage.",
-      "type": "long_string"
-    },
-    "variable_value": {
-      "caption": "Variable Value",
-      "description": "The value of a variable. See specific usage.",
-      "type": "long_string"
     },
     "vector_string": {
       "caption": "Vector String",

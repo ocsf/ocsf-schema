@@ -194,7 +194,7 @@ Thankyou! -->
 1. Added a fix (profile: null) to `OSINT Inventory Info` so that the `osint` attribute is present w/o the OSINT profile, per the class definition.
 1. Added http_response to all classes that have http_request, but no http_response object. #1200
 1. Removed redundant `name` attribute from Windows extension to the `startup_item` object for consistency with other extensions. #1203
-1. Change `activity_id` requirement from `optional` to `required`. #1307
+1. Change `activity_id` requirement from `optional` to `required` in `email_activity`, `email_file_activity` and `email_url_activity` classes. #1307
 
 ### Deprecated
 1. Deprecated `project_uid` in favor of `account.uid`. #1166

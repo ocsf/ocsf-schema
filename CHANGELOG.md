@@ -83,6 +83,7 @@ Thankyou! -->
     1. Added `event_uid` as a `string_t`. #1312
     1. Added `debug` attribute as a `string_t` array, used in the `metadata` object. #1308
     1. Added `ancestry` as a list of `process_entity`. #1317
+    1. Added `internal_name` as a `string_t`. #1322
 
 * #### Objects
     1. Added `environment_variable` object. #1172, #1288
@@ -182,6 +183,7 @@ Thankyou! -->
     1. Added optional `url` attribute to the `file` object. This was allows capturing a file's URL in the File Hosting Activity (6006) event class. #1289
     1. Changed the `process` object to extend the `process_entity` object. #1317
     1. Added `ancestry` to the `process` object. #1317
+    1. Added `internal_name` to the `file` object. #1322
 
 ### Bugfixes
 1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180

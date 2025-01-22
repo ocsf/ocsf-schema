@@ -486,6 +486,11 @@
       "description": "The number of bytes sent from the destination to the source.",
       "type": "long_t"
     },
+    "bytes_missed": {
+      "caption": "Bytes Missed",
+      "description": "Indicates the number of bytes missed, which is representative of packet loss.",
+      "type": "long_t"
+    },
     "bytes_out": {
       "caption": "Bytes Out",
       "description": "The number of bytes sent from the source to the destination.",
@@ -2297,6 +2302,12 @@
     "flag_history": {
       "caption": "Connection Flag History",
       "description": "The Connection Flag History summarizes events in a network connection. For example flags <code> ShAD </code> representing SYN, SYN/ACK, ACK and Data exchange.",
+      "references": [
+        {
+          "description": "Zeek History",
+          "url": "https://docs.zeek.org/en/master/scripts/base/protocols/conn/main.zeek.html#detailed-interface:~:text=Records%20the%20state%20history%20of%20connections%20as%20a%20string%20of%20letters.%20The%20meaning%20of%20those%20letters%20is"
+        }
+      ],
       "type": "string_t"
     },
     "flag_ids": {
@@ -2551,8 +2562,16 @@
       "sibling": "impact",
       "type": "integer_t",
       "source": "impact value; impact level",
-      "references": [{"description": "NIST SP 800-172 from FIPS 199", "url": "https://doi.org/10.6028/NIST.FIPS.199"}, 
-                     {"description": "NIST Computer Security Resource Center", "url": "https://doi.org/10.6028/NIST.FIPS.199"}],
+      "references": [
+        {
+          "description": "NIST SP 800-172 from FIPS 199",
+          "url": "https://doi.org/10.6028/NIST.FIPS.199"
+        },
+        {
+          "description": "NIST Computer Security Resource Center",
+          "url": "https://doi.org/10.6028/NIST.FIPS.199"
+        }
+      ],
       "enum": {
         "0": {
           "caption": "Unknown",
@@ -3320,11 +3339,6 @@
       "caption": "MIME type",
       "description": "The Multipurpose Internet Mail Extensions (MIME) type of the file, if applicable.",
       "type": "string_t"
-    },
-    "missed_bytes":  {
-      "caption": "Missed Bytes",
-      "description": "The number of bytes lost or unanalyzed due to incomplete data capture.",
-      "type": "long_t"
     },
     "model": {
       "caption": "Model",

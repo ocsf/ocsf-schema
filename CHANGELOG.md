@@ -50,6 +50,22 @@ Thankyou! -->
   1. Added `boot_uid` to `device` object. [#1335](https://github.com/ocsf/ocsf-schema/pull/1335)
   1. Relaxed constraint to provide `email_addr`, `phone_number`, or `security_questions` on `auth_factor`. [#1339](https://github.com/ocsf/ocsf-schema/pull/1339)
 
+### Misc
+1. Added `email.subject` and `email.uid` as an Observable types - `type_id: 39` and `type_id: 40`. #1326
+1. Added `process_entity.uid` as an Observable type - `type_id: 41` #1326
+1. Added `file_path_t` as an Observable type - `type_id: 42` and marked fields as this type #1326
+    - `lineage` dictionary attribute
+    - `affected_package.path` object attribute
+    - `file.path` object attribute
+    - `image.path` object attribute
+    - `kernel.path` object attribute
+    - `malware.path` object attribute
+    - `process_entity.path` object attribute
+1. Added `extensions/windows/reg_key_path_t` as an Observable type - `type_id: 43` and marked fields as this type #1326
+    - `reg_key.path` object attribute
+    - `reg_value.path` object attribute
+1. Added `reg_value.name` as an Observable type - `type_id: 44`  #1326
+
 ## [v1.4.0] - January 31st, 2025
 
 ### Added

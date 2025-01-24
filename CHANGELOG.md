@@ -84,6 +84,7 @@ Thankyou! -->
     1. Added `debug` attribute as a `string_t` array, used in the `metadata` object. #1308
     1. Added `ancestry` as a list of `process_entity`. #1317
     1. Added `internal_name` as a `string_t`. #1322
+    1. Added `cc_mailboxes`, `from_mailbox`, `to_mailboxes`, `delivered_to_list`  and `reply_to_mailboxes`. #1307
 
 * #### Objects
     1. Added `environment_variable` object. #1172, #1288
@@ -126,6 +127,8 @@ Thankyou! -->
     1. Add `incident` profile to `finding` to affect classes that extend it. #1293
     1. Add `keyboard_info` object to RDP event class. #1313
     1. Added attributes and a new Activity ID to the `File Hosting Activity` class for network file share services and authorization check result. Activity ID added: `17` - "Access Check". Optional `context` group attributes added: `access_list`, `access_mask`, `access_result`, `share`, `share_type`, and `share_type_id`. #1315
+    1. Added `command` and `protocol_name` to Email Activity event class. #1307
+
 * #### Profiles
     1. Added `is_alert`, `confidence_id`, `confidence`, `confidence_score` attributes to the `security_control` profile. #1178
     1. Added `risk_level_id`, `risk_level`, `risk_score`, `risk_details` attributes to the `security_control` profile.  #1178
@@ -184,12 +187,14 @@ Thankyou! -->
     1. Changed the `process` object to extend the `process_entity` object. #1317
     1. Added `ancestry` to the `process` object. #1317
     1. Added `internal_name` to the `file` object. #1322
+    1. Added `cc_mailboxes`, `from_mailbox`, `to_mailboxes`, `delivered_to_list`  and `reply_to_mailboxes` to `email` object. #1307
 
 ### Bugfixes
 1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180
 1. Added a fix (profile: null) to `OSINT Inventory Info` so that the `osint` attribute is present w/o the OSINT profile, per the class definition.
 1. Added http_response to all classes that have http_request, but no http_response object. #1200
 1. Removed redundant `name` attribute from Windows extension to the `startup_item` object for consistency with other extensions. #1203
+1. Change `activity_id` requirement from `optional` to `required` in `email_activity`, `email_file_activity` and `email_url_activity` classes. #1307
 
 ### Deprecated
 1. Deprecated `project_uid` in favor of `account.uid`. #1166
@@ -205,6 +210,7 @@ Thankyou! -->
 1. Deprecated `product_uid` in favor of the `product` object. #1271
 1. Deprecated `policy` in favor of `policies` in `Account Change` class. #1282
 1. Deprecated `lineage` in the `process` object. #1317
+1. Deprecated `smtp_hello`, `smtp_from`, `smtp_to`, `delivered_to` and `reply_to` in favor of `command`, `from`, `to`, `delivered_to_list` and `reply_to_mailboxes` respectively. #1307
 
 ### Misc
 1. Added `user.uid` as an Observable type - `type_id: 31`. #1155

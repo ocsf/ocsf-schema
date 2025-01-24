@@ -362,8 +362,8 @@
       "type": "timespan"
     },
     "banner": {
-      "caption": "SMTP Banner",
-      "description": "The initial SMTP connection response that a messaging server receives after it connects to a email server.",
+      "caption": "Protocol Banner",
+      "description": "The initial connection response that a messaging server receives after it connects to an email server.",
       "type": "string_t"
     },
     "base_address": {
@@ -804,7 +804,7 @@
     },
     "cc": {
       "caption": "Cc",
-      "description": "The email header Cc values, as defined by RFC 5322.",
+      "description": "The machine-readable email header Cc values, as defined by RFC 5322. For example <code>example.user@usersdomain.com</code>.",
       "references": [
         {
           "url": "https://www.rfc-editor.org/rfc/rfc5322",
@@ -812,6 +812,18 @@
         }
       ],
       "type": "email_t",
+      "is_array": true
+    },
+    "cc_mailboxes": {
+      "caption": "Cc Mailboxes",
+      "description": "The human-readable email header Cc Mailbox values. For example <code>'Example User &lt;example.user@usersdomain.com&gt;'</code>.",
+      "references": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc5322#section-3.4",
+          "description": "RFC 5322"
+        }
+      ],
+      "type": "string_t",
       "is_array": true
     },
     "cell_name": {
@@ -1181,7 +1193,7 @@
       "description": "A two-element array, containing a longitude/latitude pair. The format conforms with <a target='_blank' href='https://geojson.org'>GeoJSON</a>. For example: <code>[-73.983, 40.719]</code>.",
       "type": "float_t",
       "@deprecated": {
-        "message": "Use specific <code> lat, long </code> attributes instead.",
+        "message": "Use specific <code>lat, long</code> attributes instead.",
         "since": "1.2.0"
       },
       "is_array": true
@@ -1220,9 +1232,9 @@
       "type": "string_t"
     },
     "cpu_architecture": {
-        "caption": "CPU Architecture",
-        "description": "The CPU architecture, normalized to the caption of the <code>cpu_architecture_id</code> value. In the case of <code>Other</code>, it is defined by the source.",
-        "type": "string_t"
+      "caption": "CPU Architecture",
+      "description": "The CPU architecture, normalized to the caption of the <code>cpu_architecture_id</code> value. In the case of <code>Other</code>, it is defined by the source.",
+      "type": "string_t"
     },
     "cpu_architecture_id": {
       "caption": "CPU Architecture ID",
@@ -1313,7 +1325,7 @@
       "description": "The unique customer identifier.",
       "type": "string_t",
       "@deprecated": {
-        "message": "Use the <code> tenant_uid </code> attribute instead.",
+        "message": "Use the <code>tenant_uid</code> attribute instead.",
         "since": "1.1.0"
       }
     },
@@ -1344,7 +1356,7 @@
       "description": "The <a target='_blank' href='https://cwe.mitre.org/'>Common Weakness Enumeration (CWE)</a> unique identifier. For example: <code>CWE-787</code>.",
       "type": "string_t",
       "@deprecated": {
-        "message": "Use the <code> related_cwes </code> object attributes instead.",
+        "message": "Use the <code>related_cwes</code> object attributes instead.",
         "since": "1.1.0"
       }
     },
@@ -1353,7 +1365,7 @@
       "description": "Common Weakness Enumeration (CWE) definition URL. For example: <code>https://cwe.mitre.org/data/definitions/787.html</code>.",
       "type": "url_t",
       "@deprecated": {
-        "message": "Use the <code> related_cwes </code> object attributes instead.",
+        "message": "Use the <code>related_cwes</code> object attributes instead.",
         "since": "1.1.0"
       }
     },
@@ -1465,8 +1477,24 @@
     },
     "delivered_to": {
       "caption": "Delivered To",
-      "description": "The <strong>Delivered-To</strong> email header field.",
-      "type": "email_t"
+      "description": "The machine-readable <strong>Delivered-To</strong> email header field. For example <code>example.user@usersdomain.com</code>",
+      "type": "email_t",
+      "@deprecated": {
+        "message": "Use the <code>delivered_to_list</code> attribute instead.",
+        "since": "1.4.0"
+      }
+    },
+    "delivered_to_list": {
+      "caption": "Delivered To",
+      "description": "The machine-readable <strong>Delivered-To</strong> email header values. For example <code>example.user@usersdomain.com</code>",
+      "references": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc9228",
+          "description": "RFC 9228"
+        }
+      ],
+      "type": "email_t",
+      "is_array": true
     },
     "related_component": {
       "caption": "Related Component",
@@ -1862,7 +1890,7 @@
       "description": "The drive type, normalized to the caption of the <code>drive_type_id</code> value. In the case of <code>Other</code>, it is defined by the source.",
       "type": "string_t"
     },
-    "drive_type_id" : {
+    "drive_type_id": {
       "caption": "Drive Type ID",
       "description": "Identifies the type of a disk drive, i.e. fixed, removable, etc.",
       "sibling": "drive_type",
@@ -1977,7 +2005,11 @@
     "email_uid": {
       "caption": "Email UID",
       "description": "The unique identifier of the email, used to correlate related email alert and activity events.",
-      "type": "string_t"
+      "type": "string_t",
+      "@deprecated": {
+        "message": "Use the <code>email.uid</code> attribute instead.",
+        "since": "1.4.0"
+      }
     },
     "employee_uid": {
       "caption": "Employee ID",
@@ -2062,7 +2094,7 @@
       "description": "The data the finding exposes to the analyst.",
       "type": "json_t",
       "@deprecated": {
-        "message": "Use the <code> evidences </code> attribute instead.",
+        "message": "Use the <code>evidences</code> attribute instead.",
         "since": "1.1.0"
       }
     },
@@ -2102,7 +2134,7 @@
       "description": "The schema extension used to create the event.",
       "type": "extension",
       "@deprecated": {
-        "message": "Use the <code> extensions </code> attribute instead.",
+        "message": "Use the <code>extensions</code> attribute instead.",
         "since": "1.1.0"
       }
     },
@@ -2111,7 +2143,7 @@
       "description": "The list of TLS extensions.",
       "type": "tls_extension",
       "@deprecated": {
-        "message": "Use the <code> tls_extension_list </code> attribute instead.",
+        "message": "Use the <code>tls_extension_list</code> attribute instead.",
         "since": "1.1.0"
       },
       "is_array": true
@@ -2253,7 +2285,7 @@
       "description": "Indicates if a fix is available for the reported vulnerability.",
       "type": "boolean_t",
       "@deprecated": {
-        "message": "Use the <code> is_fix_available </code> attribute instead.",
+        "message": "Use the <code>is_fix_available</code> attribute instead.",
         "since": "1.1.0"
       }
     },
@@ -2297,7 +2329,7 @@
     },
     "from": {
       "caption": "From",
-      "description": "The email header From values, as defined by RFC 5322.",
+      "description": "The machine-readable email header From values, as defined by RFC 5322. For example <code>example.user@usersdomain.com</code>",
       "references": [
         {
           "url": "https://www.rfc-editor.org/rfc/rfc5322",
@@ -2305,6 +2337,17 @@
         }
       ],
       "type": "email_t"
+    },
+    "from_mailbox": {
+      "caption": "From Mailbox",
+      "description": "The human-readable email header From Mailbox value. For example <code>'Example User &lt;example.user@usersdomain.com&gt;'</code>.",
+      "references": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc5322#section-3.4",
+          "description": "RFC 5322"
+        }
+      ],
+      "type": "string_t"
     },
     "full_name": {
       "caption": "Full Name",
@@ -2351,7 +2394,7 @@
       "description": "The name of the group that the resource belongs to.",
       "type": "string_t",
       "@deprecated": {
-        "message": "Use the <code> group.name </code> attribute instead.",
+        "message": "Use the <code>group.name</code> attribute instead.",
         "since": "1.1.0"
       }
     },
@@ -2419,7 +2462,7 @@
       "description": "A cookie attribute to make it inaccessible via JavaScript",
       "type": "boolean_t",
       "@deprecated": {
-        "message": "Use the <code> is_http_only </code> attribute instead.",
+        "message": "Use the <code>is_http_only</code> attribute instead.",
         "since": "1.1.0"
       }
     },
@@ -2438,7 +2481,7 @@
       "description": "The Hypertext Transfer Protocol (HTTP) <a target='_blank' href='https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml'>status code</a> returned to the client.",
       "type": "integer_t",
       "@deprecated": {
-        "message": "Use the <code> http_response.code </code> attribute instead.",
+        "message": "Use the <code>http_response.code</code> attribute instead.",
         "since": "1.1.0"
       }
     },
@@ -2660,6 +2703,11 @@
       "type": "ip_t",
       "is_array": true
     },
+    "internal_name": {
+      "caption": "Internal Name",
+      "description": "The name by which a resource identifies itself internally. See specific usage.",
+      "type": "string_t"
+    },
     "invoked_by": {
       "caption": "Invoked by",
       "description": "The name of the service that invoked the activity as described in the event.",
@@ -2872,7 +2920,7 @@
       "description": "The KB article/s related to the entity. A KB Article contains metadata that describes the patch or an update.",
       "type": "string_t",
       "@deprecated": {
-        "message": "Use the <code> kb_article_list </code> attribute instead.",
+        "message": "Use the <code>kb_article_list</code> attribute instead.",
         "since": "1.1.0"
       },
       "is_array": true
@@ -3227,7 +3275,12 @@
     "message_trace_uid": {
       "caption": "Message Trace UID",
       "description": "The identifier that tracks a message that travels through multiple points of a messaging service.",
-      "references": [{"url": "https://learn.microsoft.com/en-us/previous-versions/office/developer/o365-enterprise-developers/jj984335(v=office.15)", "description": "For example Office 365 Message Trace Report."}],
+      "references": [
+        {
+          "url": "https://learn.microsoft.com/en-us/previous-versions/office/developer/o365-enterprise-developers/jj984335(v=office.15)",
+          "description": "For example Office 365 Message Trace Report."
+        }
+      ],
       "type": "string_t"
     },
     "message_uid": {
@@ -3239,6 +3292,7 @@
           "description": "RFC 5322"
         }
       ],
+      "source": "Message-ID",
       "type": "string_t"
     },
     "metadata": {
@@ -3546,7 +3600,7 @@
       "description": "List of vulnerable packages as identified by the security product",
       "type": "package",
       "@deprecated": {
-        "message": "Use the <code> affected_packages </code> attribute instead.",
+        "message": "Use the <code>affected_packages</code> attribute instead.",
         "since": "1.1.0"
       },
       "is_array": true
@@ -3846,18 +3900,24 @@
       "description": "The unique identifier of a Cloud project.",
       "type": "string_t",
       "@deprecated": {
-        "message": "Use the <code> account.uid </code> attribute instead.",
+        "message": "Use the <code>account.uid</code> attribute instead.",
         "since": "1.4.0"
       }
     },
     "protocol_name": {
       "caption": "Protocol Name",
-      "description": "The TCP/IP protocol name in lowercase, as defined by the Internet Assigned Numbers Authority (IANA). See <a target='_blank' href='https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml'>Protocol Numbers</a>. For example: <code>tcp</code> or <code>udp</code>.",
+      "description": "The protocol name. See specific usage.",
       "type": "string_t"
     },
     "protocol_num": {
       "caption": "Protocol Number",
-      "description": "The TCP/IP protocol number, as defined by the Internet Assigned Numbers Authority (IANA). Use -1 if the protocol is not defined by IANA. See <a target='_blank' href='https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml'>Protocol Numbers</a>. For example: <code>6</code> for TCP and <code>17</code> for UDP.",
+      "description": "The IP protocol number, as defined by the Internet Assigned Numbers Authority (IANA). For example: <code>6</code> for TCP and <code>17</code> for UDP.",
+      "references": [
+        {
+          "url": "https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml",
+          "description": "IANA Protocol Numbers"
+        }
+      ],
       "type": "integer_t"
     },
     "protocol_ver": {
@@ -3891,7 +3951,7 @@
       "description": "The proxy (server) in a network connection.",
       "type": "network_proxy",
       "@deprecated": {
-        "message": "Use the <code> proxy_endpoint </code> attribute instead.",
+        "message": "Use the <code>proxy_endpoint</code> attribute instead.",
         "since": "1.1.0"
       }
     },
@@ -4150,14 +4210,30 @@
     },
     "reply_to": {
       "caption": "Reply To",
-      "description": "The email header Reply-To values, as defined by RFC 5322.",
+      "description": "The machine-readable email header Reply-To values, as defined by RFC 5322. For example <code>example.user@usersdomain.com</code>",
       "references": [
         {
           "url": "https://www.rfc-editor.org/rfc/rfc5322",
           "description": "RFC 5322"
         }
       ],
-      "type": "email_t"
+      "type": "email_t",
+      "@deprecated": {
+        "message": "Use the <code>reply_to_mailboxes</code> attribute instead.",
+        "since": "1.4.0"
+      }
+    },
+    "reply_to_mailboxes": {
+      "caption": "Reply To Mailboxes",
+      "description": "The human-readable email header Reply To Mailbox values. For example <code>'Example User &lt;example.user@usersdomain.com&gt;'</code>.",
+      "references": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc5322#section-3.4",
+          "description": "RFC 5322"
+        }
+      ],
+      "type": "string_t",
+      "is_array": true
     },
     "reputation": {
       "caption": "Reputation Scores",
@@ -4176,7 +4252,7 @@
     },
     "requirements": {
       "caption": "Compliance Requirements",
-      "description": "A list of requirements associated to a specific control in an industry or regulatory framework. e.g. <code> NIST.800-53.r5 AU-10 </code>",
+      "description": "A list of requirements associated to a specific control in an industry or regulatory framework. e.g. <code>NIST.800-53.r5 AU-10</code>",
       "type": "string_t",
       "is_array": true
     },
@@ -4509,7 +4585,7 @@
       "description": "The cookie attribute to only send cookies to the server with an encrypted request over the HTTPS protocol.",
       "type": "boolean_t",
       "@deprecated": {
-        "message": "Use the <code> is_secure </code> attribute instead.",
+        "message": "Use the <code>is_secure</code> attribute instead.",
         "since": "1.1.0"
       }
     },
@@ -4700,18 +4776,30 @@
     "smtp_from": {
       "caption": "SMTP From",
       "description": "The value of the SMTP MAIL FROM command.",
-      "type": "email_t"
+      "type": "email_t",
+      "@deprecated": {
+        "message": "Use the <code>from</code> attribute instead.",
+        "since": "1.4.0"
+      }
     },
     "smtp_hello": {
       "caption": "SMTP Hello",
       "description": "The value of the SMTP HELO or EHLO command.",
-      "type": "string_t"
+      "type": "string_t",
+      "@deprecated": {
+        "message": "Use the <code>command</code> attribute instead.",
+        "since": "1.4.0"
+      }
     },
     "smtp_to": {
       "caption": "SMTP To",
       "description": "The value of the SMTP envelope RCPT TO command.",
       "type": "email_t",
-      "is_array": true
+      "is_array": true,
+      "@deprecated": {
+        "message": "Use the <code>to</code> attribute instead.",
+        "since": "1.4.0"
+      }
     },
     "sni": {
       "caption": "Server Name Indication",
@@ -5018,7 +5106,7 @@
       "description": "The Tactic object describes the tactic ID and/or tactic name that are associated with the attack technique, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK® Matrix</a>.",
       "type": "tactic",
       "@deprecated": {
-        "message": "Use the <code> tactic </code> attribute instead.",
+        "message": "Use the <code>tactic</code> attribute instead.",
         "since": "1.1.0"
       },
       "is_array": true
@@ -5028,7 +5116,7 @@
       "description": "The image tag. For example: <code>1.11-alpine</code>.",
       "type": "string_t",
       "@deprecated": {
-        "message": "Use the <code> labels or tags </code> attribute instead.",
+        "message": "Use the <code>labels or tags</code> attribute instead.",
         "since": "1.4.0"
       }
     },
@@ -5106,7 +5194,7 @@
     },
     "to": {
       "caption": "To",
-      "description": "The email header To values, as defined by RFC 5322.",
+      "description": "The machine-readable email header To values, as defined by RFC 5322. For example <code>example.user@usersdomain.com</code>",
       "references": [
         {
           "url": "https://www.rfc-editor.org/rfc/rfc5322",
@@ -5114,6 +5202,18 @@
         }
       ],
       "type": "email_t",
+      "is_array": true
+    },
+    "to_mailboxes": {
+      "caption": "To Mailboxes",
+      "description": "The human-readable email header To Mailbox values. For example <code>'Example User &lt;example.user@usersdomain.com&gt;'</code>.",
+      "references": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc5322#section-3.4",
+          "description": "RFC 5322"
+        }
+      ],
+      "type": "string_t",
       "is_array": true
     },
     "total": {

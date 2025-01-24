@@ -2,7 +2,12 @@
   "caption": "Email",
   "name": "email",
   "description": "The Email object describes the email metadata such as sender, recipients, and direction, and can include embedded URLs and files.",
-  "references": [{"url": "https://d3fend.mitre.org/dao/artifact/d3f:Email/", "description": "D3FEND™ Ontology d3f:Email."}],
+  "references": [
+    {
+      "url": "https://d3fend.mitre.org/dao/artifact/d3f:Email/",
+      "description": "D3FEND™ Ontology d3f:Email."
+    }
+  ],
   "extends": "object",
   "observable": 22,
   "profiles": [
@@ -15,7 +20,17 @@
     "cc": {
       "requirement": "optional"
     },
+    "cc_mailboxes": {
+      "requirement": "optional"
+    },
     "delivered_to": {
+      "requirement": "optional",
+      "@deprecated": {
+        "message": "Use the <code> delivered_to_list </code> attribute instead.",
+        "since": "1.4.0"
+      }
+    },
+    "delivered_to_list": {
       "requirement": "optional"
     },
     "files": {
@@ -24,6 +39,9 @@
     },
     "from": {
       "requirement": "recommended"
+    },
+    "from_mailbox": {
+      "requirement": "optional"
     },
     "http_headers": {
       "requirement": "optional"
@@ -35,26 +53,49 @@
       "requirement": "optional"
     },
     "reply_to": {
-      "requirement": "recommended"
+      "requirement": "recommended",
+      "@deprecated": {
+        "message": "Use the <code> reply_to_mailboxes </code> attribute instead.",
+        "since": "1.4.0"
+      }
+    },
+    "reply_to_mailboxes": {
+      "requirement": "optional"
     },
     "size": {
       "description": "The size in bytes of the email, including attachments.",
       "requirement": "recommended"
     },
     "smtp_from": {
-      "requirement": "recommended"
+      "requirement": "recommended",
+      "@deprecated": {
+        "message": "Use the <code> from </code> attribute instead.",
+        "since": "1.4.0"
+      }
     },
     "smtp_to": {
-      "requirement": "recommended"
+      "requirement": "recommended",
+      "@deprecated": {
+        "message": "Use the <code> to </code> attribute instead.",
+        "since": "1.4.0"
+      }
     },
     "subject": {
       "caption": "Subject",
       "description": "The email header Subject value, as defined by RFC 5322.",
-      "references": [{"url": "https://www.rfc-editor.org/rfc/rfc5322", "description": "RFC 5322"}],
+      "references": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc5322",
+          "description": "RFC 5322"
+        }
+      ],
       "requirement": "recommended"
     },
     "to": {
       "requirement": "recommended"
+    },
+    "to_mailboxes": {
+      "requirement": "optional"
     },
     "urls": {
       "requirement": "optional",
@@ -64,17 +105,15 @@
       "requirement": "optional"
     },
     "uid": {
-      "caption": "Email UID",
-      "description": "The email unique identifier.",
+      "caption": "Email Thread UID",
+      "description": "The unique identifier of the email thread.",
       "requirement": "recommended"
     }
   },
   "constraints": {
     "at_least_one": [
       "from",
-      "to",
-      "smtp_from",
-      "smtp_to"
+      "to"
     ]
   }
 }

@@ -101,6 +101,7 @@ Thankyou! -->
     1. Added `drive_type` and `drive_type_id` objects. #1287
     1. Added `cpu_architecture` and `cpu_architecture_id` objects. #1278
     1. Added `process_entity` object. #1317
+    1. Added `tls.certificate.sans` array, deprecated `tls.sans` array. #1325
 
 * ### Profiles
     1. Added `incident` profile. #1293

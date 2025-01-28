@@ -810,25 +810,25 @@
     "cc": {
       "caption": "Cc",
       "description": "The machine-readable email header Cc values, as defined by RFC 5322. For example <code>example.user@usersdomain.com</code>.",
+      "type": "email_t",
       "references": [
         {
-          "url": "https://www.rfc-editor.org/rfc/rfc5322",
-          "description": "RFC 5322"
+          "description": "RFC 5322",
+          "url": "https://www.rfc-editor.org/rfc/rfc5322"
         }
       ],
-      "type": "email_t",
       "is_array": true
     },
     "cc_mailboxes": {
       "caption": "Cc Mailboxes",
       "description": "The human-readable email header Cc Mailbox values. For example <code>'Example User &lt;example.user@usersdomain.com&gt;'</code>.",
+      "type": "string_t",
       "references": [
         {
-          "url": "https://www.rfc-editor.org/rfc/rfc5322#section-3.4",
-          "description": "RFC 5322"
+          "description": "RFC 5322",
+          "url": "https://www.rfc-editor.org/rfc/rfc5322#section-3.4"
         }
       ],
-      "type": "string_t",
       "is_array": true
     },
     "cell_name": {
@@ -1035,15 +1035,15 @@
     },
     "community_uid": {
       "caption": "Community ID",
+      "description": "The Community ID of the network connection.",
       "source": "community_id",
+      "type": "string_t",
       "references": [
         {
-          "url": "https://github.com/corelight/community-id-spec",
-          "description": "Community ID definition."
+          "description": "Community ID definition.",
+          "url": "https://github.com/corelight/community-id-spec"
         }
-      ],
-      "description": "The Community ID of the network connection.",
-      "type": "string_t"
+      ]
     },
     "company_name": {
       "caption": "Company Name",
@@ -1227,13 +1227,18 @@
     "country": {
       "observable": 14,
       "caption": "Country",
+      "description": "The ISO 3166-1 Alpha-2 country code.<p><b>Note:</b> The two letter country code should be capitalized. For example: <code>US</code> or <code>CA</code>.</p>",
+      "type": "string_t",
       "references": [
         {
-          "url": "https://www.iso.org/obp/ui/#iso:pub:PUB500001:en",
-          "description": "ISO 3166-1 alpha-2 codes"
+          "description": "ISO 3166-1 alpha-2 codes",
+          "url": "https://www.iso.org/obp/ui/#iso:pub:PUB500001:en"
         }
-      ],
-      "description": "The ISO 3166-1 Alpha-2 country code.<p><b>Note:</b> The two letter country code should be capitalized. For example: <code>US</code> or <code>CA</code>.</p>",
+      ]
+    },
+    "cpe_name": {
+      "caption": "The product CPE identifier",
+      "description": "The Common Platform Enumeration (CPE) name as described by (<a target='_blank' href='https://nvd.nist.gov/products/cpe'>NIST</a>) For example: <code>cpe:/a:apple:safari:16.2</code>.",
       "type": "string_t"
     },
     "cpu_architecture": {
@@ -1268,11 +1273,6 @@
           "description": "The CPU architecture is not mapped. See the <code>cpu_architecture</code> attribute, which contains a data source specific value."
         }
       }
-    },
-    "cpe_name": {
-      "caption": "The product CPE identifier",
-      "description": "The Common Platform Enumeration (CPE) name as described by (<a target='_blank' href='https://nvd.nist.gov/products/cpe'>NIST</a>) For example: <code>cpe:/a:apple:safari:16.2</code>.",
-      "type": "string_t"
     },
     "cpu_bits": {
       "caption": "CPU Bits",
@@ -1459,16 +1459,16 @@
       "description": "The DCE/RPC object describes the remote procedure call system for distributed computing environments.",
       "type": "dce_rpc"
     },
-    "decision": {
-      "caption": "Authorization Decision/Outcome",
-      "description": "Decision/outcome of the authorization mechanism (e.g. Approved, Denied)",
-      "type": "string_t"
-    },
     "debug": {
       "caption": "Debug Information",
       "description": "Debug information about non-fatal issues with this OCSF event. Each issue is a line in this string array.",
       "type": "string_t",
       "is_array": true
+    },
+    "decision": {
+      "caption": "Authorization Decision/Outcome",
+      "description": "Decision/outcome of the authorization mechanism (e.g. Approved, Denied)",
+      "type": "string_t"
     },
     "delay": {
       "caption": "Root Delay",
@@ -1492,19 +1492,14 @@
     "delivered_to_list": {
       "caption": "Delivered To",
       "description": "The machine-readable <strong>Delivered-To</strong> email header values. For example <code>example.user@usersdomain.com</code>",
+      "type": "email_t",
       "references": [
         {
-          "url": "https://www.rfc-editor.org/rfc/rfc9228",
-          "description": "RFC 9228"
+          "description": "RFC 9228",
+          "url": "https://www.rfc-editor.org/rfc/rfc9228"
         }
       ],
-      "type": "email_t",
       "is_array": true
-    },
-    "related_component": {
-      "caption": "Related Component",
-      "description": "The package URL (PURL) of the component that this software component has a relationship with.",
-      "type": "string_t"
     },
     "depth": {
       "caption": "CVSS Depth",
@@ -2302,13 +2297,13 @@
     "flag_history": {
       "caption": "Connection Flag History",
       "description": "The Connection Flag History summarizes events in a network connection. For example flags <code> ShAD </code> representing SYN, SYN/ACK, ACK and Data exchange.",
+      "type": "string_t",
       "references": [
         {
           "description": "Zeek History",
           "url": "https://docs.zeek.org/en/master/scripts/base/protocols/conn/main.zeek.html#detailed-interface:~:text=Records%20the%20state%20history%20of%20connections%20as%20a%20string%20of%20letters.%20The%20meaning%20of%20those%20letters%20is"
         }
-      ],
-      "type": "string_t"
+      ]
     },
     "flag_ids": {
       "caption": "Communication Flag IDs",
@@ -2346,24 +2341,24 @@
     "from": {
       "caption": "From",
       "description": "The machine-readable email header From values, as defined by RFC 5322. For example <code>example.user@usersdomain.com</code>",
+      "type": "email_t",
       "references": [
         {
-          "url": "https://www.rfc-editor.org/rfc/rfc5322",
-          "description": "RFC 5322"
+          "description": "RFC 5322",
+          "url": "https://www.rfc-editor.org/rfc/rfc5322"
         }
-      ],
-      "type": "email_t"
+      ]
     },
     "from_mailbox": {
       "caption": "From Mailbox",
       "description": "The human-readable email header From Mailbox value. For example <code>'Example User &lt;example.user@usersdomain.com&gt;'</code>.",
+      "type": "string_t",
       "references": [
         {
-          "url": "https://www.rfc-editor.org/rfc/rfc5322#section-3.4",
-          "description": "RFC 5322"
+          "description": "RFC 5322",
+          "url": "https://www.rfc-editor.org/rfc/rfc5322#section-3.4"
         }
-      ],
-      "type": "string_t"
+      ]
     },
     "full_name": {
       "caption": "Full Name",
@@ -2548,8 +2543,8 @@
     "imei_list": {
       "caption": "IMEI List",
       "description": "The International Mobile Equipment Identity values that are associated with the device.",
-      "is_array": true,
-      "type": "string_t"
+      "type": "string_t",
+      "is_array": true
     },
     "impact": {
       "caption": "Impact",
@@ -2560,18 +2555,8 @@
       "caption": "Impact ID",
       "description": "The normalized impact of the incident or finding. Per NIST, this is the magnitude of harm that can be expected to result from the consequences of unauthorized disclosure, modification, destruction, or loss of information or information system availability.",
       "sibling": "impact",
-      "type": "integer_t",
       "source": "impact value; impact level",
-      "references": [
-        {
-          "description": "NIST SP 800-172 from FIPS 199",
-          "url": "https://doi.org/10.6028/NIST.FIPS.199"
-        },
-        {
-          "description": "NIST Computer Security Resource Center",
-          "url": "https://doi.org/10.6028/NIST.FIPS.199"
-        }
-      ],
+      "type": "integer_t",
       "enum": {
         "0": {
           "caption": "Unknown",
@@ -2597,7 +2582,17 @@
           "caption": "Other",
           "description": "The impact is not mapped. See the <code>impact</code> attribute, which contains a data source specific value."
         }
-      }
+      },
+      "references": [
+        {
+          "description": "NIST SP 800-172 from FIPS 199",
+          "url": "https://doi.org/10.6028/NIST.FIPS.199"
+        },
+        {
+          "description": "NIST Computer Security Resource Center",
+          "url": "https://doi.org/10.6028/NIST.FIPS.199"
+        }
+      ]
     },
     "impact_score": {
       "caption": "Impact Score",
@@ -3112,8 +3107,8 @@
     "locations": {
       "caption": "Geo Locations",
       "description": "A list of detailed geographical locations.",
-      "is_array": true,
-      "type": "location"
+      "type": "location",
+      "is_array": true
     },
     "log_level": {
       "caption": "Log Level",
@@ -3174,6 +3169,11 @@
       "description": "An array of Logger objects that describe the devices and logging products between the event source and its eventual destination. Note, this attribute can be used when there is a complex end-to-end path of event flow.",
       "type": "logger",
       "is_array": true
+    },
+    "login_endpoint": {
+      "caption": "Login Endpoint",
+      "description": "URL for initiating a login request. See specific usage.",
+      "type": "url_t"
     },
     "logon_process": {
       "caption": "Logon Process",
@@ -3249,11 +3249,6 @@
         }
       }
     },
-    "login_endpoint": {
-      "caption": "Login Endpoint",
-      "description": "URL for initiating a login request. See specific usage.",
-      "type": "url_t"
-    },
     "logout_endpoint": {
       "caption": "Logout Endpoint",
       "description": "URL for initiating a logout request. See specific usage.",
@@ -3299,25 +3294,25 @@
     "message_trace_uid": {
       "caption": "Message Trace UID",
       "description": "The identifier that tracks a message that travels through multiple points of a messaging service.",
+      "type": "string_t",
       "references": [
         {
-          "url": "https://learn.microsoft.com/en-us/previous-versions/office/developer/o365-enterprise-developers/jj984335(v=office.15)",
-          "description": "For example Office 365 Message Trace Report."
+          "description": "For example Office 365 Message Trace Report.",
+          "url": "https://learn.microsoft.com/en-us/previous-versions/office/developer/o365-enterprise-developers/jj984335(v=office.15)"
         }
-      ],
-      "type": "string_t"
+      ]
     },
     "message_uid": {
       "caption": "Message UID",
       "description": "The email header Message-ID value, as defined by RFC 5322.",
+      "source": "Message-ID",
+      "type": "string_t",
       "references": [
         {
-          "url": "https://www.rfc-editor.org/rfc/rfc5322",
-          "description": "RFC 5322"
+          "description": "RFC 5322",
+          "url": "https://www.rfc-editor.org/rfc/rfc5322"
         }
-      ],
-      "source": "Message-ID",
-      "type": "string_t"
+      ]
     },
     "metadata": {
       "caption": "Metadata",
@@ -3466,13 +3461,13 @@
     "observables": {
       "caption": "Observables",
       "description": "The observables associated with the event or a finding.",
+      "type": "observable",
       "references": [
         {
-          "url": "https://github.com/ocsf/ocsf-docs/blob/main/Articles/Defining and Using Observables.md",
-          "description": "OCSF Observables FAQ"
+          "description": "OCSF Observables FAQ",
+          "url": "https://github.com/ocsf/ocsf-docs/blob/main/Articles/Defining and Using Observables.md"
         }
       ],
-      "type": "observable",
       "is_array": true
     },
     "occurrence_details": {
@@ -3572,16 +3567,16 @@
       "description": "The endpoint operating system.",
       "type": "os"
     },
+    "os_machine_uuid": {
+      "caption": "OS Machine UUID",
+      "description": "The operating system assigned Machine ID. In Windows, this is the value stored at the registry path: <code>HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography\\MachineGuid</code>. In Linux, this is stored in the file: <code>/etc/machine-id</code>.",
+      "type": "uuid_t"
+    },
     "osint": {
       "caption": "OSINT",
       "description": "The OSINT (Open Source Intelligence) object contains details related to an indicator such as the indicator itself, related indicators, geolocation, registrar information, subdomains, analyst commentary, and other contextual information. This information can be used to further enrich a detection or finding by providing decisioning support to other analysts and engineers.",
       "type": "osint",
       "is_array": true
-    },
-    "os_machine_uuid": {
-      "caption": "OS Machine UUID",
-      "description": "The operating system assigned Machine ID. In Windows, this is the value stored at the registry path: <code>HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography\\MachineGuid</code>. In Linux, this is stored in the file: <code>/etc/machine-id</code>.",
-      "type": "uuid_t"
     },
     "ou_name": {
       "caption": "Org Unit Name",
@@ -3605,14 +3600,14 @@
     },
     "package": {
       "caption": "Software Package",
+      "description": "The Software Package object describes details about a software package.",
+      "type": "package",
       "references": [
         {
-          "url": "https://d3fend.mitre.org/dao/artifact/d3f:SoftwarePackage/",
-          "description": "D3FEND™ Ontology d3f:SoftwarePackage."
+          "description": "D3FEND™ Ontology d3f:SoftwarePackage.",
+          "url": "https://d3fend.mitre.org/dao/artifact/d3f:SoftwarePackage/"
         }
-      ],
-      "description": "The Software Package object describes details about a software package.",
-      "type": "package"
+      ]
     },
     "package_manager": {
       "caption": "Package Manager",
@@ -3936,13 +3931,13 @@
     "protocol_num": {
       "caption": "Protocol Number",
       "description": "The IP protocol number, as defined by the Internet Assigned Numbers Authority (IANA). For example: <code>6</code> for TCP and <code>17</code> for UDP.",
+      "type": "integer_t",
       "references": [
         {
-          "url": "https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml",
-          "description": "IANA Protocol Numbers"
+          "description": "IANA Protocol Numbers",
+          "url": "https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml"
         }
-      ],
-      "type": "integer_t"
+      ]
     },
     "protocol_ver": {
       "caption": "Protocol Version",
@@ -4158,6 +4153,11 @@
       "type": "analytic",
       "is_array": true
     },
+    "related_component": {
+      "caption": "Related Component",
+      "description": "The package URL (PURL) of the component that this software component has a relationship with.",
+      "type": "string_t"
+    },
     "related_cves": {
       "caption": "Related CVEs",
       "description": "Describes Common Vulnerabilities and Exposures <a target='_blank' href='https://cve.mitre.org/'>(CVE)</a> entries that are related to an entity. See specific usage.",
@@ -4235,28 +4235,28 @@
     "reply_to": {
       "caption": "Reply To",
       "description": "The machine-readable email header Reply-To values, as defined by RFC 5322. For example <code>example.user@usersdomain.com</code>",
-      "references": [
-        {
-          "url": "https://www.rfc-editor.org/rfc/rfc5322",
-          "description": "RFC 5322"
-        }
-      ],
       "type": "email_t",
       "@deprecated": {
         "message": "Use the <code>reply_to_mailboxes</code> attribute instead.",
         "since": "1.4.0"
-      }
+      },
+      "references": [
+        {
+          "description": "RFC 5322",
+          "url": "https://www.rfc-editor.org/rfc/rfc5322"
+        }
+      ]
     },
     "reply_to_mailboxes": {
       "caption": "Reply To Mailboxes",
       "description": "The human-readable email header Reply To Mailbox values. For example <code>'Example User &lt;example.user@usersdomain.com&gt;'</code>.",
+      "type": "string_t",
       "references": [
         {
-          "url": "https://www.rfc-editor.org/rfc/rfc5322#section-3.4",
-          "description": "RFC 5322"
+          "description": "RFC 5322",
+          "url": "https://www.rfc-editor.org/rfc/rfc5322#section-3.4"
         }
       ],
-      "type": "string_t",
       "is_array": true
     },
     "reputation": {
@@ -4447,12 +4447,6 @@
       "description": "The Software Bill of Materials (SBOM) object describes the characteristics of a generated SBOM for a software package.",
       "type": "sbom"
     },
-    "software_components": {
-      "caption": "Software Components",
-      "description": "The list of software components used in the software package.",
-      "type": "software_component",
-      "is_array": true
-    },
     "scale_factor": {
       "caption": "Scale Factor",
       "description": "The numeric scale factor of display.",
@@ -4468,49 +4462,49 @@
       "description": "The unique identifier of the schedule associated with a scan job.",
       "type": "string_t"
     },
-    "scim": {
-      "caption": "SCIM",
-      "description": "The System for Cross-domain Identity Management (SCIM) resource object provides a structured set of attributes related to SCIM protocols used for identity provisioning and management across cloud-based platforms. It standardizes user and group provisioning details, enabling identity synchronization and lifecycle management with compatible Identity Providers (IdPs) and applications. SCIM is defined in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc7643'>RFC-7634</a>",
-      "references": [
-        {
-          "url": "https://datatracker.ietf.org/doc/html/rfc7643",
-          "description": "System for Cross-domain Identity Management (SCIM) RFC."
-        }
-      ],
-      "type": "scim"
-    },
-    "scim_group_schema": {
-      "caption": "SCIM Group Schema",
-      "description": "SCIM provides a schema for representing groups, identified using the following schema URI: <code>urn:ietf:params:scim:schemas:core:2.0:Group</code> as defined in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc7643'>RFC-7634</a>. This attribute will capture key-value pairs for the scheme implemented in a SCIM resource.",
-      "references": [
-        {
-          "url": "https://datatracker.ietf.org/doc/html/rfc7643",
-          "description": "System for Cross-domain Identity Management (SCIM) RFC spec."
-        }
-      ],
-      "type": "json_t"
-    },
-    "scim_user_schema": {
-      "caption": "SCIM User Schema",
-      "description": "SCIM provides a resource type for user resources. The core schema for user is identified using the following schema URI: <code>urn:ietf:params:scim:schemas:core:2.0:User</code> as defined in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc7643'>RFC-7634</a>. his attribute will capture key-value pairs for the scheme implemented in a SCIM resource. This object is inclusive of both the basic and Enterprise User Schema Extension.",
-      "references": [
-        {
-          "url": "https://datatracker.ietf.org/doc/html/rfc7643",
-          "description": "System for Cross-domain Identity Management (SCIM) RFC spec."
-        }
-      ],
-      "type": "json_t"
-    },
     "scheme": {
       "caption": "Scheme",
       "description": "The scheme portion of the URL. For example: <code>http</code>, <code>https</code>, <code>ftp</code>, or <code>sftp</code>.",
       "type": "string_t"
     },
+    "scim": {
+      "caption": "SCIM",
+      "description": "The System for Cross-domain Identity Management (SCIM) resource object provides a structured set of attributes related to SCIM protocols used for identity provisioning and management across cloud-based platforms. It standardizes user and group provisioning details, enabling identity synchronization and lifecycle management with compatible Identity Providers (IdPs) and applications. SCIM is defined in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc7643'>RFC-7634</a>",
+      "type": "scim",
+      "references": [
+        {
+          "description": "System for Cross-domain Identity Management (SCIM) RFC.",
+          "url": "https://datatracker.ietf.org/doc/html/rfc7643"
+        }
+      ]
+    },
+    "scim_group_schema": {
+      "caption": "SCIM Group Schema",
+      "description": "SCIM provides a schema for representing groups, identified using the following schema URI: <code>urn:ietf:params:scim:schemas:core:2.0:Group</code> as defined in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc7643'>RFC-7634</a>. This attribute will capture key-value pairs for the scheme implemented in a SCIM resource.",
+      "type": "json_t",
+      "references": [
+        {
+          "description": "System for Cross-domain Identity Management (SCIM) RFC spec.",
+          "url": "https://datatracker.ietf.org/doc/html/rfc7643"
+        }
+      ]
+    },
+    "scim_user_schema": {
+      "caption": "SCIM User Schema",
+      "description": "SCIM provides a resource type for user resources. The core schema for user is identified using the following schema URI: <code>urn:ietf:params:scim:schemas:core:2.0:User</code> as defined in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc7643'>RFC-7634</a>. his attribute will capture key-value pairs for the scheme implemented in a SCIM resource. This object is inclusive of both the basic and Enterprise User Schema Extension.",
+      "type": "json_t",
+      "references": [
+        {
+          "description": "System for Cross-domain Identity Management (SCIM) RFC spec.",
+          "url": "https://datatracker.ietf.org/doc/html/rfc7643"
+        }
+      ]
+    },
     "scopes": {
       "caption": "Scopes",
       "description": "Scopes define the specific permissions or actions that the client is allowed to perform on behalf of the user. Each scope represents a different set of permissions, and the user can selectively grant or deny access to specific scopes during the authorization process.",
-      "is_array": true,
-      "type": "string_t"
+      "type": "string_t",
+      "is_array": true
     },
     "score": {
       "caption": "Reputation Score",
@@ -4670,10 +4664,10 @@
       "type": "integer_t"
     },
     "serial_number": {
+      "observable": 37,
       "caption": "Serial Number",
       "description": "The serial number that pertains to the object. See specific usage.",
-      "type": "string_t",
-      "observable": 37
+      "type": "string_t"
     },
     "server_ciphers": {
       "caption": "Server Cipher Suites",
@@ -4819,16 +4813,22 @@
       "caption": "SMTP To",
       "description": "The value of the SMTP envelope RCPT TO command.",
       "type": "email_t",
-      "is_array": true,
       "@deprecated": {
         "message": "Use the <code>to</code> attribute instead.",
         "since": "1.4.0"
-      }
+      },
+      "is_array": true
     },
     "sni": {
       "caption": "Server Name Indication",
       "description": " The Server Name Indication (SNI) extension sent by the client.",
       "type": "string_t"
+    },
+    "software_components": {
+      "caption": "Software Components",
+      "description": "The list of software components used in the software package.",
+      "type": "software_component",
+      "is_array": true
     },
     "sp_name": {
       "caption": "OS Service Pack",
@@ -5219,31 +5219,36 @@
     "to": {
       "caption": "To",
       "description": "The machine-readable email header To values, as defined by RFC 5322. For example <code>example.user@usersdomain.com</code>",
+      "type": "email_t",
       "references": [
         {
-          "url": "https://www.rfc-editor.org/rfc/rfc5322",
-          "description": "RFC 5322"
+          "description": "RFC 5322",
+          "url": "https://www.rfc-editor.org/rfc/rfc5322"
         }
       ],
-      "type": "email_t",
       "is_array": true
     },
     "to_mailboxes": {
       "caption": "To Mailboxes",
       "description": "The human-readable email header To Mailbox values. For example <code>'Example User &lt;example.user@usersdomain.com&gt;'</code>.",
+      "type": "string_t",
       "references": [
         {
-          "url": "https://www.rfc-editor.org/rfc/rfc5322#section-3.4",
-          "description": "RFC 5322"
+          "description": "RFC 5322",
+          "url": "https://www.rfc-editor.org/rfc/rfc5322#section-3.4"
         }
       ],
-      "type": "string_t",
       "is_array": true
     },
     "total": {
       "caption": "Total",
       "description": "The total number of items. See specific usage.",
       "type": "integer_t"
+    },
+    "trace": {
+      "caption": "Trace",
+      "description": "The information about the trace. See specific usage.",
+      "type": "trace"
     },
     "track_direction": {
       "caption": "Track Direction",
@@ -5264,11 +5269,6 @@
       "caption": "Transmission Time",
       "description": "The event transmission time from one device to another.  See specific usage.",
       "type": "timestamp_t"
-    },
-    "trace": {
-      "caption": "Trace",
-      "description": "The information about the trace. See specific usage.",
-      "type": "trace"
     },
     "tree_uid": {
       "caption": "Tree UID",
@@ -5334,21 +5334,6 @@
       "type": "string_t",
       "is_array": true
     },
-    "unmanned_aerial_system": {
-      "caption": "Unmanned Aerial System",
-      "description": "The Unmanned Aerial System object describes the characteristics, Position Location Information (PLI), and other metadata of Unmanned Aerial Systems (UAS) and other unmanned and drone systems used in Remote ID. Remote ID is defined in the Standard Specification for Remote ID and Tracking (ASTM Designation: F3411-22a) <a target='_blank' href='https://cdn.standards.iteh.ai/samples/112830/71297057ac42432880a203654f213709/ASTM-F3411-22a.pdf'>ASTM F3411-22a</a>.",
-      "type": "unmanned_aerial_system"
-    },
-    "unmanned_system_operator": {
-      "caption": "Unmanned Systems Operator",
-      "description": "The human or machine operator of an Unmanned System.",
-      "type": "user"
-    },
-    "unmanned_system_operating_area": {
-      "caption": "UAS Operating Area",
-      "description": "The UAS Operating Area object describes details about a precise area of operations for a UAS flight or mission.",
-      "type": "unmanned_system_operating_area"
-    },
     "uid": {
       "caption": "Unique ID",
       "description": "The unique identifier. See specific usage.",
@@ -5358,6 +5343,21 @@
       "caption": "Alternate ID",
       "description": "The alternate unique identifier. See specific usage.",
       "type": "string_t"
+    },
+    "unmanned_aerial_system": {
+      "caption": "Unmanned Aerial System",
+      "description": "The Unmanned Aerial System object describes the characteristics, Position Location Information (PLI), and other metadata of Unmanned Aerial Systems (UAS) and other unmanned and drone systems used in Remote ID. Remote ID is defined in the Standard Specification for Remote ID and Tracking (ASTM Designation: F3411-22a) <a target='_blank' href='https://cdn.standards.iteh.ai/samples/112830/71297057ac42432880a203654f213709/ASTM-F3411-22a.pdf'>ASTM F3411-22a</a>.",
+      "type": "unmanned_aerial_system"
+    },
+    "unmanned_system_operating_area": {
+      "caption": "UAS Operating Area",
+      "description": "The UAS Operating Area object describes details about a precise area of operations for a UAS flight or mission.",
+      "type": "unmanned_system_operating_area"
+    },
+    "unmanned_system_operator": {
+      "caption": "Unmanned Systems Operator",
+      "description": "The human or machine operator of an Unmanned System.",
+      "type": "user"
     },
     "unmapped": {
       "caption": "Unmapped Data",

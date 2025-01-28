@@ -188,6 +188,7 @@ Thankyou! -->
     1. Added `ancestry` to the `process` object. #1317
     1. Added `internal_name` to the `file` object. #1322
     1. Added `cc_mailboxes`, `from_mailbox`, `to_mailboxes`, `delivered_to_list`  and `reply_to_mailboxes` to `email` object. #1307
+    1. Added `sans` array to `certificate` object. #1325
 
 ### Bugfixes
 1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180
@@ -211,6 +212,7 @@ Thankyou! -->
 1. Deprecated `policy` in favor of `policies` in `Account Change` class. #1282
 1. Deprecated `lineage` in the `process` object. #1317
 1. Deprecated `smtp_hello`, `smtp_from`, `smtp_to`, `delivered_to` and `reply_to` in favor of `command`, `from`, `to`, `delivered_to_list` and `reply_to_mailboxes` respectively. #1307
+1. Deprecated `tls.sans` array in favor of added `tls.certificate.sans` array. #1325
 
 ### Misc
 1. Added `user.uid` as an Observable type - `type_id: 31`. #1155

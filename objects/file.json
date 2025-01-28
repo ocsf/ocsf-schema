@@ -1,13 +1,9 @@
 {
-  "caption": "File",
-  "name": "file",
   "observable": 24,
+  "caption": "File",
   "description": "The File object represents the metadata associated with a file stored in a computer system. It encompasses information about the file itself, including its attributes, properties, and organizational details.",
-  "references": [{"url": "https://next.d3fend.mitre.org/dao/artifact/d3f:File/", "description": "D3FEND™ Ontology d3f:File"}],
   "extends": "_entity",
-  "profiles": [
-    "data_classification"
-  ],
+  "name": "file",
   "attributes": {
     "$include": [
       "profiles/data_classification.json"
@@ -45,7 +41,7 @@
     "drive_type": {
       "requirement": "optional"
     },
-    "drive_type_id" : {
+    "drive_type_id": {
       "requirement": "optional"
     },
     "encryption_details": {
@@ -72,13 +68,13 @@
       "description": "Indicates if the file is encrypted.",
       "requirement": "optional"
     },
-    "is_system": {
+    "is_public": {
+      "description": "Indicates if the file is publicly accessible. For example in an object's public access in AWS S3",
+      "profile": "cloud",
       "requirement": "optional"
     },
-    "is_public":{
-      "description": "Indicates if the file is publicly accessible. For example in an object's public access in AWS S3",
-      "requirement": "optional",
-      "profile": "cloud"
+    "is_system": {
+      "requirement": "optional"
     },
     "mime_type": {
       "requirement": "optional"
@@ -119,12 +115,12 @@
     "size": {
       "requirement": "optional"
     },
-    "storage_class":{
+    "storage_class": {
       "description": "The storage class of the file. For example in AWS S3: <code>STANDARD, STANDARD_IA, GLACIER</code>.",
-      "requirement": "optional",
-      "profile": "cloud"
+      "profile": "cloud",
+      "requirement": "optional"
     },
-    "tags":{
+    "tags": {
       "description": "The list of tags; <code>{key:value}</code> pairs associated to the file.",
       "requirement": "optional"
     },
@@ -181,5 +177,14 @@
       "requirement": "optional"
     }
   },
-  "constraints": {}
+  "constraints": {},
+  "profiles": [
+    "data_classification"
+  ],
+  "references": [
+    {
+      "description": "D3FEND™ Ontology d3f:File",
+      "url": "https://next.d3fend.mitre.org/dao/artifact/d3f:File/"
+    }
+  ]
 }

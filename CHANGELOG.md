@@ -39,7 +39,7 @@ Thankyou! -->
 
 -->
 
-## [Unreleased]
+## [v1.4.0] - January 31st, 2025
 
 ### Added
 * #### Categories
@@ -52,16 +52,18 @@ Thankyou! -->
     1. Added `Cloud Resources Inventory Info` event class to the Discovery category. #1250
     1. Added `Airborne Broadcast Activity` event class to the Unmanned Systems category. #1253
     1. Added `Application Error` event class to the Application Activity category. #1299
+* #### Profiles
+    1. Added `incident` profile. #1293
 * #### Dictionary Attributes
     1. Added `has_mfa` as a `boolean_t`. #1155
     1. Added `environment_variables` as an array of `environment_variable` object. #1172
     1. Added `forward_addr` as an `email_t`. #1179
     1. Added `related_cves`, `related_cwes` as arrays of `cve`, `cwe` objects respectively. #1176
     1. Added `exploit_last_seen_time` as a `timestamp_t`. #1176
-    1. Added `is_alert` as a `boolean_t`, #1179
+    1. Added `is_alert` as a `boolean_t`. #1179
     1. Added `working_directory` as a `string_t`. #1195
-    1. Added `is_deleted` a `boolean_t`. #1196
-    1. Added `body_length` as an `integer_t` #1200
+    1. Added `is_deleted` as a `boolean_t`. #1196
+    1. Added `body_length` as an `integer_t`. #1200
     1. Added `is_public` as a `boolean_t` #1208
     1. Added `tags`, `control_parameters` as an array of `key_value_object` object. #1219
     1. Added `community_uid` as a `string_t`. #1202
@@ -74,7 +76,6 @@ Thankyou! -->
     1. Added `group_provisioning_enabled`, `scim_group_schema`, `user_provisioning_enabled`, `scim_user_schema`, `scopes`, `idle_timeout`, `login_endpoint`, `logout_endpoint`, and `metadata_url` entries to the dictionary to support the new `scim` and `sso` objects. #1239
     1. Added new `11: Basic Authentication` enum value to `auth_protocol_id`. #1239
     1. Added `values` as an array of `string_t`. #1251
-    1. Added `kernel_release` as a `string_t`.
     1. Added `files` `urls` and `message_trace_uid`. #1259
     1. Added `kernel_release` as a `string_t`. #1249
     1. Added `os_machine_uuid` as a `uuid_t`.  #1268
@@ -86,7 +87,6 @@ Thankyou! -->
     1. Added `internal_name` as a `string_t`. #1322
     1. Added `cc_mailboxes`, `from_mailbox`, `to_mailboxes`, `delivered_to_list`  and `reply_to_mailboxes`. #1307
     1. Added `flag_history` and `bytes_missed` attributes. #1316
-
 * #### Objects
     1. Added `environment_variable` object. #1172, #1288
     1. Added `advisory` object. #1176
@@ -103,9 +103,6 @@ Thankyou! -->
     1. Added `cpu_architecture` and `cpu_architecture_id` objects. #1278
     1. Added `process_entity` object. #1317
 
-* ### Profiles
-    1. Added `incident` profile. #1293
-
 ### Improved
 * #### Event Classes
     1. Added `evidences` to `compliance_finding` class. #1157
@@ -115,21 +112,19 @@ Thankyou! -->
     1. Added `Archived|5` as an enum item to `status_id` attribute in Findings classes. #1219
     1. Added a `Trace` `activity_id` to the `Email Activity` class. #1252
     1. Added a `message_trace_uid` to the `Email Activity` class. #1259
-    1. Added a `Trace`, `activity_id` to the `Email Activity` class. #1252
     1. Added `vendor_attributes` to all `Findings` Category classes. #1257
     1. Added `sbom` to `Software Inventory Info` class. #1262
     1. Relaxed requirements on the `dst_endpoint` attribute in the `network_activity` event class and added an `at_least_one` constraint with `src_endpoint` and `dst_endpoint`. #1274
     1. Relaxed requirements on the `http_request` and `http_response` attributes in the `http_activity` event class and added an `at_least_one` constraint with these attributes. #1274
-    1. Add `host` profile to base_event.json and remove this profile elsewhere in the event hierarchy. #1280
+    1. Add `host` profile to `base_event` and remove this profile elsewhere in the event hierarchy. #1280
     1. Add the `actor` attribute to the IAM base event. #1280
-    1. Add `security_control` profile to base_event.json and remove this profile elsewhere in the event hierarchy. #1281
+    1. Add `security_control` profile to `base_event` and remove this profile elsewhere in the event hierarchy. #1281
     1. Add `policies` to `Account Change` class. #1282
     1. Add `Unlock` activity to `account_change` class. #1285
     1. Add `incident` profile to `finding` to affect classes that extend it. #1293
     1. Add `keyboard_info` object to RDP event class. #1313
     1. Added attributes and a new Activity ID to the `File Hosting Activity` class for network file share services and authorization check result. Activity ID added: `17` - "Access Check". Optional `context` group attributes added: `access_list`, `access_mask`, `access_result`, `share`, `share_type`, and `share_type_id`. #1315
     1. Added `command` and `protocol_name` to Email Activity event class. #1307
-
 * #### Profiles
     1. Added `is_alert`, `confidence_id`, `confidence`, `confidence_score` attributes to the `security_control` profile. #1178
     1. Added `risk_level_id`, `risk_level`, `risk_score`, `risk_details` attributes to the `security_control` profile.  #1178
@@ -188,7 +183,7 @@ Thankyou! -->
     1. Changed the `process` object to extend the `process_entity` object. #1317
     1. Added `ancestry` to the `process` object. #1317
     1. Added `internal_name` to the `file` object. #1322
-    1. Added `cc_mailboxes`, `from_mailbox`, `to_mailboxes`, `delivered_to_list`  and `reply_to_mailboxes` to `email` object. #1307
+    1. Added `cc_mailboxes`, `from_mailbox`, `to_mailboxes`, `delivered_to_list` and `reply_to_mailboxes` to `email` object. #1307
     1. Added `sans` array to `certificate` object. #1325
     1. Added `flag_history` attribute to the `network_connection_info` object. #1316
     1. Added `bytes_missed` attribute to the `network_traffic` object. #1316
@@ -196,7 +191,7 @@ Thankyou! -->
 ### Bugfixes
 1. Added sibling definition to `confidence_id` in dictionary, accurately associating `confidence` as its sibling. #1180
 1. Added a fix (profile: null) to `OSINT Inventory Info` so that the `osint` attribute is present w/o the OSINT profile, per the class definition.
-1. Added http_response to all classes that have http_request, but no http_response object. #1200
+1. Added `http_response` to all classes that have `http_request`, but no `http_response` object. #1200
 1. Removed redundant `name` attribute from Windows extension to the `startup_item` object for consistency with other extensions. #1203
 1. Change `activity_id` requirement from `optional` to `required` in `email_activity`, `email_file_activity` and `email_url_activity` classes. #1307
 

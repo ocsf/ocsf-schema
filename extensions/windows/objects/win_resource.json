@@ -1,15 +1,15 @@
 {
-  "description": "The Windows resource object describes a resource object managed by Windows, such as mutant or timer.",
   "caption": "Windows Resource",
-  "name": "win_resource",
+  "description": "The Windows resource object describes a resource object managed by Windows, such as mutant or timer.",
   "extends": "_resource",
+  "name": "win_resource",
   "attributes": {
-    "name": {
-      "description": "The name of the resource object."
-    },
     "details": {
       "description": "The string detailing the attributes of the resource object.",
       "requirement": "optional"
+    },
+    "name": {
+      "description": "The name of the resource object."
     },
     "svc_name": {
       "description": "The Windows service acting as the object server for the resource object, such as Security or Security Account Manager.",
@@ -21,11 +21,10 @@
     },
     "type_id": {
       "description": "The normalized type identifier of the Windows resource object accessed.",
+      "requirement": "required",
+      "sibling": "type",
+      "type": "integer_t",
       "enum": {
-        "99": {
-          "caption": "Other",
-          "description": "The resource object type is not mapped. See the <code>type</code> attribute, which may contain a data source specific value."
-        },
         "0": {
           "caption": "Unknown",
           "description": "The resource object type is unknown."
@@ -140,11 +139,12 @@
         },
         "37": {
           "caption": "SAM_SERVER"
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The resource object type is not mapped. See the <code>type</code> attribute, which may contain a data source specific value."
         }
-      },
-      "sibling": "type",
-      "requirement": "required",
-      "type": "integer_t"
+      }
     },
     "uid": {
       "description": "The Windows provided handle identifier for the resource object"

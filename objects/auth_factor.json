@@ -1,48 +1,48 @@
 {
   "caption": "Authentication Factor",
   "description": "An Authentication Factor object describes a category of methods used for identity verification in an authentication attempt.",
-  "name": "auth_factor",
   "extends": "object",
+  "name": "auth_factor",
   "attributes": {
-    "factor_type": {
-      "requirement": "recommended",
-      "group": "primary"
-    },
-    "factor_type_id": {
-      "requirement": "required",
-      "group": "primary"
-    },
     "device": {
       "description": "Device used to complete an authentication request.",
-      "requirement": "recommended",
-      "group": "primary"
-    },
-    "provider": {
-      "description": "The name of provider for an authentication factor.",
-      "requirement": "recommended",
-      "group": "context"
-    },
-    "is_totp": {
-      "requirement": "recommended",
-      "group": "context"
-    },
-    "is_hotp": {
-      "requirement": "recommended",
-      "group": "context"
-    },
-    "security_questions": {
-      "requirement": "optional",
-      "group": "context"
-    },
-    "phone_number": {
-      "description": "The phone number used for a telephony-based authentication request.",
-      "requirement": "optional",
-      "group": "context"
+      "group": "primary",
+      "requirement": "recommended"
     },
     "email_addr": {
       "description": "The email address used in an email-based authentication factor.",
-      "requirement": "optional",
-      "group": "context"
+      "group": "context",
+      "requirement": "optional"
+    },
+    "factor_type": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "factor_type_id": {
+      "group": "primary",
+      "requirement": "required"
+    },
+    "is_hotp": {
+      "group": "context",
+      "requirement": "recommended"
+    },
+    "is_totp": {
+      "group": "context",
+      "requirement": "recommended"
+    },
+    "phone_number": {
+      "description": "The phone number used for a telephony-based authentication request.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "provider": {
+      "description": "The name of provider for an authentication factor.",
+      "group": "context",
+      "requirement": "recommended"
+    },
+    "security_questions": {
+      "group": "context",
+      "requirement": "optional"
     }
   },
   "constraints": {

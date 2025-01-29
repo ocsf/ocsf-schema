@@ -1,7 +1,6 @@
 {
   "caption": "Script",
   "description": "The Script object describes a script or command that can be executed by a shell, script engine, or interpreter. Examples include Bash, JavsScript, PowerShell, Python, VBScript, etc. Note that the term <em>script</em> here denotes not only a script contained within a file but also a script or command typed interactively by a user, supplied on the command line, or provided by some other file-less mechanism.",
-  "references": [{"url": "https://d3fend.mitre.org/dao/artifact/d3f:ExecutableScript/", "description": "D3FEND™ Ontology d3f:ExecutableScript."}],
   "extends": "object",
   "name": "script",
   "attributes": {
@@ -30,7 +29,6 @@
     },
     "type_id": {
       "description": "The normalized script type ID.",
-      "requirement": "required",
       "enum": {
         "0": {
           "caption": "Unknown",
@@ -61,11 +59,18 @@
           "caption": "Other",
           "description": "The script type is not mapped. See the <code>type</code> attribute which contains an event source specific value."
         }
-      }
+      },
+      "requirement": "required"
     },
     "uid": {
       "description": "Some script engines assign a unique ID to each individual execution of a given script. This attribute captures that unique ID. In the case of PowerShell, the unique ID corresponds to the <code>ScriptBlockId</code> in the raw ETW events provided by the OS.",
       "requirement": "optional"
     }
-  }
+  },
+  "references": [
+    {
+      "description": "D3FEND™ Ontology d3f:ExecutableScript.",
+      "url": "https://d3fend.mitre.org/dao/artifact/d3f:ExecutableScript/"
+    }
+  ]
 }

@@ -1,10 +1,9 @@
 {
+  "observable": 29,
   "caption": "Registry Value",
   "description": "The registry value object describes a Windows registry value.",
-  "references": [{"url": "https://d3fend.mitre.org/dao/artifact/d3f:WindowsRegistryValue/", "description": "D3FEND™ Ontology d3f:WindowsRegistryValue."}],
   "extends": "object",
   "name": "reg_value",
-  "observable": 29,
   "attributes": {
     "data": {
       "description": "The data of the registry value.",
@@ -34,12 +33,10 @@
     },
     "type_id": {
       "description": "The value type ID.",
+      "requirement": "recommended",
       "enum": {
         "1": {
           "caption": "REG_BINARY"
-        },
-        "10": {
-          "caption": "REG_SZ"
         },
         "2": {
           "caption": "REG_DWORD"
@@ -64,9 +61,17 @@
         },
         "9": {
           "caption": "REG_QWORD_LITTLE_ENDIAN"
+        },
+        "10": {
+          "caption": "REG_SZ"
         }
-      },
-      "requirement": "recommended"
+      }
     }
-  }
+  },
+  "references": [
+    {
+      "description": "D3FEND™ Ontology d3f:WindowsRegistryValue.",
+      "url": "https://d3fend.mitre.org/dao/artifact/d3f:WindowsRegistryValue/"
+    }
+  ]
 }

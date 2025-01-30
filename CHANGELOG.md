@@ -116,13 +116,13 @@ Thankyou! -->
     1. Added `sbom` to `Software Inventory Info` class. [#1262](https://github.com/ocsf/ocsf-schema/pull/1262)
     1. Relaxed requirements on the `dst_endpoint` attribute in the `network_activity` event class and added an `at_least_one` constraint with `src_endpoint` and `dst_endpoint`. [#1274](https://github.com/ocsf/ocsf-schema/pull/1274)
     1. Relaxed requirements on the `http_request` and `http_response` attributes in the `http_activity` event class and added an `at_least_one` constraint with these attributes. [#1274](https://github.com/ocsf/ocsf-schema/pull/1274)
-    1. Add `host` profile to `base_event` and remove this profile elsewhere in the event hierarchy. [#1280](https://github.com/ocsf/ocsf-schema/pull/1280)
-    1. Add the `actor` attribute to the IAM base event. [#1280](https://github.com/ocsf/ocsf-schema/pull/1280)
-    1. Add `security_control` profile to `base_event` and remove this profile elsewhere in the event hierarchy. [#1281](https://github.com/ocsf/ocsf-schema/pull/1281)
-    1. Add `policies` to `Account Change` class. [#1282](https://github.com/ocsf/ocsf-schema/pull/1282)
-    1. Add `Unlock` activity to `account_change` class. [#1285](https://github.com/ocsf/ocsf-schema/pull/1285)
-    1. Add `incident` profile to `finding` to affect classes that extend it. [#1293](https://github.com/ocsf/ocsf-schema/pull/1293)
-    1. Add `keyboard_info` object to RDP event class. [#1313](https://github.com/ocsf/ocsf-schema/pull/1313)
+    1. Added `host` profile to `base_event` and removed this profile elsewhere in the event hierarchy. [#1280](https://github.com/ocsf/ocsf-schema/pull/1280)
+    1. Added the `actor` attribute to the IAM base event. [#1280](https://github.com/ocsf/ocsf-schema/pull/1280)
+    1. Added `security_control` profile to `base_event` and removed this profile elsewhere in the event hierarchy. [#1281](https://github.com/ocsf/ocsf-schema/pull/1281)
+    1. Added `policies` to `Account Change` class. [#1282](https://github.com/ocsf/ocsf-schema/pull/1282)
+    1. Added `Unlock` activity to `account_change` class. [#1285](https://github.com/ocsf/ocsf-schema/pull/1285)
+    1. Added `incident` profile to `finding` to affect classes that extend it. [#1293](https://github.com/ocsf/ocsf-schema/pull/1293)
+    1. Added `keyboard_info` object to RDP event class. [#1313](https://github.com/ocsf/ocsf-schema/pull/1313)
     1. Added attributes and a new Activity ID to the `File Hosting Activity` class for network file share services and authorization check result. Activity ID added: `17` - "Access Check". Optional `context` group attributes added: `access_list`, `access_mask`, `access_result`, `share`, `share_type`, and `share_type_id`. [#1315](https://github.com/ocsf/ocsf-schema/pull/1315)
     1. Added `command` and `protocol_name` to Email Activity event class. [#1307](https://github.com/ocsf/ocsf-schema/pull/1307)
 * #### Profiles
@@ -192,7 +192,7 @@ Thankyou! -->
 1. Added a fix (profile: null) to `OSINT Inventory Info` so that the `osint` attribute is present w/o the OSINT profile, per the class definition.
 1. Added `http_response` to all classes that have `http_request`, but no `http_response` object. [#1200](https://github.com/ocsf/ocsf-schema/pull/1200)
 1. Removed redundant `name` attribute from Windows extension to the `startup_item` object for consistency with other extensions. [#1203](https://github.com/ocsf/ocsf-schema/pull/1203)
-1. Change `activity_id` requirement from `optional` to `required` in `email_activity`, `email_file_activity` and `email_url_activity` classes. [#1307](https://github.com/ocsf/ocsf-schema/pull/1307)
+1. Changed `activity_id` requirement from `optional` to `required` in `email_activity`, `email_file_activity` and `email_url_activity` classes. [#1307](https://github.com/ocsf/ocsf-schema/pull/1307)
 
 ### Deprecated
 1. Deprecated `project_uid` in favor of `account.uid`. [#1166](https://github.com/ocsf/ocsf-schema/pull/1166)

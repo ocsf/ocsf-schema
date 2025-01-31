@@ -51,7 +51,7 @@ Thankyou! -->
   1. Relaxed constraint to provide `email_addr`, `phone_number`, or `security_questions` on `auth_factor`. [#1339](https://github.com/ocsf/ocsf-schema/pull/1339)
 
 ### Misc
-1. Added `email.subject` and `email.uid` as an Observable types - `type_id: 39` and `type_id: 40`. #1326
+1. Added `email.subject` and `email.uid` and `message_uid` as an Observable types - `type_id: 39`, `type_id: 40` and `type_id: 45`. #1326
 1. Added `process_entity.uid` as an Observable type - `type_id: 41` #1326
 1. Added `file_path_t` as an Observable type - `type_id: 42` and marked fields as this type #1326
     - `lineage` dictionary attribute

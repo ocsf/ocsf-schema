@@ -1,11 +1,13 @@
 {
+  "uid": 1,
   "caption": "Drone Flights Activity",
   "description": "Drone Flights Activity events report the activity of Unmanned Aerial Systems (UAS), their Operators, and mission-planning and authorization metadata as reported by the UAS platforms themselves, by Counter-UAS (CUAS) systems, or other remote monitoring or sensing infrastructure. Based on the Remote ID defined in Standard Specification for Remote ID and Tracking (ASTM Designation: F3411-22a) <a target='_blank' href='https://cdn.standards.iteh.ai/samples/112830/71297057ac42432880a203654f213709/ASTM-F3411-22a.pdf'>ASTM F3411-22a</a>",
   "extends": "unmanned_systems",
   "name": "drone_flights_activity",
-  "uid": 1,
   "attributes": {
     "activity_id": {
+      "group": "primary",
+      "requirement": "required",
       "enum": {
         "0": {
           "caption": "Unknown",
@@ -23,23 +25,21 @@
           "caption": "Other",
           "description": "The event activity is not mapped. See the <code>activity_name</code> attribute, which contains a data source specific value."
         }
-      },
-      "requirement": "required",
-      "group": "primary"
+      }
     },
     "auth_protocol": {
       "caption": "Authentication Type",
       "description": "The authentication type as defined by the caption of <code>auth_protocol_id</code>. In the case of 'Other', it is defined by the event source.",
-      "requirement": "optional",
-      "group": "context"
+      "group": "context",
+      "requirement": "optional"
     },
     "auth_protocol_id": {
       "caption": "Authentication Type ID",
       "description": "The normalized identifier of the authentication type used to authorize a flight plan or mission.",
-      "sibling": "auth_protocol",
       "group": "context",
-      "type": "integer_t",
       "requirement": "optional",
+      "sibling": "auth_protocol",
+      "type": "integer_t",
       "enum": {
         "0": {
           "caption": "Unknown",
@@ -78,8 +78,8 @@
     "classification": {
       "caption": "Classification Type",
       "description": "UA Classification - Allows a region to classify UAS in a regional specific manner. The format may differ from region to region.",
-      "requirement": "optional",
-      "group": "context"
+      "group": "context",
+      "requirement": "optional"
     },
     "comment": {
       "caption": "Operation Description",
@@ -144,13 +144,13 @@
       "group": "primary",
       "requirement": "required"
     },
-    "unmanned_system_operator": {
-      "requirement": "required",
-      "group": "primary"
-    },
     "unmanned_system_operating_area": {
-      "requirement": "recommended",
-      "group": "primary"
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "unmanned_system_operator": {
+      "group": "primary",
+      "requirement": "required"
     }
   },
   "constraints": {
@@ -159,6 +159,6 @@
       "unmanned_aerial_system",
       "unmanned_system_operator",
       "unmanned_system_operating_area"
-		]
-	}
+    ]
+  }
 }

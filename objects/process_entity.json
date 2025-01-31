@@ -1,0 +1,38 @@
+{
+  "caption": "Process Entity",
+  "description": "The Process Entity object provides critical fields for referencing a process.",
+  "extends": "_entity",
+  "name": "process_entity",
+  "attributes": {
+    "cmd_line": {
+      "requirement": "recommended"
+    },
+    "created_time": {
+      "description": "The time when the process was created/started.",
+      "requirement": "recommended"
+    },
+    "name": {
+      "description": "The friendly name of the process, for example: <code>Notepad++</code>.",
+      "type": "process_name_t"
+    },
+    "path": {
+      "description": "The process file path.",
+      "requirement": "optional"
+    },
+    "pid": {
+      "requirement": "recommended"
+    },
+    "uid": {
+      "description": "A unique identifier for this process assigned by the producer (tool).  Facilitates correlation of a process event with other events for that process."
+    }
+  },
+  "constraints": {
+    "at_least_one": [
+      "cmd_line",
+      "name",
+      "path",
+      "pid",
+      "uid"
+    ]
+  }
+}

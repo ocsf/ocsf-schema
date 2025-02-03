@@ -1,7 +1,7 @@
 {
+  "caption": "Security Control",
   "description": "The attributes including disposition that represent the outcome of a security control including but not limited to access control, malware or policy violation, network proxy, intrusion detection, firewall, or data control.  The profile is intended to augment activities or findings with an outcome when a security control has observed or intervened. If the control detected a security violation, and the <code>disposition_id</code> or <code>action_id</code> is an alertable outcome or action, the <code>is_alert</code> flag may be set to <code>true</code>.",
   "meta": "profile",
-  "caption": "Security Control",
   "name": "security_control",
   "annotations": {
     "group": "primary"
@@ -15,6 +15,7 @@
     "action_id": {
       "caption": "Action ID",
       "description": "The action taken by a control or other policy-based system leading to an outcome or disposition. An unknown action may still correspond to a known disposition. Refer to <code>disposition_id</code> for the outcome of the action.",
+      "requirement": "recommended",
       "enum": {
         "0": {
           "caption": "Unknown",
@@ -40,8 +41,7 @@
           "caption": "Other",
           "description": "The action is not mapped. See the <code>action</code> attribute which contains a data source specific value."
         }
-      },
-      "requirement": "recommended"
+      }
     },
     "attacks": {
       "requirement": "optional"
@@ -68,8 +68,8 @@
       "requirement": "recommended"
     },
     "firewall_rule": {
-      "requirement": "optional",
-      "description": "The firewall rule that pertains to the control that triggered the event, if applicable."
+      "description": "The firewall rule that pertains to the control that triggered the event, if applicable.",
+      "requirement": "optional"
     },
     "is_alert": {
       "description": "Indicates that the event is considered to be an alertable signal. Should be set to <code>true</code> if <code>disposition_id = Alert</code> among other dispositions, and/or <code>risk_level_id</code> or <code>severity_id</code> of the event is elevated. Not all control events will be alertable, for example if <code>disposition_id = Exonerated</code> or <code>disposition_id = Allowed</code>.",
@@ -79,8 +79,8 @@
       "requirement": "optional"
     },
     "policy": {
-      "requirement": "optional",
-      "description": "The policy that pertains to the control that triggered the event, if applicable. For example the name of an anti-malware policy or an access control policy."
+      "description": "The policy that pertains to the control that triggered the event, if applicable. For example the name of an anti-malware policy or an access control policy.",
+      "requirement": "optional"
     },
     "risk_details": {
       "group": "context",

@@ -41,6 +41,14 @@ Thankyou! -->
 
 ## [Unreleased]
 
+### Added
+* #### Dictionary Attributes 
+  1. Added `boot_uid` as a `string_t`
+	
+### Improved
+* #### Objects
+  1. Added `boot_uid` to `device` objects.
+
 ## [v1.4.0] - January 31st, 2025
 
 ### Added

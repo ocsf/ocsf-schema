@@ -44,8 +44,11 @@ Thankyou! -->
 ### Added
 * #### Dictionary Attributes 
   1. Added `boot_uid` as a `string_t`. [#1335](https://github.com/ocsf/ocsf-schema/pull/1335)
-	
+  1. Added `status_detail_id` as an `integer_t` enum. [#1340](https://github.com/ocsf/ocsf-schema/pull/1340)
+
 ### Improved
+* #### Event Classes
+  1. Added `status_detail_id` to the Base Event. [#1340](https://github.com/ocsf/ocsf-schema/pull/1340)
 * #### Objects
   1. Added `boot_uid` to `device` object. [#1335](https://github.com/ocsf/ocsf-schema/pull/1335)
 

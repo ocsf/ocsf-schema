@@ -4998,8 +4998,24 @@
     },
     "status_detail": {
       "caption": "Status Detail",
-      "description": "The status detail contains additional information about the event/finding outcome.",
+      "description": "Additional information about the event/finding outcome, as defined by <code>status_detail_id</code>.",
       "type": "string_t"
+    },
+    "status_detail_id": {
+      "caption": "Status Detail ID",
+      "description": "A normalized identifier for additional information about the event/finding outcome.",
+      "sibling": "status_detail",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The status detail is unknown."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The status detail is not mapped. See the <code>status_detail</code> attribute, which contains a data source specific value."
+        }
+      }
     },
     "status_details": {
       "caption": "Status Details",

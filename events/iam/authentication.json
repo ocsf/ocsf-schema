@@ -107,8 +107,37 @@
       "group": "primary",
       "requirement": "recommended"
     },
-    "status_detail": {
-      "description": "The details about the authentication request. For example, possible details for Windows logon or logoff events are:<ul><li>Success</li><ul><li>LOGOFF_USER_INITIATED</li><li>LOGOFF_OTHER</li></ul><li>Failure</li><ul><li>USER_DOES_NOT_EXIST</li><li>INVALID_CREDENTIALS</li><li>ACCOUNT_DISABLED</li><li>ACCOUNT_LOCKED_OUT</li><li>PASSWORD_EXPIRED</li></ul></ul>"
+    "status_detail_id": {
+      "enum": {
+        "1": {
+          "caption": "LOGOFF_USER_INITIATED",
+          "description": "The user initiated logoff succeeded."
+        },
+        "2": {
+          "caption": "LOGOFF_OTHER",
+          "description": "Logoff succeeded."
+        },
+        "3": {
+          "caption": "USER_DOES_NOT_EXIST",
+          "description": "Logon failed because the user does not exist."
+        },
+        "4": {
+          "caption": "INVALID_CREDENTIALS",
+          "description": "Logon failed because of invalid credentials."
+        },
+        "5": {
+          "caption": "ACCOUNT_DISABLED",
+          "description": "Logon failed because the account was disabled."
+        },
+        "6": {
+          "caption": "ACCOUNT_LOCKED_OUT",
+          "description": "Logon failed because the account is locked out."
+        },
+        "7": {
+          "caption": "PASSWORD_EXPIRED",
+          "description": "Logon failed because because of an expired password."
+        }
+      }
     },
     "user": {
       "description": "The subject (user/role or account) to authenticate.",

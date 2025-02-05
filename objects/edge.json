@@ -1,28 +1,38 @@
 {
-    "caption": "edge",
-    "description": "",
-    "references": [{"url": "https://github.com/jsongraph/json-graph-specification/", "description": "JSON graph specification."}],
-    "name": "edge",
-    "extends": "_entity",
-    "attributes": {
-      "name": {
-        "description": "The edge name."
-      },
-      "relation": {
-        "description": "The relation between source and target nodes in the edge.",
-        "requirement": "optional"
-      },
-      "uid": {
-        "description": "Unique identifier of the edge"
-      },
-      "source": {
-        "description": "The source node's uid in the edge.",
-        "requirement": "optional"
-      },
-      "target": {
-        "description": "The target node's uid in the edge.",
-        "requirement": "optional"
-      }
+  "caption": "edge",
+  "description": "Represents a connection or relationship between two nodes in a graph",
+  "extends": "_entity",
+  "name": "edge",
+  "attributes": {
+    "data": {
+      "description": "Additional data about the edge such as weight, distance, or custom properties.",
+      "requirement": "optional"
+    },
+    "name": {
+      "description": "The human-readable name or label for the edge.",
+      "requirement": "recommended"
+    },
+    "relation": {
+      "description": "The type of relationship between nodes (e.g. is-attached-to , depends-on, etc).",
+      "requirement": "recommended"
+    },
+    "source": {
+      "description": "The unique identifier of the node where the edge originates.",
+      "requirement": "required"
+    },
+    "target": {
+      "description": "The unique identifier of the node where the edge terminates.",
+      "requirement": "required"
+    },
+    "uid": {
+      "description": "Unique identifier of the edge.",
+      "requirement": "recommended"
     }
-  }
-  
+  },
+  "references": [
+    {
+      "description": "JSON graph specification.",
+      "url": "https://github.com/jsongraph/json-graph-specification/"
+    }
+  ]
+}

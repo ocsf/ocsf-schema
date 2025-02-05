@@ -43,11 +43,11 @@ Thankyou! -->
 
 ### Added
 * #### Dictionary Attributes 
-  1. Added `boot_uid` as a `string_t`
+  1. Added `boot_uid` as a `string_t`. [#1335](https://github.com/ocsf/ocsf-schema/pull/1335)
 	
 ### Improved
 * #### Objects
-  1. Added `boot_uid` to `device` objects.
+  1. Added `boot_uid` to `device` object. [#1335](https://github.com/ocsf/ocsf-schema/pull/1335)
 
 ## [v1.4.0] - January 31st, 2025
 

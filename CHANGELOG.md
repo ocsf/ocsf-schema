@@ -48,6 +48,7 @@ Thankyou! -->
 ### Improved
 * #### Objects
   1. Added `boot_uid` to `device` object. [#1335](https://github.com/ocsf/ocsf-schema/pull/1335)
+  1. Added `full_name` to `ldap_person` object. [#1341](https://github.com/ocsf/ocsf-schema/pull/1341)
 
 ## [v1.4.0] - January 31st, 2025
 

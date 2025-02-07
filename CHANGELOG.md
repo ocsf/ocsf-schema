@@ -44,21 +44,21 @@ Thankyou! -->
 ### Added
 * #### Dictionary Attributes 
   1. Added `boot_uid` as a `string_t`. [#1335](https://github.com/ocsf/ocsf-schema/pull/1335)
-  1. Added `assessments` as an array of `assessment` objects.
-  1. Added `meets_criteria` as a `boolean_t`.
+  1. Added `assessments` as an array of `assessment` objects. #1343
+  1. Added `meets_criteria` as a `boolean_t`. #1343
 * #### Objects
-  1. Added `assessment` object to capture evaluations/assessments of configurations/signals.
+  1. Added `assessment` object to capture evaluations/assessments of configurations/signals. #1343
 	
 ### Improved
 * #### Event Classes
-  1. Added `assessments` to `cloud_resources_inventory_info` and `config_state`.
+  1. Added `assessments` to `cloud_resources_inventory_info` and `config_state`. #1343
 * #### Objects
   1. Added `boot_uid` to `device` object. [#1335](https://github.com/ocsf/ocsf-schema/pull/1335)
-  1. Added `meets_criteria` and `policy` to `assessment` object.
-  1. Added `assessments` to `compliance` object.
+  1. Added `meets_criteria` and `policy` to `assessment` object. #1343
+  1. Added `assessments` to `compliance` object. #1343
 
 ### Misc
-1. Updated description of `cloud_resources_inventory_info` and `config_state` to reflect the addition of the `assessments` object.
+1. Updated description of `cloud_resources_inventory_info` and `config_state` to reflect the addition of the `assessments` object. #1343
 
 ## [v1.4.0] - January 31st, 2025
 

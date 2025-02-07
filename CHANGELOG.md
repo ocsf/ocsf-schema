@@ -48,6 +48,8 @@ Thankyou! -->
 ### Improved
 * #### Objects
   1. Added `boot_uid` to `device` object. [#1335](https://github.com/ocsf/ocsf-schema/pull/1335)
+  2. Edit `network_interface` object description. TBD
+  3. Edit dictionary `network_interfaces` description. TBD
 
 ## [v1.4.0] - January 31st, 2025
 

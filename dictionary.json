@@ -2789,7 +2789,7 @@
       "description": "Indicates if the entity was deleted. See specific usage.",
       "type": "boolean_t"
     },
-    "is_directed":{
+    "is_directed": {
       "caption": "Directed",
       "description": "Indicates if the entity has directionality. See specific usage.",
       "type": "boolean_t"
@@ -4051,6 +4051,27 @@
       "caption": "Query Info",
       "description": "The query info object holds information related to data access within a datastore. To access, manipulate, delete, or retrieve data from a datastore, a database query must be written using a specific syntax.",
       "type": "query_info"
+    },
+    "query_language": {
+      "caption": "Query Language",
+      "description": "The query language, normalized to the caption of the <code>query_language_id</code> value. See specific usage.",
+      "type": "string_t"
+    },
+    "query_language_id": {
+      "caption": "Query Language ID",
+      "description": "The normalized identifier of the query language. See specific usage.",
+      "sibling": "query_language",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The Query Language is unknown."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The Query Language is not mapped. See the <code>query_language</code> attribute, which contains a data source specific value."
+        }
+      }
     },
     "query_result": {
       "caption": "Query Result",

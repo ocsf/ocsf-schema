@@ -12,7 +12,7 @@
       "description": "The edges/connections between nodes in the graph - contains the collection of <code>edge</code> objects defining relationships between nodes.",
       "requirement": "optional"
     },
-    "is_directed":{
+    "is_directed": {
       "description": "Indicates if the graph is directed (<code>true</code>) or undirected (<code>false</code>).",
       "requirement": "optional"
     },
@@ -21,10 +21,48 @@
     },
     "nodes": {
       "description": "The nodes/vertices of the graph - contains the collection of <code>node</code> objects that make up the graph.",
+      "requirement": "required"
+    },
+    "query_language": {
+      "description": "The graph query language, normalized to the caption of the <code>query_language_id</code> value.",
       "requirement": "optional"
     },
+    "query_language_id": {
+      "description": "The normalized identifier of a graph query language that can be used to interact with the graph.",
+      "requirement": "recommended",
+      "enum": {
+        "1": {
+          "caption": "Cypher",
+          "description": "A declarative graph query language developed by Neo4j that allows for expressive and efficient querying of graph databases"
+        },
+        "2": {
+          "caption": "GraphQL",
+          "description": "A query language for APIs that enables declarative data fetching and provides a complete description of the data in the API"
+        },
+        "3": {
+          "caption": "Gremlin",
+          "description": "A graph traversal language and virtual machine developed by Apache TinkerPop that enables graph computing across different graph databases"
+        },
+        "4": {
+          "caption": "GQL",
+          "description": "An ISO standard graph query language designed to provide a unified way to query graph databases"
+        },
+        "5": {
+          "caption": "G-CORE",
+          "description": "A graph query language that combines features from existing languages while adding support for paths as first-class citizens"
+        },
+        "6": {
+          "caption": "PGQL",
+          "description": "Property Graph Query Language developed by Oracle that provides SQL-like syntax for querying property graphs"
+        },
+        "7": {
+          "caption": "SPARQL",
+          "description": "A semantic query language for databases that enables querying and manipulating data stored in RDF format"
+        }
+      }
+    },
     "type": {
-      "description": "The graph type - indicates if this is a directed, undirected, weighted or other type of graph.",
+      "description": "The graph type - indicates if this is a complete, connected, cyclic, acyclic, null or other type of graph.",
       "requirement": "optional"
     },
     "uid": {

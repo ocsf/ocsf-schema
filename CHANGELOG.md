@@ -48,7 +48,8 @@ Thankyou! -->
 ### Improved
 * #### Objects
   1. Added `boot_uid` to `device` object. [#1335](https://github.com/ocsf/ocsf-schema/pull/1335)
-  2. Added `name`, `resources`, `uid`, `verdict`, and `verdict_id` to `evidences`. ##1337
+  1. Relaxed constraint to provide `email_addr`, `phone_number`, or `security_questions` on `auth_factor`. [#1339](https://github.com/ocsf/ocsf-schema/pull/1339)
+  1. Added `name`, `resources`, `uid`, `verdict`, and `verdict_id` to `evidences`. ##1337
 
 ## [v1.4.0] - January 31st, 2025
 

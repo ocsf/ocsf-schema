@@ -58,6 +58,7 @@ Thankyou! -->
   1. Added `meets_criteria` and `policy` to `assessment` object. #1343
   1. Added `assessments` to `compliance` object. #1343
   1. Added `data` to `policy` object. #1343
+  1. Added `eid`, `iccid`, and `meid` to `device`.
 
 ### Misc
   1. Relaxed constraint to provide `email_addr`, `phone_number`, or `security_questions` on `auth_factor`. [#1339](https://github.com/ocsf/ocsf-schema/pull/1339)

@@ -109,8 +109,59 @@
       "requirement": "optional"
     },
     "verdict_id": {
-      "description": "The normalized verdict (or status) ID of the evidence associated with the security detection. For example, Microsoft Graph Security Alerts contain a <code>verdict</code> enumeration for each type of <code>evidence</code> associated with the Alert.",
-      "requirement": "optional"
+      "description": "The normalized verdict (or status) ID of the evidence associated with the security detection. For example, Microsoft Graph Security Alerts contain a <code>verdict</code> enumeration for each type of <code>evidence</code> associated with the Alert. This is typically set by an automated investigation process or an analyst/investigator assigned to the finding.",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The type is unknown."
+        },
+        "1": {
+          "caption": "False Positive",
+          "description": "The verdict for the evidence has been identified as a False Positive."
+        },
+        "2": {
+          "caption": "True Positive",
+          "description": "The verdict for the evidence has been identified as a True Positive."
+        },
+        "3": {
+          "caption": "Disregard",
+          "description": "The verdict for the evidence is that is should be Disregarded."
+        },
+        "4": {
+          "caption": "Suspicious",
+          "description": "The verdict for the evidence has been identified as Suspicious."
+        },
+        "5": {
+          "caption": "Benign",
+          "description": "The verdict for the evidence has been identified as Benign."
+        },
+        "6": {
+          "caption": "Test",
+          "description": "The evidence is part of a Test, or other sanctioned behavior(s)."
+        },
+        "7": {
+          "caption": "Insufficient Data",
+          "description": "There is insufficient data to render a verdict on the evidence."
+        },
+        "8": {
+          "caption": "Security Risk",
+          "description": "The verdict for the evidence has been identified as a Security Risk."
+        },
+        "9": {
+          "caption": "Managed Externally",
+          "description": "The verdict for the evidence is Managed Externally, such as in a case management tool."
+        },
+        "10": {
+          "caption": "Duplicate",
+          "description": "This evidence duplicates existing evidence related to this finding."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The type is not mapped. See the <code>type</code> attribute, which contains a data source specific value."
+        }
+      },
+      "requirement": "optional",
+      "sibling": "type"
     }
   },
   "constraints": {

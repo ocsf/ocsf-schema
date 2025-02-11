@@ -43,12 +43,17 @@ Thankyou! -->
 
 ### Added
 * #### Dictionary Attributes 
-  1. Added `boot_uid` as a `string_t`. [#1335](https://github.com/ocsf/ocsf-schema/pull/1335)
+    1. Added `boot_uid` as a `string_t`. [#1335](https://github.com/ocsf/ocsf-schema/pull/1335)
+    1. Added `is_directed` as a `boolean_t`, `relation` as a `string_t`, `query_language` & `query_language_id` a sibling pair. #1343
+    1. Added `relationship_graph` of type `graph`, `nodes` of type `node`, `edges` of type `edge`. #1343
+* #### Objects
+    1. Added `node`, `edge`, `graph` objects. #1343
 	
 ### Improved
 * #### Objects
-  1. Added `boot_uid` to `device` object. [#1335](https://github.com/ocsf/ocsf-schema/pull/1335)
-  1. Relaxed constraint to provide `email_addr`, `phone_number`, or `security_questions` on `auth_factor`. [#1339](https://github.com/ocsf/ocsf-schema/pull/1339)
+    1. Added `boot_uid` to `device` object. [#1335](https://github.com/ocsf/ocsf-schema/pull/1335)
+    1. Relaxed constraint to provide `email_addr`, `phone_number`, or `security_questions` on `auth_factor`. [#1339](https://github.com/ocsf/ocsf-schema/pull/1339)
+    1. Added `relationship_graph` to `resource_details` object. #1343
 
 ## [v1.4.0] - January 31st, 2025
 

@@ -58,7 +58,8 @@ Thankyou! -->
   1. Added `assessments` to `compliance` object. #1343
 
 ### Misc
-1. Updated description of `cloud_resources_inventory_info` and `config_state` to reflect the addition of the `assessments` object. #1343
+  1. Relaxed constraint to provide `email_addr`, `phone_number`, or `security_questions` on `auth_factor`. [#1339](https://github.com/ocsf/ocsf-schema/pull/1339)
+  1. Updated description of `cloud_resources_inventory_info` and `config_state` to reflect the addition of the `assessments` object. #1343
 
 ## [v1.4.0] - January 31st, 2025
 

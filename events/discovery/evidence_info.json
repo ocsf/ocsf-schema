@@ -9,6 +9,11 @@
             "group": "primary",
             "requirement": "required"
         },
+        "device": {
+            "group": "primary",
+            "requirement": "required",
+            "profile": null
+        },
         "file": {
             "description": "The file that is the target of the query.",
             "group": "primary",
@@ -34,9 +39,9 @@
             "requirement": "required"
         },
         "module": {
-      		"group": "primary",
-      		"requirement": "required"
-    	},
+            "group": "primary",
+            "requirement": "required"
+        },
         "network_interfaces": {
             "group": "primary",
             "requirement": "required"
@@ -55,13 +60,13 @@
             "requirement": "required"
         },
         "session": {
-      		"group": "primary",
-      		"requirement": "required"
-    	},
+            "group": "primary",
+            "requirement": "required"
+        },
         "startup_item": {
-      		"group": "primary",
-      		"requirement": "required"
-    	},
+            "group": "primary",
+            "requirement": "required"
+        },
         "state": {
             "description": "The state of the socket, normalized to the caption of the state_id value. In the case of 'Other', it is defined by the event source.",
             "group": "primary",
@@ -129,6 +134,13 @@
                 "description": "The users that belong to the administrative group.",
                 "group": "primary",
                 "requirement": "recommended"
+            },
+            "constraints": {
+                "at_least_one": [
+                    "device.hostname",
+                    "device.mac",
+                    "device.name"
+                ]
             }
         }
     }

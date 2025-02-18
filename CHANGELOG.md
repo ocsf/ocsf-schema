@@ -42,13 +42,15 @@ Thankyou! -->
 ## [Unreleased]
 
 ### Added
-* #### Dictionary Attributes 
+* #### Dictionary Attributes
   1. Added `boot_uid` as a `string_t`. [#1335](https://github.com/ocsf/ocsf-schema/pull/1335)
-	
+  1. Added `raw_data_size` as a `long_t`. [#1347](https://github.com/ocsf/ocsf-schema/pull/1347)
+
 ### Improved
 * #### Objects
   1. Added `boot_uid` to `device` object. [#1335](https://github.com/ocsf/ocsf-schema/pull/1335)
   1. Relaxed constraint to provide `email_addr`, `phone_number`, or `security_questions` on `auth_factor`. [#1339](https://github.com/ocsf/ocsf-schema/pull/1339)
+  1. Added `raw_data_size` to `base_event` object. [#1347](https://github.com/ocsf/ocsf-schema/pull/1347)
 
 ## [v1.4.0] - January 31st, 2025
 

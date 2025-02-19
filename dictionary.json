@@ -238,6 +238,17 @@
       "description": "The details of the group assigned to an Incident.",
       "type": "group"
     },
+    "assessment": {
+      "caption": "Assessment",
+      "description": "The Assessment object describes a point-in-time assessment, check, or evaluation of a specific configuration or signal against an asset, entity, person, or otherwise. For example, this can encapsulate <code>os_signals</code> from CrowdStrike Falcon Zero Trust Assessments, or account for <code>Datastore</code> configurations from Cyera.",
+      "type": "assessment"
+    },
+    "assessments": {
+      "caption": "Assessments",
+      "description": "A list of <code>assessment</code> objects.",
+      "type": "assessment",
+      "is_array": true
+    },
     "attacks": {
       "caption": "MITRE ATT&CK® Details",
       "description": "An array of <a target='_blank' href='https://attack.mitre.org'>MITRE ATT&CK®</a> objects describing identified tactics, techniques & sub-techniques.",
@@ -1692,6 +1703,11 @@
       "description": "The dispersion in the NTP protocol is the estimated time error or uncertainty relative to the reference clock in milliseconds.",
       "type": "integer_t"
     },
+    "display_name": {
+      "caption": "Display Name",
+      "description": "The display name. See specific usage.",
+      "type": "string_t"
+    },
     "disposition": {
       "caption": "Disposition",
       "description": "The disposition name, normalized to the caption of the disposition_id value. In the case of 'Other', it is defined by the event source.",
@@ -1986,6 +2002,12 @@
       "caption": "Duration Years",
       "description": "Represents the duration of the activity in years. See specific usage.",
       "type": "integer_t"
+    },
+    "edges": {
+      "caption": "Edges",
+      "description": "The list of edge objects that are part of the graph.",
+      "type": "edge",
+      "is_array": true
     },
     "edition": {
       "caption": "OS Edition",
@@ -2393,7 +2415,7 @@
     },
     "full_name": {
       "caption": "Full Name",
-      "description": "The full name of the person, as per the LDAP Common Name attribute (cn).",
+      "description": "The full name. See specific usage.",
       "type": "string_t"
     },
     "function_keys": {
@@ -2425,6 +2447,11 @@
       "caption": "Given Name",
       "description": "The given or first name of the user.",
       "type": "string_t"
+    },
+    "graph": {
+      "caption": "Graph",
+      "description": "A graph data structure representation with nodes and edges.",
+      "type": "graph"
     },
     "group": {
       "caption": "Group",
@@ -2796,6 +2823,11 @@
     "is_deleted": {
       "caption": "Deleted",
       "description": "Indicates if the entity was deleted. See specific usage.",
+      "type": "boolean_t"
+    },
+    "is_directed": {
+      "caption": "Directed",
+      "description": "Indicates if the entity has directionality. See specific usage.",
       "type": "boolean_t"
     },
     "is_encrypted": {
@@ -3345,6 +3377,11 @@
         }
       ]
     },
+    "meets_criteria": {
+      "caption": "Meets Criteria",
+      "description": "Determines if an assessment, control, policy, or otherwise meets its assessment criteria. See specific usage.",
+      "type": "boolean_t"
+    },
     "metadata": {
       "caption": "Metadata",
       "description": "The metadata associated with the event or a finding.",
@@ -3432,6 +3469,12 @@
       "caption": "NIST List",
       "description": "The NIST Cybersecurity Framework recommendations for managing the cybersecurity risk.",
       "type": "string_t",
+      "is_array": true
+    },
+    "nodes": {
+      "caption": "Nodes",
+      "description": "The list of node objects that are part of the graph.",
+      "type": "node",
       "is_array": true
     },
     "num_detections": {
@@ -4050,6 +4093,27 @@
       "description": "The query info object holds information related to data access within a datastore. To access, manipulate, delete, or retrieve data from a datastore, a database query must be written using a specific syntax.",
       "type": "query_info"
     },
+    "query_language": {
+      "caption": "Query Language",
+      "description": "The query language, normalized to the caption of the <code>query_language_id</code> value. See specific usage.",
+      "type": "string_t"
+    },
+    "query_language_id": {
+      "caption": "Query Language ID",
+      "description": "The normalized identifier of the query language. See specific usage.",
+      "sibling": "query_language",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The Query Language is unknown."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The Query Language is not mapped. See the <code>query_language</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
     "query_result": {
       "caption": "Query Result",
       "description": "The result of the query.",
@@ -4223,6 +4287,11 @@
       "type": "string_t",
       "is_array": true
     },
+    "relation": {
+      "caption": "Relation",
+      "description": "The relationship between two entities. See specific usage.",
+      "type": "string_t"
+    },
     "relationship": {
       "caption": "Relationship",
       "description": "The relationship between two software components, normalized to the caption of the <code>relationship_id</code> value. In the case of 'Other', it is defined by the source.",
@@ -4320,6 +4389,11 @@
       "caption": "Resource",
       "description": "The target resource.",
       "type": "resource_details"
+    },
+    "resource_relationship": {
+      "caption": "Resource Relationship",
+      "description": "Describes entities related to the resource, using a graph structure. See specific usage.",
+      "type": "graph"
     },
     "resource_type": {
       "caption": "Resource Type",
@@ -4866,6 +4940,11 @@
       "type": "software_component",
       "is_array": true
     },
+    "source": {
+      "caption": "Source",
+      "description": "The source of the event or object. See specific usage.",
+      "type": "string_t"
+    },
     "sp_name": {
       "caption": "OS Service Pack",
       "description": "The name of the latest Service Pack.",
@@ -5185,6 +5264,11 @@
       "description": "The list of tags; <code>{key:value}</code> pairs attached to an entity. A Tag may be used to categorize, filter, and search for entities. For e.g. <code>\"Environment\": \"Production\"</code>, <code>\"Owner\": \"007\"</code>. See specific usage.",
       "type": "key_value_object",
       "is_array": true
+    },
+    "target": {
+      "caption": "Target",
+      "description": "The target of the event or object. See specific usage.",
+      "type": "string_t"
     },
     "tcp_flags": {
       "caption": "TCP Flags",

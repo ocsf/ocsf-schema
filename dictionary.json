@@ -238,6 +238,17 @@
       "description": "The details of the group assigned to an Incident.",
       "type": "group"
     },
+    "assessment": {
+      "caption": "Assessment",
+      "description": "The Assessment object describes a point-in-time assessment, check, or evaluation of a specific configuration or signal against an asset, entity, person, or otherwise. For example, this can encapsulate <code>os_signals</code> from CrowdStrike Falcon Zero Trust Assessments, or account for <code>Datastore</code> configurations from Cyera.",
+      "type": "assessment"
+    },
+    "assessments": {
+      "caption": "Assessments",
+      "description": "A list of <code>assessment</code> objects.",
+      "type": "assessment",
+      "is_array": true
+    },
     "attacks": {
       "caption": "MITRE ATT&CK® Details",
       "description": "An array of <a target='_blank' href='https://attack.mitre.org'>MITRE ATT&CK®</a> objects describing identified tactics, techniques & sub-techniques.",
@@ -3330,6 +3341,11 @@
         }
       ]
     },
+    "meets_criteria": {
+      "caption": "Meets Criteria",
+      "description": "Determines if an assessment, control, policy, or otherwise meets its assessment criteria. See specific usage.",
+      "type": "boolean_t"
+    },
     "metadata": {
       "caption": "Metadata",
       "description": "The metadata associated with the event or a finding.",
@@ -3404,7 +3420,7 @@
     },
     "network_interfaces": {
       "caption": "Network Interfaces",
-      "description": "The network interfaces that are associated with the device, one for each unique MAC address/IP address/hostname/name combination.<p><b>Note:</b> The first element of the array is the network information that pertains to the event.</p>",
+      "description": "The physical or virtual network interfaces that are associated with the device, one for each unique MAC address/IP address/hostname/name combination.<p><b>Note:</b> The first element of the array is the network information that pertains to the event.</p>",
       "type": "network_interface",
       "is_array": true
     },
@@ -4105,6 +4121,11 @@
       "caption": "Raw Data",
       "description": "The raw event/finding data as received from the source.",
       "type": "string_t"
+    },
+    "raw_data_size": {
+      "caption": "Raw Data Size",
+      "description": "The size of the raw data which was transformed into an OCSF event, in bytes.",
+      "type": "long_t"
     },
     "raw_header": {
       "caption": "Raw Header",

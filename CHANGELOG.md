@@ -43,10 +43,22 @@ Thankyou! -->
 
 ### Added
 <<<<<<< HEAD
+<<<<<<< HEAD
 * #### Event Classes
     1. Added `OSINT Inventory Info` event class to the Discovery category. #1154
+=======
+* #### Dictionary Attributes
+  1. Added `boot_uid` as a `string_t`. [#1335](https://github.com/ocsf/ocsf-schema/pull/1335)
+  1. Added `raw_data_size` as a `long_t`. [#1347](https://github.com/ocsf/ocsf-schema/pull/1347)
+  1. Added `assessments` as an array of `assessment` objects. #1343
+  1. Added `meets_criteria` as a `boolean_t`. #1343
+* #### Objects
+  1. Added `assessment` object to capture evaluations/assessments of configurations/signals. #1343
+>>>>>>> fa6af6aa (Add `assessments` to OCSF (#1343))
 
 ### Improved
+* #### Event Classes
+  1. Added `assessments` to `config_state`. #1343
 * #### Objects
     1. Added `phone_number` to `user` and `ldap_person` objects. #1155
     2. Added `has_mfa` to `user` object. #1155
@@ -73,7 +85,13 @@ Thankyou! -->
   1. Added `raw_data_size` to `base_event` object. [#1347](https://github.com/ocsf/ocsf-schema/pull/1347)
 * #### Objects
   1. Added `boot_uid` to `device` object. [#1335](https://github.com/ocsf/ocsf-schema/pull/1335)
+  1. Added `meets_criteria` and `policy` to `assessment` object. #1343
+  1. Added `assessments` to `compliance` object. #1343
+  1. Added `data` to `policy` object. #1343
+
+### Misc
   1. Relaxed constraint to provide `email_addr`, `phone_number`, or `security_questions` on `auth_factor`. [#1339](https://github.com/ocsf/ocsf-schema/pull/1339)
+<<<<<<< HEAD
   1. Added `boot_uid` to `device` object. [#1335](https://github.com/ocsf/ocsf-schema/pull/1335)
   1. Added `meets_criteria` and `policy` to `assessment` object. #1343
   1. Added `assessments` to `compliance` object. #1343
@@ -91,6 +109,10 @@ Thankyou! -->
 4. Added `has_mfa` boolean_t to Dictionary. #1155
 5. Deprecate `project_uid`. #1166
 6. Added several new enums to `account.type_id`. #1166
+=======
+  1. Added `raw_data_size` to `base_event` object. [#1347](https://github.com/ocsf/ocsf-schema/pull/1347)
+  1. Updated description of `config_state` to reflect the addition of the `assessments` object. #1343
+>>>>>>> fa6af6aa (Add `assessments` to OCSF (#1343))
 
 ## [v1.3.0] - August 1st, 2024
 

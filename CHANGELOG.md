@@ -49,7 +49,7 @@ Thankyou! -->
     1. Added `meets_criteria` as a `boolean_t`. #1343
     1. Added `display_name` attribute as a `string_t`. [#1341](https://github.com/ocsf/ocsf-schema/pull/1341)
     1. Added `is_directed` as a `boolean_t`, `relation` as a `string_t`, `query_language` & `query_language_id` a sibling pair. #1343
-    1. Added `relationship_graph` of type `graph`, `nodes` of type `node`, `edges` of type `edge`. #1343
+    1. Added `resource_relationship` of type `graph`, `nodes` of type `node`, `edges` of type `edge`. #1343
 * #### Objects
     1. Added `assessment` object to capture evaluations/assessments of configurations/signals. #1343
     1. Added `node`, `edge`, `graph` objects. #1343
@@ -66,7 +66,7 @@ Thankyou! -->
     1. Added `assessments` to `compliance` object. #1343
     1. Added `data` to `policy` object. #1343
     1. Added `display_name` attribute to the `user` and `ldap_person` objects. [#1341](https://github.com/ocsf/ocsf-schema/pull/1341)
-    1. Added `relationship_graph` to `resource_details` object. #1343
+    1. Added `resource_relationship` to `resource_details` object. #1343
   
 ### Misc
   1. Updated description of `config_state` to reflect the addition of the `assessments` object. #1343

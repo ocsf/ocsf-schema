@@ -45,17 +45,32 @@ Thankyou! -->
 * #### Dictionary Attributes 
     1. Added `boot_uid` as a `string_t`. [#1335](https://github.com/ocsf/ocsf-schema/pull/1335)
     1. Added `raw_data_size` as a `long_t`. [#1347](https://github.com/ocsf/ocsf-schema/pull/1347)
+    1. Added `assessments` as an array of `assessment` objects. #1343
+    1. Added `meets_criteria` as a `boolean_t`. #1343
+    1. Added `display_name` attribute as a `string_t`. [#1341](https://github.com/ocsf/ocsf-schema/pull/1341)
     1. Added `is_directed` as a `boolean_t`, `relation` as a `string_t`, `query_language` & `query_language_id` a sibling pair. #1343
     1. Added `relationship_graph` of type `graph`, `nodes` of type `node`, `edges` of type `edge`. #1343
 * #### Objects
+    1. Added `assessment` object to capture evaluations/assessments of configurations/signals. #1343
     1. Added `node`, `edge`, `graph` objects. #1343
 	
 ### Improved
+* #### Event Classes
+    1. Added `assessments` to `config_state`. #1343
+    1. Added `raw_data_size` to `base_event` object. [#1347](https://github.com/ocsf/ocsf-schema/pull/1347)
 * #### Objects
     1. Added `boot_uid` to `device` object. [#1335](https://github.com/ocsf/ocsf-schema/pull/1335)
     1. Relaxed constraint to provide `email_addr`, `phone_number`, or `security_questions` on `auth_factor`. [#1339](https://github.com/ocsf/ocsf-schema/pull/1339)
-    1. Added `raw_data_size` to `base_event` object. [#1347](https://github.com/ocsf/ocsf-schema/pull/1347)
+    1. Added `boot_uid` to `device` object. [#1335](https://github.com/ocsf/ocsf-schema/pull/1335)
+    1. Added `meets_criteria` and `policy` to `assessment` object. #1343
+    1. Added `assessments` to `compliance` object. #1343
+    1. Added `data` to `policy` object. #1343
+    1. Added `display_name` attribute to the `user` and `ldap_person` objects. [#1341](https://github.com/ocsf/ocsf-schema/pull/1341)
     1. Added `relationship_graph` to `resource_details` object. #1343
+  
+### Misc
+  1. Updated description of `config_state` to reflect the addition of the `assessments` object. #1343
+
 
 ## [v1.4.0] - January 31st, 2025
 

@@ -2003,6 +2003,12 @@
       "description": "Represents the duration of the activity in years. See specific usage.",
       "type": "integer_t"
     },
+    "edges": {
+      "caption": "Edges",
+      "description": "The list of edge objects that are part of the graph.",
+      "type": "edge",
+      "is_array": true
+    },
     "edition": {
       "caption": "OS Edition",
       "description": "The operating system edition. For example: <code>Professional</code>.",
@@ -2422,6 +2428,11 @@
       "description": "The given or first name of the user.",
       "type": "string_t"
     },
+    "graph": {
+      "caption": "Graph",
+      "description": "A graph data structure representation with nodes and edges.",
+      "type": "graph"
+    },
     "group": {
       "caption": "Group",
       "description": "The group object associated with an entity such as user, policy, or rule.",
@@ -2792,6 +2803,11 @@
     "is_deleted": {
       "caption": "Deleted",
       "description": "Indicates if the entity was deleted. See specific usage.",
+      "type": "boolean_t"
+    },
+    "is_directed": {
+      "caption": "Directed",
+      "description": "Indicates if the entity has directionality. See specific usage.",
       "type": "boolean_t"
     },
     "is_encrypted": {
@@ -3435,6 +3451,12 @@
       "type": "string_t",
       "is_array": true
     },
+    "nodes": {
+      "caption": "Nodes",
+      "description": "The list of node objects that are part of the graph.",
+      "type": "node",
+      "is_array": true
+    },
     "num_detections": {
       "caption": "Detections",
       "description": "The number of detections.",
@@ -4051,6 +4073,27 @@
       "description": "The query info object holds information related to data access within a datastore. To access, manipulate, delete, or retrieve data from a datastore, a database query must be written using a specific syntax.",
       "type": "query_info"
     },
+    "query_language": {
+      "caption": "Query Language",
+      "description": "The query language, normalized to the caption of the <code>query_language_id</code> value. See specific usage.",
+      "type": "string_t"
+    },
+    "query_language_id": {
+      "caption": "Query Language ID",
+      "description": "The normalized identifier of the query language. See specific usage.",
+      "sibling": "query_language",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The Query Language is unknown."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The Query Language is not mapped. See the <code>query_language</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
     "query_result": {
       "caption": "Query Result",
       "description": "The result of the query.",
@@ -4224,6 +4267,11 @@
       "type": "string_t",
       "is_array": true
     },
+    "relation": {
+      "caption": "Relation",
+      "description": "The relationship between two entities. See specific usage.",
+      "type": "string_t"
+    },
     "relationship": {
       "caption": "Relationship",
       "description": "The relationship between two software components, normalized to the caption of the <code>relationship_id</code> value. In the case of 'Other', it is defined by the source.",
@@ -4321,6 +4369,11 @@
       "caption": "Resource",
       "description": "The target resource.",
       "type": "resource_details"
+    },
+    "resource_relationship": {
+      "caption": "Resource Relationship",
+      "description": "Describes entities related to the resource, using a graph structure. See specific usage.",
+      "type": "graph"
     },
     "resource_type": {
       "caption": "Resource Type",
@@ -4867,6 +4920,11 @@
       "type": "software_component",
       "is_array": true
     },
+    "source": {
+      "caption": "Source",
+      "description": "The source of the event or object. See specific usage.",
+      "type": "string_t"
+    },
     "sp_name": {
       "caption": "OS Service Pack",
       "description": "The name of the latest Service Pack.",
@@ -5186,6 +5244,11 @@
       "description": "The list of tags; <code>{key:value}</code> pairs attached to an entity. A Tag may be used to categorize, filter, and search for entities. For e.g. <code>\"Environment\": \"Production\"</code>, <code>\"Owner\": \"007\"</code>. See specific usage.",
       "type": "key_value_object",
       "is_array": true
+    },
+    "target": {
+      "caption": "Target",
+      "description": "The target of the event or object. See specific usage.",
+      "type": "string_t"
     },
     "tcp_flags": {
       "caption": "TCP Flags",

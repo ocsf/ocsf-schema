@@ -4,16 +4,10 @@
   "description": "The Finding event is a generic event that defines a set of attributes available in the Findings category.",
   "extends": "base_event",
   "name": "finding",
-  "profiles": [
-    "host"
-  ],
   "attributes": {
     "$include": [
-      "profiles/host.json"
+      "profiles/incident.json"
     ],
-    "activity_name": {
-      "description": "The finding activity name, as defined by the <code>activity_id</code>."
-    },
     "activity_id": {
       "description": "The normalized identifier of the finding activity.",
       "enum": {
@@ -31,6 +25,9 @@
         }
       }
     },
+    "activity_name": {
+      "description": "The finding activity name, as defined by the <code>activity_id</code>."
+    },
     "comment": {
       "description": "A user provided comment about the finding.",
       "group": "context",
@@ -38,20 +35,24 @@
     },
     "confidence": {
       "group": "context",
-      "requirement": "optional"
+      "requirement": "optional",
+      "profile": null
     },
     "confidence_id": {
       "group": "context",
-      "requirement": "recommended"
+      "requirement": "recommended",
+      "profile": null
     },
     "confidence_score": {
       "group": "context",
-      "requirement": "optional"
+      "requirement": "optional",
+      "profile": null
     },
     "device": {
       "description": "Describes the affected device/host. It can be used in conjunction with <code>Affected Resource(s)</code>. <p> e.g. Specific details about an AWS EC2 instance, that is affected by the Finding.</p>",
       "group": "primary",
-      "requirement": "recommended"
+      "requirement": "recommended",
+      "profile": null
     },
     "end_time": {
       "description": "The time of the most recent event included in the finding.",
@@ -90,8 +91,19 @@
         "4": {
           "caption": "Resolved",
           "description": "The Finding was reviewed, remediated and is now considered resolved."
+        },
+        "5": {
+          "caption": "Archived",
+          "description": "The Finding was archived."
         }
       }
+    },
+    "vendor_attributes": {
+      "group": "context",
+      "requirement": "optional"
     }
-  }
+  },
+  "profiles": [
+    "incident"
+  ]
 }

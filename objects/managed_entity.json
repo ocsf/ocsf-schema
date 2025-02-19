@@ -8,15 +8,33 @@
       "description": "The managed entity content as a JSON object.",
       "requirement": "optional"
     },
+    "device": {
+      "requirement": "recommended"
+    },
+    "email": {
+      "requirement": "recommended"
+    },
+    "group": {
+      "requirement": "recommended"
+    },
+    "location": {
+      "requirement": "optional"
+    },
     "name": {
       "description": "The name of the managed entity."
+    },
+    "org": {
+      "requirement": "recommended"
+    },
+    "policy": {
+      "description": "Describes details of a managed policy.",
+      "requirement": "recommended"
     },
     "type": {
       "description": "The managed entity type. For example: <code>policy</code>, <code>user</code>, <code>organizational unit</code>, <code>device</code>.",
       "requirement": "recommended"
     },
     "type_id": {
-      "requirement": "recommended",
       "description": "The type of the Managed Entity. It is recommended to also populate the <code>type</code> attribute with the associated label, or the source specific name if <code>Other</code>.",
       "enum": {
         "1": {
@@ -43,23 +61,8 @@
           "caption": "Email",
           "description": "A managed Email entity.  This item corresponds to population of the <code>email</code> attribute."
         }
-      }
-    },
-    "device": {
+      },
       "requirement": "recommended"
-    },
-    "email": {
-      "requirement": "recommended"
-    },
-    "group": {
-      "requirement": "recommended"
-    },
-    "org": {
-      "requirement": "recommended"
-    },
-    "policy": {
-      "requirement": "recommended",
-      "description": "Describes details of a managed policy."
     },
     "uid": {
       "description": "The identifier of the managed entity."
@@ -75,7 +78,7 @@
   "constraints": {
     "at_least_one": [
       "name",
-      "uid",  
+      "uid",
       "device",
       "group",
       "org",

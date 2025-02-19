@@ -4,17 +4,9 @@
   "description": "Network event is a generic event that defines a set of attributes available in the Network category.",
   "extends": "base_event",
   "name": "network",
-  "profiles": [
-    "host",
-    "network_proxy",
-    "security_control",
-    "load_balancer"
-  ],
   "attributes": {
     "$include": [
-      "profiles/host.json",
       "profiles/network_proxy.json",
-      "profiles/security_control.json",
       "profiles/load_balancer.json"
     ],
     "app_name": {
@@ -28,7 +20,7 @@
     "dst_endpoint": {
       "description": "The responder (server) in a network connection.",
       "group": "primary",
-      "requirement": "required"
+      "requirement": "recommended"
     },
     "ja4_fingerprint_list": {
       "group": "context",
@@ -51,5 +43,15 @@
       "group": "primary",
       "requirement": "recommended"
     }
-  }
+  },
+  "constraints": {
+    "at_least_one": [
+      "dst_endpoint",
+      "src_endpoint"
+    ]
+  },
+  "profiles": [
+    "network_proxy",
+    "load_balancer"
+  ]
 }

@@ -1,0 +1,41 @@
+{
+  "uid": 6,
+  "caption": "Scheduled Job Activity",
+  "description": "Scheduled Job Activity events report activities related to scheduled jobs or tasks.",
+  "extends": "system",
+  "name": "scheduled_job_activity",
+  "attributes": {
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Create"
+        },
+        "2": {
+          "caption": "Update"
+        },
+        "3": {
+          "caption": "Delete"
+        },
+        "4": {
+          "caption": "Enable"
+        },
+        "5": {
+          "caption": "Disable"
+        },
+        "6": {
+          "caption": "Start"
+        }
+      }
+    },
+    "actor": {
+      "description": "The actor that performed the activity on the <code>job</code> object.",
+      "group": "context",
+      "requirement": "optional",
+      "profile": null
+    },
+    "job": {
+      "group": "primary",
+      "requirement": "required"
+    }
+  }
+}

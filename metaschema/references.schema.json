@@ -1,0 +1,25 @@
+{
+    "$id": "https://schema.ocsf.io/references.schema.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "References",
+    "description": "A list of references. A reference is a hyperlink to an associated definition for the current item (attribute, event class, or object), for example where an equivalent is defined in MITRE d3fend.",
+    "type": "array",
+    "items": {
+        "title": "Reference",
+        "description": "A hyperlink to an associated definition for the current item (attribute, event class, or object), for example where an equivalent is defined in MITRE d3fend.",
+        "type": "object",
+        "required": ["url", "description"],
+        "properties": {
+            "url": {
+                "type": "string",
+                "format": "uri",
+                "description": "The URL of the associated definition. In HTML this becomes the value an anchor (a) tag's href attribute. When rendered on the web, the value of this attribute should be properly escaped (URL encoded)."
+            },
+            "description": {
+                "type": "string",
+                "description": "The description of the resource referred to by the URL. In HTML this becomes the content of an anchor (a) tag. When rendered on the web, this value should not be used raw -- the value of this attribute should be properly escaped (HTML entity escaped). In other words, this field is not meant to hold markup that is rendered on the web. This is done for clean separation of concerns."
+            }
+        },
+        "additionalProperties": false
+    }
+}

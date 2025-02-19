@@ -1,0 +1,61 @@
+{
+  "caption": "Unmanned System Operating Area",
+  "description": "The Unmanned System Operating Area object describes details about a precise area of operations for a UAS flight or mission.",
+  "extends": "location",
+  "name": "unmanned_system_operating_area",
+  "attributes": {
+    "altitude_ceiling": {
+      "requirement": "optional"
+    },
+    "altitude_floor": {
+      "requirement": "optional"
+    },
+    "count": {
+      "description": "Indicates the number of UAS in the operating area.",
+      "requirement": "recommended"
+    },
+    "end_time": {
+      "description": "The date and time at which a group or an Intent-Based Network Participant operation ends. (This field is only applicable to Network Remote ID.)",
+      "requirement": "optional"
+    },
+    "locations": {
+      "caption": "Operating Polygon",
+      "description": "A list of Position Location Information (PLI) (latitude/longitude pairs) defining the area where a group or Intent-Based Network Participant operation is taking place. (This field is only applicable to Network Remote ID.)",
+      "requirement": "recommended"
+    },
+    "radius": {
+      "caption": "Operating Area Radius",
+      "requirement": "optional"
+    },
+    "start_time": {
+      "description": "The date and time at which a group or an Intent-Based Network Participant operation starts. (This field is only applicable to Network Remote ID.)",
+      "requirement": "optional"
+    },
+    "type": {
+      "description": "The type of operating area. For example, <code>Takeoff Location</code>, <code>Fixed Location</code>, <code>Dynamic Location</code>.",
+      "requirement": "optional"
+    },
+    "type_id": {
+      "description": "The operating area type identifier.",
+      "enum": {
+        "0": {
+          "caption": "Unknown/Undeclared",
+          "description": "The UA type is empty or not declared."
+        },
+        "1": {
+          "caption": "Takeoff Location"
+        },
+        "2": {
+          "caption": "Fixed Location"
+        },
+        "3": {
+          "caption": "Dynamic Location"
+        },
+        "99": {
+          "caption": "Other"
+        }
+      },
+      "requirement": "recommended"
+    }
+  }
+}

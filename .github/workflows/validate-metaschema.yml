@@ -1,0 +1,27 @@
+name: Metaschema Validation
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  validate:
+    name: Validate the schema satisfies the requirements of the metaschema
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository content
+      uses: actions/checkout@v3
+
+    - name: Setup python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install validator
+      run: python -m pip install "ocsf-validator>=${{ vars.SCHEMA_VALIDATOR_VERSION || '0.2,<0.3' }}"
+
+    - name: Run validator
+      shell: bash
+      run: export FORCE_COLOR=1 && python -m ocsf_validator .

@@ -1,8 +1,8 @@
 {
   "caption": "Group",
-  "description": "The Group object represents a collection or association of entities, such as users, policies, or devices. It serves as a logical grouping mechanism to organize and manage entities with similar characteristics or permissions within a system or organization.",
-  "name": "group",
+  "description": "The Group object represents a collection or association of entities, such as users, policies, or devices. It serves as a logical grouping mechanism to organize and manage entities with similar characteristics or permissions within a system or organization, including but not limited to purposes of access control.",
   "extends": "_entity",
+  "name": "group",
   "attributes": {
     "desc": {
       "description": "The group description.",
@@ -21,13 +21,19 @@
       "requirement": "optional"
     },
     "type": {
-      "description": "The type of the group or account.",
       "caption": "Account Type",
+      "description": "The type of the group or account.",
       "requirement": "optional"
     },
     "uid": {
       "description": "The unique identifier of the group. For example, for Windows events this is the security identifier (SID) of the group.",
       "observable": 33
     }
-  }
+  },
+  "references": [
+    {
+      "description": "D3FEND™ Ontology d3f:AccessControlGroup.",
+      "url": "https://d3fend.mitre.org/dao/artifact/d3f:AccessControlGroup/"
+    }
+  ]
 }

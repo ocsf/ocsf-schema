@@ -1,0 +1,58 @@
+{
+  "caption": "Encryption Details",
+  "description": "Details about the encrytpion methodology utilized.",
+  "extends": "object",
+  "name": "encryption_details",
+  "attributes": {
+    "algorithm": {
+      "caption": "Encryption Algorithm",
+      "description": "The encryption algorithm used, normalized to the caption of 'algorithm_id",
+      "requirement": "optional"
+    },
+    "algorithm_id": {
+      "caption": "Encryption Algorithm ID",
+      "description": "The encryption algorithm used.",
+      "enum": {
+        "1": {
+          "caption": "DES",
+          "description": "Data Encryption Standard Algorithm"
+        },
+        "2": {
+          "caption": "TripleDES",
+          "description": "Triple Data Encryption Standard Algorithm"
+        },
+        "3": {
+          "caption": "AES",
+          "description": "Advanced Encryption Standard Algorithm."
+        },
+        "4": {
+          "caption": "RSA",
+          "description": "Rivest-Shamir-Adleman Algorithm"
+        },
+        "5": {
+          "caption": "ECC",
+          "description": "Elliptic Curve Cryptography Algorithm"
+        },
+        "6": {
+          "caption": "SM2",
+          "description": "ShangMi Cryptographic Algorithm"
+        }
+      },
+      "requirement": "recommended"
+    },
+    "key_length": {
+      "caption": "Encryption Key Length",
+      "description": "The length of the encryption key used.",
+      "requirement": "optional"
+    },
+    "key_uid": {
+      "description": "The unique identifier of the key used for encrpytion. For example, AWS KMS Key ARN.",
+      "requirement": "optional"
+    },
+    "type": {
+      "caption": "Encryption Type",
+      "description": "The type of the encryption used.",
+      "requirement": "recommended"
+    }
+  }
+}

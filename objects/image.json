@@ -1,11 +1,11 @@
 {
   "caption": "Image",
-  "name": "image",
-  "description": "The Image object provides a description of a specific Virtual Machine (VM) or Container image. Defined by D3FEND <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:ContainerImage/'>d3f:ContainerImage</a>.",
+  "description": "The Image object provides a description of a specific Virtual Machine (VM) or Container image.",
   "extends": "_entity",
+  "name": "image",
   "attributes": {
     "labels": {
-      "description": "The image labels.",
+      "description": "The list of labels associated to the image.",
       "requirement": "optional"
     },
     "name": {
@@ -18,10 +18,20 @@
     "tag": {
       "requirement": "optional"
     },
+    "tags": {
+      "description": "The list of tags; <code>{key:value}</code> pairs associated to the image.",
+      "requirement": "optional"
+    },
     "uid": {
       "description": "The unique image ID. For example: <code>77af4d6b9913</code>.",
       "requirement": "required"
     }
   },
-  "constraints": {}
+  "constraints": {},
+  "references": [
+    {
+      "description": "D3FEND™ Ontology d3f:ContainerImage",
+      "url": "https://d3fend.mitre.org/dao/artifact/d3f:ContainerImage/"
+    }
+  ]
 }

@@ -1,0 +1,65 @@
+{
+  "uid": 1,
+  "caption": "Registry Key Activity",
+  "description": "Registry Key Activity events report when a process performs an action on a Windows registry key.",
+  "extends": "system",
+  "name": "registry_key_activity",
+  "attributes": {
+    "access_mask": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Create"
+        },
+        "2": {
+          "caption": "Read"
+        },
+        "3": {
+          "caption": "Modify"
+        },
+        "4": {
+          "caption": "Delete"
+        },
+        "5": {
+          "caption": "Rename"
+        },
+        "6": {
+          "caption": "Set Security"
+        },
+        "7": {
+          "caption": "Restore"
+        },
+        "8": {
+          "caption": "Import"
+        },
+        "9": {
+          "caption": "Export"
+        }
+      }
+    },
+    "actor": {
+      "description": "The actor that performed the activity on the <code>reg_key</code> object.",
+      "requirement": "required",
+      "profile": null
+    },
+    "create_mask": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "open_mask": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "prev_reg_key": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "reg_key": {
+      "group": "primary",
+      "requirement": "required"
+    }
+  }
+}

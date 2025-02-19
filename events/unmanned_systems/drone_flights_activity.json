@@ -1,0 +1,164 @@
+{
+  "uid": 1,
+  "caption": "Drone Flights Activity",
+  "description": "Drone Flights Activity events report the activity of Unmanned Aerial Systems (UAS), their Operators, and mission-planning and authorization metadata as reported by the UAS platforms themselves, by Counter-UAS (CUAS) systems, or other remote monitoring or sensing infrastructure. Based on the Remote ID defined in Standard Specification for Remote ID and Tracking (ASTM Designation: F3411-22a) <a target='_blank' href='https://cdn.standards.iteh.ai/samples/112830/71297057ac42432880a203654f213709/ASTM-F3411-22a.pdf'>ASTM F3411-22a</a>",
+  "extends": "unmanned_systems",
+  "name": "drone_flights_activity",
+  "attributes": {
+    "activity_id": {
+      "group": "primary",
+      "requirement": "required",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The event activity is unknown."
+        },
+        "1": {
+          "caption": "Capture",
+          "description": "Remote ID information from an Unmanned System is being captured (collected)."
+        },
+        "2": {
+          "caption": "Record",
+          "description": "Unmanned System activity is being recorded."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The event activity is not mapped. See the <code>activity_name</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
+    "auth_protocol": {
+      "caption": "Authentication Type",
+      "description": "The authentication type as defined by the caption of <code>auth_protocol_id</code>. In the case of 'Other', it is defined by the event source.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "auth_protocol_id": {
+      "caption": "Authentication Type ID",
+      "description": "The normalized identifier of the authentication type used to authorize a flight plan or mission.",
+      "group": "context",
+      "requirement": "optional",
+      "sibling": "auth_protocol",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The authentication type is unknown."
+        },
+        "1": {
+          "caption": "None"
+        },
+        "2": {
+          "caption": "UAS ID Signature"
+        },
+        "3": {
+          "caption": "Operator ID Signature"
+        },
+        "4": {
+          "caption": "Message Set Signature"
+        },
+        "5": {
+          "caption": "Authentication Provided by Network Remote ID"
+        },
+        "6": {
+          "caption": "Specific Authentication Method"
+        },
+        "7": {
+          "caption": "Reserved"
+        },
+        "8": {
+          "caption": "Private User"
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The authentication type is not mapped. See the <code>auth_protocol</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
+    "classification": {
+      "caption": "Classification Type",
+      "description": "UA Classification - Allows a region to classify UAS in a regional specific manner. The format may differ from region to region.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "comment": {
+      "caption": "Operation Description",
+      "description": "This optional, free-text field enables the operator to describe the purpose of a flight, if so desired.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "protocol_name": {
+      "caption": "Remote ID Protocol",
+      "description": "The networking protocol associated with the Remote ID device or beacon. E.g. <code>BLE</code>, <code>LTE</code>, <code>802.11</code>.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "src_endpoint": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "status": {
+      "caption": "Operational Status",
+      "description": "The normalized Operational status for the Unmanned Aerial System (UAS) normalized to the caption of the <code>status_id</code> value. In the case of 'Other', it is defined by the source.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "status_id": {
+      "caption": "Operational Status ID",
+      "description": "The normalized Operational status identifier for the Unmanned Aerial System (UAS).",
+      "group": "primary",
+      "requirement": "recommended",
+      "enum": {
+        "1": {
+          "caption": "Undeclared",
+          "description": "The operational status is not reported."
+        },
+        "2": {
+          "caption": "Ground",
+          "description": "The Unmanned Aerial System (UAS) is grounded."
+        },
+        "3": {
+          "caption": "Airborne",
+          "description": "The Unmanned Aerial System (UAS) is airborne."
+        },
+        "4": {
+          "caption": "Emergency",
+          "description": "The Unmanned Aerial System (UAS) is reporting an emergency status."
+        },
+        "5": {
+          "caption": "Remote ID System Failure",
+          "description": "The Unmanned Aerial System (UAS) is reporting the Remote ID beacon or device is malfunctioning or has failed."
+        },
+        "6": {
+          "caption": "Reserved",
+          "description": "An ASTM Reserved status is reported."
+        }
+      }
+    },
+    "traffic": {
+      "description": "Traffic refers to the amount of data transmitted from a Unmanned Aerial System (UAS) or Counter Unmanned Aerial System (UAS) (CUAS) system at a given point of time. Ex: <code>bytes_in</code> and <code>bytes_out</code>.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "unmanned_aerial_system": {
+      "group": "primary",
+      "requirement": "required"
+    },
+    "unmanned_system_operating_area": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "unmanned_system_operator": {
+      "group": "primary",
+      "requirement": "required"
+    }
+  },
+  "constraints": {
+    "at_least_one": [
+      "src_endpoint",
+      "unmanned_aerial_system",
+      "unmanned_system_operator",
+      "unmanned_system_operating_area"
+    ]
+  }
+}

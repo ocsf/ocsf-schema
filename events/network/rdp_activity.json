@@ -1,0 +1,84 @@
+{
+  "uid": 5,
+  "caption": "RDP Activity",
+  "description": "Remote Desktop Protocol (RDP) Activity events report remote client connections to a server as seen on the network.",
+  "extends": "network",
+  "name": "rdp_activity",
+  "attributes": {
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Initial Request",
+          "description": "The initial RDP request."
+        },
+        "2": {
+          "caption": "Initial Response",
+          "description": "The initial RDP response."
+        },
+        "3": {
+          "caption": "Connect Request",
+          "description": "An RDP connection request."
+        },
+        "4": {
+          "caption": "Connect Response",
+          "description": "An RDP connection response."
+        },
+        "5": {
+          "caption": "TLS Handshake",
+          "description": "The TLS handshake."
+        },
+        "6": {
+          "caption": "Traffic",
+          "description": "Network traffic report."
+        }
+      }
+    },
+    "capabilities": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "certificate_chain": {
+      "description": "The list of observed certificates in an RDP TLS connection.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "device": {
+      "description": "The device instigating the RDP connection.",
+      "requirement": "optional",
+      "profile": null
+    },
+    "file": {
+      "description": "The file that is the target of the RDP activity.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "identifier_cookie": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "keyboard_info": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "protocol_ver": {
+      "caption": "RDP Version",
+      "description": "The Remote Desktop Protocol version.",
+      "group": "context",
+      "requirement": "recommended"
+    },
+    "remote_display": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "request": {
+      "description": "The client request in an RDP network connection.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "response": {
+      "description": "The server response in an RDP network connection.",
+      "group": "primary",
+      "requirement": "recommended"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "uid": 7,
+  "caption": "Process Activity",
+  "description": "Process Activity events report when a process launches, injects, opens or terminates another process, successful or otherwise.",
+  "extends": "system",
+  "name": "process_activity",
+  "attributes": {
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Launch"
+        },
+        "2": {
+          "caption": "Terminate"
+        },
+        "3": {
+          "caption": "Open"
+        },
+        "4": {
+          "caption": "Inject"
+        },
+        "5": {
+          "caption": "Set User ID"
+        }
+      }
+    },
+    "actor": {
+      "description": "The actor that performed the activity on the target <code>process</code>. For example, the process that started a new process or injected code into another process.",
+      "profile": null
+    },
+    "actual_permissions": {
+      "description": "The permissions that were granted to the process in a platform-native format.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "exit_code": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "injection_type": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "injection_type_id": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "module": {
+      "description": "The module that was injected by the actor process.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "process": {
+      "description": "The process that was launched, injected into, opened, or terminated.",
+      "group": "primary",
+      "requirement": "required"
+    },
+    "requested_permissions": {
+      "description": "The permissions mask that was requested by the process.",
+      "group": "primary",
+      "requirement": "recommended"
+    }
+  }
+}

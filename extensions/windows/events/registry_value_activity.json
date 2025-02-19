@@ -1,0 +1,36 @@
+{
+  "uid": 2,
+  "caption": "Registry Value Activity",
+  "description": "Registry Value Activity events reports when a process performs an action on a Windows registry value.",
+  "extends": "system",
+  "name": "registry_value_activity",
+  "attributes": {
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Get"
+        },
+        "2": {
+          "caption": "Set"
+        },
+        "3": {
+          "caption": "Modify"
+        },
+        "4": {
+          "caption": "Delete"
+        }
+      }
+    },
+    "actor": {
+      "description": "The actor that performed the activity on the <code>reg_value</code> object.",
+      "requirement": "required",
+      "profile": null
+    },
+    "prev_reg_value": {
+      "requirement": "optional"
+    },
+    "reg_value": {
+      "requirement": "required"
+    }
+  }
+}

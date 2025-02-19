@@ -1,0 +1,110 @@
+{
+  "uid": 10,
+  "caption": "Network File Activity",
+  "description": "Network File Activity events report file activities traversing the network, including file storage services such as Box, MS OneDrive, or Google Drive.",
+  "extends": "network",
+  "name": "network_file_activity",
+  "@deprecated": {
+    "message": "Use the new class: <code>'File Hosting Activity' in the 'Application'  category.</code>",
+    "since": "1.1.0"
+  },
+  "attributes": {
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Upload",
+          "description": "Upload a file."
+        },
+        "2": {
+          "caption": "Download",
+          "description": "Download a file."
+        },
+        "3": {
+          "caption": "Update",
+          "description": "Update a file."
+        },
+        "4": {
+          "caption": "Delete",
+          "description": "Delete a file."
+        },
+        "5": {
+          "caption": "Rename",
+          "description": "Rename a file."
+        },
+        "6": {
+          "caption": "Copy",
+          "description": "Copy a file."
+        },
+        "7": {
+          "caption": "Move",
+          "description": "Move a file."
+        },
+        "8": {
+          "caption": "Restore",
+          "description": "Restore a file."
+        },
+        "9": {
+          "caption": "Preview",
+          "description": "Preview a file."
+        },
+        "10": {
+          "caption": "Lock",
+          "description": "Lock a file."
+        },
+        "11": {
+          "caption": "Unlock",
+          "description": "Unlock a file."
+        },
+        "12": {
+          "caption": "Share",
+          "description": "Share a file."
+        },
+        "13": {
+          "caption": "Unshare",
+          "description": "Unshare a file."
+        },
+        "14": {
+          "caption": "Open",
+          "description": "Open a file."
+        },
+        "15": {
+          "caption": "Sync",
+          "description": "Mark a file or folder to sync with a computer."
+        },
+        "16": {
+          "caption": "Unsync",
+          "description": "Mark a file or folder to not sync with a computer."
+        }
+      }
+    },
+    "actor": {
+      "description": "The actor that performed the activity on the target file.",
+      "group": "primary",
+      "requirement": "required",
+      "profile": null
+    },
+    "connection_info": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "dst_endpoint": {
+      "description": "The endpoint that received the activity on the target file.",
+      "requirement": "recommended"
+    },
+    "expiration_time": {
+      "description": "The share expiration time.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "file": {
+      "description": "The file that is the target of the activity.",
+      "group": "primary",
+      "requirement": "required"
+    },
+    "src_endpoint": {
+      "description": "The endpoint that performed the activity on the target file.",
+      "group": "primary",
+      "requirement": "required"
+    }
+  }
+}

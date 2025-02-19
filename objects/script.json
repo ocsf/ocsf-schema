@@ -1,0 +1,76 @@
+{
+  "caption": "Script",
+  "description": "The Script object describes a script or command that can be executed by a shell, script engine, or interpreter. Examples include Bash, JavsScript, PowerShell, Python, VBScript, etc. Note that the term <em>script</em> here denotes not only a script contained within a file but also a script or command typed interactively by a user, supplied on the command line, or provided by some other file-less mechanism.",
+  "extends": "object",
+  "name": "script",
+  "attributes": {
+    "file": {
+      "description": "Present if this script is associated with a file. Not present in the case of a file-less script.",
+      "requirement": "optional"
+    },
+    "hashes": {
+      "description": "An array of the script's cryptographic hashes. Note that these hashes are calculated on the script in its original encoding, and not on the normalized UTF-8 encoding found in the <code>script_content</code> attribute.",
+      "requirement": "recommended"
+    },
+    "name": {
+      "description": "Unique identifier for the script or macro, independent of the containing file, used for tracking, auditing, and security analysis.",
+      "requirement": "optional"
+    },
+    "parent_uid": {
+      "description": "This attribute relates a sub-script to a parent script having the matching <code>uid</code> attribute. In the case of PowerShell, sub-script execution can be identified by matching the activity correlation ID of the raw ETW events provided by the OS.",
+      "requirement": "optional"
+    },
+    "script_content": {
+      "requirement": "required"
+    },
+    "type": {
+      "description": "The script type, normalized to the caption of the <code>type_id</code> value. In the case of 'Other', it is defined by the event source.",
+      "requirement": "optional"
+    },
+    "type_id": {
+      "description": "The normalized script type ID.",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The script type is unknown."
+        },
+        "1": {
+          "caption": "Windows Command Prompt"
+        },
+        "2": {
+          "caption": "PowerShell"
+        },
+        "3": {
+          "caption": "Python"
+        },
+        "4": {
+          "caption": "JavaScript"
+        },
+        "5": {
+          "caption": "VBScript"
+        },
+        "6": {
+          "caption": "Unix Shell"
+        },
+        "7": {
+          "caption": "VBA"
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The script type is not mapped. See the <code>type</code> attribute which contains an event source specific value."
+        }
+      },
+      "requirement": "required"
+    },
+    "uid": {
+      "description": "Some script engines assign a unique ID to each individual execution of a given script. This attribute captures that unique ID. In the case of PowerShell, the unique ID corresponds to the <code>ScriptBlockId</code> in the raw ETW events provided by the OS.",
+      "requirement": "optional"
+    }
+  },
+  "references": [
+    {
+      "description": "D3FEND™ Ontology d3f:ExecutableScript.",
+      "url": "https://d3fend.mitre.org/dao/artifact/d3f:ExecutableScript/"
+    }
+  ]
+}

@@ -3,9 +3,6 @@
   "description": "The database object is used for databases which are typically datastore services that contain an organized collection of structured and unstructured data or a types of data.",
   "extends": "_entity",
   "name": "database",
-  "profiles": [
-    "data_classification"
-  ],
   "attributes": {
     "$include": [
       "profiles/data_classification.json"
@@ -14,20 +11,23 @@
       "description": "The time when the database was known to have been created.",
       "requirement": "optional"
     },
-    "modified_time": {
-      "description": "The most recent time when any changes, updates, or modifications were made within the database.",
-      "requirement": "optional"
-    },
     "desc": {
       "description": "The description of the database.",
       "requirement": "optional"
     },
-    "size": {
-      "description": "The size of the database in bytes.",
-      "requirement": "optional"
-    },
     "groups": {
       "description": "The group names to which the database belongs.",
+      "requirement": "optional"
+    },
+    "modified_time": {
+      "description": "The most recent time when any changes, updates, or modifications were made within the database.",
+      "requirement": "optional"
+    },
+    "name": {
+      "description": "The database name, ordinarily as assigned by a database administrator."
+    },
+    "size": {
+      "description": "The size of the database in bytes.",
       "requirement": "optional"
     },
     "type": {
@@ -36,7 +36,6 @@
     },
     "type_id": {
       "description": "The normalized identifier of the database type.",
-      "requirement": "required",
       "enum": {
         "0": {
           "caption": "Unknown"
@@ -62,13 +61,20 @@
         "99": {
           "caption": "Other"
         }
-      }
-    },
-    "name": {
-      "description": "The database name, ordinarily as assigned by a database administrator."
+      },
+      "requirement": "required"
     },
     "uid": {
       "description": "The unique identifier of the database."
     }
-  }
+  },
+  "profiles": [
+    "data_classification"
+  ],
+  "references": [
+    {
+      "description": "D3FEND™ Ontology d3f:Database.",
+      "url": "https://d3fend.mitre.org/dao/artifact/d3f:Database/"
+    }
+  ]
 }

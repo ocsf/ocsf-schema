@@ -75,6 +75,7 @@ Thankyou! -->
   1. Added `eid`, `iccid`, `is_backed_up`, `is_mobile_account_active`, `is_shared`, and `meid` to `device`. #1346
   1. Added `is_backed_up` to `resource_details`. #1346
   1. Added `isp`, `isp_org` to `network_endpoint` & `whois` objects. #1351
+  1. Reduced requirement of `standards` to recommended in the `compliance` object. #1352
 
 ### Deprecated
 1. Deprecated usage of `isp` attribute in the `location` object. #1351

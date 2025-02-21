@@ -53,6 +53,7 @@ Thankyou! -->
   1. Added `fix_coverage` as `string_t` and `fix_coverage_id` as `int_t`. #1350
   1. Added `eid`, `iccid`, and `meid` as `string_t`. #1346
   1. Added `is_backed_up`, `is_mobile_account_active`, and `is_shared` as `boolean_t`. #1346
+  1. Added `isp_org` as `string_t`. #1351
 * #### Objects
   1. Added `assessment` object to capture evaluations/assessments of configurations/signals. #1343
   1. Added `node`, `edge`, `graph` objects. #1343
@@ -73,8 +74,14 @@ Thankyou! -->
   1. Added `fix_coverage`, `fix_coverage_id` to `vulnerability` object. #1350
   1. Added `eid`, `iccid`, `is_backed_up`, `is_mobile_account_active`, `is_shared`, and `meid` to `device`. #1346
   1. Added `is_backed_up` to `resource_details`. #1346
+  1. Added `isp`, `isp_org` to `network_endpoint` & `whois` objects. #1351
+
+### Deprecated
+1. Deprecated usage of `isp` attribute in the `location` object. #1351
+
+
 ### Misc
-  1. Updated description of `config_state` to reflect the addition of the `assessments` object. #1343
+1. Updated description of `config_state` to reflect the addition of the `assessments` object. #1343
 
 
 ## [v1.4.0] - January 31st, 2025

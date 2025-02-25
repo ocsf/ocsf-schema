@@ -51,8 +51,30 @@
       "requirement": "optional"
     },
     "uuid": {
-      "description": "The device manufacturer assigned universally unique hardware identifier. It is the System UUID for <a href='https://www.dmtf.org/standards/smbios'>SMBIOS</a> compatible devices such as those running Linux and Windows. It is the Hardware UUID (also known as <code>IOPlatformUUID</code>) for macOS devices.",
-      "requirement": "optional"
+      "description": "The device manufacturer assigned universally unique hardware identifier. For SMBIOS compatible devices such as those running Linux and Windows, it is the UUID member of the System Information structure in the SMBIOS information. For macOS devices, it is the Hardware UUID (also known as IOPlatformUUID in the I/O Registry).",
+      "requirement": "optional",
+      "references": [
+        {
+          "description": "SMBIOS Specification",
+          "url": "https://www.dmtf.org/standards/smbios"
+        },
+        {
+          "description": "Linux DMI Table Decoder documentation",
+          "url": "https://linux.die.net/man/8/dmidecode"
+        },
+        {
+          "description": "Windows Win32_ComputerSystemProduct documentation",
+          "url": "https://learn.microsoft.com/en-us/windows/win32/cimwin32prov/win32-computersystemproduct"
+        },
+        {
+          "description": "Apple Wiki (Mac Hardware UUID)",
+          "url": "https://theapplewiki.com/wiki/UDID#Mac"
+        },
+        {
+          "description": "macOS I/O Registry source code reference to IOPlatformUUID",
+          "url": "https://github.com/apple-oss-distributions/xnu/blob/8d741a5de7ff4191bf97d57b9f54c2f6d4a15585/iokit/IOKit/IOKitKeys.h#L264-L265"
+        }
+      ]
     },
     "vendor_name": {
       "description": "The device manufacturer.",

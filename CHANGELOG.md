@@ -53,10 +53,16 @@ Thankyou! -->
   1. Added `fix_coverage` as `string_t` and `fix_coverage_id` as `int_t`. #1350
   1. Added `eid`, `iccid`, and `meid` as `string_t`. #1346
   1. Added `is_backed_up`, `is_mobile_account_active`, and `is_shared` as `boolean_t`. #1346
+  1. Added `detection_pattern_type` an `detection_pattern_type_id` as a `string_t` and `int_t` respectively. #1310
+  1. Added `external_id` as an `string_t`. #1310
+  1. Added `intrusion_sets` as an array `string_t`. #1310
+  1. Added `uploaded_time` as an `timestamp_t`. #1310
   1. Added `isp_org` as `string_t`. #1351
 * #### Objects
   1. Added `assessment` object to capture evaluations/assessments of configurations/signals. #1343
   1. Added `node`, `edge`, `graph` objects. #1343
+  1. Added `camapign` object #1310
+  1. Added `threat_actor` object #1310
 	
 ### Improved
 * #### Event Classes
@@ -77,6 +83,7 @@ Thankyou! -->
   1. Added `isp`, `isp_org` to `network_endpoint` & `whois` objects. #1351
   1. Reduced requirement of `standards` to recommended in the `compliance` object. #1352
   1. Updated MITRE `attack`, `tactic`, `technique`, `subtechnique` captions, descriptions, references to include MITRE ATLAS. Used standard requirements for `_entity` extended objects. #1355.
+  1. Added `campaign`, `category`, `created_time`, `creator`, `desc`, `expiration_time`, `external_id`, `labels`, `malware`, `modified_time`, `name`, `detection_pattern`, `detection_pattern_type`, `detection_pattern_type_id`, `intrusion_sets`, `risk_score`, `references`, `uploaded_time`, `severity`, `uid` and `threat_actor` to `osint` object. #1310
 
 ### Deprecated
 1. Deprecated usage of `isp` attribute in the `location` object. #1351

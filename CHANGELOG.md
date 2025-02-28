@@ -84,8 +84,8 @@ Thankyou! -->
 
 ### Misc
 1. Updated description of `config_state` to reflect the addition of the `assessments` object. #1343
+1. Updated description of `hw_info.uuid` to clarify usage especially in presence of new `device.udid` field. #1354
 1. Updated dictionary descriptions and references of MITRE `attacks`, `tactic`, `technique`, `subtechnique`. #1355
-
 
 ## [v1.4.0] - January 31st, 2025
 

@@ -1,20 +1,20 @@
 {
   "caption": "Behavior Analysis",
-  "description": "",
-  "extends": "object", 
+  "description": "Represents the analysis of system and user behaviors to detect anomalies and deviations from normal patterns",
+  "extends": "object",
   "name": "behavior_analysis",
   "attributes": {
-    "baselines": {
-      "description": "",
-      "requirement": "recommended"
+    "analysis_target": {
+      "description": "The specific scope or entity being analyzed for behavioral patterns. This could be a user account, Kubernetes cluster, network namespace, application component, or any other discrete unit of the system where behavior patterns can be meaningfully analyzed. The target defines the boundary of what behaviors are being monitored and analyzed.",
+      "requirement": "required"
     },
     "anomalies": {
-      "description": "",
+      "description": "List of detected behaviors that significantly deviate from the established baselines. This can include unusual access patterns, unexpected user-agents, abnormal API usage, suspicious traffic spikes, unauthorized access attempts, and other behaviors that may indicate potential security threats or system issues.",
       "requirement": "required"
     },
-    "analysis_target": {
-      "description": "The specific dimension, component, or aspect of the system that is the target of the analysis. Examples: account, cluster, namespace etc.",
-      "requirement": "required"
+    "baselines": {
+      "description": "List of established patterns representing normal behavior that serve as reference points for anomaly detection. This includes typical user interaction patterns like common user-agents, expected API access frequencies and patterns, standard resource utilization levels, and regular traffic flows. These baselines help establish what constitutes 'normal' behavior in the system.",
+      "requirement": "recommended"
     }
   }
 }

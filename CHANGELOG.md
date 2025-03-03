@@ -82,7 +82,7 @@ Thankyou! -->
   1. Updated MITRE `attack`, `tactic`, `technique`, `subtechnique` captions, descriptions, references to include MITRE ATLAS. Used standard requirements for `_entity` extended objects. #1355.
   1. Added `category` and `desc` to `compliance` object. #1357
   1. Added `category`, `dependency_chain`, `exploit_reference_link`, `exploit_requirement`, and `exploit_type` to `vulnerability` object. #1357
-  1. Added `type`, `type_id`, and `uid` to `sbom` object. #1357
+  1. Added `type`, `type_id`, `uid`, and `version` to `sbom` object. #1357
   1. Added `license_link`, `package_manager`, `package_manager_link`, `src_url`, and `uid` to `package` object. #1357
 
 ### Deprecated

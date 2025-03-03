@@ -9,7 +9,7 @@
         "caption": "Related Compliance",
         "group": "primary",
         "description": "Provides compliance context to vulnerabilities and other weaknesses that are reported as part of an Application Security or Vulnerability Management tool's built-in compliance framework mapping.",
-        "requirement": "optional"
+        "requirement": "recommended"
       },
       "remediation": {
         "caption": "Remediation Guidance",
@@ -26,11 +26,23 @@
       "sbom": {
         "caption": "Related SBOM",
         "group": "context",
-        "requirement": "optional"
+        "requirement": "recommended"
       },
       "vulnerabilities": {
         "group": "primary",
-        "requirement": "required"
+        "requirement": "recommended"
       }
-    }
+    },
+    "constraints": {
+      "at_least_one": [
+        "compliance",
+        "remediation",
+        "resources",
+        "sbom",
+        "vulnerabilities"
+      ]
+    },
+    "profiles": [
+      "incident"
+    ]
   }

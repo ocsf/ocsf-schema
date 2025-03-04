@@ -76,6 +76,7 @@ Thankyou! -->
   1. Added `is_backed_up` to `resource_details`. #1346
   1. Added `isp`, `isp_org` to `network_endpoint` & `whois` objects. #1351
   1. Reduced requirement of `standards` to recommended in the `compliance` object. #1352
+  1. Updated MITRE `attack`, `tactic`, `technique`, `subtechnique` captions, descriptions, references to include MITRE ATLAS. Used standard requirements for `_entity` extended objects. #1355.
 
 ### Deprecated
 1. Deprecated usage of `isp` attribute in the `location` object. #1351
@@ -83,7 +84,8 @@ Thankyou! -->
 
 ### Misc
 1. Updated description of `config_state` to reflect the addition of the `assessments` object. #1343
-
+1. Updated description of `hw_info.uuid` to clarify usage especially in presence of new `device.udid` field. #1354
+1. Updated dictionary descriptions and references of MITRE `attacks`, `tactic`, `technique`, `subtechnique`. #1355
 
 ### Misc
 1. Added `email.subject` and `email.uid` and `message_uid` as an Observable types - `type_id: 39`, `type_id: 40` and `type_id: 45`. #1326

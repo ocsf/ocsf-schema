@@ -56,7 +56,7 @@ Thankyou! -->
   1. Added `eid`, `iccid`, and `meid` as `string_t`. #1346
   1. Added `is_backed_up`, `is_mobile_account_active`, and `is_shared` as `boolean_t`. #1346
   1. Added `isp_org` as `string_t`. #1351
-  1. Added `start_column` as `integer_t`. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
+  1. Added `end_column` and `start_column` as `integer_t`. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
   1. Added `dependency_chain`, `exploit_requirement`, and `exploit_type` as `string_t`. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
   1. Added `exploit_reference_url`, `license_url`, `package_manager_url`, and `uri` as `url_t`. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
 * #### Objects
@@ -82,7 +82,7 @@ Thankyou! -->
   1. Added `isp`, `isp_org` to `network_endpoint` & `whois` objects. #1351
   1. Reduced requirement of `standards` to recommended in the `compliance` object. #1352
   1. Updated MITRE `attack`, `tactic`, `technique`, `subtechnique` captions, descriptions, references to include MITRE ATLAS. Used standard requirements for `_entity` extended objects. #1355.
-  1. Added `rule` and `start_column` to `affected_code` object. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
+  1. Added `end_column`, `rule` and `start_column` to `affected_code` object. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
   1. Added `category` and `desc` to `compliance` object. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
   1. Added `uri` to the `file` object. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
   1. Added `license_url`, `package_manager`, `package_manager_url`, `src_url`, and `uid` to `package` object. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)

@@ -190,7 +190,8 @@
       "caption": "Ancestry",
       "description": "An array of Process Entities describing the extended parentage of this process object. Direct parent information sould be expressed through the <code>parent_process</code> attribute. The first array element is the direct parent of this process object. Subsequent list elements go up the process parentage hierarchy. That is, the array is sorted from newest to oldest process. It is recommended to only populate this field for the top-level process object.",
       "type": "process_entity",
-      "is_array": true
+      "is_array": true,
+      "references": [{"url": "https://github.com/ocsf/ocsf-docs/blob/main/Articles/Representing Process Parentage.md", "description": "Guidance on Representing Process Parentage"}]
     },
     "answers": {
       "caption": "DNS Answer",
@@ -238,10 +239,31 @@
       "description": "The details of the group assigned to an Incident.",
       "type": "group"
     },
+    "assessment": {
+      "caption": "Assessment",
+      "description": "The Assessment object describes a point-in-time assessment, check, or evaluation of a specific configuration or signal against an asset, entity, person, or otherwise. For example, this can encapsulate <code>os_signals</code> from CrowdStrike Falcon Zero Trust Assessments, or account for <code>Datastore</code> configurations from Cyera.",
+      "type": "assessment"
+    },
+    "assessments": {
+      "caption": "Assessments",
+      "description": "A list of <code>assessment</code> objects. See specific usage.",
+      "type": "assessment",
+      "is_array": true
+    },
     "attacks": {
-      "caption": "MITRE ATT&CK® Details",
-      "description": "An array of <a target='_blank' href='https://attack.mitre.org'>MITRE ATT&CK®</a> objects describing identified tactics, techniques & sub-techniques.",
+      "caption": "MITRE ATT&CK® and ATLAS™ Details",
+      "description": "An array of MITRE ATT&CK® objects describing identified tactics, techniques & sub-techniques. The objects are compatible with MITRE ATLAS™ tactics, techniques & sub-techniques.",
       "type": "attack",
+      "references": [
+        {
+          "description": "MITRE ATT&CK®",
+          "url": "https://attack.mitre.org"
+        },
+        {
+          "description": "MITRE ATLAS",
+          "url": "https://atlas.mitre.org/matrices/ATLAS"
+        }
+      ],
       "is_array": true
     },
     "attempt": {
@@ -1387,12 +1409,24 @@
     },
     "d3f_tactic": {
       "caption": "MITRE DEFEND™ Tactic",
-      "description": "The D3FEND Tactic object describes the defensive tactic name associated with a countermeasure, as defined by <a target='_blank' href='https://d3fend.mitre.org'>D3FEND<sup>TM</sup> Matrix</a>.",
+      "description": "The D3FEND Tactic object describes the defensive tactic name associated with a countermeasure.",
+      "references": [
+        {
+          "description": "D3FEND™ Matrix",
+          "url": "https://d3fend.mitre.org"
+        }
+      ],
       "type": "d3f_tactic"
     },
     "d3f_technique": {
       "caption": "MITRE DEFEND™ Technique",
-      "description": "The D3FEND Technique object describes the defensive technique ID and/or name associated with a countermeasure, as defined by <a target='_blank' href='https://d3fend.mitre.org'>D3FEND<sup>TM</sup> Matrix</a>.",
+      "description": "The D3FEND Technique object describes the defensive technique ID and/or name associated with a countermeasure.",
+      "references": [
+        {
+          "description": "D3FEND™ Matrix",
+          "url": "https://d3fend.mitre.org"
+        }
+      ],
       "type": "d3f_technique"
     },
     "data": {
@@ -1692,6 +1726,11 @@
       "description": "The dispersion in the NTP protocol is the estimated time error or uncertainty relative to the reference clock in milliseconds.",
       "type": "integer_t"
     },
+    "display_name": {
+      "caption": "Display Name",
+      "description": "The display name. See specific usage.",
+      "type": "string_t"
+    },
     "disposition": {
       "caption": "Disposition",
       "description": "The disposition name, normalized to the caption of the disposition_id value. In the case of 'Other', it is defined by the event source.",
@@ -1987,9 +2026,20 @@
       "description": "Represents the duration of the activity in years. See specific usage.",
       "type": "integer_t"
     },
+    "edges": {
+      "caption": "Edges",
+      "description": "The list of edge objects that are part of the graph.",
+      "type": "edge",
+      "is_array": true
+    },
     "edition": {
       "caption": "OS Edition",
       "description": "The operating system edition. For example: <code>Professional</code>.",
+      "type": "string_t"
+    },
+    "eid": {
+      "caption": "EID",
+      "description": "An Embedded Identity Document, is a unique serial number that identifies an eSIM-enabled device.",
       "type": "string_t"
     },
     "email": {
@@ -2300,6 +2350,26 @@
         "since": "1.1.0"
       }
     },
+    "fix_coverage": {
+      "caption": "Fix Coverage",
+      "description": "The fix coverage, normalized to the caption of the <code>fix_coverage_id</code> value. See specific usage.",
+      "type": "string_t"
+    },
+    "fix_coverage_id": {
+      "caption": "Fix Coverage ID",
+      "description": "The normalized identifier for fix coverage. See specific usage.",
+      "type": "integer_t",
+      "enum":{
+        "0": {
+          "caption": "Unknown",
+          "description": "The fix coverage is unknown."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The fix coverage is not mapped. See the <code>fix_coverage</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
     "fixed_in_version": {
       "caption": "Fixed In Version",
       "description": "The software package version in which a reported vulnerability was patched/fixed.",
@@ -2373,7 +2443,7 @@
     },
     "full_name": {
       "caption": "Full Name",
-      "description": "The full name of the person, as per the LDAP Common Name attribute (cn).",
+      "description": "The full name. See specific usage.",
       "type": "string_t"
     },
     "function_keys": {
@@ -2405,6 +2475,11 @@
       "caption": "Given Name",
       "description": "The given or first name of the user.",
       "type": "string_t"
+    },
+    "graph": {
+      "caption": "Graph",
+      "description": "A graph data structure representation with nodes and edges.",
+      "type": "graph"
     },
     "group": {
       "caption": "Group",
@@ -2515,6 +2590,11 @@
     "hypervisor": {
       "caption": "Hypervisor",
       "description": "The name of the hypervisor running on the device. For example, <code>Xen</code>, <code>VMware</code>, <code>Hyper-V</code>, <code>VirtualBox</code>, etc.",
+      "type": "string_t"
+    },
+    "iccid": {
+      "caption": "ICCID",
+      "description": "The Integrated Circuit Card Identification of a mobile device. Typically it is a unique 18 to 22 digit number that identifies a SIM card.",
       "type": "string_t"
     },
     "identifier_cookie": {
@@ -2758,6 +2838,11 @@
       "description": "A determination if a policy, rule, or enforcement action was applied.",
       "type": "boolean_t"
     },
+    "is_backed_up": {
+      "caption": "Back Ups Configured",
+      "description": "Indicates whether the device or resource has a backup enabled, such as an automated snapshot or a cloud backup. For example, this is indicated by the <code>cloudBackupEnabled</code> value within JAMF Pro mobile devices or the registration of an AWS ARN with the AWS Backup service.",
+      "type": "boolean_t"
+    },
     "is_cleartext": {
       "caption": "Cleartext Credentials",
       "description": "Indicates whether the credentials were passed in clear text.<p><b>Note:</b> True if the credentials were passed in a clear text protocol such as FTP or TELNET, or if Windows detected that a user's logon password was passed to the authentication package in clear text.</p>",
@@ -2776,6 +2861,11 @@
     "is_deleted": {
       "caption": "Deleted",
       "description": "Indicates if the entity was deleted. See specific usage.",
+      "type": "boolean_t"
+    },
+    "is_directed": {
+      "caption": "Directed",
+      "description": "Indicates if the entity has directionality. See specific usage.",
       "type": "boolean_t"
     },
     "is_encrypted": {
@@ -2818,6 +2908,11 @@
       "description": "Indicates whether Multi Factor Authentication was used during authentication.",
       "type": "boolean_t"
     },
+    "is_mobile_account_active": {
+      "caption": "Mobile Account Active",
+      "description": "Indicates whether the device has an active mobile account. For example, this is indicated by the <code>itunesStoreAccountActive</code> value within JAMF Pro mobile devices.",
+      "type": "boolean_t"
+    },
     "is_new_logon": {
       "caption": "New Logon",
       "description": "Indicates logon is from a device not seen before or a first time account logon.",
@@ -2858,6 +2953,11 @@
       "description": "Denotes whether a digital certificate is self-signed or signed by a known certificate authority (CA).",
       "type": "boolean_t"
     },
+    "is_shared": {
+      "caption": "Shared Device",
+      "description": "The event occurred on a shared device.",
+      "type": "boolean_t"
+    },
     "is_superseded": {
       "caption": "The patch is superseded.",
       "description": "The vendor patch has been replaced by another.",
@@ -2866,6 +2966,11 @@
     "is_suspected_breach": {
       "caption": "Suspected Breach",
       "description": "A determination based on analytics as to whether a potential breach was found.",
+      "type": "boolean_t"
+    },
+    "is_supervised": {
+      "caption": "Supervised Device",
+      "description": "The event occurred on a supervised device. Devices that are supervised are typically mobile devices managed by a Mobile Device Management solution and are restricted from specific behaviors such as Apple AirDrop.",
       "type": "boolean_t"
     },
     "is_system": {
@@ -2899,8 +3004,13 @@
       "type": "boolean_t"
     },
     "isp": {
-      "caption": "ISP",
+      "caption": "ISP Name",
       "description": "The name of the Internet Service Provider (ISP).",
+      "type": "string_t"
+    },
+    "isp_org": {
+      "caption": "ISP Org",
+      "description": "The organization name of the Internet Service Provider (ISP). This represents the parent organization or company that owns/operates the ISP. For example, Comcast Corporation would be the ISP org for Xfinity internet service. This attribute helps identify the ultimate provider when ISPs operate under different brand names.",
       "type": "string_t"
     },
     "issuer": {
@@ -3297,6 +3407,11 @@
       "description": "The location of the matched data in the source which resulted in the triggered firewall rule. For example: HEADER.",
       "type": "string_t"
     },
+    "meid": {
+      "caption": "MEID",
+      "description": "The Mobile Equipment Identifier. It's a unique number that identifies a Code Division Multiple Access (CDMA) mobile device.",
+      "type": "string_t"
+    },
     "message": {
       "caption": "Message",
       "description": "The description of the event/finding, as defined by the source.",
@@ -3324,6 +3439,11 @@
           "url": "https://www.rfc-editor.org/rfc/rfc5322"
         }
       ]
+    },
+    "meets_criteria": {
+      "caption": "Meets Criteria",
+      "description": "Determines if an assessment, control, policy, or otherwise meets its assessment criteria. See specific usage.",
+      "type": "boolean_t"
     },
     "metadata": {
       "caption": "Metadata",
@@ -3412,6 +3532,12 @@
       "caption": "NIST List",
       "description": "The NIST Cybersecurity Framework recommendations for managing the cybersecurity risk.",
       "type": "string_t",
+      "is_array": true
+    },
+    "nodes": {
+      "caption": "Nodes",
+      "description": "The list of node objects that are part of the graph.",
+      "type": "node",
       "is_array": true
     },
     "num_detections": {
@@ -3668,7 +3794,8 @@
     "parent_process": {
       "caption": "Parent Process",
       "description": "The parent process of this process object. It is recommended to only populate this field for the top-level process object, to prevent deep nesting. Additional ancestry information can be supplied in the <code>ancestry</code> attribute.",
-      "type": "process"
+      "type": "process",
+      "references": [{"url": "https://github.com/ocsf/ocsf-docs/blob/main/Articles/Representing Process Parentage.md", "description": "Guidance on Representing Process Parentage"}]
     },
     "parent_uid": {
       "caption": "Parent Unique ID",
@@ -4035,6 +4162,27 @@
       "description": "The query info object holds information related to data access within a datastore. To access, manipulate, delete, or retrieve data from a datastore, a database query must be written using a specific syntax.",
       "type": "query_info"
     },
+    "query_language": {
+      "caption": "Query Language",
+      "description": "The query language, normalized to the caption of the <code>query_language_id</code> value. See specific usage.",
+      "type": "string_t"
+    },
+    "query_language_id": {
+      "caption": "Query Language ID",
+      "description": "The normalized identifier of the query language. See specific usage.",
+      "sibling": "query_language",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The Query Language is unknown."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The Query Language is not mapped. See the <code>query_language</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
     "query_result": {
       "caption": "Query Result",
       "description": "The result of the query.",
@@ -4105,6 +4253,11 @@
       "caption": "Raw Data",
       "description": "The raw event/finding data as received from the source.",
       "type": "string_t"
+    },
+    "raw_data_size": {
+      "caption": "Raw Data Size",
+      "description": "The size of the raw data which was transformed into an OCSF event, in bytes.",
+      "type": "long_t"
     },
     "raw_header": {
       "caption": "Raw Header",
@@ -4203,6 +4356,11 @@
       "type": "string_t",
       "is_array": true
     },
+    "relation": {
+      "caption": "Relation",
+      "description": "The relationship between two entities. See specific usage.",
+      "type": "string_t"
+    },
     "relationship": {
       "caption": "Relationship",
       "description": "The relationship between two software components, normalized to the caption of the <code>relationship_id</code> value. In the case of 'Other', it is defined by the source.",
@@ -4300,6 +4458,11 @@
       "caption": "Resource",
       "description": "The target resource.",
       "type": "resource_details"
+    },
+    "resource_relationship": {
+      "caption": "Resource Relationship",
+      "description": "Describes entities related to the resource, using a graph structure. See specific usage.",
+      "type": "graph"
     },
     "resource_type": {
       "caption": "Resource Type",
@@ -4846,6 +5009,11 @@
       "type": "software_component",
       "is_array": true
     },
+    "source": {
+      "caption": "Source",
+      "description": "The source of the event or object. See specific usage.",
+      "type": "string_t"
+    },
     "sp_name": {
       "caption": "OS Service Pack",
       "description": "The name of the latest Service Pack.",
@@ -5076,9 +5244,19 @@
       }
     },
     "sub_technique": {
-      "caption": "Sub Technique",
-      "description": "The Sub Technique object describes the sub technique ID and/or name associated to an attack, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK® Matrix</a>.",
-      "type": "sub_technique"
+      "caption": "MITRE Sub-technique",
+      "description": "The Sub-technique object describes the MITRE ATT&CK® or ATLAS™ Sub-technique ID and/or name associated to an attack.",
+      "type": "sub_technique",
+      "references": [
+        {
+          "description": "ATT&CK® Matrix",
+          "url": "https://attack.mitre.org/wiki/ATT&CK_Matrix"
+        },
+        {
+          "description": "ATLAS™ Matrix",
+          "url": "https://atlas.mitre.org/matrices/ATLAS"
+        }
+      ]
     },
     "subdomain": {
       "caption": "Subdomain",
@@ -5137,9 +5315,19 @@
       "type": "table"
     },
     "tactic": {
-      "caption": "Tactic",
-      "description": "The Tactic object describes the tactic ID and/or name that is associated to an attack, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK® Matrix</a>.",
-      "type": "tactic"
+      "caption": "MITRE Tactic",
+      "description": "The Tactic object describes the MITRE ATT&CK® or ATLAS™ Tactic ID and/or name that is associated to an attack.",
+      "type": "tactic",
+      "references": [
+        {
+          "description": "ATT&CK® Matrix",
+          "url": "https://attack.mitre.org/wiki/ATT&CK_Matrix"
+        },
+        {
+          "description": "ATLAS™ Matrix",
+          "url": "https://atlas.mitre.org/matrices/ATLAS"
+        }
+      ]
     },
     "tactics": {
       "caption": "Tactics",
@@ -5166,15 +5354,30 @@
       "type": "key_value_object",
       "is_array": true
     },
+    "target": {
+      "caption": "Target",
+      "description": "The target of the event or object. See specific usage.",
+      "type": "string_t"
+    },
     "tcp_flags": {
       "caption": "TCP Flags",
       "description": "The network connection TCP header flags (i.e., control bits).",
       "type": "integer_t"
     },
     "technique": {
-      "caption": "Technique",
-      "description": "The Technique object describes the technique ID and/or name associated to an attack, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK® Matrix</a>.",
-      "type": "technique"
+      "caption": "MITRE Technique",
+      "description": "The Technique object describes the MITRE ATT&CK® or ATLAS™ Technique ID and/or name associated to an attack.",
+      "type": "technique",
+      "references": [
+        {
+          "description": "ATT&CK® Matrix",
+          "url": "https://attack.mitre.org/wiki/ATT&CK_Matrix"
+        },
+        {
+          "description": "ATLAS™ Matrix",
+          "url": "https://atlas.mitre.org/matrices/ATLAS"
+        }
+      ]
     },
     "tenant_uid": {
       "caption": "Tenant UID",
@@ -5349,6 +5552,17 @@
       "description": "The type/s of an entity. See specific usage.",
       "type": "string_t",
       "is_array": true
+    },
+    "udid": {
+      "caption": "Unique Device Identifier",
+      "description": "The Apple assigned Unique Device Identifier (UDID). For iOS, iPadOS, tvOS, watchOS and visionOS devices, this is the UDID. For macOS devices, it is the Provisioning UDID. For example: <code>00008020-008D4548007B4F26</code>",
+      "type": "string_t",
+      "references": [
+        {
+          "description": "Apple Wiki",
+          "url": "https://theapplewiki.com/wiki/UDID"
+        }
+      ]
     },
     "uid": {
       "caption": "Unique ID",

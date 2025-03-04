@@ -44,11 +44,48 @@ Thankyou! -->
 ### Added
 * #### Dictionary Attributes 
   1. Added `boot_uid` as a `string_t`. [#1335](https://github.com/ocsf/ocsf-schema/pull/1335)
+  1. Added `raw_data_size` as a `long_t`. [#1347](https://github.com/ocsf/ocsf-schema/pull/1347)
+  1. Added `assessments` as an array of `assessment` objects. #1343
+  1. Added `meets_criteria` as a `boolean_t`. #1343
+  1. Added `display_name` attribute as a `string_t`. [#1341](https://github.com/ocsf/ocsf-schema/pull/1341)
+  1. Added `is_directed` as a `boolean_t`, `relation` as a `string_t`, `query_language` & `query_language_id` a sibling pair. #1343
+  1. Added `resource_relationship` of type `graph`, `nodes` of type `node`, `edges` of type `edge`. #1343
+  1. Added `fix_coverage` as `string_t` and `fix_coverage_id` as `int_t`. #1350
+  1. Added `eid`, `iccid`, and `meid` as `string_t`. #1346
+  1. Added `is_backed_up`, `is_mobile_account_active`, and `is_shared` as `boolean_t`. #1346
+  1. Added `isp_org` as `string_t`. #1351
+* #### Objects
+  1. Added `assessment` object to capture evaluations/assessments of configurations/signals. #1343
+  1. Added `node`, `edge`, `graph` objects. #1343
 	
 ### Improved
+* #### Event Classes
+  1. Added `assessments` to `config_state`. #1343
+  1. Added `raw_data_size` to `base_event` object. [#1347](https://github.com/ocsf/ocsf-schema/pull/1347)
 * #### Objects
   1. Added `boot_uid` to `device` object. [#1335](https://github.com/ocsf/ocsf-schema/pull/1335)
   1. Relaxed constraint to provide `email_addr`, `phone_number`, or `security_questions` on `auth_factor`. [#1339](https://github.com/ocsf/ocsf-schema/pull/1339)
+  1. Added `boot_uid` to `device` object. [#1335](https://github.com/ocsf/ocsf-schema/pull/1335)
+  1. Added `meets_criteria` and `policy` to `assessment` object. #1343
+  1. Added `assessments` to `compliance` object. #1343
+  1. Added `data` to `policy` object. #1343
+  1. Added `display_name` attribute to the `user` and `ldap_person` objects. [#1341](https://github.com/ocsf/ocsf-schema/pull/1341)
+  1. Added `resource_relationship` to `resource_details` object. #1343
+  1. Added `fix_coverage`, `fix_coverage_id` to `vulnerability` object. #1350
+  1. Added `eid`, `iccid`, `is_backed_up`, `is_mobile_account_active`, `is_shared`, and `meid` to `device`. #1346
+  1. Added `is_backed_up` to `resource_details`. #1346
+  1. Added `isp`, `isp_org` to `network_endpoint` & `whois` objects. #1351
+  1. Reduced requirement of `standards` to recommended in the `compliance` object. #1352
+  1. Updated MITRE `attack`, `tactic`, `technique`, `subtechnique` captions, descriptions, references to include MITRE ATLAS. Used standard requirements for `_entity` extended objects. #1355.
+
+### Deprecated
+1. Deprecated usage of `isp` attribute in the `location` object. #1351
+
+
+### Misc
+1. Updated description of `config_state` to reflect the addition of the `assessments` object. #1343
+1. Updated description of `hw_info.uuid` to clarify usage especially in presence of new `device.udid` field. #1354
+1. Updated dictionary descriptions and references of MITRE `attacks`, `tactic`, `technique`, `subtechnique`. #1355
 
 ## [v1.4.0] - January 31st, 2025
 

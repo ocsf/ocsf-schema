@@ -101,6 +101,7 @@ Thankyou! -->
   1. Added `fix_coverage`, `fix_coverage_id` to `vulnerability` object. #1350
   1. Added `eid`, `iccid`, `is_backed_up`, `is_mobile_account_active`, `is_shared`, and `meid` to `device`. #1346
   1. Added `is_backed_up` to `resource_details`. #1346
+<<<<<<< HEAD
 >>>>>>> e3efe4a8 (Expand `device` with mobile device attributes (#1346))
 ### Misc
 1. Added `user.uid` as an Observable type - `type_id: 31`. #1155
@@ -113,6 +114,20 @@ Thankyou! -->
   1. Added `raw_data_size` to `base_event` object. [#1347](https://github.com/ocsf/ocsf-schema/pull/1347)
   1. Updated description of `config_state` to reflect the addition of the `assessments` object. #1343
 >>>>>>> fa6af6aa (Add `assessments` to OCSF (#1343))
+=======
+  1. Added `isp`, `isp_org` to `network_endpoint` & `whois` objects. #1351
+  1. Reduced requirement of `standards` to recommended in the `compliance` object. #1352
+  1. Updated MITRE `attack`, `tactic`, `technique`, `subtechnique` captions, descriptions, references to include MITRE ATLAS. Used standard requirements for `_entity` extended objects. #1355.
+  1. Added `name`, `resources`, `uid`, `verdict`, and `verdict_id` to `evidences`. #1337
+
+### Deprecated
+  1. Deprecated usage of `isp` attribute in the `location` object. #1351
+
+### Misc
+  1. Updated description of `config_state` to reflect the addition of the `assessments` object. #1343
+  1. Updated description of `hw_info.uuid` to clarify usage especially in presence of new `device.udid` field. #1354
+  1. Updated dictionary descriptions and references of MITRE `attacks`, `tactic`, `technique`, `subtechnique`. #1355
+>>>>>>> 8fc6b8f1 (Expand `evidences` (#1337))
 
 ## [v1.3.0] - August 1st, 2024
 

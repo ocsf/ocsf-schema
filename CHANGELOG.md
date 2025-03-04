@@ -88,6 +88,22 @@ Thankyou! -->
 1. Updated description of `hw_info.uuid` to clarify usage especially in presence of new `device.udid` field. #1354
 1. Updated dictionary descriptions and references of MITRE `attacks`, `tactic`, `technique`, `subtechnique`. #1355
 
+### Misc
+1. Added `email.subject` and `email.uid` and `message_uid` as an Observable types - `type_id: 39`, `type_id: 40` and `type_id: 45`. #1326
+1. Added `process_entity.uid` as an Observable type - `type_id: 41` #1326
+1. Added `file_path_t` as an Observable type - `type_id: 42` and marked fields as this type #1326
+    - `lineage` dictionary attribute
+    - `affected_package.path` object attribute
+    - `file.path` object attribute
+    - `image.path` object attribute
+    - `kernel.path` object attribute
+    - `malware.path` object attribute
+    - `process_entity.path` object attribute
+1. Added `extensions/windows/reg_key_path_t` as an Observable type - `type_id: 43` and marked fields as this type #1326
+    - `reg_key.path` object attribute
+    - `reg_value.path` object attribute
+1. Added `reg_value.name` as an Observable type - `type_id: 44`  #1326
+
 ## [v1.4.0] - January 31st, 2025
 
 ### Added

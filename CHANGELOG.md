@@ -80,7 +80,7 @@ Thankyou! -->
   1. Updated MITRE `attack`, `tactic`, `technique`, `subtechnique` captions, descriptions, references to include MITRE ATLAS. Used standard requirements for `_entity` extended objects. #1355.
 
 ### Deprecated
-1. Deprecated usage of `isp` attribute in the `location` object. #1351
+  1. Deprecated usage of `isp` attribute in the `location` object. #1351
 
 ### Misc
   1. Updated description of `config_state` to reflect the addition of the `assessments` object. #1343

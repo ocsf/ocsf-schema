@@ -54,6 +54,7 @@ Thankyou! -->
   1. Added `eid`, `iccid`, and `meid` as `string_t`. #1346
   1. Added `is_backed_up`, `is_mobile_account_active`, and `is_shared` as `boolean_t`. #1346
   1. Added `isp_org` as `string_t`. #1351
+  1. Added `ldap` protocol to `auth_protocol_id` enum. [#1359](https://github.com/ocsf/ocsf-schema/pull/1359)
 * #### Objects
   1. Added `assessment` object to capture evaluations/assessments of configurations/signals. #1343
   1. Added `node`, `edge`, `graph` objects. #1343

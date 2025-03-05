@@ -73,7 +73,7 @@ Thankyou! -->
   1. Added `malware_scan_info` object. #1373
   1. Added `camapign` object #1310
   1. Added `threat_actor` object #1310
-
+	
 ### Improved
 * #### Event Classes
   1. Added `assessments` to `config_state`. #1343

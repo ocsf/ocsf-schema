@@ -107,7 +107,7 @@ Thankyou! -->
 * #### Profiles
   1. Added `malware_scan_info` to `security_control` profile. #1373
   1. Added `campaign`, `category`, `created_time`, `creator`, `desc`, `expiration_time`, `external_id`, `labels`, `malware`, `modified_time`, `name`, `detection_pattern`, `detection_pattern_type`, `detection_pattern_type_id`, `intrusion_sets`, `risk_score`, `references`, `uploaded_time`, `severity`, `uid` and `threat_actor` to `osint` object. #1310
-
+ 
 ### Deprecated
   1. Deprecated usage of `isp` attribute in the `location` object. #1351
   1. Deprecated usage of `occurrence_details` in favor of `occurrences` in `discovery_details` object. #1358

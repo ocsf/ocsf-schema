@@ -1,23 +1,48 @@
 {
-  "caption": "CIS Benchmark Result",
-  "description": "The CIS Benchmark Result object contains information as defined by the Center for Internet Security (<a target='_blank' href='https://www.cisecurity.org/cis-benchmarks/'>CIS</a>) benchmark result. CIS Benchmarks are a collection of best practices for securely configuring IT systems, software, networks, and cloud infrastructure.",
-  "extends": "object",
-  "name": "cis_benchmark_result",
-  "attributes": {
-    "desc": {
-      "description": "The CIS benchmark description.",
-      "requirement": "optional"
-    },
-    "name": {
-      "description": "The CIS benchmark name.",
-      "requirement": "required"
-    },
-    "remediation": {
-      "requirement": "optional"
-    },
-    "rule": {
-      "description": "The CIS benchmark rule.",
-      "requirement": "optional"
+    "caption": "CIS Benchmark Result",
+    "description": "The CIS Benchmark Result object contains information as defined by the Center for Internet Security (<a target='_blank' href='https://www.cisecurity.org/cis-benchmarks/'>CIS</a>) benchmark result. CIS Benchmarks are a collection of best practices for securely configuring IT systems, software, networks, and cloud infrastructure.",
+    "extends": "object",
+    "name": "cis_benchmark_result",
+    "attributes": {
+        "desc": {
+            "description": "The CIS Benchmark description. For example: <i>The cramfs filesystem type is a compressed read-only Linux filesystem embedded in small footprint systems. A cramfs image can be used without having to first decompress the image.</i>",
+            "requirement": "optional"
+        },
+        "name": {
+            "description": "The CIS Benchmark Standard name. For example: <i>CIS Microsoft Windows 10 Enterprise Benchmark.</i>",
+            "requirement": "required"
+        },
+        "remediation": {
+            "requirement": "optional"
+        },
+        "rule": {
+            "description": "The CIS benchmark Rule name. For example: <i>L1 Configure Create symbolic links.</i>",
+            "requirement": "optional"
+        },
+        "status": {
+            "description": "The resultant status of the compliance check  normalized to the caption of the <code>status_id</code> value. In the case of 'Other', it is defined by the event source.",
+            "requirement": "recommended"
+        },
+        "status_id": {
+            "description": "The normalized status identifier of the compliance check.",
+            "enum": {
+                "1": {
+                    "caption": "Pass",
+                    "description": "The compliance check passed for all the evaluated resources."
+                },
+                "2": {
+                    "caption": "Warning",
+                    "description": "The compliance check did not yield a result due to missing information."
+                },
+                "3": {
+                    "caption": "Fail",
+                    "description": "The compliance check failed for at least one of the evaluated resources."
+                }
+            },
+            "version": {
+                "description": "The CIS benchmark Version number. For example: <i>3.0.0</i>",
+                "requirement": "optional"
+            }
+        }
     }
-  }
 }

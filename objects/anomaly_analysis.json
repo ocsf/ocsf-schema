@@ -1,0 +1,23 @@
+{
+  "caption": "Anomaly Analysis",
+  "description": "Describes the analysis of activity patterns and anomalies of a target entity to identify potential security threats, performance issues, or other deviations from established baselines. This includes monitoring and analyzing user interactions, API usage, resource utilization, access patterns and other measured indicators.",
+  "name": "anomaly_analysis",
+  "attributes": {
+    "analysis_target": {
+      "description": "The specific scope or entity being analyzed for activity patterns. This could be a specific User Account, Kubernetes Cluster, Network namespace, Application component, or any other discrete unit of the system where patterns can be meaningfully analyzed. The target defines the boundary of what activities are being monitored and analyzed.",
+      "requirement": "required"
+    },
+    "analysis_target_type":  {
+      "description": "The type of the analysis target. The target type helps categorize the analysis target.",
+      "requirement": "optional"
+    },
+    "anomalies": {
+      "description": "List of detected activities that significantly deviate from the established baselines. This can include unusual access patterns, unexpected user-agents, abnormal API usage, suspicious traffic spikes, unauthorized access attempts, and other activities that may indicate potential security threats or system issues.",
+      "requirement": "required"
+    },
+    "baselines": {
+      "description": "List of established patterns representing normal activity that serve as reference points for anomaly detection. This includes typical user interaction patterns like common user-agents, expected API access frequencies and patterns, standard resource utilization levels, and regular traffic flows. These baselines help establish what constitutes 'normal' activity in the system.",
+      "requirement": "recommended"
+    }
+  }
+}

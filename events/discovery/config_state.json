@@ -1,30 +1,34 @@
 {
-  "uid": 2,
-  "caption": "Device Config State",
-  "description": "Device Config State events report device configuration data, device assessments, and/or CIS Benchmark results.",
-  "extends": "discovery",
-  "name": "config_state",
-  "attributes": {
-    "actor": {
-      "group": "context",
-      "requirement": "optional",
-      "profile": null
+    "uid": 2,
+    "caption": "Device Config State",
+    "description": "Device Config State events report device configuration data, device assessments, and/or CIS Benchmark results.",
+    "extends": "discovery",
+    "name": "config_state",
+    "@deprecated": {
+        "message": "Use Compliance Finding (2003)",
+        "since": "1.5.0"
     },
-    "assessments": {
-      "caption": "Related Assessments",
-      "description": "A list of assessments associated with the device.",
-      "group": "context",
-      "requirement": "optional"
-    },
-    "cis_benchmark_result": {
-      "group": "primary",
-      "requirement": "recommended"
-    },
-    "device": {
-      "description": "The device that is being discovered by an inventory process.",
-      "group": "primary",
-      "requirement": "required",
-      "profile": null
+    "attributes": {
+        "actor": {
+            "group": "context",
+            "requirement": "optional",
+            "profile": null
+        },
+        "assessments": {
+            "caption": "Related Assessments",
+            "description": "A list of assessments associated with the device.",
+            "group": "context",
+            "requirement": "optional"
+        },
+        "cis_benchmark_result": {
+            "group": "primary",
+            "requirement": "recommended"
+        },
+        "device": {
+            "description": "The device that is being discovered by an inventory process.",
+            "group": "primary",
+            "requirement": "required",
+            "profile": null
+        }
     }
-  }
 }

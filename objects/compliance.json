@@ -1,66 +1,66 @@
 {
-  "caption": "Compliance",
-  "description": "The Compliance object contains information about Industry and Regulatory Framework standards, controls and requirements or details about custom assessments utilized in a compilance evaluation.",
-  "extends": "object",
-  "name": "compliance",
-  "attributes": {
-    "assessments": {
-      "description": "A list of assessments associated with the compliance requirements evaluation.",
-      "requirement": "optional"
-    },
-    "cis_benchmark": {
-      "group": "primary",
-      "requirement": "optional"
-    },
-    "cis_benchmark_result": {
-      "requirement": "optional"
-    },
-    "remediation": {
-      "requirement": "optional"
-    },
-    "requirements": {
-      "requirement": "optional"
-    },
-    "standards": {
-      "requirement": "recommended"
-    },
-    "status": {
-      "description": "The resultant status of the compliance check  normalized to the caption of the <code>status_id</code> value. In the case of 'Other', it is defined by the event source.",
-      "requirement": "recommended"
-    },
-    "status_code": {
-      "description": "The resultant status code of the compliance check.",
-      "requirement": "optional"
-    },
-    "status_detail": {
-      "@deprecated": {
-        "message": "Use the <code> status_details </code> attribute instead.",
-        "since": "1.4.0"
-      },
-      "description": "The contextual description of the <code>status, status_code</code> values.",
-      "requirement": "optional"
-    },
-    "status_details": {
-      "description": "A list of contextual descriptions of the <code>status, status_code</code> values.",
-      "requirement": "optional"
-    },
-    "status_id": {
-      "description": "The normalized status identifier of the compliance check.",
-      "requirement": "recommended",
-      "enum": {
-        "1": {
-          "caption": "Pass",
-          "description": "The compliance check passed for all the evaluated resources."
+    "caption": "Compliance",
+    "description": "The Compliance object contains information about Industry and Regulatory Framework standards, controls and requirements or details about custom assessments utilized in a compilance evaluation.",
+    "extends": "object",
+    "name": "compliance",
+    "attributes": {
+        "assessments": {
+            "description": "A list of assessments associated with the compliance requirements evaluation.",
+            "requirement": "optional"
         },
-        "2": {
-          "caption": "Warning",
-          "description": "The compliance check did not yield a result due to missing information."
+        "cis_benchmark": {
+            "group": "primary",
+            "requirement": "optional"
         },
-        "3": {
-          "caption": "Fail",
-          "description": "The compliance check failed for at least one of the evaluated resources."
+        "cis_benchmark_result": {
+            "requirement": "optional"
+        },
+        "remediation": {
+            "requirement": "optional"
+        },
+        "requirements": {
+            "requirement": "optional"
+        },
+        "standards": {
+            "requirement": "recommended"
+        },
+        "status": {
+            "description": "The resultant status of the compliance check  normalized to the caption of the <code>status_id</code> value. In the case of 'Other', it is defined by the event source.",
+            "requirement": "recommended"
+        },
+        "status_code": {
+            "description": "The resultant status code of the compliance check.",
+            "requirement": "optional"
+        },
+        "status_detail": {
+            "@deprecated": {
+                "message": "Use the <code> status_details </code> attribute instead.",
+                "since": "1.4.0",
+                "description": "The contextual description of the <code>status, status_code</code> values.",
+                "requirement": "optional"
+            },
+            "status_details": {
+                "description": "A list of contextual descriptions of the <code>status, status_code</code> values.",
+                "requirement": "optional"
+            },
+            "status_id": {
+                "description": "The normalized status identifier of the compliance check.",
+                "requirement": "recommended",
+                "enum": {
+                    "1": {
+                        "caption": "Pass",
+                        "description": "The compliance check passed for all the evaluated resources."
+                    },
+                    "2": {
+                        "caption": "Warning",
+                        "description": "The compliance check did not yield a result due to missing information."
+                    },
+                    "3": {
+                        "caption": "Fail",
+                        "description": "The compliance check failed for at least one of the evaluated resources."
+                    }
+                }
+            }
         }
-      }
-    } 
-  }
+    }
 }

@@ -61,6 +61,7 @@ Thankyou! -->
   1. Added `node`, `edge`, `graph` objects. #1343
   1. Added `anomaly`, `anomaly_analysis`, `baseline`, `observation` objects. #1358
   1. Added `trait` object. #1363
+  1. Added `mitigation` object. #1348
   
 ### Improved
 * #### Event Classes
@@ -88,6 +89,7 @@ Thankyou! -->
   1. Added 'count' `start_time` `end_time` to `timespan` object. #1365
   1. Added `traits` to `related_event` object. #1363
   1. Updated `timespan` to include a Time Window `type_id` and `start_time`, `end_time` to the `at_least_one` constraint. #1372
+  1. Added `mitigation` to `attack` object. #1348
 
 ### Deprecated
   1. Deprecated usage of `isp` attribute in the `location` object. #1351

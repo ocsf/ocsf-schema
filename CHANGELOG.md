@@ -83,6 +83,7 @@ Thankyou! -->
   1. Updated MITRE `attack`, `tactic`, `technique`, `subtechnique` captions, descriptions, references to include MITRE ATLAS. Used standard requirements for `_entity` extended objects. #1355.
   1. Added `name`, `resources`, `uid`, `verdict`, and `verdict_id` to `evidences`. #1337
   1. Added `algorithm` to `analytic` object. #1358
+  1. Added 'count' `start_time` `end_time` to `timespan` object. #1365
 
 ### Deprecated
   1. Deprecated usage of `isp` attribute in the `location` object. #1351

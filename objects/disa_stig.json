@@ -1,53 +1,53 @@
 {
-    "caption": "DISA STIG Result",
-    "description": "The DISA STIG Result object contains information as defined by the Defense Information System Agency (<a target='_blank' href='https://public.cyber.mil/stigs/'>DISA</a>) Security Technical Implementation Guide result. A DISA STIG (Security Technical Implementation Guide) is a cybersecurity framework that provides standardized guidelines and best practices to secure systems, networks, and applications against potential vulnerabilities.",
-    "extends": "object",
-    "name": "disa_stig",
-    "attributes": {
-        "desc": {
-            "description": "The STIG detailed description. For example: <i>Password complexity must be enabled to ensure that passwords meet minimum security requirements.</i>",
-            "requirement": "optional"
+  "caption": "DISA STIG Result",
+  "description": "The DISA STIG Result object contains information as defined by the Defense Information System Agency (<a target='_blank' href='https://public.cyber.mil/stigs/'>DISA</a>) Security Technical Implementation Guide result. A DISA STIG (Security Technical Implementation Guide) is a cybersecurity framework that provides standardized guidelines and best practices to secure systems, networks, and applications against potential vulnerabilities.",
+  "extends": "object",
+  "name": "disa_stig",
+  "attributes": {
+    "desc": {
+      "description": "The STIG detailed description. For example: <i>Password complexity must be enabled to ensure that passwords meet minimum security requirements.</i>",
+      "requirement": "optional"
+    },
+    "fix_text": {
+      "description": "The STIG fix details. For example: <i>Configure the system to enforce password complexity by editing the <code>/etc/security/pwquality.conf</code> file and setting the minlen parameter to 12 or higher.</i>",
+      "requirement": "optional"
+    },
+    "remediation": {
+      "requirement": "optional"
+    },
+    "rule": {
+      "description": "The STIG rule title. For example: <i>Ensure password complexity is enabled</i>",
+      "requirement": "required"
+    },
+    "rule_id": {
+      "description": "The STIG rule ID. For example: <i>V-12345</i>",
+      "requirement": "required"
+    },
+    "severity": {
+      "description": "The STIG severity. For example: <i>CAT II</i>",
+      "requirement": "required"
+    },
+    "status": {
+      "description": "The resultant status of the compliance check  normalized to the caption of the <code>status_id</code> value. In the case of 'Other', it is defined by the event source.",
+      "requirement": "optional"
+    },
+    "status_id": {
+      "description": "The normalized status identifier of the compliance check.",
+      "requirement": "optional",
+      "enum": {
+        "1": {
+          "caption": "Pass",
+          "description": "The compliance check passed for all the evaluated resources."
         },
-        "fix_text": {
-            "description": "The STIG fix details. For example: <i>Configure the system to enforce password complexity by editing the <code>/etc/security/pwquality.conf</code> file and setting the minlen parameter to 12 or higher.</i>",
-            "requirement": "optional"
-        },   
-        "remediation": {
-            "requirement": "optional"
+        "2": {
+          "caption": "Warning",
+          "description": "The compliance check did not yield a result due to missing information."
         },
-        "rule": {
-            "description": "The STIG rule title. For example: <i>Ensure password complexity is enabled</i>",
-            "requirement": "required"
-        },
-        "rule_id": {
-            "description": "The STIG rule ID. For example: <i>V-12345</i>",
-            "requirement": "required"
-        },
-        "severity": {
-            "description": "The STIG severity. For example: <i>CAT II</i>",
-            "requirement": "required"
-        },
-        "status": {
-            "description": "The resultant status of the compliance check  normalized to the caption of the <code>status_id</code> value. In the case of 'Other', it is defined by the event source.",
-            "requirement": "optional"
-        },
-        "status_id": {
-            "description": "The normalized status identifier of the compliance check.",
-            "requirement": "optional",
-            "enum": {
-                "1": {
-                    "caption": "Pass",
-                    "description": "The compliance check passed for all the evaluated resources."
-                },
-                "2": {
-                    "caption": "Warning",
-                    "description": "The compliance check did not yield a result due to missing information."
-                },
-                "3": {
-                    "caption": "Fail",
-                    "description": "The compliance check failed for at least one of the evaluated resources."
-                }
-            }
+        "3": {
+          "caption": "Fail",
+          "description": "The compliance check failed for at least one of the evaluated resources."
         }
+      }
     }
+  }
 }

@@ -15,7 +15,7 @@
         "cis_benchmark_result": {
             "requirement": "optional"
         },
-        "disa_stig_result": {
+        "disa_stig": {
             "requirement": "optional"
         },
         "remediation": {
@@ -35,30 +35,30 @@
         "status_detail": {
             "@deprecated": {
                 "message": "Use the <code> status_details </code> attribute instead.",
-                "since": "1.4.0",
-                "description": "The contextual description of the <code>status, status_code</code> values.",
-                "requirement": "optional"
+                "since": "1.4.0"
             },
-            "status_details": {
-                "description": "A list of contextual descriptions of the <code>status, status_code</code> values.",
-                "requirement": "optional"
-            },
-            "status_id": {
-                "description": "The normalized status identifier of the compliance check.",
-                "requirement": "recommended",
-                "enum": {
-                    "1": {
-                        "caption": "Pass",
-                        "description": "The compliance check passed for all the evaluated resources."
-                    },
-                    "2": {
-                        "caption": "Warning",
-                        "description": "The compliance check did not yield a result due to missing information."
-                    },
-                    "3": {
-                        "caption": "Fail",
-                        "description": "The compliance check failed for at least one of the evaluated resources."
-                    }
+            "description": "The contextual description of the <code>status, status_code</code> values.",
+            "requirement": "optional"
+        },
+        "status_details": {
+            "description": "A list of contextual descriptions of the <code>status, status_code</code> values.",
+            "requirement": "optional"
+        },
+        "status_id": {
+            "description": "The normalized status identifier of the compliance check.",
+            "requirement": "recommended",
+            "enum": {
+                "1": {
+                    "caption": "Pass",
+                    "description": "The compliance check passed for all the evaluated resources."
+                },
+                "2": {
+                    "caption": "Warning",
+                    "description": "The compliance check did not yield a result due to missing information."
+                },
+                "3": {
+                    "caption": "Fail",
+                    "description": "The compliance check failed for at least one of the evaluated resources."
                 }
             }
         }

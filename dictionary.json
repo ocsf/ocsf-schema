@@ -960,12 +960,14 @@
     "cis_benchmark": {
       "caption": "CIS Benchmark",
       "description": "The CIS Benchmark describes best practices for securely configuring IT systems, software, networks, and cloud infrastructure as defined by the Center for Internet Security (<a target='_blank' href='https://www.cisecurity.org/cis-benchmarks/'>CIS</a>).",
-      "type": "cis_benchmark"
+      "type": "cis_benchmark",
+      "is_array": true
     },
     "cis_benchmark_result": {
       "caption": "CIS Benchmark Result",
-      "description": "The CIS benchmark result.",
-      "type": "cis_benchmark_result"
+      "description": "The CIS Benchmark Result object captures results generated from benchmark evaluations as defined by the Center for Internet Security (<a target='_blank' href='https://www.cisecurity.org/cis-benchmarks/'>CIS</a>).",
+      "type": "cis_benchmark_result",
+      "is_array": true
     },
     "cis_controls": {
       "caption": "CIS Controls",
@@ -977,7 +979,11 @@
       "caption": "CIS CSC",
       "description": "The CIS Critical Security Controls is a list of top 20 actions and practices an organization’s security team can take on such that cyber attacks or malware, are minimized and prevented.",
       "type": "cis_csc",
-      "is_array": true
+      "is_array": true,
+      "@deprecated": {
+          "message": "Use CIS Controls for standard benchmark controls.",
+          "since": "1.5.0"
+      }
     },
     "city": {
       "caption": "City",
@@ -1767,6 +1773,12 @@
         }
       }
     },
+    "disa_stig": {
+      "caption": "DISA STIG",
+      "description": "The Defense Information System Agency (DISA) Security Technical Implementation Guide (STIG) object provides context and results for this framework.",
+      "type": "disa_stig",
+      "is_array": true
+    },
     "discovery_details": {
       "caption": "Discovery Details",
       "description": "A collection of <code>Discovery Details</code> objects. See specific usage.",
@@ -2421,6 +2433,11 @@
           "description": "The fix coverage is not mapped. See the <code>fix_coverage</code> attribute, which contains a data source specific value."
         }
       }
+    },
+    "fix_text": {
+      "caption": "Fix Text",
+      "description": "The text details regarding the fix. See specific usage.",
+      "type": "string_t"
     },
     "fixed_in_version": {
       "caption": "Fixed In Version",
@@ -4609,6 +4626,11 @@
       "description": "The rules that reported the events.",
       "type": "rule"
     },
+    "rule_id": {
+      "caption": "Rule ID",
+      "description": "The rule identifer.",
+      "type": "string_t"
+    }, 
     "run_mode_ids": {
       "caption": "Run Mode IDs",
       "description": "The list of normalized identifiers that describe application attributes when it is running. See specific usage.",

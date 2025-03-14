@@ -8,23 +8,55 @@
       "description": "A list of assessments associated with the compliance requirements evaluation.",
       "requirement": "optional"
     },
-    "compliance_references": {
+    "cis_benchmark": {
       "requirement": "optional"
+    },
+    "cis_benchmark_result": {
+      "requirement": "optional"
+    },
+    "compliance_references": {
+      "requirement": "optional",
+      "@deprecated": {
+        "message": "Use CIS Benchmark, DISA STIG, or Assessments instead.",
+        "since": "1.5.0"
+      }
     },
     "compliance_standards": {
-      "requirement": "optional"
+      "requirement": "optional",
+      "@deprecated": {
+        "message": "Use CIS Benchmark, DISA STIG, or Assessments instead.",
+        "since": "1.5.0"
+      }
     },
     "control": {
-      "requirement": "recommended"
+      "requirement": "recommended",
+      "@deprecated": {
+        "message": "Use CIS Controls in the Remdiation object instead.",
+        "since": "1.5.0"
+      }
     },
     "control_parameters": {
+      "requirement": "optional",
+      "@deprecated": {
+        "message": "Use CIS Controls in the Remdiation object instead.",
+        "since": "1.5.0"
+      }
+    },
+    "disa_stig": {
+      "requirement": "optional"
+    },
+    "remediation": {
       "requirement": "optional"
     },
     "requirements": {
-      "requirement": "optional"
+      "requirement": "optional",
+      "@deprecated": {
+        "message": "Use CIS Benchmark, DISA STIG, or Assessments instead.",
+        "since": "1.5.0"
+      }
     },
     "standards": {
-      "requirement": "recommended"
+      "requirement": "optional"
     },
     "status": {
       "description": "The resultant status of the compliance check  normalized to the caption of the <code>status_id</code> value. In the case of 'Other', it is defined by the event source.",
@@ -48,6 +80,7 @@
     },
     "status_id": {
       "description": "The normalized status identifier of the compliance check.",
+      "requirement": "recommended",
       "enum": {
         "1": {
           "caption": "Pass",
@@ -61,8 +94,15 @@
           "caption": "Fail",
           "description": "The compliance check failed for at least one of the evaluated resources."
         }
-      },
-      "requirement": "recommended"
-    } 
+      }
+    }
+  },
+  "constraints": {
+    "at_least_one": [
+      "assessments",
+      "cis_benchmark",
+      "cis_benchmark_result",
+      "disa_stig"
+    ]
   }
 }

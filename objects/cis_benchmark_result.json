@@ -5,18 +5,44 @@
   "name": "cis_benchmark_result",
   "attributes": {
     "desc": {
-      "description": "The CIS benchmark description.",
+      "description": "The CIS Benchmark detailed description. For example: <i>This policy setting determines which users can create symbolic links.</i>",
       "requirement": "optional"
     },
     "name": {
-      "description": "The CIS benchmark name.",
+      "description": "The CIS Benchmark Standard name. For example: <i>CIS Microsoft Windows 10 Enterprise Benchmark.</i>",
       "requirement": "required"
     },
     "remediation": {
       "requirement": "optional"
     },
     "rule": {
-      "description": "The CIS benchmark rule.",
+      "description": "The CIS benchmark Rule name. For example: <i>L1 Configure Create symbolic links.</i>",
+      "requirement": "recommended"
+    },
+    "status": {
+      "description": "The resultant status of the compliance check normalized to the caption of the <code>status_id</code> value. In the case of 'Other', it is defined by the event source.",
+      "requirement": "recommended"
+    },
+    "status_id": {
+      "description": "The normalized status identifier of the compliance check.",
+      "requirement": "recommended",
+      "enum": {
+        "1": {
+          "caption": "Pass",
+          "description": "The compliance check passed for all the evaluated resources."
+        },
+        "2": {
+          "caption": "Warning",
+          "description": "The compliance check did not yield a result due to missing information."
+        },
+        "3": {
+          "caption": "Fail",
+          "description": "The compliance check failed for at least one of the evaluated resources."
+        }
+      }
+    },
+    "version": {
+      "description": "The CIS benchmark Version number. For example: <i>3.0.0</i>",
       "requirement": "optional"
     }
   }

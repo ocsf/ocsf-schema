@@ -60,6 +60,7 @@ Thankyou! -->
   1. Added `assessment` object to capture evaluations/assessments of configurations/signals. #1343
   1. Added `node`, `edge`, `graph` objects. #1343
   1. Added `anomaly`, `anomaly_analysis`, `baseline`, `observation` objects. #1358
+  1. Added `trait` object. #1363
   
 ### Improved
 * #### Event Classes
@@ -83,6 +84,9 @@ Thankyou! -->
   1. Updated MITRE `attack`, `tactic`, `technique`, `subtechnique` captions, descriptions, references to include MITRE ATLAS. Used standard requirements for `_entity` extended objects. #1355.
   1. Added `name`, `resources`, `uid`, `verdict`, and `verdict_id` to `evidences`. #1337
   1. Added `algorithm` to `analytic` object. #1358
+  1. Added 'Network Zone' type to the `managed_entity` object enum list. #1364
+  1. Added 'count' `start_time` `end_time` to `timespan` object. #1365
+  1. Added `traits` to `related_event` object. #1363
 
 ### Deprecated
   1. Deprecated usage of `isp` attribute in the `location` object. #1351

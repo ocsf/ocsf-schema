@@ -62,7 +62,7 @@ Thankyou! -->
   1. Added `assessment` object to capture evaluations/assessments of configurations/signals. #1343
   1. Added `node`, `edge`, `graph` objects. #1343
   1. Added `anomaly`, `anomaly_analysis`, `baseline`, `observation` objects. #1358
-  1. Added `analysis_target`object. #1371
+  1. Added `analysis_target` object. #1371
   
 ### Improved
 * #### Event Classes

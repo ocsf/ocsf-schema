@@ -56,11 +56,14 @@ Thankyou! -->
   1. Added `isp_org` as `string_t`. #1351
   1. Added `ldap` protocol to `auth_protocol_id` enum. [#1359](https://github.com/ocsf/ocsf-schema/pull/1359)
   1. Added `observation_parameter`, `analysis_target`, `analysis_target_type`, `observation_type`, `observed_pattern` as `string_t` and `occurrences` as an array of `occurrence_details`. #1358
+  1. Removed `analysis_target` and `analysis_target_type`. Added `analysis_targets` as an array of type `analysis_target`. #1371
+  
 * #### Objects
   1. Added `assessment` object to capture evaluations/assessments of configurations/signals. #1343
   1. Added `node`, `edge`, `graph` objects. #1343
   1. Added `anomaly`, `anomaly_analysis`, `baseline`, `observation` objects. #1358
   1. Added `trait` object. #1363
+  1. Added `analysis_target` object. #1371
   
 ### Improved
 * #### Event Classes

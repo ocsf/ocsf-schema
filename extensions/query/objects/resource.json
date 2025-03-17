@@ -1,0 +1,91 @@
+{
+    "description": "The resource object describes a managed resource.",
+    "caption": "Resource",
+    "name": "resource",
+    "attributes": {
+        "account_uid": {
+            "description": "The unique identifier of the resource owning account(e.g. AWS Account ID).",
+            "requirement": "optional",
+            "caption": "Account UID",
+            "type": "string_t"
+        },
+        "cloud_partition": {
+            "requirement": "optional",
+            "caption": "Cloud Partition",
+            "description": "The canonical cloud partition name to which the region is assigned (e.g. AWS Partitions: aws, aws-cn, aws-us-gov).",
+            "type": "string_t"
+        },
+        "criticality": {
+            "description": "The criticality of the resource.",
+            "requirement": "optional",
+            "caption": "Criticality",
+            "type": "string_t"
+        },
+        "details": {
+            "description": "The details pertaining to the resource.",
+            "requirement": "optional",
+            "caption": "Details",
+            "type": "string_t"
+        },
+        "group_name": {
+            "requirement": "recommended",
+            "caption": "Group Name",
+            "description": "The name of the group that the resource belongs to.",
+            "type": "string_t"
+        },
+        "labels": {
+            "requirement": "optional",
+            "caption": "Labels",
+            "description": "The list of labels attached to an event, object, or attribute.",
+            "is_array": true,
+            "type": "string_t"
+        },
+        "name": {
+            "description": "The name of the resource.",
+            "requirement": "recommended",
+            "caption": "Name",
+            "type": "string_t"
+        },
+        "owner": {
+            "description": "The identity of the service or user account that owns the resource",
+            "requirement": "recommended",
+            "caption": "Owner",
+            "type": "string_t"
+        },
+        "region": {
+            "description": "The region of the resource.",
+            "requirement": "optional",
+            "caption": "Region",
+            "type": "string_t"
+        },
+        "type": {
+            "description": "The type of the resource.",
+            "requirement": "optional",
+            "caption": "Type",
+            "type": "string_t"
+        },
+        "uid": {
+            "description": "The unique identifier of the resource.",
+            "requirement": "recommended",
+            "caption": "Unique ID",
+            "type": "string_t"
+        },
+        "raw_data": {
+            "group": "context",
+            "caption": "Raw Data",
+            "description": "The event data as received from the event source.",
+            "type": "json_t"
+        },
+        "record_id": {
+            "description": "Unique identifier for the object",
+            "group": "primary",
+            "requirement": "required",
+            "caption": "Record ID",
+            "type": "string_t"
+        }
+    },
+    "@deprecated": {
+        "since": "1.1.0",
+        "message": "Deprecated in upgrade from ocsf-0.31.1 to qdm-1.1.0"
+    }
+}

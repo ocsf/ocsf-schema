@@ -87,6 +87,7 @@ Thankyou! -->
   1. Added 'Network Zone' type to the `managed_entity` object enum list. #1364
   1. Added 'count' `start_time` `end_time` to `timespan` object. #1365
   1. Added `traits` to `related_event` object. #1363
+  1. Updated `timespan` to include a Time Window `type_id` and `start_time`, `end_time` to the `at_least_one` constraint. #1372
 
 ### Deprecated
   1. Deprecated usage of `isp` attribute in the `location` object. #1351

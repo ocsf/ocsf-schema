@@ -1,8 +1,58 @@
 {
   "caption": "Attribute Dictionary",
-  "description": "The Attribute Dictionary defines attributes and includes references to the events and objects in which they are used.",
+  "description": "The Attribute Dictionary provides a comprehensive catalog of standardized attributes used across OCSF. It defines each attribute's properties, data types, and relationships. This dictionary serves as the authoritative reference for attribute definitions and ensures consistent usage throughout the schema.",
   "name": "dictionary",
   "attributes": {
+    "timespan": {
+      "caption": "Time Span",
+      "description": "The Time Span object represents different time period durations. If a timespan is fractional, i.e. crosses one period, e.g. a week and 3 days, more than one may be populated since each member is of integral type. In that case <code>type_id</code> if present should be set to <code>Other.</code><P>A timespan may also be defined by its time interval boundaries, <code>start_time</code> and <code>end_time</code>.",
+      "type": "timespan"
+    },
+    "observation_parameter": {
+      "caption": "Observation Parameter",
+      "description": "The name of the parameter being analyzed or monitored. This generally identifies the specific characteristic or property being measured. See specific usage.",
+      "type": "string_t"
+    },
+    "analysis_targets": {
+      "caption": "Analysis Targets",
+      "description": "The specific dimensions, components, or aspects of the system that are the targets of the analysis. See specific usage.",
+      "type": "analysis_target",
+      "is_array": true
+    },
+    "observations": {
+      "caption": "Observations",
+      "description": "A list of individual observations or measurements collected during analysis. Each observation captures a specific data point. See specific usage.",
+      "type": "observation",
+      "is_array": true
+    },
+    "observation_type": {
+      "caption": "Observation Type",
+      "description": "The classification or category of the observation, indicating what kind of measurement or finding it represents. See specific usage.",
+      "type": "string_t"
+    },
+    "observed_pattern": {
+      "caption": "Observed Pattern",
+      "description": "A detected pattern or trend identified in the analyzed data, describing recurring activities or characteristics.",
+      "type": "string_t"
+    },
+    "anomalies": {
+      "caption": "Anomalies",
+      "description": "A list of detected anomalies or deviations from expected behavior patterns. See specific usage.",
+      "type": "anomaly", 
+      "is_array": true
+    },
+    "baselines": {
+      "caption": "Baselines",
+      "description": "A list of baseline measurements or normal behavior patterns used as reference points for comparison and anomaly detection. See specific usage.",
+      "type": "baseline",
+      "is_array": true
+    },
+    "anomaly_analyses": {
+      "caption": "Anomaly Analyses",
+      "description": "A list of anomaly analysis results that examine and characterize patterns of activity or usage over time to identify normal vs abnormal activities. See specific usage.",
+      "type": "anomaly_analysis",
+      "is_array": true
+    },
     "access_list": {
       "caption": "Access List",
       "description": "The list of requested access rights.",
@@ -3642,8 +3692,14 @@
     },
     "occurrence_details": {
       "caption": "Occurrence Details",
-      "description": "Details about where in the target entity, specified information was discovered. See specific usage.",
+      "description": "Details about where in the target entity the specified information was discovered. See specific usage.",
       "type": "occurrence_details"
+    },
+    "occurrences": {
+      "caption": "Occurrences",
+      "description": "A list of <code>occurrence_details</code> objects, each describing where in the target entity the specified information was discovered. See specific usage.",
+      "type": "occurrence_details",
+      "is_array": true
     },
     "office_location": {
       "caption": "Office Location",
@@ -5847,6 +5903,12 @@
       "caption": "Network Zone",
       "description": "The network zone or LAN segment.",
       "type": "string_t"
+    },
+    "traits": {
+      "caption": "Traits",
+      "description": "The traits that describe characteristics, features of an entity. See specific usage.",
+      "type": "trait",
+      "is_array": true
     }
   },
   "types": {

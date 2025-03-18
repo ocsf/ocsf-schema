@@ -1,6 +1,6 @@
 {
   "caption": "Compliance",
-  "description": "The Compliance object contains information about Industry and Regulatory Framework standards, controls and requirements or details about custom assessments utilized in a compilance evaluation.",
+  "description": "The Compliance object contains information about Industry and Regulatory Framework standards, controls and requirements or details about custom assessments utilized in a compliance evaluation.",
   "extends": "object",
   "name": "compliance",
   "attributes": {
@@ -9,10 +9,8 @@
       "requirement": "optional"
     },
     "cis_benchmark": {
-      "requirement": "optional"
-    },
-    "cis_benchmark_result": {
-      "requirement": "optional"
+      "requirement": "optional",
+      "description": "CIS Benchmark compliance content"
     },
     "compliance_references": {
       "requirement": "optional",
@@ -30,36 +28,28 @@
     },
     "control": {
       "requirement": "recommended",
-      "@deprecated": {
-        "message": "Use CIS Controls in the Remdiation object instead.",
-        "since": "1.5.0"
-      }
+      "description": "Microsoft Windows 10 Enterprise Benchmark"
     },
     "control_parameters": {
       "requirement": "optional",
-      "@deprecated": {
-        "message": "Use CIS Controls in the Remdiation object instead.",
-        "since": "1.5.0"
-      }
+      "description": "L1 Configure Create symbolic links."
     },
     "disa_stig": {
-      "requirement": "optional"
+      "requirement": "optional",
+      "description": "DISA STIG compliance content"
     },
     "remediation": {
-      "requirement": "optional"
+      "requirement": "optional",
+      "description": "The remediation or fix for the compliance benchmark."
     },
     "requirements": {
-      "requirement": "optional",
-      "@deprecated": {
-        "message": "Use CIS Benchmark, DISA STIG, or Assessments instead.",
-        "since": "1.5.0"
-      }
-    },
-    "standards": {
       "requirement": "optional"
     },
+    "standards": {
+      "requirement": "recommended"
+    },
     "status": {
-      "description": "The resultant status of the compliance check  normalized to the caption of the <code>status_id</code> value. In the case of 'Other', it is defined by the event source.",
+      "description": "The resultant status of the compliance check normalized to the caption of the <code>status_id</code> value. In the case of 'Other', it is defined by the event source.",
       "requirement": "recommended"
     },
     "status_code": {
@@ -80,7 +70,6 @@
     },
     "status_id": {
       "description": "The normalized status identifier of the compliance check.",
-      "requirement": "recommended",
       "enum": {
         "1": {
           "caption": "Pass",
@@ -94,15 +83,8 @@
           "caption": "Fail",
           "description": "The compliance check failed for at least one of the evaluated resources."
         }
-      }
+      },
+      "requirement": "recommended"
     }
-  },
-  "constraints": {
-    "at_least_one": [
-      "assessments",
-      "cis_benchmark",
-      "cis_benchmark_result",
-      "disa_stig"
-    ]
   }
 }

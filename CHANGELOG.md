@@ -55,18 +55,22 @@ Thankyou! -->
   1. Added `is_backed_up`, `is_mobile_account_active`, and `is_shared` as `boolean_t`. #1346
   1. Added `isp_org` as `string_t`. #1351
   1. Added `ldap` protocol to `auth_protocol_id` enum. [#1359](https://github.com/ocsf/ocsf-schema/pull/1359)
-  1. Added `observation_parameter`, `analysis_target`, `analysis_target_type`, `observation_type`, `observed_pattern` as `string_t` and `occurrences` as an array of `occurrence_details`. #1358
+  1. Added `observation_parameter`, `observation_type`, `observed_pattern` as `string_t` and `occurrences` as an array of `occurrence_details`. #1358
+  1. Added `analysis_targets` as an array of type `analysis_target`. #1371
+  
 * #### Objects
   1. Added `assessment` object to capture evaluations/assessments of configurations/signals. #1343
   1. Added `node`, `edge`, `graph` objects. #1343
   1. Added `anomaly`, `anomaly_analysis`, `baseline`, `observation` objects. #1358
   1. Added `trait` object. #1363
+  1. Added `analysis_target` object. #1371
   
 ### Improved
 * #### Event Classes
   1. Added `assessments` to `config_state`. #1343
   1. Added `raw_data_size` to `base_event`. [#1347](https://github.com/ocsf/ocsf-schema/pull/1347)
   1. Added `anomaly_analyses` to `detection_finding`. #1358
+  1. Added `resources` to `user_access`. #1374
 * #### Objects
   1. Added `boot_uid` to `device` object. [#1335](https://github.com/ocsf/ocsf-schema/pull/1335)
   1. Relaxed constraint to provide `email_addr`, `phone_number`, or `security_questions` on `auth_factor`. [#1339](https://github.com/ocsf/ocsf-schema/pull/1339)
@@ -88,10 +92,12 @@ Thankyou! -->
   1. Added 'count' `start_time` `end_time` to `timespan` object. #1365
   1. Added `traits` to `related_event` object. #1363
   1. Updated `timespan` to include a Time Window `type_id` and `start_time`, `end_time` to the `at_least_one` constraint. #1372
+  2. Added `timespan` object to `observation` object. #1371
 
 ### Deprecated
   1. Deprecated usage of `isp` attribute in the `location` object. #1351
   1. Deprecated usage of `occurrence_details` in favor of `occurrences` in `discovery_details` object. #1358
+  1. Deprecated usage of `resource` in favor of `resources` in the `user_access` class. #1374
 
 ### Misc
   1. Updated description of `config_state` to reflect the addition of the `assessments` object. #1343

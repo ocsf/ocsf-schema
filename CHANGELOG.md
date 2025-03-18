@@ -55,12 +55,15 @@ Thankyou! -->
   1. Added `is_backed_up`, `is_mobile_account_active`, and `is_shared` as `boolean_t`. #1346
   1. Added `isp_org` as `string_t`. #1351
   1. Added `ldap` protocol to `auth_protocol_id` enum. [#1359](https://github.com/ocsf/ocsf-schema/pull/1359)
-  1. Added `observation_parameter`, `analysis_target`, `analysis_target_type`, `observation_type`, `observed_pattern` as `string_t` and `occurrences` as an array of `occurrence_details`. #1358
+  1. Added `observation_parameter`, `observation_type`, `observed_pattern` as `string_t` and `occurrences` as an array of `occurrence_details`. #1358
+  1. Added `analysis_targets` as an array of type `analysis_target`. #1371
+  
 * #### Objects
   1. Added `assessment` object to capture evaluations/assessments of configurations/signals. #1343
   1. Added `node`, `edge`, `graph` objects. #1343
   1. Added `anomaly`, `anomaly_analysis`, `baseline`, `observation` objects. #1358
   1. Added `trait` object. #1363
+  1. Added `analysis_target` object. #1371
   
 ### Improved
 * #### Event Classes
@@ -89,6 +92,7 @@ Thankyou! -->
   1. Added 'count' `start_time` `end_time` to `timespan` object. #1365
   1. Added `traits` to `related_event` object. #1363
   1. Updated `timespan` to include a Time Window `type_id` and `start_time`, `end_time` to the `at_least_one` constraint. #1372
+  2. Added `timespan` object to `observation` object. #1371
 
 ### Deprecated
   1. Deprecated usage of `isp` attribute in the `location` object. #1351

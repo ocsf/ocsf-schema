@@ -3,20 +3,21 @@
   "description": "The Attribute Dictionary provides a comprehensive catalog of standardized attributes used across OCSF. It defines each attribute's properties, data types, and relationships. This dictionary serves as the authoritative reference for attribute definitions and ensures consistent usage throughout the schema.",
   "name": "dictionary",
   "attributes": {
+    "timespan": {
+      "caption": "Time Span",
+      "description": "The Time Span object represents different time period durations. If a timespan is fractional, i.e. crosses one period, e.g. a week and 3 days, more than one may be populated since each member is of integral type. In that case <code>type_id</code> if present should be set to <code>Other.</code><P>A timespan may also be defined by its time interval boundaries, <code>start_time</code> and <code>end_time</code>.",
+      "type": "timespan"
+    },
     "observation_parameter": {
       "caption": "Observation Parameter",
       "description": "The name of the parameter being analyzed or monitored. This generally identifies the specific characteristic or property being measured. See specific usage.",
       "type": "string_t"
     },
-    "analysis_target": {
-      "caption": "Analysis Target", 
-      "description": "The specific dimension, component, or aspect of the system that is the target of the analysis. See specific usage.",
-      "type": "string_t"
-    },
-    "analysis_target_type": {
-      "caption": "Analysis Target Type", 
-      "description": "The type of dimension, component, or aspect of the system that is the target of the analysis. See specific usage.",
-      "type": "string_t"
+    "analysis_targets": {
+      "caption": "Analysis Targets",
+      "description": "The specific dimensions, components, or aspects of the system that are the targets of the analysis. See specific usage.",
+      "type": "analysis_target",
+      "is_array": true
     },
     "observations": {
       "caption": "Observations",
@@ -3517,6 +3518,21 @@
       "caption": "MIME type",
       "description": "The Multipurpose Internet Mail Extensions (MIME) type of the file, if applicable.",
       "type": "string_t"
+    },
+    "mitigation": {
+      "caption": "MITRE Mitigation",
+      "description": "The Mitigation object describes the MITRE ATT&CK® or ATLAS™ Mitigation ID and/or name that is associated to an attack.",
+      "type": "mitigation",
+      "references": [
+        {
+          "description": "ATT&CK® Matrix",
+          "url": "https://attack.mitre.org/wiki/ATT&CK_Matrix"
+        },
+        {
+          "description": "ATLAS™ Matrix",
+          "url": "https://atlas.mitre.org/matrices/ATLAS"
+        }
+      ]
     },
     "model": {
       "caption": "Model",

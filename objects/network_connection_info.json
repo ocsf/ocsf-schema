@@ -1,6 +1,6 @@
 {
   "caption": "Network Connection Information",
-  "description": "The Network Connection Information object describes characteristics of a network connection. Defined by D3FEND <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:NetworkSession/'>d3f:NetworkSession</a>.",
+  "description": "The Network Connection Information object describes characteristics of an OSI Transport Layer communication, including TCP and UDP.",
   "extends": "object",
   "name": "network_connection_info",
   "attributes": {
@@ -10,13 +10,27 @@
     "boundary_id": {
       "requirement": "recommended"
     },
+    "community_uid": {
+      "requirement": "optional"
+    },
     "direction": {
       "requirement": "optional"
     },
     "direction_id": {
       "requirement": "required"
     },
+    "flag_history": {
+      "requirement": "optional"
+    },
     "protocol_name": {
+      "caption": "Protocol Name",
+      "description": "The IP protocol name in lowercase, as defined by the Internet Assigned Numbers Authority (IANA). For example: <code>tcp</code> or <code>udp</code>.",
+      "references": [
+        {
+          "description": "IANA Protocol Numbers",
+          "url": "https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml"
+        }
+      ],
       "requirement": "recommended"
     },
     "protocol_num": {
@@ -57,5 +71,11 @@
       "description": "The unique identifier of the connection.",
       "requirement": "recommended"
     }
-  }
+  },
+  "references": [
+    {
+      "description": "D3FEND™ Ontology d3f:NetworkSession",
+      "url": "https://d3fend.mitre.org/dao/artifact/d3f:NetworkSession/"
+    }
+  ]
 }

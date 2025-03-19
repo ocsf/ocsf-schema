@@ -1,0 +1,72 @@
+{
+  "uid": 8,
+  "caption": "FTP Activity",
+  "description": "File Transfer Protocol (FTP) Activity events report file transfers between a server and a client as seen on the network.",
+  "extends": "network",
+  "name": "ftp_activity",
+  "attributes": {
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Put",
+          "description": "File upload to the FTP or SFTP site."
+        },
+        "2": {
+          "caption": "Get",
+          "description": "File download from the FTP or SFTP site."
+        },
+        "3": {
+          "caption": "Poll",
+          "description": "Poll directory for specific file(s) or folder(s) at the FTP or SFTP site location."
+        },
+        "4": {
+          "caption": "Delete",
+          "description": "Delete file(s) from the FTP or SFTP site."
+        },
+        "5": {
+          "caption": "Rename",
+          "description": "Rename the file(s) in the FTP or SFTP site."
+        },
+        "6": {
+          "caption": "List",
+          "description": "List files in a specified directory."
+        }
+      }
+    },
+    "codes": {
+      "description": "The list of return codes to the FTP command.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "command": {
+      "description": "The FTP command.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "command_responses": {
+      "description": "The list of responses to the FTP command.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "file": {
+      "description": "The file that is the target of the FTP activity.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "name": {
+      "description": "The name of the data affiliated with the command.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "port": {
+      "description": "The dynamic port established for impending data transfers.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "type": {
+      "description": "The type of FTP network connection (e.g. active, passive).",
+      "group": "primary",
+      "requirement": "recommended"
+    }
+  }
+}

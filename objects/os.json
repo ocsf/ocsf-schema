@@ -1,6 +1,6 @@
 {
   "caption": "Operating System (OS)",
-  "description": "The Operating System (OS) object describes characteristics of an OS, such as Linux or Windows. Defined by D3FEND <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:OperatingSystem/'>d3f:OperatingSystem</a>.",
+  "description": "The Operating System (OS) object describes characteristics of an OS, such as Linux or Windows.",
   "extends": "object",
   "name": "os",
   "attributes": {
@@ -8,7 +8,13 @@
       "requirement": "optional"
     },
     "country": {
-      "description": "The operating system country code, as defined by the ISO 3166-1 standard (Alpha-2 code). For the complete list of country codes, see <a target='_blank' href='https://www.iso.org/obp/ui/#iso:pub:PUB500001:en'>ISO 3166-1 alpha-2 codes</a>.",
+      "description": "The operating system country code, as defined by the ISO 3166-1 standard (Alpha-2 code).<p><b>Note:</b> The two letter country code should be capitalized. For example: <code>US</code> or <code>CA</code>.</p>",
+      "references": [
+        {
+          "description": "ISO 3166-1 alpha-2 codes",
+          "url": "https://www.iso.org/obp/ui/#iso:pub:PUB500001:en"
+        }
+      ],
       "requirement": "optional"
     },
     "cpe_name": {
@@ -18,6 +24,9 @@
       "requirement": "optional"
     },
     "edition": {
+      "requirement": "optional"
+    },
+    "kernel_release": {
       "requirement": "optional"
     },
     "lang": {
@@ -39,7 +48,6 @@
     },
     "type_id": {
       "description": "The type identifier of the operating system.",
-      "requirement": "required",
       "enum": {
         "100": {
           "caption": "Windows"
@@ -71,11 +79,18 @@
         "402": {
           "caption": "HP-UX"
         }
-      }
+      },
+      "requirement": "required"
     },
     "version": {
       "description": "The version of the OS running on the device that originated the event. For example: \"Windows 10\", \"OS X 10.7\", or \"iOS 9\".",
       "requirement": "optional"
     }
-  }
+  },
+  "references": [
+    {
+      "description": "D3FEND™ Ontology d3f:OperatingSystem",
+      "url": "https://d3fend.mitre.org/dao/artifact/d3f:OperatingSystem/"
+    }
+  ]
 }

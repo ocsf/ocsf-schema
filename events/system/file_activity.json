@@ -1,0 +1,105 @@
+{
+  "uid": 1,
+  "caption": "File System Activity",
+  "description": "File System Activity events report when a process performs an action on a file or folder.",
+  "extends": "system",
+  "name": "file_activity",
+  "attributes": {
+    "access_mask": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Create",
+          "description": "A request to create a new file on a file system."
+        },
+        "2": {
+          "caption": "Read",
+          "description": "A request to read data from a file on a file system."
+        },
+        "3": {
+          "caption": "Update",
+          "description": "A request to write data to a file on a file system."
+        },
+        "4": {
+          "caption": "Delete",
+          "description": "A request to delete a file on a file system."
+        },
+        "5": {
+          "caption": "Rename",
+          "description": "A request to rename a file on a file system."
+        },
+        "6": {
+          "caption": "Set Attributes",
+          "description": "A request to set attributes for a file on a file system."
+        },
+        "7": {
+          "caption": "Set Security",
+          "description": "A request to set security for a file on a file system."
+        },
+        "8": {
+          "caption": "Get Attributes",
+          "description": "A request to get attributes for a file on a file system."
+        },
+        "9": {
+          "caption": "Get Security",
+          "description": "A request to get security for a file on a file system."
+        },
+        "10": {
+          "caption": "Encrypt",
+          "description": "A request to encrypt a file on a file system."
+        },
+        "11": {
+          "caption": "Decrypt",
+          "description": "A request to decrypt a file on a file system."
+        },
+        "12": {
+          "caption": "Mount",
+          "description": "A request to mount a file on a file system."
+        },
+        "13": {
+          "caption": "Unmount",
+          "description": "A request to unmount a file from a file system."
+        },
+        "14": {
+          "caption": "Open",
+          "description": "A request to create a file handle."
+        }
+      }
+    },
+    "actor": {
+      "description": "The actor that performed the activity on the <code>file</code> object",
+      "requirement": "required",
+      "profile": null
+    },
+    "component": {
+      "description": "<p>The name or relative pathname of a sub-component of the data object, if applicable. </p>For example: <code>attachment.doc</code>, <code>attachment.zip/bad.doc</code>, or <code>part.mime/part.cab/part.uue/part.doc</code>.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "connection_uid": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "create_mask": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "file": {
+      "description": "The file that is the target of the activity.",
+      "group": "primary",
+      "requirement": "required"
+    },
+    "file_diff": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "file_result": {
+      "description": "The resulting file object when the activity was allowed and successful.",
+      "group": "primary",
+      "requirement": "recommended"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "uid": 23,
+  "caption": "Cloud Resources Inventory Info",
+  "description": "Cloud Resources Inventory Info events report cloud asset inventory data. This data can be either logged or proactively collected. For example, use this event class when creating an inventory of cloud resource information from a Configuration Management Database (CMDB), Cyber Asset Attack Surface Management (CAASM), direct public cloud service provider APIs, Software-as-a-Service (SaaS) APIs, or otherwise.",
+  "extends": "discovery",
+  "name": "cloud_resources_inventory_info",
+  "attributes": {
+    "cloud": {
+      "description": "Cloud service provider or SaaS platform metadata about the cloud resource(s) that are being discovered by an inventory process.",
+      "group": "primary",
+      "requirement": "recommended",
+      "profile": null
+    },
+    "container": {
+      "description": "A cloud-based container image or running container discovered by an inventory process.",
+      "group": "primary",
+      "requirement": "recommended",
+      "profile": null
+    },
+    "database": {
+      "description": "A cloud-based database discovered by an inventory process.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "databucket": {
+      "description": "A cloud-based data bucket or other object storage discovered by an inventory process.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "idp": {
+      "description": "The Identity Provider that is being discovered by an inventory process, or that is related to the cloud resource(s) being discovered by an inventory process.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "region": {
+      "description": "The cloud region where the resource is located, e.g., <code>us-isof-south-1</code>, <code>eastus2</code>, <code>us-central1</code>, etc.",
+      "group": "context",
+      "requirement": "recommended",
+      "profile": null
+    },
+    "resources": {
+      "caption": "Cloud Resources",
+      "description": "The cloud resource(s) that are being discovered by an inventory process. Use this object if there is not a direct object match in the class.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "table": {
+      "description": "A cloud-based database table discovered by an inventory process.",
+      "group": "primary",
+      "requirement": "recommended"
+    }
+  },
+  "constraints": {
+    "at_least_one": [
+      "cloud",
+      "container",
+      "database",
+      "databucket",
+      "idp",
+      "resources",
+      "table"
+    ]
+  }
+}

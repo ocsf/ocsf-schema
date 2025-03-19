@@ -179,7 +179,6 @@ Choose a **unique** object you want to add, `vulnerability` in the example above
         ```
         "attributes": {
           "$include": [
-            "includes/occurrence.json",
             "profiles/cloud.json"
           ],
           ...
@@ -325,8 +324,7 @@ The extension's directory structure is the same as the top level schema director
 |-------------------|---------------------------------------------------------------------------|
 | `categories.json` | Create it to define new categories. Note, to avoid collisions with the categories defined in the core schema, the category IDs must be greater than or equal to 30. |
 | `dictionary.json` | Create it to define new attributes.                                       |
-| `events`          | Create it to define new event classes.                                    |
-| `includes`        | Create it to define new shared data.                                      |
+| `events`          | Create it to define new event classes.                                    |                                    |
 | `objects`         | Create it to define new objects.                                          |
 | `profiles`        | Create it to define new profiles.                                         |
 

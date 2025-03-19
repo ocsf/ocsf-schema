@@ -1,12 +1,9 @@
 {
-  "caption": "File",
   "observable": 24,
-  "name": "file",
-  "description": "The File object represents the metadata associated with a file stored in a computer system. It encompasses information about the file itself, including its attributes, properties, and organizational details. Defined by D3FEND <a target='_blank' href='https://next.d3fend.mitre.org/dao/artifact/d3f:File/'>d3f:File</a>.",
+  "caption": "File",
+  "description": "The File object represents the metadata associated with a file stored in a computer system. It encompasses information about the file itself, including its attributes, properties, and organizational details.",
   "extends": "_entity",
-  "profiles": [
-    "data_classification"
-  ],
+  "name": "file",
   "attributes": {
     "$include": [
       "profiles/data_classification.json"
@@ -41,6 +38,16 @@
       "description": "The description of the file, as returned by file system. For example: the description as returned by the Unix file command or the Windows file type.",
       "requirement": "optional"
     },
+    "drive_type": {
+      "requirement": "optional"
+    },
+    "drive_type_id": {
+      "requirement": "optional"
+    },
+    "encryption_details": {
+      "description": "The encryption details of the file. Should be populated if the file is encrypted.",
+      "requirement": "optional"
+    },
     "ext": {
       "caption": "File Extension",
       "description": "The extension of the file, excluding the leading dot. For example: <code>exe</code> from <code>svchost.exe</code>, or <code>gz</code> from <code>export.tar.gz</code>.",
@@ -48,6 +55,23 @@
     },
     "hashes": {
       "requirement": "recommended"
+    },
+    "internal_name": {
+      "description": "The name of the file as identified within the file itself. This contrasts with the name by which the file is known on disk. Where available, the internal name is widely used by security practitioners and detection content because the on-disk file name is not reliable. On the Windows OS, most PE files contain a <a href=\"https://learn.microsoft.com/en-us/windows/win32/menurc/versioninfo-resource\">VERSIONINFO</a> resource from which the internal name can be obtained. On macOS, binaries can optionally embed a copy of the application's Info.plist file which in turn contains the name of the executable.",
+      "requirement": "optional"
+    },
+    "is_deleted": {
+      "description": "Indicates if the file was deleted from the filesystem.",
+      "requirement": "optional"
+    },
+    "is_encrypted": {
+      "description": "Indicates if the file is encrypted.",
+      "requirement": "optional"
+    },
+    "is_public": {
+      "description": "Indicates if the file is publicly accessible. For example in an object's public access in AWS S3",
+      "profile": "cloud",
+      "requirement": "optional"
     },
     "is_system": {
       "requirement": "optional"
@@ -91,6 +115,15 @@
     "size": {
       "requirement": "optional"
     },
+    "storage_class": {
+      "description": "The storage class of the file. For example in AWS S3: <code>STANDARD, STANDARD_IA, GLACIER</code>.",
+      "profile": "cloud",
+      "requirement": "optional"
+    },
+    "tags": {
+      "description": "The list of tags; <code>{key:value}</code> pairs associated to the file.",
+      "requirement": "optional"
+    },
     "type": {
       "description": "The file type.",
       "requirement": "optional"
@@ -132,6 +165,10 @@
       "description": "The unique identifier of the file as defined by the storage system, such the file system file ID.",
       "requirement": "optional"
     },
+    "url": {
+      "description": "The URL of the file, when applicable.",
+      "requirement": "optional"
+    },
     "version": {
       "description": "The file version. For example: <code>8.0.7601.17514</code>.",
       "requirement": "optional"
@@ -140,5 +177,14 @@
       "requirement": "optional"
     }
   },
-  "constraints": {}
+  "constraints": {},
+  "profiles": [
+    "data_classification"
+  ],
+  "references": [
+    {
+      "description": "D3FEND™ Ontology d3f:File",
+      "url": "https://next.d3fend.mitre.org/dao/artifact/d3f:File/"
+    }
+  ]
 }

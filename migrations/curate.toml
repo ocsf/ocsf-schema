@@ -1,5 +1,7 @@
-new_repo = "../ocsf-schema"
-old_repo = "../old-qdm-schema"
+#new_repo = "../ocsf/qdm"
+#old_repo = "../ocsf/qdm-prev"
+old_repo = "/Users/jfisher/Source/qdm14/qdm-13"
+new_repo = "/Users/jfisher/Source/qdm14/qdm-1_4"
 
 log_level = "DEBUG"
 
@@ -13,12 +15,11 @@ update = [
     "*.constraints.?", # QDM doesn't enforce constraints
     "*.attributes.?.requirement", # QDM doesn't enforce OCSF requirements
     "*.attributes.observable",
+	"dictionary.types.attributes.*",
+	"?.?.attributes.?.enum.?.description",
 
-	"objects.registry_key", "objects.registry_key.*", "objects.registry_value.name",
-	"objects.registry_value", "objects.registry_value.*", "objects.registry_value.name",
-	"*.attributes.duration.type",
-	"*.attributes.tls.group",
-	"*.attributes.*.type",
+	# Update everything
+	"*",
 ]
 
 # Preserve paths
@@ -27,10 +28,7 @@ update = [
 preserve = [
     #"*.type", # Not so sure about this one...
     #"?.?.attributes.?.enum.*", # Keep all enums by default
-    "*.@deprecated.*", # Don't update @deprecated messages
-
-	"*.attributes.status_detail.caption",
-	"*.attributes.duration.caption",
+    #"*.@deprecated.*", # Don't update @deprecated messages
 ]
 
 # Deprecate paths
@@ -38,8 +36,6 @@ preserve = [
 #   be preserved in the new schema, but with an @deprecated annotation.
 deprecate = [
     #"events.email_delivery_activity.*",
-    "?.?.attributes.*", # Deprecate all attributes by default
-    "?.?", # Deprecate all removed records by default
 ]
 
 # Ignore paths
@@ -61,9 +57,6 @@ ignore = [
     "events.?.attributes.type_uid.*",
     "events.?.attributes.category_uid",
     "events.?.attributes.category_uid.*",
-
-    "objects.reg_key.name", "objects.reg_value.name",
-	"events.registry_key_activity.attributes.reg_key_result", "events.registry_value_activity.attributes.reg_value_result",
 ]
 
 # Clarify paths

@@ -1,0 +1,157 @@
+{
+  "uid": 3,
+  "caption": "DNS Activity",
+  "description": "DNS Activity events report DNS queries and answers as seen on the network.",
+  "extends": "network",
+  "name": "dns_activity",
+  "attributes": {
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Query",
+          "description": "The DNS query request."
+        },
+        "2": {
+          "caption": "Response",
+          "description": "The DNS query response."
+        },
+        "6": {
+          "caption": "Traffic",
+          "description": "Bidirectional DNS request and response traffic."
+        }
+      }
+    },
+    "answers": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "connection_info": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "dst_endpoint": {
+      "requirement": "recommended"
+    },
+    "query": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "query_time": {
+      "group": "occurrence",
+      "requirement": "recommended"
+    },
+    "rcode": {
+      "description": "The DNS server response code, normalized to the caption of the rcode_id value. In the case of 'Other', it is defined by the event source.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "rcode_id": {
+      "caption": "Response Code ID",
+      "description": "The normalized identifier of the DNS server response code. See <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc6895'>RFC-6895</a>.",
+      "group": "primary",
+      "requirement": "recommended",
+      "enum": {
+        "0": {
+          "caption": "NoError",
+          "description": "No Error."
+        },
+        "1": {
+          "caption": "FormError",
+          "description": "Format Error."
+        },
+        "2": {
+          "caption": "ServError",
+          "description": "Server Failure."
+        },
+        "3": {
+          "caption": "NXDomain",
+          "description": "Non-Existent Domain."
+        },
+        "4": {
+          "caption": "NotImp",
+          "description": "Not Implemented."
+        },
+        "5": {
+          "caption": "Refused",
+          "description": "Query Refused."
+        },
+        "6": {
+          "caption": "YXDomain",
+          "description": "Name Exists when it should not."
+        },
+        "7": {
+          "caption": "YXRRSet",
+          "description": "RR Set Exists when it should not."
+        },
+        "8": {
+          "caption": "NXRRSet",
+          "description": "RR Set that should exist does not."
+        },
+        "9": {
+          "caption": "NotAuth",
+          "description": "Not Authorized or Server Not Authoritative for zone."
+        },
+        "10": {
+          "caption": "NotZone",
+          "description": "Name not contained in zone."
+        },
+        "11": {
+          "caption": "DSOTYPENI",
+          "description": "DSO-TYPE Not Implemented."
+        },
+        "16": {
+          "caption": "BADSIG_VERS",
+          "description": "TSIG Signature Failure or Bad OPT Version."
+        },
+        "17": {
+          "caption": "BADKEY",
+          "description": "Key not recognized."
+        },
+        "18": {
+          "caption": "BADTIME",
+          "description": "Signature out of time window."
+        },
+        "19": {
+          "caption": "BADMODE",
+          "description": "Bad TKEY Mode."
+        },
+        "20": {
+          "caption": "BADNAME",
+          "description": "Duplicate key name."
+        },
+        "21": {
+          "caption": "BADALG",
+          "description": "Algorithm not supported."
+        },
+        "22": {
+          "caption": "BADTRUNC",
+          "description": "Bad Truncation."
+        },
+        "23": {
+          "caption": "BADCOOKIE",
+          "description": "Bad/missing Server Cookie."
+        },
+        "24": {
+          "caption": "Unassigned",
+          "description": "The codes deemed to be unassigned by the RFC (unassigned codes: 12-15, 24-3840, 4096-65534)."
+        },
+        "25": {
+          "caption": "Reserved",
+          "description": "The codes deemed to be reserved by the RFC (codes: 3841-4095, 65535)."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The dns response code is not defined by the RFC."
+        }
+      }
+    },
+    "response_time": {
+      "group": "occurrence",
+      "requirement": "recommended"
+    },
+    "traffic": {
+      "group": "context",
+      "requirement": "optional"
+    }
+  }
+}

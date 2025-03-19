@@ -3,7 +3,6 @@
   "description": "The Resource Details object describes details about resources that were affected by the activity/event.",
   "extends": "_resource",
   "name": "resource_details",
-  "profiles": ["cloud"],
   "attributes": {
     "agent_list": {
       "requirement": "optional"
@@ -19,6 +18,21 @@
     "group": {
       "description": "The name of the related resource group.",
       "requirement": "optional"
+    },
+    "hostname": {
+      "description": "The fully qualified name of the resource.",
+      "requirement": "recommended"
+    },
+    "ip": {
+      "description": "The IP address of the resource, in either IPv4 or IPv6 format.",
+      "requirement": "recommended"
+    },
+    "is_backed_up": {
+      "requirement": "optional"
+    },
+    "name": {
+      "observable": 38,
+      "requirement": "recommended"
     },
     "namespace": {
       "description": "The namespace is useful when similar entities exist that you need to keep separate.",
@@ -37,5 +51,8 @@
       "description": "The version of the resource. For example <code>1.2.3</code>.",
       "requirement": "optional"
     }
-  }
+  },
+  "profiles": [
+    "cloud"
+  ]
 }

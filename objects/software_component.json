@@ -1,0 +1,62 @@
+{
+  "caption": "Software Component",
+  "description": "The Software Component object describes characteristics of a software component within a software package.",
+  "extends": "object",
+  "name": "software_component",
+  "attributes": {
+    "author": {
+      "requirement": "recommended"
+    },
+    "hash": {
+      "description": "Cryptographic hash to identify the binary instance of a software component.",
+      "requirement": "optional"
+    },
+    "license": {
+      "description": "The software license applied to this component.",
+      "requirement": "optional"
+    },
+    "name": {
+      "description": "The software component name.",
+      "requirement": "required"
+    },
+    "purl": {
+      "description": "The Package URL (PURL) to identify the software component. This is a URL that uniquely identifies the component, including the component's name, version, and type. The URL is used to locate and retrieve the component's metadata and content.",
+      "requirement": "recommended"
+    },
+    "related_component": {
+      "requirement": "recommended"
+    },
+    "relationship": {
+      "requirement": "optional"
+    },
+    "relationship_id": {
+      "requirement": "recommended"
+    },
+    "type": {
+      "description": "The type of software component, normalized to the caption of the <code>type_id</code> value. In the case of 'Other', it is defined by the source.",
+      "requirement": "optional"
+    },
+    "type_id": {
+      "description": "The type of software component.",
+      "enum": {
+        "1": {
+          "caption": "Framework",
+          "description": "A software framework."
+        },
+        "2": {
+          "caption": "Library",
+          "description": "A software library."
+        },
+        "3": {
+          "caption": "Operating System",
+          "description": "An operating system. Useful for SBOMs of container images."
+        }
+      },
+      "requirement": "recommended"
+    },
+    "version": {
+      "description": "The software component version.",
+      "requirement": "required"
+    }
+  }
+}

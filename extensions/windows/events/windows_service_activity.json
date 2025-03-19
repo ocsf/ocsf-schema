@@ -1,0 +1,44 @@
+{
+  "uid": 4,
+  "caption": "Windows Service Activity",
+  "description": "Windows Service Activity events report when a process interacts with the Service Control Manager.",
+  "extends": "system",
+  "name": "windows_service_activity",
+  "attributes": {
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Create",
+          "description": "A service is created, for example by calling <code>CreateService</code>. Refer to the <code>win_service</code> attribute for details."
+        },
+        "2": {
+          "caption": "Reconfigure",
+          "description": "A service is reconfigured, for example by calling <code>ChangeServiceConfig</code> or <code>ChangeServiceConfig2</code>. Refer to the <code>win_service</code> attribute for details."
+        },
+        "3": {
+          "caption": "Start",
+          "description": "A stopped service is started, for example by calling <code>StartService</code>. Refer to the <code>service</code> attribute for details."
+        },
+        "4": {
+          "caption": "Stop",
+          "description": "A running or paused service is stopped, for example by calling <code>ControlService</code> or <code>ControlServiceEx</code>. Refer to the <code>win_service</code> attribute for details."
+        },
+        "5": {
+          "caption": "Pause",
+          "description": "A running service is paused, for example by calling <code>ControlService</code> or <code>ControlServiceEx</code>. Refer to the <code>win_service</code> attribute for details."
+        },
+        "6": {
+          "caption": "Continue",
+          "description": "A paused service is continued, for example by calling <code>ControlService</code> or <code>ControlServiceEx</code>. Refer to the <code>win_service</code> attribute for details."
+        },
+        "7": {
+          "caption": "Delete",
+          "description": "A service is deleted, for example by calling <code>DeleteService</code>. Refer to the <code>win_service</code> attribute for details."
+        }
+      }
+    },
+    "win_service": {
+      "requirement": "required"
+    }
+  }
+}

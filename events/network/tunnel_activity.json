@@ -1,12 +1,20 @@
 {
+  "uid": 14,
   "caption": "Tunnel Activity",
-  "category": "network",
   "description": "Tunnel Activity events report secure tunnel establishment (such as VPN), teardowns, renewals, and other network tunnel specific actions.",
   "extends": "network",
   "name": "tunnel_activity",
-  "uid": 14,
+  "associations": {
+    "src_endpoint": [
+      "user"
+    ],
+    "user": [
+      "src_endpoint"
+    ]
+  },
   "attributes": {
     "activity_id": {
+      "requirement": "required",
       "enum": {
         "0": {
           "caption": "Unknown",
@@ -28,23 +36,22 @@
           "caption": "Other",
           "description": "The event activity is not mapped. See the <code>activity_name</code> attribute, which contains a data source specific value."
         }
-      },
-      "requirement": "required"
+      }
     },
     "connection_info": {
       "description": "The tunnel connection information.",
       "group": "context",
       "requirement": "optional"
     },
-    "dst_endpoint": {
-      "description": "The server responding to the tunnel connection.",
-      "group": "primary",
-      "requirement": "recommended"
-    },
     "device": {
       "description": "The device that reported the event.",
       "group": "primary",
-      "profile": null,
+      "requirement": "recommended",
+      "profile": null
+    },
+    "dst_endpoint": {
+      "description": "The server responding to the tunnel connection.",
+      "group": "primary",
       "requirement": "recommended"
     },
     "protocol_name": {
@@ -53,14 +60,14 @@
       "group": "context",
       "requirement": "optional"
     },
-    "src_endpoint": {
-      "description": "The initiator (client) of the tunnel connection.",
-      "group": "primary",
-      "requirement": "recommended"
-    },
     "session": {
       "caption": "Tunnel Session",
       "description": "The session associated with the tunnel.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "src_endpoint": {
+      "description": "The initiator (client) of the tunnel connection.",
       "group": "primary",
       "requirement": "recommended"
     },
@@ -82,6 +89,8 @@
     },
     "tunnel_type_id": {
       "description": "The normalized tunnel type ID.",
+      "group": "primary",
+      "requirement": "recommended",
       "enum": {
         "0": {
           "caption": "Unknown"
@@ -95,23 +104,13 @@
         "99": {
           "caption": "Other"
         }
-      },
-      "group": "primary",
-      "requirement": "recommended"
+      }
     },
     "user": {
       "description": "The user associated with the tunnel activity.",
       "group": "primary",
       "requirement": "recommended"
     }
-  },
-  "associations": {
-    "user": [
-      "src_endpoint"
-    ],
-    "src_endpoint": [
-      "user"
-    ]
   },
   "constraints": {
     "at_least_one": [
@@ -121,6 +120,6 @@
       "traffic",
       "tunnel_interface",
       "tunnel_type_id"
-		]
-	}
+    ]
+  }
 }

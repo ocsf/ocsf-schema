@@ -1,0 +1,24 @@
+{
+  "uid": 8,
+  "caption": "Application Error",
+  "description": "Application Error events describe issues with an applications. The error message should be put in the event's <code>message</code> attribute. The <code>metadata.product</code> attribute can be used to capture the originating application information. The <code>host</code> profile can used to include the generating device information. This class is helpful (and originally intended for) applications that generate and/or handle OCSF events. This class can also be used for errors in upstream products and services.",
+  "extends": "application",
+  "name": "application_error",
+  "attributes": {
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "General Error",
+          "description": "The application has experienced an error."
+        },
+        "2": {
+          "caption": "Translation Error",
+          "description": "The application has experienced an error translating (mapping) a raw event to OCSF. Including the original raw event in the raw_data field is highly recommended."
+        }
+      }
+    },
+    "message": {
+      "description": "The error message as reported by the application."
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "uid": 4,
+  "caption": "Memory Activity",
+  "description": "Memory Activity events report when a process has memory allocated, read/modified, or other manipulation activities - such as a buffer overflow or turning off data execution protection (DEP).",
+  "extends": "system",
+  "name": "memory_activity",
+  "attributes": {
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Allocate Page"
+        },
+        "2": {
+          "caption": "Modify Page"
+        },
+        "3": {
+          "caption": "Delete Page"
+        },
+        "4": {
+          "caption": "Buffer Overflow"
+        },
+        "5": {
+          "caption": "Disable DEP",
+          "description": "Data Execution Permission"
+        },
+        "6": {
+          "caption": "Enable DEP",
+          "description": "Data Execution Permission"
+        },
+        "7": {
+          "caption": "Read",
+          "description": "Read (Example: <code>ReadProcessMemory</code>)"
+        },
+        "8": {
+          "caption": "Write",
+          "description": "Write (Example: <code>WriteProcessMemory</code>)"
+        },
+        "9": {
+          "caption": "Map View",
+          "description": "Map View (Example: <code>MapViewOfFile2</code>)"
+        }
+      }
+    },
+    "actual_permissions": {
+      "description": "The permissions that were granted to access memory.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "base_address": {
+      "description": "The memory address that was access or requested.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "process": {
+      "description": "The process that had memory allocated, read/written, or had other manipulation activities performed on it.",
+      "group": "primary",
+      "requirement": "required"
+    },
+    "requested_permissions": {
+      "description": "The permissions mask that was requested to access memory.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "size": {
+      "description": "The memory size that was access or requested.",
+      "group": "primary",
+      "requirement": "recommended"
+    }
+  }
+}

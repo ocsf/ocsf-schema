@@ -4,6 +4,11 @@
   "extends": "object",
   "name": "compliance",
   "attributes": {
+    "assessments": {
+      "caption": "Related Assessments",
+      "description": "A list of assessments associated with the compliance requirements evaluation",
+      "requirement": "optional"
+    },
     "compliance_references": {
       "requirement": "optional"
     },
@@ -12,6 +17,9 @@
     },
     "control": {
       "requirement": "recommended"
+    },
+    "control_parameters": {
+      "requirement": "optional"
     },
     "requirements": {
       "requirement": "optional"
@@ -28,7 +36,15 @@
       "requirement": "optional"
     },
     "status_detail": {
-      "description": "The contextual description of the status, status_code values.",
+      "@deprecated": {
+        "message": "Use the <code> status_details </code> attribute instead.",
+        "since": "1.4.0"
+      },
+      "description": "The contextual description of the <code>status, status_code</code> values.",
+      "requirement": "optional"
+    },
+    "status_details": {
+      "description": "A list of contextual descriptions of the <code>status, status_code</code> values.",
       "requirement": "optional"
     },
     "status_id": {

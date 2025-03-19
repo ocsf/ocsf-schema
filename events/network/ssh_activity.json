@@ -1,0 +1,102 @@
+{
+  "uid": 7,
+  "caption": "SSH Activity",
+  "description": "SSH Activity events report remote client connections to a server using the Secure Shell (SSH) Protocol.",
+  "extends": "network",
+  "name": "ssh_activity",
+  "attributes": {
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Open",
+          "description": "A new network connection was opened."
+        },
+        "2": {
+          "caption": "Close",
+          "description": "The network connection was closed."
+        },
+        "3": {
+          "caption": "Reset",
+          "description": "The network connection was abnormally terminated or closed by a middle device like firewalls."
+        },
+        "4": {
+          "caption": "Fail",
+          "description": "The network connection failed. For example a connection timeout or no route to host."
+        },
+        "5": {
+          "caption": "Refuse",
+          "description": "The network connection was refused. For example an attempt to connect to a server port which is not open."
+        },
+        "6": {
+          "caption": "Traffic",
+          "description": "Network traffic report."
+        },
+        "7": {
+          "caption": "Listen",
+          "description": "A network endpoint began listening for new network connections."
+        }
+      }
+    },
+    "auth_type": {
+      "description": "The SSH authentication type, normalized to the caption of 'auth_type_id'. In the case of 'Other', it is defined by the event source.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "auth_type_id": {
+      "description": "The normalized identifier of the SSH authentication type.",
+      "group": "primary",
+      "requirement": "recommended",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Certificate Based",
+          "description": "Authentication using digital certificates."
+        },
+        "2": {
+          "caption": "GSSAPI",
+          "description": "GSSAPI for centralized authentication."
+        },
+        "3": {
+          "caption": "Host Based",
+          "description": "Authentication based on the client host's identity."
+        },
+        "4": {
+          "caption": "Keyboard Interactive",
+          "description": "Multi-step, interactive authentication."
+        },
+        "5": {
+          "caption": "Password",
+          "description": "Password Authentication."
+        },
+        "6": {
+          "caption": "Public Key",
+          "description": "Paired public key authentication."
+        },
+        "99": {
+          "caption": "Other"
+        }
+      }
+    },
+    "client_hassh": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "file": {
+      "description": "The file that is the target of the SSH activity.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "protocol_ver": {
+      "caption": "SSH Version",
+      "description": "The Secure Shell Protocol version.",
+      "group": "context",
+      "requirement": "recommended"
+    },
+    "server_hassh": {
+      "group": "primary",
+      "requirement": "recommended"
+    }
+  }
+}

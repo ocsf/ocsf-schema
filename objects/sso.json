@@ -1,0 +1,75 @@
+{
+  "caption": "SSO",
+  "description": "The Single Sign-On (SSO) object provides a structure for normalizing SSO attributes, configuration, and/or settings from Identity Providers.",
+  "extends": "object",
+  "name": "sso",
+  "attributes": {
+    "auth_protocol": {
+      "description": "The authorization protocol as defined by the caption of <code>auth_protocol_id</code>. In the case of <code>Other</code>, it is defined by the event source.",
+      "requirement": "optional"
+    },
+    "auth_protocol_id": {
+      "description": "The normalized identifier of the authentication protocol used by the SSO resource.",
+      "requirement": "optional"
+    },
+    "certificate": {
+      "caption": "SAML Certificate",
+      "description": "Digital Signature associated with the SSO resource, e.g., SAML X.509 certificate details.",
+      "requirement": "recommended"
+    },
+    "created_time": {
+      "description": "When the SSO resource was created.",
+      "requirement": "optional"
+    },
+    "duration_mins": {
+      "caption": "SSO Session Duration",
+      "description": "The duration (in minutes) for an SSO session, after which re-authentication is required.",
+      "requirement": "optional"
+    },
+    "idle_timeout": {
+      "caption": "SSO Idle Timeout",
+      "description": "Duration (in minutes) of allowed inactivity before Single Sign-On (SSO) session expiration.",
+      "requirement": "optional"
+    },
+    "login_endpoint": {
+      "caption": "SSO Login Endpoint",
+      "description": "URL for initiating an SSO login request.",
+      "requirement": "optional"
+    },
+    "logout_endpoint": {
+      "caption": "SSO Logout Endpoint",
+      "description": "URL for initiating an SSO logout request, allowing sessions to be terminated across applications.",
+      "requirement": "optional"
+    },
+    "metadata_endpoint": {
+      "caption": "SSO Metadata Endpoint",
+      "description": "URL where metadata about the SSO configuration is available (e.g., for SAML configurations).",
+      "requirement": "optional"
+    },
+    "modified_time": {
+      "description": "The most recent time when the SSO resource was updated.",
+      "requirement": "optional"
+    },
+    "name": {
+      "description": "The name of the SSO resource.",
+      "requirement": "recommended"
+    },
+    "protocol_name": {
+      "caption": "Supported Protocol",
+      "description": "The supported protocol for the SSO resource. E.g., <code>SAML</code> or <code>OIDC</code>.",
+      "requirement": "optional"
+    },
+    "scopes": {
+      "requirement": "optional"
+    },
+    "uid": {
+      "description": "A unique identifier for a SSO resource.",
+      "requirement": "recommended"
+    },
+    "vendor_name": {
+      "caption": "Service Provider",
+      "description": "Name of the vendor or service provider implementing SSO. E.g., <code>Okta</code>, <code>Auth0</code>, <code>Microsoft</code>.",
+      "requirement": "optional"
+    }
+  }
+}

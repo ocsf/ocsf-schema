@@ -1,0 +1,69 @@
+{
+  "uid": 3,
+  "caption": "API Activity",
+  "description": "API events describe general CRUD (Create, Read, Update, Delete) API activities, e.g. (AWS Cloudtrail)",
+  "extends": "application",
+  "name": "api_activity",
+  "attributes": {
+    "$include": [
+      "profiles/trace.json"
+    ],
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Create",
+          "description": "The API call in the event pertains to a 'create' activity."
+        },
+        "2": {
+          "caption": "Read",
+          "description": "The API call in the event pertains to a 'read' activity."
+        },
+        "3": {
+          "caption": "Update",
+          "description": "The API call in the event pertains to a 'update' activity."
+        },
+        "4": {
+          "caption": "Delete",
+          "description": "The API call in the event pertains to a 'delete' activity."
+        }
+      }
+    },
+    "actor": {
+      "group": "primary",
+      "requirement": "required",
+      "profile": null
+    },
+    "api": {
+      "group": "primary",
+      "requirement": "required",
+      "profile": null
+    },
+    "dst_endpoint": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "http_request": {
+      "description": "Details about the underlying http request.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "http_response": {
+      "description": "Details about the underlying http response.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "resources": {
+      "description": "Details about resources that were affected by the activity/event.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "src_endpoint": {
+      "description": "Details about the source of the activity.",
+      "group": "primary",
+      "requirement": "required"
+    }
+  },
+  "profiles": [
+    "trace"
+  ]
+}

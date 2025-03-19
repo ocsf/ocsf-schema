@@ -1,0 +1,75 @@
+{
+  "uid": 13,
+  "caption": "NTP Activity",
+  "description": "The Network Time Protocol (NTP) Activity events report instances of remote clients synchronizing their clocks with an NTP server, as observed on the network.",
+  "extends": "network",
+  "name": "ntp_activity",
+  "attributes": {
+    "activity_id": {
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "Not used in standard NTP implementations."
+        },
+        "1": {
+          "caption": "Symmetric Active Exchange",
+          "description": "Bidirectional time exchange between devices."
+        },
+        "2": {
+          "caption": "Symmetric Passive Response",
+          "description": "Device responds as a server to peers in symmetric active mode."
+        },
+        "3": {
+          "caption": "Client Synchronization",
+          "description": "NTP client, syncs with servers."
+        },
+        "4": {
+          "caption": "Server Response",
+          "description": "Dedicated NTP time server, responds to clients."
+        },
+        "5": {
+          "caption": "Broadcast",
+          "description": "Broadcast time info to network devices."
+        },
+        "6": {
+          "caption": "Control",
+          "description": "Monitoring and control messaging."
+        },
+        "7": {
+          "caption": "Private Use Case",
+          "description": "Reserved - Not defined in standard NTP specifications."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The event activity is not mapped."
+        }
+      }
+    },
+    "delay": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "dispersion": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "precision": {
+      "description": "The NTP precision quantifies a clock's accuracy and stability in log2 seconds, as defined in RFC-5905.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "stratum": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "stratum_id": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "version": {
+      "description": "The version number of the NTP protocol.",
+      "group": "context",
+      "requirement": "required"
+    }
+  }
+}

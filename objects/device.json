@@ -1,6 +1,6 @@
 {
   "caption": "Device",
-  "description": "The Device object represents an addressable computer system or host, which is typically connected to a computer network and participates in the transmission or processing of data within the computer network. Defined by D3FEND <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:Host/'>d3f:Host</a>.",
+  "description": "The Device object represents an addressable computer system or host, which is typically connected to a computer network and participates in the transmission or processing of data within the computer network.",
   "extends": "endpoint",
   "name": "device",
   "attributes": {
@@ -24,12 +24,15 @@
       "description": "The network domain where the device resides. For example: <code>work.example.com</code>.",
       "requirement": "optional"
     },
+    "eid": {
+      "requirement": "optional"
+    },
     "first_seen_time": {
       "description": "The initial discovery time of the device.",
       "requirement": "optional"
     },
     "groups": {
-      "description": "The group names to which the device belongs. For example: <code>[\"Windows Laptops\", \"Engineering\"]<code/>.",
+      "description": "The group names to which the device belongs. For example: <code>[\"Windows Laptops\", \"Engineering\"]</code>.",
       "requirement": "optional"
     },
     "hostname": {
@@ -43,11 +46,20 @@
       "description": "The image used as a template to run the virtual machine.",
       "requirement": "optional"
     },
+    "iccid": {
+      "requirement": "optional"
+    },
     "imei": {
+      "requirement": "optional"
+    },
+    "imei_list": {
       "requirement": "optional"
     },
     "ip": {
       "description": "The device IP address, in either IPv4 or IPv6 format.",
+      "requirement": "optional"
+    },
+    "is_backed_up": {
       "requirement": "optional"
     },
     "is_compliant": {
@@ -56,7 +68,16 @@
     "is_managed": {
       "requirement": "optional"
     },
+    "is_mobile_account_active": {
+      "requirement": "optional"
+    },
     "is_personal": {
+      "requirement": "optional"
+    },
+    "is_shared": {
+      "requirement": "optional"
+    },
+    "is_supervised": {
       "requirement": "optional"
     },
     "is_trusted": {
@@ -68,6 +89,13 @@
     },
     "location": {
       "description": "The geographical location of the device.",
+      "requirement": "optional"
+    },
+    "meid": {
+      "requirement": "optional"
+    },
+    "model": {
+      "description": "The model of the device. For example <code>ThinkPad X1 Carbon</code>.",
       "requirement": "optional"
     },
     "modified_time": {
@@ -83,6 +111,9 @@
     },
     "org": {
       "description": "Organization and org unit related to the device.",
+      "requirement": "optional"
+    },
+    "os_machine_uuid": {
       "requirement": "optional"
     },
     "region": {
@@ -109,6 +140,9 @@
       "description": "The device type ID.",
       "requirement": "required"
     },
+    "udid": {
+      "requirement": "optional"
+    },
     "uid": {
       "description": "The unique identifier of the device. For example the Windows TargetSID or AWS EC2 ARN.",
       "requirement": "recommended"
@@ -116,6 +150,16 @@
     "uid_alt": {
       "description": "An alternate unique identifier of the device if any. For example the ActiveDirectory DN.",
       "requirement": "optional"
+    },
+    "vendor_name": {
+      "description": "The vendor for the device. For example <code>Dell</code> or <code>Lenovo</code>.",
+      "requirement": "recommended"
     }
-  }
+  },
+  "references": [
+    {
+      "description": "D3FEND™ Ontology d3f:Host.",
+      "url": "https://d3fend.mitre.org/dao/artifact/d3f:Host/"
+    }
+  ]
 }

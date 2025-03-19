@@ -1,0 +1,42 @@
+{
+  "uid": 12,
+  "caption": "Email URL Activity",
+  "category": "network",
+  "description": "Email URL Activity events report URLs within an email.",
+  "extends": "base_event",
+  "name": "email_url_activity",
+  "@deprecated": {
+    "message": "Use the <code>Email Activity</code> class with the <code>email.urls[]</code> array instead.",
+    "since": "1.3.0"
+  },
+  "attributes": {
+    "activity_id": {
+      "requirement": "required",
+      "enum": {
+        "1": {
+          "caption": "Send"
+        },
+        "2": {
+          "caption": "Receive"
+        },
+        "3": {
+          "caption": "Scan",
+          "description": "Email URL being scanned (example: security scanning)."
+        }
+      }
+    },
+    "email_uid": {
+      "group": "primary",
+      "requirement": "required",
+      "@deprecated": {
+        "message": "Use the <code>email.uid</code> attribute instead.",
+        "since": "1.4.0"
+      }
+    },
+    "url": {
+      "description": "The URL included in the email content.",
+      "group": "primary",
+      "requirement": "required"
+    }
+  }
+}

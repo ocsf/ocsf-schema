@@ -1,27 +1,61 @@
 {
   "caption": "CIS Benchmark",
-  "description": "The CIS Benchmark object describes best practices for securely configuring IT systems, software, networks, and cloud infrastructure as defined by the <a target='_blank' href='https://www.cisecurity.org/cis-benchmarks/'>Center for Internet Security</a>. See also <a target='_blank' href='https://www.cisecurity.org/insights/blog/getting-to-know-the-cis-benchmarks'>Getting to Know the CIS Benchmarks</a>.",
+  "description": "The CIS Benchmark object describes best practices for securely configuring IT systems, software, networks, and cloud infrastructure as defined by the <a target='_blank' href='https://www.cisecurity.org/cis-benchmarks/'>Center for Internet Security</a>.",
   "extends": "object",
   "name": "cis_benchmark",
   "attributes": {
     "cis_controls": {
-      "requirement": "recommended"
+      "requirement": "recommended",
+      "description": "Related CIS Controls that this benchmark item helps satisfy."
     },
     "desc": {
-      "description": "The CIS Benchmark detailed description. For example: <i>This policy setting determines which users can create symbolic links.</i>",
-      "requirement": "optional"
+      "description": "The CIS Benchmark description. For example: <i>The cramfs filesystem type is a compressed read-only Linux filesystem embedded in small footprint systems. A cramfs image can be used without having to first decompress the image.</i>",
+      "requirement": "optional",
+      "@deprecated": {
+        "message": "Use the rule object instead.",
+        "since": "1.5.0"
+      }
     },
     "name": {
-      "description": "The CIS Benchmark Standard name. For example: <i>CIS Microsoft Windows 10 Enterprise Benchmark.</i>",
-      "requirement": "required"
+      "description": "The CIS Benchmark name. For example: <i>Ensure mounting of cramfs filesystems is disabled.</i>",
+      "requirement": "required",
+      "@deprecated": {
+        "message": "Use the rule object instead.",
+        "since": "1.5.0"
+      }
     },
     "rule": {
-      "description": "The CIS benchmark Rule name. For example: <i>L1 Configure Create symbolic links.</i>",
+      "description": "The Rule object containing details about the CIS Benchmark check. This includes the rule name (e.g., 'Ensure mounting of cramfs filesystems is disabled'), uid (the unique CIS identifier, e.g., '1.1.1.1'), description (detailed explanation of the security requirement), and version information.",
+      "requirement": "optional",
+      "type": "rule"
+    },
+    "severity": {
+      "description": "The CIS Benchmark recommendation level as defined in the source document. Valid values are: 'Level 1' (security-forward, essential settings), 'Level 2' (security-focused environment, more restrictive), or 'Scored/Not Scored' (whether compliance can be automatically checked).",
       "requirement": "optional"
     },
-    "version": {
-      "description": "The CIS benchmark Version number. For example: <i>3.0.0</i>",
-      "requirement": "optional"
+    "severity_id": {
+      "description": "The normalized severity identifier that maps CIS Benchmark levels to standard severity levels. Level 2 maps to 4 (High), Level 1 maps to 3 (Medium).",
+      "requirement": "optional",
+      "sibling": "severity",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The severity is unknown."
+        },
+        "3": {
+          "caption": "Medium",
+          "description": "Maps to CIS Benchmark 'Level 1' - Essential security settings recommended for all systems."
+        },
+        "4": {
+          "caption": "High",
+          "description": "Maps to CIS Benchmark 'Level 2' - More restrictive and security-focused settings for sensitive environments."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The severity is not mapped. See the severity attribute, which contains a data source specific value."
+        }
+      }
     }
   }
 }

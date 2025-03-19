@@ -3474,6 +3474,26 @@
       "type": "malware",
       "is_array": true
     },
+    "malware_scan_info": {
+      "caption": "Malware Scan Info",
+      "description": "Describes details about the scan job that identified malware on the target system.",
+      "type": "malware_scan_info"
+    },
+    "num_volumes": {
+      "caption": "Number of Volumes",
+      "description": "The number of volumes in the storage device. See specific usage.",
+      "type": "integer_t"
+    },
+    "num_infected": {
+      "caption": "Number of Infected Entities",
+      "description": "The number of infected entities. See specific usage.",
+      "type": "integer_t"
+    },
+    "unique_malware_count": {
+      "caption": "Unique Malware Count",
+      "description": "The number of unique malware detected during a scan. See specific usage.",
+      "type": "integer_t"
+    },
     "manager": {
       "caption": "Manager",
       "description": "The user's manager. This helps in understanding an org hierarchy. This should only ever be populated once in an event. I.e. there should not be a manager's manager in an event.",
@@ -3548,6 +3568,21 @@
       "caption": "MIME type",
       "description": "The Multipurpose Internet Mail Extensions (MIME) type of the file, if applicable.",
       "type": "string_t"
+    },
+    "mitigation": {
+      "caption": "MITRE Mitigation",
+      "description": "The Mitigation object describes the MITRE ATT&CK® or ATLAS™ Mitigation ID and/or name that is associated to an attack.",
+      "type": "mitigation",
+      "references": [
+        {
+          "description": "ATT&CK® Matrix",
+          "url": "https://attack.mitre.org/wiki/ATT&CK_Matrix"
+        },
+        {
+          "description": "ATLAS™ Matrix",
+          "url": "https://atlas.mitre.org/matrices/ATLAS"
+        }
+      ]
     },
     "model": {
       "caption": "Model",
@@ -4960,7 +4995,7 @@
     },
     "severity": {
       "caption": "Severity",
-      "description": "The event/finding severity, normalized to the caption of the severity_id value. In the case of 'Other', it is defined by the source.",
+      "description": "The event/finding severity, normalized to the caption of the <code>severity_id</code> value. In the case of 'Other', it is defined by the source.",
       "type": "string_t"
     },
     "severity_id": {
@@ -5843,6 +5878,11 @@
       "caption": "VLAN",
       "description": "The Virtual LAN identifier.",
       "type": "string_t"
+    },
+    "volume": {
+      "caption": "Volume",
+      "description": "The volume on the storage device where the file is located. See specific usage.",
+     "type": "string_t"
     },
     "vpc_uid": {
       "caption": "VPC UID",

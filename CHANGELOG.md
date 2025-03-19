@@ -57,6 +57,7 @@ Thankyou! -->
   1. Added `ldap` protocol to `auth_protocol_id` enum. [#1359](https://github.com/ocsf/ocsf-schema/pull/1359)
   1. Added `observation_parameter`, `observation_type`, `observed_pattern` as `string_t` and `occurrences` as an array of `occurrence_details`. #1358
   1. Added `analysis_targets` as an array of type `analysis_target`. #1371
+  1. Added `num_volumes`, `num_infected` as `int_t`, `unique_malware_count`, `volume` as `string_t`. #1373
   
 * #### Objects
   1. Added `assessment` object to capture evaluations/assessments of configurations/signals. #1343
@@ -65,6 +66,7 @@ Thankyou! -->
   1. Added `trait` object. #1363
   1. Added `mitigation` object. #1348
   1. Added `analysis_target` object. #1371
+  1. Added `malware_scan_info` object. #1373
   
 ### Improved
 * #### Event Classes
@@ -72,6 +74,7 @@ Thankyou! -->
   1. Added `raw_data_size` to `base_event`. [#1347](https://github.com/ocsf/ocsf-schema/pull/1347)
   1. Added `anomaly_analyses` to `detection_finding`. #1358
   1. Added `resources` to `user_access`. #1374
+  1. Added `malware_scan_info`, `malware` to `detection_finding`. #1373 
 * #### Objects
   1. Added `boot_uid` to `device` object. [#1335](https://github.com/ocsf/ocsf-schema/pull/1335)
   1. Relaxed constraint to provide `email_addr`, `phone_number`, or `security_questions` on `auth_factor`. [#1339](https://github.com/ocsf/ocsf-schema/pull/1339)
@@ -95,6 +98,8 @@ Thankyou! -->
   1. Updated `timespan` to include a Time Window `type_id` and `start_time`, `end_time` to the `at_least_one` constraint. #1372
   1. Added `mitigation` to `attack` object. #1348
   1. Added `timespan` object to `observation` object. #1371
+* #### Profiles
+  1. Added `malware_scan_info` to `security_control` profile. #1373
 
 ### Deprecated
   1. Deprecated usage of `isp` attribute in the `location` object. #1351

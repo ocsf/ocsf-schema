@@ -1,6 +1,6 @@
 {
   "caption": "Compliance",
-  "description": "The Compliance object contains information about Industry and Regulatory Framework standards, controls and requirements or details about custom assessments utilized in a compilance evaluation.",
+  "description": "The Compliance object contains information about Industry and Regulatory Framework standards, controls and requirements or details about custom assessments utilized in a compliance evaluation.",
   "extends": "object",
   "name": "compliance",
   "attributes": {
@@ -8,26 +8,50 @@
       "description": "A list of assessments associated with the compliance requirements evaluation.",
       "requirement": "optional"
     },
+    "cis_benchmark": {
+      "requirement": "optional",
+      "description": "Information related to Center for Internet Security (CIS) Benchmark compliance. E.g., <code>CIS Microsoft Windows 10 Enterprise Benchmark v1.9.0, Level 1</code> or <code>CIS Amazon Web Services Foundations Benchmark v1.4.0, Level 2</code>"
+    },
     "compliance_references": {
-      "requirement": "optional"
+      "requirement": "optional",
+      "@deprecated": {
+        "message": "Use CIS Benchmark, DISA STIG, or Assessments instead.",
+        "since": "1.5.0"
+      }
     },
     "compliance_standards": {
-      "requirement": "optional"
+      "requirement": "optional",
+      "@deprecated": {
+        "message": "Use CIS Benchmark, DISA STIG, or Assessments instead.",
+        "since": "1.5.0"
+      }
     },
     "control": {
-      "requirement": "recommended"
+      "requirement": "recommended",
+      "description": "A Control is prescriptive, prioritized set of best practices that strengthens cybersecurity posture. E.g., <code>CIS AWS Foundations Benchmark 1.2.0 - Control 2.1 - Ensure CloudTrail is enabled in all regions</code>"
     },
     "control_parameters": {
-      "requirement": "optional"
+      "requirement": "optional",
+      "description": "The list of control parameters evaluated in a Compliance check. E.g., parameters for CloudTrail configuration might include <code>multiRegionTrailEnabled: true</code>, <code>logFileValidationEnabled: true</code>, and <code>requiredRegions: [us-east-1, us-west-2]</code>"
+    },
+    "disa_stig": {
+      "requirement": "optional",
+      "description": "Information related to Defense Information Systems Agency (DISA) Security Technical Implementation Guide (STIG) compliance. E.g., <code>Windows 10 STIG Version 2 Release 3</code> or <code>Red Hat Enterprise Linux 8 STIG Version 1 Release 5</code>"
+    },
+    "remediation": {
+      "requirement": "optional",
+      "description": "The remediation steps or fix for addressing the compliance issue."
     },
     "requirements": {
-      "requirement": "optional"
+      "requirement": "optional",
+      "description": "The specific compliance requirements being evaluated. E.g., <code>PCI DSS Requirement 8.2.3 - Passwords must meet minimum complexity requirements</code> or <code>HIPAA Security Rule 164.312(a)(2)(iv) - Implement encryption and decryption mechanisms</code>"
     },
     "standards": {
-      "requirement": "recommended"
+      "requirement": "recommended",
+      "description": "The regulatory or industry standards being evaluated for compliance. E.g., <code>PCI DSS 3.2.1</code>, <code>HIPAA Security Rule</code>, <code>NIST SP 800-53 Rev. 5</code>, or <code>ISO/IEC 27001:2013</code>"
     },
     "status": {
-      "description": "The resultant status of the compliance check  normalized to the caption of the <code>status_id</code> value. In the case of 'Other', it is defined by the event source.",
+      "description": "The resultant status of the compliance check normalized to the caption of the <code>status_id</code> value. In the case of 'Other', it is defined by the event source.",
       "requirement": "recommended"
     },
     "status_code": {
@@ -36,7 +60,7 @@
     },
     "status_detail": {
       "@deprecated": {
-        "message": "Use the <code> status_details </code> attribute instead.",
+        "message": "Use the <code>status_details</code> attribute instead.",
         "since": "1.4.0"
       },
       "description": "The contextual description of the <code>status, status_code</code> values.",
@@ -63,6 +87,6 @@
         }
       },
       "requirement": "recommended"
-    } 
+    }
   }
 }

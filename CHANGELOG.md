@@ -73,6 +73,7 @@ Thankyou! -->
   1. Added `assessments` to `config_state`. #1343
   1. Added `raw_data_size` to `base_event`. [#1347](https://github.com/ocsf/ocsf-schema/pull/1347)
   1. Added `anomaly_analyses` to `detection_finding`. #1358
+  1. Added `Detect` value for `activity_id` in Remediation events. [#1362](https://github.com/ocsf/ocsf-schema/pull/1362)
   1. Added `resources` to `user_access`. #1374
   1. Added `malware_scan_info`, `malware` to `detection_finding`. #1373 
 * #### Objects

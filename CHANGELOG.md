@@ -117,6 +117,17 @@ Thankyou! -->
   1. Added `email.subject` and `email.uid` as an Observable types - `type_id: 40` and `type_id: 41`. #1380
   1. Added `message_uid` as Observable type - `type_id: 42`. #1380
   1. Added `reg_value.name` as an Observable type - `type_id: 43`. #1380
+  1. Added `file_path_t` as an Observable type - `type_id: 44` and marked fields as this type #1381
+    - `lineage` dictionary attribute
+    - `affected_package.path` object attribute
+    - `file.path` object attribute
+    - `image.path` object attribute
+    - `kernel.path` object attribute
+    - `malware.path` object attribute
+    - `process_entity.path` object attribute
+  1. Added `extensions/windows/reg_key_path_t` as an Observable type - `type_id: 45` and marked fields as this type #1381
+    - `reg_key.path` object attribute
+    - `reg_value.path` object attribute
 
 ## [v1.4.0] - January 31st, 2025
 

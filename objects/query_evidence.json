@@ -3,6 +3,10 @@
     "description": "The specific resulting evidence information that was queried or discovered. When mapping raw telemetry data users should select the appropriate child object that best matches the evidence type.",
     "name": "query_evidence",
     "attributes": {
+        "connection_info": {
+            "group": "primary",
+            "requirement": "optional"
+        },
         "file": {
             "description": "The file that is the target of the query.",
             "group": "primary",
@@ -10,6 +14,11 @@
         },
         "folder": {
             "description": "The folder that is the target of the query.",
+            "group": "primary",
+            "requirement": "optional"
+        },
+        "group": {
+            "description": "The administrative group.",
             "group": "primary",
             "requirement": "optional"
         },
@@ -114,8 +123,10 @@
     },
     "constraints": {
         "just_one": [
+            "connection_info",
             "file",
             "folder",
+            "group",
             "job",
             "kernel",
             "module",

@@ -148,6 +148,17 @@ Thankyou! -->
   1. Added `reg_value.name` as an Observable type - `type_id: 43`. #1380
   1. Added `advisory.uid` as Observable type `type_id: 44`. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
   1. Updated `resource_details.uid`, `web_resource.uid`, and `win_resource.uid` to be observable `type_id: 10` #1394
+  1. Added `file_path_t` as an Observable type - `type_id: 45` and marked fields as this type #1381
+     - `lineage` dictionary attribute
+     - `affected_package.path` object attribute
+     - `file.path` object attribute
+     - `image.path` object attribute
+     - `kernel.path` object attribute
+     - `malware.path` object attribute
+     - `process_entity.path` object attribute
+  1. Added `extensions/windows/reg_key_path_t` as an Observable type - `type_id: 46` and marked fields as this type #1381
+     - `reg_key.path` object attribute
+     - `reg_value.path` object attribute 
 
 ## [v1.4.0] - January 31st, 2025
 

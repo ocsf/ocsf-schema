@@ -43,7 +43,7 @@ Thankyou! -->
 
 ### Added
 * #### Event Classes
-  1. Added `Application Security Finding` event class to the Findings category. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
+  1. Added `Application Security Posture Finding` event class to the Findings category. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
 * #### Dictionary Attributes 
   1. Added `boot_uid` as a `string_t`. [#1335](https://github.com/ocsf/ocsf-schema/pull/1335)
   1. Added `raw_data_size` as a `long_t`. [#1347](https://github.com/ocsf/ocsf-schema/pull/1347)
@@ -127,7 +127,7 @@ Thankyou! -->
   1. Added `message_uid` as Observable type - `type_id: 42`. #1380
   1. Added `reg_value.name` as an Observable type - `type_id: 43`. #1380
   1. Removed redundant `package_manager` attribute from `affected_package` since it is available from `package`. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
-  1. Added `advisory.uid` as Observable type `type_id: 39`. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
+  1. Added `advisory.uid` as Observable type `type_id: 44`. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
 
 ## [v1.4.0] - January 31st, 2025
 

@@ -126,7 +126,6 @@ Thankyou! -->
   1. Added `email.subject` and `email.uid` as an Observable types - `type_id: 40` and `type_id: 41`. #1380
   1. Added `message_uid` as Observable type - `type_id: 42`. #1380
   1. Added `reg_value.name` as an Observable type - `type_id: 43`. #1380
-  1. Removed redundant `package_manager` attribute from `affected_package` since it is available from `package`. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
   1. Added `advisory.uid` as Observable type `type_id: 44`. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
 
 ## [v1.4.0] - January 31st, 2025

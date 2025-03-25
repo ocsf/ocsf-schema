@@ -1,32 +1,76 @@
 {
-    "uid": 12,
-    "caption": "Network Connection Query",
-    "description": "Network Connection Query events report information about active network connections.",
-    "extends": "discovery_result",
-    "name": "network_connection_query",
-    "@deprecated": {
-        "message": "Use the <code>Live Evidence Info</code> class.",
-        "since": "1.5.0"
-    },
+    "caption": "Query Evidence",
+    "description": "The specific resulting evidence information that was queried or discovered. When mapping raw telemetry data users should select the appropriate child object that best matches the evidence type.",
+    "name": "query_evidence",
     "attributes": {
         "connection_info": {
             "group": "primary",
-            "requirement": "required"
+            "requirement": "recommended"
         },
-        "process": {
-            "description": "The process that owns the socket.",
-            "group": "primary",
-            "requirement": "required"
-        },
-        "state": {
-            "description": "The state of the socket, normalized to the caption of the state_id value. In the case of 'Other', it is defined by the event source.",
+        "file": {
+            "description": "The file that is the target of the query.",
             "group": "primary",
             "requirement": "recommended"
         },
-        "state_id": {
-            "description": "The state of the socket.",
+        "folder": {
+            "description": "The folder that is the target of the query.",
             "group": "primary",
-            "requirement": "required",
+            "requirement": "recommended"
+        },
+        "group": {
+            "description": "The administrative group.",
+            "group": "primary",
+            "requirement": "recommended"
+        },
+        "job": {
+            "group": "primary",
+            "requirement": "recommended"
+        },
+        "kernel": {
+            "description": "The kernel object that pertains to the event.",
+            "group": "primary",
+            "requirement": "recommended"
+        },
+        "module": {
+            "group": "primary",
+            "requirement": "recommended"
+        },
+        "network_interfaces": {
+            "group": "primary",
+            "requirement": "recommended"
+        },
+        "peripheral_device": {
+            "group": "primary",
+            "requirement": "recommended"
+        },
+        "process": {
+            "description": "The process that loaded the module.",
+            "group": "primary",
+            "requirement": "recommended"
+        },
+        "service": {
+            "group": "primary",
+            "requirement": "recommended"
+        },
+        "session": {
+            "group": "primary",
+            "requirement": "recommended"
+        },
+        "startup_item": {
+            "group": "primary",
+            "requirement": "recommended"
+        },
+        "state": {
+            "caption": "Network Connection State",
+            "description": "The state of the socket, normalized to the caption of the state_id value. In the case of 'Other', it is defined by the event source.",
+            "group": "context",
+            "requirement": "optional"
+        },
+        "state_id": {
+            "caption": "Network Connection State ID",
+            "description": "The state of the socket.",
+            "group": "context",
+            "requirement": "optional",
             "enum": {
                 "0": {
                     "caption": "Unknown",
@@ -77,6 +121,33 @@
                     "description": "The socket connection has been closed by the local application and the remote peer simultaneously, and the remote peer has not yet acknowledged the close attempt of the local application."
                 }
             }
+        },
+        "user": {
+            "group": "primary",
+            "requirement": "recommended"
+        },
+        "users": {
+            "description": "The users that belong to the administrative group.",
+            "group": "context",
+            "requirement": "optional"
         }
+    },
+    "constraints": {
+        "just_one": [
+            "connection_info",
+            "file",
+            "folder",
+            "group",
+            "job",
+            "kernel",
+            "module",
+            "network_interfaces",
+            "peripheral_device",
+            "process",
+            "service",
+            "session",
+            "startup_item",
+            "user"
+        ]
     }
 }

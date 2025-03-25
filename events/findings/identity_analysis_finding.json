@@ -1,0 +1,39 @@
+{
+  "uid": 7,
+  "caption": "Identity Analysis Finding",
+  "description": "This finding represents an identity analysis result, which evaluates IAM policies, external access patterns, and identity configurations for potential security risks. <br><strong>Note: </strong>If the event producer is a security control, the <code>security_control</code> profile should be applied and its <code>attacks</code> information, if present, should be duplicated into the <code>finding_info</code> object. <br><strong>Note: </strong>If the Finding is an incident, i.e. requires incident workflow, also apply the <code>incident</code> profile  or aggregate this finding into an <code>Incident Finding</code>.",
+  "extends": "finding",
+  "name": "identity_analysis_finding",
+  "attributes": {
+    "external_access_analysis": {
+      "description": "Describes details about external access to the Identity that is the subject of the analysis.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "identity_analysis": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "policy_analysis": {
+      "description": "Describes the results of analysis performed on an IAM Policy.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "remediation": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "resources": {
+      "description": "Describes details about the Identity/Policy that are the subject of the analysis.",
+      "group": "primary",
+      "requirement": "recommended"
+    }
+  },
+  "constraints": {
+    "at_least_one": [
+      "external_access_analysis",
+      "identity_analysis",
+      "policy_analysis"
+    ]
+  }
+}

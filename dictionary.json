@@ -1160,7 +1160,7 @@
     },
     "condition": {
       "caption": "Condition",
-      "description": "The rule trigger condition for the rule. For example: SQL_INJECTION.",
+      "description": "The condition that was evaluated in a rule, policy. See specific usage.",
       "type": "string_t"
     },
     "confidence": {
@@ -5288,7 +5288,7 @@
         },
         "99": {
           "caption": "Other",
-          "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
+          "description": "The status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
         }
       }
     },
@@ -5904,6 +5904,63 @@
       "description": "The traits that describe characteristics, features of an entity. See specific usage.",
       "type": "trait",
       "is_array": true
+    },
+    "access_level": {
+      "caption": "Access Level",
+      "description": "The access level of an entity. See specific usage.",
+      "type": "string_t"
+    },
+    "credential_last_used_time": {
+      "caption": "Credential Last Used Time",
+      "description": "The time when a user's credential was last used.",
+      "type": "timestamp_t"
+    },
+    "external_access_analysis":{
+      "caption": "External Access Analysis",
+      "description": "Describes details about the analysis of access permissions granted to external identities through policies. See specific usage.",
+      "type": "external_access_analysis"
+    },
+    "granted_actions": {
+      "caption": "Granted Actions",
+      "description": "The actions that were granted to the user via an IAM policy or otherwise. See specific usage.",
+      "type": "string_t",
+      "is_array": true
+    },
+    "identity_analysis":{
+      "caption": "Identity Analysis",
+      "description": "The identity analysis object describes details about the analysis performed on an Identity i.e. AWS IAM User, GCP IAM Principal, etc.",
+      "type": "identity_analysis"
+    },
+    "password_last_used_time": {
+      "caption": "Password Last Used Time",
+      "description": "The time when a user's password was last used.",
+      "type": "timestamp_t"
+    },
+    "policy_analysis": {
+      "caption": "Policy Analysis",
+      "description": "The policy analysis object describes details about the analysis performed on a policy. See specific usage.",
+      "type": "policy_analysis"
+    },
+    "additional_restrictions":{
+      "caption": "Additional Restrictions",
+      "description": "The restrictions that apply to an entity, by the virtue of a policy. See specific usage.",
+      "type": "additional_restriction",
+      "is_array": true
+    },
+    "user_last_used_time": {
+      "caption": "User Last Used Time",
+      "description": "The time when a given user was last used.",
+      "type": "timestamp_t"
+    },
+    "unused_actions_num": {
+      "caption": "Unused Actions",
+      "description": "The number of unused actions. See specific usage.",
+      "type": "integer_t"
+    },
+    "unused_services_num": {
+      "caption": "Unused Services",
+      "description": "The number of unused services. See specific usage.",
+      "type": "integer_t"
     }
   },
   "types": {

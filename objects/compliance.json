@@ -10,7 +10,21 @@
     },
     "cis_benchmark_detail": {
       "requirement": "optional",
-      "description": "Information related to Center for Internet Security (CIS) Benchmark compliance. E.g., <code>CIS Microsoft Windows 10 Enterprise Benchmark v1.9.0, Level 1</code> or <code>CIS Amazon Web Services Foundations Benchmark v1.4.0, Level 2</code>"
+      "description": "Information related to Center for Internet Security (CIS) Benchmark compliance. E.g., <code>CIS Microsoft Windows 10 Enterprise Benchmark v1.9.0, Level 1</code> or <code>CIS Amazon Web Services Foundations Benchmark v1.4.0, Level 2</code>",
+      "references": [
+        {
+          "description": "CIS Benchmarks",
+          "url": "https://www.cisecurity.org/cis-benchmarks"
+        },
+        {
+          "description": "Windows 10 Benchmark",
+          "url": "https://www.cisecurity.org/benchmark/microsoft_windows_desktop"
+        },
+        {
+          "description": "AWS Foundations Benchmark",
+          "url": "https://www.cisecurity.org/benchmark/amazon_web_services"
+        }
+      ]
     },
     "compliance_references": {
       "requirement": "optional",
@@ -28,23 +42,89 @@
     },
     "control": {
       "requirement": "recommended",
-      "description": "A Control is prescriptive, prioritized set of best practices that strengthens cybersecurity posture. E.g., <code>CIS AWS Foundations Benchmark 1.2.0 - Control 2.1 - Ensure CloudTrail is enabled in all regions</code>"
+      "description": "A Control is prescriptive, prioritized set of best practices that strengthens cybersecurity posture. E.g., <code>CIS AWS Foundations Benchmark 1.2.0 - Control 2.1 - Ensure CloudTrail is enabled in all regions</code>",
+      "references": [
+        {
+          "description": "CIS AWS Foundations Benchmark 1.2.0",
+          "url": "https://www.cisecurity.org/benchmark/amazon_web_services"
+        },
+        {
+          "description": "CloudTrail Documentation",
+          "url": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html"
+        }
+      ]
     },
     "control_parameters": {
       "requirement": "optional",
-      "description": "The list of control parameters evaluated in a Compliance check. E.g., parameters for CloudTrail configuration might include <code>multiRegionTrailEnabled: true</code>, <code>logFileValidationEnabled: true</code>, and <code>requiredRegions: [us-east-1, us-west-2]</code>"
+      "description": "The list of control parameters evaluated in a Compliance check. E.g., parameters for CloudTrail configuration might include <code>multiRegionTrailEnabled: true</code>, <code>logFileValidationEnabled: true</code>, and <code>requiredRegions: [us-east-1, us-west-2]</code>",
+      "references": [
+        {
+          "description": "AWS CloudTrail Configuration Parameters",
+          "url": "https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_CreateTrail.html"
+        },
+        {
+          "description": "AWS Multi-Region CloudTrail Best Practices",
+          "url": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html"
+        },
+        {
+          "description": "CloudTrail Log File Validation",
+          "url": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-log-file-validation-intro.html"
+        }
+      ]
     },
     "disa_stig": {
       "requirement": "optional",
-      "description": "Information related to Defense Information Systems Agency (DISA) Security Technical Implementation Guide (STIG) compliance. E.g., <code>Windows 10 STIG Version 2 Release 3</code> or <code>Red Hat Enterprise Linux 8 STIG Version 1 Release 5</code>"
+      "description": "Information related to Defense Information Systems Agency (DISA) Security Technical Implementation Guide (STIG) compliance. E.g., <code>Windows 10 STIG Version 2 Release 3</code> or <code>Red Hat Enterprise Linux 8 STIG Version 1 Release 5</code>",
+      "references": [
+        {
+          "description": "DISA STIGs",
+          "url": "https://public.cyber.mil/stigs"
+        },
+        {
+          "description": "Windows 10 STIG",
+          "url": "https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=windows"
+        },
+        {
+          "description": "RHEL 8 STIG",
+          "url": "https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=unix-linux"
+        }
+      ]
     },
     "requirements": {
       "requirement": "optional",
-      "description": "The specific compliance requirements being evaluated. E.g., <code>PCI DSS Requirement 8.2.3 - Passwords must meet minimum complexity requirements</code> or <code>HIPAA Security Rule 164.312(a)(2)(iv) - Implement encryption and decryption mechanisms</code>"
+      "description": "The specific compliance requirements being evaluated. E.g., <code>PCI DSS Requirement 8.2.3 - Passwords must meet minimum complexity requirements</code> or <code>HIPAA Security Rule 164.312(a)(2)(iv) - Implement encryption and decryption mechanisms</code>",
+      "references": [
+        {
+          "description": "PCI DSS Standards",
+          "url": "https://www.pcisecuritystandards.org/document_library"
+        },
+        {
+          "description": "HIPAA Security Rule",
+          "url": "https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html"
+        }
+      ]
     },
     "standards": {
       "requirement": "recommended",
-      "description": "The regulatory or industry standards being evaluated for compliance. E.g., <code>PCI DSS 3.2.1</code>, <code>HIPAA Security Rule</code>, <code>NIST SP 800-53 Rev. 5</code>, or <code>ISO/IEC 27001:2013</code>"
+      "description": "The regulatory or industry standards being evaluated for compliance. E.g., <code>PCI DSS 3.2.1</code>, <code>HIPAA Security Rule</code>, <code>NIST SP 800-53 Rev. 5</code>, or <code>ISO/IEC 27001:2013</code>",
+      "references": [
+        {
+          "description": "PCI DSS 3.2.1",
+          "url": "https://www.pcisecuritystandards.org/document_library"
+        },
+        {
+          "description": "HIPAA Security Rule",
+          "url": "https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html"
+        },
+        {
+          "description": "NIST SP 800-53 Rev. 5",
+          "url": "https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final"
+        },
+        {
+          "description": "ISO/IEC 27001:2013",
+          "url": "https://www.iso.org/standard/54534.html"
+        }
+      ]
     },
     "status": {
       "description": "The resultant status of the compliance check normalized to the caption of the <code>status_id</code> value. In the case of 'Other', it is defined by the event source.",

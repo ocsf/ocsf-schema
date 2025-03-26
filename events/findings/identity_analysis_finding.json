@@ -6,16 +6,16 @@
   "name": "identity_analysis_finding",
   "attributes": {
     "external_access_analysis": {
-      "description": "Describes details about external access to the Identity that is the subject of the analysis.",
+      "description": "Describes results of analysis performed to determine external access to the Identity that is the subject of the analysis.",
       "group": "context",
       "requirement": "optional"
     },
-    "identity_activity_analysis": {
+    "identity_activity_details": {
       "group": "primary",
       "requirement": "recommended"
     },
-    "policy_analysis": {
-      "description": "Describes the results of analysis performed on an IAM Policy.",
+    "policy_analyses": {
+      "description": "Describes the results of analyses performed on the IAM Policies associated to the identity.",
       "group": "primary",
       "requirement": "recommended"
     },
@@ -24,7 +24,12 @@
       "requirement": "optional"
     },
     "resources": {
-      "description": "Describes details about the Identity/Policy that are the subject of the analysis.",
+      "description": "Describes details about the Identity that are the subject of the analysis.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "user": {
+      "description": "Describes details about the Identity that is the subject of the analysis.",
       "group": "primary",
       "requirement": "recommended"
     }
@@ -32,7 +37,7 @@
   "constraints": {
     "at_least_one": [
       "external_access_analysis",
-      "identity_analysis",
+      "identity_activity_details",
       "policy_analysis"
     ]
   }

@@ -1,0 +1,40 @@
+{
+  "caption": "CIS Benchmark Detail",
+  "description": "The CIS Benchmark Detail object contains information as defined by the Center for Internet Security (<a target='_blank' href='https://www.cisecurity.org/cis-benchmarks/'>CIS</a>) benchmarks. A CIS Benchmark provides technical guidance for securely configuring IT systems, software, networks, and cloud infrastructure.",
+  "extends": "object",
+  "name": "cis_benchmark_detail",
+  "attributes": {
+    "rule": {
+      "description": "The Rule object containing details about the CIS Benchmark check. This includes the rule name (e.g., <code>Ensure mounting of cramfs filesystems is disabled</code>), uid (the unique CIS identifier, e.g., <code>1.1.1.1</code>), description (detailed explanation of the security requirement), and version information.",
+      "requirement": "required"
+    },
+    "severity": {
+      "description": "The CIS Benchmark recommendation level as defined in the source document. Valid values are: <code>Level 1</code> (security-forward, essential settings), <code>Level 2</code> (security-focused environment, more restrictive), or <code>Scored/Not Scored</code> (whether compliance can be automatically checked).",
+      "requirement": "required"
+    },
+    "severity_id": {
+      "description": "The normalized severity identifier that maps CIS Benchmark levels to standard severity levels. <code>Level 2</code> maps to <code>4</code> (High), <code>Level 1</code> maps to <code>3</code> (Medium).",
+      "requirement": "required",
+      "sibling": "severity",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The severity is unknown."
+        },
+        "3": {
+          "caption": "Medium",
+          "description": "Maps to CIS Benchmark <code>Level 1</code> - Essential security settings recommended for all systems."
+        },
+        "4": {
+          "caption": "High",
+          "description": "Maps to CIS Benchmark <code>Level 2</code> - More restrictive and security-focused settings for sensitive environments."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The severity is not mapped. See the severity attribute, which contains a data source specific value."
+        }
+      }
+    }
+  }
+}

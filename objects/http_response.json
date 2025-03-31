@@ -4,6 +4,11 @@
   "extends": "object",
   "name": "http_response",
   "attributes": {
+    "body_length": {
+      "caption": "Response Body Length",
+      "description": "The actual length of the HTTP response body, in number of bytes, independent of a potentially existing Content-Length header.",
+      "requirement": "optional"
+    },
     "code": {
       "description": "The Hypertext Transfer Protocol (HTTP) status code returned from the web server to the client. For example, 200.",
       "requirement": "required"
@@ -22,17 +27,12 @@
       "description": "The length of the entire HTTP response, in number of bytes.",
       "requirement": "optional"
     },
-    "body_length": {
-      "caption": "Response Body Length",
-      "description": "The actual length of the HTTP response body, in number of bytes, independent of a potentially existing Content-Length header.",
-      "requirement": "optional"
-    },
     "message": {
       "requirement": "optional"
     },
     "status": {
-      "requirement": "optional",
-      "description": "The response status. For example: A successful HTTP status of 'OK' which corresponds to a code of 200."
+      "description": "The response status. For example: A successful HTTP status of 'OK' which corresponds to a code of 200.",
+      "requirement": "optional"
     }
   }
 }

@@ -1,9 +1,8 @@
 {
   "caption": "Session",
-  "name": "session",
   "description": "The Session object describes details about an authenticated session. e.g. Session Creation Time, Session Issuer.",
-  "references": [{"url": "https://d3fend.mitre.org/dao/artifact/d3f:Session/", "description": "D3FEND™ Ontology d3f:Session"}],
   "extends": "object",
+  "name": "session",
   "attributes": {
     "count": {
       "description": "The number of identical sessions spawned from the same source IP, destination IP, application, and content/threat type seen over a period of time.",
@@ -16,19 +15,19 @@
     "credential_uid": {
       "requirement": "optional"
     },
-    "expiration_time": {
-      "description": "The session expiration time.",
-      "requirement": "optional"
-    },
     "expiration_reason": {
       "description": "The reason which triggered the session expiration.",
       "requirement": "optional"
     },
+    "expiration_time": {
+      "description": "The session expiration time.",
+      "requirement": "optional"
+    },
+    "is_mfa": {
+      "requirement": "optional"
+    },
     "is_remote": {
       "requirement": "recommended"
-    },
-    "is_mfa":{
-      "requirement": "optional"
     },
     "is_vpn": {
       "requirement": "optional"
@@ -53,5 +52,11 @@
       "description": "The universally unique identifier of the session.",
       "requirement": "optional"
     }
-  }
+  },
+  "references": [
+    {
+      "description": "D3FEND™ Ontology d3f:Session",
+      "url": "https://d3fend.mitre.org/dao/artifact/d3f:Session/"
+    }
+  ]
 }

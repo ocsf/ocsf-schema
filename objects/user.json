@@ -1,16 +1,19 @@
 {
-  "caption": "User",
-  "name": "user",
-  "description": "The User object describes the characteristics of a user/person or a security principal.",
-  "references": [{"url": "https://d3fend.mitre.org/dao/artifact/d3f:UserAccount/", "description": "D3FEND™ Ontology d3f:UserAccount"}],
-  "extends": "_entity",
   "observable": 21,
+  "caption": "User",
+  "description": "The User object describes the characteristics of a user/person or a security principal.",
+  "extends": "_entity",
+  "name": "user",
   "attributes": {
     "account": {
       "description": "The user's account or the account associated with the user.",
       "requirement": "optional"
     },
     "credential_uid": {
+      "requirement": "optional"
+    },
+    "display_name": {
+      "description": "The display name of the user, as reported by the product.",
       "requirement": "optional"
     },
     "domain": {
@@ -24,6 +27,7 @@
       "requirement": "optional"
     },
     "full_name": {
+      "description": "The full name of the user, as reported by the product.",
       "requirement": "optional"
     },
     "groups": {
@@ -90,8 +94,8 @@
     },
     "uid": {
       "description": "The unique user identifier. For example, the Windows user SID, ActiveDirectory DN or AWS user ARN.",
-      "requirement": "recommended",
-      "observable": 31
+      "observable": 31,
+      "requirement": "recommended"
     },
     "uid_alt": {
       "description": "The alternate user identifier. For example, the Active Directory user GUID or AWS user Principal ID.",
@@ -104,5 +108,11 @@
       "name",
       "uid"
     ]
-  }
+  },
+  "references": [
+    {
+      "description": "D3FEND™ Ontology d3f:UserAccount",
+      "url": "https://d3fend.mitre.org/dao/artifact/d3f:UserAccount/"
+    }
+  ]
 }

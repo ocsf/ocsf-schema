@@ -5,13 +5,13 @@
   "description": "Email File Activity events report files within emails.",
   "extends": "base_event",
   "name": "email_file_activity",
+  "@deprecated": {
+    "message": "Use the <code>Email Activity</code> class with the <code>email.files[]</code> array instead.",
+    "since": "1.3.0"
+  },
   "attributes": {
-    "$include": [
-      "profiles/host.json",
-      "profiles/security_control.json"
-    ],
     "activity_id": {
-      "requirement": "optional",
+      "requirement": "required",
       "enum": {
         "1": {
           "caption": "Send"
@@ -27,16 +27,16 @@
     },
     "email_uid": {
       "group": "primary",
-      "requirement": "required"
+      "requirement": "required",
+      "@deprecated": {
+        "message": "Use the <code>email.uid</code> attribute instead.",
+        "since": "1.4.0"
+      }
     },
     "file": {
       "description": "The email file attachment.",
       "group": "primary",
       "requirement": "required"
     }
-  },
-  "profiles": [
-    "host",
-    "security_control"
-  ]
+  }
 }

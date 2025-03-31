@@ -1,9 +1,8 @@
 {
   "caption": "Digital Certificate",
-  "name": "certificate",
   "description": "The Digital Certificate, also known as a Public Key Certificate, object contains information about the ownership and usage of a public key. It serves as a means to establish trust in the authenticity and integrity of the public key and the associated entity.",
   "extends": "object",
-  "references": [{"url": "https://d3fend.mitre.org/dao/artifact/d3f:Certificate/", "description": "D3FEND™ Ontology d3f:Certificate."}],
+  "name": "certificate",
   "attributes": {
     "created_time": {
       "description": "The time when the certificate was created.",
@@ -15,19 +14,24 @@
     },
     "fingerprints": {
       "description": "The fingerprint list of the certificate.",
-      "requirement": "required"
+      "requirement": "recommended"
+    },
+    "is_self_signed": {
+      "requirement": "recommended"
     },
     "issuer": {
       "caption": "Issuer Distinguished Name",
       "description": "The certificate issuer distinguished name.",
       "requirement": "required"
     },
-    "is_self_signed": {
-      "requirement": "recommended"
+    "sans": {
+      "caption": "Subject Alternative Names",
+      "description": "The list of subject alternative names that are secured by a specific certificate.",
+      "requirement": "optional"
     },
     "serial_number": {
-      "description": "The serial number of the certificate used to create the digital signature.",
       "caption": "Certificate Serial Number",
+      "description": "The serial number of the certificate used to create the digital signature.",
       "requirement": "required"
     },
     "subject": {
@@ -43,5 +47,11 @@
       "description": "The certificate version.",
       "requirement": "recommended"
     }
-  }
+  },
+  "references": [
+    {
+      "description": "D3FEND™ Ontology d3f:Certificate.",
+      "url": "https://d3fend.mitre.org/dao/artifact/d3f:Certificate/"
+    }
+  ]
 }

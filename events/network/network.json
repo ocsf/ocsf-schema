@@ -6,9 +6,7 @@
   "name": "network",
   "attributes": {
     "$include": [
-      "profiles/host.json",
       "profiles/network_proxy.json",
-      "profiles/security_control.json",
       "profiles/load_balancer.json"
     ],
     "app_name": {
@@ -22,7 +20,7 @@
     "dst_endpoint": {
       "description": "The responder (server) in a network connection.",
       "group": "primary",
-      "requirement": "required"
+      "requirement": "recommended"
     },
     "ja4_fingerprint_list": {
       "group": "context",
@@ -46,10 +44,14 @@
       "requirement": "recommended"
     }
   },
+  "constraints": {
+    "at_least_one": [
+      "dst_endpoint",
+      "src_endpoint"
+    ]
+  },
   "profiles": [
-    "host",
     "network_proxy",
-    "security_control",
     "load_balancer"
   ]
 }

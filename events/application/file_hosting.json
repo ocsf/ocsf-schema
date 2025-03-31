@@ -1,10 +1,23 @@
 {
   "uid": 6,
   "caption": "File Hosting Activity",
-  "description": "File Hosting Activity events report the actions taken by file management applications, including file sharing servers like Sharepoint and services such as Box, MS OneDrive, or Google Drive.",
+  "description": "File Hosting Activity events report the actions taken by file management applications, including file sharing servers like Sharepoint and services such as Box, MS OneDrive, Google Drive, or network file share services.",
   "extends": "application",
   "name": "file_hosting",
   "attributes": {
+    "access_list": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "access_mask": {
+      "description": "The sum of hexadecimal values of requested access rights.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "access_result": {
+      "group": "context",
+      "requirement": "optional"
+    },
     "activity_id": {
       "enum": {
         "1": {
@@ -70,13 +83,18 @@
         "16": {
           "caption": "Unsync",
           "description": "Mark a file or folder to not sync with a computer."
+        },
+        "17": {
+          "caption": "Access Check",
+          "description": "Access check for a file. The <code>security_control</code> profile can be used to add the access check results."
         }
       }
     },
     "actor": {
       "description": "The actor that performed the activity on the target file.",
       "group": "primary",
-      "requirement": "required"
+      "requirement": "required",
+      "profile": null
     },
     "connection_info": {
       "group": "context",
@@ -98,6 +116,19 @@
     },
     "file_result": {
       "description": "The resulting file object when the activity was allowed and successful.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "share": {
+      "description": "The share name.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "share_type": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "share_type_id": {
       "group": "context",
       "requirement": "optional"
     },

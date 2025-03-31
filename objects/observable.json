@@ -5,8 +5,8 @@
   "name": "observable",
   "attributes": {
     "name": {
-      "description": "The full name of the observable attribute. The <code>name</code> is a pointer/reference to an attribute within the event data. For example: <code>file.name</code>.",
-      "requirement": "required"
+      "description": "The full name of the observable attribute. The <code>name</code> is a pointer/reference to an attribute within the OCSF event data. For example: <code>file.name</code>.",
+      "requirement": "recommended"
     },
     "reputation": {
       "requirement": "optional"
@@ -17,7 +17,6 @@
     },
     "type_id": {
       "description": "The observable value type identifier.",
-      "requirement": "required",
       "enum": {
         "0": {
           "caption": "Unknown",
@@ -27,11 +26,18 @@
           "caption": "Other",
           "description": "The observable data type is not mapped. See the <code>type</code> attribute, which may contain data source specific value."
         }
-      }
+      },
+      "requirement": "required"
     },
     "value": {
       "description": "The value associated with the observable attribute. The meaning of the value depends on the observable type.<br/>If the <code>name</code> refers to a scalar attribute, then the <code>value</code> is the value of the attribute.<br/>If the <code>name</code> refers to an object attribute, then the <code>value</code> is not populated.",
       "requirement": "optional"
     }
-  }
+  },
+  "references": [
+    {
+      "description": "OCSF Observables FAQ",
+      "url": "https://github.com/ocsf/ocsf-docs/blob/main/Articles/Defining and Using Observables.md"
+    }
+  ]
 }

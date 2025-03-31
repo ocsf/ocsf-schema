@@ -1,0 +1,51 @@
+{
+  "caption": "Aircraft",
+  "description": "The Aircraft object represents any aircraft or otherwise airborne asset such as an unmanned system, airplane, balloon, spacecraft, or otherwise. The Aircraft object is intended to normalized data captured or otherwise logged from active radar, passive radar, multi-spectral systems, or the Automatic Dependant Broadcast - Surveillance (ADS-B), and/or Mode S systems.",
+  "extends": "_entity",
+  "name": "aircraft",
+  "attributes": {
+    "location": {
+      "requirement": "recommended"
+    },
+    "model": {
+      "description": "The model name of the aircraft or unmanned system.",
+      "requirement": "optional"
+    },
+    "name": {
+      "description": "The name of the aircraft, such as the such as the flight name or callsign.",
+      "requirement": "recommended"
+    },
+    "serial_number": {
+      "description": "The serial number of the aircraft.",
+      "requirement": "optional"
+    },
+    "speed": {
+      "requirement": "optional"
+    },
+    "speed_accuracy": {
+      "requirement": "optional"
+    },
+    "track_direction": {
+      "requirement": "optional"
+    },
+    "uid": {
+      "description": "The primary identification identifier for an aircraft, such as the 24-bit International Civil Aviation Organization (ICAO) identifier of the aircraft, as 6 hex digits.",
+      "requirement": "recommended"
+    },
+    "uid_alt": {
+      "description": "A secondary identification identifier for an aircraft, such as the 4-digit squawk (octal representation).",
+      "requirement": "optional"
+    },
+    "vertical_speed": {
+      "requirement": "optional"
+    }
+  },
+  "constraints": {
+    "at_least_one": [
+      "name",
+      "serial_number",
+      "uid",
+      "uid_alt"
+    ]
+  }
+}

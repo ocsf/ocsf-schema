@@ -1,0 +1,80 @@
+{
+  "uid": 2,
+  "caption": "Airborne Broadcast Activity",
+  "description": "Airborne Broadcast Activity events report the activity of any aircraft or unmanned system as reported and tracked by Automatic Dependent Surveillance - Broadcast (ADS-B) receivers. Based on the ADS-B standards described in <a target='_blank' href='https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91#91.225'>Code of Federal Regulations (CFR) Title 14 Chapter I Subchapter F Part 91</a> and in other general Federal Aviation Administration (FAA) supplemental orders and guidance described <a target='_blank' href='https://www.faa.gov/about/office_org/headquarters_offices/avs/offices/afx/afs/afs400/afs410/ads-b'>here</a>.",
+  "extends": "unmanned_systems",
+  "name": "airborne_broadcast_activity",
+  "attributes": {
+    "activity_id": {
+      "group": "primary",
+      "requirement": "required",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The event activity is unknown."
+        },
+        "1": {
+          "caption": "Capture",
+          "description": "ADS-B information is being captured (collected)."
+        },
+        "2": {
+          "caption": "Record",
+          "description": "ADS-B information is being recorded, for example by a standalone transceiver."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The event activity is not mapped. See the <code>activity_name</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
+    "aircraft": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "dst_endpoint": {
+      "description": "The destination network endpoint for the ADS-B system, if telemetry is being remotely broadcasted.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "protocol_name": {
+      "caption": "ADS-B Protocol",
+      "description": "The specific protocol associated with the ADS-B system. E.g. <code>ADS-B UAT</code> or <code>ADS-B ES</code>.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "rssi": {
+      "description": "Recent average RSSI (signal power) measured in dbFS. This value will always be negative, e.g., <code>-87.13</code>.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "src_endpoint": {
+      "description": "The source network endpoint for the ADS-B system.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "traffic": {
+      "description": "Traffic refers to the amount of data transmitted from a ADS-B remote monitoring system at a given point of time. Ex: <code>bytes_in</code> and <code>bytes_out</code>.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "unmanned_aerial_system": {
+      "group": "primary",
+      "requirement": "required"
+    },
+    "unmanned_system_operating_area": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "unmanned_system_operator": {
+      "group": "primary",
+      "requirement": "required"
+    }
+  },
+  "constraints": {
+    "at_least_one": [
+      "aircraft",
+      "unmanned_aerial_system",
+      "unmanned_system_operating_area"
+    ]
+  }
+}

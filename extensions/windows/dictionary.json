@@ -3,14 +3,24 @@
   "description": "The Attribute Dictionary defines schema attributes and includes references to the events and objects in which they are used.",
   "name": "dictionary",
   "attributes": {
-    "reg_key": {
-      "caption": "Registry Key",
-      "description": "The registry key.",
-      "type": "reg_key"
+    "load_order_group": {
+      "caption": "Load Order Group",
+      "description": "The name of the load ordering group of which this service is a member.",
+      "type": "string_t"
     },
     "prev_reg_key": {
       "caption": "Previous Registry Key",
       "description": "The registry key before the mutation",
+      "type": "reg_key"
+    },
+    "prev_reg_value": {
+      "caption": "Previous Registry Value",
+      "description": "The registry value before the mutation",
+      "type": "reg_value"
+    },
+    "reg_key": {
+      "caption": "Registry Key",
+      "description": "The registry key.",
       "type": "reg_key"
     },
     "reg_value": {
@@ -23,21 +33,6 @@
       "description": "The prefetch file run count.",
       "type": "integer_t"
     },
-    "prev_reg_value": {
-      "caption": "Previous Registry Value",
-      "description": "The registry value before the mutation",
-      "type": "reg_value"
-    },
-    "win_resource": {
-      "caption": "Windows Resource",
-      "description": "The Windows resource object that was accessed, such as a mutant or timer.",
-      "type": "win_resource"
-    },
-    "load_order_group": {
-      "caption": "Load Order Group",
-      "description": "The name of the load ordering group of which this service is a member.",
-      "type": "string_t"
-    },
     "service_category": {
       "caption": "Service Category",
       "description": "The service category, normalized to the caption of the service_category_id value. In the case of 'Other', it is defined by the event source.",
@@ -48,7 +43,7 @@
       "description": "The normalized identifier of the service category.",
       "sibling": "service_category",
       "type": "integer_t",
-      "enum":{
+      "enum": {
         "0": {
           "caption": "Unknown",
           "description": "The service category is unknown."
@@ -83,7 +78,7 @@
       "description": "The normalized identifier of the service error control.",
       "sibling": "service_error_control",
       "type": "integer_t",
-      "enum":{
+      "enum": {
         "0": {
           "caption": "Unknown",
           "description": "The service error control is unknown."
@@ -110,6 +105,11 @@
         }
       }
     },
+    "service_start_name": {
+      "caption": "Service Start Name",
+      "description": "For a user mode service, this attribute represents the name of the account under which the service is run. For a kernel mode driver, this attribute represents the object name used to load the driver.",
+      "type": "string_t"
+    },
     "service_start_type": {
       "caption": "Service Start Type",
       "description": "The service start type, normalized to the caption of the <code>service_start_type_id</code> value. In the case of 'Other', it is defined by the event source.",
@@ -120,7 +120,7 @@
       "description": "The normalized identifier of the service start type.",
       "sibling": "service_start_type",
       "type": "integer_t",
-      "enum":{
+      "enum": {
         "0": {
           "caption": "Unknown",
           "description": "The service start type is unknown."
@@ -151,11 +151,6 @@
         }
       }
     },
-    "service_start_name": {
-      "caption": "Service Start Name",
-      "description": "For a user mode service, this attribute represents the name of the account under which the service is run. For a kernel mode driver, this attribute represents the object name used to load the driver.",
-      "type": "string_t"
-    },
     "service_type": {
       "caption": "Service Type",
       "description": "The service type, normalized to the caption of the service_type_id value. In the case of 'Other', it is defined by the event source.",
@@ -166,7 +161,7 @@
       "description": "The normalized identifier of the service type.",
       "sibling": "service_type",
       "type": "integer_t",
-      "enum":{
+      "enum": {
         "0": {
           "caption": "Unknown",
           "description": "The service type is unknown."
@@ -192,6 +187,11 @@
           "description": "The service type is not mapped. See the <code>service_type</code> attribute, which contains an event source specific value."
         }
       }
+    },
+    "win_resource": {
+      "caption": "Windows Resource",
+      "description": "The Windows resource object that was accessed, such as a mutant or timer.",
+      "type": "win_resource"
     },
     "win_service": {
       "caption": "Windows Service",

@@ -2,16 +2,12 @@
   "uid": 9,
   "caption": "Email Activity",
   "category": "network",
-  "description": "Email events report activities of emails.",
+  "description": "Email Activity events report SMTP protocol and email activities including those with embedded URLs and files. See the <code>Email</code> object for details.",
   "extends": "base_event",
   "name": "email_activity",
   "attributes": {
-    "$include": [
-      "profiles/host.json",
-      "profiles/security_control.json"
-    ],
     "activity_id": {
-      "requirement": "optional",
+      "requirement": "required",
       "enum": {
         "1": {
           "caption": "Send"
@@ -25,7 +21,13 @@
         },
         "4": {
           "caption": "Trace",
-          "description": "Follow an email message as it travels through an organization. For example: <a target='_blank' href='https://learn.microsoft.com/en-us/Exchange/monitoring/trace-an-email-message/message-trace-modern-eac'>O365 Email Message Trace</a>."
+          "description": "Follow an email message as it travels through an organization. The <code>message_trace_uid</code> should be populated when selected.",
+          "references": [
+            {
+              "description": "For example Office 365 Email Message Trace",
+              "url": "href='https://learn.microsoft.com/en-us/Exchange/monitoring/trace-an-email-message/message-trace-modern-eac"
+            }
+          ]
         }
       }
     },
@@ -37,6 +39,11 @@
     "banner": {
       "group": "context",
       "requirement": "optional"
+    },
+    "command": {
+      "description": "The command issued by the initiator (client), such as SMTP HELO or EHLO.",
+      "group": "primary",
+      "requirement": "recommended"
     },
     "direction": {
       "description": "The direction of the email, as defined by the <code>direction_id</code> value.",
@@ -82,19 +89,28 @@
       "group": "primary",
       "requirement": "recommended"
     },
+    "message_trace_uid": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "protocol_name": {
+      "description": "The Protocol Name specifies the email communication protocol, such as SMTP, IMAP, or POP3.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
     "smtp_hello": {
       "description": "The value of the SMTP HELO or EHLO command sent by the initiator (client).",
       "group": "primary",
-      "requirement": "recommended"
+      "requirement": "recommended",
+      "@deprecated": {
+        "message": "Use the <code>command</code> attribute instead.",
+        "since": "1.4.0"
+      }
     },
     "src_endpoint": {
       "description": "The initiator (client) sending the email.",
       "group": "primary",
       "requirement": "recommended"
     }
-  },
-  "profiles": [
-    "host",
-    "security_control"
-  ]
+  }
 }

@@ -1,26 +1,39 @@
 {
-  "caption": "MITRE ATT&CK®",
-  "description": "The <a target='_blank' href='https://attack.mitre.org'>MITRE ATT&CK®</a> object describes the tactic, technique & sub-technique associated to an attack as defined in <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK® Matrix</a>.",
+  "caption": "MITRE ATT&CK® & ATLAS™",
+  "description": "The MITRE ATT&CK® & ATLAS™ object describes the tactic, technique, sub-technique & mitigation associated to an attack.",
   "extends": "object",
   "name": "attack",
   "attributes": {
-    "sub_technique": {
+    "mitigation": {
       "requirement": "optional"
     },
+    "sub_technique": {
+      "requirement": "recommended"
+    },
     "tactic": {
-      "requirement": "optional"
+      "requirement": "recommended"
     },
     "tactics": {
       "requirement": "optional"
     },
     "technique": {
-      "requirement": "optional"
+      "requirement": "recommended"
     },
     "version": {
-      "description": "The <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK® Matrix</a> version.",
+      "description": "The ATT&CK® or ATLAS™ Matrix version.",
       "requirement": "recommended"
     }
   },
+  "references": [
+    {
+      "description": "ATT&CK® Matrix",
+      "url": "https://attack.mitre.org/wiki/ATT&CK_Matrix"
+    },
+    {
+      "description": "ATLAS™ Matrix",
+      "url": "https://atlas.mitre.org/matrices/ATLAS"
+    }
+  ],
   "constraints": {
     "at_least_one": [
       "tactic",

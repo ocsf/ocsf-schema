@@ -5,6 +5,11 @@
     "extends": "finding",
     "name": "application_security_posture_finding",
     "attributes": {
+      "application": {
+        "caption": "Related Application",
+        "group": "primary",
+        "requirement": "recommended"
+      },
       "compliance": {
         "caption": "Related Compliance",
         "group": "primary",
@@ -23,11 +28,6 @@
         "group": "context",
         "requirement": "recommended"
       },
-      "sbom": {
-        "caption": "Related SBOM",
-        "group": "context",
-        "requirement": "recommended"
-      },
       "vulnerabilities": {
         "group": "primary",
         "requirement": "recommended"
@@ -35,6 +35,7 @@
     },
     "constraints": {
       "at_least_one": [
+        "application",
         "compliance",
         "remediation",
         "vulnerabilities"

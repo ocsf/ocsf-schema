@@ -71,6 +71,7 @@ Thankyou! -->
   1. Added `mitigation` object. #1348
   1. Added `analysis_target` object. #1371
   1. Added `malware_scan_info` object. #1373
+  1. Added `application` object. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
   
 ### Improved
 * #### Event Classes

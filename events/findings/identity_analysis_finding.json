@@ -1,0 +1,44 @@
+{
+  "uid": 7,
+  "caption": "Identity Analysis Finding",
+  "description": "This finding represents an identity analysis result, which evaluates IAM policies, external access patterns, and identity configurations for potential security risks. <br><strong>Note: </strong>If the event producer is a security control, the <code>security_control</code> profile should be applied and its <code>attacks</code> information, if present, should be duplicated into the <code>finding_info</code> object. <br><strong>Note: </strong>If the Finding is an incident, i.e. requires incident workflow, also apply the <code>incident</code> profile  or aggregate this finding into an <code>Incident Finding</code>.",
+  "extends": "finding",
+  "name": "identity_analysis_finding",
+  "attributes": {
+    "external_access_analysis": {
+      "description": "Describes results of analysis performed to determine external access, to the Identity that is the subject of the analysis.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "identity_activity_details": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "policy_analyses": {
+      "description": "Describes the results of analyses performed on the IAM Policies associated to the identity.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "remediation": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "resources": {
+      "description": "Describes identifiers, type, and other high level details about the resources (identity, policies, etc) that are the subject of the analysis. Note: Specific details about the target identity, can be populated using the <code>user</code> attribute.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "user": {
+      "description": "Describes specific details about the Identity that is the subject of the analysis.",
+      "group": "primary",
+      "requirement": "recommended"
+    }
+  },
+  "constraints": {
+    "at_least_one": [
+      "external_access_analysis",
+      "identity_activity_details",
+      "policy_analyses"
+    ]
+  }
+}

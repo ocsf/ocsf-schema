@@ -1,0 +1,28 @@
+{
+  "caption": "Policy Analysis",
+  "description": "The Policy Analysis object describes details about the analysis performed on a Policy i.e. AWS IAM Policy, GCP IAM Policy, etc.",
+  "extends": "object",
+  "name": "policy_analysis",
+  "attributes": {
+    "condition_keys": {
+      "description": "The condition keys that were evaluated in the policy. E.g. <code>aws:SourceIp:1.2.3.4</code>",
+      "requirement": "optional"
+    },
+    "granted_actions": {
+      "description": "The actions that were granted by the policy.",
+      "requirement": "optional"
+    },
+    "policy": {
+      "description": "Details about the policy that was the subject of the analysis.",
+      "requirement": "recommended"
+    },
+    "unused_actions_count": {
+      "description": "The number of unused actions in the policy.",
+      "requirement": "optional"
+    },
+    "unused_services_count": {
+      "description": "The number of unused services in the policy. E.g. AWS S3, SQS, IAM etc.",
+      "requirement": "optional"
+    }
+  }
+}

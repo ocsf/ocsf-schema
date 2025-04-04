@@ -1,0 +1,20 @@
+{
+  "caption": "External Access Analysis",
+  "description": "Analysis of access permissions granted to external identities through policies.",
+  "extends": "object",
+  "name": "external_access_analysis", 
+  "attributes": {
+    "access_level": {
+      "description": "The generalized access level (permissions) granted to the external identity through the analyzed policy. Common examples include Read, Write, List, Delete, etc. This represents the effective permissions after policy evaluation.",
+      "requirement": "recommended"
+    },
+    "accessor": {
+      "description": "The external identity (user, role, service principal etc.) that is granted access through the analyzed policy. This identifies who can exercise the permissions.",
+      "requirement": "required"
+    },
+    "additional_restrictions": {
+      "description": "Details about supplementary restrictions and guardrails that may limit the granted access, applied through additional policy types such as Resource Control Policies (RCPs), Service Control Policies (SCPs) in AWS, or other policy constraints.",
+      "requirement": "optional"
+    }
+  }
+}

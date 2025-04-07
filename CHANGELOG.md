@@ -42,6 +42,8 @@ Thankyou! -->
 ## [Unreleased]
 
 ### Added
+* #### Event Classes
+  1. Added `Identity Analysis Finding` to `Findings` Category. #1389
 * #### Dictionary Attributes 
   1. Added `boot_uid` as a `string_t`. [#1335](https://github.com/ocsf/ocsf-schema/pull/1335)
   1. Added `cpid` as a `uuid_t`. [#1246](https://github.com/ocsf/ocsf-schema/pull/1246)
@@ -59,6 +61,7 @@ Thankyou! -->
   1. Added `observation_parameter`, `observation_type`, `observed_pattern` as `string_t` and `occurrences` as an array of `occurrence_details`. #1358
   1. Added `analysis_targets` as an array of type `analysis_target`. #1371
   1. Added `num_volumes`, `num_infected` as `int_t`, `unique_malware_count`, `volume` as `string_t`. #1373
+  1. Added `access_level` as `string_t`, `granted_actions` as array of `string_t`, `credential_last_used_time`, `password_last_used_time` as `timestamp_t`, `unused_actions_count`, `unused_services_count` as `int_t`. #1389
   
 * #### Objects
   1. Added `assessment` object to capture evaluations/assessments of configurations/signals. #1343
@@ -68,6 +71,7 @@ Thankyou! -->
   1. Added `mitigation` object. #1348
   1. Added `analysis_target` object. #1371
   1. Added `malware_scan_info` object. #1373
+  1. Added `external_access_analysis`, `identity_activity_details`, `policy_analysis`, `additional_restriction` objects. #1389
 
 ### Improved
 * #### Event Classes
@@ -101,6 +105,7 @@ Thankyou! -->
   1. Updated `timespan` to include a Time Window `type_id` and `start_time`, `end_time` to the `at_least_one` constraint. #1372
   1. Added `mitigation` to `attack` object. #1348
   1. Added `timespan` object to `observation` object. #1371
+  1. Added `traits` to `finding_info` object. #1389
 * #### Profiles
   1. Added `malware_scan_info` to `security_control` profile. #1373
 

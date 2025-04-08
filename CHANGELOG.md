@@ -58,7 +58,7 @@ Thankyou! -->
   1. Added `observation_parameter`, `observation_type`, `observed_pattern` as `string_t` and `occurrences` as an array of `occurrence_details`. #1358
   1. Added `analysis_targets` as an array of type `analysis_target`. #1371
   1. Added `num_volumes`, `num_infected` as `int_t`, `unique_malware_count`, `volume` as `string_t`. #1373
-  1. Added `transformation_info` array #1386
+  1. Added `transformations` array #1386
   
 * #### Objects
   1. Added `assessment` object to capture evaluations/assessments of configurations/signals. #1343
@@ -68,7 +68,7 @@ Thankyou! -->
   1. Added `mitigation` object. #1348
   1. Added `analysis_target` object. #1371
   1. Added `malware_scan_info` object. #1373
-  1. Added `transformation_info` object #1386
+  1. Added `transformations` object #1386
   
 ### Improved
 * #### Event Classes

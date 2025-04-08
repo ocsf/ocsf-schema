@@ -259,6 +259,11 @@
       "description": "The application that reported the event.",
       "type": "product"
     },
+    "application": {
+      "caption": "Application",
+      "description": "An Application describes the details for an inventoried application as reported by an Application Security tool or other Developer-centric tooling. Applications can be defined as Kubernetes resources, Containerized resources, or application hosting-specific cloud sources such as AWS Elastic BeanStalk, AWS Lightsail, or Azure Logic Apps.",
+      "type": "application"
+    },
     "app_name": {
       "caption": "Application Name",
       "description": "The name of the application associated with the event or object.",
@@ -1606,6 +1611,11 @@
       ],
       "is_array": true
     },
+    "dependency_chain": {
+      "caption": "Dependency Chain",
+      "description": "Information about the chain of dependencies related to the issue as reported by an Application Security or Vulnerability Management tool. E.g., <code>serverless-offline -> @serverless/utils -> memoizee -> es5-ext</code>.",
+      "type": "string_t"
+    },
     "depth": {
       "caption": "CVSS Depth",
       "description": "The CVSS depth represents a depth of the equation used to calculate CVSS score.",
@@ -2142,6 +2152,11 @@
       "description": "The encryption details of a file or other content. See specific usage.",
       "type": "encryption_details"
     },
+    "end_column": {
+      "caption": "End Column",
+      "description": "The end column number. See specific usage.",
+      "type": "integer_t"
+    },
     "end_line": {
       "caption": "End Line",
       "description": "The line number of the last line of code block identified as vulnerable.",
@@ -2244,6 +2259,21 @@
       "caption": "Exploit Last Seen Time",
       "description": "The time when the exploit was most recently observed.",
       "type": "timestamp_t"
+    },
+    "exploit_ref_url": {
+      "caption": "Exploit URL",
+      "description": "The URL of the exploit code or Proof-of-Concept (PoC).",
+      "type": "url_t"
+    },
+    "exploit_requirement": {
+      "caption": "Exploit Requirement",
+      "description": "The requirement description related to any constraints around exploit execution.",
+      "type": "string_t"
+    },
+    "exploit_type": {
+      "caption": "Exploit Type",
+      "description": "The categorization or type of Exploit. E.g., <code>Network</code> or <code>Physical</code>.",
+      "type": "string_t"
     },
     "ext": {
       "caption": "Extension",
@@ -3242,6 +3272,11 @@
       "description": "The name or identifier of the license applied on package or software. See <a target='_blank' href='https://spdx.org/licenses/'>SPDX License List</a>.",
       "type": "string_t"
     },
+    "license_url": {
+      "caption": "Software License URL",
+      "description": "The URL pointing to the license applied on package or software. This is typically a <code>LICENSE.md</code> file within a repository.",
+      "type": "url_t"
+    },
     "lineage": {
       "caption": "Lineage",
       "description": "The lineage of the process, represented by a list of paths for each ancestor process. For example: <code>['/usr/sbin/sshd', '/usr/bin/bash', '/usr/bin/whoami']</code>.",
@@ -3852,6 +3887,11 @@
       "caption": "Package Manager",
       "description": "The software packager manager utilized to manage a package on a system, e.g. npm, yum, dpkg etc.",
       "type": "string_t"
+    },
+    "package_manager_url": {
+      "caption": "Package Manager URL",
+      "description": "The URL of the package or library at the package manager, or the specific URL or URI of an internal package manager link such as <code>AWS CodeArtifact</code> or <code>Artifactory</code>.",
+      "type": "url_t"
     },
     "packages": {
       "caption": "Software Packages",
@@ -5167,6 +5207,11 @@
       "description": "The start address of the execution.",
       "type": "string_t"
     },
+    "start_column": {
+      "caption": "Start Column",
+      "description": "The start column number. See specific usage.",
+      "type": "integer_t"
+    },
     "start_line": {
       "caption": "Start Line",
       "description": "The line number of the first line of code block identified as vulnerable.",
@@ -5695,6 +5740,12 @@
       "caption": "Untruncated Size",
       "description": "The size in bytes of an attribute before truncation. See specific usage.",
       "type": "integer_t"
+    },
+    "uri": {
+      "caption": "URI",
+      "description": "A Uniform Resource Identifier (URI) is a string of characters that identifies a resource on the Internet. URIs can identify physical resources, like webpages and documents. See specific usage.",
+      "type": "url_t",
+      "references": [{"url": "https://datatracker.ietf.org/doc/html/rfc3986", "description": "RFC 3986"}]
     },
     "url": {
       "caption": "URL",

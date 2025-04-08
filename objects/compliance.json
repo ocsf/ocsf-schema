@@ -8,35 +8,17 @@
       "description": "A list of assessments associated with the compliance requirements evaluation.",
       "requirement": "optional"
     },
-    "cis_benchmark_detail": {
-      "requirement": "optional",
-      "description": "Information related to Center for Internet Security (CIS) Benchmark compliance. E.g., <code>CIS Microsoft Windows 10 Enterprise Benchmark v1.9.0, Level 1</code> or <code>CIS Amazon Web Services Foundations Benchmark v1.4.0, Level 2</code>",
-      "references": [
-        {
-          "description": "CIS Benchmarks",
-          "url": "https://www.cisecurity.org/cis-benchmarks"
-        },
-        {
-          "description": "Windows 10 Benchmark",
-          "url": "https://www.cisecurity.org/benchmark/microsoft_windows_desktop"
-        },
-        {
-          "description": "AWS Foundations Benchmark",
-          "url": "https://www.cisecurity.org/benchmark/amazon_web_services"
-        }
-      ]
-    },
     "compliance_references": {
       "requirement": "optional",
       "@deprecated": {
-        "message": "Use CIS Benchmark, DISA STIG, or Assessments instead.",
+        "message": "Use the Compliance object with Rule and Severity attributes or Assessments instead.",
         "since": "1.5.0"
       }
     },
     "compliance_standards": {
       "requirement": "optional",
       "@deprecated": {
-        "message": "Use CIS Benchmark, DISA STIG, or Assessments instead.",
+        "message": "Use the Compliance object with Rule and Severity attributes or Assessments instead.",
         "since": "1.5.0"
       }
     },
@@ -72,21 +54,17 @@
         }
       ]
     },
-    "disa_stig": {
-      "requirement": "optional",
-      "description": "Information related to Defense Information Systems Agency (DISA) Security Technical Implementation Guide (STIG) compliance. E.g., <code>Windows 10 STIG Version 2 Release 3</code> or <code>Red Hat Enterprise Linux 8 STIG Version 1 Release 5</code>",
+    "rule": {
+      "description": "The Rule object containing details about the compliance check. This includes the rule name (e.g., CIS: <code>Ensure mounting of cramfs filesystems is disabled</code> or DISA STIG: descriptive title of the check), uid (the unique identifier, such as CIS identifier <code>1.1.1.1</code> or DISA STIG identifier starting with 'V-', e.g., <code>V-230234</code>), description (detailed explanation of the security requirement or vulnerability discussion), and version information.",
+      "requirement": "required",
       "references": [
         {
-          "description": "DISA STIGs",
-          "url": "https://public.cyber.mil/stigs"
+          "description": "Center for Internet Security Benchmarks",
+          "url": "https://www.cisecurity.org/cis-benchmarks/"
         },
         {
-          "description": "Windows 10 STIG",
-          "url": "https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=windows"
-        },
-        {
-          "description": "RHEL 8 STIG",
-          "url": "https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=unix-linux"
+          "description": "DISA Security Technical Implementation Guides (STIGs)",
+          "url": "https://public.cyber.mil/stigs/"
         }
       ]
     },
@@ -103,6 +81,48 @@
           "url": "https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html"
         }
       ]
+    },
+    "severity": {
+      "description": "The severity level as defined in the source document. For example CIS Benchmarks, valid values are: <code>Level 1</code> (security-forward, essential settings), <code>Level 2</code> (security-focused environment, more restrictive), or <code>Scored/Not Scored</code> (whether compliance can be automatically checked). For DISA STIG, valid values are: <code>CAT I</code> (maps to severity_id 5/Critical), <code>CAT II</code> (maps to severity_id 4/High), or <code>CAT III</code> (maps to severity_id 3/Medium).",
+      "requirement": "required",
+      "references": [
+        {
+          "description": "CIS Benchmarks Levels",
+          "url": "https://www.cisecurity.org/cis-benchmarks"
+        },
+        {
+          "description": "DISA STIGs Category Guide",
+          "url": "https://public.cyber.mil/stigs"
+        }
+      ]
+    },
+    "severity_id": {
+      "description": "The normalized severity identifier that maps severity levels to standard severity levels. For example CIS Benchmark: <code>Level 2</code> maps to <code>4</code> (High), <code>Level 1</code> maps to <code>3</code> (Medium). For DISA STIG: <code>CAT I</code> maps to <code>5</code> (Critical), <code>CAT II</code> maps to <code>4</code> (High), and <code>CAT III</code> maps to <code>3</code> (Medium).",
+      "requirement": "required",
+      "sibling": "severity",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The severity is unknown."
+        },
+        "3": {
+          "caption": "Medium",
+          "description": "Maps to CIS Benchmark <code>Level 1</code> - Essential security settings recommended for all systems, or DISA STIG <code>CAT III</code> - Action is required but the situation is not serious at this time."
+        },
+        "4": {
+          "caption": "High",
+          "description": "Maps to CIS Benchmark <code>Level 2</code> - More restrictive and security-focused settings for sensitive environments, or DISA STIG <code>CAT II</code> - Action is required immediately."
+        },
+        "5": {
+          "caption": "Critical",
+          "description": "Maps to DISA STIG <code>CAT I</code> - Action is required immediately and the scope is broad."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The severity is not mapped. See the severity attribute, which contains a data source specific value."
+        }
+      }
     },
     "standards": {
       "requirement": "recommended",
@@ -123,6 +143,22 @@
         {
           "description": "ISO/IEC 27001:2013",
           "url": "https://www.iso.org/standard/54534.html"
+        },
+        {
+          "description": "Windows 10 Benchmark",
+          "url": "https://www.cisecurity.org/benchmark/microsoft_windows_desktop"
+        },
+        {
+          "description": "AWS Foundations Benchmark",
+          "url": "https://www.cisecurity.org/benchmark/amazon_web_services"
+        },
+        {
+          "description": "Windows 10 STIG",
+          "url": "https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=windows"
+        },
+        {
+          "description": "RHEL 8 STIG",
+          "url": "https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=unix-linux"
         }
       ]
     },

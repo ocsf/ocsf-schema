@@ -65,7 +65,7 @@ Thankyou! -->
   1. Added `end_column` and `start_column` as `integer_t`. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
   1. Added `dependency_chain`, `exploit_requirement`, and `exploit_type` as `string_t`. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
   1. Added `exploit_ref_url`, `license_url`, `package_manager_url`, and `uri` as `url_t`. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
-  1. Added `access_level` as `string_t`, `granted_actions` as array of `string_t`, `credential_last_used_time`, `password_last_used_time` as `timestamp_t`, `unused_actions_count`, `unused_services_count` as `int_t`. #1389
+  1. Added `access_level` as `string_t`, `granted_privileges` as array of `string_t`, `credential_last_used_time`, `password_last_used_time` as `timestamp_t`, `unused_privileges_count`, `unused_services_count` as `int_t`. #1389
 * #### Objects
   1. Added `assessment` object to capture evaluations/assessments of configurations/signals. #1343
   1. Added `node`, `edge`, `graph` objects. #1343

@@ -1,0 +1,43 @@
+{
+  "caption": "Kerberos Ticket",
+  "description": "The Kerberos Ticket object contains the attributes pertaining to a Kerberos ticket.",
+  "extends": "object",
+  "name": "kerberos_ticket",
+  "attributes": {
+    "created_time": {
+      "description": "The date the Kerberos ticket was created.",
+      "requirement": "optional"
+    },
+    "encrpytion_details": {
+      "description": "The encryption details of the Kerberos ticket.",
+      "requirement": "optional"
+    },
+    "ticket_flags": {
+      "description": "",
+      "requirement": "optional"
+    },
+    "type": {
+      "description": "The type of the Kerberos ticket.",
+      "requirement": "recommended"
+    },
+    "type_id": {
+      "caption": "Type ID",
+      "description": "The normalized Kerberos ticket type identifier.",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The Kerberos ticket type is unknown."
+        },
+        "1": {
+          "caption": "Ticket Granting Ticket (TGT)"
+        },
+        "2": {
+          "caption": "Service Ticket (ST)"
+        },
+        "99": {
+          "caption": "Other"
+        }
+      }
+    }
+  }
+}

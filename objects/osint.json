@@ -1,7 +1,7 @@
 {
   "caption": "OSINT",
   "description": "The OSINT (Open Source Intelligence) object contains details related to an indicator such as the indicator itself, related indicators, geolocation, registrar information, subdomains, analyst commentary, and other contextual information. This information can be used to further enrich a detection or finding by providing decisioning support to other analysts and engineers.",
-  "extends": "_entity",
+  "extends": "object",
   "name": "osint",
   "attributes": {
     "answers": {
@@ -30,6 +30,25 @@
       "description": "The normalized confidence refers to the accuracy of collected information related to the OSINT or how pertinent an indicator or analysis is to a specific event or finding. A low confidence means that the information collected or analysis conducted lacked detail or is not accurate enough to qualify an indicator as fully malicious.",
       "requirement": "recommended"
     },
+    "campaign": {
+      "requirement": "optional"
+    },
+    "category": {
+      "description": "Categorizes the threat indicator based on its functional or operational role.",
+      "requirement": "optional"
+    },
+    "created_time": {
+      "description": "The timestamp when the indicator was initially created or identified.",
+      "requirement": "optional"
+    },
+    "creator": {
+      "description": "The identifier of the user, system, or organization that contributed the indicator.",
+      "requirement": "optional"
+    },
+    "desc": {
+      "description": "A detailed explanation of the indicator, including its context, purpose, and relevance.",
+      "requirement": "optional"
+    },
     "email": {
       "caption": "Related Email",
       "description": "Any email information pertinent to an indicator or OSINT analysis.",
@@ -40,17 +59,52 @@
       "description": "Any email authentication information pertinent to an indicator or OSINT analysis.",
       "requirement": "optional"
     },
+    "expiration_time": {
+      "description": "The expiration date of the indicator, after which it is no longer considered reliable.",
+      "requirement": "optional"
+    },
+    "external_uid": {
+      "requirement": "optional"
+    },
     "file": {
       "caption": "Related File",
       "description": "Any pertinent file information related to an indicator or OSINT analysis.",
+      "requirement": "optional"
+    },
+    "detection_pattern": {
+      "description": "The specific detection pattern or signature associated with the indicator.",
+      "requirement": "optional"
+    },
+    "detection_pattern_type": {
+      "requirement": "optional"
+    },
+    "detection_pattern_type_id": {
+      "requirement": "optional"
+    },
+    "intrusion_sets": {
       "requirement": "optional"
     },
     "kill_chain": {
       "description": "Lockheed Martin Kill Chain Phases pertinent to an indicator or OSINT analysis.",
       "requirement": "optional"
     },
+    "labels": {
+      "description": "Tags or keywords associated with the indicator to enhance searchability.",
+      "requirement": "optional"
+    },
     "location": {
       "description": "Any pertinent geolocation information related to an indicator or OSINT analysis.",
+      "requirement": "optional"
+    },
+    "malware": {
+      "requirement": "optional"
+    },
+    "modified_time": {
+      "description": "The timestamp of the last modification or update to the indicator.",
+      "requirement": "optional"
+    },
+    "name": {
+      "description": "The <code>name</code> is a pointer/reference to an attribute within the OCSF event data. For example: file.name.",
       "requirement": "optional"
     },
     "related_analytics": {
@@ -62,9 +116,25 @@
       "description": "Related reputational analysis from third-party engines and analysts for a given indicator or OSINT analysis.",
       "requirement": "optional"
     },
+    "risk_score": {
+      "description": "A numerical representation of the threat indicator’s risk level.",
+      "requirement": "optional"
+    },
+    "references": {
+      "description": "Provides a reference to an external source of information related to the CTI being represented. This may include a URL, a document, or some other type of reference that provides additional context or information about the CTI.",
+      "requirement": "optional"
+    },
     "script": {
       "caption": "Related Script Data",
       "description": "Any pertinent script information related to an indicator or OSINT analysis.",
+      "requirement": "optional"
+    },
+    "severity": {
+      "description": "Represents the severity level of the threat indicator, typically reflecting its potential impact or damage.",
+      "requirement": "optional"
+    },
+    "severity_id": {
+      "description": "The normalized severity level of the threat indicator, typically reflecting its potential impact or damage.",
       "requirement": "optional"
     },
     "signatures": {
@@ -84,6 +154,9 @@
     "subnet": {
       "caption": "Related Subnet",
       "description": "A CIDR or network block related to an indicator or OSINT analysis.",
+      "requirement": "optional"
+    },
+    "threat_actor": {
       "requirement": "optional"
     },
     "tlp": {
@@ -192,6 +265,14 @@
         }
       },
       "requirement": "required"
+    },
+    "uid": {
+      "description": "The unique identifier for the OSINT object.",
+      "requirement": "optional"
+    },
+    "uploaded_time": {
+      "description": "The timestamp indicating when the associated indicator or intelligence was added to the system or repository.",
+      "requirement": "optional"
     },
     "value": {
       "caption": "Indicator",

@@ -38,7 +38,7 @@
     "anomalies": {
       "caption": "Anomalies",
       "description": "A list of detected anomalies or deviations from expected behavior patterns. See specific usage.",
-      "type": "anomaly", 
+      "type": "anomaly",
       "is_array": true
     },
     "baselines": {
@@ -258,6 +258,11 @@
       "caption": "Application",
       "description": "The application that reported the event.",
       "type": "product"
+    },
+    "application": {
+      "caption": "Application",
+      "description": "An Application describes the details for an inventoried application as reported by an Application Security tool or other Developer-centric tooling. Applications can be defined as Kubernetes resources, Containerized resources, or application hosting-specific cloud sources such as AWS Elastic BeanStalk, AWS Lightsail, or Azure Logic Apps.",
+      "type": "application"
     },
     "app_name": {
       "caption": "Application Name",
@@ -587,6 +592,11 @@
       "description": "A list of RDP capabilities.",
       "type": "string_t",
       "is_array": true
+    },
+    "campaign": {
+      "caption": "Campaign",
+      "description": "The campaign object describes details about the campaign that was the source of the activity.",
+      "type": "campaign"
     },
     "caption": {
       "caption": "Caption",
@@ -1360,6 +1370,13 @@
         }
       }
     },
+    "cpid": {
+      "caption": "Common Process Identifier",
+      "source": "cpid",
+      "references": [{"url": "https://github.com/ocsf/common-process-id", "description": "OCSF Common Process Identifier (CPID) Specification"}],
+      "description": "A unique process identifier that can be assigned deterministically by multiple system data producers.",
+      "type": "uuid_t"
+    },
     "cpu_bits": {
       "caption": "CPU Bits",
       "description": "The cpu architecture, the number of bits used for addressing in memory. For example: <code>32</code> or <code>64</code>.",
@@ -1599,6 +1616,11 @@
       ],
       "is_array": true
     },
+    "dependency_chain": {
+      "caption": "Dependency Chain",
+      "description": "Information about the chain of dependencies related to the issue as reported by an Application Security or Vulnerability Management tool. E.g., <code>serverless-offline -> @serverless/utils -> memoizee -> es5-ext</code>.",
+      "type": "string_t"
+    },
     "depth": {
       "caption": "CVSS Depth",
       "description": "The CVSS depth represents a depth of the equation used to calculate CVSS score.",
@@ -1634,6 +1656,45 @@
       "caption": "Detection Pattern",
       "description": "Specific pattern, algorithm, fingerprint, or model used for detection.",
       "type": "string_t"
+    },
+    "detection_pattern_type": {
+      "caption": "Detection Pattern",
+      "description": "The detection pattern type, normalized to the caption of the detection_pattern_type_id value. In the case of 'Other', it is defined by the event source.",
+      "type": "string_t"
+    },
+    "detection_pattern_type_id": {
+      "caption": "Detection Pattern Type ID",
+      "description": "Specifies the type of detection pattern used to identify the associated threat indicator.",
+      "sibling": "detection_pattern_type",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The type is not mapped."
+        },
+        "1": {
+          "caption": "STIX"
+        },
+        "2": {
+          "caption": "PCRE"
+        },
+        "3": {
+          "caption": "SIGMA"
+        },
+        "4": {
+          "caption": "Snort"
+        },
+        "5": {
+          "caption": "Suricata"
+        },
+        "6": {
+          "caption": "YARA"
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The detection pattern type is not mapped. See the <code>detection_pattern_type</code> attribute, which contains a data source specific value."
+        }
+      }
     },
     "detection_system": {
       "caption": "Detection System",
@@ -2135,6 +2196,11 @@
       "description": "The encryption details of a file or other content. See specific usage.",
       "type": "encryption_details"
     },
+    "end_column": {
+      "caption": "End Column",
+      "description": "The end column number. See specific usage.",
+      "type": "integer_t"
+    },
     "end_line": {
       "caption": "End Line",
       "description": "The line number of the last line of code block identified as vulnerable.",
@@ -2238,6 +2304,21 @@
       "description": "The time when the exploit was most recently observed.",
       "type": "timestamp_t"
     },
+    "exploit_ref_url": {
+      "caption": "Exploit URL",
+      "description": "The URL of the exploit code or Proof-of-Concept (PoC).",
+      "type": "url_t"
+    },
+    "exploit_requirement": {
+      "caption": "Exploit Requirement",
+      "description": "The requirement description related to any constraints around exploit execution.",
+      "type": "string_t"
+    },
+    "exploit_type": {
+      "caption": "Exploit Type",
+      "description": "The categorization or type of Exploit. E.g., <code>Network</code> or <code>Physical</code>.",
+      "type": "string_t"
+    },
     "ext": {
       "caption": "Extension",
       "description": "The extension. See specific usage.",
@@ -2267,6 +2348,11 @@
       "description": "The schema extensions used to create the event.",
       "type": "extension",
       "is_array": true
+    },
+    "external_uid": {
+      "caption": "External ID",
+      "description": "A unique identifier assigned by an external system for cross-referencing.",
+      "type": "string_t"
     },
     "factor_type": {
       "caption": "Factor Type",
@@ -2742,6 +2828,12 @@
       "caption": "Impact Score",
       "description": "The impact as an integer value of the finding, valid range 0-100.",
       "type": "integer_t"
+    },
+    "intrusion_sets": {
+      "caption": "Intrusion Sets",
+      "description": "A grouping of adversarial behaviors and resources believed to be associated with specific threat actors or campaigns. Intrusion sets often encompass multiple campaigns and are used to organize related activities under a common label.",
+      "type": "string_t",
+      "is_array": true
     },
     "injection_type": {
       "caption": "Injection Type",
@@ -3234,6 +3326,11 @@
       "caption": "Software License",
       "description": "The name or identifier of the license applied on package or software. See <a target='_blank' href='https://spdx.org/licenses/'>SPDX License List</a>.",
       "type": "string_t"
+    },
+    "license_url": {
+      "caption": "Software License URL",
+      "description": "The URL pointing to the license applied on package or software. This is typically a <code>LICENSE.md</code> file within a repository.",
+      "type": "url_t"
     },
     "lineage": {
       "caption": "Lineage",
@@ -3845,6 +3942,11 @@
       "caption": "Package Manager",
       "description": "The software packager manager utilized to manage a package on a system, e.g. npm, yum, dpkg etc.",
       "type": "string_t"
+    },
+    "package_manager_url": {
+      "caption": "Package Manager URL",
+      "description": "The URL of the package or library at the package manager, or the specific URL or URI of an internal package manager link such as <code>AWS CodeArtifact</code> or <code>Artifactory</code>.",
+      "type": "url_t"
     },
     "packages": {
       "caption": "Software Packages",
@@ -5160,6 +5262,11 @@
       "description": "The start address of the execution.",
       "type": "string_t"
     },
+    "start_column": {
+      "caption": "Start Column",
+      "description": "The start column number. See specific usage.",
+      "type": "integer_t"
+    },
     "start_line": {
       "caption": "Start Line",
       "description": "The line number of the first line of code block identified as vulnerable.",
@@ -5590,6 +5697,17 @@
       "description": "The tree id is a unique SMB identifier which represents an open connection to a share.",
       "type": "string_t"
     },
+    "threat_actor": {
+      "caption": "Threat Actor",
+      "description": "A threat actor is an individual or group that conducts malicious cyber activities, often with financial, political, or ideological motives.",
+      "type": "threat_actor",
+      "references": [
+        {
+          "description": "STIX Threat Actor definition",
+          "url": "https://stixproject.github.io/data-model/1.2/ta/ThreatActorType/"
+        }
+      ]
+    },
     "ttl": {
       "caption": "TTL",
       "description": "The time interval that the resource record may be cached. Zero value means that the resource record can only be used for the transaction in progress, and should not be cached.",
@@ -5694,6 +5812,17 @@
       "caption": "Untruncated Size",
       "description": "The size in bytes of an attribute before truncation. See specific usage.",
       "type": "integer_t"
+    },
+    "uri": {
+      "caption": "URI",
+      "description": "A Uniform Resource Identifier (URI) is a string of characters that identifies a resource on the Internet. URIs can identify physical resources, like webpages and documents. See specific usage.",
+      "type": "url_t",
+      "references": [{"url": "https://datatracker.ietf.org/doc/html/rfc3986", "description": "RFC 3986"}]
+    },
+    "uploaded_time": {
+      "caption": "Uploaded Time",
+      "description": "The timestamp at which an entity was uploaded. See specific usage.",
+      "type": "timestamp_t"
     },
     "url": {
       "caption": "URL",

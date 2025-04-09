@@ -68,6 +68,7 @@ Thankyou! -->
   1. Added `end_column` and `start_column` as `integer_t`. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
   1. Added `dependency_chain`, `exploit_requirement`, and `exploit_type` as `string_t`. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
   1. Added `exploit_ref_url`, `license_url`, `package_manager_url`, and `uri` as `url_t`. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
+  1. Added `authentication_token` as `authentication_token`, `kerberos_flags` as `string_t` and `is_renewable` as `boolean_t`. [#1391](https://github.com/ocsf/ocsf-schema/pull/1391)
 * #### Objects
   1. Added `assessment` object to capture evaluations/assessments of configurations/signals. #1343
   1. Added `node`, `edge`, `graph` objects. #1343
@@ -77,8 +78,9 @@ Thankyou! -->
   1. Added `analysis_target` object. #1371
   1. Added `malware_scan_info` object. #1373
   1. Added `application` object. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
-  1. Added `campaign` object #1310
-  1. Added `threat_actor` object #1310
+  1. Added `campaign` object. #1310
+  1. Added `threat_actor` object. #1310
+  1. Added `authentication_token` object. [#1391](https://github.com/ocsf/ocsf-schema/pull/1391)
 
 ### Improved
 * #### Event Classes
@@ -88,6 +90,7 @@ Thankyou! -->
   1. Added `Detect` value for `activity_id` in Remediation events. [#1362](https://github.com/ocsf/ocsf-schema/pull/1362)
   1. Added `resources` to `user_access`. #1374
   1. Added `malware_scan_info`, `malware` to `detection_finding`. #1373 
+  1. Added `authentication_token` to `authentication`. [#1391](https://github.com/ocsf/ocsf-schema/pull/1391)
 * #### Objects
   1. Added `boot_uid` to `device` object. [#1335](https://github.com/ocsf/ocsf-schema/pull/1335)
   1. Relaxed constraint to provide `email_addr`, `phone_number`, or `security_questions` on `auth_factor`. [#1339](https://github.com/ocsf/ocsf-schema/pull/1339)

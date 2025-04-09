@@ -38,7 +38,7 @@
     "anomalies": {
       "caption": "Anomalies",
       "description": "A list of detected anomalies or deviations from expected behavior patterns. See specific usage.",
-      "type": "anomaly", 
+      "type": "anomaly",
       "is_array": true
     },
     "baselines": {
@@ -592,6 +592,11 @@
       "description": "A list of RDP capabilities.",
       "type": "string_t",
       "is_array": true
+    },
+    "campaign": {
+      "caption": "Campaign",
+      "description": "The campaign object describes details about the campaign that was the source of the activity.",
+      "type": "campaign"
     },
     "caption": {
       "caption": "Caption",
@@ -1652,6 +1657,45 @@
       "description": "Specific pattern, algorithm, fingerprint, or model used for detection.",
       "type": "string_t"
     },
+    "detection_pattern_type": {
+      "caption": "Detection Pattern",
+      "description": "The detection pattern type, normalized to the caption of the detection_pattern_type_id value. In the case of 'Other', it is defined by the event source.",
+      "type": "string_t"
+    },
+    "detection_pattern_type_id": {
+      "caption": "Detection Pattern Type ID",
+      "description": "Specifies the type of detection pattern used to identify the associated threat indicator.",
+      "sibling": "detection_pattern_type",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The type is not mapped."
+        },
+        "1": {
+          "caption": "STIX"
+        },
+        "2": {
+          "caption": "PCRE"
+        },
+        "3": {
+          "caption": "SIGMA"
+        },
+        "4": {
+          "caption": "Snort"
+        },
+        "5": {
+          "caption": "Suricata"
+        },
+        "6": {
+          "caption": "YARA"
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The detection pattern type is not mapped. See the <code>detection_pattern_type</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
     "detection_system": {
       "caption": "Detection System",
       "description": "The name of the type of data security tool or system that the finding, detection, or alert originated from. E.g., Endpoint, Secure Email Gateway, etc.",
@@ -2305,6 +2349,11 @@
       "type": "extension",
       "is_array": true
     },
+    "external_uid": {
+      "caption": "External ID",
+      "description": "A unique identifier assigned by an external system for cross-referencing.",
+      "type": "string_t"
+    },
     "factor_type": {
       "caption": "Factor Type",
       "description": "The type of authentication factor used in an authentication attempt.",
@@ -2779,6 +2828,12 @@
       "caption": "Impact Score",
       "description": "The impact as an integer value of the finding, valid range 0-100.",
       "type": "integer_t"
+    },
+    "intrusion_sets": {
+      "caption": "Intrusion Sets",
+      "description": "A grouping of adversarial behaviors and resources believed to be associated with specific threat actors or campaigns. Intrusion sets often encompass multiple campaigns and are used to organize related activities under a common label.",
+      "type": "string_t",
+      "is_array": true
     },
     "injection_type": {
       "caption": "Injection Type",
@@ -5636,6 +5691,17 @@
       "description": "The tree id is a unique SMB identifier which represents an open connection to a share.",
       "type": "string_t"
     },
+    "threat_actor": {
+      "caption": "Threat Actor",
+      "description": "A threat actor is an individual or group that conducts malicious cyber activities, often with financial, political, or ideological motives.",
+      "type": "threat_actor",
+      "references": [
+        {
+          "description": "STIX Threat Actor definition",
+          "url": "https://stixproject.github.io/data-model/1.2/ta/ThreatActorType/"
+        }
+      ]
+    },
     "ttl": {
       "caption": "TTL",
       "description": "The time interval that the resource record may be cached. Zero value means that the resource record can only be used for the transaction in progress, and should not be cached.",
@@ -5746,6 +5812,11 @@
       "description": "A Uniform Resource Identifier (URI) is a string of characters that identifies a resource on the Internet. URIs can identify physical resources, like webpages and documents. See specific usage.",
       "type": "url_t",
       "references": [{"url": "https://datatracker.ietf.org/doc/html/rfc3986", "description": "RFC 3986"}]
+    },
+    "uploaded_time": {
+      "caption": "Uploaded Time",
+      "description": "The timestamp at which an entity was uploaded. See specific usage.",
+      "type": "timestamp_t"
     },
     "url": {
       "caption": "URL",

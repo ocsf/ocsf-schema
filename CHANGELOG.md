@@ -137,6 +137,7 @@ Thankyou! -->
   1. Added `message_uid` as Observable type - `type_id: 42`. #1380
   1. Added `reg_value.name` as an Observable type - `type_id: 43`. #1380
   1. Added `advisory.uid` as Observable type `type_id: 44`. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
+  1. Updated `resource_details.uid`, `web_resource.uid`, and `win_resource.uid` to be observable `type_id: 10` #1394
 
 ## [v1.4.0] - January 31st, 2025
 

@@ -68,6 +68,7 @@ Thankyou! -->
   1. Added `end_column` and `start_column` as `integer_t`. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
   1. Added `dependency_chain`, `exploit_requirement`, and `exploit_type` as `string_t`. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
   1. Added `exploit_ref_url`, `license_url`, `package_manager_url`, and `uri` as `url_t`. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
+  1. Added `transformation_info_list` #1392
   1. Added `authentication_token` as `authentication_token`, `kerberos_flags` as `string_t` and `is_renewable` as `boolean_t`. [#1391](https://github.com/ocsf/ocsf-schema/pull/1391)
 * #### Objects
   1. Added `assessment` object to capture evaluations/assessments of configurations/signals. #1343
@@ -78,8 +79,9 @@ Thankyou! -->
   1. Added `analysis_target` object. #1371
   1. Added `malware_scan_info` object. #1373
   1. Added `application` object. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
-  1. Added `campaign` object. #1310
-  1. Added `threat_actor` object. #1310
+  1. Added `campaign` object #1310
+  1. Added `threat_actor` object #1310
+  1. Added `transformation_info` #1392
   1. Added `authentication_token` object. [#1391](https://github.com/ocsf/ocsf-schema/pull/1391)
 
 ### Improved

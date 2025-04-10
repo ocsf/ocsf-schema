@@ -128,6 +128,7 @@ Thankyou! -->
   1. Updated description of `hw_info.uuid` to clarify usage especially in presence of new `device.udid` field. #1354
   1. Updated dictionary descriptions and references of MITRE `attacks`, `tactic`, `technique`, `subtechnique`. #1355
 >>>>>>> 8fc6b8f1 (Expand `evidences` (#1337))
+  1. Updated `resource_details.uid`, `web_resource.uid`, and `win_resource.uid` to be observable `type_id: 10` #1394
 
 ## [v1.3.0] - August 1st, 2024
 

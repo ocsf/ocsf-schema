@@ -4456,10 +4456,103 @@
       "description": "The Domain Name System (DNS) query time.",
       "type": "timestamp_t"
     },
+    "query_type": {
+    "caption": "Query Type",
+    "description": "The normalized caption of query_type_id or the source-specific query type.",
+    "type": "string_t"
+    },
+    "query_type_id": {
+    "caption": "Query Type ID",
+    "description": "The normalized type of system query performed against a device or system component.",
+    "sibling": "query_type",
+    "type": "integer_t",
+    "enum": {
+        "0": {
+            "caption": "Unknown",
+            "description": "The query type was unknown or not specified."
+        },
+        "5006": {
+            "caption": "Kernel",
+            "description": "A query about kernel resources including system calls, shared mutex, or other kernel components."
+        },
+        "5007": {
+            "caption": "File",
+            "description": "A query about file attributes, metadata, content, hash values, or properties."
+        },
+        "5008": {
+            "caption": "Folder",
+            "description": "A query about folder attributes, metadata, content, or structure."
+        },
+        "5009": {
+            "caption": "Admin Group",
+            "description": "A query about group membership, privileges, domain, or group properties."
+        },
+        "5010": {
+            "caption": "Job",
+            "description": "A query about scheduled jobs, their command lines, run states, or execution times."
+        },
+        "5011": {
+            "caption": "Module",
+            "description": "A query about loaded modules, their base addresses, load types, or function entry points."
+        },
+        "5012": {
+            "caption": "Network Connection",
+            "description": "A query about active network connections, boundaries, protocols, or TCP states."
+        },
+        "5013": {
+            "caption": "Network Interfaces",
+            "description": "A query about physical or virtual network interfaces, their IP/MAC addresses, or types."
+        },
+        "5014": {
+            "caption": "Peripheral Device",
+            "description": "A query about attached peripheral devices, their classes, models, or vendor information."
+        },
+        "5015": {
+            "caption": "Process",
+            "description": "A query about running processes, command lines, ancestry, loaded modules, or execution context."
+        },
+        "5016": {
+            "caption": "Service",
+            "description": "A query about system services, their names, versions, labels, or properties."
+        },
+        "5017": {
+            "caption": "Session",
+            "description": "A query about authenticated user or service sessions, their creation times, or issuer details."
+        },
+        "5018": {
+            "caption": "User",
+            "description": "A query about user accounts, their properties, credentials, or domain information."
+        },
+        "5019": {
+            "caption": "Users",
+            "description": "A query about multiple users belonging to an administrative group."
+        },
+        "5022": {
+            "caption": "Startup Item",
+            "description": "A query about startup configuration items, their run modes, start types, or current states."
+        },
+        "5023": {
+            "caption": "Registry Key",
+            "description": "A Windows-specific query about registry keys, their paths, security descriptors, or modification times."
+        },
+        "5024": {
+            "caption": "Registry Value",
+            "description": "A Windows-specific query about registry values, their data types, content, or names."
+        },
+        "5025": {
+            "caption": "Prefetch",
+            "description": "A Windows-specific query about prefetch files, their run counts, last execution times, or existence."
+        },
+        "99": {
+            "caption": "Other",
+            "description": "The query type was not mapped to a standard category. See the query_type attribute for source-specific value."
+        }
+      }
+    },
     "radius": {
-      "caption": "Radius",
-      "description": "Farthest horizontal distance from the reported location at which any UA in a group may be located (meters). Also allows defining the area where an Intent-Based Network Participant operation is taking place. Default: 0 m.",
-      "type": "string_t"
+    "caption": "Radius",
+    "description": "Farthest horizontal distance from the reported location at which any UA in a group may be located (meters). Also allows defining the area where an Intent-Based Network Participant operation is taking place. Default: 0 m.",
+    "type": "string_t"
     },
     "ram_size": {
       "caption": "RAM Size",

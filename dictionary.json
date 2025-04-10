@@ -415,6 +415,11 @@
         }
       }
     },
+    "authentication_token": {
+      "caption": "Authentication Token",
+      "description": "The authentication token, ticket, or assertion. See specific usage.",
+      "type": "authentication_token"
+    },
     "author": {
       "caption": "Author",
       "description": "The author(s) who published the software component.",
@@ -2542,6 +2547,21 @@
       },
       "is_array": true
     },
+    "kerberos_flags": {
+      "caption": "Kerberos Flags",
+      "description": "A bitmask, either in hexadecimal or decimal form, which encodes various attributes or permissions associated with a Kerberos ticket. These flags delineate specific characteristics of the ticket, such as its renewability or forwardability.",
+      "references": [
+        {
+          "description": "RFC 4120: 5.2.8.  KerberosFlags",
+          "url": "https://www.rfc-editor.org/rfc/rfc4120#section-5.2.8"
+        },
+        {
+          "description": "Microsoft Windows Security 4769 (see 'Ticket Options')",
+          "url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4769"
+        }
+      ],
+      "type": "string_t"
+    },
     "flags": {
       "caption": "Flags",
       "description": "The list of communication flags, normalized to the captions of the flag_ids values. See specific usage.",
@@ -3083,9 +3103,14 @@
       "description": "The indication of whether the session is remote.",
       "type": "boolean_t"
     },
+    "is_renewable": {
+      "caption": "Renewable",
+      "description": "The indication of whether something is renewable. See specific usage.",
+      "type": "boolean_t"
+    },
     "is_renewal": {
       "caption": "Renewal",
-      "description": "The indication of whether this is a lease/session renewal event.",
+      "description": "The indication of whether the event or object represents a renewal. See specific usage.",
       "type": "boolean_t"
     },
     "is_secure": {

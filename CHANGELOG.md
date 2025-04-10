@@ -56,6 +56,10 @@ Thankyou! -->
   1. Added `fix_coverage` as `string_t` and `fix_coverage_id` as `int_t`. #1350
   1. Added `eid`, `iccid`, and `meid` as `string_t`. #1346
   1. Added `is_backed_up`, `is_mobile_account_active`, and `is_shared` as `boolean_t`. #1346
+  1. Added `detection_pattern_type` an `detection_pattern_type_id` as a `string_t` and `int_t` respectively. #1310
+  1. Added `external_id` as an `string_t`. #1310
+  1. Added `intrusion_sets` as an array `string_t`. #1310
+  1. Added `uploaded_time` as an `timestamp_t`. #1310
   1. Added `isp_org` as `string_t`. #1351
   1. Added `ldap` protocol to `auth_protocol_id` enum. [#1359](https://github.com/ocsf/ocsf-schema/pull/1359)
   1. Added `observation_parameter`, `observation_type`, `observed_pattern` as `string_t` and `occurrences` as an array of `occurrence_details`. #1358
@@ -64,6 +68,7 @@ Thankyou! -->
   1. Added `end_column` and `start_column` as `integer_t`. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
   1. Added `dependency_chain`, `exploit_requirement`, and `exploit_type` as `string_t`. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
   1. Added `exploit_ref_url`, `license_url`, `package_manager_url`, and `uri` as `url_t`. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
+  1. Added `transformation_info_list` #1392
 * #### Objects
   1. Added `assessment` object to capture evaluations/assessments of configurations/signals. #1343
   1. Added `node`, `edge`, `graph` objects. #1343
@@ -73,6 +78,9 @@ Thankyou! -->
   1. Added `analysis_target` object. #1371
   1. Added `malware_scan_info` object. #1373
   1. Added `application` object. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
+  1. Added `campaign` object #1310
+  1. Added `threat_actor` object #1310
+  1. Added `transformation_info` #1392
 
 ### Improved
 * #### Event Classes
@@ -115,6 +123,7 @@ Thankyou! -->
   1. Added `category`, `dependency_chain`, `exploit_ref_url`, `exploit_requirement`, and `exploit_type` to `vulnerability` object. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
 * #### Profiles
   1. Added `malware_scan_info` to `security_control` profile. #1373
+  1. Added `campaign`, `category`, `created_time`, `creator`, `desc`, `expiration_time`, `external_id`, `labels`, `malware`, `modified_time`, `name`, `detection_pattern`, `detection_pattern_type`, `detection_pattern_type_id`, `intrusion_sets`, `risk_score`, `references`, `uploaded_time`, `severity`, `uid` and `threat_actor` to `osint` object. #1310
 
 ### Deprecated
   1. Deprecated usage of `isp` attribute in the `location` object. #1351
@@ -130,6 +139,7 @@ Thankyou! -->
   1. Added `message_uid` as Observable type - `type_id: 42`. #1380
   1. Added `reg_value.name` as an Observable type - `type_id: 43`. #1380
   1. Added `advisory.uid` as Observable type `type_id: 44`. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
+  1. Updated `resource_details.uid`, `web_resource.uid`, and `win_resource.uid` to be observable `type_id: 10` #1394
 
 ## [v1.4.0] - January 31st, 2025
 

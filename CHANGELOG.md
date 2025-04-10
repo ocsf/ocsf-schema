@@ -42,9 +42,6 @@ Thankyou! -->
 ## [Unreleased]
 
 ### Added
-* #### Event Classes
-  1. Added `Live Evidence Info` event class to Discovery category. [#TBD](https://github.com/ocsf/ocsf-schema/pull/TBD) 
-
 * #### Dictionary Attributes 
   1. Added `boot_uid` as a `string_t`. [#1335](https://github.com/ocsf/ocsf-schema/pull/1335)
   1. Added `raw_data_size` as a `long_t`. [#1347](https://github.com/ocsf/ocsf-schema/pull/1347)
@@ -70,7 +67,6 @@ Thankyou! -->
   1. Added `mitigation` object. #1348
   1. Added `analysis_target` object. #1371
   1. Added `malware_scan_info` object. #1373
-  1. Added `Query Evidence` object. [#TBD](https://github.com/ocsf/ocsf-schema/pull/TBD) 
   
 ### Improved
 * #### Event Classes
@@ -110,7 +106,6 @@ Thankyou! -->
   1. Deprecated usage of `isp` attribute in the `location` object. #1351
   1. Deprecated usage of `occurrence_details` in favor of `occurrences` in `discovery_details` object. #1358
   1. Deprecated usage of `resource` in favor of `resources` in the `user_access` class. #1374
-  1. Deprecated `Kernel Object Query`, `File Query`, `Folder Query`, `Admin Group Query`, `Job Query`, `Module Query`, `Network Connection Query`, `Networks Query`, `Peripheral Device Query`, `Process Query`, `Service Query`, `User Session Query`, `User Query`, `Startup Item Query`, `Registry Key Query`, `Registry Value Query`, and `Prefetch Query` classes in favor of the `Live Evidence Info` class. [#TBD](https://github.com/ocsf/ocsf-schema/pull/TBD) 
 
 ### Misc
   1. Updated description of `config_state` to reflect the addition of the `assessments` object. #1343

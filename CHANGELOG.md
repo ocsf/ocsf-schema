@@ -44,6 +44,7 @@ Thankyou! -->
 ### Added
 * #### Event Classes
   1. Added `Application Security Posture Finding` event class to the Findings category. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
+  2. 1. Added `Identity Analysis Finding` to `Findings` Category. #1389
 * #### Dictionary Attributes 
   1. Added `boot_uid` as a `string_t`. [#1335](https://github.com/ocsf/ocsf-schema/pull/1335)
   1. Added `cpid` as a `uuid_t`. [#1246](https://github.com/ocsf/ocsf-schema/pull/1246)
@@ -68,8 +69,9 @@ Thankyou! -->
   1. Added `end_column` and `start_column` as `integer_t`. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
   1. Added `dependency_chain`, `exploit_requirement`, and `exploit_type` as `string_t`. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
   1. Added `exploit_ref_url`, `license_url`, `package_manager_url`, and `uri` as `url_t`. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
-  1. Added `transformation_info_list` #1392
+  1. Added `transformation_info_list` as an array of `transformation_info`. #1392
   1. Added `authentication_token` as `authentication_token`, `kerberos_flags` as `string_t` and `is_renewable` as `boolean_t`. [#1391](https://github.com/ocsf/ocsf-schema/pull/1391)
+  1. Added `access_level` as `string_t`, `granted_privileges` as array of `string_t`, `credential_last_used_time`, `password_last_used_time` as `timestamp_t`, `unused_privileges_count`, `unused_services_count` as `int_t`. #1389
 * #### Objects
   1. Added `assessment` object to capture evaluations/assessments of configurations/signals. #1343
   1. Added `node`, `edge`, `graph` objects. #1343
@@ -81,8 +83,9 @@ Thankyou! -->
   1. Added `application` object. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
   1. Added `campaign` object #1310
   1. Added `threat_actor` object #1310
-  1. Added `transformation_info` #1392
+  1. Added `transformation_info` object. #1392
   1. Added `authentication_token` object. [#1391](https://github.com/ocsf/ocsf-schema/pull/1391)
+  1. Added `external_access_analysis`, `identity_activity_details`, `permission_analysis`, `additional_restriction` objects. #1389
 
 ### Improved
 * #### Event Classes
@@ -124,6 +127,7 @@ Thankyou! -->
   1. Added `license_url`, `package_manager`, `package_manager_url`, `src_url`, and `uid` to `package` object. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
   1. Added `type`, `type_id`, `uid`, and `version` to `sbom` object. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
   1. Added `category`, `dependency_chain`, `exploit_ref_url`, `exploit_requirement`, and `exploit_type` to `vulnerability` object. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
+  1. Added `traits` to `finding_info` object. #1389
 * #### Profiles
   1. Added `malware_scan_info` to `security_control` profile. #1373
   1. Added `campaign`, `category`, `created_time`, `creator`, `desc`, `expiration_time`, `external_id`, `labels`, `malware`, `modified_time`, `name`, `detection_pattern`, `detection_pattern_type`, `detection_pattern_type_id`, `intrusion_sets`, `risk_score`, `references`, `uploaded_time`, `severity`, `uid` and `threat_actor` to `osint` object. #1310

@@ -38,7 +38,7 @@
     "anomalies": {
       "caption": "Anomalies",
       "description": "A list of detected anomalies or deviations from expected behavior patterns. See specific usage.",
-      "type": "anomaly", 
+      "type": "anomaly",
       "is_array": true
     },
     "baselines": {
@@ -415,6 +415,11 @@
         }
       }
     },
+    "authentication_token": {
+      "caption": "Authentication Token",
+      "description": "The authentication token, ticket, or assertion. See specific usage.",
+      "type": "authentication_token"
+    },
     "author": {
       "caption": "Author",
       "description": "The author(s) who published the software component.",
@@ -592,6 +597,11 @@
       "description": "A list of RDP capabilities.",
       "type": "string_t",
       "is_array": true
+    },
+    "campaign": {
+      "caption": "Campaign",
+      "description": "The campaign object describes details about the campaign that was the source of the activity.",
+      "type": "campaign"
     },
     "caption": {
       "caption": "Caption",
@@ -1323,7 +1333,7 @@
     },
     "countermeasures": {
       "caption": "Countermeasures",
-      "description": "The MITRE DEFEND™ Matrix Countermeasures associated with a remediation.",
+      "description": "The MITRE D3FEND™ Matrix Countermeasures associated with a remediation.",
       "type": "d3fend",
       "is_array": true
     },
@@ -1485,7 +1495,7 @@
       }
     },
     "d3f_tactic": {
-      "caption": "MITRE DEFEND™ Tactic",
+      "caption": "MITRE D3FEND™ Tactic",
       "description": "The D3FEND Tactic object describes the defensive tactic name associated with a countermeasure.",
       "references": [
         {
@@ -1496,7 +1506,7 @@
       "type": "d3f_tactic"
     },
     "d3f_technique": {
-      "caption": "MITRE DEFEND™ Technique",
+      "caption": "MITRE D3FEND™ Technique",
       "description": "The D3FEND Technique object describes the defensive technique ID and/or name associated with a countermeasure.",
       "references": [
         {
@@ -1663,6 +1673,45 @@
       "caption": "Detection Pattern",
       "description": "Specific pattern, algorithm, fingerprint, or model used for detection.",
       "type": "string_t"
+    },
+    "detection_pattern_type": {
+      "caption": "Detection Pattern",
+      "description": "The detection pattern type, normalized to the caption of the detection_pattern_type_id value. In the case of 'Other', it is defined by the event source.",
+      "type": "string_t"
+    },
+    "detection_pattern_type_id": {
+      "caption": "Detection Pattern Type ID",
+      "description": "Specifies the type of detection pattern used to identify the associated threat indicator.",
+      "sibling": "detection_pattern_type",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The type is not mapped."
+        },
+        "1": {
+          "caption": "STIX"
+        },
+        "2": {
+          "caption": "PCRE"
+        },
+        "3": {
+          "caption": "SIGMA"
+        },
+        "4": {
+          "caption": "Snort"
+        },
+        "5": {
+          "caption": "Suricata"
+        },
+        "6": {
+          "caption": "YARA"
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The detection pattern type is not mapped. See the <code>detection_pattern_type</code> attribute, which contains a data source specific value."
+        }
+      }
     },
     "detection_system": {
       "caption": "Detection System",
@@ -2317,6 +2366,11 @@
       "type": "extension",
       "is_array": true
     },
+    "external_uid": {
+      "caption": "External ID",
+      "description": "A unique identifier assigned by an external system for cross-referencing.",
+      "type": "string_t"
+    },
     "factor_type": {
       "caption": "Factor Type",
       "description": "The type of authentication factor used in an authentication attempt.",
@@ -2504,6 +2558,21 @@
         }
       },
       "is_array": true
+    },
+    "kerberos_flags": {
+      "caption": "Kerberos Flags",
+      "description": "A bitmask, either in hexadecimal or decimal form, which encodes various attributes or permissions associated with a Kerberos ticket. These flags delineate specific characteristics of the ticket, such as its renewability or forwardability.",
+      "references": [
+        {
+          "description": "RFC 4120: 5.2.8.  KerberosFlags",
+          "url": "https://www.rfc-editor.org/rfc/rfc4120#section-5.2.8"
+        },
+        {
+          "description": "Microsoft Windows Security 4769 (see 'Ticket Options')",
+          "url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4769"
+        }
+      ],
+      "type": "string_t"
     },
     "flags": {
       "caption": "Flags",
@@ -2792,6 +2861,12 @@
       "description": "The impact as an integer value of the finding, valid range 0-100.",
       "type": "integer_t"
     },
+    "intrusion_sets": {
+      "caption": "Intrusion Sets",
+      "description": "A grouping of adversarial behaviors and resources believed to be associated with specific threat actors or campaigns. Intrusion sets often encompass multiple campaigns and are used to organize related activities under a common label.",
+      "type": "string_t",
+      "is_array": true
+    },
     "injection_type": {
       "caption": "Injection Type",
       "description": "The process injection method, normalized to the caption of the injection_type_id value. In the case of 'Other', it is defined by the event source.",
@@ -3040,9 +3115,14 @@
       "description": "The indication of whether the session is remote.",
       "type": "boolean_t"
     },
+    "is_renewable": {
+      "caption": "Renewable",
+      "description": "The indication of whether something is renewable. See specific usage.",
+      "type": "boolean_t"
+    },
     "is_renewal": {
       "caption": "Renewal",
-      "description": "The indication of whether this is a lease/session renewal event.",
+      "description": "The indication of whether the event or object represents a renewal. See specific usage.",
       "type": "boolean_t"
     },
     "is_secure": {
@@ -5638,6 +5718,12 @@
       "description": "The unique identifier of the transaction.",
       "type": "string_t"
     },
+    "transformation_info_list": {
+      "caption": "Transformation Info",
+      "description": "An array of transformation info that describes the mappings or transforms applied to the data.",
+      "type": "transformation_info",
+      "is_array": true
+    },
     "transmit_time": {
       "caption": "Transmission Time",
       "description": "The event transmission time from one device to another.  See specific usage.",
@@ -5647,6 +5733,17 @@
       "caption": "Tree UID",
       "description": "The tree id is a unique SMB identifier which represents an open connection to a share.",
       "type": "string_t"
+    },
+    "threat_actor": {
+      "caption": "Threat Actor",
+      "description": "A threat actor is an individual or group that conducts malicious cyber activities, often with financial, political, or ideological motives.",
+      "type": "threat_actor",
+      "references": [
+        {
+          "description": "STIX Threat Actor definition",
+          "url": "https://stixproject.github.io/data-model/1.2/ta/ThreatActorType/"
+        }
+      ]
     },
     "ttl": {
       "caption": "TTL",
@@ -5758,6 +5855,11 @@
       "description": "A Uniform Resource Identifier (URI) is a string of characters that identifies a resource on the Internet. URIs can identify physical resources, like webpages and documents. See specific usage.",
       "type": "url_t",
       "references": [{"url": "https://datatracker.ietf.org/doc/html/rfc3986", "description": "RFC 3986"}]
+    },
+    "uploaded_time": {
+      "caption": "Uploaded Time",
+      "description": "The timestamp at which an entity was uploaded. See specific usage.",
+      "type": "timestamp_t"
     },
     "url": {
       "caption": "URL",

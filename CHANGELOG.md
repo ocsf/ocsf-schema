@@ -126,6 +126,7 @@ Thankyou! -->
   1. Added `type`, `type_id`, `uid`, and `version` to `sbom` object. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
   1. Added `category`, `dependency_chain`, `exploit_ref_url`, `exploit_requirement`, and `exploit_type` to `vulnerability` object. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
   1. Added `status`, `status_id`, `status_details` to `ticket` object; `uid_alt`, `created_time` to `_resource` object; `traits` to `finding_info` object. #1402
+  1. Added `modified_time` to `_resource` object; `zone` to `resource_details` object. #1403
 * #### Profiles
   1. Added `malware_scan_info` to `security_control` profile. #1373
   1. Added `campaign`, `category`, `created_time`, `creator`, `desc`, `expiration_time`, `external_id`, `labels`, `malware`, `modified_time`, `name`, `detection_pattern`, `detection_pattern_type`, `detection_pattern_type_id`, `intrusion_sets`, `risk_score`, `references`, `uploaded_time`, `severity`, `uid` and `threat_actor` to `osint` object. #1310

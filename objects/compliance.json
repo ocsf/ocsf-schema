@@ -1,6 +1,6 @@
 {
   "caption": "Compliance",
-  "description": "The Compliance object contains information about Industry and Regulatory Framework standards, controls and requirements or details about custom assessments utilized in a compliance evaluation.",
+  "description": "The Compliance object contains information about Industry and Regulatory Framework standards, controls and requirements or details about custom assessments utilized in a compliance evaluation. Standards define broad security frameworks, controls represent specific security requirements within those frameworks, and checks are the testable verification points used to determine if controls are properly implemented.",
   "extends": "object",
   "name": "compliance",
   "attributes": {
@@ -12,23 +12,37 @@
       "description": "The category a control framework pertains to, as reported by the source tool, such as <code>Asset Management</code> or <code>Risk Assessment</code>.",
       "requirement": "optional"
     },
+    "checks": {
+      "description": "A list of compliance checks associated with specific industry standards or frameworks. Each check represents an individual rule or requirement that has been evaluated against a target device. Checks typically include details such as the check name (e.g., CIS: 'Ensure mounting of cramfs filesystems is disabled' or DISA STIG descriptive titles), unique identifiers (such as CIS identifier '1.1.1.1' or DISA STIG identifier 'V-230234'), descriptions (detailed explanations of security requirements or vulnerability discussions), and version information.",
+      "requirement": "optional",
+      "references": [
+        {
+          "description": "Center for Internet Security Benchmarks",
+          "url": "https://www.cisecurity.org/cis-benchmarks/"
+        },
+        {
+          "description": "DISA Security Technical Implementation Guides (STIGs)",
+          "url": "https://public.cyber.mil/stigs/"
+        }
+      ]
+    },
     "compliance_references": {
       "requirement": "optional",
       "@deprecated": {
-        "message": "Use the Compliance object with Rule and Severity attributes or Assessments instead.",
+        "message": "Use the Compliance object with Checks array instead.",
         "since": "1.5.0"
       }
     },
     "compliance_standards": {
       "requirement": "optional",
       "@deprecated": {
-        "message": "Use the Compliance object with Rule and Severity attributes or Assessments instead.",
+        "message": "Use the Compliance object with Checks array instead.",
         "since": "1.5.0"
       }
     },
     "control": {
       "requirement": "recommended",
-      "description": "A Control is prescriptive, prioritized set of best practices that strengthens cybersecurity posture. E.g., <code>CIS AWS Foundations Benchmark 1.2.0 - Control 2.1 - Ensure CloudTrail is enabled in all regions</code>",
+      "description": "A Control is a prescriptive, actionable set of specifications that strengthens device posture. The control specifies required security measures, while the specific implementation values are defined in control_parameters. E.g., CIS AWS Foundations Benchmark 1.2.0 - Control 2.1 - Ensure CloudTrail is enabled in all regions",
       "references": [
         {
           "description": "CIS AWS Foundations Benchmark 1.2.0",
@@ -58,24 +72,6 @@
         }
       ]
     },
-    "rule": {
-      "description": "The Rule object containing details about the compliance check. This includes the rule name (e.g., CIS: <code>Ensure mounting of cramfs filesystems is disabled</code> or DISA STIG: descriptive title of the check), uid (the unique identifier, such as CIS identifier <code>1.1.1.1</code> or DISA STIG identifier starting with 'V-', e.g., <code>V-230234</code>), description (detailed explanation of the security requirement or vulnerability discussion), and version information.",
-      "requirement": "optional",
-      "references": [
-        {
-          "description": "Center for Internet Security Benchmarks",
-          "url": "https://www.cisecurity.org/cis-benchmarks/"
-        },
-        {
-          "description": "DISA Security Technical Implementation Guides (STIGs)",
-          "url": "https://public.cyber.mil/stigs/"
-        }
-      ]
-    },
-    "desc": {
-      "description": "The description or criteria of a control.",
-      "requirement": "optional"
-    },
     "requirements": {
       "requirement": "optional",
       "description": "The specific compliance requirements being evaluated. E.g., <code>PCI DSS Requirement 8.2.3 - Passwords must meet minimum complexity requirements</code> or <code>HIPAA Security Rule 164.312(a)(2)(iv) - Implement encryption and decryption mechanisms</code>",
@@ -90,51 +86,9 @@
         }
       ]
     },
-    "severity": {
-      "description": "The severity level as defined in the source document. For example CIS Benchmarks, valid values are: <code>Level 1</code> (security-forward, essential settings), <code>Level 2</code> (security-focused environment, more restrictive), or <code>Scored/Not Scored</code> (whether compliance can be automatically checked). For DISA STIG, valid values are: <code>CAT I</code> (maps to severity_id 5/Critical), <code>CAT II</code> (maps to severity_id 4/High), or <code>CAT III</code> (maps to severity_id 3/Medium).",
-      "requirement": "optional",
-      "references": [
-        {
-          "description": "CIS Benchmarks Levels",
-          "url": "https://www.cisecurity.org/cis-benchmarks"
-        },
-        {
-          "description": "DISA STIGs Category Guide",
-          "url": "https://public.cyber.mil/stigs"
-        }
-      ]
-    },
-    "severity_id": {
-      "description": "The normalized severity identifier that maps severity levels to standard severity levels. For example CIS Benchmark: <code>Level 2</code> maps to <code>4</code> (High), <code>Level 1</code> maps to <code>3</code> (Medium). For DISA STIG: <code>CAT I</code> maps to <code>5</code> (Critical), <code>CAT II</code> maps to <code>4</code> (High), and <code>CAT III</code> maps to <code>3</code> (Medium).",
-      "requirement": "optional",
-      "sibling": "severity",
-      "type": "integer_t",
-      "enum": {
-        "0": {
-          "caption": "Unknown",
-          "description": "The severity is unknown."
-        },
-        "3": {
-          "caption": "Medium",
-          "description": "Maps to CIS Benchmark <code>Level 1</code> - Essential security settings recommended for all systems, or DISA STIG <code>CAT III</code> - Action is required but the situation is not serious at this time."
-        },
-        "4": {
-          "caption": "High",
-          "description": "Maps to CIS Benchmark <code>Level 2</code> - More restrictive and security-focused settings for sensitive environments, or DISA STIG <code>CAT II</code> - Action is required immediately."
-        },
-        "5": {
-          "caption": "Critical",
-          "description": "Maps to DISA STIG <code>CAT I</code> - Action is required immediately and the scope is broad."
-        },
-        "99": {
-          "caption": "Other",
-          "description": "The severity is not mapped. See the severity attribute, which contains a data source specific value."
-        }
-      }
-    },
     "standards": {
       "requirement": "recommended",
-      "description": "The regulatory or industry standards being evaluated for compliance. E.g., <code>PCI DSS 3.2.1</code>, <code>HIPAA Security Rule</code>, <code>NIST SP 800-53 Rev. 5</code>, or <code>ISO/IEC 27001:2013</code>",
+      "description": "The regulatory or industry standards being evaluated for compliance.",
       "references": [
         {
           "description": "PCI DSS 3.2.1",
@@ -151,39 +105,15 @@
         {
           "description": "ISO/IEC 27001:2013",
           "url": "https://www.iso.org/standard/54534.html"
-        },
-        {
-          "description": "Windows 10 Benchmark",
-          "url": "https://www.cisecurity.org/benchmark/microsoft_windows_desktop"
-        },
-        {
-          "description": "AWS Foundations Benchmark",
-          "url": "https://www.cisecurity.org/benchmark/amazon_web_services"
-        },
-        {
-          "description": "Windows 10 STIG",
-          "url": "https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=windows"
-        },
-        {
-          "description": "RHEL 8 STIG",
-          "url": "https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=unix-linux"
         }
       ]
     },
     "status": {
-      "description": "The resultant status of the compliance check normalized to the caption of the <code>status_id</code> value. In the case of 'Other', it is defined by the event source.",
+      "description": "The resultant status of the compliance check normalized to the caption of the <code>status_id</code> value.",
       "requirement": "recommended"
     },
     "status_code": {
       "description": "The resultant status code of the compliance check.",
-      "requirement": "optional"
-    },
-    "status_detail": {
-      "@deprecated": {
-        "message": "Use the <code>status_details</code> attribute instead.",
-        "since": "1.4.0"
-      },
-      "description": "The contextual description of the <code>status, status_code</code> values.",
       "requirement": "optional"
     },
     "status_details": {
@@ -192,7 +122,12 @@
     },
     "status_id": {
       "description": "The normalized status identifier of the compliance check.",
+      "requirement": "recommended",
       "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The status is unknown."
+        },
         "1": {
           "caption": "Pass",
           "description": "The compliance check passed for all the evaluated resources."
@@ -204,9 +139,12 @@
         "3": {
           "caption": "Fail",
           "description": "The compliance check failed for at least one of the evaluated resources."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
         }
-      },
-      "requirement": "recommended"
+      }
     }
   }
 }

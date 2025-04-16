@@ -5,7 +5,7 @@
   "name": "checks",
   "attributes": {
     "desc": {
-      "description": "The detailed description of the compliance check, explaining the security requirement, vulnerability, or configuration being assessed. For example, CIS: 'The cramfs filesystem type is a compressed read-only Linux filesystem. Removing support for unneeded filesystem types reduces the local attack surface.' or DISA STIG: 'Unauthorized access to the information system by foreign entities may result in loss or compromise of data.'.",
+      "description": "The detailed description of the compliance check, explaining the security requirement, vulnerability, or configuration being assessed. For example, CIS: <code>The cramfs filesystem type is a compressed read-only Linux filesystem. Removing support for unneeded filesystem types reduces the local attack surface.</code> or DISA STIG: <code>Unauthorized access to the information system by foreign entities may result in loss or compromise of data.</code>",
       "requirement": "optional",
       "references": [
         {
@@ -19,7 +19,7 @@
       ]
     },
     "name": {
-      "description": "The name or title of the compliance check. For example, CIS: 'Ensure mounting of cramfs filesystems is disabled' or DISA STIG: 'The Ubuntu operating system must implement DoD-approved encryption to protect the confidentiality of remote access sessions.'",
+      "description": "The name or title of the compliance check. For example, CIS: <code>Ensure mounting of cramfs filesystems is disabled</code> or DISA STIG: <code>The Ubuntu operating system must implement DoD-approved encryption to protect the confidentiality of remote access sessions</code>.",
       "requirement": "recommended",
       "references": [
         {
@@ -33,7 +33,7 @@
       ]
     },
     "uid": {
-      "description": "The unique identifier of the compliance check within its standard or framework. For example, CIS Benchmark identifier '1.1.1.1', DISA STIG identifier 'V-230234', or NIST control identifier 'AC-17(2)'.",
+      "description": "The unique identifier of the compliance check within its standard or framework. For example, CIS Benchmark identifier <code>1.1.1.1</code>, DISA STIG identifier <code>V-230234</code>, or NIST control identifier <code>AC-17(2)</code>.",
       "requirement": "recommended",
       "references": [
         {
@@ -87,8 +87,18 @@
       ]
     },
     "status": {
-      "description": "The resultant status of the compliance check normalized to the caption of the <code>status_id</code> value. In the case of 'Other', it is defined by the event source.",
-      "requirement": "recommended"
+      "description": "The resultant status of the compliance check normalized to the caption of the <code>status_id</code> value. For example, CIS Benchmark: <code>Pass</code> when all requirements are met, <code>Fail</code> when requirements are not met, or DISA STIG: <code>NotAFinding</code> (maps to status_id 1/Pass), <code>Open</code> (maps to status_id 3/Fail).",
+      "requirement": "recommended",
+      "references": [
+        {
+          "description": "CIS Benchmark Compliance Status",
+          "url": "https://www.cisecurity.org/cis-benchmarks"
+        },
+        {
+          "description": "DISA STIG Status Types",
+          "url": "https://public.cyber.mil/stigs/srg-stig-tools/"
+        }
+      ]
     },
     "status_id": {
       "description": "The normalized status identifier of the compliance check.",

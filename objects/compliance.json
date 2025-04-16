@@ -113,7 +113,7 @@
       ]
     },
     "status": {
-      "description": "The resultant status of the compliance check normalized to the caption of the <code>status_id</code> value.",
+      "description": "The resultant status of the compliance check normalized to the caption of the <code>status_id</code> value. In the case of 'Other', it is defined by the event source.",
       "requirement": "recommended"
     },
     "status_code": {
@@ -134,12 +134,7 @@
     },
     "status_id": {
       "description": "The normalized status identifier of the compliance check.",
-      "requirement": "recommended",
       "enum": {
-        "0": {
-          "caption": "Unknown",
-          "description": "The status is unknown."
-        },
         "1": {
           "caption": "Pass",
           "description": "The compliance check passed for all the evaluated resources."
@@ -151,12 +146,9 @@
         "3": {
           "caption": "Fail",
           "description": "The compliance check failed for at least one of the evaluated resources."
-        },
-        "99": {
-          "caption": "Other",
-          "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
         }
-      }
-    }
+      },
+      "requirement": "recommended"
+    } 
   }
 }

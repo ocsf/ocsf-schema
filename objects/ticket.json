@@ -1,12 +1,60 @@
 {
   "caption": "Ticket",
-  "description": "The Ticket object represents ticket in the customer's systems like Salesforce, jira etc.",
+  "description": "The Ticket object represents ticket in the customer's IT Service Management (ITSM) systems like ServiceNow, Jira, etc.",
   "extends": "object",
   "name": "ticket",
   "attributes": {
     "src_url": {
       "description": "The url of a ticket in the ticket system.",
       "requirement": "recommended"
+    },
+    "status": {
+      "caption": "Ticket Status",
+      "description": "The status of the ticket normalized to the caption of the <code>status_id</code> value. In the case of <code>99</code>, this value should as defined by the source.",
+      "requirement": "optional"
+    },
+    "status_id": {
+      "caption": "Ticket Status ID",
+      "description": "The normalized identifier for the ticket status.",
+      "enum": {
+        "1": {
+          "caption": "New",
+          "description": "The ticket is new and yet to be reviewed."
+        },
+        "2": {
+          "caption": "In Progress",
+          "description": "The ticket is actively being worked on."
+        },
+        "3": {
+          "caption": "Notified", 
+          "description": "Relevant parties have been notified about the ticket."
+        },
+        "4": {
+          "caption": "On Hold",
+          "description": "Work on the ticket is temporarily suspended."
+        },
+        "5": {
+          "caption": "Resolved",
+          "description": "The ticket is resolved and a solution is implemented, pending confirmation or verification from the requestor."
+        },
+        "6": {
+          "caption": "Closed",
+          "description": "The ticket has been completed and closed."
+        },
+        "7": {
+          "caption": "Canceled",
+          "description": "The ticket has been canceled and will not be processed."
+        },
+        "8": {
+          "caption": "Reopened",
+          "description": "The ticket was previously closed, but has been reopened."
+        }
+      },
+      "requirement": "optional"
+    },
+    "status_details": {
+      "description": "A list of contextual descriptions of the <code>status, status_id</code> values.",
+      "requirement": "optional"
     },
     "title": {
       "description": "The title of the ticket.",
@@ -37,7 +85,7 @@
       "requirement": "optional"
     },
     "uid": {
-      "description": "Unique ticket identifier like ticket id.",
+      "description": "Unique identifier of the ticket.",
       "requirement": "recommended"
     }
   },

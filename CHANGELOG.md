@@ -70,6 +70,7 @@ Thankyou! -->
   1. Added `exploit_ref_url`, `license_url`, `package_manager_url`, and `uri` as `url_t`. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
   1. Added `transformation_info_list` #1392
   1. Added `authentication_token` as `authentication_token`, `kerberos_flags` as `string_t` and `is_renewable` as `boolean_t`. [#1391](https://github.com/ocsf/ocsf-schema/pull/1391)
+  1. Added `tickets` as an array of `ticket` objects. #1402
 * #### Objects
   1. Added `assessment` object to capture evaluations/assessments of configurations/signals. #1343
   1. Added `node`, `edge`, `graph` objects. #1343
@@ -124,14 +125,18 @@ Thankyou! -->
   1. Added `license_url`, `package_manager`, `package_manager_url`, `src_url`, and `uid` to `package` object. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
   1. Added `type`, `type_id`, `uid`, and `version` to `sbom` object. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
   1. Added `category`, `dependency_chain`, `exploit_ref_url`, `exploit_requirement`, and `exploit_type` to `vulnerability` object. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
+  1. Added `status`, `status_id`, `status_details` to `ticket` object; `uid_alt`, `created_time` to `_resource` object; `traits` to `finding_info` object. #1402
+  1. Added `modified_time` to `_resource` object; `zone` to `resource_details` object. #1403
 * #### Profiles
   1. Added `malware_scan_info` to `security_control` profile. #1373
   1. Added `campaign`, `category`, `created_time`, `creator`, `desc`, `expiration_time`, `external_id`, `labels`, `malware`, `modified_time`, `name`, `detection_pattern`, `detection_pattern_type`, `detection_pattern_type_id`, `intrusion_sets`, `risk_score`, `references`, `uploaded_time`, `severity`, `uid` and `threat_actor` to `osint` object. #1310
+  1. Added `tickets` to `incident` profile. #1402
 
 ### Deprecated
   1. Deprecated usage of `isp` attribute in the `location` object. #1351
   1. Deprecated usage of `occurrence_details` in favor of `occurrences` in `discovery_details` object. #1358
   1. Deprecated usage of `resource` in favor of `resources` in the `user_access` class. #1374
+  1. Deprecated usage of `ticket` in favor of `tickets` in `incident` profile and `incident_finding` event class. #1402
 
 ### Misc
   1. Updated description of `config_state` to reflect the addition of the `assessments` object. #1343
@@ -143,6 +148,17 @@ Thankyou! -->
   1. Added `reg_value.name` as an Observable type - `type_id: 43`. #1380
   1. Added `advisory.uid` as Observable type `type_id: 44`. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
   1. Updated `resource_details.uid`, `web_resource.uid`, and `win_resource.uid` to be observable `type_id: 10` #1394
+  1. Added `file_path_t` as an Observable type - `type_id: 45` and marked fields as this type #1381
+     - `lineage` dictionary attribute
+     - `affected_package.path` object attribute
+     - `file.path` object attribute
+     - `image.path` object attribute
+     - `kernel.path` object attribute
+     - `malware.path` object attribute
+     - `process_entity.path` object attribute
+  1. Added `extensions/windows/reg_key_path_t` as an Observable type - `type_id: 46` and marked fields as this type #1381
+     - `reg_key.path` object attribute
+     - `reg_value.path` object attribute 
 
 ## [v1.4.0] - January 31st, 2025
 

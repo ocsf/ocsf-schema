@@ -43,7 +43,7 @@ Thankyou! -->
 
 ### Added
 * #### Event Classes
-  1. Added `observability_metric_info` event class to the Discovery category.  [#1385](https://github.com/ocsf/ocsf-schema/pull/1386)
+  1. Added `observability_metric_info` event class to the Discovery category. [#1385](https://github.com/ocsf/ocsf-schema/pull/1385)
   1. Added `Application Security Posture Finding` event class to the Findings category. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
 * #### Dictionary Attributes 
   1. Added `boot_uid` as a `string_t`. [#1335](https://github.com/ocsf/ocsf-schema/pull/1335)

@@ -1,0 +1,64 @@
+{
+  "caption": "Authentication Token",
+  "description": "The Authentication Token object contains the attributes pertaining to an authentication token, ticket, or assertion e.g. Kerberos, OIDC, SAML.",
+  "extends": "object",
+  "name": "authentication_token",
+  "attributes": {
+    "created_time": {
+      "description": "The time that the authentication token was created.",
+      "requirement": "recommended"
+    },
+    "encryption_details": {
+      "description": "The encryption details of the authentication token.",
+      "requirement": "recommended"
+    },
+    "expiration_time": {
+      "description": "The expiration time of the authentication token.",
+      "requirement": "optional"
+    },
+    "is_renewable": {
+      "description": "Indicates whether the authentication token is renewable.",
+      "requirement": "optional"
+    },
+    "kerberos_flags": {
+      "requirement": "recommended"
+    },
+    "type": {
+      "description": "The type of the authentication token.",
+      "requirement": "recommended"
+    },
+    "type_id": {
+      "description": "The normalized authentication token type identifier.",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The Authentication token type is unknown."
+        },
+        "1": {
+          "caption": "Ticket Granting Ticket",
+          "description": "Ticket Granting Ticket (TGT) for Kerberos."
+        },
+        "2": {
+          "caption": "Service Ticket",
+          "description": "Service Ticket (ST) for Kerberos."
+        },
+        "3": {
+          "caption": "Identity Token",
+          "description": "Identity (ID) Token for OIDC."
+        },
+        "4": {
+          "caption": "Refresh Token",
+          "description": "Refresh Token for OIDC."
+        },
+        "5": {
+          "caption": "SAML Assertion",
+          "description": "Authentication Assertion for SAML."
+        },
+        "99": {
+          "caption": "Other"
+        }
+      },
+      "requirement": "recommended"
+    }
+  }
+}

@@ -1,8 +1,58 @@
 {
   "caption": "Attribute Dictionary",
-  "description": "The Attribute Dictionary defines attributes and includes references to the events and objects in which they are used.",
+  "description": "The Attribute Dictionary provides a comprehensive catalog of standardized attributes used across OCSF. It defines each attribute's properties, data types, and relationships. This dictionary serves as the authoritative reference for attribute definitions and ensures consistent usage throughout the schema.",
   "name": "dictionary",
   "attributes": {
+    "timespan": {
+      "caption": "Time Span",
+      "description": "The Time Span object represents different time period durations. If a timespan is fractional, i.e. crosses one period, e.g. a week and 3 days, more than one may be populated since each member is of integral type. In that case <code>type_id</code> if present should be set to <code>Other.</code><P>A timespan may also be defined by its time interval boundaries, <code>start_time</code> and <code>end_time</code>.",
+      "type": "timespan"
+    },
+    "observation_parameter": {
+      "caption": "Observation Parameter",
+      "description": "The name of the parameter being analyzed or monitored. This generally identifies the specific characteristic or property being measured. See specific usage.",
+      "type": "string_t"
+    },
+    "analysis_targets": {
+      "caption": "Analysis Targets",
+      "description": "The specific dimensions, components, or aspects of the system that are the targets of the analysis. See specific usage.",
+      "type": "analysis_target",
+      "is_array": true
+    },
+    "observations": {
+      "caption": "Observations",
+      "description": "A list of individual observations or measurements collected during analysis. Each observation captures a specific data point. See specific usage.",
+      "type": "observation",
+      "is_array": true
+    },
+    "observation_type": {
+      "caption": "Observation Type",
+      "description": "The classification or category of the observation, indicating what kind of measurement or finding it represents. See specific usage.",
+      "type": "string_t"
+    },
+    "observed_pattern": {
+      "caption": "Observed Pattern",
+      "description": "A detected pattern or trend identified in the analyzed data, describing recurring activities or characteristics.",
+      "type": "string_t"
+    },
+    "anomalies": {
+      "caption": "Anomalies",
+      "description": "A list of detected anomalies or deviations from expected behavior patterns. See specific usage.",
+      "type": "anomaly",
+      "is_array": true
+    },
+    "baselines": {
+      "caption": "Baselines",
+      "description": "A list of baseline measurements or normal behavior patterns used as reference points for comparison and anomaly detection. See specific usage.",
+      "type": "baseline",
+      "is_array": true
+    },
+    "anomaly_analyses": {
+      "caption": "Anomaly Analyses",
+      "description": "A list of anomaly analysis results that examine and characterize patterns of activity or usage over time to identify normal vs abnormal activities. See specific usage.",
+      "type": "anomaly_analysis",
+      "is_array": true
+    },
     "access_list": {
       "caption": "Access List",
       "description": "The list of requested access rights.",
@@ -209,6 +259,11 @@
       "description": "The application that reported the event.",
       "type": "product"
     },
+    "application": {
+      "caption": "Application",
+      "description": "An Application describes the details for an inventoried application as reported by an Application Security tool or other Developer-centric tooling. Applications can be defined as Kubernetes resources, Containerized resources, or application hosting-specific cloud sources such as AWS Elastic BeanStalk, AWS Lightsail, or Azure Logic Apps.",
+      "type": "application"
+    },
     "app_name": {
       "caption": "Application Name",
       "description": "The name of the application associated with the event or object.",
@@ -359,6 +414,11 @@
           "description": "The authentication type is not mapped. See the <code>auth_type</code> attribute, which contains a data source specific value."
         }
       }
+    },
+    "authentication_token": {
+      "caption": "Authentication Token",
+      "description": "The authentication token, ticket, or assertion. See specific usage.",
+      "type": "authentication_token"
     },
     "author": {
       "caption": "Author",
@@ -537,6 +597,11 @@
       "description": "A list of RDP capabilities.",
       "type": "string_t",
       "is_array": true
+    },
+    "campaign": {
+      "caption": "Campaign",
+      "description": "The campaign object describes details about the campaign that was the source of the activity.",
+      "type": "campaign"
     },
     "caption": {
       "caption": "Caption",
@@ -1256,7 +1321,7 @@
     },
     "countermeasures": {
       "caption": "Countermeasures",
-      "description": "The MITRE DEFEND™ Matrix Countermeasures associated with a remediation.",
+      "description": "The MITRE D3FEND™ Matrix Countermeasures associated with a remediation.",
       "type": "d3fend",
       "is_array": true
     },
@@ -1309,6 +1374,13 @@
           "description": "The CPU architecture is not mapped. See the <code>cpu_architecture</code> attribute, which contains a data source specific value."
         }
       }
+    },
+    "cpid": {
+      "caption": "Common Process Identifier",
+      "source": "cpid",
+      "references": [{"url": "https://github.com/ocsf/common-process-id", "description": "OCSF Common Process Identifier (CPID) Specification"}],
+      "description": "A unique process identifier that can be assigned deterministically by multiple system data producers.",
+      "type": "uuid_t"
     },
     "cpu_bits": {
       "caption": "CPU Bits",
@@ -1411,7 +1483,7 @@
       }
     },
     "d3f_tactic": {
-      "caption": "MITRE DEFEND™ Tactic",
+      "caption": "MITRE D3FEND™ Tactic",
       "description": "The D3FEND Tactic object describes the defensive tactic name associated with a countermeasure.",
       "references": [
         {
@@ -1422,7 +1494,7 @@
       "type": "d3f_tactic"
     },
     "d3f_technique": {
-      "caption": "MITRE DEFEND™ Technique",
+      "caption": "MITRE D3FEND™ Technique",
       "description": "The D3FEND Technique object describes the defensive technique ID and/or name associated with a countermeasure.",
       "references": [
         {
@@ -1549,6 +1621,11 @@
       ],
       "is_array": true
     },
+    "dependency_chain": {
+      "caption": "Dependency Chain",
+      "description": "Information about the chain of dependencies related to the issue as reported by an Application Security or Vulnerability Management tool. E.g., <code>serverless-offline -> @serverless/utils -> memoizee -> es5-ext</code>.",
+      "type": "string_t"
+    },
     "depth": {
       "caption": "CVSS Depth",
       "description": "The CVSS depth represents a depth of the equation used to calculate CVSS score.",
@@ -1584,6 +1661,45 @@
       "caption": "Detection Pattern",
       "description": "Specific pattern, algorithm, fingerprint, or model used for detection.",
       "type": "string_t"
+    },
+    "detection_pattern_type": {
+      "caption": "Detection Pattern",
+      "description": "The detection pattern type, normalized to the caption of the detection_pattern_type_id value. In the case of 'Other', it is defined by the event source.",
+      "type": "string_t"
+    },
+    "detection_pattern_type_id": {
+      "caption": "Detection Pattern Type ID",
+      "description": "Specifies the type of detection pattern used to identify the associated threat indicator.",
+      "sibling": "detection_pattern_type",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The type is not mapped."
+        },
+        "1": {
+          "caption": "STIX"
+        },
+        "2": {
+          "caption": "PCRE"
+        },
+        "3": {
+          "caption": "SIGMA"
+        },
+        "4": {
+          "caption": "Snort"
+        },
+        "5": {
+          "caption": "Suricata"
+        },
+        "6": {
+          "caption": "YARA"
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The detection pattern type is not mapped. See the <code>detection_pattern_type</code> attribute, which contains a data source specific value."
+        }
+      }
     },
     "detection_system": {
       "caption": "Detection System",
@@ -2085,6 +2201,11 @@
       "description": "The encryption details of a file or other content. See specific usage.",
       "type": "encryption_details"
     },
+    "end_column": {
+      "caption": "End Column",
+      "description": "The end column number. See specific usage.",
+      "type": "integer_t"
+    },
     "end_line": {
       "caption": "End Line",
       "description": "The line number of the last line of code block identified as vulnerable.",
@@ -2188,6 +2309,21 @@
       "description": "The time when the exploit was most recently observed.",
       "type": "timestamp_t"
     },
+    "exploit_ref_url": {
+      "caption": "Exploit URL",
+      "description": "The URL of the exploit code or Proof-of-Concept (PoC).",
+      "type": "url_t"
+    },
+    "exploit_requirement": {
+      "caption": "Exploit Requirement",
+      "description": "The requirement description related to any constraints around exploit execution.",
+      "type": "string_t"
+    },
+    "exploit_type": {
+      "caption": "Exploit Type",
+      "description": "The categorization or type of Exploit. E.g., <code>Network</code> or <code>Physical</code>.",
+      "type": "string_t"
+    },
     "ext": {
       "caption": "Extension",
       "description": "The extension. See specific usage.",
@@ -2217,6 +2353,11 @@
       "description": "The schema extensions used to create the event.",
       "type": "extension",
       "is_array": true
+    },
+    "external_uid": {
+      "caption": "External ID",
+      "description": "A unique identifier assigned by an external system for cross-referencing.",
+      "type": "string_t"
     },
     "factor_type": {
       "caption": "Factor Type",
@@ -2361,6 +2502,7 @@
     "fix_coverage_id": {
       "caption": "Fix Coverage ID",
       "description": "The normalized identifier for fix coverage. See specific usage.",
+      "sibling": "fix_coverage",
       "type": "integer_t",
       "enum":{
         "0": {
@@ -2405,6 +2547,21 @@
         }
       },
       "is_array": true
+    },
+    "kerberos_flags": {
+      "caption": "Kerberos Flags",
+      "description": "A bitmask, either in hexadecimal or decimal form, which encodes various attributes or permissions associated with a Kerberos ticket. These flags delineate specific characteristics of the ticket, such as its renewability or forwardability.",
+      "references": [
+        {
+          "description": "RFC 4120: 5.2.8.  KerberosFlags",
+          "url": "https://www.rfc-editor.org/rfc/rfc4120#section-5.2.8"
+        },
+        {
+          "description": "Microsoft Windows Security 4769 (see 'Ticket Options')",
+          "url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4769"
+        }
+      ],
+      "type": "string_t"
     },
     "flags": {
       "caption": "Flags",
@@ -2693,6 +2850,12 @@
       "description": "The impact as an integer value of the finding, valid range 0-100.",
       "type": "integer_t"
     },
+    "intrusion_sets": {
+      "caption": "Intrusion Sets",
+      "description": "A grouping of adversarial behaviors and resources believed to be associated with specific threat actors or campaigns. Intrusion sets often encompass multiple campaigns and are used to organize related activities under a common label.",
+      "type": "string_t",
+      "is_array": true
+    },
     "injection_type": {
       "caption": "Injection Type",
       "description": "The process injection method, normalized to the caption of the injection_type_id value. In the case of 'Other', it is defined by the event source.",
@@ -2936,14 +3099,24 @@
       "description": "Determination of the public accessibility. See specific usage.",
       "type": "boolean_t"
     },
+    "is_read": {
+      "caption": "Read",
+      "description": "The indication of whether the email has been read.",
+      "type": "boolean_t"
+    },
     "is_remote": {
       "caption": "Remote",
       "description": "The indication of whether the session is remote.",
       "type": "boolean_t"
     },
+    "is_renewable": {
+      "caption": "Renewable",
+      "description": "The indication of whether something is renewable. See specific usage.",
+      "type": "boolean_t"
+    },
     "is_renewal": {
       "caption": "Renewal",
-      "description": "The indication of whether this is a lease/session renewal event.",
+      "description": "The indication of whether the event or object represents a renewal. See specific usage.",
       "type": "boolean_t"
     },
     "is_secure": {
@@ -3185,10 +3358,15 @@
       "description": "The name or identifier of the license applied on package or software. See <a target='_blank' href='https://spdx.org/licenses/'>SPDX License List</a>.",
       "type": "string_t"
     },
+    "license_url": {
+      "caption": "Software License URL",
+      "description": "The URL pointing to the license applied on package or software. This is typically a <code>LICENSE.md</code> file within a repository.",
+      "type": "url_t"
+    },
     "lineage": {
       "caption": "Lineage",
       "description": "The lineage of the process, represented by a list of paths for each ancestor process. For example: <code>['/usr/sbin/sshd', '/usr/bin/bash', '/usr/bin/whoami']</code>.",
-      "type": "string_t",
+      "type": "file_path_t",
       "is_array": true
     },
     "load_balancer": {
@@ -3394,6 +3572,26 @@
       "type": "malware",
       "is_array": true
     },
+    "malware_scan_info": {
+      "caption": "Malware Scan Info",
+      "description": "Describes details about the scan job that identified malware on the target system.",
+      "type": "malware_scan_info"
+    },
+    "num_volumes": {
+      "caption": "Number of Volumes",
+      "description": "The number of volumes in the storage device. See specific usage.",
+      "type": "integer_t"
+    },
+    "num_infected": {
+      "caption": "Number of Infected Entities",
+      "description": "The number of infected entities. See specific usage.",
+      "type": "integer_t"
+    },
+    "unique_malware_count": {
+      "caption": "Unique Malware Count",
+      "description": "The number of unique malware detected during a scan. See specific usage.",
+      "type": "integer_t"
+    },
     "manager": {
       "caption": "Manager",
       "description": "The user's manager. This helps in understanding an org hierarchy. This should only ever be populated once in an event. I.e. there should not be a manager's manager in an event.",
@@ -3441,7 +3639,8 @@
           "description": "RFC 5322",
           "url": "https://www.rfc-editor.org/rfc/rfc5322"
         }
-      ]
+      ],
+      "observable": 42
     },
     "meets_criteria": {
       "caption": "Meets Criteria",
@@ -3468,6 +3667,21 @@
       "caption": "MIME type",
       "description": "The Multipurpose Internet Mail Extensions (MIME) type of the file, if applicable.",
       "type": "string_t"
+    },
+    "mitigation": {
+      "caption": "MITRE Mitigation",
+      "description": "The Mitigation object describes the MITRE ATT&CK® or ATLAS™ Mitigation ID and/or name that is associated to an attack.",
+      "type": "mitigation",
+      "references": [
+        {
+          "description": "ATT&CK® Matrix",
+          "url": "https://attack.mitre.org/wiki/ATT&CK_Matrix"
+        },
+        {
+          "description": "ATLAS™ Matrix",
+          "url": "https://atlas.mitre.org/matrices/ATLAS"
+        }
+      ]
     },
     "model": {
       "caption": "Model",
@@ -3612,8 +3826,14 @@
     },
     "occurrence_details": {
       "caption": "Occurrence Details",
-      "description": "Details about where in the target entity, specified information was discovered. See specific usage.",
+      "description": "Details about where in the target entity the specified information was discovered. See specific usage.",
       "type": "occurrence_details"
+    },
+    "occurrences": {
+      "caption": "Occurrences",
+      "description": "A list of <code>occurrence_details</code> objects, each describing where in the target entity the specified information was discovered. See specific usage.",
+      "type": "occurrence_details",
+      "is_array": true
     },
     "office_location": {
       "caption": "Office Location",
@@ -3753,6 +3973,11 @@
       "caption": "Package Manager",
       "description": "The software packager manager utilized to manage a package on a system, e.g. npm, yum, dpkg etc.",
       "type": "string_t"
+    },
+    "package_manager_url": {
+      "caption": "Package Manager URL",
+      "description": "The URL of the package or library at the package manager, or the specific URL or URI of an internal package manager link such as <code>AWS CodeArtifact</code> or <code>Artifactory</code>.",
+      "type": "url_t"
     },
     "packages": {
       "caption": "Software Packages",
@@ -4869,7 +5094,7 @@
     },
     "severity": {
       "caption": "Severity",
-      "description": "The event/finding severity, normalized to the caption of the severity_id value. In the case of 'Other', it is defined by the source.",
+      "description": "The event/finding severity, normalized to the caption of the <code>severity_id</code> value. In the case of 'Other', it is defined by the source.",
       "type": "string_t"
     },
     "severity_id": {
@@ -5067,6 +5292,11 @@
       "caption": "Start Address",
       "description": "The start address of the execution.",
       "type": "string_t"
+    },
+    "start_column": {
+      "caption": "Start Column",
+      "description": "The start column number. See specific usage.",
+      "type": "integer_t"
     },
     "start_line": {
       "caption": "Start Line",
@@ -5397,6 +5627,12 @@
       "description": "The linked ticket in the ticketing system.",
       "type": "ticket"
     },
+    "tickets": {
+      "caption": "Tickets",
+      "description": "The associated ticket(s) in the ticketing system. Each ticket contains details like ticket ID, status, etc.",
+      "type": "ticket",
+      "is_array": true
+    },
     "tid": {
       "caption": "Thread ID",
       "description": "The Identifier of the thread associated with the event, as returned by the operating system.",
@@ -5482,6 +5718,12 @@
       "description": "The unique identifier of the transaction.",
       "type": "string_t"
     },
+    "transformation_info_list": {
+      "caption": "Transformation Info",
+      "description": "An array of transformation info that describes the mappings or transforms applied to the data.",
+      "type": "transformation_info",
+      "is_array": true
+    },
     "transmit_time": {
       "caption": "Transmission Time",
       "description": "The event transmission time from one device to another.  See specific usage.",
@@ -5491,6 +5733,17 @@
       "caption": "Tree UID",
       "description": "The tree id is a unique SMB identifier which represents an open connection to a share.",
       "type": "string_t"
+    },
+    "threat_actor": {
+      "caption": "Threat Actor",
+      "description": "A threat actor is an individual or group that conducts malicious cyber activities, often with financial, political, or ideological motives.",
+      "type": "threat_actor",
+      "references": [
+        {
+          "description": "STIX Threat Actor definition",
+          "url": "https://stixproject.github.io/data-model/1.2/ta/ThreatActorType/"
+        }
+      ]
     },
     "ttl": {
       "caption": "TTL",
@@ -5596,6 +5849,17 @@
       "caption": "Untruncated Size",
       "description": "The size in bytes of an attribute before truncation. See specific usage.",
       "type": "integer_t"
+    },
+    "uri": {
+      "caption": "URI",
+      "description": "A Uniform Resource Identifier (URI) is a string of characters that identifies a resource on the Internet. URIs can identify physical resources, like webpages and documents. See specific usage.",
+      "type": "url_t",
+      "references": [{"url": "https://datatracker.ietf.org/doc/html/rfc3986", "description": "RFC 3986"}]
+    },
+    "uploaded_time": {
+      "caption": "Uploaded Time",
+      "description": "The timestamp at which an entity was uploaded. See specific usage.",
+      "type": "timestamp_t"
     },
     "url": {
       "caption": "URL",
@@ -5742,6 +6006,11 @@
       "description": "The Virtual LAN identifier.",
       "type": "string_t"
     },
+    "volume": {
+      "caption": "Volume",
+      "description": "The volume on the storage device where the file is located. See specific usage.",
+     "type": "string_t"
+    },
     "vpc_uid": {
       "caption": "VPC UID",
       "description": "The unique identifier of the Virtual Private Cloud (VPC).",
@@ -5801,6 +6070,12 @@
       "caption": "Network Zone",
       "description": "The network zone or LAN segment.",
       "type": "string_t"
+    },
+    "traits": {
+      "caption": "Traits",
+      "description": "The traits that describe characteristics, features of an entity. See specific usage.",
+      "type": "trait",
+      "is_array": true
     }
   },
   "types": {
@@ -5848,6 +6123,13 @@
         "observable": 7,
         "caption": "File Name",
         "description": "File name. For example:<br><code>text-file.txt</code>.",
+        "type": "string_t",
+        "type_name": "String"
+      },
+      "file_path_t": {
+        "observable": 45,
+        "caption": "File Path",
+        "description": "The full path to the file. For example: For example:<br><code>c:\\windows\\system32\\svchost.exe</code>.",
         "type": "string_t",
         "type_name": "String"
       },

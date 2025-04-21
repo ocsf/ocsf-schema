@@ -44,7 +44,8 @@ Thankyou! -->
 ### Added
 * #### Event Classes
   1. Added `Application Security Posture Finding` event class to the Findings category. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
-* #### Dictionary Attributes 
+  1. Added `Live Evidence Info` event class to Discovery category. [#1382](https://github.com/ocsf/ocsf-schema/pull/1382)
+* #### Dictionary Attributes
   1. Added `boot_uid` as a `string_t`. [#1335](https://github.com/ocsf/ocsf-schema/pull/1335)
   1. Added `cpid` as a `uuid_t`. [#1246](https://github.com/ocsf/ocsf-schema/pull/1246)
   1. Added `raw_data_size` as a `long_t`. [#1347](https://github.com/ocsf/ocsf-schema/pull/1347)
@@ -72,6 +73,10 @@ Thankyou! -->
   1. Added `authentication_token` as `authentication_token`, `kerberos_flags` as `string_t` and `is_renewable` as `boolean_t`. [#1391](https://github.com/ocsf/ocsf-schema/pull/1391)
   1. Added `tickets` as an array of `ticket` objects. #1402
   1. Added `is_read` as `boolean_t`. #1406
+  1. Added `query_type` and `query_type_id` as `string` and `integer_t` respectively. [#1382](https://github.com/ocsf/ocsf-schema/pull/1382)
+  1. Added `tcp_state_id` as `integer_t`. [#1382](https://github.com/ocsf/ocsf-schema/pull/1382)
+  1. Added `query_evidence` as type `query_evidence`. [#1382](https://github.com/ocsf/ocsf-schema/pull/1382)
+  1. Added `checks` as type `check`. [#1369](https://github.com/ocsf/ocsf-schema/pull/1369)
 * #### Objects
   1. Added `assessment` object to capture evaluations/assessments of configurations/signals. #1343
   1. Added `node`, `edge`, `graph` objects. #1343
@@ -85,7 +90,9 @@ Thankyou! -->
   1. Added `threat_actor` object #1310
   1. Added `transformation_info` #1392
   1. Added `authentication_token` object. [#1391](https://github.com/ocsf/ocsf-schema/pull/1391)
-
+  1. Added `query_evidence` object. [#1382](https://github.com/ocsf/ocsf-schema/pull/1382)
+  1. Added `check` object [#1369](https://github.com/ocsf/ocsf-schema/pull/1369)
+     
 ### Improved
 * #### Event Classes
   1. Added `assessments` to `config_state`. #1343
@@ -95,6 +102,7 @@ Thankyou! -->
   1. Added `resources` to `user_access`. #1374
   1. Added `malware_scan_info`, `malware` to `detection_finding`. #1373 
   1. Added `authentication_token` to `authentication`. [#1391](https://github.com/ocsf/ocsf-schema/pull/1391)
+
 * #### Objects
   1. Added `boot_uid` to `device` object. [#1335](https://github.com/ocsf/ocsf-schema/pull/1335)
   1. Relaxed constraint to provide `email_addr`, `phone_number`, or `security_questions` on `auth_factor`. [#1339](https://github.com/ocsf/ocsf-schema/pull/1339)
@@ -130,6 +138,9 @@ Thankyou! -->
   1. Added `modified_time` to `_resource` object; `zone` to `resource_details` object. #1403
   1. Added `countermeasures` to `mitigation` object. #1348
   1. Added `is_read` to `email` object. #1406
+  1. Added `cis_controls` to `remediation` object [#1369](https://github.com/ocsf/ocsf-schema/pull/1369)
+  1. Added `check` object to `compliance` object [#1369](https://github.com/ocsf/ocsf-schema/pull/1369)
+     
 * #### Profiles
   1. Added `malware_scan_info` to `security_control` profile. #1373
   1. Added `campaign`, `category`, `created_time`, `creator`, `desc`, `expiration_time`, `external_id`, `labels`, `malware`, `modified_time`, `name`, `detection_pattern`, `detection_pattern_type`, `detection_pattern_type_id`, `intrusion_sets`, `risk_score`, `references`, `uploaded_time`, `severity`, `uid` and `threat_actor` to `osint` object. #1310
@@ -140,6 +151,10 @@ Thankyou! -->
   1. Deprecated usage of `occurrence_details` in favor of `occurrences` in `discovery_details` object. #1358
   1. Deprecated usage of `resource` in favor of `resources` in the `user_access` class. #1374
   1. Deprecated usage of `ticket` in favor of `tickets` in `incident` profile and `incident_finding` event class. #1402
+  1. Deprecated `kernel_object_query`, `file_query`, `folder_query`, `admin_group_query`, `job_query`, `module_query`, `network_connection_query`, `networks_query`, `peripheral_device_query`, `process_query`, `service_query`, `user_session_query`, `user_query`, `startup_item_query`, `registry_key_query`, `registry_value_query`, and `prefetch_query` classes in favor of the `live_evidence_info` class. [#1382](https://github.com/ocsf/ocsf-schema/pull/1382)
+  1. Deprecated `compliance_references` and `compliance_standards` in favor of the `check` object. [#1369](https://github.com/ocsf/ocsf-schema/pull/1369)
+  1. Deprecated `cis_csc` in favor of `cis_control` object. [#1369](https://github.com/ocsf/ocsf-schema/pull/1369)
+  1. Deprecated the `Device Config State` class in favor of the `Compliance Finding` class. [#1369](https://github.com/ocsf/ocsf-schema/pull/1369)
 
 ### Misc
   1. Updated description of `config_state` to reflect the addition of the `assessments` object. #1343
@@ -161,8 +176,8 @@ Thankyou! -->
      - `process_entity.path` object attribute
   1. Added `extensions/windows/reg_key_path_t` as an Observable type - `type_id: 46` and marked fields as this type #1381
      - `reg_key.path` object attribute
-     - `reg_value.path` object attribute 
-
+     - `reg_value.path` object attribute
+  1. Added enhanced descriptions and references to `requirements`, `standards`, `control_parameters`, and `control` in the `compliance` object for clarity and usage. [#1369](https://github.com/ocsf/ocsf-schema/pull/1369)
 ## [v1.4.0] - January 31st, 2025
 
 ### Added

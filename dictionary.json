@@ -4406,6 +4406,11 @@
       "description": "The Domain Name System (DNS) query.",
       "type": "dns_query"
     },
+    "query_evidence": {
+      "caption": "Query Evidence",
+      "description": "The resulting evidence discovered from the evidence search request.",
+      "type": "query_evidence"
+    },
     "query_info": {
       "caption": "Query Info",
       "description": "The query info object holds information related to data access within a datastore. To access, manipulate, delete, or retrieve data from a datastore, a database query must be written using a specific syntax.",
@@ -4483,10 +4488,103 @@
       "description": "The Domain Name System (DNS) query time.",
       "type": "timestamp_t"
     },
+    "query_type": {
+    "caption": "Query Type",
+    "description": "The normalized caption of query_type_id or the source-specific query type.",
+    "type": "string_t"
+    },
+    "query_type_id": {
+    "caption": "Query Type ID",
+    "description": "The normalized type of system query performed against a device or system component.",
+    "sibling": "query_type",
+    "type": "integer_t",
+    "enum": {
+        "0": {
+            "caption": "Unknown",
+            "description": "The query type was unknown or not specified."
+        },
+        "1": {
+            "caption": "Kernel",
+            "description": "A query about kernel resources including system calls, shared mutex, or other kernel components."
+        },
+        "2": {
+            "caption": "File",
+            "description": "A query about file attributes, metadata, content, hash values, or properties."
+        },
+        "3": {
+            "caption": "Folder",
+            "description": "A query about folder attributes, metadata, content, or structure."
+        },
+        "4": {
+            "caption": "Admin Group",
+            "description": "A query about group membership, privileges, domain, or group properties."
+        },
+        "5": {
+            "caption": "Job",
+            "description": "A query about scheduled jobs, their command lines, run states, or execution times."
+        },
+        "6": {
+            "caption": "Module",
+            "description": "A query about loaded modules, their base addresses, load types, or function entry points."
+        },
+        "7": {
+            "caption": "Network Connection",
+            "description": "A query about active network connections, boundaries, protocols, or TCP states."
+        },
+        "8": {
+            "caption": "Network Interfaces",
+            "description": "A query about physical or virtual network interfaces, their IP/MAC addresses, or types."
+        },
+        "9": {
+            "caption": "Peripheral Device",
+            "description": "A query about attached peripheral devices, their classes, models, or vendor information."
+        },
+        "10": {
+            "caption": "Process",
+            "description": "A query about running processes, command lines, ancestry, loaded modules, or execution context."
+        },
+        "11": {
+            "caption": "Service",
+            "description": "A query about system services, their names, versions, labels, or properties."
+        },
+        "12": {
+            "caption": "Session",
+            "description": "A query about authenticated user or service sessions, their creation times, or issuer details."
+        },
+        "13": {
+            "caption": "User",
+            "description": "A query about user accounts, their properties, credentials, or domain information."
+        },
+        "14": {
+            "caption": "Users",
+            "description": "A query about multiple users belonging to an administrative group."
+        },
+        "15": {
+            "caption": "Startup Item",
+            "description": "A query about startup configuration items, their run modes, start types, or current states."
+        },
+        "16": {
+            "caption": "Registry Key",
+            "description": "A Windows-specific query about registry keys, their paths, security descriptors, or modification times."
+        },
+        "17": {
+            "caption": "Registry Value",
+            "description": "A Windows-specific query about registry values, their data types, content, or names."
+        },
+        "18": {
+            "caption": "Prefetch",
+            "description": "A Windows-specific query about prefetch files, their run counts, last execution times, or existence."
+        },
+        "99": {
+            "caption": "Other",
+            "description": "The query type was not mapped to a standard category. See the query_type attribute for source-specific value."
+        }
+      }
+    },
     "radius": {
-      "caption": "Radius",
-      "description": "Farthest horizontal distance from the reported location at which any UA in a group may be located (meters). Also allows defining the area where an Intent-Based Network Participant operation is taking place. Default: 0 m.",
-      "type": "string_t"
+    "caption": "Radius",
+    "description": "Farthest horizontal distance from the reported location at which any UA in a group may be located (meters). Also allows defining the area where an Intent-Based Network Participant operation is taking place. Default: 0 m.",
+    "type": "string_t"
     },
     "ram_size": {
       "caption": "RAM Size",
@@ -5617,6 +5715,67 @@
       "caption": "TCP Flags",
       "description": "The network connection TCP header flags (i.e., control bits).",
       "type": "integer_t"
+    },
+    "tcp_state_id": {
+      "caption": "TCP State ID",
+      "description": "The state of the TCP socket for the network connection.",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The socket state is unknown."
+        },
+        "1": {
+          "caption": "ESTABLISHED",
+          "description": "The socket has an established connection between a local application and a remote peer."
+        },
+        "2": {
+          "caption": "SYN-SENT",
+          "description": "The socket is actively trying to establish a connection to a remote peer."
+        },
+        "3": {
+          "caption": "SYN-RECEIVED",
+          "description": "The socket has passively received a connection request from a remote peer."
+        },
+        "4": {
+          "caption": "FIN-WAIT-1",
+          "description": "The socket connection has been closed by the local application, the remote peer has not yet acknowledged the close, and the system is waiting for it to close its half of the connection."
+        },
+        "5": {
+          "caption": "FIN-WAIT-2",
+          "description": "The socket connection has been closed by the local application, the remote peer has acknowledged the close, and the system is waiting for it to close its half of the connection."
+        },
+        "6": {
+          "caption": "TIME-WAIT",
+          "description": "The socket connection has been closed by the local application, the remote peer has closed its half of the connection, and the system is waiting to be sure that the remote peer received the last acknowledgement."
+        },
+        "7": {
+          "caption": "CLOSED",
+          "description": "The socket is not in use."
+        },
+        "8": {
+          "caption": "CLOSE-WAIT",
+          "description": "The socket connection has been closed by the remote peer, and the system is waiting for the local application to close its half of the connection."
+        },
+        "9": {
+          "caption": "LAST-ACK",
+          "description": "The socket connection has been closed by the remote peer, the local application has closed its half of the connection, and the system is waiting for the remote peer to acknowledge the close."
+        },
+        "10": {
+          "caption": "LISTEN",
+          "description": "The socket is listening for incoming connections."
+        },
+        "11": {
+          "caption": "CLOSING",
+          "description": "The socket connection has been closed by the local application and the remote peer simultaneously, and the remote peer has not yet acknowledged the close attempt of the local application."
+        }
+      },
+      "references": [
+        {
+          "description": "RFC 9293",
+          "url": "https://datatracker.ietf.org/doc/html/rfc9293"
+        }
+      ]
     },
     "technique": {
       "caption": "MITRE Technique",

@@ -241,7 +241,12 @@
       "description": "An array of Process Entities describing the extended parentage of this process object. Direct parent information sould be expressed through the <code>parent_process</code> attribute. The first array element is the direct parent of this process object. Subsequent list elements go up the process parentage hierarchy. That is, the array is sorted from newest to oldest process. It is recommended to only populate this field for the top-level process object.",
       "type": "process_entity",
       "is_array": true,
-      "references": [{"url": "https://github.com/ocsf/ocsf-docs/blob/main/Articles/Representing Process Parentage.md", "description": "Guidance on Representing Process Parentage"}]
+      "references": [
+        {
+          "url": "https://github.com/ocsf/ocsf-docs/blob/main/Articles/Representing Process Parentage.md",
+          "description": "Guidance on Representing Process Parentage"
+        }
+      ]
     },
     "answers": {
       "caption": "DNS Answer",
@@ -956,7 +961,7 @@
     "checks": {
       "caption": "Compliance Checks",
       "description": "A list of specific, individual compliance verification checks derived from standard or non-standard benchmark rules or requirements.",
-      "type": "check",  
+      "type": "check",
       "is_array": true
     },
     "chunks": {
@@ -984,17 +989,17 @@
       "description": "The CIS Benchmark describes best practices for securely configuring IT systems, software, networks, and cloud infrastructure as defined by the Center for Internet Security (<a target='_blank' href='https://www.cisecurity.org/cis-benchmarks/'>CIS</a>).",
       "type": "cis_benchmark",
       "@deprecated": {
-      "message": "Use Compliance object with Check object instead.",
-      "since": "1.5.0"
-     }
-   },
+        "message": "Use Compliance object with Check object instead.",
+        "since": "1.5.0"
+      }
+    },
     "cis_benchmark_result": {
       "caption": "CIS Benchmark Result",
       "description": "The CIS Benchmark Result object captures results generated from benchmark evaluations as defined by the Center for Internet Security (<a target='_blank' href='https://www.cisecurity.org/cis-benchmarks/'>CIS</a>).",
       "type": "cis_benchmark_result",
       "@deprecated": {
-          "message": "Use Compliance object with Check object instead.",
-          "since": "1.5.0"
+        "message": "Use Compliance object with Check object instead.",
+        "since": "1.5.0"
       }
     },
     "cis_controls": {
@@ -1009,8 +1014,8 @@
       "type": "cis_csc",
       "is_array": true,
       "@deprecated": {
-          "message": "Use CIS Controls for standard benchmark controls.",
-          "since": "1.5.0"
+        "message": "Use CIS Controls for standard benchmark controls.",
+        "since": "1.5.0"
       }
     },
     "city": {
@@ -1192,7 +1197,7 @@
       "@deprecated": {
         "message": "Use the Compliance object with Check array instead",
         "since": "1.5.0"
-      }      
+      }
     },
     "component": {
       "caption": "Component",
@@ -1404,7 +1409,12 @@
     "cpid": {
       "caption": "Common Process Identifier",
       "source": "cpid",
-      "references": [{"url": "https://github.com/ocsf/common-process-id", "description": "OCSF Common Process Identifier (CPID) Specification"}],
+      "references": [
+        {
+          "url": "https://github.com/ocsf/common-process-id",
+          "description": "OCSF Common Process Identifier (CPID) Specification"
+        }
+      ],
       "description": "A unique process identifier that can be assigned deterministically by multiple system data producers.",
       "type": "uuid_t"
     },
@@ -2530,7 +2540,7 @@
       "description": "The normalized identifier for fix coverage. See specific usage.",
       "sibling": "fix_coverage",
       "type": "integer_t",
-      "enum":{
+      "enum": {
         "0": {
           "caption": "Unknown",
           "description": "The fix coverage is unknown."
@@ -4049,7 +4059,12 @@
       "caption": "Parent Process",
       "description": "The parent process of this process object. It is recommended to only populate this field for the top-level process object, to prevent deep nesting. Additional ancestry information can be supplied in the <code>ancestry</code> attribute.",
       "type": "process",
-      "references": [{"url": "https://github.com/ocsf/ocsf-docs/blob/main/Articles/Representing Process Parentage.md", "description": "Guidance on Representing Process Parentage"}]
+      "references": [
+        {
+          "url": "https://github.com/ocsf/ocsf-docs/blob/main/Articles/Representing Process Parentage.md",
+          "description": "Guidance on Representing Process Parentage"
+        }
+      ]
     },
     "parent_uid": {
       "caption": "Parent Unique ID",
@@ -4489,102 +4504,102 @@
       "type": "timestamp_t"
     },
     "query_type": {
-    "caption": "Query Type",
-    "description": "The normalized caption of query_type_id or the source-specific query type.",
-    "type": "string_t"
+      "caption": "Query Type",
+      "description": "The normalized caption of query_type_id or the source-specific query type.",
+      "type": "string_t"
     },
     "query_type_id": {
-    "caption": "Query Type ID",
-    "description": "The normalized type of system query performed against a device or system component.",
-    "sibling": "query_type",
-    "type": "integer_t",
-    "enum": {
+      "caption": "Query Type ID",
+      "description": "The normalized type of system query performed against a device or system component.",
+      "sibling": "query_type",
+      "type": "integer_t",
+      "enum": {
         "0": {
-            "caption": "Unknown",
-            "description": "The query type was unknown or not specified."
+          "caption": "Unknown",
+          "description": "The query type was unknown or not specified."
         },
         "1": {
-            "caption": "Kernel",
-            "description": "A query about kernel resources including system calls, shared mutex, or other kernel components."
+          "caption": "Kernel",
+          "description": "A query about kernel resources including system calls, shared mutex, or other kernel components."
         },
         "2": {
-            "caption": "File",
-            "description": "A query about file attributes, metadata, content, hash values, or properties."
+          "caption": "File",
+          "description": "A query about file attributes, metadata, content, hash values, or properties."
         },
         "3": {
-            "caption": "Folder",
-            "description": "A query about folder attributes, metadata, content, or structure."
+          "caption": "Folder",
+          "description": "A query about folder attributes, metadata, content, or structure."
         },
         "4": {
-            "caption": "Admin Group",
-            "description": "A query about group membership, privileges, domain, or group properties."
+          "caption": "Admin Group",
+          "description": "A query about group membership, privileges, domain, or group properties."
         },
         "5": {
-            "caption": "Job",
-            "description": "A query about scheduled jobs, their command lines, run states, or execution times."
+          "caption": "Job",
+          "description": "A query about scheduled jobs, their command lines, run states, or execution times."
         },
         "6": {
-            "caption": "Module",
-            "description": "A query about loaded modules, their base addresses, load types, or function entry points."
+          "caption": "Module",
+          "description": "A query about loaded modules, their base addresses, load types, or function entry points."
         },
         "7": {
-            "caption": "Network Connection",
-            "description": "A query about active network connections, boundaries, protocols, or TCP states."
+          "caption": "Network Connection",
+          "description": "A query about active network connections, boundaries, protocols, or TCP states."
         },
         "8": {
-            "caption": "Network Interfaces",
-            "description": "A query about physical or virtual network interfaces, their IP/MAC addresses, or types."
+          "caption": "Network Interfaces",
+          "description": "A query about physical or virtual network interfaces, their IP/MAC addresses, or types."
         },
         "9": {
-            "caption": "Peripheral Device",
-            "description": "A query about attached peripheral devices, their classes, models, or vendor information."
+          "caption": "Peripheral Device",
+          "description": "A query about attached peripheral devices, their classes, models, or vendor information."
         },
         "10": {
-            "caption": "Process",
-            "description": "A query about running processes, command lines, ancestry, loaded modules, or execution context."
+          "caption": "Process",
+          "description": "A query about running processes, command lines, ancestry, loaded modules, or execution context."
         },
         "11": {
-            "caption": "Service",
-            "description": "A query about system services, their names, versions, labels, or properties."
+          "caption": "Service",
+          "description": "A query about system services, their names, versions, labels, or properties."
         },
         "12": {
-            "caption": "Session",
-            "description": "A query about authenticated user or service sessions, their creation times, or issuer details."
+          "caption": "Session",
+          "description": "A query about authenticated user or service sessions, their creation times, or issuer details."
         },
         "13": {
-            "caption": "User",
-            "description": "A query about user accounts, their properties, credentials, or domain information."
+          "caption": "User",
+          "description": "A query about user accounts, their properties, credentials, or domain information."
         },
         "14": {
-            "caption": "Users",
-            "description": "A query about multiple users belonging to an administrative group."
+          "caption": "Users",
+          "description": "A query about multiple users belonging to an administrative group."
         },
         "15": {
-            "caption": "Startup Item",
-            "description": "A query about startup configuration items, their run modes, start types, or current states."
+          "caption": "Startup Item",
+          "description": "A query about startup configuration items, their run modes, start types, or current states."
         },
         "16": {
-            "caption": "Registry Key",
-            "description": "A Windows-specific query about registry keys, their paths, security descriptors, or modification times."
+          "caption": "Registry Key",
+          "description": "A Windows-specific query about registry keys, their paths, security descriptors, or modification times."
         },
         "17": {
-            "caption": "Registry Value",
-            "description": "A Windows-specific query about registry values, their data types, content, or names."
+          "caption": "Registry Value",
+          "description": "A Windows-specific query about registry values, their data types, content, or names."
         },
         "18": {
-            "caption": "Prefetch",
-            "description": "A Windows-specific query about prefetch files, their run counts, last execution times, or existence."
+          "caption": "Prefetch",
+          "description": "A Windows-specific query about prefetch files, their run counts, last execution times, or existence."
         },
         "99": {
-            "caption": "Other",
-            "description": "The query type was not mapped to a standard category. See the query_type attribute for source-specific value."
+          "caption": "Other",
+          "description": "The query type was not mapped to a standard category. See the query_type attribute for source-specific value."
         }
       }
     },
     "radius": {
-    "caption": "Radius",
-    "description": "Farthest horizontal distance from the reported location at which any UA in a group may be located (meters). Also allows defining the area where an Intent-Based Network Participant operation is taking place. Default: 0 m.",
-    "type": "string_t"
+      "caption": "Radius",
+      "description": "Farthest horizontal distance from the reported location at which any UA in a group may be located (meters). Also allows defining the area where an Intent-Based Network Participant operation is taking place. Default: 0 m.",
+      "type": "string_t"
     },
     "ram_size": {
       "caption": "RAM Size",
@@ -6039,7 +6054,12 @@
       "caption": "URI",
       "description": "A Uniform Resource Identifier (URI) is a string of characters that identifies a resource on the Internet. URIs can identify physical resources, like webpages and documents. See specific usage.",
       "type": "url_t",
-      "references": [{"url": "https://datatracker.ietf.org/doc/html/rfc3986", "description": "RFC 3986"}]
+      "references": [
+        {
+          "url": "https://datatracker.ietf.org/doc/html/rfc3986",
+          "description": "RFC 3986"
+        }
+      ]
     },
     "uploaded_time": {
       "caption": "Uploaded Time",
@@ -6194,7 +6214,7 @@
     "volume": {
       "caption": "Volume",
       "description": "The volume on the storage device where the file is located. See specific usage.",
-     "type": "string_t"
+      "type": "string_t"
     },
     "vpc_uid": {
       "caption": "VPC UID",

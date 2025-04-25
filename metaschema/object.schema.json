@@ -1,28 +1,29 @@
 {
-    "$id": "https://schema.ocsf.io/object.schema.json",
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": "Object",
-    "description": "An object is a collection of contextually related attributes, usually representing an entity, and may include other objects. Each object is also a data type in OCSF. Examples of object data types are Process, Device, User, Malware and File.",
-    "allOf": [
-        {
-            "$ref": "common-event-object.schema.json"
-        },
-        {
-            "type": "object",
-            "properties": {
-                "@deprecated": true,
-                "description": true,
-                "caption": true,
-                "name": true,
-                "extends": true,
-                "constraints": true,
-                "profiles": true,
-                "references": true,
-                "attributes": true,
-                "observable": {
-                    "$ref": "observable.schema.json"
-                }            },
-            "additionalProperties": false
+  "$id": "https://schema.ocsf.io/object.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "An object is a collection of contextually related attributes, usually representing an entity, and may include other objects. Each object is also a data type in OCSF. Examples of object data types are Process, Device, User, Malware and File.",
+  "title": "Object",
+  "allOf": [
+    {
+      "$ref": "common-event-object.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "@deprecated": true,
+        "description": true,
+        "caption": true,
+        "name": true,
+        "extends": true,
+        "constraints": true,
+        "profiles": true,
+        "references": true,
+        "attributes": true,
+        "observable": {
+          "$ref": "observable.schema.json"
         }
-    ]
+      },
+      "additionalProperties": false
+    }
+  ]
 }

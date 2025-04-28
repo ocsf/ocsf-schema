@@ -94,6 +94,25 @@ Thankyou! -->
   1. Added `authentication_token` object. [#1391](https://github.com/ocsf/ocsf-schema/pull/1391)
   1. Added `query_evidence` object. [#1382](https://github.com/ocsf/ocsf-schema/pull/1382)
   1. Added `check` object [#1369](https://github.com/ocsf/ocsf-schema/pull/1369)
+* #### Observables
+  1. Added `process_entity.uid` as an Observable type - `type_id: 39`. [#1380](https://github.com/ocsf/ocsf-schema/pull/1380)
+  1. Added `email.subject` and `email.uid` as an Observable types - `type_id: 40` and `type_id: 41`. [#1380](https://github.com/ocsf/ocsf-schema/pull/1380)
+  1. Added `message_uid` as Observable type - `type_id: 42`. [#1380](https://github.com/ocsf/ocsf-schema/pull/1380)
+  1. Added `reg_value.name` as an Observable type - `type_id: 43`. [#1380](https://github.com/ocsf/ocsf-schema/pull/1380)
+  1. Added `advisory.uid` as Observable type `type_id: 44`. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
+  1. Updated `resource_details.uid`, `web_resource.uid`, and `win_resource.uid` to be observable `type_id: 10` [#1394](https://github.com/ocsf/ocsf-schema/pull/1394)
+  1. Added `file_path_t` as an Observable type - `type_id: 45` and marked fields as this type [#1381](https://github.com/ocsf/ocsf-schema/pull/1381)
+     - `lineage` dictionary attribute
+     - `affected_package.path` object attribute
+     - `file.path` object attribute
+     - `image.path` object attribute
+     - `kernel.path` object attribute
+     - `malware.path` object attribute
+     - `process_entity.path` object attribute
+  1. Added `extensions/windows/reg_key_path_t` as an Observable type - `type_id: 46` and marked fields as this type [#1381](https://github.com/ocsf/ocsf-schema/pull/1381)
+     - `reg_key.path` object attribute
+     - `reg_value.path` object attribute
+  
      
 ### Improved
 * #### Event Classes
@@ -129,8 +148,7 @@ Thankyou! -->
   1. Updated `timespan` to include a Time Window `type_id` and `start_time`, `end_time` to the `at_least_one` constraint. [#1372](https://github.com/ocsf/ocsf-schema/pull/1372)
   1. Added `mitigation` to `attack` object. [#1348](https://github.com/ocsf/ocsf-schema/pull/1348)
   1. Added `timespan` object to `observation` object. [#1371](https://github.com/ocsf/ocsf-schema/pull/1371)
-  1. Added `timespan` object to `observation` object. [#1371](https://github.com/ocsf/ocsf-schema/pull/1371)
-  1. Added `end_column`, `rule` and `start_column` to `affected_code` object. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
+  1. Added `end_column`, `rule`, and `start_column` to `affected_code` object. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
   1. Added `category` and `desc` to `compliance` object. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
   1. Added `uri` to the `file` object. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
   1. Added `license_url`, `package_manager`, `package_manager_url`, `src_url`, and `uid` to `package` object. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
@@ -162,23 +180,6 @@ Thankyou! -->
   1. Updated description of `config_state` to reflect the addition of the `assessments` object. [#1343](https://github.com/ocsf/ocsf-schema/pull/1343)
   1. Updated description of `hw_info.uuid` to clarify usage especially in presence of new `device.udid` field. [#1354](https://github.com/ocsf/ocsf-schema/pull/1354)
   1. Updated dictionary descriptions and references of MITRE `attacks`, `tactic`, `technique`, `subtechnique`. [#1355](https://github.com/ocsf/ocsf-schema/pull/1355)
-  1. Added `process_entity.uid` as an Observable type - `type_id: 39`. [#1380](https://github.com/ocsf/ocsf-schema/pull/1380)
-  1. Added `email.subject` and `email.uid` as an Observable types - `type_id: 40` and `type_id: 41`. [#1380](https://github.com/ocsf/ocsf-schema/pull/1380)
-  1. Added `message_uid` as Observable type - `type_id: 42`. [#1380](https://github.com/ocsf/ocsf-schema/pull/1380)
-  1. Added `reg_value.name` as an Observable type - `type_id: 43`. [#1380](https://github.com/ocsf/ocsf-schema/pull/1380)
-  1. Added `advisory.uid` as Observable type `type_id: 44`. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
-  1. Updated `resource_details.uid`, `web_resource.uid`, and `win_resource.uid` to be observable `type_id: 10` [#1394](https://github.com/ocsf/ocsf-schema/pull/1394)
-  1. Added `file_path_t` as an Observable type - `type_id: 45` and marked fields as this type [#1381](https://github.com/ocsf/ocsf-schema/pull/1381)
-     - `lineage` dictionary attribute
-     - `affected_package.path` object attribute
-     - `file.path` object attribute
-     - `image.path` object attribute
-     - `kernel.path` object attribute
-     - `malware.path` object attribute
-     - `process_entity.path` object attribute
-  1. Added `extensions/windows/reg_key_path_t` as an Observable type - `type_id: 46` and marked fields as this type [#1381](https://github.com/ocsf/ocsf-schema/pull/1381)
-     - `reg_key.path` object attribute
-     - `reg_value.path` object attribute
   1. Added enhanced descriptions and references to `requirements`, `standards`, `control_parameters`, and `control` in the `compliance` object for clarity and usage. [#1369](https://github.com/ocsf/ocsf-schema/pull/1369)
 
 ## [v1.4.0] - January 31st, 2025

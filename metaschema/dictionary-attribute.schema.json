@@ -1,66 +1,66 @@
 {
-    "$id": "https://schema.ocsf.io/dictionary-attribute.schema.json",
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": "Dictionary Attribute",
-    "type": "object",
-    "required": [
-        "caption",
-        "description",
-        "type"
-    ],
-    "properties": {
-        "@deprecated": {
-            "$ref": "deprecated.schema.json"
-        },
-        "caption": {
-            "type": "string",
-            "description": "A short, more specific identifier for this attribute."
-        },
-        "description": {
-            "type": "string",
-            "description": "The description of the attribute."
-        },
-        "enum": {
-            "$ref": "enum.schema.json"
-        },
-        "sibling": {
-            "type": "string",
-            "description": "Sibling attributes are string attributes paired with a source enum id attribute. If the source attribute maps to a defined enumeration value, the sibling attribute should be populated with the label of the enum. In the case that the source attribute is `Other`, the sibling attribute is populated with a custom label."
-        },
-        "type": {
-            "type": "string",
-            "description": "The data type for this attribute."
-        },
-        "is_array": {
-            "type": "boolean",
-            "description": "A flag used when the attribute represents an array of values rather than a single value."
-        },
-        "suppress_checks": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "anyOf": [
-              {
-                "const": "enum_convention",
-                "description": "Suppresses the convention that every Enum type has two common values with integer value 0 for Unknown and 99 for Other."
-              },
-              {
-                "const": "sibling_convention",
-                "description": "Suppresses the convention that a sibling field for a field that has an _id suffix should be the name with the _id suffix stripped."
-              }
-            ]
-          }
-        },
-        "observable": {
-            "$ref": "observable.schema.json"
-        },
-        "source": {
-            "type": "string",
-            "description": "The source attribute and its origin, for example the name from an RFC or from another well known schema, e.g. ActiveDirectory."
-        },
-        "references": {
-            "$ref": "references.schema.json"
-        }
+  "additionalProperties": false,
+  "$id": "https://schema.ocsf.io/dictionary-attribute.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dictionary Attribute",
+  "type": "object",
+  "properties": {
+    "@deprecated": {
+      "$ref": "deprecated.schema.json"
     },
-    "additionalProperties": false
+    "caption": {
+      "type": "string",
+      "description": "A short, more specific identifier for this attribute."
+    },
+    "description": {
+      "type": "string",
+      "description": "The description of the attribute."
+    },
+    "enum": {
+      "$ref": "enum.schema.json"
+    },
+    "sibling": {
+      "type": "string",
+      "description": "Sibling attributes are string attributes paired with a source enum id attribute. If the source attribute maps to a defined enumeration value, the sibling attribute should be populated with the label of the enum. In the case that the source attribute is `Other`, the sibling attribute is populated with a custom label."
+    },
+    "type": {
+      "type": "string",
+      "description": "The data type for this attribute."
+    },
+    "is_array": {
+      "type": "boolean",
+      "description": "A flag used when the attribute represents an array of values rather than a single value."
+    },
+    "suppress_checks": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "anyOf": [
+          {
+            "const": "enum_convention",
+            "description": "Suppresses the convention that every Enum type has two common values with integer value 0 for Unknown and 99 for Other."
+          },
+          {
+            "const": "sibling_convention",
+            "description": "Suppresses the convention that a sibling field for a field that has an _id suffix should be the name with the _id suffix stripped."
+          }
+        ]
+      }
+    },
+    "observable": {
+      "$ref": "observable.schema.json"
+    },
+    "source": {
+      "type": "string",
+      "description": "The source attribute and its origin, for example the name from an RFC or from another well known schema, e.g. ActiveDirectory."
+    },
+    "references": {
+      "$ref": "references.schema.json"
+    }
+  },
+  "required": [
+    "caption",
+    "description",
+    "type"
+  ]
 }

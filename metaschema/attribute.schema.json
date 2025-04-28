@@ -1,65 +1,81 @@
 {
-    "$id": "https://schema.ocsf.io/attribute.schema.json",
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": "Attribute",
-    "type": "object",
+  "$id": "https://schema.ocsf.io/attribute.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Attribute",
+  "type": "object",
+  "else": {
     "properties": {
-        "@deprecated": {
-            "$ref": "deprecated.schema.json"
-        },
-        "caption": {
-            "type": "string",
-            "description": "A short, more specific identifier for this attribute."
-        },
-        "description": {
-            "type": "string",
-            "description": "The description of the attribute."
-        },
-        "enum": {
-            "$ref": "enum.schema.json"
-        },
-        "group": {
-            "type": "string",
-            "description": "The group that the attribute is a part of.",
-            "enum": ["context", "classification", "occurrence", "primary"]
-        },
-        "requirement": {
-            "type": "string",
-            "description": "The requirement placed on the attribute for inclusion in the schema."
-        },
-        "sibling": {
-            "type": "string",
-            "description": "Sibling attributes are string attributes paired with a source enum id attribute. If the source attribute maps to a defined enumeration value, the sibling attribute should be populated with the label of the enum. In the case that the source attribute is `Other`, the sibling attribute is populated with a custom label."
-        },
-        "observable": {
-            "$ref": "observable.schema.json"
-        },
-        "source": {
-            "type": "string",
-            "description": "The source attribute and its origin, for example the name from an RFC or from another well known schema, e.g. ActiveDirectory."
-        },
-        "references": {
-            "$ref": "references.schema.json"
-        }
-    },
-    "if": {
-        "required": ["group"],
-        "properties": {
-            "group": { "const": "primary" }
-        }
-    },
-    "then": {
-        "properties": {
-            "requirement": {
-                "enum": ["recommended", "required"]
-            }
-        }
-    },
-    "else": {
-        "properties": {
-            "requirement": {
-                "enum": ["optional", "recommended", "required"]
-            }
-        }
+      "requirement": {
+        "enum": [
+          "optional",
+          "recommended",
+          "required"
+        ]
+      }
     }
+  },
+  "if": {
+    "required": [
+      "group"
+    ],
+    "properties": {
+      "group": {
+        "const": "primary"
+      }
+    }
+  },
+  "properties": {
+    "@deprecated": {
+      "$ref": "deprecated.schema.json"
+    },
+    "caption": {
+      "type": "string",
+      "description": "A short, more specific identifier for this attribute."
+    },
+    "description": {
+      "type": "string",
+      "description": "The description of the attribute."
+    },
+    "enum": {
+      "$ref": "enum.schema.json"
+    },
+    "group": {
+      "type": "string",
+      "description": "The group that the attribute is a part of.",
+      "enum": [
+        "context",
+        "classification",
+        "occurrence",
+        "primary"
+      ]
+    },
+    "requirement": {
+      "type": "string",
+      "description": "The requirement placed on the attribute for inclusion in the schema."
+    },
+    "sibling": {
+      "type": "string",
+      "description": "Sibling attributes are string attributes paired with a source enum id attribute. If the source attribute maps to a defined enumeration value, the sibling attribute should be populated with the label of the enum. In the case that the source attribute is `Other`, the sibling attribute is populated with a custom label."
+    },
+    "observable": {
+      "$ref": "observable.schema.json"
+    },
+    "source": {
+      "type": "string",
+      "description": "The source attribute and its origin, for example the name from an RFC or from another well known schema, e.g. ActiveDirectory."
+    },
+    "references": {
+      "$ref": "references.schema.json"
+    }
+  },
+  "then": {
+    "properties": {
+      "requirement": {
+        "enum": [
+          "recommended",
+          "required"
+        ]
+      }
+    }
+  }
 }

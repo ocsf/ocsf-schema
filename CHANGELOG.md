@@ -41,6 +41,11 @@ Thankyou! -->
 
 ## [Unreleased]
 
+### Improved
+
+* #### Objects
+  1. Added more `algorithm_id` values and references to the `fingerprint` object. [#1412](https://github.com/ocsf/ocsf-schema/pull/1412)
+
 ## [v1.5.0] - April 28th, 2025
 
 ### Added

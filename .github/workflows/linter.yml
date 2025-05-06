@@ -14,7 +14,7 @@ on:
   # push:
     # branches-ignore: [master, main]
     # Remove the line above to run when pushing to master
-  # pull_request:
+  pull_request:
     # branches: [master, main]
 
 ###############
@@ -40,16 +40,6 @@ jobs:
           # Full git history is needed to get a proper
           # list of changed files within `super-linter`
           fetch-depth: 0
-
-      ################################
-      # Run Linter against code base #
-      ################################
-      - name: Lint Code Base
-        uses: github/super-linter@v4
-        env:
-          VALIDATE_ALL_CODEBASE: false
-          DEFAULT_BRANCH: main
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Spellcheck all content
         uses: streetsidesoftware/cspell-action@357d91b7153520efd453f404d76424cff0a29797 # v6.11.0

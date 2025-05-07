@@ -1,0 +1,101 @@
+{
+  "caption": "Application",
+  "description": "An Application describes the details for an inventoried application as reported by an Application Security tool or other Developer-centric tooling. Applications can be defined as Kubernetes resources, Containerized resources, or application hosting-specific cloud sources such as AWS Elastic BeanStalk, AWS Lightsail, or Azure Logic Apps.",
+  "extends": "object",
+  "name": "application",
+  "attributes": {
+    "criticality": {
+      "caption": "Business Criticality",
+      "description": "The criticality of the application as defined by the event source.",
+      "requirement": "optional"
+    },
+    "data": {
+      "description": "Additional data describing the application.",
+      "requirement": "optional"
+    },
+    "desc": {
+      "caption": "Application Description",
+      "description": "A description or commentary for an application, usually retrieved from an upstream system.",
+      "requirement": "optional"
+    },
+    "group": {
+      "description": "The name of the related application or associated resource group.",
+      "requirement": "optional"
+    },
+    "hostname": {
+      "description": "The fully qualified name of the application.",
+      "requirement": "optional"
+    },
+    "labels": {
+      "description": "The list of labels associated to the application.",
+      "requirement": "optional"
+    },
+    "name": {
+      "caption": "Application Name",
+      "description": "The name of the application.",
+      "requirement": "recommended"
+    },
+    "owner": {
+      "description": "The identity of the service or user account that owns the application.",
+      "requirement": "recommended"
+    },
+    "region": {
+      "description": "The cloud region of the resource.",
+      "profile": "cloud",
+      "requirement": "optional"
+    },
+    "resource_relationship": {
+      "caption": "Application Relationship",
+      "description": "A graph representation showing how this application relates to and interacts with other entities in the environment. This can include parent/child relationships, dependencies, or other connections.",
+      "requirement": "optional"
+    },
+    "risk_level": {
+      "requirement": "optional"
+    },
+    "risk_level_id": {
+      "requirement": "optional"
+    },
+    "risk_score": {
+      "requirement": "optional"
+    },
+    "sbom": {
+      "caption": "Related SBOM",
+      "description": "The Software Bill of Materials (SBOM) associated with the application",
+      "requirement": "optional"
+    },
+    "tags": {
+      "description": "The list of tags; <code>{key:value}</code> pairs associated to the application.",
+      "requirement": "optional"
+    },
+    "type": {
+      "caption": "Application Type",
+      "description": "The type of application as defined by the event source, e.g., <code>GitHub</code>, <code>Azure Logic App</code>, or <code>Amazon Elastic BeanStalk</code>.",
+      "requirement": "optional"
+    },
+    "uid": {
+      "caption": "Application ID",
+      "description": "The unique identifier for the application.",
+      "requirement": "recommended"
+    },
+    "uid_alt": {
+      "caption": "Application Alternative ID",
+      "description": "An alternative or contextual identifier for the application, such as a configuration, organization, or license UID.",
+      "requirement": "optional"
+    },
+    "url": {
+      "description": "The URL of the application.",
+      "requirement": "optional"
+    },
+    "version": {
+      "caption": "Application Version",
+      "description": "The semantic version of the application, e.g., <code>1.7.4</code>.",
+      "requirement": "optional"
+    }
+  },
+  "constraints": {
+    "at_least_one": [
+      "uid",
+      "name"
+    ]
+  }
+}

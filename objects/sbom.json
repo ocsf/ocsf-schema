@@ -9,15 +9,72 @@
       "requirement": "recommended"
     },
     "package": {
-      "description": "The device software that is being discovered by an inventory process.",
+      "description": "The software package or library that is being discovered or inventoried by an SBOM.",
       "requirement": "required"
     },
     "product": {
-      "description": "The product that generated the SBOM e.g. cdxgen or Syft.",
+      "description": "Details about the upstream product that generated the SBOM e.g. <code>cdxgen</code> or <code>Syft</code>.",
       "requirement": "recommended"
     },
     "software_components": {
       "requirement": "required"
+    },
+    "type": {
+      "description": "The type of SBOM, normalized to the caption of the <code>type_id</code> value. In the case of 'Other', it is defined by the source.",
+      "requirement": "optional"
+    },
+    "type_id": {
+      "description": "The type of SBOM.",
+      "references": [
+        {
+          "description": "SPDX",
+          "url": "https://spdx.dev/"
+        },
+        {
+          "description": "ISO/IEC 5692:2021",
+          "url": "https://www.iso.org/standard/81870.html"
+        },
+        {
+          "description": "CycloneDX",
+          "url": "https://cyclonedx.org/"
+        },
+        {
+          "description": "ECMA-424",
+          "url": "https://ecma-international.org/publications-and-standards/standards/ecma-424/"
+        },
+        {
+          "description": "SWID",
+          "url": "https://nvd.nist.gov/products/swid"
+        },
+        {
+          "description": "ISO/IEC 19770-2:2015",
+          "url": "https://www.iso.org/standard/65666.html"
+        }
+      ],
+      "enum": {
+        "1": {
+          "caption": "SPDX",
+          "description": "System Package Data Exchange (SPDX®) is an open standard capable of representing systems with software components in as SBOMs (Software Bill of Materials) and other AI, data and security references supporting a range of risk management use cases. The SPDX specification is a freely available international open standard (ISO/IEC 5692:2021)."
+        },
+        "2": {
+          "caption": "CycloneDX",
+          "description": "CycloneDX is an International Standard for Bill of Materials (ECMA-424)."
+        },
+        "3": {
+          "caption": "SWID",
+          "description": "The International Organization for Standardization (ISO) and the International Electrotechnical Commission (IEC) publishes, ISO/IEC 19770-2, a standard for software identification (SWID) tags that defines a structured metadata format for describing a software product. A SWID tag document is composed of a structured set of data elements that identify the software product"
+        }
+      },
+      "requirement": "recommended"
+    },
+    "uid": {
+      "caption": "SBOM ID",
+      "description": "A unique identifier for the SBOM or the SBOM generation by a source tool, such as the SPDX <code>metadata.component.bom-ref</code>.",
+      "requirement": "optional"
+    },
+    "version": {
+      "description": "The specification (spec) version of the particular SBOM, e.g., <code>1.6</code>.",
+      "requirement": "optional"
     }
   }
 }

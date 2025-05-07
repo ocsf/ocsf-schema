@@ -1,0 +1,44 @@
+{
+  "caption": "Threat Actor",
+  "description": "Threat actor is responsible for the observed malicious activity.",
+  "extends": "object",
+  "name": "threat_actor",
+  "attributes": {
+    "name": {
+      "description": "The name of the threat actor.",
+      "requirement": "required"
+    },
+    "type": {
+      "caption": "Threat Actor Type",
+      "description": "The classification of the threat actor based on their motivations, capabilities, or affiliations. Common types include nation-state actors, cybercriminal groups, hacktivists, or insider threats.",
+      "requirement": "optional"
+    },
+    "type_id": {
+      "caption": "Threat Actor Type ID",
+      "description": "The normalized datastore resource type identifier.",
+      "requirement": "recommended",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The threat actor type is unknown."
+        },
+        "1": {
+          "caption": "Nation-state"
+        },
+        "2": {
+          "caption": "Cybercriminal"
+        },
+        "3": {
+          "caption": "Hacktivists"
+        },
+        "4": {
+          "caption": "Insider"
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The threat actor type is not mapped."
+        }
+      }
+    }
+  }
+}

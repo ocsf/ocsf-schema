@@ -1,7 +1,7 @@
 {
   "uid": 5,
   "caption": "RDP Activity",
-  "description": "Remote Desktop Protocol (RDP) Activity events report remote client connections to a server as seen on the network.",
+  "description": "Remote Desktop Protocol (RDP) Activity events report post-authentication remote client connections between clients and servers over the network.",
   "extends": "network",
   "name": "rdp_activity",
   "attributes": {
@@ -30,8 +30,22 @@
         "6": {
           "caption": "Traffic",
           "description": "Network traffic report."
+        },
+        "7": {
+          "caption": "Disconnect",
+          "description": "An RDP connection disconnect."
+        },
+        "8": {
+          "caption": "Reconnect",
+          "description": "An RDP connection reconnect."
         }
-      }
+      },
+      "references": [
+        {
+          "url": "https://docs.suricata.io/en/latest/output/eve/eve-json-format.html#event-type-rdp",
+          "description": "Suricata Event Type: RDP"
+        }
+      ]
     },
     "capabilities": {
       "group": "context",
@@ -39,6 +53,11 @@
     },
     "certificate_chain": {
       "description": "The list of observed certificates in an RDP TLS connection.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "connection_info": {
+      "description": "The remote desktop connection details, either connection-based or connectionless.",
       "group": "primary",
       "requirement": "recommended"
     },

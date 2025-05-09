@@ -52,6 +52,7 @@ Thankyou! -->
 
 ### Added
 * #### Event Classes
+  1. Added `observability_metric_info` event class to the Discovery category. [#1385](https://github.com/ocsf/ocsf-schema/pull/1385)
   1. Added `Application Security Posture Finding` event class to the Findings category. [#1357](https://github.com/ocsf/ocsf-schema/pull/1357)
   1. Added `Live Evidence Info` event class to Discovery category. [#1382](https://github.com/ocsf/ocsf-schema/pull/1382)
 * #### Dictionary Attributes

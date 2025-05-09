@@ -22,7 +22,11 @@
       "requirement": "recommended"
     },
     "name": {
-      "description": "The policy name. For example: <code>IAM Policy</code>."
+      "description": "The policy name. For example: <code>AdministratorAccess Policy</code>."
+    },
+    "type":{
+      "description": "The policy type. For example: <code>Identity Policy, Resource Policy, Service Control Policy, etc./code>.",
+      "requirement": "optional"
     },
     "uid": {
       "description": "A unique identifier of the policy instance."
@@ -31,5 +35,12 @@
       "description": "The policy version number.",
       "requirement": "recommended"
     }
+  },
+  "constraints": {
+    "at_least_one": [
+      "name",
+      "type",
+      "uid"
+    ]
   }
 }

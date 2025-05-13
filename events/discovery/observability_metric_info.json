@@ -1,0 +1,42 @@
+{
+  "uid": 24,
+  "caption": "Observability Metric",
+  "description": "Observability Metric events report metrics data from a running device or service that is either logged or proactively collected. For example, when collecting device information such as such as CPU usage, memory utilization, disk I/O, or network traffic.",
+  "extends": "discovery",
+  "name": "observability_metric",
+  "attributes": {
+    "app": {
+      "description": "Information about the application generating or associated with the observability metrics. This may include the application's name, version, or unique identifier, providing context about which software component the metrics pertain to.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "connection_info": {
+      "description": "Details about the network or connection context under which the observability metrics were collected. This may include IP addresses, ports, connection protocols, or other metadata that helps identify the origin and path of the telemetry data.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "device": {
+      "description": "The device or system generating observability metrics. This can include physical devices, virtual machines, or services being monitored for metrics.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "web_resources": {
+      "description":  "Information about the web-based resource associated with the observability metric. This may include the resource's URL, path, content type, or service endpoint. It provides context for metrics that relate to specific web assets, such as API endpoints, web pages, or static content, which can be useful for performance monitoring and troubleshooting.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "metrics": {
+      "description": "The specific observability metrics being reported for the device or service. This could include metrics such as CPU usage, memory utilization, disk I/O, network traffic, or any other performance-related data collected for monitoring purposes.",
+      "group": "primary",
+      "requirement": "required"
+    }
+  },
+  "constraints": {
+    "at_least_one": [
+      "app",
+      "device",
+      "connection_info",
+      "web_resources"
+    ]
+  }
+}

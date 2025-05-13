@@ -49,6 +49,9 @@ Thankyou! -->
 * #### Objects
   1. Added more `algorithm_id` values and references to the `fingerprint` object. [#1412](https://github.com/ocsf/ocsf-schema/pull/1412)
 
+### Misc
+  1. Fixed spelling errors throughout the project and added spell checking to the CI linter workflow. [#1411](https://github.com/ocsf/ocsf-schema/pull/1411)
+
 ## [v1.5.0] - April 28th, 2025
 
 ### Added

@@ -51,6 +51,7 @@ Thankyou! -->
 
 ### Misc
   1. Fixed spelling errors throughout the project and added spell checking to the CI linter workflow. [#1411](https://github.com/ocsf/ocsf-schema/pull/1411)
+  1. Improved description of the `Application Error` class. [#1424](https://github.com/ocsf/ocsf-schema/pull/1424)
 
 ## [v1.5.0] - April 28th, 2025
 

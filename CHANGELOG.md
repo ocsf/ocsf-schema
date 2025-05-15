@@ -172,6 +172,7 @@ Thankyou! -->
   1. Added `is_read` to `email` object. [#1406](https://github.com/ocsf/ocsf-schema/pull/1406)
   1. Added `cis_controls` to `remediation` object [#1369](https://github.com/ocsf/ocsf-schema/pull/1369)
   1. Added `check` object to `compliance` object [#1369](https://github.com/ocsf/ocsf-schema/pull/1369)
+  1. Added `Patch` as a value of `http_method` in the `http_request` object. [#1427](https://github.com/ocsf/ocsf-schema/pull/1427)
      
 * #### Profiles
   1. Added `malware_scan_info` to `security_control` profile. [#1373](https://github.com/ocsf/ocsf-schema/pull/1373)

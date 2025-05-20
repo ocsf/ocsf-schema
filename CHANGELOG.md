@@ -43,8 +43,16 @@ Thankyou! -->
 
 ### Improved
 
+* #### Event Classes
+  1. Added `Disconnect` and `Reconnect` activities in the `RDP Activity` class. [#1415](https://github.com/ocsf/ocsf-schema/pull/1415)
+  1. Added `user` as an attribute to the `RDP Activity` class. [#1419](https://github.com/ocsf/ocsf-schema/pull/1419)
 * #### Objects
   1. Added more `algorithm_id` values and references to the `fingerprint` object. [#1412](https://github.com/ocsf/ocsf-schema/pull/1412)
+  1. Added `Service` to `user` `type_id` enum. [#1428](https://github.com/ocsf/ocsf-schema/pull/1428)
+
+### Misc
+  1. Fixed spelling errors throughout the project and added spell checking to the CI linter workflow. [#1411](https://github.com/ocsf/ocsf-schema/pull/1411)
+  1. Improved description of the `Application Error` class. [#1424](https://github.com/ocsf/ocsf-schema/pull/1424)
 
 ## [v1.5.0] - April 28th, 2025
 
@@ -165,6 +173,7 @@ Thankyou! -->
   1. Added `is_read` to `email` object. [#1406](https://github.com/ocsf/ocsf-schema/pull/1406)
   1. Added `cis_controls` to `remediation` object [#1369](https://github.com/ocsf/ocsf-schema/pull/1369)
   1. Added `check` object to `compliance` object [#1369](https://github.com/ocsf/ocsf-schema/pull/1369)
+  1. Added `Patch` as a value of `http_method` in the `http_request` object. [#1427](https://github.com/ocsf/ocsf-schema/pull/1427)
      
 * #### Profiles
   1. Added `malware_scan_info` to `security_control` profile. [#1373](https://github.com/ocsf/ocsf-schema/pull/1373)

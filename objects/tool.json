@@ -1,0 +1,190 @@
+{
+    "caption": "AI Tool",
+    "description": "Object to represent metadata for AI tools used in agentic, communication or orchestration workflows.",
+    "extends": "object",
+    "name": "ai_tool",
+    "attributes": {
+        "name": {
+            "group": "primary",
+            "description": "Human-readable name of the tool (e.g., calculator, sql_query_tool).",
+            "requirement": "recommended"
+        },
+        "type_id": {
+            "caption": "Type ID",
+            "description": "Category of tool functionality (e.g., retriever, calculator, api).",
+            "requirement": "recommended",
+            "enum": {
+                "0": {
+                    "caption": "Unknown"
+                },
+                "1": {
+                    "caption": "Function"
+                },
+                "2": {
+                    "caption": "Api"
+                },
+                "3": {
+                    "caption": "Retriever"
+                },
+                "4": {
+                    "caption": "Search"
+                },
+                "5": {
+                    "caption": "Calculator"
+                },
+                "99": {
+                    "caption": "Other"
+                }
+            }
+        },
+        "type": {
+            "caption": "Type",
+            "description": "The normalized caption of <code>type_id</code>.",
+            "requirement": "optional"
+        },        
+        "provider": {
+            "group": "primary",
+            "description": "Name of the organization or platform providing the tool (e.g., openai, huggingface, internal).",
+            "requirement": "recommended"
+        },
+        "uri": {
+            "group": "context",
+            "description": "URI or endpoint address for accessing or calling the tool (e.g., API base URL or plugin link).",
+            "requirement": "optional"
+        },
+        "method_id": {
+            "caption": "Method ID",
+            "description": "Method",
+            "requirement": "recommended",
+            "enum": {
+                "0": {
+                    "caption": "Unknown"
+                },
+                "1": {
+                    "caption": "Call"
+                },
+                "2": {
+                    "caption": "Read"
+                },
+                "3": {
+                    "caption": "Update"
+                },
+                "4": {
+                    "caption": "Summarize"
+                },
+                "99": {
+                    "caption": "Other"
+                }
+            }
+        },
+        "method": {
+            "caption": "Method",
+            "description": "The normalized caption of <code>method_id</code>.",
+            "requirement": "optional"
+        },
+        "input_schema": {
+            "group": "context",
+            "description": "JSON Schema or structured format specification for the tool's input parameters.",
+            "requirement": "optional"
+        },
+        "output_schema": {
+            "group": "context",
+            "description": "JSON Schema or structured description of the tool's response format or output.",
+            "requirement": "optional"
+        },
+        "access_level_id": {
+            "caption": "Access Level ID",
+            "description": "Classification of the tool's access level based on its impact or scope.",
+            "requirement": "recommended",
+            "enum": {
+                "0": {
+                    "caption": "Unknown"
+                },
+                "1": {
+                    "caption": "Read Only"
+                },
+                "2": {
+                    "caption": "Write"
+                },
+                "3": {
+                    "caption": "Destructive"
+                },
+                "99": {
+                    "caption": "Other"
+                }
+            }
+        },
+        "access_level": {
+            "caption": "Access Level",
+            "description": "The normalized caption of <code>access_level_id</code>.",
+            "requirement": "optional"
+        },
+        "destructive_hint": {
+            "group": "context",
+            "description": "Boolean indicating whether the tool performs actions that alter external state irreversibly.",
+            "requirement": "optional"
+        },
+        "read_only_hint": {
+            "group": "context",
+            "description": "Boolean indicating whether the tool is safe and free from side effects",
+            "requirement": "optional"
+        },
+        "description": {
+            "group": "context",
+            "description": "A longer free-text explanation of the tool's purpose, behavior, or use case.",
+            "requirement": "optional"
+        },
+        "version": {
+            "group": "primary",
+            "description": "Version identifier for the tool implementation, API spec, or plugin release.",
+            "requirement": "recommended"
+        },
+        "tool_category_id": {
+            "caption": "Tool Category ID",
+            "description": "High-level classification of the tool's role.",
+            "requirement": "recommended",
+            "enum": {
+                "0": {
+                    "caption": "Unknown"
+                },
+                "1": {
+                    "caption": "Utility"
+                },
+                "2": {
+                    "caption": "Agent-Helper"
+                },
+                "3": {
+                    "caption": "Inference"
+                },
+                "99": {
+                    "caption": "Other"
+                }
+            }
+        },
+        "tool_category": {
+            "caption": "Tool Category",
+            "description": "The normalized caption of <code>tool_category_id</code>.",
+            "requirement": "optional"
+        },
+        "latency_ms": {
+            "group": "context",
+            "description": "Observed or expected latency in milliseconds for the tool's execution or response.",
+            "requirement": "optional"
+        },
+        "timeout": {
+            "group": "context",
+            "description": "Maximum duration allowed for tool execution before timeout, in milliseconds or ISO 8601 duration format.",
+            "requirement": "optional"
+        },
+        "retry_policy": {
+            "group": "context",
+            "description": "Description of the retry strategy if tool execution fails (e.g., exponential backoff, linear, none).",
+            "requirement": "optional"
+        },
+        "max_retries": {
+            "group": "context",
+            "description": "Maximum number of retry attempts allowed in case of failure or error.",
+            "requirement": "optional"
+        }
+    }
+}

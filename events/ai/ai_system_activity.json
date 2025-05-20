@@ -1,0 +1,52 @@
+{
+    "caption": "AI System Activity",
+    "category": "ai",
+    "description": "General telemetry about AI system operations.",
+    "extends": "base_event",
+    "name": "ai_system_activity",
+    "profiles": [
+      "ai_inference",
+      "trace"
+    ],
+    "attributes": {
+        "$include": [
+            "profiles/ai_inference.json",
+            "profiles/trace.json"
+        ],
+        "uid": {
+            "group": "primary",
+            "description": "",
+            "requirement": "required"
+        },
+        "device": {
+            "group": "primary",
+            "description": "Object representing AI system or component.",
+            "requirement": "required"
+        },
+        "operation_name": {
+            "group": "context",
+            "description": "Name of the operation executed (e.g., load_model, shutdown, refresh_cache).",
+            "requirement": "optional"
+        },
+        "operation_result": {
+            "group": "context",
+            "description": "Outcome of the operation (success, failed, partially_successful).",
+            "requirement": "optional"
+        },
+        "event_source": {
+            "group": "context",
+            "description": "Component or actor that triggered the event (user, scheduler, pipeline, healthcheck).",
+            "requirement": "optional"
+        },
+        "trigger_type": {
+            "group": "context",
+            "description": "How the operation was initiated (manual, scheduled, conditional).",
+            "requirement": "optional"
+        },
+        "region": {
+            "group": "context",
+            "description": "Cloud or geographic region where the system activity occurred (e.g., us-west-2).",
+            "requirement": "optional"
+        }
+    }
+  }

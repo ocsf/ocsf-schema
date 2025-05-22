@@ -1,0 +1,90 @@
+{
+    "caption": "Model Inference Activity",
+    "category": "ai",
+    "description": "Captures fine-grained telemetry for AI model inference operations.",
+    "extends": "base_event",
+    "name": "model_inference_activity",
+    "profiles": [
+      "ai_inference"
+    ],
+    "attributes": {
+        "$include": [
+            "profiles/ai_inference.json"
+        ],
+        "uid": {
+            "group": "primary",
+            "description": "Unique identifier for the inference request or job execution.",
+            "requirement": "required"
+        },
+        "model_task_type": {
+            "group": "context",
+            "description": "Type of ML task performed by the model (e.g., text-generation, classification, image-segmentation).",
+            "requirement": "optional"
+        },
+        "inference_trigger_type": {
+            "group": "context",
+            "description": "How the inference was triggered (scheduled, user, agent, API).",
+            "requirement": "optional"
+        },
+        "input_type": {
+            "group": "context",
+            "description": "Data type of the input provided (e.g., text, image, audio).",
+            "requirement": "optional"
+        },
+        "output_format": {
+            "group": "context",
+            "description": "Format of the output produced (json, html, plain_text, etc.).",
+            "requirement": "optional"
+        },
+        "input_size_bytes": {
+            "group": "context",
+            "description": "Size of the input in bytes. Useful for tracking performance and scale.",
+            "requirement": "optional"
+        },
+        "output_size_bytes": {
+            "group": "context",
+            "description": "Size of the output in bytes.",
+            "requirement": "optional"
+        },
+        "execution_environment": {
+            "group": "context",
+            "description": "Execution context (serverless, container, vm, on-device).",
+            "requirement": "optional"
+        },
+        "runtime_framework": {
+            "group": "context",
+            "description": "ML framework or runtime used (torch, tensorflow, onnx, triton).",
+            "requirement": "optional"
+        },
+        "batch_id": {
+            "group": "context",
+            "description": "ID for a batch of inference requests, if batched.",
+            "requirement": "optional"
+        },
+        "batch_position": {
+            "group": "context",
+            "description": "Position of this inference within the batch (0-indexed).",
+            "requirement": "optional"
+        },
+        "inference_mode": {
+            "group": "context",
+            "description": "Mode of inference (streaming, batch, single).",
+            "requirement": "optional"
+        },
+        "logging_level": {
+            "group": "context",
+            "description": "Verbosity of logging (minimal, detailed, debug).",
+            "requirement": "optional"
+        },
+        "audit_log_reference": {
+            "group": "context",
+            "description": "Link or ID to the audit log entry for this inference, for traceability.",
+            "requirement": "optional"
+        },
+        "detected_anomalies": {
+            "group": "context",
+            "description": "List of anomalies observed (e.g., null_output, high_latency, low_confidence).",
+            "requirement": "optional"
+        }     
+    }
+}

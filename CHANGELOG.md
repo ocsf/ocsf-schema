@@ -50,6 +50,7 @@ Thankyou! -->
   1. Added more `algorithm_id` values and references to the `fingerprint` object. [#1412](https://github.com/ocsf/ocsf-schema/pull/1412)
   1. Added `Service` to `user` `type_id` enum. [#1428](https://github.com/ocsf/ocsf-schema/pull/1428)
   1. Added `Deleted` to `finding` `status_id` enum. [#1437](https://github.com/ocsf/ocsf-schema/pull/1437)
+  1. Added `Executable File` to `file` `type_id` enum. Added `is_readonly` as an optional attribute. [#1438](https://github.com/ocsf/ocsf-schema/pull/1438)
 
 ### Misc
   1. Fixed spelling errors throughout the project and added spell checking to the CI linter workflow. [#1411](https://github.com/ocsf/ocsf-schema/pull/1411)
@@ -93,6 +94,7 @@ Thankyou! -->
   1. Added `tcp_state_id` as `integer_t`. [#1382](https://github.com/ocsf/ocsf-schema/pull/1382)
   1. Added `query_evidence` as type `query_evidence`. [#1382](https://github.com/ocsf/ocsf-schema/pull/1382)
   1. Added `checks` as type `check`. [#1369](https://github.com/ocsf/ocsf-schema/pull/1369)
+  1. Added 'is_readonly' as type `boolean_t` with a "See specific usage" description. [#1438](https://github.com/ocsf/ocsf-schema/pull/1438)
 * #### Objects
   1. Added `assessment` object to capture evaluations/assessments of configurations/signals. [#1343](https://github.com/ocsf/ocsf-schema/pull/1343)
   1. Added `node`, `edge`, `graph` objects. [#1343](https://github.com/ocsf/ocsf-schema/pull/1343)

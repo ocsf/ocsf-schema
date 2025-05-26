@@ -1,8 +1,9 @@
 {
+    "uid": 4,
     "caption": "MCP Message Activity",
     "category": "ai",
     "description": "Standardizes Model Context Protocol (MCP) communication logs.",
-    "extends": "base_event",
+    "extends": "ai_system_activity",
     "name": "mcp_message_activity",
     "profiles": [
         "trace"
@@ -20,33 +21,6 @@
             "group": "primary",
             "description": "The current user or agent session where the message was exchanged.",
             "requirement": "recommended"
-        },
-        "message_type_id": {
-            "caption": "Message Type ID",
-            "description": "Type of MCP message",
-            "requirement": "recommended",
-            "enum": {
-                "0": {
-                    "caption": "Unknown"
-                },
-                "1": {
-                    "caption": "Request"
-                },
-                "2": {
-                    "caption": "Response"
-                },
-                "3": {
-                    "caption": "Notification"
-                },
-                "99": {
-                    "caption": "Other"
-                }
-            }
-        },
-        "message_type": {
-            "caption": "Message Type",
-            "description": "The normalized caption of <code>message_type_id</code>.",
-            "requirement": "optional"
         },
         "role_id": {
             "caption": "Role ID",

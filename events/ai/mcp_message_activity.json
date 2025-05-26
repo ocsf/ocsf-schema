@@ -1,0 +1,134 @@
+{
+    "caption": "MCP Message Activity",
+    "category": "ai",
+    "description": "Standardizes Model Context Protocol (MCP) communication logs.",
+    "extends": "base_event",
+    "name": "mcp_message_activity",
+    "profiles": [
+        "trace"
+    ],
+    "attributes": {
+        "$include": [
+            "profiles/trace.json"
+        ],
+        "mcp_id": {
+            "group": "primary",
+            "description": "Unique identifier for the full Model Context Protocol session or chain of related interactions.",
+            "requirement": "required"
+        },
+        "session": {
+            "group": "primary",
+            "description": "The current user or agent session where the message was exchanged.",
+            "requirement": "recommended"
+        },
+        "message_type_id": {
+            "caption": "Message Type ID",
+            "description": "Type of MCP message",
+            "requirement": "recommended",
+            "enum": {
+                "0": {
+                    "caption": "Unknown"
+                },
+                "1": {
+                    "caption": "Request"
+                },
+                "2": {
+                    "caption": "Response"
+                },
+                "3": {
+                    "caption": "Notification"
+                },
+                "99": {
+                    "caption": "Other"
+                }
+            }
+        },
+        "message_type": {
+            "caption": "Message Type",
+            "description": "The normalized caption of <code>message_type_id</code>.",
+            "requirement": "optional"
+        },
+        "role_id": {
+            "caption": "Role ID",
+            "description": "The originator or target role of the message",
+            "requirement": "recommended",
+            "enum": {
+                "0": {
+                    "caption": "Unknown"
+                },
+                "1": {
+                    "caption": "User",
+                    "description": "The human user initiating a request."
+                },
+                "2": {
+                    "caption": "Assistant",
+                    "description": "The AI model generating a response."
+                },
+                "3": {
+                    "caption": "Tool",
+                    "description": "A callable tool or API invoked by the assistant."
+                },
+                "4": {
+                    "caption": "Agent",
+                    "description": "A software agent acting with autonomy or intention."
+                },
+                "5": {
+                    "caption": "Orchestrator",
+                    "description": "The component coordinating multiple agents or tools."
+                },
+                "6": {
+                    "caption": "Retriever",
+                    "description": "A vector DB or knowledge system providing context."
+                },
+                "99": {
+                    "caption": "Other"
+                }
+            }
+        },
+        "role": {
+            "caption": "Role",
+            "description": "The normalized caption of <code>role_id</code>.",
+            "requirement": "optional"
+        },
+        "protocol_version": {
+            "group": "primary",
+            "description": "The version of the MCP protocol being used.",
+            "requirement": "recommended"
+        },
+        "client_name": {
+            "group": "primary",
+            "description": "The name of the initiating client (e.g., LangChain, Postman, browser).",
+            "requirement": "recommended"
+        },
+        "client_version": {
+            "group": "primary",
+            "description": "Version of the client software or SDK.",
+            "requirement": "recommended"
+        },
+        "server_name": {
+            "group": "primary",
+            "description": "Server or agent name handling the request (e.g., OpenLLMetry, LangGraph).",
+            "requirement": "recommended"
+        },
+        "server_version": {
+            "group": "primary",
+            "description": "Version of the MCP server or agent endpoint.",
+            "requirement": "recommended"
+        },
+        "latency_ms": {
+            "group": "context",
+            "description": "Time taken to generate or process the message in milliseconds.",
+            "requirement": "optional"
+        },
+        "tool_call": {
+            "group": "primary",
+            "description": "Details arguments, results, and errors from tools invoked in AI Communication Protocol)",
+            "requirement": "recommended"
+        },
+        "message_payload": {
+            "group": "context",
+            "description": "Represents AI communication protocol message payload.",
+            "requirement": "optional"
+        }
+    }
+  }

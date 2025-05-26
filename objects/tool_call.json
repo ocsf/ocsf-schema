@@ -1,0 +1,60 @@
+{
+    "caption": "Tool Call",
+    "description": "Details arguments, results, and errors from tools invoked in AI Communication Protocol (e.g. MCP)",
+    "extends": "object",
+    "name": "tool_call",
+    "attributes": {
+        "tool": {
+            "group": "primary",
+            "requirement": "required"
+        },
+        "arguments": {
+            "group": "primary",
+            "requirement": "recommended"
+        },
+        "is_error": {
+            "group": "context",
+            "requirement": "optional"
+        },
+        "error_message": {
+            "group": "context",
+            "requirement": "optional"
+        },
+        "result_content": {
+            "group": "context",
+            "requirement": "optional"
+        },
+        "result_type_id": {
+            "caption": "Result Type ID",
+            "requirement": "recommended",
+            "enum": {
+                "0": {
+                    "caption": "Unknown"
+                },
+                "1": {
+                    "caption": "Text"
+                },
+                "2": {
+                    "caption": "Image"
+                },
+                "3": {
+                    "caption": "Audio"
+                },
+                "4": {
+                    "caption": "Video"
+                },
+                "5": {
+                    "caption": "Embedded"
+                },
+                "99": {
+                    "caption": "Other"
+                }
+            }
+        },
+        "result_type": {
+            "caption": "Result Type",
+            "description": "The normalized caption of <code>result_type_id</code>.",
+            "requirement": "optional"
+        }
+    }
+}

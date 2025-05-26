@@ -41,8 +41,24 @@ Thankyou! -->
 
 ## [Unreleased]
 
-### Improved
+### Added
+* #### Categories
+  1. Added `AI System Activity` category. [#1431](https://github.com/ocsf/ocsf-schema/pull/1431)
+* #### Event Classes
+  1. Added `Model Inference Activity` class. [#1431](https://github.com/ocsf/ocsf-schema/pull/1431)
+  1. Added `AI System Activity` class. [#1431](https://github.com/ocsf/ocsf-schema/pull/1431)
+  1. Added `MCP Message Activity` class. [#1431](https://github.com/ocsf/ocsf-schema/pull/1431)
+  1. Added `Agentic RAG Workflow Execution` class. [#1431](https://github.com/ocsf/ocsf-schema/pull/1431)
+* #### Profiles
+  1. Added `AI Inference` profile. [#1431](https://github.com/ocsf/ocsf-schema/pull/1431)
+  1. Added `AI Tool` profile. [#1431](https://github.com/ocsf/ocsf-schema/pull/1431)
+* #### Objects
+  1. Added `Workflow Step` object. [#1431](https://github.com/ocsf/ocsf-schema/pull/1431)
+  1. Added `Tool Call` object. [#1431](https://github.com/ocsf/ocsf-schema/pull/1431)
+  1. Added `AI Tool` object. [#1431](https://github.com/ocsf/ocsf-schema/pull/1431)
+  1. Added `Message Payload` object. [#1431](https://github.com/ocsf/ocsf-schema/pull/1431)  
 
+### Improved  
 * #### Event Classes
   1. Added `Disconnect` and `Reconnect` activities in the `RDP Activity` class. [#1415](https://github.com/ocsf/ocsf-schema/pull/1415)
   1. Added `user` as an attribute to the `RDP Activity` class. [#1419](https://github.com/ocsf/ocsf-schema/pull/1419)

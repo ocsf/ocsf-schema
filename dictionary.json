@@ -3,55 +3,33 @@
   "description": "The Attribute Dictionary provides a comprehensive catalog of standardized attributes used across OCSF. It defines each attribute's properties, data types, and relationships. This dictionary serves as the authoritative reference for attribute definitions and ensures consistent usage throughout the schema.",
   "name": "dictionary",
   "attributes": {
-    "timespan": {
-      "caption": "Time Span",
-      "description": "The Time Span object represents different time period durations. If a timespan is fractional, i.e. crosses one period, e.g. a week and 3 days, more than one may be populated since each member is of integral type. In that case <code>type_id</code> if present should be set to <code>Other.</code><P>A timespan may also be defined by its time interval boundaries, <code>start_time</code> and <code>end_time</code>.",
-      "type": "timespan"
+    "access_level": {
+      "type": "string_t",
+      "caption": "Access Level",
+      "description": "The normalized caption of <code>access_level_id</code>."
     },
-    "observation_parameter": {
-      "caption": "Observation Parameter",
-      "description": "The name of the parameter being analyzed or monitored. This generally identifies the specific characteristic or property being measured. See specific usage.",
-      "type": "string_t"
-    },
-    "analysis_targets": {
-      "caption": "Analysis Targets",
-      "description": "The specific dimensions, components, or aspects of the system that are the targets of the analysis. See specific usage.",
-      "type": "analysis_target",
-      "is_array": true
-    },
-    "observations": {
-      "caption": "Observations",
-      "description": "A list of individual observations or measurements collected during analysis. Each observation captures a specific data point. See specific usage.",
-      "type": "observation",
-      "is_array": true
-    },
-    "observation_type": {
-      "caption": "Observation Type",
-      "description": "The classification or category of the observation, indicating what kind of measurement or finding it represents. See specific usage.",
-      "type": "string_t"
-    },
-    "observed_pattern": {
-      "caption": "Observed Pattern",
-      "description": "A detected pattern or trend identified in the analyzed data, describing recurring activities or characteristics.",
-      "type": "string_t"
-    },
-    "anomalies": {
-      "caption": "Anomalies",
-      "description": "A list of detected anomalies or deviations from expected behavior patterns. See specific usage.",
-      "type": "anomaly",
-      "is_array": true
-    },
-    "baselines": {
-      "caption": "Baselines",
-      "description": "A list of baseline measurements or normal behavior patterns used as reference points for comparison and anomaly detection. See specific usage.",
-      "type": "baseline",
-      "is_array": true
-    },
-    "anomaly_analyses": {
-      "caption": "Anomaly Analyses",
-      "description": "A list of anomaly analysis results that examine and characterize patterns of activity or usage over time to identify normal vs abnormal activities. See specific usage.",
-      "type": "anomaly_analysis",
-      "is_array": true
+    "access_level_id": {
+      "caption": "Access Level ID",
+      "description": "Classification of the tool's access level based on its impact or scope.",
+      "sibling": "access_level",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Read Only"
+        },
+        "2": {
+          "caption": "Write"
+        },
+        "3": {
+          "caption": "Destructive"
+        },
+        "99": {
+          "caption": "Other"
+        }
+      }
     },
     "access_list": {
       "caption": "Access List",
@@ -184,6 +162,16 @@
       "description": "An Agent (also known as a Sensor) is typically installed on an Operating System (OS) and serves as a specialized software component that can be designed to monitor, detect, collect, archive, or take action. These activities and possible actions are defined by the upstream system controlling the Agent and its intended purpose. For instance, an Agent can include Endpoint Detection & Response (EDR) agents, backup/disaster recovery sensors, Application Performance Monitoring or profiling sensors, and similar software.",
       "type": "agent"
     },
+    "agent_framework": {
+      "type": "string_t",
+      "caption": "Agent Framework",
+      "description": "Name of the framework used to manage the agent logic (e.g., LangGraph, CrewAI)."
+    },
+    "agent_id": {
+      "type": "string_t",
+      "caption": "Agent ID",
+      "description": "Identifier for the agent orchestrating the workflow."
+    },
     "agent_list": {
       "caption": "Agent List",
       "description": "A list of <code>agent</code> objects associated with a device, endpoint, or resource.",
@@ -231,6 +219,12 @@
       "description": "Minimum altitude (WGS-84 HAE) for a group or an Intent-Based Network Participant. Measured in meters. Special Values: <code>Invalid</code>, <code>No Value</code>, or <code>Unknown: -1000 m</code>.",
       "type": "string_t"
     },
+    "analysis_targets": {
+      "caption": "Analysis Targets",
+      "description": "The specific dimensions, components, or aspects of the system that are the targets of the analysis. See specific usage.",
+      "type": "analysis_target",
+      "is_array": true
+    },
     "analytic": {
       "caption": "Analytic",
       "description": "The analytic technique used to analyze and derive insights from the data or information that led to the finding or conclusion.",
@@ -248,6 +242,18 @@
         }
       ]
     },
+    "anomalies": {
+      "caption": "Anomalies",
+      "description": "A list of detected anomalies or deviations from expected behavior patterns. See specific usage.",
+      "type": "anomaly",
+      "is_array": true
+    },
+    "anomaly_analyses": {
+      "caption": "Anomaly Analyses",
+      "description": "A list of anomaly analysis results that examine and characterize patterns of activity or usage over time to identify normal vs abnormal activities. See specific usage.",
+      "type": "anomaly_analysis",
+      "is_array": true
+    },
     "answers": {
       "caption": "DNS Answer",
       "description": "The Domain Name System (DNS) answers.",
@@ -264,11 +270,6 @@
       "description": "The application that reported the event.",
       "type": "product"
     },
-    "application": {
-      "caption": "Application",
-      "description": "An Application describes the details for an inventoried application as reported by an Application Security tool or other Developer-centric tooling. Applications can be defined as Kubernetes resources, Containerized resources, or application hosting-specific cloud sources such as AWS Elastic BeanStalk, AWS Lightsail, or Azure Logic Apps.",
-      "type": "application"
-    },
     "app_name": {
       "caption": "Application Name",
       "description": "The name of the application associated with the event or object.",
@@ -278,6 +279,11 @@
       "caption": "Application ID",
       "description": "The unique ID of the application associated with the event or object.",
       "type": "string_t"
+    },
+    "application": {
+      "caption": "Application",
+      "description": "An Application describes the details for an inventoried application as reported by an Application Security tool or other Developer-centric tooling. Applications can be defined as Kubernetes resources, Containerized resources, or application hosting-specific cloud sources such as AWS Elastic BeanStalk, AWS Lightsail, or Azure Logic Apps.",
+      "type": "application"
     },
     "architecture": {
       "caption": "Architecture",
@@ -289,15 +295,11 @@
       "description": "The arguments sent along with the HTTP request.",
       "type": "string_t"
     },
-    "assignee": {
-      "caption": "Assignee",
-      "description": "The details of the user assigned to an Incident.",
-      "type": "user"
-    },
-    "assignee_group": {
-      "caption": "Assignee Group",
-      "description": "The details of the group assigned to an Incident.",
-      "type": "group"
+    "arguments": {
+      "type": "string_t",
+      "is_array": true,
+      "caption": "Arguments",
+      "description": "Parameters passed to the tool, typically structured as key-value pairs."
     },
     "assessment": {
       "caption": "Assessment",
@@ -309,6 +311,16 @@
       "description": "A list of <code>assessment</code> objects. See specific usage.",
       "type": "assessment",
       "is_array": true
+    },
+    "assignee": {
+      "caption": "Assignee",
+      "description": "The details of the user assigned to an Incident.",
+      "type": "user"
+    },
+    "assignee_group": {
+      "caption": "Assignee Group",
+      "description": "The details of the group assigned to an Incident.",
+      "type": "group"
     },
     "attacks": {
       "caption": "MITRE ATT&CK® and ATLAS™ Details",
@@ -335,6 +347,11 @@
       "caption": "Attributes",
       "description": "The bitmask value that represents the file attributes.",
       "type": "integer_t"
+    },
+    "audit_log_reference": {
+      "type": "string_t",
+      "caption": "Audit Log Reference",
+      "description": "Link or ID to the audit log entry for this inference, for traceability."
     },
     "auth_factors": {
       "caption": "Authentication Factors",
@@ -465,6 +482,22 @@
       "caption": "Base Score",
       "description": "The base score as reported by the event source. See specific usage.",
       "type": "float_t"
+    },
+    "baselines": {
+      "caption": "Baselines",
+      "description": "A list of baseline measurements or normal behavior patterns used as reference points for comparison and anomaly detection. See specific usage.",
+      "type": "baseline",
+      "is_array": true
+    },
+    "batch_id": {
+      "type": "string_t",
+      "caption": "Batch ID",
+      "description": "ID for a batch of inference requests, if batched."
+    },
+    "batch_position": {
+      "type": "integer_t",
+      "caption": "Batch Position",
+      "description": "Position of this inference within the batch (0-indexed)."
     },
     "bios_date": {
       "caption": "BIOS Date",
@@ -597,16 +630,16 @@
       "description": "The number of bytes sent from the source to the destination.",
       "type": "long_t"
     },
+    "campaign": {
+      "caption": "Campaign",
+      "description": "The campaign object describes details about the campaign that was the source of the activity.",
+      "type": "campaign"
+    },
     "capabilities": {
       "caption": "Capabilities",
       "description": "A list of RDP capabilities.",
       "type": "string_t",
       "is_array": true
-    },
-    "campaign": {
-      "caption": "Campaign",
-      "description": "The campaign object describes details about the campaign that was the source of the activity.",
-      "type": "campaign"
     },
     "caption": {
       "caption": "Caption",
@@ -1089,6 +1122,16 @@
       "description": "The Client HASSH fingerprinting object.",
       "type": "hassh"
     },
+    "client_name": {
+      "type": "string_t",
+      "caption": "Client Name",
+      "description": "The name of the initiating client (e.g., LangChain, Postman, browser)."
+    },
+    "client_version": {
+      "type": "string_t",
+      "caption": "Client Version",
+      "description": "Version of the client software or SDK."
+    },
     "cloud": {
       "caption": "Cloud",
       "description": "Describes details about the Cloud environment where the event was originally created or logged.",
@@ -1174,6 +1217,11 @@
       "description": "The name of the company that published the file. For example: <code>Microsoft Corporation</code>.",
       "type": "string_t"
     },
+    "completion_tokens": {
+      "type": "string_t",
+      "caption": "Completion Tokens",
+      "description": "Number of tokens generated in the output of this step."
+    },
     "compliance": {
       "caption": "Compliance",
       "description": "The compliance object provides context to compliance findings (e.g., a check against a specific regulatory or best practice framework such as CIS, NIST etc.) and contains compliance related details.",
@@ -1203,6 +1251,11 @@
       "caption": "Component",
       "description": "The component of a data object. See specific usage.",
       "type": "string_t"
+    },
+    "component_name": {
+      "type": "string_t",
+      "caption": "Component Name",
+      "description": "Name of the module, agent, or function executing the step."
     },
     "condition": {
       "caption": "Condition",
@@ -1304,6 +1357,11 @@
       "type": "container",
       "is_array": true
     },
+    "content": {
+      "type": "string_t",
+      "caption": "Content",
+      "description": "Actual content of the message (e.g., natural language text, JSON body, base64 media reference). This may be redacted or hashed in security-sensitive environments."
+    },
     "content_type": {
       "caption": "HTTP Content Type",
       "description": "The request header that identifies the original <a target='_blank' href='https://www.iana.org/assignments/media-types/media-types.xhtml'>media type </a> of the resource (prior to any content encoding applied for sending).",
@@ -1373,6 +1431,18 @@
       "description": "The Common Platform Enumeration (CPE) name as described by (<a target='_blank' href='https://nvd.nist.gov/products/cpe'>NIST</a>) For example: <code>cpe:/a:apple:safari:16.2</code>.",
       "type": "string_t"
     },
+    "cpid": {
+      "caption": "Common Process Identifier",
+      "source": "cpid",
+      "references": [
+        {
+          "url": "https://github.com/ocsf/common-process-id",
+          "description": "OCSF Common Process Identifier (CPID) Specification"
+        }
+      ],
+      "description": "A unique process identifier that can be assigned deterministically by multiple system data producers.",
+      "type": "uuid_t"
+    },
     "cpu_architecture": {
       "caption": "CPU Architecture",
       "description": "The CPU architecture, normalized to the caption of the <code>cpu_architecture_id</code> value. In the case of <code>Other</code>, it is defined by the source.",
@@ -1405,18 +1475,6 @@
           "description": "The CPU architecture is not mapped. See the <code>cpu_architecture</code> attribute, which contains a data source specific value."
         }
       }
-    },
-    "cpid": {
-      "caption": "Common Process Identifier",
-      "source": "cpid",
-      "references": [
-        {
-          "url": "https://github.com/ocsf/common-process-id",
-          "description": "OCSF Common Process Identifier (CPID) Specification"
-        }
-      ],
-      "description": "A unique process identifier that can be assigned deterministically by multiple system data producers.",
-      "type": "uuid_t"
     },
     "cpu_bits": {
       "caption": "CPU Bits",
@@ -1662,6 +1720,11 @@
       "description": "Information about the chain of dependencies related to the issue as reported by an Application Security or Vulnerability Management tool. E.g., <code>serverless-offline -> @serverless/utils -> memoizee -> es5-ext</code>.",
       "type": "string_t"
     },
+    "deployment_id": {
+      "caption": "Deployment ID",
+      "description": "Identifier of the deployed model instance, useful for tracing across environments.",
+      "type": "string_t"
+    },
     "depth": {
       "caption": "CVSS Depth",
       "description": "The CVSS depth represents a depth of the equation used to calculate CVSS score.",
@@ -1683,15 +1746,30 @@
       "description": "The description that pertains to the object or event. See specific usage.",
       "type": "string_t"
     },
+    "description": {
+      "type": "string_t",
+      "caption": "Description",
+      "description": "A longer free-text explanation of the purpose, behavior, or use case."
+    },
     "desktop_display": {
       "caption": "Desktop Display",
       "description": "The desktop display affiliated with the event",
       "type": "display"
     },
+    "destructive_hint": {
+      "type": "string_t",
+      "caption": "Destructive Hint",
+      "description": "Boolean indicating whether the tool performs actions that alter external state irreversibly."
+    },
     "details": {
       "caption": "Details",
       "description": "Details of an entity. See specific usage",
       "type": "string_t"
+    },
+    "detected_anomalies": {
+      "type": "string_t",
+      "caption": "Detection Anomalies",
+      "description": "List of anomalies observed (e.g., null_output, high_latency, low_confidence)."
     },
     "detection_pattern": {
       "caption": "Detection Pattern",
@@ -2227,6 +2305,11 @@
         "since": "1.4.0"
       }
     },
+    "embedding_model": {
+      "type": "string_t",
+      "caption": "Embedding Model",
+      "description": "Name or version of the embedding model used in retrieval."
+    },
     "employee_uid": {
       "caption": "Employee ID",
       "description": "The employee identifier assigned to the user by the organization.",
@@ -2251,6 +2334,11 @@
       "caption": "End Time",
       "description": "The end time of a time period. See specific usage.",
       "type": "timestamp_t"
+    },
+    "endpoint": {
+      "caption": "Endpoint",
+      "description": "Endpoint or URI",
+      "type": "string_t"
     },
     "endpoint_connections": {
       "caption": "Endpoint Connections",
@@ -2305,6 +2393,11 @@
       "description": "The <code>Event ID, Code, or Name</code> that the product uses to primarily identify the event.",
       "type": "string_t"
     },
+    "event_source": {
+      "type": "string_t",
+      "caption": "Event Source",
+      "description": "Component or actor that triggered the event (user, scheduler, pipeline, healthcheck)."
+    },
     "event_uid": {
       "caption": "Event UID",
       "description": "The unique identifier of an event. See specific usage.",
@@ -2324,6 +2417,16 @@
       "description": "A collection of evidence artifacts associated to the activity/activities that triggered a finding. See specific usage.",
       "type": "evidences",
       "is_array": true
+    },
+    "execution_environment": {
+      "type": "string_t",
+      "caption": "Execution Environment",
+      "description": "Execution context (serverless, container, vm, on-device)."
+    },
+    "execution_status": {
+      "type": "string_t",
+      "caption": "Execution Status",
+      "description": "Status of the workflow execution (success, partial, failure)."
     },
     "exit_code": {
       "caption": "Exit Code",
@@ -2484,6 +2587,11 @@
       "type": "file",
       "is_array": true
     },
+    "final_answer": {
+      "type": "string_t",
+      "caption": "Final Answer",
+      "description": "Final response generated by the workflow after synthesis."
+    },
     "finding": {
       "caption": "Finding",
       "description": "The Finding object provides details about a finding/detection generated by a security tool.",
@@ -2583,21 +2691,6 @@
         }
       },
       "is_array": true
-    },
-    "kerberos_flags": {
-      "caption": "Kerberos Flags",
-      "description": "A bitmask, either in hexadecimal or decimal form, which encodes various attributes or permissions associated with a Kerberos ticket. These flags delineate specific characteristics of the ticket, such as its renewability or forwardability.",
-      "references": [
-        {
-          "description": "RFC 4120: 5.2.8.  KerberosFlags",
-          "url": "https://www.rfc-editor.org/rfc/rfc4120#section-5.2.8"
-        },
-        {
-          "description": "Microsoft Windows Security 4769 (see 'Ticket Options')",
-          "url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4769"
-        }
-      ],
-      "type": "string_t"
     },
     "flags": {
       "caption": "Flags",
@@ -2886,11 +2979,15 @@
       "description": "The impact as an integer value of the finding, valid range 0-100.",
       "type": "integer_t"
     },
-    "intrusion_sets": {
-      "caption": "Intrusion Sets",
-      "description": "A grouping of adversarial behaviors and resources believed to be associated with specific threat actors or campaigns. Intrusion sets often encompass multiple campaigns and are used to organize related activities under a common label.",
+    "inference_mode": {
       "type": "string_t",
-      "is_array": true
+      "caption": "Inference Mode",
+      "description": "Mode of inference (streaming, batch, single)."
+    },
+    "inference_trigger_type": {
+      "type": "string_t",
+      "caption": "Inference Trigger Type",
+      "description": "How the inference was triggered (scheduled, user, agent, API)."
     },
     "injection_type": {
       "caption": "Injection Type",
@@ -2921,6 +3018,31 @@
           "description": "The injection type is not mapped. See the <code>injection_type</code> attribute, which contains a data source specific value."
         }
       }
+    },
+    "input_schema": {
+      "type": "string_t",
+      "caption": "Input Schema",
+      "description": "JSON Schema or structured format specification for the tool's input parameters."
+    },
+    "input_signature": {
+      "caption": "Input Signature",
+      "description": "A fingerprint or schema representation of the input structure for this inference.",
+      "type": "string_t"
+    },
+    "input_size_bytes": {
+      "type": "long_t",
+      "caption": "Input Size (Bytes)",
+      "description": "Size of the input in bytes. Useful for tracking performance and scale."
+    },
+    "input_tokens": {
+      "type": "integer_t",
+      "caption": "Input Tokens",
+      "description": "Total number of tokens in the prompt (query + context)."
+    },
+    "input_type": {
+      "type": "string_t",
+      "caption": "Input Type",
+      "description": "Data type of the input provided (e.g., text, image, audio)."
     },
     "install_state": {
       "caption": "Install State",
@@ -3020,6 +3142,12 @@
       "description": "The name by which a resource identifies itself internally. See specific usage.",
       "type": "string_t"
     },
+    "intrusion_sets": {
+      "caption": "Intrusion Sets",
+      "description": "A grouping of adversarial behaviors and resources believed to be associated with specific threat actors or campaigns. Intrusion sets often encompass multiple campaigns and are used to organize related activities under a common label.",
+      "type": "string_t",
+      "is_array": true
+    },
     "invoked_by": {
       "caption": "Invoked by",
       "description": "The name of the service that invoked the activity as described in the event.",
@@ -3074,6 +3202,11 @@
       "caption": "Encrypted",
       "description": "Indicates if the entity was encrypted. See specific usage.",
       "type": "boolean_t"
+    },
+    "is_error": {
+      "type": "boolean_t",
+      "caption": "Is Error",
+      "description": "Indicates whether the tool invocation resulted in an error."
     },
     "is_exploit_available": {
       "caption": "Exploit Availability",
@@ -3175,14 +3308,14 @@
       "description": "The vendor patch has been replaced by another.",
       "type": "boolean_t"
     },
-    "is_suspected_breach": {
-      "caption": "Suspected Breach",
-      "description": "A determination based on analytics as to whether a potential breach was found.",
-      "type": "boolean_t"
-    },
     "is_supervised": {
       "caption": "Supervised Device",
       "description": "The event occurred on a supervised device. Devices that are supervised are typically mobile devices managed by a Mobile Device Management solution and are restricted from specific behaviors such as Apple AirDrop.",
+      "type": "boolean_t"
+    },
+    "is_suspected_breach": {
+      "caption": "Suspected Breach",
+      "description": "A determination based on analytics as to whether a potential breach was found.",
       "type": "boolean_t"
     },
     "is_system": {
@@ -3277,6 +3410,21 @@
       },
       "is_array": true
     },
+    "kerberos_flags": {
+      "caption": "Kerberos Flags",
+      "description": "A bitmask, either in hexadecimal or decimal form, which encodes various attributes or permissions associated with a Kerberos ticket. These flags delineate specific characteristics of the ticket, such as its renewability or forwardability.",
+      "references": [
+        {
+          "description": "RFC 4120: 5.2.8.  KerberosFlags",
+          "url": "https://www.rfc-editor.org/rfc/rfc4120#section-5.2.8"
+        },
+        {
+          "description": "Microsoft Windows Security 4769 (see 'Ticket Options')",
+          "url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4769"
+        }
+      ],
+      "type": "string_t"
+    },
     "kernel": {
       "caption": "Kernel",
       "description": "The kernel resource object that pertains to the event.",
@@ -3359,6 +3507,11 @@
       "description": "The HTTP response latency measured in milliseconds.",
       "type": "integer_t"
     },
+    "latency_ms": {
+      "type": "long_t",
+      "caption": "Latency",
+      "description": "Input data passed to this step (may be preprocessed or hashed for logging)."
+    },
     "ldap_cn": {
       "caption": "LDAP Common Name",
       "description": "The LDAP and X.500 <code>commonName</code> attribute, typically the full name of the person. For example, <code>John Doe</code>.",
@@ -3404,6 +3557,11 @@
       "description": "The lineage of the process, represented by a list of paths for each ancestor process. For example: <code>['/usr/sbin/sshd', '/usr/bin/bash', '/usr/bin/whoami']</code>.",
       "type": "file_path_t",
       "is_array": true
+    },
+    "llm_model": {
+      "type": "string_t",
+      "caption": "LLM Model",
+      "description": "Name or version of the language model used to generate the final answer."
     },
     "load_balancer": {
       "caption": "Load Balancer",
@@ -3507,6 +3665,11 @@
       "description": "An array of Logger objects that describe the devices and logging products between the event source and its eventual destination. Note, this attribute can be used when there is a complex end-to-end path of event flow.",
       "type": "logger",
       "is_array": true
+    },
+    "logging_level": {
+      "type": "string_t",
+      "caption": "Logging Level",
+      "description": "Verbosity of logging (minimal, detailed, debug)."
     },
     "login_endpoint": {
       "caption": "Login Endpoint",
@@ -3613,21 +3776,6 @@
       "description": "Describes details about the scan job that identified malware on the target system.",
       "type": "malware_scan_info"
     },
-    "num_volumes": {
-      "caption": "Number of Volumes",
-      "description": "The number of volumes in the storage device. See specific usage.",
-      "type": "integer_t"
-    },
-    "num_infected": {
-      "caption": "Number of Infected Entities",
-      "description": "The number of infected entities. See specific usage.",
-      "type": "integer_t"
-    },
-    "unique_malware_count": {
-      "caption": "Unique Malware Count",
-      "description": "The number of unique malware detected during a scan. See specific usage.",
-      "type": "integer_t"
-    },
     "manager": {
       "caption": "Manager",
       "description": "The user's manager. This helps in understanding an org hierarchy. This should only ever be populated once in an event. I.e. there should not be a manager's manager in an event.",
@@ -3644,6 +3792,21 @@
       "description": "The location of the matched data in the source which resulted in the triggered firewall rule. For example: HEADER.",
       "type": "string_t"
     },
+    "max_retries": {
+      "type": "integer_t",
+      "caption": "Max Retries",
+      "description": "Maximum number of retry attempts allowed in case of failure or error."
+    },
+    "mcp_id": {
+      "type": "string_t",
+      "caption": "Model Context Protocol (MCP) ID",
+      "description": "Unique identifier for the full Model Context Protocol session or chain of related interactions."
+    },
+    "meets_criteria": {
+      "caption": "Meets Criteria",
+      "description": "Determines if an assessment, control, policy, or otherwise meets its assessment criteria. See specific usage.",
+      "type": "boolean_t"
+    },
     "meid": {
       "caption": "MEID",
       "description": "The Mobile Equipment Identifier. It's a unique number that identifies a Code Division Multiple Access (CDMA) mobile device.",
@@ -3653,6 +3816,16 @@
       "caption": "Message",
       "description": "The description of the event/finding, as defined by the source.",
       "type": "string_t"
+    },
+    "message_id": {
+      "type": "string_t",
+      "caption": "Retry Policy",
+      "description": "Unique identifier for the specific message instance within a session or MCP exchange."
+    },
+    "message_payload": {
+      "type": "message_payload",
+      "caption": "Message Payload",
+      "description": "Represents AI communication protocol message payload."
     },
     "message_trace_uid": {
       "caption": "Message Trace UID",
@@ -3664,6 +3837,34 @@
           "url": "https://learn.microsoft.com/en-us/previous-versions/office/developer/o365-enterprise-developers/jj984335(v=office.15)"
         }
       ]
+    },
+    "message_type": {
+      "type": "string_t",
+      "caption": "Message Type",
+      "description": "The normalized caption of <code>message_type_id</code>."
+    },
+    "message_type_id": {
+      "caption": "Message Type ID",
+      "description": "Type of MCP message",
+      "sibling": "message_type",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Request"
+        },
+        "2": {
+          "caption": "Response"
+        },
+        "3": {
+          "caption": "Notification"
+        },
+        "99": {
+          "caption": "Other"
+        }
+      }
     },
     "message_uid": {
       "caption": "Message UID",
@@ -3678,11 +3879,6 @@
       ],
       "observable": 42
     },
-    "meets_criteria": {
-      "caption": "Meets Criteria",
-      "description": "Determines if an assessment, control, policy, or otherwise meets its assessment criteria. See specific usage.",
-      "type": "boolean_t"
-    },
     "metadata": {
       "caption": "Metadata",
       "description": "The metadata associated with the event or a finding.",
@@ -3692,6 +3888,37 @@
       "caption": "Metadata Endpoint",
       "description": "URL where metadata about a configuration or resource is available (e.g., for SAML configurations). See specific usage.",
       "type": "url_t"
+    },
+    "method": {
+      "type": "string_t",
+      "caption": "Method",
+      "description": "The normalized caption of <code>method_id</code>."
+    },
+    "method_id": {
+      "caption": "Method ID",
+      "description": "Method",
+      "sibling": "method",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Call"
+        },
+        "2": {
+          "caption": "Read"
+        },
+        "3": {
+          "caption": "Update"
+        },
+        "4": {
+          "caption": "Summarize"
+        },
+        "99": {
+          "caption": "Other"
+        }
+      }
     },
     "metrics": {
       "caption": "Metrics",
@@ -3722,6 +3949,26 @@
     "model": {
       "caption": "Model",
       "description": "The model name of an entity. See specific usage.",
+      "type": "string_t"
+    },
+    "model_name": {
+      "caption": "Model Name",
+      "description": "Name of the AI model used in inference (e.g., gpt-4, bert-large, llama-2).",
+      "type": "string_t"
+    },
+    "model_owner": {
+      "caption": "Model Owner",
+      "description": "Entity or organization responsible for the model (e.g., OpenAI, Internal).",
+      "type": "string_t"
+    },
+    "model_task_type": {
+      "type": "string_t",
+      "caption": "Model Task Type",
+      "description": "Type of ML task performed by the model (e.g., text-generation, classification, image-segmentation)."
+    },
+    "model_version": {
+      "caption": "Model Version",
+      "description": "Version of the deployed model, which may include release date or custom tag.",
       "type": "string_t"
     },
     "modified_time": {
@@ -3808,6 +4055,11 @@
       "description": "The number of folders scanned.",
       "type": "integer_t"
     },
+    "num_infected": {
+      "caption": "Number of Infected Entities",
+      "description": "The number of infected entities. See specific usage.",
+      "type": "integer_t"
+    },
     "num_network_items": {
       "caption": "Scanned Network Items",
       "description": "The number of network items scanned.",
@@ -3843,6 +4095,11 @@
       "description": "The number of times the policy or rule was violated.",
       "type": "integer_t"
     },
+    "num_volumes": {
+      "caption": "Number of Volumes",
+      "description": "The number of volumes in the storage device. See specific usage.",
+      "type": "integer_t"
+    },
     "number": {
       "caption": "Number",
       "description": "The number of the entity. See specific usage.",
@@ -3859,6 +4116,27 @@
         }
       ],
       "is_array": true
+    },
+    "observation_parameter": {
+      "caption": "Observation Parameter",
+      "description": "The name of the parameter being analyzed or monitored. This generally identifies the specific characteristic or property being measured. See specific usage.",
+      "type": "string_t"
+    },
+    "observation_type": {
+      "caption": "Observation Type",
+      "description": "The classification or category of the observation, indicating what kind of measurement or finding it represents. See specific usage.",
+      "type": "string_t"
+    },
+    "observations": {
+      "caption": "Observations",
+      "description": "A list of individual observations or measurements collected during analysis. Each observation captures a specific data point. See specific usage.",
+      "type": "observation",
+      "is_array": true
+    },
+    "observed_pattern": {
+      "caption": "Observed Pattern",
+      "description": "A detected pattern or trend identified in the analyzed data, describing recurring activities or characteristics.",
+      "type": "string_t"
     },
     "occurrence_details": {
       "caption": "Occurrence Details",
@@ -3938,6 +4216,16 @@
       "description": "Verb/Operation associated with the request",
       "type": "string_t"
     },
+    "operation_name": {
+      "type": "string_t",
+      "caption": "Operation Name",
+      "description": "Name of the operation executed (e.g., load_model, shutdown, refresh_cache)."
+    },
+    "operation_result": {
+      "type": "string_t",
+      "caption": "Operation Result",
+      "description": "Outcome of the operation (success, failed, partially_successful)."
+    },
     "opnum": {
       "caption": "Opnum",
       "description": "An operation number used to identify a specific remote procedure call (RPC) method or a method in an interface.",
@@ -3982,6 +4270,31 @@
     "ou_uid": {
       "caption": "Org Unit ID",
       "description": "The alternate identifier for an entity's unique identifier. For example, its Active Directory OU DN or AWS OU ID.",
+      "type": "string_t"
+    },
+    "output_format": {
+      "type": "string_t",
+      "caption": "Output Format",
+      "description": "Format of the output produced (json, html, plain_text, etc.)."
+    },
+    "output_schema": {
+      "type": "string_t",
+      "caption": "Output Schema",
+      "description": "JSON Schema or structured description of the tool's response format or output."
+    },
+    "output_size_bytes": {
+      "type": "long_t",
+      "caption": "Output Size (Bytes)",
+      "description": "Size of the output in bytes."
+    },
+    "output_tokens": {
+      "type": "integer_t",
+      "caption": "Output Tokens",
+      "description": "Number of tokens generated in the final LLM output."
+    },
+    "output_type": {
+      "caption": "Output Type",
+      "description": "Format or semantic type of the inference output (e.g., text, classification_label, image).",
       "type": "string_t"
     },
     "overall_score": {
@@ -4330,6 +4643,11 @@
         "since": "1.4.0"
       }
     },
+    "prompt_tokens": {
+      "type": "string_t",
+      "caption": "Prompt Tokens",
+      "description": "Number of tokens used in the prompt/input to this step."
+    },
     "protocol_name": {
       "caption": "Protocol Name",
       "description": "The protocol name. See specific usage.",
@@ -4366,6 +4684,11 @@
           "description": "The protocol version is not mapped. See the <code>protocol_ver</code> attribute, which contains a data source specific value."
         }
       }
+    },
+    "protocol_version": {
+      "type": "string_t",
+      "caption": "Protocol Version",
+      "description": "The version of the MCP protocol being used."
     },
     "provider": {
       "caption": "Provider",
@@ -4498,6 +4821,11 @@
       "description": "The query portion of the URL. For example: the query portion of the URL <code>http://www.example.com/search?q=bad&sort=date</code> is <code>q=bad&sort=date</code>.",
       "type": "string_t"
     },
+    "query_text": {
+      "type": "string_t",
+      "caption": "Query Text",
+      "description": "Text of the original query input by the user or calling agent."
+    },
     "query_time": {
       "caption": "Query Time",
       "description": "The Domain Name System (DNS) query time.",
@@ -4601,6 +4929,11 @@
       "description": "Farthest horizontal distance from the reported location at which any UA in a group may be located (meters). Also allows defining the area where an Intent-Based Network Participant operation is taking place. Default: 0 m.",
       "type": "string_t"
     },
+    "rag_strategy": {
+      "type": "string_t",
+      "caption": "RAG Strategy",
+      "description": "Retrieval-augmented generation strategy used (e.g., simple_rag, multi-hop, hierarchical)."
+    },
     "ram_size": {
       "caption": "RAM Size",
       "description": "The total amount of installed RAM, in Megabytes. For example: <code>2048</code>.",
@@ -4651,6 +4984,11 @@
       "caption": "DNS RData",
       "description": "The data describing the DNS resource. The meaning of this data depends on the type and class of the resource record.",
       "type": "string_t"
+    },
+    "read_only_hint": {
+      "type": "string_t",
+      "caption": "Read-Only Hint",
+      "description": "Boolean indicating whether the tool is safe and free from side effects"
     },
     "record_index_in_array": {
       "caption": "Record Index in Array",
@@ -4816,6 +5154,11 @@
       "type": "string_t",
       "is_array": true
     },
+    "reranking_model": {
+      "type": "string_t",
+      "caption": "Reranking Model",
+      "description": "Reranking model applied to retrieved documents."
+    },
     "resource": {
       "caption": "Resource",
       "description": "The target resource.",
@@ -4852,6 +5195,60 @@
       "caption": "Response Time",
       "description": "The Domain Name System (DNS) response time.",
       "type": "timestamp_t"
+    },
+    "result_content": {
+      "type": "string_t",
+      "caption": "Server Version",
+      "description": "The content or output returned by the tool (e.g., result string, JSON, answer)."
+    },
+    "result_type": {
+      "type": "string_t",
+      "caption": "Result Type",
+      "description": "The normalized caption of <code>result_type_id</code>."
+    },
+    "result_type_id": {
+      "caption": "Result Type ID",
+      "description": "Format or semantic category of the result",
+      "sibling": "result_type",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Text"
+        },
+        "2": {
+          "caption": "Image"
+        },
+        "3": {
+          "caption": "Audio"
+        },
+        "4": {
+          "caption": "Video"
+        },
+        "5": {
+          "caption": "Embedded"
+        },
+        "99": {
+          "caption": "Other"
+        }
+      }
+    },
+    "retrieved_doc_count": {
+      "type": "integer_t",
+      "caption": "Retrieved Document Count",
+      "description": "Number of documents retrieved for the query."
+    },
+    "retriever_type": {
+      "type": "string_t",
+      "caption": "Retriever Type",
+      "description": "Type or backend of the retriever (e.g., FAISS, Pinecone, Vespa)."
+    },
+    "retry_policy": {
+      "type": "string_t",
+      "caption": "Retry Policy",
+      "description": "Description of the retry strategy if tool execution fails (e.g., exponential backoff, linear, none)."
     },
     "risk_details": {
       "caption": "Risk Details",
@@ -4897,6 +5294,49 @@
       "caption": "Risk Score",
       "description": "The risk score as reported by the event source.",
       "type": "integer_t"
+    },
+    "role": {
+      "type": "string_t",
+      "caption": "Role",
+      "description": "The normalized caption of <code>role_id</code>."
+    },
+    "role_id": {
+      "caption": "Role ID",
+      "description": "The originator or target role of the message",
+      "sibling": "role",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "User",
+          "description": "The human user initiating a request."
+        },
+        "2": {
+          "caption": "Assistant",
+          "description": "The AI model generating a response."
+        },
+        "3": {
+          "caption": "Tool",
+          "description": "A callable tool or API invoked by the assistant."
+        },
+        "4": {
+          "caption": "Agent",
+          "description": "A software agent acting with autonomy or intention."
+        },
+        "5": {
+          "caption": "Orchestrator",
+          "description": "The component coordinating multiple agents or tools."
+        },
+        "6": {
+          "caption": "Retriever",
+          "description": "A vector DB or knowledge system providing context."
+        },
+        "99": {
+          "caption": "Other"
+        }
+      }
     },
     "row_number": {
       "caption": "Row Number",
@@ -4966,6 +5406,11 @@
       "caption": "Runtime",
       "description": "The backend running the container, such as containerd or cri-o.",
       "type": "string_t"
+    },
+    "runtime_framework": {
+      "type": "string_t",
+      "caption": "Runtime Framework",
+      "description": "ML framework or runtime used (torch, tensorflow, onnx, triton)."
     },
     "samesite": {
       "caption": "SameSite",
@@ -5220,6 +5665,16 @@
       "caption": "Server HASSH",
       "description": "The Server HASSH fingerprinting object.",
       "type": "hassh"
+    },
+    "server_name": {
+      "type": "string_t",
+      "caption": "Server Name",
+      "description": "Server or agent name handling the request (e.g., OpenLLMetry, LangGraph)."
+    },
+    "server_version": {
+      "type": "string_t",
+      "caption": "Server Version",
+      "description": "Version of the MCP server or agent endpoint."
     },
     "service": {
       "caption": "Service",
@@ -5569,6 +6024,31 @@
         }
       }
     },
+    "step_id": {
+      "type": "string_t",
+      "caption": "Step ID",
+      "description": "Unique ID for the step in the workflow."
+    },
+    "step_input": {
+      "type": "string_t",
+      "caption": "Step Input",
+      "description": "Input data passed to this step (may be preprocessed or hashed for logging)."
+    },
+    "step_output": {
+      "type": "string_t",
+      "caption": "Step Output",
+      "description": "Output or response generated by the step."
+    },
+    "step_status": {
+      "type": "string_t",
+      "caption": "Step Status",
+      "description": "Result of the step execution (success, error, skipped, timeout)."
+    },
+    "step_type": {
+      "type": "string_t",
+      "caption": "Step Type",
+      "description": "Logical category of the step (e.g., retrieve, rerank, synthesize, validate, tool_call)."
+    },
     "storage_class": {
       "caption": "Storage Class",
       "description": "The storage class of the entity. See specific usage.",
@@ -5822,6 +6302,17 @@
       "description": "The time when the entity was terminated. See specific usage.",
       "type": "timestamp_t"
     },
+    "threat_actor": {
+      "caption": "Threat Actor",
+      "description": "A threat actor is an individual or group that conducts malicious cyber activities, often with financial, political, or ideological motives.",
+      "type": "threat_actor",
+      "references": [
+        {
+          "description": "STIX Threat Actor definition",
+          "url": "https://stixproject.github.io/data-model/1.2/ta/ThreatActorType/"
+        }
+      ]
+    },
     "ticket": {
       "caption": "Ticket",
       "description": "The linked ticket in the ticketing system.",
@@ -5842,6 +6333,16 @@
       "caption": "Event Time",
       "description": "The normalized event occurrence time or the finding creation time.",
       "type": "timestamp_t"
+    },
+    "timeout": {
+      "type": "long_t",
+      "caption": "Timeout",
+      "description": "Maximum duration allowed for tool execution before timeout, in milliseconds or ISO 8601 duration format."
+    },
+    "timespan": {
+      "caption": "Time Span",
+      "description": "The Time Span object represents different time period durations. If a timespan is fractional, i.e. crosses one period, e.g. a week and 3 days, more than one may be populated since each member is of integral type. In that case <code>type_id</code> if present should be set to <code>Other.</code><P>A timespan may also be defined by its time interval boundaries, <code>start_time</code> and <code>end_time</code>.",
+      "type": "timespan"
     },
     "timezone_offset": {
       "caption": "Timezone Offset",
@@ -5893,10 +6394,68 @@
       ],
       "is_array": true
     },
+    "token_count": {
+      "type": "integer_t",
+      "caption": "Token Count",
+      "description": "Number of tokens (e.g., OpenAI or Hugging Face tokenizer units) in the message content, if applicable. Used for usage tracking, billing, or performance telemetry."
+    },
+    "tool": {
+      "type": "tool",
+      "caption": "Tool",
+      "description": "Object representing a tool being invoked (e.g., calculator, sql_tool, web_search)."
+    },
+    "tool_call": {
+      "type": "tool_call",
+      "caption": "Tool Call",
+      "description": "Details arguments, results, and errors from tools invoked in AI Communication Protocol)"
+    },
+    "tool_category": {
+      "type": "string_t",
+      "caption": "Tool Category",
+      "description": "The normalized caption of <code>tool_category_id</code>."
+    },
+    "tool_category_id": {
+      "caption": "Tool Category ID",
+      "description": "High-level classification of the tool's role.",
+      "sibling": "tool_category",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Utility"
+        },
+        "2": {
+          "caption": "Agent-Helper"
+        },
+        "3": {
+          "caption": "Inference"
+        },
+        "99": {
+          "caption": "Other"
+        }
+      }
+    },
+    "tool_used": {
+      "type": "string_t",
+      "caption": "Tool Used",
+      "description": "Name or ID of the tool or external system used in the step."
+    },
     "total": {
       "caption": "Total",
       "description": "The total number of items. See specific usage.",
       "type": "integer_t"
+    },
+    "total_latency_ms": {
+      "type": "integer_t",
+      "caption": "Total Latency (ms)",
+      "description": "Total time taken by the entire workflow in milliseconds."
+    },
+    "total_tokens": {
+      "type": "string_t",
+      "caption": "Total Tokens",
+      "description": "Sum of prompt and completion tokens."
     },
     "trace": {
       "caption": "Trace",
@@ -5912,6 +6471,12 @@
       "caption": "Traffic",
       "description": "The network traffic refers to the amount of data moving across a network at a given point of time. Intended to be used alongside Network Connection.",
       "type": "network_traffic"
+    },
+    "traits": {
+      "caption": "Traits",
+      "description": "The traits that describe characteristics, features of an entity. See specific usage.",
+      "type": "trait",
+      "is_array": true
     },
     "transaction_uid": {
       "caption": "Transaction UID",
@@ -5934,16 +6499,10 @@
       "description": "The tree id is a unique SMB identifier which represents an open connection to a share.",
       "type": "string_t"
     },
-    "threat_actor": {
-      "caption": "Threat Actor",
-      "description": "A threat actor is an individual or group that conducts malicious cyber activities, often with financial, political, or ideological motives.",
-      "type": "threat_actor",
-      "references": [
-        {
-          "description": "STIX Threat Actor definition",
-          "url": "https://stixproject.github.io/data-model/1.2/ta/ThreatActorType/"
-        }
-      ]
+    "trigger_type": {
+      "type": "string_t",
+      "caption": "Trigger Type",
+      "description": "How the operation was initiated (manual, scheduled, conditional)."
     },
     "ttl": {
       "caption": "TTL",
@@ -6025,6 +6584,11 @@
       "description": "The alternate unique identifier. See specific usage.",
       "type": "string_t"
     },
+    "unique_malware_count": {
+      "caption": "Unique Malware Count",
+      "description": "The number of unique malware detected during a scan. See specific usage.",
+      "type": "integer_t"
+    },
     "unmanned_aerial_system": {
       "caption": "Unmanned Aerial System",
       "description": "The Unmanned Aerial System object describes the characteristics, Position Location Information (PLI), and other metadata of Unmanned Aerial Systems (UAS) and other unmanned and drone systems used in Remote ID. Remote ID is defined in the Standard Specification for Remote ID and Tracking (ASTM Designation: F3411-22a) <a target='_blank' href='https://cdn.standards.iteh.ai/samples/112830/71297057ac42432880a203654f213709/ASTM-F3411-22a.pdf'>ASTM F3411-22a</a>.",
@@ -6050,6 +6614,11 @@
       "description": "The size in bytes of an attribute before truncation. See specific usage.",
       "type": "integer_t"
     },
+    "uploaded_time": {
+      "caption": "Uploaded Time",
+      "description": "The timestamp at which an entity was uploaded. See specific usage.",
+      "type": "timestamp_t"
+    },
     "uri": {
       "caption": "URI",
       "description": "A Uniform Resource Identifier (URI) is a string of characters that identifies a resource on the Internet. URIs can identify physical resources, like webpages and documents. See specific usage.",
@@ -6060,11 +6629,6 @@
           "description": "RFC 3986"
         }
       ]
-    },
-    "uploaded_time": {
-      "caption": "Uploaded Time",
-      "description": "The timestamp at which an entity was uploaded. See specific usage.",
-      "type": "timestamp_t"
     },
     "url": {
       "caption": "URL",
@@ -6249,6 +6813,22 @@
       "description": "The resources of a WHOIS record for a given domain. This can include domain names, IP address blocks, autonomous system information, and/or contact and registration information for a domain.",
       "type": "whois"
     },
+    "workflow_id": {
+      "type": "string_t",
+      "caption": "Workflow ID",
+      "description": "Unique identifier for the RAG workflow instance."
+    },
+    "workflow_name": {
+      "type": "string_t",
+      "caption": "Workflow Name",
+      "description": "Human-readable name of the workflow configuration or pipeline."
+    },
+    "workflow_steps": {
+      "type": "workflow_step",
+      "caption": "Workflow Steps",
+      "description": "A list of individual, traceable steps executed during the RAG workflow.",
+      "is_array": true
+    },
     "working_directory": {
       "caption": "Working Directory",
       "description": "The working directory of a process.",
@@ -6274,586 +6854,6 @@
     "zone": {
       "caption": "Network Zone",
       "description": "The network zone or LAN segment.",
-      "type": "string_t"
-    },
-    "traits": {
-      "caption": "Traits",
-      "description": "The traits that describe characteristics, features of an entity. See specific usage.",
-      "type": "trait",
-      "is_array": true
-    },
-    "workflow_id": {
-      "type": "string_t", 
-      "caption": "Workflow ID", 
-      "description": "Unique identifier for the RAG workflow instance." 
-    },
-    "workflow_name": {
-      "type": "string_t", 
-      "caption": "Workflow Name", 
-      "description": "Human-readable name of the workflow configuration or pipeline." 
-    },
-    "workflow_steps": {
-        "type": "workflow_step",
-        "caption": "Workflow Steps", 
-        "description": "A list of individual, traceable steps executed during the RAG workflow.",
-        "is_array": true
-    },
-    "agent_id": {
-      "type": "string_t", 
-      "caption": "Agent ID", 
-      "description": "Identifier for the agent orchestrating the workflow." 
-    },
-    "agent_framework": {
-      "type": "string_t", 
-      "caption": "Agent Framework", 
-      "description": "Name of the framework used to manage the agent logic (e.g., LangGraph, CrewAI)." 
-    },
-    "rag_strategy": {
-      "type": "string_t", 
-      "caption": "RAG Strategy", 
-      "description": "Retrieval-augmented generation strategy used (e.g., simple_rag, multi-hop, hierarchical)." 
-    },
-    "retriever_type": {
-      "type": "string_t", 
-      "caption": "Retriever Type", 
-      "description": "Type or backend of the retriever (e.g., FAISS, Pinecone, Vespa)." 
-    },
-    "retrieved_doc_count": {
-      "type": "integer_t", 
-      "caption": "Retrieved Document Count", 
-      "description": "Number of documents retrieved for the query." 
-    },
-    "reranking_model": {
-      "type": "string_t", 
-      "caption": "Reranking Model", 
-      "description": "Reranking model applied to retrieved documents." 
-    },
-    "embedding_model": {
-      "type": "string_t", 
-      "caption": "Embedding Model", 
-      "description": "Name or version of the embedding model used in retrieval." 
-    },
-    "llm_model": {
-      "type": "string_t", 
-      "caption": "LLM Model", 
-      "description": "Name or version of the language model used to generate the final answer." 
-    },
-    "query_text": {
-      "type": "string_t", 
-      "caption": "Query Text", 
-      "description": "Text of the original query input by the user or calling agent." 
-    },
-    "final_answer": {
-      "type": "string_t", 
-      "caption": "Final Answer", 
-      "description": "Final response generated by the workflow after synthesis." 
-    },
-    "output_tokens": {
-      "type": "integer_t", 
-      "caption": "Output Tokens", 
-      "description": "Number of tokens generated in the final LLM output." 
-    },
-    "input_tokens": {
-      "type": "integer_t", 
-      "caption": "Input Tokens", 
-      "description": "Total number of tokens in the prompt (query + context)." 
-    },
-    "total_latency_ms": {
-      "type": "integer_t", 
-      "caption": "Total Latency (ms)", 
-      "description": "Total time taken by the entire workflow in milliseconds." 
-    },
-    "execution_status": {
-      "type": "string_t", 
-      "caption": "Execution Status", 
-      "description": "Status of the workflow execution (success, partial, failure)." 
-    },
-    "step_id": {
-      "type": "string_t", 
-      "caption": "Step ID",
-      "description": "Unique ID for the step in the workflow." 
-    },
-    "step_type": {
-      "type": "string_t", 
-      "caption": "Step Type",
-      "description": "Logical category of the step (e.g., retrieve, rerank, synthesize, validate, tool_call)."
-    },
-    "component_name": {
-      "type": "string_t", 
-      "caption": "Component Name",
-      "description": "Name of the module, agent, or function executing the step."
-    },
-    "tool_used": {
-      "type": "string_t", 
-      "caption": "Tool Used",
-      "description": "Name or ID of the tool or external system used in the step."
-    },
-    "step_input": {
-      "type": "string_t", 
-      "caption": "Step Input",
-      "description": "Input data passed to this step (may be preprocessed or hashed for logging)."
-    },
-    "step_output": {
-      "type": "string_t", 
-      "caption": "Step Output",
-      "description": "Output or response generated by the step."
-    },
-    "latency_ms": {
-      "type": "long_t", 
-      "caption": "Latency",
-      "description": "Input data passed to this step (may be preprocessed or hashed for logging)."
-    },
-    "step_status": {
-      "type": "string_t", 
-      "caption": "Step Status",
-      "description": "Result of the step execution (success, error, skipped, timeout)."
-    },
-    "prompt_tokens": {
-      "type": "string_t", 
-      "caption": "Prompt Tokens",
-      "description": "Number of tokens used in the prompt/input to this step."
-    },
-    "completion_tokens": {
-      "type": "string_t", 
-      "caption": "Completion Tokens",
-      "description": "Number of tokens generated in the output of this step."
-    },
-    "total_tokens": {
-      "type": "string_t", 
-      "caption": "Total Tokens",
-      "description": "Sum of prompt and completion tokens."
-    },
-    "operation_name": {
-      "type": "string_t", 
-      "caption": "Operation Name",
-      "description": "Name of the operation executed (e.g., load_model, shutdown, refresh_cache)."
-    },
-    "operation_result": {
-      "type": "string_t", 
-      "caption": "Operation Result",
-      "description": "Outcome of the operation (success, failed, partially_successful)."
-    },
-    "event_source": {
-      "type": "string_t", 
-      "caption": "Event Source",
-      "description": "Component or actor that triggered the event (user, scheduler, pipeline, healthcheck)."
-    },
-    "trigger_type": {
-      "type": "string_t", 
-      "caption": "Trigger Type",
-      "description": "How the operation was initiated (manual, scheduled, conditional)."
-    },
-    "mcp_id": {
-      "type": "string_t", 
-      "caption": "Model Context Protocol (MCP) ID",
-      "description": "Unique identifier for the full Model Context Protocol session or chain of related interactions."
-    },
-    "message_type_id": {
-      "caption": "Message Type ID",
-      "description": "Type of MCP message",
-      "sibling": "message_type",
-      "type": "integer_t",
-      "enum": {
-        "0": {
-          "caption": "Unknown"
-        },
-        "1": {
-          "caption": "Request"
-        },
-        "2": {
-          "caption": "Response"
-        },
-        "3": {
-          "caption": "Notification"
-        },
-        "99": {
-          "caption": "Other"
-        }
-      }
-    },
-    "message_type": {
-      "type": "string_t", 
-      "caption": "Message Type",
-      "description": "The normalized caption of <code>message_type_id</code>."
-    },
-    "role_id": {
-      "caption": "Role ID",
-      "description": "The originator or target role of the message",
-      "sibling": "role",
-      "type": "integer_t",
-      "enum": {
-        "0": {
-          "caption": "Unknown"
-        },
-        "1": {
-          "caption": "User",
-          "description": "The human user initiating a request."
-        },
-        "2": {
-          "caption": "Assistant",
-          "description": "The AI model generating a response."
-        },
-        "3": {
-          "caption": "Tool",
-          "description": "A callable tool or API invoked by the assistant."
-        },
-        "4": {
-          "caption": "Agent",
-          "description": "A software agent acting with autonomy or intention."
-        },
-        "5": {
-          "caption": "Orchestrator",
-          "description": "The component coordinating multiple agents or tools."
-        },
-        "6": {
-          "caption": "Retriever",
-          "description": "A vector DB or knowledge system providing context."
-        },
-        "99": {
-          "caption": "Other"
-        }
-      }
-    },
-    "role": {
-      "type": "string_t", 
-      "caption": "Role",
-      "description": "The normalized caption of <code>role_id</code>."
-    },
-    "protocol_version": {
-      "type": "string_t", 
-      "caption": "Protocol Version",
-      "description": "The version of the MCP protocol being used."
-    },
-    "client_name": {
-      "type": "string_t", 
-      "caption": "Client Name",
-      "description": "The name of the initiating client (e.g., LangChain, Postman, browser)."
-    },
-    "client_version": {
-      "type": "string_t", 
-      "caption": "Client Version",
-      "description": "Version of the client software or SDK."
-    },
-    "server_name": {
-      "type": "string_t", 
-      "caption": "Server Name",
-      "description": "Server or agent name handling the request (e.g., OpenLLMetry, LangGraph)."
-    },
-    "server_version": {
-      "type": "string_t", 
-      "caption": "Server Version",
-      "description": "Version of the MCP server or agent endpoint."
-    },
-    "tool_call": {
-      "type": "tool_call", 
-      "caption": "Tool Call",
-      "description": "Details arguments, results, and errors from tools invoked in AI Communication Protocol)"
-    },
-    "tool": {
-      "type": "tool", 
-      "caption": "Tool",
-      "description": "Object representing a tool being invoked (e.g., calculator, sql_tool, web_search)."
-    },
-    "arguments": {
-      "type": "string_t",
-      "is_array": true,
-      "caption": "Arguments",
-      "description": "Parameters passed to the tool, typically structured as key-value pairs."
-    },
-    "is_error": {
-      "type": "boolean_t", 
-      "caption": "Is Error",
-      "description": "Indicates whether the tool invocation resulted in an error."
-    },
-    "result_content": {
-      "type": "string_t", 
-      "caption": "Server Version",
-      "description": "The content or output returned by the tool (e.g., result string, JSON, answer)."
-    },
-    "result_type_id": {
-      "caption": "Result Type ID",
-      "description": "Format or semantic category of the result",
-      "sibling": "result_type",
-      "type": "integer_t",
-      "enum": {
-        "0": {
-          "caption": "Unknown"
-        },
-        "1": {
-          "caption": "Text"
-        },
-        "2": {
-          "caption": "Image"
-        },
-        "3": {
-          "caption": "Audio"
-        },
-        "4": {
-          "caption": "Video"
-        },
-        "5": {
-          "caption": "Embedded"
-        },
-        "99": {
-          "caption": "Other"
-        }
-      }
-    },
-    "result_type": {
-      "type": "string_t",
-      "caption": "Result Type",
-      "description": "The normalized caption of <code>result_type_id</code>."
-    },       
-    "method_id": {
-      "caption": "Method ID",
-      "description": "Method",
-      "sibling": "method",
-      "type": "integer_t",
-      "enum": {
-        "0": {
-          "caption": "Unknown"
-        },
-        "1": {
-          "caption": "Call"
-        },
-        "2": {
-          "caption": "Read"
-        },
-        "3": {
-          "caption": "Update"
-        },
-        "4": {
-          "caption": "Summarize"
-        },
-        "99": {
-          "caption": "Other"
-        }
-      }
-    },
-    "method": {
-      "type": "string_t",
-      "caption": "Method",
-      "description": "The normalized caption of <code>method_id</code>."
-    },
-    "input_schema": {
-      "type": "string_t",
-      "caption": "Input Schema",
-      "description": "JSON Schema or structured format specification for the tool's input parameters."
-    },
-    "output_schema": {
-      "type": "string_t",
-      "caption": "Output Schema",
-      "description": "JSON Schema or structured description of the tool's response format or output."
-    },
-    "access_level_id": {
-      "caption": "Access Level ID",
-      "description": "Classification of the tool's access level based on its impact or scope.",
-      "sibling": "access_level",
-      "type": "integer_t",
-      "enum": {
-        "0": {
-          "caption": "Unknown"
-        },
-        "1": {
-          "caption": "Read Only"
-        },
-        "2": {
-          "caption": "Write"
-        },
-        "3": {
-          "caption": "Destructive"
-        },
-        "99": {
-          "caption": "Other"
-        }
-      }
-    },
-    "access_level": {
-      "type": "string_t",
-      "caption": "Access Level",
-      "description": "The normalized caption of <code>access_level_id</code>."
-    },
-    "destructive_hint": {
-      "type": "string_t",
-      "caption": "Destructive Hint",
-      "description": "Boolean indicating whether the tool performs actions that alter external state irreversibly."
-    },
-    "read_only_hint": {
-      "type": "string_t",
-      "caption": "Read-Only Hint",
-      "description": "Boolean indicating whether the tool is safe and free from side effects"
-    },
-    "description": {
-      "type": "string_t",
-      "caption": "Description",
-      "description": "A longer free-text explanation of the purpose, behavior, or use case."
-    },
-    "tool_category_id": {
-      "caption": "Tool Category ID",
-      "description": "High-level classification of the tool's role.",
-      "sibling": "tool_category",
-      "type": "integer_t",
-      "enum": {
-        "0": {
-          "caption": "Unknown"
-        },
-        "1": {
-          "caption": "Utility"
-        },
-        "2": {
-          "caption": "Agent-Helper"
-        },
-        "3": {
-          "caption": "Inference"
-        },
-        "99": {
-          "caption": "Other"
-        }
-      }
-    },
-    "tool_category": {
-      "type": "string_t",
-      "caption": "Tool Category",
-      "description": "The normalized caption of <code>tool_category_id</code>."
-    },
-    "timeout": {
-      "type": "long_t",
-      "caption": "Timeout",
-      "description": "Maximum duration allowed for tool execution before timeout, in milliseconds or ISO 8601 duration format."
-    },
-    "retry_policy": {
-      "type": "string_t",
-      "caption": "Retry Policy",
-      "description": "Description of the retry strategy if tool execution fails (e.g., exponential backoff, linear, none)."
-    },
-    "max_retries": {
-      "type": "integer_t",
-      "caption": "Max Retries",
-      "description": "Maximum number of retry attempts allowed in case of failure or error."
-    },
-    "message_payload": {
-      "type": "message_payload", 
-      "caption": "Message Payload",
-      "description": "Represents AI communication protocol message payload."
-    },
-    "message_id": {
-      "type": "string_t",
-      "caption": "Retry Policy",
-      "description": "Unique identifier for the specific message instance within a session or MCP exchange."
-    },
-    "content": {
-      "type": "string_t",
-      "caption": "Content",
-      "description": "Actual content of the message (e.g., natural language text, JSON body, base64 media reference). This may be redacted or hashed in security-sensitive environments."
-    },
-    "token_count": {
-      "type": "integer_t",
-      "caption": "Token Count",
-      "description": "Number of tokens (e.g., OpenAI or Hugging Face tokenizer units) in the message content, if applicable. Used for usage tracking, billing, or performance telemetry."
-    },
-    "model_task_type": {
-      "type": "string_t",
-      "caption": "Model Task Type",
-      "description": "Type of ML task performed by the model (e.g., text-generation, classification, image-segmentation)."
-    },
-    "inference_trigger_type": {
-      "type": "string_t",
-      "caption": "Inference Trigger Type",
-      "description": "How the inference was triggered (scheduled, user, agent, API)."
-    },
-    "input_type": {
-      "type": "string_t",
-      "caption": "Input Type",
-      "description": "Data type of the input provided (e.g., text, image, audio)."
-    },
-    "output_format": {
-      "type": "string_t",
-      "caption": "Output Format",
-      "description": "Format of the output produced (json, html, plain_text, etc.)."
-    },
-    "input_size_bytes": {
-      "type": "long_t",
-      "caption": "Input Size (Bytes)",
-      "description": "Size of the input in bytes. Useful for tracking performance and scale."
-    },
-    "output_size_bytes": {
-      "type": "long_t",
-      "caption": "Output Size (Bytes)",
-      "description": "Size of the output in bytes."
-    },
-    "execution_environment": {
-      "type": "string_t",
-      "caption": "Execution Environment",
-      "description": "Execution context (serverless, container, vm, on-device)."
-    },
-    "runtime_framework": {
-      "type": "string_t",
-      "caption": "Runtime Framework",
-      "description": "ML framework or runtime used (torch, tensorflow, onnx, triton)."
-    },
-    "batch_id": {
-      "type": "string_t",
-      "caption": "Batch ID",
-      "description": "ID for a batch of inference requests, if batched."
-    },
-    "batch_position": {
-      "type": "integer_t",
-      "caption": "Batch Position",
-      "description": "Position of this inference within the batch (0-indexed)."
-    },
-    "inference_mode": {
-      "type": "string_t",
-      "caption": "Inference Mode",
-      "description": "Mode of inference (streaming, batch, single)."
-    },
-    "logging_level": {
-      "type": "string_t",
-      "caption": "Logging Level",
-      "description": "Verbosity of logging (minimal, detailed, debug)."
-    },
-    "audit_log_reference": {
-      "type": "string_t",
-      "caption": "Audit Log Reference",
-      "description": "Link or ID to the audit log entry for this inference, for traceability."
-    },
-    "detected_anomalies": {
-      "type": "string_t",
-      "caption": "Detection Anomalies",
-      "description": "List of anomalies observed (e.g., null_output, high_latency, low_confidence)."
-    },
-    "model_name": {
-      "caption": "Model Name",
-      "description": "Name of the AI model used in inference (e.g., gpt-4, bert-large, llama-2).",
-      "type": "string_t"
-    },
-    "model_version": {
-      "caption": "Model Version",
-      "description": "Version of the deployed model, which may include release date or custom tag.",
-      "type": "string_t"
-    },
-    "model_owner": {
-      "caption": "Model Owner",
-      "description": "Entity or organization responsible for the model (e.g., OpenAI, Internal).",
-      "type": "string_t"
-    },
-    "deployment_id": {
-      "caption": "Deployment ID",
-      "description": "Identifier of the deployed model instance, useful for tracing across environments.",
-      "type": "string_t"
-    },
-    "input_signature": {
-      "caption": "Input Signature",
-      "description": "A fingerprint or schema representation of the input structure for this inference.",
-      "type": "string_t"
-    },
-    "output_type": {
-      "caption": "Output Type",
-      "description": "Format or semantic type of the inference output (e.g., text, classification_label, image).",
-      "type": "string_t"
-    },
-    "endpoint": {
-      "caption": "Endpoint",
-      "description": "Endpoint or URI",
       "type": "string_t"
     }
   },

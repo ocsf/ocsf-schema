@@ -608,7 +608,7 @@ n/a
     5. Added `Datastore Activity` event class 6005. [#874](https://github.com/ocsf/ocsf-schema/pull/874)
     6. Added `Detection Finding` event class. [#877](https://github.com/ocsf/ocsf-schema/pull/877)
     7. Added `Incident Finding` event class. [#903](https://github.com/ocsf/ocsf-schema/pull/903)
-    8. Added `Device Config Sate Change` event class. [#914](https://github.com/ocsf/ocsf-schema/pull/914)
+    8. Added `Device Config State Change` event class. [#914](https://github.com/ocsf/ocsf-schema/pull/914)
     9. Added `Scan Activity` event class. [#915](https://github.com/ocsf/ocsf-schema/pull/915)
     10. Added `File Hosting Activity` event class. [#917](https://github.com/ocsf/ocsf-schema/pull/917)
 

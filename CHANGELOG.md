@@ -41,8 +41,12 @@ Thankyou! -->
 
 ## [Unreleased]
 
-### Improved
+### Added
+* #### Event Classes
+  1. Added `observability_metric_info` event class to the Discovery category. [#1421](https://github.com/ocsf/ocsf-schema/pull/1421)
+ 
 
+### Improved
 * #### Event Classes
   1. Added `Disconnect` and `Reconnect` activities in the `RDP Activity` class. [#1415](https://github.com/ocsf/ocsf-schema/pull/1415)
   1. Added `user` as an attribute to the `RDP Activity` class. [#1419](https://github.com/ocsf/ocsf-schema/pull/1419)

@@ -1,0 +1,32 @@
+{
+  "caption": "Observed Entity",
+  "description": "The entity which is best described by the event.",
+  "extends": "_entity",
+  "name": "observed_entity",
+  "attributes": {
+    "api": {
+      "description": "Describes details about the API call associated with the current event.",
+      "requirement": "recommended"
+    },
+    "container": {
+      "description": "Describes details about the container associated with the current event.",
+      "requirement": "recommended"
+    },
+    "device": {
+      "description": "An addressable device, computer system or host associated with the current event.",
+      "requirement": "recommended"
+    },
+    "web_resources": {
+      "description":  "Information about the web-based resource associated with the the current event. This may include the resource's URL, path, content type, or service endpoint."
+      "requirement": "recommended"
+    }
+  },
+  "constraints": {
+    "at_least_one": [
+      "api",
+      "container",
+      "device",
+      "web_resource"
+    ]
+  }
+}

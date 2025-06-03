@@ -44,10 +44,15 @@ Thankyou! -->
 ### Improved
 
 * #### Event Classes
+  1. Added new `observability_metric` event to the Discovery category. [#1442](https://github.com/ocsf/ocsf-schema/pull/1442)
+* #### Event Classes
   1. Added `Disconnect` and `Reconnect` activities in the `RDP Activity` class. [#1415](https://github.com/ocsf/ocsf-schema/pull/1415)
   1. Added `user` as an attribute to the `RDP Activity` class. [#1419](https://github.com/ocsf/ocsf-schema/pull/1419)
 * #### Objects
   1. Added more `algorithm_id` values and references to the `fingerprint` object. [#1412](https://github.com/ocsf/ocsf-schema/pull/1412)
+  1. Added an `observed_entity` object. [#1442](https://github.com/ocsf/ocsf-schema/pull/1442)
+* #### Dictionary Attributes
+  1. Added `observed_entity` to the dictionary. [#1442](https://github.com/ocsf/ocsf-schema/pull/1442)
 
 ## [v1.5.0] - April 28th, 2025
 

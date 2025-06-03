@@ -1,0 +1,19 @@
+{
+  "uid": 24,
+  "caption": "Observability Metric",
+  "description": "Observability Metric events report metrics data from a running device or service that is either logged or proactively collected. For example, when collecting device information such as such as CPU usage, memory utilization, disk I/O, or network traffic.",
+  "extends": "discovery",
+  "name": "observability_metric",
+  "attributes": {
+    "observed_entity": {
+      "description": "The entity which produced the metric(s) were collected from. This collection process can happen either via a push from the entity to a third party service or a third party service performing an activity to interface with the entity and extract the metrics of interest.",
+      "group": "primary",
+      "requirement": "required"
+    },
+    "metrics": {
+      "description": "Data points pushed from or extracted from a target entity at a given point in time. This could include metrics such as CPU usage, memory utilization, disk I/O, network traffic, or any other performance-related data collected for monitoring purposes.",
+      "group": "primary",
+      "requirement": "required"
+    }
+  }
+}

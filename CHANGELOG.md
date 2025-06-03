@@ -45,6 +45,8 @@ Thankyou! -->
 ### Improved
 
 * #### Event Classes
+  1. Added new `observability_metric` event to the Discovery category. [#1442](https://github.com/ocsf/ocsf-schema/pull/1442)
+* #### Event Classes
   1. Added `Disconnect` and `Reconnect` activities in the `RDP Activity` class. [#1415](https://github.com/ocsf/ocsf-schema/pull/1415)
   1. Added `user` as an attribute to the `RDP Activity` class. [#1419](https://github.com/ocsf/ocsf-schema/pull/1419)
   1. Added `raw_data_hash` as an attribute to `base_event`. [#1420](https://github.com/ocsf/ocsf-schema/pull/1420)
@@ -57,6 +59,8 @@ Thankyou! -->
   1. Added `status` to `related_event` object. [#1434](https://github.com/ocsf/ocsf-schema/pull/1434)
   1. Added `attack_graph` to `finding_info`. [#1436](https://github.com/ocsf/ocsf-schema/pull/1436)
   1. Added `Executable File` to `file` `type_id` enum. Added `is_readonly` as an optional attribute. [#1438](https://github.com/ocsf/ocsf-schema/pull/1438)
+* #### Dictionary Attributes
+  1. Added `observed_entity` to the dictionary. [#1442](https://github.com/ocsf/ocsf-schema/pull/1442)
 
 ### Misc
   1. Fixed spelling errors throughout the project and added spell checking to the CI linter workflow. [#1411](https://github.com/ocsf/ocsf-schema/pull/1411)
@@ -64,6 +68,7 @@ Thankyou! -->
 
 ### Deprecated
   1. Deprecated usage of `group` attribute in favor of `groups` in the `databucket` object. [#1344]
+
 
 ## [v1.5.0] - April 28th, 2025
 

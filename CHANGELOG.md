@@ -46,9 +46,12 @@ Thankyou! -->
 * #### Event Classes
   1. Added `Disconnect` and `Reconnect` activities in the `RDP Activity` class. [#1415](https://github.com/ocsf/ocsf-schema/pull/1415)
   1. Added `user` as an attribute to the `RDP Activity` class. [#1419](https://github.com/ocsf/ocsf-schema/pull/1419)
+  1. Added `raw_data_hash` as an attribute to `base_event`. [#1420](https://github.com/ocsf/ocsf-schema/pull/1420)
 * #### Objects
   1. Added more `algorithm_id` values and references to the `fingerprint` object. [#1412](https://github.com/ocsf/ocsf-schema/pull/1412)
+  1. Added xxHash H3's 64-bit and 128-bit variants to `algorithm_id` on the `fingerprint` object. [#1420](https://github.com/ocsf/ocsf-schema/pull/1412)
   1. Added `Service` to `user` `type_id` enum. [#1428](https://github.com/ocsf/ocsf-schema/pull/1428)
+  1. Added `Deleted` to `finding` `status_id` enum. [#1437](https://github.com/ocsf/ocsf-schema/pull/1437)
   1. Added `status` to `related_event` object. [#1434](https://github.com/ocsf/ocsf-schema/pull/1434)
 
 ### Misc

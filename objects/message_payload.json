@@ -1,0 +1,29 @@
+{
+    "caption": "Message Payload",
+    "description": "Represents AI communication protocol message payload.",
+    "extends": "object",
+    "name": "message_payload",
+    "attributes": {
+      "message_id": {
+        "description": "Unique identifier for the specific message instance within a session or MCP exchange.",
+        "requirement": "optional"
+      },
+      "content_type": {
+        "caption": "Message Content Type",
+        "description": "Semantic category of the message content, such as text, image, audio, or json.",
+        "requirement": "optional"
+      },
+      "content": {
+        "description": "Actual content of the message (e.g., natural language text, JSON body, base64 media reference). This may be redacted or hashed in security-sensitive environments.",
+        "requirement": "optional"
+      },
+      "mime_type": {
+        "description": "MIME type corresponding to the content format, e.g., text/plain, application/json, image/png.",
+        "requirement": "optional"
+      },
+      "token_count": {
+        "description": "Number of tokens (e.g., OpenAI or Hugging Face tokenizer units) in the message content, if applicable. Used for usage tracking, billing, or performance telemetry.",
+        "requirement": "optional"
+      }
+    }
+  }

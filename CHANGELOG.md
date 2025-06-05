@@ -55,6 +55,7 @@ Thankyou! -->
   1. Added `Deleted` to `finding` `status_id` enum. [#1437](https://github.com/ocsf/ocsf-schema/pull/1437)
   1. Added `status` to `related_event` object. [#1434](https://github.com/ocsf/ocsf-schema/pull/1434)
   1. Added `attack_graph` to `finding_info`. [#1436](https://github.com/ocsf/ocsf-schema/pull/1436)
+  1. Added `status_id` and `status` to `analytic`. [#1448](https://github.com/ocsf/ocsf-schema/pull/1448)
 
 ### Misc
   1. Fixed spelling errors throughout the project and added spell checking to the CI linter workflow. [#1411](https://github.com/ocsf/ocsf-schema/pull/1411)

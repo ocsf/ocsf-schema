@@ -57,6 +57,7 @@ Thankyou! -->
 ### Misc
   1. Fixed spelling errors throughout the project and added spell checking to the CI linter workflow. [#1411](https://github.com/ocsf/ocsf-schema/pull/1411)
   1. Improved description of the `Application Error` class. [#1424](https://github.com/ocsf/ocsf-schema/pull/1424)
+  1. Fixed remaining spell check errors. [#1439](https://github.com/ocsf/ocsf-schema/pull/1439)
 
 ### Deprecated
   1. Deprecated usage of `group` attribute in favor of `groups` in the `databucket` object. [#1344]
@@ -614,7 +615,7 @@ n/a
     5. Added `Datastore Activity` event class 6005. [#874](https://github.com/ocsf/ocsf-schema/pull/874)
     6. Added `Detection Finding` event class. [#877](https://github.com/ocsf/ocsf-schema/pull/877)
     7. Added `Incident Finding` event class. [#903](https://github.com/ocsf/ocsf-schema/pull/903)
-    8. Added `Device Config Sate Change` event class. [#914](https://github.com/ocsf/ocsf-schema/pull/914)
+    8. Added `Device Config State Change` event class. [#914](https://github.com/ocsf/ocsf-schema/pull/914)
     9. Added `Scan Activity` event class. [#915](https://github.com/ocsf/ocsf-schema/pull/915)
     10. Added `File Hosting Activity` event class. [#917](https://github.com/ocsf/ocsf-schema/pull/917)
 

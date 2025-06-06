@@ -1,14 +1,25 @@
 {
   "caption": "Databucket",
   "description": "The databucket object is a basic container that holds data, typically organized through the use of data partitions.",
-  "extends": "resource_details",
+  "extends": "_resource",
   "name": "databucket",
   "attributes": {
     "$include": [
       "profiles/data_classification.json"
     ],
+    "agent_list": {
+      "requirement": "optional"
+    },
+    "cloud_partition": {
+      "profile": "cloud",
+      "requirement": "optional"
+    },
     "created_time": {
       "description": "The time when the databucket was known to have been created.",
+      "requirement": "optional"
+    },
+    "criticality": {
+      "description": "The criticality of the databucket as defined by the event source.",
       "requirement": "optional"
     },
     "desc": {
@@ -24,8 +35,27 @@
       "description": "Details about the file/object within a databucket.",
       "requirement": "optional"
     },
+    "group": {
+      "description": "The name of the related resource group.",
+      "requirement": "optional",
+      "@deprecated": {
+        "message": "Use the <code>groups</code> attribute instead.",
+        "since": "1.6.0"
+      }
+    },
     "groups": {
       "description": "The group names to which the databucket belongs.",
+      "requirement": "optional"
+    },
+    "hostname": {
+      "description": "The fully qualified hostname of the databucket.",
+      "requirement": "recommended"
+    },
+    "ip": {
+      "description": "The IP address of the resource, in either IPv4 or IPv6 format.",
+      "requirement": "recommended"
+    },
+    "is_backed_up": {
       "requirement": "optional"
     },
     "is_encrypted": {
@@ -42,6 +72,23 @@
     },
     "name": {
       "description": "The databucket name."
+    },
+    "namespace": {
+      "description": "The namespace is useful when similar entities exist that you need to keep separate.",
+      "requirement": "optional"
+    },
+    "owner": {
+      "description": "The identity of the service or user account that owns the databucket.",
+      "requirement": "recommended"
+    },
+    "region": {
+      "description": "The cloud region of the databucket.",
+      "profile": "cloud",
+      "requirement": "optional"
+    },
+    "resource_relationship": {
+      "description": "A graph representation showing how this databucket relates to and interacts with other entities in the environment. This can include parent/child relationships, dependencies, or other connections.",
+      "requirement": "optional"
     },
     "size": {
       "description": "The size of the databucket in bytes.",
@@ -74,9 +121,20 @@
     },
     "uid": {
       "description": "The unique identifier of the databucket."
+    },
+    "version": {
+      "description": "The version of the resource. For example <code>1.2.3</code>.",
+      "requirement": "optional"
+    },
+    "zone": {
+      "caption": "Cloud Availability Zone",
+      "description": "The specific availability zone within a cloud region where the databucket is located.",
+      "profile": "cloud",
+      "requirement": "optional"
     }
   },
   "profiles": [
-    "data_classification"
+    "data_classification",
+    "cloud"
   ]
 }

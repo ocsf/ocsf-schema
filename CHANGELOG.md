@@ -40,6 +40,7 @@ Thankyou! -->
 -->
 
 ## [Unreleased]
+  1. Set `device.uid` as an Observable type - type_id: 47 [#1446](https://github.com/ocsf/ocsf-schema/pull/1446)
 
 ### Improved
 

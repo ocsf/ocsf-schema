@@ -3,6 +3,21 @@
   "description": "The Attribute Dictionary provides a comprehensive catalog of standardized attributes used across OCSF. It defines each attribute's properties, data types, and relationships. This dictionary serves as the authoritative reference for attribute definitions and ensures consistent usage throughout the schema.",
   "name": "dictionary",
   "attributes": {
+    "attack_graph": {
+      "caption": "Attack Graph",
+      "description": "An Attack Graph describes possible routes an attacker could take through an environment. It describes relationships between resources and their findings, such as malware detections, vulnerabilities, misconfigurations, and other security actions.",
+      "type": "graph",
+      "references": [
+        {
+          "url": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/how-to-manage-attack-path",
+          "description": "MS Defender description of Attack Path"
+        },
+        {
+          "url": "https://www.sentinelone.com/cybersecurity-101/cybersecurity/attack-path-analysis/",
+          "description": "SentinelOne Attack Path documentation"
+        }
+      ]
+    },
     "timespan": {
       "caption": "Time Span",
       "description": "The Time Span object represents different time period durations. If a timespan is fractional, i.e. crosses one period, e.g. a week and 3 days, more than one may be populated since each member is of integral type. In that case <code>type_id</code> if present should be set to <code>Other.</code><P>A timespan may also be defined by its time interval boundaries, <code>start_time</code> and <code>end_time</code>.",
@@ -4615,6 +4630,11 @@
       "caption": "Raw Data",
       "description": "The raw event/finding data as received from the source.",
       "type": "string_t"
+    },
+    "raw_data_hash": {
+      "caption": "Raw Data Hash",
+      "description": "The hash, which describes the content of the raw_data field.",
+      "type": "fingerprint"
     },
     "raw_data_size": {
       "caption": "Raw Data Size",

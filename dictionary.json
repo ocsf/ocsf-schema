@@ -1221,7 +1221,7 @@
     },
     "condition": {
       "caption": "Condition",
-      "description": "The rule trigger condition for the rule. For example: SQL_INJECTION.",
+      "description": "The condition that was evaluated in a rule, policy. See specific usage.",
       "type": "string_t"
     },
     "confidence": {
@@ -5585,7 +5585,7 @@
         },
         "99": {
           "caption": "Other",
-          "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
+          "description": "The status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
         }
       }
     },
@@ -6300,6 +6300,71 @@
       "caption": "Traits",
       "description": "The traits that describe characteristics, features of an entity. See specific usage.",
       "type": "trait",
+      "is_array": true
+    },
+    "access_level": {
+      "caption": "Access Level",
+      "description": "The access level of an entity. See specific usage.",
+      "type": "string_t"
+    },
+    "credential_last_used_time": {
+      "caption": "Credential Last Used Time",
+      "description": "The time when a user's credential was last used.",
+      "type": "timestamp_t"
+    },
+    "external_access_analysis":{
+      "caption": "External Access Analysis",
+      "description": "Describes details about the analysis of access permissions granted to external identities through policies. See specific usage.",
+      "type": "external_access_analysis"
+    },
+    "granted_privileges": {
+      "caption": "Granted Privileges",
+      "description": "The Privileges that were granted to the user via an IAM policy or otherwise. See specific usage.",
+      "type": "string_t",
+      "is_array": true
+    },
+    "identity_activity_metrics":{
+      "caption": "Identity Activity Metrics",
+      "description": "Describes usage activity and other metrics of an Identity i.e. AWS IAM User, GCP IAM Principal, etc.",
+      "type": "identity_activity_metrics"
+    },
+    "password_last_used_time": {
+      "caption": "Password Last Used Time",
+      "description": "The time when a user's password was last used.",
+      "type": "timestamp_t"
+    },
+    "permission_analyses": {
+      "caption": "Permission Analyses",
+      "description": "Describes the results of analyses performed on the permissions and privileges granted to the identity, including evaluations of access levels, policy configurations and any other relevant details.",
+      "type": "permission_analysis",
+      "is_array": true
+    },
+    "additional_restrictions": {
+      "caption": "Additional Restrictions",
+      "description": "The restrictions that may apply to an entity, by the virtue of a policy. See specific usage.",
+      "type": "additional_restriction",
+      "is_array": true
+    },
+    "unused_privileges_count": {
+      "caption": "Unused Privileges Count",
+      "description": "The number of unused Privileges. See specific usage.",
+      "type": "integer_t"
+    },
+    "unused_services_count": {
+      "caption": "Unused Services Count",
+      "description": "The number of unused services. See specific usage.",
+      "type": "integer_t"
+    },
+    "condition_keys": {
+      "caption": "Condition Keys",
+      "description": "The list of condition keys and their values that were evaluated as part of a rule or policy. Condition keys are used to define circumstances under which the rule/policy is in effect. See specific usage.",
+      "type": "key_value_object",
+      "is_array": true
+    },
+    "applications": {
+      "caption": "Applications",
+      "description": "A list of application objects. See specific usage.",
+      "type": "application",
       "is_array": true
     }
   },

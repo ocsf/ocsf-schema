@@ -4431,6 +4431,11 @@
       "description": "The network traffic refers to the amount of data moving across a network, from proxy to remote server at a given point of time.",
       "type": "network_traffic"
     },
+    "ptid": {
+      "caption": "Process Thread ID",
+      "description": "The identifier of the process thread associated with the event, as returned by the operating system.",
+      "type": "long_t"
+    },
     "purl": {
       "caption": "Package URL",
       "description": "A purl is a URL string used to identify and locate a software package in a mostly universal and uniform way across programming languages, package managers, packaging conventions, tools, APIs and databases.",
@@ -5865,8 +5870,12 @@
     },
     "tid": {
       "caption": "Thread ID",
-      "description": "The Identifier of the thread associated with the event, as returned by the operating system.",
-      "type": "integer_t"
+      "description": "The identifier of the thread associated with the event, as returned by the operating system.",
+      "type": "integer_t",
+      "@deprecated": {
+        "message": "<code>tid</code> is deprecated in favor of <code>ptid</code>. <code>ptid</code> has type <code>long_t</code> which can accommodate the thread identifiers returned by all platforms (e.g. 64-bit on MacOS).",
+        "since": "1.6.0"
+      }
     },
     "time": {
       "caption": "Event Time",

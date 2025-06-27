@@ -18,7 +18,7 @@ The schema framework definition files and the resulting schema are written as JS
 OCSF is intended to be used by both products and devices which produce log events,
 analytic systems, and logging systems which retain log events.
 
-For more information about concepts in OCSF, please refer to the OCSF White paper, [Understanding OCSF](https://github.com/ocsf/ocsf-docs/blob/main/Understanding%20OCSF.pdf).
+For more information about concepts in OCSF, please refer to the OCSF White paper, [Understanding OCSF](https://github.com/ocsf/ocsf-docs/blob/main/overview/understanding-ocsf.pdf).
 
 Looking to contribute? Please refer to the contribution guide,
 [CONTRIBUTING.md](https://github.com/ocsf/ocsf-schema/blob/main/CONTRIBUTING.md).

@@ -2644,7 +2644,7 @@
     "from_list": {
       "caption": "From List",
       "description": "The machine-readable email header From values. This array should contain the value in <code>from</code>. For example <code>example.user@usersdomain.com</code>.",
-      "type": "string_t",
+      "type": "email_t",
       "references": [
         {
           "description": "RFC 5322",
@@ -5287,7 +5287,7 @@
     },
     "sender": {
       "caption": "Sender",
-      "description": "The machine-readable sender address from the email header, as defined in RFC 5322. This is typically the email address of the agent responsible for sending the message on behalf of the author, such as <code>example.user@usersdomain.com</code>. This is distinct from the <code>from</code> field, which represents the author of the message.",
+      "description": "The machine readable email address of the system or server that actually transmitted the email message, extracted from the email headers per RFC 5322. This differs from the <code>from</code> field, which shows the message author. The sender field is most commonly used when multiple addresses appear in the <code> from_list </code> field, or when the transmitting system is different from the message author (such as when sending on behalf of someone else).",
       "type": "email_t",
       "references": [
         {
@@ -5298,7 +5298,7 @@
     },
     "sender_mailbox": {
       "caption": "Sender Mailbox",
-      "description": "The full sender field from the email header in a human-readable format, as defined in RFC 5322. This typically includes both the display name and email address of the agent who sent the message, such as <code>Example User &lt;example.user@usersdomain.com&gt;</code>. This is distinct from the <code>from_mailbox</code>, which represents the author of the message.",
+      "description": "The human readable email address of the system or server that actually transmitted the email message, extracted from the email headers per RFC 5322. This differs from the <code>from_mailbox</code> field, which shows the message author. The sender mailbox field is most commonly used when multiple addresses appear in the <code> from_mailboxes </code> field, or when the transmitting system is different from the message author (such as when sending on behalf of someone else).",
       "type": "string_t",
       "references": [
         {

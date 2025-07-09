@@ -6317,15 +6317,26 @@
       "description": "The access level of an entity. See specific usage.",
       "type": "string_t"
     },
-    "credential_last_used_time": {
-      "caption": "Credential Last Used Time",
-      "description": "The time when a user's credential was last used.",
+    "programmatic_credentials": {
+      "caption": "Programmatic Credential Identifier",
+      "description": "Details about the programmatic credential (API key, service account key, access token, certificate). See specific usage.",
+      "type": "programmatic_credential",
+      "is_array": true
+    },
+    "last_authentication_time": {
+      "caption": "Last Authentication Time",
+      "description": "The timestamp when this identity last successfully authenticated to any system or service. See specific usage.",
       "type": "timestamp_t"
     },
-    "external_access_analysis":{
-      "caption": "External Access Analysis",
-      "description": "Describes details about the analysis of access permissions granted to external identities through policies. See specific usage.",
-      "type": "external_access_analysis"
+    "access_analysis_result":{
+      "caption": "Access Analysis Result",
+      "description": "Describes details about the analysis of access permissions granted to identities through policies. See specific usage.",
+      "type": "access_analysis_result"
+    },
+    "last_usage_time": {
+      "caption": "Last Usage Time",
+      "description": "The most recent usage time of an entity. See specific usage.",
+      "type": "timestamp_t"
     },
     "granted_privileges": {
       "caption": "Granted Privileges",
@@ -6343,16 +6354,21 @@
       "description": "The time when a user's password was last used.",
       "type": "timestamp_t"
     },
-    "permission_analyses": {
+    "access_type": {
+      "caption": "Access Type",
+      "description": "The type or category of access being granted to the identity. See specific usage.",
+      "type": "string_t"
+    },
+    "permission_analysis_results": {
       "caption": "Permission Analyses",
       "description": "Describes the results of analyses performed on the permissions and privileges granted to the identity, including evaluations of access levels, policy configurations and any other relevant details.",
-      "type": "permission_analysis",
+      "type": "permission_analysis_result",
       "is_array": true
     },
-    "additional_restrictions": {
-      "caption": "Additional Restrictions",
+    "policy_restrictions": {
+      "caption": "Policy Restrictions",
       "description": "The restrictions that may apply to an entity, by the virtue of a policy. See specific usage.",
-      "type": "additional_restriction",
+      "type": "policy_restriction",
       "is_array": true
     },
     "unused_privileges_count": {

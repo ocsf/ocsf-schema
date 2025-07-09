@@ -40,7 +40,12 @@ Thankyou! -->
 -->
 
 ## [Unreleased]
+
   1. Set `device.uid` as an Observable type - type_id: 47 [#1446](https://github.com/ocsf/ocsf-schema/pull/1446)
+
+### Added
+* #### Dictionary Attributes
+  1. Added `from_list`, `from_mailboxes`,`reply_to_list`, `return_path`, `sender` and `sender_mailbox`. [#1454](https://github.com/ocsf/ocsf-schema/pull/1454)
 
 ### Improved
 
@@ -49,6 +54,8 @@ Thankyou! -->
   1. Added `user` as an attribute to the `RDP Activity` class. [#1419](https://github.com/ocsf/ocsf-schema/pull/1419)
   1. Added `raw_data_hash` as an attribute to `base_event`. [#1420](https://github.com/ocsf/ocsf-schema/pull/1420)
   1. Added `Add Subgroup`, and `Remove Subgroup` activities in the `Group Management` class. [#1447](https://github.com/ocsf/ocsf-schema/pull/1447)
+  1. Added `MTA Relay` activity and `to`/`from` attributes to the `Email Activity` class. [#1454](https://github.com/ocsf/ocsf-schema/pull/1454)
+
 * #### Objects
   1. Added more `algorithm_id` values and references to the `fingerprint` object. [#1412](https://github.com/ocsf/ocsf-schema/pull/1412)
   1. Added xxHash H3's 64-bit and 128-bit variants to `algorithm_id` on the `fingerprint` object. [#1420](https://github.com/ocsf/ocsf-schema/pull/1412)
@@ -59,6 +66,7 @@ Thankyou! -->
   1. Added `Executable File` to `file` `type_id` enum. Added `is_readonly` as an optional attribute. [#1438](https://github.com/ocsf/ocsf-schema/pull/1438)
   1. Added `ptid` (type `long_t`) to `process` and deprecated `tid` (type `integer_t`) [#1450](https://github.com/ocsf/ocsf-schema/pull/1450)
   1. Added `state_id` and `state` to `analytic`. [#1448](https://github.com/ocsf/ocsf-schema/pull/1448)
+  1. Added `from_list`, `from_mailboxes`,`reply_to_list`, `return_path`, `sender` and `sender_mailbox` attributes to `email` object. [#1454](https://github.com/ocsf/ocsf-schema/pull/1454)
 
 ### Misc
   1. Fixed spelling errors throughout the project and added spell checking to the CI linter workflow. [#1411](https://github.com/ocsf/ocsf-schema/pull/1411)

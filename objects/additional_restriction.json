@@ -1,8 +1,8 @@
 {
-  "caption": "Policy Restriction",
-  "description": "The Policy Restriction object describes supplementary access controls and guardrails that constrain or limit granted permissions beyond the primary policy. These restrictions are typically applied through hierarchical policy frameworks, organizational controls, or conditional access mechanisms. Examples include AWS Service Control Policies (SCPs), Resource Control Policies (RCPs), Azure Management Group policies, GCP Organization policies, conditional access policies, IP restrictions, time-based constraints, and MFA requirements.",
+  "caption": "Additional Restriction",
+  "description": "The Additional Restriction object describes supplementary access controls and guardrails that constrain or limit granted permissions beyond the primary policy. These restrictions are typically applied through hierarchical policy frameworks, organizational controls, or conditional access mechanisms. Examples include AWS Service Control Policies (SCPs), Resource Control Policies (RCPs), Azure Management Group policies, GCP Organization policies, conditional access policies, IP restrictions, time-based constraints, and MFA requirements.",
   "extends": "object",
-  "name": "policy_restriction",
+  "name": "additional_restriction",
   "attributes": {
     "policy": {
       "description": "Detailed information about the policy document that defines this restriction, including policy metadata, type, scope, and the specific rules or conditions that implement the access control.",
@@ -17,12 +17,12 @@
       "requirement": "recommended",
       "enum": {
         "1": {
-          "caption": "Active",
-          "description": "This restriction is currently active and being enforced."
+          "caption": "Applicable",
+          "description": "This restriction is currently applicable and being enforced."
         },
         "2": {
-          "caption": "Inactive",
-          "description": "This restriction is not currently active or applicable."
+          "caption": "Inapplicable",
+          "description": "This restriction is not applicable."
         },
         "3": {
           "caption": "Evaluation Error",
@@ -32,3 +32,4 @@
     }
   }
 }
+

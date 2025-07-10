@@ -1,7 +1,7 @@
 {
   "uid": 8,
   "caption": "IAM Analysis Finding",
-  "description": "This finding represents an IAM analysis result, which evaluates IAM policies, access patterns, and IAM configurations for potential security risks. The analysis can focus on either an identity (user, role, service account) or a resource to assess permissions, access patterns, and security posture within the IAM domain. <br><strong>Note:</strong>If the event producer is a security control, the <code>security_control</code> profile should be applied and its <code>attacks</code> information, if present, should be duplicated into the <code>finding_info</code> object. <br><strong>Note:</strong>If the Finding is an incident, i.e. requires incident workflow, also apply the <code>incident</code> profile or aggregate this finding into an <code>Incident Finding</code>.",
+  "description": "This finding represents an IAM analysis result, which evaluates IAM policies, access patterns, and IAM configurations for potential security risks. The analysis can focus on either an identity (user, role, service account) or a resource to assess permissions, access patterns, and security posture within the IAM domain. <br><strong>Note:</strong> Use <code>permission_analysis_results</code> for identity-centric analysis (evaluating what an identity can do) and <code>access_analysis_result</code> for resource-centric analysis (evaluating who can access a resource). These complement each other for comprehensive IAM security assessment.<br><strong>Note:</strong> If the Finding is an incident, i.e. requires incident workflow, also apply the <code>incident</code> profile or aggregate this finding into an <code>Incident Finding</code>.",
   "extends": "finding",
   "name": "iam_analysis_finding",
   "attributes": {
@@ -11,7 +11,6 @@
       "requirement": "recommended"
     },
     "access_analysis_result": {
-      "description": "Analysis results for access permissions granted to identities, accounts, or services. This includes evaluation of access levels, access types, accessor details, and any policy restrictions that may apply.",
       "group": "context",
       "requirement": "optional"
     },
@@ -21,7 +20,6 @@
       "requirement": "recommended"
     },
     "permission_analysis_results": {
-      "description": "Analysis results of permissions, privileges, and access policies, associated to the subject identity.",
       "group": "primary",
       "requirement": "recommended"
     },

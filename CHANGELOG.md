@@ -49,7 +49,7 @@ Thankyou! -->
   1. Added `user` as an attribute to the `RDP Activity` class. [#1419](https://github.com/ocsf/ocsf-schema/pull/1419)
   1. Added `raw_data_hash` as an attribute to `base_event`. [#1420](https://github.com/ocsf/ocsf-schema/pull/1420)
   1. Added `Add Subgroup`, and `Remove Subgroup` activities in the `Group Management` class. [#1447](https://github.com/ocsf/ocsf-schema/pull/1447)
-  1. Added `auth_factor` as an attribute to the `Account Change` class. [#1455](https://github.com/ocsf/ocsf-schema/pull/1455)
+  1. Added `auth_factors` as an attribute to the `Account Change` class and updated related activity names. [#1455](https://github.com/ocsf/ocsf-schema/pull/1455)
 
 * #### Objects
   1. Added more `algorithm_id` values and references to the `fingerprint` object. [#1412](https://github.com/ocsf/ocsf-schema/pull/1412)

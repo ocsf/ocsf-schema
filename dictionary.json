@@ -1661,7 +1661,7 @@
       }
     },
     "delivered_to_list": {
-      "caption": "Delivered To",
+      "caption": "Delivered To List",
       "description": "The machine-readable <strong>Delivered-To</strong> email header values. For example <code>example.user@usersdomain.com</code>",
       "type": "email_t",
       "references": [
@@ -2632,7 +2632,7 @@
     },
     "from": {
       "caption": "From",
-      "description": "The machine-readable email header From values, as defined by RFC 5322. For example <code>example.user@usersdomain.com</code>",
+      "description": "The machine-readable email header From value, as defined by RFC 5322. For example <code>example.user@usersdomain.com</code>.",
       "type": "email_t",
       "references": [
         {
@@ -2640,6 +2640,18 @@
           "url": "https://www.rfc-editor.org/rfc/rfc5322"
         }
       ]
+    },
+    "from_list": {
+      "caption": "From List",
+      "description": "The machine-readable email header From values. This array should contain the value in <code>from</code>. For example <code>example.user@usersdomain.com</code>.",
+      "type": "email_t",
+      "references": [
+        {
+          "description": "RFC 5322",
+          "url": "https://www.rfc-editor.org/rfc/rfc5322#section-3.4"
+        }
+      ],
+      "is_array": true
     },
     "from_mailbox": {
       "caption": "From Mailbox",
@@ -2651,6 +2663,18 @@
           "url": "https://www.rfc-editor.org/rfc/rfc5322#section-3.4"
         }
       ]
+    },
+    "from_mailboxes": {
+      "caption": "From Mailboxes",
+      "description": "The human-readable email header From Mailbox values. This array should contain the value in <code>from_mailbox</code>. For example <code>'Example User &lt;example.user@usersdomain.com&gt;'</code>.",
+      "type": "email_t",
+      "references": [
+        {
+          "description": "RFC 5322",
+          "url": "https://www.rfc-editor.org/rfc/rfc5322#section-3.4"
+        }
+      ],
+      "is_array": true
     },
     "full_name": {
       "caption": "Full Name",
@@ -4800,10 +4824,10 @@
     },
     "reply_to": {
       "caption": "Reply To",
-      "description": "The machine-readable email header Reply-To values, as defined by RFC 5322. For example <code>example.user@usersdomain.com</code>",
+      "description": "The machine-readable email header Reply-To value, as defined by RFC 5322. For example <code>example.user@usersdomain.com</code>",
       "type": "email_t",
       "@deprecated": {
-        "message": "Use the <code>reply_to_mailboxes</code> attribute instead.",
+        "message": "Use the <code>reply_to_list</code> attribute instead.",
         "since": "1.4.0"
       },
       "references": [
@@ -4812,6 +4836,18 @@
           "url": "https://www.rfc-editor.org/rfc/rfc5322"
         }
       ]
+    },
+    "reply_to_list": {
+      "caption": "Reply To List",
+      "description": "The machine-readable email header Reply-To values, as defined by RFC 5322. For example <code>example.user@usersdomain.com</code>",
+      "type": "email_t",
+      "references": [
+        {
+          "description": "RFC 5322",
+          "url": "https://www.rfc-editor.org/rfc/rfc5322"
+        }
+      ],
+      "is_array": true
     },
     "reply_to_mailboxes": {
       "caption": "Reply To Mailboxes",
@@ -4882,6 +4918,21 @@
       "caption": "Response Time",
       "description": "The Domain Name System (DNS) response time.",
       "type": "timestamp_t"
+    },
+    "return_path": {
+      "caption": "Return Path",
+      "description": "The address found in the 'Return-Path' header, which indicates where bounce messages (non-delivery reports) should be sent. This address is often set by the sending system and may differ from the 'From' or 'Sender' addresses. For example, <code>mailer-daemon@senderserver.com</code>.",
+      "type": "email_t",
+      "references": [
+        {
+          "description": "RFC 5322",
+          "url": "https://www.rfc-editor.org/rfc/rfc5322"
+        },
+        {
+          "description": "RFC 5321 - Simple Mail Transfer Protocol",
+          "url": "https://datatracker.ietf.org/doc/html/rfc5321#section-4.4"
+        }
+      ]
     },
     "risk_details": {
       "caption": "Risk Details",
@@ -5233,6 +5284,28 @@
       "caption": "Sequence Number",
       "description": "Sequence number of the event. The sequence number is a value available in some events, to make the exact ordering of events unambiguous, regardless of the event time precision.",
       "type": "integer_t"
+    },
+    "sender": {
+      "caption": "Sender",
+      "description": "The machine readable email address of the system or server that actually transmitted the email message, extracted from the email headers per RFC 5322. This differs from the <code>from</code> field, which shows the message author. The sender field is most commonly used when multiple addresses appear in the <code> from_list </code> field, or when the transmitting system is different from the message author (such as when sending on behalf of someone else).",
+      "type": "email_t",
+      "references": [
+        {
+          "description": "RFC 5322",
+          "url": "https://www.rfc-editor.org/rfc/rfc5322"
+        }
+      ]
+    },
+    "sender_mailbox": {
+      "caption": "Sender Mailbox",
+      "description": "The human readable email address of the system or server that actually transmitted the email message, extracted from the email headers per RFC 5322. This differs from the <code>from_mailbox</code> field, which shows the message author. The sender mailbox field is most commonly used when multiple addresses appear in the <code> from_mailboxes </code> field, or when the transmitting system is different from the message author (such as when sending on behalf of someone else).",
+      "type": "string_t",
+      "references": [
+        {
+          "description": "RFC 5322",
+          "url": "https://www.rfc-editor.org/rfc/rfc5322"
+        }
+      ]
     },
     "serial_number": {
       "observable": 37,

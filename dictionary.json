@@ -6407,6 +6407,27 @@
       "description": "A list of application objects. See specific usage.",
       "type": "application",
       "is_array": true
+    },
+    "role": {
+      "caption": "Role",
+      "description": "The role of an entity in the context of the event or finding, normalized to the caption of the role_id value. In the case of 'Other', it is defined by the event source. See specific usage.",
+      "type": "string_t"
+    },
+    "role_id": {
+      "caption": "Role ID",
+      "description": "The normalized identifier of an entity's role in the context of the event or finding. See specific usage.",
+      "sibling": "role",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The role is unknown."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The role is not mapped. See the role attribute, which contains a data source specific value."
+        }
+      }
     }
   },
   "types": {

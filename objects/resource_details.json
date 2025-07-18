@@ -51,6 +51,32 @@
       "description": "A graph representation showing how this resource relates to and interacts with other entities in the environment. This can include parent/child relationships, dependencies, or other connections.",
       "requirement": "optional"
     },
+    "role": {
+      "description": "The role of the resource in the context of the event or finding, normalized to the caption of the role_id value. In the case of 'Other', it is defined by the event source.",
+      "requirement": "optional"
+    },
+    "role_id": {
+      "description": "The normalized identifier of the resource's role in the context of the event or finding.",
+      "requirement": "recommended",
+      "enum": {
+        "1": {
+          "caption": "Target",
+          "description": "The resource is the primary target or subject of the event/finding."
+        },
+        "2": {
+          "caption": "Actor",
+          "description": "The resource is acting as the initiator or performer in the context of the event/finding."
+        },
+        "3": {
+          "caption": "Affected",
+          "description": "The resource was impacted or affected by the event/finding."
+        },
+        "4": {
+          "caption": "Related",
+          "description": "The resource is related to or associated with the event/finding."
+        }
+      }
+    },
     "version": {
       "description": "The version of the resource. For example <code>1.2.3</code>.",
       "requirement": "optional"

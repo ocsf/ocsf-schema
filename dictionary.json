@@ -99,6 +99,35 @@
       "description": "The account object describes details about the account that was the source or target of the activity.",
       "type": "account"
     },
+    "account_switch_type": {
+      "caption": "Account Switch Type",
+      "description": "The account switch method, normalized to the caption of the account_switch_type_id value. In the case of 'Other', it is defined by the event source.",
+      "type": "string_t"
+    },
+    "account_switch_type_id": {
+      "caption": "Account Switch Type ID",
+      "description": "The normalized identifier of the account switch method.",
+      "sibling": "account_switch_type",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The account switch type is unknown."
+        },
+        "1": {
+          "caption": "Substitute User",
+          "description": "A utility like <code>sudo</code>, <code>su</code>, or equivalent was used to perform actions in the context of another user."
+        },
+        "2": {
+          "caption": "Impersonate",
+          "description": "An API like <code>ImpersonateLoggedOnUser()</code> or equivalent was used to perform actions in the context of another user."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The account switch type is not mapped. See the <code>account_switch_type</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
     "ack_reason": {
       "caption": "Acknowledgement Reason",
       "description": "An integer that provides a reason code or additional information about the acknowledgment result.",

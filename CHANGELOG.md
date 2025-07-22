@@ -71,6 +71,7 @@ Thankyou! -->
   1. Added `state_id` and `state` to `analytic`. [#1448](https://github.com/ocsf/ocsf-schema/pull/1448)
   1. Added `from_list`, `from_mailboxes`,`reply_to_list`, `return_path`, `sender` and `sender_mailbox` attributes to `email` object. [#1454](https://github.com/ocsf/ocsf-schema/pull/1454)
   1. Added `role`, `role_id` to `resource_details` object, `type` to `policy` object,  #1389
+  1. Added `is_truncated` and `untruncated_size` to `metadata`, `logger` objects. #1461
 
 ### Misc
   1. Fixed spelling errors throughout the project and added spell checking to the CI linter workflow. [#1411](https://github.com/ocsf/ocsf-schema/pull/1411)

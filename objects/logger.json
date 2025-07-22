@@ -12,6 +12,10 @@
       "description": "The unique identifier of the event assigned by the logger.",
       "requirement": "optional"
     },
+    "is_truncated": {
+      "description": "Indicates whether the event data has been truncated due to size limitations. When <code>true</code>, some event data may have been omitted to fit within system constraints.",
+      "requirement": "optional"
+    },
     "log_level": {
       "requirement": "optional"
     },
@@ -42,6 +46,10 @@
     "uid": {
       "description": "The unique identifier of the logging product instance.",
       "requirement": "recommended"
+    },
+    "untruncated_size": {
+      "description": "The original size of the event data in kilobytes before any truncation occurred. This field is typically populated when <code>is_truncated</code> is <code>true</code> to indicate the full size of the original event.",
+      "requirement": "optional"
     },
     "version": {
       "description": "The version of the logging product.",

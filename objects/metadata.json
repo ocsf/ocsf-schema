@@ -22,6 +22,10 @@
     "extensions": {
       "requirement": "optional"
     },
+    "is_truncated": {
+      "description": "Indicates whether the event data has been truncated due to size limitations. When <code>true</code>, some event data may have been omitted to fit within system constraints.",
+      "requirement": "optional"
+    },
     "labels": {
       "description": "The list of labels attached to the event. For example: <code>[\"sample\", \"dev\"]</code>",
       "requirement": "optional"
@@ -78,8 +82,12 @@
       "description": "The logging system-assigned unique identifier of an event instance.",
       "requirement": "optional"
     },
+    "untruncated_size": {
+      "description": "The original size of the event data in bytes before any truncation occurred. This field is typically populated when <code>is_truncated</code> is <code>true</code> to indicate the full size of the original event.",
+      "requirement": "optional"
+    },
     "version": {
-      "description": "The version of the OCSF schema, using Semantic Versioning Specification (<a target='_blank' href='https://semver.org'>SemVer</a>). For example: 1.0.0. Event consumers use the version to determine the available event attributes.",
+      "description": "The version of the OCSF schema, using Semantic Versioning Specification (<a target='_blank' href='https://semver.org'>SemVer</a>). For example: <code>1.0.0.</code> Event consumers use the version to determine the available event attributes.",
       "requirement": "required"
     }
   },

@@ -1347,6 +1347,31 @@
         }
       }
     },
+    "connection_initiator": {
+      "caption": "Connection Initiator",
+      "description": "Indicates which endpoint initiated the connection (i.e. the network flow).",
+      "type": "string_t"
+    },
+    "connection_initiator_id": {
+      "caption": "Connection Initiator ID",
+      "description": "The normalized identifier of the <code>connection_initiator</code>.",
+      "sibling": "connection_initiator",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "Endpoint role cannot be determined."
+        },
+        "1": {
+          "caption": "Source Endpoint",
+          "description": "The <code>src_endpoint</code> initiated the connection."
+        },
+        "2": {
+          "caption": "Destination Endpoint",
+          "description": "The <code>dst_endpoint</code> initiated the connection."
+        }
+      }
+    },
     "connection_info": {
       "caption": "Connection Info",
       "description": "The network connection information.",

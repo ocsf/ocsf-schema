@@ -56,6 +56,7 @@ Thankyou! -->
   1. Added `Add Subgroup`, and `Remove Subgroup` activities in the `Group Management` class. [#1447](https://github.com/ocsf/ocsf-schema/pull/1447)
   1. Added `MTA Relay` activity and `to`/`from` attributes to the `Email Activity` class. [#1454](https://github.com/ocsf/ocsf-schema/pull/1454)
   1. Added `http_request` and `http_response` objects to the `File Hosting Activity` Class [#1458](https://github.com/ocsf/ocsf-schema/pull/1458)
+  1. Added `Account Switch` activity_id to the `Authentication` class. Added `account_switch_type` and `account_switch_type_id` attributes to the `Authentication` class. [#1460](https://github.com/ocsf/ocsf-schema/pull/1460)
 
 * #### Objects
   1. Added more `algorithm_id` values and references to the `fingerprint` object. [#1412](https://github.com/ocsf/ocsf-schema/pull/1412)

@@ -7,7 +7,11 @@
   "attributes": {
     "data": {
       "description": "The data of the registry value.",
-      "requirement": "optional"
+      "requirement": "optional",
+      "@deprecated": {
+        "message": "Use the appropriate type-specific attribute from <code>reg_binary_data</code>, <code>reg_integer_data</code>, <code>reg_string_data</code>, or <code>reg_string_list_data</code>.",
+        "since": "1.6.0"
+      }
     },
     "is_default": {
       "requirement": "optional"
@@ -28,6 +32,18 @@
       "description": "The full path to the registry key, where the value is located.",
       "requirement": "required",
       "type": "reg_key_path_t"
+    },
+    "reg_binary_data": {
+      "requirement": "optional"
+    },
+    "reg_integer_data": {
+      "requirement": "optional"
+    },
+    "reg_string_data": {
+      "requirement": "optional"
+    },
+    "reg_string_list_data": {
+      "requirement": "optional"
     },
     "type": {
       "description": "A string representation of the value type as specified in <a target='_blank' href='https://learn.microsoft.com/en-us/windows/win32/sysinfo/registry-value-types'>Registry Value Types</a>.",
@@ -62,7 +78,11 @@
           "caption": "REG_QWORD"
         },
         "9": {
-          "caption": "REG_QWORD_LITTLE_ENDIAN"
+          "caption": "REG_QWORD_LITTLE_ENDIAN",
+          "@deprecated": {
+            "message": "Use <code>REG_QWORD</code> instead.",
+            "since": "1.6.0"
+          }
         },
         "10": {
           "caption": "REG_SZ"

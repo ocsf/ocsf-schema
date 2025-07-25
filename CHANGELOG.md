@@ -49,6 +49,7 @@ Thankyou! -->
   1. Added `access_level`, `programmatic_credentials`, `last_authentication_time`, `access_analysis_result`, `last_used_time`, `accessors`, `granted_privileges`, `identity_activity_metrics`, `password_last_used_time`, `access_type`, `permission_analysis_results`, `additional_restrictions`, `unused_privileges_count`, `condition_keys`, `applications`, `role`, `role_id`. #1389
 * #### Objects
   1. Added  `access_analysis_result`, `additional_restriction`, `identity_activity_metrics`, `permission_analysis_result`, `programmatic_credential`. #1389
+  1. Added `port_info` object. #1466
 
 ### Improved
 * #### Event Classes
@@ -75,6 +76,7 @@ Thankyou! -->
   1. Added `from_list`, `from_mailboxes`,`reply_to_list`, `return_path`, `sender` and `sender_mailbox` attributes to `email` object. [#1454](https://github.com/ocsf/ocsf-schema/pull/1454)
   1. Added `role`, `role_id` to `resource_details` object, `type` to `policy` object,  #1389
   1. Added `is_truncated` and `untruncated_size` to `metadata`, `logger` objects. #1461
+  1. Added `open_ports` to the `network_interface` object. #1466
 
 ### Misc
   1. Fixed spelling errors throughout the project and added spell checking to the CI linter workflow. [#1411](https://github.com/ocsf/ocsf-schema/pull/1411)

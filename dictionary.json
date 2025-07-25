@@ -1270,7 +1270,7 @@
     },
     "condition": {
       "caption": "Condition",
-      "description": "The rule trigger condition for the rule. For example: SQL_INJECTION.",
+      "description": "The condition that was evaluated in a rule, policy. See specific usage.",
       "type": "string_t"
     },
     "confidence": {
@@ -5723,7 +5723,7 @@
         },
         "99": {
           "caption": "Other",
-          "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
+          "description": "The status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
         }
       }
     },
@@ -6448,6 +6448,114 @@
       "description": "The traits that describe characteristics, features of an entity. See specific usage.",
       "type": "trait",
       "is_array": true
+    },
+    "access_level": {
+      "caption": "Access Level",
+      "description": "The access level of an entity. See specific usage.",
+      "type": "string_t"
+    },
+    "programmatic_credentials": {
+      "caption": "Programmatic Credentials",
+      "description": "Details about the programmatic credential (API key, service account key, access token, certificate). See specific usage.",
+      "type": "programmatic_credential",
+      "is_array": true
+    },
+    "last_authentication_time": {
+      "caption": "Last Authentication Time",
+      "description": "The timestamp when this identity last successfully authenticated to any system or service. See specific usage.",
+      "type": "timestamp_t"
+    },
+    "access_analysis_result":{
+      "caption": "Access Analysis Result",
+      "description": "Describes access relationships and pathways between identities, resources, focusing on who can access what and through which mechanisms. This evaluates access levels (read/write/admin), access types (direct, cross-account, public, federated), and the conditions under which access is granted. Use this for resource-centric security assessments such as external access discovery, public exposure analysis, etc.",
+      "type": "access_analysis_result"
+    },
+    "last_used_time": {
+      "caption": "Last Used Time",
+      "description": "The most recent usage time of an entity. See specific usage.",
+      "type": "timestamp_t"
+    },
+    "accessors": {
+      "caption": "Accessors",
+      "description": "A list of users who have access to an entity. See specific usage.",
+      "type": "user",
+      "is_array": true
+    },
+    "granted_privileges": {
+      "caption": "Granted Privileges",
+      "description": "The Privileges that were granted to the user via an IAM policy or otherwise. See specific usage.",
+      "type": "string_t",
+      "is_array": true
+    },
+    "identity_activity_metrics":{
+      "caption": "Identity Activity Metrics",
+      "description": "Describes usage activity and other metrics of an Identity i.e. AWS IAM User, GCP IAM Principal, etc.",
+      "type": "identity_activity_metrics"
+    },
+    "password_last_used_time": {
+      "caption": "Password Last Used Time",
+      "description": "The time when a user's password was last used. See specific usage.",
+      "type": "timestamp_t"
+    },
+    "access_type": {
+      "caption": "Access Type",
+      "description": "The type or category of access being granted to the identity. See specific usage.",
+      "type": "string_t"
+    },
+    "permission_analysis_results": {
+      "caption": "Permission Analysis Results",
+      "description": "Describes analysis results of permissions, policies directly associated with an identity (user, role, or service account). This evaluates what permissions an identity has been granted through attached policies, which privileges are actively used versus unused, and identifies potential over-privileged access. Use this for identity-centric security assessments such as privilege audits, dormant permission discovery, and least-privilege compliance analysis.",
+      "type": "permission_analysis_result",
+      "is_array": true
+    },
+    "additional_restrictions": {
+      "caption": "Additional Restrictions",
+      "description": "The supplementary restrictions that may apply to an entity, by the virtue of a policy. See specific usage.",
+      "type": "additional_restriction",
+      "is_array": true
+    },
+    "unused_privileges_count": {
+      "caption": "Unused Privileges Count",
+      "description": "The number of unused Privileges. See specific usage.",
+      "type": "integer_t"
+    },
+    "unused_services_count": {
+      "caption": "Unused Services Count",
+      "description": "The number of unused services. See specific usage.",
+      "type": "integer_t"
+    },
+    "condition_keys": {
+      "caption": "Condition Keys",
+      "description": "The list of condition keys and their values that were evaluated as part of a rule or policy. Condition keys are used to define circumstances under which the rule/policy is in effect. See specific usage.",
+      "type": "key_value_object",
+      "is_array": true
+    },
+    "applications": {
+      "caption": "Applications",
+      "description": "A list of application objects. See specific usage.",
+      "type": "application",
+      "is_array": true
+    },
+    "role": {
+      "caption": "Role",
+      "description": "The role of an entity in the context of the event or finding, normalized to the caption of the role_id value. In the case of 'Other', it is defined by the event source. See specific usage.",
+      "type": "string_t"
+    },
+    "role_id": {
+      "caption": "Role ID",
+      "description": "The normalized identifier of an entity's role in the context of the event or finding. See specific usage.",
+      "sibling": "role",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The role is unknown."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The role is not mapped. See the role attribute, which contains a data source specific value."
+        }
+      }
     }
   },
   "types": {

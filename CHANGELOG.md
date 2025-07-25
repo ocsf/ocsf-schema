@@ -60,6 +60,8 @@ Thankyou! -->
   1. Added `MTA Relay` activity and `to`/`from` attributes to the `Email Activity` class. [#1454](https://github.com/ocsf/ocsf-schema/pull/1454)
   1. Added `http_request` and `http_response` objects to the `File Hosting Activity` Class [#1458](https://github.com/ocsf/ocsf-schema/pull/1458)
   1. Added `Account Switch` activity_id to the `Authentication` class. Added `account_switch_type` and `account_switch_type_id` attributes to the `Authentication` class. [#1460](https://github.com/ocsf/ocsf-schema/pull/1460)
+  1. Added `is_src_dst_assignment_known` attribute to `Network Activity` class. [#1464](https://github.com/ocsf/ocsf-schema/pull/1464)
+
 
 * #### Objects
   1. Added more `algorithm_id` values and references to the `fingerprint` object. [#1412](https://github.com/ocsf/ocsf-schema/pull/1412)
@@ -81,6 +83,7 @@ Thankyou! -->
   1. Improved description of the `Application Error` class. [#1424](https://github.com/ocsf/ocsf-schema/pull/1424)
   1. Fixed links to ocsf-docs repo [#1453](https://github.com/ocsf/ocsf-schema/pull/1453)
   1. Set `device.uid` as an Observable type - type_id: 47 [#1446](https://github.com/ocsf/ocsf-schema/pull/1446)
+  1. Improved descriptions of `src_endpoint` and `dst_endpoint` attributes in `Network Activity` class. [#1464](https://github.com/ocsf/ocsf-schema/pull/1464)
 
 ### Deprecated
   1. Deprecated usage of `group` attribute in favor of `groups` in the `databucket` object. #1344

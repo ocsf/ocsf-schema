@@ -41,14 +41,17 @@ Thankyou! -->
 
 ## [Unreleased]
 
-  1. Set `device.uid` as an Observable type - type_id: 47 [#1446](https://github.com/ocsf/ocsf-schema/pull/1446)
-
 ### Added
+* #### Event Classes
+  1. Added `IAM Analysis Finding` event class to the Findings category. #1389
 * #### Dictionary Attributes
   1. Added `from_list`, `from_mailboxes`,`reply_to_list`, `return_path`, `sender` and `sender_mailbox`. [#1454](https://github.com/ocsf/ocsf-schema/pull/1454)
+  1. Added `access_level`, `programmatic_credentials`, `last_authentication_time`, `access_analysis_result`, `last_used_time`, `accessors`, `granted_privileges`, `identity_activity_metrics`, `password_last_used_time`, `access_type`, `permission_analysis_results`, `additional_restrictions`, `unused_privileges_count`, `condition_keys`, `applications`, `role`, `role_id`. #1389
+* #### Objects
+  1. Added  `access_analysis_result`, `additional_restriction`, `identity_activity_metrics`, `permission_analysis_result`, `programmatic_credential`. #1389
+  1. Added `port_info` object. #1466
 
 ### Improved
-
 * #### Event Classes
   1. Added `Disconnect` and `Reconnect` activities in the `RDP Activity` class. [#1415](https://github.com/ocsf/ocsf-schema/pull/1415)
   1. Added `user` as an attribute to the `RDP Activity` class. [#1419](https://github.com/ocsf/ocsf-schema/pull/1419)
@@ -57,6 +60,8 @@ Thankyou! -->
   1. Added `MTA Relay` activity and `to`/`from` attributes to the `Email Activity` class. [#1454](https://github.com/ocsf/ocsf-schema/pull/1454)
   1. Added `http_request` and `http_response` objects to the `File Hosting Activity` Class [#1458](https://github.com/ocsf/ocsf-schema/pull/1458)
   1. Added `Account Switch` activity_id to the `Authentication` class. Added `account_switch_type` and `account_switch_type_id` attributes to the `Authentication` class. [#1460](https://github.com/ocsf/ocsf-schema/pull/1460)
+  1. Added `is_src_dst_assignment_known` attribute to `Network Activity` class. [#1464](https://github.com/ocsf/ocsf-schema/pull/1464)
+
 
 * #### Objects
   1. Added more `algorithm_id` values and references to the `fingerprint` object. [#1412](https://github.com/ocsf/ocsf-schema/pull/1412)
@@ -69,14 +74,21 @@ Thankyou! -->
   1. Added `ptid` (type `long_t`) to `process` and deprecated `tid` (type `integer_t`) [#1450](https://github.com/ocsf/ocsf-schema/pull/1450)
   1. Added `state_id` and `state` to `analytic`. [#1448](https://github.com/ocsf/ocsf-schema/pull/1448)
   1. Added `from_list`, `from_mailboxes`,`reply_to_list`, `return_path`, `sender` and `sender_mailbox` attributes to `email` object. [#1454](https://github.com/ocsf/ocsf-schema/pull/1454)
+  1. Added `role`, `role_id` to `resource_details` object, `type` to `policy` object,  #1389
+  1. Added `is_truncated` and `untruncated_size` to `metadata`, `logger` objects. #1461
+  1. Added `open_ports` to the `network_interface` object. #1466
 
 ### Misc
   1. Fixed spelling errors throughout the project and added spell checking to the CI linter workflow. [#1411](https://github.com/ocsf/ocsf-schema/pull/1411)
   1. Improved description of the `Application Error` class. [#1424](https://github.com/ocsf/ocsf-schema/pull/1424)
   1. Fixed links to ocsf-docs repo [#1453](https://github.com/ocsf/ocsf-schema/pull/1453)
+  1. Set `device.uid` as an Observable type - type_id: 47 [#1446](https://github.com/ocsf/ocsf-schema/pull/1446)
+  1. Improved descriptions of `src_endpoint` and `dst_endpoint` attributes in `Network Activity` class. [#1464](https://github.com/ocsf/ocsf-schema/pull/1464)
 
 ### Deprecated
-  1. Deprecated usage of `group` attribute in favor of `groups` in the `databucket` object. [#1344]
+  1. Deprecated usage of `group` attribute in favor of `groups` in the `databucket` object. #1344
+  2. Deprecated usage of `credential_uid` attribute in favor of `programmatic_credentials` in the `user` object. #1389
+  3. Deprecated usage of items `3` and `4` in the `type_id` enum in `account` object, in favor of the `type_id` enum in the `user` object. #1389
 
 ## [v1.5.0] - April 28th, 2025
 

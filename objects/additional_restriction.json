@@ -1,0 +1,35 @@
+{
+  "caption": "Additional Restriction",
+  "description": "The Additional Restriction object describes supplementary access controls and guardrails that constrain or limit granted permissions beyond the primary policy. These restrictions are typically applied through hierarchical policy frameworks, organizational controls, or conditional access mechanisms. Examples include AWS Service Control Policies (SCPs), Resource Control Policies (RCPs), Azure Management Group policies, GCP Organization policies, conditional access policies, IP restrictions, time-based constraints, and MFA requirements.",
+  "extends": "object",
+  "name": "additional_restriction",
+  "attributes": {
+    "policy": {
+      "description": "Detailed information about the policy document that defines this restriction, including policy metadata, type, scope, and the specific rules or conditions that implement the access control.",
+      "requirement": "required"
+    },
+    "status": {
+      "description": "The current status of the policy restriction, normalized to the caption of the <code>status_id</code> enum value.",
+      "requirement": "optional"
+    },
+    "status_id": {
+      "description": "The normalized status identifier indicating the applicability of this policy restriction.",
+      "requirement": "recommended",
+      "enum": {
+        "1": {
+          "caption": "Applicable",
+          "description": "This restriction is currently applicable and being enforced."
+        },
+        "2": {
+          "caption": "Inapplicable",
+          "description": "This restriction is not applicable."
+        },
+        "3": {
+          "caption": "Evaluation Error",
+          "description": "This restriction could not be properly evaluated due to an error."
+        }
+      }
+    }
+  }
+}
+

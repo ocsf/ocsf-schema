@@ -77,6 +77,7 @@ Thankyou! -->
   1. Added `role`, `role_id` to `resource_details` object, `type` to `policy` object,  #1389
   1. Added `is_truncated` and `untruncated_size` to `metadata`, `logger` objects. #1461
   1. Added `open_ports` to the `network_interface` object. #1466
+  1. Added `is_local` to `network_endpoint` object. [#1470](https://github.com/ocsf/ocsf-schema/pull/1470)
 
 ### Misc
   1. Fixed spelling errors throughout the project and added spell checking to the CI linter workflow. [#1411](https://github.com/ocsf/ocsf-schema/pull/1411)

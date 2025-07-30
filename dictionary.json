@@ -3263,6 +3263,11 @@
       "description": "The event occurred on a shared device.",
       "type": "boolean_t"
     },
+    "is_src_dst_assignment_known": {
+      "caption": "Source/Destination Assignment Known",
+      "description": "<code>true</code> denotes that <code>src_endpoint</code> and <code>dst_endpoint</code> correctly identify the initiator and responder respectively. <code>false</code> denotes that the event source has arbitrarily assigned one peer to <code>src_endpoint</code> and the other to <code>dst_endpoint</code>, in other words that initiator and responder are not being asserted. This can occur, for example, when the event source is a network appliance that has not observed the initiation of a given connection. In the absence of this attribute, interpretation of the initiator and responder is implementation-specific.",
+      "type": "boolean_t"
+    },
     "is_superseded": {
       "caption": "The patch is superseded.",
       "description": "The vendor patch has been replaced by another.",
@@ -4020,6 +4025,12 @@
       "caption": "Open Mask",
       "description": "The Windows options needed to open a registry key.",
       "type": "integer_t"
+    },
+    "open_ports": {
+      "caption": "Open Ports",
+      "description": "The list of open ports on a network interface, including port numbers and associated protocol information.",
+      "type": "port_info",
+      "is_array": true
     },
     "open_type": {
       "caption": "Open Type",
@@ -6459,7 +6470,7 @@
       "description": "The timestamp when this identity last successfully authenticated to any system or service. See specific usage.",
       "type": "timestamp_t"
     },
-    "access_analysis_result":{
+    "access_analysis_result": {
       "caption": "Access Analysis Result",
       "description": "Describes access relationships and pathways between identities, resources, focusing on who can access what and through which mechanisms. This evaluates access levels (read/write/admin), access types (direct, cross-account, public, federated), and the conditions under which access is granted. Use this for resource-centric security assessments such as external access discovery, public exposure analysis, etc.",
       "type": "access_analysis_result"
@@ -6481,7 +6492,7 @@
       "type": "string_t",
       "is_array": true
     },
-    "identity_activity_metrics":{
+    "identity_activity_metrics": {
       "caption": "Identity Activity Metrics",
       "description": "Describes usage activity and other metrics of an Identity i.e. AWS IAM User, GCP IAM Principal, etc.",
       "type": "identity_activity_metrics"

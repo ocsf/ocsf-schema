@@ -6,7 +6,7 @@
   "name": "reg_value",
   "attributes": {
     "data": {
-      "description": "The data of the registry value.",
+      "description": "The data of the registry value. Where the value type is known, implementers should instead use a type-specific attribute, i.e. <code>reg_binary_data</code>, <code>reg_integer_data</code>, <code>reg_string_data</code>, or <code>reg_string_list_data</code>.",
       "requirement": "optional"
     },
     "is_default": {
@@ -29,6 +29,18 @@
       "requirement": "required",
       "type": "reg_key_path_t"
     },
+    "reg_binary_data": {
+      "requirement": "optional"
+    },
+    "reg_integer_data": {
+      "requirement": "optional"
+    },
+    "reg_string_data": {
+      "requirement": "optional"
+    },
+    "reg_string_list_data": {
+      "requirement": "optional"
+    },
     "type": {
       "description": "A string representation of the value type as specified in <a target='_blank' href='https://learn.microsoft.com/en-us/windows/win32/sysinfo/registry-value-types'>Registry Value Types</a>.",
       "requirement": "optional"
@@ -38,34 +50,48 @@
       "requirement": "recommended",
       "enum": {
         "1": {
-          "caption": "REG_BINARY"
+          "caption": "REG_BINARY",
+          "description": "Arbitrary binary data."
         },
         "2": {
-          "caption": "REG_DWORD"
+          "caption": "REG_DWORD",
+          "description": "A 32-bit integer."
         },
         "3": {
-          "caption": "REG_DWORD_BIG_ENDIAN"
+          "caption": "REG_DWORD_BIG_ENDIAN",
+          "description": "A 32-bit integer in big-endian byte order."
         },
         "4": {
-          "caption": "REG_EXPAND_SZ"
+          "caption": "REG_EXPAND_SZ",
+          "description": "A string containing unexpanded environment variables, e.g. <code>%USERPROFILE%\\Downloads</code>."
         },
         "5": {
-          "caption": "REG_LINK"
+          "caption": "REG_LINK",
+          "description": "A string containing the target path of a symbolic link created by calling <code>RegCreateKeyEx</code> with <code>REG_OPTION_CREATE_LINK</code>."
         },
         "6": {
-          "caption": "REG_MULTI_SZ"
+          "caption": "REG_MULTI_SZ",
+          "description": "A sequence of zero or more strings."
         },
         "7": {
-          "caption": "REG_NONE"
+          "caption": "REG_NONE",
+          "description": "A value with no declared type."
         },
         "8": {
-          "caption": "REG_QWORD"
+          "caption": "REG_QWORD",
+          "description": "A 64-bit integer."
         },
         "9": {
-          "caption": "REG_QWORD_LITTLE_ENDIAN"
+          "caption": "REG_QWORD_LITTLE_ENDIAN",
+          "description": "Not defined in Windows documentation and previously added to OCSF in error.",
+          "@deprecated": {
+            "message": "Use <code>REG_QWORD</code> instead.",
+            "since": "1.6.0"
+          }
         },
         "10": {
-          "caption": "REG_SZ"
+          "caption": "REG_SZ",
+          "description": "A string."
         }
       }
     }

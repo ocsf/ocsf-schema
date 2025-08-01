@@ -1,6 +1,6 @@
 # <img src="ocsf.png" alt="OCSF Logo" width="32"/> Open Cybersecurity Schema Framework
 
-[![Version](https://img.shields.io/badge/version-1.7.0--dev-blue.svg)](version.json)
+[![Version](https://img.shields.io/badge/version-1.6.0-blue.svg)](version.json)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](LICENSE)
 [![Schema Browser](https://img.shields.io/badge/schema-browser-orange.svg)](https://schema.ocsf.io)
 

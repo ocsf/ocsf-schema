@@ -4,7 +4,9 @@
 [![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](LICENSE)
 [![Schema Browser](https://img.shields.io/badge/schema-browser-orange.svg)](https://schema.ocsf.io)
 
-The Open Cybersecurity Schema Framework (OCSF) is an open standard for cybersecurity event logging and data normalization. This repository contains the core schema definitions that enable consistent representation of security events across different tools and platforms. The core schema for cybersecurity events is intended to be agnostic to implementations. OCSF is intended to be used by both products and devices which produce log events, analytic systems, and logging systems which retain log events.
+The Open Cybersecurity Schema Framework (OCSF) is an open standard for cybersecurity event logging and data normalization. The framework is made up of a set of categories, event classes, data types, and an attribute dictionary. It is not restricted to cybersecurity nor to events, however the initial focus of the framework has been a schema for cybersecurity events. 
+
+This repository contains the core schema definitions that enable consistent representation of security events across different tools and platforms. The core schema for cybersecurity events is intended to be agnostic to implementations. OCSF is intended to be used by both products and devices which produce log events, analytic systems, and logging systems which retain log events.
 
 ## 🚀 Quick Start
 

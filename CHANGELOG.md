@@ -41,6 +41,8 @@ Thankyou! -->
 
 ## [Unreleased]
 
+## [v1.6.0] - Aug 1st, 2025
+
 ### Added
 * #### Event Classes
   1. Added `IAM Analysis Finding` event class to the Findings category. [#1389](https://github.com/ocsf/ocsf-schema/pull/1389)

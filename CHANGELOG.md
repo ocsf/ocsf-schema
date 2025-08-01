@@ -39,8 +39,6 @@ Thankyou! -->
 
 -->
 
-## [Unreleased]
-
 ## [v1.6.0] - Aug 1st, 2025
 
 ### Added

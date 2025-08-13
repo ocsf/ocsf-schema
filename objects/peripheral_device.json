@@ -24,6 +24,34 @@
       "description": "The peripheral device serial number.",
       "requirement": "recommended"
     },
+    "type": {
+      "caption": "Peripheral Device Type",
+      "description": "The Peripheral Device type, normalized to the caption of the <code>type_id</code> value. In the case of 'Other', it is defined by the source.",
+      "requirement": "optional"
+    },
+    "type_id": {
+      "caption": "Peripheral Device Type ID",
+      "description": "The normalized peripheral device type ID.",
+      "requirement": "required",
+      "enum": {
+        "1": {
+          "caption": "USB",
+          "description": "The peripheral device is a USB device."
+        },
+        "2": {
+          "caption": "Keyboard",
+          "description": "The peripheral device is a keyboard."
+        },
+        "3": {
+          "caption": "Mouse",
+          "description": "The peripheral device is a mouse."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The peripheral device type is not mapped. See the <code>type</code> attribute which contains an event source specific value."
+        }
+      }
+    },
     "uid": {
       "description": "The unique identifier of the peripheral device.",
       "requirement": "recommended"

@@ -41,6 +41,32 @@ Thankyou! -->
 
 ## [Unreleased]
 
+### Added
+* #### Categories
+* #### Event Classes
+* #### Profiles
+* #### Objects
+* #### Platform Extensions
+* #### Dictionary Attributes
+
+### Improved
+* #### Categories
+* #### Event Classes
+* #### Profiles
+* #### Objects
+* #### Platform Extensions
+* #### Dictionary Attributes
+ 1. Added `Local (4)` enum to the `direction_id` attribute. [#1475](https://github.com/ocsf/ocsf-schema/pull/1475)
+
+
+### Bugfixes
+
+### Deprecated
+
+### Breaking changes
+
+### Misc
+
 ## [v1.6.0] - Aug 1st, 2025
 
 ### Added

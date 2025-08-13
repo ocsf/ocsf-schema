@@ -56,7 +56,7 @@ Thankyou! -->
 * #### Objects
 * #### Platform Extensions
 * #### Dictionary Attributes
- 1. Added `Local (4)` enum to the `direction_id` attribute.
+ 1. Added `Local (4)` enum to the `direction_id` attribute. [#1475](https://github.com/ocsf/ocsf-schema/pull/1475)
 
 
 ### Bugfixes

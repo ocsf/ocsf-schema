@@ -16,16 +16,16 @@
       "description": "The identities that are granted access through the analyzed policy configuration. This identifies the specific entity that can exercise the permissions and helps assess the access relationship and potential security implications. Examples include user accounts, service principals, roles, account identifiers, or system identities.",
       "requirement": "required"
     },
+    "additional_restrictions": {
+      "description": "Details about supplementary restrictions and guardrails that may limit the granted access, applied through additional policy types such as Resource Control Policies (RCPs) and Service Control Policies (SCPs) in AWS, or other policy constraints.",
+      "requirement": "optional"
+    },
     "condition_keys": {
       "description": "The condition keys and their values that constrain when and how the granted access can be exercised. These conditions define the circumstances under which the access relationship is valid and the privileges can be used. Examples: IP address restrictions like 'aws:SourceIp:192.0.2.0/24', time-based constraints like 'aws:RequestedRegion:us-east-1', MFA requirements like 'aws:MultiFactorAuthPresent:true', or custom conditions based on resource tags and request context.",
       "requirement": "optional"
     },
     "granted_privileges": {
       "description": "The specific privileges, actions, or permissions that are granted through the analyzed access relationship. This includes the actual operations that the accessor can perform on the target resource. Examples: AWS actions like 'sts:AssumeRole', 's3:GetObject', 'ec2:DescribeInstances'; Azure actions like 'Microsoft.Storage/storageAccounts/read'; or GCP permissions like 'storage.objects.get'.",
-      "requirement": "optional"
-    },
-    "additional_restrictions": {
-      "description": "Details about supplementary restrictions and guardrails that may limit the granted access, applied through additional policy types such as Resource Control Policies (RCPs) and Service Control Policies (SCPs) in AWS, or other policy constraints.",
       "requirement": "optional"
     }
   }

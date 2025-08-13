@@ -20,12 +20,12 @@
       "description": "The name of the analytic that generated the finding."
     },
     "related_analytics": {
+      "description": "Other analytics related to this analytic.",
+      "requirement": "optional",
       "@deprecated": {
         "message": "Related Analytics has been decoupled from this object, instead use <code>finding_info.related_analytics</code>.",
         "since": "1.0.0"
-      },
-      "description": "Other analytics related to this analytic.",
-      "requirement": "optional"
+      }
     },
     "state": {
       "description": "The Analytic state.",
@@ -55,6 +55,7 @@
     },
     "type_id": {
       "description": "The analytic type ID.",
+      "requirement": "required",
       "enum": {
         "0": {
           "caption": "Unknown"
@@ -62,14 +63,6 @@
         "1": {
           "caption": "Rule",
           "description": "A Rule in security analytics refers to predefined criteria or conditions set to monitor, alert, or enforce policies, playing a crucial role in access control, threat detection, and regulatory compliance across security systems."
-        },
-        "10": {
-          "caption": "Partial Data Match",
-          "description": "Partial Data Match involves identifying instances where segments of sensitive information or patterns match, facilitating nuanced DLP and threat detection without requiring complete data conformity."
-        },
-        "11": {
-          "caption": "Indexed Data Match",
-          "description": "Indexed Data Match refers to comparing content against a pre-compiled index of sensitive information to efficiently detect and prevent unauthorized access or breaches, streamlining DLP and compliance efforts."
         },
         "2": {
           "caption": "Behavioral",
@@ -103,11 +96,18 @@
           "caption": "Exact Data Match",
           "description": "Exact Data Match is a precise comparison technique used to detect the unauthorized use or exposure of specific, sensitive information, crucial for enforcing DLP policies and protecting against data breaches."
         },
+        "10": {
+          "caption": "Partial Data Match",
+          "description": "Partial Data Match involves identifying instances where segments of sensitive information or patterns match, facilitating nuanced DLP and threat detection without requiring complete data conformity."
+        },
+        "11": {
+          "caption": "Indexed Data Match",
+          "description": "Indexed Data Match refers to comparing content against a pre-compiled index of sensitive information to efficiently detect and prevent unauthorized access or breaches, streamlining DLP and compliance efforts."
+        },
         "99": {
           "caption": "Other"
         }
-      },
-      "requirement": "required"
+      }
     },
     "uid": {
       "description": "The unique identifier of the analytic that generated the finding."

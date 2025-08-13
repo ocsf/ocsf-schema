@@ -41,19 +41,63 @@ Thankyou! -->
 
 ## [Unreleased]
 
-### Improved
+## [v1.6.0] - Aug 1st, 2025
 
+### Added
+* #### Event Classes
+  1. Added `IAM Analysis Finding` event class to the Findings category. [#1389](https://github.com/ocsf/ocsf-schema/pull/1389)
+* #### Dictionary Attributes
+  1. Added `from_list`, `from_mailboxes`,`reply_to_list`, `return_path`, `sender` and `sender_mailbox`. [#1454](https://github.com/ocsf/ocsf-schema/pull/1454)
+  1. Added `access_level`, `programmatic_credentials`, `last_authentication_time`, `access_analysis_result`, `last_used_time`, `accessors`, `granted_privileges`, `identity_activity_metrics`, `password_last_used_time`, `access_type`, `permission_analysis_results`, `additional_restrictions`, `unused_privileges_count`, `condition_keys`, `applications`, `role`, `role_id`. [#1389](https://github.com/ocsf/ocsf-schema/pull/1389)
+  1. Added `reg_binary_data`, `reg_integer_data`, `reg_string_data`, `reg_string_list_data` to Windows extension. [#1468](https://github.com/ocsf/ocsf-schema/pull/1468)
+  1. Added `is_src_dst_assignment_known` as a boolean. [#1464](https://github.com/ocsf/ocsf-schema/pull/1464)
+
+* #### Objects
+  1. Added  `access_analysis_result`, `additional_restriction`, `identity_activity_metrics`, `permission_analysis_result`, `programmatic_credential`. [#1389](https://github.com/ocsf/ocsf-schema/pull/1389)
+  1. Added `port_info` object. [#1466](https://github.com/ocsf/ocsf-schema/pull/1466)
+
+### Improved
 * #### Event Classes
   1. Added `Disconnect` and `Reconnect` activities in the `RDP Activity` class. [#1415](https://github.com/ocsf/ocsf-schema/pull/1415)
   1. Added `user` as an attribute to the `RDP Activity` class. [#1419](https://github.com/ocsf/ocsf-schema/pull/1419)
+  1. Added `raw_data_hash` as an attribute to `base_event`. [#1420](https://github.com/ocsf/ocsf-schema/pull/1420)
+  1. Added `Add Subgroup`, and `Remove Subgroup` activities in the `Group Management` class. [#1447](https://github.com/ocsf/ocsf-schema/pull/1447)
+  1. Added `MTA Relay` activity and `to`/`from` attributes to the `Email Activity` class. [#1454](https://github.com/ocsf/ocsf-schema/pull/1454)
+  1. Added `http_request` and `http_response` objects to the `File Hosting Activity` Class [#1458](https://github.com/ocsf/ocsf-schema/pull/1458)
+  1. Added `Account Switch` activity_id to the `Authentication` class. Added `account_switch_type` and `account_switch_type_id` attributes to the `Authentication` class. [#1460](https://github.com/ocsf/ocsf-schema/pull/1460)
+  1. Added `is_src_dst_assignment_known` attribute to `Network Activity` class. [#1464](https://github.com/ocsf/ocsf-schema/pull/1464)
+
+
 * #### Objects
   1. Added more `algorithm_id` values and references to the `fingerprint` object. [#1412](https://github.com/ocsf/ocsf-schema/pull/1412)
+  1. Added xxHash H3's 64-bit and 128-bit variants to `algorithm_id` on the `fingerprint` object. [#1420](https://github.com/ocsf/ocsf-schema/pull/1412)
   1. Added `Service` to `user` `type_id` enum. [#1428](https://github.com/ocsf/ocsf-schema/pull/1428)
   1. Added `Deleted` to `finding` `status_id` enum. [#1437](https://github.com/ocsf/ocsf-schema/pull/1437)
+  1. Added `status` to `related_event` object. [#1434](https://github.com/ocsf/ocsf-schema/pull/1434)
+  1. Added `attack_graph` to `finding_info`. [#1436](https://github.com/ocsf/ocsf-schema/pull/1436)
+  1. Added `Executable File` to `file` `type_id` enum. Added `is_readonly` as an optional attribute. [#1438](https://github.com/ocsf/ocsf-schema/pull/1438)
+  1. Added `ptid` (type `long_t`) to `process` and deprecated `tid` (type `integer_t`) [#1450](https://github.com/ocsf/ocsf-schema/pull/1450)
+  1. Added `state_id` and `state` to `analytic`. [#1448](https://github.com/ocsf/ocsf-schema/pull/1448)
+  1. Added `from_list`, `from_mailboxes`,`reply_to_list`, `return_path`, `sender` and `sender_mailbox` attributes to `email` object. [#1454](https://github.com/ocsf/ocsf-schema/pull/1454)
+  1. Added `role`, `role_id` to `resource_details` object, `type` to `policy` object,  [#1389](https://github.com/ocsf/ocsf-schema/pull/1389)
+  1. Added `is_truncated` and `untruncated_size` to `metadata`, `logger` objects. [#1461](https://github.com/ocsf/ocsf-schema/pull/1461)
+  1. Added `open_ports` to the `network_interface` object. [#1466](https://github.com/ocsf/ocsf-schema/pull/1466)
+  1. Added `reg_binary_data`, `reg_integer_data`, `reg_string_data`, `reg_string_list_data` to `reg_value` object in Windows extension. [#1468](https://github.com/ocsf/ocsf-schema/pull/1468)
+  
 
 ### Misc
   1. Fixed spelling errors throughout the project and added spell checking to the CI linter workflow. [#1411](https://github.com/ocsf/ocsf-schema/pull/1411)
   1. Improved description of the `Application Error` class. [#1424](https://github.com/ocsf/ocsf-schema/pull/1424)
+  1. Fixed links to ocsf-docs repo [#1453](https://github.com/ocsf/ocsf-schema/pull/1453)
+  1. Set `device.uid` as an Observable type - type_id: 47 [#1446](https://github.com/ocsf/ocsf-schema/pull/1446)
+  1. Improved descriptions of `src_endpoint` and `dst_endpoint` attributes in `Network Activity` class. [#1464](https://github.com/ocsf/ocsf-schema/pull/1464)
+  1. Improved the description of the `bytestring_t` data type. [#1468](https://github.com/ocsf/ocsf-schema/pull/1468)
+
+### Deprecated
+  1. Deprecated usage of `group` attribute in favor of `groups` in the `databucket` object. [#1344](https://github.com/ocsf/ocsf-schema/pull/1344)
+  1. Deprecated usage of `credential_uid` attribute in favor of `programmatic_credentials` in the `user` object. [#1389](https://github.com/ocsf/ocsf-schema/pull/1389)
+  1. Deprecated usage of items `3` and `4` in the `type_id` enum in `account` object, in favor of the `type_id` enum in the `user` object. [#1389](https://github.com/ocsf/ocsf-schema/pull/1389)
+  1. Deprecated item `9` (`REG_QWORD_LITTLE_ENDIAN`) in the `type_id` enum in the `reg_value` object. Its presence was an error. [#1468](https://github.com/ocsf/ocsf-schema/pull/1468)
 
 ## [v1.5.0] - April 28th, 2025
 
@@ -93,6 +137,7 @@ Thankyou! -->
   1. Added `tcp_state_id` as `integer_t`. [#1382](https://github.com/ocsf/ocsf-schema/pull/1382)
   1. Added `query_evidence` as type `query_evidence`. [#1382](https://github.com/ocsf/ocsf-schema/pull/1382)
   1. Added `checks` as type `check`. [#1369](https://github.com/ocsf/ocsf-schema/pull/1369)
+  1. Added 'is_readonly' as type `boolean_t` with a "See specific usage" description. [#1438](https://github.com/ocsf/ocsf-schema/pull/1438)
 * #### Objects
   1. Added `assessment` object to capture evaluations/assessments of configurations/signals. [#1343](https://github.com/ocsf/ocsf-schema/pull/1343)
   1. Added `node`, `edge`, `graph` objects. [#1343](https://github.com/ocsf/ocsf-schema/pull/1343)
@@ -126,8 +171,8 @@ Thankyou! -->
   1. Added `extensions/windows/reg_key_path_t` as an Observable type - `type_id: 46` and marked fields as this type [#1381](https://github.com/ocsf/ocsf-schema/pull/1381)
      - `reg_key.path` object attribute
      - `reg_value.path` object attribute
-  
-     
+
+
 ### Improved
 * #### Event Classes
   1. Added `assessments` to `config_state`. [#1343](https://github.com/ocsf/ocsf-schema/pull/1343)
@@ -135,7 +180,7 @@ Thankyou! -->
   1. Added `anomaly_analyses` to `detection_finding`. [#1358](https://github.com/ocsf/ocsf-schema/pull/1358)
   1. Added `Detect` value for `activity_id` in Remediation events. [#1362](https://github.com/ocsf/ocsf-schema/pull/1362)
   1. Added `resources` to `user_access`. [#1374](https://github.com/ocsf/ocsf-schema/pull/1374)
-  1. Added `malware_scan_info`, `malware` to `detection_finding`. [#1373](https://github.com/ocsf/ocsf-schema/pull/1373) 
+  1. Added `malware_scan_info`, `malware` to `detection_finding`. [#1373](https://github.com/ocsf/ocsf-schema/pull/1373)
   1. Added `authentication_token` to `authentication`. [#1391](https://github.com/ocsf/ocsf-schema/pull/1391)
 
 * #### Objects
@@ -175,7 +220,7 @@ Thankyou! -->
   1. Added `cis_controls` to `remediation` object [#1369](https://github.com/ocsf/ocsf-schema/pull/1369)
   1. Added `check` object to `compliance` object [#1369](https://github.com/ocsf/ocsf-schema/pull/1369)
   1. Added `Patch` as a value of `http_method` in the `http_request` object. [#1427](https://github.com/ocsf/ocsf-schema/pull/1427)
-     
+
 * #### Profiles
   1. Added `malware_scan_info` to `security_control` profile. [#1373](https://github.com/ocsf/ocsf-schema/pull/1373)
   1. Added `campaign`, `category`, `created_time`, `creator`, `desc`, `expiration_time`, `external_id`, `labels`, `malware`, `modified_time`, `name`, `detection_pattern`, `detection_pattern_type`, `detection_pattern_type_id`, `intrusion_sets`, `risk_score`, `references`, `uploaded_time`, `severity`, `uid` and `threat_actor` to `osint` object. [#1310](https://github.com/ocsf/ocsf-schema/pull/1310)
@@ -228,7 +273,7 @@ Thankyou! -->
     1. Added `location` to the `managed_entity` object. [#1169](https://github.com/ocsf/ocsf-schema/pull/1169)
     1. Added `unmanned_system_operator` to the dictionary, extends `user`. [#1169](https://github.com/ocsf/ocsf-schema/pull/1169)
     1. Added `locations` to the dictionary, an array type of the `location` object, used within the new `operating_area` object. [#1169](https://github.com/ocsf/ocsf-schema/pull/1169)
-    1. Added `altitude_ceiling`, `altitude_floor`, `geodetic_altitude`, `aerial_height`, `horizontal_accuracy`, `pressure_altitude`, `radius`, `speed`, `track_direction`, and `vertical_speed` all to support `operating_area` and `unmanned_aerial_system` objects. [#1169](https://github.com/ocsf/ocsf-schema/pull/1169) 
+    1. Added `altitude_ceiling`, `altitude_floor`, `geodetic_altitude`, `aerial_height`, `horizontal_accuracy`, `pressure_altitude`, `radius`, `speed`, `track_direction`, and `vertical_speed` all to support `operating_area` and `unmanned_aerial_system` objects. [#1169](https://github.com/ocsf/ocsf-schema/pull/1169)
     1. Added `imei_list` as an array `string_t`. [#1225](https://github.com/ocsf/ocsf-schema/pull/1225)
     1. Added `is_encrypted` as `boolean_t`; `column_name`, `cell_name`, `storage_class`, `key_uid`, `json_path` as `string_t` & `column_number`, `row_number`, `page_number`, `record_index_in_array` as `integer_t`. [#1245](https://github.com/ocsf/ocsf-schema/pull/1245)
     1. Added `group_provisioning_enabled`, `scim_group_schema`, `user_provisioning_enabled`, `scim_user_schema`, `scopes`, `idle_timeout`, `login_endpoint`, `logout_endpoint`, and `metadata_url` entries to the dictionary to support the new `scim` and `sso` objects. [#1239](https://github.com/ocsf/ocsf-schema/pull/1239)

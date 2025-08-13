@@ -19,6 +19,14 @@
     ]
   },
   "attributes": {
+    "account_switch_type": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "account_switch_type_id": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
     "activity_id": {
       "enum": {
         "1": {
@@ -44,6 +52,10 @@
         "6": {
           "caption": "Preauth",
           "description": "A preauthentication stage was engaged."
+        },
+        "7": {
+          "caption": "Account Switch",
+          "description": "A utility or service switched the user account. See the <code>account_switch_type_id</code> attribute for more details."
         }
       }
     },
@@ -62,6 +74,7 @@
     "authentication_token": {
       "description": "The authentication token, ticket, or assertion, e.g. <code>Kerberos</code>, <code>OIDC</code>, <code>SAML</code>.",
       "group": "context",
+      "requirement": "optional",
       "references": [
         {
           "description": "RFC 4120: The Kerberos Network Authentication Service (V5)",
@@ -75,8 +88,7 @@
           "description": "The OASIS Security Assertion Markup Language (SAML) V2.0",
           "url": "https://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf"
         }
-      ],
-      "requirement": "optional"
+      ]
     },
     "certificate": {
       "description": "The certificate associated with the authentication or pre-authentication (Kerberos).",

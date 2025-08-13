@@ -3,70 +3,15 @@
   "description": "The Attribute Dictionary provides a comprehensive catalog of standardized attributes used across OCSF. It defines each attribute's properties, data types, and relationships. This dictionary serves as the authoritative reference for attribute definitions and ensures consistent usage throughout the schema.",
   "name": "dictionary",
   "attributes": {
-    "attack_graph": {
-      "caption": "Attack Graph",
-      "description": "An Attack Graph describes possible routes an attacker could take through an environment. It describes relationships between resources and their findings, such as malware detections, vulnerabilities, misconfigurations, and other security actions.",
-      "type": "graph",
-      "references": [
-        {
-          "url": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/how-to-manage-attack-path",
-          "description": "MS Defender description of Attack Path"
-        },
-        {
-          "url": "https://www.sentinelone.com/cybersecurity-101/cybersecurity/attack-path-analysis/",
-          "description": "SentinelOne Attack Path documentation"
-        }
-      ]
+    "access_analysis_result": {
+      "caption": "Access Analysis Result",
+      "description": "Describes access relationships and pathways between identities, resources, focusing on who can access what and through which mechanisms. This evaluates access levels (read/write/admin), access types (direct, cross-account, public, federated), and the conditions under which access is granted. Use this for resource-centric security assessments such as external access discovery, public exposure analysis, etc.",
+      "type": "access_analysis_result"
     },
-    "timespan": {
-      "caption": "Time Span",
-      "description": "The Time Span object represents different time period durations. If a timespan is fractional, i.e. crosses one period, e.g. a week and 3 days, more than one may be populated since each member is of integral type. In that case <code>type_id</code> if present should be set to <code>Other.</code><P>A timespan may also be defined by its time interval boundaries, <code>start_time</code> and <code>end_time</code>.",
-      "type": "timespan"
-    },
-    "observation_parameter": {
-      "caption": "Observation Parameter",
-      "description": "The name of the parameter being analyzed or monitored. This generally identifies the specific characteristic or property being measured. See specific usage.",
+    "access_level": {
+      "caption": "Access Level",
+      "description": "The access level of an entity. See specific usage.",
       "type": "string_t"
-    },
-    "analysis_targets": {
-      "caption": "Analysis Targets",
-      "description": "The specific dimensions, components, or aspects of the system that are the targets of the analysis. See specific usage.",
-      "type": "analysis_target",
-      "is_array": true
-    },
-    "observations": {
-      "caption": "Observations",
-      "description": "A list of individual observations or measurements collected during analysis. Each observation captures a specific data point. See specific usage.",
-      "type": "observation",
-      "is_array": true
-    },
-    "observation_type": {
-      "caption": "Observation Type",
-      "description": "The classification or category of the observation, indicating what kind of measurement or finding it represents. See specific usage.",
-      "type": "string_t"
-    },
-    "observed_pattern": {
-      "caption": "Observed Pattern",
-      "description": "A detected pattern or trend identified in the analyzed data, describing recurring activities or characteristics.",
-      "type": "string_t"
-    },
-    "anomalies": {
-      "caption": "Anomalies",
-      "description": "A list of detected anomalies or deviations from expected behavior patterns. See specific usage.",
-      "type": "anomaly",
-      "is_array": true
-    },
-    "baselines": {
-      "caption": "Baselines",
-      "description": "A list of baseline measurements or normal behavior patterns used as reference points for comparison and anomaly detection. See specific usage.",
-      "type": "baseline",
-      "is_array": true
-    },
-    "anomaly_analyses": {
-      "caption": "Anomaly Analyses",
-      "description": "A list of anomaly analysis results that examine and characterize patterns of activity or usage over time to identify normal vs abnormal activities. See specific usage.",
-      "type": "anomaly_analysis",
-      "is_array": true
     },
     "access_list": {
       "caption": "Access List",
@@ -84,6 +29,11 @@
       "description": "The list of access check results.",
       "type": "json_t"
     },
+    "access_type": {
+      "caption": "Access Type",
+      "description": "The type or category of access being granted to the identity. See specific usage.",
+      "type": "string_t"
+    },
     "accessed_time": {
       "caption": "Accessed Time",
       "description": "The time when the file was last accessed.",
@@ -94,10 +44,65 @@
       "description": "The name of the user who last accessed the object.",
       "type": "user"
     },
+    "accessors": {
+      "caption": "Accessors",
+      "description": "A list of users who have access to an entity. See specific usage.",
+      "type": "user",
+      "is_array": true
+    },
     "account": {
       "caption": "Account",
       "description": "The account object describes details about the account that was the source or target of the activity.",
       "type": "account"
+    },
+    "account_switch_type": {
+      "caption": "Account Switch Type",
+      "description": "The account switch method, normalized to the caption of the account_switch_type_id value. In the case of 'Other', it is defined by the event source.",
+      "type": "string_t"
+    },
+    "account_switch_type_id": {
+      "caption": "Account Switch Type ID",
+      "description": "The normalized identifier of the account switch method.",
+      "sibling": "account_switch_type",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The account switch type is unknown."
+        },
+        "1": {
+          "caption": "Substitute User",
+          "description": "A utility like <code>sudo</code>, <code>su</code>, or equivalent was used to perform actions in the context of another user.",
+          "references": [
+            {
+              "description": "sudo documentation",
+              "url": "https://www.sudo.ws/"
+            },
+            {
+              "description": "su Linux manual page",
+              "url": "https://man7.org/linux/man-pages/man1/su.1.html"
+            },
+            {
+              "description": "su macOS manual page",
+              "url": "https://www.unix.com/man_page/osx/1/su/"
+            }
+          ]
+        },
+        "2": {
+          "caption": "Impersonate",
+          "description": "An API like <code>ImpersonateLoggedOnUser()</code> or equivalent was used to perform actions in the context of another user.",
+          "references": [
+            {
+              "description": "Microsoft ImpersonateLoggedOnUser() documentation",
+              "url": "https://learn.microsoft.com/en-us/windows/win32/api/securitybaseapi/nf-securitybaseapi-impersonateloggedonuser"
+            }
+          ]
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The account switch type is not mapped. See the <code>account_switch_type</code> attribute, which contains a data source specific value."
+        }
+      }
     },
     "ack_reason": {
       "caption": "Acknowledgement Reason",
@@ -171,6 +176,12 @@
       "caption": "Actual Permissions",
       "description": "The permissions that were granted in a platform-native format. See specific usage.",
       "type": "integer_t"
+    },
+    "additional_restrictions": {
+      "caption": "Additional Restrictions",
+      "description": "The supplementary restrictions that may apply to an entity, by the virtue of a policy. See specific usage.",
+      "type": "additional_restriction",
+      "is_array": true
     },
     "advisory": {
       "caption": "Security Advisory",
@@ -246,6 +257,12 @@
       "description": "Minimum altitude (WGS-84 HAE) for a group or an Intent-Based Network Participant. Measured in meters. Special Values: <code>Invalid</code>, <code>No Value</code>, or <code>Unknown: -1000 m</code>.",
       "type": "string_t"
     },
+    "analysis_targets": {
+      "caption": "Analysis Targets",
+      "description": "The specific dimensions, components, or aspects of the system that are the targets of the analysis. See specific usage.",
+      "type": "analysis_target",
+      "is_array": true
+    },
     "analytic": {
       "caption": "Analytic",
       "description": "The analytic technique used to analyze and derive insights from the data or information that led to the finding or conclusion.",
@@ -255,13 +272,25 @@
       "caption": "Ancestry",
       "description": "An array of Process Entities describing the extended parentage of this process object. Direct parent information should be expressed through the <code>parent_process</code> attribute. The first array element is the direct parent of this process object. Subsequent list elements go up the process parentage hierarchy. That is, the array is sorted from newest to oldest process. It is recommended to only populate this field for the top-level process object.",
       "type": "process_entity",
-      "is_array": true,
       "references": [
         {
-          "url": "https://github.com/ocsf/ocsf-docs/blob/main/articles/representing-process-parentage.md",
-          "description": "Guidance on Representing Process Parentage"
+          "description": "Guidance on Representing Process Parentage",
+          "url": "https://github.com/ocsf/ocsf-docs/blob/main/articles/representing-process-parentage.md"
         }
-      ]
+      ],
+      "is_array": true
+    },
+    "anomalies": {
+      "caption": "Anomalies",
+      "description": "A list of detected anomalies or deviations from expected behavior patterns. See specific usage.",
+      "type": "anomaly",
+      "is_array": true
+    },
+    "anomaly_analyses": {
+      "caption": "Anomaly Analyses",
+      "description": "A list of anomaly analysis results that examine and characterize patterns of activity or usage over time to identify normal vs abnormal activities. See specific usage.",
+      "type": "anomaly_analysis",
+      "is_array": true
     },
     "answers": {
       "caption": "DNS Answer",
@@ -279,11 +308,6 @@
       "description": "The application that reported the event.",
       "type": "product"
     },
-    "application": {
-      "caption": "Application",
-      "description": "An Application describes the details for an inventoried application as reported by an Application Security tool or other Developer-centric tooling. Applications can be defined as Kubernetes resources, Containerized resources, or application hosting-specific cloud sources such as AWS Elastic BeanStalk, AWS Lightsail, or Azure Logic Apps.",
-      "type": "application"
-    },
     "app_name": {
       "caption": "Application Name",
       "description": "The name of the application associated with the event or object.",
@@ -293,6 +317,17 @@
       "caption": "Application ID",
       "description": "The unique ID of the application associated with the event or object.",
       "type": "string_t"
+    },
+    "application": {
+      "caption": "Application",
+      "description": "An Application describes the details for an inventoried application as reported by an Application Security tool or other Developer-centric tooling. Applications can be defined as Kubernetes resources, Containerized resources, or application hosting-specific cloud sources such as AWS Elastic BeanStalk, AWS Lightsail, or Azure Logic Apps.",
+      "type": "application"
+    },
+    "applications": {
+      "caption": "Applications",
+      "description": "A list of application objects. See specific usage.",
+      "type": "application",
+      "is_array": true
     },
     "architecture": {
       "caption": "Architecture",
@@ -304,16 +339,6 @@
       "description": "The arguments sent along with the HTTP request.",
       "type": "string_t"
     },
-    "assignee": {
-      "caption": "Assignee",
-      "description": "The details of the user assigned to an Incident.",
-      "type": "user"
-    },
-    "assignee_group": {
-      "caption": "Assignee Group",
-      "description": "The details of the group assigned to an Incident.",
-      "type": "group"
-    },
     "assessment": {
       "caption": "Assessment",
       "description": "The Assessment object describes a point-in-time assessment, check, or evaluation of a specific configuration or signal against an asset, entity, person, or otherwise. For example, this can encapsulate <code>os_signals</code> from CrowdStrike Falcon Zero Trust Assessments, or account for <code>Datastore</code> configurations from Cyera.",
@@ -324,6 +349,31 @@
       "description": "A list of <code>assessment</code> objects. See specific usage.",
       "type": "assessment",
       "is_array": true
+    },
+    "assignee": {
+      "caption": "Assignee",
+      "description": "The details of the user assigned to an Incident.",
+      "type": "user"
+    },
+    "assignee_group": {
+      "caption": "Assignee Group",
+      "description": "The details of the group assigned to an Incident.",
+      "type": "group"
+    },
+    "attack_graph": {
+      "caption": "Attack Graph",
+      "description": "An Attack Graph describes possible routes an attacker could take through an environment. It describes relationships between resources and their findings, such as malware detections, vulnerabilities, misconfigurations, and other security actions.",
+      "type": "graph",
+      "references": [
+        {
+          "description": "MS Defender description of Attack Path",
+          "url": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/how-to-manage-attack-path"
+        },
+        {
+          "description": "SentinelOne Attack Path documentation",
+          "url": "https://www.sentinelone.com/cybersecurity-101/cybersecurity/attack-path-analysis/"
+        }
+      ]
     },
     "attacks": {
       "caption": "MITRE ATT&CK® and ATLAS™ Details",
@@ -481,6 +531,12 @@
       "description": "The base score as reported by the event source. See specific usage.",
       "type": "float_t"
     },
+    "baselines": {
+      "caption": "Baselines",
+      "description": "A list of baseline measurements or normal behavior patterns used as reference points for comparison and anomaly detection. See specific usage.",
+      "type": "baseline",
+      "is_array": true
+    },
     "bios_date": {
       "caption": "BIOS Date",
       "description": "The BIOS date. For example: <code>03/31/16</code>.",
@@ -612,16 +668,16 @@
       "description": "The number of bytes sent from the source to the destination.",
       "type": "long_t"
     },
+    "campaign": {
+      "caption": "Campaign",
+      "description": "The campaign object describes details about the campaign that was the source of the activity.",
+      "type": "campaign"
+    },
     "capabilities": {
       "caption": "Capabilities",
       "description": "A list of RDP capabilities.",
       "type": "string_t",
       "is_array": true
-    },
-    "campaign": {
-      "caption": "Campaign",
-      "description": "The campaign object describes details about the campaign that was the source of the activity.",
-      "type": "campaign"
     },
     "caption": {
       "caption": "Caption",
@@ -1027,11 +1083,11 @@
       "caption": "CIS CSC",
       "description": "The CIS Critical Security Controls is a list of top 20 actions and practices an organization’s security team can take on such that cyber attacks or malware, are minimized and prevented.",
       "type": "cis_csc",
-      "is_array": true,
       "@deprecated": {
         "message": "Use CIS Controls for standard benchmark controls.",
         "since": "1.5.0"
-      }
+      },
+      "is_array": true
     },
     "city": {
       "caption": "City",
@@ -1198,21 +1254,21 @@
       "caption": "Compliance Standard References",
       "description": "A list of reference KB articles that provide information to help organizations understand, interpret, and implement compliance standards. They provide guidance, best practices, and examples.",
       "type": "kb_article",
-      "is_array": true,
       "@deprecated": {
         "message": "Use the Compliance object with Check array instead",
         "since": "1.5.0"
-      }
+      },
+      "is_array": true
     },
     "compliance_standards": {
       "caption": "Compliance Standards: Details",
       "description": "A list of established guidelines or criteria that define specific requirements an organization must follow.",
       "type": "kb_article",
-      "is_array": true,
       "@deprecated": {
         "message": "Use the Compliance object with Check array instead",
         "since": "1.5.0"
-      }
+      },
+      "is_array": true
     },
     "component": {
       "caption": "Component",
@@ -1221,8 +1277,14 @@
     },
     "condition": {
       "caption": "Condition",
-      "description": "The rule trigger condition for the rule. For example: SQL_INJECTION.",
+      "description": "The condition that was evaluated in a rule, policy. See specific usage.",
       "type": "string_t"
+    },
+    "condition_keys": {
+      "caption": "Condition Keys",
+      "description": "The list of condition keys and their values that were evaluated as part of a rule or policy. Condition keys are used to define circumstances under which the rule/policy is in effect. See specific usage.",
+      "type": "key_value_object",
+      "is_array": true
     },
     "confidence": {
       "caption": "Confidence",
@@ -1388,6 +1450,18 @@
       "description": "The Common Platform Enumeration (CPE) name as described by (<a target='_blank' href='https://nvd.nist.gov/products/cpe'>NIST</a>) For example: <code>cpe:/a:apple:safari:16.2</code>.",
       "type": "string_t"
     },
+    "cpid": {
+      "caption": "Common Process Identifier",
+      "description": "A unique process identifier that can be assigned deterministically by multiple system data producers.",
+      "source": "cpid",
+      "type": "uuid_t",
+      "references": [
+        {
+          "description": "OCSF Common Process Identifier (CPID) Specification",
+          "url": "https://github.com/ocsf/common-process-id"
+        }
+      ]
+    },
     "cpu_architecture": {
       "caption": "CPU Architecture",
       "description": "The CPU architecture, normalized to the caption of the <code>cpu_architecture_id</code> value. In the case of <code>Other</code>, it is defined by the source.",
@@ -1420,18 +1494,6 @@
           "description": "The CPU architecture is not mapped. See the <code>cpu_architecture</code> attribute, which contains a data source specific value."
         }
       }
-    },
-    "cpid": {
-      "caption": "Common Process Identifier",
-      "source": "cpid",
-      "references": [
-        {
-          "url": "https://github.com/ocsf/common-process-id",
-          "description": "OCSF Common Process Identifier (CPID) Specification"
-        }
-      ],
-      "description": "A unique process identifier that can be assigned deterministically by multiple system data producers.",
-      "type": "uuid_t"
     },
     "cpu_bits": {
       "caption": "CPU Bits",
@@ -1536,24 +1598,24 @@
     "d3f_tactic": {
       "caption": "MITRE D3FEND™ Tactic",
       "description": "The D3FEND Tactic object describes the defensive tactic name associated with a countermeasure.",
+      "type": "d3f_tactic",
       "references": [
         {
           "description": "D3FEND™ Matrix",
           "url": "https://d3fend.mitre.org"
         }
-      ],
-      "type": "d3f_tactic"
+      ]
     },
     "d3f_technique": {
       "caption": "MITRE D3FEND™ Technique",
       "description": "The D3FEND Technique object describes the defensive technique ID and/or name associated with a countermeasure.",
+      "type": "d3f_technique",
       "references": [
         {
           "description": "D3FEND™ Matrix",
           "url": "https://d3fend.mitre.org"
         }
-      ],
-      "type": "d3f_technique"
+      ]
     },
     "data": {
       "caption": "Data",
@@ -1661,7 +1723,7 @@
       }
     },
     "delivered_to_list": {
-      "caption": "Delivered To",
+      "caption": "Delivered To List",
       "description": "The machine-readable <strong>Delivered-To</strong> email header values. For example <code>example.user@usersdomain.com</code>",
       "type": "email_t",
       "references": [
@@ -2599,21 +2661,6 @@
       },
       "is_array": true
     },
-    "kerberos_flags": {
-      "caption": "Kerberos Flags",
-      "description": "A bitmask, either in hexadecimal or decimal form, which encodes various attributes or permissions associated with a Kerberos ticket. These flags delineate specific characteristics of the ticket, such as its renewability or forwardability.",
-      "references": [
-        {
-          "description": "RFC 4120: 5.2.8.  KerberosFlags",
-          "url": "https://www.rfc-editor.org/rfc/rfc4120#section-5.2.8"
-        },
-        {
-          "description": "Microsoft Windows Security 4769 (see 'Ticket Options')",
-          "url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4769"
-        }
-      ],
-      "type": "string_t"
-    },
     "flags": {
       "caption": "Flags",
       "description": "The list of communication flags, normalized to the captions of the flag_ids values. See specific usage.",
@@ -2632,7 +2679,7 @@
     },
     "from": {
       "caption": "From",
-      "description": "The machine-readable email header From values, as defined by RFC 5322. For example <code>example.user@usersdomain.com</code>",
+      "description": "The machine-readable email header From value, as defined by RFC 5322. For example <code>example.user@usersdomain.com</code>.",
       "type": "email_t",
       "references": [
         {
@@ -2640,6 +2687,18 @@
           "url": "https://www.rfc-editor.org/rfc/rfc5322"
         }
       ]
+    },
+    "from_list": {
+      "caption": "From List",
+      "description": "The machine-readable email header From values. This array should contain the value in <code>from</code>. For example <code>example.user@usersdomain.com</code>.",
+      "type": "email_t",
+      "references": [
+        {
+          "description": "RFC 5322",
+          "url": "https://www.rfc-editor.org/rfc/rfc5322#section-3.4"
+        }
+      ],
+      "is_array": true
     },
     "from_mailbox": {
       "caption": "From Mailbox",
@@ -2651,6 +2710,18 @@
           "url": "https://www.rfc-editor.org/rfc/rfc5322#section-3.4"
         }
       ]
+    },
+    "from_mailboxes": {
+      "caption": "From Mailboxes",
+      "description": "The human-readable email header From Mailbox values. This array should contain the value in <code>from_mailbox</code>. For example <code>'Example User &lt;example.user@usersdomain.com&gt;'</code>.",
+      "type": "email_t",
+      "references": [
+        {
+          "description": "RFC 5322",
+          "url": "https://www.rfc-editor.org/rfc/rfc5322#section-3.4"
+        }
+      ],
+      "is_array": true
     },
     "full_name": {
       "caption": "Full Name",
@@ -2686,6 +2757,12 @@
       "caption": "Given Name",
       "description": "The given or first name of the user.",
       "type": "string_t"
+    },
+    "granted_privileges": {
+      "caption": "Granted Privileges",
+      "description": "The Privileges that were granted to the user via an IAM policy or otherwise. See specific usage.",
+      "type": "string_t",
+      "is_array": true
     },
     "graph": {
       "caption": "Graph",
@@ -2813,6 +2890,11 @@
       "description": "The client identifier cookie during client/server exchange.",
       "type": "string_t"
     },
+    "identity_activity_metrics": {
+      "caption": "Identity Activity Metrics",
+      "description": "Describes usage activity and other metrics of an Identity i.e. AWS IAM User, GCP IAM Principal, etc.",
+      "type": "identity_activity_metrics"
+    },
     "idle_timeout": {
       "caption": "SSO Idle Timeout",
       "description": "Duration (in minutes) of allowed inactivity before a timeout See specific usage.",
@@ -2900,12 +2982,6 @@
       "caption": "Impact Score",
       "description": "The impact as an integer value of the finding, valid range 0-100.",
       "type": "integer_t"
-    },
-    "intrusion_sets": {
-      "caption": "Intrusion Sets",
-      "description": "A grouping of adversarial behaviors and resources believed to be associated with specific threat actors or campaigns. Intrusion sets often encompass multiple campaigns and are used to organize related activities under a common label.",
-      "type": "string_t",
-      "is_array": true
     },
     "injection_type": {
       "caption": "Injection Type",
@@ -3034,6 +3110,12 @@
       "caption": "Internal Name",
       "description": "The name by which a resource identifies itself internally. See specific usage.",
       "type": "string_t"
+    },
+    "intrusion_sets": {
+      "caption": "Intrusion Sets",
+      "description": "A grouping of adversarial behaviors and resources believed to be associated with specific threat actors or campaigns. Intrusion sets often encompass multiple campaigns and are used to organize related activities under a common label.",
+      "type": "string_t",
+      "is_array": true
     },
     "invoked_by": {
       "caption": "Invoked by",
@@ -3190,19 +3272,24 @@
       "description": "The event occurred on a shared device.",
       "type": "boolean_t"
     },
+    "is_src_dst_assignment_known": {
+      "caption": "Source/Destination Assignment Known",
+      "description": "<code>true</code> denotes that <code>src_endpoint</code> and <code>dst_endpoint</code> correctly identify the initiator and responder respectively. <code>false</code> denotes that the event source has arbitrarily assigned one peer to <code>src_endpoint</code> and the other to <code>dst_endpoint</code>, in other words that initiator and responder are not being asserted. This can occur, for example, when the event source is a network appliance that has not observed the initiation of a given connection. In the absence of this attribute, interpretation of the initiator and responder is implementation-specific.",
+      "type": "boolean_t"
+    },
     "is_superseded": {
       "caption": "The patch is superseded.",
       "description": "The vendor patch has been replaced by another.",
       "type": "boolean_t"
     },
-    "is_suspected_breach": {
-      "caption": "Suspected Breach",
-      "description": "A determination based on analytics as to whether a potential breach was found.",
-      "type": "boolean_t"
-    },
     "is_supervised": {
       "caption": "Supervised Device",
       "description": "The event occurred on a supervised device. Devices that are supervised are typically mobile devices managed by a Mobile Device Management solution and are restricted from specific behaviors such as Apple AirDrop.",
+      "type": "boolean_t"
+    },
+    "is_suspected_breach": {
+      "caption": "Suspected Breach",
+      "description": "A determination based on analytics as to whether a potential breach was found.",
       "type": "boolean_t"
     },
     "is_system": {
@@ -3297,6 +3384,21 @@
       },
       "is_array": true
     },
+    "kerberos_flags": {
+      "caption": "Kerberos Flags",
+      "description": "A bitmask, either in hexadecimal or decimal form, which encodes various attributes or permissions associated with a Kerberos ticket. These flags delineate specific characteristics of the ticket, such as its renewability or forwardability.",
+      "type": "string_t",
+      "references": [
+        {
+          "description": "RFC 4120: 5.2.8.  KerberosFlags",
+          "url": "https://www.rfc-editor.org/rfc/rfc4120#section-5.2.8"
+        },
+        {
+          "description": "Microsoft Windows Security 4769 (see 'Ticket Options')",
+          "url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4769"
+        }
+      ]
+    },
     "kernel": {
       "caption": "Kernel",
       "description": "The kernel resource object that pertains to the event.",
@@ -3354,6 +3456,11 @@
       "description": "The two letter lower case language codes, as defined by <a target='_blank' href='https://en.wikipedia.org/wiki/ISO_639-1'>ISO 639-1</a>. For example: <code>en</code> (English), <code>de</code> (German), or <code>fr</code> (French).",
       "type": "string_t"
     },
+    "last_authentication_time": {
+      "caption": "Last Authentication Time",
+      "description": "The timestamp when this identity last successfully authenticated to any system or service. See specific usage.",
+      "type": "timestamp_t"
+    },
     "last_login_time": {
       "caption": "Last Login",
       "description": "The last time when the user logged in.",
@@ -3367,6 +3474,11 @@
     "last_seen_time": {
       "caption": "Last Seen",
       "description": "The most recent detection time of the activity or object. See specific usage.",
+      "type": "timestamp_t"
+    },
+    "last_used_time": {
+      "caption": "Last Used Time",
+      "description": "The most recent usage time of an entity. See specific usage.",
       "type": "timestamp_t"
     },
     "lat": {
@@ -3633,21 +3745,6 @@
       "description": "Describes details about the scan job that identified malware on the target system.",
       "type": "malware_scan_info"
     },
-    "num_volumes": {
-      "caption": "Number of Volumes",
-      "description": "The number of volumes in the storage device. See specific usage.",
-      "type": "integer_t"
-    },
-    "num_infected": {
-      "caption": "Number of Infected Entities",
-      "description": "The number of infected entities. See specific usage.",
-      "type": "integer_t"
-    },
-    "unique_malware_count": {
-      "caption": "Unique Malware Count",
-      "description": "The number of unique malware detected during a scan. See specific usage.",
-      "type": "integer_t"
-    },
     "manager": {
       "caption": "Manager",
       "description": "The user's manager. This helps in understanding an org hierarchy. This should only ever be populated once in an event. I.e. there should not be a manager's manager in an event.",
@@ -3663,6 +3760,11 @@
       "caption": "Match Location",
       "description": "The location of the matched data in the source which resulted in the triggered firewall rule. For example: HEADER.",
       "type": "string_t"
+    },
+    "meets_criteria": {
+      "caption": "Meets Criteria",
+      "description": "Determines if an assessment, control, policy, or otherwise meets its assessment criteria. See specific usage.",
+      "type": "boolean_t"
     },
     "meid": {
       "caption": "MEID",
@@ -3686,6 +3788,7 @@
       ]
     },
     "message_uid": {
+      "observable": 42,
       "caption": "Message UID",
       "description": "The email header Message-ID value, as defined by RFC 5322.",
       "source": "Message-ID",
@@ -3695,13 +3798,7 @@
           "description": "RFC 5322",
           "url": "https://www.rfc-editor.org/rfc/rfc5322"
         }
-      ],
-      "observable": 42
-    },
-    "meets_criteria": {
-      "caption": "Meets Criteria",
-      "description": "Determines if an assessment, control, policy, or otherwise meets its assessment criteria. See specific usage.",
-      "type": "boolean_t"
+      ]
     },
     "metadata": {
       "caption": "Metadata",
@@ -3828,6 +3925,11 @@
       "description": "The number of folders scanned.",
       "type": "integer_t"
     },
+    "num_infected": {
+      "caption": "Number of Infected Entities",
+      "description": "The number of infected entities. See specific usage.",
+      "type": "integer_t"
+    },
     "num_network_items": {
       "caption": "Scanned Network Items",
       "description": "The number of network items scanned.",
@@ -3863,6 +3965,11 @@
       "description": "The number of times the policy or rule was violated.",
       "type": "integer_t"
     },
+    "num_volumes": {
+      "caption": "Number of Volumes",
+      "description": "The number of volumes in the storage device. See specific usage.",
+      "type": "integer_t"
+    },
     "number": {
       "caption": "Number",
       "description": "The number of the entity. See specific usage.",
@@ -3879,6 +3986,27 @@
         }
       ],
       "is_array": true
+    },
+    "observation_parameter": {
+      "caption": "Observation Parameter",
+      "description": "The name of the parameter being analyzed or monitored. This generally identifies the specific characteristic or property being measured. See specific usage.",
+      "type": "string_t"
+    },
+    "observation_type": {
+      "caption": "Observation Type",
+      "description": "The classification or category of the observation, indicating what kind of measurement or finding it represents. See specific usage.",
+      "type": "string_t"
+    },
+    "observations": {
+      "caption": "Observations",
+      "description": "A list of individual observations or measurements collected during analysis. Each observation captures a specific data point. See specific usage.",
+      "type": "observation",
+      "is_array": true
+    },
+    "observed_pattern": {
+      "caption": "Observed Pattern",
+      "description": "A detected pattern or trend identified in the analyzed data, describing recurring activities or characteristics.",
+      "type": "string_t"
     },
     "occurrence_details": {
       "caption": "Occurrence Details",
@@ -3947,6 +4075,12 @@
       "caption": "Open Mask",
       "description": "The Windows options needed to open a registry key.",
       "type": "integer_t"
+    },
+    "open_ports": {
+      "caption": "Open Ports",
+      "description": "The list of open ports on a network interface, including port numbers and associated protocol information.",
+      "type": "port_info",
+      "is_array": true
     },
     "open_type": {
       "caption": "Open Type",
@@ -4081,8 +4215,8 @@
       "type": "process",
       "references": [
         {
-          "url": "https://github.com/ocsf/ocsf-docs/blob/main/articles/representing-process-parentage.md",
-          "description": "Guidance on Representing Process Parentage"
+          "description": "Guidance on Representing Process Parentage",
+          "url": "https://github.com/ocsf/ocsf-docs/blob/main/articles/representing-process-parentage.md"
         }
       ]
     },
@@ -4090,6 +4224,11 @@
       "caption": "Parent Unique ID",
       "description": "The unique identifier of an object's parent object. See specific usage.",
       "type": "string_t"
+    },
+    "password_last_used_time": {
+      "caption": "Password Last Used Time",
+      "description": "The time when a user's password was last used. See specific usage.",
+      "type": "timestamp_t"
     },
     "path": {
       "caption": "Path",
@@ -4115,6 +4254,12 @@
       "caption": "Permission",
       "description": "The IAM permission related to an event",
       "type": "string_t"
+    },
+    "permission_analysis_results": {
+      "caption": "Permission Analysis Results",
+      "description": "Describes analysis results of permissions, policies directly associated with an identity (user, role, or service account). This evaluates what permissions an identity has been granted through attached policies, which privileges are actively used versus unused, and identifies potential over-privileged access. Use this for identity-centric security assessments such as privilege audits, dormant permission discovery, and least-privilege compliance analysis.",
+      "type": "permission_analysis_result",
+      "is_array": true
     },
     "phase": {
       "caption": "Kill Chain Phase",
@@ -4341,6 +4486,12 @@
       "type": "string_t",
       "is_array": true
     },
+    "programmatic_credentials": {
+      "caption": "Programmatic Credentials",
+      "description": "Details about the programmatic credential (API key, service account key, access token, certificate). See specific usage.",
+      "type": "programmatic_credential",
+      "is_array": true
+    },
     "project_uid": {
       "caption": "Project ID",
       "description": "The unique identifier of a Cloud project.",
@@ -4430,6 +4581,11 @@
       "caption": "Proxy Traffic",
       "description": "The network traffic refers to the amount of data moving across a network, from proxy to remote server at a given point of time.",
       "type": "network_traffic"
+    },
+    "ptid": {
+      "caption": "Process Thread ID",
+      "description": "The identifier of the process thread associated with the event, as returned by the operating system.",
+      "type": "long_t"
     },
     "purl": {
       "caption": "Package URL",
@@ -4795,10 +4951,10 @@
     },
     "reply_to": {
       "caption": "Reply To",
-      "description": "The machine-readable email header Reply-To values, as defined by RFC 5322. For example <code>example.user@usersdomain.com</code>",
+      "description": "The machine-readable email header Reply-To value, as defined by RFC 5322. For example <code>example.user@usersdomain.com</code>",
       "type": "email_t",
       "@deprecated": {
-        "message": "Use the <code>reply_to_mailboxes</code> attribute instead.",
+        "message": "Use the <code>reply_to_list</code> attribute instead.",
         "since": "1.4.0"
       },
       "references": [
@@ -4807,6 +4963,18 @@
           "url": "https://www.rfc-editor.org/rfc/rfc5322"
         }
       ]
+    },
+    "reply_to_list": {
+      "caption": "Reply To List",
+      "description": "The machine-readable email header Reply-To values, as defined by RFC 5322. For example <code>example.user@usersdomain.com</code>",
+      "type": "email_t",
+      "references": [
+        {
+          "description": "RFC 5322",
+          "url": "https://www.rfc-editor.org/rfc/rfc5322"
+        }
+      ],
+      "is_array": true
     },
     "reply_to_mailboxes": {
       "caption": "Reply To Mailboxes",
@@ -4878,6 +5046,21 @@
       "description": "The Domain Name System (DNS) response time.",
       "type": "timestamp_t"
     },
+    "return_path": {
+      "caption": "Return Path",
+      "description": "The address found in the 'Return-Path' header, which indicates where bounce messages (non-delivery reports) should be sent. This address is often set by the sending system and may differ from the 'From' or 'Sender' addresses. For example, <code>mailer-daemon@senderserver.com</code>.",
+      "type": "email_t",
+      "references": [
+        {
+          "description": "RFC 5322",
+          "url": "https://www.rfc-editor.org/rfc/rfc5322"
+        },
+        {
+          "description": "RFC 5321 - Simple Mail Transfer Protocol",
+          "url": "https://datatracker.ietf.org/doc/html/rfc5321#section-4.4"
+        }
+      ]
+    },
     "risk_details": {
       "caption": "Risk Details",
       "description": "Describes the risk associated with the finding.",
@@ -4922,6 +5105,27 @@
       "caption": "Risk Score",
       "description": "The risk score as reported by the event source.",
       "type": "integer_t"
+    },
+    "role": {
+      "caption": "Role",
+      "description": "The role of an entity in the context of the event or finding, normalized to the caption of the role_id value. In the case of 'Other', it is defined by the event source. See specific usage.",
+      "type": "string_t"
+    },
+    "role_id": {
+      "caption": "Role ID",
+      "description": "The normalized identifier of an entity's role in the context of the event or finding. See specific usage.",
+      "sibling": "role",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The role is unknown."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The role is not mapped. See the role attribute, which contains a data source specific value."
+        }
+      }
     },
     "row_number": {
       "caption": "Row Number",
@@ -5218,6 +5422,28 @@
       "description": "The current security states. See specific usage.",
       "type": "security_state",
       "is_array": true
+    },
+    "sender": {
+      "caption": "Sender",
+      "description": "The machine readable email address of the system or server that actually transmitted the email message, extracted from the email headers per RFC 5322. This differs from the <code>from</code> field, which shows the message author. The sender field is most commonly used when multiple addresses appear in the <code> from_list </code> field, or when the transmitting system is different from the message author (such as when sending on behalf of someone else).",
+      "type": "email_t",
+      "references": [
+        {
+          "description": "RFC 5322",
+          "url": "https://www.rfc-editor.org/rfc/rfc5322"
+        }
+      ]
+    },
+    "sender_mailbox": {
+      "caption": "Sender Mailbox",
+      "description": "The human readable email address of the system or server that actually transmitted the email message, extracted from the email headers per RFC 5322. This differs from the <code>from_mailbox</code> field, which shows the message author. The sender mailbox field is most commonly used when multiple addresses appear in the <code> from_mailboxes </code> field, or when the transmitting system is different from the message author (such as when sending on behalf of someone else).",
+      "type": "string_t",
+      "references": [
+        {
+          "description": "RFC 5322",
+          "url": "https://www.rfc-editor.org/rfc/rfc5322"
+        }
+      ]
     },
     "sensitivity": {
       "caption": "Sensitivity",
@@ -5590,7 +5816,7 @@
         },
         "99": {
           "caption": "Other",
-          "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
+          "description": "The status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
         }
       }
     },
@@ -5852,6 +6078,17 @@
       "description": "The time when the entity was terminated. See specific usage.",
       "type": "timestamp_t"
     },
+    "threat_actor": {
+      "caption": "Threat Actor",
+      "description": "A threat actor is an individual or group that conducts malicious cyber activities, often with financial, political, or ideological motives.",
+      "type": "threat_actor",
+      "references": [
+        {
+          "description": "STIX Threat Actor definition",
+          "url": "https://stixproject.github.io/data-model/1.2/ta/ThreatActorType/"
+        }
+      ]
+    },
     "ticket": {
       "caption": "Ticket",
       "description": "The linked ticket in the ticketing system.",
@@ -5865,13 +6102,22 @@
     },
     "tid": {
       "caption": "Thread ID",
-      "description": "The Identifier of the thread associated with the event, as returned by the operating system.",
-      "type": "integer_t"
+      "description": "The identifier of the thread associated with the event, as returned by the operating system.",
+      "type": "integer_t",
+      "@deprecated": {
+        "message": "<code>tid</code> is deprecated in favor of <code>ptid</code>. <code>ptid</code> has type <code>long_t</code> which can accommodate the thread identifiers returned by all platforms (e.g. 64-bit on MacOS).",
+        "since": "1.6.0"
+      }
     },
     "time": {
       "caption": "Event Time",
       "description": "The normalized event occurrence time or the finding creation time.",
       "type": "timestamp_t"
+    },
+    "timespan": {
+      "caption": "Time Span",
+      "description": "The Time Span object represents different time period durations. If a timespan is fractional, i.e. crosses one period, e.g. a week and 3 days, more than one may be populated since each member is of integral type. In that case <code>type_id</code> if present should be set to <code>Other.</code><P>A timespan may also be defined by its time interval boundaries, <code>start_time</code> and <code>end_time</code>.",
+      "type": "timespan"
     },
     "timezone_offset": {
       "caption": "Timezone Offset",
@@ -5948,6 +6194,12 @@
       "description": "The network traffic refers to the amount of data moving across a network at a given point of time. Intended to be used alongside Network Connection.",
       "type": "network_traffic"
     },
+    "traits": {
+      "caption": "Traits",
+      "description": "The traits that describe characteristics, features of an entity. See specific usage.",
+      "type": "trait",
+      "is_array": true
+    },
     "transaction_uid": {
       "caption": "Transaction UID",
       "description": "The unique identifier of the transaction.",
@@ -5968,17 +6220,6 @@
       "caption": "Tree UID",
       "description": "The tree id is a unique SMB identifier which represents an open connection to a share.",
       "type": "string_t"
-    },
-    "threat_actor": {
-      "caption": "Threat Actor",
-      "description": "A threat actor is an individual or group that conducts malicious cyber activities, often with financial, political, or ideological motives.",
-      "type": "threat_actor",
-      "references": [
-        {
-          "description": "STIX Threat Actor definition",
-          "url": "https://stixproject.github.io/data-model/1.2/ta/ThreatActorType/"
-        }
-      ]
     },
     "ttl": {
       "caption": "TTL",
@@ -6060,6 +6301,11 @@
       "description": "The alternate unique identifier. See specific usage.",
       "type": "string_t"
     },
+    "unique_malware_count": {
+      "caption": "Unique Malware Count",
+      "description": "The number of unique malware detected during a scan. See specific usage.",
+      "type": "integer_t"
+    },
     "unmanned_aerial_system": {
       "caption": "Unmanned Aerial System",
       "description": "The Unmanned Aerial System object describes the characteristics, Position Location Information (PLI), and other metadata of Unmanned Aerial Systems (UAS) and other unmanned and drone systems used in Remote ID. Remote ID is defined in the Standard Specification for Remote ID and Tracking (ASTM Designation: F3411-22a) <a target='_blank' href='https://cdn.standards.iteh.ai/samples/112830/71297057ac42432880a203654f213709/ASTM-F3411-22a.pdf'>ASTM F3411-22a</a>.",
@@ -6085,21 +6331,31 @@
       "description": "The size in bytes of an attribute before truncation. See specific usage.",
       "type": "integer_t"
     },
+    "unused_privileges_count": {
+      "caption": "Unused Privileges Count",
+      "description": "The number of unused Privileges. See specific usage.",
+      "type": "integer_t"
+    },
+    "unused_services_count": {
+      "caption": "Unused Services Count",
+      "description": "The number of unused services. See specific usage.",
+      "type": "integer_t"
+    },
+    "uploaded_time": {
+      "caption": "Uploaded Time",
+      "description": "The timestamp at which an entity was uploaded. See specific usage.",
+      "type": "timestamp_t"
+    },
     "uri": {
       "caption": "URI",
       "description": "A Uniform Resource Identifier (URI) is a string of characters that identifies a resource on the Internet. URIs can identify physical resources, like webpages and documents. See specific usage.",
       "type": "url_t",
       "references": [
         {
-          "url": "https://datatracker.ietf.org/doc/html/rfc3986",
-          "description": "RFC 3986"
+          "description": "RFC 3986",
+          "url": "https://datatracker.ietf.org/doc/html/rfc3986"
         }
       ]
-    },
-    "uploaded_time": {
-      "caption": "Uploaded Time",
-      "description": "The timestamp at which an entity was uploaded. See specific usage.",
-      "type": "timestamp_t"
     },
     "url": {
       "caption": "URL",
@@ -6310,17 +6566,11 @@
       "caption": "Network Zone",
       "description": "The network zone or LAN segment.",
       "type": "string_t"
-    },
-    "traits": {
-      "caption": "Traits",
-      "description": "The traits that describe characteristics, features of an entity. See specific usage.",
-      "type": "trait",
-      "is_array": true
     }
   },
   "types": {
     "caption": "Data Types",
-    "description": "The data types available in OCSF. Each data type specifies constraints in the form regular expressions, max lengths or value limits. Implementors of OCSF should ensure they abide to these constraints.",
+    "description": "The data types available in OCSF. Each data type specifies constraints in the form regular expressions, max lengths or value limits. Implementers of OCSF should ensure they abide to these constraints.",
     "attributes": {
       "boolean_t": {
         "caption": "Boolean",
@@ -6332,7 +6582,14 @@
       },
       "bytestring_t": {
         "caption": "Byte String",
-        "description": "Base64 encoded immutable byte sequence.",
+        "description": "Base 64 encoded immutable byte sequence. Traditional Base 64 is preferred but publishers may use URL-safe Base 64 when known to be acceptable to consumers. These encodings are described in RFC 4648.",
+        "references": [
+          {
+            "description": "RFC 4648",
+            "url": "https://www.rfc-editor.org/rfc/rfc4648.html"
+          }
+        ],
+        "regex": "^(?:(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)|(?:[A-Za-z0-9_-]{4})*(?:[A-Za-z0-9_-]{2}==|[A-Za-z0-9_-]{3}=))?$",
         "type": "string_t",
         "type_name": "String"
       },

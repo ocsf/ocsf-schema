@@ -41,8 +41,8 @@
       }
     },
     "control": {
-      "requirement": "recommended",
       "description": "A Control is a prescriptive, actionable set of specifications that strengthens device posture. The control specifies required security measures, while the specific implementation values are defined in control_parameters. E.g., CIS AWS Foundations Benchmark 1.2.0 - Control 2.1 - Ensure CloudTrail is enabled in all regions",
+      "requirement": "recommended",
       "references": [
         {
           "description": "CIS AWS Foundations Benchmark 1.2.0",
@@ -55,8 +55,8 @@
       ]
     },
     "control_parameters": {
-      "requirement": "optional",
       "description": "The list of control parameters evaluated in a Compliance check. E.g., parameters for CloudTrail configuration might include <code>multiRegionTrailEnabled: true</code>, <code>logFileValidationEnabled: true</code>, and <code>requiredRegions: [us-east-1, us-west-2]</code>",
+      "requirement": "optional",
       "references": [
         {
           "description": "AWS CloudTrail Configuration Parameters",
@@ -77,8 +77,8 @@
       "requirement": "optional"
     },
     "requirements": {
-      "requirement": "optional",
       "description": "The specific compliance requirements being evaluated. E.g., <code>PCI DSS Requirement 8.2.3 - Passwords must meet minimum complexity requirements</code> or <code>HIPAA Security Rule 164.312(a)(2)(iv) - Implement encryption and decryption mechanisms</code>",
+      "requirement": "optional",
       "references": [
         {
           "description": "PCI DSS Standards",
@@ -91,8 +91,8 @@
       ]
     },
     "standards": {
-      "requirement": "recommended",
       "description": "The regulatory or industry standards being evaluated for compliance.",
+      "requirement": "recommended",
       "references": [
         {
           "description": "PCI DSS 3.2.1",
@@ -121,12 +121,12 @@
       "requirement": "optional"
     },
     "status_detail": {
+      "description": "The contextual description of the <code>status, status_code</code> values.",
+      "requirement": "optional",
       "@deprecated": {
         "message": "Use the <code> status_details </code> attribute instead.",
         "since": "1.4.0"
-      },
-      "description": "The contextual description of the <code>status, status_code</code> values.",
-      "requirement": "optional"
+      }
     },
     "status_details": {
       "description": "A list of contextual descriptions of the <code>status, status_code</code> values.",
@@ -134,6 +134,7 @@
     },
     "status_id": {
       "description": "The normalized status identifier of the compliance check.",
+      "requirement": "recommended",
       "enum": {
         "1": {
           "caption": "Pass",
@@ -147,8 +148,7 @@
           "caption": "Fail",
           "description": "The compliance check failed for at least one of the evaluated resources."
         }
-      },
-      "requirement": "recommended"
+      }
     }
   }
 }

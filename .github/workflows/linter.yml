@@ -1,52 +1,30 @@
 ---
-#################################
-#################################
-## Super Linter GitHub Actions ##
-#################################
-#################################
-name: Lint Code Base
+name: Lint OCSF Metaschema
 
-#############################
-# Start the job on all push #
-#############################
 on:
   workflow_dispatch:
-  # push:
-    # branches-ignore: [master, main]
-    # Remove the line above to run when pushing to master
-  # pull_request:
-    # branches: [master, main]
+  pull_request:
+    branches: 
+      - main
 
-###############
-# Set the Job #
-###############
+# Cancel in-progress runs when a new workflow with the same ID is triggered
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  build:
-    # Name the Job
-    name: Lint Code Base
-    # Set the agent to run on
+  lint:
+    name: Lint OCSF Metaschema
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
-    ##################
-    # Load all steps #
-    ##################
     steps:
-      ##########################
-      # Checkout the code base #
-      ##########################
       - name: Checkout Code
-        uses: actions/checkout@v3
-        with:
-          # Full git history is needed to get a proper
-          # list of changed files within `super-linter`
-          fetch-depth: 0
+        uses: actions/checkout@v4
 
-      ################################
-      # Run Linter against code base #
-      ################################
-      - name: Lint Code Base
-        uses: github/super-linter@v4
-        env:
-          VALIDATE_ALL_CODEBASE: false
-          DEFAULT_BRANCH: main
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Spellcheck all content
+        uses: streetsidesoftware/cspell-action@v7
+        with:
+          config: .github/.cspell.yaml
+          strict: false
+          inline: warning

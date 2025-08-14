@@ -17,6 +17,13 @@
       "description": "Any pertinent autonomous system information related to an indicator or OSINT analysis.",
       "requirement": "optional"
     },
+    "campaign": {
+      "requirement": "optional"
+    },
+    "category": {
+      "description": "Categorizes the threat indicator based on its functional or operational role.",
+      "requirement": "optional"
+    },
     "comment": {
       "caption": "Analyst Comments",
       "description": "Analyst commentary or source commentary about an indicator or OSINT analysis.",
@@ -30,13 +37,6 @@
       "description": "The normalized confidence refers to the accuracy of collected information related to the OSINT or how pertinent an indicator or analysis is to a specific event or finding. A low confidence means that the information collected or analysis conducted lacked detail or is not accurate enough to qualify an indicator as fully malicious.",
       "requirement": "recommended"
     },
-    "campaign": {
-      "requirement": "optional"
-    },
-    "category": {
-      "description": "Categorizes the threat indicator based on its functional or operational role.",
-      "requirement": "optional"
-    },
     "created_time": {
       "description": "The timestamp when the indicator was initially created or identified.",
       "requirement": "optional"
@@ -47,6 +47,16 @@
     },
     "desc": {
       "description": "A detailed explanation of the indicator, including its context, purpose, and relevance.",
+      "requirement": "optional"
+    },
+    "detection_pattern": {
+      "description": "The specific detection pattern or signature associated with the indicator.",
+      "requirement": "optional"
+    },
+    "detection_pattern_type": {
+      "requirement": "optional"
+    },
+    "detection_pattern_type_id": {
       "requirement": "optional"
     },
     "email": {
@@ -69,16 +79,6 @@
     "file": {
       "caption": "Related File",
       "description": "Any pertinent file information related to an indicator or OSINT analysis.",
-      "requirement": "optional"
-    },
-    "detection_pattern": {
-      "description": "The specific detection pattern or signature associated with the indicator.",
-      "requirement": "optional"
-    },
-    "detection_pattern_type": {
-      "requirement": "optional"
-    },
-    "detection_pattern_type_id": {
       "requirement": "optional"
     },
     "intrusion_sets": {
@@ -107,6 +107,10 @@
       "description": "The <code>name</code> is a pointer/reference to an attribute within the OCSF event data. For example: file.name.",
       "requirement": "optional"
     },
+    "references": {
+      "description": "Provides a reference to an external source of information related to the CTI being represented. This may include a URL, a document, or some other type of reference that provides additional context or information about the CTI.",
+      "requirement": "optional"
+    },
     "related_analytics": {
       "caption": "Related Analytics",
       "description": "Any analytics related to an indicator or OSINT analysis.",
@@ -118,10 +122,6 @@
     },
     "risk_score": {
       "description": "A numerical representation of the threat indicator’s risk level.",
-      "requirement": "optional"
-    },
-    "references": {
-      "description": "Provides a reference to an external source of information related to the CTI being represented. This may include a URL, a document, or some other type of reference that provides additional context or information about the CTI.",
       "requirement": "optional"
     },
     "script": {
@@ -162,6 +162,8 @@
     "tlp": {
       "caption": "Traffic Light Protocol",
       "description": "The <a target='_blank' href='https://www.first.org/tlp/'>Traffic Light Protocol</a> was created to facilitate greater sharing of potentially sensitive information and more effective collaboration. TLP provides a simple and intuitive schema for indicating with whom potentially sensitive information can be shared.",
+      "requirement": "recommended",
+      "type": "string_t",
       "enum": {
         "AMBER": {
           "caption": "TLP:AMBER",
@@ -187,9 +189,7 @@
           "caption": "TLP:WHITE",
           "description": "TLP:WHITE and TLP:CLEAR may be used interchangeably, TLP:WHITE is the most up to date (as of TLP 2.0) usage."
         }
-      },
-      "requirement": "recommended",
-      "type": "string_t"
+      }
     },
     "type": {
       "description": "The OSINT indicator type.",
@@ -198,6 +198,7 @@
     "type_id": {
       "caption": "Indicator Type ID",
       "description": "The OSINT indicator type ID.",
+      "requirement": "required",
       "enum": {
         "0": {
           "caption": "Unknown",
@@ -206,26 +207,6 @@
         "1": {
           "caption": "IP Address",
           "description": "An IPv4 or IPv6 address."
-        },
-        "10": {
-          "caption": "Vulnerability",
-          "description": "A CVE ID, CWE ID, or other identifier for a weakness, exploit, bug, or misconfiguration."
-        },
-        "11": {
-          "caption": "File",
-          "description": "A file or metadata about a file."
-        },
-        "12": {
-          "caption": "Registry Key",
-          "description": "A Windows Registry Key."
-        },
-        "13": {
-          "caption": "Registry Value",
-          "description": "A Windows Registry Value."
-        },
-        "14": {
-          "caption": "Command Line",
-          "description": "A partial or full Command Line used to invoke scripts or other remote commands."
         },
         "2": {
           "caption": "Domain",
@@ -259,12 +240,31 @@
           "caption": "Email Address",
           "description": "An email address."
         },
+        "10": {
+          "caption": "Vulnerability",
+          "description": "A CVE ID, CWE ID, or other identifier for a weakness, exploit, bug, or misconfiguration."
+        },
+        "11": {
+          "caption": "File",
+          "description": "A file or metadata about a file."
+        },
+        "12": {
+          "caption": "Registry Key",
+          "description": "A Windows Registry Key."
+        },
+        "13": {
+          "caption": "Registry Value",
+          "description": "A Windows Registry Value."
+        },
+        "14": {
+          "caption": "Command Line",
+          "description": "A partial or full Command Line used to invoke scripts or other remote commands."
+        },
         "99": {
           "caption": "Other",
           "description": "The indicator type is not directly listed."
         }
-      },
-      "requirement": "required"
+      }
     },
     "uid": {
       "description": "The unique identifier for the OSINT object.",

@@ -1,0 +1,48 @@
+{
+  "uid": 8,
+  "caption": "IAM Analysis Finding",
+  "description": "This finding represents an IAM analysis result, which evaluates IAM policies, access patterns, and IAM configurations for potential security risks. The analysis can focus on either an identity (user, role, service account) or a resource to assess permissions, access patterns, and security posture within the IAM domain. <br><strong>Note:</strong> Use <code>permission_analysis_results</code> for identity-centric analysis (evaluating what an identity can do) and <code>access_analysis_result</code> for resource-centric analysis (evaluating who can access a resource). These complement each other for comprehensive IAM security assessment.<br><strong>Note:</strong> If the Finding is an incident, i.e. requires incident workflow, also apply the <code>incident</code> profile or aggregate this finding into an <code>Incident Finding</code>.",
+  "extends": "finding",
+  "name": "iam_analysis_finding",
+  "attributes": {
+    "access_analysis_result": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "applications": {
+      "description": "Details about applications, services, or systems that are accessible based on the IAM analysis. For identity-centric analysis, this represents applications the identity can access. For resource-centric analysis, this represents applications that can access the resource.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "identity_activity_metrics": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "permission_analysis_results": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "remediation": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "resources": {
+      "description": "Details about resources involved in the IAM analysis. For identity-centric analysis, this represents resources the identity can access. For resource-centric analysis, this represents the resource being analyzed and related resources in the access chain.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "user": {
+      "description": "Details about the identity (user, role, service account, or other principal) that is the subject of the IAM analysis. This provides context about the identity being evaluated for security risks and access patterns.",
+      "group": "primary",
+      "requirement": "recommended"
+    }
+  },
+  "constraints": {
+    "at_least_one": [
+      "access_analysis_result",
+      "applications",
+      "identity_activity_metrics",
+      "permission_analysis_results"
+    ]
+  }
+}

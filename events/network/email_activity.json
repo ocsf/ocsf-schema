@@ -28,6 +28,10 @@
               "url": "href='https://learn.microsoft.com/en-us/Exchange/monitoring/trace-an-email-message/message-trace-modern-eac"
             }
           ]
+        },
+        "5": {
+          "caption": "MTA Relay",
+          "description": "Email processed by an MTA, typically combining send, receive, and scan operations into a single activity."
         }
       }
     },
@@ -89,6 +93,11 @@
       "group": "primary",
       "requirement": "recommended"
     },
+    "from": {
+      "description": "The sender address from the transmission envelope. This reflects the actual sending party and may differ from the 'From' header in the message.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
     "message_trace_uid": {
       "group": "primary",
       "requirement": "recommended"
@@ -109,6 +118,11 @@
     },
     "src_endpoint": {
       "description": "The initiator (client) sending the email.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "to": {
+      "description": "The recipient address from the transmission envelope. This may differ from the 'To' header and represents where the message was actually delivered.",
       "group": "primary",
       "requirement": "recommended"
     }

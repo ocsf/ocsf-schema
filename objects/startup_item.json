@@ -21,6 +21,7 @@
     },
     "run_mode_ids": {
       "description": "The list of normalized identifiers that describe the startup items' properties when it is running.  Use this field to capture extended information about the process, which may depend on the type of startup item.  E.g., A Windows service that interacts with the desktop.",
+      "requirement": "optional",
       "enum": {
         "1": {
           "caption": "Interactive",
@@ -34,8 +35,7 @@
           "caption": "Shared Process",
           "description": "The startup item runs in a shared process."
         }
-      },
-      "requirement": "optional"
+      }
     },
     "run_modes": {
       "description": "The list of run_modes, normalized to the captions of the run_mode_id values.  In the case of 'Other', they are defined by the event source.",
@@ -47,6 +47,7 @@
     },
     "run_state_id": {
       "description": "The run state ID of the startup item.",
+      "requirement": "recommended",
       "enum": {
         "1": {
           "caption": "Stopped",
@@ -80,8 +81,7 @@
           "caption": "Restart Pending",
           "description": "The service is pending restart."
         }
-      },
-      "requirement": "recommended"
+      }
     },
     "start_type": {
       "description": "The start type of the startup item.",
@@ -100,6 +100,8 @@
     "type_id": {
       "caption": "Type ID",
       "description": "The startup item type identifier.",
+      "requirement": "recommended",
+      "type": "integer_t",
       "enum": {
         "0": {
           "caption": "Unknown",
@@ -141,9 +143,7 @@
           "caption": "Other",
           "description": "The startup item type is not mapped. See the <code>type</code> attribute, which contains data source specific values."
         }
-      },
-      "requirement": "recommended",
-      "type": "integer_t"
+      }
     }
   },
   "constraints": {

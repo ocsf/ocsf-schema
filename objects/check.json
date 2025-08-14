@@ -32,100 +32,6 @@
         }
       ]
     },
-    "uid": {
-      "description": "The unique identifier of the compliance check within its standard or framework. For example, CIS Benchmark identifier <code>1.1.1.1</code>, DISA STIG identifier <code>V-230234</code>, or NIST control identifier <code>AC-17(2)</code>.",
-      "requirement": "recommended",
-      "references": [
-        {
-          "description": "CIS Benchmark ID Format",
-          "url": "https://www.cisecurity.org/cis-benchmarks"
-        },
-        {
-          "description": "DISA STIG ID Format",
-          "url": "https://public.cyber.mil/stigs/downloads"
-        },
-        {
-          "description": "NIST SP 800-53 Control IDs",
-          "url": "https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final"
-        }
-      ]
-    },
-    "version": {
-      "description": "The check version. For example, CIS Benchmark: <code>1.1.0</code> for Amazon Linux 2 or DISA STIG: <code>V2R1</code> for Windows 10.",
-      "requirement": "optional",
-      "references": [
-        {
-          "description": "CIS Benchmark Versioning",
-          "url": "https://www.cisecurity.org/cis-benchmarks"
-        },
-        {
-          "description": "DISA STIG Version Numbering",
-          "url": "https://public.cyber.mil/stigs/downloads"
-        }
-      ]
-    },
-    "standards": {
-      "description": "The regulatory or industry standard this check is associated with. E.g., <code>PCI DSS 3.2.1</code>, <code>HIPAA Security Rule</code>, <code>NIST SP 800-53 Rev. 5</code>, or <code>ISO/IEC 27001:2013</code>.",
-      "requirement": "recommended",
-      "references": [
-        {
-          "description": "PCI DSS 3.2.1",
-          "url": "https://www.pcisecuritystandards.org/document_library"
-        },
-        {
-          "description": "HIPAA Security Rule",
-          "url": "https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html"
-        },
-        {
-          "description": "NIST SP 800-53 Rev. 5",
-          "url": "https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final"
-        },
-        {
-          "description": "ISO/IEC 27001:2013",
-          "url": "https://www.iso.org/standard/54534.html"
-        }
-      ]
-    },
-    "status": {
-      "description": "The resultant status of the compliance check normalized to the caption of the <code>status_id</code> value. For example, CIS Benchmark: <code>Pass</code> when all requirements are met, <code>Fail</code> when requirements are not met, or DISA STIG: <code>NotAFinding</code> (maps to status_id 1/Pass), <code>Open</code> (maps to status_id 3/Fail).",
-      "requirement": "recommended",
-      "references": [
-        {
-          "description": "CIS Benchmark Compliance Status",
-          "url": "https://www.cisecurity.org/cis-benchmarks"
-        },
-        {
-          "description": "DISA STIG Status Types",
-          "url": "https://public.cyber.mil/stigs/srg-stig-tools/"
-        }
-      ]
-    },
-    "status_id": {
-      "description": "The normalized status identifier of the compliance check.",
-      "enum": {
-        "0": {
-          "caption": "Unknown",
-          "description": "The status is unknown."
-        },
-        "1": {
-          "caption": "Pass",
-          "description": "The compliance check passed for all the evaluated resources."
-        },
-        "2": {
-          "caption": "Warning",
-          "description": "The compliance check did not yield a result due to missing information."
-        },
-        "3": {
-          "caption": "Fail",
-          "description": "The compliance check failed for at least one of the evaluated resources."
-        },
-        "99": {
-          "caption": "Other",
-          "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
-        }
-      },
-      "requirement": "recommended"
-    },
     "severity": {
       "description": "The severity level as defined in the source document. For example CIS Benchmarks, valid values are: <code>Level 1</code> (security-forward, essential settings), <code>Level 2</code> (security-focused environment, more restrictive), or <code>Scored/Not Scored</code> (whether compliance can be automatically checked). For DISA STIG, valid values are: <code>CAT I</code> (maps to severity_id 5/Critical), <code>CAT II</code> (maps to severity_id 4/High), or <code>CAT III</code> (maps to severity_id 3/Medium).",
       "requirement": "optional",
@@ -177,6 +83,100 @@
           "description": "The severity is not mapped. See the <code>severity</code> attribute, which contains a data source specific value."
         }
       }
+    },
+    "standards": {
+      "description": "The regulatory or industry standard this check is associated with. E.g., <code>PCI DSS 3.2.1</code>, <code>HIPAA Security Rule</code>, <code>NIST SP 800-53 Rev. 5</code>, or <code>ISO/IEC 27001:2013</code>.",
+      "requirement": "recommended",
+      "references": [
+        {
+          "description": "PCI DSS 3.2.1",
+          "url": "https://www.pcisecuritystandards.org/document_library"
+        },
+        {
+          "description": "HIPAA Security Rule",
+          "url": "https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html"
+        },
+        {
+          "description": "NIST SP 800-53 Rev. 5",
+          "url": "https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final"
+        },
+        {
+          "description": "ISO/IEC 27001:2013",
+          "url": "https://www.iso.org/standard/54534.html"
+        }
+      ]
+    },
+    "status": {
+      "description": "The resultant status of the compliance check normalized to the caption of the <code>status_id</code> value. For example, CIS Benchmark: <code>Pass</code> when all requirements are met, <code>Fail</code> when requirements are not met, or DISA STIG: <code>NotAFinding</code> (maps to status_id 1/Pass), <code>Open</code> (maps to status_id 3/Fail).",
+      "requirement": "recommended",
+      "references": [
+        {
+          "description": "CIS Benchmark Compliance Status",
+          "url": "https://www.cisecurity.org/cis-benchmarks"
+        },
+        {
+          "description": "DISA STIG Status Types",
+          "url": "https://public.cyber.mil/stigs/srg-stig-tools/"
+        }
+      ]
+    },
+    "status_id": {
+      "description": "The normalized status identifier of the compliance check.",
+      "requirement": "recommended",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The status is unknown."
+        },
+        "1": {
+          "caption": "Pass",
+          "description": "The compliance check passed for all the evaluated resources."
+        },
+        "2": {
+          "caption": "Warning",
+          "description": "The compliance check did not yield a result due to missing information."
+        },
+        "3": {
+          "caption": "Fail",
+          "description": "The compliance check failed for at least one of the evaluated resources."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The event status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
+    "uid": {
+      "description": "The unique identifier of the compliance check within its standard or framework. For example, CIS Benchmark identifier <code>1.1.1.1</code>, DISA STIG identifier <code>V-230234</code>, or NIST control identifier <code>AC-17(2)</code>.",
+      "requirement": "recommended",
+      "references": [
+        {
+          "description": "CIS Benchmark ID Format",
+          "url": "https://www.cisecurity.org/cis-benchmarks"
+        },
+        {
+          "description": "DISA STIG ID Format",
+          "url": "https://public.cyber.mil/stigs/downloads"
+        },
+        {
+          "description": "NIST SP 800-53 Control IDs",
+          "url": "https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final"
+        }
+      ]
+    },
+    "version": {
+      "description": "The check version. For example, CIS Benchmark: <code>1.1.0</code> for Amazon Linux 2 or DISA STIG: <code>V2R1</code> for Windows 10.",
+      "requirement": "optional",
+      "references": [
+        {
+          "description": "CIS Benchmark Versioning",
+          "url": "https://www.cisecurity.org/cis-benchmarks"
+        },
+        {
+          "description": "DISA STIG Version Numbering",
+          "url": "https://public.cyber.mil/stigs/downloads"
+        }
+      ]
     }
   }
 }

@@ -44,10 +44,12 @@ Thankyou! -->
 ### Added
 * #### Categories
 * #### Event Classes
+    1. Added `Peripheral Activity` event class to the System category. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
 * #### Profiles
 * #### Objects
 * #### Platform Extensions
 * #### Dictionary Attributes
+    1. Added `vendor_id_list` as a `string_t` array. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
 
 ### Improved
 * #### Categories
@@ -56,12 +58,14 @@ Thankyou! -->
 * #### Objects
 * #### Platform Extensions
 * #### Dictionary Attributes
- 1. Added `Local (4)` enum to the `direction_id` attribute. [#1475](https://github.com/ocsf/ocsf-schema/pull/1475)
+    1. Added `Local (4)` enum to the `direction_id` attribute. [#1475](https://github.com/ocsf/ocsf-schema/pull/1475)
 
 
 ### Bugfixes
 
 ### Deprecated
+* #### Categories
+    1. Deprecated `class` attribute in favor of the `type_id` attribute from the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
 
 ### Breaking changes
 

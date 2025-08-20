@@ -64,8 +64,6 @@ Thankyou! -->
 ### Bugfixes
 
 ### Deprecated
-* #### Categories
-    1. Deprecated `class` attribute in favor of the `type_id` attribute from the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
 
 ### Breaking changes
 

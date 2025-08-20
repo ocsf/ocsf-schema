@@ -57,7 +57,7 @@ Thankyou! -->
 * #### Platform Extensions
 * #### Dictionary Attributes
  1. Added `Local (4)` enum to the `direction_id` attribute. [#1475](https://github.com/ocsf/ocsf-schema/pull/1475)
- 2. Added `Atom (38)` enum as an available `type_id` for `win_resource` object [#]
+ 2. Added `Atom (38)` enum as an available `type_id` for `win_resource` object [#1477](https://github.com/ocsf/ocsf-schema/pull/1477)
 
 
 ### Bugfixes

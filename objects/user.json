@@ -10,7 +10,11 @@
       "requirement": "optional"
     },
     "credential_uid": {
-      "requirement": "optional"
+      "requirement": "optional",
+      "@deprecated": {
+        "message": "Use <code>programmatic_credentials</code> instead.",
+        "since": "1.6.0"
+      }
     },
     "display_name": {
       "description": "The display name of the user, as reported by the product.",
@@ -55,6 +59,10 @@
       "description": "The telephone number of the user.",
       "requirement": "optional"
     },
+    "programmatic_credentials": {
+      "description": "Details about the programmatic credential (API keys, access tokens, certificates, etc) associated to the user.",
+      "requirement": "optional"
+    },
     "risk_level": {
       "requirement": "optional"
     },
@@ -70,6 +78,7 @@
     },
     "type_id": {
       "description": "The account type identifier.",
+      "requirement": "recommended",
       "enum": {
         "0": {
           "caption": "Unknown"
@@ -93,12 +102,11 @@
         "99": {
           "caption": "Other"
         }
-      },
-      "requirement": "recommended"
+      }
     },
     "uid": {
-      "description": "The unique user identifier. For example, the Windows user SID, ActiveDirectory DN or AWS user ARN.",
       "observable": 31,
+      "description": "The unique user identifier. For example, the Windows user SID, ActiveDirectory DN or AWS user ARN.",
       "requirement": "recommended"
     },
     "uid_alt": {

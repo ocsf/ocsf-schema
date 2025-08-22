@@ -4,9 +4,9 @@
   "name": "query_evidence",
   "attributes": {
     "connection_info": {
+      "description": "The network connection information related to a Network Connection query type.",
       "group": "primary",
-      "requirement": "recommended",
-      "description": "The network connection information related to a Network Connection query type."
+      "requirement": "recommended"
     },
     "file": {
       "description": "The file that is the target of the query when query_type_id indicates a File query.",
@@ -24,9 +24,9 @@
       "requirement": "recommended"
     },
     "job": {
+      "description": "The job object that pertains to the event when query_type_id indicates a Job query.",
       "group": "primary",
-      "requirement": "recommended",
-      "description": "The job object that pertains to the event when query_type_id indicates a Job query."
+      "requirement": "recommended"
     },
     "kernel": {
       "description": "The kernel object that pertains to the event when query_type_id indicates a Kernel query.",
@@ -34,58 +34,29 @@
       "requirement": "recommended"
     },
     "module": {
+      "description": "The module that pertains to the event when query_type_id indicates a Module query.",
       "group": "primary",
-      "requirement": "recommended",
-      "description": "The module that pertains to the event when query_type_id indicates a Module query."
+      "requirement": "recommended"
     },
     "network_interfaces": {
+      "description": "The physical or virtual network interfaces that are associated with the device when query_type_id indicates a Network Interfaces query.",
       "group": "primary",
-      "requirement": "recommended",
-      "description": "The physical or virtual network interfaces that are associated with the device when query_type_id indicates a Network Interfaces query."
+      "requirement": "recommended"
     },
     "peripheral_device": {
+      "description": "The peripheral device that triggered the event when query_type_id indicates a Peripheral Device query.",
       "group": "primary",
-      "requirement": "recommended",
-      "description": "The peripheral device that triggered the event when query_type_id indicates a Peripheral Device query."
+      "requirement": "recommended"
     },
     "process": {
       "description": "The process that pertains to the event when query_type_id indicates a Process query.",
       "group": "primary",
       "requirement": "recommended"
     },
-    "service": {
-      "group": "primary",
-      "requirement": "recommended",
-      "description": "The service that pertains to the event when query_type_id indicates a Service query."
-    },
-    "session": {
-      "group": "primary",
-      "requirement": "recommended",
-      "description": "The authenticated user or service session when query_type_id indicates a Session query."
-    },
-    "startup_item": {
-      "group": "primary",
-      "requirement": "recommended",
-      "description": "The startup item object that pertains to the event when query_type_id indicates a Startup Item query."
-    },
-    "state": {
-      "caption": "Network Connection State",
-      "description": "The state of the socket, normalized to the caption of the state_id value. In the case of 'Other', it is defined by the event source.",
-      "group": "context",
-      "requirement": "optional"
-    },
-    "tcp_state_id": {
-      "group": "context",
-      "requirement": "optional"
-    },
-    "user": {
-      "group": "primary",
-      "requirement": "recommended",
-      "description": "The user that pertains to the event when query_type_id indicates a User query."
-    },
-    "users": {
-      "description": "The users that belong to the administrative group when query_type_id indicates a Users query.",
-      "group": "context",
+    "query_type": {
+      "caption": "Query Type",
+      "description": "The normalized caption of query_type_id or the source-specific query type.",
+      "group": "classification",
       "requirement": "optional"
     },
     "query_type_id": {
@@ -176,10 +147,39 @@
         }
       }
     },
-    "query_type": {
-      "caption": "Query Type",
-      "description": "The normalized caption of query_type_id or the source-specific query type.",
-      "group": "classification",
+    "service": {
+      "description": "The service that pertains to the event when query_type_id indicates a Service query.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "session": {
+      "description": "The authenticated user or service session when query_type_id indicates a Session query.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "startup_item": {
+      "description": "The startup item object that pertains to the event when query_type_id indicates a Startup Item query.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "state": {
+      "caption": "Network Connection State",
+      "description": "The state of the socket, normalized to the caption of the state_id value. In the case of 'Other', it is defined by the event source.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "tcp_state_id": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "user": {
+      "description": "The user that pertains to the event when query_type_id indicates a User query.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "users": {
+      "description": "The users that belong to the administrative group when query_type_id indicates a Users query.",
+      "group": "context",
       "requirement": "optional"
     }
   },

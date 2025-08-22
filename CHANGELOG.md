@@ -46,6 +46,7 @@ Thankyou! -->
 * #### Event Classes
 * #### Profiles
 * #### Objects
+ 1. Added `observation_point` object. [#1476](https://github.com/ocsf/ocsf-schema/pull/1476)
 * #### Platform Extensions
 * #### Dictionary Attributes
 
@@ -54,6 +55,7 @@ Thankyou! -->
 * #### Event Classes
 * #### Profiles
 * #### Objects
+ 1. Added `observation_point` to the `metadata` object. [#1476](https://github.com/ocsf/ocsf-schema/pull/1476)
 * #### Platform Extensions
 * #### Dictionary Attributes
  1. Added `Local (4)` enum to the `direction_id` attribute. [#1475](https://github.com/ocsf/ocsf-schema/pull/1475)

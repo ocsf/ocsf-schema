@@ -44,21 +44,24 @@ Thankyou! -->
 ### Added
 * #### Categories
 * #### Event Classes
-    1. Added `Peripheral Activity` event class to the System category. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
+ 1. Added `Peripheral Activity` event class to the System category. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
 * #### Profiles
 * #### Objects
 * #### Platform Extensions
 * #### Dictionary Attributes
-    1. Added `vendor_id_list` as a `string_t` array. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
+ 1. Added `vendor_id_list` as a `string_t` array. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
 
 ### Improved
 * #### Categories
 * #### Event Classes
 * #### Profiles
 * #### Objects
+ 1. Added `type`, `type_uid`, and `vendor_id_list` to the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
+ 1. Downgraded the `class` attribute requirement to `optional` in the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
+
 * #### Platform Extensions
 * #### Dictionary Attributes
-    1. Added `Local (4)` enum to the `direction_id` attribute. [#1475](https://github.com/ocsf/ocsf-schema/pull/1475)
+ 1. Added `Local (4)` enum to the `direction_id` attribute. [#1475](https://github.com/ocsf/ocsf-schema/pull/1475)
 
 
 ### Bugfixes
@@ -68,6 +71,7 @@ Thankyou! -->
 ### Breaking changes
 
 ### Misc
+ 1. Updated description for the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
 
 ## [v1.6.0] - Aug 1st, 2025
 

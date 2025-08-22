@@ -57,7 +57,8 @@ Thankyou! -->
 * #### Profiles
 * #### Objects
  1. Added `type`, `type_uid`, and `vendor_id_list` to the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
- 1. Downgraded the `class` attribute requirement to `optional` in the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
+ 1. Relaxed the `class` attribute requirement to `optional` in the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
+ 1. Set the `vendor_name` requirement to `recommended` in the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
 
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -71,7 +72,7 @@ Thankyou! -->
 ### Breaking changes
 
 ### Misc
- 1. Updated description for the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
+ 1. Updated description for the `peripheral_device` object and the `vendor_name` attribute within it. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
 
 ## [v1.6.0] - Aug 1st, 2025
 

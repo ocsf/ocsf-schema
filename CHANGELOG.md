@@ -48,6 +48,7 @@ Thankyou! -->
 * #### Objects
 * #### Platform Extensions
 * #### Dictionary Attributes
+ 1. Added `department` as `string_t` and `is_on_premises_sync_enabled` as `bool_t`. [#1478](https://github.com/ocsf/ocsf-schema/pull/1478)
 
 ### Improved
 * #### Categories
@@ -55,6 +56,7 @@ Thankyou! -->
  1. Added `auth_factors` as an attribute to the `Account Change` class and updated related activity names. [#1455](https://github.com/ocsf/ocsf-schema/pull/1455)
 * #### Profiles
 * #### Objects
+ 1. Added `department` to `ldap_person` and `is_on_premises_sync_enabled` to `account`. [#1478](https://github.com/ocsf/ocsf-schema/pull/1478)
 * #### Platform Extensions
 * #### Dictionary Attributes
  1. Added `Local (4)` enum to the `direction_id` attribute. [#1475](https://github.com/ocsf/ocsf-schema/pull/1475)

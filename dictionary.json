@@ -3221,6 +3221,11 @@
       "description": "Indicates logon is from a device not seen before or a first time account logon.",
       "type": "boolean_t"
     },
+    "is_observation_point": {
+      "caption": "Observation Point",
+      "description": "Indicates whether the entity represents the point where the activity was observed. See specific usage.",
+      "type": "boolean_t"
+    },
     "is_on_premises": {
       "caption": "On Premises",
       "description": "The indication of whether the location is on premises.",
@@ -3897,6 +3902,36 @@
       "type": "network_interface",
       "is_array": true
     },
+    "network_scope": {
+      "caption": "Network Scope",
+      "description": "Indicates whether the endpoint resides inside the customer’s network, outside on the Internet, or if its location relative to the customer’s network cannot be determined. The value is normalized to the caption of the <code>network_scope_id</code>.",
+      "type": "string_t"
+    },
+    "network_scope_id": {
+      "caption": "Network Scope ID",
+      "description": "The normalized identifier of the endpoint’s network scope.",
+      "sibling": "network_scope",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "Unknown whether this endpoint resides within the customer’s network."
+        },
+        "1": {
+          "caption": "Internal",
+          "description": "The endpoint resides inside the customer’s network."
+        },
+        "2": {
+          "caption": "External",
+          "description": "The endpoint is on the Internet or otherwise external to the customer’s network."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The network scope is not mapped. See the <code>network_scope</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
+
     "next_run_time": {
       "caption": "Next Run",
       "description": "The next run time. See specific usage.",

@@ -26,6 +26,37 @@
       "group": "context",
       "requirement": "optional"
     },
+    "observation_point": {
+      "description": "Indicates whether the source network endpoint, destination network endpoint, or neither served as the observation point for the activity. The value is normalized to the caption of the <code>observation_point_id</code>.",
+      "requirement": "optional"
+    },
+    "observation_point_id": {
+      "description": "The normalized identifier of the observation point.",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The observation point is unknown."
+        },
+        "1": {
+          "caption": "Source",
+          "description": "The source network endpoint is the observation point."
+        },
+        "2": {
+          "caption": "Destination",
+          "description": "The destination network endpoint is the observation point."
+        },
+        "3": {
+          "caption": "Neither",
+          "description": "Neither the source nor destination network endpoint is the observation point."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The observation point is not mapped. See the <code>observation_point</code> attribute for a data source specific value."
+        }
+      },
+      "requirement": "optional"
+    },
+
     "proxy": {
       "group": "primary",
       "requirement": "recommended"

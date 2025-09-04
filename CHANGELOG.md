@@ -45,6 +45,7 @@ Thankyou! -->
 * #### Categories
 * #### Event Classes
  1. Added `Peripheral Activity` event class to the System category. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
+ 2. Added `ai_security` profile to `API Activity` and `Datastore Activity` classes for AI-related security events.
 * #### Profiles
  1. **AI Security Profile**: Added minimal AI Security Profile with essential attributes for AI security event mapping.
 * #### Objects

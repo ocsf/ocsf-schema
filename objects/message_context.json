@@ -1,0 +1,89 @@
+{
+    "caption": "Message Context",
+    "description": "Communication context for AI system interactions including protocols, roles, clients, and session information for MCP and other AI communication systems.",
+    "extends": "_entity",
+    "name": "message_context",
+    "attributes": {
+        "ai_role_id": {
+            "description": "The originator or target role of the message.",
+            "requirement": "recommended",
+            "enum": {
+                "0": {
+                    "caption": "Unknown",
+                    "description": "Unknown role type."
+                },
+                "1": {
+                    "caption": "User",
+                    "description": "The human user initiating a request."
+                },
+                "2": {
+                    "caption": "Assistant",
+                    "description": "The AI model generating a response."
+                },
+                "3": {
+                    "caption": "Tool",
+                    "description": "A callable tool or API invoked by the assistant."
+                },
+                "4": {
+                    "caption": "Agent",
+                    "description": "A software agent acting with autonomy or intention."
+                },
+                "5": {
+                    "caption": "Orchestrator",
+                    "description": "The component coordinating multiple agents or tools."
+                },
+                "6": {
+                    "caption": "Retriever",
+                    "description": "A vector DB or knowledge system providing context."
+                },
+                "99": {
+                    "caption": "Other",
+                    "description": "Other role type not covered above."
+                }
+            }
+        },
+        "ai_role": {
+            "description": "The normalized caption of the role_id.",
+            "requirement": "optional"
+        },
+        "client_name": {
+            "description": "The name of the initiating client (e.g., LangChain, browser, mobile_app).",
+            "requirement": "recommended"
+        },
+        "server_name": {
+            "description": "Server or agent name handling the request (e.g., OpenAI_API, Claude_API, Internal_Agent).",
+            "requirement": "recommended"
+        },
+        "prompt_tokens": {
+            "description": "Number of tokens in the input prompt for this message.",
+            "requirement": "optional"
+        },
+        "completion_tokens": {
+            "description": "Number of tokens in the model's response/completion for this message.",
+            "requirement": "optional"
+        },
+        "total_tokens": {
+            "description": "Total number of tokens used for this message (prompt + completion).",
+            "requirement": "optional"
+        }
+    },
+    "constraints": {
+        "at_least_one": [
+            "client_name",
+            "server_name"
+        ]
+    },
+    "profiles": [
+        "ai_security"
+    ],
+    "references": [
+        {
+            "description": "OWASP AI Security and Privacy Guide - Agent Security",
+            "url": "https://owasp.org/www-project-ai-security-and-privacy-guide/"
+        },
+        {
+            "description": "Model Context Protocol (MCP) Specification",
+            "url": "https://modelcontextprotocol.io/"
+        }
+    ]
+}

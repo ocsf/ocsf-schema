@@ -1,7 +1,7 @@
 # CHANGELOG
 All notable changes to this project will be documented in this file. `[Unreleased]` section at the top, will be used to track upcoming changes.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 <!-- When updating the Changelog:
@@ -45,25 +45,34 @@ Thankyou! -->
 * #### Categories
 * #### Event Classes
  1. Added `Peripheral Activity` event class to the System category. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
+ 2. Added `ai_security` profile to `API Activity` and `Datastore Activity` classes for AI-related security events.
 * #### Profiles
+ 1. **AI Security Profile**: Added minimal AI Security Profile with essential attributes for AI security event mapping.
 * #### Objects
+ 1. **AI Model Object**: Added minimal AI model object with core fields (`model_name`, `ai_provider`, `version`) for AI security events.
+ 2. **Message Context Object**: Added communication context object for AI system interactions with role-based identification and token usage metrics (`prompt_tokens`, `completion_tokens`, `total_tokens`).
 * #### Platform Extensions
 * #### Dictionary Attributes
- 1. Added `vendor_id_list` as a `string_t` array. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
+ 1. Added `model_name`, `ai_provider` attributes for AI model identification.
+ 2. Added `ai_role_id`, `ai_role`, `client_name`, `server_name` attributes for AI communication context.
+ 3. Added `prompt_tokens`, `completion_tokens`, `total_tokens` attributes for AI token usage metrics.
+ 4. Added `embedding_model` attribute for AI retrieval systems.
+ 5. Added `Local (4)` enum to the `direction_id` attribute. [#1475](https://github.com/ocsf/ocsf-schema/pull/1475)
+ 6. Added `vendor_id_list` as a `string_t` array. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
 
-### Improved
+### Changed
 * #### Categories
 * #### Event Classes
  1. Added `auth_factors` as an attribute to the `Account Change` class and updated related activity names. [#1455](https://github.com/ocsf/ocsf-schema/pull/1455)
 * #### Profiles
 * #### Objects
+ 1. **Database Object**: Extended with AI-specific database types (`Vector (7)`, `Knowledge Graph (8)`) and `embedding_model` field for AI retrieval systems.
  1. Added `type`, `type_uid`, and `vendor_id_list` to the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
  1. Relaxed the `class` attribute requirement to `optional` in the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
  1. Set the `vendor_name` requirement to `recommended` in the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
 
 * #### Platform Extensions
 * #### Dictionary Attributes
- 1. Added `Local (4)` enum to the `direction_id` attribute. [#1475](https://github.com/ocsf/ocsf-schema/pull/1475)
 
 
 ### Bugfixes

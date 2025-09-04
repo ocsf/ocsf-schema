@@ -21,7 +21,7 @@ Thankyou! -->
 * #### Platform Extensions
 * #### Dictionary Attributes
 
-### Changed
+### Improved
 * #### Categories
 * #### Event Classes
 * #### Profiles
@@ -29,13 +29,13 @@ Thankyou! -->
 * #### Platform Extensions
 * #### Dictionary Attributes
 
+### Bugfixes
+
 ### Deprecated
 
-### Removed
+### Breaking changes
 
-### Fixed
-
-### Security
+### Misc
 
 -->
 
@@ -52,15 +52,12 @@ Thankyou! -->
  2. **Message Context Object**: Added communication context object for AI system interactions with role-based identification and token usage metrics (`prompt_tokens`, `completion_tokens`, `total_tokens`).
 * #### Platform Extensions
 * #### Dictionary Attributes
-<<<<<<< HEAD
  1. Added `model_name`, `ai_provider` attributes for AI model identification.
  2. Added `ai_role_id`, `ai_role`, `client_name`, `server_name` attributes for AI communication context.
  3. Added `prompt_tokens`, `completion_tokens`, `total_tokens` attributes for AI token usage metrics.
  4. Added `embedding_model` attribute for AI retrieval systems.
  5. Added `Local (4)` enum to the `direction_id` attribute. [#1475](https://github.com/ocsf/ocsf-schema/pull/1475)
-=======
- 1. Added `vendor_id_list` as a `string_t` array. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
->>>>>>> main
+ 6. Added `vendor_id_list` as a `string_t` array. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
 
 ### Changed
 * #### Categories
@@ -68,30 +65,23 @@ Thankyou! -->
  1. Added `auth_factors` as an attribute to the `Account Change` class and updated related activity names. [#1455](https://github.com/ocsf/ocsf-schema/pull/1455)
 * #### Profiles
 * #### Objects
-<<<<<<< HEAD
  1. **Database Object**: Extended with AI-specific database types (`Vector (7)`, `Knowledge Graph (8)`) and `embedding_model` field for AI retrieval systems.
-=======
  1. Added `type`, `type_uid`, and `vendor_id_list` to the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
  1. Relaxed the `class` attribute requirement to `optional` in the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
  1. Set the `vendor_name` requirement to `recommended` in the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
 
->>>>>>> main
 * #### Platform Extensions
 * #### Dictionary Attributes
 
 
+### Bugfixes
+
 ### Deprecated
 
-### Removed
+### Breaking changes
 
-<<<<<<< HEAD
-### Fixed
-
-### Security
-=======
 ### Misc
  1. Updated description for the `peripheral_device` object and the `vendor_name` attribute within it. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
->>>>>>> main
 
 ## [v1.6.0] - Aug 1st, 2025
 

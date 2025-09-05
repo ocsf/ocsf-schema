@@ -50,6 +50,7 @@ Thankyou! -->
 * #### Platform Extensions
 * #### Dictionary Attributes
  1. Added `vendor_id_list` as a `string_t` array. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
+ 1. Added `log_source` `log_format` as `string_t`. [#1483] https://github.com/ocsf/ocsf-schema/pull/1483
 
 ### Improved
 * #### Categories
@@ -60,7 +61,7 @@ Thankyou! -->
  1. Added `type`, `type_uid`, and `vendor_id_list` to the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
  1. Relaxed the `class` attribute requirement to `optional` in the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
  1. Set the `vendor_name` requirement to `recommended` in the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
- 1. Added `source` and `type` to `metadata`. [#1483] https://github.com/ocsf/ocsf-schema/pull/1483
+ 1. Added `source` `type` `log_source` `log_format` `transmit_time` to `metadata`. `log_format` to `logger`[#1483] https://github.com/ocsf/ocsf-schema/pull/1483
 
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -70,6 +71,7 @@ Thankyou! -->
 ### Bugfixes
 
 ### Deprecated
+1. Deprecated `version` attribute in `logger` for `log_version`. [#1483] https://github.com/ocsf/ocsf-schema/pull/1483
 
 ### Breaking changes
 

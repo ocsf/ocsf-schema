@@ -14,6 +14,7 @@
       "requirement": "optional"
     },
     "event_code": {
+      "description": "The identifier of the original event. For example the numerical Windows Event Code or Cisco syslog code.",
       "requirement": "optional"
     },
     "extension": {
@@ -30,16 +31,30 @@
       "description": "The list of labels attached to the event. For example: <code>[\"sample\", \"dev\"]</code>",
       "requirement": "optional"
     },
+    "log_format": {
+      "caption": "Log Source Format",
+      "description": "The format of data in the log where the data originated. For example JSON, syslog or CSV.",
+      "requirement": "optional"
+    },
     "log_level": {
+      "description": "The level at which an event was logged. This can be log provider specific. For example the audit level.",
       "requirement": "optional"
     },
     "log_name": {
+      "description": "The event log name, typically for the consumer of the event. For example, the storage bucket name, SIEM repository index name, etc.",
       "requirement": "recommended"
     },
     "log_provider": {
-      "requirement": "recommended"
+      "description": "The logging provider or logging service that logged the event. For example AWS CloudWatch or Splunk.",
+      "requirement": "optional"
+    },
+    "log_source": {
+      "description": "The log where the data originated. For example, syslog server name or Windows hostname and logging subsystem: Security.",
+      "requirement": "optional"
     },
     "log_version": {
+      "caption": "Log Version",
+      "description": "The log version of the log provider. For example syslog version or Windows Event Log version.",
       "requirement": "optional"
     },
     "logged_time": {
@@ -68,7 +83,7 @@
       "requirement": "optional"
     },
     "source": {
-      "description": "The source of the event or finding. This can be a resource such as syslog, a file path, a database table, a network name, product name or other distinguishing origin of the data.",
+      "description": "The source of the event or finding. This can be any distinguishing name for the data origin, or a resource from where the data originated. For example 'attack simulations.' In some situations this may be the <code>log_source</code>.",
       "requirement": "optional"
     },
     "tags": {
@@ -81,8 +96,12 @@
     "transformation_info_list": {
       "requirement": "optional"
     },
+    "transmit_time": {
+      "description": "The time when the event was transmitted from the logging device to it's next destination.",
+      "requirement": "optional"
+    },
     "type": {
-      "description": "The type of the event or finding. This can be a classification such as 'firewall traffic logs', 'OS kernel events' or any other distinguishing characteristic of the data.",
+      "description": "The type of the event or finding. This can be any distinguishing characteristic of the data. For example 'firewall connections' or 'flow data'. In some situations this may be the same as the <code>log_format</code>.",
       "requirement": "optional"
     },
     "uid": {

@@ -67,6 +67,7 @@ Thankyou! -->
 
 
 ### Bugfixes
+ 1. Renamed `event_log_actvity` to `event_log_activity` in the Event Log Activity class.
 
 ### Deprecated
 

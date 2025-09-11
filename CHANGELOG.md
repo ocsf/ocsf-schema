@@ -50,7 +50,7 @@ Thankyou! -->
  1. **AI Security Profile**: Added minimal AI Security Profile with essential attributes for AI security event mapping.
 * #### Objects
  1. **AI Model Object**: Added minimal AI model object with core fields (`model_name`, `ai_provider`, `version`) for AI security events.
- 2. **Message Context Object**: Added communication context object for AI system interactions with role-based identification and token usage metrics (`prompt_tokens`, `completion_tokens`, `total_tokens`).
+ 2. **Message Context Object**: Added communication context object for AI system interactions with role-based identification and token usage metrics (`prompt_tokens`, `completion_tokens`, `total_tokens`). Updated to use standard OCSF `application` and `service` objects instead of custom client/server attributes to prevent attribute sprawl.
 * #### Platform Extensions
 * #### Dictionary Attributes
  1. Added `model_name`, `ai_provider` attributes for AI model identification.

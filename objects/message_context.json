@@ -4,6 +4,9 @@
     "extends": "_entity",
     "name": "message_context",
     "attributes": {
+        "name": {
+            "description": "The name or identifier of the message context. In AI systems, this could be the conversation ID, session name, thread identifier, or interaction name (e.g., 'user-session-123', 'conversation-abc', 'chat-thread-456')."
+        },
         "ai_role_id": {
             "description": "The originator or target role of the message.",
             "requirement": "recommended",
@@ -46,21 +49,13 @@
             "description": "The normalized caption of the role_id.",
             "requirement": "optional"
         },
-        "client_name": {
-            "description": "The name of the initiating client (e.g., LangChain, browser, mobile_app).",
+        "application": {
+            "description": "The initiating client application. In AI systems, this represents the client-side application or framework that initiates requests (e.g., LangChain application, web browser, mobile app, SDK implementation).",
             "requirement": "recommended"
         },
-        "client_uid": {
-            "description": "The unique identifier of the initiating client.",
-            "requirement": "optional"
-        },
-        "server_name": {
-            "description": "Server or agent name handling the request (e.g., OpenAI_API, Claude_API, Internal_Agent).",
+        "service": {
+            "description": "The server or service handling the request. In AI systems, this represents the AI service, API endpoint, or agent that processes and responds to requests (e.g., OpenAI API service, Claude API service, internal AI model service).",
             "requirement": "recommended"
-        },
-        "server_uid": {
-            "description": "The unique identifier of the server or agent.",
-            "requirement": "optional"
         },
         "prompt_tokens": {
             "description": "Number of tokens in the input prompt for this message.",
@@ -77,8 +72,8 @@
     },
     "constraints": {
         "at_least_one": [
-            "client_name",
-            "server_name"
+            "application",
+            "service"
         ]
     },
     "profiles": [

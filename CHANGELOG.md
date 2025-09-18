@@ -74,7 +74,7 @@ Thankyou! -->
 
 ### Misc
  1. Updated description for the `peripheral_device` object and the `vendor_name` attribute within it. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
-
+ 1. Corrected the deprecation note for the `Web Resource Access Activity` event class. [#1492](https://github.com/ocsf/ocsf-schema/pull/1492)
 ## [v1.6.0] - Aug 1st, 2025
 
 ### Added

@@ -85,6 +85,7 @@ Thankyou! -->
   1. Added `access_level`, `programmatic_credentials`, `last_authentication_time`, `access_analysis_result`, `last_used_time`, `accessors`, `granted_privileges`, `identity_activity_metrics`, `password_last_used_time`, `access_type`, `permission_analysis_results`, `additional_restrictions`, `unused_privileges_count`, `condition_keys`, `applications`, `role`, `role_id`. [#1389](https://github.com/ocsf/ocsf-schema/pull/1389)
   1. Added `reg_binary_data`, `reg_integer_data`, `reg_string_data`, `reg_string_list_data` to Windows extension. [#1468](https://github.com/ocsf/ocsf-schema/pull/1468)
   1. Added `is_src_dst_assignment_known` as a boolean. [#1464](https://github.com/ocsf/ocsf-schema/pull/1464)
+  1. Added `network_scope`, `network_scope_id`, `observation_point` and `observation_point_id`. [#1481](https://github.com/ocsf/ocsf-schema/pull/1481)
 
 * #### Objects
   1. Added  `access_analysis_result`, `additional_restriction`, `identity_activity_metrics`, `permission_analysis_result`, `programmatic_credential`. [#1389](https://github.com/ocsf/ocsf-schema/pull/1389)
@@ -100,6 +101,7 @@ Thankyou! -->
   1. Added `http_request` and `http_response` objects to the `File Hosting Activity` Class [#1458](https://github.com/ocsf/ocsf-schema/pull/1458)
   1. Added `Account Switch` activity_id to the `Authentication` class. Added `account_switch_type` and `account_switch_type_id` attributes to the `Authentication` class. [#1460](https://github.com/ocsf/ocsf-schema/pull/1460)
   1. Added `is_src_dst_assignment_known` attribute to `Network Activity` class. [#1464](https://github.com/ocsf/ocsf-schema/pull/1464)
+  1. Added `observation_point` and `observation_point_id` to the base `Network` event. [#1481](https://github.com/ocsf/ocsf-schema/pull/1481)
 
 * #### Objects
   1. Added more `algorithm_id` values and references to the `fingerprint` object. [#1412](https://github.com/ocsf/ocsf-schema/pull/1412)
@@ -116,6 +118,7 @@ Thankyou! -->
   1. Added `is_truncated` and `untruncated_size` to `metadata`, `logger` objects. [#1461](https://github.com/ocsf/ocsf-schema/pull/1461)
   1. Added `open_ports` to the `network_interface` object. [#1466](https://github.com/ocsf/ocsf-schema/pull/1466)
   1. Added `reg_binary_data`, `reg_integer_data`, `reg_string_data`, `reg_string_list_data` to `reg_value` object in Windows extension. [#1468](https://github.com/ocsf/ocsf-schema/pull/1468)
+  1. Added `network_scope` and `network_scope_id` to the `network_endpoint` object. [#1481](https://github.com/ocsf/ocsf-schema/pull/1481)
   
 
 ### Misc

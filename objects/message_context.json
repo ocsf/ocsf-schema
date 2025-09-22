@@ -8,7 +8,7 @@
             "description": "The name or identifier of the message context. In AI systems, this could be the conversation ID, session name, thread identifier, or interaction name (e.g., 'user-session-123', 'conversation-abc', 'chat-thread-456')."
         },
         "ai_role_id": {
-            "description": "The originator or target role of the message.",
+            "description": "Specifies the functional role of the AI within the context of this message, such as retrieving information, assisting reasoning, executing a tool, or generating content.",
             "requirement": "recommended",
             "enum": {
                 "0": {
@@ -29,7 +29,7 @@
                 },
                 "4": {
                     "caption": "Agent",
-                    "description": "A software agent acting with autonomy or intention."
+                    "description": "A software agent that performs tasks with autonomy or delegated intent."
                 },
                 "5": {
                     "caption": "Orchestrator",
@@ -37,7 +37,7 @@
                 },
                 "6": {
                     "caption": "Retriever",
-                    "description": "A vector DB or knowledge system providing context."
+                    "description": "A component that retrieves information or context from a knowledge source (e.g., vector DB, search system, or API)."
                 },
                 "99": {
                     "caption": "Other",
@@ -46,7 +46,6 @@
             }
         },
         "ai_role": {
-            "description": "The normalized caption of the role_id.",
             "requirement": "optional"
         },
         "application": {

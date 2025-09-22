@@ -54,7 +54,7 @@ Thankyou! -->
 * #### Platform Extensions
 * #### Dictionary Attributes
  1. Added `model_name`, `ai_provider` attributes for AI model identification.
- 2. Added `ai_role_id`, `ai_role` attributes for AI communication context.
+ 2. Added `ai_role_id`, `ai_role` attributes for AI communication context with proper sibling relationship.
  3. Added `prompt_tokens`, `completion_tokens`, `total_tokens` attributes for AI token usage metrics.
  4. Added `embedding_model` attribute for AI retrieval systems.
  5. Added `Local (4)` enum to the `direction_id` attribute. [#1475](https://github.com/ocsf/ocsf-schema/pull/1475)

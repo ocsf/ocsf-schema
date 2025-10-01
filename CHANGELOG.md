@@ -40,6 +40,7 @@ Thankyou! -->
 -->
 
 ## [Unreleased]
+1. Set `endpoint.uid` as an Observable type - type_id: 47 [#1500](https://github.com/ocsf/ocsf-schema/pull/1500)
 
 ### Added
 * #### Categories

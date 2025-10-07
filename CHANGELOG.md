@@ -40,7 +40,6 @@ Thankyou! -->
 -->
 
 ## [Unreleased]
-1. Set `network_endpoint.uid` as an Observable type - type_id: 48 [#1502](https://github.com/ocsf/ocsf-schema/pull/1502)
 
 ### Added
 * #### Categories
@@ -64,6 +63,7 @@ Thankyou! -->
  1. Set the `vendor_name` requirement to `recommended` in the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
  1. Added `reporter` to the `metadata` object. [#1476](https://github.com/ocsf/ocsf-schema/pull/1476)
  1. Added `event_uid` and `type_uid` to the `observable` object. [#1503](https://github.com/ocsf/ocsf-schema/pull/1503)
+ 1. Set `network_endpoint.uid` as an Observable type - type_id: 48 [#1502](https://github.com/ocsf/ocsf-schema/pull/1502)
 * #### Platform Extensions
 * #### Dictionary Attributes
  1. Added `Local (4)` enum to the `direction_id` attribute. [#1475](https://github.com/ocsf/ocsf-schema/pull/1475)

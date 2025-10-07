@@ -49,11 +49,11 @@ Thankyou! -->
 * #### Profiles
  1. **AI Security Profile**: Added minimal AI Security Profile with essential attributes for AI security event mapping.
 * #### Objects
- 1. **AI Model Object**: Added minimal AI model object with core fields (`model_name`, `ai_provider`, `version`) for AI security events.
- 2. **Message Context Object**: Added communication context object for AI system interactions with role-based identification and token usage metrics (`prompt_tokens`, `completion_tokens`, `total_tokens`). Updated to use standard OCSF `application` and `service` objects instead of custom client/server attributes to prevent attribute sprawl.
+ 1. **AI Model Object**: Added minimal AI model object with core fields (`name`, `ai_provider`, `version`) for AI security events. Uses inherited `name` attribute from `_entity` base object instead of custom `model_name` attribute.
+ 2. **Message Context Object**: Added communication context object for AI system interactions with role-based identification and token usage metrics (`prompt_tokens`, `completion_tokens`, `total_tokens`). Updated to use standard OCSF `application` and `service` objects instead of custom client/server attributes to prevent attribute sprawl. Overrides inherited `uid` attribute with context-specific description.
 * #### Platform Extensions
 * #### Dictionary Attributes
- 1. Added `model_name`, `ai_provider` attributes for AI model identification.
+ 1. Added `ai_provider` attribute for AI model identification. Removed `model_name` in favor of inherited `name` attribute from `_entity` base object.
  2. Added `ai_role_id`, `ai_role` attributes for AI communication context with proper sibling relationship.
  3. Added `prompt_tokens`, `completion_tokens`, `total_tokens` attributes for AI token usage metrics.
  4. Added `embedding_model` attribute for AI retrieval systems.

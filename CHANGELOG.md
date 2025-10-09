@@ -18,6 +18,7 @@ Thankyou! -->
 * #### Event Classes
 * #### Profiles
 * #### Objects
+* #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
 
@@ -26,6 +27,7 @@ Thankyou! -->
 * #### Event Classes
 * #### Profiles
 * #### Objects
+* #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
 
@@ -44,31 +46,33 @@ Thankyou! -->
 ### Added
 * #### Categories
 * #### Event Classes
- 1. Added `Peripheral Activity` event class to the System category. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
+  1. Added `Peripheral Activity` event class to the System category. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
 * #### Profiles
 * #### Objects
- 1. Added `reporter` object. [#1476](https://github.com/ocsf/ocsf-schema/pull/1476)
+  1. Added `reporter` object. [#1476](https://github.com/ocsf/ocsf-schema/pull/1476)
+* #### Observables
+  1. Set `network_endpoint.uid` as an Observable type - `type_id: 48`. [#1502](https://github.com/ocsf/ocsf-schema/pull/1502)
 * #### Platform Extensions
 * #### Dictionary Attributes
- 1. Added `vendor_id_list` as a `string_t` array. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
+  1. Added `vendor_id_list` as a `string_t` array. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
 
 ### Improved
 * #### Categories
 * #### Event Classes
- 1. Added `auth_factors` as an attribute to the `Account Change` class and updated related activity names. [#1455](https://github.com/ocsf/ocsf-schema/pull/1455)
+  1. Added `auth_factors` as an attribute to the `Account Change` class and updated related activity names. [#1455](https://github.com/ocsf/ocsf-schema/pull/1455)
 * #### Profiles
 * #### Objects
- 1. Added `type`, `type_uid`, and `vendor_id_list` to the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
- 1. Relaxed the `class` attribute requirement to `optional` in the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
- 1. Set the `vendor_name` requirement to `recommended` in the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
- 1. Added `reporter` to the `metadata` object. [#1476](https://github.com/ocsf/ocsf-schema/pull/1476)
- 1. Added `event_uid` and `type_uid` to the `observable` object. [#1503](https://github.com/ocsf/ocsf-schema/pull/1503)
- 1. Set `network_endpoint.uid` as an Observable type - type_id: 48 [#1502](https://github.com/ocsf/ocsf-schema/pull/1502)
+  1. Added `type`, `type_uid`, and `vendor_id_list` to the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
+  1. Relaxed the `class` attribute requirement to `optional` in the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
+  1. Set the `vendor_name` requirement to `recommended` in the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
+  1. Added `reporter` to the `metadata` object. [#1476](https://github.com/ocsf/ocsf-schema/pull/1476)
+  1. Added `event_uid` and `type_uid` to the `observable` object. [#1503](https://github.com/ocsf/ocsf-schema/pull/1503)
+* #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
- 1. Added `Local (4)` enum to the `direction_id` attribute. [#1475](https://github.com/ocsf/ocsf-schema/pull/1475)
- 2. Added `Atom (38)` enum as an available `type_id` for `win_resource` object [#1477](https://github.com/ocsf/ocsf-schema/pull/1477)
- 3. Updated reference descriptions/urls for win_resource types, including `Directory (1)`, `Event (2)`, `Timer (3)`, `Device (4)`, `Mutant (5)`, `File (7)`, `Token (8)`, `Thread (9)`, `Section (10)`, `WindowStation (11)`, `Driver (15)`, `IoCompletion (16)`, `Controller (17)`, `SymbolicLink (18)`, `WmiGuid (19)`, `Process (20)`, `Profile (21)`, `Desktop (22)`, `KeyedEvent (23)`, `Adapter (24)`, `Callback (27)`, `Semaphore (28)`, `Job (29)`, `ALPC Port (32)`, `SAM_ALIAS (33)`, `SAM_GROUP (34)`, `SAM_USER (35)`, `SAM_DOMAIN (36)`, `SAM_SERVER (37)`, and `Atom (38)`.
+  1. Added `Local (4)` enum to the `direction_id` attribute. [#1475](https://github.com/ocsf/ocsf-schema/pull/1475)
+  1. Added `Atom (38)` enum as an available `type_id` for `win_resource` object. [#1477](https://github.com/ocsf/ocsf-schema/pull/1477)
+  1. Updated reference descriptions/urls for win_resource types, including `Directory (1)`, `Event (2)`, `Timer (3)`, `Device (4)`, `Mutant (5)`, `File (7)`, `Token (8)`, `Thread (9)`, `Section (10)`, `WindowStation (11)`, `Driver (15)`, `IoCompletion (16)`, `Controller (17)`, `SymbolicLink (18)`, `WmiGuid (19)`, `Process (20)`, `Profile (21)`, `Desktop (22)`, `KeyedEvent (23)`, `Adapter (24)`, `Callback (27)`, `Semaphore (28)`, `Job (29)`, `ALPC Port (32)`, `SAM_ALIAS (33)`, `SAM_GROUP (34)`, `SAM_USER (35)`, `SAM_DOMAIN (36)`, `SAM_SERVER (37)`, and `Atom (38)`. [#1477](https://github.com/ocsf/ocsf-schema/pull/1477)
 
 
 ### Bugfixes
@@ -80,6 +84,7 @@ Thankyou! -->
 ### Misc
  1. Updated description for the `peripheral_device` object and the `vendor_name` attribute within it. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
  1. Corrected the deprecation note for the `Web Resource Access Activity` event class. [#1492](https://github.com/ocsf/ocsf-schema/pull/1492)
+
 ## [v1.6.0] - Aug 1st, 2025
 
 ### Added

@@ -3912,6 +3912,36 @@
       "type": "network_interface",
       "is_array": true
     },
+    "network_scope": {
+      "caption": "Network Scope",
+      "description": "Indicates whether the endpoint resides inside the customer’s network, outside on the Internet, or if its location relative to the customer’s network cannot be determined. The value is normalized to the caption of the <code>network_scope_id</code>.",
+      "type": "string_t"
+    },
+    "network_scope_id": {
+      "caption": "Network Scope ID",
+      "description": "The normalized identifier of the endpoint’s network scope. The normalized network scope identifier indicates whether the endpoint resides inside the customer’s network, outside on the Internet, or if its location relative to the customer’s network cannot be determined.",
+      "sibling": "network_scope",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "Unknown whether this endpoint resides within the customer’s network."
+        },
+        "1": {
+          "caption": "Internal",
+          "description": "The endpoint resides inside the customer’s network."
+        },
+        "2": {
+          "caption": "External",
+          "description": "The endpoint is on the Internet or otherwise external to the customer’s network."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The network scope is not mapped. See the <code>network_scope</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
+
     "next_run_time": {
       "caption": "Next Run",
       "description": "The next run time. See specific usage.",
@@ -4010,6 +4040,25 @@
       "caption": "Observation Parameter",
       "description": "The name of the parameter being analyzed or monitored. This generally identifies the specific characteristic or property being measured. See specific usage.",
       "type": "string_t"
+    },
+    "observation_point": {
+      "caption": "Observation Point",
+      "description": "The normalized observation point value. See specific usage.",
+      "type": "string_t"
+    },
+    "observation_point_id": {
+      "caption": "Observation Point ID",
+      "description": "The normalized identifier of the observation point. See specific usage.",
+      "sibling": "observation_point",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "99": {
+          "caption": "Other"
+        }
+      }
     },
     "observation_type": {
       "caption": "Observation Type",
@@ -5006,6 +5055,11 @@
         }
       ],
       "is_array": true
+    },
+    "reporter": {
+      "caption": "Reporter",
+      "description": "The entity from which an event or finding was first reported. See specific usage.",
+      "type": "reporter"
     },
     "reputation": {
       "caption": "Reputation Scores",

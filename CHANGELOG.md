@@ -66,7 +66,7 @@ Thankyou! -->
  1. Added `type`, `type_uid`, and `vendor_id_list` to the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
  1. Relaxed the `class` attribute requirement to `optional` in the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
  1. Set the `vendor_name` requirement to `recommended` in the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
- 1. Added `source` `type` `log_source` `log_source_uid``log_format` `transmit_time` to `metadata`. `log_format` to `logger`[#1483] https://github.com/ocsf/ocsf-schema/pull/1483
+ 1. Added `source`, `type`, `log_source`, `original_event_uid`,`log_format`, `transmit_time` to `metadata`. `log_format` to `logger`[#1483] https://github.com/ocsf/ocsf-schema/pull/1483
  1. Added `reporter` to the `metadata` object. [#1476](https://github.com/ocsf/ocsf-schema/pull/1476)
  1. Added `event_uid` and `type_uid` to the `observable` object. [#1503](https://github.com/ocsf/ocsf-schema/pull/1503)
  1. Relaxed the `file` attribute requirement to `optional` in the `job` object. [#1509](https://github.com/ocsf/ocsf-schema/pull/1509)
@@ -83,7 +83,6 @@ Thankyou! -->
 ### Bugfixes
 
 ### Deprecated
-1. Deprecated `version` attribute in `logger` for `log_version`. [#1483] https://github.com/ocsf/ocsf-schema/pull/1483
 
 ### Breaking changes
 

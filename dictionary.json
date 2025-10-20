@@ -1414,7 +1414,7 @@
     },
     "correlation_uid": {
       "caption": "Correlation UID",
-      "description": "The unique identifier used to correlate events.",
+      "description": "A unique identifier used to correlate events. See specific usage.",
       "type": "string_t"
     },
     "cost_center": {
@@ -3609,11 +3609,6 @@
       "description": "The log where the data originated. See specific usage.",
       "type": "string_t"
     },
-    "log_source_uid": {
-      "caption": "Log Source ID",
-      "description": "The unique ID of the log where the data originated. See specific usage.",
-      "type": "string_t"
-    },
     "log_type": {
       "caption": "Log Type",
       "description": "The log type, normalized to the caption of the <code>log_type_id</code> value. In the case of 'Other', it is defined by the event source.",
@@ -4174,6 +4169,11 @@
       "caption": "Organization",
       "description": "Organization and org unit relevant to the event or object.",
       "type": "organization"
+    },
+    "original_event_uid": {
+      "caption": "Original Event ID",
+      "description": "The unique identifier assigned to the event in its original logging system before transformation to OCSF format. This field preserves the source system's native event identifier, enabling traceability back to the raw log entry. For example, a Windows Event Record ID, a syslog message ID, a Splunk _cd value, or a database transaction log sequence number.",
+      "type": "string_t"
     },
     "original_time": {
       "caption": "Original Time",

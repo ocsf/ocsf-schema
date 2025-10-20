@@ -8,6 +8,7 @@
       "profiles/data_classification.json"
     ],
     "correlation_uid": {
+      "description": "A unique identifier used to correlate this OCSF event with other related OCSF events, distinct from the event's <code>uid</code> value. This enables linking multiple OCSF events that are part of the same activity, transaction, or security incident across different systems or time periods.",
       "requirement": "optional"
     },
     "debug": {
@@ -49,11 +50,7 @@
       "requirement": "optional"
     },
     "log_source": {
-      "description": "The log system or component where the data originated. For example, a syslog server name or a Windows hostname and logging subsystem such as Security.",
-      "requirement": "optional"
-    },
-    "log_source_uid": {
-      "description": "The unique ID of the log where the data originated. For example, an identifier within an organization's network that distinguishes each log instance.",
+      "description": "The log system or component where the data originated. For example, a file path, syslog server name or a Windows hostname and logging subsystem such as Security.",
       "requirement": "optional"
     },
     "log_version": {
@@ -69,6 +66,10 @@
     },
     "modified_time": {
       "description": "The time when the event was last modified or enriched.",
+      "requirement": "optional"
+    },
+    "original_event_uid": {
+      "description": "The unique identifier assigned to the event in its original logging system before transformation to OCSF format. This field preserves the source system's native event identifier, enabling traceability back to the raw log entry. For example, a Windows Event Record ID, a syslog message ID, a Splunk _cd value, or a database transaction log sequence number.",
       "requirement": "optional"
     },
     "original_time": {
@@ -114,7 +115,7 @@
     },
     "uid": {
       "caption": "Event UID",
-      "description": "The logging system-assigned unique identifier of an event instance.",
+      "description": "A unique identifier assigned to the OCSF event. This ID is specific to the OCSF event itself and is distinct from the original event identifier in the source system (see <code>original_event_uid</code>).",
       "requirement": "optional"
     },
     "untruncated_size": {

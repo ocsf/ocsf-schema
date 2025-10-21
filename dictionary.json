@@ -3502,31 +3502,41 @@
     },
     "launch_type_id": {
       "caption": "Launch Type ID",
-      "description": "The normalized identifier for the specific type of <code>Launch<code> activity.",
+      "description": "The normalized identifier for the specific type of <code>Launch</code> activity.",
       "sibling": "launch_type",
       "type": "integer_t",
       "enum": {
         "0": {
           "caption": "Unknown",
-          "description": "The launch type is unknown or not specfied."
+          "description": "The launch type is unknown or not specified."
         },
         "1": {
           "caption": "Spawn",
-          "description": "On operating systems such as Windows which have a single step process creation model, this launch type denotes that the actor process has called <code>NtCreateUserProcess()</code> to create a new process atomically. On operating systems such as Linux and macOS which have a two step process creation model, implementations may elect to use this launch type to combine discrete <code>fork()</code> and <code>exec()</code> steps into a single event."
+          "description": "With the Windows process creation model, this launch type denotes atomic creation of a new process in a single step. With the 2-step Unix model, this launch type may be used to represent both steps in a single event."
         },
         "2": {
           "caption": "Fork",
-          "description": "On operating systems such as Linux and macOS which have a two step process creation model, this launch type denotes that the actor process has called <code>fork()</code> or equivalent to create a clone of itself as a new child process."
+          "description": "With the 2-step Unix process creation model, this launch type denotes the \"fork\" step where a parent process clones itself to a new child process. WSL1 processes on Windows also use the 2-step model."
         },
         "3": {
           "caption": "Exec",
-          "description": "On operating systems such as Linux and macOS which have a two step process creation model, this launch type denotes that the actor process has called <code>exec()</code> or equivalent to reconfigure itself with a new executable image, command line, and environment."
+          "description": "With the 2-step Unix process creation model, this launch type denotes the \"exec\" step where the new child process replaces its executable image, command line, and environment. WSL1 processes on Windows also use the 2-step model."
         },
         "99": {
           "caption": "Other",
           "description": "The launch type is not mapped. See the <code>launch_type</code> attribute, which contains a data source specific value."
         }
-      }
+      },
+      "references": [
+        {
+          "description": "fork()",
+          "url": "https://www.man7.org/linux/man-pages/man2/fork.2.html"
+        },
+        {
+          "description": "execve()",
+          "url": "https://www.man7.org/linux/man-pages/man2/execve.2.html"
+        }
+      ]
     },
     "ldap_cn": {
       "caption": "LDAP Common Name",

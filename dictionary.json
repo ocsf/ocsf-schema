@@ -3495,6 +3495,39 @@
       "description": "The HTTP response latency measured in milliseconds.",
       "type": "integer_t"
     },
+    "launch_type": {
+      "caption": "Launch Type",
+      "description": "The specific type of <code>Launch</code> activity, normalized to the caption of the <code>launch_type_id</code> value. In the case of <code>Other</code> it is defined by the event source.",
+      "type": "string_t"
+    },
+    "launch_type_id": {
+      "caption": "Launch Type ID",
+      "description": "The normalized identifier for the specific type of <code>Launch<code> activity.",
+      "sibling": "launch_type",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The launch type is unknown or not specfied."
+        },
+        "1": {
+          "caption": "Spawn",
+          "description": "On operating systems such as Windows which have a single step process creation model, this launch type denotes that the actor process has called <code>NtCreateUserProcess()</code> to create a new process atomically. On operating systems such as Linux and macOS which have a two step process creation model, implementations may elect to use this launch type to combine discrete <code>fork()</code> and <code>exec()</code> steps into a single event."
+        },
+        "2": {
+          "caption": "Fork",
+          "description": "On operating systems such as Linux and macOS which have a two step process creation model, this launch type denotes that the actor process has called <code>fork()</code> or equivalent to create a clone of itself as a new child process."
+        },
+        "3": {
+          "caption": "Exec",
+          "description": "On operating systems such as Linux and macOS which have a two step process creation model, this launch type denotes that the actor process has called <code>exec()</code> or equivalent to reconfigure itself with a new executable image, command line, and environment."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The launch type is not mapped. See the <code>launch_type</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
     "ldap_cn": {
       "caption": "LDAP Common Name",
       "description": "The LDAP and X.500 <code>commonName</code> attribute, typically the full name of the person. For example, <code>John Doe</code>.",

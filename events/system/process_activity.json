@@ -8,16 +8,20 @@
     "activity_id": {
       "enum": {
         "1": {
-          "caption": "Launch"
+          "caption": "Launch",
+          "description": "A request by the actor to launch another process. Refer to the <code>launch_type_id</code> attribute for details of the specific launch type."
         },
         "2": {
-          "caption": "Terminate"
+          "caption": "Terminate",
+          "description": "Termination of a process.<br>Note that process termination is reflexive on Windows, even if initiated by another process. For some event sources therefore, <code>actor.process</code> identifies the terminated process rather than the actor that requested termination."
         },
         "3": {
-          "caption": "Open"
+          "caption": "Open",
+          "description": "A request by the actor to obtain a handle or descriptor to another process with the aim of performing further actions upon that process."
         },
         "4": {
-          "caption": "Inject"
+          "caption": "Inject",
+          "description": "A request by the actor to execute code within the context of another process. Refer to the <code>injection_type_id</code> attribute for details of the specific injection type."
         },
         "5": {
           "caption": "Set User ID"
@@ -42,6 +46,13 @@
       "requirement": "recommended"
     },
     "injection_type_id": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "launch_type": {
+      "group": "primary"
+    },
+    "launch_type_id": {
       "group": "primary",
       "requirement": "recommended"
     },

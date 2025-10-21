@@ -55,11 +55,15 @@ Thankyou! -->
 * #### Platform Extensions
 * #### Dictionary Attributes
   1. Added `vendor_id_list` as a `string_t` array. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
+  1. Added `launch_type_id` enum and `launch_type` sibling. [#1517](https://github.com/ocsf/ocsf-schema/pull/1517)
 
 ### Improved
 * #### Categories
 * #### Event Classes
   1. Added `auth_factors` as an attribute to the `Account Change` class and updated related activity names. [#1455](https://github.com/ocsf/ocsf-schema/pull/1455)
+  1. Added `launch_type_id` and `launch_type` as attributes to the `Process Activity` event class. [#1517](https://github.com/ocsf/ocsf-schema/pull/1517)
+  2. Added descriptions to values of `injection_type_id` enum. [#1517](https://github.com/ocsf/ocsf-schema/pull/1517)
+
 * #### Profiles
 * #### Objects
   1. Added `type`, `type_uid`, and `vendor_id_list` to the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)

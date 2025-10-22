@@ -3512,15 +3512,15 @@
         },
         "1": {
           "caption": "Spawn",
-          "description": "With the Windows process creation model, this launch type denotes atomic creation of a new process in a single step. With the 2-step Unix model, this launch type may be used to represent both steps in a single event."
+          "description": "Denotes that the <code>Launch</code> event represents atomic creation of a new process on Windows. This launch type ID may also be used to represent both steps of Unix process creation in a single <code>Launch</code> event."
         },
         "2": {
           "caption": "Fork",
-          "description": "With the 2-step Unix process creation model, this launch type denotes the \"fork\" step where a parent process clones itself to a new child process. WSL1 processes on Windows also use the 2-step model."
+          "description": "Denotes that the <code>Launch</code> event represents the \"fork\" step of Unix process creation, where a process creates a clone of itself in a parent-child relationship. WSL1 pico processes on Windows also use the 2-step Unix model."
         },
         "3": {
           "caption": "Exec",
-          "description": "With the 2-step Unix process creation model, this launch type denotes the \"exec\" step where the new child process replaces its executable image, command line, and environment. WSL1 processes on Windows also use the 2-step model."
+          "description": "Denotes that the <code>Launch</code> event represents the \"exec\" step of Unix process creation, where a process replaces its executable image, command line, and environment. WSL1 pico processes on Windows also use the 2-step Unix model."
         },
         "99": {
           "caption": "Other",
@@ -3529,11 +3529,11 @@
       },
       "references": [
         {
-          "description": "fork()",
+          "description": "fork() man page",
           "url": "https://www.man7.org/linux/man-pages/man2/fork.2.html"
         },
         {
-          "description": "execve()",
+          "description": "execve() man page",
           "url": "https://www.man7.org/linux/man-pages/man2/execve.2.html"
         }
       ]

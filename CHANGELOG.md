@@ -45,20 +45,23 @@ Thankyou! -->
 * #### Categories
 * #### Event Classes
  1. Added `Peripheral Activity` event class to the System category. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
- 2. Added `ai_security` profile to `API Activity` and `Datastore Activity` classes for AI-related security events.
 * #### Profiles
- 1. **AI Security Profile**: Added minimal AI Security Profile with essential attributes for AI security event mapping.
+ 1. **AI Security Profile**: Added minimal AI Security Profile with essential attributes for AI security event mapping. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
 * #### Objects
- 1. **AI Model Object**: Added minimal AI model object with core fields (`name`, `ai_provider`, `version`) for AI security events. Uses inherited `name` attribute from `_entity` base object instead of custom `model_name` attribute.
- 2. **Message Context Object**: Added communication context object for AI system interactions with role-based identification and token usage metrics (`prompt_tokens`, `completion_tokens`, `total_tokens`). Updated to use standard OCSF `application` and `service` objects instead of custom client/server attributes to prevent attribute sprawl. Overrides inherited `uid` attribute with context-specific description.
+  1. Added `type`, `type_uid`, and `vendor_id_list` to the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
+  1. Relaxed the `class` attribute requirement to `optional` in the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
+  1. Set the `vendor_name` requirement to `recommended` in the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
+  1. **Database Object**: Extended with AI-specific database types (`Vector (7)`, `Knowledge Graph (8)`) and `embedding_model` field for AI retrieval systems. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
+  2. **AI Model Object**: Added minimal AI model object with core fields (`name`, `ai_provider`, `version`) for AI security events. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
+  3. **Message Context Object**: Added communication context object for AI system interactions with role-based identification and token usage metrics (`prompt_tokens`, `completion_tokens`, `total_tokens`). [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
 * #### Platform Extensions
 * #### Dictionary Attributes
- 1. Added `ai_provider` attribute for AI model identification. Removed `model_name` in favor of inherited `name` attribute from `_entity` base object.
- 2. Added `ai_role_id`, `ai_role` attributes for AI communication context with proper sibling relationship.
- 3. Added `prompt_tokens`, `completion_tokens`, `total_tokens` attributes for AI token usage metrics.
- 4. Added `embedding_model` attribute for AI retrieval systems.
- 5. Added `Local (4)` enum to the `direction_id` attribute. [#1475](https://github.com/ocsf/ocsf-schema/pull/1475)
- 6. Added `vendor_id_list` as a `string_t` array. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
+ 1. Added `Local (4)` enum to the `direction_id` attribute. [#1475](https://github.com/ocsf/ocsf-schema/pull/1475)
+ 2. Added `vendor_id_list` as a `string_t` array. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
+ 3. Added `ai_provider` attribute for AI model identification. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
+ 4. Added `ai_role_id`, `ai_role` attributes for AI communication context with proper sibling relationship. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
+ 5. Added `prompt_tokens`, `completion_tokens`, `total_tokens` attributes for AI token usage metrics. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
+ 6. Added `embedding_model` attribute for AI retrieval systems. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
 
 ### Changed
 * #### Categories

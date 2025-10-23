@@ -13,15 +13,15 @@
         },
         "2": {
           "caption": "Terminate",
-          "description": "Termination of a process. Note that process termination is reflexive on Windows, even if initiated by another process. For some event sources therefore, <code>actor.process</code> identifies the terminated process rather than the actor that requested termination."
+          "description": "A request by the actor to terminate a process. This activity is most commonly reflexive, this being the case when a process exits at its own initiation. Note too that Windows security products cannot always identify the actor in the case of inter-process termination. In this case, <code>actor.process</code> and <code>process</code> refer to the exiting process, i.e. indistinguishable from the reflexive case."
         },
         "3": {
           "caption": "Open",
-          "description": "A request by the actor to obtain a handle or descriptor to another process with the aim of performing further actions upon that process."
+          "description": "A request by the actor to obtain a handle or descriptor to a process with the aim of performing further actions upon that process. The target is usually a different process but this activity can also be reflexive."
         },
         "4": {
           "caption": "Inject",
-          "description": "A request by the actor to execute code within the context of another process. Refer to the <code>injection_type_id</code> attribute for details of the specific injection type."
+          "description": "A request by the actor to execute code within the context of a process. The target is usually a different process but this activity can also be reflexive. Refer to the <code>injection_type_id</code> attribute for details of the specific injection type."
         },
         "5": {
           "caption": "Set User ID",

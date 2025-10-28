@@ -4,8 +4,16 @@
   "extends": "object",
   "name": "observable",
   "attributes": {
+    "event_uid": {
+      "description": "The unique identifier (<code>metadata.uid</code>) of the source OCSF event from which this observable was extracted. This field enables linking observables back to their originating event data when observables are stored in a separate location or system.",
+      "requirement": "optional"
+    },
+    "type_uid": {
+      "description": "The OCSF event type UID (<code>type_uid</code>) of the source event that this observable was extracted from. This field enables filtering and categorizing observables by their originating event type. For example: <code>300101</code> for Network Activity (class_uid 3001) with activity_id 1.",
+      "requirement": "optional"
+    },
     "name": {
-      "description": "The full name of the observable attribute. The <code>name</code> is a pointer/reference to an attribute within the OCSF event data. For example: <code>file.name</code>.",
+      "description": "The full name of the observable attribute. The <code>name</code> is a pointer/reference to an attribute within the OCSF event data. For example: <code>file.name</code>. Array attributes may be represented in one of three ways. For example: <code>resources.uid</code>, <code>resources[].uid</code>, <code>resources[0].uid</code>.",
       "requirement": "recommended"
     },
     "reputation": {

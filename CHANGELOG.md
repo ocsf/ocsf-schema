@@ -18,6 +18,7 @@ Thankyou! -->
 * #### Event Classes
 * #### Profiles
 * #### Objects
+* #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
 
@@ -26,6 +27,7 @@ Thankyou! -->
 * #### Event Classes
 * #### Profiles
 * #### Objects
+* #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
 
@@ -44,29 +46,43 @@ Thankyou! -->
 ### Added
 * #### Categories
 * #### Event Classes
- 1. Added `Peripheral Activity` event class to the System category. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
+  1. Added `Peripheral Activity` event class to the System category. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
 * #### Profiles
 * #### Objects
+  1. Added `reporter` object. [#1476](https://github.com/ocsf/ocsf-schema/pull/1476)
+* #### Observables
+  1. Set `network_endpoint.uid` as an Observable type - `type_id: 48`. [#1502](https://github.com/ocsf/ocsf-schema/pull/1502)
+ 1. Added the `function_invocation` and `parameter` objects. [#1497](https://github.com/ocsf/ocsf-schema/pull/1497)
 * #### Platform Extensions
 * #### Dictionary Attributes
- 1. Added `vendor_id_list` as a `string_t` array. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
+  1. Added `vendor_id_list` as a `string_t` array. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
+ 1. Added `function_invocation` as a `function_invocation` object. [#1497](https://github.com/ocsf/ocsf-schema/pull/1497)
+ 1. Added `post_value`, `pre_value` and `return_value` as `string_t`. [#1497](https://github.com/ocsf/ocsf-schema/pull/1497)
 
 ### Improved
 * #### Categories
 * #### Event Classes
- 1. Added `auth_factors` as an attribute to the `Account Change` class and updated related activity names. [#1455](https://github.com/ocsf/ocsf-schema/pull/1455)
+  1. Added `auth_factors` as an attribute to the `Account Change` class and updated related activity names. [#1455](https://github.com/ocsf/ocsf-schema/pull/1455)
+ 1. Added `Invoke` as an `activity_id` value for the `Module Activity` class. [#1497](https://github.com/ocsf/ocsf-schema/pull/1497)
 * #### Profiles
 * #### Objects
- 1. Added `type`, `type_uid`, and `vendor_id_list` to the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
- 1. Relaxed the `class` attribute requirement to `optional` in the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
- 1. Set the `vendor_name` requirement to `recommended` in the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
-
+  1. Added `type`, `type_uid`, and `vendor_id_list` to the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
+  1. Relaxed the `class` attribute requirement to `optional` in the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
+  1. Set the `vendor_name` requirement to `recommended` in the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
+  1. Added `reporter` to the `metadata` object. [#1476](https://github.com/ocsf/ocsf-schema/pull/1476)
+  1. Added `event_uid` and `type_uid` to the `observable` object. [#1503](https://github.com/ocsf/ocsf-schema/pull/1503) 1. Set `load_type_id` requirement to `recommended` in the `module` object. [#1497](https://github.com/ocsf/ocsf-schema/pull/1497)
+ 1. Added `at_least_one` constraint on `load_type_id` and `function_name` in the `module` object. [#1497](https://github.com/ocsf/ocsf-schema/pull/1497)
+ 1. Modified descriptions in the `module` object to accommodate `Module Activity: Invoke` event. [#1497](https://github.com/ocsf/ocsf-schema/pull/1497)
+ 1. Added `function_invocation` to the `module` object. [#1497](https://github.com/ocsf/ocsf-schema/pull/1497)
+  1. Relaxed the `file` attribute requirement to `optional` in the `job` object. [#1509](https://github.com/ocsf/ocsf-schema/pull/1509)
+  1. Relaxed the `name` and `uid` requirement to `recommended` with `at_least_one` constraint in the `extension` object. [#1511](https://github.com/ocsf/ocsf-schema/pull/1511)
+* #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
  1. Added `Disabled (4)` enum to the `state_id` attribute in `analytic` object. [#1524](https://github.com/ocsf/ocsf-schema/pull/1524)
  1. Added `Local (4)` enum to the `direction_id` attribute. [#1475](https://github.com/ocsf/ocsf-schema/pull/1475)
- 2. Added `Atom (38)` enum as an available `type_id` for `win_resource` object [#1477](https://github.com/ocsf/ocsf-schema/pull/1477)
- 3. Updated reference descriptions/urls for win_resource types, including `Directory (1)`, `Event (2)`, `Timer (3)`, `Device (4)`, `Mutant (5)`, `File (7)`, `Token (8)`, `Thread (9)`, `Section (10)`, `WindowStation (11)`, `Driver (15)`, `IoCompletion (16)`, `Controller (17)`, `SymbolicLink (18)`, `WmiGuid (19)`, `Process (20)`, `Profile (21)`, `Desktop (22)`, `KeyedEvent (23)`, `Adapter (24)`, `Callback (27)`, `Semaphore (28)`, `Job (29)`, `ALPC Port (32)`, `SAM_ALIAS (33)`, `SAM_GROUP (34)`, `SAM_USER (35)`, `SAM_DOMAIN (36)`, `SAM_SERVER (37)`, and `Atom (38)`.
+ 1. Added `Atom (38)` enum as an available `type_id` for `win_resource` object [#1477](https://github.com/ocsf/ocsf-schema/pull/1477)
+ 1. Updated reference descriptions/urls for win_resource types, including `Directory (1)`, `Event (2)`, `Timer (3)`, `Device (4)`, `Mutant (5)`, `File (7)`, `Token (8)`, `Thread (9)`, `Section (10)`, `WindowStation (11)`, `Driver (15)`, `IoCompletion (16)`, `Controller (17)`, `SymbolicLink (18)`, `WmiGuid (19)`, `Process (20)`, `Profile (21)`, `Desktop (22)`, `KeyedEvent (23)`, `Adapter (24)`, `Callback (27)`, `Semaphore (28)`, `Job (29)`, `ALPC Port (32)`, `SAM_ALIAS (33)`, `SAM_GROUP (34)`, `SAM_USER (35)`, `SAM_DOMAIN (36)`, `SAM_SERVER (37)`, and `Atom (38)`.
 
 
 ### Bugfixes
@@ -78,6 +94,7 @@ Thankyou! -->
 ### Misc
  1. Updated description for the `peripheral_device` object and the `vendor_name` attribute within it. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
  1. Corrected the deprecation note for the `Web Resource Access Activity` event class. [#1492](https://github.com/ocsf/ocsf-schema/pull/1492)
+
 ## [v1.6.0] - Aug 1st, 2025
 
 ### Added
@@ -88,6 +105,7 @@ Thankyou! -->
   1. Added `access_level`, `programmatic_credentials`, `last_authentication_time`, `access_analysis_result`, `last_used_time`, `accessors`, `granted_privileges`, `identity_activity_metrics`, `password_last_used_time`, `access_type`, `permission_analysis_results`, `additional_restrictions`, `unused_privileges_count`, `condition_keys`, `applications`, `role`, `role_id`. [#1389](https://github.com/ocsf/ocsf-schema/pull/1389)
   1. Added `reg_binary_data`, `reg_integer_data`, `reg_string_data`, `reg_string_list_data` to Windows extension. [#1468](https://github.com/ocsf/ocsf-schema/pull/1468)
   1. Added `is_src_dst_assignment_known` as a boolean. [#1464](https://github.com/ocsf/ocsf-schema/pull/1464)
+  1. Added `network_scope`, `network_scope_id`, `observation_point` and `observation_point_id`. [#1481](https://github.com/ocsf/ocsf-schema/pull/1481)
 
 * #### Objects
   1. Added  `access_analysis_result`, `additional_restriction`, `identity_activity_metrics`, `permission_analysis_result`, `programmatic_credential`. [#1389](https://github.com/ocsf/ocsf-schema/pull/1389)
@@ -103,6 +121,7 @@ Thankyou! -->
   1. Added `http_request` and `http_response` objects to the `File Hosting Activity` Class [#1458](https://github.com/ocsf/ocsf-schema/pull/1458)
   1. Added `Account Switch` activity_id to the `Authentication` class. Added `account_switch_type` and `account_switch_type_id` attributes to the `Authentication` class. [#1460](https://github.com/ocsf/ocsf-schema/pull/1460)
   1. Added `is_src_dst_assignment_known` attribute to `Network Activity` class. [#1464](https://github.com/ocsf/ocsf-schema/pull/1464)
+  1. Added `observation_point` and `observation_point_id` to the base `Network` event. [#1481](https://github.com/ocsf/ocsf-schema/pull/1481)
 
 * #### Objects
   1. Added more `algorithm_id` values and references to the `fingerprint` object. [#1412](https://github.com/ocsf/ocsf-schema/pull/1412)
@@ -119,6 +138,7 @@ Thankyou! -->
   1. Added `is_truncated` and `untruncated_size` to `metadata`, `logger` objects. [#1461](https://github.com/ocsf/ocsf-schema/pull/1461)
   1. Added `open_ports` to the `network_interface` object. [#1466](https://github.com/ocsf/ocsf-schema/pull/1466)
   1. Added `reg_binary_data`, `reg_integer_data`, `reg_string_data`, `reg_string_list_data` to `reg_value` object in Windows extension. [#1468](https://github.com/ocsf/ocsf-schema/pull/1468)
+  1. Added `network_scope` and `network_scope_id` to the `network_endpoint` object. [#1481](https://github.com/ocsf/ocsf-schema/pull/1481)
   
 
 ### Misc

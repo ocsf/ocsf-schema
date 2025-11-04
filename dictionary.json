@@ -52,7 +52,7 @@
     },
     "account": {
       "caption": "Account",
-      "description": "The account object describes details about the account that was the source or target of the activity.",
+      "description": "The account object describes details about the account that was the source or target of the activity. See specific usage.",
       "type": "account"
     },
     "account_switch_type": {
@@ -1162,12 +1162,12 @@
     },
     "cloud": {
       "caption": "Cloud",
-      "description": "Describes details about the Cloud environment where the event was originally created or logged.",
+      "description": "Describes details about the Cloud environment where the event or finding was created.",
       "type": "cloud"
     },
     "cloud_partition": {
       "caption": "Cloud Partition",
-      "description": "The canonical cloud partition name to which the region is assigned (e.g. AWS Partitions: aws, aws-cn, aws-us-gov).",
+      "description": "The logical grouping or isolated segment within a cloud provider's infrastructure. See specific usage.",
       "type": "string_t"
     },
     "cmd_line": {
@@ -2732,6 +2732,11 @@
       "description": "The full name. See specific usage.",
       "type": "string_t"
     },
+    "function_invocation": {
+      "caption": "Function Invocation",
+      "description": "Details of a function invocation.",
+      "type": "function_invocation"
+    },
     "function_keys": {
       "caption": "Function Keys",
       "description": "The number of function keys on client keyboard.",
@@ -2739,7 +2744,7 @@
     },
     "function_name": {
       "caption": "Function Name",
-      "description": "The entry-point function of the module. The system calls the entry-point function whenever a process or thread loads or unloads the module.",
+      "description": "The function name. See specific usage.",
       "type": "string_t"
     },
     "geodetic_altitude": {
@@ -4178,7 +4183,7 @@
     },
     "org": {
       "caption": "Organization",
-      "description": "Organization and org unit relevant to the event or object.",
+      "description": "Organization and org unit relevant to the event or object. See specific usage.",
       "type": "organization"
     },
     "original_time": {
@@ -4277,6 +4282,12 @@
       "caption": "Page Number",
       "description": "The page number of the document. See specific usage.",
       "type": "integer_t"
+    },
+    "parameters": {
+      "caption": "Parameters",
+      "description": "The parameters passed into a function invocation.",
+      "type": "parameter",
+      "is_array": true
     },
     "parent_folder": {
       "caption": "Parent Folder",
@@ -4440,6 +4451,16 @@
     "postal_code": {
       "caption": "Postal Code",
       "description": "The postal code of the location.",
+      "type": "string_t"
+    },
+    "post_value":{
+      "caption": "Post-Value",
+      "description": "The value after. See specific usage.",
+      "type": "string_t"
+    },
+    "pre_value": {
+      "caption": "Pre-Value",
+      "description": "The value before. See specific usage.",
       "type": "string_t"
     },
     "precision": {
@@ -5124,6 +5145,11 @@
       "caption": "Response Time",
       "description": "The Domain Name System (DNS) response time.",
       "type": "timestamp_t"
+    },
+    "return_value": {
+      "caption": "Return Value",
+      "description": "The value returned from a function.",
+      "type": "string_t"
     },
     "return_path": {
       "caption": "Return Path",
@@ -6644,7 +6670,7 @@
     },
     "zone": {
       "caption": "Network Zone",
-      "description": "The network zone or LAN segment.",
+      "description": "The network zone or LAN segment. See specific usage.",
       "type": "string_t"
     }
   },

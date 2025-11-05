@@ -68,12 +68,15 @@ Thankyou! -->
   1. Added `ai_role_id`, `ai_role` attributes for AI communication context with proper sibling relationship. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
   1. Added `prompt_tokens`, `completion_tokens`, `total_tokens` attributes for AI token usage metrics. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
   1. Added `embedding_model` attribute for AI retrieval systems. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
+  1. Added `launch_type_id` enum and `launch_type` sibling. [#1517](https://github.com/ocsf/ocsf-schema/pull/1517)
 
 ### Changed
 * #### Categories
 * #### Event Classes
   1. Added `auth_factors` as an attribute to the `Account Change` class and updated related activity names. [#1455](https://github.com/ocsf/ocsf-schema/pull/1455)
   1. Added `Invoke` as an `activity_id` value for the `Module Activity` class. [#1497](https://github.com/ocsf/ocsf-schema/pull/1497)
+  1. Added `launch_type_id` and `launch_type` as attributes to the `Process Activity` event class. [#1517](https://github.com/ocsf/ocsf-schema/pull/1517)
+  1. Added descriptions to values of `activity_id` enum in `Process Activity` event class. [#1517](https://github.com/ocsf/ocsf-schema/pull/1517)
 * #### Profiles
 * #### Objects
   1. Added `type`, `type_uid`, and `vendor_id_list` to the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)

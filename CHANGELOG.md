@@ -136,7 +136,7 @@ Thankyou! -->
   1. Added `Account Switch` activity_id to the `Authentication` class. Added `account_switch_type` and `account_switch_type_id` attributes to the `Authentication` class. [#1460](https://github.com/ocsf/ocsf-schema/pull/1460)
   1. Added `is_src_dst_assignment_known` attribute to `Network Activity` class. [#1464](https://github.com/ocsf/ocsf-schema/pull/1464)
   1. Added `observation_point` and `observation_point_id` to the base `Network` event. [#1481](https://github.com/ocsf/ocsf-schema/pull/1481)
-  1. Added `cumulative_network_traffic`  to the base `Network` event. [#1481](https://github.com/ocsf/ocsf-schema/pull/1529)
+  1. Added `cumulative_network_traffic`  to the base `Network` event. [#1529](https://github.com/ocsf/ocsf-schema/pull/1529)
 
 * #### Objects
   1. Added more `algorithm_id` values and references to the `fingerprint` object. [#1412](https://github.com/ocsf/ocsf-schema/pull/1412)

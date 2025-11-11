@@ -66,6 +66,7 @@ Thankyou! -->
   1. Added `ai_role_id` as `integer_t` enum and `ai_role` as `string_t`. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
   1. Added `prompt_tokens`, `completion_tokens`, `total_tokens` as `integer_t`. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
   1. Added `embedding_model` as `string_t`. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
+  1. Added `log_source` `log_source_uid` `log_format` as `string_t`. [#1483](https://github.com/ocsf/ocsf-schema/pull/1483)
 
 ### Improved
 * #### Categories
@@ -89,6 +90,7 @@ Thankyou! -->
   1. Relaxed the `name` and `uid` requirement to `recommended` with `at_least_one` constraint in the `extension` object. [#1511](https://github.com/ocsf/ocsf-schema/pull/1511)
   1. Added `embedding_model` to the `database` object. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
   1. Added enum types (`Vector (7)`, `Knowledge Graph (8)`) to `type_id` in the `database` object. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
+  1. Added `source`, `type`, `log_source`, `original_event_uid`,`log_format`, `transmit_time` to `metadata`. `log_format` to `logger`[#1483](https://github.com/ocsf/ocsf-schema/pull/1483)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes

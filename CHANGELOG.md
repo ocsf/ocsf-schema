@@ -71,6 +71,7 @@ Thankyou! -->
   1. Added descriptions to values of `activity_id` enum in `Process Activity` event class. [#1517](https://github.com/ocsf/ocsf-schema/pull/1517)
   1. Added missing context classification to `windows_service_activity.win_service`. [#1531](https://github.com/ocsf/ocsf-schema/pull/1531)
   1. Added missing requirement to `process_activity.launch_type`. [#1531](https://github.com/ocsf/ocsf-schema/pull/1531)
+  1. Added `cumulative_network_traffic`  to the base `Network` event. [#1529](https://github.com/ocsf/ocsf-schema/pull/1529)
 * #### Profiles
 * #### Objects
   1. Added `type`, `type_uid`, and `vendor_id_list` to the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
@@ -88,6 +89,7 @@ Thankyou! -->
   1. Added `hosted_services`, array to the `process` object.
 
   1. Added `source`, `type`, `log_source`, `original_event_uid`,`log_format`, `transmit_time` to `metadata`. `log_format` to `logger`[#1483](https://github.com/ocsf/ocsf-schema/pull/1483)
+  1. Added `start_time` and `end_time` to the `network_traffic` object. [#1529](https://github.com/ocsf/ocsf-schema/pull/1529)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -97,6 +99,7 @@ Thankyou! -->
   1. Added `hosted_services` to the Windows extension to the `process` object.
   1. Added multiple values to the `state_id` enum attribute for the `digital_signature` object. [#1520](https://github.com/ocsf/ocsf-schema/pull/1520)
   1. Added `WFP Filter (39)`, `WFP Callout (40)`, `WFP Layer (41)`, `WFP Sub-layer (42)`, `WFP Provider (43)` and `WFP Provider Context (44)` WindowsFilteringPlatform-related enums as an available `type_ids` for `win_resource` object. [#1530](https://github.com/ocsf/ocsf-schema/pull/1530)
+  1. Added `cumulative_network_traffic` of `network_traffic` type. [#1529](https://github.com/ocsf/ocsf-schema/pull/1529)
 
 ### Bugfixes
 
@@ -119,7 +122,6 @@ Thankyou! -->
   1. Added `reg_binary_data`, `reg_integer_data`, `reg_string_data`, `reg_string_list_data` to Windows extension. [#1468](https://github.com/ocsf/ocsf-schema/pull/1468)
   1. Added `is_src_dst_assignment_known` as a boolean. [#1464](https://github.com/ocsf/ocsf-schema/pull/1464)
   1. Added `network_scope`, `network_scope_id`, `observation_point` and `observation_point_id`. [#1481](https://github.com/ocsf/ocsf-schema/pull/1481)
-  1. Added `cumulative_network_traffic` of `network_traffic` type. [#1529](https://github.com/ocsf/ocsf-schema/pull/1529)
 
 * #### Objects
   1. Added  `access_analysis_result`, `additional_restriction`, `identity_activity_metrics`, `permission_analysis_result`, `programmatic_credential`. [#1389](https://github.com/ocsf/ocsf-schema/pull/1389)
@@ -136,7 +138,6 @@ Thankyou! -->
   1. Added `Account Switch` activity_id to the `Authentication` class. Added `account_switch_type` and `account_switch_type_id` attributes to the `Authentication` class. [#1460](https://github.com/ocsf/ocsf-schema/pull/1460)
   1. Added `is_src_dst_assignment_known` attribute to `Network Activity` class. [#1464](https://github.com/ocsf/ocsf-schema/pull/1464)
   1. Added `observation_point` and `observation_point_id` to the base `Network` event. [#1481](https://github.com/ocsf/ocsf-schema/pull/1481)
-  1. Added `cumulative_network_traffic`  to the base `Network` event. [#1529](https://github.com/ocsf/ocsf-schema/pull/1529)
 
 * #### Objects
   1. Added more `algorithm_id` values and references to the `fingerprint` object. [#1412](https://github.com/ocsf/ocsf-schema/pull/1412)

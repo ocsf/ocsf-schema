@@ -4,41 +4,6 @@
   "extends": "object",
   "name": "network_traffic",
   "attributes": {
-    "aggregation_type": {
-      "description": "Text name of how network traffic counters are aggregated or reported. Normalized to match the caption of <code>aggregation_type_id</code>. Possible values: Incremental, Cumulative, Combined, Instantaneous, or Other.",
-      "requirement": "optional"
-    },
-    "aggregation_type_id": {
-      "caption": "Aggregation Type ID",
-      "description": "Numeric identifier defining how network traffic counters are aggregated or reported.",
-      "requirement": "recommended",
-      "enum": {
-        "0": {
-          "caption": "Unknown",
-          "description": "Aggregation model is unspecified or could not be determined."
-        },
-        "1": {
-          "caption": "Incremental",
-          "description": "Values represent the change (delta) observed during a specific reporting window or time interval."
-        },
-        "2": {
-          "caption": "Cumulative",
-          "description": "Values represent total counts accumulated since the beginning of the flow or observation period."
-        },
-        "3": {
-          "caption": "Combined",
-          "description": "Values include both delta (incremental) and total (cumulative) counters reported together."
-        },
-        "4": {
-          "caption": "Instantaneous",
-          "description": "Represents a single unaggregated (raw) network observation, such as one packet or one discrete event."
-        },
-        "99": {
-          "caption": "Other",
-          "description": "Aggregation model is non-standard or custom-defined by the event source."
-        }
-      }
-    },
     "bytes": {
       "description": "The total number of bytes transferred in both directions (sum of bytes_in and bytes_out). In the combined model, this represents the delta (incremental) bytes transferred during the current reporting interval.",
       "requirement": "recommended"
@@ -80,41 +45,11 @@
       "requirement": "optional"
     },
     "start_time": {
-      "description": "Start time of the observation period. In the combined and incremental models, this value differs from the base event's <code>start_time</code> and marks the start of the current reporting window. In the cumulative model, it marks the start time of the flow or observation period.",
+      "description": "The start time of the observation or reporting period.",
       "requirement": "optional"
     },
     "end_time": {
-      "description": "End time of the observation period. In the combined and incremental models, this marks the end of the current reporting window. In the cumulative model, it marks the end time of the flow or observation period.",
-      "requirement": "optional"
-    },
-    "cumulative_bytes": {
-      "requirement": "optional"
-    },
-    "cumulative_bytes_in": {
-      "requirement": "optional"
-    },
-    "cumulative_bytes_missed": {
-      "requirement": "optional"
-    },
-    "cumulative_bytes_out": {
-      "requirement": "optional"
-    },
-    "cumulative_chunks": {
-      "requirement": "optional"
-    },
-    "cumulative_chunks_in": {
-      "requirement": "optional"
-    },
-    "cumulative_chunks_out": {
-      "requirement": "optional"
-    },
-    "cumulative_packets": {
-      "requirement": "optional"
-    },
-    "cumulative_packets_in": {
-      "requirement": "optional"
-    },
-    "cumulative_packets_out": {
+      "description": "The end time of the observation or reporting period.",
       "requirement": "optional"
     }
   },

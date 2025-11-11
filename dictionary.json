@@ -1419,7 +1419,7 @@
     },
     "correlation_uid": {
       "caption": "Correlation UID",
-      "description": "The unique identifier used to correlate events.",
+      "description": "A unique identifier used to correlate events. See specific usage.",
       "type": "string_t"
     },
     "cost_center": {
@@ -3647,19 +3647,29 @@
       "type": "location",
       "is_array": true
     },
+    "log_format": {
+      "caption": "Log Format",
+      "description": "The format of data in the log. See specific usage.",
+      "type": "string_t"
+    },
     "log_level": {
       "caption": "Log Level",
-      "description": "The audit level at which an event was generated.",
+      "description": "The log specific level at which an event was generated. See specific usage.",
       "type": "string_t"
     },
     "log_name": {
       "caption": "Log Name",
-      "description": "The event log name. For example, syslog file name or Windows logging subsystem: Security.",
+      "description": "The log name. See specific usage.",
       "type": "string_t"
     },
     "log_provider": {
       "caption": "Log Provider",
-      "description": "The logging provider or logging service that logged the event. For example, Microsoft-Windows-Security-Auditing.",
+      "description": "The logging provider or logging service that logged the event. See specific usage.",
+      "type": "string_t"
+    },
+    "log_source": {
+      "caption": "Log Source",
+      "description": "The log where the data originated. See specific usage.",
       "type": "string_t"
     },
     "log_type": {
@@ -3693,7 +3703,7 @@
     },
     "log_version": {
       "caption": "Log Version",
-      "description": "The event log schema version that specifies the format of the original event. For example syslog version or Cisco Log Schema Version.",
+      "description": "The log version. See specific usage.",
       "type": "string_t"
     },
     "logged_time": {
@@ -3703,7 +3713,7 @@
     },
     "loggers": {
       "caption": "Loggers",
-      "description": "An array of Logger objects that describe the devices and logging products between the event source and its eventual destination. Note, this attribute can be used when there is a complex end-to-end path of event flow.",
+      "description": "An array of Logger objects that describe the pipeline of devices and logging products between the event source and its eventual destination. Note, this attribute can be used when there is a complex end-to-end path of event flow and/or to track the chain of custody of the data.",
       "type": "logger",
       "is_array": true
     },
@@ -4222,6 +4232,11 @@
       "caption": "Organization",
       "description": "Organization and org unit relevant to the event or object. See specific usage.",
       "type": "organization"
+    },
+    "original_event_uid": {
+      "caption": "Original Event ID",
+      "description": "The unique identifier assigned to the event in its original logging system before transformation to OCSF format. This field preserves the source system's native event identifier, enabling traceability back to the raw log entry. For example, a Windows Event Record ID, a syslog message ID, a Splunk _cd value, or a database transaction log sequence number.",
+      "type": "string_t"
     },
     "original_time": {
       "caption": "Original Time",

@@ -52,7 +52,7 @@
     },
     "account": {
       "caption": "Account",
-      "description": "The account object describes details about the account that was the source or target of the activity.",
+      "description": "The account object describes details about the account that was the source or target of the activity. See specific usage.",
       "type": "account"
     },
     "account_switch_type": {
@@ -1162,12 +1162,12 @@
     },
     "cloud": {
       "caption": "Cloud",
-      "description": "Describes details about the Cloud environment where the event was originally created or logged.",
+      "description": "Describes details about the Cloud environment where the event or finding was created.",
       "type": "cloud"
     },
     "cloud_partition": {
       "caption": "Cloud Partition",
-      "description": "The canonical cloud partition name to which the region is assigned (e.g. AWS Partitions: aws, aws-cn, aws-us-gov).",
+      "description": "The logical grouping or isolated segment within a cloud provider's infrastructure. See specific usage.",
       "type": "string_t"
     },
     "cmd_line": {
@@ -1414,7 +1414,7 @@
     },
     "correlation_uid": {
       "caption": "Correlation UID",
-      "description": "The unique identifier used to correlate events.",
+      "description": "A unique identifier used to correlate events. See specific usage.",
       "type": "string_t"
     },
     "cost_center": {
@@ -3500,6 +3500,49 @@
       "description": "The HTTP response latency measured in milliseconds.",
       "type": "integer_t"
     },
+    "launch_type": {
+      "caption": "Launch Type",
+      "description": "The specific type of <code>Launch</code> activity, normalized to the caption of the <code>launch_type_id</code> value. In the case of <code>Other</code> it is defined by the event source.",
+      "type": "string_t"
+    },
+    "launch_type_id": {
+      "caption": "Launch Type ID",
+      "description": "The normalized identifier for the specific type of <code>Launch</code> activity.",
+      "sibling": "launch_type",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The launch type is unknown or not specified."
+        },
+        "1": {
+          "caption": "Spawn",
+          "description": "Denotes that the <code>Launch</code> event represents atomic creation of a new process on Windows. This launch type ID may also be used to represent both steps of Unix process creation in a single <code>Launch</code> event."
+        },
+        "2": {
+          "caption": "Fork",
+          "description": "Denotes that the <code>Launch</code> event represents the \"fork\" step of Unix process creation, where a process creates a clone of itself in a parent-child relationship. WSL1 pico processes on Windows also use the 2-step Unix model."
+        },
+        "3": {
+          "caption": "Exec",
+          "description": "Denotes that the <code>Launch</code> event represents the \"exec\" step of Unix process creation, where a process replaces its executable image, command line, and environment. WSL1 pico processes on Windows also use the 2-step Unix model."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The launch type is not mapped. See the <code>launch_type</code> attribute, which contains a data source specific value."
+        }
+      },
+      "references": [
+        {
+          "description": "fork() man page",
+          "url": "https://www.man7.org/linux/man-pages/man2/fork.2.html"
+        },
+        {
+          "description": "execve() man page",
+          "url": "https://www.man7.org/linux/man-pages/man2/execve.2.html"
+        }
+      ]
+    },
     "ldap_cn": {
       "caption": "LDAP Common Name",
       "description": "The LDAP and X.500 <code>commonName</code> attribute, typically the full name of the person. For example, <code>John Doe</code>.",
@@ -3589,19 +3632,29 @@
       "type": "location",
       "is_array": true
     },
+    "log_format": {
+      "caption": "Log Format",
+      "description": "The format of data in the log. See specific usage.",
+      "type": "string_t"
+    },
     "log_level": {
       "caption": "Log Level",
-      "description": "The audit level at which an event was generated.",
+      "description": "The log specific level at which an event was generated. See specific usage.",
       "type": "string_t"
     },
     "log_name": {
       "caption": "Log Name",
-      "description": "The event log name. For example, syslog file name or Windows logging subsystem: Security.",
+      "description": "The log name. See specific usage.",
       "type": "string_t"
     },
     "log_provider": {
       "caption": "Log Provider",
-      "description": "The logging provider or logging service that logged the event. For example, Microsoft-Windows-Security-Auditing.",
+      "description": "The logging provider or logging service that logged the event. See specific usage.",
+      "type": "string_t"
+    },
+    "log_source": {
+      "caption": "Log Source",
+      "description": "The log where the data originated. See specific usage.",
       "type": "string_t"
     },
     "log_type": {
@@ -3635,7 +3688,7 @@
     },
     "log_version": {
       "caption": "Log Version",
-      "description": "The event log schema version that specifies the format of the original event. For example syslog version or Cisco Log Schema Version.",
+      "description": "The log version. See specific usage.",
       "type": "string_t"
     },
     "logged_time": {
@@ -3645,7 +3698,7 @@
     },
     "loggers": {
       "caption": "Loggers",
-      "description": "An array of Logger objects that describe the devices and logging products between the event source and its eventual destination. Note, this attribute can be used when there is a complex end-to-end path of event flow.",
+      "description": "An array of Logger objects that describe the pipeline of devices and logging products between the event source and its eventual destination. Note, this attribute can be used when there is a complex end-to-end path of event flow and/or to track the chain of custody of the data.",
       "type": "logger",
       "is_array": true
     },
@@ -4162,8 +4215,13 @@
     },
     "org": {
       "caption": "Organization",
-      "description": "Organization and org unit relevant to the event or object.",
+      "description": "Organization and org unit relevant to the event or object. See specific usage.",
       "type": "organization"
+    },
+    "original_event_uid": {
+      "caption": "Original Event ID",
+      "description": "The unique identifier assigned to the event in its original logging system before transformation to OCSF format. This field preserves the source system's native event identifier, enabling traceability back to the raw log entry. For example, a Windows Event Record ID, a syslog message ID, a Splunk _cd value, or a database transaction log sequence number.",
+      "type": "string_t"
     },
     "original_time": {
       "caption": "Original Time",
@@ -6649,7 +6707,7 @@
     },
     "zone": {
       "caption": "Network Zone",
-      "description": "The network zone or LAN segment.",
+      "description": "The network zone or LAN segment. See specific usage.",
       "type": "string_t"
     }
   },

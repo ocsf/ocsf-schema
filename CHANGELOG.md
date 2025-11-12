@@ -71,7 +71,7 @@ Thankyou! -->
   1. Added descriptions to values of `activity_id` enum in `Process Activity` event class. [#1517](https://github.com/ocsf/ocsf-schema/pull/1517)
   1. Added missing context classification to `windows_service_activity.win_service`. [#1531](https://github.com/ocsf/ocsf-schema/pull/1531)
   1. Added missing requirement to `process_activity.launch_type`. [#1531](https://github.com/ocsf/ocsf-schema/pull/1531)
-  1. Added `cumulative_traffic` attribute to the base `Network` event. [#1529](https://github.com/ocsf/ocsf-schema/pull/1529)
+  1. Added `cumulative_traffic` attribute to the base `Network` event. Updated `traffic` description. [#1529](https://github.com/ocsf/ocsf-schema/pull/1529)
 * #### Profiles
 * #### Objects
   1. Added `type`, `type_uid`, and `vendor_id_list` to the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
@@ -87,9 +87,8 @@ Thankyou! -->
   1. Relaxed the `name` and `uid` requirement to `recommended` with `at_least_one` constraint in the `extension` object. [#1511](https://github.com/ocsf/ocsf-schema/pull/1511)
   1. Added `hosting_process`, `service_file` and `service_dll_file` to the `win_service` object.
   1. Added `hosted_services`, array to the `process` object.
-
   1. Added `source`, `type`, `log_source`, `original_event_uid`,`log_format`, `transmit_time` to `metadata`. `log_format` to `logger`[#1483](https://github.com/ocsf/ocsf-schema/pull/1483)
-  1. Added `start_time` and `end_time` to the `network_traffic` object. [#1529](https://github.com/ocsf/ocsf-schema/pull/1529)
+  1. Added `start_time` and `end_time` to the `network_traffic` object. Updated `network_traffic` description. [#1529](https://github.com/ocsf/ocsf-schema/pull/1529)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes

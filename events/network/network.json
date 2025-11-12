@@ -17,8 +17,8 @@
       "group": "primary",
       "requirement": "recommended"
     },
-    "cumulative_network_traffic": {
-      "description": "The cumulative (total) network traffic since the start of the flow or observation period. Used in combined and cumulative aggregation models to provide running totals alongside incremental delta values in the <code>traffic</code> attribute.",
+    "cumulative_traffic": {
+      "description": "The cumulative (running total) network traffic aggregated from the start of a flow or session. Use when reporting: (1) total accumulated bytes/packets since flow initiation, (2) combined aggregation models where both incremental deltas (in <code>traffic</code>) and running totals are reported together, or (3) final summary metrics when a long-lived connection closes. This represents the sum of all activity from flow start to the current observation, not a delta or point-in-time value.",
       "group": "context",
       "requirement": "optional"
     },
@@ -79,7 +79,7 @@
       "requirement": "optional"
     },
     "traffic": {
-      "description": "The instantaneous or incremental (delta) network traffic for the current observation or reporting interval. For cumulative totals, use the <code>cumulative_network_traffic</code> attribute.",
+      "description": "The network traffic for this observation period. Use when reporting: (1) delta values (bytes/packets transferred since the last observation), (2) instantaneous measurements at a specific point in time, or (3) standalone single-event metrics. This attribute represents a point-in-time measurement or incremental change, not a running total. For accumulated totals across multiple observations or the lifetime of a flow, use <code>cumulative_traffic</code> instead.",
       "group": "primary",
       "requirement": "recommended"
     }

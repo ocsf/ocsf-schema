@@ -88,7 +88,7 @@ Thankyou! -->
   1. Added `hosting_process`, `service_file` and `service_dll_file` to the `win_service` object.
   1. Added `hosted_services`, array to the `process` object.
   1. Added `source`, `type`, `log_source`, `original_event_uid`,`log_format`, `transmit_time` to `metadata`. `log_format` to `logger`[#1483](https://github.com/ocsf/ocsf-schema/pull/1483)
-  1. Added `start_time` and `end_time` to the `network_traffic` object. Updated `network_traffic` description. [#1529](https://github.com/ocsf/ocsf-schema/pull/1529)
+  1. Added `start_time`, `end_time` and `timespan` to the `network_traffic` object. Updated `network_traffic` description. [#1529](https://github.com/ocsf/ocsf-schema/pull/1529)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes

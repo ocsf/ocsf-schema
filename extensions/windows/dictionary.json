@@ -209,6 +209,27 @@
         }
       }
     },
+    "hosting_process": {
+      "caption": "Hosting Process",
+      "description": "The process that is hosting this service.",
+      "type": "process_entity"
+    },
+    "hosted_services": {
+      "caption": "Hosted Services",
+      "description": "The Windows services that this process is hosting.",
+      "type": "win_service",
+      "is_array": true
+   },
+    "service_file": {
+      "caption": "Service File",
+      "description": "For a user mode service (<code>service_type_id</code> 3 or 4) this is the executable program that the SCM launches as the service process.<br>For a kernel mode driver (<code>service_type_id</code> 1 or 2) this is the driver file loaded into the kernel at the request of the SCM. ",
+      "type": "file"
+    },
+    "service_dll_file": {
+      "caption": "Service DLL",
+      "description": "For a shared user mode service (<code>service_type_id</code> is 4) this is the DLL that gets loaded by the generic service host process (e.g. <code>svchost.exe</code>) to implement the service.",
+      "type": "file"
+    },
     "win_resource": {
       "caption": "Windows Resource",
       "description": "The Windows resource object that was accessed, such as a mutant or timer.",

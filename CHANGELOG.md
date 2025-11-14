@@ -43,6 +43,8 @@ Thankyou! -->
 
 ## [Unreleased]
 
+## [v1.7.0] - Nov 14th, 2025
+
 ### Added
 * #### Categories
 * #### Event Classes
@@ -51,13 +53,12 @@ Thankyou! -->
 * #### Objects
   1. Added `reporter` object. [#1476](https://github.com/ocsf/ocsf-schema/pull/1476)
   1. Added Windows extension to the `process` object.
+  1. Added `function_invocation` as a `function_invocation` object. [#1497](https://github.com/ocsf/ocsf-schema/pull/1497)
 * #### Observables
   1. Set `network_endpoint.uid` as an Observable type - `type_id: 48`. [#1502](https://github.com/ocsf/ocsf-schema/pull/1502)
- 1. Added the `function_invocation` and `parameter` objects. [#1497](https://github.com/ocsf/ocsf-schema/pull/1497)
 * #### Platform Extensions
 * #### Dictionary Attributes
   1. Added `vendor_id_list` as a `string_t` array. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
-  1. Added `function_invocation` as a `function_invocation` object. [#1497](https://github.com/ocsf/ocsf-schema/pull/1497)
   1. Added `post_value`, `pre_value` and `return_value` as `string_t`. [#1497](https://github.com/ocsf/ocsf-schema/pull/1497)
   1. Added `launch_type_id` enum and `launch_type` sibling. [#1517](https://github.com/ocsf/ocsf-schema/pull/1517)
   1. Added `log_source` `log_source_uid` `log_format` as `string_t`. [#1483](https://github.com/ocsf/ocsf-schema/pull/1483)

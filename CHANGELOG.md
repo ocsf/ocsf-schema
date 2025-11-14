@@ -53,7 +53,7 @@ Thankyou! -->
 * #### Objects
   1. Added `reporter` object. [#1476](https://github.com/ocsf/ocsf-schema/pull/1476)
   1. Added Windows extension to the `process` object.
-  1. Added `function_invocation` as a `function_invocation` object. [#1497](https://github.com/ocsf/ocsf-schema/pull/1497)
+  1. Added the `function_invocation` and `parameter` objects. [#1497](https://github.com/ocsf/ocsf-schema/pull/1497)
 * #### Observables
   1. Set `network_endpoint.uid` as an Observable type - `type_id: 48`. [#1502](https://github.com/ocsf/ocsf-schema/pull/1502)
 * #### Platform Extensions

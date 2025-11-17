@@ -43,6 +43,8 @@ Thankyou! -->
 
 ## [Unreleased]
 
+## [v1.7.0] - Nov 14th, 2025
+
 ### Added
 * #### Categories
 * #### Event Classes
@@ -54,13 +56,13 @@ Thankyou! -->
   1. Added `ai_model` object with core fields (`name`, `ai_provider`, `version`) for AI security events. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
   1. Added `message_context` object for AI system interactions with role-based identification and token usage metrics (`prompt_tokens`, `completion_tokens`, `total_tokens`). [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
   1. Added Windows extension to the `process` object.
+  1. Added the `function_invocation` and `parameter` objects. [#1497](https://github.com/ocsf/ocsf-schema/pull/1497)
 * #### Observables
   1. Set `network_endpoint.uid` as an Observable type - `type_id: 48`. [#1502](https://github.com/ocsf/ocsf-schema/pull/1502)
   1. Added the `function_invocation` and `parameter` objects. [#1497](https://github.com/ocsf/ocsf-schema/pull/1497)
 * #### Platform Extensions
 * #### Dictionary Attributes
   1. Added `vendor_id_list` as a `string_t` array. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
-  1. Added `function_invocation` as a `function_invocation` object. [#1497](https://github.com/ocsf/ocsf-schema/pull/1497)
   1. Added `post_value`, `pre_value` and `return_value` as `string_t`. [#1497](https://github.com/ocsf/ocsf-schema/pull/1497)
   1. Added `launch_type_id` enum and `launch_type` sibling. [#1517](https://github.com/ocsf/ocsf-schema/pull/1517)
   1. Added `ai_provider` as `string_t`. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
@@ -78,6 +80,7 @@ Thankyou! -->
   1. Added descriptions to values of `activity_id` enum in `Process Activity` event class. [#1517](https://github.com/ocsf/ocsf-schema/pull/1517)
   1. Added missing context classification to `windows_service_activity.win_service`. [#1531](https://github.com/ocsf/ocsf-schema/pull/1531)
   1. Added missing requirement to `process_activity.launch_type`. [#1531](https://github.com/ocsf/ocsf-schema/pull/1531)
+  1. Added `cumulative_traffic` attribute to the base `Network` event. Updated `traffic` description. [#1529](https://github.com/ocsf/ocsf-schema/pull/1529)
 * #### Profiles
 * #### Objects
   1. Added `type`, `type_uid`, and `vendor_id_list` to the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
@@ -95,8 +98,8 @@ Thankyou! -->
   1. Added enum types (`Vector (7)`, `Knowledge Graph (8)`) to `type_id` in the `database` object. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
   1. Added `hosting_process`, `service_file` and `service_dll_file` to the `win_service` object.
   1. Added `hosted_services`, array to the `process` object.
-
   1. Added `source`, `type`, `log_source`, `original_event_uid`,`log_format`, `transmit_time` to `metadata`. `log_format` to `logger`[#1483](https://github.com/ocsf/ocsf-schema/pull/1483)
+  1. Added `start_time`, `end_time` and `timespan` to the `network_traffic` object. Updated `network_traffic` description. [#1529](https://github.com/ocsf/ocsf-schema/pull/1529)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -106,6 +109,7 @@ Thankyou! -->
   1. Added `hosted_services` to the Windows extension to the `process` object.
   1. Added multiple values to the `state_id` enum attribute for the `digital_signature` object. [#1520](https://github.com/ocsf/ocsf-schema/pull/1520)
   1. Added `WFP Filter (39)`, `WFP Callout (40)`, `WFP Layer (41)`, `WFP Sub-layer (42)`, `WFP Provider (43)` and `WFP Provider Context (44)` WindowsFilteringPlatform-related enums as an available `type_ids` for `win_resource` object. [#1530](https://github.com/ocsf/ocsf-schema/pull/1530)
+  1. Added `cumulative_traffic` of `network_traffic` type. [#1529](https://github.com/ocsf/ocsf-schema/pull/1529)
 
 ### Bugfixes
 

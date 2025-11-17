@@ -43,6 +43,14 @@ Thankyou! -->
 
 ## [Unreleased]
 
+### Added
+* ### Dictionary Attributes
+  1. Added `queued_duration` to track how long an event spent in a queue. [#TODO](#)
+
+### Improved
+* #### Objects
+ 1. Added `queued_duration` to the `metadata` object. [#TODO](#)
+
 ## [v1.7.0] - Nov 14th, 2025
 
 ### Added

@@ -1,0 +1,36 @@
+{
+  "caption": "Reporter",
+  "description": "The entity from which an event or finding was reported.",
+  "extends": "_entity",
+  "name": "reporter",
+  "attributes": {
+    "hostname": {
+      "description": "The hostname of the entity from which the event or finding was reported.",
+      "requirement": "recommended"
+    },
+    "ip": {
+      "description": "The IP address of the entity from which the event or finding was reported.",
+      "requirement": "recommended"
+    },
+    "name": {
+      "description": "The name of the entity from which the event or finding was reported.",
+      "requirement": "recommended"
+    },
+    "org": {
+      "description": "The organization properties of the entity that reported the event or finding.",
+      "requirement": "optional"
+    },
+    "uid": {
+      "description": "The unique identifier of the entity from which the event or finding was reported.",
+      "requirement": "recommended"
+    }
+  },
+  "constraints": {
+    "at_least_one": [
+      "hostname",
+      "ip",
+      "name",
+      "uid"
+    ]
+  }
+}

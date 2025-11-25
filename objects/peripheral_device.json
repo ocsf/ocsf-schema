@@ -1,12 +1,12 @@
 {
   "caption": "Peripheral Device",
-  "description": "The peripheral device object describes the identity, vendor and model of a peripheral device.",
+  "description": "The peripheral device object describes the properties of external, connectable, and detachable hardware.",
   "extends": "_entity",
   "name": "peripheral_device",
   "attributes": {
     "class": {
       "description": "The class of the peripheral device.",
-      "requirement": "required"
+      "requirement": "optional"
     },
     "model": {
       "description": "The peripheral device model.",
@@ -20,12 +20,64 @@
       "description": "The peripheral device serial number.",
       "requirement": "recommended"
     },
+    "type": {
+      "caption": "Peripheral Device Type",
+      "description": "The Peripheral Device type, normalized to the caption of the <code>type_id</code> value. In the case of 'Other', it is defined by the source.",
+      "requirement": "optional"
+    },
+    "type_id": {
+      "caption": "Peripheral Device Type ID",
+      "description": "The normalized peripheral device type ID.",
+      "requirement": "recommended",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The peripheral device type is unknown."
+        },
+        "1": {
+          "caption": "External Storage",
+          "description": "The peripheral device is an external storage device."
+        },
+        "2": {
+          "caption": "Keyboard",
+          "description": "The peripheral device is a keyboard."
+        },
+        "3": {
+          "caption": "Mouse",
+          "description": "The peripheral device is a mouse."
+        },
+        "4": {
+          "caption": "Printer",
+          "description": "The peripheral device is a printer."
+        },
+        "5": {
+          "caption": "Monitor",
+          "description": "The peripheral device is a monitor."
+        },
+        "6": {
+          "caption": "Microphone",
+          "description": "The peripheral device is a microphone."
+        },
+        "7": {
+          "caption": "Webcam",
+          "description": "The peripheral device is a webcam."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The peripheral device type is not mapped. See the <code>type</code> attribute which contains an event source specific value."
+        }
+      }
+    },
     "uid": {
       "description": "The unique identifier of the peripheral device.",
       "requirement": "recommended"
     },
+    "vendor_id_list": {
+      "description": "The list of vendor IDs for the peripheral device.",
+      "requirement": "recommended"
+    },
     "vendor_name": {
-      "description": "The peripheral device vendor.",
+      "description": "The primary vendor name for the peripheral device.",
       "requirement": "recommended"
     }
   }

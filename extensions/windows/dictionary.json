@@ -3,6 +3,17 @@
   "description": "The Attribute Dictionary defines schema attributes and includes references to the events and objects in which they are used.",
   "name": "dictionary",
   "attributes": {
+    "hosted_services": {
+      "caption": "Hosted Services",
+      "description": "The Windows services that this process is hosting.",
+      "type": "win_service",
+      "is_array": true
+    },
+    "hosting_process": {
+      "caption": "Hosting Process",
+      "description": "The process that is hosting this service.",
+      "type": "process_entity"
+    },
     "load_order_group": {
       "caption": "Load Order Group",
       "description": "The name of the load ordering group of which this service is a member.",
@@ -89,6 +100,11 @@
       "type": "string_t",
       "is_array": true
     },
+    "service_dll_file": {
+      "caption": "Service DLL",
+      "description": "For a shared user mode service (<code>service_type_id</code> is 4) this is the DLL that gets loaded by the generic service host process (e.g. <code>svchost.exe</code>) to implement the service.",
+      "type": "file"
+    },
     "service_error_control": {
       "caption": "Service Error Control",
       "description": "The service error control, normalized to the caption of the <code>service_error_control_id</code> value. In the case of 'Other', it is defined by the event source.",
@@ -125,6 +141,11 @@
           "description": "The service error control is not mapped. See the <code>service_error_control</code> attribute, which contains an event source specific value."
         }
       }
+    },
+    "service_file": {
+      "caption": "Service File",
+      "description": "For a user mode service (<code>service_type_id</code> 3 or 4) this is the executable program that the SCM launches as the service process.<br>For a kernel mode driver (<code>service_type_id</code> 1 or 2) this is the driver file loaded into the kernel at the request of the SCM. ",
+      "type": "file"
     },
     "service_start_name": {
       "caption": "Service Start Name",

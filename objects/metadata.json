@@ -8,12 +8,14 @@
       "profiles/data_classification.json"
     ],
     "correlation_uid": {
+      "description": "A unique identifier used to correlate this OCSF event with other related OCSF events, distinct from the event's <code>uid</code> value. This enables linking multiple OCSF events that are part of the same activity, transaction, or security incident across different systems or time periods.",
       "requirement": "optional"
     },
     "debug": {
       "requirement": "optional"
     },
     "event_code": {
+      "description": "The identifier of the original event. For example the numerical Windows Event Code or Cisco syslog code.",
       "requirement": "optional"
     },
     "extension": {
@@ -30,16 +32,30 @@
       "description": "The list of labels attached to the event. For example: <code>[\"sample\", \"dev\"]</code>",
       "requirement": "optional"
     },
+    "log_format": {
+      "caption": "Log Source Format",
+      "description": "The format of data in the log where the data originated. For example CSV, XML, Windows Multiline, JSON, syslog or Cisco Log Schema.",
+      "requirement": "optional"
+    },
     "log_level": {
+      "description": "The level at which an event was logged. This can be log provider specific. For example the audit level.",
       "requirement": "optional"
     },
     "log_name": {
+      "description": "The event log name, typically for the consumer of the event. For example, the storage bucket name, SIEM repository index name, etc.",
       "requirement": "recommended"
     },
     "log_provider": {
-      "requirement": "recommended"
+      "description": "The logging provider or logging service that logged the event. For example AWS CloudWatch or Splunk.",
+      "requirement": "optional"
+    },
+    "log_source": {
+      "description": "The log system or component where the data originated. For example, a file path, syslog server name or a Windows hostname and logging subsystem such as Security.",
+      "requirement": "optional"
     },
     "log_version": {
+      "caption": "Log Version",
+      "description": "The event log schema version of the original event. For example the syslog version or the Cisco Log Schema version",
       "requirement": "optional"
     },
     "logged_time": {
@@ -50,6 +66,10 @@
     },
     "modified_time": {
       "description": "The time when the event was last modified or enriched.",
+      "requirement": "optional"
+    },
+    "original_event_uid": {
+      "description": "The unique identifier assigned to the event in its original logging system before transformation to OCSF format. This field preserves the source system's native event identifier, enabling traceability back to the raw log entry. For example, a Windows Event Record ID, a syslog message ID, a Splunk _cd value, or a database transaction log sequence number.",
       "requirement": "optional"
     },
     "original_time": {
@@ -64,7 +84,15 @@
     "profiles": {
       "requirement": "optional"
     },
+    "reporter": {
+      "description": "The entity from which the event or finding was first reported.",
+      "requirement": "recommended"
+    },
     "sequence": {
+      "requirement": "optional"
+    },
+    "source": {
+      "description": "The source of the event or finding. This can be any distinguishing name for the logical origin of the data — for example, 'CloudTrail Events', or a use case like 'Attack Simulations' or 'Vulnerability Scans'.",
       "requirement": "optional"
     },
     "tags": {
@@ -77,9 +105,17 @@
     "transformation_info_list": {
       "requirement": "optional"
     },
+    "transmit_time": {
+      "description": "The time when the event was transmitted from the logging device to it's next destination.",
+      "requirement": "optional"
+    },
+    "type": {
+      "description": "The type of the event or finding as a subset of the <code>source</code> of the event. This can be any distinguishing characteristic of the data. For example 'Management Events' or 'Device Penetration Test'.",
+      "requirement": "optional"
+    },
     "uid": {
       "caption": "Event UID",
-      "description": "The logging system-assigned unique identifier of an event instance.",
+      "description": "A unique identifier assigned to the OCSF event. This ID is specific to the OCSF event itself and is distinct from the original event identifier in the source system (see <code>original_event_uid</code>).",
       "requirement": "optional"
     },
     "untruncated_size": {

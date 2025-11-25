@@ -48,32 +48,26 @@ Thankyou! -->
 * #### Event Classes
   1. Added `Peripheral Activity` event class to the System category. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
 * #### Profiles
-  1. Added `ai_security` profile with essential attributes for AI security event mapping. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
+  1. Added `ai_operation` profile with essential attributes for AI operation event mapping. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
 * #### Objects
   1. Added `reporter` object. [#1476](https://github.com/ocsf/ocsf-schema/pull/1476)
-<<<<<<< HEAD
+  1. Added Windows extension to the `process` object.
+  1. Added the `function_invocation` and `parameter` objects. [#1497](https://github.com/ocsf/ocsf-schema/pull/1497)
   1. Added `ai_model` object with core fields (`name`, `ai_provider`, `version`) for AI security events. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
   1. Added `message_context` object for AI system interactions with role-based identification and token usage metrics (`prompt_tokens`, `completion_tokens`, `total_tokens`). [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
-=======
-  1. Added Windows extension to the `process` object.
->>>>>>> main
 * #### Observables
   1. Set `network_endpoint.uid` as an Observable type - `type_id: 48`. [#1502](https://github.com/ocsf/ocsf-schema/pull/1502)
-  1. Added the `function_invocation` and `parameter` objects. [#1497](https://github.com/ocsf/ocsf-schema/pull/1497)
 * #### Platform Extensions
 * #### Dictionary Attributes
   1. Added `vendor_id_list` as a `string_t` array. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
   1. Added `function_invocation` as a `function_invocation` object. [#1497](https://github.com/ocsf/ocsf-schema/pull/1497)
   1. Added `post_value`, `pre_value` and `return_value` as `string_t`. [#1497](https://github.com/ocsf/ocsf-schema/pull/1497)
   1. Added `launch_type_id` enum and `launch_type` sibling. [#1517](https://github.com/ocsf/ocsf-schema/pull/1517)
-<<<<<<< HEAD
-  1. Added `ai_provider` as `string_t`. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
-  1. Added `ai_role_id` as `integer_t` enum and `ai_role` as `string_t`. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
-  1. Added `prompt_tokens`, `completion_tokens`, `total_tokens` as `integer_t`. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
-  1. Added `embedding_model` as `string_t`. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
-=======
   1. Added `log_source` `log_source_uid` `log_format` as `string_t`. [#1483](https://github.com/ocsf/ocsf-schema/pull/1483)
->>>>>>> main
+  1. Added `ai_provider` attribute for AI model identification. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
+  1. Added `ai_role_id`, `ai_role` attributes for AI communication context with proper sibling relationship. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
+  1. Added `prompt_tokens`, `completion_tokens`, `total_tokens` attributes for AI token usage metrics. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
+  1. Added `embedding_model` attribute for AI retrieval systems. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
 
 ### Improved
 * #### Categories
@@ -97,15 +91,10 @@ Thankyou! -->
   1. Added `function_invocation` to the `module` object. [#1497](https://github.com/ocsf/ocsf-schema/pull/1497)
   1. Relaxed the `file` attribute requirement to `optional` in the `job` object. [#1509](https://github.com/ocsf/ocsf-schema/pull/1509)
   1. Relaxed the `name` and `uid` requirement to `recommended` with `at_least_one` constraint in the `extension` object. [#1511](https://github.com/ocsf/ocsf-schema/pull/1511)
-<<<<<<< HEAD
-  1. Added `embedding_model` to the `database` object. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
-  1. Added enum types (`Vector (7)`, `Knowledge Graph (8)`) to `type_id` in the `database` object. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
-=======
   1. Added `hosting_process`, `service_file` and `service_dll_file` to the `win_service` object.
   1. Added `hosted_services`, array to the `process` object.
-
   1. Added `source`, `type`, `log_source`, `original_event_uid`,`log_format`, `transmit_time` to `metadata`. `log_format` to `logger`[#1483](https://github.com/ocsf/ocsf-schema/pull/1483)
->>>>>>> main
+  1. Extended `database` object with AI-specific database types (`Vector (7)`, `Knowledge Graph (8)`) and `embedding_model` field for AI retrieval systems. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes

@@ -43,6 +43,14 @@ Thankyou! -->
 
 ## [Unreleased]
 
+### Added
+* #### Objects
+  * Added `logged_on_users` attribute to `device` object - List of users currently logged on to the device.
+  * Added `action`, `action_id`, `disposition`, and `disposition_id` attributes to `evidences` object - Outcome or action taken by security controls for evidence artifacts.
+
+* #### Dictionary Attributes
+  * Added `logged_on_users` field - Array of user objects representing logged on users.
+
 ## [v1.7.0] - Nov 14th, 2025
 
 ### Added

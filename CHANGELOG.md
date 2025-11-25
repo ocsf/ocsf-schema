@@ -53,7 +53,7 @@ Thankyou! -->
   1. Added `reporter` object. [#1476](https://github.com/ocsf/ocsf-schema/pull/1476)
   1. Added Windows extension to the `process` object.
   1. Added the `function_invocation` and `parameter` objects. [#1497](https://github.com/ocsf/ocsf-schema/pull/1497)
-  1. Added `ai_model` object with core fields (`name`, `ai_provider`, `version`) for AI security events. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
+  1. Added `ai_model` object with core fields (`name`, `ai_provider`, `version`) for AI operation events. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
   1. Added `message_context` object for AI system interactions with role-based identification and token usage metrics (`prompt_tokens`, `completion_tokens`, `total_tokens`). [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
 * #### Observables
   1. Set `network_endpoint.uid` as an Observable type - `type_id: 48`. [#1502](https://github.com/ocsf/ocsf-schema/pull/1502)
@@ -95,6 +95,7 @@ Thankyou! -->
   1. Added `hosted_services`, array to the `process` object.
   1. Added `source`, `type`, `log_source`, `original_event_uid`,`log_format`, `transmit_time` to `metadata`. `log_format` to `logger`[#1483](https://github.com/ocsf/ocsf-schema/pull/1483)
   1. Extended `database` object with AI-specific database types (`Vector (7)`, `Knowledge Graph (8)`) and `embedding_model` field for AI retrieval systems. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
+  1. Added `start_time`, `end_time` and `timespan` to the `network_traffic` object. Updated `network_traffic` description. [#1529](https://github.com/ocsf/ocsf-schema/pull/1529)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes

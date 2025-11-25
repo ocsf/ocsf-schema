@@ -4,18 +4,22 @@
   "extends": "object",
   "name": "function_invocation",
   "attributes": {
-    "parameters":{
-        "requirement": "optional"
+    "error": {
+      "description": "The error indication returned from the function. This may differ from the return value (e.g. when <code>errno</code> is used).",
+      "requirement": "optional"
+    },
+    "parameters": {
+      "requirement": "optional"
     },
     "return_value": {
-        "requirement": "optional"
-    },
-    "error": {
-        "requirement": "optional",
-        "description": "The error indication returned from the function. This may differ from the return value (e.g. when <code>errno</code> is used)."
+      "requirement": "optional"
     }
   },
   "constraints": {
-    "at_least_one": ["parameters", "return_value", "error"]
+    "at_least_one": [
+      "parameters",
+      "return_value",
+      "error"
+    ]
   }
 }

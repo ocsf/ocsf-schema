@@ -8,17 +8,17 @@ on:
 
 jobs:
   validate-ocsf-server:
-    name: Validate the schema can be understood by the OCSF server and OCSF Schema
+    name: Validate OCSF Server compile of schema
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout schema
+    - name: Checkout ocsf-schema
       uses: actions/checkout@v6
     - name: Checkout ocsf-server
       uses: actions/checkout@v6
       with:
         repository: ocsf/ocsf-server
         path: server
-    - name: Set up elixir
+    - name: Set up Elixir
       uses: erlef/setup-beam@v1
       with:
         elixir-version: '1.16'  # Define the elixir version [required]
@@ -29,10 +29,10 @@ jobs:
         path: server/deps
         key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
         restore-keys: ${{ runner.os }}-mix-
-    - name: Install dependencies
+    - name: Install ocsf-server dependencies
       working-directory: server
       run: mix deps.get
-    - name: Run tests
+    - name: Run ocsf-server tests
       working-directory: server
       run: |
         export SCHEMA_DIR=..
@@ -40,10 +40,10 @@ jobs:
         mix test
 
   validate-ocsf-schema-compiler:
-    name: Validate the schema can be understood by the OCSF server and OCSF Schema
+    name: Validate ocsf-schema-compiler compile of schema
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
+    - name: Checkout ocsf-schema
       uses: actions/checkout@v6
     - name: Setup Python
       uses: actions/setup-python@v6

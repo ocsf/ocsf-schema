@@ -1,4 +1,4 @@
-name: Server Validation
+name: OCSF Server and OCSF Schema Compiler Validation
 
 on:
   push:
@@ -7,13 +7,12 @@ on:
     branches: [ "main" ]
 
 jobs:
-   build:
-    name: Validate the schema can be understood by the OCSF server
+  validate-ocsf-server:
+    name: Validate the schema can be understood by the OCSF server and OCSF Schema
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
     - name: Clone schema server repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v6
       with:
         repository: ocsf/ocsf-server
         path: server
@@ -34,3 +33,21 @@ jobs:
     - name: Run tests
       working-directory: server
       run: SCHEMA_DIR=.. mix test
+
+  validate-ocsf-schema-compiler:
+    name: Validate the schema can be understood by the OCSF server and OCSF Schema
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v6
+    - name: Setup Python
+      uses: actions/setup-python@v6
+      with:
+        python-version: "3.14"
+    - name: Compile schema
+      run: |
+        python -m pip install ocsf-schema-compiler
+        # Get compiler version
+        ocsf-schema-compiler -v
+        # Actual output of schema compile is not needed, so pipe to /dev/null
+        ocsf-schema-compiler . > /dev/null

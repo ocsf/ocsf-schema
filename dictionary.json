@@ -1414,7 +1414,7 @@
     },
     "correlation_uid": {
       "caption": "Correlation UID",
-      "description": "The unique identifier used to correlate events.",
+      "description": "A unique identifier used to correlate events. See specific usage.",
       "type": "string_t"
     },
     "cost_center": {
@@ -1545,6 +1545,11 @@
       "caption": "Criticality",
       "description": "Criticality of a resource/object in question",
       "type": "string_t"
+    },
+    "cumulative_traffic": {
+      "caption": "Cumulative Traffic",
+      "description": "The cumulative network traffic. See specific usage.",
+      "type": "network_traffic"
     },
     "customer_uid": {
       "caption": "Customer UID",
@@ -3653,19 +3658,29 @@
       "type": "location",
       "is_array": true
     },
+    "log_format": {
+      "caption": "Log Format",
+      "description": "The format of data in the log. See specific usage.",
+      "type": "string_t"
+    },
     "log_level": {
       "caption": "Log Level",
-      "description": "The audit level at which an event was generated.",
+      "description": "The log specific level at which an event was generated. See specific usage.",
       "type": "string_t"
     },
     "log_name": {
       "caption": "Log Name",
-      "description": "The event log name. For example, syslog file name or Windows logging subsystem: Security.",
+      "description": "The log name. See specific usage.",
       "type": "string_t"
     },
     "log_provider": {
       "caption": "Log Provider",
-      "description": "The logging provider or logging service that logged the event. For example, Microsoft-Windows-Security-Auditing.",
+      "description": "The logging provider or logging service that logged the event. See specific usage.",
+      "type": "string_t"
+    },
+    "log_source": {
+      "caption": "Log Source",
+      "description": "The log where the data originated. See specific usage.",
       "type": "string_t"
     },
     "log_type": {
@@ -3699,7 +3714,7 @@
     },
     "log_version": {
       "caption": "Log Version",
-      "description": "The event log schema version that specifies the format of the original event. For example syslog version or Cisco Log Schema Version.",
+      "description": "The log version. See specific usage.",
       "type": "string_t"
     },
     "logged_time": {
@@ -3709,7 +3724,7 @@
     },
     "loggers": {
       "caption": "Loggers",
-      "description": "An array of Logger objects that describe the devices and logging products between the event source and its eventual destination. Note, this attribute can be used when there is a complex end-to-end path of event flow.",
+      "description": "An array of Logger objects that describe the pipeline of devices and logging products between the event source and its eventual destination. Note, this attribute can be used when there is a complex end-to-end path of event flow and/or to track the chain of custody of the data.",
       "type": "logger",
       "is_array": true
     },
@@ -3901,7 +3916,7 @@
       "references": [
         {
           "description": "ATT&CK® Matrix",
-          "url": "https://attack.mitre.org/wiki/ATT&CK_Matrix"
+          "url": "https://attack.mitre.org"
         },
         {
           "description": "ATLAS™ Matrix",
@@ -3995,7 +4010,6 @@
         }
       }
     },
-
     "next_run_time": {
       "caption": "Next Run",
       "description": "The next run time. See specific usage.",
@@ -4228,6 +4242,11 @@
       "caption": "Organization",
       "description": "Organization and org unit relevant to the event or object. See specific usage.",
       "type": "organization"
+    },
+    "original_event_uid": {
+      "caption": "Original Event ID",
+      "description": "The unique identifier assigned to the event in its original logging system before transformation to OCSF format. This field preserves the source system's native event identifier, enabling traceability back to the raw log entry. For example, a Windows Event Record ID, a syslog message ID, a Splunk _cd value, or a database transaction log sequence number.",
+      "type": "string_t"
     },
     "original_time": {
       "caption": "Original Time",
@@ -4491,14 +4510,14 @@
       "description": "The TCP/UDP port number associated with a connection. See specific usage.",
       "type": "port_t"
     },
+    "post_value": {
+      "caption": "Post-Value",
+      "description": "The value after. See specific usage.",
+      "type": "string_t"
+    },
     "postal_code": {
       "caption": "Postal Code",
       "description": "The postal code of the location.",
-      "type": "string_t"
-    },
-    "post_value":{
-      "caption": "Post-Value",
-      "description": "The value after. See specific usage.",
       "type": "string_t"
     },
     "pre_value": {
@@ -5189,11 +5208,6 @@
       "description": "The Domain Name System (DNS) response time.",
       "type": "timestamp_t"
     },
-    "return_value": {
-      "caption": "Return Value",
-      "description": "The value returned from a function.",
-      "type": "string_t"
-    },
     "return_path": {
       "caption": "Return Path",
       "description": "The address found in the 'Return-Path' header, which indicates where bounce messages (non-delivery reports) should be sent. This address is often set by the sending system and may differ from the 'From' or 'Sender' addresses. For example, <code>mailer-daemon@senderserver.com</code>.",
@@ -5208,6 +5222,11 @@
           "url": "https://datatracker.ietf.org/doc/html/rfc5321#section-4.4"
         }
       ]
+    },
+    "return_value": {
+      "caption": "Return Value",
+      "description": "The value returned from a function.",
+      "type": "string_t"
     },
     "risk_details": {
       "caption": "Risk Details",
@@ -6016,7 +6035,7 @@
       "references": [
         {
           "description": "ATT&CK® Matrix",
-          "url": "https://attack.mitre.org/wiki/ATT&CK_Matrix"
+          "url": "https://attack.mitre.org"
         },
         {
           "description": "ATLAS™ Matrix",
@@ -6092,7 +6111,7 @@
       "references": [
         {
           "description": "ATT&CK® Matrix",
-          "url": "https://attack.mitre.org/wiki/ATT&CK_Matrix"
+          "url": "https://attack.mitre.org"
         },
         {
           "description": "ATLAS™ Matrix",
@@ -6203,7 +6222,7 @@
       "references": [
         {
           "description": "ATT&CK® Matrix",
-          "url": "https://attack.mitre.org/wiki/ATT&CK_Matrix"
+          "url": "https://attack.mitre.org"
         },
         {
           "description": "ATLAS™ Matrix",
@@ -6564,16 +6583,16 @@
       "description": "The Vendor Attributes object can be used to represent values of attributes populated by the Vendor/Finding Provider. It can help distinguish between the vendor-provided values and consumer-updated values, of key attributes like <code>severity_id</code>.<br>The original finding producer should not populate this object. It should be populated by consuming systems that support data mutability.",
       "type": "vendor_attributes"
     },
-    "vendor_name": {
-      "caption": "Vendor Name",
-      "description": "The name of the vendor. See specific usage.",
-      "type": "string_t"
-    },
     "vendor_id_list": {
       "caption": "Vendor ID List",
       "description": "The list of vendor IDs. See specific usage.",
       "type": "string_t",
       "is_array": true
+    },
+    "vendor_name": {
+      "caption": "Vendor Name",
+      "description": "The name of the vendor. See specific usage.",
+      "type": "string_t"
     },
     "verdict": {
       "caption": "Verdict",
@@ -6732,15 +6751,15 @@
       "bytestring_t": {
         "caption": "Byte String",
         "description": "Base 64 encoded immutable byte sequence. Traditional Base 64 is preferred but publishers may use URL-safe Base 64 when known to be acceptable to consumers. These encodings are described in RFC 4648.",
+        "regex": "^(?:(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)|(?:[A-Za-z0-9_-]{4})*(?:[A-Za-z0-9_-]{2}==|[A-Za-z0-9_-]{3}=))?$",
+        "type": "string_t",
+        "type_name": "String",
         "references": [
           {
             "description": "RFC 4648",
             "url": "https://www.rfc-editor.org/rfc/rfc4648.html"
           }
-        ],
-        "regex": "^(?:(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)|(?:[A-Za-z0-9_-]{4})*(?:[A-Za-z0-9_-]{2}==|[A-Za-z0-9_-]{3}=))?$",
-        "type": "string_t",
-        "type_name": "String"
+        ]
       },
       "datetime_t": {
         "caption": "Datetime",

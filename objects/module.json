@@ -11,13 +11,13 @@
       "description": "The module file object.",
       "requirement": "recommended"
     },
-    "function_name": {
-      "requirement": "recommended",
-      "description": "The invoked function in the module. For load and unload events, this is the entry-point function of the module. The system calls the entry-point function whenever a process or thread loads or unloads the module."
-    },
     "function_invocation": {
-      "requirement": "optional",
-      "description": "Details about the invocation of the function given in <code>function_name</code>."
+      "description": "Details about the invocation of the function given in <code>function_name</code>.",
+      "requirement": "optional"
+    },
+    "function_name": {
+      "description": "The invoked function in the module. For load and unload events, this is the entry-point function of the module. The system calls the entry-point function whenever a process or thread loads or unloads the module.",
+      "requirement": "recommended"
     },
     "load_type": {
       "requirement": "optional"
@@ -57,6 +57,9 @@
     }
   },
   "constraints": {
-    "at_least_one": ["load_type_id", "function_name"]
+    "at_least_one": [
+      "load_type_id",
+      "function_name"
+    ]
   }
 }

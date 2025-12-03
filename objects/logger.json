@@ -16,16 +16,24 @@
       "description": "Indicates whether the OCSF event data has been truncated due to size limitations. When <code>true</code>, some event data may have been omitted to fit within system constraints.",
       "requirement": "optional"
     },
+    "log_format": {
+      "description": "The format of data in the log. For example JSON, syslog or CSV.",
+      "requirement": "optional"
+    },
     "log_level": {
+      "description": "The level at which an event was logged. This can be log provider specific. For example the audit level.",
       "requirement": "optional"
     },
     "log_name": {
+      "description": "The log name for the logging provider log, or the file name of the system log. This may be an intermediate store-and-forward log or a vendor destination log. For example /archive/server1/var/log/messages.0 or /var/log/.",
       "requirement": "recommended"
     },
     "log_provider": {
+      "description": "The logging provider or logging service that logged the event. This may be an intermediate application store-and-forward log or a vendor destination log.",
       "requirement": "recommended"
     },
     "log_version": {
+      "description": "The event log schema version of the original event. For example the syslog version or the Cisco Log Schema version",
       "requirement": "optional"
     },
     "logged_time": {
@@ -41,7 +49,7 @@
     },
     "transmit_time": {
       "description": "The time when the event was transmitted from the logging device to it's next destination.",
-      "requirement": "optional"
+      "requirement": "recommended"
     },
     "uid": {
       "description": "The unique identifier of the logging product instance.",
@@ -52,7 +60,7 @@
       "requirement": "optional"
     },
     "version": {
-      "description": "The version of the logging product.",
+      "description": "The version of the logging provider.",
       "requirement": "optional"
     }
   }

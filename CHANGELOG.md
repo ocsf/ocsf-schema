@@ -76,6 +76,9 @@ Thankyou! -->
 ### Breaking changes
 
 ### Misc
+### Bugfixes
+* #### Event Classes
+  1. Removed erroneous `at_least_one` constraint in `Live Evidence Info` class [#1357](https://github.com/ocsf/ocsf-schema/pull/1537)
 
 ## [v1.7.0] - Nov 14th, 2025
 

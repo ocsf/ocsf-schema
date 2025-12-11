@@ -49,10 +49,10 @@ Thankyou! -->
 
 ### Improved
 * #### Objects
-  1. Added `signatures` to the `file` object. [#0](https://github.com/ocsf/ocsf-schema/pull/0)
+  1. Added `signatures` to the `file` object. [#1546](https://github.com/ocsf/ocsf-schema/pull/1546)
 
 ### Deprecated
-1. Deprecated the `signature` attribute of the file object in favour of the `signatures` attribute. [#0](https://github.com/ocsf/ocsf-schema/pull/0)
+1. Deprecated the `signature` attribute of the file object in favour of the `signatures` attribute. [#1546](https://github.com/ocsf/ocsf-schema/pull/1546)
 
 
 

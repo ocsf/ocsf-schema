@@ -1,32 +1,35 @@
 {
   "caption": "Cloud",
-  "description": "The Cloud object contains information about a cloud or Software-as-a-Service account or similar construct, such as AWS Account ID, regions, organizations, folders, compartments, tenants, etc.",
+  "description": "The Cloud object describes the cloud computing environment where an event or finding originated. It provides comprehensive context about the cloud infrastructure, including the cloud service provider, account or subscription details, organizational structure, geographic regions, availability zones, and logical partitions.",
   "extends": "object",
   "name": "cloud",
   "attributes": {
     "account": {
+      "description": "The Account object containing details about the cloud account, subscription, or billing unit where the event or finding was created. This object includes properties such as the account name, unique identifier, type, labels, and tags.<br/><br/><strong>Examples:</strong><ul><li><strong>AWS:</strong> Account object with <code>name</code>, <code>uid</code> (Account ID), <code>type</code>, and other account properties</li><li><strong>Azure:</strong> Subscription object with <code>name</code>, <code>uid</code> (Subscription ID), <code>type</code>, and subscription metadata</li><li><strong>GCP:</strong> Project object with <code>name</code>, <code>uid</code> (Project ID), <code>type</code>, and project attributes</li><li><strong>Oracle Cloud:</strong> Compartment object with <code>name</code>, <code>uid</code> (Tenancy OCID), <code>type</code>, and compartment details</li></ul>",
       "requirement": "optional"
     },
     "cloud_partition": {
+      "description": "The logical grouping or isolated segment within a cloud provider's infrastructure where the event or finding was created, often used for compliance, governance, or regional separation.<br/><br/><strong>Examples:</strong><ul><li><strong>AWS:</strong> Partition where the event occurred (<code>aws</code>, <code>aws-cn</code>, <code>aws-us-gov</code>)</li><li><strong>Azure:</strong> Cloud environment where the event occurred (<code>AzureCloud</code>, <code>AzureUSGovernment</code>, <code>AzureChinaCloud</code>)</li></ul>",
       "requirement": "optional"
     },
     "org": {
+      "description": "The Organization object containing details about the organizational unit or management structure that governs the account, subscription, or project where the event or finding was created. This object includes properties such as the organization name, unique identifier, type, and other organizational metadata.<br/><br/><strong>Examples:</strong><ul><li><strong>AWS:</strong> Organization object with <code>name</code>, <code>uid</code> (Organization ID), <code>type</code>, and other organizational properties</li><li><strong>Azure:</strong> Management Group object with <code>name</code>, <code>uid</code> (Management Group ID), <code>type</code>, and management group metadata</li><li><strong>GCP:</strong> Organization object with <code>name</code>, <code>uid</code> (Organization ID), <code>type</code>, and organizational attributes</li><li><strong>Oracle Cloud:</strong> Tenancy object with <code>name</code>, <code>uid</code> (Tenancy OCID), <code>type</code>, and tenancy details</li></ul>",
       "requirement": "optional"
     },
     "project_uid": {
       "requirement": "optional"
     },
     "provider": {
-      "description": "The unique name of the Cloud services provider, such as AWS, MS Azure, GCP, etc.",
+      "description": "The unique name of the Cloud services provider where the event or finding was created, such as AWS, MS Azure, GCP, etc.",
       "requirement": "required"
     },
     "region": {
-      "description": "The name of the cloud region, as defined by the cloud provider.",
+      "description": "The cloud region where the event or finding was created, as defined by the cloud provider.<br/><br/><strong>Examples:</strong><ul><li><strong>AWS:</strong> Region where the event occurred (<code>us-east-1</code>, <code>eu-west-1</code>)</li><li><strong>Azure:</strong> Region where the event occurred (<code>East US</code>, <code>West Europe</code>)</li><li><strong>GCP:</strong> Region where the event occurred (<code>us-central1</code>, <code>europe-west1</code>)</li><li><strong>Oracle Cloud:</strong> Region where the event occurred (<code>us-ashburn-1</code>, <code>uk-london-1</code>)</li></ul>",
       "requirement": "recommended"
     },
     "zone": {
       "caption": "Cloud Availability Zone",
-      "description": "The availability zone in the cloud region, as defined by the cloud provider.",
+      "description": "The availability zone in the cloud region where the event or finding was created, as defined by the cloud provider.<br/><br/><strong>Examples:</strong><ul><li><strong>AWS:</strong> Availability zone where the event occurred (<code>us-east-1a</code>, <code>us-east-1b</code>)</li><li><strong>Azure:</strong> Availability zone where the event occurred (<code>1</code>, <code>2</code>, <code>3</code> within a region)</li><li><strong>GCP:</strong> Availability zone where the event occurred (<code>us-central1-a</code>, <code>us-central1-b</code>)</li><li><strong>Oracle Cloud:</strong> Availability zone where the event occurred (<code>AD-1</code>, <code>AD-2</code>, <code>AD-3</code>)</li></ul>",
       "requirement": "optional"
     }
   }

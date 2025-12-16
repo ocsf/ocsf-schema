@@ -1,6 +1,6 @@
 {
   "caption": "Module",
-  "description": "The Module object describes the load attributes of a module.",
+  "description": "The Module object describes the attributes of a module.",
   "extends": "object",
   "name": "module",
   "attributes": {
@@ -11,15 +11,20 @@
       "description": "The module file object.",
       "requirement": "recommended"
     },
-    "function_name": {
+    "function_invocation": {
+      "description": "Details about the invocation of the function given in <code>function_name</code>.",
       "requirement": "optional"
+    },
+    "function_name": {
+      "description": "The invoked function in the module. For load and unload events, this is the entry-point function of the module. The system calls the entry-point function whenever a process or thread loads or unloads the module.",
+      "requirement": "recommended"
     },
     "load_type": {
       "requirement": "optional"
     },
     "load_type_id": {
       "description": "The normalized identifier for how the module was loaded in memory.",
-      "requirement": "required",
+      "requirement": "recommended",
       "enum": {
         "1": {
           "caption": "Standard",
@@ -50,5 +55,11 @@
       "description": "The module type.",
       "requirement": "recommended"
     }
+  },
+  "constraints": {
+    "at_least_one": [
+      "load_type_id",
+      "function_name"
+    ]
   }
 }

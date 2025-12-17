@@ -49,7 +49,7 @@ Thankyou! -->
 
 ### Improved
 * #### Objects
- 1. Added `total_queued_duration` to the `metadata` object. [#1536](https://github.com/ocsf/ocsf-schema/pull/1536)
+  1. Added `total_queued_duration` to the `metadata` object. [#1536](https://github.com/ocsf/ocsf-schema/pull/1536)
 * #### Categories
 * #### Event Classes
 * #### Profiles

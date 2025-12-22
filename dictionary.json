@@ -6724,25 +6724,15 @@
       "description": "The unique identifier of the Virtual Private Cloud (VPC).",
       "type": "string_t"
     },
-    "vram_size": {
-      "caption": "VRAM Size",
-      "description": "The total amount of installed video RAM.",
-      "type": "integer_t"
-    },
-    "vram_type": {
-      "caption": "VRAM Type",
-      "description": "The video memory configuration, normalized to the caption of the vram_type_id value. In the case of 'Other', it is defined by the event source.",
-      "type": "string_t"
-    },
-    "vram_type_id": {
-      "caption": "VRAM Type ID",
-      "description": "The normalized identifier of the video memory configuration.",
-      "sibling": "vram_type",
+    "vram_mode_id": {
+      "caption": "VRAM Mode ID",
+      "description": "The normalized identifier of the video memory attachment mode.",
+      "sibling": "vram_mode",
       "type": "integer_t",
       "enum": {
         "0": {
           "caption": "Unknown",
-          "description": "The VRAM type is unknown or not reported."
+          "description": "The VRAM mode is unknown or not reported."
         },
         "1": {
           "caption": "Shared",
@@ -6754,9 +6744,19 @@
         },
         "99": {
           "caption": "Other",
-          "description": "A VRAM type not covered by the defined values; the exact value is reported by the event source."
+          "description": "A VRAM mode not covered by the defined values; the exact value is reported by the event source."
         }
       }
+    },
+    "vram_mode": {
+      "caption": "VRAM Mode",
+      "description": "The video memory attachment mode, indicating how the VRAM hardware is integrated with the system (e.g., shared or dedicated), normalized to the caption of the vram_mode_id value. For 'Other', the exact attachment mode is defined by the event source.",
+      "type": "string_t"
+    },
+    "vram_size": {
+      "caption": "VRAM Size",
+      "description": "The total amount of installed video RAM.",
+      "type": "integer_t"
     },
     "vulnerabilities": {
       "caption": "Vulnerabilities",

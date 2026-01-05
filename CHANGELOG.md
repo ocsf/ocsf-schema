@@ -48,11 +48,12 @@ Thankyou! -->
 * #### Event Classes
 * #### Profiles
   1. Added `ai_operation` profile with essential attributes for AI operation event mapping. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
+  1. Added `user_sessions` profile for capturing users and their associated session information. [#1540](https://github.com/ocsf/ocsf-schema/pull/1540)
 * #### Objects
   1. Added `ai_model` object with core fields (`name`, `ai_provider`, `version`) for AI operation events. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
   1. Added `message_context` object for AI system interactions with role-based identification and token usage metrics (`prompt_tokens`, `completion_tokens`, `total_tokens`). [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
-  1. Added `logged_on_users` attribute to `device` object - List of users currently logged on to the device.
-  1. Added `action`, `action_id`, `disposition`, and `disposition_id` attributes to `evidences` object - Outcome or action taken by security controls for evidence artifacts.
+  1. Added `user_session` object containing `user` and `session` objects for user session tracking. [#1540](https://github.com/ocsf/ocsf-schema/pull/1540)
+  1. Included `user_sessions` profile in `evidences` object. [#1540](https://github.com/ocsf/ocsf-schema/pull/1540)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -60,7 +61,7 @@ Thankyou! -->
   1. Added `ai_role_id`, `ai_role` attributes for AI communication context with proper sibling relationship. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
   1. Added `prompt_tokens`, `completion_tokens`, `total_tokens` attributes for AI token usage metrics. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
   1. Added `embedding_model` attribute for AI retrieval systems. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
-  1. Added `logged_on_users` field - Array of user objects representing logged on users.
+  1. Added `user_sessions` attribute for the Users and Sessions profile. [#1540](https://github.com/ocsf/ocsf-schema/pull/1540)
 
 ### Improved
 * #### Categories

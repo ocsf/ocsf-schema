@@ -65,6 +65,7 @@ Thankyou! -->
 * #### Profiles
 * #### Objects
   1. Extended `database` object with AI-specific database types (`Vector (7)`, `Knowledge Graph (8)`) and `embedding_model` field for AI retrieval systems. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
+  1. Expanded on `created_time` attribute description within the `related_event` object. [1552](https://github.com/ocsf/ocsf-schema/pull/1552)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes

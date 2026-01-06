@@ -44,6 +44,12 @@ Thankyou! -->
 ## [Unreleased]
 
 ### Added
+* ### Dictionary Attributes
+  1. Added `total_queued_duration` to track how long an event spent in a queue. [#1536](https://github.com/ocsf/ocsf-schema/pull/1536)
+
+### Improved
+* #### Objects
+  1. Added `total_queued_duration` to the `metadata` object. [#1536](https://github.com/ocsf/ocsf-schema/pull/1536)
 * #### Categories
 * #### Event Classes
 * #### Profiles

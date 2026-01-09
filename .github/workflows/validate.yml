@@ -7,30 +7,34 @@ on:
     branches: [ "main" ]
 
 jobs:
-   build:
+  validate-ocsf-server:
     name: Validate the schema can be understood by the OCSF server
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Clone schema server repository
-      uses: actions/checkout@v2
+    - name: Checkout ocsf-schema
+      uses: actions/checkout@v6
+    - name: Checkout ocsf-server
+      uses: actions/checkout@v6
       with:
         repository: ocsf/ocsf-server
         path: server
-    - name: Set up elixir
+    - name: Set up Elixir
       uses: erlef/setup-beam@v1
       with:
-        elixir-version: '1.14.0' # Define the elixir version [required]
-        otp-version: '25'        # Define the OTP version [required]
+        elixir-version: '1.16'  # Define the elixir version [required]
+        otp-version: '26'       # Define the OTP version [required]
     - name: Restore dependencies cache
       uses: actions/cache@v3
       with:
         path: server/deps
         key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
         restore-keys: ${{ runner.os }}-mix-
-    - name: Install dependencies
+    - name: Install ocsf-server dependencies
       working-directory: server
       run: mix deps.get
-    - name: Run tests
+    - name: Run ocsf-server tests
       working-directory: server
-      run: SCHEMA_DIR=.. mix test
+      run: |
+        export SCHEMA_DIR=..
+        export SCHEMA_EXTENSION=../extensions
+        mix test

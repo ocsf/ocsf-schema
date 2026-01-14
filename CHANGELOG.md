@@ -88,6 +88,9 @@ Thankyou! -->
   1. Removed erroneous `at_least_one` constraint in `Live Evidence Info` class [#1357](https://github.com/ocsf/ocsf-schema/pull/1537)
 
 ### Improved
+* #### Event Classes
+  1. Add `app_protocol` to `Network Activity` class. [#1557](https://github.com/ocsf/ocsf-schema/pull/1557)
+  
 * #### Objects
   1. Added `signatures` to the `file` object. [#1546](https://github.com/ocsf/ocsf-schema/pull/1546)
 

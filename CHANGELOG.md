@@ -50,6 +50,7 @@ Thankyou! -->
 * #### Profiles
 * #### Objects
   1. Added `reporter` object. [#1476](https://github.com/ocsf/ocsf-schema/pull/1476)
+  1. Added `token` object for API tokens, client tokens, and API keys used in API activity events.
 * #### Observables
   1. Set `network_endpoint.uid` as an Observable type - `type_id: 48`. [#1502](https://github.com/ocsf/ocsf-schema/pull/1502)
  1. Added the `function_invocation` and `parameter` objects. [#1497](https://github.com/ocsf/ocsf-schema/pull/1497)
@@ -60,6 +61,7 @@ Thankyou! -->
   1. Added `post_value`, `pre_value` and `return_value` as `string_t`. [#1497](https://github.com/ocsf/ocsf-schema/pull/1497)
   1. Added `launch_type_id` enum and `launch_type` sibling. [#1517](https://github.com/ocsf/ocsf-schema/pull/1517)
   1. Added `log_source` `log_source_uid` `log_format` as `string_t`. [#1483](https://github.com/ocsf/ocsf-schema/pull/1483)
+  1. Added `token` as a `token` object.
 
 ### Improved
 * #### Categories
@@ -82,6 +84,8 @@ Thankyou! -->
   1. Relaxed the `file` attribute requirement to `optional` in the `job` object. [#1509](https://github.com/ocsf/ocsf-schema/pull/1509)
   1. Relaxed the `name` and `uid` requirement to `recommended` with `at_least_one` constraint in the `extension` object. [#1511](https://github.com/ocsf/ocsf-schema/pull/1511)
   1. Added `source`, `type`, `log_source`, `original_event_uid`,`log_format`, `transmit_time` to `metadata`. `log_format` to `logger`[#1483](https://github.com/ocsf/ocsf-schema/pull/1483)
+  1. Added `token` as an attribute to the `api` object.
+  1. Added `created_time` attribute back to the `authentication_token` object with improved description.
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes

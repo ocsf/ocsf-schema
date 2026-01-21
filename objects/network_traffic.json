@@ -1,40 +1,59 @@
 {
   "caption": "Network Traffic",
-  "description": "The Network Traffic object describes characteristics of network traffic. Network traffic refers to data moving across a network at a given point of time.",
+  "description": "The Network Traffic object describes characteristics of network traffic over a time period. The metrics represent network data transferred between source and destination during an observation window.",
   "extends": "object",
   "name": "network_traffic",
   "attributes": {
     "bytes": {
+      "description": "The total number of bytes transferred in both directions (sum of bytes_in and bytes_out).",
       "requirement": "recommended"
     },
     "bytes_in": {
+      "description": "The number of bytes sent from the destination to the source (inbound direction).",
       "requirement": "optional"
     },
     "bytes_missed": {
+      "description": "The number of bytes that were missed during observation, typically due to packet loss or sampling limitations.",
       "requirement": "optional"
     },
     "bytes_out": {
+      "description": "The number of bytes sent from the source to the destination (outbound direction).",
       "requirement": "optional"
     },
     "chunks": {
-      "description": "The total number of chunks (in and out).",
+      "description": "The total number of chunks transferred in both directions (sum of chunks_in and chunks_out).",
       "requirement": "optional"
     },
     "chunks_in": {
-      "description": "The number of chunks sent from the destination to the source.",
+      "description": "The number of chunks sent from the destination to the source (inbound direction).",
       "requirement": "optional"
     },
     "chunks_out": {
-      "description": "The number of chunks sent from the source to the destination.",
+      "description": "The number of chunks sent from the source to the destination (outbound direction).",
+      "requirement": "optional"
+    },
+    "end_time": {
+      "description": "The end time of the observation or reporting period.",
       "requirement": "optional"
     },
     "packets": {
+      "description": "The total number of packets transferred in both directions (sum of packets_in and packets_out).",
       "requirement": "recommended"
     },
     "packets_in": {
+      "description": "The number of packets sent from the destination to the source (inbound direction).",
       "requirement": "optional"
     },
     "packets_out": {
+      "description": "The number of packets sent from the source to the destination (outbound direction).",
+      "requirement": "optional"
+    },
+    "start_time": {
+      "description": "The start time of the observation or reporting period.",
+      "requirement": "optional"
+    },
+    "timespan": {
+      "description": "The time span object representing the duration of the observation or reporting period.",
       "requirement": "optional"
     }
   },

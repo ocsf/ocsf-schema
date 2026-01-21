@@ -1546,6 +1546,11 @@
       "description": "Criticality of a resource/object in question",
       "type": "string_t"
     },
+    "cumulative_traffic": {
+      "caption": "Cumulative Traffic",
+      "description": "The cumulative network traffic. See specific usage.",
+      "type": "network_traffic"
+    },
     "customer_uid": {
       "caption": "Customer UID",
       "description": "The unique customer identifier.",
@@ -3890,7 +3895,7 @@
       "references": [
         {
           "description": "ATT&CK® Matrix",
-          "url": "https://attack.mitre.org/wiki/ATT&CK_Matrix"
+          "url": "https://attack.mitre.org"
         },
         {
           "description": "ATLAS™ Matrix",
@@ -3984,7 +3989,6 @@
         }
       }
     },
-
     "next_run_time": {
       "caption": "Next Run",
       "description": "The next run time. See specific usage.",
@@ -4485,14 +4489,14 @@
       "description": "The TCP/UDP port number associated with a connection. See specific usage.",
       "type": "port_t"
     },
+    "post_value": {
+      "caption": "Post-Value",
+      "description": "The value after. See specific usage.",
+      "type": "string_t"
+    },
     "postal_code": {
       "caption": "Postal Code",
       "description": "The postal code of the location.",
-      "type": "string_t"
-    },
-    "post_value":{
-      "caption": "Post-Value",
-      "description": "The value after. See specific usage.",
       "type": "string_t"
     },
     "pre_value": {
@@ -5183,11 +5187,6 @@
       "description": "The Domain Name System (DNS) response time.",
       "type": "timestamp_t"
     },
-    "return_value": {
-      "caption": "Return Value",
-      "description": "The value returned from a function.",
-      "type": "string_t"
-    },
     "return_path": {
       "caption": "Return Path",
       "description": "The address found in the 'Return-Path' header, which indicates where bounce messages (non-delivery reports) should be sent. This address is often set by the sending system and may differ from the 'From' or 'Sender' addresses. For example, <code>mailer-daemon@senderserver.com</code>.",
@@ -5202,6 +5201,11 @@
           "url": "https://datatracker.ietf.org/doc/html/rfc5321#section-4.4"
         }
       ]
+    },
+    "return_value": {
+      "caption": "Return Value",
+      "description": "The value returned from a function.",
+      "type": "string_t"
     },
     "risk_details": {
       "caption": "Risk Details",
@@ -6010,7 +6014,7 @@
       "references": [
         {
           "description": "ATT&CK® Matrix",
-          "url": "https://attack.mitre.org/wiki/ATT&CK_Matrix"
+          "url": "https://attack.mitre.org"
         },
         {
           "description": "ATLAS™ Matrix",
@@ -6086,7 +6090,7 @@
       "references": [
         {
           "description": "ATT&CK® Matrix",
-          "url": "https://attack.mitre.org/wiki/ATT&CK_Matrix"
+          "url": "https://attack.mitre.org"
         },
         {
           "description": "ATLAS™ Matrix",
@@ -6197,7 +6201,7 @@
       "references": [
         {
           "description": "ATT&CK® Matrix",
-          "url": "https://attack.mitre.org/wiki/ATT&CK_Matrix"
+          "url": "https://attack.mitre.org"
         },
         {
           "description": "ATLAS™ Matrix",
@@ -6563,16 +6567,16 @@
       "description": "The Vendor Attributes object can be used to represent values of attributes populated by the Vendor/Finding Provider. It can help distinguish between the vendor-provided values and consumer-updated values, of key attributes like <code>severity_id</code>.<br>The original finding producer should not populate this object. It should be populated by consuming systems that support data mutability.",
       "type": "vendor_attributes"
     },
-    "vendor_name": {
-      "caption": "Vendor Name",
-      "description": "The name of the vendor. See specific usage.",
-      "type": "string_t"
-    },
     "vendor_id_list": {
       "caption": "Vendor ID List",
       "description": "The list of vendor IDs. See specific usage.",
       "type": "string_t",
       "is_array": true
+    },
+    "vendor_name": {
+      "caption": "Vendor Name",
+      "description": "The name of the vendor. See specific usage.",
+      "type": "string_t"
     },
     "verdict": {
       "caption": "Verdict",
@@ -6714,6 +6718,52 @@
       "caption": "Network Zone",
       "description": "The network zone or LAN segment. See specific usage.",
       "type": "string_t"
+    },
+    "ai_model": {
+      "caption": "AI Model",
+      "description": "The AI Model object describes the characteristics of an AI/ML model. Examples include language models like GPT-4, embedding models like text-embedding-ada-002, and computer vision models like CLIP.",
+      "type": "ai_model"
+    },
+    "message_context": {
+      "caption": "Message Context",
+      "description": "Communication context for AI system interactions including protocols, roles, clients, and session information for MCP and other AI communication systems.",
+      "type": "message_context"
+    },
+    "ai_provider": {
+      "caption": "AI Provider",
+      "description": "AI service provider or organization name.",
+      "type": "string_t"
+    },
+    "embedding_model": {
+      "caption": "Embedding Model",
+      "description": "Model used for creating embeddings in AI retrieval systems.",
+      "type": "string_t"
+    },
+    "prompt_tokens": {
+      "caption": "Prompt Tokens",
+      "description": "Number of tokens in the input prompt for this message.",
+      "type": "integer_t"
+    },
+    "completion_tokens": {
+      "caption": "Completion Tokens",
+      "description": "Number of tokens in the model's response/completion for this message.",
+      "type": "integer_t"
+    },
+    "total_tokens": {
+      "caption": "Total Tokens",
+      "description": "Total number of tokens used for this message (prompt + completion).",
+      "type": "integer_t"
+    },
+    "ai_role_id": {
+      "caption": "AI Role ID",
+      "description": "The originator or target role of the message.",
+      "type": "integer_t",
+      "sibling": "ai_role"
+    },
+    "ai_role": {
+      "caption": "AI Role",
+      "description": "The normalized caption of the <code>ai_role_id</code>.",
+      "type": "string_t"
     }
   },
   "types": {
@@ -6731,15 +6781,15 @@
       "bytestring_t": {
         "caption": "Byte String",
         "description": "Base 64 encoded immutable byte sequence. Traditional Base 64 is preferred but publishers may use URL-safe Base 64 when known to be acceptable to consumers. These encodings are described in RFC 4648.",
+        "regex": "^(?:(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)|(?:[A-Za-z0-9_-]{4})*(?:[A-Za-z0-9_-]{2}==|[A-Za-z0-9_-]{3}=))?$",
+        "type": "string_t",
+        "type_name": "String",
         "references": [
           {
             "description": "RFC 4648",
             "url": "https://www.rfc-editor.org/rfc/rfc4648.html"
           }
-        ],
-        "regex": "^(?:(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)|(?:[A-Za-z0-9_-]{4})*(?:[A-Za-z0-9_-]{2}==|[A-Za-z0-9_-]{3}=))?$",
-        "type": "string_t",
-        "type_name": "String"
+        ]
       },
       "datetime_t": {
         "caption": "Datetime",

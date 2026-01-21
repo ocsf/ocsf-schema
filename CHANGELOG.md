@@ -89,8 +89,9 @@ Thankyou! -->
 
 ### Improved
 * #### Event Classes
-  1. Add `app_protocol` to `Network Activity` class. [#1557](https://github.com/ocsf/ocsf-schema/pull/1557)
-  
+  1. Add `app_protocol` to `Network Activity` class with clarified description for deep packet inspection. [#1557](https://github.com/ocsf/ocsf-schema/pull/1557)
+  1. Enhanced `app_name` description in `Network Activity` class to clarify network application identification by tools such as NBAR. [#1557](https://github.com/ocsf/ocsf-schema/pull/1557)
+
 * #### Objects
   1. Added `signatures` to the `file` object. [#1546](https://github.com/ocsf/ocsf-schema/pull/1546)
 

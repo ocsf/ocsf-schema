@@ -24,7 +24,7 @@
       "requirement": "optional"
     },
     "token": {
-      "description": "The API or client token used to authenticate or authorize the API request. This attribute contains a <code>token</code> object that represents: (1) IdP-issued tokens such as Okta API tokens or Microsoft Entra ID Application Registration client secrets, or (2) generic API keys used for SaaS application authentication. Use this attribute when the API request was authenticated using a token that should be tracked as part of the API activity event.",
+      "description": "The API or client token used to authenticate or authorize the API request. This attribute contains the base <code>token</code> object that represents: (1) IdP-issued client tokens (type_id: 6) such as Okta API tokens or Microsoft Entra ID Application Registration client secrets, or (2) generic API tokens/keys (type_id: 7) used for SaaS application authentication. Use this attribute when the API request was authenticated using a token that should be tracked as part of the API activity event. Note: Protocol-specific authentication tokens (Kerberos, OIDC, SAML) should be represented using <code>authentication_token</code> in authentication events, not in API activity events.",
       "requirement": "optional"
     },
     "version": {

@@ -3548,6 +3548,61 @@
         }
       ]
     },
+    "layer_id": {
+      "caption": "OSI Layer ID",
+      "description": "The normalized identifier of the OSI (Open Systems Interconnection) layer.",
+      "sibling": "layer_name",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The OSI layer is unknown or not specified."
+        },
+        "1": {
+          "caption": "Layer 1 - Physical",
+          "description": "Physical layer: Transmission and reception of raw bit streams over a physical medium (e.g., cables, radio frequencies)."
+        },
+        "2": {
+          "caption": "Layer 2 - Data Link",
+          "description": "Data Link layer: Node-to-node data transfer and error detection/correction (e.g., Ethernet, MAC addresses, switches)."
+        },
+        "3": {
+          "caption": "Layer 3 - Network",
+          "description": "Network layer: Routing and forwarding of data packets between networks (e.g., IP, routing)."
+        },
+        "4": {
+          "caption": "Layer 4 - Transport",
+          "description": "Transport layer: End-to-end communication and data flow control (e.g., TCP, UDP)."
+        },
+        "5": {
+          "caption": "Layer 5 - Session",
+          "description": "Session layer: Establishment, management, and termination of connections between applications (e.g., session management, authentication)."
+        },
+        "6": {
+          "caption": "Layer 6 - Presentation",
+          "description": "Presentation layer: Data translation, encryption, and compression (e.g., SSL/TLS, data encoding)."
+        },
+        "7": {
+          "caption": "Layer 7 - Application",
+          "description": "Application layer: Network services directly supporting user applications (e.g., HTTP, DNS, SMTP, FTP)."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The OSI layer is not one of the standard seven layers."
+        }
+      },
+      "references": [
+        {
+          "description": "OSI Model - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/OSI_model"
+        }
+      ]
+    },
+    "layer_name": {
+      "caption": "OSI Layer Name",
+      "description": "The name of the OSI layer. For example: <code>Physical</code>, <code>Data Link</code>, <code>Network</code>, <code>Transport</code>, <code>Session</code>, <code>Presentation</code>, or <code>Application</code>.",
+      "type": "string_t"
+    },
     "ldap_cn": {
       "caption": "LDAP Common Name",
       "description": "The LDAP and X.500 <code>commonName</code> attribute, typically the full name of the person. For example, <code>John Doe</code>.",
@@ -4246,6 +4301,17 @@
       "caption": "OSINT",
       "description": "The OSINT (Open Source Intelligence) object contains details related to an indicator such as the indicator itself, related indicators, geolocation, registrar information, subdomains, analyst commentary, and other contextual information. This information can be used to further enrich a detection or finding by providing decisioning support to other analysts and engineers.",
       "type": "osint",
+      "is_array": true
+    },
+    "osi_layer": {
+      "caption": "OSI Layer",
+      "description": "The OSI Layer object describes characteristics and data associated with a specific layer of the OSI (Open Systems Interconnection) model.",
+      "type": "osi_layer"
+    },
+    "osi_layers": {
+      "caption": "OSI Layers",
+      "description": "The array of OSI layer objects describing characteristics and data observed at different layers of the OSI model.",
+      "type": "osi_layer",
       "is_array": true
     },
     "ou_name": {

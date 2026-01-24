@@ -72,6 +72,8 @@ Thankyou! -->
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
+* #### Dictionary Types
+  1. Dictionary type `file_hash_t` renamed to the more general `fingerprint_t` with caption "Hash" renamed to "Fingerprint Type". The hexadecimal regular expression constraint was removed. The existing usage of this type in the `value` attribute of the `Fingerprint` object was fixed up. [1564](https://github.com/ocsf/ocsf-schema/pull/1564)
 
 ### Bugfixes
 
@@ -206,7 +208,7 @@ Thankyou! -->
   1. Added `open_ports` to the `network_interface` object. [#1466](https://github.com/ocsf/ocsf-schema/pull/1466)
   1. Added `reg_binary_data`, `reg_integer_data`, `reg_string_data`, `reg_string_list_data` to `reg_value` object in Windows extension. [#1468](https://github.com/ocsf/ocsf-schema/pull/1468)
   1. Added `network_scope` and `network_scope_id` to the `network_endpoint` object. [#1481](https://github.com/ocsf/ocsf-schema/pull/1481)
-  
+
 
 ### Misc
   1. Fixed spelling errors throughout the project and added spell checking to the CI linter workflow. [#1411](https://github.com/ocsf/ocsf-schema/pull/1411)

@@ -73,13 +73,14 @@ Thankyou! -->
 * #### Platform Extensions
 * #### Dictionary Attributes
 * #### Dictionary Types
-  1. Dictionary type `file_hash_t` renamed to the more general `fingerprint_t` with caption "Hash" renamed to "Fingerprint Type". The hexadecimal regular expression constraint was removed. The existing usage of this type in the `value` attribute of the `Fingerprint` object was fixed up. [1564](https://github.com/ocsf/ocsf-schema/pull/1564)
+  1. The regular expression constraint in dictionary type `file_hash_t` has been removed to use as a general fingerprint with an arbitrary string. **Warning:** This can create a breaking change for some kinds of tooling that process OCSF events. [1564](https://github.com/ocsf/ocsf-schema/pull/1564)
 
 ### Bugfixes
 
 ### Deprecated
 
 ### Breaking changes
+  1. The regular expression constraint in dictionary type `file_hash_t` has been removed. This can create a breaking change for some kinds of tooling that process OCSF events. (Repeated item from Dictionary Types section above.) [1564](https://github.com/ocsf/ocsf-schema/pull/1564)
 
 ### Misc
 ### Bugfixes

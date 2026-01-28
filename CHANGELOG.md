@@ -94,6 +94,8 @@ Thankyou! -->
 
 * #### Objects
   1. Added `signatures` to the `file` object. [#1546](https://github.com/ocsf/ocsf-schema/pull/1546)
+  1. Updated `fingerprint` object description. Updated the descriptions of `algorithm`, `algorithm_id`, and `value` attributes in the `fingerprint` object. [#1560](https://github.com/ocsf/ocsf-schema/pull/1560)
+  1. Added `fingerprints` attribute to the `network_endpoint` object. [#1560](https://github.com/ocsf/ocsf-schema/pull/1560)
 
 ### Deprecated
 1. Deprecated the `signature` attribute of the file object in favour of the `signatures` attribute. [#1546](https://github.com/ocsf/ocsf-schema/pull/1546)

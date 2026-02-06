@@ -63,6 +63,7 @@ Thankyou! -->
 
 ### Improved
 * #### Categories
+  1. Extended `Network Activity` category with a `raw_packet_data` field. [#1549](https://github.com/ocsf/ocsf-schema/pull/1549)
 * #### Event Classes
 * #### Profiles
 * #### Objects

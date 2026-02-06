@@ -10,7 +10,19 @@
       "profiles/load_balancer.json"
     ],
     "app_name": {
+      "description": "The network application name identified by tools such as NBAR or App ID (e.g., youtube, facebook, webex). This represents a specific network application that uses standard protocols (such as https or quic) to deliver its service.",
       "group": "context",
+      "requirement": "optional"
+    },
+    "app_protocol_name": {
+      "description": "The application-layer (Layer 7) protocol name identified by deep packet inspection or packet parsing (e.g., <code>https</code>, <code>quic</code>, <code>ssh</code>, <code>dns</code>), expressed as an IANA-registered service name from the IANA Service Name and Transport Protocol Port Number Registry.\n\n<p><b>Note:</b> Port numbers alone are not always a reliable indicator of the actual application protocol in use.</p>",
+      "group": "context",
+      "references": [
+        {
+          "description": "IANA Service Name and Transport Protocol Port Number Registry",
+          "url": "https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml"
+        }
+      ],
       "requirement": "optional"
     },
     "connection_info": {

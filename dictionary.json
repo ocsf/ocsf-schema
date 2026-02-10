@@ -313,6 +313,11 @@
       "description": "The name of the application associated with the event or object.",
       "type": "string_t"
     },
+    "app_protocol_name": {
+      "caption": "Application Protocol Name",
+      "description": "The application protocol name. See specific usage.",
+      "type": "string_t"
+    },
     "app_uid": {
       "caption": "Application ID",
       "description": "The unique ID of the application associated with the event or object.",
@@ -2996,6 +3001,12 @@
       "caption": "Impact Score",
       "description": "The impact as an integer value of the finding, valid range 0-100.",
       "type": "integer_t"
+    },
+    "imported_symbols": {
+      "caption": "Imported Symbols",
+      "description": "A list of symbols imported by the executable file.",
+      "type": "string_t",
+      "is_array": true
     },
     "injection_type": {
       "caption": "Injection Type",
@@ -6315,6 +6326,11 @@
       ],
       "is_array": true
     },
+    "token": {
+      "caption": "Token",
+      "description": "The Token object is the base object for representing tokens, API keys, and authentication credentials. This object provides common attributes for all token types and can be used directly in API activity events to represent API tokens (type_id: 7) or client tokens (type_id: 6) such as Okta API tokens or Microsoft Entra ID Application Registration client secrets. The base <code>token</code> object is also extended by <code>authentication_token</code> for protocol-specific authentication tokens in authentication events. Note: Use <code>authentication_token</code> (which extends <code>token</code>) for protocol-specific authentication tokens (Kerberos, OIDC, SAML) in authentication events, and <code>programmatic_credential</code> for tracking credential lifecycle and usage patterns.",
+      "type": "token"
+    },
     "total": {
       "caption": "Total",
       "description": "The total number of items. See specific usage.",
@@ -6804,8 +6820,7 @@
       "file_hash_t": {
         "observable": 8,
         "caption": "Hash",
-        "description": "Hash. A unique value that corresponds to the content of the file, image, ja3_hash or hassh found in the schema. For example:<br> MD5: <code>3172ac7e2b55cbb81f04a6e65855a628</code>.",
-        "regex": "^[a-fA-F0-9]+$",
+        "description": "Fingerprint. A value, in any format, that maps an arbitrarily large data item to a much shorter string that uniquely identifies the original data. Examples include cryptographic hashing of a file, code signing, and Network Protocol Fingerprinting (NPF).<p><b>Note about name.</b> The type name <code>file_hast_t</code> and the caption &quot;Hash&quot; are used for legacy reasons. This type has been generalized from a file hash to a general fingerprint. The existing type name and caption were retained for backwards compatibility.",
         "type": "string_t",
         "type_name": "String"
       },

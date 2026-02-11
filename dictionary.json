@@ -2343,6 +2343,11 @@
       "description": "The end time of a time period. See specific usage.",
       "type": "timestamp_t"
     },
+    "end_offset": {
+      "caption": "End Offset",
+      "description": "The ending offset. See specific usage.",
+      "type": "long_t"
+    },
     "endpoint_connections": {
       "caption": "Endpoint Connections",
       "description": "Contains information about network connection attempts. See specific usage.",
@@ -2354,6 +2359,27 @@
       "description": "The additional information from an external data source, which is associated with the event or a finding. For example add location information for the IP address in the DNS answers:</p><code>[{\"name\": \"answers.ip\", \"value\": \"92.24.47.250\", \"type\": \"location\", \"data\": {\"city\": \"Socotra\", \"continent\": \"Asia\", \"coordinates\": [-25.4153, 17.0743], \"country\": \"YE\", \"desc\": \"Yemen\"}}]</code>",
       "type": "enrichment",
       "is_array": true
+    },
+    "encoding": {
+      "caption": "Encoding",
+      "description": "The encoding method, normalized to the caption of the encoding_id value. In the case of 'Other', it is defined by the event source. See specific usage.",
+      "type": "string_t"
+    },
+    "encoding_id": {
+      "caption": "Encoding ID",
+      "description": "The normalized identifier of the encoding method. See specific usage.",
+      "sibling": "encoding",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The encoding method is unknown."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The encoding method is not mapped. See the <code>encoding</code> attribute, which contains a data source specific value."
+        }
+      }
     },
     "entity": {
       "caption": "Entity",
@@ -2680,6 +2706,27 @@
       "description": "The list of communication flags, normalized to the captions of the flag_ids values. See specific usage.",
       "type": "string_t",
       "is_array": true
+    },
+    "format": {
+      "caption": "Format",
+      "description": "The format, normalized to the caption of the format_id value. In the case of 'Other', it is defined by the event source. See specific usage.",
+      "type": "string_t"
+    },
+    "format_id": {
+      "caption": "Format ID",
+      "description": "The normalized identifier of the format. See specific usage.",
+      "sibling": "format",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The format is unknown."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The format is not mapped. See the <code>format</code> attribute, which contains a data source specific value."
+        }
+      }
     },
     "folder": {
       "caption": "Folder",
@@ -4315,6 +4362,17 @@
       "description": "The packet identifier assigned by the protocol.",
       "type": "integer_t"
     },
+    "packet": {
+      "caption": "Packet",
+      "description": "The packet object describes a single captured network packet and its associated metadata.",
+      "type": "packet"
+    },
+    "packet_list": {
+      "caption": "Packets",
+      "description": "The list of packet objects describing captured network packets.",
+      "type": "packet",
+      "is_array": true
+    },
     "packets": {
       "caption": "Total Packets",
       "description": "The total number of packets (in and out).",
@@ -5612,6 +5670,11 @@
       "description": "Sequence number of the event. The sequence number is a value available in some events, to make the exact ordering of events unambiguous, regardless of the event time precision.",
       "type": "integer_t"
     },
+    "sequence_number": {
+      "caption": "Sequence Number",
+      "description": "The sequence number. See specific usage.",
+      "type": "long_t"
+    },
     "serial_number": {
       "observable": 37,
       "caption": "Serial Number",
@@ -5781,8 +5844,24 @@
     },
     "source": {
       "caption": "Source",
-      "description": "The source of the event or object. See specific usage.",
+      "description": "The source, normalized to the caption of the source_id value. In the case of 'Other', it is defined by the event source. See specific usage.",
       "type": "string_t"
+    },
+    "source_id": {
+      "caption": "Source ID",
+      "description": "The normalized identifier of the source. See specific usage.",
+      "sibling": "source",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The source is unknown."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The source is not mapped. See the <code>source</code> attribute, which contains a data source specific value."
+        }
+      }
     },
     "sp_name": {
       "caption": "OS Service Pack",
@@ -5854,6 +5933,11 @@
       "caption": "Start Time",
       "description": "The start time of a time period. See specific usage.",
       "type": "timestamp_t"
+    },
+    "start_offset": {
+      "caption": "Start Offset",
+      "description": "The starting offset. See specific usage.",
+      "type": "long_t"
     },
     "start_type": {
       "caption": "Start Type",

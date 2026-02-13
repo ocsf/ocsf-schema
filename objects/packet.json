@@ -9,7 +9,7 @@
       "requirement": "optional"
     },
     "encoding_id": {
-      "description": "The normalized identifier of the encoding method used for the packet data.",
+      "description": "The normalized identifier of the encoding method used to represent the packet data as a string.",
       "requirement": "recommended",
       "enum": {
         "0": {
@@ -17,24 +17,16 @@
           "description": "The encoding format of the packet data is not known."
         },
         "1": {
-          "caption": "Raw",
-          "description": "The packet data is stored as raw binary bytes without transformation or encoding."
-        },
-        "2": {
           "caption": "Base64",
           "description": "The packet data is encoded using Base64."
         },
-        "3": {
+        "2": {
           "caption": "Hexadecimal",
           "description": "The packet data is encoded as a hexadecimal string representation of the raw bytes."
         },
-        "4": {
+        "3": {
           "caption": "URL Encoded",
-          "description": "The packet data is encoded using percent-encoding (URL encoding)"
-        },
-        "5": {
-          "caption": "Compressed",
-          "description": "The packet data has been compressed (for example using gzip or zlib) before storage."
+          "description": "The packet data is encoded using percent-encoding (URL encoding)."
         },
         "99": {
           "caption": "Other",
@@ -52,7 +44,6 @@
     },
     "format_id": {
       "description": "The normalized identifier of the packet capture format.",
-      "sibling": "format",
       "requirement": "recommended",
       "enum": {
         "0": {
@@ -99,7 +90,6 @@
     },
     "source_id": {
       "description": "A normalized numeric identifier that specifies how the packet was obtained or generated.",
-      "sibling": "source",
       "requirement": "recommended",
       "enum": {
         "0": {

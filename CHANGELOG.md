@@ -51,6 +51,7 @@ Thankyou! -->
 * #### Objects
   1. Added `ai_model` object with core fields (`name`, `ai_provider`, `version`) for AI operation events. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
   1. Added `message_context` object for AI system interactions with role-based identification and token usage metrics (`prompt_tokens`, `completion_tokens`, `total_tokens`). [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
+  1. Added `token` object for API tokens, client tokens, and API keys used in API activity events. [#1429](https://github.com/ocsf/ocsf-schema/pull/1429)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -60,15 +61,24 @@ Thankyou! -->
   1. Added `embedding_model` attribute for AI retrieval systems. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
   1. Added `imported_symbols` attribute for reporting an executable file's imports.  [#1553](https://github.com/ocsf/ocsf-schema/pull/1553)
   1. Added `Imphash (18)` enum to the `algorithm_id` attribute of the `fingerprint` object. [#1553](https://github.com/ocsf/ocsf-schema/pull/1553)
+  1. Added `token` as a `token` object. [#1429](https://github.com/ocsf/ocsf-schema/pull/1429)
 
 ### Improved
 * #### Categories
 * #### Event Classes
+  1. Add `app_protocol_name` to `Network Activity` class with clarified description for deep packet inspection. [#1557](https://github.com/ocsf/ocsf-schema/pull/1557)
+  1. Enhanced `app_name` description in `Network Activity` class to clarify network application identification by tools such as NBAR. [#1557](https://github.com/ocsf/ocsf-schema/pull/1557)
 * #### Profiles
 * #### Objects
   1. Extended `database` object with AI-specific database types (`Vector (7)`, `Knowledge Graph (8)`) and `embedding_model` field for AI retrieval systems. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
+  1. Added `signatures` to the `file` object. [#1546](https://github.com/ocsf/ocsf-schema/pull/1546)
   1. Expanded on `created_time` attribute description within the `related_event` object. [1552](https://github.com/ocsf/ocsf-schema/pull/1552)
   1. Added `imported_symbols` attribute to the `file` object.  [#1553](https://github.com/ocsf/ocsf-schema/pull/1553)
+  1. Updated `fingerprint` object description. Updated the descriptions of `algorithm`, `algorithm_id`, and `value` attributes in the `fingerprint` object. [#1560](https://github.com/ocsf/ocsf-schema/pull/1560)
+  1. Added `fingerprints` attribute to the `network_endpoint` object. [#1560](https://github.com/ocsf/ocsf-schema/pull/1560)
+  1. Added `token` as an attribute to the `api` object. [#1429](https://github.com/ocsf/ocsf-schema/pull/1429)
+  1. Added `created_time` attribute back to the `authentication_token` object with improved description. [#1429](https://github.com/ocsf/ocsf-schema/pull/1429)
+  1. Added `provider` to the `resource_details` object via `cloud` profile. [#1566](https://github.com/ocsf/ocsf-schema/pull/1566)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -76,23 +86,16 @@ Thankyou! -->
   1. The regular expression constraint in dictionary type `file_hash_t` has been removed to use as a general fingerprint with an arbitrary string. **Warning:** This can create a breaking change for some kinds of tooling that process OCSF events. [1564](https://github.com/ocsf/ocsf-schema/pull/1564)
 
 ### Bugfixes
+* #### Event Classes
+  1. Removed erroneous `at_least_one` constraint in `Live Evidence Info` class [#1357](https://github.com/ocsf/ocsf-schema/pull/1537)
 
 ### Deprecated
+1. Deprecated the `signature` attribute of the file object in favour of the `signatures` attribute. [#1546](https://github.com/ocsf/ocsf-schema/pull/1546)
 
 ### Breaking changes
   1. The regular expression constraint in dictionary type `file_hash_t` has been removed. This can create a breaking change for some kinds of tooling that process OCSF events. (Repeated item from Dictionary Types section above.) [1564](https://github.com/ocsf/ocsf-schema/pull/1564)
 
 ### Misc
-### Bugfixes
-* #### Event Classes
-  1. Removed erroneous `at_least_one` constraint in `Live Evidence Info` class [#1357](https://github.com/ocsf/ocsf-schema/pull/1537)
-
-### Improved
-* #### Objects
-  1. Added `signatures` to the `file` object. [#1546](https://github.com/ocsf/ocsf-schema/pull/1546)
-
-### Deprecated
-1. Deprecated the `signature` attribute of the file object in favour of the `signatures` attribute. [#1546](https://github.com/ocsf/ocsf-schema/pull/1546)
 
 
 

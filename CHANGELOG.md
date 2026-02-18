@@ -79,7 +79,7 @@ Thankyou! -->
   1. Added `token` as an attribute to the `api` object. [#1429](https://github.com/ocsf/ocsf-schema/pull/1429)
   1. Added `created_time` attribute back to the `authentication_token` object with improved description. [#1429](https://github.com/ocsf/ocsf-schema/pull/1429)
   1. Added `provider` to the `resource_details` object via `cloud` profile. [#1566](https://github.com/ocsf/ocsf-schema/pull/1566)
-  1. Added `resource` attribute to the `check` object to describe details about the resource that the check evaluated.
+  1. Added `resource` attribute to the `check` object to describe details about the resource that the check evaluated. [#1574](https://github.com/ocsf/ocsf-schema/pull/1574)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes

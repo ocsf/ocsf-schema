@@ -1,0 +1,156 @@
+{
+  "caption": "Packet",
+  "description": "The Packet object represents a single captured network packet and its associated metadata. It describes where the packet came from, how it is stored or encoded, and how it can be located within a capture file or stream. This object does not interpret protocol content; it only represents the captured packet data and its positioning information.",
+  "extends": "object",
+  "name": "packet",
+  "attributes": {
+    "encoding": {
+      "description": "The human-readable name of the encoding used to represent the packet data in the <code>value</code> field. This should match the caption associated with <code>encoding_id</code>. If <code>encoding_id</code> is 99 (Other), this field contains the original data source–specific encoding value.",
+      "requirement": "optional"
+    },
+    "encoding_id": {
+      "description": "The normalized identifier of the encoding method used to represent the packet data as a string.",
+      "requirement": "recommended",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The encoding format of the packet data is not known."
+        },
+        "1": {
+          "caption": "Base64",
+          "description": "The packet data is encoded using Base64."
+        },
+        "2": {
+          "caption": "Hexadecimal",
+          "description": "The packet data is encoded as a hexadecimal string representation of the raw bytes."
+        },
+        "3": {
+          "caption": "URL Encoded",
+          "description": "The packet data is encoded using percent-encoding (URL encoding)."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The encoding method is not mapped. Refer to the <code>encoding</code> field for the original source-specific value."
+        }
+      }
+    },
+    "end_offset": {
+      "description": "The ending byte position of this packet within a capture file or stream.",
+      "requirement": "optional"
+    },
+    "format": {
+      "description": "The human-readable name of the packet capture file format in which the packet is stored. This should match the caption associated with <code>format_id</code>. If <code>format_id</code> is 99 (Other), this field contains the original data source–specific format value.",
+      "requirement": "optional"
+    },
+    "format_id": {
+      "description": "The normalized identifier of the packet capture format.",
+      "requirement": "recommended",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The packet format is unknown."
+        },
+        "1": {
+          "caption": "PCAP",
+          "description": "Standard libpcap/tcpdump packet capture file format."
+        },
+        "2": {
+          "caption": "PCAPNG",
+          "description": "Next-generation PCAP format that supports multiple interfaces and enhanced metadata."
+        },
+        "3": {
+          "caption": "Snoop",
+          "description": "Solaris/Unix capture format."
+        },
+        "4": {
+          "caption": "ERF",
+          "description": "Extensible Record Format used by Endace network monitoring hardware."
+        },
+        "5": {
+          "caption": "NetMon",
+          "description": "Microsoft Network Monitor capture file format."
+        },
+        "6": {
+          "caption": "5Views",
+          "description": "Accellent 5Views packet capture format."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The packet format is not mapped. Refer to the <code>format</code> field for the original source-specific value."
+        }
+      }
+    },
+    "sequence_number": {
+      "description": "The relative order number of this packet within a capture session, file, or reconstructed stream. This value represents capture order and is not the same as a protocol-level sequence number (such as a TCP sequence number).",
+      "requirement": "optional"
+    },
+    "source": {
+      "description": "The human-readable name describing how or where the packet was obtained. This should match the caption associated with <code>source_id</code>. If <code>source_id</code> is 99 (Other), this field contains the original data source–specific value.",
+      "requirement": "optional"
+    },
+    "source_id": {
+      "description": "A normalized numeric identifier that specifies how the packet was obtained or generated.",
+      "requirement": "recommended",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The packet source is unknown."
+        },
+        "1": {
+          "caption": "Wire",
+          "description": "The packet was captured directly from a network interface."
+        },
+        "2": {
+          "caption": "Stream",
+          "description": "The packet was reconstructed or derived from a stream of packets."
+        },
+        "3": {
+          "caption": "Decoder",
+          "description": "The packet was generated or extracted by a protocol decoder or analysis engine."
+        },
+        "4": {
+          "caption": "TAP",
+          "description": "The packet was captured from a physical network Test Access Point (TAP) device used for passive monitoring."
+        },
+        "5": {
+          "caption": "SPAN",
+          "description": "The packet was captured from a switch Switched Port Analyzer (SPAN) or mirror port."
+        },
+        "6": {
+          "caption": "Endpoint",
+          "description": "The packet was captured by a host-based agent or endpoint detection and response (EDR) sensor."
+        },
+        "7": {
+          "caption": "Virtual",
+          "description": "The packet was captured from a virtual network interface, virtual switch, or container network."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The packet source is not mapped. Refer to the <code>source</code> field for the original source-specific value."
+        }
+      }
+    },
+    "start_offset": {
+      "description": "The starting byte position of this packet within a capture file or stream.",
+      "requirement": "optional"
+    },
+    "value": {
+      "description": "The actual packet data, represented as a string. The format of this string is determined by the specified <code>encoding_id</code> (e.g., Base64, Hexadecimal, or URL Encoded).",
+      "requirement": "required"
+    }
+  },
+  "references": [
+    {
+      "description": "D3FEND™ Ontology d3f:NetworkPacket.",
+      "url": "https://d3fend.mitre.org/dao/artifact/d3f:NetworkPacket/"
+    },
+    {
+      "description": "D3FEND™ Ontology d3f:PacketCaptureFile.",
+      "url": "https://d3fend.mitre.org/dao/artifact/d3f:PacketCaptureFile/"
+    },
+    {
+      "description": "D3FEND™ Ontology d3f:PacketLog.",
+      "url": "https://d3fend.mitre.org/dao/artifact/d3f:PacketLog/"
+    }
+  ]
+}

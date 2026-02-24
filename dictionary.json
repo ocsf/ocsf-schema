@@ -653,6 +653,55 @@
       "description": "The vendor bulletin identifier.",
       "type": "string_t"
     },
+    "bus_type": {
+      "caption": "Bus Type",
+      "description": "The attachment bus or interface standard, normalized to the caption of the bus_type_id value. In the case of 'Other', it is defined by the event source.",
+      "type": "string_t"
+    },
+    "bus_type_id": {
+      "caption": "Bus Type ID",
+      "description": "The normalized identifier of the attachment bus or interface standard.",
+      "sibling": "bus_type",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The bus type is unknown or not reported."
+        },
+        "1": {
+          "caption": "Onboard",
+          "description": "The device is attached directly on the motherboard or SoC (often referred to as 'integrated' or 'onboard')."
+        },
+        "2": {
+          "caption": "PCIe x16",
+          "description": "Peripheral Component Interconnect Express slot with 16 lanes, typically used for high‑bandwidth add‑in devices."
+        },
+        "3": {
+          "caption": "PCIe x8",
+          "description": "Peripheral Component Interconnect Express slot with 8 lanes; common for high‑performance NICs, storage controllers, and accelerators."
+        },
+        "4": {
+          "caption": "MXM Type A",
+          "description": "Mobile PCI Express Module (MXM) Type A form factor (compact laptop/embedded GPU module)."
+        },
+        "5": {
+          "caption": "MXM Type B",
+          "description": "Mobile PCI Express Module (MXM) Type B form factor (larger laptop/embedded GPU module)."
+        },
+        "6": {
+          "caption": "M.2",
+          "description": "M.2 (NGFF) internal module form factor/connector exposing PCIe (and/or SATA/USB) for SSDs and add‑in modules."
+        },
+        "7": {
+          "caption": "CXL",
+          "description": "Compute Express Link (CXL), an open cache‑coherent interconnect for processors, memory expansion, and accelerators built on the PCIe physical layer."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "A bus or interface standard not covered by the defined values; the exact value is reported by the event source."
+        }
+      }
+    },
     "bytes": {
       "caption": "Total Bytes",
       "description": "The total number of bytes (in and out).",
@@ -1416,6 +1465,11 @@
         "since": "1.2.0"
       },
       "is_array": true
+    },
+    "cores": {
+      "caption": "Cores",
+      "description": "The number of processing cores or compute units for the component.",
+      "type": "integer_t"
     },
     "correlation_uid": {
       "caption": "Correlation UID",
@@ -2777,6 +2831,17 @@
       "description": "The given or first name of the user.",
       "type": "string_t"
     },
+    "gpu_count": {
+      "caption": "GPU Count",
+      "description": "The number of GPU's on a system. For example: <code>1</code>.",
+      "type": "integer_t"
+    },
+    "gpu_info_list": {
+      "caption": "GPU information",
+      "description": "An array of objects describing describing Graphical Processing Unit hardware.",
+      "type": "gpu_info",
+      "is_array": true
+    },  
     "granted_privileges": {
       "caption": "Granted Privileges",
       "description": "The Privileges that were granted to the user via an IAM policy or otherwise. See specific usage.",
@@ -3811,6 +3876,17 @@
       "caption": "MAC Address",
       "description": "The Media Access Control (MAC) address that is associated with the network interface.",
       "type": "mac_t"
+    },
+    "mac_vendor": {
+      "caption": "MAC Vendor",
+      "description": "The vendor or manufacturer of the network interface controller (NIC) identified from the MAC address. For example: <code>Apple, Inc.</code>, <code>Intel Corporate</code>.",
+      "references": [
+        {
+          "description": "IEEE Registration Authority",
+          "url": "https://standards.ieee.org/products-programs/regauth/"
+        }
+      ],
+      "type": "string_t"
     },
     "malware": {
       "caption": "Malware",
@@ -6679,6 +6755,40 @@
       "caption": "VPC UID",
       "description": "The unique identifier of the Virtual Private Cloud (VPC).",
       "type": "string_t"
+    },
+    "vram_mode_id": {
+      "caption": "VRAM Mode ID",
+      "description": "The normalized identifier of the video memory attachment mode.",
+      "sibling": "vram_mode",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The VRAM mode is unknown or not reported."
+        },
+        "1": {
+          "caption": "Shared",
+          "description": "Video memory is allocated from system memory."
+        },
+        "2": {
+          "caption": "Dedicated",
+          "description": "Video memory is physically separate from system memory."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "A VRAM mode not covered by the defined values; the exact value is reported by the event source."
+        }
+      }
+    },
+    "vram_mode": {
+      "caption": "VRAM Mode",
+      "description": "The video memory attachment mode, indicating how the VRAM hardware is integrated with the system (e.g., shared or dedicated), normalized to the caption of the vram_mode_id value. For 'Other', the exact attachment mode is defined by the event source.",
+      "type": "string_t"
+    },
+    "vram_size": {
+      "caption": "VRAM Size",
+      "description": "The total amount of installed video RAM.",
+      "type": "integer_t"
     },
     "vulnerabilities": {
       "caption": "Vulnerabilities",

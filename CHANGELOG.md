@@ -54,6 +54,7 @@ Thankyou! -->
   1. Added `message_context` object for AI system interactions with role-based identification and token usage metrics (`prompt_tokens`, `completion_tokens`, `total_tokens`). [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
   1. Added `token` object for API tokens, client tokens, and API keys used in API activity events. [#1429](https://github.com/ocsf/ocsf-schema/pull/1429)
   1. Added `gpu_info` object for GPU's (array name `gpu_info_list`). [#1527](https://github.com/ocsf/ocsf-schema/pull/1527)
+  1. Added `packet` object for network packets (array name `packet_list`). [#1569](https://github.com/ocsf/ocsf-schema/pull/1569)
 * #### Observables
 * #### Platform Extensions
   1. Added `macos` extension (`uid` 3). This extension adds the `macos/macos_users` profile and patches the `process` object to add this profile. [#1538](https://github.com/ocsf/ocsf-schema/pull/1538)
@@ -77,6 +78,14 @@ Thankyou! -->
   1. Added `pool` attribute of type `group`. [#1521](https://github.com/ocsf/ocsf-schema/pull/1521)
   1. Added `mac_vendor` as `string_t`. [#1575](https://github.com/ocsf/ocsf-schema/pull/1575)
   1. Added `network_observation_point` as type `network_endpoint`. [#1571](https://github.com/ocsf/ocsf-schema/pull/1571)
+  1. Added `packet` as a `packet` object. [#1569](https://github.com/ocsf/ocsf-schema/pull/1569)
+  1. Added `packet_list` as an array of `packet` objects. [#1569](https://github.com/ocsf/ocsf-schema/pull/1569)
+  1. Added `encoding`, `encoding_id` attributes for data encoding representation. [#1569](https://github.com/ocsf/ocsf-schema/pull/1569)
+  1. Added `format`, `format_id` attributes for data format identification. [#1569](https://github.com/ocsf/ocsf-schema/pull/1569)
+  1. Added `source_id` normalized identifier for the source. [#1569](https://github.com/ocsf/ocsf-schema/pull/1569)
+  1. Added `sequence_number` attribute for ordering within a sequence. [#1569](https://github.com/ocsf/ocsf-schema/pull/1569)
+  1. Added `start_offset` attribute for the starting offset. [#1569](https://github.com/ocsf/ocsf-schema/pull/1569)
+  1. Added `end_offset` attribute for the ending offset. [#1569](https://github.com/ocsf/ocsf-schema/pull/1569)
 ### Improved
 * #### Categories
 * #### Event Classes
@@ -84,6 +93,7 @@ Thankyou! -->
   1. Enhanced `app_name` description in `Network Activity` class to clarify network application identification by tools such as NBAR. [#1557](https://github.com/ocsf/ocsf-schema/pull/1557)
   1. Added `ai_operation` profile to `process_activity` event class. [#1578](https://github.com/ocsf/ocsf-schema/pull/1578)
   1. Added `network_observation_point` attribute to the base `Network` event. [#1571](https://github.com/ocsf/ocsf-schema/pull/1571)
+  1. Added `packet_list` to `network` event class. [#1578](https://github.com/ocsf/ocsf-schema/pull/1578)
 * #### Profiles
 * #### Objects
   1. Extended `database` object with AI-specific database types (`Vector (7)`, `Knowledge Graph (8)`) and `embedding_model` field for AI retrieval systems. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)

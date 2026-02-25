@@ -77,6 +77,7 @@ Thankyou! -->
   1. Add `app_protocol_name` to `Network Activity` class with clarified description for deep packet inspection. [#1557](https://github.com/ocsf/ocsf-schema/pull/1557)
   1. Enhanced `app_name` description in `Network Activity` class to clarify network application identification by tools such as NBAR. [#1557](https://github.com/ocsf/ocsf-schema/pull/1557)
   1. Added `ai_operation` profile to `process_activity` event class. [#1578](https://github.com/ocsf/ocsf-schema/pull/1578)
+  1. Added new `observability_metric_report` event to the Discovery category. [#1442](https://github.com/ocsf/ocsf-schema/pull/1442)
 * #### Profiles
 * #### Objects
   1. Extended `database` object with AI-specific database types (`Vector (7)`, `Knowledge Graph (8)`) and `embedding_model` field for AI retrieval systems. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
@@ -196,8 +197,6 @@ Thankyou! -->
   1. Added `port_info` object. [#1466](https://github.com/ocsf/ocsf-schema/pull/1466)
 
 ### Improved
-* #### Event Classes
-  1. Added new `observability_metric_report` event to the Discovery category. [#1442](https://github.com/ocsf/ocsf-schema/pull/1442)
 * #### Event Classes
   1. Added `Disconnect` and `Reconnect` activities in the `RDP Activity` class. [#1415](https://github.com/ocsf/ocsf-schema/pull/1415)
   1. Added `user` as an attribute to the `RDP Activity` class. [#1419](https://github.com/ocsf/ocsf-schema/pull/1419)

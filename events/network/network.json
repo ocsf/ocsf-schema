@@ -43,6 +43,11 @@
       "group": "context",
       "requirement": "optional"
     },
+    "network_observation_point": {
+      "description": "The network endpoint that observes or inspects network traffic as a third-party system, used when the observer is neither the source nor the destination of the communication (when <code>observation_point_id</code> = 3). Examples include network taps, span ports, inline security devices, or packet capture systems that monitor traffic between other endpoints.",
+      "group": "context",
+      "requirement": "optional"
+    },
     "observation_point": {
       "description": "Indicates whether the source network endpoint, destination network endpoint, or neither served as the observation point for the activity. The value is normalized to the caption of the <code>observation_point_id</code>.",
       "requirement": "optional"
@@ -65,7 +70,7 @@
         },
         "3": {
           "caption": "Neither",
-          "description": "Neither the source nor destination network endpoint is the observation point."
+          "description": "Neither the source nor destination network endpoint is the observation point. Refer to the <code>network_observation_point</code> attribute for details."
         },
         "4": {
           "caption": "Both",

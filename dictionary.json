@@ -313,6 +313,11 @@
       "description": "The name of the application associated with the event or object.",
       "type": "string_t"
     },
+    "app_protocol_name": {
+      "caption": "Application Protocol Name",
+      "description": "The application protocol name. See specific usage.",
+      "type": "string_t"
+    },
     "app_uid": {
       "caption": "Application ID",
       "description": "The unique ID of the application associated with the event or object.",
@@ -647,6 +652,55 @@
       "caption": "Patch Bulletin",
       "description": "The vendor bulletin identifier.",
       "type": "string_t"
+    },
+    "bus_type": {
+      "caption": "Bus Type",
+      "description": "The attachment bus or interface standard, normalized to the caption of the bus_type_id value. In the case of 'Other', it is defined by the event source.",
+      "type": "string_t"
+    },
+    "bus_type_id": {
+      "caption": "Bus Type ID",
+      "description": "The normalized identifier of the attachment bus or interface standard.",
+      "sibling": "bus_type",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The bus type is unknown or not reported."
+        },
+        "1": {
+          "caption": "Onboard",
+          "description": "The device is attached directly on the motherboard or SoC (often referred to as 'integrated' or 'onboard')."
+        },
+        "2": {
+          "caption": "PCIe x16",
+          "description": "Peripheral Component Interconnect Express slot with 16 lanes, typically used for high‑bandwidth add‑in devices."
+        },
+        "3": {
+          "caption": "PCIe x8",
+          "description": "Peripheral Component Interconnect Express slot with 8 lanes; common for high‑performance NICs, storage controllers, and accelerators."
+        },
+        "4": {
+          "caption": "MXM Type A",
+          "description": "Mobile PCI Express Module (MXM) Type A form factor (compact laptop/embedded GPU module)."
+        },
+        "5": {
+          "caption": "MXM Type B",
+          "description": "Mobile PCI Express Module (MXM) Type B form factor (larger laptop/embedded GPU module)."
+        },
+        "6": {
+          "caption": "M.2",
+          "description": "M.2 (NGFF) internal module form factor/connector exposing PCIe (and/or SATA/USB) for SSDs and add‑in modules."
+        },
+        "7": {
+          "caption": "CXL",
+          "description": "Compute Express Link (CXL), an open cache‑coherent interconnect for processors, memory expansion, and accelerators built on the PCIe physical layer."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "A bus or interface standard not covered by the defined values; the exact value is reported by the event source."
+        }
+      }
     },
     "bytes": {
       "caption": "Total Bytes",
@@ -1411,6 +1465,11 @@
         "since": "1.2.0"
       },
       "is_array": true
+    },
+    "cores": {
+      "caption": "Cores",
+      "description": "The number of processing cores or compute units for the component.",
+      "type": "integer_t"
     },
     "correlation_uid": {
       "caption": "Correlation UID",
@@ -2772,6 +2831,17 @@
       "description": "The given or first name of the user.",
       "type": "string_t"
     },
+    "gpu_count": {
+      "caption": "GPU Count",
+      "description": "The number of GPU's on a system. For example: <code>1</code>.",
+      "type": "integer_t"
+    },
+    "gpu_info_list": {
+      "caption": "GPU information",
+      "description": "An array of objects describing describing Graphical Processing Unit hardware.",
+      "type": "gpu_info",
+      "is_array": true
+    },  
     "granted_privileges": {
       "caption": "Granted Privileges",
       "description": "The Privileges that were granted to the user via an IAM policy or otherwise. See specific usage.",
@@ -2996,6 +3066,12 @@
       "caption": "Impact Score",
       "description": "The impact as an integer value of the finding, valid range 0-100.",
       "type": "integer_t"
+    },
+    "imported_symbols": {
+      "caption": "Imported Symbols",
+      "description": "A list of symbols imported by the executable file.",
+      "type": "string_t",
+      "is_array": true
     },
     "injection_type": {
       "caption": "Injection Type",
@@ -3801,6 +3877,17 @@
       "description": "The Media Access Control (MAC) address that is associated with the network interface.",
       "type": "mac_t"
     },
+    "mac_vendor": {
+      "caption": "MAC Vendor",
+      "description": "The vendor or manufacturer of the network interface controller (NIC) identified from the MAC address. For example: <code>Apple, Inc.</code>, <code>Intel Corporate</code>.",
+      "references": [
+        {
+          "description": "IEEE Registration Authority",
+          "url": "https://standards.ieee.org/products-programs/regauth/"
+        }
+      ],
+      "type": "string_t"
+    },
     "malware": {
       "caption": "Malware",
       "description": "A list of Malware objects, describing details about the identified malware.",
@@ -3895,7 +3982,7 @@
       "references": [
         {
           "description": "ATT&CK® Matrix",
-          "url": "https://attack.mitre.org/wiki/ATT&CK_Matrix"
+          "url": "https://attack.mitre.org"
         },
         {
           "description": "ATLAS™ Matrix",
@@ -6014,7 +6101,7 @@
       "references": [
         {
           "description": "ATT&CK® Matrix",
-          "url": "https://attack.mitre.org/wiki/ATT&CK_Matrix"
+          "url": "https://attack.mitre.org"
         },
         {
           "description": "ATLAS™ Matrix",
@@ -6090,7 +6177,7 @@
       "references": [
         {
           "description": "ATT&CK® Matrix",
-          "url": "https://attack.mitre.org/wiki/ATT&CK_Matrix"
+          "url": "https://attack.mitre.org"
         },
         {
           "description": "ATLAS™ Matrix",
@@ -6201,7 +6288,7 @@
       "references": [
         {
           "description": "ATT&CK® Matrix",
-          "url": "https://attack.mitre.org/wiki/ATT&CK_Matrix"
+          "url": "https://attack.mitre.org"
         },
         {
           "description": "ATLAS™ Matrix",
@@ -6314,6 +6401,11 @@
         }
       ],
       "is_array": true
+    },
+    "token": {
+      "caption": "Token",
+      "description": "The Token object is the base object for representing tokens, API keys, and authentication credentials. This object provides common attributes for all token types and can be used directly in API activity events to represent API tokens (type_id: 7) or client tokens (type_id: 6) such as Okta API tokens or Microsoft Entra ID Application Registration client secrets. The base <code>token</code> object is also extended by <code>authentication_token</code> for protocol-specific authentication tokens in authentication events. Note: Use <code>authentication_token</code> (which extends <code>token</code>) for protocol-specific authentication tokens (Kerberos, OIDC, SAML) in authentication events, and <code>programmatic_credential</code> for tracking credential lifecycle and usage patterns.",
+      "type": "token"
     },
     "total": {
       "caption": "Total",
@@ -6664,6 +6756,40 @@
       "description": "The unique identifier of the Virtual Private Cloud (VPC).",
       "type": "string_t"
     },
+    "vram_mode_id": {
+      "caption": "VRAM Mode ID",
+      "description": "The normalized identifier of the video memory attachment mode.",
+      "sibling": "vram_mode",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The VRAM mode is unknown or not reported."
+        },
+        "1": {
+          "caption": "Shared",
+          "description": "Video memory is allocated from system memory."
+        },
+        "2": {
+          "caption": "Dedicated",
+          "description": "Video memory is physically separate from system memory."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "A VRAM mode not covered by the defined values; the exact value is reported by the event source."
+        }
+      }
+    },
+    "vram_mode": {
+      "caption": "VRAM Mode",
+      "description": "The video memory attachment mode, indicating how the VRAM hardware is integrated with the system (e.g., shared or dedicated), normalized to the caption of the vram_mode_id value. For 'Other', the exact attachment mode is defined by the event source.",
+      "type": "string_t"
+    },
+    "vram_size": {
+      "caption": "VRAM Size",
+      "description": "The total amount of installed video RAM.",
+      "type": "integer_t"
+    },
     "vulnerabilities": {
       "caption": "Vulnerabilities",
       "description": "This object describes vulnerabilities reported in a security finding.",
@@ -6718,6 +6844,52 @@
       "caption": "Network Zone",
       "description": "The network zone or LAN segment. See specific usage.",
       "type": "string_t"
+    },
+    "ai_model": {
+      "caption": "AI Model",
+      "description": "The AI Model object describes the characteristics of an AI/ML model. Examples include language models like GPT-4, embedding models like text-embedding-ada-002, and computer vision models like CLIP.",
+      "type": "ai_model"
+    },
+    "message_context": {
+      "caption": "Message Context",
+      "description": "Communication context for AI system interactions including protocols, roles, clients, and session information for MCP and other AI communication systems.",
+      "type": "message_context"
+    },
+    "ai_provider": {
+      "caption": "AI Provider",
+      "description": "AI service provider or organization name.",
+      "type": "string_t"
+    },
+    "embedding_model": {
+      "caption": "Embedding Model",
+      "description": "Model used for creating embeddings in AI retrieval systems.",
+      "type": "string_t"
+    },
+    "prompt_tokens": {
+      "caption": "Prompt Tokens",
+      "description": "Number of tokens in the input prompt for this message.",
+      "type": "integer_t"
+    },
+    "completion_tokens": {
+      "caption": "Completion Tokens",
+      "description": "Number of tokens in the model's response/completion for this message.",
+      "type": "integer_t"
+    },
+    "total_tokens": {
+      "caption": "Total Tokens",
+      "description": "Total number of tokens used for this message (prompt + completion).",
+      "type": "integer_t"
+    },
+    "ai_role_id": {
+      "caption": "AI Role ID",
+      "description": "The originator or target role of the message.",
+      "type": "integer_t",
+      "sibling": "ai_role"
+    },
+    "ai_role": {
+      "caption": "AI Role",
+      "description": "The normalized caption of the <code>ai_role_id</code>.",
+      "type": "string_t"
     }
   },
   "types": {
@@ -6763,8 +6935,7 @@
       "file_hash_t": {
         "observable": 8,
         "caption": "Hash",
-        "description": "Hash. A unique value that corresponds to the content of the file, image, ja3_hash or hassh found in the schema. For example:<br> MD5: <code>3172ac7e2b55cbb81f04a6e65855a628</code>.",
-        "regex": "^[a-fA-F0-9]+$",
+        "description": "Fingerprint. A value, in any format, that maps an arbitrarily large data item to a much shorter string that uniquely identifies the original data. Examples include cryptographic hashing of a file, code signing, and Network Protocol Fingerprinting (NPF).<p><b>Note about name.</b> The type name <code>file_hast_t</code> and the caption &quot;Hash&quot; are used for legacy reasons. This type has been generalized from a file hash to a general fingerprint. The existing type name and caption were retained for backwards compatibility.",
         "type": "string_t",
         "type_name": "String"
       },

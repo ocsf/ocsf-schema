@@ -10,12 +10,29 @@
       "profiles/load_balancer.json"
     ],
     "app_name": {
+      "description": "The network application name identified by tools such as NBAR or App ID (e.g., youtube, facebook, webex). This represents a specific network application that uses standard protocols (such as https or quic) to deliver its service.",
       "group": "context",
+      "requirement": "optional"
+    },
+    "app_protocol_name": {
+      "description": "The application-layer (Layer 7) protocol name identified by deep packet inspection or packet parsing (e.g., <code>https</code>, <code>quic</code>, <code>ssh</code>, <code>dns</code>), expressed as an IANA-registered service name from the IANA Service Name and Transport Protocol Port Number Registry.\n\n<p><b>Note:</b> Port numbers alone are not always a reliable indicator of the actual application protocol in use.</p>",
+      "group": "context",
+      "references": [
+        {
+          "description": "IANA Service Name and Transport Protocol Port Number Registry",
+          "url": "https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml"
+        }
+      ],
       "requirement": "optional"
     },
     "connection_info": {
       "group": "primary",
       "requirement": "recommended"
+    },
+    "cumulative_traffic": {
+      "description": "The cumulative (running total) network traffic aggregated from the start of a flow or session. Use when reporting: (1) total accumulated bytes/packets since flow initiation, (2) combined aggregation models where both incremental deltas and running totals are reported together (populate both <code>traffic</code> for the delta and this attribute for the cumulative total), or (3) final summary metrics when a long-lived connection closes. This represents the sum of all activity from flow start to the current observation, not a delta or point-in-time value.",
+      "group": "context",
+      "requirement": "optional"
     },
     "dst_endpoint": {
       "description": "The responder (server) in a network connection.",
@@ -32,6 +49,7 @@
     },
     "observation_point_id": {
       "description": "The normalized identifier of the observation point. The observation point identifier indicates whether the source network endpoint, destination network endpoint, or neither served as the observation point for the activity.",
+      "requirement": "optional",
       "enum": {
         "0": {
           "caption": "Unknown",
@@ -57,10 +75,8 @@
           "caption": "Other",
           "description": "The observation point is not mapped. See the <code>observation_point</code> attribute for a data source specific value."
         }
-      },
-      "requirement": "optional"
+      }
     },
-
     "proxy": {
       "group": "primary",
       "requirement": "recommended"
@@ -75,6 +91,7 @@
       "requirement": "optional"
     },
     "traffic": {
+      "description": "The network traffic for this observation period. Use when reporting: (1) delta values (bytes/packets transferred since the last observation), (2) instantaneous measurements at a specific point in time, or (3) standalone single-event metrics. This attribute represents a point-in-time measurement or incremental change, not a running total. For accumulated totals across multiple observations or the lifetime of a flow, use <code>cumulative_traffic</code> instead.",
       "group": "primary",
       "requirement": "recommended"
     }

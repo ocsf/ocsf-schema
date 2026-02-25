@@ -8,6 +8,7 @@
       "requirement": "optional"
     },
     "cloud_partition": {
+      "description": "The logical grouping or isolated segment within a cloud provider's infrastructure where the resource is located. Examples include AWS partitions (aws, aws-cn, aws-us-gov), Azure cloud environments (AzureCloud, AzureUSGovernment, AzureChinaCloud), or similar logical divisions in other cloud providers.",
       "profile": "cloud",
       "requirement": "optional"
     },
@@ -39,11 +40,17 @@
       "requirement": "optional"
     },
     "owner": {
-      "description": "The identity of the service or user account that owns the resource.",
+      "description": "The details of the entity that owns the resource. This object includes properties such as the owner's name, unique identifier, type, domain, and other relevant attributes that help identify the resource owner within the environment.",
       "requirement": "recommended"
     },
+    "provider": {
+      "caption": "Cloud Provider",
+      "description": "The cloud service provider that hosts or manages the resource. This field is typically used when the resource is managed by a different provider than the one generating the event or finding. Examples include AWS, Azure, GCP (Google Cloud Platform), Oracle Cloud, IBM Cloud, Alibaba Cloud, or other public, private, or hybrid cloud providers.",
+      "profile": "cloud",
+      "requirement": "optional"
+    },
     "region": {
-      "description": "The cloud region of the resource.",
+      "description": "The cloud region where the resource is hosted, as defined by the cloud provider. This represents the physical or logical geographic area containing the infrastructure supporting the resource. Examples include AWS regions (us-east-1, eu-west-1), Azure regions (East US, West Europe), GCP regions (us-central1, europe-west1), or Oracle Cloud regions (us-ashburn-1, uk-london-1).",
       "profile": "cloud",
       "requirement": "optional"
     },
@@ -83,7 +90,7 @@
     },
     "zone": {
       "caption": "Cloud Availability Zone",
-      "description": "The specific availability zone within a cloud region where the resource is located.",
+      "description": "The availability zone within a cloud region where the resource is located. Examples include AWS availability zones (us-east-1a, us-east-1b), Azure availability zones (1, 2, 3 within a region), GCP zones (us-central1-a, us-central1-b), or Oracle Cloud availability domains (AD-1, AD-2, AD-3).",
       "profile": "cloud",
       "requirement": "optional"
     }

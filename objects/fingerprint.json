@@ -1,16 +1,16 @@
 {
   "observable": 30,
   "caption": "Fingerprint",
-  "description": "The Fingerprint object provides detailed information about a digital fingerprint, which is a compact representation of data used to identify a longer piece of information, such as a public key or file content. It contains the algorithm and value of the fingerprint, enabling efficient and reliable identification of the associated data.",
+  "description": "The Fingerprint object provides detailed information about a fingerprint, which is a compact representation of data used to identify a longer piece of information, such as a public key, file content, or application implementation. It contains the algorithm or scheme and value of the fingerprint, enabling efficient and reliable identification of the associated data.",
   "extends": "object",
   "name": "fingerprint",
   "attributes": {
     "algorithm": {
-      "description": "The hash algorithm used to create the digital fingerprint, normalized to the caption of <code>algorithm_id</code>. In the case of <code>Other</code>, it is defined by the event source.",
+      "description": "The algorithm or scheme used to create the fingerprint, normalized to the caption of <code>algorithm_id</code>. In the case of <code>Other</code>, it is defined by the event source.",
       "requirement": "optional"
     },
     "algorithm_id": {
-      "description": "The identifier of the normalized hash algorithm, which was used to create the digital fingerprint.",
+      "description": "The identifier of the normalized algorithm or scheme, which was used to create the fingerprint.",
       "requirement": "required",
       "enum": {
         "0": {
@@ -168,13 +168,37 @@
             }
           ]
         },
+        "18": {
+          "caption": "Imphash",
+          "description": "Import hash (imphash) based on the import table of a Portable Executable (PE) file producing a 128-bit (16-byte) hash value.",
+          "references": [
+            {
+              "description": "Tracking Malware with Import Hashing",
+              "url": "https://cloud.google.com/blog/topics/threat-intelligence/tracking-malware-import-hashing/"
+            }
+          ]
+        },
+        "19": {
+          "caption": "NPF",
+          "description": "Network Protocol Fingerprint (NPF) used to identify network protocols and applications.",
+          "references": [
+            {
+              "description": "Mercury Network Protocol Fingerprint Documentation",
+              "url": "https://github.com/cisco/mercury/blob/main/doc/npf.md"
+            }
+          ]
+        },
+        "20": {
+          "caption": "HASSH",
+          "description": "HASSH is a network fingerprinting standard which can be used to identify specific SSH client and server implementations."
+        },
         "99": {
           "caption": "Other"
         }
       }
     },
     "value": {
-      "description": "The digital fingerprint value.",
+      "description": "The fingerprint value.<p><b>Note:</b> This uses type <code>file_hash_t</code> (&quot;Hash&quot;), which has been generalized for all fingerprints but retains the same name and caption for backwards compatibility.</p>",
       "requirement": "required",
       "type": "file_hash_t"
     }

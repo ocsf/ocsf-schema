@@ -5,30 +5,44 @@
   "extends": "system",
   "name": "process_activity",
   "attributes": {
+    "$include": [
+      "profiles/ai_operation.json"
+    ],
     "activity_id": {
       "enum": {
         "1": {
-          "caption": "Launch"
+          "caption": "Launch",
+          "description": "A request by the actor to launch another process. Refer to the <code>launch_type_id</code> attribute for details of the specific launch type."
         },
         "2": {
-          "caption": "Terminate"
+          "caption": "Terminate",
+          "description": "A request by the actor to terminate a process. This activity is most commonly reflexive, this being the case when a process exits at its own initiation. Note too that Windows security products cannot always identify the actor in the case of inter-process termination. In this case, <code>actor.process</code> and <code>process</code> refer to the exiting process, i.e. indistinguishable from the reflexive case."
         },
         "3": {
-          "caption": "Open"
+          "caption": "Open",
+          "description": "A request by the actor to obtain a handle or descriptor to a process with the aim of performing further actions upon that process. The target is usually a different process but this activity can also be reflexive."
         },
         "4": {
           "caption": "Inject",
+          "description": "A request by the actor to execute code within the context of a process. The target is usually a different process but this activity can also be reflexive. Refer to the <code>injection_type_id</code> attribute for details of the specific injection type.",
           "references": [
             {
-              "url": "https://github.com/ocsf/ocsf-docs/blob/main/faqs/schema-faq.md#when-should-i-use-a-module-activity-load-event-and-when-should-i-use-a-process-activity-inject-event",
-              "description": "Guidance on the use of \"Module Activity: Load\" and \"Process Activity: Inject\"."
+              "description": "Guidance on the use of \"Module Activity: Load\" and \"Process Activity: Inject\".",
+              "url": "https://github.com/ocsf/ocsf-docs/blob/main/faqs/schema-faq.md#when-should-i-use-a-module-activity-load-event-and-when-should-i-use-a-process-activity-inject-event"
             }
           ]
         },
         "5": {
-          "caption": "Set User ID"
+          "caption": "Set User ID",
+          "description": "A request by the actor to change its user identity by invoking the <code>setuid()</code> system call. Common programs like <code>su</code> and <code>sudo</code> use this mechanism. Note that the <em>impersonation</em> mechanism on Windows is not directly equivalent because it acts at the thread level."
         }
-      }
+      },
+      "references": [
+        {
+          "description": "setuid() man page",
+          "url": "https://www.man7.org/linux/man-pages/man2/setuid.2.html"
+        }
+      ]
     },
     "actor": {
       "description": "The actor that performed the activity on the target <code>process</code>. For example, the process that started a new process or injected code into another process.",
@@ -51,6 +65,14 @@
       "group": "primary",
       "requirement": "recommended"
     },
+    "launch_type": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "launch_type_id": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
     "module": {
       "description": "The module that was injected by the actor process.",
       "group": "primary",
@@ -66,5 +88,8 @@
       "group": "primary",
       "requirement": "recommended"
     }
-  }
+  },
+  "profiles": [
+      "ai_operation"
+  ]
 }

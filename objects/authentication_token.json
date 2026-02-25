@@ -1,11 +1,11 @@
 {
   "caption": "Authentication Token",
-  "description": "The Authentication Token object represents standardized authentication tokens, tickets, or assertions that conform to established authentication protocols such as Kerberos, OIDC, and SAML. These tokens are issued by authentication servers and identity providers and carry protocol-specific metadata, lifecycle information, and security attributes defined by their respective specifications.",
-  "extends": "object",
+  "description": "The Authentication Token object extends the base <code>token</code> object and represents standardized authentication tokens, tickets, or assertions that conform to established authentication protocols such as Kerberos, OIDC, and SAML. This object inherits all attributes from <code>token</code> and adds protocol-specific attributes (e.g., <code>kerberos_flags</code>, <code>encryption_details</code>) for authentication events. Use this object in authentication events to represent protocol-specific tokens: Kerberos Ticket Granting Tickets (TGT) and Service Tickets (ST), OIDC Identity Tokens and Refresh Tokens, and SAML Assertions. These tokens are issued by authentication servers and identity providers and carry protocol-specific metadata, lifecycle information, and security attributes defined by their respective specifications. When to use this object: Use <code>authentication_token</code> when representing protocol-specific authentication tokens (type_id values 1-5: Kerberos TGT/ST, OIDC ID/Refresh tokens, SAML assertions) in authentication events. When NOT to use this object: Do NOT use <code>authentication_token</code> for API tokens or client tokens (type_id values 6-7) used in API activity events - use the base <code>token</code> object instead. Do NOT use <code>authentication_token</code> for generic API keys - use the base <code>token</code> object instead.",
+  "extends": "token",
   "name": "authentication_token",
   "attributes": {
     "created_time": {
-      "description": "The time that the authentication token was created.",
+      "description": "The time that the authentication token was created or issued. This corresponds to the token issuance time, such as the <code>iat</code> (issued at) claim in OIDC tokens, the issue instant in SAML assertions, or the ticket start time in Kerberos tickets.",
       "requirement": "recommended"
     },
     "encryption_details": {
@@ -28,7 +28,7 @@
       "requirement": "recommended"
     },
     "type_id": {
-      "description": "The normalized authentication token type identifier.",
+      "description": "The normalized authentication token type identifier. This attribute restricts the base <code>token.type_id</code> enum to only protocol-specific authentication token types (values 0, 1-5, 99). API tokens and client tokens (values 6-7) are not valid for <code>authentication_token</code> - use the base <code>token</code> object for those types.",
       "requirement": "recommended",
       "enum": {
         "0": {

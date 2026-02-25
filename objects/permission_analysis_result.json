@@ -4,6 +4,10 @@
   "extends": "object",
   "name": "permission_analysis_result",
   "attributes": {
+    "analyzed_privileges_count": {
+      "description": "The total count of privileges that were analyzed across all services.",
+      "requirement": "optional"
+    },
     "condition_keys": {
       "description": "The condition keys and their values that were evaluated during policy analysis, including contextual constraints that affect permission grants. These conditions define when and how permissions are applied. Examples: <code>aws:SourceIp:1.2.3.4</code>, <code>aws:RequestedRegion:us-east-1</code>.",
       "requirement": "optional"
@@ -15,6 +19,10 @@
     "policy": {
       "description": "Detailed information about the policy document that was analyzed, including policy metadata, version, type (identity-based, resource-based, etc.), and structural details. This provides context for understanding the scope and nature of the permission analysis.",
       "requirement": "recommended"
+    },
+    "privileges_analysis": {
+      "description": "The detailed privilege analysis results containing aggregated privilege usage data across cloud services and mappings to potential attack techniques.",
+      "requirement": "optional"
     },
     "unused_privileges_count": {
       "description": "The total count of privileges or actions defined in the policy that have not been utilized within the analysis timeframe. This metric helps identify over-privileged access and opportunities for privilege reduction to follow the principle of least privilege. High counts may indicate policy bloat or excessive permissions.",

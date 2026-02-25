@@ -75,13 +75,15 @@ Thankyou! -->
   1. Added `department` and `is_on_premises_sync_enabled` for ldap and Entra ID support. [#1584](https://github.com/ocsf/ocsf-schema/pull/1584)
   1. Added `is_disabled` and `is_locked` as type `boolean_t` with a "See specific usage" description. [#1583](https://github.com/ocsf/ocsf-schema/pull/1583)
   1. Added `pool` attribute of type `group`. [#1521](https://github.com/ocsf/ocsf-schema/pull/1521)
-
+  1. Added `mac_vendor` as `string_t`. [#1575](https://github.com/ocsf/ocsf-schema/pull/1575)
+  1. Added `network_observation_point` as type `network_endpoint`. [#1571](https://github.com/ocsf/ocsf-schema/pull/1571)
 ### Improved
 * #### Categories
 * #### Event Classes
   1. Add `app_protocol_name` to `Network Activity` class with clarified description for deep packet inspection. [#1557](https://github.com/ocsf/ocsf-schema/pull/1557)
   1. Enhanced `app_name` description in `Network Activity` class to clarify network application identification by tools such as NBAR. [#1557](https://github.com/ocsf/ocsf-schema/pull/1557)
   1. Added `ai_operation` profile to `process_activity` event class. [#1578](https://github.com/ocsf/ocsf-schema/pull/1578)
+  1. Added `network_observation_point` attribute to the base `Network` event. [#1571](https://github.com/ocsf/ocsf-schema/pull/1571)
 * #### Profiles
 * #### Objects
   1. Extended `database` object with AI-specific database types (`Vector (7)`, `Knowledge Graph (8)`) and `embedding_model` field for AI retrieval systems. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
@@ -90,6 +92,7 @@ Thankyou! -->
   1. Added `imported_symbols` attribute to the `file` object.  [#1553](https://github.com/ocsf/ocsf-schema/pull/1553)
   1. Updated `fingerprint` object description. Updated the descriptions of `algorithm`, `algorithm_id`, and `value` attributes in the `fingerprint` object. [#1560](https://github.com/ocsf/ocsf-schema/pull/1560)
   1. Added `fingerprints` attribute to the `network_endpoint` object. [#1560](https://github.com/ocsf/ocsf-schema/pull/1560)
+  1. Added `mac_vendor` to the `endpoint` object. [#1575](https://github.com/ocsf/ocsf-schema/pull/1575)
   1. Added `token` as an attribute to the `api` object. [#1429](https://github.com/ocsf/ocsf-schema/pull/1429)
   1. Added `created_time` attribute back to the `authentication_token` object with improved description. [#1429](https://github.com/ocsf/ocsf-schema/pull/1429)
   1. Added `provider` to the `resource_details` object via `cloud` profile. [#1566](https://github.com/ocsf/ocsf-schema/pull/1566)
@@ -144,8 +147,6 @@ Thankyou! -->
   1. Added `post_value`, `pre_value` and `return_value` as `string_t`. [#1497](https://github.com/ocsf/ocsf-schema/pull/1497)
   1. Added `launch_type_id` enum and `launch_type` sibling. [#1517](https://github.com/ocsf/ocsf-schema/pull/1517)
   1. Added `log_source` `log_source_uid` `log_format` as `string_t`. [#1483](https://github.com/ocsf/ocsf-schema/pull/1483)
-  1. Added `mac_vendor` as `string_t`. [#1575](https://github.com/ocsf/ocsf-schema/pull/1575)
-  1. Added `observation_endpoint` as type `network_endpoint`. [#1571](https://github.com/ocsf/ocsf-schema/pull/1571)
 
 ### Improved
 * #### Categories
@@ -157,7 +158,6 @@ Thankyou! -->
   1. Added missing context classification to `windows_service_activity.win_service`. [#1531](https://github.com/ocsf/ocsf-schema/pull/1531)
   1. Added missing requirement to `process_activity.launch_type`. [#1531](https://github.com/ocsf/ocsf-schema/pull/1531)
   1. Added `cumulative_traffic` attribute to the base `Network` event. Updated `traffic` description. [#1529](https://github.com/ocsf/ocsf-schema/pull/1529)
-  1. Added `observation_endpoint` attribute to the base `Network` event. [#1571](https://github.com/ocsf/ocsf-schema/pull/1571)
 * #### Profiles
 * #### Objects
   1. Added `type`, `type_uid`, and `vendor_id_list` to the `peripheral_device` object. [#1471](https://github.com/ocsf/ocsf-schema/pull/1471)
@@ -175,7 +175,6 @@ Thankyou! -->
   1. Added `hosted_services`, array to the `process` object.
   1. Added `source`, `type`, `log_source`, `original_event_uid`,`log_format`, `transmit_time` to `metadata`. `log_format` to `logger`[#1483](https://github.com/ocsf/ocsf-schema/pull/1483)
   1. Added `start_time`, `end_time` and `timespan` to the `network_traffic` object. Updated `network_traffic` description. [#1529](https://github.com/ocsf/ocsf-schema/pull/1529)
-  1. Added `mac_vendor` to the `endpoint` object. [#1575](https://github.com/ocsf/ocsf-schema/pull/1575)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes

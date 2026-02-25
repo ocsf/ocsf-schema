@@ -1,0 +1,44 @@
+{
+    "caption": "Service Privilege Analysis",
+    "description": "The Service Privilege Analysis object describes privilege analysis results for a single cloud service or resource namespace. It provides metrics on privilege usage, counts by type, and mappings to potential attack techniques.",
+    "extends": "object",
+    "name": "service_privilege_analysis",
+    "attributes": {
+        "name": {
+            "description": "The service or namespace identifier. Examples: <code>s3</code>, <code>ec2</code> (AWS); <code>Microsoft.Storage</code> (Azure); <code>storage</code> (GCP).",
+            "requirement": "required"
+        },
+        "unused_privileges_count": {
+            "description": "The count of unused privileges within this service.",
+            "requirement": "optional"
+        },
+        "last_used_time": {
+            "description": "The most recent time any privilege in this service was used.",
+            "requirement": "optional"
+        },
+        "analyzed_privileges_count": {
+            "description": "The total count of privileges analyzed within this service.",
+            "requirement": "optional"
+        },
+        "privilege_attack_details": {
+            "description": "The list of privilege-to-attack mappings for this service.",
+            "requirement": "optional"
+        },
+        "execute_count": {
+            "description": "The count of execute-type privileges within this service.",
+            "requirement": "optional"
+        },
+        "read_count": {
+            "description": "The count of read-type privileges within this service.",
+            "requirement": "optional"
+        },
+        "write_count": {
+            "description": "The count of write-type privileges within this service.",
+            "requirement": "optional"
+        },
+        "all_unused": {
+            "description": "Indicates whether all privileges within this service are unused.",
+            "requirement": "optional"
+        }
+    }
+}

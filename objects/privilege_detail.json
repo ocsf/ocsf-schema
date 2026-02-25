@@ -1,0 +1,24 @@
+{
+    "caption": "Privilege Detail",
+    "description": "The Privilege Detail object describes details about a specific privilege, action, or permission. It captures the privilege name, type, usage status, and when it was last used.",
+    "extends": "object",
+    "name": "privilege_detail",
+    "attributes": {
+        "name": {
+            "description": "The name of the privilege, action, or permission. Examples: <code>GetObject</code>, <code>CreateStoreImageTask</code> (AWS); <code>Microsoft.Storage/storageAccounts/read</code> (Azure); <code>storage.objects.get</code> (GCP).",
+            "requirement": "required"
+        },
+        "type": {
+            "description": "The type or category of the privilege. Examples: <code>read</code>, <code>write</code>, <code>execute</code>.",
+            "requirement": "optional"
+        },
+        "last_used_time": {
+            "description": "The most recent time this privilege was used.",
+            "requirement": "optional"
+        },
+        "is_unused": {
+            "description": "Indicates whether the privilege is unused within the analysis timeframe.",
+            "requirement": "optional"
+        }
+    }
+}

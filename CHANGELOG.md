@@ -53,6 +53,9 @@ Thankyou! -->
   1. Added `message_context` object for AI system interactions with role-based identification and token usage metrics (`prompt_tokens`, `completion_tokens`, `total_tokens`). [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
   1. Added `token` object for API tokens, client tokens, and API keys used in API activity events. [#1429](https://github.com/ocsf/ocsf-schema/pull/1429)
   1. Added `gpu_info` object for GPU's (array name `gpu_info_list`). [#1527](https://github.com/ocsf/ocsf-schema/pull/1527)
+  1. Added `privilege_detail` object for describing specific privileges, actions, or permissions with usage status.
+  1. Added `privilege_attack_detail` object for grouping privileges by potential MITRE ATT&CK techniques.
+  1. Added `service_privilege_analysis` object for privilege analysis results per cloud service or namespace.
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -70,6 +73,18 @@ Thankyou! -->
   1. Added `vram_mode` Derived from `vram_type_id`. [#1527](https://github.com/ocsf/ocsf-schema/pull/1527)
   1. Added `vram_mode_id` Identifier for VRAM type. [#1527](https://github.com/ocsf/ocsf-schema/pull/1527)
   1. Added `total_queued_duration` to track how long an event spent in a queue. [#1536](https://github.com/ocsf/ocsf-schema/pull/1536)
+  1. Added `all_unused` boolean attribute indicating whether all items in a group are unused.
+  1. Added `analyzed_privileges_count` integer attribute for the total count of analyzed privileges.
+  1. Added `attack` singular attribute for MITRE ATT&CK details (complements existing `attacks` array).
+  1. Added `execute_count` integer attribute for count of execute-type privileges.
+  1. Added `is_unused` boolean attribute indicating whether an item is unused.
+  1. Added `privilege_attack_detail`, `privilege_attack_details` attributes for privilege-to-attack mappings.
+  1. Added `privilege_detail`, `privilege_details` attributes for specific privilege information.
+  1. Added `read_count` integer attribute for count of read-type privileges.
+  1. Added `service_privilege_analysis`, `service_privilege_analyses` attributes for service-level privilege analysis.
+  1. Added `total_potential_attacks_count` integer attribute for count of privileges mapping to attack techniques.
+  1. Added `write_count` integer attribute for count of write-type privileges.
+
 ### Improved
 * #### Categories
 * #### Event Classes
@@ -89,6 +104,7 @@ Thankyou! -->
   1. Added `provider` to the `resource_details` object via `cloud` profile. [#1566](https://github.com/ocsf/ocsf-schema/pull/1566)
   1. Added `resource` attribute to the `check` object to describe details about the resource that the check evaluated. [#1574](https://github.com/ocsf/ocsf-schema/pull/1574)
   1. Added `total_queued_duration` to the `metadata` object. [#1536](https://github.com/ocsf/ocsf-schema/pull/1536)
+  1. Added `analyzed_privileges_count`, `service_privilege_analyses`, and `total_potential_attacks_count` attributes to the `permission_analysis_result` object for detailed privilege analysis.
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes

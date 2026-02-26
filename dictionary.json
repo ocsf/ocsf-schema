@@ -247,6 +247,11 @@
         }
       }
     },
+    "all_unused": {
+      "caption": "All Unused",
+      "description": "Indicates whether all items in a group are unused. See specific usage.",
+      "type": "boolean_t"
+    },
     "altitude_ceiling": {
       "caption": "Altitude Ceiling",
       "description": "Maximum altitude (WGS-84 HAE) for a group or an Intent-Based Network Participant. Measured in meters. Special Values: <code>Invalid</code>, <code>No Value</code>, or <code>Unknown: -1000 m</code>.",
@@ -262,6 +267,11 @@
       "description": "The specific dimensions, components, or aspects of the system that are the targets of the analysis. See specific usage.",
       "type": "analysis_target",
       "is_array": true
+    },
+    "analyzed_privileges_count": {
+      "caption": "Analyzed Privileges Count",
+      "description": "The total count of privileges that were analyzed. See specific usage.",
+      "type": "integer_t"
     },
     "analytic": {
       "caption": "Analytic",
@@ -364,6 +374,11 @@
       "caption": "Assignee Group",
       "description": "The details of the group assigned to an Incident.",
       "type": "group"
+    },
+    "attack": {
+      "caption": "MITRE ATT&CK® Details",
+      "description": "The MITRE ATT&CK® object describing the tactic, technique, and sub-technique. See specific usage.",
+      "type": "attack"
     },
     "attack_graph": {
       "caption": "Attack Graph",
@@ -2470,6 +2485,11 @@
       "type": "evidences",
       "is_array": true
     },
+    "execute_count": {
+      "caption": "Execute Count",
+      "description": "The count of execute-type privileges or permissions. See specific usage.",
+      "type": "integer_t"
+    },
     "exit_code": {
       "caption": "Exit Code",
       "description": "The exit code reported by a process when it terminates. The convention is that zero indicates success and any non-zero exit code indicates that some error occurred.",
@@ -2841,7 +2861,7 @@
       "description": "An array of objects describing describing Graphical Processing Unit hardware.",
       "type": "gpu_info",
       "is_array": true
-    },  
+    },
     "granted_privileges": {
       "caption": "Granted Privileges",
       "description": "The Privileges that were granted to the user via an IAM policy or otherwise. See specific usage.",
@@ -3395,6 +3415,11 @@
     "is_truncated": {
       "caption": "Is Truncated",
       "description": "Indicates that an attribute has been truncated. See specific usage.",
+      "type": "boolean_t"
+    },
+    "is_unused": {
+      "caption": "Is Unused",
+      "description": "Indicates whether an item is unused within the analysis timeframe. See specific usage.",
       "type": "boolean_t"
     },
     "is_trusted": {
@@ -4679,6 +4704,28 @@
       "type": "string_t",
       "is_array": true
     },
+    "privilege_attack_detail": {
+      "caption": "Privilege Attack Detail",
+      "description": "Details about privileges grouped by the potential attack they could enable.",
+      "type": "privilege_attack_detail"
+    },
+    "privilege_attack_details": {
+      "caption": "Privilege Attack Details",
+      "description": "A list of privilege-to-attack mappings. See specific usage.",
+      "type": "privilege_attack_detail",
+      "is_array": true
+    },
+    "privilege_detail": {
+      "caption": "Privilege Detail",
+      "description": "Details about a specific privilege, action, or permission.",
+      "type": "privilege_detail"
+    },
+    "privilege_details": {
+      "caption": "Privilege Details",
+      "description": "A list of privilege details. See specific usage.",
+      "type": "privilege_detail",
+      "is_array": true
+    },
     "process": {
       "caption": "Process",
       "description": "The process object.",
@@ -5055,6 +5102,11 @@
       "caption": "DNS RData",
       "description": "The data describing the DNS resource. The meaning of this data depends on the type and class of the resource record.",
       "type": "string_t"
+    },
+    "read_count": {
+      "caption": "Read Count",
+      "description": "The count of read-type privileges or permissions. See specific usage.",
+      "type": "integer_t"
     },
     "record_index_in_array": {
       "caption": "Record Index in Array",
@@ -5693,6 +5745,17 @@
       "caption": "Serial Number",
       "description": "The serial number that pertains to the object. See specific usage.",
       "type": "string_t"
+    },
+    "service_privilege_analysis": {
+      "caption": "Service Privilege Analysis",
+      "description": "Privilege analysis results for a single cloud service or resource namespace.",
+      "type": "service_privilege_analysis"
+    },
+    "service_privilege_analyses": {
+      "caption": "Service Privilege Analyses",
+      "description": "A list of privilege analysis results grouped by cloud service or namespace. See specific usage.",
+      "type": "service_privilege_analysis",
+      "is_array": true
     },
     "server_ciphers": {
       "caption": "Server Cipher Suites",
@@ -6412,6 +6475,11 @@
       "description": "The total number of items. See specific usage.",
       "type": "integer_t"
     },
+    "total_potential_attacks_count": {
+      "caption": "Total Potential Attacks Count",
+      "description": "The total count of privileges that map to potential attack techniques.",
+      "type": "integer_t"
+    },
     "trace": {
       "caption": "Trace",
       "description": "The information about the trace. See specific usage.",
@@ -6817,6 +6885,11 @@
       "caption": "Working Directory",
       "description": "The working directory of a process.",
       "type": "string_t"
+    },
+    "write_count": {
+      "caption": "Write Count",
+      "description": "The count of write-type privileges or permissions. See specific usage.",
+      "type": "integer_t"
     },
     "x_forwarded_for": {
       "caption": "X-Forwarded-For",

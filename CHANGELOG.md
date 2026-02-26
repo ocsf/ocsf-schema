@@ -52,6 +52,7 @@ Thankyou! -->
   1. Added `ai_model` object with core fields (`name`, `ai_provider`, `version`) for AI operation events. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
   1. Added `message_context` object for AI system interactions with role-based identification and token usage metrics (`prompt_tokens`, `completion_tokens`, `total_tokens`). [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
   1. Added `token` object for API tokens, client tokens, and API keys used in API activity events. [#1429](https://github.com/ocsf/ocsf-schema/pull/1429)
+  1. Added `gpu_info` object for GPU's (array name `gpu_info_list`). [#1527](https://github.com/ocsf/ocsf-schema/pull/1527)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -62,7 +63,13 @@ Thankyou! -->
   1. Added `imported_symbols` attribute for reporting an executable file's imports.  [#1553](https://github.com/ocsf/ocsf-schema/pull/1553)
   1. Added `Imphash (18)` enum to the `algorithm_id` attribute of the `fingerprint` object. [#1553](https://github.com/ocsf/ocsf-schema/pull/1553)
   1. Added `token` as a `token` object. [#1429](https://github.com/ocsf/ocsf-schema/pull/1429)
-
+  1. Added `bus_type`	Derived from `bus_type_id`. [#1527](https://github.com/ocsf/ocsf-schema/pull/1527)
+  1. Added `bus_type_id` Identifier for the bus/interface standard. [#1527](https://github.com/ocsf/ocsf-schema/pull/1527)
+  1. Added `cores` Number of cores. [#1527](https://github.com/ocsf/ocsf-schema/pull/1527)
+  1. Added `vram_size` Installed VRAM. [#1527](https://github.com/ocsf/ocsf-schema/pull/1527)
+  1. Added `vram_mode` Derived from `vram_type_id`. [#1527](https://github.com/ocsf/ocsf-schema/pull/1527)
+  1. Added `vram_mode_id` Identifier for VRAM type. [#1527](https://github.com/ocsf/ocsf-schema/pull/1527)
+   
 ### Improved
 * #### Categories
 * #### Event Classes

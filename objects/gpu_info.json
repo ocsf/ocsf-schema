@@ -1,0 +1,78 @@
+{
+  "caption": "GPU Information",
+  "description": "The GPU information object contains attributes describing graphical processing hardware.",
+  "extends": "object",
+  "name": "gpu_info",
+  "attributes": {
+    "bus_type": {
+      "requirement": "optional"
+    },
+    "bus_type_id": {
+      "description": "The normalized identifier of the attachment bus or interface standard.",
+      "requirement": "optional",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Onboard"
+        },
+        "2": {
+          "caption": "PCIe x16"
+        },
+        "3": {
+          "caption": "PCIe x8"
+        },
+        "4": {
+          "caption": "MXM Type A"
+        },
+        "5": {
+          "caption": "MXM Type B"
+        },
+        "6": {
+          "caption": "M.2"
+        },
+        "7": {
+          "caption": "CXL"
+        },
+        "99": {
+          "caption": "Other"
+        }
+      }
+    },
+    "cores": {
+      "requirement": "optional"
+    },
+    "model": {
+      "description": "The model name of the GPU. For example: <code>GeForce RTX A6000</code>, <code>Radeon PRO W7900</code>, or <code>Intel Data Center GPU Max 1550</code>.",
+      "requirement": "recommended"
+    },
+    "vendor_name": {
+      "description": "The name of the vendor of the GPU. For example: <code>NVIDIA</code>, <code>AMD</code>, or <code>Intel</code>.",
+      "requirement": "recommended"
+    },
+    "vram_mode": {
+      "requirement": "recommended"
+    },
+    "vram_mode_id": {
+      "requirement": "recommended",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Shared"
+        },
+        "2": {
+          "caption": "Dedicated"
+        },
+        "99": {
+          "caption": "Other"
+        }
+      }
+    },
+    "vram_size": {
+      "requirement": "recommended"
+    }
+  }
+}

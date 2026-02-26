@@ -56,7 +56,6 @@ Thankyou! -->
   1. Added `privilege_detail` object for describing specific privileges, actions, or permissions with usage status.
   1. Added `privilege_attack_detail` object for grouping privileges by potential MITRE ATT&CK techniques.
   1. Added `service_privilege_analysis` object for privilege analysis results per cloud service or namespace.
-  1. Added `privileges_analysis` object as top-level container for privilege analysis results across cloud services.
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -80,7 +79,6 @@ Thankyou! -->
   1. Added `is_unused` boolean attribute indicating whether an item is unused.
   1. Added `privilege_attack_detail`, `privilege_attack_details` attributes for privilege-to-attack mappings.
   1. Added `privilege_detail`, `privilege_details` attributes for specific privilege information.
-  1. Added `privileges_analysis` attribute as top-level container for privilege analysis results.
   1. Added `read_count` integer attribute for count of read-type privileges.
   1. Added `service_privilege_analysis`, `service_privilege_analyses` attributes for service-level privilege analysis.
   1. Added `total_potential_attacks_count` integer attribute for count of privileges mapping to attack techniques.
@@ -103,7 +101,7 @@ Thankyou! -->
   1. Added `token` as an attribute to the `api` object. [#1429](https://github.com/ocsf/ocsf-schema/pull/1429)
   1. Added `created_time` attribute back to the `authentication_token` object with improved description. [#1429](https://github.com/ocsf/ocsf-schema/pull/1429)
   1. Added `provider` to the `resource_details` object via `cloud` profile. [#1566](https://github.com/ocsf/ocsf-schema/pull/1566)
-  1. Added `analyzed_privileges_count` and `privileges_analysis` attributes to the `permission_analysis_result` object for detailed privilege analysis.
+  1. Added `analyzed_privileges_count`, `service_privilege_analyses`, and `total_potential_attacks_count` attributes to the `permission_analysis_result` object for detailed privilege analysis.
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes

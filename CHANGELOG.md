@@ -77,7 +77,6 @@ Thankyou! -->
   1. Add `app_protocol_name` to `Network Activity` class with clarified description for deep packet inspection. [#1557](https://github.com/ocsf/ocsf-schema/pull/1557)
   1. Enhanced `app_name` description in `Network Activity` class to clarify network application identification by tools such as NBAR. [#1557](https://github.com/ocsf/ocsf-schema/pull/1557)
   1. Added `ai_operation` profile to `process_activity` event class. [#1578](https://github.com/ocsf/ocsf-schema/pull/1578)
-  1. Added `pool` to the `Authentication` class. [#1521](https://github.com/ocsf/ocsf-schema/pull/1521)
 
 * #### Profiles
 * #### Objects
@@ -92,6 +91,7 @@ Thankyou! -->
   1. Added `provider` to the `resource_details` object via `cloud` profile. [#1566](https://github.com/ocsf/ocsf-schema/pull/1566)
   1. Added `pool` attribute to the `endpoint` object. [#1521](https://github.com/ocsf/ocsf-schema/pull/1521)
   1. Added `uid_alt` attribute to the `group` object. [#1521](https://github.com/ocsf/ocsf-schema/pull/1521)
+  1. Added `pool` to the `endpoint` object. [#1521](https://github.com/ocsf/ocsf-schema/pull/1521)
 
 * #### Observables
 * #### Platform Extensions

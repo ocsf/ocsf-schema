@@ -69,7 +69,7 @@ Thankyou! -->
   1. Added `vram_size` Installed VRAM. [#1527](https://github.com/ocsf/ocsf-schema/pull/1527)
   1. Added `vram_mode` Derived from `vram_type_id`. [#1527](https://github.com/ocsf/ocsf-schema/pull/1527)
   1. Added `vram_mode_id` Identifier for VRAM type. [#1527](https://github.com/ocsf/ocsf-schema/pull/1527)
-   
+  1. Added `total_queued_duration` to track how long an event spent in a queue. [#1536](https://github.com/ocsf/ocsf-schema/pull/1536)
 ### Improved
 * #### Categories
 * #### Event Classes
@@ -88,6 +88,7 @@ Thankyou! -->
   1. Added `created_time` attribute back to the `authentication_token` object with improved description. [#1429](https://github.com/ocsf/ocsf-schema/pull/1429)
   1. Added `provider` to the `resource_details` object via `cloud` profile. [#1566](https://github.com/ocsf/ocsf-schema/pull/1566)
   1. Added `resource` attribute to the `check` object to describe details about the resource that the check evaluated. [#1574](https://github.com/ocsf/ocsf-schema/pull/1574)
+  1. Added `total_queued_duration` to the `metadata` object. [#1536](https://github.com/ocsf/ocsf-schema/pull/1536)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes

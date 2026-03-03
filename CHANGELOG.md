@@ -70,6 +70,7 @@ Thankyou! -->
   1. Added `vram_size` Installed VRAM. [#1527](https://github.com/ocsf/ocsf-schema/pull/1527)
   1. Added `vram_mode` Derived from `vram_type_id`. [#1527](https://github.com/ocsf/ocsf-schema/pull/1527)
   1. Added `vram_mode_id` Identifier for VRAM type. [#1527](https://github.com/ocsf/ocsf-schema/pull/1527)
+  1. Added `total_queued_duration` to track how long an event spent in a queue. [#1536](https://github.com/ocsf/ocsf-schema/pull/1536)
   1. Added `packet` as a `packet` object. [#1569](https://github.com/ocsf/ocsf-schema/pull/1569)
   1. Added `packet_list` as an array of `packet` objects. [#1569](https://github.com/ocsf/ocsf-schema/pull/1569)
   1. Added `encoding`, `encoding_id` attributes for data encoding representation. [#1569](https://github.com/ocsf/ocsf-schema/pull/1569)
@@ -77,8 +78,8 @@ Thankyou! -->
   1. Added `source_id` normalized identifier for the source. [#1569](https://github.com/ocsf/ocsf-schema/pull/1569)
   1. Added `sequence_number` attribute for ordering within a sequence. [#1569](https://github.com/ocsf/ocsf-schema/pull/1569)
   1. Added `start_offset` attribute for the starting offset. [#1569](https://github.com/ocsf/ocsf-schema/pull/1569)
-  1. Added `end_offset` attribute for the ending offset. [#1569](https://github.com/ocsf/ocsf-schema/pull/1569)
-   
+  1. Added `end_offset` attribute for the ending offset. [#1569](https://github.com/ocsf/ocsf-schema/pull/1569) 
+  
 ### Improved
 * #### Categories
 * #### Event Classes
@@ -97,6 +98,8 @@ Thankyou! -->
   1. Added `token` as an attribute to the `api` object. [#1429](https://github.com/ocsf/ocsf-schema/pull/1429)
   1. Added `created_time` attribute back to the `authentication_token` object with improved description. [#1429](https://github.com/ocsf/ocsf-schema/pull/1429)
   1. Added `provider` to the `resource_details` object via `cloud` profile. [#1566](https://github.com/ocsf/ocsf-schema/pull/1566)
+  1. Added `resource` attribute to the `check` object to describe details about the resource that the check evaluated. [#1574](https://github.com/ocsf/ocsf-schema/pull/1574)
+  1. Added `total_queued_duration` to the `metadata` object. [#1536](https://github.com/ocsf/ocsf-schema/pull/1536)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -114,7 +117,7 @@ Thankyou! -->
   1. The regular expression constraint in dictionary type `file_hash_t` has been removed. This can create a breaking change for some kinds of tooling that process OCSF events. (Repeated item from Dictionary Types section above.) [1564](https://github.com/ocsf/ocsf-schema/pull/1564)
 
 ### Misc
-
+1. New Extension registration for Synqly [#1579](https://github.com/ocsf/ocsf-schema/pull/1579). 
 
 
 

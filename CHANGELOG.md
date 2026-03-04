@@ -53,8 +53,8 @@ Thankyou! -->
   1. Added `message_context` object for AI system interactions with role-based identification and token usage metrics (`prompt_tokens`, `completion_tokens`, `total_tokens`). [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
   1. Added `token` object for API tokens, client tokens, and API keys used in API activity events. [#1429](https://github.com/ocsf/ocsf-schema/pull/1429)
   1. Added `gpu_info` object for GPU's (array name `gpu_info_list`). [#1527](https://github.com/ocsf/ocsf-schema/pull/1527)
-  1. Added `privilege_detail` object for describing specific privileges, actions, or permissions with usage status.
-  1. Added `privilege_attack_detail` object for grouping privileges by potential MITRE ATT&CK techniques.
+  1. Added `privilege_info` object for describing specific privileges, actions, or permissions with usage status.
+  1. Added `privilege_attack_info` object for grouping privileges by potential MITRE ATT&CK techniques.
   1. Added `service_privilege_analysis` object for privilege analysis results per cloud service or namespace.
 * #### Observables
 * #### Platform Extensions
@@ -78,8 +78,8 @@ Thankyou! -->
   1. Added `attack` singular attribute for MITRE ATT&CK details (complements existing `attacks` array).
   1. Added `execute_count` integer attribute for count of execute-type privileges.
   1. Added `is_unused` boolean attribute indicating whether an item is unused.
-  1. Added `privilege_attack_detail`, `privilege_attack_details` attributes for privilege-to-attack mappings.
-  1. Added `privilege_detail`, `privilege_details` attributes for specific privilege information.
+  1. Added `privilege_attack_info`, `privilege_attack_info_list` attributes for privilege-to-attack mappings.
+  1. Added `privilege_info`, `privilege_info_list` attributes for specific privilege information.
   1. Added `read_count` integer attribute for count of read-type privileges.
   1. Added `service_privilege_analysis`, `service_privilege_analyses` attributes for service-level privilege analysis.
   1. Added `total_potential_attacks_count` integer attribute for count of privileges mapping to attack techniques.

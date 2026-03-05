@@ -70,6 +70,7 @@ Thankyou! -->
   1. Added `vram_mode` Derived from `vram_type_id`. [#1527](https://github.com/ocsf/ocsf-schema/pull/1527)
   1. Added `vram_mode_id` Identifier for VRAM type. [#1527](https://github.com/ocsf/ocsf-schema/pull/1527)
   1. Added `total_queued_duration` to track how long an event spent in a queue. [#1536](https://github.com/ocsf/ocsf-schema/pull/1536)
+  1. Added `is_disabled` and `is_locked` as type `boolean_t` with a "See specific usage" description.[#1583](https://github.com/ocsf/ocsf-schema/pull/1583)
 ### Improved
 * #### Categories
 * #### Event Classes

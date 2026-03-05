@@ -2,9 +2,17 @@
 """
 Review OCSF schema descriptions in PRs for LLM comprehension quality.
 
-Compiles the schema using ocsf-schema-compiler to produce the final resolved
-output, then sends the compiled objects/classes that changed in the PR to Claude
-for description quality review. Posts findings as a PR comment.
+Two-phase design for fork PR compatibility:
+
+  prepare  — Runs in the pull_request workflow (no secrets needed).
+             Reads the compiled schema, PR diff, and changed file list
+             produced by earlier workflow steps, extracts only the
+             relevant compiled objects/classes/dictionary attributes,
+             and writes review_context.json.
+
+  review   — Runs in the workflow_run workflow (has secrets).
+             Reads review_context.json, sends it to Claude, and
+             posts an advisory comment on the PR.
 """
 
 import json
@@ -13,8 +21,6 @@ import re
 import subprocess
 import sys
 from pathlib import Path
-
-import anthropic
 
 COMMENT_MARKER = "<!-- ocsf-description-review -->"
 DEFAULT_MODEL = "claude-sonnet-4-20250514"
@@ -80,16 +86,13 @@ field from raw security telemetry and distinguish it from similar attributes.
 
 Use this markdown structure:
 
-### Critical Issues
+### Suggestions
 Numbered list. Each item:
 - **Object/Class**: `name`
 - **Attribute**: `attribute_name`
 - **Issue**: concise problem statement
 - **Current**: the current description (quoted)
 - **Suggested**: your improved description (quoted)
-
-### Warnings
-Same format, for non-critical improvements.
 
 ### CHANGELOG Issues
 List any convention violations.
@@ -98,11 +101,17 @@ List any convention violations.
 1-2 sentence overall assessment.
 
 If no issues are found, respond with only:
-> No description quality issues found in this PR.
+> ✅ No description issues found — descriptions look clear for LLM consumption.
 
-Only review CHANGED or ADDED content. Do not flag pre-existing descriptions.
+These are advisory suggestions to help improve clarity. They are not required
+changes. Only review CHANGED or ADDED content. Do not flag pre-existing
+descriptions.
 """
 
+
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
 
 def run_gh(*args: str, input_data: str | None = None) -> str:
     result = subprocess.run(
@@ -118,33 +127,6 @@ def run_gh(*args: str, input_data: str | None = None) -> str:
         )
         raise subprocess.CalledProcessError(result.returncode, "gh")
     return result.stdout
-
-
-def compile_schema() -> dict:
-    """Compile the OCSF schema and return the fully resolved output."""
-    print("Compiling schema...")
-    result = subprocess.run(
-        ["ocsf-schema-compiler", "."],
-        capture_output=True,
-        text=True,
-    )
-    if result.returncode != 0:
-        print(f"Compiler stderr:\n{result.stderr}", file=sys.stderr)
-        raise RuntimeError(
-            f"ocsf-schema-compiler failed with exit code {result.returncode}"
-        )
-    if result.stderr:
-        print(f"Compiler logs:\n{result.stderr}", file=sys.stderr)
-    return json.loads(result.stdout)
-
-
-def get_pr_diff(pr_number: str) -> str:
-    return run_gh("pr", "diff", pr_number)
-
-
-def get_changed_files(pr_number: str) -> list[str]:
-    output = run_gh("pr", "diff", pr_number, "--name-only")
-    return [f.strip() for f in output.strip().split("\n") if f.strip()]
 
 
 def extract_changed_dict_attrs(diff: str) -> list[str]:
@@ -166,16 +148,42 @@ def extract_changed_dict_attrs(diff: str) -> list[str]:
     return attrs
 
 
-def extract_compiled_context(
-    compiled: dict, changed_files: list[str], diff: str
-) -> dict:
-    """Extract the compiled representations of items changed in the PR."""
+# ---------------------------------------------------------------------------
+# Phase 1: prepare
+# ---------------------------------------------------------------------------
+
+def cmd_prepare() -> None:
+    """Read compiled schema + PR metadata files, extract context, save JSON."""
+    compiled_path = Path("compiled_schema.json")
+    diff_path = Path("pr_diff.txt")
+    changed_path = Path("changed_files.txt")
+    pr_number_path = Path("pr_number.txt")
+
+    for p in (compiled_path, diff_path, changed_path, pr_number_path):
+        if not p.exists():
+            print(f"Missing required file: {p}", file=sys.stderr)
+            sys.exit(1)
+
+    compiled = json.loads(compiled_path.read_text())
+    diff = diff_path.read_text()
+    changed_files = [
+        f.strip() for f in changed_path.read_text().strip().split("\n") if f.strip()
+    ]
+    pr_number = pr_number_path.read_text().strip()
+
+    schema_files = [
+        f for f in changed_files if f.endswith(".json") or f == "CHANGELOG.md"
+    ]
+    if not schema_files:
+        print("No schema files changed, writing empty context.")
+        Path("review_context.json").write_text(json.dumps({"skip": True}))
+        return
+
     context = {"objects": {}, "classes": {}, "dictionary_attributes": {}}
 
     compiled_objects = compiled.get("objects", {})
     compiled_classes = compiled.get("classes", {})
-    compiled_dict = compiled.get("dictionary", {})
-    compiled_dict_attrs = compiled_dict.get("attributes", {})
+    compiled_dict_attrs = compiled.get("dictionary", {}).get("attributes", {})
 
     for filepath in changed_files:
         if filepath.endswith(".json") and filepath.startswith("objects/"):
@@ -189,45 +197,56 @@ def extract_compiled_context(
                 context["classes"][name] = compiled_classes[name]
 
     if "dictionary.json" in changed_files:
-        changed_attrs = extract_changed_dict_attrs(diff)
-        for attr_name in changed_attrs:
+        for attr_name in extract_changed_dict_attrs(diff):
             if attr_name in compiled_dict_attrs:
                 context["dictionary_attributes"][attr_name] = compiled_dict_attrs[
                     attr_name
                 ]
 
-    return context
+    output = {
+        "pr_number": pr_number,
+        "changed_files": changed_files,
+        "compiled_context": context,
+        "diff": diff,
+    }
+
+    Path("review_context.json").write_text(json.dumps(output))
+    print(f"Saved review context ({len(json.dumps(output))} chars)")
 
 
-def build_review_context(
-    compiled_context: dict, changed_files: list[str], diff: str
-) -> str:
-    """Build the context string to send to Claude."""
+# ---------------------------------------------------------------------------
+# Phase 2: review
+# ---------------------------------------------------------------------------
+
+def build_review_prompt(data: dict) -> str:
+    """Build the prompt string from the saved review context."""
+    ctx = data["compiled_context"]
+    diff = data["diff"]
+    changed_files = data["changed_files"]
     parts = []
 
-    if compiled_context["objects"]:
+    if ctx["objects"]:
         parts.append(
             "## Compiled Objects (fully resolved)\n```json\n"
-            + json.dumps(compiled_context["objects"], indent=2)
+            + json.dumps(ctx["objects"], indent=2)
             + "\n```\n"
         )
 
-    if compiled_context["classes"]:
+    if ctx["classes"]:
         parts.append(
             "## Compiled Event Classes (fully resolved)\n```json\n"
-            + json.dumps(compiled_context["classes"], indent=2)
+            + json.dumps(ctx["classes"], indent=2)
             + "\n```\n"
         )
 
-    if compiled_context["dictionary_attributes"]:
+    if ctx["dictionary_attributes"]:
         parts.append(
             "## Compiled Dictionary Attributes (changed)\n```json\n"
-            + json.dumps(compiled_context["dictionary_attributes"], indent=2)
+            + json.dumps(ctx["dictionary_attributes"], indent=2)
             + "\n```\n"
         )
 
-    changelog_in_diff = "CHANGELOG.md" in changed_files
-    if changelog_in_diff:
+    if "CHANGELOG.md" in changed_files:
         changelog_lines = []
         in_changelog = False
         for line in diff.split("\n"):
@@ -251,44 +270,14 @@ def build_review_context(
 
     context = "\n".join(parts)
     if len(context) > MAX_CONTEXT_CHARS:
-        trimmed_parts = []
-        if compiled_context["objects"]:
-            trimmed_parts.append(parts[0])
-        if compiled_context["classes"]:
-            trimmed_parts.append(
-                parts[1] if compiled_context["objects"] else parts[0]
-            )
-        trimmed_parts.append(
-            "## PR diff (full context omitted due to size)\n```diff\n"
+        trimmed = parts[:3] if len(parts) > 3 else parts[:1]
+        trimmed.append(
+            "## PR diff (truncated due to size)\n```diff\n"
             + diff[:100_000]
             + "\n```\n"
         )
-        context = "\n".join(trimmed_parts)
+        context = "\n".join(trimmed)
     return context
-
-
-def call_claude(context: str) -> str:
-    client = anthropic.Anthropic()
-    model = os.environ.get("CLAUDE_MODEL", DEFAULT_MODEL)
-
-    message = client.messages.create(
-        model=model,
-        max_tokens=4096,
-        system=SYSTEM_PROMPT,
-        messages=[
-            {
-                "role": "user",
-                "content": (
-                    "Review the following OCSF schema PR changes for "
-                    "description quality and LLM comprehension. The objects "
-                    "and classes below are COMPILED output — fully resolved "
-                    "with inheritance, dictionary merging, and type "
-                    "enrichment applied.\n\n" + context
-                ),
-            }
-        ],
-    )
-    return message.content[0].text
 
 
 def find_existing_comment(pr_number: str) -> str | None:
@@ -310,9 +299,15 @@ def find_existing_comment(pr_number: str) -> str | None:
 
 
 def post_or_update_comment(pr_number: str, body: str) -> None:
-    """Post a new review comment or update the existing one (idempotent)."""
+    """Post a new comment or update the existing one (idempotent)."""
     repo = os.environ.get("GITHUB_REPOSITORY", "")
-    full_body = f"{COMMENT_MARKER}\n## Schema Description Review\n\n{body}"
+    full_body = (
+        f"{COMMENT_MARKER}\n"
+        "## Schema Description Review\n\n"
+        "_Automated suggestions for improving description clarity "
+        "for LLM consumption. These are advisory — not required changes._\n\n"
+        f"{body}"
+    )
     payload = json.dumps({"body": full_body})
 
     existing_id = find_existing_comment(pr_number)
@@ -321,10 +316,7 @@ def post_or_update_comment(pr_number: str, body: str) -> None:
         run_gh(
             "api",
             f"repos/{repo}/issues/comments/{existing_id}",
-            "-X",
-            "PATCH",
-            "--input",
-            "-",
+            "-X", "PATCH", "--input", "-",
             input_data=payload,
         )
         print(f"Updated existing comment {existing_id}")
@@ -332,58 +324,80 @@ def post_or_update_comment(pr_number: str, body: str) -> None:
         run_gh(
             "api",
             f"repos/{repo}/issues/{pr_number}/comments",
-            "-X",
-            "POST",
-            "--input",
-            "-",
+            "-X", "POST", "--input", "-",
             input_data=payload,
         )
         print("Posted new comment")
 
 
-def main() -> None:
-    pr_number = os.environ.get("PR_NUMBER")
-    if not pr_number:
-        print("PR_NUMBER environment variable is required", file=sys.stderr)
+def cmd_review() -> None:
+    """Read review_context.json, call Claude, post PR comment."""
+    import anthropic
+
+    context_path = Path("review_context.json")
+    if not context_path.exists():
+        print("review_context.json not found", file=sys.stderr)
         sys.exit(1)
 
-    print(f"Reviewing PR #{pr_number}...")
+    data = json.loads(context_path.read_text())
 
-    changed_files = get_changed_files(pr_number)
-    schema_files = [
-        f for f in changed_files if f.endswith(".json") or f == "CHANGELOG.md"
-    ]
-
-    if not schema_files:
-        print("No schema files changed, skipping review.")
+    if data.get("skip"):
+        print("No schema files were changed, nothing to review.")
         return
 
-    print(f"Schema files changed: {schema_files}")
+    pr_number = data["pr_number"]
+    ctx = data["compiled_context"]
 
-    compiled = compile_schema()
+    has_content = ctx["objects"] or ctx["classes"] or ctx["dictionary_attributes"]
+    has_changelog = "CHANGELOG.md" in data["changed_files"]
 
-    diff = get_pr_diff(pr_number)
-    compiled_context = extract_compiled_context(compiled, changed_files, diff)
-
-    has_compiled_items = (
-        compiled_context["objects"]
-        or compiled_context["classes"]
-        or compiled_context["dictionary_attributes"]
-    )
-    has_changelog = "CHANGELOG.md" in changed_files
-
-    if not has_compiled_items and not has_changelog:
-        print("No reviewable schema content found, skipping.")
+    if not has_content and not has_changelog:
+        print("No reviewable content, skipping.")
         return
 
-    context = build_review_context(compiled_context, changed_files, diff)
+    prompt_context = build_review_prompt(data)
 
     print("Calling Claude for review...")
-    review = call_claude(context)
+    client = anthropic.Anthropic()
+    model = os.environ.get("CLAUDE_MODEL", DEFAULT_MODEL)
+
+    message = client.messages.create(
+        model=model,
+        max_tokens=4096,
+        system=SYSTEM_PROMPT,
+        messages=[
+            {
+                "role": "user",
+                "content": (
+                    "Review the following OCSF schema PR changes for "
+                    "description quality and LLM comprehension. The objects "
+                    "and classes below are COMPILED output — fully resolved "
+                    "with inheritance, dictionary merging, and type "
+                    "enrichment applied.\n\n" + prompt_context
+                ),
+            }
+        ],
+    )
+    review = message.content[0].text
 
     print("Posting review comment...")
     post_or_update_comment(pr_number, review)
     print("Done!")
+
+
+# ---------------------------------------------------------------------------
+# Entry point
+# ---------------------------------------------------------------------------
+
+def main() -> None:
+    if len(sys.argv) < 2 or sys.argv[1] not in ("prepare", "review"):
+        print("Usage: review_descriptions.py <prepare|review>", file=sys.stderr)
+        sys.exit(1)
+
+    if sys.argv[1] == "prepare":
+        cmd_prepare()
+    else:
+        cmd_review()
 
 
 if __name__ == "__main__":

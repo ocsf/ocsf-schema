@@ -36,11 +36,14 @@ files. This means all inheritance (`extends`) has been resolved, dictionary
 definitions have been merged with object-level overrides, and types are fully
 enriched. This is the final form that downstream consumers and LLMs will see.
 
+You will only see compiled objects and event classes — never raw dictionary
+entries. Every attribute description you see is the final resolved version
+after all overrides have been applied.
+
 The compiled schema contains:
 - **objects**: Fully resolved object definitions with all inherited and
   dictionary-merged attributes
 - **classes**: Fully resolved event class definitions
-- **dictionary**: The enriched dictionary with type information
 
 ## Review Criteria
 
@@ -179,11 +182,10 @@ def cmd_prepare() -> None:
         Path("review_context.json").write_text(json.dumps({"skip": True}))
         return
 
-    context = {"objects": {}, "classes": {}, "dictionary_attributes": {}}
+    context = {"objects": {}, "classes": {}}
 
     compiled_objects = compiled.get("objects", {})
     compiled_classes = compiled.get("classes", {})
-    compiled_dict_attrs = compiled.get("dictionary", {}).get("attributes", {})
 
     for filepath in changed_files:
         if filepath.endswith(".json") and filepath.startswith("objects/"):
@@ -196,12 +198,18 @@ def cmd_prepare() -> None:
             if name in compiled_classes:
                 context["classes"][name] = compiled_classes[name]
 
+    # For dictionary changes, find compiled objects that use the changed
+    # attributes so Claude reviews the final resolved descriptions rather
+    # than the raw dictionary entries (which often contain placeholder text
+    # like "See specific usage." that gets overridden at the object level).
     if "dictionary.json" in changed_files:
-        for attr_name in extract_changed_dict_attrs(diff):
-            if attr_name in compiled_dict_attrs:
-                context["dictionary_attributes"][attr_name] = compiled_dict_attrs[
-                    attr_name
-                ]
+        changed_attrs = set(extract_changed_dict_attrs(diff))
+        for obj_name, obj_data in compiled_objects.items():
+            if obj_name in context["objects"]:
+                continue
+            obj_attrs = obj_data.get("attributes", {})
+            if changed_attrs & set(obj_attrs.keys()):
+                context["objects"][obj_name] = obj_data
 
     output = {
         "pr_number": pr_number,
@@ -236,13 +244,6 @@ def build_review_prompt(data: dict) -> str:
         parts.append(
             "## Compiled Event Classes (fully resolved)\n```json\n"
             + json.dumps(ctx["classes"], indent=2)
-            + "\n```\n"
-        )
-
-    if ctx["dictionary_attributes"]:
-        parts.append(
-            "## Compiled Dictionary Attributes (changed)\n```json\n"
-            + json.dumps(ctx["dictionary_attributes"], indent=2)
             + "\n```\n"
         )
 
@@ -346,7 +347,7 @@ def cmd_review() -> None:
     pr_number = data["pr_number"]
     ctx = data["compiled_context"]
 
-    has_content = ctx["objects"] or ctx["classes"] or ctx["dictionary_attributes"]
+    has_content = ctx["objects"] or ctx["classes"]
     has_changelog = "CHANGELOG.md" in data["changed_files"]
 
     if not has_content and not has_changelog:

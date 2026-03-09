@@ -1,0 +1,49 @@
+name: Schema Description Review - Compile
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - "**.json"
+      - "CHANGELOG.md"
+
+permissions:
+  contents: read
+
+jobs:
+  compile:
+    name: Compile schema and prepare review context
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.14"
+
+      - name: Install compiler
+        run: pip install ocsf-schema-compiler
+
+      - name: Compile schema
+        run: ocsf-schema-compiler . > compiled_schema.json
+
+      - name: Collect PR metadata
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "$PR_NUMBER" > pr_number.txt
+          gh pr diff "$PR_NUMBER" > pr_diff.txt
+          gh pr diff "$PR_NUMBER" --name-only > changed_files.txt
+
+      - name: Extract review context
+        run: python .github/scripts/review_descriptions.py prepare
+
+      - name: Upload review context
+        uses: actions/upload-artifact@v4
+        with:
+          name: review-context
+          path: review_context.json
+          retention-days: 1

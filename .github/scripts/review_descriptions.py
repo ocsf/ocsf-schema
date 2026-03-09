@@ -38,9 +38,11 @@ enriched. This is the final form that downstream consumers and LLMs will see.
 
 The compiled schema contains:
 - **objects**: Fully resolved object definitions with all inherited and
-  dictionary-merged attributes
+  dictionary-merged attributes — every description is the final version
+  after all overrides have been applied
 - **classes**: Fully resolved event class definitions
-- **dictionary**: The enriched dictionary with type information
+- **dictionary_attributes**: Changed dictionary entries that have real
+  descriptions (not placeholder text) — review these directly
 
 ## Review Criteria
 
@@ -198,10 +200,22 @@ def cmd_prepare() -> None:
 
     if "dictionary.json" in changed_files:
         for attr_name in extract_changed_dict_attrs(diff):
-            if attr_name in compiled_dict_attrs:
-                context["dictionary_attributes"][attr_name] = compiled_dict_attrs[
-                    attr_name
-                ]
+            if attr_name not in compiled_dict_attrs:
+                continue
+            dict_entry = compiled_dict_attrs[attr_name]
+            desc = dict_entry.get("description", "")
+
+            if "See specific usage" in desc:
+                # Placeholder text — find compiled objects that use this
+                # attribute so Claude reviews the final resolved descriptions.
+                for obj_name, obj_data in compiled_objects.items():
+                    if obj_name in context["objects"]:
+                        continue
+                    if attr_name in obj_data.get("attributes", {}):
+                        context["objects"][obj_name] = obj_data
+            else:
+                # Real description — review the dictionary entry directly.
+                context["dictionary_attributes"][attr_name] = dict_entry
 
     output = {
         "pr_number": pr_number,
@@ -239,9 +253,9 @@ def build_review_prompt(data: dict) -> str:
             + "\n```\n"
         )
 
-    if ctx["dictionary_attributes"]:
+    if ctx.get("dictionary_attributes"):
         parts.append(
-            "## Compiled Dictionary Attributes (changed)\n```json\n"
+            "## Dictionary Attributes (changed, non-placeholder descriptions)\n```json\n"
             + json.dumps(ctx["dictionary_attributes"], indent=2)
             + "\n```\n"
         )
@@ -346,7 +360,7 @@ def cmd_review() -> None:
     pr_number = data["pr_number"]
     ctx = data["compiled_context"]
 
-    has_content = ctx["objects"] or ctx["classes"] or ctx["dictionary_attributes"]
+    has_content = ctx["objects"] or ctx["classes"] or ctx.get("dictionary_attributes")
     has_changelog = "CHANGELOG.md" in data["changed_files"]
 
     if not has_content and not has_changelog:

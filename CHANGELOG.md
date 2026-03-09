@@ -94,6 +94,7 @@ Thankyou! -->
   1. Added `ai_operation` profile to `process_activity` event class. [#1578](https://github.com/ocsf/ocsf-schema/pull/1578)
   1. Added `network_observation_point` attribute to the base `Network` event. [#1571](https://github.com/ocsf/ocsf-schema/pull/1571)
   1. Added `packet_list` to `network` event class. [#1578](https://github.com/ocsf/ocsf-schema/pull/1578)
+  1. Added `packet_list` to `network` event class. [#1569](https://github.com/ocsf/ocsf-schema/pull/1569)
 * #### Profiles
 * #### Objects
   1. Extended `database` object with AI-specific database types (`Vector (7)`, `Knowledge Graph (8)`) and `embedding_model` field for AI retrieval systems. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)

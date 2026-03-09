@@ -332,8 +332,6 @@ def post_or_update_comment(pr_number: str, body: str) -> None:
 
 def cmd_review() -> None:
     """Read review_context.json, call Claude, post PR comment."""
-    import anthropic
-
     context_path = Path("review_context.json")
     if not context_path.exists():
         print("review_context.json not found", file=sys.stderr)
@@ -354,6 +352,8 @@ def cmd_review() -> None:
     if not has_content and not has_changelog:
         print("No reviewable content, skipping.")
         return
+
+    import anthropic
 
     prompt_context = build_review_prompt(data)
 

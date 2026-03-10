@@ -1,0 +1,39 @@
+name: Schema Description Review - Comment
+
+on:
+  workflow_run:
+    workflows: ["Schema Description Review - Compile"]
+    types: [completed]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  review:
+    name: Post description review suggestions
+    runs-on: ubuntu-latest
+    if: github.event.workflow_run.conclusion == 'success'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install anthropic
+
+      - name: Download review context
+        uses: actions/download-artifact@v4
+        with:
+          name: review-context
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Review and comment
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ZACHS_CLAUDE_KEY }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python .github/scripts/review_descriptions.py review

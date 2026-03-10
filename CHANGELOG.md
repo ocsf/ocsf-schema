@@ -73,6 +73,7 @@ Thankyou! -->
   1. Added `vram_mode` Derived from `vram_type_id`. [#1527](https://github.com/ocsf/ocsf-schema/pull/1527)
   1. Added `vram_mode_id` Identifier for VRAM type. [#1527](https://github.com/ocsf/ocsf-schema/pull/1527)
   1. Added `total_queued_duration` to track how long an event spent in a queue. [#1536](https://github.com/ocsf/ocsf-schema/pull/1536)
+  1. Added `is_disabled` and `is_locked` as type `boolean_t` with a "See specific usage" description. [#1583](https://github.com/ocsf/ocsf-schema/pull/1583)
   1. Added `all_unused` boolean attribute indicating whether all items in a group are unused.
   1. Added `analyzed_privileges_count` integer attribute for the total count of analyzed privileges.
   1. Added `attack` singular attribute for MITRE ATT&CK details (complements existing `attacks` array).
@@ -104,7 +105,9 @@ Thankyou! -->
   1. Added `provider` to the `resource_details` object via `cloud` profile. [#1566](https://github.com/ocsf/ocsf-schema/pull/1566)
   1. Added `resource` attribute to the `check` object to describe details about the resource that the check evaluated. [#1574](https://github.com/ocsf/ocsf-schema/pull/1574)
   1. Added `total_queued_duration` to the `metadata` object. [#1536](https://github.com/ocsf/ocsf-schema/pull/1536)
+  1. Added `is_disabled` and `is_locked` attributes to the `account` object. [#1583](https://github.com/ocsf/ocsf-schema/pull/1583)
   1. Added `analyzed_privileges_count`, `service_privilege_analyses`, and `total_potential_attacks_count` attributes to the `permission_analysis_result` object for detailed privilege analysis.
+
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -123,6 +126,7 @@ Thankyou! -->
 
 ### Misc
 1. New Extension registration for Synqly [#1579](https://github.com/ocsf/ocsf-schema/pull/1579). 
+1. Added GitHub Actions workflow for automated schema description review using Claude to suggest LLM comprehension improvements on PRs. [#1587](https://github.com/ocsf/ocsf-schema/pull/1587) [#1588](https://github.com/ocsf/ocsf-schema/pull/1588)
 
 
 

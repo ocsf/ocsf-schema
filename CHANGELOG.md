@@ -110,6 +110,7 @@ Thankyou! -->
 ### Misc
 1. New Extension registration for Synqly [#1579](https://github.com/ocsf/ocsf-schema/pull/1579). 
 1. Added GitHub Actions workflow for automated schema description review using Claude to suggest LLM comprehension improvements on PRs. [#1587](https://github.com/ocsf/ocsf-schema/pull/1587) [#1588](https://github.com/ocsf/ocsf-schema/pull/1588)
+1. Corrected caption for `type` attribute in `group` object: was `Account Type`, now `Group Type`. [#1590](https://github.com/ocsf/ocsf-schema/pull/1590)
 
 
 

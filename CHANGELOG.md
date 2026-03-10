@@ -72,6 +72,7 @@ Thankyou! -->
   1. Added `vram_mode` Derived from `vram_type_id`. [#1527](https://github.com/ocsf/ocsf-schema/pull/1527)
   1. Added `vram_mode_id` Identifier for VRAM type. [#1527](https://github.com/ocsf/ocsf-schema/pull/1527)
   1. Added `total_queued_duration` to track how long an event spent in a queue. [#1536](https://github.com/ocsf/ocsf-schema/pull/1536)
+  1. Added `department` and `is_on_premises_sync_enabled` for ldap and Entra ID support. [#1584](https://github.com/ocsf/ocsf-schema/pull/1584)
   1. Added `is_disabled` and `is_locked` as type `boolean_t` with a "See specific usage" description. [#1583](https://github.com/ocsf/ocsf-schema/pull/1583)
   1. Added `pool` attribute of type `group`. [#1521](https://github.com/ocsf/ocsf-schema/pull/1521)
 
@@ -94,6 +95,7 @@ Thankyou! -->
   1. Added `provider` to the `resource_details` object via `cloud` profile. [#1566](https://github.com/ocsf/ocsf-schema/pull/1566)
   1. Added `resource` attribute to the `check` object to describe details about the resource that the check evaluated. [#1574](https://github.com/ocsf/ocsf-schema/pull/1574)
   1. Added `total_queued_duration` to the `metadata` object. [#1536](https://github.com/ocsf/ocsf-schema/pull/1536)
+  1. Added `is_on_premises_sync_enabled` to `Account`. Added `department` to `ldap_person`. Added `ActiveDirectory Account` to `Account.type`. [#1584](https://github.com/ocsf/ocsf-schema/pull/1584)
   1. Added `is_disabled` and `is_locked` attributes to the `account` object. [#1583](https://github.com/ocsf/ocsf-schema/pull/1583)
   1. Added `macos/macos_users` profile to the `process` object via `macos` extension patch. [#1538](https://github.com/ocsf/ocsf-schema/pull/1538)
   1. Added `pool` attribute to the `endpoint` object. [#1521](https://github.com/ocsf/ocsf-schema/pull/1521)

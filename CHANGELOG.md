@@ -48,6 +48,7 @@ Thankyou! -->
 * #### Event Classes
 * #### Profiles
   1. Added `ai_operation` profile with essential attributes for AI operation event mapping. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
+  1. Added `macos/macos_users` profile with `egid` and `euid` attributes. This profile is used by the `process` object. [#1538](https://github.com/ocsf/ocsf-schema/pull/1538)
 * #### Objects
   1. Added `ai_model` object with core fields (`name`, `ai_provider`, `version`) for AI operation events. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
   1. Added `message_context` object for AI system interactions with role-based identification and token usage metrics (`prompt_tokens`, `completion_tokens`, `total_tokens`). [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
@@ -55,6 +56,7 @@ Thankyou! -->
   1. Added `gpu_info` object for GPU's (array name `gpu_info_list`). [#1527](https://github.com/ocsf/ocsf-schema/pull/1527)
 * #### Observables
 * #### Platform Extensions
+  1. Added `macos` extension (`uid` 3). This extension adds the `macos/macos_users` profile and patches the `process` object to add this profile. [#1538](https://github.com/ocsf/ocsf-schema/pull/1538)
 * #### Dictionary Attributes
   1. Added `ai_provider` attribute for AI model identification. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
   1. Added `ai_role_id`, `ai_role` attributes for AI communication context with proper sibling relationship. [#1488](https://github.com/ocsf/ocsf-schema/pull/1488)
@@ -71,6 +73,8 @@ Thankyou! -->
   1. Added `vram_mode_id` Identifier for VRAM type. [#1527](https://github.com/ocsf/ocsf-schema/pull/1527)
   1. Added `total_queued_duration` to track how long an event spent in a queue. [#1536](https://github.com/ocsf/ocsf-schema/pull/1536)
   1. Added `is_disabled` and `is_locked` as type `boolean_t` with a "See specific usage" description. [#1583](https://github.com/ocsf/ocsf-schema/pull/1583)
+  1. Added `pool` attribute of type `group`. [#1521](https://github.com/ocsf/ocsf-schema/pull/1521)
+
 ### Improved
 * #### Categories
 * #### Event Classes
@@ -91,9 +95,14 @@ Thankyou! -->
   1. Added `resource` attribute to the `check` object to describe details about the resource that the check evaluated. [#1574](https://github.com/ocsf/ocsf-schema/pull/1574)
   1. Added `total_queued_duration` to the `metadata` object. [#1536](https://github.com/ocsf/ocsf-schema/pull/1536)
   1. Added `is_disabled` and `is_locked` attributes to the `account` object. [#1583](https://github.com/ocsf/ocsf-schema/pull/1583)
+  1. Added `macos/macos_users` profile to the `process` object via `macos` extension patch. [#1538](https://github.com/ocsf/ocsf-schema/pull/1538)
+  1. Added `pool` attribute to the `endpoint` object. [#1521](https://github.com/ocsf/ocsf-schema/pull/1521)
+  1. Added `uid_alt` attribute to the `group` object. [#1521](https://github.com/ocsf/ocsf-schema/pull/1521)
+
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
+  1. Moved all dictionary attributes previously defined in the `linux` extension to the base schema: the `auid`, `egid`, and `euid` dictionary attributes. This was done so the `egid` and `euid` attributes can be used by both the `linux` and `macos` extensions. This changes the internal names of these items in the compiled schema, removing the `linux/` prefix. This should _not_ cause a problem for tooling since compiled classes and objects include processed and enriched versions of these attributes. There is no need to lookup class and object attributes in the dictionary, and indeed doing can yield incomplete and inaccurate information. [#1538](https://github.com/ocsf/ocsf-schema/pull/1538)
 * #### Dictionary Types
   1. The regular expression constraint in dictionary type `file_hash_t` has been removed to use as a general fingerprint with an arbitrary string. **Warning:** This can create a breaking change for some kinds of tooling that process OCSF events. [1564](https://github.com/ocsf/ocsf-schema/pull/1564)
 
@@ -108,7 +117,7 @@ Thankyou! -->
   1. The regular expression constraint in dictionary type `file_hash_t` has been removed. This can create a breaking change for some kinds of tooling that process OCSF events. (Repeated item from Dictionary Types section above.) [1564](https://github.com/ocsf/ocsf-schema/pull/1564)
 
 ### Misc
-1. New Extension registration for Synqly [#1579](https://github.com/ocsf/ocsf-schema/pull/1579). 
+1. New Extension registration for Synqly [#1579](https://github.com/ocsf/ocsf-schema/pull/1579).
 1. Added GitHub Actions workflow for automated schema description review using Claude to suggest LLM comprehension improvements on PRs. [#1587](https://github.com/ocsf/ocsf-schema/pull/1587) [#1588](https://github.com/ocsf/ocsf-schema/pull/1588)
 1. Corrected caption for `type` attribute in `group` object: was `Account Type`, now `Group Type`. Also corrected description, which erroneously included 'or account'. [#1590](https://github.com/ocsf/ocsf-schema/pull/1590)
 

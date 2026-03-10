@@ -73,20 +73,7 @@ Thankyou! -->
   1. Added `vram_mode` Derived from `vram_type_id`. [#1527](https://github.com/ocsf/ocsf-schema/pull/1527)
   1. Added `vram_mode_id` Identifier for VRAM type. [#1527](https://github.com/ocsf/ocsf-schema/pull/1527)
   1. Added `total_queued_duration` to track how long an event spent in a queue. [#1536](https://github.com/ocsf/ocsf-schema/pull/1536)
-<<<<<<< HEAD
   1. Added `is_disabled` and `is_locked` as type `boolean_t` with a "See specific usage" description. [#1583](https://github.com/ocsf/ocsf-schema/pull/1583)
-  1. Added `all_unused` boolean attribute indicating whether all items in a group are unused.
-  1. Added `analyzed_privileges_count` integer attribute for the total count of analyzed privileges.
-  1. Added `attack` singular attribute for MITRE ATT&CK details (complements existing `attacks` array).
-  1. Added `execute_count` integer attribute for count of execute-type privileges.
-  1. Added `is_unused` boolean attribute indicating whether an item is unused.
-  1. Added `privilege_attack_info`, `privilege_attack_info_list` attributes for privilege-to-attack mappings.
-  1. Added `privilege_info`, `privilege_info_list` attributes for specific privilege information.
-  1. Added `read_count` integer attribute for count of read-type privileges.
-  1. Added `service_privilege_analysis`, `service_privilege_analyses` attributes for service-level privilege analysis.
-  1. Added `total_potential_attacks_count` integer attribute for count of privileges mapping to attack techniques.
-  1. Added `write_count` integer attribute for count of write-type privileges.
-=======
   1. Added `all_unused` boolean attribute indicating whether all items in a group are unused. [#1581](https://github.com/ocsf/ocsf-schema/pull/1581)
   1. Added `analyzed_privileges_count` integer attribute for the total count of analyzed privileges. [#1581](https://github.com/ocsf/ocsf-schema/pull/1581)
   1. Added `attack` singular attribute for MITRE ATT&CK details (complements existing `attacks` array). [#1581](https://github.com/ocsf/ocsf-schema/pull/1581)
@@ -98,7 +85,6 @@ Thankyou! -->
   1. Added `service_privilege_analysis`, `service_privilege_analyses` attributes for service-level privilege analysis. [#1581](https://github.com/ocsf/ocsf-schema/pull/1581)
   1. Added `total_potential_attacks_count` integer attribute for count of privileges mapping to attack techniques. [#1581](https://github.com/ocsf/ocsf-schema/pull/1581)
   1. Added `write_count` integer attribute for count of write-type privileges. [#1581](https://github.com/ocsf/ocsf-schema/pull/1581)
->>>>>>> a45c07c6 (Remove see specific usage in description; link PR in changelog)
 
 ### Improved
 * #### Categories
@@ -119,13 +105,9 @@ Thankyou! -->
   1. Added `provider` to the `resource_details` object via `cloud` profile. [#1566](https://github.com/ocsf/ocsf-schema/pull/1566)
   1. Added `resource` attribute to the `check` object to describe details about the resource that the check evaluated. [#1574](https://github.com/ocsf/ocsf-schema/pull/1574)
   1. Added `total_queued_duration` to the `metadata` object. [#1536](https://github.com/ocsf/ocsf-schema/pull/1536)
-<<<<<<< HEAD
   1. Added `is_disabled` and `is_locked` attributes to the `account` object. [#1583](https://github.com/ocsf/ocsf-schema/pull/1583)
-  1. Added `analyzed_privileges_count`, `service_privilege_analyses`, and `total_potential_attacks_count` attributes to the `permission_analysis_result` object for detailed privilege analysis.
-
-=======
   1. Added `analyzed_privileges_count`, `service_privilege_analyses`, and `total_potential_attacks_count` attributes to the `permission_analysis_result` object for detailed privilege analysis. [#1581](https://github.com/ocsf/ocsf-schema/pull/1581)
->>>>>>> a45c07c6 (Remove see specific usage in description; link PR in changelog)
+
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes

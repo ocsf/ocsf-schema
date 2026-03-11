@@ -93,7 +93,6 @@ Thankyou! -->
   1. Enhanced `app_name` description in `Network Activity` class to clarify network application identification by tools such as NBAR. [#1557](https://github.com/ocsf/ocsf-schema/pull/1557)
   1. Added `ai_operation` profile to `process_activity` event class. [#1578](https://github.com/ocsf/ocsf-schema/pull/1578)
   1. Added `network_observation_point` attribute to the base `Network` event. [#1571](https://github.com/ocsf/ocsf-schema/pull/1571)
-  1. Added `packet_list` to `network` event class. [#1578](https://github.com/ocsf/ocsf-schema/pull/1578)
   1. Added `packet_list` to `network` event class. [#1569](https://github.com/ocsf/ocsf-schema/pull/1569)
 * #### Profiles
 * #### Objects

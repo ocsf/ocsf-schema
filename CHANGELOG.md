@@ -78,7 +78,7 @@ Thankyou! -->
   1. Added `total_queued_duration` to track how long an event spent in a queue. [#1536](https://github.com/ocsf/ocsf-schema/pull/1536)
   1. Added `department` and `is_on_premises_sync_enabled` for ldap and Entra ID support. [#1584](https://github.com/ocsf/ocsf-schema/pull/1584)
   1. Added `is_disabled` and `is_locked` as type `boolean_t` with a "See specific usage" description. [#1583](https://github.com/ocsf/ocsf-schema/pull/1583)
-  1. Added `all_unused` boolean attribute indicating whether all items in a group are unused. [#1581](https://github.com/ocsf/ocsf-schema/pull/1581)
+  1. Added `all_privileges_unused` boolean attribute indicating whether all privileges in a group are unused. [#1581](https://github.com/ocsf/ocsf-schema/pull/1581)
   1. Added `analyzed_privileges_count` integer attribute for the total count of analyzed privileges. [#1581](https://github.com/ocsf/ocsf-schema/pull/1581)
   1. Added `attack` singular attribute for MITRE ATT&CK details (complements existing `attacks` array). [#1581](https://github.com/ocsf/ocsf-schema/pull/1581)
   1. Added `execute_count` integer attribute for count of execute-type privileges. [#1581](https://github.com/ocsf/ocsf-schema/pull/1581)

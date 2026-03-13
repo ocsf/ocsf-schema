@@ -41,8 +41,11 @@ The compiled schema contains:
   dictionary-merged attributes — every description is the final version
   after all overrides have been applied
 - **classes**: Fully resolved event class definitions
-- **dictionary_attributes**: Changed dictionary entries that have real
-  descriptions (not placeholder text) — review these directly
+- **dictionary_attributes**: Changed dictionary entries — these include both
+  entries with full descriptions and entries whose generic description precedes
+  a "See specific usage" marker (the marker is stripped). When a dictionary
+  attribute also appears in the compiled objects above, review both the generic
+  dictionary description and the object-specific resolved descriptions
 
 ## Review Criteria
 
@@ -206,18 +209,20 @@ def cmd_prepare() -> None:
             desc = dict_entry.get("description", "")
 
             if "See specific usage" in desc:
-                # Placeholder text — find compiled objects that use this
-                # attribute so Claude reviews the final resolved descriptions.
-                found_in_object = False
+                # Strip the placeholder suffix and include the generic
+                # dictionary description so Claude can review it too.
+                prefix = desc.split("See specific usage")[0].strip()
+                if prefix:
+                    trimmed = dict_entry.copy()
+                    trimmed["description"] = prefix
+                    context["dictionary_attributes"][attr_name] = trimmed
+
+                # Also pull in compiled objects that use this attribute
+                # so Claude reviews the final resolved descriptions.
                 for obj_name, obj_data in compiled_objects.items():
                     if attr_name in obj_data.get("attributes", {}):
-                        found_in_object = True
                         if obj_name not in context["objects"]:
                             context["objects"][obj_name] = obj_data
-                # If no object uses it yet, include the dictionary entry
-                # so Claude can still flag the placeholder.
-                if not found_in_object:
-                    context["dictionary_attributes"][attr_name] = dict_entry
             else:
                 # Real description — review the dictionary entry directly.
                 context["dictionary_attributes"][attr_name] = dict_entry

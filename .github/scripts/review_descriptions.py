@@ -208,11 +208,16 @@ def cmd_prepare() -> None:
             if "See specific usage" in desc:
                 # Placeholder text — find compiled objects that use this
                 # attribute so Claude reviews the final resolved descriptions.
+                found_in_object = False
                 for obj_name, obj_data in compiled_objects.items():
-                    if obj_name in context["objects"]:
-                        continue
                     if attr_name in obj_data.get("attributes", {}):
-                        context["objects"][obj_name] = obj_data
+                        found_in_object = True
+                        if obj_name not in context["objects"]:
+                            context["objects"][obj_name] = obj_data
+                # If no object uses it yet, include the dictionary entry
+                # so Claude can still flag the placeholder.
+                if not found_in_object:
+                    context["dictionary_attributes"][attr_name] = dict_entry
             else:
                 # Real description — review the dictionary entry directly.
                 context["dictionary_attributes"][attr_name] = dict_entry

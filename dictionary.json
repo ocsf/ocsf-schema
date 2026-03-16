@@ -247,6 +247,11 @@
         }
       }
     },
+    "all_privileges_unused": {
+      "caption": "All Privileges Unused",
+      "description": "Indicates whether all privileges in a set, list, collection or group are unused. See specific usage.",
+      "type": "boolean_t"
+    },
     "altitude_ceiling": {
       "caption": "Altitude Ceiling",
       "description": "Maximum altitude (WGS-84 HAE) for a group or an Intent-Based Network Participant. Measured in meters. Special Values: <code>Invalid</code>, <code>No Value</code>, or <code>Unknown: -1000 m</code>.",
@@ -262,6 +267,11 @@
       "description": "The specific dimensions, components, or aspects of the system that are the targets of the analysis. See specific usage.",
       "type": "analysis_target",
       "is_array": true
+    },
+    "analyzed_privileges_count": {
+      "caption": "Analyzed Privileges Count",
+      "description": "The total count of privileges that were analyzed. See specific usage.",
+      "type": "integer_t"
     },
     "analytic": {
       "caption": "Analytic",
@@ -364,6 +374,11 @@
       "caption": "Assignee Group",
       "description": "The details of the group assigned to an Incident.",
       "type": "group"
+    },
+    "attack": {
+      "caption": "MITRE ATT&CK® Details",
+      "description": "The MITRE ATT&CK® object describing the tactic, technique, and sub-technique.",
+      "type": "attack"
     },
     "attack_graph": {
       "caption": "Attack Graph",
@@ -2516,6 +2531,11 @@
       "type": "evidences",
       "is_array": true
     },
+    "execute_count": {
+      "caption": "Execute Count",
+      "description": "The execute count. See specific usage.",
+      "type": "integer_t"
+    },
     "exit_code": {
       "caption": "Exit Code",
       "description": "The exit code reported by a process when it terminates. The convention is that zero indicates success and any non-zero exit code indicates that some error occurred.",
@@ -2908,7 +2928,7 @@
       "description": "An array of objects describing describing Graphical Processing Unit hardware.",
       "type": "gpu_info",
       "is_array": true
-    },  
+    },
     "granted_privileges": {
       "caption": "Granted Privileges",
       "description": "The Privileges that were granted to the user via an IAM policy or otherwise. See specific usage.",
@@ -3360,7 +3380,7 @@
       "type": "boolean_t"
     },
     "is_locked": {
-      "caption": "Locked",  
+      "caption": "Locked",
       "description": "Indicates if the entity is locked. See specific usage.",
       "type": "boolean_t"
     },
@@ -3477,6 +3497,11 @@
     "is_truncated": {
       "caption": "Is Truncated",
       "description": "Indicates that an attribute has been truncated. See specific usage.",
+      "type": "boolean_t"
+    },
+    "is_unused": {
+      "caption": "Is Unused",
+      "description": "Indicates whether an item is unused. See specific usage.",
       "type": "boolean_t"
     },
     "is_trusted": {
@@ -4670,9 +4695,9 @@
       "type": "policy"
     },
     "pool": {
-		  "caption": "Pool",
-		  "description": "An unordered collection of resources. See specific usage.",
-		  "type": "group"
+      "caption": "Pool",
+      "description": "An unordered collection of resources. See specific usage.",
+      "type": "group"
     },
     "port": {
       "caption": "Port",
@@ -4780,6 +4805,28 @@
       "caption": "Privileges",
       "description": "The user or group privileges.",
       "type": "string_t",
+      "is_array": true
+    },
+    "privilege_attack_info": {
+      "caption": "Privilege Attack Info",
+      "description": "Information about privileges grouped by the potential attack they could enable.",
+      "type": "privilege_attack_info"
+    },
+    "privilege_attack_info_list": {
+      "caption": "Privilege Attack Info List",
+      "description": "A list of privilege-to-attack mappings.",
+      "type": "privilege_attack_info",
+      "is_array": true
+    },
+    "privilege_info": {
+      "caption": "Privilege Info",
+      "description": "Information about a specific privilege, action, or permission.",
+      "type": "privilege_info"
+    },
+    "privilege_info_list": {
+      "caption": "Privilege Info List",
+      "description": "A list of privilege information objects, where each element describes a specific privilege, action, or permission with its usage status.",
+      "type": "privilege_info",
       "is_array": true
     },
     "process": {
@@ -5158,6 +5205,11 @@
       "caption": "DNS RData",
       "description": "The data describing the DNS resource. The meaning of this data depends on the type and class of the resource record.",
       "type": "string_t"
+    },
+    "read_count": {
+      "caption": "Read Count",
+      "description": "The read count. See specific usage.",
+      "type": "integer_t"
     },
     "record_index_in_array": {
       "caption": "Record Index in Array",
@@ -5801,6 +5853,17 @@
       "caption": "Serial Number",
       "description": "The serial number that pertains to the object. See specific usage.",
       "type": "string_t"
+    },
+    "service_privilege_analysis": {
+      "caption": "Service Privilege Analysis",
+      "description": "Privilege analysis results for a single cloud service or resource namespace.",
+      "type": "service_privilege_analysis"
+    },
+    "service_privilege_analysis_list": {
+      "caption": "Service Privilege Analysis List",
+      "description": "A list of privilege analysis results grouped by cloud service or namespace.",
+      "type": "service_privilege_analysis",
+      "is_array": true
     },
     "server_ciphers": {
       "caption": "Server Cipher Suites",
@@ -6541,6 +6604,11 @@
       "description": "The total number of items. See specific usage.",
       "type": "integer_t"
     },
+    "total_potential_attacks_count": {
+      "caption": "Total Potential Attacks Count",
+      "description": "The total count of privilege-to-attack technique mappings identified across all analyzed privileges.",
+      "type": "integer_t"
+    },
     "total_queued_duration": {
       "caption": "Total Queued Duration",
       "description": "The amount of time an event spent in a queue awaiting processing.",
@@ -6951,6 +7019,11 @@
       "caption": "Working Directory",
       "description": "The working directory of a process.",
       "type": "string_t"
+    },
+    "write_count": {
+      "caption": "Write Count",
+      "description": "The write count. See specific usage.",
+      "type": "integer_t"
     },
     "x_forwarded_for": {
       "caption": "X-Forwarded-For",

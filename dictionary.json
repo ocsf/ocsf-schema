@@ -216,6 +216,27 @@
       "type": "agent",
       "is_array": true
     },
+    "ai_model": {
+      "caption": "AI Model",
+      "description": "The AI Model object describes the characteristics of an AI/ML model. Examples include language models like GPT-4, embedding models like text-embedding-ada-002, and computer vision models like CLIP.",
+      "type": "ai_model"
+    },
+    "ai_provider": {
+      "caption": "AI Provider",
+      "description": "AI service provider or organization name.",
+      "type": "string_t"
+    },
+    "ai_role": {
+      "caption": "AI Role",
+      "description": "The normalized caption of the <code>ai_role_id</code>.",
+      "type": "string_t"
+    },
+    "ai_role_id": {
+      "caption": "AI Role ID",
+      "description": "The originator or target role of the message.",
+      "sibling": "ai_role",
+      "type": "integer_t"
+    },
     "aircraft": {
       "caption": "Aircraft",
       "description": "The Aircraft object represents any aircraft or otherwise airborne asset such as an unmanned system, airplane, balloon, spacecraft, or otherwise. The Aircraft object is intended to normalized data captured or otherwise logged from active radar, passive radar, multi-spectral systems, or the Automatic Dependant Broadcast - Surveillance (ADS-B), and/or Mode S systems.",
@@ -268,15 +289,15 @@
       "type": "analysis_target",
       "is_array": true
     },
-    "analyzed_privileges_count": {
-      "caption": "Analyzed Privileges Count",
-      "description": "The total count of privileges that were analyzed. See specific usage.",
-      "type": "integer_t"
-    },
     "analytic": {
       "caption": "Analytic",
       "description": "The analytic technique used to analyze and derive insights from the data or information that led to the finding or conclusion.",
       "type": "analytic"
+    },
+    "analyzed_privileges_count": {
+      "caption": "Analyzed Privileges Count",
+      "description": "The total count of privileges that were analyzed. See specific usage.",
+      "type": "integer_t"
     },
     "ancestry": {
       "caption": "Ancestry",
@@ -1318,6 +1339,11 @@
       "caption": "Company Name",
       "description": "The name of the company that published the file. For example: <code>Microsoft Corporation</code>.",
       "type": "string_t"
+    },
+    "completion_tokens": {
+      "caption": "Completion Tokens",
+      "description": "Number of tokens in the model's response/completion for this message.",
+      "type": "integer_t"
     },
     "compliance": {
       "caption": "Compliance",
@@ -2402,47 +2428,15 @@
         "since": "1.4.0"
       }
     },
+    "embedding_model": {
+      "caption": "Embedding Model",
+      "description": "Model used for creating embeddings in AI retrieval systems.",
+      "type": "string_t"
+    },
     "employee_uid": {
       "caption": "Employee ID",
       "description": "The employee identifier assigned to the user by the organization.",
       "type": "string_t"
-    },
-    "encryption_details": {
-      "caption": "Encryption Details",
-      "description": "The encryption details of a file or other content. See specific usage.",
-      "type": "encryption_details"
-    },
-    "end_column": {
-      "caption": "End Column",
-      "description": "The end column number. See specific usage.",
-      "type": "integer_t"
-    },
-    "end_line": {
-      "caption": "End Line",
-      "description": "The line number of the last line of code block identified as vulnerable.",
-      "type": "integer_t"
-    },
-    "end_time": {
-      "caption": "End Time",
-      "description": "The end time of a time period. See specific usage.",
-      "type": "timestamp_t"
-    },
-    "end_offset": {
-      "caption": "End Offset",
-      "description": "The ending offset. See specific usage.",
-      "type": "long_t"
-    },
-    "endpoint_connections": {
-      "caption": "Endpoint Connections",
-      "description": "Contains information about network connection attempts. See specific usage.",
-      "type": "endpoint_connection",
-      "is_array": true
-    },
-    "enrichments": {
-      "caption": "Enrichments",
-      "description": "The additional information from an external data source, which is associated with the event or a finding. For example add location information for the IP address in the DNS answers:</p><code>[{\"name\": \"answers.ip\", \"value\": \"92.24.47.250\", \"type\": \"location\", \"data\": {\"city\": \"Socotra\", \"continent\": \"Asia\", \"coordinates\": [-25.4153, 17.0743], \"country\": \"YE\", \"desc\": \"Yemen\"}}]</code>",
-      "type": "enrichment",
-      "is_array": true
     },
     "encoding": {
       "caption": "Encoding",
@@ -2464,6 +2458,43 @@
           "description": "The encoding method is not mapped. See the <code>encoding</code> attribute, which contains a data source specific value."
         }
       }
+    },
+    "encryption_details": {
+      "caption": "Encryption Details",
+      "description": "The encryption details of a file or other content. See specific usage.",
+      "type": "encryption_details"
+    },
+    "end_column": {
+      "caption": "End Column",
+      "description": "The end column number. See specific usage.",
+      "type": "integer_t"
+    },
+    "end_line": {
+      "caption": "End Line",
+      "description": "The line number of the last line of code block identified as vulnerable.",
+      "type": "integer_t"
+    },
+    "end_offset": {
+      "caption": "End Offset",
+      "description": "The ending offset. See specific usage.",
+      "type": "long_t"
+    },
+    "end_time": {
+      "caption": "End Time",
+      "description": "The end time of a time period. See specific usage.",
+      "type": "timestamp_t"
+    },
+    "endpoint_connections": {
+      "caption": "Endpoint Connections",
+      "description": "Contains information about network connection attempts. See specific usage.",
+      "type": "endpoint_connection",
+      "is_array": true
+    },
+    "enrichments": {
+      "caption": "Enrichments",
+      "description": "The additional information from an external data source, which is associated with the event or a finding. For example add location information for the IP address in the DNS answers:</p><code>[{\"name\": \"answers.ip\", \"value\": \"92.24.47.250\", \"type\": \"location\", \"data\": {\"city\": \"Socotra\", \"continent\": \"Asia\", \"coordinates\": [-25.4153, 17.0743], \"country\": \"YE\", \"desc\": \"Yemen\"}}]</code>",
+      "type": "enrichment",
+      "is_array": true
     },
     "entity": {
       "caption": "Entity",
@@ -2801,6 +2832,11 @@
       "type": "string_t",
       "is_array": true
     },
+    "folder": {
+      "caption": "Folder",
+      "description": "The folder that pertains to the event.",
+      "type": "file"
+    },
     "format": {
       "caption": "Format",
       "description": "The format, normalized to the caption of the format_id value. In the case of 'Other', it is defined by the event source. See specific usage.",
@@ -2821,11 +2857,6 @@
           "description": "The format is not mapped. See the <code>format</code> attribute, which contains a data source specific value."
         }
       }
-    },
-    "folder": {
-      "caption": "Folder",
-      "description": "The folder that pertains to the event.",
-      "type": "file"
     },
     "forward_addr": {
       "caption": "Forwarding Address",
@@ -3499,14 +3530,14 @@
       "description": "Indicates that an attribute has been truncated. See specific usage.",
       "type": "boolean_t"
     },
-    "is_unused": {
-      "caption": "Is Unused",
-      "description": "Indicates whether an item is unused. See specific usage.",
-      "type": "boolean_t"
-    },
     "is_trusted": {
       "caption": "Trusted Device",
       "description": "The event occurred on a trusted device.",
+      "type": "boolean_t"
+    },
+    "is_unused": {
+      "caption": "Is Unused",
+      "description": "Indicates whether an item is unused. See specific usage.",
       "type": "boolean_t"
     },
     "is_user_provisioning_enabled": {
@@ -3987,13 +4018,13 @@
     "mac_vendor": {
       "caption": "MAC Vendor",
       "description": "The vendor or manufacturer of the network interface controller (NIC) identified from the MAC address. For example: <code>Apple, Inc.</code>, <code>Intel Corporate</code>.",
+      "type": "string_t",
       "references": [
         {
           "description": "IEEE Registration Authority",
           "url": "https://standards.ieee.org/products-programs/regauth/"
         }
-      ],
-      "type": "string_t"
+      ]
     },
     "malware": {
       "caption": "Malware",
@@ -4036,6 +4067,11 @@
       "caption": "Message",
       "description": "The description of the event/finding, as defined by the source.",
       "type": "string_t"
+    },
+    "message_context": {
+      "caption": "Message Context",
+      "description": "Communication context for AI system interactions including protocols, roles, clients, and session information for MCP and other AI communication systems.",
+      "type": "message_context"
     },
     "message_trace_uid": {
       "caption": "Message Trace UID",
@@ -4153,6 +4189,11 @@
       "description": "The physical or virtual network interfaces that are associated with the device, one for each unique MAC address/IP address/hostname/name combination.<p><b>Note:</b> The first element of the array is the network information that pertains to the event.</p>",
       "type": "network_interface",
       "is_array": true
+    },
+    "network_observation_point": {
+      "caption": "Network Observation Point",
+      "description": "The network endpoint that observes or inspects network traffic as a third-party system, used when the observer is neither the source nor the destination of the communication. Examples include network taps, span ports, inline security devices, or packet capture systems.",
+      "type": "network_endpoint"
     },
     "network_scope": {
       "caption": "Network Scope",
@@ -4281,11 +4322,6 @@
       "caption": "Observation Parameter",
       "description": "The name of the parameter being analyzed or monitored. This generally identifies the specific characteristic or property being measured. See specific usage.",
       "type": "string_t"
-    },
-    "network_observation_point": {
-      "caption": "Network Observation Point",
-      "description": "The network endpoint that observes or inspects network traffic as a third-party system, used when the observer is neither the source nor the destination of the communication. Examples include network taps, span ports, inline security devices, or packet capture systems.",
-      "type": "network_endpoint"
     },
     "observation_point": {
       "caption": "Observation Point",
@@ -4498,11 +4534,6 @@
       },
       "is_array": true
     },
-    "packet_uid": {
-      "caption": "Packet UID",
-      "description": "The packet identifier assigned by the protocol.",
-      "type": "integer_t"
-    },
     "packet": {
       "caption": "Packet",
       "description": "The packet object describes a single captured network packet and its associated metadata.",
@@ -4513,6 +4544,11 @@
       "description": "The list of packet objects describing captured network packets.",
       "type": "packet",
       "is_array": true
+    },
+    "packet_uid": {
+      "caption": "Packet UID",
+      "description": "The packet identifier assigned by the protocol.",
+      "type": "integer_t"
     },
     "packets": {
       "caption": "Total Packets",
@@ -4801,12 +4837,6 @@
         }
       }
     },
-    "privileges": {
-      "caption": "Privileges",
-      "description": "The user or group privileges.",
-      "type": "string_t",
-      "is_array": true
-    },
     "privilege_attack_info": {
       "caption": "Privilege Attack Info",
       "description": "Information about privileges grouped by the potential attack they could enable.",
@@ -4827,6 +4857,12 @@
       "caption": "Privilege Info List",
       "description": "A list of privilege information objects, where each element describes a specific privilege, action, or permission with its usage status.",
       "type": "privilege_info",
+      "is_array": true
+    },
+    "privileges": {
+      "caption": "Privileges",
+      "description": "The user or group privileges.",
+      "type": "string_t",
       "is_array": true
     },
     "process": {
@@ -4873,6 +4909,11 @@
         "message": "Use the <code>account.uid</code> attribute instead.",
         "since": "1.4.0"
       }
+    },
+    "prompt_tokens": {
+      "caption": "Prompt Tokens",
+      "description": "Number of tokens in the input prompt for this message.",
+      "type": "integer_t"
     },
     "protocol_name": {
       "caption": "Protocol Name",
@@ -5854,17 +5895,6 @@
       "description": "The serial number that pertains to the object. See specific usage.",
       "type": "string_t"
     },
-    "service_privilege_analysis": {
-      "caption": "Service Privilege Analysis",
-      "description": "Privilege analysis results for a single cloud service or resource namespace.",
-      "type": "service_privilege_analysis"
-    },
-    "service_privilege_analysis_list": {
-      "caption": "Service Privilege Analysis List",
-      "description": "A list of privilege analysis results grouped by cloud service or namespace.",
-      "type": "service_privilege_analysis",
-      "is_array": true
-    },
     "server_ciphers": {
       "caption": "Server Cipher Suites",
       "description": "The server cipher suites that were exchanged during the TLS handshake negotiation.",
@@ -5880,6 +5910,17 @@
       "caption": "Service",
       "description": "The service that pertains to the event.",
       "type": "service"
+    },
+    "service_privilege_analysis": {
+      "caption": "Service Privilege Analysis",
+      "description": "Privilege analysis results for a single cloud service or resource namespace.",
+      "type": "service_privilege_analysis"
+    },
+    "service_privilege_analysis_list": {
+      "caption": "Service Privilege Analysis List",
+      "description": "A list of privilege analysis results grouped by cloud service or namespace.",
+      "type": "service_privilege_analysis",
+      "is_array": true
     },
     "session": {
       "caption": "Session",
@@ -6113,15 +6154,15 @@
       "description": "The line number of the first line of code block identified as vulnerable.",
       "type": "integer_t"
     },
-    "start_time": {
-      "caption": "Start Time",
-      "description": "The start time of a time period. See specific usage.",
-      "type": "timestamp_t"
-    },
     "start_offset": {
       "caption": "Start Offset",
       "description": "The starting offset. See specific usage.",
       "type": "long_t"
+    },
+    "start_time": {
+      "caption": "Start Time",
+      "description": "The start time of a time period. See specific usage.",
+      "type": "timestamp_t"
     },
     "start_type": {
       "caption": "Start Type",
@@ -6614,6 +6655,11 @@
       "description": "The amount of time an event spent in a queue awaiting processing.",
       "type": "timespan"
     },
+    "total_tokens": {
+      "caption": "Total Tokens",
+      "description": "Total number of tokens used for this message (prompt + completion).",
+      "type": "integer_t"
+    },
     "trace": {
       "caption": "Trace",
       "description": "The information about the trace. See specific usage.",
@@ -6953,6 +6999,11 @@
       "description": "The unique identifier of the Virtual Private Cloud (VPC).",
       "type": "string_t"
     },
+    "vram_mode": {
+      "caption": "VRAM Mode",
+      "description": "The video memory attachment mode, indicating how the VRAM hardware is integrated with the system (e.g., shared or dedicated), normalized to the caption of the vram_mode_id value. For 'Other', the exact attachment mode is defined by the event source.",
+      "type": "string_t"
+    },
     "vram_mode_id": {
       "caption": "VRAM Mode ID",
       "description": "The normalized identifier of the video memory attachment mode.",
@@ -6976,11 +7027,6 @@
           "description": "A VRAM mode not covered by the defined values; the exact value is reported by the event source."
         }
       }
-    },
-    "vram_mode": {
-      "caption": "VRAM Mode",
-      "description": "The video memory attachment mode, indicating how the VRAM hardware is integrated with the system (e.g., shared or dedicated), normalized to the caption of the vram_mode_id value. For 'Other', the exact attachment mode is defined by the event source.",
-      "type": "string_t"
     },
     "vram_size": {
       "caption": "VRAM Size",
@@ -7045,52 +7091,6 @@
     "zone": {
       "caption": "Network Zone",
       "description": "The network zone or LAN segment. See specific usage.",
-      "type": "string_t"
-    },
-    "ai_model": {
-      "caption": "AI Model",
-      "description": "The AI Model object describes the characteristics of an AI/ML model. Examples include language models like GPT-4, embedding models like text-embedding-ada-002, and computer vision models like CLIP.",
-      "type": "ai_model"
-    },
-    "message_context": {
-      "caption": "Message Context",
-      "description": "Communication context for AI system interactions including protocols, roles, clients, and session information for MCP and other AI communication systems.",
-      "type": "message_context"
-    },
-    "ai_provider": {
-      "caption": "AI Provider",
-      "description": "AI service provider or organization name.",
-      "type": "string_t"
-    },
-    "embedding_model": {
-      "caption": "Embedding Model",
-      "description": "Model used for creating embeddings in AI retrieval systems.",
-      "type": "string_t"
-    },
-    "prompt_tokens": {
-      "caption": "Prompt Tokens",
-      "description": "Number of tokens in the input prompt for this message.",
-      "type": "integer_t"
-    },
-    "completion_tokens": {
-      "caption": "Completion Tokens",
-      "description": "Number of tokens in the model's response/completion for this message.",
-      "type": "integer_t"
-    },
-    "total_tokens": {
-      "caption": "Total Tokens",
-      "description": "Total number of tokens used for this message (prompt + completion).",
-      "type": "integer_t"
-    },
-    "ai_role_id": {
-      "caption": "AI Role ID",
-      "description": "The originator or target role of the message.",
-      "type": "integer_t",
-      "sibling": "ai_role"
-    },
-    "ai_role": {
-      "caption": "AI Role",
-      "description": "The normalized caption of the <code>ai_role_id</code>.",
       "type": "string_t"
     }
   },

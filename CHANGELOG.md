@@ -43,6 +43,8 @@ Thankyou! -->
 
 ## [Unreleased]
 
+
+## [v1.8.0] - Mar 16th, 2026
 ### Added
 * #### Categories
 * #### Event Classes

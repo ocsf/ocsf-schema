@@ -1,50 +1,50 @@
 {
-    "caption": "Privilege Info",
-    "description": "The Privilege Info object describes information about a specific privilege, action, or permission. It captures the privilege name, type, usage status, and when it was last used.",
-    "extends": "object",
-    "name": "privilege_info",
-    "attributes": {
-        "name": {
-            "description": "The name of the privilege, action, or permission. Examples: <code>GetObject</code>, <code>CreateStoreImageTask</code> (AWS); <code>Microsoft.Storage/storageAccounts/read</code> (Azure); <code>storage.objects.get</code> (GCP).",
-            "requirement": "required"
+  "caption": "Privilege Info",
+  "description": "The Privilege Info object describes information about a specific privilege, action, or permission. It captures the privilege name, type, usage status, and when it was last used.",
+  "extends": "object",
+  "name": "privilege_info",
+  "attributes": {
+    "is_unused": {
+      "description": "Indicates whether the privilege is unused within the analysis timeframe.",
+      "requirement": "optional"
+    },
+    "last_used_time": {
+      "description": "The most recent time this privilege was used.",
+      "requirement": "optional"
+    },
+    "name": {
+      "description": "The name of the privilege, action, or permission. Examples: <code>GetObject</code>, <code>CreateStoreImageTask</code> (AWS); <code>Microsoft.Storage/storageAccounts/read</code> (Azure); <code>storage.objects.get</code> (GCP).",
+      "requirement": "required"
+    },
+    "type": {
+      "description": "The type or category of the privilege, normalized to the caption of the <code>type_id</code> value. In the case of 'Other', it is defined by the event source.",
+      "requirement": "optional"
+    },
+    "type_id": {
+      "description": "The normalized type of the privilege.",
+      "requirement": "optional",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The privilege type is unknown."
         },
-        "type": {
-            "description": "The type or category of the privilege, normalized to the caption of the <code>type_id</code> value. In the case of 'Other', it is defined by the event source.",
-            "requirement": "optional"
+        "1": {
+          "caption": "Read",
+          "description": "A read-type privilege that permits viewing or retrieving data. Examples: <code>s3:GetObject</code>, <code>Microsoft.Storage/storageAccounts/read</code>, <code>storage.objects.get</code>."
         },
-        "type_id": {
-            "description": "The normalized type of the privilege.",
-            "requirement": "optional",
-            "enum": {
-                "0": {
-                    "caption": "Unknown",
-                    "description": "The privilege type is unknown."
-                },
-                "1": {
-                    "caption": "Read",
-                    "description": "A read-type privilege that permits viewing or retrieving data. Examples: <code>s3:GetObject</code>, <code>Microsoft.Storage/storageAccounts/read</code>, <code>storage.objects.get</code>."
-                },
-                "2": {
-                    "caption": "Write",
-                    "description": "A write-type privilege that permits creating, modifying, or deleting data. Examples: <code>s3:PutObject</code>, <code>Microsoft.Storage/storageAccounts/write</code>, <code>storage.objects.create</code>."
-                },
-                "3": {
-                    "caption": "Execute",
-                    "description": "An execute-type privilege that permits running operations or invoking functions. Examples: <code>lambda:InvokeFunction</code>, <code>Microsoft.Compute/virtualMachines/start/action</code>."
-                },
-                "99": {
-                    "caption": "Other",
-                    "description": "The privilege type is not mapped. See the <code>type</code> attribute, which contains a data source specific value."
-                }
-            }
+        "2": {
+          "caption": "Write",
+          "description": "A write-type privilege that permits creating, modifying, or deleting data. Examples: <code>s3:PutObject</code>, <code>Microsoft.Storage/storageAccounts/write</code>, <code>storage.objects.create</code>."
         },
-        "last_used_time": {
-            "description": "The most recent time this privilege was used.",
-            "requirement": "optional"
+        "3": {
+          "caption": "Execute",
+          "description": "An execute-type privilege that permits running operations or invoking functions. Examples: <code>lambda:InvokeFunction</code>, <code>Microsoft.Compute/virtualMachines/start/action</code>."
         },
-        "is_unused": {
-            "description": "Indicates whether the privilege is unused within the analysis timeframe.",
-            "requirement": "optional"
+        "99": {
+          "caption": "Other",
+          "description": "The privilege type is not mapped. See the <code>type</code> attribute, which contains a data source specific value."
         }
+      }
     }
+  }
 }

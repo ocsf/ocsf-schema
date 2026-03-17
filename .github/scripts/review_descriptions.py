@@ -108,6 +108,17 @@ List any convention violations.
 If no issues are found, respond with only:
 > ✅ No description issues found — descriptions look clear for LLM consumption.
 
+## Previous Review Awareness
+
+You may receive a "Previous Review" section containing your earlier review of
+this same PR. When present:
+1. Check which of your previous suggestions have been addressed in the current
+   code — acknowledge them briefly (e.g., "✅ Fixed: `attr_name` description
+   improved")
+2. Re-raise any suggestions that were NOT addressed — keep the same format
+3. Note any NEW issues introduced since the last review
+4. Keep the Summary section updated to reflect current state
+
 These are advisory suggestions to help improve clarity. They are not required
 changes. Only review CHANGED or ADDED content. Do not flag pre-existing
 descriptions.
@@ -242,12 +253,21 @@ def cmd_prepare() -> None:
 # Phase 2: review
 # ---------------------------------------------------------------------------
 
-def build_review_prompt(data: dict) -> str:
+def build_review_prompt(data: dict, previous_review: str | None = None) -> str:
     """Build the prompt string from the saved review context."""
     ctx = data["compiled_context"]
     diff = data["diff"]
     changed_files = data["changed_files"]
     parts = []
+
+    if previous_review:
+        parts.append(
+            "## Previous Review\n"
+            "The following is your previous review of this PR. Check which "
+            "suggestions have been addressed and which remain outstanding.\n\n"
+            + previous_review
+            + "\n\n---\n"
+        )
 
     if ctx["objects"]:
         parts.append(
@@ -322,6 +342,31 @@ def find_existing_comment(pr_number: str) -> str | None:
         return None
 
 
+def fetch_previous_review(pr_number: str) -> str | None:
+    """Fetch the body of the existing review comment, stripped of boilerplate."""
+    repo = os.environ.get("GITHUB_REPOSITORY", "")
+    jq_filter = f'.[] | select(.body | contains("{COMMENT_MARKER}")) | .body'
+    try:
+        output = run_gh(
+            "api",
+            f"repos/{repo}/issues/{pr_number}/comments",
+            "--paginate",
+            "--jq",
+            jq_filter,
+        )
+        body = output.strip()
+        if not body:
+            return None
+        # Strip the marker and preamble to get Claude's actual review text.
+        for delimiter in ["_\n\n", "_\r\n\r\n"]:
+            idx = body.find(delimiter)
+            if idx != -1:
+                return body[idx + len(delimiter):]
+        return body
+    except subprocess.CalledProcessError:
+        return None
+
+
 def post_or_update_comment(pr_number: str, body: str) -> None:
     """Post a new comment or update the existing one (idempotent)."""
     repo = os.environ.get("GITHUB_REPOSITORY", "")
@@ -379,7 +424,14 @@ def cmd_review() -> None:
 
     import anthropic
 
-    prompt_context = build_review_prompt(data)
+    print("Checking for previous review comment...")
+    previous_review = fetch_previous_review(pr_number)
+    if previous_review:
+        print(f"Found previous review ({len(previous_review)} chars)")
+    else:
+        print("No previous review found (first review)")
+
+    prompt_context = build_review_prompt(data, previous_review=previous_review)
 
     print("Calling Claude for review...")
     client = anthropic.Anthropic()

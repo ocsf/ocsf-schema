@@ -2,9 +2,13 @@ name: Server Validation
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - "v1.[0-7].*"          # Enforces: v1, then 0-7, then a literal dot, then anything.
+      - "v1.0.0-rc.[2-3]"     # Specifically allows these two RC branches.
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - "v1.[0-7].*"
+      - "v1.0.0-rc.[2-3]"
 
 jobs:
   validate-ocsf-server:

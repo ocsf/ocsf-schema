@@ -2542,6 +2542,12 @@
       "description": "The <code>Event ID, Code, or Name</code> that the product uses to primarily identify the event.",
       "type": "string_t"
     },
+    "event_codes": {
+      "caption": "Event Codes",
+      "description": "Event identifiers that pertains to an entity. See specific usage.",
+      "type": "string_t",
+      "is_array": true
+    },
     "event_uid": {
       "caption": "Event UID",
       "description": "The unique identifier of an event. See specific usage.",
@@ -3581,15 +3587,32 @@
       "type": "ja4_fingerprint",
       "is_array": true
     },
+    "job_actions": {
+      "caption": "Job Actions",
+      "description": "An array of actions that will be performed by a job when certain conditions are met.",
+      "type": "job_action",
+      "is_array": true
+    },
     "job": {
       "caption": "Job",
       "description": "The job object that pertains to the event.",
+      "type": "job"
+    },
+    "job_result": {      
+      "caption": "Job Result",
+      "description": "The updated job object that pertains to the event.",
       "type": "job"
     },
     "job_title": {
       "caption": "Job Title",
       "description": "The user's job title.",
       "type": "string_t"
+    },
+    "job_triggers": {
+      "caption": "Job Triggers",
+      "description": "An array of conditions or events that, when met, will initiate the job to perform specified actions.",
+      "type": "job_trigger",
+      "is_array": true
     },
     "json_path": {
       "caption": "JSON Path",
@@ -3875,6 +3898,12 @@
       "caption": "Log Source",
       "description": "The log where the data originated. See specific usage.",
       "type": "string_t"
+    },
+    "log_sources": {
+      "caption": "Log Sources",
+      "description": "A collection of log systems or components that pertains to an entity. See specific usage.",
+      "type": "string_t",
+      "is_array": true
     },
     "log_type": {
       "caption": "Log Type",
@@ -4914,6 +4943,12 @@
       "caption": "Prompt Tokens",
       "description": "Number of tokens in the input prompt for this message.",
       "type": "integer_t"
+    },
+    "properties": {
+      "caption": "Properties",
+      "description": "The list of properties associated with an entity.",
+      "type": "key_value_object",
+      "is_array": true
     },
     "protocol_name": {
       "caption": "Protocol Name",

@@ -1,0 +1,49 @@
+{
+  "caption": "Job Action",
+  "description": "The action that will be performed by the job when certain conditions are met.",
+  "name": "job_action",
+  "attributes": {
+    "type_id": {
+      "description": "The normalized identifier of the job action.",
+      "requirement": "required",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+	  "description": "The performed action is unknown."
+	},
+	"1": {
+	  "caption": "Com Handler",
+	  "description": "The action fires a COM handler."
+	},
+	"2": {
+	  "caption": "Execution",
+	  "description": "The action executes a command-line operation."
+	},
+	"3": {
+	  "caption": "E-mail",
+	  "description": "The action sends an email."
+	},
+	"4": {
+	  "caption": "Show Message",
+	  "description": "The action shows a message box with specified message and title."
+	},
+	"99": {
+	  "caption": "Other",
+	  "description": "The performed action is not mapped. See the <code>type</code> attribute, which contains a data source specific value."
+	}
+      }
+    },
+    "type": {
+      "description": "The type of action that the job will perform when specified conditions are met.",
+      "requirement": "recommended"
+    },
+    "cmd_line": {
+      "description": "The command line executed when the action type is <code>Execution (2)</code>.",
+      "requirement": "optional"
+    },
+    "properties": {
+      "description": "The list of properties associated with the performed action.<br>Can be populated with additional attributes of a program execution process, COM object attributes, fields of a message box or an email.",
+      "requirement": "recommended"
+    }
+  }
+}

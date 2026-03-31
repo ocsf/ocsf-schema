@@ -3261,30 +3261,26 @@
     },
     "initiator": {
       "caption": "Initiator",
-      "description": "The human-readable label identifying which endpoint initiated the network communication. See specific usage in the <code>network_activity</code> class.",
+      "description": "The initiator. See specific usage.",
       "type": "string_t"
     },
     "initiator_id": {
       "caption": "Initiator ID",
-      "description": "The normalized identifier indicating which endpoint initiated the network communication. Supersedes <code>is_src_dst_assignment_known</code>. A value of 1 means <code>src_endpoint</code> is the initiator; a value of 2 means <code>dst_endpoint</code> is the initiator. Use this field when bi-flow or asymmetric flow data may cause the source and destination roles to appear reversed relative to the actual connection initiator. See specific usage in the <code>network_activity</code> class.",
+      "description": "The normalized identifier of the <code>initiator</code>. See specific usage.",
       "sibling": "initiator",
       "type": "integer_t",
       "enum": {
         "0": {
-          "caption": "Unknown",
-          "description": "The initiating endpoint cannot be determined from the available flow data."
+          "caption": "Unknown"
         },
         "1": {
-          "caption": "Source Endpoint",
-          "description": "The <code>src_endpoint</code> initiated the communication. The source/destination assignment correctly reflects the direction of initiation."
+          "caption": "Source Endpoint"
         },
         "2": {
-          "caption": "Destination Endpoint",
-          "description": "The <code>dst_endpoint</code> initiated the communication. This occurs in bi-flow or asymmetric flow scenarios where individual directional flows show the response side as the source, making the assignment appear reversed relative to the true initiator."
+          "caption": "Destination Endpoint"
         },
         "99": {
-          "caption": "Other",
-          "description": "The initiating endpoint is known but does not match a defined value. See the <code>initiator</code> attribute for the source-specific value."
+          "caption": "Other"
         }
       }
     },

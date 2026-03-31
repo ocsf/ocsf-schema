@@ -41,10 +41,12 @@
       "description": "The destination endpoint of the network connection — typically the responder. In bi-flow or asymmetric flow scenarios, this endpoint may represent the true initiator of the original connection. Use <code>initiator_id</code> to determine which endpoint actually initiated the communication."
     },
     "initiator": {
+      "description": "The normalized caption of <code>initiator_id</code>. One of: <code>Source Endpoint</code>, <code>Destination Endpoint</code>, <code>Unknown</code>, or <code>Other</code>.",
       "group": "primary",
       "requirement": "optional"
     },
     "initiator_id": {
+      "description": "Indicates which endpoint initiated the network communication. Use this field to disambiguate source and destination roles when the event source represents a bi-directional flow as two separate unidirectional flows, or when a network appliance did not observe the connection handshake and has arbitrarily assigned endpoints. <code>1</code> (Source Endpoint) means <code>src_endpoint</code> is the true initiator and the assignment is correct. <code>2</code> (Destination Endpoint) means <code>dst_endpoint</code> is the true initiator and the assignment is reversed — the response side appears as the source. <code>0</code> (Unknown) means the initiator cannot be determined. Supersedes <code>is_src_dst_assignment_known</code>.",
       "group": "primary",
       "requirement": "recommended"
     },

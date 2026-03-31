@@ -1,0 +1,15 @@
+{
+  "caption": "Delegation Node",
+  "description": "A node in a delegation lineage graph. Flattens in delegation attributes and adds agent identity for a single unified structure. Each node captures the full context of a delegation point: authorization metadata, the agent to which authority was delegated, and the model backing that agent.",
+  "extends": "object",
+  "name": "delegation_node",
+  "attributes": {
+    "$include": [
+      "objects/delegation.json"
+    ],
+    "ai_agent": {
+      "description": "The autonomous agent to which this delegation was issued. Carries model identity via <code>ai_agent.ai_model</code>.",
+      "requirement": "recommended"
+    }
+  }
+}

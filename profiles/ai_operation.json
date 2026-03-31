@@ -1,14 +1,26 @@
 {
     "caption": "AI Operation",
-    "description": "AI-specific attributes for model operations, retrieval systems, and agent activities. e.g. model_name, total_token_counts etc.",
+    "description": "Stamps AI context onto data-plane events — tool calls, file operations, process launches, etc. — so that any action can be attributed to a model, an agent, or a delegation. Four independent concerns, each independently optional: populate what applies. For agent-mediated operations, model identity is carried within <code>ai_agent.ai_model</code>; the standalone <code>ai_model</code> attribute covers direct model invocations without an autonomous agent. Control-plane events (delegation_activity, agent_activity) declare their own agent and delegation attributes directly and do not use this profile.",
     "meta": "profile",
     "name": "ai_operation",
     "attributes": {
         "ai_model": {
+            "description": "The AI model involved in this operation. Use for direct model invocations (e.g., a stateless LLM API call) where no autonomous agent is involved. For agent-mediated operations, model identity is carried within <code>ai_agent.ai_model</code> instead.",
             "group": "context",
             "requirement": "recommended"
         },
+        "ai_agent": {
+            "description": "The autonomous AI agent that performed this action. Carries model identity via <code>ai_agent.ai_model</code>. Populate when the action was performed by an agent operating under delegated authority rather than a direct model call.",
+            "group": "context",
+            "requirement": "optional"
+        },
         "message_context": {
+            "description": "Conversation metadata such as token counts and message-level detail.",
+            "group": "context",
+            "requirement": "optional"
+        },
+        "delegation": {
+            "description": "The delegation under whose authority this action was performed. Links the event to a durable authorization context independent of traces and sessions. Enables queries like 'show me everything this delegation did.'",
             "group": "context",
             "requirement": "optional"
         }

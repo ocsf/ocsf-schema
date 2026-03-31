@@ -216,6 +216,11 @@
       "type": "agent",
       "is_array": true
     },
+    "ai_agent": {
+      "caption": "AI Agent",
+      "description": "The AI Agent object describes an autonomous AI agent acting under delegated authority. Distinguished from the agent object (security sensors) and from human principals.",
+      "type": "ai_agent"
+    },
     "ai_model": {
       "caption": "AI Model",
       "description": "The AI Model object describes the characteristics of an AI/ML model. Examples include language models like GPT-4, embedding models like text-embedding-ada-002, and computer vision models like CLIP.",
@@ -1853,6 +1858,27 @@
       "caption": "Dependency Chain",
       "description": "Information about the chain of dependencies related to the issue as reported by an Application Security or Vulnerability Management tool. E.g., <code>serverless-offline -> @serverless/utils -> memoizee -> es5-ext</code>.",
       "type": "string_t"
+    },
+    "delegation": {
+      "caption": "Delegation",
+      "description": "The Delegation object describes a durable authorization context issued by a principal to an autonomous agent, representing delegated authority to act on the principal's behalf.",
+      "type": "delegation"
+    },
+    "delegation_lineage": {
+      "caption": "Delegation Lineage",
+      "description": "A directed graph representing the full delegation ancestry tree rooted at the current delegation. Nodes are delegation_node objects carrying delegation context, agent identity, and model information. Directed edges represent parent-child relationships established via sub-agent spawning or re-delegation. Populated on Delegation Activity lifecycle events (Complete, Revoke, Expire) as a materialized view of the delegation DAG for lineage queries.",
+      "type": "delegation_lineage"
+    },
+    "delegation_node": {
+      "caption": "Delegation Node",
+      "description": "A graph node representing a delegation in a delegation lineage graph, combining node identity with flattened delegation attributes and the agent to which authority was delegated.",
+      "type": "delegation_node"
+    },
+    "delegation_nodes": {
+      "caption": "Delegation Nodes",
+      "description": "The collection of delegation nodes in a delegation lineage graph.",
+      "type": "delegation_node",
+      "is_array": true
     },
     "depth": {
       "caption": "CVSS Depth",
@@ -3565,6 +3591,11 @@
       "description": "The identifier of the issuer. See specific usage.",
       "type": "string_t"
     },
+    "issuer_uid": {
+      "caption": "Issuer ID",
+      "description": "The unique identifier of the trusted boundary that issued a delegation or credential.",
+      "type": "string_t"
+    },
     "ja3_hash": {
       "caption": "JA3 Hash",
       "description": "The MD5 hash of a JA3 string.",
@@ -4067,6 +4098,22 @@
       "caption": "Message",
       "description": "The description of the event/finding, as defined by the source.",
       "type": "string_t"
+    },
+    "manifest_uid": {
+      "caption": "Manifest ID",
+      "description": "The identifier of the capability manifest describing an agent's declared skills, expected sub-agent dependencies, and tool scopes.",
+      "type": "string_t"
+    },
+    "manifest_version": {
+      "caption": "Manifest Version",
+      "description": "The version of the capability manifest active at the time of agent registration or update.",
+      "type": "string_t"
+    },
+    "declared_agents": {
+      "caption": "Declared Agents",
+      "description": "The sub-agents an agent is declared to depend on, snapshotted from its capability manifest at registration time.",
+      "type": "ai_agent",
+      "is_array": true
     },
     "message_context": {
       "caption": "Message Context",

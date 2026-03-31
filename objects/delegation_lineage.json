@@ -1,0 +1,16 @@
+{
+  "caption": "Delegation Lineage",
+  "description": "A directed graph representing the delegation ancestry tree. Nodes are delegation_node objects carrying the full context of each delegation point — authorization metadata, agent identity, and backing model. Edges represent parent-child relationships established via sub-agent spawning or re-delegation. The graph is always directed; authority flows from parent to child.",
+  "extends": "object",
+  "name": "delegation_lineage",
+  "attributes": {
+    "delegation_nodes": {
+      "description": "The delegation nodes in the lineage graph. Each node is a <code>delegation_node</code> object carrying delegation context, agent identity, and model information.",
+      "requirement": "required"
+    },
+    "edges": {
+      "description": "The parent-child relationships between delegations. Each edge's source is the parent delegation UID and target is the child delegation UID. The relation is typically <code>spawned</code> or <code>re-delegated</code>.",
+      "requirement": "recommended"
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "caption": "AI Agent",
+  "description": "An autonomous AI agent that performs tasks under delegated authority. Distinguished from the OCSF agent object (which describes security sensors such as EDR and DLP tools) and from human principals. An AI agent has a stable logical identity across runs and a restart-sensitive instance identity. The agent owns its model — the ai_model attribute captures which model was backing the agent at the time of action.",
+  "extends": "object",
+  "name": "ai_agent",
+  "attributes": {
+    "uid": {
+      "caption": "AI Agent ID",
+      "description": "Stable logical identifier for the agent (e.g., <code>research-agent</code>, <code>model-tester</code>). Persists across restarts and instances.",
+      "requirement": "required"
+    },
+    "instance_uid": {
+      "caption": "AI Agent Instance ID",
+      "description": "Identifier for a specific running instance of the agent. Restart-sensitive: a new instance ID is expected after a process restart or re-spawn. Enables attribution of actions to a specific process or session of the agent.",
+      "requirement": "recommended"
+    },
+    "name": {
+      "description": "Human-readable name for the agent. For example: <code>Q4 Analysis Agent</code> or <code>Model Tester Agent</code>.",
+      "requirement": "recommended"
+    },
+    "type": {
+      "caption": "Agent Type",
+      "description": "The agent framework or protocol type, normalized to the caption of the <code>type_id</code> value.",
+      "requirement": "optional"
+    },
+    "type_id": {
+      "caption": "Agent Type ID",
+      "description": "The normalized identifier for the agent framework or protocol. Different agent frameworks have different identity, tool-call, and delegation semantics — recording the type enables cross-framework normalization.",
+      "requirement": "recommended",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The agent framework type is unknown."
+        },
+        "1": {
+          "caption": "Native",
+          "description": "A first-party or proprietary agent without a standardized interoperability protocol. For example, a custom orchestrator or an LLM provider's own agent SDK."
+        },
+        "2": {
+          "caption": "MCP",
+          "description": "An agent that exposes or consumes tools via the Model Context Protocol (MCP), enabling standardized tool discovery and invocation across runtimes."
+        },
+        "3": {
+          "caption": "A2A",
+          "description": "An agent that communicates using the Agent-to-Agent (A2A) protocol, enabling structured inter-agent task delegation and result exchange."
+        },
+        "4": {
+          "caption": "LangChain",
+          "description": "An agent built with the LangChain framework."
+        },
+        "5": {
+          "caption": "AutoGen",
+          "description": "An agent built with the Microsoft AutoGen framework for multi-agent conversation and orchestration."
+        },
+        "6": {
+          "caption": "CrewAI",
+          "description": "An agent built with the CrewAI framework for role-based multi-agent collaboration."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The agent framework type is not listed. Use the <code>type</code> attribute to describe it."
+        }
+      }
+    },
+    "ai_model": {
+      "description": "The AI model backing this agent at the time of action. An agent's model may change across instances or versions; this captures the model in use for the specific event or delegation.",
+      "requirement": "recommended"
+    }
+  }
+}

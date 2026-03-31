@@ -1,0 +1,80 @@
+{
+  "uid": 1,
+  "caption": "Delegation Activity",
+  "description": "Delegation Activity events report lifecycle transitions of an AI delegation — the durable authorization context issued by a principal to an autonomous agent. These are control-plane events distinct from the data-plane tool-call events (e.g. api_activity, process_activity) that carry delegation context. A Create event is emitted when a gateway mints a new delegation. Revoke and Expire events mark premature termination. A Complete event summarizes the delegation's full scope of activity upon closure.",
+  "extends": "ai",
+  "name": "delegation_activity",
+  "attributes": {
+    "$include": [
+      "profiles/trace.json"
+    ],
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Create",
+          "description": "A delegation was issued by a trusted boundary (gateway or orchestrator) to an autonomous agent. The delegation UID is minted at this point and must not be reused."
+        },
+        "2": {
+          "caption": "Revoke",
+          "description": "A delegation was explicitly terminated before completion, typically due to a policy violation, user cancellation, or security enforcement action."
+        },
+        "3": {
+          "caption": "Expire",
+          "description": "A delegation reached its time-to-live limit before the delegated task completed."
+        },
+        "4": {
+          "caption": "Complete",
+          "description": "A delegated task finished and the delegation is closed. This event may carry a summary of the delegation's aggregate activity scope."
+        }
+      }
+    },
+    "delegation": {
+      "description": "The delegation that is the subject of this lifecycle event.",
+      "group": "primary",
+      "requirement": "required"
+    },
+    "ai_agent": {
+      "description": "The autonomous agent to which the delegation was issued. Carries model identity via <code>ai_agent.ai_model</code>.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "duration": {
+      "description": "The total duration of the delegation in milliseconds, from creation to completion, revocation, or expiry.",
+      "group": "occurrence",
+      "requirement": "recommended"
+    },
+    "start_time": {
+      "description": "The time the delegation was created.",
+      "group": "occurrence",
+      "requirement": "recommended"
+    },
+    "end_time": {
+      "description": "The time the delegation was completed, revoked, or expired.",
+      "group": "occurrence",
+      "requirement": "recommended"
+    },
+    "delegation_lineage": {
+      "description": "The full delegation ancestry tree rooted at this delegation, materialized as a directed graph. Nodes are <code>delegation_node</code> objects carrying delegation context, agent identity, and model information; edges represent parent-child relationships from sub-agent spawning or re-delegation. Recommended on Complete, Revoke, and Expire events to enable lineage queries without requiring trace reconstruction.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "prompt_tokens": {
+      "description": "Aggregate number of input prompt tokens consumed across all actions performed under this delegation. Populated on Complete, Revoke, and Expire events.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "completion_tokens": {
+      "description": "Aggregate number of completion/response tokens generated across all actions performed under this delegation. Populated on Complete, Revoke, and Expire events.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "total_tokens": {
+      "description": "Aggregate total tokens (prompt + completion) consumed across all actions performed under this delegation. Populated on Complete, Revoke, and Expire events.",
+      "group": "context",
+      "requirement": "recommended"
+    }
+  },
+  "profiles": [
+    "trace"
+  ]
+}

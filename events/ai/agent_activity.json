@@ -1,0 +1,100 @@
+{
+  "uid": 2,
+  "caption": "Agent Activity",
+  "description": "Agent Activity events report lifecycle transitions of an autonomous AI agent — the actor that performs tasks under delegated authority. These events track the agent's own lifecycle, independent of any particular delegation. An agent may serve multiple delegations across its lifetime; this event class provides the anchor for cross-delegation baselining and agent-level configuration tracking.",
+  "extends": "ai",
+  "name": "agent_activity",
+  "attributes": {
+    "$include": [
+      "profiles/trace.json"
+    ],
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Spawn",
+          "description": "A new agent instance was created. The <code>ai_agent.instance_uid</code> is minted at this point. The agent is now available to accept delegations."
+        },
+        "2": {
+          "caption": "Terminate",
+          "description": "An agent instance shut down. May be normal completion, forced termination, or crash. Use <code>status_id</code> to distinguish success from failure."
+        },
+        "3": {
+          "caption": "Suspend",
+          "description": "An agent was paused at the agent level — waiting for human-in-the-loop approval, rate limited, or yielding in an async workflow. Distinct from a delegation-level suspend."
+        },
+        "4": {
+          "caption": "Resume",
+          "description": "An agent resumed execution from a suspended state."
+        },
+        "5": {
+          "caption": "Update",
+          "description": "An agent's configuration changed at runtime — model upgrade, tool set modification, system prompt update, or capability change."
+        },
+        "6": {
+          "caption": "Register",
+          "description": "An agent registered with a gateway or orchestrator and its design-time declarations were snapshotted. Captures the manifest version, declared sub-agent dependencies, and tool scopes at the moment the agent became known to the runtime. Enables comparison of declared behavior against observed runtime behavior."
+        }
+      }
+    },
+    "ai_agent": {
+      "description": "The autonomous agent that is the subject of this lifecycle event.",
+      "group": "primary",
+      "requirement": "required"
+    },
+    "delegation": {
+      "description": "The delegation the agent is currently serving, if any. An agent may be spawned before receiving a delegation, or may be between delegations at the time of the event.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "duration": {
+      "description": "The total runtime of the agent instance in milliseconds, from spawn to termination. Populated on Terminate events.",
+      "group": "occurrence",
+      "requirement": "recommended"
+    },
+    "start_time": {
+      "description": "The time the agent instance was spawned.",
+      "group": "occurrence",
+      "requirement": "recommended"
+    },
+    "end_time": {
+      "description": "The time the agent instance was terminated, if applicable.",
+      "group": "occurrence",
+      "requirement": "optional"
+    },
+    "prompt_tokens": {
+      "description": "Aggregate number of input prompt tokens consumed across the agent instance's lifetime. Populated on Terminate events.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "completion_tokens": {
+      "description": "Aggregate number of completion/response tokens generated across the agent instance's lifetime. Populated on Terminate events.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "total_tokens": {
+      "description": "Aggregate total tokens (prompt + completion) consumed across the agent instance's lifetime. Populated on Terminate events.",
+      "group": "context",
+      "requirement": "recommended"
+    },
+    "manifest_uid": {
+      "caption": "Manifest ID",
+      "description": "The identifier of the capability manifest (e.g., an OASF record or internal agent registry entry) that describes this agent's declared skills, expected sub-agent dependencies, and tool scopes. Populated on Register and Update events.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "manifest_version": {
+      "caption": "Manifest Version",
+      "description": "The version of the capability manifest active at the time of registration or update. Enables detection of agents running stale or unexpected manifest versions.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "declared_agents": {
+      "description": "The sub-agents this agent is declared to depend on, snapshotted from its capability manifest at registration time. Populated on Register and Update events. Comparing this against runtime delegation lineage reveals undeclared sub-agent spawning.",
+      "group": "context",
+      "requirement": "optional"
+    }
+  },
+  "profiles": [
+    "trace"
+  ]
+}

@@ -3259,6 +3259,35 @@
       "description": "The unique identifier of a VM instance.",
       "type": "string_t"
     },
+    "initiator": {
+      "caption": "Initiator",
+      "description": "The human-readable label identifying which endpoint initiated the network communication. See specific usage in the <code>network_activity</code> class.",
+      "type": "string_t"
+    },
+    "initiator_id": {
+      "caption": "Initiator ID",
+      "description": "The normalized identifier indicating which endpoint initiated the network communication. Supersedes <code>is_src_dst_assignment_known</code>. A value of 1 means <code>src_endpoint</code> is the initiator; a value of 2 means <code>dst_endpoint</code> is the initiator. Use this field when bi-flow or asymmetric flow data may cause the source and destination roles to appear reversed relative to the actual connection initiator. See specific usage in the <code>network_activity</code> class.",
+      "sibling": "initiator",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The initiating endpoint cannot be determined from the available flow data."
+        },
+        "1": {
+          "caption": "Source Endpoint",
+          "description": "The <code>src_endpoint</code> initiated the communication. The source/destination assignment correctly reflects the direction of initiation."
+        },
+        "2": {
+          "caption": "Destination Endpoint",
+          "description": "The <code>dst_endpoint</code> initiated the communication. This occurs in bi-flow or asymmetric flow scenarios where individual directional flows show the response side as the source, making the assignment appear reversed relative to the true initiator."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The initiating endpoint is known but does not match a defined value. See the <code>initiator</code> attribute for the source-specific value."
+        }
+      }
+    },
     "integrity": {
       "caption": "Integrity",
       "description": "The process integrity level, normalized to the caption of the integrity_id value. In the case of 'Other', it is defined by the event source (Windows only).",
@@ -3498,7 +3527,11 @@
     "is_src_dst_assignment_known": {
       "caption": "Source/Destination Assignment Known",
       "description": "<code>true</code> denotes that <code>src_endpoint</code> and <code>dst_endpoint</code> correctly identify the initiator and responder respectively. <code>false</code> denotes that the event source has arbitrarily assigned one peer to <code>src_endpoint</code> and the other to <code>dst_endpoint</code>, in other words that initiator and responder are not being asserted. This can occur, for example, when the event source is a network appliance that has not observed the initiation of a given connection. In the absence of this attribute, interpretation of the initiator and responder is implementation-specific.",
-      "type": "boolean_t"
+      "type": "boolean_t",
+      "@deprecated": {
+        "message": "Use <code>initiator_id</code> instead, which provides richer semantics for bi-flow and asymmetric flow scenarios.",
+        "since": "1.9.0"
+      }
     },
     "is_superseded": {
       "caption": "The patch is superseded.",

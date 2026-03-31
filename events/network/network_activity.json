@@ -46,9 +46,25 @@
       "requirement": "optional"
     },
     "initiator_id": {
-      "description": "Indicates which endpoint initiated the network communication. Use this field to disambiguate source and destination roles when the event source represents a bi-directional flow as two separate unidirectional flows, or when a network appliance did not observe the connection handshake and has arbitrarily assigned endpoints. <code>1</code> (Source Endpoint) means <code>src_endpoint</code> is the true initiator and the assignment is correct. <code>2</code> (Destination Endpoint) means <code>dst_endpoint</code> is the true initiator and the assignment is reversed — the response side appears as the source. <code>0</code> (Unknown) means the initiator cannot be determined. Supersedes <code>is_src_dst_assignment_known</code>.",
+      "description": "Indicates which endpoint initiated the network communication. Use this field to disambiguate source and destination roles in bi-directional or asymmetric flow scenarios.",
       "group": "primary",
-      "requirement": "recommended"
+      "requirement": "recommended",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Source Endpoint",
+          "description": "The <code>src_endpoint</code> is the true initiator and the source/destination assignment is correct."
+        },
+        "2": {
+          "caption": "Destination Endpoint",
+          "description": "The <code>dst_endpoint</code> is the true initiator and the source/destination assignment is reversed."
+        },
+        "99": {
+          "caption": "Other"
+        }
+      }
     },
     "is_src_dst_assignment_known": {
       "group": "primary",

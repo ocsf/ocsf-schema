@@ -304,6 +304,176 @@ def check_generic_naming(
     return []
 
 
+def check_duplicate_attribute(
+    attr_name: str,
+    attr_def: dict,
+    container_name: str,
+    all_dict_attrs: dict,
+) -> list[Finding]:
+    """Flag is_X / X pairs in the dictionary with the same type and meaning."""
+    if not attr_name.startswith("is_"):
+        return []
+
+    bare_name = attr_name[3:]
+    if bare_name not in all_dict_attrs:
+        return []
+
+    bare_def = all_dict_attrs[bare_name]
+    if bare_def.get("type") != attr_def.get("type"):
+        return []
+
+    # Same type — very likely a duplicate
+    bare_desc = bare_def.get("description", "")
+    our_desc = attr_def.get("description", "")
+
+    return [Finding(
+        rule="duplicate-attribute",
+        severity="warning",
+        container=container_name,
+        attribute=attr_name,
+        message=(
+            f"`{attr_name}` and `{bare_name}` are both `{attr_def.get('type')}` "
+            f"in the dictionary. Having two attributes for the same concept "
+            f"with and without the `is_` prefix causes ambiguity.\n"
+            f"   - `{attr_name}`: \"{our_desc[:80]}\"\n"
+            f"   - `{bare_name}`: \"{bare_desc[:80]}\""
+        ),
+        suggestion=(
+            f"Deprecate one and keep the other. The OCSF convention for "
+            f"booleans uses the `is_` prefix, so `{attr_name}` is preferred "
+            f"and `{bare_name}` should be deprecated."
+        ),
+    )]
+
+
+def check_duplicate_description(
+    attr_name: str,
+    attr_def: dict,
+    container_name: str,
+    all_dict_attrs: dict,
+) -> list[Finding]:
+    """Flag dictionary attributes with identical descriptions to another attr."""
+    desc = attr_def.get("description", "").strip()
+    if not desc or len(desc) < 30 or "See specific usage" in desc:
+        return []
+
+    # Skip known intentional pairs: timestamp_t/datetime_t
+    if attr_name.endswith("_dt"):
+        return []
+    base_dt = attr_name + "_dt"
+    if base_dt in all_dict_attrs:
+        return []
+
+    # Skip sibling pairs (_id and its string counterpart)
+    if attr_name.endswith("_id"):
+        return []
+    if attr_name + "_id" in all_dict_attrs:
+        return []
+
+    for other_name, other_def in all_dict_attrs.items():
+        if other_name == attr_name:
+            continue
+        if other_name.endswith("_dt") or other_name.endswith("_id"):
+            continue
+        other_desc = other_def.get("description", "").strip()
+        if desc == other_desc:
+            # Only report once — report the one that sorts second
+            if attr_name < other_name:
+                return []
+            return [Finding(
+                rule="duplicate-description",
+                severity="warning",
+                container=container_name,
+                attribute=attr_name,
+                message=(
+                    f"`{attr_name}` has an identical description to "
+                    f"`{other_name}`: \"{desc[:100]}\". Different attributes "
+                    f"should have distinct descriptions that clarify their "
+                    f"unique purpose."
+                ),
+                suggestion=(
+                    "Differentiate the descriptions, or if they truly "
+                    "represent the same concept, deprecate one."
+                ),
+            )]
+
+    return []
+
+
+def check_type_inconsistency(
+    attr_name: str,
+    attr_def: dict,
+    container_name: str,
+    all_compiled_objects: dict,
+) -> list[Finding]:
+    """Flag attributes with different types across objects."""
+    types_seen: dict[str, list[str]] = {}
+    for obj_name, obj_data in all_compiled_objects.items():
+        obj_attr = obj_data.get("attributes", {}).get(attr_name)
+        if obj_attr:
+            t = obj_attr.get("type", "?")
+            types_seen.setdefault(t, []).append(obj_name)
+
+    if len(types_seen) <= 1:
+        return []
+
+    type_summary = ", ".join(
+        f"`{t}` ({len(objs)} object{'s' if len(objs) > 1 else ''})"
+        for t, objs in sorted(types_seen.items())
+    )
+
+    return [Finding(
+        rule="type-inconsistency",
+        severity="warning",
+        container=container_name,
+        attribute=attr_name,
+        message=(
+            f"`{attr_name}` has different types across objects: "
+            f"{type_summary}. Inconsistent types for the same attribute "
+            f"name make the schema harder to consume programmatically."
+        ),
+        suggestion=(
+            "Use distinct attribute names for different types, or "
+            "standardize on a single type across all objects."
+        ),
+    )]
+
+
+def check_id_without_enum(
+    attr_name: str,
+    attr_def: dict,
+    container_name: str,
+    all_attrs: dict,
+) -> list[Finding]:
+    """Flag integer_t _id attributes that have no enum values defined."""
+    if not attr_name.endswith("_id"):
+        return []
+    if attr_def.get("type") != "integer_t":
+        return []
+    if attr_def.get("enum"):
+        return []
+    # Skip if the attribute has "See specific usage" — enum may be at class level
+    desc = attr_def.get("description", "")
+    if "See specific usage" in desc:
+        return []
+
+    return [Finding(
+        rule="id-without-enum",
+        severity="info",
+        container=container_name,
+        attribute=attr_name,
+        message=(
+            f"`{attr_name}` is `integer_t` with an `_id` suffix but has no "
+            f"enum values defined. The `_id` naming convention implies "
+            f"normalized categorical values, which should be enumerated."
+        ),
+        suggestion=(
+            "Define enum values for this attribute, or rename it if it "
+            "represents an arbitrary integer rather than a category."
+        ),
+    )]
+
+
 # ---------------------------------------------------------------------------
 # Diff parsing
 # ---------------------------------------------------------------------------
@@ -418,13 +588,16 @@ def cmd_prepare() -> None:
 
     all_changed_attrs = changed_dict_attrs.copy()
 
-    # Per-attribute detectors
+    compiled_dict = compiled.get("dictionary", {}).get("attributes", {})
+
+    # Per-attribute detectors (receive: attr_name, attr_def, container, all_attrs)
     attr_detectors = [
         check_boolean_trap,
         check_missing_sibling,
         check_tautological_description,
         check_enum_without_description,
         check_generic_naming,
+        check_id_without_enum,
     ]
 
     findings: list[dict] = []
@@ -435,14 +608,12 @@ def cmd_prepare() -> None:
         if not obj:
             continue
         attrs = obj.get("attributes", {})
-        # Determine which attributes were actually changed in this file
         for filepath in changed_files:
             if filepath.startswith("objects/") and Path(filepath).stem == obj_name:
                 file_changed_attrs = extract_changed_attrs_for_file(diff, filepath)
                 break
         else:
             file_changed_attrs = set()
-        # Merge with changed dictionary attrs (inherited changes)
         scope = file_changed_attrs | changed_dict_attrs
         for attr_name, attr_def in attrs.items():
             if attr_name not in scope:
@@ -450,7 +621,12 @@ def cmd_prepare() -> None:
             for detector in attr_detectors:
                 for f in detector(attr_name, attr_def, obj_name, attrs):
                     findings.append(f.to_dict())
-        # Container-level checks (still use all attrs for proliferation)
+            # Cross-object type inconsistency
+            for f in check_type_inconsistency(
+                attr_name, attr_def, obj_name, compiled_objects
+            ):
+                findings.append(f.to_dict())
+        # Container-level checks
         for f in check_boolean_proliferation(
             obj_name, attrs, all_changed_attrs
         ):
@@ -481,7 +657,6 @@ def cmd_prepare() -> None:
             findings.append(f.to_dict())
 
     # Check changed dictionary attributes directly
-    compiled_dict = compiled.get("dictionary", {}).get("attributes", {})
     for attr_name in changed_dict_attrs:
         attr_def = compiled_dict.get(attr_name)
         if not attr_def:
@@ -489,6 +664,15 @@ def cmd_prepare() -> None:
         for detector in attr_detectors:
             for f in detector(attr_name, attr_def, "dictionary", {}):
                 findings.append(f.to_dict())
+        # Dictionary-level cross-checks
+        for f in check_duplicate_attribute(
+            attr_name, attr_def, "dictionary", compiled_dict
+        ):
+            findings.append(f.to_dict())
+        for f in check_duplicate_description(
+            attr_name, attr_def, "dictionary", compiled_dict
+        ):
+            findings.append(f.to_dict())
 
     # Deduplicate (same rule + container + attribute)
     seen = set()

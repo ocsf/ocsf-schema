@@ -34,6 +34,11 @@ COMMENT_MARKER = "<!-- ocsf-antipattern-check -->"
 # and returns a list of Finding dicts (possibly empty).
 # ---------------------------------------------------------------------------
 
+def _is_deprecated(attr_def: dict) -> bool:
+    """Return True if the attribute definition carries an @deprecated marker."""
+    return bool(attr_def.get("@deprecated"))
+
+
 class Finding:
     """A single anti-pattern finding."""
 
@@ -77,6 +82,8 @@ def check_boolean_trap(
     - boolean_t whose description mentions 3+ distinct states or options
     """
     if attr_def.get("type") != "boolean_t":
+        return []
+    if _is_deprecated(attr_def):
         return []
 
     findings = []
@@ -135,7 +142,9 @@ def check_boolean_proliferation(
     """Flag objects with many is_* booleans that may be a single enum."""
     bool_attrs = [
         name for name, defn in all_attrs.items()
-        if defn.get("type") == "boolean_t" and name.startswith("is_")
+        if defn.get("type") == "boolean_t"
+        and name.startswith("is_")
+        and not _is_deprecated(defn)
     ]
     # Only flag if at least one of the booleans was changed in this PR
     if len(bool_attrs) < 3 or not (set(bool_attrs) & changed_attr_names):
@@ -168,6 +177,8 @@ def check_missing_sibling(
     """Flag _id enum attributes without a corresponding string sibling."""
     if not attr_name.endswith("_id"):
         return []
+    if _is_deprecated(attr_def):
+        return []
     if attr_def.get("type") != "integer_t":
         return []
     if not attr_def.get("enum"):
@@ -199,6 +210,8 @@ def check_tautological_description(
     all_attrs: dict,
 ) -> list[Finding]:
     """Flag descriptions that just restate the attribute name or caption."""
+    if _is_deprecated(attr_def):
+        return []
     desc = attr_def.get("description", "")
     caption = attr_def.get("caption", "")
     if not desc:
@@ -239,6 +252,8 @@ def check_enum_without_description(
     all_attrs: dict,
 ) -> list[Finding]:
     """Flag enum values that have a caption but no description."""
+    if _is_deprecated(attr_def):
+        return []
     enum = attr_def.get("enum")
     if not enum or not isinstance(enum, dict):
         return []
@@ -277,6 +292,8 @@ def check_generic_naming(
     all_attrs: dict,
 ) -> list[Finding]:
     """Flag attributes with overly generic names and thin descriptions."""
+    if _is_deprecated(attr_def):
+        return []
     generic_names = {"type", "name", "value", "data", "info", "details", "status"}
     if attr_name not in generic_names:
         return []
@@ -313,12 +330,16 @@ def check_duplicate_attribute(
     """Flag is_X / X pairs in the dictionary with the same type and meaning."""
     if not attr_name.startswith("is_"):
         return []
+    if _is_deprecated(attr_def):
+        return []
 
     bare_name = attr_name[3:]
     if bare_name not in all_dict_attrs:
         return []
 
     bare_def = all_dict_attrs[bare_name]
+    if _is_deprecated(bare_def):
+        return []
     if bare_def.get("type") != attr_def.get("type"):
         return []
 
@@ -353,6 +374,8 @@ def check_duplicate_description(
     all_dict_attrs: dict,
 ) -> list[Finding]:
     """Flag dictionary attributes with identical descriptions to another attr."""
+    if _is_deprecated(attr_def):
+        return []
     desc = attr_def.get("description", "").strip()
     if not desc or len(desc) < 30 or "See specific usage" in desc:
         return []
@@ -374,6 +397,8 @@ def check_duplicate_description(
         if other_name == attr_name:
             continue
         if other_name.endswith("_dt") or other_name.endswith("_id"):
+            continue
+        if _is_deprecated(other_def):
             continue
         other_desc = other_def.get("description", "").strip()
         if desc == other_desc:
@@ -407,10 +432,12 @@ def check_type_inconsistency(
     all_compiled_objects: dict,
 ) -> list[Finding]:
     """Flag attributes with different types across objects."""
+    if _is_deprecated(attr_def):
+        return []
     types_seen: dict[str, list[str]] = {}
     for obj_name, obj_data in all_compiled_objects.items():
         obj_attr = obj_data.get("attributes", {}).get(attr_name)
-        if obj_attr:
+        if obj_attr and not _is_deprecated(obj_attr):
             t = obj_attr.get("type", "?")
             types_seen.setdefault(t, []).append(obj_name)
 
@@ -439,6 +466,78 @@ def check_type_inconsistency(
     )]
 
 
+def load_learned_patterns() -> list[dict]:
+    """Load learned anti-pattern rules from the config file."""
+    config_path = Path(__file__).parent.parent / "config" / "learned_antipatterns.json"
+    if not config_path.exists():
+        return []
+    try:
+        data = json.loads(config_path.read_text())
+        return data.get("patterns", [])
+    except (json.JSONDecodeError, KeyError):
+        print(f"Warning: Failed to parse {config_path}", file=sys.stderr)
+        return []
+
+
+def check_learned_patterns(
+    attr_name: str,
+    attr_def: dict,
+    container_name: str,
+    all_attrs: dict,
+    learned: list[dict],
+) -> list[Finding]:
+    """Check an attribute against learned anti-pattern rules."""
+    if _is_deprecated(attr_def):
+        return []
+    findings = []
+    desc = attr_def.get("description", "")
+
+    for pattern in learned:
+        match_type = pattern.get("match_type", "")
+        match_value = pattern.get("match_value", "")
+        rule = f"learned:{pattern.get('rule', 'unknown')}"
+        message = pattern.get("message", "Learned anti-pattern match")
+        severity = pattern.get("severity", "warning")
+
+        if match_type == "attr_name_pair":
+            pair = match_value if isinstance(match_value, list) else str(match_value).split(",")
+            if len(pair) == 2 and attr_name in pair:
+                other = pair[0] if pair[1] == attr_name else pair[1]
+                if other in all_attrs:
+                    findings.append(Finding(
+                        rule=rule,
+                        severity=severity,
+                        container=container_name,
+                        attribute=attr_name,
+                        message=message,
+                    ))
+
+        elif match_type == "attr_name_regex":
+            try:
+                if re.fullmatch(match_value, attr_name):
+                    findings.append(Finding(
+                        rule=rule,
+                        severity=severity,
+                        container=container_name,
+                        attribute=attr_name,
+                        message=message,
+                    ))
+            except re.error:
+                pass
+
+        elif match_type == "desc_contains":
+            if isinstance(match_value, str) and match_value.lower() in desc.lower():
+                findings.append(Finding(
+                    rule=rule,
+                    severity=severity,
+                    container=container_name,
+                    attribute=attr_name,
+                    message=message,
+                ))
+
+    return findings
+
+
 def check_id_without_enum(
     attr_name: str,
     attr_def: dict,
@@ -447,6 +546,8 @@ def check_id_without_enum(
 ) -> list[Finding]:
     """Flag integer_t _id attributes that have no enum values defined."""
     if not attr_name.endswith("_id"):
+        return []
+    if _is_deprecated(attr_def):
         return []
     if attr_def.get("type") != "integer_t":
         return []
@@ -590,6 +691,11 @@ def cmd_prepare() -> None:
 
     compiled_dict = compiled.get("dictionary", {}).get("attributes", {})
 
+    # Load learned patterns from config
+    learned = load_learned_patterns()
+    if learned:
+        print(f"Loaded {len(learned)} learned anti-pattern rule(s)")
+
     # Per-attribute detectors (receive: attr_name, attr_def, container, all_attrs)
     attr_detectors = [
         check_boolean_trap,
@@ -626,6 +732,12 @@ def cmd_prepare() -> None:
                 attr_name, attr_def, obj_name, compiled_objects
             ):
                 findings.append(f.to_dict())
+            # Learned pattern checks
+            if learned:
+                for f in check_learned_patterns(
+                    attr_name, attr_def, obj_name, attrs, learned
+                ):
+                    findings.append(f.to_dict())
         # Container-level checks
         for f in check_boolean_proliferation(
             obj_name, attrs, all_changed_attrs
@@ -651,6 +763,12 @@ def cmd_prepare() -> None:
             for detector in attr_detectors:
                 for f in detector(attr_name, attr_def, class_name, attrs):
                     findings.append(f.to_dict())
+            # Learned pattern checks
+            if learned:
+                for f in check_learned_patterns(
+                    attr_name, attr_def, class_name, attrs, learned
+                ):
+                    findings.append(f.to_dict())
         for f in check_boolean_proliferation(
             class_name, attrs, all_changed_attrs
         ):
@@ -673,6 +791,12 @@ def cmd_prepare() -> None:
             attr_name, attr_def, "dictionary", compiled_dict
         ):
             findings.append(f.to_dict())
+        # Learned pattern checks
+        if learned:
+            for f in check_learned_patterns(
+                attr_name, attr_def, "dictionary", compiled_dict, learned
+            ):
+                findings.append(f.to_dict())
 
     # Deduplicate (same rule + container + attribute)
     seen = set()

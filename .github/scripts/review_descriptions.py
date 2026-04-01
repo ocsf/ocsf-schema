@@ -47,6 +47,10 @@ The compiled schema contains:
   attribute also appears in the compiled objects above, review both the generic
   dictionary description and the object-specific resolved descriptions
 
+Deprecated attributes (those with an `@deprecated` marker) have been
+pre-filtered from the compiled schema data. Do not flag or comment on
+deprecated attributes — they are intentionally being phased out.
+
 ## Review Criteria
 
 Evaluate ONLY the changed/added descriptions against these criteria:
@@ -145,6 +149,34 @@ Numbered list. Each item:
 
 If no anti-patterns are found, omit this section entirely.
 
+### Structured Anti-Pattern JSON
+
+After the Anti-Pattern Findings section (if any), append a hidden HTML comment
+block containing a JSON array of your findings. This enables automated
+extraction and learning. Use this exact format:
+
+```
+<!-- antipattern-json
+[
+  {
+    "rule": "semantic-overlap",
+    "container": "object_or_class_name",
+    "attribute": "attribute_name",
+    "pattern": "match_type:match_value",
+    "message": "concise description of the anti-pattern"
+  }
+]
+-->
+```
+
+The `pattern` field describes the structural signature so it can be codified
+as a static rule. Use one of these match types:
+- `attr_name_pair:name1,name2` — two attribute names that overlap
+- `attr_name_regex:regex` — attribute names matching a pattern (e.g., `is_\\w+_verified`)
+- `desc_contains:phrase` — attributes whose description contains a phrase
+
+If you found no anti-patterns, omit this block entirely.
+
 ### CHANGELOG Issues
 List any convention violations.
 
@@ -210,6 +242,19 @@ def extract_changed_dict_attrs(diff: str) -> list[str]:
     return attrs
 
 
+def _strip_deprecated_attrs(definition: dict) -> dict:
+    """Return a copy of an object/class definition with deprecated attributes removed."""
+    if "attributes" not in definition:
+        return definition
+    filtered = {
+        name: attr for name, attr in definition["attributes"].items()
+        if not attr.get("@deprecated")
+    }
+    result = definition.copy()
+    result["attributes"] = filtered
+    return result
+
+
 # ---------------------------------------------------------------------------
 # Phase 1: prepare
 # ---------------------------------------------------------------------------
@@ -251,37 +296,40 @@ def cmd_prepare() -> None:
         if filepath.endswith(".json") and filepath.startswith("objects/"):
             name = Path(filepath).stem
             if name in compiled_objects:
-                context["objects"][name] = compiled_objects[name]
+                context["objects"][name] = _strip_deprecated_attrs(
+                    compiled_objects[name]
+                )
 
         elif filepath.endswith(".json") and filepath.startswith("events/"):
             name = Path(filepath).stem
             if name in compiled_classes:
-                context["classes"][name] = compiled_classes[name]
+                context["classes"][name] = _strip_deprecated_attrs(
+                    compiled_classes[name]
+                )
 
     if "dictionary.json" in changed_files:
         for attr_name in extract_changed_dict_attrs(diff):
             if attr_name not in compiled_dict_attrs:
                 continue
             dict_entry = compiled_dict_attrs[attr_name]
+            if dict_entry.get("@deprecated"):
+                continue
             desc = dict_entry.get("description", "")
 
             if "See specific usage" in desc:
-                # Strip the placeholder suffix and include the generic
-                # dictionary description so Claude can review it too.
                 prefix = desc.split("See specific usage")[0].strip()
                 if prefix:
                     trimmed = dict_entry.copy()
                     trimmed["description"] = prefix
                     context["dictionary_attributes"][attr_name] = trimmed
 
-                # Also pull in compiled objects that use this attribute
-                # so Claude reviews the final resolved descriptions.
                 for obj_name, obj_data in compiled_objects.items():
                     if attr_name in obj_data.get("attributes", {}):
                         if obj_name not in context["objects"]:
-                            context["objects"][obj_name] = obj_data
+                            context["objects"][obj_name] = _strip_deprecated_attrs(
+                                obj_data
+                            )
             else:
-                # Real description — review the dictionary entry directly.
                 context["dictionary_attributes"][attr_name] = dict_entry
 
     output = {
@@ -534,9 +582,82 @@ def cmd_review() -> None:
     )
     review = message.content[0].text
 
+    # Extract structured anti-pattern JSON from Claude's response
+    llm_findings = extract_llm_antipattern_json(review)
+    novel_findings = diff_findings(llm_findings, static_findings or [])
+
+    if novel_findings:
+        print(f"Found {len(novel_findings)} novel LLM-discovered anti-pattern(s)")
+        # Log the JSON for easy copy-paste into learned_antipatterns.json
+        learned_entries = []
+        for f in novel_findings:
+            learned_entries.append({
+                "rule": f.get("rule", "unknown"),
+                "match_type": f.get("pattern", "").split(":")[0] if ":" in f.get("pattern", "") else "manual",
+                "match_value": f.get("pattern", "").split(":", 1)[1] if ":" in f.get("pattern", "") else f.get("pattern", ""),
+                "message": f.get("message", ""),
+                "severity": "warning",
+                "discovered_in_pr": pr_number,
+            })
+        print("--- Learned patterns JSON (add to .github/config/learned_antipatterns.json) ---")
+        print(json.dumps(learned_entries, indent=2))
+        print("--- End learned patterns ---")
+
+        # Append a labeled section to the review comment
+        novel_section = (
+            "\n\n---\n"
+            "### LLM-Discovered Anti-Patterns\n"
+            "_These anti-patterns were identified by LLM analysis and are "
+            "not yet covered by static rules. Consider adding them to "
+            "`.github/config/learned_antipatterns.json`._\n\n"
+        )
+        for i, f in enumerate(novel_findings, 1):
+            novel_section += (
+                f"{i}. **{f.get('rule', 'unknown')}** — "
+                f"`{f.get('container', '?')}`.`{f.get('attribute', '?')}`\n"
+                f"   {f.get('message', '')}\n"
+                f"   > Pattern: `{f.get('pattern', 'N/A')}`\n\n"
+            )
+        review += novel_section
+    else:
+        print("No novel LLM anti-patterns beyond static findings")
+
     print("Posting review comment...")
     post_or_update_comment(pr_number, review)
     print("Done!")
+
+
+def extract_llm_antipattern_json(review_text: str) -> list[dict]:
+    """Extract structured anti-pattern findings from Claude's HTML comment block."""
+    match = re.search(
+        r"<!--\s*antipattern-json\s*\n(.*?)\n\s*-->",
+        review_text,
+        re.DOTALL,
+    )
+    if not match:
+        return []
+    try:
+        findings = json.loads(match.group(1))
+        if isinstance(findings, list):
+            return findings
+    except (json.JSONDecodeError, TypeError):
+        print("Warning: Failed to parse antipattern-json block", file=sys.stderr)
+    return []
+
+
+def diff_findings(
+    llm_findings: list[dict],
+    static_findings: list[dict],
+) -> list[dict]:
+    """Return LLM findings that don't have a matching static finding."""
+    static_keys = {
+        (f.get("container", ""), f.get("attribute", ""))
+        for f in static_findings
+    }
+    return [
+        f for f in llm_findings
+        if (f.get("container", ""), f.get("attribute", "")) not in static_keys
+    ]
 
 
 # ---------------------------------------------------------------------------

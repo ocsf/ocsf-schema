@@ -53,6 +53,49 @@ OCSF is designed for:
 - **Analytics Platforms**: Tools processing and analyzing security data
 - **Data Pipelines**: ETL processes normalizing security data
 
+## Automated PR Review
+
+Pull requests that change schema definitions are automatically reviewed by two complementary workflows.
+
+### Static Anti-Pattern Check
+
+A deterministic checker (`check_antipatterns.py`) runs on every PR and flags structural design issues in changed attributes. It runs without an API key — fast, free, and reproducible.
+
+**What it detects:**
+- **Boolean Trap** — `is_*_known` booleans that mask multi-state concepts
+- **Boolean Proliferation** — objects accumulating 3+ `is_*` booleans that may belong in an enum
+- **Missing Sibling** — `_id` enum attributes without a corresponding string sibling
+- **Tautological Description** — descriptions that just restate the attribute name
+- **Enum Without Description** — enum values that have captions but no descriptions
+- **Generic Naming** — attributes named `type`, `name`, `value` with thin descriptions
+- **Type Inconsistency** — same attribute name with different types across objects
+- **ID Without Enum** — `integer_t` `_id` attributes with no enum values defined
+- **Duplicate Attribute** — `is_X` / `X` pairs with the same type
+- **Duplicate Description** — different attribute names sharing identical description text
+- **Learned Patterns** — rules extracted from previous LLM reviews (stored in `.github/config/learned_antipatterns.json`)
+
+Deprecated attributes are ignored across all checks.
+
+### LLM Description Review
+
+A Claude-powered reviewer (`review_descriptions.py`) evaluates the compiled (fully resolved) schema for description quality and semantic anti-patterns that static analysis cannot catch.
+
+**How it works:**
+1. The `description-review-compile` workflow triggers on `pull_request` events, compiles the schema with `ocsf-schema-compiler`, and saves review context as an artifact
+2. The `description-review-comment` workflow triggers on successful compilation, downloads the artifact, calls Claude, and posts an advisory comment on the PR
+
+**What it evaluates:**
+- Description clarity, precision, and self-containedness
+- Whether descriptions are specific enough for an LLM to correctly populate fields from raw telemetry
+- Semantic anti-patterns (overlap between attributes, incorrect type choices, indirect attribution)
+- CHANGELOG.md convention compliance
+
+The LLM reviewer is context-aware — on re-reviews it acknowledges fixed suggestions and re-raises outstanding ones.
+
+### LLM-to-Static Learning Pipeline
+
+When the LLM discovers a novel anti-pattern not covered by static rules, the finding is labeled in the PR comment and logged as JSON ready for addition to `.github/config/learned_antipatterns.json`. Once a human approves and merges the learned pattern, the static checker picks it up on all future PRs — turning a one-time LLM insight into a permanent, free, deterministic check.
+
 ## 🤝 Contributing
 
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details on:

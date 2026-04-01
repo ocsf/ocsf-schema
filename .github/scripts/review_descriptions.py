@@ -87,6 +87,42 @@ Every CHANGELOG entry MUST:
 Descriptions should be specific enough for an LLM to correctly populate the
 field from raw security telemetry and distinguish it from similar attributes.
 
+## Anti-Pattern Detection
+
+In addition to description quality, flag structural design anti-patterns in
+changed/added attributes:
+
+### 8. Boolean Trap
+Flag `boolean_t` attributes where the concept has more than two meaningful
+states. Common signals:
+- The description mentions conditional logic, multiple options, or "depending on"
+- The boolean answers a meta-question ("is X known?") instead of directly
+  encoding the value — prefer an `integer_t` enum with explicit states
+- Example: `is_src_dst_assignment_known` (boolean) should be `initiator_id`
+  (enum: Unknown, Source Endpoint, Destination Endpoint, Other)
+
+### 9. Semantic Overlap
+Flag attributes on the same object/class that appear to represent the same
+or nearly identical concepts without clear differentiation. Each attribute
+should have a distinct, non-overlapping purpose.
+
+### 10. Incorrect Type Choice
+Flag attributes where the chosen type doesn't match the described semantics:
+- `string_t` used for values that have a fixed set of options (should be enum)
+- `integer_t` without enum for categorical values
+- `boolean_t` for multi-state concepts (see Boolean Trap above)
+
+### 11. Indirect Attribution
+Flag attributes that describe a meta-property about another value rather than
+directly encoding the information. Prefer direct representation.
+- Anti-pattern: `is_connection_type_known` (boolean meta-property)
+- Better: `connection_type_id` (enum that directly encodes the type, with
+  Unknown as a value)
+
+### 12. Cross-Attribute Inconsistency
+When the same attribute name appears on multiple objects in the compiled schema,
+flag cases where the descriptions or types are inconsistent without clear reason.
+
 ## Output Format
 
 Use this markdown structure:
@@ -99,11 +135,21 @@ Numbered list. Each item:
 - **Current**: the current description (quoted)
 - **Suggested**: your improved description (quoted)
 
+### Anti-Pattern Findings
+Numbered list. Each item:
+- **Pattern**: name of the anti-pattern (e.g., Boolean Trap, Semantic Overlap)
+- **Object/Class**: `name`
+- **Attribute**: `attribute_name`
+- **Issue**: what makes this an anti-pattern
+- **Recommendation**: how to restructure it
+
+If no anti-patterns are found, omit this section entirely.
+
 ### CHANGELOG Issues
 List any convention violations.
 
 ### Summary
-1-2 sentence overall assessment.
+1-2 sentence overall assessment covering both descriptions and anti-patterns.
 
 If no issues are found, respond with only:
 > ✅ No description issues found — descriptions look clear for LLM consumption.
@@ -253,7 +299,11 @@ def cmd_prepare() -> None:
 # Phase 2: review
 # ---------------------------------------------------------------------------
 
-def build_review_prompt(data: dict, previous_review: str | None = None) -> str:
+def build_review_prompt(
+    data: dict,
+    previous_review: str | None = None,
+    static_findings: list[dict] | None = None,
+) -> str:
     """Build the prompt string from the saved review context."""
     ctx = data["compiled_context"]
     diff = data["diff"]
@@ -267,6 +317,19 @@ def build_review_prompt(data: dict, previous_review: str | None = None) -> str:
             "suggestions have been addressed and which remain outstanding.\n\n"
             + previous_review
             + "\n\n---\n"
+        )
+
+    if static_findings:
+        parts.append(
+            "## Static Anti-Pattern Findings\n"
+            "The following anti-patterns were detected by static analysis. "
+            "Validate these findings and include confirmed ones in your "
+            "Anti-Pattern Findings section. Also look for additional "
+            "anti-patterns that static analysis cannot catch (semantic "
+            "overlap, incorrect type choices, indirect attribution, etc.).\n"
+            "```json\n"
+            + json.dumps(static_findings, indent=2)
+            + "\n```\n"
         )
 
     if ctx["objects"]:
@@ -431,7 +494,21 @@ def cmd_review() -> None:
     else:
         print("No previous review found (first review)")
 
-    prompt_context = build_review_prompt(data, previous_review=previous_review)
+    # Load static anti-pattern findings if available
+    static_findings = None
+    ap_path = Path("antipattern_results.json")
+    if ap_path.exists():
+        ap_data = json.loads(ap_path.read_text())
+        findings = ap_data.get("findings", [])
+        if findings:
+            static_findings = findings
+            print(f"Loaded {len(findings)} static anti-pattern finding(s)")
+
+    prompt_context = build_review_prompt(
+        data,
+        previous_review=previous_review,
+        static_findings=static_findings,
+    )
 
     print("Calling Claude for review...")
     client = anthropic.Anthropic()
@@ -446,10 +523,11 @@ def cmd_review() -> None:
                 "role": "user",
                 "content": (
                     "Review the following OCSF schema PR changes for "
-                    "description quality and LLM comprehension. The objects "
-                    "and classes below are COMPILED output — fully resolved "
-                    "with inheritance, dictionary merging, and type "
-                    "enrichment applied.\n\n" + prompt_context
+                    "description quality, LLM comprehension, and structural "
+                    "anti-patterns. The objects and classes below are "
+                    "COMPILED output — fully resolved with inheritance, "
+                    "dictionary merging, and type enrichment applied.\n\n"
+                    + prompt_context
                 ),
             }
         ],

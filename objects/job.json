@@ -81,7 +81,7 @@
     },
     "type_id": {
       "description": "The normalized orchestration mechanism name that the job refers to.",
-      "requirement": "required",
+      "requirement": "recommended",
       "enum": {
 	"0": {
 	  "caption": "Unknown",
@@ -112,7 +112,17 @@
     "user": {
       "description": "The user that created the job.",
       "requirement": "optional"
+    },
+    "uid": {
+      "description": "The unique job identifier.",
+      "requirement": "optional"
     }
+  },
+  "constraints": {
+    "at_least_one": [
+      "name",
+      "type_id"
+    ]
   },
   "references": [
     {

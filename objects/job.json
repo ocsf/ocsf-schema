@@ -75,20 +75,44 @@
         }
       }
     },
-    "uid": {
-      "description": "The unique job identifier.",
-      "requirement": "recommended"
+    "type": {
+      "description": "The name of the orchestration mechanism that the job refers to.",
+      "requirement": "optional"
+    },
+    "type_id": {
+      "description": "The normalized orchestration mechanism name that the job refers to.",
+      "requirement": "required",
+      "enum": {
+	"0": {
+	  "caption": "Unknown",
+	  "description": "The job orchestration mechanism is unknown."
+	},
+	"1": {
+	  "caption": "Task Scheduler",
+	  "description": "The job refers to Windows Task Scheduler."
+	},
+	"2": {
+	  "caption": "Cron",
+	  "description": "The job refers to cron utility."
+	},
+	"3": {
+	  "caption": "Systemd",
+	  "description": "The job refers to systemd suite."
+	},
+	"4": {
+	  "caption": "Launchd",
+	  "description": "The job refers to Apple system and service management suite."
+	},
+        "99": {
+          "caption": "Other",
+          "description": "The job orchestration mechanism is not mapped. See the <code>type</code> attribute, which contains a data source specific value."
+        }
+      }
     },
     "user": {
       "description": "The user that created the job.",
       "requirement": "optional"
     }
-  },
-  "constraints": {
-    "at_least_one": [
-      "name",
-      "uid"
-    ]
   },
   "references": [
     {

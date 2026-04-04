@@ -1,9 +1,19 @@
 {
   "uid": 4,
   "caption": "Entity Management",
-  "description": "Entity Management events report activity by a managed client, a micro service, or a user at a management console. The activity can be a create, read, update, and delete operation on a managed entity.",
+  "description": "Entity Management events report activity on managed entities such as users, groups, roles, policies, accounts, devices, and other organizational resources. Activities include create, read, update, delete, enable, disable, lock, unlock, membership changes, privilege assignments, policy attachments, password management, and MFA factor changes. <p><b>When to use this class:</b> Use for any lifecycle or configuration change to an identity, access, or organizational entity. This includes what was previously reported as Account Change, User Access Management, or Group Management. <b>Do not use</b> for identity verification (use <code>Authentication</code>) or session privilege elevation (use <code>Authorize Session</code>).</p>",
   "extends": "iam",
   "name": "entity_management",
+  "references": [
+    {
+      "description": "D3FEND™ Ontology d3f:PermissionGrantingEvent",
+      "url": "https://d3fend.mitre.org/event/d3f:PermissionGrantingEvent/"
+    },
+    {
+      "description": "D3FEND™ Ontology d3f:GroupManagementEvent",
+      "url": "https://d3fend.mitre.org/event/d3f:GroupManagementEvent/"
+    }
+  ],
   "attributes": {
     "access_list": {
       "group": "context",
@@ -66,8 +76,61 @@
         "13": {
           "caption": "Resume",
           "description": "Resume (unsuspend) an existing managed entity."
+        },
+        "14": {
+          "caption": "Lock",
+          "description": "Lock a managed entity."
+        },
+        "15": {
+          "caption": "Unlock",
+          "description": "Unlock a managed entity."
+        },
+        "16": {
+          "caption": "Assign Privileges",
+          "description": "Assign privileges to a managed entity."
+        },
+        "17": {
+          "caption": "Revoke Privileges",
+          "description": "Revoke privileges from a managed entity."
+        },
+        "18": {
+          "caption": "Add Member",
+          "description": "Add a user or subgroup as a member of a group."
+        },
+        "19": {
+          "caption": "Remove Member",
+          "description": "Remove a user or subgroup as a member of a group."
+        },
+        "20": {
+          "caption": "Password Change",
+          "description": "An attempt was made to change a managed entity's password."
+        },
+        "21": {
+          "caption": "Password Reset",
+          "description": "An attempt was made to reset a managed entity's password."
+        },
+        "22": {
+          "caption": "MFA Factor Enable",
+          "description": "One or more authentication factors were enabled."
+        },
+        "23": {
+          "caption": "MFA Factor Disable",
+          "description": "One or more authentication factors were disabled."
+        },
+        "24": {
+          "caption": "Attach Policy",
+          "description": "An IAM Policy was attached to a managed entity."
+        },
+        "25": {
+          "caption": "Detach Policy",
+          "description": "An IAM Policy was detached from a managed entity."
         }
       }
+    },
+    "auth_factors": {
+      "description": "Details about the authentication factors associated with MFA activities.",
+      "group": "context",
+      "requirement": "optional"
     },
     "comment": {
       "description": "The user provided comment about why the entity was changed.",
@@ -81,6 +144,41 @@
     "entity_result": {
       "group": "primary",
       "requirement": "recommended"
+    },
+    "group": {
+      "description": "The group that was the target of the management activity.",
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "policies": {
+      "description": "Details about the IAM policies associated with policy management activities.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "privileges": {
+      "description": "List of privileges assigned to or revoked from the managed entity.",
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "resources": {
+      "description": "Resources that the privileges give access to.",
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "subgroup": {
+      "description": "A subgroup that was added to or removed from a group.",
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "user": {
+      "description": "The user that was the target of the management activity.",
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "user_result": {
+      "description": "The resulting state of the user after the management activity.",
+      "group": "primary",
+      "requirement": "optional"
     }
   }
 }

@@ -83,6 +83,11 @@
       "group": "primary",
       "requirement": "recommended"
     },
+    "parent_event_uid": {
+      "description": "The unique identifier of the parent event that caused or triggered this event. Enables lightweight causality chains (OTel trace alignment).",
+      "group": "context",
+      "requirement": "optional"
+    },
     "raw_data": {
       "group": "context",
       "requirement": "optional"
@@ -125,6 +130,12 @@
       "requirement": "recommended"
     },
     "time": {
+      "description": "The event timestamp as epoch milliseconds. In v2.0, <code>time_dt</code> is the primary time field; this epoch form is retained for backward compatibility.",
+      "group": "occurrence",
+      "requirement": "optional"
+    },
+    "time_dt": {
+      "description": "The event timestamp in RFC 3339 format. This is the primary time field in v2.0.",
       "group": "occurrence",
       "requirement": "required"
     },

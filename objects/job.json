@@ -1,11 +1,11 @@
 {
   "caption": "Job",
-  "description": "The Job object provides information about a scheduled job or task, including its name, command line, and state. It encompasses attributes that describe the properties and status of the scheduled job.",
+  "description": "The Job object provides information about a scheduled job or task, including cron jobs, Windows Task Scheduler tasks, and cloud-managed scheduled tasks. It encompasses attributes that describe the properties, schedule, and execution status of the job.",
   "extends": "_entity",
   "name": "job",
   "attributes": {
     "cmd_line": {
-      "description": "The job command line.",
+      "description": "The command line executed by the job.",
       "requirement": "recommended"
     },
     "created_time": {
@@ -17,51 +17,83 @@
       "requirement": "recommended"
     },
     "file": {
-      "description": "The file that pertains to the job.",
+      "description": "The file or executable that the job runs.",
+      "requirement": "optional"
+    },
+    "is_enabled": {
+      "description": "Indicates whether the job is enabled and eligible to run.",
       "requirement": "optional"
     },
     "last_run_time": {
       "description": "The time when the job was last run.",
       "requirement": "recommended"
     },
+    "modified_time": {
+      "description": "The time when the job was last modified.",
+      "requirement": "optional"
+    },
     "name": {
-      "description": "The name of the job.",
+      "description": "The name of the job. For example, the Windows Task Scheduler task name or cron job label.",
       "requirement": "required"
     },
     "next_run_time": {
       "description": "The time when the job will next be run.",
       "requirement": "optional"
     },
+    "run_count": {
+      "description": "The number of times the job has been executed.",
+      "requirement": "optional"
+    },
     "run_state": {
-      "description": "The run state of the job.",
+      "description": "The run state of the job, normalized to the caption of the <code>run_state_id</code> value. In the case of <code>Other</code>, it is defined by the source.",
       "requirement": "optional"
     },
     "run_state_id": {
-      "description": "The run state ID of the job.",
+      "description": "The normalized run state identifier of the job.",
       "requirement": "recommended",
       "enum": {
         "0": {
           "caption": "Unknown"
         },
         "1": {
-          "caption": "Ready"
+          "caption": "Ready",
+          "description": "The job is ready to run at its next scheduled time or on trigger."
         },
         "2": {
-          "caption": "Queued"
+          "caption": "Queued",
+          "description": "The job is queued for execution."
         },
         "3": {
-          "caption": "Running"
+          "caption": "Running",
+          "description": "The job is currently executing."
         },
         "4": {
-          "caption": "Stopped"
+          "caption": "Stopped",
+          "description": "The job was stopped before completion."
+        },
+        "5": {
+          "caption": "Completed",
+          "description": "The job finished execution successfully."
+        },
+        "6": {
+          "caption": "Failed",
+          "description": "The job finished execution with an error."
+        },
+        "7": {
+          "caption": "Disabled",
+          "description": "The job is disabled and will not run."
         },
         "99": {
           "caption": "Other"
         }
       }
     },
+    "trigger": {
+      "description": "The trigger or schedule that initiates the job. For example, a cron expression, Windows Task Scheduler trigger XML, or cloud schedule rule.",
+      "requirement": "optional"
+    },
     "user": {
-      "description": "The user that created the job.",
+      "description": "The user context under which the job runs, or the user that created the job.",
       "requirement": "optional"
     }
   },

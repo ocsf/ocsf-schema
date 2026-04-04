@@ -55,6 +55,12 @@
       "description": "The account object describes details about the account that was the source or target of the activity. See specific usage.",
       "type": "account"
     },
+    "accounts": {
+      "caption": "Accounts",
+      "description": "All accounts associated with the user across different systems or domains.",
+      "type": "account",
+      "is_array": true
+    },
     "account_switch_type": {
       "caption": "Account Switch Type",
       "description": "The account switch method, normalized to the caption of the account_switch_type_id value. In the case of 'Other', it is defined by the event source.",
@@ -1227,6 +1233,16 @@
       "type": "string_t",
       "is_array": true
     },
+    "cidr": {
+      "caption": "CIDR",
+      "description": "The CIDR notation for a network or subnet. For example: <code>10.0.0.0/16</code>.",
+      "type": "string_t"
+    },
+    "client_application": {
+      "caption": "Client Application",
+      "description": "The client application that initiated a request or connection.",
+      "type": "client_application"
+    },
     "client_hassh": {
       "caption": "Client HASSH",
       "description": "The Client HASSH fingerprinting object.",
@@ -1299,6 +1315,11 @@
       "caption": "Comment",
       "description": "The user-provided comment.",
       "type": "string_t"
+    },
+    "compute_environment": {
+      "caption": "Compute Environment",
+      "description": "The runtime execution environment in which an event originated (e.g., serverless, container, edge).",
+      "type": "compute_environment"
     },
     "community_uid": {
       "caption": "Community ID",
@@ -1950,6 +1971,11 @@
       "description": "An addressable device, computer system or host.",
       "type": "device"
     },
+    "device_detail": {
+      "caption": "Device Detail",
+      "description": "Detailed device information including hardware, OS, network interfaces, and management state.",
+      "type": "device_detail"
+    },
     "devices": {
       "caption": "Devices",
       "description": "The object describes details related to the list of devices.",
@@ -2434,6 +2460,40 @@
       "description": "The updated managed entity.",
       "type": "managed_entity"
     },
+    "entity_type": {
+      "caption": "Entity Type",
+      "description": "The entity type, normalized to the caption of the <code>entity_type_id</code> value. In the case of <code>Other</code>, it is defined by the source.",
+      "type": "string_t"
+    },
+    "entity_type_id": {
+      "caption": "Entity Type ID",
+      "description": "The normalized identifier of the entity type. Used to classify nodes in graph contexts.",
+      "type": "integer_t",
+      "enum": {
+        "0": { "caption": "Unknown" },
+        "1": { "caption": "User", "description": "A user account or identity." },
+        "2": { "caption": "Device", "description": "An endpoint, host, or network device." },
+        "3": { "caption": "Process", "description": "An operating system process." },
+        "4": { "caption": "File", "description": "A file or directory." },
+        "5": { "caption": "Network Endpoint", "description": "A network endpoint (IP, port, protocol)." },
+        "6": { "caption": "Application", "description": "A software application or service." },
+        "7": { "caption": "Cloud Resource", "description": "A cloud infrastructure resource." },
+        "8": { "caption": "Container", "description": "A container or pod." },
+        "9": { "caption": "Domain", "description": "A DNS domain or hostname." },
+        "10": { "caption": "URL", "description": "A Uniform Resource Locator." },
+        "11": { "caption": "Certificate", "description": "A digital certificate." },
+        "12": { "caption": "Vulnerability", "description": "A security vulnerability." },
+        "13": { "caption": "Threat Actor", "description": "A threat actor or adversary." },
+        "14": { "caption": "Group", "description": "A user group or organizational unit." },
+        "15": { "caption": "Policy", "description": "A security or IAM policy." },
+        "16": { "caption": "Subnet", "description": "A network subnet." },
+        "17": { "caption": "VPC", "description": "A virtual private cloud or virtual network." },
+        "18": { "caption": "Database", "description": "A database or data store." },
+        "19": { "caption": "Email", "description": "An email address or mailbox." },
+        "20": { "caption": "Hash", "description": "A file or content hash." },
+        "99": { "caption": "Other" }
+      }
+    },
     "environment_variables": {
       "caption": "Environment Variables",
       "description": "An array of environment variables.",
@@ -2468,6 +2528,16 @@
     "event_code": {
       "caption": "Event Code",
       "description": "The <code>Event ID, Code, or Name</code> that the product uses to primarily identify the event.",
+      "type": "string_t"
+    },
+    "event_graph": {
+      "caption": "Event Graph",
+      "description": "A unified graph projection of all entities and relationships present in the event. Nodes are typed via <code>entity_type_id</code> and edges via <code>relation_id</code>, enabling domain-specific views (identity, topology, temporal, data lineage, dependency) from a single graph. <b>Note:</b> The graph adds payload overhead. For high-volume sources, populate selectively — during enrichment, on sampled events, or when promoted for investigation.",
+      "type": "graph"
+    },
+    "event_name": {
+      "caption": "Event Name",
+      "description": "The name of the original event as defined by the event source. For example, a Windows event log name or syslog facility.",
       "type": "string_t"
     },
     "event_uid": {
@@ -3271,6 +3341,11 @@
       "description": "The indication of whether the value is from a default value name. For example, the value name could be missing.",
       "type": "boolean_t"
     },
+    "is_enabled": {
+      "caption": "Enabled",
+      "description": "Indicates whether the entity is enabled.",
+      "type": "boolean_t"
+    },
     "is_deleted": {
       "caption": "Deleted",
       "description": "Indicates if the entity was deleted. See specific usage.",
@@ -3314,6 +3389,11 @@
     "is_http_only": {
       "caption": "HTTP Only",
       "description": "This attribute prevents the cookie from being accessed via JavaScript.",
+      "type": "boolean_t"
+    },
+    "is_inspected": {
+      "caption": "Inspected",
+      "description": "Indicates whether TLS traffic was decrypted and inspected by a security device.",
       "type": "boolean_t"
     },
     "is_locked": {
@@ -4274,6 +4354,12 @@
       "caption": "Office Location",
       "description": "The primary office location associated with the user. This could be any string and isn't a specific address. For example, <code>South East Virtual</code>.",
       "type": "string_t"
+    },
+    "ontology_refs": {
+      "caption": "Ontology References",
+      "description": "Cross-references to external ontologies and schema standards. For example: <code>[\"d3f:UserAccount\", \"stix:identity\"]</code>.",
+      "type": "string_t",
+      "is_array": true
     },
     "opcode": {
       "caption": "DNS Opcode",
@@ -5250,7 +5336,7 @@
     },
     "relation": {
       "caption": "Relation",
-      "description": "The relationship between two entities. See specific usage.",
+      "description": "The relationship between two entities, normalized to the caption of the <code>relation_id</code> value. In the case of <code>Other</code>, it is defined by the source.",
       "type": "string_t"
     },
     "relationship": {
@@ -5282,6 +5368,68 @@
       "caption": "Relay",
       "description": "The network relay that is associated with the event.",
       "type": "network_interface"
+    },
+    "relation_id": {
+      "caption": "Relation ID",
+      "description": "The normalized identifier of the relationship type between two nodes in a graph.",
+      "sibling": "relation",
+      "type": "integer_t",
+      "enum": {
+        "0": { "caption": "Unknown" },
+        "1": { "caption": "Owns", "description": "The source entity owns the target entity." },
+        "2": { "caption": "Uses", "description": "The source entity uses or accesses the target entity." },
+        "3": { "caption": "Member Of", "description": "The source is a member of the target group or collection." },
+        "4": { "caption": "Manages", "description": "The source manages or administers the target." },
+        "5": { "caption": "Created", "description": "The source created the target entity." },
+        "6": { "caption": "Modified", "description": "The source modified the target entity." },
+        "7": { "caption": "Deleted", "description": "The source deleted the target entity." },
+        "8": { "caption": "Connects To", "description": "The source has a network connection to the target." },
+        "9": { "caption": "Authenticates To", "description": "The source authenticated to the target." },
+        "10": { "caption": "Runs On", "description": "The source runs on the target (e.g., process on device)." },
+        "11": { "caption": "Contains", "description": "The source contains the target (e.g., folder contains file)." },
+        "12": { "caption": "Parent Of", "description": "The source is the parent of the target." },
+        "13": { "caption": "Child Of", "description": "The source is a child of the target." },
+        "14": { "caption": "Depends On", "description": "The source depends on the target." },
+        "15": { "caption": "Resolves To", "description": "The source resolves to the target (e.g., DNS)." },
+        "16": { "caption": "Hosted On", "description": "The source is hosted on the target." },
+        "17": { "caption": "Loaded By", "description": "The source was loaded by the target." },
+        "18": { "caption": "Signed By", "description": "The source was signed by the target." },
+        "19": { "caption": "Communicates With", "description": "The source communicates with the target." },
+        "20": { "caption": "Targets", "description": "The source targets the target (e.g., attack)." },
+        "21": { "caption": "Exploits", "description": "The source exploits the target vulnerability." },
+        "22": { "caption": "Impersonates", "description": "The source impersonates the target identity." },
+        "23": { "caption": "Escalated To", "description": "Privilege escalation from source to target." },
+        "24": { "caption": "Grants", "description": "The source grants access/permission to the target." },
+        "25": { "caption": "Revokes", "description": "The source revokes access/permission from the target." },
+        "26": { "caption": "Reads", "description": "The source reads from the target." },
+        "27": { "caption": "Writes", "description": "The source writes to the target." },
+        "28": { "caption": "Encrypts", "description": "The source encrypts the target." },
+        "29": { "caption": "Decrypts", "description": "The source decrypts the target." },
+        "30": { "caption": "Scans", "description": "The source scans the target." },
+        "31": { "caption": "Blocks", "description": "The source blocks the target." },
+        "32": { "caption": "Allows", "description": "The source allows the target." },
+        "33": { "caption": "Derived From", "description": "The source is derived from the target." },
+        "34": { "caption": "Preceded By", "description": "The source was preceded by the target (temporal)." },
+        "99": { "caption": "Other" }
+      }
+    },
+    "related_hashes": {
+      "caption": "Related Hashes",
+      "description": "A denormalized array of all file and content hashes referenced in the event. Optimized for point-lookup queries (e.g., IoC matching) in columnar storage.",
+      "type": "string_t",
+      "is_array": true
+    },
+    "related_ips": {
+      "caption": "Related IPs",
+      "description": "A denormalized array of all IP addresses referenced in the event. Optimized for point-lookup queries in columnar storage.",
+      "type": "ip_t",
+      "is_array": true
+    },
+    "related_users": {
+      "caption": "Related Users",
+      "description": "A denormalized array of all usernames referenced in the event. Optimized for point-lookup queries in columnar storage.",
+      "type": "username_t",
+      "is_array": true
     },
     "release": {
       "caption": "Software Release Details",
@@ -6077,6 +6225,16 @@
         }
       }
     },
+    "source_name": {
+      "caption": "Source Name",
+      "description": "The name of the event source, such as a log file, application, or service that generated the event.",
+      "type": "string_t"
+    },
+    "source_type": {
+      "caption": "Source Type",
+      "description": "The type of the event source (e.g., log file, API, agent, syslog).",
+      "type": "string_t"
+    },
     "sp_name": {
       "caption": "OS Service Pack",
       "description": "The name of the latest Service Pack.",
@@ -6543,7 +6701,7 @@
     },
     "time": {
       "caption": "Event Time",
-      "description": "The normalized event occurrence time or the finding creation time.",
+      "description": "Epoch-millis occurrence time for backward compatibility. The canonical event timestamp is <code>time_dt</code> (RFC 3339); prefer <code>time_dt</code> for new producers and analytics.",
       "type": "timestamp_t"
     },
     "timespan": {
@@ -6553,12 +6711,12 @@
     },
     "time_dt": {
       "caption": "Event Time (RFC 3339)",
-      "description": "The event timestamp in RFC 3339 date/time format. This is the primary time field in v2.0.",
+      "description": "The default and canonical event timestamp in RFC 3339 date/time format (v2.0). Use this field as the primary occurrence time; use <code>time</code> only when epoch millis is required for legacy consumers.",
       "type": "datetime_t"
     },
     "timezone_offset": {
       "caption": "Timezone Offset",
-      "description": "The number of minutes that the reported event <code>time</code> is ahead or behind UTC, in the range -1,080 to +1,080.",
+      "description": "The number of minutes that the reported event <code>time_dt</code> (or, if used, <code>time</code>) is ahead or behind UTC, in the range -1,080 to +1,080.",
       "type": "integer_t"
     },
     "title": {
@@ -6676,6 +6834,11 @@
     "tree_uid": {
       "caption": "Tree UID",
       "description": "The tree id is a unique SMB identifier which represents an open connection to a share.",
+      "type": "string_t"
+    },
+    "trigger": {
+      "caption": "Trigger",
+      "description": "The trigger or schedule that initiates a job or task. For example, a cron expression, Windows Task Scheduler trigger, or cloud schedule rule.",
       "type": "string_t"
     },
     "ttl": {
@@ -6975,6 +7138,11 @@
       "caption": "Volume",
       "description": "The volume on the storage device where the file is located. See specific usage.",
       "type": "string_t"
+    },
+    "vpc": {
+      "caption": "VPC",
+      "description": "The Virtual Private Cloud in which the resource resides.",
+      "type": "vpc"
     },
     "vpc_uid": {
       "caption": "VPC UID",

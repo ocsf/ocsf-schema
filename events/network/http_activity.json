@@ -5,9 +5,6 @@
   "extends": "network",
   "name": "http_activity",
   "attributes": {
-    "$include": [
-      "profiles/trace.json"
-    ],
     "activity_id": {
       "enum": {
         "1": {
@@ -48,6 +45,11 @@
         }
       }
     },
+    "client_application": {
+      "description": "The client application or tool that initiated the HTTP request, when known (e.g., SDK, mobile app, API client).",
+      "group": "context",
+      "requirement": "optional"
+    },
     "file": {
       "description": "The file that is the target of the HTTP activity.",
       "group": "context",
@@ -72,9 +74,6 @@
       "http_response"
     ]
   },
-  "profiles": [
-    "trace"
-  ],
   "references": [
     {
       "description": "D3FEND™ Ontology d3f:HTTPEvent",

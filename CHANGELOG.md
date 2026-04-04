@@ -41,8 +41,104 @@ Thankyou! -->
 
 -->
 
-## [Unreleased]
+## [Unreleased] — v2.0.0-dev
 
+### Added
+* #### Profiles
+  1. Added `event_graph` profile providing a unified graph projection on all event classes. Nodes are typed via `entity_type_id` and edges via `relation_id`, enabling domain-specific views (identity, topology, temporal, data lineage, dependency) from a single graph.
+* #### Objects
+  1. Added `client_application` object for describing the software application that initiated a request or connection, with `type_id` enum (Browser, CLI, SDK, Mobile App, Desktop App, Service, API Client).
+  1. Added `compute_environment` object for describing the runtime execution environment (Server, Serverless, Container, Edge, Embedded).
+  1. Added `device_detail` object extending `device` for network interfaces, posture flags, and risk scoring; OS, hardware, and agents remain on the `endpoint` / `device` inheritance chain.
+  1. Added `subnet` object (extends `_entity`) for network subnet representation with CIDR and VPC association.
+  1. Added `vpc` object (extends `_entity`) for virtual private cloud representation.
+* #### Dictionary Attributes
+  1. Added `accounts` attribute (array of `account`) for multi-account user representation.
+  1. Added `cidr` attribute for CIDR notation on subnets and VPCs.
+  1. Added `client_application` attribute for client application context.
+  1. Added `compute_environment` attribute for runtime execution environment context.
+  1. Added `conn_state_id` and `conn_state` attributes for Zeek-style TCP connection state tracking.
+  1. Added `connection_history` attribute for Zeek-style connection history flags.
+  1. Added `device_detail` attribute for detailed device information.
+  1. Added `entity_type_id` and `entity_type` attributes to classify nodes in graph contexts with 21-value enum.
+  1. Added `event_graph` attribute for unified graph projection of event contents.
+  1. Added `event_name` attribute for original event name from the source system.
+  1. Added `finding_type_id` and `finding_type` attributes for discriminative finding classification (Detection, Vulnerability, Compliance, Data Security, App Security Posture, IAM Analysis).
+  1. Added `flow_direction_id` and `flow_direction` attributes for IPFIX-style network flow direction.
+  1. Added `is_enabled` boolean attribute for entity enabled state.
+  1. Added `is_inspected` boolean attribute for TLS traffic inspection state.
+  1. Added `ontology_refs` attribute for cross-references to external ontologies and schema standards.
+  1. Added `orig_bytes`, `orig_pkts`, `resp_bytes`, `resp_pkts` attributes for directional network counters.
+  1. Added `parent_event_uid` attribute for lightweight causality chains (OTel alignment).
+  1. Added `query_length` and `answer_length` attributes for DNS message size tracking.
+  1. Added `related_hashes`, `related_ips`, `related_users` denormalized search arrays optimized for columnar storage queries.
+  1. Added `relation_id` attribute with 34-value normalized enum for typed edge relationships across identity, topology, temporal, data lineage, and dependency domains.
+  1. Added `source_name` and `source_type` attributes for event source metadata.
+  1. Added `subdomain`, `tld`, `parent_domain` attributes for DNS domain decomposition.
+  1. Added `time_dt` attribute (`datetime_t`) as the primary RFC 3339 event timestamp.
+  1. Added `trigger` attribute for job/task schedule definitions.
+  1. Added `tunnel_chain` attribute for ordered tunnel/proxy traversal tracking.
+  1. Added `vpc` attribute (object type) for VPC context.
+  1. Added Windows registry and service dictionary attributes to core: `reg_key`, `reg_value`, `reg_binary_data`, `reg_integer_data`, `reg_string_data`, `reg_string_list_data`, `prev_reg_key`, `prev_reg_value`, `win_resource`, `win_service`, `service_category_id`, `service_category`, `service_dependencies`, `service_dll_file`, `service_error_control_id`, `service_error_control`, `service_file`, `service_start_name`, `service_start_type_id`, `service_start_type`, `service_type_id`, `service_type`, `load_order_group`, `run_count`, `hosted_services`, `hosting_process`.
+  1. Added `reg_key_path_t` type for registry key paths.
+  1. Added `map_t` type for semi-structured key-value data (replaces most `json_t` usage).
+  1. Added `datetime_t` type for RFC 3339 formatted timestamps.
+
+### Improved
+* #### Event Classes
+  1. Expanded `entity_management` event class with 12 new activity types (Lock, Unlock, Assign/Revoke Privileges, Add/Remove Member, Password Change/Reset, MFA Factor Enable/Disable, Attach/Detach Policy) and 8 new attributes absorbed from deleted IAM classes.
+  1. Undeprecated `security_finding` and expanded with `finding_type_id` discriminator and attributes merged from 6 deleted finding classes.
+  1. Added network flow/state attributes (`conn_state_id`, `flow_direction_id`, directional counters, `tunnel_chain`) to the base network event class.
+  1. Renamed `device_config_state_change` to `device_state_change` for clarity.
+  1. Moved Windows event classes (`registry_key_activity`, `registry_value_activity`, `windows_service_activity`, `windows_resource_activity`) from extensions to core system category.
+  1. Aligned `security_finding` and `entity_management` attribute groups: contextual fields use `context`/`optional` instead of overstating `primary`/`recommended` when values are activity-specific.
+  1. Added optional `vpc` to the base `network` event class; optional `client_application` to `http_activity`; optional `ontology_refs` to `base_event`; optional `device_detail` to `inventory_info`.
+* #### Profiles
+  1. Inlined former profiles into core definitions: `cloud`, `host`, and `trace` attributes on `base_event`; `network_proxy` and `load_balancer` on `network` (and proxy fields on `web_resources_activity`); `incident` semantics on `finding`; `data_classifications` on `metadata`, `_resource`, and selected objects; `container` context on `process` and `endpoint`. Removed the empty `datetime` profile; RFC 3339 timing is core on `base_event` via required `time_dt`, with optional epoch `time` for compatibility. Remaining standalone profiles: `event_graph`, `osint`, `security_control`, `ai_operation`. The folded `cloud` attribute is optional (`context` group) on `base_event`, `resource_details`, and `databucket` so on-prem and non-cloud events do not need a synthetic cloud object.
+* #### Objects
+  1. Promoted 18 objects to extend `_entity` for stronger entity identity: `agent`, `application`, `check`, `classifier_details`, `container`, `domain_contact`, `node`, `osint`, `package`, `scim`, `script`, `sso`, `token`, `autonomous_system`, `campaign`, `job`, `threat_actor`, `session`.
+  1. Made `uid` required on `_entity` base object; added `created_time` and `modified_time` lifecycle timestamps.
+  1. Added `entity_type_id` and `entity_type` to `node` object for typed graph node classification.
+  1. Added `relation_id` to `edge` object for normalized typed edge relationships.
+  1. Absorbed `ldap_person` attributes directly into `user` object (`department`, `job_title`, `employee_uid`, `given_name`, `surname`, `hire_time`, `leave_time`, `ldap_cn`, `ldap_dn`, `office_location`, `email_addrs`, `cost_center`, `last_login_time`).
+  1. Added `is_enabled` and `accounts` to `user` object.
+  1. Added `is_inspected` to `tls` object.
+  1. Redesigned `job` object with Windows Task Scheduler compatibility: added `run_count`, `trigger`, `is_enabled`, expanded `run_state_id` enum (Completed, Failed, Disabled).
+  1. Added `Unknown` (0) to `digital_signature` `state_id` enum.
+  1. Expanded `managed_entity` `type_id` enum with Account (8), Role (9), Certificate (10).
+  1. Added `event_name`, `source_type`, `source_name` to `metadata` object.
+  1. Added DNS enrichment attributes (`subdomain`, `tld`, `parent_domain`, `query_length`) to `dns_query` and `answer_length` to `dns_answer`.
+  1. Added `flow_direction_id` to `network_connection_info`.
+  1. Added `ip_list` to `network_interface` for multiple IP addresses.
+  1. Added `uid` to `url` for entity identification in topology graphs.
+  1. Folded Linux/macOS process attributes (`auid`, `egid`, `euid`, `group`) and Windows process attribute (`hosted_services`) into core `process` object.
+  1. Moved Windows objects (`registry_key`, `registry_value`, `win_resource`, `win_service`) from extensions to core.
+  1. Merged Windows evidence artifacts (`reg_key`, `reg_value`, `win_service`) into core `evidences` and `query_evidence` objects.
+  1. Clarified `device` vs `device_detail`: posture, risk, and `network_interfaces` live on `device_detail` only; `device` description documents the split.
+  1. Clarified `node` object: prefer `entity_type_id` / `entity_type` over generic `type` for normalized graph use cases.
+* #### Dictionary Attributes
+  1. Updated `relation` description to reference `relation_id` sibling.
+
+### Breaking changes
+  1. Removed 13 deprecated query event classes: `admin_group_query`, `file_query`, `folder_query`, `job_query`, `kernel_object_query`, `module_query`, `network_connection_query`, `networks_query`, `peripheral_device_query`, `process_query`, `service_query`, `session_query`, `startup_item_query`, `user_query`.
+  1. Removed 3 deprecated network event classes: `email_file_activity`, `email_url_activity`, `network_file_activity`.
+  1. Removed `web_resource_access_activity` event class.
+  1. Removed deprecated discovery event classes: `config_state`, `software_info`.
+  1. Consolidated 3 IAM event classes into `entity_management`: deleted `account_change`, `user_access`, `group_management`.
+  1. Consolidated 6 finding event classes into `security_finding`: deleted `vulnerability_finding`, `compliance_finding`, `detection_finding`, `data_security_finding`, `application_security_posture_finding`, `iam_analysis_finding`.
+  1. Removed 4 deprecated objects: `finding`, `cis_csc`, `cis_benchmark`, `cis_benchmark_result`.
+  1. Removed 32 deprecated dictionary attributes.
+  1. Removed deprecated attributes from 15 objects (`account`, `actor`, `compliance`, `email`, `file`, `process`, `tls`, `location`, `malware`, `discovery_details`, `cve`, `vulnerability`, `databucket`, `user`, `analytic`).
+  1. Removed platform extensions directory (`linux`, `macos`, `windows`); all platform content folded into core schema.
+  1. Made `uid` required on `_entity` base object.
+  1. Made `time_dt` (RFC 3339) the required primary time field; demoted `time` (epoch) to optional.
+  1. Deleted Windows query events: `registry_key_query`, `registry_value_query`, `prefetch_query`.
+  1. Removed recursive `manager` attribute from `ldap_person`.
+  1. `device` object no longer defines `network_interfaces` or posture/risk attributes; populate those on `device_detail` (optional `device_detail` on `base_event` carries extended host context).
+  1. Removed profile definitions `cloud`, `host`, `trace`, `container`, `data_classification`, `incident`, `network_proxy`, `load_balancer`, and `datetime` (attributes are core or class-local). Event `metadata.profiles` and class-level `profiles` arrays must no longer reference those names; use the merged schema shape only.
+
+### Misc
+  1. Updated schema version to `2.0.0-dev`.
 
 ## [v1.8.0] - Mar 16th, 2026
 ### Added

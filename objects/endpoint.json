@@ -5,11 +5,12 @@
   "extends": "_entity",
   "name": "endpoint",
   "attributes": {
-    "$include": [
-      "profiles/container.json"
-    ],
     "agent_list": {
       "requirement": "optional"
+    },
+    "container": {
+      "group": "context",
+      "requirement": "recommended"
     },
     "domain": {
       "description": "The name of the domain that the endpoint belongs to or that corresponds to the endpoint.",
@@ -49,6 +50,10 @@
     },
     "name": {
       "description": "The short name of the endpoint."
+    },
+    "namespace_pid": {
+      "group": "context",
+      "requirement": "recommended"
     },
     "os": {
       "description": "The endpoint operating system.",
@@ -162,9 +167,6 @@
       "interface_name"
     ]
   },
-  "profiles": [
-    "container"
-  ],
   "references": [
     {
       "description": "D3FEND™ Ontology d3f:Host.",

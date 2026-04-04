@@ -130,7 +130,7 @@ An example `vulnerability.json` object file,
         ```
         "attributes": {
           "$include": [
-            "profiles/host.json"
+            "profiles/event_graph.json"
           ],
           ...
         }
@@ -179,7 +179,7 @@ Choose a **unique** object you want to add, `vulnerability` in the example above
         ```
         "attributes": {
           "$include": [
-            "profiles/cloud.json"
+            "profiles/ai_operation.json"
           ],
           ...
         }

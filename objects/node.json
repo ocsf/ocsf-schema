@@ -1,6 +1,6 @@
 {
   "caption": "Node",
-  "description": "Represents a node or a vertex in a graph structure.",
+  "description": "Represents a node or vertex in a graph structure. For normalized, cross-domain filtering (identity, topology, lineage), prefer <code>entity_type_id</code> and <code>entity_type</code>; use <code>type</code> only for legacy or source-specific labels that do not map to the entity type enum.",
   "extends": "_entity",
   "name": "node",
   "attributes": {
@@ -12,12 +12,20 @@
       "description": "A human-readable description of the node's purpose or meaning in the graph.",
       "requirement": "optional"
     },
+    "entity_type": {
+      "description": "The entity type of this node, normalized to the caption of the <code>entity_type_id</code> value.",
+      "requirement": "optional"
+    },
+    "entity_type_id": {
+      "description": "The normalized identifier of the entity type represented by this node.",
+      "requirement": "optional"
+    },
     "name": {
       "description": "A human-readable name or label for the node. Should be descriptive and unique within the graph context.",
       "requirement": "recommended"
     },
     "type": {
-      "description": "Categorizes the node into a specific class or type. Useful for grouping and filtering nodes.",
+      "description": "Source-specific or legacy category string. Prefer <code>entity_type_id</code> for normalized node classification in <code>event_graph</code> projections.",
       "requirement": "optional"
     },
     "uid": {

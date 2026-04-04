@@ -5,9 +5,6 @@
   "extends": "base_event",
   "name": "finding",
   "attributes": {
-    "$include": [
-      "profiles/incident.json"
-    ],
     "activity_id": {
       "description": "The normalized identifier of the finding activity.",
       "enum": {
@@ -27,6 +24,14 @@
     },
     "activity_name": {
       "description": "The finding activity name, as defined by the <code>activity_id</code>."
+    },
+    "assignee": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "assignee_group": {
+      "group": "context",
+      "requirement": "optional"
     },
     "comment": {
       "description": "A user provided comment about the finding.",
@@ -61,6 +66,30 @@
     "finding_info": {
       "group": "primary",
       "requirement": "required"
+    },
+    "impact": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "impact_id": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "impact_score": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "is_suspected_breach": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "priority": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "priority_id": {
+      "group": "context",
+      "requirement": "recommended"
     },
     "start_time": {
       "description": "The time of the least recent event included in the finding.",
@@ -102,12 +131,34 @@
         }
       }
     },
+    "src_url": {
+      "description": "A Url link used to access the original incident.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "ticket": {
+      "group": "context",
+      "requirement": "optional",
+      "@deprecated": {
+        "message": "Use <code>tickets</code> instead.",
+        "since": "1.5.0"
+      }
+    },
+    "tickets": {
+      "group": "context",
+      "requirement": "optional"
+    },
     "vendor_attributes": {
       "group": "context",
       "requirement": "optional"
+    },
+    "verdict": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "verdict_id": {
+      "group": "primary",
+      "requirement": "recommended"
     }
-  },
-  "profiles": [
-    "incident"
-  ]
+  }
 }

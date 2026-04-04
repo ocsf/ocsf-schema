@@ -5,15 +5,16 @@
   "extends": "process_entity",
   "name": "process",
   "attributes": {
-    "$include": [
-      "profiles/container.json"
-    ],
     "ancestry": {
       "requirement": "optional"
     },
     "auid": {
       "description": "The audit user ID (Linux). The original login UID that is preserved across privilege escalation.",
       "requirement": "optional"
+    },
+    "container": {
+      "group": "context",
+      "requirement": "recommended"
     },
     "egid": {
       "description": "The effective group ID of the process (Linux/macOS).",
@@ -47,6 +48,10 @@
     },
     "loaded_modules": {
       "requirement": "optional"
+    },
+    "namespace_pid": {
+      "group": "context",
+      "requirement": "recommended"
     },
     "parent_process": {
       "requirement": "recommended"
@@ -84,9 +89,6 @@
       "cpid"
     ]
   },
-  "profiles": [
-    "container"
-  ],
   "references": [
     {
       "description": "D3FEND™ Ontology d3f:Process",

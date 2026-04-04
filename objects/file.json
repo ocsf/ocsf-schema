@@ -5,9 +5,6 @@
   "extends": "_entity",
   "name": "file",
   "attributes": {
-    "$include": [
-      "profiles/data_classification.json"
-    ],
     "accessed_time": {
       "requirement": "optional"
     },
@@ -29,6 +26,10 @@
     "created_time": {
       "description": "The time when the file was created.",
       "requirement": "optional"
+    },
+    "data_classifications": {
+      "group": "context",
+      "requirement": "recommended"
     },
     "creator": {
       "description": "The user that created the file.",
@@ -198,9 +199,6 @@
     }
   },
   "constraints": {},
-  "profiles": [
-    "data_classification"
-  ],
   "references": [
     {
       "description": "D3FEND™ Ontology d3f:File",

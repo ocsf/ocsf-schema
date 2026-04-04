@@ -4,9 +4,6 @@
   "extends": "_entity",
   "name": "_resource",
   "attributes": {
-    "$include": [
-      "profiles/data_classification.json"
-    ],
     "created_time": {
       "description": "The time when the resource was created.",
       "requirement": "optional"
@@ -14,6 +11,10 @@
     "data": {
       "description": "Additional data describing the resource.",
       "requirement": "optional"
+    },
+    "data_classifications": {
+      "group": "context",
+      "requirement": "recommended"
     },
     "labels": {
       "description": "The list of labels associated to the resource.",
@@ -43,8 +44,5 @@
       "requirement": "optional",
       "type": "resource_uid_t"
     }
-  },
-  "profiles": [
-    "data_classification"
-  ]
+  }
 }

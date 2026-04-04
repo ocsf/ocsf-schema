@@ -1,0 +1,68 @@
+{
+  "caption": "Client Application",
+  "description": "The Client Application object describes the software application that initiated a request or connection. This provides richer context than user-agent string parsing for identifying client software in API calls, web requests, and service interactions.",
+  "extends": "_entity",
+  "name": "client_application",
+  "attributes": {
+    "name": {
+      "description": "The name of the client application. For example: <code>Postman</code>, <code>curl</code>, <code>AWS CLI</code>.",
+      "requirement": "recommended"
+    },
+    "type": {
+      "description": "The type of client application, normalized to the caption of the <code>type_id</code> value. In the case of <code>Other</code>, it is defined by the source.",
+      "requirement": "optional"
+    },
+    "type_id": {
+      "description": "The normalized client application type identifier.",
+      "requirement": "recommended",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Browser",
+          "description": "A web browser application."
+        },
+        "2": {
+          "caption": "CLI",
+          "description": "A command-line interface tool."
+        },
+        "3": {
+          "caption": "SDK",
+          "description": "A software development kit or library."
+        },
+        "4": {
+          "caption": "Mobile App",
+          "description": "A mobile application."
+        },
+        "5": {
+          "caption": "Desktop App",
+          "description": "A desktop application."
+        },
+        "6": {
+          "caption": "Service",
+          "description": "A backend service or microservice."
+        },
+        "7": {
+          "caption": "API Client",
+          "description": "A dedicated API client or testing tool."
+        },
+        "99": {
+          "caption": "Other"
+        }
+      }
+    },
+    "uid": {
+      "description": "The unique identifier of the client application. For example, an OAuth client ID or registered application ID.",
+      "requirement": "recommended"
+    },
+    "vendor_name": {
+      "description": "The vendor of the client application.",
+      "requirement": "optional"
+    },
+    "version": {
+      "description": "The version of the client application.",
+      "requirement": "optional"
+    }
+  }
+}

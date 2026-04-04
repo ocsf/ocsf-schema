@@ -1,16 +1,46 @@
 {
   "caption": "Base Event",
   "category": "other",
-  "description": "The base event is a generic and concrete event. It also defines a set of attributes available in most event classes. As a generic event that does not belong to any event category, it could be used to log events that are not otherwise defined by the schema.",
+  "description": "The base event is a generic and concrete event. It also defines a set of attributes available in most event classes. As a generic event that does not belong to any event category, it could be used to log events that are not otherwise defined by the schema. The canonical occurrence timestamp for every event is <code>time_dt</code> (RFC 3339). The epoch-millis <code>time</code> field is optional and retained for backward compatibility.",
   "name": "base_event",
   "attributes": {
     "$include": [
-      "profiles/cloud.json",
-      "profiles/datetime.json",
-      "profiles/host.json",
+      "profiles/event_graph.json",
       "profiles/osint.json",
       "profiles/security_control.json"
     ],
+    "actor": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "api": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "cloud": {
+      "description": "Cloud provider and region context when the event originates from or pertains to a cloud environment.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "compute_environment": {
+      "description": "The runtime environment for serverless, container, or edge workloads related to this event.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "device": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "device_detail": {
+      "description": "Extended device context (interfaces, posture, risk). Use with <code>device</code> when producers capture detailed host or inventory data.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "trace": {
+      "description": "Distributed trace context (e.g., OpenTelemetry) when the event participates in a traced request.",
+      "group": "context",
+      "requirement": "optional"
+    },
     "activity_id": {
       "group": "classification",
       "requirement": "required",
@@ -83,8 +113,28 @@
       "group": "primary",
       "requirement": "recommended"
     },
+    "ontology_refs": {
+      "description": "Optional cross-references to external ontologies (e.g., D3FEND, STIX, UCO) for interoperability and analytics.",
+      "group": "context",
+      "requirement": "optional"
+    },
     "parent_event_uid": {
       "description": "The unique identifier of the parent event that caused or triggered this event. Enables lightweight causality chains (OTel trace alignment).",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "related_hashes": {
+      "description": "A denormalized array of all file and content hashes in the event, for optimized IoC matching in columnar storage.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "related_ips": {
+      "description": "A denormalized array of all IP addresses in the event, for optimized point-lookup queries in columnar storage.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "related_users": {
+      "description": "A denormalized array of all usernames in the event, for optimized point-lookup queries in columnar storage.",
       "group": "context",
       "requirement": "optional"
     },
@@ -130,12 +180,12 @@
       "requirement": "recommended"
     },
     "time": {
-      "description": "The event timestamp as epoch milliseconds. In v2.0, <code>time_dt</code> is the primary time field; this epoch form is retained for backward compatibility.",
+      "description": "Optional event timestamp as epoch milliseconds. The default and required occurrence time is <code>time_dt</code>; populate this only when a pipeline or consumer still expects epoch millis.",
       "group": "occurrence",
       "requirement": "optional"
     },
     "time_dt": {
-      "description": "The event timestamp in RFC 3339 format. This is the primary time field in v2.0.",
+      "description": "The default event occurrence timestamp in RFC 3339 format. Producers must set this field; it is the canonical event time in v2.0.",
       "group": "occurrence",
       "requirement": "required"
     },
@@ -157,9 +207,7 @@
     }
   },
   "profiles": [
-    "cloud",
-    "datetime",
-    "host",
+    "event_graph",
     "osint",
     "security_control"
   ]

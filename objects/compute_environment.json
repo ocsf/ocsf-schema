@@ -1,0 +1,82 @@
+{
+  "caption": "Compute Environment",
+  "description": "The Compute Environment object describes the runtime execution environment in which an event originated. This includes serverless functions, container orchestration platforms, edge compute nodes, and traditional server environments.",
+  "extends": "_entity",
+  "name": "compute_environment",
+  "attributes": {
+    "cloud": {
+      "description": "The cloud provider and region of the compute environment.",
+      "requirement": "optional"
+    },
+    "container": {
+      "description": "The container in which the workload is running.",
+      "requirement": "optional"
+    },
+    "desc": {
+      "description": "A description of the compute environment.",
+      "requirement": "optional"
+    },
+    "name": {
+      "description": "The name of the compute environment. For example, a Lambda function name, ECS cluster name, or Kubernetes namespace.",
+      "requirement": "recommended"
+    },
+    "provider": {
+      "description": "The compute platform provider. For example: <code>AWS Lambda</code>, <code>Azure Functions</code>, <code>Google Cloud Run</code>.",
+      "requirement": "optional"
+    },
+    "region": {
+      "description": "The deployment region of the compute environment.",
+      "requirement": "optional"
+    },
+    "type": {
+      "description": "The type of compute environment, normalized to the caption of the <code>type_id</code> value. In the case of <code>Other</code>, it is defined by the source.",
+      "requirement": "optional"
+    },
+    "type_id": {
+      "description": "The normalized compute environment type identifier.",
+      "requirement": "recommended",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Server",
+          "description": "A traditional server or virtual machine."
+        },
+        "2": {
+          "caption": "Serverless",
+          "description": "A serverless function (e.g., AWS Lambda, Azure Functions)."
+        },
+        "3": {
+          "caption": "Container",
+          "description": "A containerized workload (e.g., Docker, Kubernetes pod)."
+        },
+        "4": {
+          "caption": "Edge",
+          "description": "An edge compute node (e.g., AWS Greengrass, Azure IoT Edge)."
+        },
+        "5": {
+          "caption": "Embedded",
+          "description": "An embedded or IoT compute environment."
+        },
+        "99": {
+          "caption": "Other"
+        }
+      }
+    },
+    "uid": {
+      "description": "The unique identifier of the compute environment. For example, a Lambda function ARN or ECS task ARN.",
+      "requirement": "recommended"
+    },
+    "version": {
+      "description": "The version or runtime version of the compute environment.",
+      "requirement": "optional"
+    }
+  },
+  "references": [
+    {
+      "description": "OpenTelemetry Semantic Conventions: Resource",
+      "url": "https://opentelemetry.io/docs/specs/semconv/resource/"
+    }
+  ]
+}

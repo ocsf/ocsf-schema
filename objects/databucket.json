@@ -4,15 +4,26 @@
   "extends": "_resource",
   "name": "databucket",
   "attributes": {
-    "$include": [
-      "profiles/data_classification.json"
-    ],
     "agent_list": {
+      "requirement": "optional"
+    },
+    "api": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "cloud": {
+      "description": "Cloud provider and region context when the databucket is cloud-hosted.",
+      "group": "context",
       "requirement": "optional"
     },
     "cloud_partition": {
       "description": "The logical grouping or isolated segment within a cloud provider's infrastructure where the databucket is located.",
       "profile": "cloud",
+      "requirement": "optional"
+    },
+    "compute_environment": {
+      "description": "The runtime environment for serverless, container, or edge workloads related to this event.",
+      "group": "context",
       "requirement": "optional"
     },
     "created_time": {
@@ -126,10 +137,6 @@
       "requirement": "optional"
     }
   },
-  "profiles": [
-    "data_classification",
-    "cloud"
-  ],
   "references": [
     {
       "description": "D3FEND™ Ontology d3f:CloudStorage.",

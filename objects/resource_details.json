@@ -7,9 +7,23 @@
     "agent_list": {
       "requirement": "optional"
     },
+    "api": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "cloud": {
+      "description": "Cloud provider and region context when the resource is cloud-hosted.",
+      "group": "context",
+      "requirement": "optional"
+    },
     "cloud_partition": {
       "description": "The logical grouping or isolated segment within a cloud provider's infrastructure where the resource is located. Examples include AWS partitions (aws, aws-cn, aws-us-gov), Azure cloud environments (AzureCloud, AzureUSGovernment, AzureChinaCloud), or similar logical divisions in other cloud providers.",
       "profile": "cloud",
+      "requirement": "optional"
+    },
+    "compute_environment": {
+      "description": "The runtime environment for serverless, container, or edge workloads related to this event.",
+      "group": "context",
       "requirement": "optional"
     },
     "criticality": {
@@ -94,8 +108,5 @@
       "profile": "cloud",
       "requirement": "optional"
     }
-  },
-  "profiles": [
-    "cloud"
-  ]
+  }
 }

@@ -1150,38 +1150,10 @@
       "description": "The negotiated cipher suite.",
       "type": "string_t"
     },
-    "cis_benchmark": {
-      "caption": "CIS Benchmark",
-      "description": "The CIS Benchmark describes best practices for securely configuring IT systems, software, networks, and cloud infrastructure as defined by the Center for Internet Security (<a target='_blank' href='https://www.cisecurity.org/cis-benchmarks/'>CIS</a>).",
-      "type": "cis_benchmark",
-      "@deprecated": {
-        "message": "Use Compliance object with Check object instead.",
-        "since": "1.5.0"
-      }
-    },
-    "cis_benchmark_result": {
-      "caption": "CIS Benchmark Result",
-      "description": "The CIS Benchmark Result object captures results generated from benchmark evaluations as defined by the Center for Internet Security (<a target='_blank' href='https://www.cisecurity.org/cis-benchmarks/'>CIS</a>).",
-      "type": "cis_benchmark_result",
-      "@deprecated": {
-        "message": "Use Compliance object with Check object instead.",
-        "since": "1.5.0"
-      }
-    },
     "cis_controls": {
       "caption": "CIS Controls",
       "description": "The CIS Critical Security Controls is a prioritized set of actions to protect your organization and data from cyber-attack vectors.",
       "type": "cis_control",
-      "is_array": true
-    },
-    "cis_csc": {
-      "caption": "CIS CSC",
-      "description": "The CIS Critical Security Controls is a list of top 20 actions and practices an organization’s security team can take on such that cyber attacks or malware, are minimized and prevented.",
-      "type": "cis_csc",
-      "@deprecated": {
-        "message": "Use CIS Controls for standard benchmark controls.",
-        "since": "1.5.0"
-      },
       "is_array": true
     },
     "city": {
@@ -1350,26 +1322,6 @@
       "description": "The compliance object provides context to compliance findings (e.g., a check against a specific regulatory or best practice framework such as CIS, NIST etc.) and contains compliance related details.",
       "type": "compliance"
     },
-    "compliance_references": {
-      "caption": "Compliance Standard References",
-      "description": "A list of reference KB articles that provide information to help organizations understand, interpret, and implement compliance standards. They provide guidance, best practices, and examples.",
-      "type": "kb_article",
-      "@deprecated": {
-        "message": "Use the Compliance object with Check array instead",
-        "since": "1.5.0"
-      },
-      "is_array": true
-    },
-    "compliance_standards": {
-      "caption": "Compliance Standards: Details",
-      "description": "A list of established guidelines or criteria that define specific requirements an organization must follow.",
-      "type": "kb_article",
-      "@deprecated": {
-        "message": "Use the Compliance object with Check array instead",
-        "since": "1.5.0"
-      },
-      "is_array": true
-    },
     "component": {
       "caption": "Component",
       "description": "The component of a data object. See specific usage.",
@@ -1500,16 +1452,6 @@
       "caption": "Control Parameters",
       "description": "The list of control parameters evaluated in a Compliance check.",
       "type": "key_value_object",
-      "is_array": true
-    },
-    "coordinates": {
-      "caption": "Coordinates",
-      "description": "A two-element array, containing a longitude/latitude pair. The format conforms with <a target='_blank' href='https://geojson.org'>GeoJSON</a>. For example: <code>[-73.983, 40.719]</code>.",
-      "type": "float_t",
-      "@deprecated": {
-        "message": "Use specific <code>lat, long</code> attributes instead.",
-        "since": "1.2.0"
-      },
       "is_array": true
     },
     "cores": {
@@ -1656,15 +1598,6 @@
       "description": "The cumulative network traffic. See specific usage.",
       "type": "network_traffic"
     },
-    "customer_uid": {
-      "caption": "Customer UID",
-      "description": "The unique customer identifier.",
-      "type": "string_t",
-      "@deprecated": {
-        "message": "Use the <code>tenant_uid</code> attribute instead.",
-        "since": "1.1.0"
-      }
-    },
     "cve": {
       "caption": "CVE",
       "description": "The Common Vulnerabilities and Exposures (<a target='_blank' href='https://cve.mitre.org/'>CVE</a>) identifiers for the vulnerability.",
@@ -1686,24 +1619,6 @@
       "caption": "CWE",
       "description": "The CWE object represents a weakness in a software system that can be exploited by a threat actor to perform an attack. The CWE object is based on the <a target='_blank' href='https://cwe.mitre.org/'>Common Weakness Enumeration (CWE)</a> catalog.",
       "type": "cwe"
-    },
-    "cwe_uid": {
-      "caption": "CWE UID",
-      "description": "The <a target='_blank' href='https://cwe.mitre.org/'>Common Weakness Enumeration (CWE)</a> unique identifier. For example: <code>CWE-787</code>.",
-      "type": "string_t",
-      "@deprecated": {
-        "message": "Use the <code>related_cwes</code> object attributes instead.",
-        "since": "1.1.0"
-      }
-    },
-    "cwe_url": {
-      "caption": "CWE URL",
-      "description": "Common Weakness Enumeration (CWE) definition URL. For example: <code>https://cwe.mitre.org/data/definitions/787.html</code>.",
-      "type": "url_t",
-      "@deprecated": {
-        "message": "Use the <code>related_cwes</code> object attributes instead.",
-        "since": "1.1.0"
-      }
     },
     "d3f_tactic": {
       "caption": "MITRE D3FEND™ Tactic",
@@ -1822,15 +1737,6 @@
       "caption": "Deleted Time",
       "description": "The timestamp when the user was deleted. In Active Directory (AD), when a user is deleted they are moved to a temporary container and then removed after 30 days. So, this field can be populated even after a user is deleted for the next 30 days.",
       "type": "timestamp_t"
-    },
-    "delivered_to": {
-      "caption": "Delivered To",
-      "description": "The machine-readable <strong>Delivered-To</strong> email header field. For example <code>example.user@usersdomain.com</code>",
-      "type": "email_t",
-      "@deprecated": {
-        "message": "Use the <code>delivered_to_list</code> attribute instead.",
-        "since": "1.4.0"
-      }
     },
     "delivered_to_list": {
       "caption": "Delivered To List",
@@ -2419,15 +2325,6 @@
       "description": "The SPF, DKIM and DMARC attributes of an email.",
       "type": "email_auth"
     },
-    "email_uid": {
-      "caption": "Email UID",
-      "description": "The unique identifier of the email, used to correlate related email alert and activity events.",
-      "type": "string_t",
-      "@deprecated": {
-        "message": "Use the <code>email.uid</code> attribute instead.",
-        "since": "1.4.0"
-      }
-    },
     "embedding_model": {
       "caption": "Embedding Model",
       "description": "Model used for creating embeddings in AI retrieval systems.",
@@ -2547,15 +2444,6 @@
       "description": "The unique identifier of an event. See specific usage.",
       "type": "string_t"
     },
-    "evidence": {
-      "caption": "Evidence",
-      "description": "The data the finding exposes to the analyst.",
-      "type": "json_t",
-      "@deprecated": {
-        "message": "Use the <code>evidences</code> attribute instead.",
-        "since": "1.1.0"
-      }
-    },
     "evidences": {
       "caption": "Evidence Artifacts",
       "description": "A collection of evidence artifacts associated to the activity/activities that triggered a finding. See specific usage.",
@@ -2606,25 +2494,6 @@
       "caption": "Extension",
       "description": "The extension. See specific usage.",
       "type": "string_t"
-    },
-    "extension": {
-      "caption": "Schema Extension",
-      "description": "The schema extension used to create the event.",
-      "type": "extension",
-      "@deprecated": {
-        "message": "Use the <code>extensions</code> attribute instead.",
-        "since": "1.1.0"
-      }
-    },
-    "extension_list": {
-      "caption": "Extension List",
-      "description": "The list of TLS extensions.",
-      "type": "tls_extension",
-      "@deprecated": {
-        "message": "Use the <code>tls_extension_list</code> attribute instead.",
-        "since": "1.1.0"
-      },
-      "is_array": true
     },
     "extensions": {
       "caption": "Schema Extensions",
@@ -2726,11 +2595,6 @@
       "type": "file",
       "is_array": true
     },
-    "finding": {
-      "caption": "Finding",
-      "description": "The Finding object provides details about a finding/detection generated by a security tool.",
-      "type": "finding"
-    },
     "finding_info": {
       "caption": "Finding Information",
       "description": "Describes the supporting information about a generated finding.",
@@ -2762,15 +2626,6 @@
       "caption": "First Seen",
       "description": "The initial detection time of the activity or object. See specific usage",
       "type": "timestamp_t"
-    },
-    "fix_available": {
-      "caption": "Fix Availability",
-      "description": "Indicates if a fix is available for the reported vulnerability.",
-      "type": "boolean_t",
-      "@deprecated": {
-        "message": "Use the <code>is_fix_available</code> attribute instead.",
-        "since": "1.1.0"
-      }
     },
     "fix_coverage": {
       "caption": "Fix Coverage",
@@ -2976,15 +2831,6 @@
       "description": "The group object associated with an entity such as user, policy, or rule.",
       "type": "group"
     },
-    "group_name": {
-      "caption": "Group Name",
-      "description": "The name of the group that the resource belongs to.",
-      "type": "string_t",
-      "@deprecated": {
-        "message": "Use the <code>group.name</code> attribute instead.",
-        "since": "1.1.0"
-      }
-    },
     "groups": {
       "caption": "Groups",
       "description": "The groups to which an entity belongs. See specific usage.",
@@ -3044,15 +2890,6 @@
       "description": "The HTTP request method indicates the desired action to be performed for a given resource. Expected values: <ul> <li>TRACE</li> <li>CONNECT</li> <li>OPTIONS</li> <li>HEAD</li> <li>DELETE</li> <li>POST</li> <li>PUT</li> <li>GET</li></ul>",
       "type": "string_t"
     },
-    "http_only": {
-      "caption": "HTTP Only",
-      "description": "A cookie attribute to make it inaccessible via JavaScript",
-      "type": "boolean_t",
-      "@deprecated": {
-        "message": "Use the <code>is_http_only</code> attribute instead.",
-        "since": "1.1.0"
-      }
-    },
     "http_request": {
       "caption": "HTTP Request",
       "description": "The HTTP Request Object documents attributes of a request made to a web server.",
@@ -3062,15 +2899,6 @@
       "caption": "HTTP Response",
       "description": "The HTTP Response from a web server to a requester.",
       "type": "http_response"
-    },
-    "http_status": {
-      "caption": "HTTP Status",
-      "description": "The Hypertext Transfer Protocol (HTTP) <a target='_blank' href='https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml'>status code</a> returned to the client.",
-      "type": "integer_t",
-      "@deprecated": {
-        "message": "Use the <code>http_response.code</code> attribute instead.",
-        "since": "1.1.0"
-      }
     },
     "hw_info": {
       "caption": "Hardware Info",
@@ -3116,15 +2944,6 @@
       "caption": "IME",
       "description": "The Input Method Editor (IME) file name.",
       "type": "string_t"
-    },
-    "imei": {
-      "caption": "IMEI",
-      "description": "The International Mobile Equipment Identity that is associated with the device.",
-      "type": "string_t",
-      "@deprecated": {
-        "message": "Use the <code>imei_list</code> attribute instead.",
-        "since": "1.4.0"
-      }
     },
     "imei_list": {
       "caption": "IMEI List",
@@ -3600,16 +3419,6 @@
       "caption": "Knowledgebase Articles",
       "description": "A list of KB articles or patches related to an endpoint. A KB Article contains metadata that describes the patch or an update.",
       "type": "kb_article",
-      "is_array": true
-    },
-    "kb_articles": {
-      "caption": "Knowledgebase Articles",
-      "description": "The KB article/s related to the entity. A KB Article contains metadata that describes the patch or an update.",
-      "type": "string_t",
-      "@deprecated": {
-        "message": "Use the <code>kb_article_list</code> attribute instead.",
-        "since": "1.1.0"
-      },
       "is_array": true
     },
     "kerberos_flags": {
@@ -4524,16 +4333,6 @@
       "description": "The URL of the package or library at the package manager, or the specific URL or URI of an internal package manager link such as <code>AWS CodeArtifact</code> or <code>Artifactory</code>.",
       "type": "url_t"
     },
-    "packages": {
-      "caption": "Software Packages",
-      "description": "List of vulnerable packages as identified by the security product",
-      "type": "package",
-      "@deprecated": {
-        "message": "Use the <code>affected_packages</code> attribute instead.",
-        "since": "1.1.0"
-      },
-      "is_array": true
-    },
     "packet": {
       "caption": "Packet",
       "description": "The packet object describes a single captured network packet and its associated metadata.",
@@ -4880,15 +4679,6 @@
       "description": "The product that reported the event.",
       "type": "product"
     },
-    "product_uid": {
-      "caption": "Product Identifier",
-      "description": "Unique Identifier of a product.",
-      "type": "string_t",
-      "@deprecated": {
-        "message": "Use the <code>uid</code> attribute in the <code>product</code> object instead. See specific usage.",
-        "since": "1.4.0"
-      }
-    },
     "profiles": {
       "caption": "Profiles",
       "description": "The list of profiles used to create the event.  Profiles should be referenced by their <code>name</code> attribute for core profiles, or <code>extension/name</code> for profiles from extensions.",
@@ -4900,15 +4690,6 @@
       "description": "Details about the programmatic credential (API key, service account key, access token, certificate). See specific usage.",
       "type": "programmatic_credential",
       "is_array": true
-    },
-    "project_uid": {
-      "caption": "Project ID",
-      "description": "The unique identifier of a Cloud project.",
-      "type": "string_t",
-      "@deprecated": {
-        "message": "Use the <code>account.uid</code> attribute instead.",
-        "since": "1.4.0"
-      }
     },
     "prompt_tokens": {
       "caption": "Prompt Tokens",
@@ -4956,15 +4737,6 @@
       "caption": "Provider",
       "description": "The origin of information associated with the event. See specific usage.",
       "type": "string_t"
-    },
-    "proxy": {
-      "caption": "Proxy",
-      "description": "The proxy (server) in a network connection.",
-      "type": "network_proxy",
-      "@deprecated": {
-        "message": "Use the <code>proxy_endpoint</code> attribute instead.",
-        "since": "1.1.0"
-      }
     },
     "proxy_connection_info": {
       "caption": "Proxy Connection Info",
@@ -5367,21 +5139,6 @@
       "caption": "Remote Display",
       "description": "The remote display affiliated with the event",
       "type": "display"
-    },
-    "reply_to": {
-      "caption": "Reply To",
-      "description": "The machine-readable email header Reply-To value, as defined by RFC 5322. For example <code>example.user@usersdomain.com</code>",
-      "type": "email_t",
-      "@deprecated": {
-        "message": "Use the <code>reply_to_list</code> attribute instead.",
-        "since": "1.4.0"
-      },
-      "references": [
-        {
-          "description": "RFC 5322",
-          "url": "https://www.rfc-editor.org/rfc/rfc5322"
-        }
-      ]
     },
     "reply_to_list": {
       "caption": "Reply To List",
@@ -5797,15 +5554,6 @@
       "description": "The 'd' section of the JA4 fingerprint.",
       "type": "string_t"
     },
-    "secure": {
-      "caption": "Secure",
-      "description": "The cookie attribute to only send cookies to the server with an encrypted request over the HTTPS protocol.",
-      "type": "boolean_t",
-      "@deprecated": {
-        "message": "Use the <code>is_secure</code> attribute instead.",
-        "since": "1.1.0"
-      }
-    },
     "security_descriptor": {
       "caption": "Security Descriptor",
       "description": "The object security descriptor.",
@@ -6027,34 +5775,6 @@
       "caption": "Size",
       "description": "The size of data, in bytes.",
       "type": "long_t"
-    },
-    "smtp_from": {
-      "caption": "SMTP From",
-      "description": "The value of the SMTP MAIL FROM command.",
-      "type": "email_t",
-      "@deprecated": {
-        "message": "Use the <code>from</code> attribute instead.",
-        "since": "1.4.0"
-      }
-    },
-    "smtp_hello": {
-      "caption": "SMTP Hello",
-      "description": "The value of the SMTP HELO or EHLO command.",
-      "type": "string_t",
-      "@deprecated": {
-        "message": "Use the <code>command</code> attribute instead.",
-        "since": "1.4.0"
-      }
-    },
-    "smtp_to": {
-      "caption": "SMTP To",
-      "description": "The value of the SMTP envelope RCPT TO command.",
-      "type": "email_t",
-      "@deprecated": {
-        "message": "Use the <code>to</code> attribute instead.",
-        "since": "1.4.0"
-      },
-      "is_array": true
     },
     "sni": {
       "caption": "Server Name Indication",
@@ -6418,25 +6138,6 @@
         }
       ]
     },
-    "tactics": {
-      "caption": "Tactics",
-      "description": "The Tactic object describes the tactic ID and/or tactic name that are associated with the attack technique, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK® Matrix</a>.",
-      "type": "tactic",
-      "@deprecated": {
-        "message": "Use the <code>tactic</code> attribute instead.",
-        "since": "1.1.0"
-      },
-      "is_array": true
-    },
-    "tag": {
-      "caption": "Image Tag",
-      "description": "The image tag. For example: <code>1.11-alpine</code>.",
-      "type": "string_t",
-      "@deprecated": {
-        "message": "Use the <code>labels or tags</code> attribute instead.",
-        "since": "1.4.0"
-      }
-    },
     "tags": {
       "caption": "Tags",
       "description": "The list of tags; <code>{key:value}</code> pairs attached to an entity. A Tag may be used to categorize, filter, and search for entities. For e.g. <code>\"Environment\": \"Production\"</code>, <code>\"Owner\": \"007\"</code>. See specific usage.",
@@ -6565,15 +6266,6 @@
       "description": "The associated ticket(s) in the ticketing system. Each ticket contains details like ticket ID, status, etc.",
       "type": "ticket",
       "is_array": true
-    },
-    "tid": {
-      "caption": "Thread ID",
-      "description": "The identifier of the thread associated with the event, as returned by the operating system.",
-      "type": "integer_t",
-      "@deprecated": {
-        "message": "<code>tid</code> is deprecated in favor of <code>ptid</code>. <code>ptid</code> has type <code>long_t</code> which can accommodate the thread identifiers returned by all platforms (e.g. 64-bit on MacOS).",
-        "since": "1.6.0"
-      }
     },
     "time": {
       "caption": "Event Time",

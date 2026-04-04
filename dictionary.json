@@ -311,6 +311,11 @@
       ],
       "is_array": true
     },
+    "answer_length": {
+      "caption": "Answer Length",
+      "description": "The length of the DNS answer message in bytes.",
+      "type": "integer_t"
+    },
     "anomalies": {
       "caption": "Anomalies",
       "description": "A list of detected anomalies or deviations from expected behavior patterns. See specific usage.",
@@ -1411,6 +1416,32 @@
           "description": "The confidentiality is not mapped. See the <code>confidentiality</code> attribute, which contains a data source specific value."
         }
       }
+    },
+    "conn_state": {
+      "caption": "Connection State",
+      "description": "The connection state, normalized to the caption of the <code>conn_state_id</code> value.",
+      "type": "string_t"
+    },
+    "conn_state_id": {
+      "caption": "Connection State ID",
+      "description": "The normalized identifier of the TCP connection state at the time of observation.",
+      "sibling": "conn_state",
+      "type": "integer_t",
+      "enum": {
+        "0": { "caption": "Unknown" },
+        "1": { "caption": "SYN Sent", "description": "Connection attempt seen, no reply." },
+        "2": { "caption": "Established", "description": "Connection established, data transfer in progress." },
+        "3": { "caption": "Normal Close", "description": "Connection closed normally (FIN handshake completed)." },
+        "4": { "caption": "Rejected", "description": "Connection attempt rejected (RST in response to SYN)." },
+        "5": { "caption": "RST by Originator", "description": "Connection reset by the originator." },
+        "6": { "caption": "RST by Responder", "description": "Connection reset by the responder." },
+        "99": { "caption": "Other" }
+      }
+    },
+    "connection_history": {
+      "caption": "Connection History",
+      "description": "A compact summary of the connection's packet-level state transitions, similar to Zeek's <code>history</code> field. Each character represents a connection event (e.g., <code>S</code> for SYN, <code>A</code> for ACK, <code>D</code> for data, <code>F</code> for FIN, <code>R</code> for RST). Uppercase letters indicate originator, lowercase indicate responder.",
+      "type": "string_t"
     },
     "connection_info": {
       "caption": "Connection Info",
@@ -2674,6 +2705,24 @@
       "description": "The software package version in which a reported vulnerability was patched/fixed.",
       "type": "string_t"
     },
+    "flow_direction": {
+      "caption": "Flow Direction",
+      "description": "The direction of the network flow relative to the reporting device, normalized to the caption of the <code>flow_direction_id</code> value.",
+      "type": "string_t"
+    },
+    "flow_direction_id": {
+      "caption": "Flow Direction ID",
+      "description": "The normalized identifier of the flow direction relative to the reporting device.",
+      "sibling": "flow_direction",
+      "type": "integer_t",
+      "enum": {
+        "0": { "caption": "Unknown" },
+        "1": { "caption": "Initiator", "description": "The reporting device initiated the connection." },
+        "2": { "caption": "Responder", "description": "The reporting device responded to the connection." },
+        "3": { "caption": "Bidirectional", "description": "The reporting device observed traffic in both directions." },
+        "99": { "caption": "Other" }
+      }
+    },
     "flag_history": {
       "caption": "Connection Flag History",
       "description": "The Connection Flag History summarizes events in a network connection. For example flags <code> ShAD </code> representing SYN, SYN/ACK, ACK and Data exchange.",
@@ -3174,6 +3223,12 @@
       "caption": "IP Address",
       "description": "The IP address, in either IPv4 or IPv6 format.",
       "type": "ip_t"
+    },
+    "ip_list": {
+      "caption": "IP Address List",
+      "description": "A list of IP addresses, in either IPv4 or IPv6 format.",
+      "type": "ip_t",
+      "is_array": true
     },
     "is_alert": {
       "caption": "Alert",
@@ -4287,6 +4342,16 @@
       "description": "Organization and org unit relevant to the event or object. See specific usage.",
       "type": "organization"
     },
+    "orig_bytes": {
+      "caption": "Originator Bytes",
+      "description": "The number of payload bytes sent by the connection originator (client).",
+      "type": "long_t"
+    },
+    "orig_pkts": {
+      "caption": "Originator Packets",
+      "description": "The number of packets sent by the connection originator (client).",
+      "type": "long_t"
+    },
     "original_event_uid": {
       "caption": "Original Event ID",
       "description": "The unique identifier assigned to the event in its original logging system before transformation to OCSF format. This field preserves the source system's native event identifier, enabling traceability back to the raw log entry. For example, a Windows Event Record ID, a syslog message ID, a Splunk _cd value, or a database transaction log sequence number.",
@@ -4395,6 +4460,11 @@
       "description": "The parameters passed into a function invocation.",
       "type": "parameter",
       "is_array": true
+    },
+    "parent_domain": {
+      "caption": "Parent Domain",
+      "description": "The parent domain (registered domain) portion of a fully qualified domain name, excluding the TLD and any subdomains. For example, for <code>www.example.com</code>, the parent domain is <code>example</code>.",
+      "type": "string_t"
     },
     "parent_folder": {
       "caption": "Parent Folder",
@@ -4876,6 +4946,11 @@
         }
       }
     },
+    "query_length": {
+      "caption": "Query Length",
+      "description": "The length of the DNS query message in bytes.",
+      "type": "integer_t"
+    },
     "query_string": {
       "caption": "HTTP Query String",
       "description": "The query portion of the URL. For example: the query portion of the URL <code>http://www.example.com/search?q=bad&sort=date</code> is <code>q=bad&sort=date</code>.",
@@ -5225,6 +5300,16 @@
       "caption": "Resource Type",
       "description": "The resource type as defined by the event source.",
       "type": "string_t"
+    },
+    "resp_bytes": {
+      "caption": "Responder Bytes",
+      "description": "The number of payload bytes sent by the connection responder (server).",
+      "type": "long_t"
+    },
+    "resp_pkts": {
+      "caption": "Responder Packets",
+      "description": "The number of packets sent by the connection responder (server).",
+      "type": "long_t"
     },
     "resources": {
       "caption": "Resources Array",
@@ -6099,6 +6184,11 @@
       "description": "A subgroup that was added to or removed from the group.",
       "type": "group"
     },
+    "subdomain": {
+      "caption": "Subdomain",
+      "description": "The subdomain portion of a fully qualified domain name (FQDN). For example, for <code>www.example.com</code>, the subdomain is <code>www</code>.",
+      "type": "string_t"
+    },
     "subject": {
       "caption": "Subject Details",
       "description": "The identifier of the subject. See specific usage.",
@@ -6313,6 +6403,11 @@
       "description": "The <a target='_blank' href='https://www.first.org/tlp/'>Traffic Light Protocol</a> was created to facilitate greater sharing of potentially sensitive information and more effective collaboration. TLP provides a simple and intuitive schema for indicating with whom potentially sensitive information can be shared.",
       "type": "string_t"
     },
+    "tld": {
+      "caption": "Top-Level Domain",
+      "description": "The top-level domain (TLD) portion of a fully qualified domain name. For example, for <code>www.example.com</code>, the TLD is <code>com</code>.",
+      "type": "string_t"
+    },
     "tls": {
       "caption": "TLS",
       "description": "The Transport Layer Security (TLS) attributes.",
@@ -6456,6 +6551,12 @@
           "description": "The type is not mapped. See the <code>type</code> attribute, which contains a data source specific value."
         }
       }
+    },
+    "tunnel_chain": {
+      "caption": "Tunnel Chain",
+      "description": "An ordered array of tunnel or proxy endpoint UIDs that the connection traverses. Replaces recursive proxy references with a flat, query-friendly representation.",
+      "type": "string_t",
+      "is_array": true
     },
     "type_name": {
       "caption": "Type Name",

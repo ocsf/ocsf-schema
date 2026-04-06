@@ -1,0 +1,29 @@
+{
+  "caption": "Network — HTTP",
+  "description": "HTTP/HTTPS request and response context for <code>network_activity</code>. Set <code>network_application_protocol_id</code> to HTTP (1). Use <code>http_method_id</code> for the HTTP method; connection lifecycle stays in <code>activity_id</code>. <strong>Constraint:</strong> when this profile is active (or the protocol id is HTTP), at least one of <code>http_request</code> or <code>http_response</code> MUST be populated (documented on the <code>network_activity</code> class description; not a separate <code>constraints</code> entry so the schema browser can render the class page).",
+  "meta": "profile",
+  "name": "network_http",
+  "annotations": {
+    "group": "context"
+  },
+  "attributes": {
+    "client_application": {
+      "requirement": "optional"
+    },
+    "file": {
+      "requirement": "optional"
+    },
+    "http_cookies": {
+      "requirement": "recommended"
+    },
+    "http_method_id": {
+      "requirement": "optional"
+    },
+    "http_request": {
+      "requirement": "recommended"
+    },
+    "http_response": {
+      "requirement": "recommended"
+    }
+  }
+}

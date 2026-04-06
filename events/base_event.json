@@ -1,12 +1,12 @@
 {
   "caption": "Base Event",
   "category": "other",
-  "description": "The base event is a generic and concrete event. It also defines a set of attributes available in most event classes. As a generic event that does not belong to any event category, it could be used to log events that are not otherwise defined by the schema. The canonical occurrence timestamp for every event is <code>time_dt</code> (RFC 3339). The epoch-millis <code>time</code> field is optional and retained for backward compatibility.",
+  "description": "The base event is a generic and concrete event. It also defines a set of attributes available in most event classes. As a generic event that does not belong to any event category, it could be used to log events that are not otherwise defined by the schema. The canonical occurrence timestamp is <code>time_dt</code> (RFC 3339). Optional <code>time</code> is epoch milliseconds for legacy consumers only.",
   "name": "base_event",
   "attributes": {
     "$include": [
       "profiles/event_graph.json",
-      "profiles/osint.json",
+      "profiles/threat_intel.json",
       "profiles/security_control.json"
     ],
     "actor": {
@@ -180,12 +180,12 @@
       "requirement": "recommended"
     },
     "time": {
-      "description": "Optional event timestamp as epoch milliseconds. The default and required occurrence time is <code>time_dt</code>; populate this only when a pipeline or consumer still expects epoch millis.",
+      "description": "Optional occurrence time as milliseconds since Unix epoch (UTC). Legacy compatibility only; the canonical timestamp is <code>time_dt</code>.",
       "group": "occurrence",
       "requirement": "optional"
     },
     "time_dt": {
-      "description": "The default event occurrence timestamp in RFC 3339 format. Producers must set this field; it is the canonical event time in v2.0.",
+      "description": "Required occurrence timestamp in RFC 3339 format. The canonical event time in v2.0.",
       "group": "occurrence",
       "requirement": "required"
     },
@@ -208,7 +208,7 @@
   },
   "profiles": [
     "event_graph",
-    "osint",
+    "threat_intel",
     "security_control"
   ]
 }

@@ -1,11 +1,31 @@
 {
   "uid": 1,
   "caption": "Network Activity",
-  "description": "Network Activity events report network connection and traffic activity.",
+  "description": "Unified network observation for flows and application-layer protocols (v2.0). <code>activity_id</code> describes <strong>connection or flow lifecycle</strong> only (open, close, traffic, etc.). Identify the L7 protocol with <code>network_application_protocol_id</code> and <code>app_protocol_name</code>; activate the matching protocol profile(s) in <code>metadata.profiles</code> (e.g. <code>network_http</code>, <code>network_dns</code>). Protocol-specific verbs (HTTP method, DHCP message type, DNS query vs response) use dedicated attributes from those profiles—not <code>activity_id</code>. Use <code>protocol_context</code> for protocols without a profile yet. <strong>HTTP:</strong> when profile <code>network_http</code> is active or <code>network_application_protocol_id</code> is HTTP (1), at least one of <code>http_request</code> or <code>http_response</code> must be populated (same rule as the former <code>http_activity</code> class; not expressible as a top-level <code>constraints</code> entry because the schema browser only renders <code>at_least_one</code> / <code>just_one</code> lists). Replaces former classes: <code>http_activity</code>, <code>dns_activity</code>, <code>dhcp_activity</code>, <code>ftp_activity</code>, <code>smb_activity</code>, <code>ssh_activity</code>, <code>ntp_activity</code>, <code>rdp_activity</code>, <code>tunnel_activity</code>.",
   "extends": "network",
   "name": "network_activity",
+  "associations": {
+    "src_endpoint": [
+      "user"
+    ],
+    "user": [
+      "src_endpoint"
+    ]
+  },
   "attributes": {
+    "$include": [
+      "profiles/network_http.json",
+      "profiles/network_dns.json",
+      "profiles/network_dhcp.json",
+      "profiles/network_ftp.json",
+      "profiles/network_smb.json",
+      "profiles/network_ssh.json",
+      "profiles/network_ntp.json",
+      "profiles/network_rdp.json",
+      "profiles/network_tunnel.json"
+    ],
     "activity_id": {
+      "description": "Connection or flow lifecycle only. Do not encode HTTP methods, DHCP message types, or other L7 verbs here—use the protocol profile fields (e.g. <code>http_method_id</code>, <code>dhcp_message_type_id</code>).",
       "enum": {
         "1": {
           "caption": "Open",
@@ -29,7 +49,7 @@
         },
         "6": {
           "caption": "Traffic",
-          "description": "Network traffic report."
+          "description": "Network traffic report for an established or connectionless flow."
         },
         "7": {
           "caption": "Listen",
@@ -44,8 +64,54 @@
       "group": "primary",
       "requirement": "recommended"
     },
+    "network_application_protocol": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "network_application_protocol_id": {
+      "description": "Normalized L7 protocol for this observation. Drives which optional profile attributes are populated.",
+      "group": "context",
+      "requirement": "recommended"
+    },
+    "dns_operation": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "http_method": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "dhcp_message_type": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "ftp_transfer_operation": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "smb_file_operation": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "ntp_association_mode": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "rdp_connection_phase": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "tunnel_session_event": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "protocol_context": {
+      "description": "Extension point for protocols without a first-class profile.",
+      "group": "context",
+      "requirement": "optional"
+    },
     "src_endpoint": {
-      "description": " The initiator of the network connection. In some contexts an event source cannot correctly identify the initiator. Refer to <code>is_src_dst_assignment_known</code> for certainty."
+      "description": "The initiator of the network connection. In some contexts an event source cannot correctly identify the initiator. Refer to <code>is_src_dst_assignment_known</code> for certainty."
     },
     "url": {
       "description": "The URL details relevant to the network traffic.",
@@ -53,10 +119,31 @@
       "requirement": "recommended"
     }
   },
+  "constraints": {
+    "at_least_one": [
+      "dst_endpoint",
+      "src_endpoint"
+    ]
+  },
+  "profiles": [
+    "network_http",
+    "network_dns",
+    "network_dhcp",
+    "network_ftp",
+    "network_smb",
+    "network_ssh",
+    "network_ntp",
+    "network_rdp",
+    "network_tunnel"
+  ],
   "references": [
     {
       "description": "D3FEND™ Ontology d3f:NetworkConnectionEvent",
       "url": "https://d3fend.mitre.org/event/d3f:NetworkConnectionEvent/"
+    },
+    {
+      "description": "OCSF issue #1384 — Profiles for Network Activity",
+      "url": "https://github.com/ocsf/ocsf-schema/issues/1384"
     }
   ]
 }

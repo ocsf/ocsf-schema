@@ -20,10 +20,11 @@ Iceberg/Delta), the column counts are far beyond typical table widths:
 | `compliance_finding` | 75 | ~23,663 |
 | `security_finding` | 70 | ~15,300 |
 | `authentication` | 75 | ~13,515 |
-| `rdp_activity` | 85 | ~13,809 |
 | `network_activity` | 77 | ~12,999 |
 | `file_activity` | 61 | ~11,249 |
 | `base_event` | 54 | ~9,914 |
+
+In OCSF v2.0, former protocol-specific classes (for example `rdp_activity`) are merged into `network_activity`; flattened column counts depend on which L7 profiles are included and may meet or exceed the historical per-protocol estimates.
 
 For context, most analytics databases perform well with tables under
 1,000 columns. Parquet file footer metadata scales linearly with column
@@ -135,7 +136,7 @@ The objects contributing most to column explosion:
 | Object | Attributes | Typical Appearances |
 |---|---|---|
 | `device` | 65 | `actor.*, src_endpoint.*, dst_endpoint.*` |
-| `osint` | 51 | OSINT profile (all classes) |
+| `threat_intel` | 51 | Threat intelligence profile (all classes) |
 | `file` | 48 | `file`, `src.file`, `dst.file` |
 | `metadata` | 39 | Every event |
 | `network_endpoint` | 34 | `src_endpoint`, `dst_endpoint` |

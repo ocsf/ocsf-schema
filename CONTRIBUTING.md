@@ -185,7 +185,7 @@ Choose a **unique** object you want to add, `vulnerability` in the example above
         }
         ```
 
-    9. `constraints` → For each class you can add constraints on the attribute requirements. Valid constraint types are `at_least_one`, `just_one`. e.g.
+    9. `constraints` → For each class you can add constraints on the attribute requirements. Valid constraint types are `at_least_one`, `just_one`. Values must be arrays of attribute name strings (the schema browser and other tools assume this shape). Profile- or protocol-conditional rules belong in class or profile descriptions if they cannot be expressed this way. e.g.
         ```
          "constraints": {
             "at_least_one": [
@@ -195,7 +195,7 @@ Choose a **unique** object you want to add, `vulnerability` in the example above
         }
         ```
     
-        _(A Constraint is a documented rule subject to validation that requires at least one of the specified recommended attributes of a class to be populated.)_ 
+        _(A Constraint is a documented rule subject to validation that requires at least one of the specified recommended attributes of a class to be populated.)_ If a subclass defines `constraints`, it replaces the parent’s `constraints` object entirely (see `extends` flattening in the schema compiler); restate inherited rules such as `at_least_one` when adding new keys.
 
 * * *
 

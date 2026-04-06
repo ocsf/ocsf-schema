@@ -44,8 +44,11 @@ Thankyou! -->
 ## [Unreleased] — v2.0.0-dev
 
 ### Added
+* #### Event Classes
+  1. Unified `network_activity` as the single concrete Network-category class for transport flows and application-layer protocols. `activity_id` describes connection or flow lifecycle only; use `network_application_protocol_id` / `app_protocol_name` and `metadata.profiles` (for example `network_http`, `network_dns`) for L7 semantics, and optional `protocol_context` for protocols without a dedicated profile. Aligns with [OCSF #1384](https://github.com/ocsf/ocsf-schema/issues/1384).
 * #### Profiles
   1. Added `event_graph` profile providing a unified graph projection on all event classes. Nodes are typed via `entity_type_id` and edges via `relation_id`, enabling domain-specific views (identity, topology, temporal, data lineage, dependency) from a single graph.
+  1. Added `network_http`, `network_dns`, `network_dhcp`, `network_ftp`, `network_smb`, `network_ssh`, `network_ntp`, `network_rdp`, and `network_tunnel` profiles for L7-specific attributes on `network_activity`.
 * #### Objects
   1. Added `client_application` object for describing the software application that initiated a request or connection, with `type_id` enum (Browser, CLI, SDK, Mobile App, Desktop App, Service, API Client).
   1. Added `compute_environment` object for describing the runtime execution environment (Server, Serverless, Container, Edge, Embedded).
@@ -83,6 +86,7 @@ Thankyou! -->
   1. Added `reg_key_path_t` type for registry key paths.
   1. Added `map_t` type for semi-structured key-value data (replaces most `json_t` usage).
   1. Added `datetime_t` type for RFC 3339 formatted timestamps.
+  1. Added `network_application_protocol_id` / `network_application_protocol`, `protocol_context`, and protocol-scoped discriminators (`dns_operation_id`, `dhcp_message_type_id`, `http_method_id`, `ftp_transfer_operation_id`, `smb_file_operation_id`, `ntp_association_mode_id`, `rdp_connection_phase_id`, `tunnel_session_event_id`) with string siblings for L7 context on unified network events.
 
 ### Improved
 * #### Event Classes
@@ -92,11 +96,11 @@ Thankyou! -->
   1. Renamed `device_config_state_change` to `device_state_change` for clarity.
   1. Moved Windows event classes (`registry_key_activity`, `registry_value_activity`, `windows_service_activity`, `windows_resource_activity`) from extensions to core system category.
   1. Aligned `security_finding` and `entity_management` attribute groups: contextual fields use `context`/`optional` instead of overstating `primary`/`recommended` when values are activity-specific.
-  1. Added optional `vpc` to the base `network` event class; optional `client_application` to `http_activity`; optional `ontology_refs` to `base_event`; optional `device_detail` to `inventory_info`.
+  1. Added optional `vpc` to the base `network` event class; optional `client_application` on `network_activity` when using the `network_http` profile; optional `ontology_refs` to `base_event`; optional `device_detail` to `inventory_info`.
 * #### Profiles
-  1. Inlined former profiles into core definitions: `cloud`, `host`, and `trace` attributes on `base_event`; `network_proxy` and `load_balancer` on `network` (and proxy fields on `web_resources_activity`); `incident` semantics on `finding`; `data_classifications` on `metadata`, `_resource`, and selected objects; `container` context on `process` and `endpoint`. Removed the empty `datetime` profile; RFC 3339 timing is core on `base_event` via required `time_dt`, with optional epoch `time` for compatibility. Remaining standalone profiles: `event_graph`, `osint`, `security_control`, `ai_operation`. The folded `cloud` attribute is optional (`context` group) on `base_event`, `resource_details`, and `databucket` so on-prem and non-cloud events do not need a synthetic cloud object.
+  1. Inlined former profiles into core definitions: `cloud`, `host`, and `trace` attributes on `base_event`; `network_proxy` and `load_balancer` on `network` (and proxy fields on `web_resources_activity`); `incident` semantics on `finding`; `data_classifications` on `metadata`, `_resource`, and selected objects; `container` context on `process` and `endpoint`. Event clock fields (`time_dt`, optional epoch `time`, `timezone_offset`) live on `base_event`; `profiles/datetime.json` is an empty compiler stub (required when `datetime_t` exists in the dictionary) and is not applied as a class profile. Remaining applied profiles: `event_graph`, `threat_intel`, `security_control`, `ai_operation`. The folded `cloud` attribute is optional (`context` group) on `base_event`, `resource_details`, and `databucket` so on-prem and non-cloud events do not need a synthetic cloud object.
 * #### Objects
-  1. Promoted 18 objects to extend `_entity` for stronger entity identity: `agent`, `application`, `check`, `classifier_details`, `container`, `domain_contact`, `node`, `osint`, `package`, `scim`, `script`, `sso`, `token`, `autonomous_system`, `campaign`, `job`, `threat_actor`, `session`.
+  1. Promoted 18 objects to extend `_entity` for stronger entity identity: `agent`, `application`, `check`, `classifier_details`, `container`, `domain_contact`, `node`, `threat_intel`, `package`, `scim`, `script`, `sso`, `token`, `autonomous_system`, `campaign`, `job`, `threat_actor`, `session`.
   1. Made `uid` required on `_entity` base object; added `created_time` and `modified_time` lifecycle timestamps.
   1. Added `entity_type_id` and `entity_type` to `node` object for typed graph node classification.
   1. Added `relation_id` to `edge` object for normalized typed edge relationships.
@@ -120,6 +124,8 @@ Thankyou! -->
   1. Updated `relation` description to reference `relation_id` sibling.
 
 ### Breaking changes
+  1. Renamed threat intelligence modeling from OSINT to neutral TI naming: dictionary attribute and object type `osint` → `threat_intel`; profile `osint` → `threat_intel`; Discovery class `osint_inventory_info` → `threat_intel_inventory_info`. Update `metadata.profiles`, event payloads, and pipelines accordingly; the former name implied open-source-only collection though feeds are often commercial or internal.
+  1. Removed dedicated application-layer network event classes; emit `network_activity` with `network_application_protocol_id` and the appropriate `network_*` profile(s) in `metadata.profiles` instead: `http_activity`, `dns_activity`, `dhcp_activity`, `ftp_activity`, `smb_activity`, `ssh_activity`, `ntp_activity`, `rdp_activity`, `tunnel_activity`. Pipeline and storage consumers must remap former `class_uid` values accordingly.
   1. Removed 13 deprecated query event classes: `admin_group_query`, `file_query`, `folder_query`, `job_query`, `kernel_object_query`, `module_query`, `network_connection_query`, `networks_query`, `peripheral_device_query`, `process_query`, `service_query`, `session_query`, `startup_item_query`, `user_query`.
   1. Removed 3 deprecated network event classes: `email_file_activity`, `email_url_activity`, `network_file_activity`.
   1. Removed `web_resource_access_activity` event class.
@@ -135,7 +141,7 @@ Thankyou! -->
   1. Deleted Windows query events: `registry_key_query`, `registry_value_query`, `prefetch_query`.
   1. Removed recursive `manager` attribute from `ldap_person`.
   1. `device` object no longer defines `network_interfaces` or posture/risk attributes; populate those on `device_detail` (optional `device_detail` on `base_event` carries extended host context).
-  1. Removed profile definitions `cloud`, `host`, `trace`, `container`, `data_classification`, `incident`, `network_proxy`, `load_balancer`, and `datetime` (attributes are core or class-local). Event `metadata.profiles` and class-level `profiles` arrays must no longer reference those names; use the merged schema shape only.
+  1. Removed profile definitions `cloud`, `host`, `trace`, `container`, `data_classification`, `incident`, `network_proxy`, and `load_balancer` (attributes are core or class-local). An empty `datetime` profile file remains for schema-compiler compatibility only. Event `metadata.profiles` and class-level `profiles` arrays must no longer reference removed names; use the merged schema shape only.
 
 ### Misc
   1. Updated schema version to `2.0.0-dev`.

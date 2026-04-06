@@ -4205,6 +4205,346 @@
         }
       }
     },
+    "network_application_protocol": {
+      "caption": "Network Application Protocol",
+      "description": "The application-layer protocol for this observation, normalized to the caption of <code>network_application_protocol_id</code>. Prefer IANA service names in <code>app_protocol_name</code> when unmapped.",
+      "type": "string_t"
+    },
+    "network_application_protocol_id": {
+      "caption": "Network Application Protocol ID",
+      "description": "Identifies which L7 protocol semantics apply. Use with optional protocol profiles on <code>network_activity</code>. Flow lifecycle remains in <code>activity_id</code>.",
+      "sibling": "network_application_protocol",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "HTTP",
+          "description": "HTTP or HTTPS; use <code>network_http</code> profile fields."
+        },
+        "2": {
+          "caption": "DNS",
+          "description": "Use <code>network_dns</code> profile fields."
+        },
+        "3": {
+          "caption": "DHCP",
+          "description": "Use <code>network_dhcp</code> profile fields."
+        },
+        "4": {
+          "caption": "FTP",
+          "description": "FTP or SFTP; use <code>network_ftp</code> profile fields."
+        },
+        "5": {
+          "caption": "SMB",
+          "description": "Use <code>network_smb</code> profile fields."
+        },
+        "6": {
+          "caption": "SSH",
+          "description": "Use <code>network_ssh</code> profile fields."
+        },
+        "7": {
+          "caption": "NTP",
+          "description": "Use <code>network_ntp</code> profile fields."
+        },
+        "8": {
+          "caption": "RDP",
+          "description": "Use <code>network_rdp</code> profile fields."
+        },
+        "9": {
+          "caption": "Tunnel",
+          "description": "VPN or encapsulation; use <code>network_tunnel</code> profile fields."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "Protocol not listed; set <code>app_protocol_name</code> and use <code>protocol_context</code> or extend profiles."
+        }
+      }
+    },
+    "dns_operation": {
+      "caption": "DNS Operation",
+      "description": "The DNS observation type, normalized to the caption of <code>dns_operation_id</code>.",
+      "type": "string_t"
+    },
+    "dns_operation_id": {
+      "caption": "DNS Operation ID",
+      "description": "DNS-specific observation when <code>network_application_protocol_id</code> is DNS. Distinct from connection <code>activity_id</code>.",
+      "sibling": "dns_operation",
+      "type": "integer_t",
+      "enum": {
+        "1": {
+          "caption": "Query",
+          "description": "DNS query request."
+        },
+        "2": {
+          "caption": "Response",
+          "description": "DNS query response."
+        },
+        "6": {
+          "caption": "Traffic",
+          "description": "Bidirectional DNS request and response in one observation."
+        }
+      }
+    },
+    "dhcp_message_type": {
+      "caption": "DHCP Message Type",
+      "description": "The DHCP message type, normalized to the caption of <code>dhcp_message_type_id</code>.",
+      "type": "string_t"
+    },
+    "dhcp_message_type_id": {
+      "caption": "DHCP Message Type ID",
+      "description": "DHCP message type when <code>network_application_protocol_id</code> is DHCP.",
+      "sibling": "dhcp_message_type",
+      "type": "integer_t",
+      "enum": {
+        "1": {
+          "caption": "Discover",
+          "description": "DHCPDISCOVER"
+        },
+        "2": {
+          "caption": "Offer",
+          "description": "DHCPOFFER"
+        },
+        "3": {
+          "caption": "Request",
+          "description": "DHCPREQUEST"
+        },
+        "4": {
+          "caption": "Decline",
+          "description": "DHCPDECLINE"
+        },
+        "5": {
+          "caption": "Ack",
+          "description": "DHCPACK"
+        },
+        "6": {
+          "caption": "Nak",
+          "description": "DHCPNAK"
+        },
+        "7": {
+          "caption": "Release",
+          "description": "DHCPRELEASE"
+        },
+        "8": {
+          "caption": "Inform",
+          "description": "DHCPINFORM"
+        },
+        "9": {
+          "caption": "Expire",
+          "description": "Lease expired."
+        }
+      }
+    },
+    "http_method_id": {
+      "caption": "HTTP Method ID",
+      "description": "The HTTP request method when <code>network_application_protocol_id</code> is HTTP. Distinct from connection <code>activity_id</code>.",
+      "sibling": "http_method",
+      "type": "integer_t",
+      "enum": {
+        "1": {
+          "caption": "Connect",
+          "description": "HTTP CONNECT tunnel."
+        },
+        "2": {
+          "caption": "Delete"
+        },
+        "3": {
+          "caption": "Get"
+        },
+        "4": {
+          "caption": "Head"
+        },
+        "5": {
+          "caption": "Options"
+        },
+        "6": {
+          "caption": "Post"
+        },
+        "7": {
+          "caption": "Put"
+        },
+        "8": {
+          "caption": "Trace"
+        },
+        "9": {
+          "caption": "Patch"
+        }
+      }
+    },
+    "ftp_transfer_operation": {
+      "caption": "FTP Transfer Operation",
+      "description": "The FTP/SFTP file operation, normalized to the caption of <code>ftp_transfer_operation_id</code>.",
+      "type": "string_t"
+    },
+    "ftp_transfer_operation_id": {
+      "caption": "FTP Transfer Operation ID",
+      "description": "FTP data-plane operation when <code>network_application_protocol_id</code> is FTP.",
+      "sibling": "ftp_transfer_operation",
+      "type": "integer_t",
+      "enum": {
+        "1": {
+          "caption": "Put",
+          "description": "Upload"
+        },
+        "2": {
+          "caption": "Get",
+          "description": "Download"
+        },
+        "3": {
+          "caption": "Poll"
+        },
+        "4": {
+          "caption": "Delete"
+        },
+        "5": {
+          "caption": "Rename"
+        },
+        "6": {
+          "caption": "List"
+        }
+      }
+    },
+    "smb_file_operation": {
+      "caption": "SMB File Operation",
+      "description": "The SMB file operation, normalized to the caption of <code>smb_file_operation_id</code>.",
+      "type": "string_t"
+    },
+    "smb_file_operation_id": {
+      "caption": "SMB File Operation ID",
+      "description": "SMB file semantics when <code>network_application_protocol_id</code> is SMB.",
+      "sibling": "smb_file_operation",
+      "type": "integer_t",
+      "enum": {
+        "1": {
+          "caption": "File Supersede"
+        },
+        "2": {
+          "caption": "File Open"
+        },
+        "3": {
+          "caption": "File Create"
+        },
+        "4": {
+          "caption": "File Open If"
+        },
+        "5": {
+          "caption": "File Overwrite"
+        },
+        "6": {
+          "caption": "File Overwrite If"
+        }
+      }
+    },
+    "ntp_association_mode": {
+      "caption": "NTP Association Mode",
+      "description": "The NTP association mode, normalized to the caption of <code>ntp_association_mode_id</code>.",
+      "type": "string_t"
+    },
+    "ntp_association_mode_id": {
+      "caption": "NTP Association Mode ID",
+      "description": "NTP mode when <code>network_application_protocol_id</code> is NTP.",
+      "sibling": "ntp_association_mode",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Symmetric Active Exchange"
+        },
+        "2": {
+          "caption": "Symmetric Passive Response"
+        },
+        "3": {
+          "caption": "Client Synchronization"
+        },
+        "4": {
+          "caption": "Server Response"
+        },
+        "5": {
+          "caption": "Broadcast"
+        },
+        "6": {
+          "caption": "Control"
+        },
+        "7": {
+          "caption": "Private Use Case"
+        },
+        "99": {
+          "caption": "Other"
+        }
+      }
+    },
+    "rdp_connection_phase": {
+      "caption": "RDP Connection Phase",
+      "description": "The RDP protocol phase, normalized to the caption of <code>rdp_connection_phase_id</code>.",
+      "type": "string_t"
+    },
+    "rdp_connection_phase_id": {
+      "caption": "RDP Connection Phase ID",
+      "description": "RDP phase when <code>network_application_protocol_id</code> is RDP.",
+      "sibling": "rdp_connection_phase",
+      "type": "integer_t",
+      "enum": {
+        "1": {
+          "caption": "Initial Request"
+        },
+        "2": {
+          "caption": "Initial Response"
+        },
+        "3": {
+          "caption": "Connect Request"
+        },
+        "4": {
+          "caption": "Connect Response"
+        },
+        "5": {
+          "caption": "TLS Handshake"
+        },
+        "6": {
+          "caption": "Traffic"
+        },
+        "7": {
+          "caption": "Disconnect"
+        },
+        "8": {
+          "caption": "Reconnect"
+        }
+      }
+    },
+    "tunnel_session_event": {
+      "caption": "Tunnel Session Event",
+      "description": "The tunnel lifecycle event, normalized to the caption of <code>tunnel_session_event_id</code>.",
+      "type": "string_t"
+    },
+    "tunnel_session_event_id": {
+      "caption": "Tunnel Session Event ID",
+      "description": "Tunnel open/close/renew when <code>network_application_protocol_id</code> is Tunnel.",
+      "sibling": "tunnel_session_event",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Open"
+        },
+        "2": {
+          "caption": "Close"
+        },
+        "3": {
+          "caption": "Renew"
+        },
+        "99": {
+          "caption": "Other"
+        }
+      }
+    },
+    "protocol_context": {
+      "caption": "Protocol Context",
+      "description": "Semi-structured payload for L7 protocols not yet modeled in OCSF profiles. Use namespaced keys; prefer <code>app_protocol_name</code> and official profiles when available.",
+      "type": "json_t"
+    },
     "next_run_time": {
       "caption": "Next Run",
       "description": "The next run time. See specific usage.",
@@ -4473,12 +4813,6 @@
       "caption": "OS Machine UUID",
       "description": "The operating system assigned Machine ID. In Windows, this is the value stored at the registry path: <code>HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography\\MachineGuid</code>. In Linux, this is stored in the file: <code>/etc/machine-id</code>.",
       "type": "uuid_t"
-    },
-    "osint": {
-      "caption": "OSINT",
-      "description": "The OSINT (Open Source Intelligence) object contains details related to an indicator such as the indicator itself, related indicators, geolocation, registrar information, subdomains, analyst commentary, and other contextual information. This information can be used to further enrich a detection or finding by providing decisioning support to other analysts and engineers.",
-      "type": "osint",
-      "is_array": true
     },
     "ou_name": {
       "caption": "Org Unit Name",
@@ -6688,6 +7022,12 @@
         }
       ]
     },
+    "threat_intel": {
+      "caption": "Threat Intelligence",
+      "description": "Threat intelligence and indicator context: the indicator value, related indicators, geolocation, registrar and WHOIS data, subdomains, analyst commentary, TTPs, campaigns, and related artifacts. Use to enrich detections or findings. Replaces the former <code>osint</code> attribute (Open Source Intelligence); sources may be open, commercial, or internal.",
+      "type": "threat_intel",
+      "is_array": true
+    },
     "ticket": {
       "caption": "Ticket",
       "description": "The linked ticket in the ticketing system.",
@@ -6700,8 +7040,8 @@
       "is_array": true
     },
     "time": {
-      "caption": "Event Time",
-      "description": "Epoch-millis occurrence time for backward compatibility. The canonical event timestamp is <code>time_dt</code> (RFC 3339); prefer <code>time_dt</code> for new producers and analytics.",
+      "caption": "Event Time (Epoch Millis)",
+      "description": "Optional occurrence time as milliseconds since the Unix epoch (UTC). Legacy compatibility only; the canonical timestamp is <code>time_dt</code> (RFC 3339).",
       "type": "timestamp_t"
     },
     "timespan": {

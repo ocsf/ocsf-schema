@@ -7040,8 +7040,13 @@
       "is_array": true
     },
     "time": {
+      "caption": "Event Time",
+      "description": "The canonical event occurrence timestamp in RFC 3339 date/time format. This is the primary time field for all events in v2.0.",
+      "type": "datetime_t"
+    },
+    "time_epoch": {
       "caption": "Event Time (Epoch Millis)",
-      "description": "Optional occurrence time as milliseconds since the Unix epoch (UTC). Legacy compatibility only; the canonical timestamp is <code>time_dt</code> (RFC 3339).",
+      "description": "Optional occurrence time as milliseconds since the Unix epoch (UTC). Use only when epoch millis is required for legacy consumers or high-performance numeric comparisons. The canonical timestamp is <code>time</code> (RFC 3339).",
       "type": "timestamp_t"
     },
     "timespan": {
@@ -7049,14 +7054,9 @@
       "description": "The Time Span object represents different time period durations. If a timespan is fractional, i.e. crosses one period, e.g. a week and 3 days, more than one may be populated since each member is of integral type. In that case <code>type_id</code> if present should be set to <code>Other.</code><P>A timespan may also be defined by its time interval boundaries, <code>start_time</code> and <code>end_time</code>.",
       "type": "timespan"
     },
-    "time_dt": {
-      "caption": "Event Time (RFC 3339)",
-      "description": "The default and canonical event timestamp in RFC 3339 date/time format (v2.0). Use this field as the primary occurrence time; use <code>time</code> only when epoch millis is required for legacy consumers.",
-      "type": "datetime_t"
-    },
     "timezone_offset": {
       "caption": "Timezone Offset",
-      "description": "The number of minutes that the reported event <code>time_dt</code> (or, if used, <code>time</code>) is ahead or behind UTC, in the range -1,080 to +1,080.",
+      "description": "The number of minutes that the reported event <code>time</code> is ahead or behind UTC, in the range -1,080 to +1,080.",
       "type": "integer_t"
     },
     "title": {

@@ -1,0 +1,31 @@
+{
+  "uid": 41,
+  "caption": "Graph Discovery",
+  "category": "discovery",
+  "description": "Graph Discovery events capture a graph representation of entities and their relationships. Nodes are typed via <code>entity_type_id</code> and edges are typed via <code>relation_id</code>, enabling consumers to filter domain-specific views (identity, topology, temporal, data lineage, dependency) from a single graph.",
+  "extends": "discovery",
+  "name": "graph_discovery",
+  "attributes": {
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Log",
+          "description": "The graph data is captured via a log."
+        },
+        "2": {
+          "caption": "Collect",
+          "description": "The graph data is captured via a collection process."
+        },
+        "3": {
+          "caption": "Query",
+          "description": "The graph data is captured via a query."
+        }
+      }
+    },
+    "event_graph": {
+      "description": "The graph representation of entities and relationships discovered or collected. Filter by <code>entity_type_id</code> and <code>relation_id</code> to extract domain-specific views.",
+      "group": "primary",
+      "requirement": "required"
+    }
+  }
+}

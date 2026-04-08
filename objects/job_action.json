@@ -4,7 +4,7 @@
   "name": "job_action",
   "attributes": {
     "type_id": {
-      "description": "The normalized identifier of the job action.",
+      "description": "The job action type.",
       "requirement": "required",
       "enum": {
         "0": {
@@ -12,7 +12,7 @@
 	  "description": "The performed action is unknown."
 	},
 	"1": {
-	  "caption": "Com Handler",
+	  "caption": "COM Handler",
 	  "description": "The action fires a COM handler."
 	},
 	"2": {
@@ -34,11 +34,11 @@
       }
     },
     "type": {
-      "description": "The type of action that the job will perform when specified conditions are met.",
+      "description": "The job action type, normalized to the caption of the <code>type_id</code> value. In the case of 'Other', it is defined by the event source.",
       "requirement": "recommended"
     },
     "cmd_line": {
-      "description": "The command line executed when the action type is <code>Execution (2)</code>.",
+      "description": "When `type_id` is <code>Execution</code>, this describes the command line that is executed.<br/><br/>When `type_id` is <code>COM Handler</code>, this <em>may</em> describe the DLL path stored in the COM component's `InprocServer32` key or the command line stored in the COM component's `LocalServer32` key.
       "requirement": "optional"
     },
     "properties": {

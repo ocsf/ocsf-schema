@@ -76,11 +76,11 @@
       }
     },
     "type": {
-      "description": "The name of the orchestration mechanism that the job refers to.",
+      "description": "The job type, normalized to the caption of the <code>type_id</code> value. In the case of 'Other', it is defined by the event source.",
       "requirement": "optional"
     },
     "type_id": {
-      "description": "The normalized orchestration mechanism name that the job refers to.",
+      "description": "The job type, i.e. the mechanism that executes the job.",
       "requirement": "recommended",
       "enum": {
 	"0": {
@@ -89,19 +89,19 @@
 	},
 	"1": {
 	  "caption": "Task Scheduler",
-	  "description": "The job refers to Windows Task Scheduler."
+	  "description": "The job is executed by the Task Scheduler on Windows."
 	},
 	"2": {
 	  "caption": "Cron",
-	  "description": "The job refers to cron utility."
+	  "description": "The job is executed by <code>cron</code> on Linux, macOS, or another a Unix-like OS."
 	},
 	"3": {
 	  "caption": "Systemd",
-	  "description": "The job refers to systemd suite."
+	  "description": "The job is executed by <code>systemd</code> on Linux."
 	},
 	"4": {
 	  "caption": "Launchd",
-	  "description": "The job refers to Apple system and service management suite."
+	  "description": "The job is executed by <code>launchd</code> on macOS."
 	},
         "99": {
           "caption": "Other",

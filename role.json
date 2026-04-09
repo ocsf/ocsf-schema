@@ -1,0 +1,34 @@
+{
+  "caption": "Role",
+  "description": "The Role object describes permission characteristics associated with a user or group of users against one or more resources. In some cases only the name or ID of the role is known hence other attributes are optional.",
+  "extends": "_entity",
+  "name": "role",
+  "attributes": {
+    "account": {
+      "description": "The the account associated with the role. For example, can be a cross-account role, different from the user or group account, granting access within this account.",
+      "requirement": "optional"
+    },
+    "policy": {
+      "description": "Describes details of a policy associated with the role.",
+      "requirement": "optional"
+    },
+    "privileges": {
+      "description": "List of privileges assigned to a role.",
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "programmatic_credentials": {
+      "description": "Details about the programmatic credential (API keys, access tokens, certificates, etc) associated to the role.",
+      "requirement": "optional"
+    },
+    "resources": {
+      "description": "Resources that the role applies to.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "session": {
+      "description": "The session where the role is active. Some roles may be temporary and expire when the session expires.",
+      "requirement": "optional"
+    }
+  }
+}

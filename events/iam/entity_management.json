@@ -1,7 +1,7 @@
 {
   "uid": 4,
   "caption": "Entity Management",
-  "description": "Entity Management events report activity on managed entities such as users, groups, roles, policies, accounts, devices, and other organizational resources. Activities include create, read, update, delete, enable, disable, lock, unlock, membership changes, privilege assignments, policy attachments, password management, and MFA factor changes. <p><b>When to use this class:</b> Use for any lifecycle or configuration change to an identity, access, or organizational entity. This includes what was previously reported as Account Change, User Access Management, or Group Management. <b>Do not use</b> for identity verification (use <code>Authentication</code>) or session privilege elevation (use <code>Authorize Session</code>).</p>",
+  "description": "Entity Management events report activity on managed entities such as users, groups, roles, policies, accounts, devices, and other organizational resources. Activities include create, read, update, delete, enable, disable, lock, unlock, membership changes, privilege assignments, policy attachments, password management, and MFA factor changes. <p><b>How to use:</b> Set <code>entity.type_id</code> to identify the entity type (User, Group, Device, Policy, etc.) and populate the corresponding attribute inside <code>entity</code> (e.g. <code>entity.user</code> for users, <code>entity.group</code> for groups). Use <code>entity_result</code> the same way to capture the state after the change.</p><p><b>When to use this class:</b> Use for any lifecycle or configuration change to an identity, access, or organizational entity. <b>Do not use</b> for identity verification (use <code>Authentication</code>) or session privilege elevation (use <code>Authorize Session</code>).</p>",
   "extends": "iam",
   "name": "entity_management",
   "references": [
@@ -145,11 +145,6 @@
       "group": "primary",
       "requirement": "recommended"
     },
-    "group": {
-      "description": "The group that was the target of the management activity.",
-      "group": "context",
-      "requirement": "optional"
-    },
     "policies": {
       "description": "Details about the IAM policies associated with policy management activities.",
       "group": "context",
@@ -162,21 +157,6 @@
     },
     "resources": {
       "description": "Resources that the privileges give access to.",
-      "group": "context",
-      "requirement": "optional"
-    },
-    "subgroup": {
-      "description": "A subgroup that was added to or removed from a group.",
-      "group": "context",
-      "requirement": "optional"
-    },
-    "user": {
-      "description": "The user that was the target of the management activity.",
-      "group": "context",
-      "requirement": "optional"
-    },
-    "user_result": {
-      "description": "The resulting state of the user after the management activity.",
       "group": "context",
       "requirement": "optional"
     }

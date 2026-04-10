@@ -42,6 +42,18 @@ Thankyou! -->
 -->
 
 ## [Unreleased]
+### Added
+* #### Categories
+* #### Event Classes
+* #### Profiles
+* #### Objects
+  1. Added `role`` ojbect for user and group management. [#1603][https://github.com/ocsf/ocsf-schema/pull/1603]
+### Improved
+* #### Categories
+* #### Event Classes
+  1. Added `role` and role management support to `account_change` `group_management` `user_management`. [#1603][https://github.com/ocsf/ocsf-schema/pull/1603]
+* #### Profiles
+* #### Objects
 
 
 ## [v1.8.0] - Mar 16th, 2026

@@ -1,12 +1,17 @@
 {
   "caption": "IAM Role",
-  "description": "The Role object describes permission characteristics associated with a user or group of users against one or more resources. In some cases only the name or ID of the role is known hence other attributes are optional.",
+  "description": "The IAM Role object describes permission characteristics (or privileges) associated with a user or group of users as security principals against one or more resources. In some cases only the name or ID of the role is known hence other attributes are optional. In some systems a user or group of users can have multiple roles, imparting the union of privileges to the principal. In some systems the role can serve as a temporary security principal without its own credentials on behalf of the actual security principal.",
   "extends": "_entity",
   "name": "iam_role",
   "attributes": {
     "account": {
       "description": "The account associated with the role. For example, can be a cross-account role, different from the user or group account, granting access within this account.",
       "requirement": "optional"
+    },
+    "name": {
+      "description": "The role name. For example, <code>Power Users</code>.",
+      "requirement": "recommended",
+      "type": "username_t"
     },
     "policy": {
       "description": "Describes details of a policy associated with the role.",
@@ -26,6 +31,14 @@
     },
     "session": {
       "description": "The session where the role is active. Some roles may be temporary and expire when the session expires.",
+      "requirement": "optional"
+    },
+    "uid": {
+      "description": "The unique role identifier. For example, the Windows role SID, or AWS role ARN.",
+      "requirement": "recommended"
+    },
+    "uid_alt": {
+      "description": "The alternate user identifier. For example, the Active Directory role GUID or the associated LDAP group DN.",
       "requirement": "optional"
     }
   }

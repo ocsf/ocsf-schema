@@ -56,7 +56,7 @@ Thankyou! -->
   1. Added `event_codes` attribute that is a set of event identifiers. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `log_sources` attribute that is a set of log systems. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `job_actions` attribute that describes a set of actions that job can perform. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
-  1. Added `job_triggers` attribute that descirbes a set of conditions when job performs its actions. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
+  1. Added `job_triggers` attribute that describes a set of conditions when job performs its actions. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `properties` attribute that is a set of characteristics associated with an entity. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
 
 ### Improved

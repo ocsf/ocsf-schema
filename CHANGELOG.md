@@ -42,7 +42,50 @@ Thankyou! -->
 -->
 
 ## [Unreleased]
+### Added
+* #### Categories
+* #### Event Classes
+* #### Profiles
+* #### Objects
+  1. Added `job_action` object to describe an action that job can perform. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
+  1. Added `job_trigger` object to describe a condition when job performs its action. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
+* #### Observables
+* #### Platform Extensions
+* #### Dictionary Attributes
+  1. Added `com_class_id` attribute to reflect Class Identifier of a Component Object Model. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
+  1. Added `event_codes` attribute that is a set of event identifiers. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
+  1. Added `log_sources` attribute that is a set of log systems. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
+  1. Added `job_actions` attribute that describes a set of actions that job can perform. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
+  1. Added `job_triggers` attribute that descirbes a set of conditions when job performs its actions. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
+  1. Added `properties` attribute that is a set of characteristics associated with an entity. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
 
+### Improved
+* #### Categories
+* #### Event Classes
+  1. Added `job_result` in `Scheduled Job Activity` class to reflect the actual or attempted state of the job upon update activity. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
+* #### Profiles
+* #### Objects
+  1. Added `job_actions` array of objects to the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
+  1. Added `job_triggers` array of objects to the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
+  1. Added `type_id` attribute to the `job` object to describe mechanism that executes the job. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
+  1. Extended `run_state_id` attribute with `Disabled (5)` in the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
+  1. Added `uid` attribute to the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
+  1. Relaxed `name` attribute constraint to `recommended` in the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
+  1. Added `at_least_one` constraint for `name` and `type_id` attributes in the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
+* #### Observables
+* #### Platform Extensions
+* #### Dictionary Attributes
+
+### Bugfixes
+
+### Deprecated
+  1. Deprecated usage of `cmd_line` attribute in favor of `job_actions.cmd_line` in the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
+  1. Deprecated usage of `last_run_time` attribute in favor of `job_triggers.last_run_time` in the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
+  1. Deprecated usage of `next_run_time` attribute in favor of `job_triggers.next_run_time` in the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
+
+### Breaking changes
+
+### Misc
 
 ## [v1.8.0] - Mar 16th, 2026
 ### Added

@@ -1,7 +1,7 @@
 {
   "uid": 6,
   "caption": "Group Management",
-  "description": "Group Management events report management updates to a group, including updates to membership and permissions.",
+  "description": "Group Management events report management updates to a group, including updates to membership and permissions and assignment of a role.",
   "extends": "iam",
   "name": "group_management",
   "attributes": {
@@ -38,6 +38,14 @@
         "8": {
           "caption": "Remove Subgroup",
           "description": "Remove subgroup from a group."
+        },
+        "9": {
+          "caption": "Assign Role",
+          "description": "Assign a role to a group."
+        },
+        "10": {
+          "caption": "Remove Role",
+          "description": "Remove a role from a group."
         }
       }
     },
@@ -45,6 +53,11 @@
       "description": "Group that was the target of the event.",
       "group": "primary",
       "requirement": "required"
+    },
+    "iam_role": {
+      "description": "The role assigned to or removed from a group.",
+      "group": "primary",
+      "requirement": "recommended"
     },
     "privileges": {
       "description": "A list of privileges assigned to the group.",

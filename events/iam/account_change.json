@@ -1,7 +1,7 @@
 {
   "uid": 1,
   "caption": "Account Change",
-  "description": "Account Change events report when specific user account management tasks are performed, such as a user/role being created, changed, deleted, renamed, disabled, enabled, locked out or unlocked.",
+  "description": "Account Change events report when specific user account management tasks are performed, such as a user/role being created or role assigned, changed, deleted, renamed, disabled, enabled, locked out or unlocked.",
   "extends": "iam",
   "name": "account_change",
   "attributes": {
@@ -54,6 +54,14 @@
         "12": {
           "caption": "Unlock",
           "description": "A user account was unlocked."
+        },
+        "13": {
+          "caption": "Assign Role",
+          "description": "Assign a role to a user."
+        },
+        "14": {
+          "caption": "Remove Role",
+          "description": "Remove a role from a user."
         }
       }
     },
@@ -61,6 +69,11 @@
       "description": "Details about the authentication factors associated with the MFA Factor Enable/Disable activities.",
       "group": "context",
       "requirement": "optional"
+    },
+    "iam_role": {
+      "description": "The role assigned to or removed from a user.",
+      "group": "primary",
+      "requirement": "recommended"
     },
     "policies": {
       "description": "Details about the IAM policies associated with the Attach/Detach Policy activities.",

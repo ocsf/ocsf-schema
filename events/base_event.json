@@ -104,7 +104,7 @@
       "requirement": "required"
     },
     "start_time": {
-      "description": "The start time of a time period, or the time of the least recent event included in the aggregate event.",
+      "description": "The start time of a time period, or the time of the least recent event included in the aggregate event. When <code>start_time</code> is not present on a non-aggregate event, it should be populated from <code>time</code> to support consistent use of <code>start_time</code> for timeline queries.",
       "group": "occurrence",
       "requirement": "optional"
     },
@@ -125,6 +125,7 @@
       "requirement": "recommended"
     },
     "time": {
+      "description": "The normalized event occurrence time. For aggregate events where <code>start_time</code> and <code>end_time</code> are populated, <code>time</code> should be set to <code>start_time</code> — the time of the least recent event in the aggregate. This enables consistent timeline ordering and causal analysis across correlated events. For finding events, <code>time</code> retains its meaning as the finding creation time.",
       "group": "occurrence",
       "requirement": "required"
     },

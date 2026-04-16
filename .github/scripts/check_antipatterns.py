@@ -780,7 +780,7 @@ def cmd_prepare() -> None:
         if not attr_def:
             continue
         for detector in attr_detectors:
-            for f in detector(attr_name, attr_def, "dictionary", {}):
+            for f in detector(attr_name, attr_def, "dictionary", compiled_dict):
                 findings.append(f.to_dict())
         # Dictionary-level cross-checks
         for f in check_duplicate_attribute(

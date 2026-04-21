@@ -37,3 +37,8 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ZACHS_CLAUDE_KEY }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python .github/scripts/review_descriptions.py review
+
+      - name: Post anti-pattern findings
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python .github/scripts/check_antipatterns.py post

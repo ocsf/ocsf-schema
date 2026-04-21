@@ -76,6 +76,7 @@ Thankyou! -->
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
+  1. Impoved `job` object description to describe cases beyond System Activity class.
 
 ### Bugfixes
 
@@ -84,9 +85,11 @@ Thankyou! -->
   1. Deprecated usage of `last_run_time` attribute in favor of `job_triggers.last_run_time` in the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Deprecated usage of `next_run_time` attribute in favor of `job_triggers.next_run_time` in the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
 
-### Breaking changes
+### Bugfixes
+1. Fixed the static anti-pattern checker so dictionary attributes are analyzed with the full compiled dictionary; the `missing-sibling` rule no longer false-positives when the sibling exists in `dictionary.json`. [#1613](https://github.com/ocsf/ocsf-schema/pull/1613)
 
 ### Misc
+1. Added static anti-pattern detection, LLM-to-static learning pipeline, and deprecated attribute filtering to the automated PR review workflows. [#1599](https://github.com/ocsf/ocsf-schema/pull/1599)
 
 ## [v1.8.0] - Mar 16th, 2026
 ### Added

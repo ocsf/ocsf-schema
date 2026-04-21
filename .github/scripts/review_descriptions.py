@@ -47,6 +47,10 @@ The compiled schema contains:
   attribute also appears in the compiled objects above, review both the generic
   dictionary description and the object-specific resolved descriptions
 
+Deprecated attributes (those with an `@deprecated` marker) have been
+pre-filtered from the compiled schema data. Do not flag or comment on
+deprecated attributes — they are intentionally being phased out.
+
 ## Review Criteria
 
 Evaluate ONLY the changed/added descriptions against these criteria:
@@ -87,6 +91,42 @@ Every CHANGELOG entry MUST:
 Descriptions should be specific enough for an LLM to correctly populate the
 field from raw security telemetry and distinguish it from similar attributes.
 
+## Anti-Pattern Detection
+
+In addition to description quality, flag structural design anti-patterns in
+changed/added attributes:
+
+### 8. Boolean Trap
+Flag `boolean_t` attributes where the concept has more than two meaningful
+states. Common signals:
+- The description mentions conditional logic, multiple options, or "depending on"
+- The boolean answers a meta-question ("is X known?") instead of directly
+  encoding the value — prefer an `integer_t` enum with explicit states
+- Example: `is_src_dst_assignment_known` (boolean) should be `initiator_id`
+  (enum: Unknown, Source Endpoint, Destination Endpoint, Other)
+
+### 9. Semantic Overlap
+Flag attributes on the same object/class that appear to represent the same
+or nearly identical concepts without clear differentiation. Each attribute
+should have a distinct, non-overlapping purpose.
+
+### 10. Incorrect Type Choice
+Flag attributes where the chosen type doesn't match the described semantics:
+- `string_t` used for values that have a fixed set of options (should be enum)
+- `integer_t` without enum for categorical values
+- `boolean_t` for multi-state concepts (see Boolean Trap above)
+
+### 11. Indirect Attribution
+Flag attributes that describe a meta-property about another value rather than
+directly encoding the information. Prefer direct representation.
+- Anti-pattern: `is_connection_type_known` (boolean meta-property)
+- Better: `connection_type_id` (enum that directly encodes the type, with
+  Unknown as a value)
+
+### 12. Cross-Attribute Inconsistency
+When the same attribute name appears on multiple objects in the compiled schema,
+flag cases where the descriptions or types are inconsistent without clear reason.
+
 ## Output Format
 
 Use this markdown structure:
@@ -99,11 +139,49 @@ Numbered list. Each item:
 - **Current**: the current description (quoted)
 - **Suggested**: your improved description (quoted)
 
+### Anti-Pattern Findings
+Numbered list. Each item:
+- **Pattern**: name of the anti-pattern (e.g., Boolean Trap, Semantic Overlap)
+- **Object/Class**: `name`
+- **Attribute**: `attribute_name`
+- **Issue**: what makes this an anti-pattern
+- **Recommendation**: how to restructure it
+
+If no anti-patterns are found, omit this section entirely.
+
+### Structured Anti-Pattern JSON
+
+After the Anti-Pattern Findings section (if any), append a hidden HTML comment
+block containing a JSON array of your findings. This enables automated
+extraction and learning. Use this exact format:
+
+```
+<!-- antipattern-json
+[
+  {
+    "rule": "semantic-overlap",
+    "container": "object_or_class_name",
+    "attribute": "attribute_name",
+    "pattern": "match_type:match_value",
+    "message": "concise description of the anti-pattern"
+  }
+]
+-->
+```
+
+The `pattern` field describes the structural signature so it can be codified
+as a static rule. Use one of these match types:
+- `attr_name_pair:name1,name2` — two attribute names that overlap
+- `attr_name_regex:regex` — attribute names matching a pattern (e.g., `is_\\w+_verified`)
+- `desc_contains:phrase` — attributes whose description contains a phrase
+
+If you found no anti-patterns, omit this block entirely.
+
 ### CHANGELOG Issues
 List any convention violations.
 
 ### Summary
-1-2 sentence overall assessment.
+1-2 sentence overall assessment covering both descriptions and anti-patterns.
 
 If no issues are found, respond with only:
 > ✅ No description issues found — descriptions look clear for LLM consumption.
@@ -164,6 +242,19 @@ def extract_changed_dict_attrs(diff: str) -> list[str]:
     return attrs
 
 
+def _strip_deprecated_attrs(definition: dict) -> dict:
+    """Return a copy of an object/class definition with deprecated attributes removed."""
+    if "attributes" not in definition:
+        return definition
+    filtered = {
+        name: attr for name, attr in definition["attributes"].items()
+        if not attr.get("@deprecated")
+    }
+    result = definition.copy()
+    result["attributes"] = filtered
+    return result
+
+
 # ---------------------------------------------------------------------------
 # Phase 1: prepare
 # ---------------------------------------------------------------------------
@@ -205,37 +296,40 @@ def cmd_prepare() -> None:
         if filepath.endswith(".json") and filepath.startswith("objects/"):
             name = Path(filepath).stem
             if name in compiled_objects:
-                context["objects"][name] = compiled_objects[name]
+                context["objects"][name] = _strip_deprecated_attrs(
+                    compiled_objects[name]
+                )
 
         elif filepath.endswith(".json") and filepath.startswith("events/"):
             name = Path(filepath).stem
             if name in compiled_classes:
-                context["classes"][name] = compiled_classes[name]
+                context["classes"][name] = _strip_deprecated_attrs(
+                    compiled_classes[name]
+                )
 
     if "dictionary.json" in changed_files:
         for attr_name in extract_changed_dict_attrs(diff):
             if attr_name not in compiled_dict_attrs:
                 continue
             dict_entry = compiled_dict_attrs[attr_name]
+            if dict_entry.get("@deprecated"):
+                continue
             desc = dict_entry.get("description", "")
 
             if "See specific usage" in desc:
-                # Strip the placeholder suffix and include the generic
-                # dictionary description so Claude can review it too.
                 prefix = desc.split("See specific usage")[0].strip()
                 if prefix:
                     trimmed = dict_entry.copy()
                     trimmed["description"] = prefix
                     context["dictionary_attributes"][attr_name] = trimmed
 
-                # Also pull in compiled objects that use this attribute
-                # so Claude reviews the final resolved descriptions.
                 for obj_name, obj_data in compiled_objects.items():
                     if attr_name in obj_data.get("attributes", {}):
                         if obj_name not in context["objects"]:
-                            context["objects"][obj_name] = obj_data
+                            context["objects"][obj_name] = _strip_deprecated_attrs(
+                                obj_data
+                            )
             else:
-                # Real description — review the dictionary entry directly.
                 context["dictionary_attributes"][attr_name] = dict_entry
 
     output = {
@@ -253,7 +347,11 @@ def cmd_prepare() -> None:
 # Phase 2: review
 # ---------------------------------------------------------------------------
 
-def build_review_prompt(data: dict, previous_review: str | None = None) -> str:
+def build_review_prompt(
+    data: dict,
+    previous_review: str | None = None,
+    static_findings: list[dict] | None = None,
+) -> str:
     """Build the prompt string from the saved review context."""
     ctx = data["compiled_context"]
     diff = data["diff"]
@@ -267,6 +365,19 @@ def build_review_prompt(data: dict, previous_review: str | None = None) -> str:
             "suggestions have been addressed and which remain outstanding.\n\n"
             + previous_review
             + "\n\n---\n"
+        )
+
+    if static_findings:
+        parts.append(
+            "## Static Anti-Pattern Findings\n"
+            "The following anti-patterns were detected by static analysis. "
+            "Validate these findings and include confirmed ones in your "
+            "Anti-Pattern Findings section. Also look for additional "
+            "anti-patterns that static analysis cannot catch (semantic "
+            "overlap, incorrect type choices, indirect attribution, etc.).\n"
+            "```json\n"
+            + json.dumps(static_findings, indent=2)
+            + "\n```\n"
         )
 
     if ctx["objects"]:
@@ -431,7 +542,21 @@ def cmd_review() -> None:
     else:
         print("No previous review found (first review)")
 
-    prompt_context = build_review_prompt(data, previous_review=previous_review)
+    # Load static anti-pattern findings if available
+    static_findings = None
+    ap_path = Path("antipattern_results.json")
+    if ap_path.exists():
+        ap_data = json.loads(ap_path.read_text())
+        findings = ap_data.get("findings", [])
+        if findings:
+            static_findings = findings
+            print(f"Loaded {len(findings)} static anti-pattern finding(s)")
+
+    prompt_context = build_review_prompt(
+        data,
+        previous_review=previous_review,
+        static_findings=static_findings,
+    )
 
     print("Calling Claude for review...")
     client = anthropic.Anthropic()
@@ -446,19 +571,93 @@ def cmd_review() -> None:
                 "role": "user",
                 "content": (
                     "Review the following OCSF schema PR changes for "
-                    "description quality and LLM comprehension. The objects "
-                    "and classes below are COMPILED output — fully resolved "
-                    "with inheritance, dictionary merging, and type "
-                    "enrichment applied.\n\n" + prompt_context
+                    "description quality, LLM comprehension, and structural "
+                    "anti-patterns. The objects and classes below are "
+                    "COMPILED output — fully resolved with inheritance, "
+                    "dictionary merging, and type enrichment applied.\n\n"
+                    + prompt_context
                 ),
             }
         ],
     )
     review = message.content[0].text
 
+    # Extract structured anti-pattern JSON from Claude's response
+    llm_findings = extract_llm_antipattern_json(review)
+    novel_findings = diff_findings(llm_findings, static_findings or [])
+
+    if novel_findings:
+        print(f"Found {len(novel_findings)} novel LLM-discovered anti-pattern(s)")
+        # Log the JSON for easy copy-paste into learned_antipatterns.json
+        learned_entries = []
+        for f in novel_findings:
+            learned_entries.append({
+                "rule": f.get("rule", "unknown"),
+                "match_type": f.get("pattern", "").split(":")[0] if ":" in f.get("pattern", "") else "manual",
+                "match_value": f.get("pattern", "").split(":", 1)[1] if ":" in f.get("pattern", "") else f.get("pattern", ""),
+                "message": f.get("message", ""),
+                "severity": "warning",
+                "discovered_in_pr": pr_number,
+            })
+        print("--- Learned patterns JSON (add to .github/config/learned_antipatterns.json) ---")
+        print(json.dumps(learned_entries, indent=2))
+        print("--- End learned patterns ---")
+
+        # Append a labeled section to the review comment
+        novel_section = (
+            "\n\n---\n"
+            "### LLM-Discovered Anti-Patterns\n"
+            "_These anti-patterns were identified by LLM analysis and are "
+            "not yet covered by static rules. Consider adding them to "
+            "`.github/config/learned_antipatterns.json`._\n\n"
+        )
+        for i, f in enumerate(novel_findings, 1):
+            novel_section += (
+                f"{i}. **{f.get('rule', 'unknown')}** — "
+                f"`{f.get('container', '?')}`.`{f.get('attribute', '?')}`\n"
+                f"   {f.get('message', '')}\n"
+                f"   > Pattern: `{f.get('pattern', 'N/A')}`\n\n"
+            )
+        review += novel_section
+    else:
+        print("No novel LLM anti-patterns beyond static findings")
+
     print("Posting review comment...")
     post_or_update_comment(pr_number, review)
     print("Done!")
+
+
+def extract_llm_antipattern_json(review_text: str) -> list[dict]:
+    """Extract structured anti-pattern findings from Claude's HTML comment block."""
+    match = re.search(
+        r"<!--\s*antipattern-json\s*\n(.*?)\n\s*-->",
+        review_text,
+        re.DOTALL,
+    )
+    if not match:
+        return []
+    try:
+        findings = json.loads(match.group(1))
+        if isinstance(findings, list):
+            return findings
+    except (json.JSONDecodeError, TypeError):
+        print("Warning: Failed to parse antipattern-json block", file=sys.stderr)
+    return []
+
+
+def diff_findings(
+    llm_findings: list[dict],
+    static_findings: list[dict],
+) -> list[dict]:
+    """Return LLM findings that don't have a matching static finding."""
+    static_keys = {
+        (f.get("container", ""), f.get("attribute", ""))
+        for f in static_findings
+    }
+    return [
+        f for f in llm_findings
+        if (f.get("container", ""), f.get("attribute", "")) not in static_keys
+    ]
 
 
 # ---------------------------------------------------------------------------

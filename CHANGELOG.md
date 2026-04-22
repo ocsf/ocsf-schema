@@ -57,13 +57,13 @@ Thankyou! -->
   1. Added `log_sources` that is a set of log systems. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `job_actions` that describes a set of actions that job can perform. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `job_triggers` that describes a set of conditions when job performs its actions. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
-  1. Added `job_result` that reflects the attempted or the actual updated job. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
+  1. Added `updated_job` that reflects the attempted or the actual updated job. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `properties` that is a set of characteristics associated with an entity. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
 
 ### Improved
 * #### Categories
 * #### Event Classes
-  1. Added `job_result` in `Scheduled Job Activity` class to reflect the actual or attempted state of the job upon update activity. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
+  1. Added `updated_job` in `Scheduled Job Activity` class to reflect the actual or attempted state of the job upon update activity. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
 * #### Profiles
 * #### Objects
   1. Added `job_actions` array of objects to the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)

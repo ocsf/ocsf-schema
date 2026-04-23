@@ -41,11 +41,11 @@
       "description": "The destination endpoint of the network activity — typically the responder. In bi-flow or asymmetric flow scenarios, this endpoint may represent the true initiator of the original communication. Use <code>initiator_id</code> to determine which endpoint actually initiated the communication."
     },
     "initiator": {
-      "description": "The normalized caption of <code>initiator_id</code>. One of: <code>Source Endpoint</code>, <code>Destination Endpoint</code>, <code>Unknown</code>, or <code>Other</code>.",
+      "description": "The endpoint that initiated the network communication, normalized to the caption of <code>initiator_id</code>. In the case of <code>Other</code>, it is defined by the event source.",
       "requirement": "optional"
     },
     "initiator_id": {
-      "description": "Indicates which endpoint initiated the network communication. Use this field to disambiguate source and destination roles in bi-directional or asymmetric flow scenarios.",
+      "description": "The normalized identifier of the endpoint that initiated the network communication. Use this field to disambiguate source and destination roles in bi-directional or asymmetric flow scenarios.",
       "group": "primary",
       "requirement": "recommended",
       "enum": {

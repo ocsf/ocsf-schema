@@ -9,43 +9,47 @@
       "enum": {
         "1": {
           "caption": "Assign Privileges",
-          "description": "Assign privileges to a group."
+          "description": "Assign privileges to a group. Use <code>privileges</code> to be assigned to <code>group</code>."
         },
         "2": {
           "caption": "Revoke Privileges",
-          "description": "Revoke privileges from a group."
+          "description": "Revoke privileges from a group. Use <code>privileges</code> to be revoked from <code>group</code>."
         },
         "3": {
           "caption": "Add User",
-          "description": "Add user to a group."
+          "description": "Add user to a group. Use <code>user</code> as the user to be added to <code>group</code>."
         },
         "4": {
           "caption": "Remove User",
-          "description": "Remove user from a group."
+          "description": "Remove user from a group. Use <code>user</code> as the user to be removed from <code>group</code>."
         },
         "5": {
           "caption": "Delete",
-          "description": "A group was deleted."
+          "description": "Delete a group. Use <code>group</code> as the group to be deleted."
         },
         "6": {
           "caption": "Create",
-          "description": "A group was created."
+          "description": "Create a group. Use <code>group</code> as the group to be created."
         },
         "7": {
           "caption": "Add Subgroup",
-          "description": "Add subgroup to a group."
+          "description": "Add a subgroup to a group. Use the <code>sub_group</code> to add to <code>group</code>."
         },
         "8": {
           "caption": "Remove Subgroup",
-          "description": "Remove subgroup from a group."
+          "description": "Remove a subgroup from a group. Use the <code>sub_group</code> to remove from <code>group</code>."
         },
         "9": {
-          "caption": "Assign Role",
-          "description": "Assign a role to a group."
+          "caption": "Update Group",
+          "description": "Update a group. The updated group details should be populated in the <code>updated_group</code> attribute."
         },
         "10": {
-          "caption": "Remove Role",
-          "description": "Remove a role from a group."
+          "caption": "Assign Roles",
+          "description": "Assign one or more roles to a group. Use the <code>iam_role_list</code> for the specific roles to be assigned to <code>group</code>."
+        },
+        "11": {
+          "caption": "Remove Roles",
+          "description": "Remove one or more roles from a group. Use the <code>iam_role_list</code> for the specific roles to be removed from <code>group</code>."
         }
       }
     },
@@ -54,8 +58,8 @@
       "group": "primary",
       "requirement": "required"
     },
-    "iam_role": {
-      "description": "The role assigned to or removed from a group.",
+    "iam_roles": {
+      "description": "One or more roles assigned to or removed from a group.",
       "group": "primary",
       "requirement": "recommended"
     },
@@ -70,12 +74,17 @@
       "requirement": "recommended"
     },
     "subgroup": {
-      "description": "A subgroup that was added to or removed from the group.",
+      "description": "A subgroup added to or removed from <code>group</code>.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "updated_group": {
+      "description": "The result of an updated group.<br><br>When the update is successful, this is the newly updated group. Upon failure, represents the attempted state of the group.",
       "group": "primary",
       "requirement": "recommended"
     },
     "user": {
-      "description": "A user that was added to or removed from the group.",
+      "description": "A user that was added to or removed from <code>group</code>.",
       "group": "primary",
       "requirement": "recommended"
     }

@@ -1,0 +1,122 @@
+{
+  "uid": 7,
+  "caption": "User Management",
+  "description": "User Management events report when specific user account management tasks are performed, such as a user being created, changed, deleted, renamed, disabled, enabled, locked out or unlocked.",
+  "extends": "iam",
+  "name": "user_management",
+  "attributes": {
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Create",
+          "description": "Create a user. Populate the <code>user</code> object with details of the user."
+        },
+        "2": {
+            "caption": "Update",
+            "description": "Update a user. The updated user details should be populated in the <code>updated_user</code> attribute."
+        },
+        "3": {
+          "caption": "Delete",
+          "description": "Delete a user."
+        },
+        "4": {
+          "caption": "Enable",
+          "description": "Enable a user."
+        },
+        "5": {
+          "caption": "Disable",
+          "description": "Disable a user."
+        },
+        "6": {
+          "caption": "Lock",
+          "description": "Lock out a user."
+        },
+        "7": {
+          "caption": "Unlock",
+          "description": "Unlock a previously locked out user."
+        },
+        "8": {
+          "caption": "Password Change",
+          "description": "An attempt to change a user password."
+        },
+        "9": {
+          "caption": "Password Reset",
+          "description": "An attempt to reset a user password."
+        },
+        "10": {
+          "caption": "Attach Policy",
+          "description": "Attach an IAM Policy to a user."
+        },
+        "11": {
+          "caption": "Detach Policy",
+          "description": "Detach an IAM Policy from a user."
+        },
+        "12": {
+          "caption": "MFA Factor Enable",
+          "description": "Enable one or more authentication factors for a user."
+        },
+        "13": {
+          "caption": "MFA Factor Disable",
+          "description": "Disable one or more authentication factors for a user."
+        },
+        "14": {
+          "caption": "Assign Privileges",
+          "description": "Assign privileges to a user."
+        },
+        "15": {
+          "caption": "Revoke Privileges",
+          "description": "Revoke privileges from a user."
+        },
+        "16": {
+          "caption": "Assign Roles",
+          "description": "Assign one or more roles to a user."
+        },
+        "17": {
+          "caption": "Remove Roles",
+          "description": "Remove one or more roles from a user."
+        }
+      }
+    },
+    "auth_factors": {
+      "description": "Details about the authentication factors associated with the MFA Factor Enable/Disable activities.",
+      "group": "context",
+      "requirement": "recommended"
+    },
+    "iam_roles": {
+      "description": "One or more roles assigned to or removed from a user.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "policies": {
+      "description": "Details about the IAM policies associated with the Attach/Detach Policy activities.",
+      "group": "context",
+      "requirement": "recommended"
+    },
+    "privileges": {
+      "description": "Set of privileges assigned to a user.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "resources": {
+      "description": "Resources that the privileges give access to.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "user": {
+      "description": "The user that was a target of an activity.",
+      "group": "primary",
+      "requirement": "required"
+    },
+    "updated_user": {
+      "description": "The result of an updated user.<br><br>When the update is successful, this is the newly updated user. Upon failure, represents the attempted state of the user.",
+      "group": "primary",
+      "requirement": "recommended"
+    }
+  },
+  "references": [
+    {
+      "description": "D3FEND™ Ontology d3f:PermissionGrantingEvent",
+      "url": "https://d3fend.mitre.org/event/d3f:PermissionGrantingEvent/"
+    }
+  ]
+}

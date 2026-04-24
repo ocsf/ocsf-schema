@@ -1,0 +1,83 @@
+{
+  "uid": 8,
+  "caption": "Role Management",
+  "description": "Role Management events report lifecycle management of a role, as well as privileges assigned or removed from a role and the resources associated with the role. There are two ways updates to the state of a role may be expressed: Using the <code>Update</code> activity, the <code>updated_role</code> reflects the changes made to <code>iam_role</code>. Using discrete activities, such as <code>Assign Privileges</code> the desired state change is expressed by the <code>privileges</code> attribute.",
+  "extends": "iam",
+  "name": "role_management",
+  "attributes": {
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Create",
+          "description": "Create a role. Use <code>iam_role</code> as the role to be created."
+        },
+        "2": {
+          "caption": "Update",
+          "description": "Update a role. The updated role details should be populated in the <code>updated_role</code> attribute."
+        },
+        "3": {
+          "caption": "Delete",
+          "description": "Delete a role. Use <code>iam_role</code> as the role to be deleted."
+        },
+        "4": {
+          "caption": "Assign Privileges",
+          "description": "Assign privileges to a role. Use <code>privileges</code> to be assigned to <code>iam_role</code>. Optionally, on success, the <code>updated_role</code> reflects the new state of the role."
+        },
+        "5": {
+          "caption": "Remove Privileges",
+          "description": "Remove privileges from a role. Use <code>privileges</code> to be removed from <code>iam_role</code>."
+        },
+        "6": {
+          "caption": "Assign Resources",
+          "description": "Assign resources to a role. Use <code>resource</code> to be assigned to <code>iam_role</code>."
+        },
+        "7": {
+          "caption": "Remove Resources",
+          "description": "Remove resources from a role. Use <code>resource</code> to be removed from <code>iam_role</code>."
+        },
+        "8": {
+          "caption": "Assign Policy",
+          "description": "Assign privileges to a role. Use <code>privileges</code> to be assigned to <code>iam_role</code>."
+        },
+        "9": {
+          "caption": "Remove Policy",
+          "description": "Remove privileges from a role. Use <code>privileges</code> to be removed from <code>iam_role</code>."
+        },
+        "10": {
+          "caption": "Programmatic Credentials",
+          "description": "Assign resources to a role. Use <code>resource</code> to be assigned to <code>iam_role</code>."
+        },
+        "11": {
+          "caption": "Remove Resources",
+          "description": "Remove resources from a role. Use <code>resource</code> to be removed from <code>iam_role</code>."
+        }
+      }
+    },
+    "iam_role": {
+      "description": "The target role.",
+      "group": "primary",
+      "requirement": "required"
+    },
+    "privileges": {
+      "description": "A list of privileges assigned to or removed from <code>iam_role</code>.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "resources": {
+      "description": "Resources assigned or removed from <code>iam_role</code.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "updated_role": {
+      "description": "The result of an updated role.<br><br>When the update is successful, this is the newly updated role. Upon failure, represents the attempted state of the role.",
+      "group": "primary",
+      "requirement": "recommended"
+    }
+  },
+  "references": [
+    {
+      "description": "D3FEND™ Ontology d3f:PermissionGrantingEvent",
+      "url": "https://d3fend.mitre.org/event/d3f:PermissionGrantingEvent/"
+    }
+  ]
+}

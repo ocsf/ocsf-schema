@@ -45,18 +45,22 @@ Thankyou! -->
 ### Added
 * #### Categories
 * #### Event Classes
+  1. Added user_management and role_management. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
 * #### Profiles
 * #### Objects
-  1. Added `iam_role` object for user and group management. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
+  1. Added `iam_role` object for user, role and group management. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
 * #### Dictionary Attributes
-  1. Added `iam_role` attribute for role management. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
+  1. Added `iam_role`, `iam_roles`, `updated_role`, `updated_group`, `updated_user` attributes. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
 ### Improved
 * #### Categories
 * #### Event Classes
-  1. Added `iam_role` and role management support to `account_change`, `group_management`, `user_access`. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
+  1. Added `iam_role` and role management support to `group_management`, `authorize_session`. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
 * #### Profiles
 * #### Objects
   1. Added `iam_role` to `actor`. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
+### Deprecated
+  1. Deprecated the `account_change` and `user_access_management` classes in favor of the `user_management` class. [#1603](https://github.com/ocsf/ocsf-schema/pull/
+  1. Deprecated the `user_result` attribute in favor of the `updated_user` attribute. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
 
 
 ## [v1.8.0] - Mar 16th, 2026

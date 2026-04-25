@@ -41,9 +41,14 @@ jobs:
       - name: Extract review context
         run: python .github/scripts/review_descriptions.py prepare
 
+      - name: Run anti-pattern check
+        run: python .github/scripts/check_antipatterns.py prepare
+
       - name: Upload review context
         uses: actions/upload-artifact@v4
         with:
           name: review-context
-          path: review_context.json
+          path: |
+            review_context.json
+            antipattern_results.json
           retention-days: 1

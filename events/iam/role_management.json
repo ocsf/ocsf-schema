@@ -1,7 +1,7 @@
 {
   "uid": 8,
   "caption": "Role Management",
-  "description": "Role Management events report lifecycle management of a role, as well as privileges assigned or removed from a role and the resources associated with the role. There are two ways updates to the state of a role may be expressed: Using the <code>Update</code> activity, the <code>updated_role</code> reflects the changes made to <code>iam_role</code>. Using discrete activities, such as <code>Assign Privileges</code> the desired state change is expressed by the <code>privileges</code> attribute.",
+  "description": "Role Management events report lifecycle management of a role, as well as privileges, policies, credentials, and resources associated with the role. There are two ways updates to the state of a role may be expressed: Using the <code>Update</code> activity, for example when updating multiple items at once time, the <code>updated_role</code> reflects the changes made to <code>iam_role</code>. Using discrete activities, such as <code>Assign Privileges</code> the desired state change is expressed by the <code>privileges</code> attribute. Optionally, on success, the <code>updated_role</code> reflects the new state of the role. Roles assigned or removed from users and groups are expressed by the <code>User Mangagement</code> and <code>Group Management</code> classes.",
   "extends": "iam",
   "name": "role_management",
   "attributes": {
@@ -21,7 +21,7 @@
         },
         "4": {
           "caption": "Assign Privileges",
-          "description": "Assign privileges to a role. Use <code>privileges</code> to be assigned to <code>iam_role</code>. Optionally, on success, the <code>updated_role</code> reflects the new state of the role."
+          "description": "Assign privileges to a role. Use <code>privileges</code> to be assigned to <code>iam_role</code>."
         },
         "5": {
           "caption": "Remove Privileges",
@@ -29,27 +29,27 @@
         },
         "6": {
           "caption": "Assign Resources",
-          "description": "Assign resources to a role. Use <code>resource</code> to be assigned to <code>iam_role</code>."
+          "description": "Assign resources to a role. Use <code>resources</code> to be assigned to <code>iam_role</code>."
         },
         "7": {
           "caption": "Remove Resources",
-          "description": "Remove resources from a role. Use <code>resource</code> to be removed from <code>iam_role</code>."
+          "description": "Remove resources from a role. Use <code>resources</code> to be removed from <code>iam_role</code>."
         },
         "8": {
-          "caption": "Assign Policy",
-          "description": "Assign privileges to a role. Use <code>privileges</code> to be assigned to <code>iam_role</code>."
+          "caption": "Attach Policies",
+          "description": "Attach one or more policies to a role. Use <code>policies</code> to be attached to <code>iam_role</code>."
         },
         "9": {
-          "caption": "Remove Policy",
-          "description": "Remove privileges from a role. Use <code>privileges</code> to be removed from <code>iam_role</code>."
+          "caption": "Detach Policies",
+          "description": "Detach one or more policies from a role. Use <code>policies</code> to be detached from <code>iam_role</code>."
         },
         "10": {
-          "caption": "Programmatic Credentials",
-          "description": "Assign resources to a role. Use <code>resource</code> to be assigned to <code>iam_role</code>."
+          "caption": "Add Programmatic Credentials",
+          "description": "Add credentials to a role. Use <code>programmatic_credentials</code> to be added to <code>iam_role</code>."
         },
         "11": {
-          "caption": "Remove Resources",
-          "description": "Remove resources from a role. Use <code>resource</code> to be removed from <code>iam_role</code>."
+          "caption": "Remove Programmatic Credentials",
+          "description": "Remove credentials from a role. Use <code>programmatic_credentials</code> to be removed from <code>iam_role</code>."
         }
       }
     },
@@ -58,9 +58,18 @@
       "group": "primary",
       "requirement": "required"
     },
+    "policies": {
+      "description": "Details about the IAM policies associated with the Attach/Detach Policy activities.",
+      "group": "context",
+      "requirement": "optional"
+    },
     "privileges": {
       "description": "A list of privileges assigned to or removed from <code>iam_role</code>.",
       "group": "primary",
+      "requirement": "recommended"
+    },
+    "programmatic_credentials": {
+      "description": "Details about the programmatic credential (API keys, access tokens, certificates, etc) associated with the role.",
       "requirement": "recommended"
     },
     "resources": {

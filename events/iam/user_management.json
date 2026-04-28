@@ -1,7 +1,7 @@
 {
   "uid": 7,
   "caption": "User Management",
-  "description": "User Management events report when specific user account management tasks are performed, such as a user being created, changed, deleted, renamed, disabled, enabled, locked out or unlocked.",
+  "description": "User Management events report lifecycle management of a user and account management tasks are performed, such as a password change or reset, a user being created, updated, deleted, disabled, enabled, locked out or unlocked. There are two ways updates to the state of a user may be expressed: Using the <code>Update</code> activity, for example when updating multiple items at once time, the <code>updated_user</code> reflects the changes made to <code>user</code>. Using discrete activities, such as <code>Assign Privileges</code> the desired state change is expressed by the <code>privileges</code> attribute. Optionally, on success, the <code>updated_user</code> reflects the new state of the user.",
   "extends": "iam",
   "name": "user_management",
   "attributes": {
@@ -44,12 +44,12 @@
           "description": "An attempt to reset a user password."
         },
         "10": {
-          "caption": "Attach Policy",
-          "description": "Attach an IAM Policy to a user."
+          "caption": "Attach Policies",
+          "description": "Attach one or more IAM Policies to a user."
         },
         "11": {
-          "caption": "Detach Policy",
-          "description": "Detach an IAM Policy from a user."
+          "caption": "Detach Policies",
+          "description": "Detach one or more IAM Policy from a user."
         },
         "12": {
           "caption": "MFA Factor Enable",
@@ -64,8 +64,8 @@
           "description": "Assign privileges to a user."
         },
         "15": {
-          "caption": "Revoke Privileges",
-          "description": "Revoke privileges from a user."
+          "caption": "Remove Privileges",
+          "description": "Remove privileges from a user."
         },
         "16": {
           "caption": "Assign Roles",

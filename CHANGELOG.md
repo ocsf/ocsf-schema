@@ -43,6 +43,9 @@ Thankyou! -->
 
 ## [Unreleased]
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0543679da7cdf7c6f2f2fd3526161f20c96c852f
 ### Added
 * #### Categories
 * #### Event Classes
@@ -63,8 +66,11 @@ Thankyou! -->
   1. Deprecated the `account_change` and `user_access_management` classes in favor of the `user_management` class. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
   1. Deprecated the `user_result` attribute in favor of the `updated_user` attribute. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
 
+<<<<<<< HEAD
 =======
 >>>>>>> f88fca7e49d109d6b84587bc70404f3bcddf1537
+=======
+>>>>>>> 0543679da7cdf7c6f2f2fd3526161f20c96c852f
 ### Bugfixes
 1. Fixed the static anti-pattern checker so dictionary attributes are analyzed with the full compiled dictionary; the `missing-sibling` rule no longer false-positives when the sibling exists in `dictionary.json`. [#1613](https://github.com/ocsf/ocsf-schema/pull/1613)
 1. Added `tunnel_type_id` enum values to `dictionary.json` to resolve the anti-pattern of missing enums in the dictionary attribute. [#1602](https://github.com/ocsf/ocsf-schema/pull/1602)

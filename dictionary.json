@@ -603,6 +603,34 @@
       "description": "The actual length of the HTTP response/request body, in number of bytes, independent of a potentially existing Content-Length header.",
       "type": "integer_t"
     },
+    "boot_state": {
+      "caption": "Boot State",
+      "description": "The current operational state of the system regarding its boot lifecycle. It reflects the most recent power event.",
+      "type": "string_t"
+    },
+    "boot_state_id": {
+      "caption": "Boot State ID",
+      "description": "The normalized identifier of the system boot state.",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The boot state is unknown."
+        },
+        "1": {
+          "caption": "System Boot",
+          "description": "The system has started and is in a running state."
+        },
+        "2": {
+          "caption": "System Shutdown",
+          "description": "The system has been powered off and is in an offline state."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The boot state of the system is not mapped. See the <code>boot_state</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
     "boot_time": {
       "caption": "Boot Time",
       "description": "The time when the system was booted.",
@@ -4749,6 +4777,48 @@
       "caption": "Postal Code",
       "description": "The postal code of the location.",
       "type": "string_t"
+    },
+    "power_state": {
+       "caption": "Power State",
+       "description": "The device's current power status.",
+       "type": "string_t",
+       "type_name": "String"
+    },
+    "power_state_id": {
+      "caption": "Power State ID",
+      "description": "The normalized identifier of the device's current power state.",
+      "type": "integer_t",
+      "type_name": "Integer",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The power state is unknown."
+        },
+        "1": {
+          "caption": "Operational",
+          "description": "The system is powered on and running."
+        },
+        "2": {
+          "caption": "Powered Off",
+          "description": "The system is powered off."
+        },
+        "3": {
+          "caption": "Sleep",
+          "description": "The system is in a low-power standby state."
+        },
+        "4": {
+          "caption": "Hibernate",
+          "description": "The system state is saved to disk and power is removed."
+        },
+        "5": {
+          "caption": "Rebooting",
+          "description": "The system is in the process of restarting."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The power state is not mapped. See the <code>power_state</code> attribute, which contains a data source specific value."
+        }
+      }
     },
     "pre_value": {
       "caption": "Pre-Value",

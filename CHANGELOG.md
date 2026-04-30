@@ -48,7 +48,7 @@ Thankyou! -->
 
 ### Misc
 1. Added static anti-pattern detection, LLM-to-static learning pipeline, and deprecated attribute filtering to the automated PR review workflows. [#1599](https://github.com/ocsf/ocsf-schema/pull/1599)
-1. Added `references` and `@deprecated` support to the profile metaschema, aligning it with event class and object metaschemas.[#1625]((https://github.com/ocsf/ocsf-schema/pull/1625)
+1. Added `references` and `@deprecated` support to the profile metaschema, aligning it with event class and object metaschemas.[#1625](https://github.com/ocsf/ocsf-schema/pull/1625)
 
 ## [v1.8.0] - Mar 16th, 2026
 ### Added

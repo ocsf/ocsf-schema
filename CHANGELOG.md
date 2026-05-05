@@ -52,7 +52,7 @@ Thankyou! -->
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
-  1. Added `com_class_id` attribute to reflect Class Identifier of a Component Object Model. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
+  1. Added `com_class_uuid` attribute to reflect Class Identifier of a Component Object Model. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `event_codes` that is a set of event identifiers. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `log_sources` that is a set of log systems. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `job_actions` that describes a set of actions that job can perform. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)

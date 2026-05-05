@@ -6748,15 +6748,33 @@
       "type": "network_interface"
     },
     "tunnel_type": {
-      "caption": "Type",
-      "description": "The tunnel type. See specific usage.",
+      "caption": "Tunnel Type",
+      "description": "The type of tunnel configuration, normalized to the caption of the <code>tunnel_type_id</code> value, indicating the scope of traffic routed through the connection. See specific usage.",
       "type": "string_t"
     },
     "tunnel_type_id": {
-      "caption": "Type",
-      "description": "The normalized tunnel type ID.",
+      "caption": "Tunnel Type ID",
+      "description": "The normalized identifier for the type of tunnel configuration, indicating the scope of traffic routed through the connection. See specific usage.",
       "sibling": "tunnel_type",
-      "type": "integer_t"
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The type of tunnel configuration is unknown."
+        },
+        "1": {
+          "caption": "Split Tunnel",
+          "description": "The tunnel configuration routes only specific traffic through the tunnel."
+        },
+        "2": {
+          "caption": "Full Tunnel",
+          "description": "The tunnel configuration routes all traffic through the tunnel."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The type of tunnel configuration is not defined by the event source."
+        }
+      }
     },
     "type": {
       "caption": "Type",

@@ -242,6 +242,62 @@ def extract_changed_dict_attrs(diff: str) -> list[str]:
     return attrs
 
 
+def extract_changed_attrs_in_file(diff: str, filename: str) -> set[str]:
+    """Extract attribute names that were added or modified in a specific file's diff.
+
+    Tracks the current top-level attribute key context so that
+    modifications inside an attribute's block correctly attribute
+    the change to the enclosing key.
+    """
+    in_file = False
+    keys = set()
+    current_key = None
+
+    for line in diff.split("\n"):
+        if line.startswith("diff --git") and filename in line:
+            in_file = True
+            current_key = None
+            continue
+        if line.startswith("diff --git") and in_file:
+            break
+        if not in_file:
+            continue
+        if line.startswith("@@") or line.startswith("+++") or line.startswith("---"):
+            continue
+
+        content = line[1:] if line and line[0] in ("+", "-", " ") else line
+
+        # Track top-level attribute key names
+        key_match = re.search(r'"(\w+)":\s*[\{\[\"]', content)
+        if key_match:
+            current_key = key_match.group(1)
+
+        # Added or modified line — mark the current key as changed
+        if line.startswith("+") and current_key:
+            keys.add(current_key)
+
+    return keys
+
+
+def _filter_to_changed_attrs(compiled_def: dict, changed_attrs: set[str]) -> dict:
+    """Return a copy of a compiled object/class with only changed attributes.
+
+    Keeps the top-level metadata (caption, description, name, etc.) and
+    filters the attributes dict to only include changed ones.
+    """
+    filtered = {}
+    for key, value in compiled_def.items():
+        if key == "attributes":
+            filtered["attributes"] = {
+                attr_name: attr_def
+                for attr_name, attr_def in value.items()
+                if attr_name in changed_attrs
+            }
+        else:
+            filtered[key] = value
+    return filtered
+
+
 def _strip_deprecated_attrs(definition: dict) -> dict:
     """Return a copy of an object/class definition with deprecated attributes removed."""
     if "attributes" not in definition:
@@ -296,16 +352,20 @@ def cmd_prepare() -> None:
         if filepath.endswith(".json") and filepath.startswith("objects/"):
             name = Path(filepath).stem
             if name in compiled_objects:
-                context["objects"][name] = _strip_deprecated_attrs(
-                    compiled_objects[name]
-                )
+                changed_attrs = extract_changed_attrs_in_file(diff, filepath)
+                if changed_attrs:
+                    context["objects"][name] = _strip_deprecated_attrs(
+                        _filter_to_changed_attrs(compiled_objects[name], changed_attrs)
+                    )
 
         elif filepath.endswith(".json") and filepath.startswith("events/"):
             name = Path(filepath).stem
             if name in compiled_classes:
-                context["classes"][name] = _strip_deprecated_attrs(
-                    compiled_classes[name]
-                )
+                changed_attrs = extract_changed_attrs_in_file(diff, filepath)
+                if changed_attrs:
+                    context["classes"][name] = _strip_deprecated_attrs(
+                        _filter_to_changed_attrs(compiled_classes[name], changed_attrs)
+                    )
 
     if "dictionary.json" in changed_files:
         for attr_name in extract_changed_dict_attrs(diff):

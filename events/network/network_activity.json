@@ -38,14 +38,43 @@
       }
     },
     "dst_endpoint": {
-      "description": "The responder of the network connection. In some contexts an event source cannot correctly identify the responder. Refer to <code>is_src_dst_assignment_known</code> for certainty."
+      "description": "The destination endpoint of the network activity — typically the responder. In bi-flow or asymmetric flow scenarios, this endpoint may represent the true initiator of the original communication. Use <code>initiator_id</code> to determine which endpoint actually initiated the communication."
+    },
+    "initiator": {
+      "description": "The endpoint that initiated the network communication, normalized to the caption of <code>initiator_id</code>. In the case of <code>Other</code>, it is defined by the event source.",
+      "requirement": "optional"
+    },
+    "initiator_id": {
+      "description": "The normalized identifier of the endpoint that initiated the network communication. Use this field to disambiguate source and destination roles in bi-directional or asymmetric flow scenarios.",
+      "group": "primary",
+      "requirement": "recommended",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Source Endpoint",
+          "description": "The <code>src_endpoint</code> is the true initiator and the source/destination assignment is correct."
+        },
+        "2": {
+          "caption": "Destination Endpoint",
+          "description": "The <code>dst_endpoint</code> is the true initiator and the source/destination assignment is reversed."
+        },
+        "99": {
+          "caption": "Other"
+        }
+      }
     },
     "is_src_dst_assignment_known": {
       "group": "primary",
-      "requirement": "recommended"
+      "requirement": "recommended",
+      "@deprecated": {
+        "message": "Use <code>initiator_id</code> instead, which provides richer semantics for bi-flow and asymmetric flow scenarios.",
+        "since": "1.9.0"
+      }
     },
     "src_endpoint": {
-      "description": " The initiator of the network connection. In some contexts an event source cannot correctly identify the initiator. Refer to <code>is_src_dst_assignment_known</code> for certainty."
+      "description": "The source endpoint of the network activity — typically the initiator. In bi-flow or asymmetric flow scenarios, this endpoint may represent the response side of communication originally initiated by the destination. Use <code>initiator_id</code> to determine which endpoint actually initiated the communication."
     },
     "url": {
       "description": "The URL details relevant to the network traffic.",

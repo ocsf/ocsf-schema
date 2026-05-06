@@ -3270,6 +3270,25 @@
       "description": "The unique identifier of a VM instance.",
       "type": "string_t"
     },
+    "initiator": {
+      "caption": "Initiator",
+      "description": "The initiator of an activity or operation. See specific usage.",
+      "type": "string_t"
+    },
+    "initiator_id": {
+      "caption": "Initiator ID",
+      "description": "The normalized identifier of the <code>initiator</code>. See specific usage.",
+      "sibling": "initiator",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "99": {
+          "caption": "Other"
+        }
+      }
+    },
     "integrity": {
       "caption": "Integrity",
       "description": "The process integrity level, normalized to the caption of the integrity_id value. In the case of 'Other', it is defined by the event source (Windows only).",
@@ -3509,7 +3528,11 @@
     "is_src_dst_assignment_known": {
       "caption": "Source/Destination Assignment Known",
       "description": "<code>true</code> denotes that <code>src_endpoint</code> and <code>dst_endpoint</code> correctly identify the initiator and responder respectively. <code>false</code> denotes that the event source has arbitrarily assigned one peer to <code>src_endpoint</code> and the other to <code>dst_endpoint</code>, in other words that initiator and responder are not being asserted. This can occur, for example, when the event source is a network appliance that has not observed the initiation of a given connection. In the absence of this attribute, interpretation of the initiator and responder is implementation-specific.",
-      "type": "boolean_t"
+      "type": "boolean_t",
+      "@deprecated": {
+        "message": "Use <code>initiator_id</code> instead, which provides richer semantics for bi-flow and asymmetric flow scenarios.",
+        "since": "1.9.0"
+      }
     },
     "is_superseded": {
       "caption": "The patch is superseded.",

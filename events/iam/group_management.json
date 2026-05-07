@@ -1,55 +1,64 @@
 {
   "uid": 6,
   "caption": "Group Management",
-  "description": "Group Management events report management updates to a group, including updates to membership and permissions and assignment of a role.",
+  "description": "Group Management events report lifecycle management of a group, as well as privileges, roles, and resources associated with the group. There are two ways updates to the state of a group may be expressed: Using the <code>Update</code> activity, for example when updating multiple items at one time, the <code>updated_group</code> reflects the changes made to <code>group</code>. Using discrete activities, such as <code>Assign Privileges</code> the state change is expressed by the <code>privileges</code> attribute. Optionally, on success, the <code>updated_group</code> reflects the new state of the group.",
   "extends": "iam",
   "name": "group_management",
   "attributes": {
     "activity_id": {
+      "description": "The normalized identifier of the activity that triggered the event. The target of each activity is the <code>group</code> attribute.",
       "enum": {
         "1": {
           "caption": "Assign Privileges",
-          "description": "Assign privileges to a group. Use <code>privileges</code> to be assigned to <code>group</code>."
+          "description": "Assign privileges to the group. Use <code>privileges</code> as privileges to be assigned."
         },
         "2": {
           "caption": "Revoke Privileges",
-          "description": "Revoke privileges from a group. Use <code>privileges</code> to be revoked from <code>group</code>."
+          "description": "Revoke privileges from the group. Use <code>privileges</code> as privileges to be revoked."
         },
         "3": {
           "caption": "Add User",
-          "description": "Add user to a group. Use <code>user</code> as the user to be added to <code>group</code>."
+          "description": "Add user to the group. Use <code>user</code> as the user to be added."
         },
         "4": {
           "caption": "Remove User",
-          "description": "Remove user from a group. Use <code>user</code> as the user to be removed from <code>group</code>."
+          "description": "Remove user from the group. Use <code>user</code> as the user to be removed."
         },
         "5": {
           "caption": "Delete",
-          "description": "Delete a group. Use <code>group</code> as the group to be deleted."
+          "description": "Delete the group."
         },
         "6": {
           "caption": "Create",
-          "description": "Create a group. Use <code>group</code> as the group to be created."
+          "description": "Create a group. Populate the <code>group</code> object with details of the group to be created."
         },
         "7": {
           "caption": "Add Subgroup",
-          "description": "Add a subgroup to a group. Use the <code>sub_group</code> to add to <code>group</code>."
+          "description": "Add a subgroup to the group. Use <code>sub_group</code> as the subgroup to be added."
         },
         "8": {
           "caption": "Remove Subgroup",
-          "description": "Remove a subgroup from a group. Use the <code>sub_group</code> to remove from <code>group</code>."
+          "description": "Remove a subgroup from the group. Use <code>sub_group</code> as the subgroup to be removed."
         },
         "9": {
-          "caption": "Update Group",
-          "description": "Update a group. The updated group details should be populated in the <code>updated_group</code> attribute."
+          "caption": "Update",
+          "description": "Update the group. The updated group details should be populated in the <code>updated_group</code> attribute."
         },
         "10": {
-          "caption": "Assign Roles",
-          "description": "Assign one or more roles to a group. Use the <code>iam_role_list</code> for the specific roles to be assigned to <code>group</code>."
+          "caption": "Attach Policies",
+          "description": "Attach one or more IAM Policies to the group. Use <code>policies</code> as policies to be attached."
         },
         "11": {
+          "caption": "Detach Policies",
+          "description": "Detach one or more IAM Policies from the group. Use <code>policies</code> as policies to be detached."
+        },
+        "12": {
+          "caption": "Assign Roles",
+          "description": "Assign one or more roles to the group. Use <code>iam_roles</code> for the specific roles to be assigned."
+        },
+        "13": {
           "caption": "Remove Roles",
-          "description": "Remove one or more roles from a group. Use the <code>iam_role_list</code> for the specific roles to be removed from <code>group</code>."
+          "description": "Remove one or more roles from the group. Use <code>iam_roles</code> for the specific roles to be removed."
         }
       }
     },
@@ -63,6 +72,11 @@
       "group": "primary",
       "requirement": "recommended"
     },
+    "policies": {
+      "description": "Details about the IAM policies associated with the Attach/Detach Policy activities.",
+      "group": "context",
+      "requirement": "recommended"
+    },
     "privileges": {
       "description": "A list of privileges assigned to the group.",
       "group": "primary",
@@ -70,6 +84,15 @@
     },
     "resource": {
       "description": "Resource that the privileges give access to.",
+      "group": "primary",
+      "requirement": "recommended",
+      "@deprecated": {
+        "message": "User <code>resources</code> instead.",
+        "since": "1.9.0"
+      }
+    },
+    "resources": {
+      "description": "Resources that the privileges, policies, and roles give access to.",
       "group": "primary",
       "requirement": "recommended"
     },

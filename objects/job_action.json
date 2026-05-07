@@ -17,11 +17,11 @@
 	},
 	"1": {
 	  "caption": "COM Handler",
-	  "description": "The action fires a COM handler. When this type is used, <code>com_class_uuid</code> attribute may be populated."
+	  "description": "The action fires a COM handler. When this type is used, <code>com_class_uuid</code> and <code>file</code> attributes may be populated."
 	},
 	"2": {
 	  "caption": "Execute",
-	  "description": "The action executes a command-line operation. When this type is used, <code>cmd_line</code> attribute may be populated."
+	  "description": "The action executes a command-line operation. When this type is used, <code>cmd_line</code> and <code>file</code> attributes may be populated."
 	},
 	"3": {
 	  "caption": "E-mail",
@@ -44,6 +44,10 @@
     "com_class_uuid": {
       "description": "When <code>type_id</code> is <code>COM Handler (1)</code>, this describes the COM Class Identifier (CLSID).",
       "requirement": "optional"
+    },
+	"file": {
+	  "description": "When known, describes the image file that is executed when <code>type_id</code> is <code>COM Handler</code> or <code>Execute</code>. Note that this attribute is intended to supplement the <code>com_class_uid</code> or <code>cmd_line</code> attributes, and is not an alternative to them.",
+	  "requirement": "optional"
     },
     "properties": {
       "description": "The list of properties associated with the performed action.<br>Can be populated with additional attributes of a program execution process, COM object attributes, fields of a message box or an email.",

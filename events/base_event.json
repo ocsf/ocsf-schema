@@ -111,7 +111,7 @@
       "requirement": "optional"
     },
     "status": {
-      "description": "The event status label, normalized to the caption of the <code>status_id</code> value. When <code>status_id</code> is <code>99</code> (Other), this attribute <b>must</b> contain the source-specific status label. For all other values, this should match the caption defined for that <code>status_id</code> enum value (e.g., <code>\"Success\"</code> for <code>status_id: 1</code>). Use this family of attributes to convey the outcome of the activity described by the event.",
+      "description": "The event status label, normalized to the caption of the <code>status_id</code> value. When <code>status_id</code> is <code>99</code> (Other), this attribute <b>must</b> contain the source-specific status label. For all other values, this must match the caption defined for that <code>status_id</code> enum value (e.g., <code>\"Success\"</code> for <code>status_id: 1</code>).",
       "group": "primary",
       "requirement": "recommended"
     },
@@ -126,7 +126,7 @@
       "requirement": "recommended"
     },
     "status_id": {
-      "description": "The normalized status of the event outcome. Producers should map their source outcome to <code>1</code> (Success) or <code>2</code> (Failure). Use <code>0</code> (Unknown) when the outcome cannot be determined, and <code>99</code> (Other) with a populated <code>status</code> string when the source value does not map cleanly.",
+      "description": "The normalized status of the event outcome. Use this family of attributes to convey the outcome of the activity described by the event. Producers should map their source outcome to <code>1</code> (Success) or <code>2</code> (Failure). Use <code>0</code> (Unknown) when the outcome cannot be determined, and <code>99</code> (Other) with a populated <code>status</code> string when the source value does not map cleanly.",
       "group": "primary",
       "requirement": "recommended",
       "enum": {

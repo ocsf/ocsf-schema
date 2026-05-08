@@ -7,7 +7,7 @@
   "name": "incident_finding",
   "attributes": {
     "activity_id": {
-      "description": "The normalized identifier of the Incident activity.",
+      "description": "The normalized identifier of the incident activity. Use <code>1</code> (Create) when an incident is first opened, <code>2</code> (Update) when an existing incident is modified (e.g., new findings added, priority changed, assignee updated), and <code>3</code> (Close) when the incident is resolved.",
       "requirement": "required",
       "enum": {
         "1": {
@@ -25,7 +25,7 @@
       }
     },
     "activity_name": {
-      "description": "The Incident activity name, as defined by the <code>activity_id</code>.",
+      "description": "The incident activity name, as defined by the <code>activity_id</code>. When <code>activity_id</code> is <code>99</code> (Other), this <b>must</b> contain the source-specific activity label.",
       "requirement": "optional"
     },
     "assignee": {
@@ -68,7 +68,7 @@
       "requirement": "recommended"
     },
     "end_time": {
-      "description": "The time of the most recent event included in the incident.",
+      "description": "The time of the most recent event or finding that contributed to this incident.",
       "requirement": "optional"
     },
     "finding_info_list": {
@@ -105,16 +105,19 @@
       "requirement": "recommended"
     },
     "start_time": {
-      "description": "The time of the least recent event included in the incident.",
+      "description": "The time of the earliest event or finding that contributed to this incident.",
       "requirement": "optional"
     },
+    "time": {
+      "description": "The incident creation time &mdash; when the incident was first opened, not when the underlying activity occurred. For the time range of contributing events, use <code>start_time</code> and <code>end_time</code>."
+    },
     "status": {
-      "description": "The normalized status of the Incident normalized to the caption of the status_id value. In the case of 'Other', it is defined by the source.",
+      "description": "The incident lifecycle status label, normalized to the caption of the <code>status_id</code> value. When <code>status_id</code> is <code>99</code> (Other), this <b>must</b> contain the source-specific status label.",
       "group": "primary",
       "requirement": "recommended"
     },
     "status_id": {
-      "description": "The normalized status identifier of the Incident.",
+      "description": "The normalized incident lifecycle status identifier. This tracks the incident management workflow from initial triage through resolution. Producers should set this to reflect the current state in their incident management system.",
       "group": "primary",
       "requirement": "required",
       "enum": {

@@ -54,16 +54,17 @@
       }
     },
     "count": {
+      "description": "The number of events aggregated into this single record. Only populate for aggregate events. When set, <code>start_time</code> and <code>end_time</code> should also be provided to define the aggregation window.",
       "group": "occurrence",
       "requirement": "optional"
     },
     "duration": {
-      "description": "The event duration or aggregate time, the amount of time the event covers from <code>start_time</code> to <code>end_time</code> in milliseconds.",
+      "description": "The elapsed time of the aggregation window in milliseconds, from <code>start_time</code> to <code>end_time</code>. Only populate for aggregate events (<code>count</code> &gt; 1). The value should equal <code>end_time - start_time</code>.",
       "group": "occurrence",
       "requirement": "optional"
     },
     "end_time": {
-      "description": "The end time of a time period, or the time of the most recent event included in the aggregate event.",
+      "description": "The time of the most recent event in an aggregate (<code>count</code> &gt; 1). Do not populate for discrete, point-in-time events &mdash; use <code>time</code> alone. Subclasses such as findings may redefine this for their own time-range semantics.",
       "group": "occurrence",
       "requirement": "optional"
     },
@@ -72,6 +73,7 @@
       "requirement": "optional"
     },
     "message": {
+      "description": "A human-readable description of the event, as defined by the source. This should be a concise, meaningful summary suitable for display in a UI or alert notification &mdash; not a raw log line. For example: <code>\"User john_doe logged in from 10.0.0.1.\"</code> rather than a raw syslog string.",
       "group": "primary",
       "requirement": "recommended"
     },
@@ -104,27 +106,42 @@
       "requirement": "required"
     },
     "start_time": {
-      "description": "The start time of a time period, or the time of the least recent event included in the aggregate event.",
+      "description": "The time of the earliest event in an aggregate (<code>count</code> &gt; 1). Do not populate for discrete, point-in-time events &mdash; use <code>time</code> alone. Subclasses such as findings may redefine this for their own time-range semantics.",
       "group": "occurrence",
       "requirement": "optional"
     },
     "status": {
+      "description": "The event status label, normalized to the caption of the <code>status_id</code> value. When <code>status_id</code> is <code>99</code> (Other), this attribute <b>must</b> contain the source-specific status label. For all other values, this must match the caption defined for that <code>status_id</code> enum value (e.g., <code>\"Success\"</code> for <code>status_id: 1</code>).",
       "group": "primary",
       "requirement": "recommended"
     },
     "status_code": {
+      "description": "The source-specific status or error code as reported by the event source. For example, a Windows logon failure code (<code>0x18</code>), an HTTP response code (<code>403</code>), or an AWS API error code. This preserves the original code for detailed troubleshooting beyond what <code>status_id</code> conveys.",
       "group": "primary",
       "requirement": "recommended"
     },
     "status_detail": {
+      "description": "A human-readable description providing additional context about the event outcome. Use this to convey details that go beyond the normalized <code>status_id</code> and source-specific <code>status_code</code>, such as a failure reason or error message. For example: <code>\"Account locked after 5 failed attempts.\"</code>.",
       "group": "primary",
       "requirement": "recommended"
     },
     "status_id": {
+      "description": "The normalized status of the event outcome. Use this family of attributes to convey the outcome of the activity described by the event. Producers should map their source outcome to <code>1</code> (Success) or <code>2</code> (Failure). Use <code>0</code> (Unknown) when the outcome cannot be determined, and <code>99</code> (Other) with a populated <code>status</code> string when the source value does not map cleanly.",
       "group": "primary",
-      "requirement": "recommended"
+      "requirement": "recommended",
+      "enum": {
+        "1": {
+          "caption": "Success",
+          "description": "The activity completed successfully."
+        },
+        "2": {
+          "caption": "Failure",
+          "description": "The activity failed."
+        }
+      }
     },
     "time": {
+      "description": "The primary timestamp of the event &mdash; when the activity actually occurred at the source. This does not capture when the event record was created or serialized by the source system; for event lifecycle timestamps such as ingestion and processing, use <code>metadata.logged_time</code> and <code>metadata.processed_time</code> respectively, or the equivalent attributes in the <code>metadata.loggers</code> array when recording pipeline stages. For aggregate events (<code>count</code> &gt; 1), set this to <code>start_time</code> (the earliest OCSF <code>time</code> in the aggregate) to preserve causal ordering and consistent timeline alignment. Note: finding classes redefine <code>time</code> as the finding creation time rather than the activity occurrence time. This <b>must</b> be a UTC epoch value in milliseconds (e.g., <code>1776881335332</code>). Mappers should use the most precise and authoritative timestamp available from the source.",
       "group": "occurrence",
       "requirement": "required"
     },

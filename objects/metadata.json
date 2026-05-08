@@ -59,9 +59,11 @@
       "requirement": "optional"
     },
     "logged_time": {
+      "description": "The ultimate logged time in the event pipeline &mdash; when the event reached its final destination (e.g., SIEM, data lake). If <code>loggers</code> is populated, this should match the <code>logged_time</code> of the last entry in the <code>loggers</code> array. This is distinct from <code>time</code> (when the activity occurred) and <code>processed_time</code> (when an intermediate system processed the event).",
       "requirement": "optional"
     },
     "loggers": {
+      "description": "An ordered array of Logger objects describing each hop in the event pipeline between the source and its final destination. Each entry captures the logging product, device, and timestamps (<code>logged_time</code>, <code>transmit_time</code>) at that stage. The last entry's <code>logged_time</code> should match <code>metadata.logged_time</code>.",
       "requirement": "optional"
     },
     "modified_time": {
@@ -76,6 +78,7 @@
       "requirement": "recommended"
     },
     "processed_time": {
+      "description": "The time when the event was processed by an intermediate system (e.g., ETL pipeline, event processor) before reaching its final destination. Can be used with <code>logged_time</code> to calculate queuing duration via <code>total_queued_duration</code>.",
       "requirement": "optional"
     },
     "product": {

@@ -43,11 +43,26 @@ Thankyou! -->
 
 ## [Unreleased]
 
+### Added
+* #### Dictionary Attributes
+  1. Added `initiator` and `initiator_id` attributes for identifying which endpoint initiated a network communication, with generic `Unknown (0)` and `Other (99)` enums. [#1598](https://github.com/ocsf/ocsf-schema/pull/1598)
+
+### Improved
+* #### Event Classes
+  1. Added `initiator_id` and `initiator` to `Network Activity` with network-specific enums `Source Endpoint (1)` and `Destination Endpoint (2)`, and updated `src_endpoint` and `dst_endpoint` descriptions to reflect bi-flow and asymmetric flow scenarios. [#1598](https://github.com/ocsf/ocsf-schema/pull/1598)
+
 ### Bugfixes
 1. Fixed the static anti-pattern checker so dictionary attributes are analyzed with the full compiled dictionary; the `missing-sibling` rule no longer false-positives when the sibling exists in `dictionary.json`. [#1613](https://github.com/ocsf/ocsf-schema/pull/1613)
+1. Added `tunnel_type_id` enum values to `dictionary.json` to resolve the anti-pattern of missing enums in the dictionary attribute. [#1602](https://github.com/ocsf/ocsf-schema/pull/1602)
+
+### Deprecated
+1. Deprecated `is_src_dst_assignment_known` dictionary attribute and its usage in `Network Activity` in favour of `initiator_id`. [#1598](https://github.com/ocsf/ocsf-schema/pull/1598)
+1. Deprecated `message` attribute in the `http_response` object. The `code` and `status` attributes already convey the HTTP status code and reason phrase. [#1616](https://github.com/ocsf/ocsf-schema/pull/1616)
+
 
 ### Misc
 1. Added static anti-pattern detection, LLM-to-static learning pipeline, and deprecated attribute filtering to the automated PR review workflows. [#1599](https://github.com/ocsf/ocsf-schema/pull/1599)
+1. Added `references` and `@deprecated` support to the profile metaschema, aligning it with event class and object metaschemas.[#1625](https://github.com/ocsf/ocsf-schema/pull/1625)
 
 ## [v1.8.0] - Mar 16th, 2026
 ### Added

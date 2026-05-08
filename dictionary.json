@@ -145,7 +145,7 @@
     },
     "activity_id": {
       "caption": "Activity ID",
-      "description": "The normalized identifier of the activity that triggered the event. Each event class defines its own set of activity values. Use <code>0</code> (Unknown) when the activity cannot be determined, and <code>99</code> (Other) when the activity does not match any defined value &mdash; in that case, populate <code>activity_name</code> with the source-specific label.",
+      "description": "The normalized identifier of the activity that triggered the event. Each event class defines its own set of activity values. Use <code>0</code> (Unknown) when the activity cannot be determined. Use <code>99</code> (Other) when the activity does not match any defined value, in which case <code>activity_name</code> must be populated with the source-specific label.",
       "sibling": "activity_name",
       "type": "integer_t",
       "enum": {
@@ -164,7 +164,7 @@
     },
     "activity_name": {
       "caption": "Activity",
-      "description": "The event activity name, as defined by the <code>activity_id</code>. When <code>activity_id</code> is <code>99</code> (Other), this attribute <b>must</b> contain the source-specific activity label. For all other <code>activity_id</code> values, this should match the caption defined for that <code>activity_id</code> enum value.",
+      "description": "The event activity name, as defined by the <code>activity_id</code>. When <code>activity_id</code> is <code>99</code> (Other), this attribute <b>must</b> contain the source-specific activity label. For all other <code>activity_id</code> values, this must match the caption defined for that <code>activity_id</code> enum value.",
       "type": "string_t"
     },
     "actor": {
@@ -1070,7 +1070,7 @@
     },
     "category_name": {
       "caption": "Category",
-      "description": "The event category name, as defined by the <code>category_uid</code> value. The value should match the caption defined for the corresponding <code>category_uid</code> enum value (e.g., <code>\"Findings\"</code> for <code>category_uid: 2</code>).",
+      "description": "The event category name, as defined by the <code>category_uid</code> value. The value must match the caption defined for the corresponding <code>category_uid</code> enum value (e.g., <code>\"Findings\"</code> for <code>category_uid: 2</code>).",
       "type": "string_t"
     },
     "category_uid": {
@@ -1196,7 +1196,7 @@
     },
     "class_name": {
       "caption": "Class",
-      "description": "The event class name, as defined by the <code>class_uid</code> value. The value should match the caption defined for the corresponding <code>class_uid</code> (e.g., <code>\"Detection Finding\"</code> for <code>class_uid: 2004</code>).",
+      "description": "The event class name, as defined by the <code>class_uid</code> value. The value must match the caption defined for the corresponding <code>class_uid</code> (e.g., <code>\"Detection Finding\"</code> for <code>class_uid: 2004</code>).",
       "type": "string_t"
     },
     "class_uid": {
@@ -6781,7 +6781,7 @@
     },
     "type_name": {
       "caption": "Type Name",
-      "description": "The event/finding type name, combining the class and activity (e.g., <code>\"Detection Finding: Create\"</code>). The value should match the <code>class_name</code> and <code>activity_name</code> joined by <code>\": \"</code>.",
+      "description": "The event/finding type name, combining the class and activity (e.g., <code>\"Detection Finding: Create\"</code>). The value must match the <code>class_name</code> and <code>activity_name</code> joined by <code>\": \"</code>.",
       "type": "string_t"
     },
     "type_uid": {

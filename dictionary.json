@@ -145,7 +145,7 @@
     },
     "activity_id": {
       "caption": "Activity ID",
-      "description": "The normalized identifier of the activity that triggered the event.",
+      "description": "The normalized identifier of the activity that triggered the event. Each event class defines its own set of activity values. Use <code>0</code> (Unknown) when the activity cannot be determined. Use <code>99</code> (Other) when the activity does not match any defined value, in which case <code>activity_name</code> must be populated with the source-specific label.",
       "sibling": "activity_name",
       "type": "integer_t",
       "enum": {
@@ -164,7 +164,7 @@
     },
     "activity_name": {
       "caption": "Activity",
-      "description": "The event activity name, as defined by the activity_id.",
+      "description": "The event activity name, as defined by the <code>activity_id</code>. When <code>activity_id</code> is <code>99</code> (Other), this attribute <b>must</b> contain the source-specific activity label. For all other <code>activity_id</code> values, this must match the caption defined for that <code>activity_id</code> enum value.",
       "type": "string_t"
     },
     "actor": {
@@ -1070,12 +1070,12 @@
     },
     "category_name": {
       "caption": "Category",
-      "description": "The event category name, as defined by category_uid value.",
+      "description": "The event category name, as defined by the <code>category_uid</code> value. The value must match the caption defined for the corresponding <code>category_uid</code> enum value (e.g., <code>\"Findings\"</code> for <code>category_uid: 2</code>).",
       "type": "string_t"
     },
     "category_uid": {
       "caption": "Category ID",
-      "description": "The category unique identifier of the event.",
+      "description": "The category unique identifier of the event. Each event class belongs to exactly one category. Producers and mappers must set this to the category defined by the event class being used.",
       "sibling": "category_name",
       "type": "integer_t"
     },
@@ -1196,12 +1196,12 @@
     },
     "class_name": {
       "caption": "Class",
-      "description": "The event class name, as defined by class_uid value.",
+      "description": "The event class name, as defined by the <code>class_uid</code> value. The value must match the caption defined for the corresponding <code>class_uid</code> (e.g., <code>\"Detection Finding\"</code> for <code>class_uid: 2004</code>).",
       "type": "string_t"
     },
     "class_uid": {
       "caption": "Class ID",
-      "description": "The unique identifier of a class. A class describes the attributes available in an event.",
+      "description": "The unique identifier of a class. A class describes the attributes available in an event. Producers and mappers must set this to the <code>uid</code> defined in the event class definition. For example, <code>Detection Finding</code> is <code>2004</code>.",
       "sibling": "class_name",
       "type": "integer_t"
     },
@@ -1529,7 +1529,7 @@
     },
     "count": {
       "caption": "Count",
-      "description": "The number of times that events in the same logical group occurred during the event <strong>Start Time</strong> to <strong>End Time</strong> period.",
+      "description": "The count of a grouped or aggregated item. See specific usage.",
       "type": "integer_t"
     },
     "countermeasures": {
@@ -3935,7 +3935,7 @@
     },
     "logged_time": {
       "caption": "Logged Time",
-      "description": "<p>The time when the logging system collected and logged the event.</p>This attribute is distinct from the event time in that event time typically contain the time extracted from the original event. Most of the time, these two times will be different.",
+      "description": "The time when a system in the event pipeline collected and logged the event. See specific usage.",
       "type": "timestamp_t"
     },
     "loggers": {
@@ -4088,7 +4088,7 @@
     },
     "message": {
       "caption": "Message",
-      "description": "The description of the event/finding, as defined by the source.",
+      "description": "The descriptive message associated with the event or object. See specific usage.",
       "type": "string_t"
     },
     "message_context": {
@@ -4122,7 +4122,7 @@
     },
     "metadata": {
       "caption": "Metadata",
-      "description": "The metadata associated with the event or a finding.",
+      "description": "The metadata object describes the event producer, schema version, and processing information. Producers and mappers <b>must</b> populate <code>metadata.product</code> to identify the data source, and <code>metadata.version</code> to indicate the OCSF schema version used. Consumers rely on this to interpret the event correctly.",
       "type": "metadata"
     },
     "metadata_endpoint": {
@@ -4331,7 +4331,7 @@
     },
     "observables": {
       "caption": "Observables",
-      "description": "The observables associated with the event or a finding.",
+      "description": "The observables array surfaces key indicators and entities from the event or finding in a single, consistent location for downstream correlation and detection. Each entry references an attribute path within the event (e.g., <code>src_endpoint.ip</code>) along with its type and value, enabling consumers to extract IOCs without parsing the full event structure.",
       "type": "observable",
       "references": [
         {
@@ -4487,7 +4487,7 @@
     },
     "original_time": {
       "caption": "Original Time",
-      "description": "The original event time as reported by the event source. For example, the time in the original format from system event log such as Syslog on Unix/Linux and the System event file on Windows. Omit if event is generated instead of collected via logs.",
+      "description": "The original event time as reported by the event source, preserved as a pass-through string in its native format (e.g., Syslog timestamp, Windows event time). This is not normalized to <code>timestamp_t</code> &mdash; the normalized equivalent is the base event <code>time</code> attribute. Omit if the event is generated rather than collected via logs.",
       "type": "string_t"
     },
     "os": {
@@ -4895,7 +4895,7 @@
     },
     "processed_time": {
       "caption": "Processed Time",
-      "description": "The event processed time, such as an ETL operation.",
+      "description": "The time when the event was processed by an intermediate system, such as an ETL pipeline or event processor. See specific usage.",
       "type": "timestamp_t"
     },
     "product": {
@@ -5226,17 +5226,17 @@
     },
     "raw_data": {
       "caption": "Raw Data",
-      "description": "The raw event/finding data as received from the source.",
+      "description": "The original event/finding data as received from the source, before normalization into OCSF. Populate this with the verbatim log line, JSON payload, or other native format for forensic and debugging purposes. This field is not intended for structured querying &mdash; use the normalized OCSF attributes instead.",
       "type": "string_t"
     },
     "raw_data_hash": {
       "caption": "Raw Data Hash",
-      "description": "The hash, which describes the content of the raw_data field.",
+      "description": "A fingerprint (hash) of the <code>raw_data</code> content. Use this to verify the integrity of the original event data or to deduplicate events.",
       "type": "fingerprint"
     },
     "raw_data_size": {
       "caption": "Raw Data Size",
-      "description": "The size of the raw data which was transformed into an OCSF event, in bytes.",
+      "description": "The size of the original event data (as captured in <code>raw_data</code>) in bytes, before OCSF normalization. Useful for metering and capacity planning.",
       "type": "long_t"
     },
     "raw_header": {
@@ -5952,7 +5952,7 @@
     },
     "severity": {
       "caption": "Severity",
-      "description": "The event/finding severity, normalized to the caption of the <code>severity_id</code> value. In the case of 'Other', it is defined by the source.",
+      "description": "The event/finding severity label, normalized to the caption of the <code>severity_id</code> value. When <code>severity_id</code> is <code>99</code> (Other), this attribute <b>must</b> contain the source-specific severity label. For all other values, this should match the caption defined for that <code>severity_id</code> enum value (e.g., <code>\"High\"</code> for <code>severity_id: 4</code>).",
       "type": "string_t"
     },
     "severity_id": {
@@ -6268,40 +6268,34 @@
     },
     "status": {
       "caption": "Status",
-      "description": "The event status, normalized to the caption of the status_id value. In the case of 'Other', it is defined by the event source.",
+      "description": "The status label, normalized to the caption of the <code>status_id</code> value. When <code>status_id</code> is <code>99</code> (Other), this attribute <b>must</b> contain a source-specific status label. See specific usage.",
       "type": "string_t"
     },
     "status_code": {
       "caption": "Status Code",
-      "description": "The event status code, as reported by the event source.<br /><br />For example, in a Windows Failed Authentication event, this would be the value of 'Failure Code', e.g. 0x18.",
+      "description": "The source-specific status or error code. This preserves the original code for detailed troubleshooting beyond what <code>status_id</code> conveys. See specific usage.",
       "type": "string_t"
     },
     "status_detail": {
       "caption": "Status Detail",
-      "description": "The status detail contains additional information about the event/finding outcome.",
+      "description": "Additional context about the outcome, beyond the normalized <code>status_id</code> and source-specific <code>status_code</code>. See specific usage.",
       "type": "string_t"
     },
     "status_details": {
       "caption": "Status Details",
-      "description": "A list of descriptions, containing additional information about the event/finding status.",
+      "description": "A list of descriptions providing additional context about the outcome. See specific usage.",
       "type": "string_t",
       "is_array": true
     },
     "status_id": {
       "caption": "Status ID",
-      "description": "The normalized identifier of the event status.",
+      "description": "The normalized status identifier. See specific usage.",
       "sibling": "status",
       "type": "integer_t",
       "enum": {
         "0": {
           "caption": "Unknown",
           "description": "The status is unknown."
-        },
-        "1": {
-          "caption": "Success"
-        },
-        "2": {
-          "caption": "Failure"
         },
         "99": {
           "caption": "Other",
@@ -6600,7 +6594,7 @@
     },
     "time": {
       "caption": "Event Time",
-      "description": "The normalized event occurrence time or the finding creation time.",
+      "description": "The normalized event occurrence time. See specific usage.",
       "type": "timestamp_t"
     },
     "timespan": {
@@ -6610,7 +6604,7 @@
     },
     "timezone_offset": {
       "caption": "Timezone Offset",
-      "description": "The number of minutes that the reported event <code>time</code> is ahead or behind UTC, in the range -1,080 to +1,080.",
+      "description": "The number of minutes that the reported event <code>time</code> is ahead or behind UTC, in the range -1,080 to +1,080. This allows consumers to reconstruct the local time at the event source. For example, US Eastern Standard Time is <code>-300</code>. Populate this when the source provides local time zone information.",
       "type": "integer_t"
     },
     "title": {
@@ -6787,12 +6781,12 @@
     },
     "type_name": {
       "caption": "Type Name",
-      "description": "The event/finding type name, as defined by the type_uid.",
+      "description": "The event/finding type name, combining the class and activity (e.g., <code>\"Detection Finding: Create\"</code>). The value must match the <code>class_name</code> and <code>activity_name</code> joined by <code>\": \"</code>.",
       "type": "string_t"
     },
     "type_uid": {
       "caption": "Type ID",
-      "description": "The event/finding type ID. It identifies the event's semantics and structure. The value is calculated by the logging system as: <code>class_uid * 100 + activity_id</code>.",
+      "description": "The event/finding type ID. It identifies the event's semantics and structure. Producers and mappers <b>must</b> compute this as <code>class_uid * 100 + activity_id</code>. It uniquely identifies the combination of event class and activity across the entire schema. For example, <code>Detection Finding: Create</code> is <code>200401</code>.",
       "sibling": "type_name",
       "type": "long_t"
     },
@@ -6845,7 +6839,7 @@
     },
     "unmapped": {
       "caption": "Unmapped Data",
-      "description": "The attributes that are not mapped to the event schema. The names and values of those attributes are specific to the event source.",
+      "description": "A container for source-specific attributes that do not map to any defined OCSF attribute. Use this to preserve valuable source data that would otherwise be lost during normalization. The keys and values are specific to the event source. Consumers should not rely on a stable structure within this field.",
       "type": "object"
     },
     "untruncated_size": {

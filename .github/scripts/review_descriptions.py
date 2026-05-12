@@ -37,15 +37,25 @@ definitions have been merged with object-level overrides, and types are fully
 enriched. This is the final form that downstream consumers and LLMs will see.
 
 The compiled schema contains:
-- **objects**: Fully resolved object definitions with all inherited and
-  dictionary-merged attributes — every description is the final version
-  after all overrides have been applied
-- **classes**: Fully resolved event class definitions
-- **dictionary_attributes**: Changed dictionary entries — these include both
-  entries with full descriptions and entries whose generic description precedes
-  a "See specific usage" marker (the marker is stripped). When a dictionary
-  attribute also appears in the compiled objects above, review both the generic
-  dictionary description and the object-specific resolved descriptions
+- **objects** / **classes**: Fully resolved definitions. Each carries a
+  `_changed_attributes` list naming the attributes added or modified in this
+  PR — **only flag findings on those attributes**. The remaining attributes
+  in the container are unchanged siblings, included as compact summaries
+  (`type`, `caption`, truncated `description`, `has_enum`) so you can reason
+  about the changed attribute in context.
+- **dictionary_attributes**: Changed dictionary entries — entries with full
+  descriptions and entries whose generic description precedes a "See specific
+  usage" marker (the marker is stripped). When a dictionary attribute also
+  appears in the compiled objects above, review both the generic dictionary
+  description and the object-specific resolved descriptions.
+- **cross_reference_index**: Maps each changed attribute name to every other
+  container (object/class) that uses the same name, with the type seen there.
+  Only attributes appearing in 2+ containers are listed. Use it to detect
+  cross-container type inconsistency and naming conflicts.
+- **dictionary_neighbors**: For each changed dictionary attribute, lists
+  closely related existing entries — `is_X`/`X` name pairs and entries with
+  identical descriptions. Use it to detect duplicate or conflicting
+  dictionary entries.
 
 Deprecated attributes (those with an `@deprecated` marker) have been
 pre-filtered from the compiled schema data. Do not flag or comment on
@@ -94,7 +104,17 @@ field from raw security telemetry and distinguish it from similar attributes.
 ## Anti-Pattern Detection
 
 In addition to description quality, flag structural design anti-patterns in
-changed/added attributes:
+changed/added attributes. Use the cross-schema context to catch issues that
+cannot be seen from the diff alone:
+
+- **Sibling attributes on the same container** (everything in `attributes`
+  outside `_changed_attributes`) → use to detect boolean proliferation,
+  missing `_id` siblings, and semantic overlap with neighbors.
+- **`cross_reference_index`** → use to detect type inconsistency where the
+  same attribute name has different types across containers (`distinct_types`
+  with more than one entry is an immediate signal).
+- **`dictionary_neighbors`** → use to detect duplicate dictionary entries
+  (`is_X`/`X` name pairs) and identical descriptions across distinct attrs.
 
 ### 8. Boolean Trap
 Flag `boolean_t` attributes where the concept has more than two meaningful
@@ -149,34 +169,6 @@ Numbered list. Each item:
 
 If no anti-patterns are found, omit this section entirely.
 
-### Structured Anti-Pattern JSON
-
-After the Anti-Pattern Findings section (if any), append a hidden HTML comment
-block containing a JSON array of your findings. This enables automated
-extraction and learning. Use this exact format:
-
-```
-<!-- antipattern-json
-[
-  {
-    "rule": "semantic-overlap",
-    "container": "object_or_class_name",
-    "attribute": "attribute_name",
-    "pattern": "match_type:match_value",
-    "message": "concise description of the anti-pattern"
-  }
-]
--->
-```
-
-The `pattern` field describes the structural signature so it can be codified
-as a static rule. Use one of these match types:
-- `attr_name_pair:name1,name2` — two attribute names that overlap
-- `attr_name_regex:regex` — attribute names matching a pattern (e.g., `is_\\w+_verified`)
-- `desc_contains:phrase` — attributes whose description contains a phrase
-
-If you found no anti-patterns, omit this block entirely.
-
 ### CHANGELOG Issues
 List any convention violations.
 
@@ -223,92 +215,274 @@ def run_gh(*args: str, input_data: str | None = None) -> str:
     return result.stdout
 
 
-def extract_changed_dict_attrs(diff: str) -> list[str]:
-    """Parse attribute names added/modified in dictionary.json from the diff."""
-    in_dict = False
-    attrs = []
-    for line in diff.split("\n"):
-        if line.startswith("diff --git") and "dictionary.json" in line:
-            in_dict = True
-            continue
-        if line.startswith("diff --git") and in_dict:
-            break
-        if not in_dict:
-            continue
-        if line.startswith("+") and not line.startswith("+++"):
-            match = re.search(r'"(\w+)":\s*\{', line)
-            if match:
-                attrs.append(match.group(1))
-    return attrs
+# OCSF keys that look structural (`"foo": { ... }`) but are never the
+# name of a reviewable attribute, so we never add them to `keys`.
+_RESERVED_FILE_KEYS = frozenset({
+    "attributes",
+    "constraints",
+    "profiles",
+    "associations",
+    "references",
+    "types",
+    "enum",
+})
+
+# Reserved wrappers whose direct children are *also* not attribute names
+# (enum entries, constraint specs, profile names, etc.). When we enter one,
+# nested keys are ignored and any modifications inside should be attributed
+# to the enclosing attribute (i.e., the previously tracked `current_key`).
+# `"attributes"` is reserved but not opaque — its direct children *are*
+# attribute names.
+_OPAQUE_WRAPPERS = frozenset({
+    "enum",
+    "constraints",
+    "profiles",
+    "associations",
+    "references",
+    "types",
+})
 
 
-def extract_changed_attrs_in_file(diff: str, filename: str) -> set[str]:
-    """Extract attribute names that were added or modified in a specific file's diff.
+def _extract_changed_attr_keys(diff: str, filename: str) -> set[str]:
+    """Extract attribute names added or modified in a file's diff.
 
-    Tracks the current top-level attribute key context so that
-    modifications inside an attribute's block correctly attribute
-    the change to the enclosing key.
+    Heuristic parser tuned for OCSF schema JSON files. It tracks brace
+    depth and a stack of "opaque" wrappers (`enum`, `constraints`,
+    `profiles`, etc.) so that:
+
+    - Modifications nested inside an attribute's body (tweaking a
+      `description`, adding `@deprecated`, etc.) attribute to the
+      enclosing attribute name.
+    - Modifications inside `enum` (e.g. adding/editing enum entries
+      `"1": {...}`) attribute to the enclosing attribute, never to the
+      enum entry IDs themselves.
+    - `"attributes"`, `"constraints"`, `"profiles"`, etc. are never
+      reported as changed attribute names.
+    - Each diff hunk starts with a fresh state — cross-hunk brace depth
+      is not reliable because untouched lines between hunks aren't in
+      the diff.
     """
     in_file = False
-    keys = set()
-    current_key = None
+    keys: set[str] = set()
+    current_key: str | None = None
+    brace_depth = 0
+    opaque_depth: int | None = None  # depth at which we entered the current opaque wrapper
 
     for line in diff.split("\n"):
         if line.startswith("diff --git") and filename in line:
             in_file = True
             current_key = None
+            brace_depth = 0
+            opaque_depth = None
             continue
         if line.startswith("diff --git") and in_file:
             break
         if not in_file:
             continue
-        if line.startswith("@@") or line.startswith("+++") or line.startswith("---"):
+        if line.startswith("@@"):
+            current_key = None
+            brace_depth = 0
+            opaque_depth = None
+            continue
+        if line.startswith("+++") or line.startswith("---"):
             continue
 
         content = line[1:] if line and line[0] in ("+", "-", " ") else line
+        in_opaque = opaque_depth is not None
 
-        # Track top-level attribute key names
-        key_match = re.search(r'"(\w+)":\s*[\{\[\"]', content)
-        if key_match:
-            current_key = key_match.group(1)
+        key_match = re.search(r'"(\w+)":\s*[\{\[]', content)
+        matched_key = key_match.group(1) if key_match else None
 
-        # Added or modified line — mark the current key as changed
-        if line.startswith("+") and current_key:
-            keys.add(current_key)
+        if matched_key in _OPAQUE_WRAPPERS and not in_opaque:
+            # Entering an opaque wrapper; preserve current_key so inner
+            # additions are attributed to the enclosing attribute.
+            opaque_depth = brace_depth
+        elif matched_key == "attributes":
+            # Entering the attributes wrapper itself; not an attribute.
+            current_key = None
+        elif matched_key and matched_key not in _RESERVED_FILE_KEYS and not in_opaque:
+            current_key = matched_key
+
+        if line.startswith("+"):
+            if (
+                matched_key
+                and matched_key not in _RESERVED_FILE_KEYS
+                and not in_opaque
+            ):
+                keys.add(matched_key)
+            elif current_key:
+                keys.add(current_key)
+            # else: inside a file-level wrapper with no enclosing attr -> drop
+
+        brace_depth += content.count("{") - content.count("}")
+
+        if opaque_depth is not None and brace_depth <= opaque_depth:
+            opaque_depth = None
 
     return keys
 
 
-def _filter_to_changed_attrs(compiled_def: dict, changed_attrs: set[str]) -> dict:
-    """Return a copy of a compiled object/class with only changed attributes.
+def extract_changed_dict_attrs(diff: str) -> set[str]:
+    """Parse attribute names added/modified in dictionary.json from the diff."""
+    return _extract_changed_attr_keys(diff, "dictionary.json")
 
-    Keeps the top-level metadata (caption, description, name, etc.) and
-    filters the attributes dict to only include changed ones.
+
+def extract_changed_attrs_in_file(diff: str, filename: str) -> set[str]:
+    """Extract attribute names that were added or modified in a file's diff."""
+    return _extract_changed_attr_keys(diff, filename)
+
+
+SIBLING_DESC_MAX = 200
+CROSS_REF_MAX = 20
+
+
+def _summarize_sibling_attr(attr_def: dict) -> dict:
+    """Compact summary of an unchanged sibling attribute.
+
+    Provides enough signal for the LLM to detect proliferation, missing
+    siblings, and semantic overlap without inflating the prompt.
     """
-    filtered = {}
-    for key, value in compiled_def.items():
-        if key == "attributes":
-            filtered["attributes"] = {
-                attr_name: attr_def
-                for attr_name, attr_def in value.items()
-                if attr_name in changed_attrs
-            }
-        else:
-            filtered[key] = value
-    return filtered
-
-
-def _strip_deprecated_attrs(definition: dict) -> dict:
-    """Return a copy of an object/class definition with deprecated attributes removed."""
-    if "attributes" not in definition:
-        return definition
-    filtered = {
-        name: attr for name, attr in definition["attributes"].items()
-        if not attr.get("@deprecated")
+    desc = attr_def.get("description", "") or ""
+    if len(desc) > SIBLING_DESC_MAX:
+        desc = desc[:SIBLING_DESC_MAX].rstrip() + "..."
+    summary = {
+        "type": attr_def.get("type", "?"),
+        "caption": attr_def.get("caption", ""),
+        "description": desc,
     }
-    result = definition.copy()
-    result["attributes"] = filtered
+    if attr_def.get("enum"):
+        summary["has_enum"] = True
+    if attr_def.get("sibling"):
+        summary["sibling"] = attr_def["sibling"]
+    return summary
+
+
+def _build_container_context(
+    compiled_def: dict,
+    changed_attrs: set[str],
+) -> dict:
+    """Return a compiled object/class with full info on changed attrs and
+    summarized info on their (non-deprecated) siblings.
+
+    Adds a `_changed_attributes` field listing the attrs the LLM should
+    actually flag findings on. Other attrs are present as context only.
+    """
+    result: dict = {"_changed_attributes": sorted(changed_attrs)}
+    for key, value in compiled_def.items():
+        if key != "attributes":
+            result[key] = value
+            continue
+        attrs_out: dict = {}
+        for attr_name, attr_def in value.items():
+            if attr_def.get("@deprecated"):
+                continue
+            if attr_name in changed_attrs:
+                attrs_out[attr_name] = attr_def
+            else:
+                attrs_out[attr_name] = _summarize_sibling_attr(attr_def)
+        result["attributes"] = attrs_out
     return result
+
+
+def _build_cross_reference_index(
+    attr_names: set[str],
+    compiled_objects: dict,
+    compiled_classes: dict,
+) -> dict:
+    """Map each changed attribute name to other containers using that name.
+
+    Skipped when the name appears in only one container — there's nothing
+    to cross-check. Capped at CROSS_REF_MAX entries to avoid blowing up
+    on common attrs like `name` or `type`.
+    """
+    index: dict[str, dict] = {}
+    for attr_name in attr_names:
+        refs: list[dict] = []
+        for obj_name, obj_data in compiled_objects.items():
+            attr = obj_data.get("attributes", {}).get(attr_name)
+            if not attr or attr.get("@deprecated"):
+                continue
+            refs.append({
+                "container": obj_name,
+                "container_kind": "object",
+                "type": attr.get("type", "?"),
+            })
+        for cls_name, cls_data in compiled_classes.items():
+            attr = cls_data.get("attributes", {}).get(attr_name)
+            if not attr or attr.get("@deprecated"):
+                continue
+            refs.append({
+                "container": cls_name,
+                "container_kind": "class",
+                "type": attr.get("type", "?"),
+            })
+
+        if len(refs) < 2:
+            continue
+
+        truncated = False
+        if len(refs) > CROSS_REF_MAX:
+            refs = refs[:CROSS_REF_MAX]
+            truncated = True
+
+        types_seen = sorted({r["type"] for r in refs})
+        index[attr_name] = {
+            "containers": refs,
+            "distinct_types": types_seen,
+            "truncated": truncated,
+        }
+    return index
+
+
+def _build_dictionary_neighbors(
+    attr_name: str,
+    attr_def: dict,
+    compiled_dict: dict,
+) -> list[dict]:
+    """Return dictionary entries closely related to a changed dict attr.
+
+    Surfaces:
+    - Name pairs: `is_X` <-> `X` (likely-duplicate boolean/value pair)
+    - Other dict entries with an identical description
+    """
+    neighbors: list[dict] = []
+    desc = (attr_def.get("description", "") or "").strip()
+
+    pair_name: str | None = None
+    if attr_name.startswith("is_"):
+        pair_name = attr_name[3:]
+    else:
+        pair_name = f"is_{attr_name}"
+
+    if pair_name and pair_name in compiled_dict:
+        pair_def = compiled_dict[pair_name]
+        if not pair_def.get("@deprecated"):
+            pair_desc = pair_def.get("description", "") or ""
+            if len(pair_desc) > SIBLING_DESC_MAX:
+                pair_desc = pair_desc[:SIBLING_DESC_MAX].rstrip() + "..."
+            neighbors.append({
+                "name": pair_name,
+                "relation": "name_pair",
+                "type": pair_def.get("type", "?"),
+                "description": pair_desc,
+            })
+
+    if desc and len(desc) >= 30 and "See specific usage" not in desc:
+        for other_name, other_def in compiled_dict.items():
+            if other_name == attr_name or other_name == pair_name:
+                continue
+            if other_def.get("@deprecated"):
+                continue
+            other_desc = (other_def.get("description", "") or "").strip()
+            if other_desc == desc:
+                neighbors.append({
+                    "name": other_name,
+                    "relation": "identical_description",
+                    "type": other_def.get("type", "?"),
+                    "description": other_desc[:SIBLING_DESC_MAX],
+                })
+
+    return neighbors
 
 
 # ---------------------------------------------------------------------------
@@ -342,11 +516,20 @@ def cmd_prepare() -> None:
         Path("review_context.json").write_text(json.dumps({"skip": True}))
         return
 
-    context = {"objects": {}, "classes": {}, "dictionary_attributes": {}}
+    context = {
+        "objects": {},
+        "classes": {},
+        "dictionary_attributes": {},
+        "cross_reference_index": {},
+        "dictionary_neighbors": {},
+    }
 
     compiled_objects = compiled.get("objects", {})
     compiled_classes = compiled.get("classes", {})
     compiled_dict_attrs = compiled.get("dictionary", {}).get("attributes", {})
+
+    all_changed_attr_names: set[str] = set()
+    changed_dict_attr_names: set[str] = set()
 
     for filepath in changed_files:
         if filepath.endswith(".json") and filepath.startswith("objects/"):
@@ -354,18 +537,20 @@ def cmd_prepare() -> None:
             if name in compiled_objects:
                 changed_attrs = extract_changed_attrs_in_file(diff, filepath)
                 if changed_attrs:
-                    context["objects"][name] = _strip_deprecated_attrs(
-                        _filter_to_changed_attrs(compiled_objects[name], changed_attrs)
+                    context["objects"][name] = _build_container_context(
+                        compiled_objects[name], changed_attrs
                     )
+                    all_changed_attr_names |= changed_attrs
 
         elif filepath.endswith(".json") and filepath.startswith("events/"):
             name = Path(filepath).stem
             if name in compiled_classes:
                 changed_attrs = extract_changed_attrs_in_file(diff, filepath)
                 if changed_attrs:
-                    context["classes"][name] = _strip_deprecated_attrs(
-                        _filter_to_changed_attrs(compiled_classes[name], changed_attrs)
+                    context["classes"][name] = _build_container_context(
+                        compiled_classes[name], changed_attrs
                     )
+                    all_changed_attr_names |= changed_attrs
 
     if "dictionary.json" in changed_files:
         for attr_name in extract_changed_dict_attrs(diff):
@@ -386,11 +571,29 @@ def cmd_prepare() -> None:
                 for obj_name, obj_data in compiled_objects.items():
                     if attr_name in obj_data.get("attributes", {}):
                         if obj_name not in context["objects"]:
-                            context["objects"][obj_name] = _strip_deprecated_attrs(
-                                obj_data
+                            context["objects"][obj_name] = _build_container_context(
+                                obj_data, {attr_name}
                             )
             else:
                 context["dictionary_attributes"][attr_name] = dict_entry
+
+            changed_dict_attr_names.add(attr_name)
+            all_changed_attr_names.add(attr_name)
+
+    if all_changed_attr_names:
+        context["cross_reference_index"] = _build_cross_reference_index(
+            all_changed_attr_names, compiled_objects, compiled_classes
+        )
+
+    for attr_name in changed_dict_attr_names:
+        attr_def = compiled_dict_attrs.get(attr_name)
+        if not attr_def:
+            continue
+        neighbors = _build_dictionary_neighbors(
+            attr_name, attr_def, compiled_dict_attrs
+        )
+        if neighbors:
+            context["dictionary_neighbors"][attr_name] = neighbors
 
     output = {
         "pr_number": pr_number,
@@ -410,7 +613,6 @@ def cmd_prepare() -> None:
 def build_review_prompt(
     data: dict,
     previous_review: str | None = None,
-    static_findings: list[dict] | None = None,
 ) -> str:
     """Build the prompt string from the saved review context."""
     ctx = data["compiled_context"]
@@ -425,19 +627,6 @@ def build_review_prompt(
             "suggestions have been addressed and which remain outstanding.\n\n"
             + previous_review
             + "\n\n---\n"
-        )
-
-    if static_findings:
-        parts.append(
-            "## Static Anti-Pattern Findings\n"
-            "The following anti-patterns were detected by static analysis. "
-            "Validate these findings and include confirmed ones in your "
-            "Anti-Pattern Findings section. Also look for additional "
-            "anti-patterns that static analysis cannot catch (semantic "
-            "overlap, incorrect type choices, indirect attribution, etc.).\n"
-            "```json\n"
-            + json.dumps(static_findings, indent=2)
-            + "\n```\n"
         )
 
     if ctx["objects"]:
@@ -458,6 +647,29 @@ def build_review_prompt(
         parts.append(
             "## Dictionary Attributes (changed, non-placeholder descriptions)\n```json\n"
             + json.dumps(ctx["dictionary_attributes"], indent=2)
+            + "\n```\n"
+        )
+
+    if ctx.get("cross_reference_index"):
+        parts.append(
+            "## Cross-Reference Index\n"
+            "_Other containers in the schema that use each changed attribute "
+            "name. Use this to detect type inconsistency and cross-container "
+            "drift. Only names that appear in 2+ containers are listed._\n"
+            "```json\n"
+            + json.dumps(ctx["cross_reference_index"], indent=2)
+            + "\n```\n"
+        )
+
+    if ctx.get("dictionary_neighbors"):
+        parts.append(
+            "## Dictionary Neighbors\n"
+            "_Existing dictionary entries closely related to each changed "
+            "dictionary attribute (`is_X`/`X` name pairs and entries with "
+            "identical descriptions). Use this to detect duplicate or "
+            "conflicting dictionary entries._\n"
+            "```json\n"
+            + json.dumps(ctx["dictionary_neighbors"], indent=2)
             + "\n```\n"
         )
 
@@ -483,16 +695,54 @@ def build_review_prompt(
         "## Full PR diff (for reference)\n```diff\n" + diff + "\n```\n"
     )
 
+    return _fit_within_budget(parts, diff)
+
+
+def _fit_within_budget(parts: list[str], diff: str) -> str:
+    """Shed low-signal sections progressively until the prompt fits.
+
+    Order of preference (most to least valuable):
+        1. Previous Review            — agent-state continuity
+        2. Compiled Objects/Classes   — primary review subject
+        3. Dictionary Attributes      — primary review subject
+        4. Cross-Reference Index      — cross-container anti-pattern signal
+        5. Dictionary Neighbors       — duplicate/conflict signal
+        6. CHANGELOG.md diff          — convention checks
+        7. Full PR diff               — verbose, mostly redundant with structured sections
+
+    The full PR diff is shed first when over budget. We replace it with a
+    head-and-tail diff stub (~50 KB) so the LLM still has line-level
+    grounding for the most prominent changes. If still over budget, the
+    CHANGELOG diff and finally the diff stub are dropped. As a last resort,
+    the joined context is hard-truncated.
+    """
     context = "\n".join(parts)
-    if len(context) > MAX_CONTEXT_CHARS:
-        trimmed = parts[:3] if len(parts) > 3 else parts[:1]
-        trimmed.append(
-            "## PR diff (truncated due to size)\n```diff\n"
-            + diff[:100_000]
-            + "\n```\n"
-        )
-        context = "\n".join(trimmed)
-    return context
+    if len(context) <= MAX_CONTEXT_CHARS:
+        return context
+
+    parts = [p for p in parts if not p.startswith("## Full PR diff")]
+    diff_stub = (
+        "## PR diff (truncated due to size — structured sections above carry "
+        "the same information more compactly)\n```diff\n"
+        + diff[:50_000]
+        + "\n```\n"
+    )
+    parts.append(diff_stub)
+    context = "\n".join(parts)
+    if len(context) <= MAX_CONTEXT_CHARS:
+        return context
+
+    parts = [p for p in parts if not p.startswith("## CHANGELOG.md diff")]
+    context = "\n".join(parts)
+    if len(context) <= MAX_CONTEXT_CHARS:
+        return context
+
+    parts = [p for p in parts if not p.startswith("## PR diff (truncated")]
+    context = "\n".join(parts)
+    if len(context) <= MAX_CONTEXT_CHARS:
+        return context
+
+    return context[:MAX_CONTEXT_CHARS] + "\n\n[CONTEXT HARD-TRUNCATED]"
 
 
 def find_existing_comment(pr_number: str) -> str | None:
@@ -586,7 +836,11 @@ def cmd_review() -> None:
     pr_number = data["pr_number"]
     ctx = data["compiled_context"]
 
-    has_content = ctx["objects"] or ctx["classes"] or ctx.get("dictionary_attributes")
+    has_content = bool(
+        ctx.get("objects")
+        or ctx.get("classes")
+        or ctx.get("dictionary_attributes")
+    )
     has_changelog = "CHANGELOG.md" in data["changed_files"]
 
     if not has_content and not has_changelog:
@@ -602,20 +856,9 @@ def cmd_review() -> None:
     else:
         print("No previous review found (first review)")
 
-    # Load static anti-pattern findings if available
-    static_findings = None
-    ap_path = Path("antipattern_results.json")
-    if ap_path.exists():
-        ap_data = json.loads(ap_path.read_text())
-        findings = ap_data.get("findings", [])
-        if findings:
-            static_findings = findings
-            print(f"Loaded {len(findings)} static anti-pattern finding(s)")
-
     prompt_context = build_review_prompt(
         data,
         previous_review=previous_review,
-        static_findings=static_findings,
     )
 
     print("Calling Claude for review...")
@@ -642,82 +885,9 @@ def cmd_review() -> None:
     )
     review = message.content[0].text
 
-    # Extract structured anti-pattern JSON from Claude's response
-    llm_findings = extract_llm_antipattern_json(review)
-    novel_findings = diff_findings(llm_findings, static_findings or [])
-
-    if novel_findings:
-        print(f"Found {len(novel_findings)} novel LLM-discovered anti-pattern(s)")
-        # Log the JSON for easy copy-paste into learned_antipatterns.json
-        learned_entries = []
-        for f in novel_findings:
-            learned_entries.append({
-                "rule": f.get("rule", "unknown"),
-                "match_type": f.get("pattern", "").split(":")[0] if ":" in f.get("pattern", "") else "manual",
-                "match_value": f.get("pattern", "").split(":", 1)[1] if ":" in f.get("pattern", "") else f.get("pattern", ""),
-                "message": f.get("message", ""),
-                "severity": "warning",
-                "discovered_in_pr": pr_number,
-            })
-        print("--- Learned patterns JSON (add to .github/config/learned_antipatterns.json) ---")
-        print(json.dumps(learned_entries, indent=2))
-        print("--- End learned patterns ---")
-
-        # Append a labeled section to the review comment
-        novel_section = (
-            "\n\n---\n"
-            "### LLM-Discovered Anti-Patterns\n"
-            "_These anti-patterns were identified by LLM analysis and are "
-            "not yet covered by static rules. Consider adding them to "
-            "`.github/config/learned_antipatterns.json`._\n\n"
-        )
-        for i, f in enumerate(novel_findings, 1):
-            novel_section += (
-                f"{i}. **{f.get('rule', 'unknown')}** — "
-                f"`{f.get('container', '?')}`.`{f.get('attribute', '?')}`\n"
-                f"   {f.get('message', '')}\n"
-                f"   > Pattern: `{f.get('pattern', 'N/A')}`\n\n"
-            )
-        review += novel_section
-    else:
-        print("No novel LLM anti-patterns beyond static findings")
-
     print("Posting review comment...")
     post_or_update_comment(pr_number, review)
     print("Done!")
-
-
-def extract_llm_antipattern_json(review_text: str) -> list[dict]:
-    """Extract structured anti-pattern findings from Claude's HTML comment block."""
-    match = re.search(
-        r"<!--\s*antipattern-json\s*\n(.*?)\n\s*-->",
-        review_text,
-        re.DOTALL,
-    )
-    if not match:
-        return []
-    try:
-        findings = json.loads(match.group(1))
-        if isinstance(findings, list):
-            return findings
-    except (json.JSONDecodeError, TypeError):
-        print("Warning: Failed to parse antipattern-json block", file=sys.stderr)
-    return []
-
-
-def diff_findings(
-    llm_findings: list[dict],
-    static_findings: list[dict],
-) -> list[dict]:
-    """Return LLM findings that don't have a matching static finding."""
-    static_keys = {
-        (f.get("container", ""), f.get("attribute", ""))
-        for f in static_findings
-    }
-    return [
-        f for f in llm_findings
-        if (f.get("container", ""), f.get("attribute", "")) not in static_keys
-    ]
 
 
 # ---------------------------------------------------------------------------

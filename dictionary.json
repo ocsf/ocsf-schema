@@ -177,6 +177,11 @@
       "description": "The permissions that were granted in a platform-native format. See specific usage.",
       "type": "integer_t"
     },
+    "additional": {
+      "caption": "DNS Additional Section",
+      "description": "The server Additional section of a DNS message, containing glue records and other supplementary resource records, along with an optional TSIG record.",
+      "type": "dns_section"
+    },
     "additional_restrictions": {
       "caption": "Additional Restrictions",
       "description": "The supplementary restrictions that may apply to an entity, by the virtue of a policy. See specific usage.",
@@ -325,8 +330,8 @@
     },
     "answers": {
       "caption": "DNS Answer",
-      "description": "The Domain Name System (DNS) answers.",
-      "type": "dns_answer",
+      "description": "The DNS Answer section resource records returned by the server.",
+      "type": "dns_resource_record",
       "is_array": true
     },
     "api": {
@@ -545,6 +550,12 @@
       "caption": "Authorization Information",
       "description": "Provides details about an authorization, such as authorization outcome, and any associated policies related to the activity/event.",
       "type": "authorization",
+      "is_array": true
+    },
+    "authority": {
+      "caption": "DNS Authority Section",
+      "description": "The DNS Authority section resource records. Contains NS records pointing to authoritative name servers, or a SOA record for negative responses (NXDOMAIN).",
+      "type": "dns_resource_record",
       "is_array": true
     },
     "autonomous_system": {
@@ -2555,6 +2566,12 @@
       "caption": "Error Code",
       "description": "Error Code",
       "type": "string_t"
+    },
+    "error_id": {
+      "caption": "Error ID",
+      "description": "The normalized error identifier. See specific usage.",
+      "sibling": "error",
+      "type": "integer_t"
     },
     "error_message": {
       "caption": "Error Message",
@@ -5104,6 +5121,11 @@
       "description": "The Domain Name System (DNS) query.",
       "type": "dns_query"
     },
+    "query_additional": {
+      "caption": "DNS Query Additional Section",
+      "description": "The client Additional section of a DNS query message, containing TSIG, TKEY, SIG, KEY, and OPT records sent by the client.",
+      "type": "dns_section"
+    },
     "query_evidence": {
       "caption": "Query Evidence",
       "description": "The resulting evidence discovered from the evidence search request.",
@@ -5349,6 +5371,12 @@
       "caption": "Record Index in Array",
       "description": "The index of the record in the array of records.",
       "type": "integer_t"
+    },
+    "records": {
+      "caption": "DNS Resource Records",
+      "description": "The resource records in a DNS message section. See specific usage.",
+      "type": "dns_resource_record",
+      "is_array": true
     },
     "references": {
       "caption": "References",
@@ -6672,6 +6700,11 @@
       "description": "The Time Span object represents different time period durations. If a timespan is fractional, i.e. crosses one period, e.g. a week and 3 days, more than one may be populated since each member is of integral type. In that case <code>type_id</code> if present should be set to <code>Other.</code><P>A timespan may also be defined by its time interval boundaries, <code>start_time</code> and <code>end_time</code>.",
       "type": "timespan"
     },
+    "time_signed": {
+      "caption": "Time Signed",
+      "description": "The timestamp used to prevent replay attacks in TSIG authentication. See <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc2845'>RFC 2845</a>.",
+      "type": "timestamp_t"
+    },
     "timezone_offset": {
       "caption": "Timezone Offset",
       "description": "The number of minutes that the reported event <code>time</code> is ahead or behind UTC, in the range -1,080 to +1,080. This allows consumers to reconstruct the local time at the event source. For example, US Eastern Standard Time is <code>-300</code>. Populate this when the source provides local time zone information.",
@@ -6697,6 +6730,16 @@
       "description": "The list of TLS extensions.",
       "type": "tls_extension",
       "is_array": true
+    },
+    "tsig": {
+      "caption": "TSIG",
+      "description": "The TSIG (Transaction Signature) record used to authenticate the DNS message. See <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc2845'>RFC 2845</a>.",
+      "type": "tsig"
+    },
+    "tsig_mac": {
+      "caption": "TSIG MAC",
+      "description": "The message authentication code computed over the DNS message using the TSIG shared secret key, base64-encoded.",
+      "type": "string_t"
     },
     "to": {
       "caption": "To",
@@ -6767,6 +6810,11 @@
       "description": "The traits that describe characteristics, features of an entity. See specific usage.",
       "type": "trait",
       "is_array": true
+    },
+    "transaction_id": {
+      "caption": "DNS Transaction ID",
+      "description": "The 16-bit DNS transaction identifier assigned by the client and echoed unchanged in the server response. This value is the same for both the query and response messages.",
+      "type": "integer_t"
     },
     "transaction_uid": {
       "caption": "Transaction UID",

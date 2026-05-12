@@ -21,9 +21,17 @@
         }
       }
     },
+    "additional": {
+      "group": "primary",
+      "requirement": "optional"
+    },
     "answers": {
       "group": "primary",
       "requirement": "recommended"
+    },
+    "authority": {
+      "group": "primary",
+      "requirement": "optional"
     },
     "connection_info": {
       "group": "context",
@@ -32,9 +40,59 @@
     "dst_endpoint": {
       "requirement": "recommended"
     },
+    "flag_ids": {
+      "caption": "DNS Header Flags",
+      "description": "The list of DNS message header flag IDs. For Query events, populated from the query header (RD, CD). For Response and Traffic events, populated from the response header, which is the complete and authoritative source as it echoes all client-set flags and adds server-set flags.",
+      "group": "primary",
+      "requirement": "optional",
+      "enum": {
+        "1": {
+          "caption": "Authoritative Answer",
+          "description": "The responding server is authoritative for the domain. Set by the server in responses only."
+        },
+        "2": {
+          "caption": "Truncated Response",
+          "description": "The response was truncated because it exceeded the maximum UDP message size."
+        },
+        "3": {
+          "caption": "Recursion Desired",
+          "description": "The client requests that the server perform recursive resolution. Set by the client and echoed in the response."
+        },
+        "4": {
+          "caption": "Recursion Available",
+          "description": "The server supports recursive resolution. Set by the server in responses."
+        },
+        "5": {
+          "caption": "Authentic Data",
+          "description": "All data in the response has been cryptographically verified (DNSSEC). Set by the server."
+        },
+        "6": {
+          "caption": "Checking Disabled",
+          "description": "The client requests that the server disable DNSSEC validation. Set by the client and echoed in the response."
+        }
+      }
+    },
+    "flags": {
+      "caption": "DNS Header Flags",
+      "description": "The list of DNS message header flags, normalized to the captions of the <code>flag_ids</code> values.",
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "opcode": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "opcode_id": {
+      "group": "primary",
+      "requirement": "optional"
+    },
     "query": {
       "group": "primary",
       "requirement": "recommended"
+    },
+    "query_additional": {
+      "group": "primary",
+      "requirement": "optional"
     },
     "query_time": {
       "group": "occurrence",
@@ -100,8 +158,8 @@
           "description": "DSO-TYPE Not Implemented."
         },
         "16": {
-          "caption": "BADSIG_VERS",
-          "description": "TSIG Signature Failure or Bad OPT Version."
+          "caption": "BADVERS",
+          "description": "Bad EDNS OPT Version. Indicates that the client requested an EDNS version that the server does not support."
         },
         "17": {
           "caption": "BADKEY",
@@ -151,6 +209,10 @@
     },
     "traffic": {
       "group": "context",
+      "requirement": "optional"
+    },
+    "transaction_id": {
+      "group": "primary",
       "requirement": "optional"
     }
   },

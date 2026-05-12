@@ -1,0 +1,56 @@
+{
+  "caption": "TSIG",
+  "description": "The TSIG (Transaction Signature) object represents a TSIG resource record as defined in <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc2845'>RFC 2845</a>. TSIG uses a shared secret key and one-way hash function to authenticate DNS messages. Per RFC 2845, at most one TSIG record is permitted per DNS message.",
+  "extends": "object",
+  "name": "tsig",
+  "attributes": {
+    "algorithm": {
+      "description": "The HMAC algorithm used to compute the MAC. For example: <code>hmac-sha256</code>.",
+      "requirement": "recommended"
+    },
+    "error_id": {
+      "caption": "TSIG Error ID",
+      "description": "The normalized TSIG-specific error code as defined in <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc2845'>RFC 2845</a> and <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc6895'>RFC 6895</a>. This is independent of the DNS message header RCODE.",
+      "requirement": "recommended",
+      "enum": {
+        "0": {
+          "caption": "NoError",
+          "description": "No error."
+        },
+        "16": {
+          "caption": "BADSIG",
+          "description": "TSIG signature failure."
+        },
+        "17": {
+          "caption": "BADKEY",
+          "description": "Key not recognized."
+        },
+        "18": {
+          "caption": "BADTIME",
+          "description": "Signature out of time window."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The TSIG error code is not listed. See the <code>error</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
+    "error": {
+      "caption": "TSIG Error",
+      "description": "The TSIG error, normalized to the caption of the <code>error_id</code> value. In the case of 'Other', it is defined by the event source.",
+      "requirement": "optional"
+    },
+    "tsig_mac": {
+      "requirement": "recommended"
+    },
+    "time_signed": {
+      "requirement": "recommended"
+    }
+  },
+  "references": [
+    {
+      "description": "RFC 2845 — Secret Key Transaction Authentication for DNS (TSIG).",
+      "url": "https://www.rfc-editor.org/rfc/rfc2845"
+    }
+  ]
+}

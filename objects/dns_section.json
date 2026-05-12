@@ -1,0 +1,27 @@
+{
+  "caption": "DNS Section",
+  "description": "The DNS Section object represents a DNS message section that carries resource records alongside an optional TSIG record. It is used for both the client Additional section (<code>query_additional</code>) and the server Additional section (<code>additional</code>) of a DNS message.",
+  "extends": "object",
+  "name": "dns_section",
+  "attributes": {
+    "records": {
+      "caption": "Resource Records",
+      "description": "The resource records contained in this DNS section.",
+      "requirement": "optional"
+    },
+    "tsig": {
+      "description": "The TSIG record present in this DNS section. Per <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc2845'>RFC 2845</a>, at most one TSIG record is permitted per DNS message.",
+      "requirement": "optional"
+    }
+  },
+  "references": [
+    {
+      "description": "RFC 1035 — DNS Implementation and Specification.",
+      "url": "https://www.rfc-editor.org/rfc/rfc1035.txt"
+    },
+    {
+      "description": "RFC 2845 — Secret Key Transaction Authentication for DNS (TSIG).",
+      "url": "https://www.rfc-editor.org/rfc/rfc2845"
+    }
+  ]
+}

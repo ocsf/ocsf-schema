@@ -58,6 +58,7 @@ Thankyou! -->
 * #### Objects
   1. Added `job_action` object to describe an action that job can perform. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `job_trigger` object to describe a condition when job performs its action. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
+  1. Added `cpu_info` object for CPUs (array name `cpu_info_list`).
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -68,6 +69,8 @@ Thankyou! -->
   1. Added `job_triggers` that describes a set of conditions when job performs its actions. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `updated_job` that reflects the attempted or the actual updated job. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `properties` that is a set of characteristics associated with an entity. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
+  1. Added `speed_mhz` for compute unit clock speed in MHz.
+  1. Added `cpu_info_list` as an array of `cpu_info` objects.
 
 ### Improved
 * #### Categories
@@ -82,6 +85,8 @@ Thankyou! -->
   1. Added `uid` attribute to the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Relaxed `name` attribute constraint to `recommended` in the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `at_least_one` constraint for `name` and `type_id` attributes in the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
+  1. Updated `cpu_count` description in `device_hw_info` to cross-reference `cpu_info_list`.
+  1. Updated `gpu_count` and `gpu_info_list` descriptions in `device_hw_info` to cross-reference each other.
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -93,6 +98,10 @@ Thankyou! -->
   1. Deprecated usage of `cmd_line` attribute in favor of `job_actions.cmd_line` in the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Deprecated usage of `last_run_time` attribute in favor of `job_triggers.last_run_time` in the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Deprecated usage of `next_run_time` attribute in favor of `job_triggers.next_run_time` in the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
+  1. Deprecated `cpu_cores` in the dictionary in favor of `cores`.
+  1. Deprecated `cpu_speed` in the dictionary in favor of `speed_mhz`.
+  1. Deprecated `cpu_type` in the dictionary in favor of `model` and `vendor_name` within `cpu_info_list[*]`.
+  1. Deprecated `cpu_architecture`, `cpu_architecture_id`, `cpu_bits`, `cpu_cores`, `cpu_speed`, and `cpu_type` on `device_hw_info` in favor of their equivalents within `cpu_info_list[*]`.
 
 ### Bugfixes
 1. Fixed the static anti-pattern checker so dictionary attributes are analyzed with the full compiled dictionary; the `missing-sibling` rule no longer false-positives when the sibling exists in `dictionary.json`. [#1613](https://github.com/ocsf/ocsf-schema/pull/1613)

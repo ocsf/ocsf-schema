@@ -44,7 +44,40 @@ Thankyou! -->
 ## [Unreleased]
 
 ### Added
-* #### Categories
+* #### Event Classes
+  1. Added `transaction_id` to `DNS Activity` to represent the 16-bit DNS transaction identifier assigned by the client and echoed unchanged in the response. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
+  1. Added `opcode_id` and `opcode` to `DNS Activity`, moved from `dns_query`, as the DNS opcode is a message-level header field with the same value in both query and response. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
+  1. Added `flag_ids` and `flags` to `DNS Activity`, moved from `dns_answer`, as DNS header flags describe the message not individual resource records. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
+  1. Added `dns_answers` to `DNS Activity` as a replacement for `answers`, typed as an array of the new `dns_resource_record` object. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
+  1. Added `authority` to `DNS Activity` to represent the DNS Authority section, containing NS or SOA records. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
+  1. Added `query_additional` to `DNS Activity` to represent the client Additional section of the DNS query message. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
+  1. Added `response_additional` to `DNS Activity` to represent the server Additional section of the DNS response message. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
+* #### Objects
+  1. Added `dns_resource_record` object to represent an RFC 1035 resource record, used across Answer, Authority, and Additional sections. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
+  1. Added `dns_section` object to represent a DNS message section containing supplementary resource records and an optional TSIG record. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
+  1. Added `tsig` object to represent a TSIG (Transaction Signature) record with structured fields for security analytics: `algorithm`, `key_name`, `error_id`, and `error`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
+* #### Dictionary Attributes
+  1. Added `transaction_id` attribute to represent a DNS transaction identifier. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
+  1. Added `dns_answers` attribute typed as an array of `dns_resource_record`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
+  1. Added `query_additional` and `response_additional` attributes typed as `dns_section`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
+  1. Added `authority` attribute typed as an array of `dns_resource_record`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
+  1. Added `key_name` attribute with generic description for reuse across object types. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
+
+### Improved
+* #### Objects
+  1. Renamed `dns_answer` to `dns_resource_record` to accurately reflect RFC 1035 resource record structure, and added `hostname` (owner name) to support CNAME chains and recursive responses. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
+
+### Bugfixes
+  1. Fixed `rcode_id` enum value 16 caption from `BADSIG_VERS` to `BADVERS` in `DNS Activity`. Code 16 in the DNS header RCODE space is specifically Bad EDNS OPT Version; BADSIG belongs in the TSIG error field. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
+
+### Deprecated
+  1. Deprecated `answers` attribute in `DNS Activity` in favour of `dns_answers`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
+  1. Deprecated `packet_uid` attribute in `_dns` object in favour of `transaction_id` on `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
+
+### Dictionary Attributes
+  1. Added `initiator` and `initiator_id` attributes for identifying which endpoint initiated a network communication, with generic `Unknown (0)` and `Other (99)` enums. [#1598](https://github.com/ocsf/ocsf-schema/pull/1598)
+
+### Improved
 * #### Event Classes
   1. Added user_management and role_management. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
 * #### Profiles

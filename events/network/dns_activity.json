@@ -22,15 +22,23 @@
       }
     },
     "response_additional": {
-      "group": "primary",
+      "group": "context",
       "requirement": "optional"
     },
     "answers": {
       "group": "primary",
+      "requirement": "recommended",
+      "@deprecated": {
+        "message": "Use <code>dns_answers</code> attribute instead.",
+        "since": "1.9.0"
+      }
+    },
+    "dns_answers": {
+      "group": "primary",
       "requirement": "recommended"
     },
     "authority": {
-      "group": "primary",
+      "group": "context",
       "requirement": "optional"
     },
     "connection_info": {
@@ -44,7 +52,7 @@
       "caption": "DNS Header Flags",
       "description": "The list of DNS message header flag IDs. For Query events, populated from the query header (RD, CD). For Response and Traffic events, populated from the response header, which is the complete and authoritative source as it echoes all client-set flags and adds server-set flags.",
       "group": "primary",
-      "requirement": "optional",
+      "requirement": "recommended",
       "enum": {
         "1": {
           "caption": "Authoritative Answer",
@@ -75,23 +83,23 @@
     "flags": {
       "caption": "DNS Header Flags",
       "description": "The list of DNS message header flags, normalized to the captions of the <code>flag_ids</code> values.",
-      "group": "primary",
+      "group": "context",
       "requirement": "optional"
     },
     "opcode": {
-      "group": "primary",
+      "group": "context",
       "requirement": "optional"
     },
     "opcode_id": {
       "group": "primary",
-      "requirement": "optional"
+      "requirement": "recommended"
     },
     "query": {
       "group": "primary",
       "requirement": "recommended"
     },
     "query_additional": {
-      "group": "primary",
+      "group": "context",
       "requirement": "optional"
     },
     "query_time": {
@@ -213,7 +221,7 @@
     },
     "transaction_id": {
       "group": "primary",
-      "requirement": "optional"
+      "requirement": "recommended"
     }
   },
   "references": [

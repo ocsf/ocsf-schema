@@ -179,7 +179,7 @@
     },
     "response_additional": {
       "caption": "DNS Response Additional Section",
-      "description": "The server Additional section of a DNS response message, containing glue records and other supplementary resource records, along with an optional TSIG record.",
+      "description": "The Additional section of the DNS response message sent by the server, containing supplementary resource records and an optional TSIG record. A DNS message has at most one TSIG record; for a transaction with both query and response, the query TSIG is in <code>query_additional.tsig</code> and the response TSIG is in <code>response_additional.tsig</code>.",
       "type": "dns_section"
     },
     "additional_restrictions": {
@@ -330,6 +330,16 @@
     },
     "answers": {
       "caption": "DNS Answer",
+      "description": "The Domain Name System (DNS) answers.",
+      "type": "dns_answer",
+      "is_array": true,
+      "@deprecated": {
+        "message": "Use <code>dns_answers</code> attribute instead.",
+        "since": "1.9.0"
+      }
+    },
+    "dns_answers": {
+      "caption": "DNS Answers",
       "description": "The DNS Answer section resource records returned by the server.",
       "type": "dns_resource_record",
       "is_array": true
@@ -3771,6 +3781,11 @@
       "type": "kill_chain_phase",
       "is_array": true
     },
+    "key_name": {
+      "caption": "Key Name",
+      "description": "The name of a key. See specific usage.",
+      "type": "string_t"
+    },
     "labels": {
       "caption": "Labels",
       "description": "The list of labels attached to an entity. See specific usage.",
@@ -5123,7 +5138,7 @@
     },
     "query_additional": {
       "caption": "DNS Query Additional Section",
-      "description": "The client Additional section of a DNS query message, containing TSIG, TKEY, SIG, KEY, and OPT records sent by the client.",
+      "description": "The Additional section of the DNS query message sent by the client, containing supplementary resource records and an optional TSIG record. A DNS message has at most one TSIG record; for a transaction with both query and response, the query TSIG is in <code>query_additional.tsig</code> and the response TSIG is in <code>response_additional.tsig</code>.",
       "type": "dns_section"
     },
     "query_evidence": {

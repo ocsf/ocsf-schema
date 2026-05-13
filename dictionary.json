@@ -6715,11 +6715,6 @@
       "description": "The Time Span object represents different time period durations. If a timespan is fractional, i.e. crosses one period, e.g. a week and 3 days, more than one may be populated since each member is of integral type. In that case <code>type_id</code> if present should be set to <code>Other.</code><P>A timespan may also be defined by its time interval boundaries, <code>start_time</code> and <code>end_time</code>.",
       "type": "timespan"
     },
-    "time_signed": {
-      "caption": "Time Signed",
-      "description": "The timestamp used to prevent replay attacks in TSIG authentication. See <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc2845'>RFC 2845</a>.",
-      "type": "timestamp_t"
-    },
     "timezone_offset": {
       "caption": "Timezone Offset",
       "description": "The number of minutes that the reported event <code>time</code> is ahead or behind UTC, in the range -1,080 to +1,080. This allows consumers to reconstruct the local time at the event source. For example, US Eastern Standard Time is <code>-300</code>. Populate this when the source provides local time zone information.",
@@ -6750,11 +6745,6 @@
       "caption": "TSIG",
       "description": "The TSIG (Transaction Signature) record used to authenticate the DNS message. See <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc2845'>RFC 2845</a>.",
       "type": "tsig"
-    },
-    "tsig_mac": {
-      "caption": "TSIG MAC",
-      "description": "The message authentication code computed over the DNS message using the TSIG shared secret key, base64-encoded.",
-      "type": "string_t"
     },
     "to": {
       "caption": "To",
@@ -6827,8 +6817,8 @@
       "is_array": true
     },
     "transaction_id": {
-      "caption": "DNS Transaction ID",
-      "description": "The 16-bit DNS transaction identifier assigned by the client and echoed unchanged in the server response. This value is the same for both the query and response messages.",
+      "caption": "Transaction ID",
+      "description": "The transaction identifier of a protocol message. See specific usage.",
       "type": "integer_t"
     },
     "transaction_uid": {

@@ -1,0 +1,61 @@
+{
+  "caption": "Job Trigger",
+  "description": "The condition or event that, when met, will initiate the job to perform specified actions.",
+  "name": "job_trigger",
+  "attributes": {
+    "event_codes": {
+      "description": "Event identifiers that pertain to the job trigger. Should be populated when the <code>Event (3)</code> type is specified.",
+      "requirement": "optional"
+    },
+    "last_run_time": {
+      "description": "The time when the job was last run.",
+      "requirement": "recommended"
+    },
+    "log_sources": {
+      "description": "A collection of log systems or components that pertain to the job trigger. Should be populated when the <code>Event (3)</code> type is specified.",
+      "requirement": "optional"
+    },
+    "next_run_time": {
+      "description": "The time when the job will next be run.",
+      "requirement": "optional"
+    },
+   "properties": {
+      "description": "The list of properties associated with the trigger.<br>Can be used to describe time boundaries of the job, amount of repetitions or when the job should be activated or expired.",
+      "requirement": "recommended"
+    },
+    "type": {
+      "description": "The job trigger type, normalized to the caption of the <code>type_id</code> value. In the case of 'Other', it is defined by the event source.",
+      "requirement": "recommended"
+    },
+    "type_id": {
+      "description": "The job trigger type, i.e. the condition that must be met for the job to perform its action.",
+      "requirement": "required",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The trigger is unknown."
+	},
+	"1": {
+	  "caption": "Boot",
+	  "description": "The job is triggered on a system boot."
+	},
+	"2": {
+	  "caption": "Schedule",
+	  "description": "The job is triggered on a specific schedule. Properties should be populated with respective time bounds."
+	},
+	"3": {
+	  "caption": "Event",
+	  "description": "The job is triggered when the specific event occurs. The <code>properties</code> attribute should be populated with respective event sources and identifiers."
+	},
+	"99": {
+	  "caption": "Other",
+	  "description": "The job trigger is unmapped. See the <code>type</code> attribute, which contains a data source specific value."
+	}
+      }
+    },
+    "user": {
+      "description": "The user that pertains to the job trigger. Can be populated when the <code>Event (3)</code> type that bounds to specific user is used.",
+      "requirement": "optional"
+    }
+  }
+}

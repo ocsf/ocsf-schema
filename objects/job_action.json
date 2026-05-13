@@ -1,0 +1,61 @@
+{
+  "caption": "Job Action",
+  "description": "The action that will be performed by the job when certain conditions are met.",
+  "name": "job_action",
+  "attributes": {
+    "type": {
+      "description": "The job action type, normalized to the caption of the <code>type_id</code> value. In the case of 'Other', it is defined by the event source.",
+      "requirement": "recommended"
+    },
+    "type_id": {
+      "description": "The job action type.",
+      "requirement": "required",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+	  "description": "The performed action is unknown."
+	},
+	"1": {
+	  "caption": "COM Handler",
+	  "description": "The action fires a COM handler. When this type is used, <code>com_class_uuid</code> and <code>file</code> attributes may be populated."
+	},
+	"2": {
+	  "caption": "Execute",
+	  "description": "The action executes a command-line operation. When this type is used, <code>cmd_line</code> and <code>file</code> attributes may be populated."
+	},
+	"3": {
+	  "caption": "E-mail",
+	  "description": "The action sends an email."
+	},
+	"4": {
+	  "caption": "Show Message",
+	  "description": "The action shows a message box with specified message and title."
+	},
+	"99": {
+	  "caption": "Other",
+	  "description": "The performed action is not mapped. See the <code>type</code> attribute, which contains a data source specific value."
+	}
+      }
+    },
+    "cmd_line": {
+      "description": "When <code>type_id</code> is <code>Execute (2)</code>, this describes the command line that is executed.<br/><br/>When <code>type_id</code> is <code>COM Handler (1)</code>, this <em>may</em> describe the DLL path stored in the COM component's <code>InprocServer32</code> key or the command line stored in the COM component's <code>LocalServer32</code> key.",
+      "requirement": "optional"
+    },
+    "com_class_uuid": {
+      "description": "When <code>type_id</code> is <code>COM Handler (1)</code>, this describes the COM Class Identifier (CLSID).",
+      "requirement": "optional"
+    },
+	"file": {
+	  "description": "When known, describes the image file that is executed when <code>type_id</code> is <code>COM Handler</code> or <code>Execute</code>. Note that this attribute is intended to supplement the <code>com_class_uid</code> or <code>cmd_line</code> attributes, and is not an alternative to them.",
+	  "requirement": "optional"
+    },
+    "properties": {
+      "description": "The list of properties associated with the performed action.<br>Can be populated with additional attributes of a program execution process, COM object attributes, fields of a message box or an email.",
+      "requirement": "recommended"
+    },
+    "working_directory": {
+      "description": "When <code>type_id</code> is <code>Execute (2)</code>, this describes the working directory of a program that is run by the job.",
+      "requirement": "optional"
+    }
+  }
+}

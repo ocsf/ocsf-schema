@@ -43,11 +43,15 @@ The compiled schema contains:
   in the container are unchanged siblings, included as compact summaries
   (`type`, `caption`, truncated `description`, `has_enum`) so you can reason
   about the changed attribute in context.
-- **dictionary_attributes**: Changed dictionary entries — entries with full
-  descriptions and entries whose generic description precedes a "See specific
-  usage" marker (the marker is stripped). When a dictionary attribute also
-  appears in the compiled objects above, review both the generic dictionary
-  description and the object-specific resolved descriptions.
+- **dictionary_attributes**: Changed dictionary entries that carry a full,
+  standalone description. Entries whose dictionary description ends with
+  the `See specific usage.` marker are intentionally generic placeholders
+  — the authoritative descriptions live on the per-class/per-object
+  overrides in the compiled objects/classes above. Those placeholder
+  entries are deliberately omitted from this section and **must not be
+  flagged** (e.g., as `tautological-description`); review only the
+  resolved descriptions in the compiled objects/classes for those
+  attributes.
 - **cross_reference_index**: Maps each changed attribute name to every other
   container (object/class) that uses the same name, with the type seen there.
   Only attributes appearing in 2+ containers are listed. Use it to detect
@@ -67,11 +71,15 @@ Evaluate ONLY the changed/added descriptions against these criteria:
 
 ### 1. Self-Contained Descriptions
 Every attribute description must be understandable in isolation. Flag:
-- "See specific usage." without enough surrounding context to convey meaning
 - Vague references like "an item", "a group", "the object" where a
   domain-specific term should be used
 - Descriptions that cannot be understood without cross-referencing other schema
   elements
+
+The `See specific usage.` marker on a **dictionary** entry is an
+intentional placeholder that defers the meaningful description to the
+per-class/per-object override; do not flag dictionary entries that use
+this convention. Review the resolved object/class description instead.
 
 ### 2. Name/Description Semantic Consistency
 Flag where the attribute name implies one thing but the description says another.
@@ -562,17 +570,24 @@ def cmd_prepare() -> None:
             desc = dict_entry.get("description", "")
 
             if "See specific usage" in desc:
-                prefix = desc.split("See specific usage")[0].strip()
-                if prefix:
-                    trimmed = dict_entry.copy()
-                    trimmed["description"] = prefix
-                    context["dictionary_attributes"][attr_name] = trimmed
-
+                # `See specific usage.` is an intentional placeholder
+                # convention: the dictionary entry stays deliberately
+                # generic and the meaningful description lives on each
+                # per-class/per-object override. Do not surface the
+                # placeholder text to the reviewer (it would trip the
+                # tautological-description check); only surface the
+                # resolved usages from compiled objects/classes.
                 for obj_name, obj_data in compiled_objects.items():
                     if attr_name in obj_data.get("attributes", {}):
                         if obj_name not in context["objects"]:
                             context["objects"][obj_name] = _build_container_context(
                                 obj_data, {attr_name}
+                            )
+                for cls_name, cls_data in compiled_classes.items():
+                    if attr_name in cls_data.get("attributes", {}):
+                        if cls_name not in context["classes"]:
+                            context["classes"][cls_name] = _build_container_context(
+                                cls_data, {attr_name}
                             )
             else:
                 context["dictionary_attributes"][attr_name] = dict_entry

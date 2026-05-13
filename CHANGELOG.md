@@ -56,8 +56,6 @@ Thankyou! -->
 * #### Event Classes
   1. Added `initiator_id` and `initiator` to `Network Activity` with network-specific enums `Source Endpoint (1)` and `Destination Endpoint (2)`, and updated `src_endpoint` and `dst_endpoint` descriptions to reflect bi-flow and asymmetric flow scenarios. [#1598](https://github.com/ocsf/ocsf-schema/pull/1598)
   1. Added `transaction_id`, `opcode_id`/`opcode`, `flag_ids`/`flags`, `dns_answers`, `authority`, `query_additional`, and `response_additional` to `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
-* #### Objects
-  1. Renamed `dns_answer` to `dns_resource_record` to accurately reflect RFC 1035 resource record structure, and added `hostname` (owner name) to support CNAME chains and recursive responses. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
 
 ### Bugfixes
   1. Fixed `rcode_id` enum value 16 caption from `BADSIG_VERS` to `BADVERS` in `DNS Activity`. Code 16 in the DNS header RCODE space is specifically Bad EDNS OPT Version; BADSIG belongs in the TSIG error field. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
@@ -65,6 +63,7 @@ Thankyou! -->
 ### Deprecated
   1. Deprecated `answers` attribute in `DNS Activity` in favour of `dns_answers`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
   1. Deprecated `packet_uid` attribute in `_dns` object in favour of `transaction_id` on `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
+  1. Deprecated `dns_answer` object in favour of `dns_resource_record`, which accurately reflects RFC 1035 resource record structure and is reusable across all DNS message sections. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
 
 ### Added
 * #### Categories

@@ -82,8 +82,8 @@ Thankyou! -->
   1. Added `uid` attribute to the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Relaxed `name` attribute constraint to `recommended` in the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `at_least_one` constraint for `name` and `type_id` attributes in the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
-  1. Added `bcc` attribute to the `email` object
-  1. Added `bcc_mailboxes` attribute to the `email` object
+  1. Added `bcc` attribute to the `email` object. [1632](https://github.com/ocsf/ocsf-schema/pull/1632)
+  1. Added `bcc_mailboxes` attribute to the `email` object. [1632](https://github.com/ocsf/ocsf-schema/pull/1632)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes

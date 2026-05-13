@@ -44,26 +44,18 @@ Thankyou! -->
 ## [Unreleased]
 
 ### Added
-* #### Event Classes
-  1. Added `transaction_id` to `DNS Activity` to represent the 16-bit DNS transaction identifier assigned by the client and echoed unchanged in the response. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
-  1. Added `opcode_id` and `opcode` to `DNS Activity`, moved from `dns_query`, as the DNS opcode is a message-level header field with the same value in both query and response. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
-  1. Added `flag_ids` and `flags` to `DNS Activity`, moved from `dns_answer`, as DNS header flags describe the message not individual resource records. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
-  1. Added `dns_answers` to `DNS Activity` as a replacement for `answers`, typed as an array of the new `dns_resource_record` object. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
-  1. Added `authority` to `DNS Activity` to represent the DNS Authority section, containing NS or SOA records. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
-  1. Added `query_additional` to `DNS Activity` to represent the client Additional section of the DNS query message. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
-  1. Added `response_additional` to `DNS Activity` to represent the server Additional section of the DNS response message. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
 * #### Objects
   1. Added `dns_resource_record` object to represent an RFC 1035 resource record, used across Answer, Authority, and Additional sections. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
   1. Added `dns_section` object to represent a DNS message section containing supplementary resource records and an optional TSIG record. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
   1. Added `tsig` object to represent a TSIG (Transaction Signature) record with structured fields for security analytics: `algorithm`, `key_name`, `error_id`, and `error`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
 * #### Dictionary Attributes
-  1. Added `transaction_id` attribute to represent a DNS transaction identifier. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
-  1. Added `dns_answers` attribute typed as an array of `dns_resource_record`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
-  1. Added `query_additional` and `response_additional` attributes typed as `dns_section`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
-  1. Added `authority` attribute typed as an array of `dns_resource_record`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
-  1. Added `key_name` attribute with generic description for reuse across object types. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
+  1. Added `initiator` and `initiator_id` attributes for identifying which endpoint initiated a network communication, with generic `Unknown (0)` and `Other (99)` enums. [#1598](https://github.com/ocsf/ocsf-schema/pull/1598)
+  1. Added `transaction_id`, `dns_answers`, `query_additional`, `response_additional`, `authority`, and `key_name` dictionary attributes for DNS Activity restructuring. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
 
 ### Improved
+* #### Event Classes
+  1. Added `initiator_id` and `initiator` to `Network Activity` with network-specific enums `Source Endpoint (1)` and `Destination Endpoint (2)`, and updated `src_endpoint` and `dst_endpoint` descriptions to reflect bi-flow and asymmetric flow scenarios. [#1598](https://github.com/ocsf/ocsf-schema/pull/1598)
+  1. Added `transaction_id`, `opcode_id`/`opcode`, `flag_ids`/`flags`, `dns_answers`, `authority`, `query_additional`, and `response_additional` to `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
 * #### Objects
   1. Renamed `dns_answer` to `dns_resource_record` to accurately reflect RFC 1035 resource record structure, and added `hostname` (owner name) to support CNAME chains and recursive responses. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
 
@@ -74,12 +66,9 @@ Thankyou! -->
   1. Deprecated `answers` attribute in `DNS Activity` in favour of `dns_answers`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
   1. Deprecated `packet_uid` attribute in `_dns` object in favour of `transaction_id` on `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
 
-### Dictionary Attributes
-  1. Added `initiator` and `initiator_id` attributes for identifying which endpoint initiated a network communication, with generic `Unknown (0)` and `Other (99)` enums. [#1598](https://github.com/ocsf/ocsf-schema/pull/1598)
-
-### Improved
+### Added
+* #### Categories
 * #### Event Classes
-  1. Added user_management and role_management. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
 * #### Profiles
 * #### Objects
   1. Added `job_action` object to describe an action that job can perform. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)

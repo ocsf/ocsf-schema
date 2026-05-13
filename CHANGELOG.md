@@ -63,6 +63,7 @@ Thankyou! -->
 ### Deprecated
   1. Deprecated `answers` attribute in `DNS Activity` in favour of `dns_answers`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
   1. Deprecated `packet_uid` attribute in `_dns` object in favour of `transaction_id` on `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
+  1. Deprecated `opcode` and `opcode_id` attributes in `dns_query` object in favour of `opcode`/`opcode_id` on `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
   1. Deprecated `dns_answer` object in favour of `dns_resource_record`, which accurately reflects RFC 1035 resource record structure and is reusable across all DNS message sections. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
 
 ### Added

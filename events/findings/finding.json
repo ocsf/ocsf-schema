@@ -9,7 +9,7 @@
       "profiles/incident.json"
     ],
     "activity_id": {
-      "description": "The normalized identifier of the finding activity.",
+      "description": "The normalized identifier of the finding activity. Use <code>1</code> (Create) when a finding is first generated, <code>2</code> (Update) when an existing finding is modified (e.g., severity change, new evidence), and <code>3</code> (Close) when a finding is resolved or dismissed.",
       "enum": {
         "1": {
           "caption": "Create",
@@ -26,7 +26,7 @@
       }
     },
     "activity_name": {
-      "description": "The finding activity name, as defined by the <code>activity_id</code>."
+      "description": "The finding activity name, as defined by the <code>activity_id</code>. When <code>activity_id</code> is <code>99</code> (Other), this <b>must</b> contain the source-specific activity label."
     },
     "comment": {
       "description": "A user provided comment about the finding.",
@@ -55,7 +55,7 @@
       "profile": null
     },
     "end_time": {
-      "description": "The time of the most recent event included in the finding.",
+      "description": "The time of the most recent event or finding that contributed to this finding.",
       "requirement": "optional"
     },
     "finding_info": {
@@ -63,16 +63,19 @@
       "requirement": "required"
     },
     "start_time": {
-      "description": "The time of the least recent event included in the finding.",
+      "description": "The time of the earliest event or finding that contributed to this finding.",
       "requirement": "optional"
     },
+    "time": {
+      "description": "The finding creation time &mdash; when the finding was first generated, not when the underlying activity occurred. For the time range of contributing events, use <code>start_time</code> and <code>end_time</code>."
+    },
     "status": {
-      "description": "The normalized status of the Finding set by the consumer normalized to the caption of the status_id value. In the case of 'Other', it is defined by the source.",
+      "description": "The finding lifecycle status label, normalized to the caption of the <code>status_id</code> value. When <code>status_id</code> is <code>99</code> (Other), this <b>must</b> contain the source-specific status label.",
       "group": "context",
       "requirement": "optional"
     },
     "status_id": {
-      "description": "The normalized status identifier of the Finding, set by the consumer.",
+      "description": "The normalized finding lifecycle status identifier. Unlike the status of an activity event, which indicates the success or failure of the activity, finding status tracks the review and triage workflow: whether the finding is new, being investigated, suppressed, or resolved. Producers should set this to reflect the current state of the finding in their system (e.g., <code>1</code> for newly created findings, <code>4</code> when remediated).",
       "group": "context",
       "requirement": "recommended",
       "enum": {

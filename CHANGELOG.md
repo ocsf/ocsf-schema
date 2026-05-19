@@ -57,7 +57,7 @@ Thankyou! -->
 * #### Event Classes
   1. Added `iam_role` and role management support to `group_management`, `authorize_session`. Filled out the `group_management` class with complete lifecycle as well as added `resources`, `policies` to the discrete activities. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
   1. Added `initiator_id` and `initiator` to `Network Activity` with network-specific enums `Source Endpoint (1)` and `Destination Endpoint (2)`, and updated `src_endpoint` and `dst_endpoint` descriptions to reflect bi-flow and asymmetric flow scenarios. [#1598](https://github.com/ocsf/ocsf-schema/pull/1598)
-  1. Added `users` to `group_management` and support to add or remove a set of users to the activities. []
+  1. Added `users` to `group_management` and support to add or remove a set of users to the activities. [#1639](https://github.com/ocsf/ocsf-schema/pull/1639)
 * #### Profiles
 * #### Objects
   1. Added `iam_role` to `actor`. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)

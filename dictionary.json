@@ -3117,6 +3117,17 @@
       "description": "The name of the hypervisor running on the device. For example, <code>Xen</code>, <code>VMware</code>, <code>Hyper-V</code>, <code>VirtualBox</code>, etc.",
       "type": "string_t"
     },
+    "iam_role": {
+      "caption": "IAM Role",
+      "description": "A role with privileges and policy against resources that can be assigned to a user or group of users.",
+      "type": "iam_role"
+    },
+    "iam_roles": {
+      "caption": "IAM Roles",
+      "description": "One or more roles with privileges and policy against resources that can be assigned to a user or group of users.",
+      "type": "iam_role",
+      "is_array": true
+    },
     "iccid": {
       "caption": "ICCID",
       "description": "The Integrated Circuit Card Identification of a mobile device. Typically it is a unique 18 to 22 digit number that identifies a SIM card.",
@@ -6916,6 +6927,21 @@
       "description": "The number of unused services. See specific usage.",
       "type": "integer_t"
     },
+    "updated_group": {
+      "caption": "Updated Group",
+      "description": "The updated group. See specific usage.",
+      "type": "group"
+    },
+    "updated_role": {
+      "caption": "Updated Role",
+      "description": "The updated role. See specific usage.",
+      "type": "iam_role"
+    },
+    "updated_user": {
+      "caption": "Updated User",
+      "description": "The updated user. See specific usage.",
+      "type": "user"
+    },
     "updated_job": {      
       "caption": "Updated Job",
       "description": "The updated job. See specific usage.",
@@ -6967,7 +6993,11 @@
     "user_result": {
       "caption": "User Result",
       "description": "The result of the user account change. It should contain the new values of the changed attributes.",
-      "type": "user"
+      "type": "user",
+      "@deprecated": {
+        "message": "Use the <code>updated_user</code> attribute instead.",
+        "since": "1.9.0"
+      }
     },
     "users": {
       "caption": "Users",

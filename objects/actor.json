@@ -4,6 +4,10 @@
   "extends": "object",
   "name": "actor",
   "attributes": {
+    "ai_agent": {
+      "description": "The autonomous AI agent that initiated the activity. Populate when the action was initiated by an AI agent operating autonomously, rather than (or in addition to) a human user, IAM role, or process.",
+      "requirement": "optional"
+    },
     "app_name": {
       "description": "The client application or service that initiated the activity. This can be in conjunction with the <code>user</code> if present.  Note that <code>app_name</code> is distinct from the <code>process</code> if present.",
       "requirement": "optional"
@@ -50,7 +54,8 @@
       "invoked_by",
       "session",
       "app_name",
-      "app_uid"
+      "app_uid",
+      "ai_agent"
     ]
   },
   "references": [

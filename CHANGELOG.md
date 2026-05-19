@@ -46,12 +46,12 @@ Thankyou! -->
 ### Added
 * #### Dictionary Attributes
   1. Added `initiator` and `initiator_id` attributes for identifying which endpoint initiated a network communication, with generic `Unknown (0)` and `Other (99)` enums. [#1598](https://github.com/ocsf/ocsf-schema/pull/1598)
-  2. Added `uid_numeric` attribute to enable a unique identifier that is numeric to be represented natively using the `long_t` data type. [#1999](https://github.com/ocsf/ocsf-schema/pull/1999)
+  2. Added `uid_numeric` attribute to enable a unique identifier that is numeric to be represented natively using the `long_t` data type. [#1643](https://github.com/ocsf/ocsf-schema/pull/1643)
 
 ### Improved
 * #### Event Classes
   1. Added `initiator_id` and `initiator` to `Network Activity` with network-specific enums `Source Endpoint (1)` and `Destination Endpoint (2)`, and updated `src_endpoint` and `dst_endpoint` descriptions to reflect bi-flow and asymmetric flow scenarios. [#1598](https://github.com/ocsf/ocsf-schema/pull/1598)
-  2. Added `uid_numeric` to `_entity` so that a numeric `uid` value can be represented natively. [#1999](https://github.com/ocsf/ocsf-schema/pull/1999)
+  2. Added `uid_numeric` to `_entity` so that a numeric `uid` value can be represented natively. [#1643](https://github.com/ocsf/ocsf-schema/pull/1643)
 
 ### Added
 * #### Categories

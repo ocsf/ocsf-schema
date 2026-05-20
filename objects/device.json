@@ -120,9 +120,34 @@
       "requirement": "optional"
     },
     "operational_state_id": {
-      "requirement": "optional"
+      "description": "The normalized identifier of the device's current operational state.",
+      "requirement": "optional",
+      "extends": "operational_state_id",
+      "enum": {
+        "1": {
+          "caption": "Operational",
+          "description": "The system is powered on and running."
+        },
+        "2": {
+          "caption": "Powered Off",
+          "description": "The system is powered off."
+        },
+        "3": {
+          "caption": "Sleep",
+          "description": "The system is in a low-power standby state."
+        },
+        "4": {
+          "caption": "Hibernate",
+          "description": "The system state is saved to disk and power is removed."
+        },
+        "5": {
+          "caption": "Rebooting",
+          "description": "The system is in the process of restarting."
+        }
+      }
     },
     "operational_state": {
+      "description": "The device's current operational state.",
       "requirement": "optional"
     },
     "region": {

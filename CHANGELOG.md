@@ -66,16 +66,16 @@ Thankyou! -->
 * #### Profiles
 * #### Objects
   1. Added `iam_role` to `actor`. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
-  1. `dns_answer` now extends `dns_resource_record` so it inherits the RFC 1035 resource record fields (`class`, `hostname`, `rdata`, `ttl`, `type`); `flag_ids` and `flags` remain locally on `dns_answer` and are deprecated in favour of the corresponding attributes on `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
+  1. `dns_answer` now extends `dns_resource_record` so it inherits the RFC 1035 resource record fields (`class`, `hostname`, `rdata`, `ttl`, `type`); `flag_ids` and `flags` remain locally on `dns_answer` and are deprecated in favor of the corresponding attributes on `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
 ### Bugfixes
   1. Fixed `rcode_id` enum value 16 caption from `BADSIG_VERS` to `BADVERS` in `DNS Activity`. Code 16 in the DNS header RCODE space is specifically Bad EDNS OPT Version; BADSIG belongs in the TSIG error field. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
 ### Deprecated
   1. Deprecated the `account_change` and `user_access_management` classes in favor of the `user_management` class. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
   1. Deprecated the `user_result` attribute in favor of the `updated_user` attribute. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
-  1. Deprecated `answers` attribute in `DNS Activity` in favour of `dns_answers`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
-  1. Deprecated `packet_uid` attribute in `_dns` object in favour of `transaction_id` on `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
-  1. Deprecated `opcode` and `opcode_id` attributes in `dns_query` object in favour of `opcode`/`opcode_id` on `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
-  1. Deprecated `flag_ids` and `flags` attributes in `dns_answer` object in favour of `flag_ids`/`flags` on `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
+  1. Deprecated `answers` attribute in `DNS Activity` in favor of `dns_answers`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
+  1. Deprecated `packet_uid` attribute in `_dns` object in favor of `transaction_id` on `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
+  1. Deprecated `opcode` and `opcode_id` attributes in `dns_query` object in favor of `opcode`/`opcode_id` on `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
+  1. Deprecated `flag_ids` and `flags` attributes in `dns_answer` object in favor of `flag_ids`/`flags` on `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
 
 ### Added
 * #### Categories
@@ -130,7 +130,7 @@ Thankyou! -->
 1. Added `tunnel_type_id` enum values to `dictionary.json` to resolve the anti-pattern of missing enums in the dictionary attribute. [#1602](https://github.com/ocsf/ocsf-schema/pull/1602)
 
 ### Deprecated
-1. Deprecated `is_src_dst_assignment_known` dictionary attribute and its usage in `Network Activity` in favour of `initiator_id`. [#1598](https://github.com/ocsf/ocsf-schema/pull/1598)
+1. Deprecated `is_src_dst_assignment_known` dictionary attribute and its usage in `Network Activity` in favor of `initiator_id`. [#1598](https://github.com/ocsf/ocsf-schema/pull/1598)
 1. Deprecated `message` attribute in the `http_response` object. The `code` and `status` attributes already convey the HTTP status code and reason phrase. [#1616](https://github.com/ocsf/ocsf-schema/pull/1616)
 1. Deprecated `resource` in `Group Management` in favor of `resources`. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
 1. Deprecated usage of `cmd_line` attribute in favor of `job_actions.cmd_line` in the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
@@ -238,7 +238,7 @@ Thankyou! -->
   1. Removed erroneous `at_least_one` constraint in `Live Evidence Info` class [#1357](https://github.com/ocsf/ocsf-schema/pull/1537)
 
 ### Deprecated
-1. Deprecated the `signature` attribute of the file object in favour of the `signatures` attribute. [#1546](https://github.com/ocsf/ocsf-schema/pull/1546)
+1. Deprecated the `signature` attribute of the file object in favor of the `signatures` attribute. [#1546](https://github.com/ocsf/ocsf-schema/pull/1546)
 
 ### Breaking changes
   1. The regular expression constraint in dictionary type `file_hash_t` has been removed. This can create a breaking change for some kinds of tooling that process OCSF events. (Repeated item from Dictionary Types section above.) [1564](https://github.com/ocsf/ocsf-schema/pull/1564)
@@ -686,7 +686,7 @@ Thankyou! -->
 1. Deprecated `data_classification` in favor of `data_classifications` in the `data_classification` profile. [#1245](https://github.com/ocsf/ocsf-schema/pull/1245)
 1. Deprecated activity_id `4|Suppressed` in the Data Security Finding event class. This shouldn't have been added when we first created it, as the right place for this info is `status_id`. [#1245](https://github.com/ocsf/ocsf-schema/pull/1245)
 1. Deprecated `email_file_activity` and `email_url_activity` in favor of updated `email_activity`. [#1259](https://github.com/ocsf/ocsf-schema/pull/1259)
-1. Deprecated `package` in `Software Inventory Info` in favour of `sbom`. [#1262](https://github.com/ocsf/ocsf-schema/pull/1262)
+1. Deprecated `package` in `Software Inventory Info` in favor of `sbom`. [#1262](https://github.com/ocsf/ocsf-schema/pull/1262)
 1. Deprecated `product_uid` in favor of the `product` object. [#1271](https://github.com/ocsf/ocsf-schema/pull/1271)
 1. Deprecated `policy` in favor of `policies` in `Account Change` class. [#1282](https://github.com/ocsf/ocsf-schema/pull/1282)
 1. Deprecated `lineage` in the `process` object. [#1317](https://github.com/ocsf/ocsf-schema/pull/1317)

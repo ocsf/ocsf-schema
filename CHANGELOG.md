@@ -52,6 +52,7 @@ Thankyou! -->
 * #### Dictionary Attributes
   1. Added `iam_role`, `iam_roles`, `updated_role`, `updated_group`, `updated_user` attributes. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
   1. Added `initiator` and `initiator_id` attributes for identifying which endpoint initiated a network communication, with generic `Unknown (0)` and `Other (99)` enums. [#1598](https://github.com/ocsf/ocsf-schema/pull/1598)
+  1. Added `interface_flags` attribute for network interface operational flags. [#1646](https://github.com/ocsf/ocsf-schema/issues/1646)
 ### Improved
 * #### Categories
 * #### Event Classes

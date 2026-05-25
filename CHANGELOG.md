@@ -67,13 +67,16 @@ Thankyou! -->
 ### Added
 * #### Categories
 * #### Event Classes
+  1. Added `initiator_id` and `initiator` to `Network Activity` with network-specific enums `Source Endpoint (1)` and `Destination Endpoint (2)`, and updated `src_endpoint` and `dst_endpoint` descriptions to reflect bi-flow and asymmetric flow scenarios. [#1598](https://github.com/ocsf/ocsf-schema/pull/1598)
 * #### Profiles
 * #### Objects
   1. Added `job_action` object to describe an action that job can perform. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `job_trigger` object to describe a condition when job performs its action. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
+  1. Added 'rule_violation' object to describe a rule being violated. [#1635](https://github.com/ocsf/ocsf-schema/issues/1635)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
+  1. Added `initiator` and `initiator_id` attributes for identifying which endpoint initiated a network communication, with generic `Unknown (0)` and `Other (99)` enums. [#1598](https://github.com/ocsf/ocsf-schema/pull/1598)
   1. Added `com_class_uuid` attribute to reflect Class Identifier of a Component Object Model. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `event_codes` that is a set of event identifiers. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `log_sources` that is a set of log systems. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
@@ -81,6 +84,7 @@ Thankyou! -->
   1. Added `job_triggers` that describes a set of conditions when job performs its actions. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `updated_job` that reflects the attempted or the actual updated job. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `properties` that is a set of characteristics associated with an entity. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
+  1. Added `rule_violations` as an array of `rule_violation` objects. [#1635](https://github.com/ocsf/ocsf-schema/issues/1635)
 
 ### Improved
 * #### Categories
@@ -97,6 +101,7 @@ Thankyou! -->
   1. Added `at_least_one` constraint for `name` and `type_id` attributes in the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `bcc` attribute to the `email` object. [1632](https://github.com/ocsf/ocsf-schema/pull/1632)
   1. Added `bcc_mailboxes` attribute to the `email` object. [1632](https://github.com/ocsf/ocsf-schema/pull/1632)
+  1. Added `rule_violations` array to `data_security` object. [#1635](https://github.com/ocsf/ocsf-schema/issues/1635)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes

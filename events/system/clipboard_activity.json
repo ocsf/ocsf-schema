@@ -1,0 +1,35 @@
+{
+  "uid": 11,
+  "caption": "Clipboard Activity",
+  "description": "Clipboard Activity events report when a process performs an action on the system clipboard.",
+  "extends": "system",
+  "name": "clipboard_activity",
+  "attributes": {
+    "activity_id": {
+      "enum": {
+       "1": {
+          "caption": "Clear",
+          "description": "All data was removed from the clipboard."
+        },
+        "2": {
+          "caption": "Copy",
+          "description": "A process has written data to the clipboard."
+        },
+        "3": {
+          "caption": "Paste",
+          "description": "A process has read data from the clipboard."
+        }
+      }
+    },
+    "source_process": {
+      "description": "For a paste activity,  the process which copied the data to the clipboard.",
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "clipboard_objects": {
+      "description": "The data objects written to, or read from, the clipboard.",
+      "group": "primary",
+      "requirement": "optional"
+    }
+  }
+}

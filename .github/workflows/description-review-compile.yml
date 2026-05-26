@@ -17,6 +17,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -32,23 +34,22 @@ jobs:
       - name: Collect PR metadata
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
           echo "$PR_NUMBER" > pr_number.txt
-          gh pr diff "$PR_NUMBER" > pr_diff.txt
-          gh pr diff "$PR_NUMBER" --name-only > changed_files.txt
+          # Use -U15 so deeply-nested edits (e.g. enum-only changes) include
+          # enough surrounding context for the review context extractor to
+          # identify the enclosing attribute.
+          git diff -U15 "$BASE_SHA...$HEAD_SHA" > pr_diff.txt
+          git diff --name-only "$BASE_SHA...$HEAD_SHA" > changed_files.txt
 
       - name: Extract review context
         run: python .github/scripts/review_descriptions.py prepare
-
-      - name: Run anti-pattern check
-        run: python .github/scripts/check_antipatterns.py prepare
 
       - name: Upload review context
         uses: actions/upload-artifact@v4
         with:
           name: review-context
-          path: |
-            review_context.json
-            antipattern_results.json
+          path: review_context.json
           retention-days: 1

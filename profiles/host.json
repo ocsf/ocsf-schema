@@ -1,6 +1,6 @@
 {
   "caption": "Host",
-  "description": "The attributes that identify host/device attributes.",
+  "description": "Adds host and actor context to event classes. Apply this profile when the event originates from or is observed on a specific host or device, and when the initiating user, process, or service is known. All event classes include this profile by default through the base event.",
   "meta": "profile",
   "name": "host",
   "annotations": {
@@ -8,9 +8,11 @@
   },
   "attributes": {
     "actor": {
+      "description": "The user, process, or service that initiated the activity on the host. For system-level events this is typically a process; for IAM events it is typically a user or role.",
       "requirement": "optional"
     },
     "device": {
+      "description": "The host or device where the activity was observed. Populate with details such as hostname, IP address, OS, and hardware identifiers when available from the source.",
       "requirement": "recommended"
     }
   }

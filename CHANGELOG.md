@@ -92,7 +92,7 @@ Thankyou! -->
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
-  1. Impoved `job` object description to describe cases beyond System Activity class.
+  1. Improved `job` object description to describe cases beyond System Activity class.
 
 ### Bugfixes
 1. Fixed the static anti-pattern checker so dictionary attributes are analyzed with the full compiled dictionary; the `missing-sibling` rule no longer false-positives when the sibling exists in `dictionary.json`. [#1613](https://github.com/ocsf/ocsf-schema/pull/1613)

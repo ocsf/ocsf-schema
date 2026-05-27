@@ -47,13 +47,13 @@ Thankyou! -->
 * #### Categories
 * #### Event Classes
   1. Added user_management and role_management. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
-  1. Added clipboard_activity. [#TBD](https://github.com/ocsf/ocsf-schema/pull/TBD)
+  1. Added clipboard_activity. [#1655](https://github.com/ocsf/ocsf-schema/pull/1655)
 * #### Profiles
 * #### Objects
   1. Added `job_action` object to describe an action that job can perform. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `job_trigger` object to describe a condition when job performs its action. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `iam_role` object for user, role and group management. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
-  1. Added `clipboard_item` object for clipboard activity. [#TBD](https://github.com/ocsf/ocsf-schema/pull/TBD)
+  1. Added `clipboard_item` object for clipboard activity. [#1655](https://github.com/ocsf/ocsf-schema/pull/1655)
 
 * #### Observables
 * #### Platform Extensions
@@ -67,7 +67,7 @@ Thankyou! -->
   1. Added `properties` that is a set of characteristics associated with an entity. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `iam_role`, `iam_roles`, `updated_role`, `updated_group`, `updated_user` attributes. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
   1. Added `initiator` and `initiator_id` attributes for identifying which endpoint initiated a network communication, with generic `Unknown (0)` and `Other (99)` enums. [#1598](https://github.com/ocsf/ocsf-schema/pull/1598)
-  1. Added `clipboard_binary_data`, `clipboard_items`, `clipboard_mime_type`, `clipboard_name`, `clipboard_native_type`, `clipboard_string_data`. [#TBD](https://github.com/ocsf/ocsf-schema/pull/TBD)
+  1. Added `clipboard_binary_data`, `clipboard_items`, `clipboard_mime_type`, `clipboard_name`, `clipboard_native_type`, `clipboard_string_data`. [#1655](https://github.com/ocsf/ocsf-schema/pull/1655)
 
 ### Improved
 * #### Categories

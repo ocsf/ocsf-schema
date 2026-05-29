@@ -3,16 +3,6 @@
   "description": "The Attribute Dictionary defines schema attributes and includes references to the events and objects in which they are used.",
   "name": "dictionary",
   "attributes": {
-    "host_ip_address": {
-      "caption": "Host IP Address",
-      "description": "The IP address from which the file was downloaded. This corresponds to the <code>HostIpAddress</code> property in the MOTW metadata.",
-      "type": "ip_t"
-    },
-    "host_url": {
-      "caption": "Host URL",
-      "description": "The URL from which the file was downloaded. This corresponds to the <code>HostUrl</code> property in the MOTW metadata.",
-      "type": "url_t"
-    },
     "hosted_services": {
       "caption": "Hosted Services",
       "description": "The Windows services that this process is hosting.",
@@ -29,52 +19,6 @@
       "description": "The name of the load ordering group of which this service is a member.",
       "type": "string_t"
     },
-    "motw": {
-      "caption": "MOTW",
-      "description": "The Mark of the Web (MOTW) of the file.",
-      "type": "motw"
-    },
-    "motw_zone": {
-      "caption": "MOTW Zone",
-      "description": "The Mark of the Web zone, normalized to the caption of the <code>motw_zone_id</code> value. In the case of 'Other', it is defined by the event source.",
-      "type": "string_t"
-    },
-    "motw_zone_id": {
-      "caption": "MOTW Zone ID",
-      "description": "The normalized identifier of the Mark of the Web zone. This corresponds to the <code>ZoneId</code> property in the MOTW metadata.<br><strong>Note:</strong> MS-defined <code>ZoneId</code> values range 0-4 and are therefore 1 less than the corresponding value of this attribute.",
-      "sibling": "motw_zone",
-      "type": "integer_t",
-      "enum": {
-        "0": {
-          "caption": "Unknown",
-          "description": "The file's Mark of the Web zone is unknown."
-        },
-        "1": {
-          "caption": "Local Machine",
-          "description": "The file was downloaded from a server running on device."
-        },
-        "2": {
-          "caption": "Intranet",
-          "description": "The file was downloaded from an intranet server."
-        },
-        "3": {
-          "caption": "Trusted",
-          "description": "The file was downloaded from a trusted server."
-        },
-        "4": {
-          "caption": "Internet",
-          "description": "The file was downloaded from an internet server."
-        },
-        "5": {
-          "caption": "Untrusted",
-          "description": "The file was downloaded from an untrusted server."
-        },
-        "99": {
-          "caption": "Other",
-          "description": "The file's Mark of the Web zone is not mapped. See the <code>motw_zone</code> attribute, which contains an event source specific value."
-        }
-      }
-    },
     "prev_reg_key": {
       "caption": "Previous Registry Key",
       "description": "The registry key before the mutation",
@@ -84,11 +28,6 @@
       "caption": "Previous Registry Value",
       "description": "The registry value before the mutation",
       "type": "reg_value"
-    },
-    "referrer_url": {
-      "caption": "Referrer URL",
-      "description": "The URL that referred to the download URL, typically the URL of a web page containing a download link. This corresponds to the <code>ReferrerUrl</code> property in the MOTW metadata.",
-      "type": "url_t"
     },
     "reg_binary_data": {
       "caption": "Registry Binary Data",

@@ -2315,6 +2315,52 @@
       "type": "domain_contact",
       "is_array": true
     },
+    "download_classification": {
+      "caption": "Download Classification",
+      "description": "The download classification, normalized to the caption of the <code>download_classification_id</code> value. In the case of 'Other', it is defined by the event source.",
+      "type": "string_t"
+    },
+    "download_classification_id": {
+      "caption": "Download Classification ID",
+      "description": "The normalized identifier of the download classification. The values correspond to the five permitted values of the <code>ZoneId</code> property in the <a target='_blank' href='https://en.wikipedia.org/wiki/Mark_of_the_Web'>Mark of the Web</a> metadata of a downloaded file on Windows. Note however that each numeric value is 1 greater than its <code>ZoneId</code> equivalent.",
+      "sibling": "download_classification",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The file's download classification is unknown."
+        },
+        "1": {
+          "caption": "Local Machine",
+          "description": "The file was downloaded from a server running on device."
+        },
+        "2": {
+          "caption": "Intranet",
+          "description": "The file was downloaded from an intranet server."
+        },
+        "3": {
+          "caption": "Trusted",
+          "description": "The file was downloaded from a trusted server."
+        },
+        "4": {
+          "caption": "Internet",
+          "description": "The file was downloaded from an internet server."
+        },
+        "5": {
+          "caption": "Untrusted",
+          "description": "The file was downloaded from an untrusted server."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The file's download classification is not mapped. See the <code>download_classification</code> attribute, which contains an event source specific value."
+        }
+      }
+    },
+    "download_info": {
+      "caption": "Download Info",
+      "description": "Information pertaining to a downloaded file.",
+      "type": "download_info"
+    },
     "drive_type": {
       "caption": "Drive Type",
       "description": "The drive type, normalized to the caption of the <code>drive_type_id</code> value. In the case of <code>Other</code>, it is defined by the source.",
@@ -5368,6 +5414,11 @@
       "caption": "HTTP Referrer",
       "description": "The request header that identifies the address of the previous web page, which is linked to the current web page or resource being requested.",
       "type": "string_t"
+    },
+    "referrer_url": {
+      "caption": "Referrer URL",
+      "description": "The URL that referred to a primary URL attribute such as <code>src_url</code>. See specific usage.",
+      "type": "url_t"
     },
     "region": {
       "caption": "Region",

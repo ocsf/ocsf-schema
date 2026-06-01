@@ -1,0 +1,13 @@
+{
+  "caption": "AI Forensics",
+  "meta": "profile",
+  "name": "ai_forensics",
+  "description": "Adds forensic non-repudiation to AI agent activity, on top of the attribution introduced by the <code>ai_operation</code> profile and the <code>ai_agent</code> object (#1640/#1641). Attribution states which agent acted; this profile lets a record carry cryptographic proof that the agent acted — bound to its verifiable identity (<code>ai_agent.uid</code>) and the operating charter in force — and lets records be chained so an independent party can detect tampering. Designed to ride the same agent-layer event as <code>ai_operation</code>, and to reuse the <code>delegation</code> object (deferred in #1640) as the authorization anchor for forensic chains rather than redefining it.",
+  "attributes": {
+    "attestation": {
+      "description": "A cryptographic attestation over this event, binding the record to the acting agent's verifiable identity and, optionally, chaining it to prior records for tamper-evidence.",
+      "group": "context",
+      "requirement": "optional"
+    }
+  }
+}

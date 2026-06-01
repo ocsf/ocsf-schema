@@ -437,6 +437,11 @@
       "description": "The delivery attempt.",
       "type": "integer_t"
     },
+    "attestation": {
+      "caption": "Attestation",
+      "description": "A cryptographic attestation that binds an event record to a verifiable identity, providing non-repudiation of the record. See the <code>ai_forensics</code> profile.",
+      "type": "attestation"
+    },
     "attributes": {
       "caption": "Attributes",
       "description": "The bitmask value that represents the file attributes.",
@@ -1142,6 +1147,11 @@
       "description": "The Chain of Certificate Serial Numbers field provides a chain of Certificate Issuer Serial Numbers leading to the Root Certificate Issuer.",
       "type": "string_t",
       "is_array": true
+    },
+    "chain_uid": {
+      "caption": "Chain ID",
+      "description": "Identifier of a forensic chain or append-only log, used by independent verifiers to locate and validate a sequence of attested records.",
+      "type": "string_t"
     },
     "chassis": {
       "caption": "Chassis",
@@ -2538,6 +2548,11 @@
         "message": "Use the <code>updated_entity</code> attribute instead.",
         "since": "1.9.0"
       }
+    },
+    "entry_hash": {
+      "caption": "Entry Hash",
+      "description": "Fingerprint of a record's canonical serialization, used as a link in a tamper-evident chain.",
+      "type": "fingerprint"
     },
     "environment_variables": {
       "caption": "Environment Variables",
@@ -4859,6 +4874,11 @@
       "caption": "Pressure Altitude",
       "description": "The uncorrected barometric pressure altitude (based on reference standard 29.92 inHg, 1013.25 mb) provides a reference for algorithms that utilize 'altitude deltas' between aircraft. This value is provided in meters and must have a minimum resolution of 1 m.. Special Values: <code>Invalid</code>, <code>No Value</code>, or <code>Unknown: -1000 m</code>.",
       "type": "string_t"
+    },
+    "prev_entry_hash": {
+      "caption": "Previous Entry Hash",
+      "description": "Fingerprint of the prior record in a tamper-evident chain.",
+      "type": "fingerprint"
     },
     "prev_security_level": {
       "caption": "Previous Security Level",

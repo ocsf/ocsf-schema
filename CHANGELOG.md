@@ -48,7 +48,9 @@ Thankyou! -->
 * #### Event Classes
   1. Added user_management and role_management. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
 * #### Profiles
+  1. Added `ai_forensics` profile adding forensic non-repudiation (cryptographic attestation, charter fingerprint, tamper-evident chaining) to AI agent activity. [#1640](https://github.com/ocsf/ocsf-schema/issues/1640)
 * #### Objects
+  1. Added `attestation` object binding an event record to a verifiable agent identity, with optional tamper-evident chaining. [#1640](https://github.com/ocsf/ocsf-schema/issues/1640)
   1. Added `job_action` object to describe an action that job can perform. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `job_trigger` object to describe a condition when job performs its action. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `iam_role` object for user, role and group management. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
@@ -65,6 +67,7 @@ Thankyou! -->
   1. Added `iam_role`, `iam_roles`, `updated_role`, `updated_group`, `updated_user` attributes. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
   1. Added `updated_entity`, `updated_file`, `updated_resources`, and `updated_web_resources` attributes for reporting intended or actual post-update state. [#1618](https://github.com/ocsf/ocsf-schema/pull/1618)
   1. Added `initiator` and `initiator_id` attributes for identifying which endpoint initiated a network communication, with generic `Unknown (0)` and `Other (99)` enums. [#1598](https://github.com/ocsf/ocsf-schema/pull/1598)
+  1. Added `attestation`, `entry_hash`, `prev_entry_hash`, and `chain_uid` attributes supporting the `ai_forensics` profile. [#1640](https://github.com/ocsf/ocsf-schema/issues/1640)
 
 
 ### Improved

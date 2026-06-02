@@ -1430,7 +1430,7 @@
       "description": "The component of a data object. See specific usage.",
       "type": "string_t"
     },
-    "com_class_uuid": { 
+    "com_class_uuid": {
       "caption": "COM Class Identifier",
       "description": "The COM Class Identifier (CLSID).",
       "type": "uuid_t"
@@ -2564,7 +2564,11 @@
     "entity_result": {
       "caption": "Entity Result",
       "description": "The updated managed entity.",
-      "type": "managed_entity"
+      "type": "managed_entity",
+      "@deprecated": {
+        "message": "Use the <code>updated_entity</code> attribute instead.",
+        "since": "1.9.0"
+      }
     },
     "environment_variables": {
       "caption": "Environment Variables",
@@ -2784,7 +2788,11 @@
     "file_result": {
       "caption": "File Result",
       "description": "The result of the file change. It should contain the new values of the changed attributes.",
-      "type": "file"
+      "type": "file",
+      "@deprecated": {
+        "message": "Use the <code>updated_file</code> attribute instead.",
+        "since": "1.9.0"
+      }
     },
     "files": {
       "caption": "Files",
@@ -5582,7 +5590,11 @@
       "caption": "Resource Results Array",
       "description": "Updated resources after an activity/event.",
       "type": "resource_details",
-      "is_array": true
+      "is_array": true,
+      "@deprecated": {
+        "message": "Use the <code>updated_resources</code> attribute instead.",
+        "since": "1.9.0"
+      }
     },
     "response": {
       "caption": "API Response Details",
@@ -6963,10 +6975,31 @@
       "description": "The number of unused services. See specific usage.",
       "type": "integer_t"
     },
+    "updated_entity": {
+      "caption": "Updated Entity",
+      "description": "The updated entity. See specific usage.",
+      "type": "managed_entity"
+    },
+    "updated_file": {
+      "caption": "Updated File",
+      "description": "The updated file. See specific usage.",
+      "type": "file"
+    },
     "updated_group": {
       "caption": "Updated Group",
       "description": "The updated group. See specific usage.",
       "type": "group"
+    },
+    "updated_job": {
+      "caption": "Updated Job",
+      "description": "The updated job. See specific usage.",
+      "type": "job"
+    },
+    "updated_resources": {
+      "caption": "Updated Resources",
+      "description": "The updated resources. See specific usage.",
+      "type": "resource_details",
+      "is_array": true
     },
     "updated_role": {
       "caption": "Updated Role",
@@ -6978,10 +7011,11 @@
       "description": "The updated user. See specific usage.",
       "type": "user"
     },
-    "updated_job": {      
-      "caption": "Updated Job",
-      "description": "The updated job. See specific usage.",
-      "type": "job"
+    "updated_web_resources": {
+      "caption": "Updated Web Resources",
+      "description": "The updated web resources. See specific usage.",
+      "type": "web_resource",
+      "is_array": true
     },
     "uploaded_time": {
       "caption": "Uploaded Time",
@@ -7219,7 +7253,11 @@
       "caption": "Web Resources Result",
       "description": "The results of the activity on web resources. It should contain the new values of the changed attributes of the web resources.",
       "type": "web_resource",
-      "is_array": true
+      "is_array": true,
+      "@deprecated": {
+        "message": "Use the <code>updated_web_resources</code> attribute instead.",
+        "since": "1.9.0"
+      }
     },
     "whois": {
       "caption": "WHOIS",

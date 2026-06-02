@@ -68,7 +68,7 @@ Thankyou! -->
   1. Added `iam_role`, `iam_roles`, `updated_role`, `updated_group`, `updated_user` attributes. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
   1. Added `updated_entity`, `updated_file`, `updated_resources`, and `updated_web_resources` attributes for reporting intended or actual post-update state. [#1618](https://github.com/ocsf/ocsf-schema/pull/1618)
   1. Added `initiator` and `initiator_id` attributes for identifying which endpoint initiated a network communication, with generic `Unknown (0)` and `Other (99)` enums. [#1598](https://github.com/ocsf/ocsf-schema/pull/1598)
-  1. Added `clipboard_binary_data`, `clipboard_items`, `clipboard_name`, `clipboard_native_type`, `clipboard_string_data`. [#1655](https://github.com/ocsf/ocsf-schema/pull/1655)
+  1. Added `binary_data`, `clipboard_items`, `clipboard_name`, `clipboard_native_type`, `string_data`. [#1655](https://github.com/ocsf/ocsf-schema/pull/1655)
 
 ### Improved
 * #### Categories

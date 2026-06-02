@@ -67,7 +67,7 @@ Thankyou! -->
   1. Added `properties` that is a set of characteristics associated with an entity. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `iam_role`, `iam_roles`, `updated_role`, `updated_group`, `updated_user` attributes. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
   1. Added `initiator` and `initiator_id` attributes for identifying which endpoint initiated a network communication, with generic `Unknown (0)` and `Other (99)` enums. [#1598](https://github.com/ocsf/ocsf-schema/pull/1598)
-  1. Added `clipboard_binary_data`, `clipboard_items`, `clipboard_mime_type`, `clipboard_name`, `clipboard_native_type`, `clipboard_string_data`. [#1655](https://github.com/ocsf/ocsf-schema/pull/1655)
+  1. Added `clipboard_binary_data`, `clipboard_items`, `clipboard_name`, `clipboard_native_type`, `clipboard_string_data`. [#1655](https://github.com/ocsf/ocsf-schema/pull/1655)
 
 ### Improved
 * #### Categories
@@ -87,6 +87,7 @@ Thankyou! -->
   1. Added `bcc` attribute to the `email` object. [1632](https://github.com/ocsf/ocsf-schema/pull/1632)
   1. Added `bcc_mailboxes` attribute to the `email` object. [1632](https://github.com/ocsf/ocsf-schema/pull/1632)
   1. Added `iam_role` to `actor`. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
+
 ### Deprecated
   1. Deprecated the `account_change` and `user_access_management` classes in favor of the `user_management` class. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
   1. Deprecated the `user_result` attribute in favor of the `updated_user` attribute. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)

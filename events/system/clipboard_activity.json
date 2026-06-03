@@ -7,22 +7,22 @@
   "attributes": {
     "activity_id": {
       "enum": {
-       "1": {
-          "caption": "Clear",
-          "description": "All data was removed from the clipboard."
+        "1": {
+          "caption": "Copy",
+          "description": "Data was written to the clipboard. The actor process is the source of the data."
         },
         "2": {
-          "caption": "Copy",
-          "description": "A process has written data to the clipboard."
+          "caption": "Paste",
+          "description": "Data was read from the clipboard. The actor process is the target of the paste. When present, <code>source_process</code> is the process from which the data was copied."
         },
         "3": {
-          "caption": "Paste",
-          "description": "A process has read data from the clipboard."
+          "caption": "Clear",
+          "description": "All data was removed from the clipboard."
         }
       }
     },
     "source_process": {
-      "description": "For a paste activity, the process which copied the data to the clipboard.  I.e. <code>actor.process</code> is the process performing the paste and <code>source_process</code> is the process that performed the copy.",
+      "description": "For a paste activity, the process which copied the data to the clipboard. In other words, <code>actor.process</code> is the process performing the paste and <code>source_process</code> is the process that performed the copy.",
       "group": "context",
       "requirement": "optional"
     },
@@ -32,7 +32,7 @@
       "requirement": "recommended"
     },
     "clipboard_name": {
-      "description": "The name of the clipboard on systems with named clipboards.  For example: <code>General</code> or <code>Drag</code>.",
+      "description": "The name of the clipboard on systems with named clipboards. For example: <code>General</code> or <code>Drag</code>.",
       "group": "context",
       "requirement": "optional"
     }

@@ -69,6 +69,8 @@ Thankyou! -->
   1. Added `updated_entity`, `updated_file`, `updated_resources`, and `updated_web_resources` attributes for reporting intended or actual post-update state. [#1618](https://github.com/ocsf/ocsf-schema/pull/1618)
   1. Added `initiator` and `initiator_id` attributes for identifying which endpoint initiated a network communication, with generic `Unknown (0)` and `Other (99)` enums. [#1598](https://github.com/ocsf/ocsf-schema/pull/1598)
   1. Added `binary_data`, `clipboard_items`, `clipboard_name`, `clipboard_native_type`, `string_data`. [#1655](https://github.com/ocsf/ocsf-schema/pull/1655)
+  1. Added `peripheral_devices` for a set of peripherals. [#1645](https://github.com/ocsf/ocsf-schema/pull/1645)
+
 
 ### Improved
 * #### Categories
@@ -89,6 +91,7 @@ Thankyou! -->
   1. Added `bcc` attribute to the `email` object. [1632](https://github.com/ocsf/ocsf-schema/pull/1632)
   1. Added `bcc_mailboxes` attribute to the `email` object. [1632](https://github.com/ocsf/ocsf-schema/pull/1632)
   1. Added `iam_role` to `actor`. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
+  1. Added `peripheral_devices` to `device`. [#1645](https://github.com/ocsf/ocsf-schema/pull/1645)
 
 ### Deprecated
   1. Deprecated the `account_change` and `user_access_management` classes in favor of the `user_management` class. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)

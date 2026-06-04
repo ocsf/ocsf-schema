@@ -49,6 +49,62 @@
     "digest": {
       "requirement": "optional"
     },
+    "serialization": {
+      "description": "The canonical serialization or signing-envelope scheme used to render the event into the signed byte sequence, normalized to the caption of 'serialization_id'. In the case of 'Other', it is defined by the event source.",
+      "requirement": "optional"
+    },
+    "serialization_id": {
+      "description": "The identifier of the normalized canonical serialization or signing-envelope scheme used to render the event into the deterministic byte sequence that was signed. A verifier must apply the same scheme to reproduce the signing input. Distinct from <code>algorithm_id</code>, which identifies how the resulting bytes were signed.",
+      "requirement": "recommended",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "JCS",
+          "description": "JSON Canonicalization Scheme — deterministic JSON serialization of the event prior to signing.",
+          "references": [
+            {
+              "description": "RFC 8785",
+              "url": "https://www.rfc-editor.org/rfc/rfc8785"
+            }
+          ]
+        },
+        "2": {
+          "caption": "JWS",
+          "description": "JSON Web Signature — the JWS Signing Input, i.e. BASE64URL(protected header) '.' BASE64URL(payload).",
+          "references": [
+            {
+              "description": "RFC 7515",
+              "url": "https://www.rfc-editor.org/rfc/rfc7515"
+            }
+          ]
+        },
+        "3": {
+          "caption": "COSE",
+          "description": "CBOR Object Signing and Encryption — the CBOR Sig_structure used as the binary signing input.",
+          "references": [
+            {
+              "description": "RFC 9052",
+              "url": "https://www.rfc-editor.org/rfc/rfc9052"
+            }
+          ]
+        },
+        "4": {
+          "caption": "DSSE",
+          "description": "Dead Simple Signing Envelope — the PAE (Pre-Authentication Encoding) canonical signing input. Note: DSSE is a signing-envelope scheme, not a hash algorithm; the hash used for entry/previous-entry chaining is carried separately in the fingerprint object.",
+          "references": [
+            {
+              "description": "DSSE specification (secure-systems-lab)",
+              "url": "https://github.com/secure-systems-lab/dsse"
+            }
+          ]
+        },
+        "99": {
+          "caption": "Other"
+        }
+      }
+    },
     "state": {
       "description": "The digital signature state defines the signature state, normalized to the caption of 'state_id'. In the case of 'Other', it is defined by the event source.",
       "requirement": "optional"

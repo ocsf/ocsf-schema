@@ -54,7 +54,7 @@ Thankyou! -->
   1. Added `job_trigger` object to describe a condition when job performs its action. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `iam_role` object for user, role and group management. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
   1. Added `clipboard` and `clipboard_item` object for clipboard activity. [#1655](https://github.com/ocsf/ocsf-schema/pull/1655)
-
+  1. Added `download_info` object with information pertaining to a downloaded file. [#1658](https://github.com/ocsf/ocsf-schema/pull/1658)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -70,6 +70,8 @@ Thankyou! -->
   1. Added `initiator` and `initiator_id` attributes for identifying which endpoint initiated a network communication, with generic `Unknown (0)` and `Other (99)` enums. [#1598](https://github.com/ocsf/ocsf-schema/pull/1598)
   1. Added `peripheral_devices` for a set of peripherals. [#1645](https://github.com/ocsf/ocsf-schema/pull/1645)
   1. Added `binary_data`, `contents`, `clipboard_native_type`, `string_data`. [#1655](https://github.com/ocsf/ocsf-schema/pull/1655)
+  1. Added `uid_numeric` attribute to enable a unique identifier that is numeric to be represented natively using the `long_t` data type. [#1643](https://github.com/ocsf/ocsf-schema/pull/1643)
+  1. Added `download_info` attribute to `file` object. [#1658](https://github.com/ocsf/ocsf-schema/pull/1658)
 
 ### Improved
 * #### Categories
@@ -78,6 +80,7 @@ Thankyou! -->
   1. Added `iam_role` and role management support to `group_management`, `authorize_session`. Filled out the `group_management` class with complete lifecycle as well as added `resources`, `policies` to the discrete activities. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
   1. Added `updated_*` attributes to `Entity Management`, `File Activity`, `File Hosting`, and `Web Resources Activity` for class-specific update result reporting. [#1618](https://github.com/ocsf/ocsf-schema/pull/1618)
   1. Added `initiator_id` and `initiator` to `Network Activity` with network-specific enums `Source Endpoint (1)` and `Destination Endpoint (2)`, and updated `src_endpoint` and `dst_endpoint` descriptions to reflect bi-flow and asymmetric flow scenarios. [#1598](https://github.com/ocsf/ocsf-schema/pull/1598)
+  1. Extended `activity_id` attribute in `HTTP Activity` to cover all methods in IANA HTTP Method Registry. [#1654](https://github.com/ocsf/ocsf-schema/pull/1654)
 * #### Profiles
 * #### Objects
   1. Added `job_actions` array of objects to the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
@@ -91,7 +94,8 @@ Thankyou! -->
   1. Added `bcc_mailboxes` attribute to the `email` object. [1632](https://github.com/ocsf/ocsf-schema/pull/1632)
   1. Added `iam_role` to `actor`. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
   1. Added `peripheral_devices` to `device`. [#1645](https://github.com/ocsf/ocsf-schema/pull/1645)
-
+  1. Added `uid_numeric` to `_entity` so that a numeric `uid` value can be represented natively. [#1643](https://github.com/ocsf/ocsf-schema/pull/1643)
+  1. Extended `http_method` attribute in the `http_request` object to cover all methods in IANA HTTP Method Registry. [#1654](https://github.com/ocsf/ocsf-schema/pull/1654)
 ### Deprecated
   1. Deprecated the `account_change` and `user_access_management` classes in favor of the `user_management` class. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
   1. Deprecated the `user_result` attribute in favor of the `updated_user` attribute. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)

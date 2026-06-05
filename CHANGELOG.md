@@ -71,8 +71,6 @@ Thankyou! -->
   1. Added `peripheral_devices` for a set of peripherals. [#1645](https://github.com/ocsf/ocsf-schema/pull/1645)
   1. Added `binary_data`, `contents`, `clipboard_native_type`, `string_data`. [#1655](https://github.com/ocsf/ocsf-schema/pull/1655)
 
->>>>>>> ed18ef4fb6782aef7a1a469e7e77e4e414a0160d
-
 ### Improved
 * #### Categories
 * #### Event Classes

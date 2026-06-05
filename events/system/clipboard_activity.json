@@ -1,28 +1,28 @@
 {
   "uid": 11,
   "caption": "Clipboard Activity",
-  "description": "Clipboard Activity events report when a process performs an action on the system clipboard.",
+  "description": "Clipboard Activity events report when a process performs an action on a clipboard.",
   "extends": "system",
   "name": "clipboard_activity",
   "attributes": {
     "activity_id": {
       "enum": {
         "1": {
-          "caption": "Copy",
-          "description": "Data was written to the clipboard. The actor process is the source of the data."
+          "caption": "Read",
+          "description": "A clipboard was read from. In user-interface terms, this is a 'paste' operation. If present, <code>source_process</code> is the process which performed the <code>Write</code> activity or, in other words, the process from which the data was copied."
         },
         "2": {
-          "caption": "Paste",
-          "description": "Data was read from the clipboard. The actor process is the target of the paste. When present, <code>source_process</code> is the process from which the data was copied."
+          "caption": "Write",
+          "description": "A clipboard was written to. In user-interface terms, this is a 'copy' or 'cut' operation."
         },
         "3": {
           "caption": "Clear",
-          "description": "All data was removed from the clipboard."
+          "description": "A clipboard was cleared."
         }
       }
     },
     "source_process": {
-      "description": "For a paste activity, the process which copied the data to the clipboard. In other words, <code>actor.process</code> is the process performing the paste and <code>source_process</code> is the process that performed the copy.",
+      "description": "For a <code>Read</code> activity, this is the process which performed the <code>Write</code>. In other words, <code>actor.process</code> is the process performing the paste and <code>source_process</code> is the process that performed the copy.",
       "group": "context",
       "requirement": "optional"
     },

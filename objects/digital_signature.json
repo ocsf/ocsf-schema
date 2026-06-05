@@ -50,11 +50,11 @@
       "requirement": "optional"
     },
     "serialization": {
-      "description": "The canonical serialization or signing-envelope scheme used to render the event into the deterministic byte sequence that was signed, normalized to the caption of 'serialization_id'. In the case of 'Other', it is defined by the event source.",
+      "description": "The canonical serialization or signing-envelope scheme used to produce the deterministic byte sequence that was signed, normalized to the caption of 'serialization_id'. In the case of 'Other', it is defined by the event source.",
       "requirement": "optional"
     },
     "serialization_id": {
-      "description": "The identifier of the normalized canonical serialization or signing-envelope scheme used to render the event into the deterministic byte sequence that was signed. A verifier must apply the same scheme to reproduce the signing input. Distinct from <code>algorithm_id</code>, which identifies how the resulting bytes were signed.",
+      "description": "The identifier of the normalized canonical serialization or signing-envelope scheme used to produce the deterministic byte sequence that was signed. A verifier must apply the same scheme to reproduce the signing input. Distinct from <code>algorithm_id</code>, which identifies how the resulting bytes were signed.",
       "requirement": "recommended",
       "enum": {
         "0": {
@@ -62,7 +62,7 @@
         },
         "1": {
           "caption": "JCS",
-          "description": "JSON Canonicalization Scheme — deterministic JSON serialization of the event prior to signing.",
+          "description": "JSON Canonicalization Scheme — deterministic JSON serialization of the structured data prior to signing.",
           "references": [
             {
               "description": "RFC 8785",

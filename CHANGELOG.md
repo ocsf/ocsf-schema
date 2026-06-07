@@ -89,7 +89,7 @@ Thankyou! -->
   1. Added `bcc_mailboxes` attribute to the `email` object. [1632](https://github.com/ocsf/ocsf-schema/pull/1632)
   1. Added `iam_role` to `actor`. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
   1. Added `peripheral_devices` to `device`. [#1645](https://github.com/ocsf/ocsf-schema/pull/1645)
-  1. Added `serialization` and `serialization_id` to the `digital_signature` object to record the canonical signing input (JCS, JWS, COSE, DSSE). [#1662](https://github.com/ocsf/ocsf-schema/pull/1662)
+  1. Added `serialization` and `serialization_id` to the `digital_signature` object to record the canonical signing input (JCS, JWS, COSE, DSSE, Authenticode). [#1662](https://github.com/ocsf/ocsf-schema/pull/1662)
 ### Deprecated
   1. Deprecated the `account_change` and `user_access_management` classes in favor of the `user_management` class. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
   1. Deprecated the `user_result` attribute in favor of the `updated_user` attribute. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)

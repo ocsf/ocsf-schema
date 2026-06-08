@@ -122,7 +122,6 @@ Thankyou! -->
   1. Added `Code Signing (5)` enum value to `algorithm_id` and `Code Signing (6)` enum value to `serialization_id` in the `digital_signature` object. [#1668](https://github.com/ocsf/ocsf-schema/pull/1668)
   1. Removed `Microsoft` from descriptions in `algorithm_id` and `serialization_id` in the `digital_signature` object. [#1668](https://github.com/ocsf/ocsf-schema/pull/1668)
   1. Added `ai_agent` to `actor` (and to its `at_least_one` constraint) and to `process`. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
-  1. Added `charter` attribute to `ai_agent` for the agent's durable role definition document (system prompt or constitution). [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
 * #### Observables
 * #### Platform Extensions
   1. Added `prev_win_service` attribute to Windows Service Activity Class in order to store previous state of the Windows service. [#1663](https://github.com/ocsf/ocsf-schema/pull/1663)

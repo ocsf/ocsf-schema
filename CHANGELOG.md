@@ -64,6 +64,7 @@ Thankyou! -->
 ### Deprecated
   1. Deprecated the `account_change` and `user_access_management` classes in favor of the `user_management` class. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
   1. Deprecated the `user_result` attribute in favor of the `updated_user` attribute. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
+  1. Deprecated the `resource` and `user` attributes in favor of `resources` and `users` attributes. [#1639](https://github.com/ocsf/ocsf-schema/pull/1639)
 
 ### Added
 * #### Categories

@@ -1,17 +1,43 @@
 {
   "caption": "DNS Query",
-  "description": "The DNS query object represents a specific request made to the Domain Name System (DNS) to retrieve information about a domain or perform a DNS operation. This object encapsulates the necessary attributes and methods to construct and send DNS queries, specify the query type (e.g., A, AAAA, MX).",
-  "extends": "_dns",
+  "description": "The DNS Query object represents a specific request made to the Domain Name System (DNS) to retrieve information about a domain or perform a DNS operation.",
+  "extends": "object",
   "name": "dns_query",
   "attributes": {
+    "class": {
+      "caption": "Resource Record Class",
+      "description": "The class of resource records being queried. See RFC 1035. For example: <code>IN</code>.",
+      "requirement": "recommended"
+    },
     "hostname": {
       "description": "The hostname or domain being queried. For example: <code>www.example.com</code>",
       "requirement": "required"
     },
     "opcode": {
-      "requirement": "optional"
+      "requirement": "optional",
+      "@deprecated": {
+        "message": "Use <code>opcode</code> on <code>DNS Activity</code> instead.",
+        "since": "1.9.0"
+      }
     },
     "opcode_id": {
+      "requirement": "recommended",
+      "@deprecated": {
+        "message": "Use <code>opcode_id</code> on <code>DNS Activity</code> instead.",
+        "since": "1.9.0"
+      }
+    },
+    "packet_uid": {
+      "description": "The DNS packet identifier assigned by the program that generated the query. The identifier is copied to the response.",
+      "requirement": "recommended",
+      "@deprecated": {
+        "message": "Use <code>transaction_id</code> on <code>DNS Activity</code> instead.",
+        "since": "1.9.0"
+      }
+    },
+    "type": {
+      "caption": "Resource Record Type",
+      "description": "The type of resource records being queried. See RFC 1035. For example: A, AAAA, CNAME, MX, and NS.",
       "requirement": "recommended"
     }
   },

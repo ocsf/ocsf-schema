@@ -96,7 +96,7 @@ Thankyou! -->
   1. Added `transaction_id`, `opcode_id`/`opcode`, `flag_ids`/`flags`, `authority`, `query_additional`, and `response_additional` to `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
   1. Extended `activity_id` attribute in `HTTP Activity` to cover all methods in IANA HTTP Method Registry. [#1654](https://github.com/ocsf/ocsf-schema/pull/1654)
   1. Added `users` to `group_management` to replace deprecated `user`. [#1666](https://github.com/ocsf/ocsf-schema/pull/1666)
-  1. Added the `ai_operation` profile to `file_activity`, `network_activity`, `web_resources_activity`, `email_activity`, `script_activity`, and `scheduled_job_activity` for agent attribution on data-plane events. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
+  1. Added the `ai_operation` profile to the `system` and `network` base event classes so all System Activity and Network Activity events inherit agent attribution. Also added the profile to `web_resources_activity` and `email_activity` (which do not extend the network base). [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
 * #### Profiles
   1. Added `ai_agent` attribute to the `ai_operation` profile. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
 * #### Objects

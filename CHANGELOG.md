@@ -69,7 +69,7 @@ Thankyou! -->
   1. Added `job_triggers` that describes a set of conditions when job performs its actions. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `updated_job` that reflects the attempted or the actual updated job. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `properties` that is a set of characteristics associated with an entity. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
-  1. Added `speed_mhz` for compute unit clock speed in MHz.[#1630](https://github.com/ocsf/ocsf-schema/pull/1630)
+  1. Added `speed_mhz` for compute unit clock speed in MHz. [#1630](https://github.com/ocsf/ocsf-schema/pull/1630)
   1. Added `cpu_info_list` as an array of `cpu_info` objects. [#1630](https://github.com/ocsf/ocsf-schema/pull/1630)
 
 ### Improved

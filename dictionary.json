@@ -6065,6 +6065,17 @@
       "description": "The serial number that pertains to the object. See specific usage.",
       "type": "string_t"
     },
+    "serialization": {
+      "caption": "Serialization",
+      "description": "The canonical serialization or signing-envelope scheme used to produce the deterministic byte sequence that was signed, e.g. <code>JCS</code> (RFC 8785). Normalized to the captions of the <code>serialization_id</code> values.",
+      "type": "string_t"
+    },
+    "serialization_id": {
+      "caption": "Serialization ID",
+      "description": "The normalized identifier of the canonical serialization or signing-envelope scheme used to produce the signed byte sequence. A verifier must apply the same scheme to reproduce the signing input.",
+      "sibling": "serialization",
+      "type": "integer_t"
+    },
     "server_ciphers": {
       "caption": "Server Cipher Suites",
       "description": "The server cipher suites that were exchanged during the TLS handshake negotiation.",

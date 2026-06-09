@@ -1,0 +1,52 @@
+{
+  "uid": 11,
+  "caption": "Device Power State Activity",
+  "description": "Device Power State Activity events report activities related to power state changes of a system.",
+  "extends": "system",
+  "name": "device_power_state_activity",
+  "attributes": {
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Power On",
+          "description": "A power-on activity was reported for the system."
+        },
+        "2": {
+          "caption": "Power Off",
+          "description": "A power-off activity was reported for the system, including graceful shutdowns and hard power-off events. For graceful or software-initiated shutdowns, the <code>actor</code> may be specified when known."
+        },
+        "3": {
+          "caption": "Sleep",
+          "description": "A sleep activity was reported for the system."
+        },
+        "4": {
+          "caption": "Hibernate",
+          "description": "A hibernate activity was reported for the system."
+        },
+        "5": {
+          "caption": "Reboot",
+          "description": "A reboot activity was reported for the system."
+        },
+        "6": {
+          "caption": "Wake",
+          "description": "A wake activity was reported for the system."
+        }
+      }
+    },
+    "actor": {
+      "description": "The actor that performed the activity on the <code>device</code> object.",
+      "group": "context",
+      "requirement": "optional",
+      "profile": null
+    },
+    "device": {
+      "description": "The host or device that changed power state."
+    }
+  },
+  "references": [
+    {
+      "description": "D3FEND™ Ontology d3f:HardwareDeviceStateEvent",
+      "url": "https://d3fend.mitre.org/event/d3f:HardwareDeviceStateEvent/"
+    }
+  ]
+}

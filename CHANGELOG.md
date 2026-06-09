@@ -100,9 +100,6 @@ Thankyou! -->
   1. Added `peripheral_devices` to `device`. [#1645](https://github.com/ocsf/ocsf-schema/pull/1645)
   1. Added `uid_numeric` to `_entity` so that a numeric `uid` value can be represented natively. [#1643](https://github.com/ocsf/ocsf-schema/pull/1643)
   1. Extended `http_method` attribute in the `http_request` object to cover all methods in IANA HTTP Method Registry. [#1654](https://github.com/ocsf/ocsf-schema/pull/1654)
-### Deprecated
-  1. Deprecated the `account_change` and `user_access_management` classes in favor of the `user_management` class. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
-  1. Deprecated the `user_result` attribute in favor of the `updated_user` attribute. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -124,6 +121,9 @@ Thankyou! -->
 1. Deprecated `packet_uid` attribute in `dns_query` object in favor of `transaction_id` on `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
 1. Deprecated `opcode` and `opcode_id` attributes in `dns_query` object in favor of `opcode`/`opcode_id` on `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
 1. Deprecated `flag_ids`, `flags`, and `packet_uid` attributes in `dns_answer` object in favor of `flag_ids`/`flags`/`transaction_id` on `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
+1. Deprecated the `account_change` and `user_access_management` classes in favor of the `user_management` class. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
+1. Deprecated the `user_result` attribute in favor of the `updated_user` attribute. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
+1. Deprecated the `user` attribute and `resource` attribute of the `group_mgt` class in favor of `users` and `groups`. []()
 
 ### Misc
 1. Added static anti-pattern detection, LLM-to-static learning pipeline, and deprecated attribute filtering to the automated PR review workflows. [#1599](https://github.com/ocsf/ocsf-schema/pull/1599)

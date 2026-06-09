@@ -47,11 +47,14 @@ Thankyou! -->
 * #### Categories
 * #### Event Classes
   1. Added user_management and role_management. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
+  1. Added clipboard_activity. [#1655](https://github.com/ocsf/ocsf-schema/pull/1655)
+  1. Added device_power_state_activity (`Device Power State Activity`) class to capture power state changes of a device. [#1624](https://github.com/ocsf/ocsf-schema/pull/1624)
 * #### Profiles
 * #### Objects
   1. Added `job_action` object to describe an action that job can perform. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `job_trigger` object to describe a condition when job performs its action. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `iam_role` object for user, role and group management. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
+  1. Added `clipboard` and `clipboard_item` object for clipboard activity. [#1655](https://github.com/ocsf/ocsf-schema/pull/1655)
   1. Added `dns_resource_record` object to represent an RFC 1035 resource record, used across Answer, Authority, and Additional sections. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
   1. Added `dns_section` object to represent a DNS message section containing supplementary resource records and an optional TSIG record. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
   1. Added `tsig` object to represent a TSIG (Transaction Signature) record with structured fields for security analytics: `algorithm`, `key_name`, `error_id`, and `error`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
@@ -71,6 +74,7 @@ Thankyou! -->
   1. Added `initiator` and `initiator_id` attributes for identifying which endpoint initiated a network communication, with generic `Unknown (0)` and `Other (99)` enums. [#1598](https://github.com/ocsf/ocsf-schema/pull/1598)
   1. Added `transaction_id`, `query_additional`, `response_additional`, `authority`, and `key_name` dictionary attributes for DNS Activity restructuring. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
   1. Added `peripheral_devices` for a set of peripherals. [#1645](https://github.com/ocsf/ocsf-schema/pull/1645)
+  1. Added `binary_data`, `contents`, `clipboard_native_type`, `string_data`. [#1655](https://github.com/ocsf/ocsf-schema/pull/1655)
   1. Added `uid_numeric` attribute to enable a unique identifier that is numeric to be represented natively using the `long_t` data type. [#1643](https://github.com/ocsf/ocsf-schema/pull/1643)
   1. Added `download_info` attribute to `file` object. [#1658](https://github.com/ocsf/ocsf-schema/pull/1658)
 

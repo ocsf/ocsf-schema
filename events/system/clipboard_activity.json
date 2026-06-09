@@ -1,0 +1,35 @@
+{
+  "uid": 12,
+  "caption": "Clipboard Activity",
+  "description": "Clipboard Activity events report when a process performs an action on a clipboard.",
+  "extends": "system",
+  "name": "clipboard_activity",
+  "attributes": {
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Read",
+          "description": "A clipboard was read from. In user-interface terms, this is a 'paste' operation. If present, <code>source_process</code> is the process which performed the <code>Write</code> activity or, in other words, the process from which the data was copied."
+        },
+        "2": {
+          "caption": "Write",
+          "description": "A clipboard was written to. In user-interface terms, this is a 'copy' or 'cut' operation."
+        },
+        "3": {
+          "caption": "Clear",
+          "description": "A clipboard was cleared."
+        }
+      }
+    },
+    "source_process": {
+      "description": "For a <code>Read</code> activity, this is the process which performed the <code>Write</code>. In other words, <code>actor.process</code> is the process performing the paste and <code>source_process</code> is the process that performed the copy.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "clipboard": {
+      "description": "The clipboard that is the target of the activity.",
+      "group": "primary",
+      "requirement": "required"
+    }
+  }
+}

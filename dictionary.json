@@ -177,6 +177,11 @@
       "description": "The permissions that were granted in a platform-native format. See specific usage.",
       "type": "integer_t"
     },
+    "response_additional": {
+      "caption": "DNS Response Additional Section",
+      "description": "The Additional section of the DNS response message sent by the server, containing supplementary resource records and an optional TSIG record. A DNS message has at most one TSIG record; for a transaction with both query and response, the query TSIG is in <code>query_additional.tsig</code> and the response TSIG is in <code>response_additional.tsig</code>.",
+      "type": "dns_section"
+    },
     "additional_restrictions": {
       "caption": "Additional Restrictions",
       "description": "The supplementary restrictions that may apply to an entity, by the virtue of a policy. See specific usage.",
@@ -545,6 +550,12 @@
       "caption": "Authorization Information",
       "description": "Provides details about an authorization, such as authorization outcome, and any associated policies related to the activity/event.",
       "type": "authorization",
+      "is_array": true
+    },
+    "authority": {
+      "caption": "DNS Authority Section",
+      "description": "The DNS Authority section resource records. Contains NS records pointing to authoritative name servers, or a SOA record for negative responses (NXDOMAIN).",
+      "type": "dns_resource_record",
       "is_array": true
     },
     "autonomous_system": {
@@ -1079,6 +1090,30 @@
       "sibling": "category_name",
       "type": "integer_t"
     },
+    "bcc": {
+      "caption": "Bcc",
+      "description": "The machine-readable email header Bcc values, as defined by RFC 5322. For example <code>example.user@usersdomain.com</code>.",
+      "type": "email_t",
+      "references": [
+        {
+          "description": "RFC 5322",
+          "url": "https://www.rfc-editor.org/rfc/rfc5322"
+        }
+      ],
+      "is_array": true
+    },
+    "bcc_mailboxes": {
+      "caption": "Bcc Mailboxes",
+      "description": "The human-readable email header Bcc Mailbox values. For example <code>'Example User &lt;example.user@usersdomain.com&gt;'</code>.",
+      "type": "string_t",
+      "references": [
+        {
+          "description": "RFC 5322",
+          "url": "https://www.rfc-editor.org/rfc/rfc5322#section-3.4"
+        }
+      ],
+      "is_array": true
+    },
     "cc": {
       "caption": "Cc",
       "description": "The machine-readable email header Cc values, as defined by RFC 5322. For example <code>example.user@usersdomain.com</code>.",
@@ -1375,7 +1410,7 @@
       "description": "The component of a data object. See specific usage.",
       "type": "string_t"
     },
-    "com_class_uuid": { 
+    "com_class_uuid": {
       "caption": "COM Class Identifier",
       "description": "The COM Class Identifier (CLSID).",
       "type": "uuid_t"
@@ -2309,6 +2344,11 @@
       "type": "domain_contact",
       "is_array": true
     },
+    "download_info": {
+      "caption": "Download Info",
+      "description": "Information pertaining to a downloaded file.",
+      "type": "download_info"
+    },
     "drive_type": {
       "caption": "Drive Type",
       "description": "The drive type, normalized to the caption of the <code>drive_type_id</code> value. In the case of <code>Other</code>, it is defined by the source.",
@@ -2527,7 +2567,11 @@
     "entity_result": {
       "caption": "Entity Result",
       "description": "The updated managed entity.",
-      "type": "managed_entity"
+      "type": "managed_entity",
+      "@deprecated": {
+        "message": "Use the <code>updated_entity</code> attribute instead.",
+        "since": "1.9.0"
+      }
     },
     "environment_variables": {
       "caption": "Environment Variables",
@@ -2549,6 +2593,12 @@
       "caption": "Error Code",
       "description": "Error Code",
       "type": "string_t"
+    },
+    "error_id": {
+      "caption": "Error ID",
+      "description": "The normalized error identifier. See specific usage.",
+      "sibling": "error",
+      "type": "integer_t"
     },
     "error_message": {
       "caption": "Error Message",
@@ -2747,7 +2797,11 @@
     "file_result": {
       "caption": "File Result",
       "description": "The result of the file change. It should contain the new values of the changed attributes.",
-      "type": "file"
+      "type": "file",
+      "@deprecated": {
+        "message": "Use the <code>updated_file</code> attribute instead.",
+        "since": "1.9.0"
+      }
     },
     "files": {
       "caption": "Files",
@@ -3070,7 +3124,7 @@
     },
     "http_method": {
       "caption": "HTTP Method",
-      "description": "The HTTP request method indicates the desired action to be performed for a given resource. Expected values: <ul> <li>TRACE</li> <li>CONNECT</li> <li>OPTIONS</li> <li>HEAD</li> <li>DELETE</li> <li>POST</li> <li>PUT</li> <li>GET</li></ul>",
+      "description": "The HTTP request method indicates the desired action to be performed for a given resource.",
       "type": "string_t"
     },
     "http_only": {
@@ -3110,6 +3164,17 @@
       "caption": "Hypervisor",
       "description": "The name of the hypervisor running on the device. For example, <code>Xen</code>, <code>VMware</code>, <code>Hyper-V</code>, <code>VirtualBox</code>, etc.",
       "type": "string_t"
+    },
+    "iam_role": {
+      "caption": "IAM Role",
+      "description": "A role with privileges and policy against resources that can be assigned to a user or group of users.",
+      "type": "iam_role"
+    },
+    "iam_roles": {
+      "caption": "IAM Roles",
+      "description": "One or more roles with privileges and policy against resources that can be assigned to a user or group of users.",
+      "type": "iam_role",
+      "is_array": true
     },
     "iccid": {
       "caption": "ICCID",
@@ -3736,6 +3801,11 @@
       "description": "The <a target='_blank' href='https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html'>Cyber Kill Chain®</a> provides a detailed description of each phase and its associated activities within the broader context of a cyber attack.",
       "type": "kill_chain_phase",
       "is_array": true
+    },
+    "key_name": {
+      "caption": "Key Name",
+      "description": "The name of a key. See specific usage.",
+      "type": "string_t"
     },
     "labels": {
       "caption": "Labels",
@@ -4451,7 +4521,7 @@
     },
     "opcode_id": {
       "caption": "DNS Opcode ID",
-      "description": "The DNS opcode ID specifies the normalized query message type as defined in <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc5395.html'>RFC-5395</a>.",
+      "description": "The DNS opcode ID specifies the normalized query message type as defined in RFC 5395.",
       "type": "integer_t",
       "enum": {
         "0": {
@@ -4691,6 +4761,12 @@
       "caption": "Peripheral Device",
       "description": "The peripheral device that triggered the event.",
       "type": "peripheral_device"
+    },
+    "peripheral_devices": {
+      "caption": "Peripheral Device",
+      "description": "A set of peripheral devices. See specific usage.",
+      "type": "peripheral_device",
+      "is_array": true
     },
     "permission": {
       "caption": "Permission",
@@ -5087,6 +5163,11 @@
       "description": "The Domain Name System (DNS) query.",
       "type": "dns_query"
     },
+    "query_additional": {
+      "caption": "DNS Query Additional Section",
+      "description": "The Additional section of the DNS query message sent by the client, containing supplementary resource records and an optional TSIG record. A DNS message has at most one TSIG record; for a transaction with both query and response, the query TSIG is in <code>query_additional.tsig</code> and the response TSIG is in <code>response_additional.tsig</code>.",
+      "type": "dns_section"
+    },
     "query_evidence": {
       "caption": "Query Evidence",
       "description": "The resulting evidence discovered from the evidence search request.",
@@ -5333,6 +5414,12 @@
       "description": "The index of the record in the array of records.",
       "type": "integer_t"
     },
+    "records": {
+      "caption": "DNS Resource Records",
+      "description": "The resource records in a DNS message section. See specific usage.",
+      "type": "dns_resource_record",
+      "is_array": true
+    },
     "references": {
       "caption": "References",
       "description": "A list of reference URLs supporting the finding/detection.",
@@ -5534,7 +5621,11 @@
       "caption": "Resource Results Array",
       "description": "Updated resources after an activity/event.",
       "type": "resource_details",
-      "is_array": true
+      "is_array": true,
+      "@deprecated": {
+        "message": "Use the <code>updated_resources</code> attribute instead.",
+        "since": "1.9.0"
+      }
     },
     "response": {
       "caption": "API Response Details",
@@ -6686,6 +6777,11 @@
       "type": "tls_extension",
       "is_array": true
     },
+    "tsig": {
+      "caption": "TSIG",
+      "description": "The TSIG (Transaction Signature) record used to authenticate the DNS message. See RFC 2845.",
+      "type": "tsig"
+    },
     "to": {
       "caption": "To",
       "description": "The machine-readable email header To values, as defined by RFC 5322. For example <code>example.user@usersdomain.com</code>",
@@ -6755,6 +6851,11 @@
       "description": "The traits that describe characteristics, features of an entity. See specific usage.",
       "type": "trait",
       "is_array": true
+    },
+    "transaction_id": {
+      "caption": "Transaction ID",
+      "description": "The identifier of a transaction. See specific usage.",
+      "type": "integer_t"
     },
     "transaction_uid": {
       "caption": "Transaction UID",
@@ -6875,6 +6976,11 @@
       "description": "The alternate unique identifier. See specific usage.",
       "type": "string_t"
     },
+    "uid_numeric": {
+      "caption": "Numeric Unique ID",
+      "description": "The unique identifier in numeric form. See specific usage.",
+      "type": "long_t"
+    },
     "unique_malware_count": {
       "caption": "Unique Malware Count",
       "description": "The number of unique malware detected during a scan. See specific usage.",
@@ -6915,10 +7021,47 @@
       "description": "The number of unused services. See specific usage.",
       "type": "integer_t"
     },
-    "updated_job": {      
+    "updated_entity": {
+      "caption": "Updated Entity",
+      "description": "The updated entity. See specific usage.",
+      "type": "managed_entity"
+    },
+    "updated_file": {
+      "caption": "Updated File",
+      "description": "The updated file. See specific usage.",
+      "type": "file"
+    },
+    "updated_group": {
+      "caption": "Updated Group",
+      "description": "The updated group. See specific usage.",
+      "type": "group"
+    },
+    "updated_job": {
       "caption": "Updated Job",
       "description": "The updated job. See specific usage.",
       "type": "job"
+    },
+    "updated_resources": {
+      "caption": "Updated Resources",
+      "description": "The updated resources. See specific usage.",
+      "type": "resource_details",
+      "is_array": true
+    },
+    "updated_role": {
+      "caption": "Updated Role",
+      "description": "The updated role. See specific usage.",
+      "type": "iam_role"
+    },
+    "updated_user": {
+      "caption": "Updated User",
+      "description": "The updated user. See specific usage.",
+      "type": "user"
+    },
+    "updated_web_resources": {
+      "caption": "Updated Web Resources",
+      "description": "The updated web resources. See specific usage.",
+      "type": "web_resource",
+      "is_array": true
     },
     "uploaded_time": {
       "caption": "Uploaded Time",
@@ -6966,7 +7109,11 @@
     "user_result": {
       "caption": "User Result",
       "description": "The result of the user account change. It should contain the new values of the changed attributes.",
-      "type": "user"
+      "type": "user",
+      "@deprecated": {
+        "message": "Use the <code>updated_user</code> attribute instead.",
+        "since": "1.9.0"
+      }
     },
     "users": {
       "caption": "Users",
@@ -7152,7 +7299,11 @@
       "caption": "Web Resources Result",
       "description": "The results of the activity on web resources. It should contain the new values of the changed attributes of the web resources.",
       "type": "web_resource",
-      "is_array": true
+      "is_array": true,
+      "@deprecated": {
+        "message": "Use the <code>updated_web_resources</code> attribute instead.",
+        "since": "1.9.0"
+      }
     },
     "whois": {
       "caption": "WHOIS",

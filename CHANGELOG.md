@@ -48,6 +48,7 @@ Thankyou! -->
 * #### Event Classes
   1. Added user_management and role_management. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
   1. Added clipboard_activity. [#1655](https://github.com/ocsf/ocsf-schema/pull/1655)
+  1. Added device_power_state_activity (`Device Power State Activity`) class to capture power state changes of a device. [#1624](https://github.com/ocsf/ocsf-schema/pull/1624)
 * #### Profiles
 * #### Objects
   1. Added `job_action` object to describe an action that job can perform. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)

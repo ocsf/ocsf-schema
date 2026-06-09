@@ -50,9 +50,9 @@ Thankyou! -->
   1. Added clipboard_activity. [#1655](https://github.com/ocsf/ocsf-schema/pull/1655)
   1. Added device_power_state_activity (`Device Power State Activity`) class to capture power state changes of a device. [#1624](https://github.com/ocsf/ocsf-schema/pull/1624)
 * #### Profiles
-  1. Added optional `delegation` attribute to the `ai_operation` profile, linking data-plane actions to the delegated authority under which they were performed. [#1664](https://github.com/ocsf/ocsf-schema/pull/1664)
+  1. Added optional `delegation` attribute to the `ai_operation` profile, linking data-plane actions to the delegated authority under which they were performed. [#1665](https://github.com/ocsf/ocsf-schema/pull/1665)
 * #### Objects
-  1. Added `delegation` object describing a durable authorization context issued by a principal to an autonomous agent. [#1664](https://github.com/ocsf/ocsf-schema/pull/1664)
+  1. Added `delegation` object describing a durable authorization context issued by a principal to an autonomous agent. [#1665](https://github.com/ocsf/ocsf-schema/pull/1665)
   1. Added `job_action` object to describe an action that job can perform. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `job_trigger` object to describe a condition when job performs its action. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `cpu_info` object for CPUs (array name `cpu_info_list`). [#1630](https://github.com/ocsf/ocsf-schema/pull/1630)
@@ -84,7 +84,7 @@ Thankyou! -->
   1. Added `uid_numeric` attribute to enable a unique identifier that is numeric to be represented natively using the `long_t` data type. [#1643](https://github.com/ocsf/ocsf-schema/pull/1643)
   1. Added `download_info` attribute to `file` object. [#1658](https://github.com/ocsf/ocsf-schema/pull/1658)
   1. Added `prompt_text` and `response_text` attributes for capturing the input prompt text and model response text of an AI message. [#1674](https://github.com/ocsf/ocsf-schema/pull/1674)
-  1. Added `delegation` and `issuer_uid` attributes supporting the `delegation` object and `ai_operation` profile. [#1664](https://github.com/ocsf/ocsf-schema/pull/1664)
+  1. Added `delegation` and `issuer_uid` attributes supporting the `delegation` object and `ai_operation` profile. [#1665](https://github.com/ocsf/ocsf-schema/pull/1665)
 
 ### Improved
 * #### Categories

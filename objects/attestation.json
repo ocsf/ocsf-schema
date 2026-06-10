@@ -2,10 +2,10 @@
   "caption": "Attestation",
   "name": "attestation",
   "extends": "object",
-  "description": "A cryptographic attestation that binds an event record to a verifiable identity and, optionally, to a tamper-evident sequence. Named distinctly from the <code>evidences</code> object, which collects detection artifacts: an attestation is about non-repudiation of the record itself — proof it was produced by the identity it claims and was not altered. The signature is computed over a canonical serialization of the event, which includes the acting <code>ai_agent</code> and the hashes of its operating charter, so the attestation also captures the charter fingerprint in force at the time of action. Algorithm-agnostic: classical, post-quantum (ML-DSA), and hybrid signatures are all expressible via the <code>digital_signature</code> object without a schema change.",
+  "description": "A cryptographic attestation that provides integrity, authenticity, and non-repudiation for an event record. The signature is computed over a canonical serialization of the event record, thereby binding all included fields to a verifiable identity. Optionally, the attestation may also support tamper-evident sequencing.",
   "attributes": {
     "signature": {
-      "description": "The digital signature over the canonical serialization of the event record, bound to the acting agent's verifiable identity. The signing algorithm, certificate or public-key material, and signing time are carried within the <code>digital_signature</code> object.",
+      "description": "The digital signature over the canonical serialization of the event record, bound to the producer's verifiable identity. The signing algorithm, certificate or public-key material, and signing time are carried within the <code>digital_signature</code> object.",
       "requirement": "required"
     },
     "entry_hash": {
@@ -15,12 +15,12 @@
     },
     "prev_entry_hash": {
       "caption": "Previous Entry Hash",
-      "description": "Fingerprint of the prior record in the agent's forensic chain, providing tamper-evident ordering. Absent on the genesis entry of a chain.",
+      "description": "Fingerprint of the prior record in the chain, providing tamper-evident ordering. Absent on the genesis entry of a chain.",
       "requirement": "recommended"
     },
     "chain_uid": {
       "caption": "Chain ID",
-      "description": "Identifier of the forensic chain or append-only log this record belongs to. Lets an independent verifier locate and validate the chain without trusting the producer's infrastructure.",
+      "description": "Identifier of the forensic chain or append-only log this record belongs to. Stable for the lifetime of the chain.",
       "requirement": "recommended"
     }
   }

@@ -6083,6 +6083,17 @@
       "description": "The serial number that pertains to the object. See specific usage.",
       "type": "string_t"
     },
+    "serialization": {
+      "caption": "Serialization",
+      "description": "The canonical serialization or signing-envelope scheme used to produce the deterministic byte sequence that was signed, e.g. <code>JCS</code> (RFC 8785). Normalized to the captions of the <code>serialization_id</code> values.",
+      "type": "string_t"
+    },
+    "serialization_id": {
+      "caption": "Serialization ID",
+      "description": "The normalized identifier of the canonical serialization or signing-envelope scheme used to produce the signed byte sequence. A verifier must apply the same scheme to reproduce the signing input.",
+      "sibling": "serialization",
+      "type": "integer_t"
+    },
     "server_ciphers": {
       "caption": "Server Cipher Suites",
       "description": "The server cipher suites that were exchanged during the TLS handshake negotiation.",
@@ -7034,8 +7045,18 @@
     },
     "unmapped": {
       "caption": "Unmapped Data",
-      "description": "A container for source-specific attributes that do not map to any defined OCSF attribute. Use this to preserve valuable source data that would otherwise be lost during normalization. The keys and values are specific to the event source. Consumers should not rely on a stable structure within this field.",
-      "type": "object"
+      "description": "A container for source-specific attributes that do not map to any defined OCSF attribute. Use this to preserve valuable source data that would otherwise be lost during normalization. The keys and values are specific to the event source. <p><b>Note: </b>Consumers should not rely on a stable structure within this field. The preferred approach to unmapped attributes is to create a custom extension with the desired structure.</p>",
+      "type": "object",
+      "references": [
+        {
+          "description": "Schema FAQ: When should I use the unmapped attribute?",
+          "url": "https://github.com/ocsf/ocsf-docs/blob/main/faqs/schema-faq.md#when-should-i-use-the-unmapped-attribute"
+        },
+        {
+          "description": "OCSF Extensions",
+          "url": "https://github.com/ocsf/ocsf-schema/blob/main/CONTRIBUTING.md#ocsf-extensions"
+        }
+      ]
     },
     "untruncated_size": {
       "caption": "Untruncated Size",
@@ -7365,7 +7386,7 @@
     },
     "xattributes": {
       "caption": "Extended Attributes",
-      "description": "An unordered collection of zero or more name/value pairs where each pair represents a file or folder extended attribute.</p>For example: Windows alternate data stream attributes (ADS stream name, ADS size, etc.), user-defined or application-defined attributes, ACL, owner, primary group, etc. Examples from DCS: </p><ul><li><strong>ads_name</strong></li><li><strong>ads_size</strong></li><li><strong>dacl</strong></li><li><strong>owner</strong></li><li><strong>primary_group</strong></li><li><strong>link_name</strong> - name of the link associated to the file.</li><li><strong>hard_link_count</strong> - the number of links that are associated to the file.</li></ul>",
+      "description": "Attributes not present in the schema that extend the class or object. See specific usage.",
       "type": "object"
     },
     "zone": {

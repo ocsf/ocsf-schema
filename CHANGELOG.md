@@ -77,6 +77,7 @@ Thankyou! -->
   1. Added `initiator` and `initiator_id` attributes for identifying which endpoint initiated a network communication, with generic `Unknown (0)` and `Other (99)` enums. [#1598](https://github.com/ocsf/ocsf-schema/pull/1598)
   1. Added `transaction_id`, `query_additional`, `response_additional`, `authority`, and `key_name` dictionary attributes for DNS Activity restructuring. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
   1. Added `peripheral_devices` for a set of peripherals. [#1645](https://github.com/ocsf/ocsf-schema/pull/1645)
+  1. Added `serialization` and `serialization_id` attributes to record the canonical serialization or signing-envelope scheme used to produce the signed bytes. [#1662](https://github.com/ocsf/ocsf-schema/pull/1662)
   1. Added `binary_data`, `contents`, `clipboard_native_type`, `string_data`. [#1655](https://github.com/ocsf/ocsf-schema/pull/1655)
   1. Added `uid_numeric` attribute to enable a unique identifier that is numeric to be represented natively using the `long_t` data type. [#1643](https://github.com/ocsf/ocsf-schema/pull/1643)
   1. Added `download_info` attribute to `file` object. [#1658](https://github.com/ocsf/ocsf-schema/pull/1658)
@@ -107,6 +108,7 @@ Thankyou! -->
   1. `dns_answer` now extends `dns_resource_record` so it inherits the RFC 1035 resource record fields (`class`, `hostname`, `rdata`, `ttl`, `type`); `flag_ids` and `flags` remain locally on `dns_answer` and are deprecated in favor of the corresponding attributes on `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
   1. Removed the abstract `_dns` object; `class`, `type`, and the deprecated `packet_uid` attribute now live directly on `dns_query`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
   1. Added `peripheral_devices` to `device`. [#1645](https://github.com/ocsf/ocsf-schema/pull/1645)
+  1. Added `serialization` and `serialization_id` to the `digital_signature` object to record the canonical signing input (JCS, JWS, COSE, DSSE, Authenticode). [#1662](https://github.com/ocsf/ocsf-schema/pull/1662)
   1. Added `uid_numeric` to `_entity` so that a numeric `uid` value can be represented natively. [#1643](https://github.com/ocsf/ocsf-schema/pull/1643)
   1. Extended `http_method` attribute in the `http_request` object to cover all methods in IANA HTTP Method Registry. [#1654](https://github.com/ocsf/ocsf-schema/pull/1654)
 * #### Observables

@@ -221,6 +221,11 @@
       "type": "agent",
       "is_array": true
     },
+    "ai_agent": {
+      "caption": "AI Agent",
+      "description": "An autonomous AI agent that performs tasks under delegated authority. Distinguished from the OCSF <code>agent</code> object, which describes security sensors such as EDR and DLP tools.",
+      "type": "ai_agent"
+    },
     "ai_model": {
       "caption": "AI Model",
       "description": "The AI Model object describes the characteristics of an AI/ML model. Examples include language models like GPT-4, embedding models like text-embedding-ada-002, and computer vision models like CLIP.",
@@ -1158,6 +1163,11 @@
       "description": "The Chain of Certificate Serial Numbers field provides a chain of Certificate Issuer Serial Numbers leading to the Root Certificate Issuer.",
       "type": "string_t",
       "is_array": true
+    },
+    "charter": {
+      "caption": "Charter",
+      "description": "A document defining the role, scope, and operating bounds of an entity. See specific usage.",
+      "type": "file"
     },
     "chassis": {
       "caption": "Chassis",
@@ -3108,6 +3118,12 @@
       "description": "Provides quality/containment on horizontal position. This is based on ADS-B NACp. Measured in meters.",
       "type": "string_t"
     },
+    "hosted_ai_agent_list": {
+      "caption": "Hosted AI Agent List",
+      "description": "A list of <code>ai_agent</code> objects hosted by the entity. Use to enumerate AI agents associated with a host when activity cannot be attributed to a single agent.",
+      "type": "ai_agent",
+      "is_array": true
+    },
     "hostname": {
       "caption": "Hostname",
       "description": "The hostname of an endpoint or a device.",
@@ -4607,7 +4623,7 @@
     },
     "original_time": {
       "caption": "Original Time",
-      "description": "The original event time as reported by the event source, preserved as a pass-through string in its native format (e.g., Syslog timestamp, Windows event time). This is not normalized to <code>timestamp_t</code> &mdash; the normalized equivalent is the base event <code>time</code> attribute. Omit if the event is generated rather than collected via logs.",
+      "description": "The original event time as reported by the event source, preserved as a pass-through string in its native format (e.g., Syslog timestamp, Windows event time). This is not normalized to <code>timestamp_t</code> - the normalized equivalent is the base event <code>time</code> attribute. Omit if the event is generated rather than collected via logs.",
       "type": "string_t"
     },
     "os": {
@@ -5363,7 +5379,7 @@
     },
     "raw_data": {
       "caption": "Raw Data",
-      "description": "The original event/finding data as received from the source, before normalization into OCSF. Populate this with the verbatim log line, JSON payload, or other native format for forensic and debugging purposes. This field is not intended for structured querying &mdash; use the normalized OCSF attributes instead.",
+      "description": "The original event/finding data as received from the source, before normalization into OCSF. Populate this with the verbatim log line, JSON payload, or other native format for forensic and debugging purposes. This field is not intended for structured querying - use the normalized OCSF attributes instead.",
       "type": "string_t"
     },
     "raw_data_hash": {

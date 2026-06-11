@@ -3118,6 +3118,12 @@
       "description": "Provides quality/containment on horizontal position. This is based on ADS-B NACp. Measured in meters.",
       "type": "string_t"
     },
+    "hosted_ai_agent_list": {
+      "caption": "Hosted AI Agent List",
+      "description": "A list of <code>ai_agent</code> objects hosted by a process or other runtime. Use to enumerate AI agents associated with a host process when activity cannot be attributed to a single agent (e.g., an IDE process running multiple coding agents simultaneously).",
+      "type": "ai_agent",
+      "is_array": true
+    },
     "hostname": {
       "caption": "Hostname",
       "description": "The hostname of an endpoint or a device.",
@@ -4617,7 +4623,7 @@
     },
     "original_time": {
       "caption": "Original Time",
-      "description": "The original event time as reported by the event source, preserved as a pass-through string in its native format (e.g., Syslog timestamp, Windows event time). This is not normalized to <code>timestamp_t</code> &mdash; the normalized equivalent is the base event <code>time</code> attribute. Omit if the event is generated rather than collected via logs.",
+      "description": "The original event time as reported by the event source, preserved as a pass-through string in its native format (e.g., Syslog timestamp, Windows event time). This is not normalized to <code>timestamp_t</code> - the normalized equivalent is the base event <code>time</code> attribute. Omit if the event is generated rather than collected via logs.",
       "type": "string_t"
     },
     "os": {
@@ -5373,7 +5379,7 @@
     },
     "raw_data": {
       "caption": "Raw Data",
-      "description": "The original event/finding data as received from the source, before normalization into OCSF. Populate this with the verbatim log line, JSON payload, or other native format for forensic and debugging purposes. This field is not intended for structured querying &mdash; use the normalized OCSF attributes instead.",
+      "description": "The original event/finding data as received from the source, before normalization into OCSF. Populate this with the verbatim log line, JSON payload, or other native format for forensic and debugging purposes. This field is not intended for structured querying - use the normalized OCSF attributes instead.",
       "type": "string_t"
     },
     "raw_data_hash": {

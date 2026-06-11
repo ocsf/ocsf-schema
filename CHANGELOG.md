@@ -113,17 +113,6 @@ Thankyou! -->
 * #### Platform Extensions
 * #### Dictionary Attributes
   1. Improved `job` object description to describe cases beyond System Activity class.
-### Bugfixes
-### Deprecated
-  1. Deprecated usage of `cmd_line` attribute in favor of `job_actions.cmd_line` in the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
-  1. Deprecated usage of `last_run_time` attribute in favor of `job_triggers.last_run_time` in the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
-  1. Deprecated usage of `next_run_time` attribute in favor of `job_triggers.next_run_time` in the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
-  1. Deprecated `cpu_cores` in the dictionary in favor of `cores`. [#1630](https://github.com/ocsf/ocsf-schema/pull/1630)
-  1. Deprecated `cpu_speed` in the dictionary in favor of `speed_mhz`. [#1630](https://github.com/ocsf/ocsf-schema/pull/1630)
-  1. Deprecated `cpu_type` in the dictionary in favor of `model` and `vendor_name` within `cpu_info_list[*]`. [#1630](https://github.com/ocsf/ocsf-schema/pull/1630)
-  1. Deprecated `cpu_architecture`, `cpu_architecture_id`, `cpu_bits`, `cpu_cores`, `cpu_speed`, and `cpu_type` on `device_hw_info` in favor of their equivalents within `cpu_info_list[*]`. [#1630](https://github.com/ocsf/ocsf-schema/pull/1630)
-  1. Deprecated the `account_change` and `user_access_management` classes in favor of the `user_management` class. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
-  1. Deprecated the `user_result` attribute in favor of the `updated_user` attribute. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
 
 ### Bugfixes
 1. Fixed the static anti-pattern checker so dictionary attributes are analyzed with the full compiled dictionary; the `missing-sibling` rule no longer false-positives when the sibling exists in `dictionary.json`. [#1613](https://github.com/ocsf/ocsf-schema/pull/1613)
@@ -141,6 +130,12 @@ Thankyou! -->
 1. Deprecated `packet_uid` attribute in `dns_query` object in favor of `transaction_id` on `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
 1. Deprecated `opcode` and `opcode_id` attributes in `dns_query` object in favor of `opcode`/`opcode_id` on `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
 1. Deprecated `flag_ids`, `flags`, and `packet_uid` attributes in `dns_answer` object in favor of `flag_ids`/`flags`/`transaction_id` on `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
+1. Deprecated the `account_change` and `user_access_management` classes in favor of the `user_management` class. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
+1. Deprecated the `user_result` attribute in favor of the `updated_user` attribute. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
+1. Deprecated `cpu_cores` in the dictionary in favor of `cores`. [#1630](https://github.com/ocsf/ocsf-schema/pull/1630)
+1. Deprecated `cpu_speed` in the dictionary in favor of `speed_mhz`. [#1630](https://github.com/ocsf/ocsf-schema/pull/1630)
+1. Deprecated `cpu_type` in the dictionary in favor of `model` and `vendor_name` within `cpu_info_list[*]`. [#1630](https://github.com/ocsf/ocsf-schema/pull/1630)
+1. Deprecated `cpu_architecture`, `cpu_architecture_id`, `cpu_bits`, `cpu_cores`, `cpu_speed`, and `cpu_type` on `device_hw_info` in favor of their equivalents within `cpu_info_list[*]`. [#1630](https://github.com/ocsf/ocsf-schema/pull/1630)
 
 ### Misc
 1. Added static anti-pattern detection, LLM-to-static learning pipeline, and deprecated attribute filtering to the automated PR review workflows. [#1599](https://github.com/ocsf/ocsf-schema/pull/1599)

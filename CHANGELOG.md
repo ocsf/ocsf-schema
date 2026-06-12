@@ -124,7 +124,7 @@ Thankyou! -->
 1. Deprecated `flag_ids`, `flags`, and `packet_uid` attributes in `dns_answer` object in favor of `flag_ids`/`flags`/`transaction_id` on `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
 1. Deprecated the `account_change` and `user_access_management` classes in favor of the `user_management` class. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
 1. Deprecated the `user_result` attribute in favor of the `updated_user` attribute. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
-1. Deprecated the `user` attribute `group_management` class in favor of `users`. [#1666](https://github.com/ocsf/ocsf-schema/pull/1666)
+1. Deprecated the `user` attribute in the `group_management` class in favor of `users`. [#1666](https://github.com/ocsf/ocsf-schema/pull/1666)
 
 ### Misc
 1. Added static anti-pattern detection, LLM-to-static learning pipeline, and deprecated attribute filtering to the automated PR review workflows. [#1599](https://github.com/ocsf/ocsf-schema/pull/1599)

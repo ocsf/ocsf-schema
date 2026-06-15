@@ -91,6 +91,7 @@ Thankyou! -->
   1. Added `initiator_id` and `initiator` to `Network Activity` with network-specific enums `Source Endpoint (1)` and `Destination Endpoint (2)`, and updated `src_endpoint` and `dst_endpoint` descriptions to reflect bi-flow and asymmetric flow scenarios. [#1598](https://github.com/ocsf/ocsf-schema/pull/1598)
   1. Added `transaction_id`, `opcode_id`/`opcode`, `flag_ids`/`flags`, `authority`, `query_additional`, and `response_additional` to `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
   1. Extended `activity_id` attribute in `HTTP Activity` to cover all methods in IANA HTTP Method Registry. [#1654](https://github.com/ocsf/ocsf-schema/pull/1654)
+  1. Added `users` to `group_management` to replace deprecated `user`. [#1666](https://github.com/ocsf/ocsf-schema/pull/1666)
 * #### Profiles
 * #### Objects
   1. Added `job_actions` array of objects to the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
@@ -138,6 +139,7 @@ Thankyou! -->
 1. Deprecated `cpu_speed` in the dictionary in favor of `speed_mhz`. [#1630](https://github.com/ocsf/ocsf-schema/pull/1630)
 1. Deprecated `cpu_type` in the dictionary in favor of `model` and `vendor_name` within `cpu_info_list[*]`. [#1630](https://github.com/ocsf/ocsf-schema/pull/1630)
 1. Deprecated `cpu_architecture`, `cpu_architecture_id`, `cpu_bits`, `cpu_cores`, `cpu_speed`, and `cpu_type` on `device_hw_info` in favor of their equivalents within `cpu_info_list[*]`. [#1630](https://github.com/ocsf/ocsf-schema/pull/1630)
+1. Deprecated the `user` attribute in the `group_management` class in favor of `users`. [#1666](https://github.com/ocsf/ocsf-schema/pull/1666)
 
 ### Misc
 1. Added static anti-pattern detection, LLM-to-static learning pipeline, and deprecated attribute filtering to the automated PR review workflows. [#1599](https://github.com/ocsf/ocsf-schema/pull/1599)

@@ -122,7 +122,7 @@ Thankyou! -->
   1. Added `prompt_text` and `response_text` attributes to the `message_context` object, complementing the existing `prompt_tokens` and `completion_tokens` metrics with the verbatim prompt and response text. [#1674](https://github.com/ocsf/ocsf-schema/pull/1674)
   1. Added `Code Signing (5)` enum value to `algorithm_id` and `Code Signing (6)` enum value to `serialization_id` in the `digital_signature` object. [#1668](https://github.com/ocsf/ocsf-schema/pull/1668)
   1. Removed `Microsoft` from descriptions in `algorithm_id` and `serialization_id` in the `digital_signature` object. [#1668](https://github.com/ocsf/ocsf-schema/pull/1668)
-  1. Added `ai_agent` to `actor` (and to its `at_least_one` constraint) and to `process`. Added `hosted_ai_agent_list` to `process` for cases where a process hosts multiple agents that cannot be individually attributed. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
+  1. Added `ai_agent` to `process`. Added `hosted_ai_agent_list` to `process` for cases where a process hosts multiple agents that cannot be individually attributed. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added `charter` attribute to `ai_agent` for the agent's durable role definition document (system prompt or constitution). [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
 * #### Observables
 * #### Platform Extensions

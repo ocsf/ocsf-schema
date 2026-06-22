@@ -9,11 +9,11 @@
       "enum": {
         "1": {
           "caption": "Transfer Request",
-          "description": "A request from a secondary name server to transfer a zone. Whether a full (AXFR) or incremental (IXFR) transfer was requested is conveyed by <code>type_id</code>. See RFC 5936 and RFC 1995."
+          "description": "A request from a secondary name server to transfer a zone. Whether a full (AXFR) or incremental (IXFR) transfer was requested is conveyed by <code>transfer_type_id</code>. See RFC 5936 and RFC 1995."
         },
         "2": {
           "caption": "Transfer Response",
-          "description": "A zone transfer response message from the primary name server. A single transfer may be delivered as a stream of multiple response messages. Whether the delivered data is a full (AXFR) or incremental (IXFR) transfer is conveyed by <code>type_id</code>; note that a server may answer an IXFR request with a full transfer when it cannot produce a delta. See RFC 5936 and RFC 1995."
+          "description": "A zone transfer response message from the primary name server. A single transfer may be delivered as a stream of multiple response messages. Whether the delivered data is a full (AXFR) or incremental (IXFR) transfer is conveyed by <code>transfer_type_id</code>; note that a server may answer an IXFR request with a full transfer when it cannot produce a delta. See RFC 5936 and RFC 1995."
         },
         "3": {
           "caption": "Notify",
@@ -21,12 +21,11 @@
         },
         "4": {
           "caption": "Completed Transfer",
-          "description": "A completed zone transfer reported as a single summary record rather than as separate request and response messages. Used by sources, such as name server logs, that emit one event per transfer with the zone, record count, byte count, duration, and peer. Whether the transfer was full (AXFR) or incremental (IXFR) is conveyed by <code>type_id</code>."
+          "description": "A completed zone transfer reported as a single summary record rather than as separate request and response messages. Used by sources, such as name server logs, that emit one event per transfer with the zone, record count, byte count, duration, and peer. Whether the transfer was full (AXFR) or incremental (IXFR) is conveyed by <code>transfer_type_id</code>."
         }
       }
     },
-    "type_id": {
-      "caption": "Transfer Type ID",
+    "transfer_type_id": {
       "description": "The normalized identifier of the zone transfer type. On a <code>Transfer Request</code> this is the type requested; on a <code>Transfer Response</code> or <code>Completed Transfer</code> this is the type actually delivered.",
       "requirement": "recommended",
       "enum": {
@@ -40,13 +39,12 @@
         }
       }
     },
-    "type": {
-      "caption": "Transfer Type",
-      "description": "The zone transfer type, normalized to the caption of the <code>type_id</code> value. In the case of 'Other', it is defined by the event source.",
+    "transfer_type": {
+      "description": "The zone transfer type, normalized to the caption of the <code>transfer_type_id</code> value. In the case of 'Other', it is defined by the event source.",
       "requirement": "optional"
     },
     "dns_zone": {
-      "description": "The DNS zone being transferred, i.e., the zone apex. This is the QNAME present in every message of the transfer or NOTIFY. The message role is conveyed by <code>activity_id</code> and the transfer type (AXFR or IXFR) by <code>type_id</code>. For example: <code>example.com</code>.",
+      "description": "The DNS zone being transferred, i.e., the zone apex. This is the QNAME present in every message of the transfer or NOTIFY. The message role is conveyed by <code>activity_id</code> and the transfer type (AXFR or IXFR) by <code>transfer_type_id</code>. For example: <code>example.com</code>.",
       "group": "primary",
       "requirement": "recommended"
     },

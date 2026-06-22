@@ -26,12 +26,7 @@
       }
     },
     "dns_zone": {
-      "description": "The DNS zone being transferred, i.e., the zone apex. This is the QNAME present in every message of the transfer or NOTIFY, and is the canonical field for the zone name. For example: <code>example.com</code>.",
-      "group": "primary",
-      "requirement": "recommended"
-    },
-    "query": {
-      "description": "The DNS query that requests the transfer, carrying the request type in <code>query.type</code>, e.g., <code>AXFR</code>, <code>IXFR</code>, or <code>SOA</code> (for NOTIFY), and the class in <code>query.class</code>. The zone name is reported in <code>dns_zone</code>; <code>query.hostname</code>, if populated, mirrors it.",
+      "description": "The DNS zone being transferred, i.e., the zone apex. This is the QNAME present in every message of the transfer or NOTIFY. The transfer type (AXFR, IXFR, NOTIFY) is conveyed by <code>activity_id</code>. For example: <code>example.com</code>.",
       "group": "primary",
       "requirement": "recommended"
     },

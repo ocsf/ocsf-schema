@@ -29,6 +29,10 @@
       "description": "The normalized identifier of the zone transfer type. On a <code>Transfer Request</code> this is the type requested; on a <code>Transfer Response</code> or <code>Completed Transfer</code> this is the type actually delivered.",
       "requirement": "recommended",
       "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The transfer type is unknown. For example, the event source reports a transfer without indicating whether it was full or incremental, or the message has no transfer type (such as a NOTIFY)."
+        },
         "1": {
           "caption": "Full Transfer (AXFR)",
           "description": "A full zone transfer, in which the primary name server sends the complete contents of the zone. See RFC 5936."
@@ -36,6 +40,10 @@
         "2": {
           "caption": "Incremental Transfer (IXFR)",
           "description": "An incremental zone transfer, in which the primary name server sends only the changes since the secondary's known SOA serial. See RFC 1995."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The transfer type is not mapped. See the <code>transfer_type</code> attribute, which contains a data source specific value."
         }
       }
     },

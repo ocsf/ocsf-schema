@@ -49,6 +49,7 @@ Thankyou! -->
   1. Added user_management and role_management. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
   1. Added clipboard_activity. [#1655](https://github.com/ocsf/ocsf-schema/pull/1655)
   1. Added device_power_state_activity (`Device Power State Activity`) class to capture power state changes of a device. [#1624](https://github.com/ocsf/ocsf-schema/pull/1624)
+  1. Added `dns_zone_transfer_activity` (`DNS Zone Transfer Activity`) class to capture DNS zone transfers (AXFR/IXFR) and NOTIFY. [#1675](https://github.com/ocsf/ocsf-schema/pull/1675)
 * #### Profiles
 * #### Objects
   1. Added `job_action` object to describe an action that job can perform. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
@@ -59,6 +60,7 @@ Thankyou! -->
   1. Added `dns_section` object to represent a DNS message section containing supplementary resource records and an optional TSIG record. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
   1. Added `tsig` object to represent a TSIG (Transaction Signature) record with structured fields for security analytics: `algorithm`, `key_name`, `error_id`, and `error`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
   1. Added `download_info` object with information pertaining to a downloaded file. [#1658](https://github.com/ocsf/ocsf-schema/pull/1658)
+  1. Added `dns_soa` object to represent the RFC 1035 SOA (Start of Authority) record RDATA, used to carry zone serials and timers in DNS zone transfers. [#1675](https://github.com/ocsf/ocsf-schema/pull/1675)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -78,6 +80,7 @@ Thankyou! -->
   1. Added `binary_data`, `contents`, `clipboard_native_type`, `string_data`. [#1655](https://github.com/ocsf/ocsf-schema/pull/1655)
   1. Added `uid_numeric` attribute to enable a unique identifier that is numeric to be represented natively using the `long_t` data type. [#1643](https://github.com/ocsf/ocsf-schema/pull/1643)
   1. Added `download_info` attribute to `file` object. [#1658](https://github.com/ocsf/ocsf-schema/pull/1658)
+  1. Added `dns_zone`, `additional`, `soa`, `updated_soa`, `num_records`, `transfer_type`, `transfer_type_id`, and the SOA sub-fields `primary_server`, `responsible_party`, `serial`, `refresh_interval`, `retry_interval`, `expire_interval`, and `minimum_ttl` for DNS zone transfers. [#1675](https://github.com/ocsf/ocsf-schema/pull/1675)
 
 ### Improved
 * #### Categories

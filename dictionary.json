@@ -182,6 +182,11 @@
       "description": "The Additional section of the DNS response message sent by the server, containing supplementary resource records and an optional TSIG record. A DNS message has at most one TSIG record; for a transaction with both query and response, the query TSIG is in <code>query_additional.tsig</code> and the response TSIG is in <code>response_additional.tsig</code>.",
       "type": "dns_section"
     },
+    "additional": {
+      "caption": "DNS Additional Section",
+      "description": "The Additional section of a DNS message, containing supplementary resource records and an optional TSIG record. Per RFC 2845, a DNS message has at most one TSIG record, available via <code>additional.tsig</code>.",
+      "type": "dns_section"
+    },
     "additional_restrictions": {
       "caption": "Additional Restrictions",
       "description": "The supplementary restrictions that may apply to an entity, by the virtue of a policy. See specific usage.",
@@ -2302,6 +2307,11 @@
       "description": "The Domain-based Message Authentication, Reporting and Conformance (DMARC) policy status.",
       "type": "string_t"
     },
+    "dns_zone": {
+      "caption": "DNS Zone",
+      "description": "The fully qualified name of the DNS zone, i.e., the zone apex. For example: <code>example.com</code>. See specific usage.",
+      "type": "string_t"
+    },
     "dnssec_status": {
       "caption": "DNSSEC Status",
       "description": "The normalized value of dnssec_status_id.",
@@ -2663,6 +2673,11 @@
       "caption": "Expiration Time",
       "description": "The expiration time. See specific usage.",
       "type": "timestamp_t"
+    },
+    "expire_interval": {
+      "caption": "Expire Interval",
+      "description": "The DNS SOA EXPIRE field: the time interval, in seconds, after which a secondary name server that has been unable to refresh the zone stops answering authoritatively for it. See RFC 1035 §3.3.13.",
+      "type": "integer_t"
     },
     "exploit_last_seen_time": {
       "caption": "Exploit Last Seen Time",
@@ -4261,6 +4276,11 @@
       "description": "The Multipurpose Internet Mail Extensions (MIME) type of the data, if applicable.  See specific usage.",
       "type": "string_t"
     },
+    "minimum_ttl": {
+      "caption": "Minimum TTL",
+      "description": "The DNS SOA MINIMUM field: the time interval, in seconds, that defines the TTL for negative caching of records from this zone. See RFC 1035 §3.3.13 and RFC 2308.",
+      "type": "integer_t"
+    },
     "mitigation": {
       "caption": "MITRE Mitigation",
       "description": "The Mitigation object describes the MITRE ATT&CK® or ATLAS™ Mitigation ID and/or name that is associated to an attack.",
@@ -4397,6 +4417,11 @@
     "num_folders": {
       "caption": "Scanned Folders",
       "description": "The number of folders scanned.",
+      "type": "integer_t"
+    },
+    "num_records": {
+      "caption": "Number of Records",
+      "description": "The number of records. See specific usage.",
       "type": "integer_t"
     },
     "num_infected": {
@@ -4949,6 +4974,11 @@
       "type": "security_state",
       "is_array": true
     },
+    "primary_server": {
+      "caption": "Primary Server",
+      "description": "The DNS SOA MNAME field: the fully qualified domain name of the primary (master) name server that is the original source of data for the zone. For example: <code>ns1.example.com</code>. See RFC 1035 §3.3.13.",
+      "type": "string_t"
+    },
     "priority": {
       "caption": "Priority",
       "description": "The priority, normalized to the caption of the priority_id value. In the case of 'Other', it is defined by the event source.",
@@ -5434,6 +5464,11 @@
       "description": "The request header that identifies the address of the previous web page, which is linked to the current web page or resource being requested.",
       "type": "string_t"
     },
+    "refresh_interval": {
+      "caption": "Refresh Interval",
+      "description": "The DNS SOA REFRESH field: the time interval, in seconds, before a secondary name server should query the primary to check for zone updates. See RFC 1035 §3.3.13.",
+      "type": "integer_t"
+    },
     "region": {
       "caption": "Region",
       "description": "The name or the code of a region. See specific usage.",
@@ -5639,6 +5674,16 @@
       "caption": "Response Time",
       "description": "The Domain Name System (DNS) response time.",
       "type": "timestamp_t"
+    },
+    "responsible_party": {
+      "caption": "Responsible Party",
+      "description": "The DNS SOA RNAME field: the email address of the party responsible for the zone, encoded as a domain name (the first label is the local part of the address). For example: <code>hostmaster.example.com</code> represents <code>hostmaster@example.com</code>. See RFC 1035 §3.3.13.",
+      "type": "string_t"
+    },
+    "retry_interval": {
+      "caption": "Retry Interval",
+      "description": "The DNS SOA RETRY field: the time interval, in seconds, before a secondary name server should retry a failed zone refresh. See RFC 1035 §3.3.13.",
+      "type": "integer_t"
     },
     "return_path": {
       "caption": "Return Path",
@@ -6059,6 +6104,11 @@
       "description": "The sequence number. See specific usage.",
       "type": "long_t"
     },
+    "serial": {
+      "caption": "Serial",
+      "description": "The DNS SOA SERIAL field: the unsigned 32-bit version number of the zone, incremented when the zone contents change. Secondary name servers compare this value to decide whether a zone transfer is needed. See RFC 1035 §3.3.13.",
+      "type": "long_t"
+    },
     "serial_number": {
       "observable": 37,
       "caption": "Serial Number",
@@ -6241,6 +6291,11 @@
       "caption": "Server Name Indication",
       "description": " The Server Name Indication (SNI) extension sent by the client.",
       "type": "string_t"
+    },
+    "soa": {
+      "caption": "SOA Record",
+      "description": "The DNS SOA (Start of Authority) record. See specific usage.",
+      "type": "dns_soa"
     },
     "software_components": {
       "caption": "Software Components",
@@ -6881,6 +6936,17 @@
       "description": "The unique identifier of the transaction.",
       "type": "string_t"
     },
+    "transfer_type": {
+      "caption": "Transfer Type",
+      "description": "The type of transfer, normalized to the caption of the <code>transfer_type_id</code> value. In the case of 'Other', it is defined by the event source. See specific usage.",
+      "type": "string_t"
+    },
+    "transfer_type_id": {
+      "caption": "Transfer Type ID",
+      "description": "The normalized identifier of the transfer type. See specific usage.",
+      "sibling": "transfer_type",
+      "type": "integer_t"
+    },
     "transformation_info_list": {
       "caption": "Transformation Info",
       "description": "An array of transformation info that describes the mappings or transforms applied to the data.",
@@ -7080,6 +7146,11 @@
       "caption": "Updated Role",
       "description": "The updated role. See specific usage.",
       "type": "iam_role"
+    },
+    "updated_soa": {
+      "caption": "Updated SOA Record",
+      "description": "The DNS SOA (Start of Authority) record after the change. See specific usage.",
+      "type": "dns_soa"
     },
     "updated_user": {
       "caption": "Updated User",

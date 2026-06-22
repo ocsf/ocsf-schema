@@ -49,8 +49,8 @@
       "group": "context",
       "requirement": "optional"
     },
-    "tsig": {
-      "description": "The TSIG (Transaction Signature) record authenticating this message. Per RFC 2845, at most one TSIG record is permitted per DNS message; for zone transfers it authenticates the requesting secondary or the primary's signed response, as indicated by <code>activity_id</code>. A <code>BADKEY</code> or <code>BADSIG</code> error commonly indicates an unauthorized transfer attempt.",
+    "additional": {
+      "description": "The Additional section of this DNS message, carrying any supplementary resource records (such as an EDNS OPT pseudo-record) and an optional TSIG record. Because <code>activity_id</code> distinguishes the request from the response, each event represents a single DNS message with a single Additional section. The TSIG record authenticating the message is available via <code>additional.tsig</code>; a <code>BADKEY</code> or <code>BADSIG</code> error commonly indicates an unauthorized transfer attempt.",
       "group": "context",
       "requirement": "optional"
     },

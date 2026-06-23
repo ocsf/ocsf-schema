@@ -1711,22 +1711,40 @@
     "cpu_cores": {
       "caption": "CPU Cores",
       "description": "The number of processor cores in all installed processors. For Example: <code>42</code>.",
-      "type": "integer_t"
+      "type": "integer_t",
+      "@deprecated": {
+        "message": "Use the cores attribute instead.",
+        "since": "1.9.0"
+      }
     },
     "cpu_count": {
       "caption": "CPU Count",
       "description": "The number of physical processors on a system. For example: <code>1</code>.",
       "type": "integer_t"
     },
+    "cpu_info_list": {
+      "caption": "CPU Information",
+      "description": "An array of objects, each describing a physical CPU package installed in the device.",
+      "type": "cpu_info",
+      "is_array": true
+    },
     "cpu_speed": {
       "caption": "Processor Speed",
       "description": "The speed of the processor in Mhz. For Example: <code>4200</code>.",
-      "type": "integer_t"
+      "type": "integer_t",
+      "@deprecated": {
+        "message": "Use the speed_mhz attribute instead.",
+        "since": "1.9.0"
+      }
     },
     "cpu_type": {
       "caption": "Processor Type",
       "description": "The processor type. For example: <code>x86 Family 6 Model 37 Stepping 5</code>.",
-      "type": "string_t"
+      "type": "string_t",
+      "@deprecated": {
+        "message": "Use the model and vendor_name attributes instead.",
+        "since": "1.9.0"
+      }
     },
     "create_mask": {
       "caption": "Create Mask",
@@ -6434,6 +6452,11 @@
       "caption": "Speed Accuracy",
       "description": "Provides quality/containment on horizontal ground speed. Measured in meters/second.",
       "type": "string_t"
+    },
+    "speed_mhz": {
+      "caption": "Compute Unit Speed (MHz)",
+      "description": "The nominal clock speed of the unit, expressed in megahertz.",
+      "type": "integer_t"
     },
     "spf": {
       "caption": "SPF Status",

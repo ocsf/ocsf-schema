@@ -6,43 +6,45 @@
   "name": "windows_service_activity",
   "attributes": {
     "activity_id": {
+      "description": "The normalized identifier of the activity that triggered the event. Each event class defines its own set of activity values. Use 0 (Unknown) when the activity cannot be determined. Use 99 (Other) when the activity does not match any defined value, in which case activity_name must be populated with the source-specific label.<br>Refer to the <code>win_service</code> attribute for details, unless any other attribute is mentioned.",
       "enum": {
         "1": {
           "caption": "Create",
-          "description": "A service is created, for example by calling <code>CreateService</code>. Refer to the <code>win_service</code> attribute for details."
+          "description": "A service is created, for example by calling CreateService Windows API."
         },
         "2": {
           "caption": "Reconfigure",
-          "description": "A service is reconfigured, for example by calling <code>ChangeServiceConfig</code> or <code>ChangeServiceConfig2</code>. Refer to the <code>win_service</code> attribute for details."
+          "description": "A service is reconfigured, for example by calling ChangeServiceConfig or ChangeServiceConfig2 Windows API. Refer to <code>prev_win_service</code> and <code>win_service</code> attributes for details."
         },
         "3": {
           "caption": "Start",
-          "description": "A stopped service is started, for example by calling <code>StartService</code>. Refer to the <code>service</code> attribute for details."
+          "description": "A stopped service is started, for example by calling StartService Windows API."
         },
         "4": {
           "caption": "Stop",
-          "description": "A running or paused service is stopped, for example by calling <code>ControlService</code> or <code>ControlServiceEx</code>. Refer to the <code>win_service</code> attribute for details."
+          "description": "A running or paused service is stopped, for example by calling ControlService or ControlServiceEx Windows API."
         },
         "5": {
           "caption": "Pause",
-          "description": "A running service is paused, for example by calling <code>ControlService</code> or <code>ControlServiceEx</code>. Refer to the <code>win_service</code> attribute for details."
+          "description": "A running service is paused, for example by calling ControlService or ControlServiceEx Windows API."
         },
         "6": {
           "caption": "Continue",
-          "description": "A paused service is continued, for example by calling <code>ControlService</code> or <code>ControlServiceEx</code>. Refer to the <code>win_service</code> attribute for details."
+          "description": "A paused service is continued, for example by calling ControlService or ControlServiceEx Windows API."
         },
         "7": {
           "caption": "Delete",
-          "description": "A service is deleted, for example by calling <code>DeleteService</code>. Refer to the <code>win_service</code> attribute for details."
+          "description": "A service is deleted, for example by calling DeleteService Windows API."
         }
       }
     },
-    "updated_win_service": {
-      "description": "The intended state of the <code>win_service</code> after the reconfiguration. On <code>Success</code>, represents the actual reconfigured state.",
+    "prev_win_service": {
+      "description": "The Windows service before the mutation.",
       "group": "primary",
       "requirement": "recommended"
     },
     "win_service": {
+      "description": "The current Windows service. On failed or unknown status of <code>Reconfigure</code> action may be populated with the intended state.",
       "group": "primary",
       "requirement": "required"
     }

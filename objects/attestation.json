@@ -2,10 +2,10 @@
   "caption": "Attestation",
   "name": "attestation",
   "extends": "object",
-  "description": "A cryptographic attestation that provides integrity, authenticity, and non-repudiation for an event record. The signature is computed over a canonical serialization of the event record, thereby binding all included fields to a verifiable identity. Optionally, the attestation may also support tamper-evident sequencing.",
+  "description": "A cryptographic attestation that provides integrity, authenticity, and non-repudiation for an event record. Each signature is computed over a canonical serialization of the event record, thereby binding all included fields to a verifiable identity. A single attestation may carry more than one signature (e.g., a co-signature, notary, or witness over the same record). Optionally, the attestation may also support tamper-evident sequencing.",
   "attributes": {
-    "signature": {
-      "description": "The digital signature over the canonical serialization of the event record, bound to the producer's verifiable identity. The signing algorithm, certificate or public-key material, and signing time are carried within the <code>digital_signature</code> object.",
+    "signatures": {
+      "description": "One or more digital signatures over the canonical serialization of the event record, each bound to a verifiable identity. The first is typically the producer; additional entries carry co-signatures such as a notary or witness over the same record. The signing algorithm, certificate or public-key material, and signing time are carried within each <code>digital_signature</code> object.",
       "requirement": "required"
     },
     "entry_hash": {

@@ -111,9 +111,6 @@ Thankyou! -->
   1. Added `prompt_text` and `response_text` attributes to the `message_context` object, complementing the existing `prompt_tokens` and `completion_tokens` metrics with the verbatim prompt and response text. [#1674](https://github.com/ocsf/ocsf-schema/pull/1674)
 * #### Platform Extensions
   1. Added `updated_win_service` attribute to Windows Service Activity Class in order to store reconfigured parameters of a Windows service. [#1663](https://github.com/ocsf/ocsf-schema/pull/1663)
-### Deprecated
-  1. Deprecated the `account_change` and `user_access_management` classes in favor of the `user_management` class. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
-  1. Deprecated the `user_result` attribute in favor of the `updated_user` attribute. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes

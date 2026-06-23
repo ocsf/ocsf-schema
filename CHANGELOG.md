@@ -78,6 +78,7 @@ Thankyou! -->
   1. Added `binary_data`, `contents`, `clipboard_native_type`, `string_data`. [#1655](https://github.com/ocsf/ocsf-schema/pull/1655)
   1. Added `uid_numeric` attribute to enable a unique identifier that is numeric to be represented natively using the `long_t` data type. [#1643](https://github.com/ocsf/ocsf-schema/pull/1643)
   1. Added `download_info` attribute to `file` object. [#1658](https://github.com/ocsf/ocsf-schema/pull/1658)
+  1. Added `prompt_text` and `response_text` attributes for capturing the input prompt text and model response text of an AI message. [#1674](https://github.com/ocsf/ocsf-schema/pull/1674)
 
 ### Improved
 * #### Categories
@@ -88,6 +89,7 @@ Thankyou! -->
   1. Added `initiator_id` and `initiator` to `Network Activity` with network-specific enums `Source Endpoint (1)` and `Destination Endpoint (2)`, and updated `src_endpoint` and `dst_endpoint` descriptions to reflect bi-flow and asymmetric flow scenarios. [#1598](https://github.com/ocsf/ocsf-schema/pull/1598)
   1. Added `transaction_id`, `opcode_id`/`opcode`, `flag_ids`/`flags`, `authority`, `query_additional`, and `response_additional` to `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
   1. Extended `activity_id` attribute in `HTTP Activity` to cover all methods in IANA HTTP Method Registry. [#1654](https://github.com/ocsf/ocsf-schema/pull/1654)
+  1. Added `users` to `group_management` to replace deprecated `user`. [#1666](https://github.com/ocsf/ocsf-schema/pull/1666)
 * #### Profiles
 * #### Objects
   1. Added `job_actions` array of objects to the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
@@ -106,6 +108,7 @@ Thankyou! -->
   1. Added `serialization` and `serialization_id` to the `digital_signature` object to record the canonical signing input (JCS, JWS, COSE, DSSE, Authenticode). [#1662](https://github.com/ocsf/ocsf-schema/pull/1662)
   1. Added `uid_numeric` to `_entity` so that a numeric `uid` value can be represented natively. [#1643](https://github.com/ocsf/ocsf-schema/pull/1643)
   1. Extended `http_method` attribute in the `http_request` object to cover all methods in IANA HTTP Method Registry. [#1654](https://github.com/ocsf/ocsf-schema/pull/1654)
+  1. Added `prompt_text` and `response_text` attributes to the `message_context` object, complementing the existing `prompt_tokens` and `completion_tokens` metrics with the verbatim prompt and response text. [#1674](https://github.com/ocsf/ocsf-schema/pull/1674)
 * #### Platform Extensions
   1. Added `updated_win_service` attribute to Windows Service Activity Class in order to store reconfigured parameters of a Windows service. [#1663](https://github.com/ocsf/ocsf-schema/pull/1663)
 ### Deprecated
@@ -132,6 +135,9 @@ Thankyou! -->
 1. Deprecated `packet_uid` attribute in `dns_query` object in favor of `transaction_id` on `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
 1. Deprecated `opcode` and `opcode_id` attributes in `dns_query` object in favor of `opcode`/`opcode_id` on `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
 1. Deprecated `flag_ids`, `flags`, and `packet_uid` attributes in `dns_answer` object in favor of `flag_ids`/`flags`/`transaction_id` on `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
+1. Deprecated the `account_change` and `user_access_management` classes in favor of the `user_management` class. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
+1. Deprecated the `user_result` attribute in favor of the `updated_user` attribute. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
+1. Deprecated the `user` attribute in the `group_management` class in favor of `users`. [#1666](https://github.com/ocsf/ocsf-schema/pull/1666)
 
 ### Misc
 1. Added static anti-pattern detection, LLM-to-static learning pipeline, and deprecated attribute filtering to the automated PR review workflows. [#1599](https://github.com/ocsf/ocsf-schema/pull/1599)

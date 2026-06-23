@@ -1,12 +1,12 @@
 {
   "caption": "AI Agent",
-  "description": "An autonomous AI agent that performs tasks under delegated authority. Distinguished from the OCSF agent object (which describes security sensors such as EDR and DLP tools) and from human principals. An AI agent has a stable logical identity across runs and a restart-sensitive instance identity. The agent owns its model — the ai_model attribute captures which model was backing the agent at the time of action.",
-  "extends": "object",
+  "description": "An autonomous AI agent that performs tasks under delegated authority. Distinguished from the OCSF agent object (which describes security sensors such as EDR and DLP tools) and from human principals. An AI agent has a stable logical identity across runs and a restart-sensitive instance identity. The agent owns its model; the ai_model attribute captures which model was backing the agent at the time of action.",
+  "extends": "_entity",
   "name": "ai_agent",
   "attributes": {
     "uid": {
       "caption": "AI Agent ID",
-      "description": "The stable logical identifier for the agent, assigned by the agent's authoritative source (e.g., its control plane, registry, or issuing identity provider). Persists across restarts and instances. Producers populate this from whatever identity they observe — for a runtime that owns the agent, this is its issued ID; for a gateway or proxy, it is typically derived from the agent's credential. Multiple producers logging the same agent should converge on the same <code>uid</code> when they share an authoritative source.",
+      "description": "The stable logical identifier for the agent, assigned by the agent's authoritative source (e.g., its control plane, registry, or issuing identity provider). Persists across restarts and instances. Producers populate this from whatever identity they observe: for a runtime that owns the agent, this is its issued ID; for a gateway or proxy, it is typically derived from the agent's credential. Multiple producers logging the same agent should converge on the same <code>uid</code> when they share an authoritative source.",
       "requirement": "required"
     },
     "instance_uid": {
@@ -25,7 +25,7 @@
     },
     "type_id": {
       "caption": "Agent Type ID",
-      "description": "The normalized identifier for the agent framework. Different agent frameworks have different identity, tool-call, and delegation semantics — recording the framework enables cross-framework normalization. Communication protocols (e.g., MCP, A2A) are a property of individual operations rather than the agent itself, and are surfaced on the relevant operation rather than here.",
+      "description": "The normalized identifier for the agent framework. Different agent frameworks have different identity, tool-call, and delegation semantics, so recording the framework enables cross-framework normalization. Communication protocols (e.g., MCP, A2A) are a property of individual operations rather than the agent itself, and are surfaced on the relevant operation rather than here.",
       "requirement": "recommended",
       "enum": {
         "0": {
@@ -60,7 +60,7 @@
     },
     "version": {
       "caption": "AI Agent Version",
-      "description": "The version of the agent — the agent's own code or configuration revision (e.g., <code>1.4.2</code>), distinct from the version of the model backing it (carried on <code>ai_model.version</code>). Enables correlation of behavioral changes with charter or configuration revisions across agent versions.",
+      "description": "The version of the agent: the agent's own code or configuration revision (e.g., <code>1.4.2</code>), distinct from the version of the model backing it (carried on <code>ai_model.version</code>). Enables correlation of behavioral changes with charter or configuration revisions across agent versions.",
       "requirement": "recommended"
     },
     "charter": {

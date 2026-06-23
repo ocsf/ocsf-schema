@@ -11,7 +11,7 @@
     },
     "instance_uid": {
       "caption": "AI Agent Instance ID",
-      "description": "Identifier for a specific running instance of the agent. Restart-sensitive: a new instance ID is expected after a process restart or re-spawn. Enables attribution of actions to a specific process or session of the agent.",
+      "description": "Identifier for a specific running instance or session of the agent, distinct from the stable logical <code>uid</code>. An instance is a single materialization of the agent: a conversation, session, or run. It may persist across restarts (a session that is suspended and later resumed keeps the same <code>instance_uid</code>) and may span multiple cooperating runtime components, so several events can share one <code>instance_uid</code>. Enables attribution of actions to a particular run of the agent rather than to the agent as a whole.",
       "requirement": "recommended"
     },
     "name": {

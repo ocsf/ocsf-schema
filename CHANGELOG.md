@@ -109,10 +109,11 @@ Thankyou! -->
   1. Added `uid_numeric` to `_entity` so that a numeric `uid` value can be represented natively. [#1643](https://github.com/ocsf/ocsf-schema/pull/1643)
   1. Extended `http_method` attribute in the `http_request` object to cover all methods in IANA HTTP Method Registry. [#1654](https://github.com/ocsf/ocsf-schema/pull/1654)
   1. Added `prompt_text` and `response_text` attributes to the `message_context` object, complementing the existing `prompt_tokens` and `completion_tokens` metrics with the verbatim prompt and response text. [#1674](https://github.com/ocsf/ocsf-schema/pull/1674)
-* #### Platform Extensions
-  1. Added `updated_win_service` attribute to Windows Service Activity Class in order to store reconfigured parameters of a Windows service. [#1663](https://github.com/ocsf/ocsf-schema/pull/1663)
 * #### Observables
 * #### Platform Extensions
+  1. Added `prev_win_service` attribute to Windows Service Activity Class in order to store previous state of the Windows service. [#1663](https://github.com/ocsf/ocsf-schema/pull/1663)
+  1. Improved `activity_id` description and descriptions for its enum values in Windows Service Activity Class.
+  1. Added "See specific usage" to `win_service` description in Windows extension dictionary.
 * #### Dictionary Attributes
   1. Improved `job` object description to describe cases beyond System Activity class.
 

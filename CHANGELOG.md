@@ -116,6 +116,9 @@ Thankyou! -->
   1. Added `prompt_text` and `response_text` attributes to the `message_context` object, complementing the existing `prompt_tokens` and `completion_tokens` metrics with the verbatim prompt and response text. [#1674](https://github.com/ocsf/ocsf-schema/pull/1674)
 * #### Observables
 * #### Platform Extensions
+  1. Added `prev_win_service` attribute to Windows Service Activity Class in order to store previous state of the Windows service. [#1663](https://github.com/ocsf/ocsf-schema/pull/1663)
+  1. Improved `activity_id` description and descriptions for its enum values in Windows Service Activity Class. [#1663](https://github.com/ocsf/ocsf-schema/pull/1663)
+  1. Added "See specific usage" to `win_service` description in Windows extension dictionary. [#1663](https://github.com/ocsf/ocsf-schema/pull/1663)
 * #### Dictionary Attributes
   1. Improved `job` object description to describe cases beyond System Activity class.
 

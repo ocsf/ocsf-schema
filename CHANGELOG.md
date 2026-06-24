@@ -48,8 +48,9 @@ Thankyou! -->
 * #### Event Classes
   1. Added user_management and role_management. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
 * #### Profiles
+  1. Added `record_integrity` profile carrying an `attestation` over the event record itself; domain-agnostic and applied alongside other profiles. [#1640](https://github.com/ocsf/ocsf-schema/issues/1640)
 * #### Objects
-  1. Added `attestation` object binding an event record to a verifiable identity, with optional tamper-evident chaining; carried on the `ai_operation` profile, with AI as the first consumer. [#1640](https://github.com/ocsf/ocsf-schema/issues/1640)
+  1. Added `attestation` object binding an event record to a verifiable identity, with optional tamper-evident chaining; carried on the `record_integrity` profile, with AI as the first consumer. [#1640](https://github.com/ocsf/ocsf-schema/issues/1640)
   1. Added `job_action` object to describe an action that job can perform. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `job_trigger` object to describe a condition when job performs its action. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `iam_role` object for user, role and group management. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
@@ -68,7 +69,7 @@ Thankyou! -->
   1. Added `updated_entity`, `updated_file`, `updated_resources`, and `updated_web_resources` attributes for reporting intended or actual post-update state. [#1618](https://github.com/ocsf/ocsf-schema/pull/1618)
   1. Added `initiator` and `initiator_id` attributes for identifying which endpoint initiated a network communication, with generic `Unknown (0)` and `Other (99)` enums. [#1598](https://github.com/ocsf/ocsf-schema/pull/1598)
   1. Added `peripheral_devices` for a set of peripherals. [#1645](https://github.com/ocsf/ocsf-schema/pull/1645)
-  1. Added `attestation`, `entry_hash`, `prev_entry_hash`, and `chain_uid` attributes supporting the `attestation` object on the `ai_operation` profile. [#1640](https://github.com/ocsf/ocsf-schema/issues/1640)
+  1. Added `attestation`, `entry_hash`, `prev_entry_hash`, and `chain_uid` attributes supporting the `attestation` object on the `record_integrity` profile, plus `ai_attestation` on the `ai_operation` profile for attesting an AI-specific subject such as the agent's charter. [#1640](https://github.com/ocsf/ocsf-schema/issues/1640)
   1. Added `uid_numeric` attribute to enable a unique identifier that is numeric to be represented natively using the `long_t` data type. [#1643](https://github.com/ocsf/ocsf-schema/pull/1643)
   1. Added `download_info` attribute to `file` object. [#1658](https://github.com/ocsf/ocsf-schema/pull/1658)
 

@@ -88,7 +88,7 @@ Thankyou! -->
 * #### Event Classes
   1. Added `updated_job` in `Scheduled Job Activity` class to reflect the actual or attempted state of the job upon update activity. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `iam_role` and role management support to `group_management`, `authorize_session`. Filled out the `group_management` class with complete lifecycle as well as added `resources`, `policies` to the discrete activities. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
-  1. Added `updated_*` attributes to `Entity Management`, `File Activity`, `File Hosting`, and `Web Resources Activity` for class-specific update result reporting. [#1618](https://github.com/ocsf/ocsf-schema/pull/1618)
+  1. Added `updated_*` attributes to `Entity Management` and `Web Resources Activity` for class-specific update result reporting. [#1618](https://github.com/ocsf/ocsf-schema/pull/1618)
   1. Added `initiator_id` and `initiator` to `Network Activity` with network-specific enums `Source Endpoint (1)` and `Destination Endpoint (2)`, and updated `src_endpoint` and `dst_endpoint` descriptions to reflect bi-flow and asymmetric flow scenarios. [#1598](https://github.com/ocsf/ocsf-schema/pull/1598)
   1. Added `transaction_id`, `opcode_id`/`opcode`, `flag_ids`/`flags`, `authority`, `query_additional`, and `response_additional` to `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
   1. Extended `activity_id` attribute in `HTTP Activity` to cover all methods in IANA HTTP Method Registry. [#1654](https://github.com/ocsf/ocsf-schema/pull/1654)

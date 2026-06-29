@@ -135,7 +135,8 @@ Thankyou! -->
 ### Bugfixes
 1. Fixed the static anti-pattern checker so dictionary attributes are analyzed with the full compiled dictionary; the `missing-sibling` rule no longer false-positives when the sibling exists in `dictionary.json`. [#1613](https://github.com/ocsf/ocsf-schema/pull/1613)
 1. Added `tunnel_type_id` enum values to `dictionary.json` to resolve the anti-pattern of missing enums in the dictionary attribute. [#1602](https://github.com/ocsf/ocsf-schema/pull/1602)
-1. Fixed `rcode_id` enum value 16 caption from `BADSIG_VERS` to `BADVERS` in `DNS Activity`. Code 16 in the DNS header RCODE space is specifically Bad EDNS OPT Version; BADSIG belongs in the TSIG error field. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
+1. Fixed `rcode_id` enum value 16 caption from `BADSIG_VERS` to `BADVERS` in `DNS Activity`. Code 16 in the DNS header RCODE space is specifically Bad EDNS OPT Version; BADSIG belongs in the TSIG error field. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634),
+1. Fixed bad URLs to ASTM F3411-22a in `drone_flights_activity` event class and `unmanned_aerial_system` object. [#1676](https://github.com/ocsf/ocsf-schema/pull/1676)
 
 ### Deprecated
 1. Deprecated `is_src_dst_assignment_known` dictionary attribute and its usage in `Network Activity` in favour of `initiator_id`. [#1598](https://github.com/ocsf/ocsf-schema/pull/1598)
@@ -159,6 +160,7 @@ Thankyou! -->
 ### Misc
 1. Added static anti-pattern detection, LLM-to-static learning pipeline, and deprecated attribute filtering to the automated PR review workflows. [#1599](https://github.com/ocsf/ocsf-schema/pull/1599)
 1. Added `references` and `@deprecated` support to the profile metaschema, aligning it with event class and object metaschemas.[#1625](https://github.com/ocsf/ocsf-schema/pull/1625)
+1. Updated all dictionary attributes, event classes, and objects where descriptions contained embedded authoritative URLs, and moved them to `references` sections, keeping the normative schema descriptions free from required URLs. [#1676](https://github.com/ocsf/ocsf-schema/pull/1676)
 
 ## [v1.8.0] - Mar 16th, 2026
 ### Added

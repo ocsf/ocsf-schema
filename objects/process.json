@@ -8,7 +8,17 @@
     "$include": [
       "profiles/container.json"
     ],
+    "ai_agent": {
+      "description": "The autonomous AI agent that this process is running or hosting, if applicable. Populate when the process serves as the runtime environment for an AI agent (e.g., a Python process executing a LangChain agent or hosting an MCP server). When a process hosts multiple agents and the activity cannot be attributed to one specifically, use <code>hosted_ai_agent_list</code> instead.",
+      "profile": "ai_operation",
+      "requirement": "optional"
+    },
     "ancestry": {
+      "requirement": "optional"
+    },
+    "hosted_ai_agent_list": {
+      "description": "The list of autonomous AI agents hosted by this process. Use when a single process hosts multiple agents (e.g., an IDE running several coding agents within the same host process) and the producer cannot attribute a specific activity to a single agent. When attribution is available, populate the singular <code>ai_agent</code> attribute instead.",
+      "profile": "ai_operation",
       "requirement": "optional"
     },
     "environment_variables": {

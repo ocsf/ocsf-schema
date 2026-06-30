@@ -177,6 +177,26 @@
       "description": "The permissions that were granted in a platform-native format. See specific usage.",
       "type": "integer_t"
     },
+    "prev_entry_hash": {
+      "caption": "Previous Entry Hash",
+      "description": "Fingerprint of the prior record in a tamper-evident chain.",
+      "type": "fingerprint"
+    },
+    "entry_hash": {
+      "caption": "Entry Hash",
+      "description": "Fingerprint of a record's canonical serialization, used as a link in a tamper-evident chain.",
+      "type": "fingerprint"
+    },
+    "chain_uid": {
+      "caption": "Chain ID",
+      "description": "Identifier of an append-only chain, such as a forensic or audit log, that groups a sequence of attested records for independent verification. Stable for the lifetime of the chain.",
+      "type": "string_t"
+    },
+    "attestation": {
+      "caption": "Attestation",
+      "description": "A cryptographic attestation over an event record, providing integrity, authenticity, and non-repudiation. Carried on the <code>record_integrity</code> profile; the object itself is domain-agnostic.",
+      "type": "attestation"
+    },
     "response_additional": {
       "caption": "DNS Response Additional Section",
       "description": "The Additional section of the DNS response message sent by the server, containing supplementary resource records and an optional TSIG record. A DNS message has at most one TSIG record; for a transaction with both query and response, the query TSIG is in <code>query_additional.tsig</code> and the response TSIG is in <code>response_additional.tsig</code>.",

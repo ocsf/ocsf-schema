@@ -50,6 +50,7 @@ Thankyou! -->
   1. Added clipboard_activity. [#1655](https://github.com/ocsf/ocsf-schema/pull/1655)
   1. Added device_power_state_activity (`Device Power State Activity`) class to capture power state changes of a device. [#1624](https://github.com/ocsf/ocsf-schema/pull/1624)
 * #### Profiles
+  1. Added `record_integrity` profile that adds a cryptographic `attestation` over the event record (integrity, authenticity, and non-repudiation), applied at the base event so any class can carry it. [#1661](https://github.com/ocsf/ocsf-schema/pull/1661)
 * #### Objects
   1. Added `job_action` object to describe an action that job can perform. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `job_trigger` object to describe a condition when job performs its action. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
@@ -63,9 +64,11 @@ Thankyou! -->
   1. Added `note` object to capture a comment along with the user who made the comment and when the note was modified. [#1670](https://github.com/ocsf/ocsf-schema/pull/1670)
 
   1. Added `ai_agent` object representing an autonomous AI agent, distinct from the existing `agent` object (which models security sensors such as EDR, DLP, APM). [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
+  1. Added `attestation` object carrying digital `signatures` over an event record, with optional tamper-evident chain fields (`entry_hash`, `prev_entry_hash`, `chain_uid`). [#1661](https://github.com/ocsf/ocsf-schema/pull/1661)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
+  1. Added `attestation`, `entry_hash`, `prev_entry_hash`, and `chain_uid` attributes for the `record_integrity` profile. [#1661](https://github.com/ocsf/ocsf-schema/pull/1661)
   1. Added `com_class_uuid` attribute to reflect Class Identifier of a Component Object Model. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `event_codes` that is a set of event identifiers. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `log_sources` that is a set of log systems. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
@@ -103,6 +106,7 @@ Thankyou! -->
   1. Added `notes` to `finding` and `incident_finding`. [#1670](https://github.com/ocsf/ocsf-schema/pull/1670)
   1. Added `resources` to `finding` for consistency and referencing within the class. [#1670](https://github.com/ocsf/ocsf-schema/pull/1670)
   1. Added the `ai_operation` profile to the `system`, `network`, `application`, and `iam` base event classes so all System Activity, Network Activity, Application Activity, and Identity & Access Management events inherit agent attribution. Also added the profile to `email_activity` (which does not extend a base with the profile). [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
+  1. Added the `record_integrity` profile to the `base_event` class so every event class can optionally carry a cryptographic `attestation` over its record. [#1661](https://github.com/ocsf/ocsf-schema/pull/1661)
 * #### Profiles
   1. Added `ai_agent` attribute to the `ai_operation` profile. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
 * #### Objects

@@ -10,6 +10,14 @@
     }
   ],
   "attributes": {
+    "$include": [
+      "profiles/ai_operation.json"
+    ],
+    "ai_agent": {
+      "description": "The AI agent that is the subject of the finding, for example an agent targeted or compromised by the detected activity.",
+      "profile": "ai_operation",
+      "requirement": "optional"
+    },
     "anomaly_analyses": {
       "description": "Describes baseline information about normal activity patterns, along with any detected deviations or anomalies that triggered this finding.",
       "group": "context",
@@ -103,5 +111,9 @@
       "group": "context",
       "requirement": "optional"
     }
-  }
+  },
+  "profiles": [
+    "incident",
+    "ai_operation"
+  ]
 }

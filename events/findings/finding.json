@@ -56,7 +56,16 @@
       "description": "Describes the affected device/host. If applicable, it can be used in conjunction with <code>Resource(s)</code>. <p> e.g. Specific details about an AWS EC2 instance, that is affected by the Finding.</p>",
       "group": "context",
       "requirement": "optional",
-      "profile": null
+      "profile": null,
+      "@deprecated": {
+        "message": "Use the <code>devices</code> attribute instead.",
+        "since": "1.9.0"
+      }
+    },
+    "devices": {
+      "description": "Describes the affected devices/hosts. If applicable, it can be used in conjunction with <code>Resource(s)</code>. <p> e.g. Specific details about AWS EC2 instances, that are affected by the Finding.</p><p>If a single device is the source of the Finding, use the <code>Host</code> profile.</p>",
+      "group": "context",
+      "requirement": "optional"
     },
     "end_time": {
       "description": "The time of the most recent event or finding that contributed to this finding.",

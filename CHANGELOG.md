@@ -62,6 +62,7 @@ Thankyou! -->
   1. Added `download_info` object with information pertaining to a downloaded file. [#1658](https://github.com/ocsf/ocsf-schema/pull/1658)
   1. Added `note` object to capture a comment along with the user who made the comment and when the note was modified. [#1670](https://github.com/ocsf/ocsf-schema/pull/1670)
 
+  1. Added `ai_agent` object representing an autonomous AI agent, distinct from the existing `agent` object (which models security sensors such as EDR, DLP, APM). [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -75,7 +76,7 @@ Thankyou! -->
   1. Added `speed_mhz` for compute unit clock speed in MHz. [#1630](https://github.com/ocsf/ocsf-schema/pull/1630)
   1. Added `cpu_info_list` as an array of `cpu_info` objects. [#1630](https://github.com/ocsf/ocsf-schema/pull/1630)
   1. Added `iam_role`, `iam_roles`, `updated_role`, `updated_group`, `updated_user` attributes. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
-  1. Added `updated_entity`, `updated_file`, `updated_resources`, and `updated_web_resources` attributes for reporting intended or actual post-update state. [#1618](https://github.com/ocsf/ocsf-schema/pull/1618)
+  1. Added `updated_entity`, `updated_resources`, and `updated_web_resources` attributes for reporting intended or actual post-update state. [#1618](https://github.com/ocsf/ocsf-schema/pull/1618)
   1. Added `initiator` and `initiator_id` attributes for identifying which endpoint initiated a network communication, with generic `Unknown (0)` and `Other (99)` enums. [#1598](https://github.com/ocsf/ocsf-schema/pull/1598)
   1. Added `transaction_id`, `query_additional`, `response_additional`, `authority`, and `key_name` dictionary attributes for DNS Activity restructuring. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
   1. Added `peripheral_devices` for a set of peripherals. [#1645](https://github.com/ocsf/ocsf-schema/pull/1645)
@@ -85,20 +86,25 @@ Thankyou! -->
   1. Added `download_info` attribute to `file` object. [#1658](https://github.com/ocsf/ocsf-schema/pull/1658)
   1. Added `notes` attribute as an array of `Note` objects. [#1670](https://github.com/ocsf/ocsf-schema/pull/1670)
   1. Added `prompt_text` and `response_text` attributes for capturing the input prompt text and model response text of an AI message. [#1674](https://github.com/ocsf/ocsf-schema/pull/1674)
+  1. Added `ai_agent` attribute referencing the new `ai_agent` object. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
+  1. Added `hosted_ai_agent_list` attribute for enumerating AI agents hosted by a process or other runtime. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
+  1. Added `charter` attribute (file type) for documents defining the role, scope, and operating bounds of an entity. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
 
 ### Improved
 * #### Categories
 * #### Event Classes
   1. Added `updated_job` in `Scheduled Job Activity` class to reflect the actual or attempted state of the job upon update activity. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `iam_role` and role management support to `group_management`, `authorize_session`. Filled out the `group_management` class with complete lifecycle as well as added `resources`, `policies` to the discrete activities. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
-  1. Added `updated_*` attributes to `Entity Management`, `File Activity`, `File Hosting`, and `Web Resources Activity` for class-specific update result reporting. [#1618](https://github.com/ocsf/ocsf-schema/pull/1618)
+  1. Added `updated_*` attributes to `Entity Management` and `Web Resources Activity` for class-specific update result reporting. [#1618](https://github.com/ocsf/ocsf-schema/pull/1618)
   1. Added `initiator_id` and `initiator` to `Network Activity` with network-specific enums `Source Endpoint (1)` and `Destination Endpoint (2)`, and updated `src_endpoint` and `dst_endpoint` descriptions to reflect bi-flow and asymmetric flow scenarios. [#1598](https://github.com/ocsf/ocsf-schema/pull/1598)
   1. Added `transaction_id`, `opcode_id`/`opcode`, `flag_ids`/`flags`, `authority`, `query_additional`, and `response_additional` to `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
   1. Extended `activity_id` attribute in `HTTP Activity` to cover all methods in IANA HTTP Method Registry. [#1654](https://github.com/ocsf/ocsf-schema/pull/1654)
   1. Added `users` to `group_management` to replace deprecated `user`. [#1666](https://github.com/ocsf/ocsf-schema/pull/1666)
   1. Added `notes` to `finding` and `incident_finding`. [#1670](https://github.com/ocsf/ocsf-schema/pull/1670)
   1. Added `resources` to `finding` for consistency and referencing within the class. [#1670](https://github.com/ocsf/ocsf-schema/pull/1670)
+  1. Added the `ai_operation` profile to the `system`, `network`, `application`, and `iam` base event classes so all System Activity, Network Activity, Application Activity, and Identity & Access Management events inherit agent attribution. Also added the profile to `email_activity` (which does not extend a base with the profile). [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
 * #### Profiles
+  1. Added `ai_agent` attribute to the `ai_operation` profile. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
 * #### Objects
   1. Added `job_actions` array of objects to the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `job_triggers` array of objects to the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
@@ -121,9 +127,8 @@ Thankyou! -->
   1. Added `prompt_text` and `response_text` attributes to the `message_context` object, complementing the existing `prompt_tokens` and `completion_tokens` metrics with the verbatim prompt and response text. [#1674](https://github.com/ocsf/ocsf-schema/pull/1674)
   1. Added `Code Signing (5)` enum value to `algorithm_id` and `Code Signing (6)` enum value to `serialization_id` in the `digital_signature` object. [#1668](https://github.com/ocsf/ocsf-schema/pull/1668)
   1. Removed `Microsoft` from descriptions in `algorithm_id` and `serialization_id` in the `digital_signature` object. [#1668](https://github.com/ocsf/ocsf-schema/pull/1668)
-### Deprecated
-  1. Deprecated the `account_change` and `user_access_management` classes in favor of the `user_management` class. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
-  1. Deprecated the `user_result` attribute in favor of the `updated_user` attribute. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
+  1. Added `ai_agent` to `process`. Added `hosted_ai_agent_list` to `process` for cases where a process hosts multiple agents that cannot be individually attributed. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
+  1. Added `charter` attribute to `ai_agent` for the agent's durable role definition document (system prompt or constitution). [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
 * #### Observables
 * #### Platform Extensions
   1. Added `prev_win_service` attribute to Windows Service Activity Class in order to store previous state of the Windows service. [#1663](https://github.com/ocsf/ocsf-schema/pull/1663)
@@ -140,7 +145,7 @@ Thankyou! -->
 ### Deprecated
 1. Deprecated `is_src_dst_assignment_known` dictionary attribute and its usage in `Network Activity` in favour of `initiator_id`. [#1598](https://github.com/ocsf/ocsf-schema/pull/1598)
 1. Deprecated `message` attribute in the `http_response` object. The `code` and `status` attributes already convey the HTTP status code and reason phrase. [#1616](https://github.com/ocsf/ocsf-schema/pull/1616)
-1. Deprecated `entity_result`, `file_result`, `resources_result`, and `web_resources_result` in favor of the corresponding `updated_*` attributes. [#1618](https://github.com/ocsf/ocsf-schema/pull/1618)
+1. Deprecated `entity_result`, `resources_result`, and `web_resources_result` in favor of the corresponding `updated_*` attributes. [#1618](https://github.com/ocsf/ocsf-schema/pull/1618)
 1. Deprecated `resource` in `Group Management` in favor of `resources`. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
 1. Deprecated usage of `cmd_line` attribute in favor of `job_actions.cmd_line` in the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
 1. Deprecated usage of `last_run_time` attribute in favor of `job_triggers.last_run_time` in the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)

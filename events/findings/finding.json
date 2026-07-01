@@ -4,6 +4,9 @@
   "description": "The Finding event is a generic event that defines a set of attributes available in the Findings category.",
   "extends": "base_event",
   "name": "finding",
+  "profiles": [
+    "incident"
+  ],
   "attributes": {
     "$include": [
       "profiles/incident.json"
@@ -53,22 +56,23 @@
       "profile": null
     },
     "device": {
-      "description": "Describes the affected device/host. If applicable, it can be used in conjunction with <code>Resource(s)</code>. <p> e.g. Specific details about an AWS EC2 instance, that is affected by the Finding.</p>",
+      "description": "Describes the device/host relevant to the finding. <p>If applicable, it can be used in conjunction with <code>resources</code>. e.g. The role of the device as the target or the actor, its IP address etc.</p><p>If a single device is the source of the finding, rather than a targeted or affected device, use the <code>Host</code> profile and populate <code>device</code>.</p>",
       "group": "context",
       "requirement": "optional",
-      "profile": null,
-      "@deprecated": {
-        "message": "Use the <code>devices</code> attribute instead.",
-        "since": "1.9.0"
-      }
+      "profile": null
     },
     "devices": {
-      "description": "Describes the affected devices/hosts. If applicable, it can be used in conjunction with <code>Resource(s)</code>. <p> e.g. Specific details about AWS EC2 instances, that are affected by the Finding.</p><p>If a single device is the source of the Finding, use the <code>Host</code> profile.</p>",
+      "description": "Describes the devices/hosts relevant to the finding. <p>If applicable, they can be used in conjunction with <code>resources</code>. e.g. The roles of the devices as targets or actors, their IP addresses etc.</p><p>If a single device is the source of the finding, use the <code>Host</code> profile and populate <code>device</code>.</p>",
       "group": "context",
       "requirement": "optional"
     },
     "end_time": {
       "description": "The time of the most recent event or finding that contributed to this finding.",
+      "requirement": "optional"
+    },
+    "endpoint_connections": {
+      "description": "Describes the affected endpoint network connections, or network connection attempts. <p>If applicable, they can be used in conjunction with <code>resources</code>. e.g. The roles of the endpoints as targets or actors, their hostnames etc.</p>",
+      "group": "context",
       "requirement": "optional"
     },
     "finding_info": {
@@ -130,12 +134,14 @@
         }
       }
     },
+    "users": {
+      "description": "Describes the users that are affected by the finding.</p><p>If a single user is the source of the finding or activities behind the finding, use the <code>Host</code> profile and populate <code>actor.user</code>.</p>",
+      "group": "context",
+      "requirement": "optional"
+    },
     "vendor_attributes": {
       "group": "context",
       "requirement": "optional"
     }
-  },
-  "profiles": [
-    "incident"
-  ]
+  }
 }

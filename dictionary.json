@@ -3481,6 +3481,11 @@
       "description": "The IP address, in either IPv4 or IPv6 format.",
       "type": "ip_t"
     },
+    "is_aggregate": {
+      "caption": "Aggregate",
+      "description": "Indicates that the event or finding represents an aggregated set. See specific usage.",
+      "type": "boolean_t"
+    },
     "is_alert": {
       "caption": "Alert",
       "description": "Indicates that the event is considered to be an alertable signal.",
@@ -6782,7 +6787,7 @@
     },
     "threat_actor": {
       "caption": "Threat Actor",
-      "description": "A threat actor is an individual or group that conducts malicious cyber activities, often with financial, political, or ideological motives.",
+      "description": "A threat actor is the technical representation of an individual or group that conducts malicious cyber activities, often with financial, political, or ideological motives.",
       "type": "threat_actor",
       "references": [
         {
@@ -6790,6 +6795,55 @@
           "url": "https://stixproject.github.io/data-model/1.2/ta/ThreatActorType/"
         }
       ]
+    },
+    "threat_source": {
+      "caption": "Threat Source",
+      "description": "The technology from where a threat (or multiple threats) is reported, or originates from, normalized to the caption of the threat_source_id value.",
+      "type": "string_t"
+    },
+    "threat_source_id": {
+      "caption": "Threat Source ID",
+      "description": "The technology from where a threat (or multiple threats) is reported, or originates.<p>Note: this does not imply that the threat source is the threat actor.</p>",
+      "sibling": "threat_source",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The threat source is unknown"
+        },
+        "1": {
+          "caption": "Network",
+          "description": "The threat is reported by, or originates from a network, firewall, or IPS sensor."
+        },
+        "2": {
+          "caption": "Endpoint",
+          "description": "The threat is reported by, or originates from an endpoint device."
+        },
+        "3": {
+          "caption": "Email",
+          "description": "The threat originates from an email or phishing exploit."
+        },
+        "4": {
+          "caption": "IAM",
+          "description": "The threat originates from an identity or privilege escalation exploit."
+        },
+        "5": {
+          "caption": "Proxy",
+          "description": "The threat is reported by a forward proxy."
+        },
+        "6": {
+          "caption": "Threat Intel",
+          "description": "The threat is reported by a threat intelligence feed or report."
+        },
+        "7": {
+          "caption": "Application",
+          "description": "The threat originates from an application."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The threat source is not mapped. See the <code>threat_source</code> attribute, which contains a data source specific value."
+        }
+      }
     },
     "ticket": {
       "caption": "Ticket",
@@ -6994,7 +7048,7 @@
     },
     "type_id": {
       "caption": "Type ID",
-      "description": "The normalized type identifier of an object. See specific usage.",
+      "description": "The normalized type identifier of an object or value. See specific usage.",
       "sibling": "type",
       "type": "integer_t",
       "enum": {
@@ -7018,6 +7072,12 @@
       "description": "The event/finding type ID. It identifies the event's semantics and structure. Producers and mappers <b>must</b> compute this as <code>class_uid * 100 + activity_id</code>. It uniquely identifies the combination of event class and activity across the entire schema. For example, <code>Detection Finding: Create</code> is <code>200401</code>.",
       "sibling": "type_name",
       "type": "long_t"
+    },
+    "type_uid_list": {
+      "caption": "Type ID List",
+      "description": "A list of <code>type_uid</code> integer values. See specific usage.",
+      "type": "long_t",
+      "is_array": true
     },
     "types": {
       "caption": "Types",

@@ -75,6 +75,11 @@
       "group": "context",
       "requirement": "optional"
     },
+    "is_aggregate": {
+      "description": "If set, indicates that the finding aggregates other findings. See <code>finding_info.related_events</code> when this value is <code>true</code> and the related events are findings.<p>Note that aggregated findings are similar to the <code>Incident Finding</code> if the <code>Incident</code> profile is applied.",
+      "group": "context",
+      "requirement": "optional"
+    },
     "finding_info": {
       "group": "primary",
       "requirement": "required"
@@ -97,6 +102,11 @@
     },
     "time": {
       "description": "The finding creation time &mdash; when the finding was first generated, not when the underlying activity occurred. For the time range of contributing events, use <code>start_time</code> and <code>end_time</code>."
+    },
+    "type_uid_list": {
+      "caption": "Aggregate Types",
+      "description": "A unique list of <code>type_uid</code> values that represent the type of each group of findings when <code>finding_info.related_events</code> include other findings. This is a convenience that avoids walking the ist of <code>finding_info.related_events</code> to filter sets of similar findings that are not activities.",
+      "requirement": "optional"
     },
     "status": {
       "description": "The finding lifecycle status label, normalized to the caption of the <code>status_id</code> value. When <code>status_id</code> is <code>99</code> (Other), this <b>must</b> contain the source-specific status label.",

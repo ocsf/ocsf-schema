@@ -2,7 +2,7 @@
   "caption": "Attestation",
   "name": "attestation",
   "extends": "object",
-  "description": "A cryptographic attestation that an event record has not been altered since it was produced and was produced by the holder of a verifiable identity, providing integrity, authenticity, and non-repudiation. Each signature is computed over a canonical serialization of the record, binding the included fields to that identity. An attestation may carry more than one signature (for example, a co-signature, notary, or witness over the same record) and may participate in a tamper-evident chain through its entry and previous-entry fingerprints. The verifiable identity is a technical credential, such as a key or certificate, and is not an attribution of any person, organization, or state.",
+  "description": "A cryptographic attestation that an event record has not been altered since it was produced and was produced by the holder of a verifiable identity, providing integrity, authenticity, and non-repudiation. Each signature is computed over a canonical serialization of the record, binding the included fields to that identity. An attestation may carry more than one signature (for example, a co-signature, notary, or witness over the same record) and may participate in a tamper-evident chain through its record and previous-record fingerprints. The verifiable identity is a technical credential, such as a key or certificate, and is not an attribution of any person, organization, or state.",
   "attributes": {
     "uid": {
       "caption": "Attestation ID",
@@ -13,19 +13,19 @@
       "description": "One or more digital signatures over the canonical serialization of the event record, each bound to a verifiable identity. The first entry is typically the producer; additional entries carry co-signatures such as a notary or witness over the same record. The signing algorithm, certificate or public-key material, and signing time are carried within each <code>digital_signature</code> object.",
       "requirement": "required"
     },
-    "entry_hash": {
-      "caption": "Entry Hash",
-      "description": "Fingerprint of this record's canonical serialization. The next record in the chain references it through that record's <code>prev_entry_hash</code>, so that altering this record breaks every later link.",
+    "record_hash": {
+      "caption": "Record Hash",
+      "description": "Fingerprint of this record's canonical serialization. The next record in the chain references it through that record's <code>prev_record_hash</code>, so that altering this record breaks every later link.",
       "requirement": "required"
     },
-    "prev_entry_hash": {
-      "caption": "Previous Entry Hash",
+    "prev_record_hash": {
+      "caption": "Previous Record Hash",
       "description": "Fingerprint of the prior record in the chain, providing tamper-evident ordering. Absent on the first, or genesis, entry of a chain.",
       "requirement": "recommended"
     },
     "chain_uid": {
       "caption": "Chain ID",
-      "description": "Identifier of the append-only chain, such as a forensic or audit log, that this record belongs to. It groups a sequence of attestations so that an independent verifier can locate and validate them in order; it identifies the chain itself and is not a reference to any record outside of this one. Stable for the lifetime of the chain. For example, every attestation produced during a single agent session shares one <code>chain_uid</code>, while each record carries its own <code>entry_hash</code> and links to its predecessor through <code>prev_entry_hash</code>.",
+      "description": "Identifier of the append-only chain, such as a forensic or audit log, that this record belongs to. It groups a sequence of attestations so that an independent verifier can locate and validate them in order; it identifies the chain itself and is not a reference to any record outside of this one. Stable for the lifetime of the chain. For example, every attestation produced during a single agent session shares one <code>chain_uid</code>, while each record carries its own <code>record_hash</code> and links to its predecessor through <code>prev_record_hash</code>.",
       "requirement": "recommended"
     }
   }

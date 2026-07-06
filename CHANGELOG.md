@@ -64,11 +64,11 @@ Thankyou! -->
   1. Added `note` object to capture a comment along with the user who made the comment and when the note was modified. [#1670](https://github.com/ocsf/ocsf-schema/pull/1670)
 
   1. Added `ai_agent` object representing an autonomous AI agent, distinct from the existing `agent` object (which models security sensors such as EDR, DLP, APM). [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
-  1. Added `attestation` object carrying digital `signatures` over an event record, with optional tamper-evident chain fields (`entry_hash`, `prev_entry_hash`, `chain_uid`). [#1661](https://github.com/ocsf/ocsf-schema/pull/1661)
+  1. Added `attestation` object carrying digital `signatures` over an event record, with optional tamper-evident chain fields (`record_hash`, `prev_record_hash`, `chain_uid`). [#1661](https://github.com/ocsf/ocsf-schema/pull/1661)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
-  1. Added `attestation`, `entry_hash`, `prev_entry_hash`, and `chain_uid` attributes for the `record_integrity` profile. [#1661](https://github.com/ocsf/ocsf-schema/pull/1661)
+  1. Added `attestation`, `record_hash`, `prev_record_hash`, and `chain_uid` attributes for the `record_integrity` profile. [#1661](https://github.com/ocsf/ocsf-schema/pull/1661)
   1. Added `com_class_uuid` attribute to reflect Class Identifier of a Component Object Model. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `event_codes` that is a set of event identifiers. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `log_sources` that is a set of log systems. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)

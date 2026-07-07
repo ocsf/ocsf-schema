@@ -65,6 +65,15 @@ More details about OCSF concepts, terminology and use-cases can be found in [Und
    * Avoid repetition of words. Example: `src_endpoint.src_ip` should be `src_endpoint.ip`.
    * Avoid abbreviations when possible. Some exceptions can be made for well-accepted abbreviation. Example: `ip`, `os`, `cve` etc.
 
+#### Caption & description style (normative & neutral)
+
+To keep OCSF suitable for international standardization (e.g. ITU ratification), captions and descriptions must be self-contained, vendor-neutral, and free of personal or politically-charged framing. An automated reviewer comments on PRs that don't follow these rules; the same rules are summarized here so you can get them right up front.
+
+1. **No authoritative URLs in captions or descriptions.** Refer to the source by name (e.g. `RFC 1035`, `MITRE ATT&CK`, `ASTM F3411-22a`) and put the link in the container's `references` array. URLs are fine only as illustrative example values, never as the citation for a field.
+2. **No trademark/registered marks (®, ™, ℠) in captions or descriptions.** Use generic wording and keep the marked, proprietary name in `references` only. See `objects/attack.json` for the canonical pattern. (The canonical proprietary-source objects — `attack`, `atlas`, `d3fend`, `d3f_tactic`, `d3f_technique` — may keep the mark in their own primary caption.)
+3. **No company/vendor/product names in captions or descriptions.** Use the generic technology or standard, and keep any vendor name to `examples` only. Product names that *are* the modeled domain inside a platform extension (e.g. Windows registry concepts under `extensions/windows/`) are an exception.
+4. **Keep descriptions technical, not personal or political.** Write descriptions as data definitions, not as descriptions of a real person or a nation/state. Avoid anthropomorphic/biographical framing, personal or protected-class characterization (race, religion, health, citizenship, political affiliation, etc.), and politically-charged wording. This does **not** ban legitimate entities — `user`, `account`, `identity`, `actor`, and `person` remain valid technical terms, and geographic values stored as data (e.g. an ISO country code) are fine. When phrasing drifts toward describing a human, reframe toward the account/identity/principal — e.g. prefer "the user account and its security-relevant attributes" over "the user and what they personally like to do".
+
 #### How to define a `field` in the dictionary?
 
 To add a new field in OCSF, you need to define it in the [dictionary.json](https://github.com/ocsf/ocsf-schema/blob/main/dictionary.json) file as described below. 

@@ -177,6 +177,11 @@
       "description": "The permissions that were granted in a platform-native format. See specific usage.",
       "type": "integer_t"
     },
+    "response_additional": {
+      "caption": "DNS Response Additional Section",
+      "description": "The Additional section of the DNS response message sent by the server, containing supplementary resource records and an optional TSIG record. A DNS message has at most one TSIG record; for a transaction with both query and response, the query TSIG is in <code>query_additional.tsig</code> and the response TSIG is in <code>response_additional.tsig</code>.",
+      "type": "dns_section"
+    },
     "additional_restrictions": {
       "caption": "Additional Restrictions",
       "description": "The supplementary restrictions that may apply to an entity, by the virtue of a policy. See specific usage.",
@@ -215,6 +220,11 @@
       "description": "A list of <code>agent</code> objects associated with a device, endpoint, or resource.",
       "type": "agent",
       "is_array": true
+    },
+    "ai_agent": {
+      "caption": "AI Agent",
+      "description": "An autonomous AI agent that performs tasks under delegated authority. Distinguished from the OCSF <code>agent</code> object, which describes security sensors such as EDR and DLP tools.",
+      "type": "ai_agent"
     },
     "ai_model": {
       "caption": "AI Model",
@@ -547,6 +557,12 @@
       "type": "authorization",
       "is_array": true
     },
+    "authority": {
+      "caption": "DNS Authority Section",
+      "description": "The DNS Authority section resource records. Contains NS records pointing to authoritative name servers, or a SOA record for negative responses (NXDOMAIN).",
+      "type": "dns_resource_record",
+      "is_array": true
+    },
     "autonomous_system": {
       "caption": "Autonomous System",
       "description": "The Autonomous System details associated with an IP address.",
@@ -582,6 +598,11 @@
       "description": "A list of baseline measurements or normal behavior patterns used as reference points for comparison and anomaly detection. See specific usage.",
       "type": "baseline",
       "is_array": true
+    },
+    "binary_data": {
+      "caption": "Binary Data",
+      "description": "The item's data in binary form.",
+      "type": "bytestring_t"
     },
     "bios_date": {
       "caption": "BIOS Date",
@@ -1079,6 +1100,30 @@
       "sibling": "category_name",
       "type": "integer_t"
     },
+    "bcc": {
+      "caption": "Bcc",
+      "description": "The machine-readable email header Bcc values, as defined by RFC 5322. For example <code>example.user@usersdomain.com</code>.",
+      "type": "email_t",
+      "references": [
+        {
+          "description": "RFC 5322",
+          "url": "https://www.rfc-editor.org/rfc/rfc5322"
+        }
+      ],
+      "is_array": true
+    },
+    "bcc_mailboxes": {
+      "caption": "Bcc Mailboxes",
+      "description": "The human-readable email header Bcc Mailbox values. For example <code>'Example User &lt;example.user@usersdomain.com&gt;'</code>.",
+      "type": "string_t",
+      "references": [
+        {
+          "description": "RFC 5322",
+          "url": "https://www.rfc-editor.org/rfc/rfc5322#section-3.4"
+        }
+      ],
+      "is_array": true
+    },
     "cc": {
       "caption": "Cc",
       "description": "The machine-readable email header Cc values, as defined by RFC 5322. For example <code>example.user@usersdomain.com</code>.",
@@ -1118,6 +1163,11 @@
       "description": "The Chain of Certificate Serial Numbers field provides a chain of Certificate Issuer Serial Numbers leading to the Root Certificate Issuer.",
       "type": "string_t",
       "is_array": true
+    },
+    "charter": {
+      "caption": "Charter",
+      "description": "A document defining the role, scope, and operating bounds of an entity. See specific usage.",
+      "type": "file"
     },
     "chassis": {
       "caption": "Chassis",
@@ -1255,6 +1305,16 @@
       "description": "The Client HASSH fingerprinting object.",
       "type": "hassh"
     },
+    "clipboard": {
+      "caption": "Clipboard",
+      "description": "The clipboard that pertains to the event. See specific usage.",
+      "type": "clipboard"
+    },
+    "clipboard_native_type": {
+      "caption": "Data Type",
+      "description": "The type of the item's data, in an operating specific form. For example: <code>CF_TEXT</code> or <code>public.utf8-plain-text</code>.",
+      "type": "string_t"
+    },
     "cloud": {
       "caption": "Cloud",
       "description": "Describes details about the Cloud environment where the event or finding was created.",
@@ -1375,7 +1435,7 @@
       "description": "The component of a data object. See specific usage.",
       "type": "string_t"
     },
-    "com_class_uuid": { 
+    "com_class_uuid": {
       "caption": "COM Class Identifier",
       "description": "The COM Class Identifier (CLSID).",
       "type": "uuid_t"
@@ -1490,6 +1550,12 @@
       "caption": "HTTP Content Type",
       "description": "The request header that identifies the original <a target='_blank' href='https://www.iana.org/assignments/media-types/media-types.xhtml'>media type </a> of the resource (prior to any content encoding applied for sending).",
       "type": "string_t"
+    },
+    "contents": {
+      "caption": "Clipboard Contents",
+      "description": "The data items written to, or read from, the clipboard.",
+      "type": "clipboard_item",
+      "is_array": true
     },
     "continent": {
       "caption": "Continent",
@@ -1613,22 +1679,40 @@
     "cpu_cores": {
       "caption": "CPU Cores",
       "description": "The number of processor cores in all installed processors. For Example: <code>42</code>.",
-      "type": "integer_t"
+      "type": "integer_t",
+      "@deprecated": {
+        "message": "Use the cores attribute instead.",
+        "since": "1.9.0"
+      }
     },
     "cpu_count": {
       "caption": "CPU Count",
       "description": "The number of physical processors on a system. For example: <code>1</code>.",
       "type": "integer_t"
     },
+    "cpu_info_list": {
+      "caption": "CPU Information",
+      "description": "An array of objects, each describing a physical CPU package installed in the device.",
+      "type": "cpu_info",
+      "is_array": true
+    },
     "cpu_speed": {
       "caption": "Processor Speed",
       "description": "The speed of the processor in Mhz. For Example: <code>4200</code>.",
-      "type": "integer_t"
+      "type": "integer_t",
+      "@deprecated": {
+        "message": "Use the speed_mhz attribute instead.",
+        "since": "1.9.0"
+      }
     },
     "cpu_type": {
       "caption": "Processor Type",
       "description": "The processor type. For example: <code>x86 Family 6 Model 37 Stepping 5</code>.",
-      "type": "string_t"
+      "type": "string_t",
+      "@deprecated": {
+        "message": "Use the model and vendor_name attributes instead.",
+        "since": "1.9.0"
+      }
     },
     "create_mask": {
       "caption": "Create Mask",
@@ -2291,6 +2375,11 @@
       "type": "domain_contact",
       "is_array": true
     },
+    "download_info": {
+      "caption": "Download Info",
+      "description": "Information pertaining to a downloaded file.",
+      "type": "download_info"
+    },
     "drive_type": {
       "caption": "Drive Type",
       "description": "The drive type, normalized to the caption of the <code>drive_type_id</code> value. In the case of <code>Other</code>, it is defined by the source.",
@@ -2509,7 +2598,11 @@
     "entity_result": {
       "caption": "Entity Result",
       "description": "The updated managed entity.",
-      "type": "managed_entity"
+      "type": "managed_entity",
+      "@deprecated": {
+        "message": "Use the <code>updated_entity</code> attribute instead.",
+        "since": "1.9.0"
+      }
     },
     "environment_variables": {
       "caption": "Environment Variables",
@@ -2531,6 +2624,12 @@
       "caption": "Error Code",
       "description": "Error Code",
       "type": "string_t"
+    },
+    "error_id": {
+      "caption": "Error ID",
+      "description": "The normalized error identifier. See specific usage.",
+      "sibling": "error",
+      "type": "integer_t"
     },
     "error_message": {
       "caption": "Error Message",
@@ -3033,6 +3132,12 @@
       "description": "Provides quality/containment on horizontal position. This is based on ADS-B NACp. Measured in meters.",
       "type": "string_t"
     },
+    "hosted_ai_agent_list": {
+      "caption": "Hosted AI Agent List",
+      "description": "A list of <code>ai_agent</code> objects hosted by the entity. Use to enumerate AI agents associated with a host when activity cannot be attributed to a single agent.",
+      "type": "ai_agent",
+      "is_array": true
+    },
     "hostname": {
       "caption": "Hostname",
       "description": "The hostname of an endpoint or a device.",
@@ -3052,7 +3157,7 @@
     },
     "http_method": {
       "caption": "HTTP Method",
-      "description": "The HTTP request method indicates the desired action to be performed for a given resource. Expected values: <ul> <li>TRACE</li> <li>CONNECT</li> <li>OPTIONS</li> <li>HEAD</li> <li>DELETE</li> <li>POST</li> <li>PUT</li> <li>GET</li></ul>",
+      "description": "The HTTP request method indicates the desired action to be performed for a given resource.",
       "type": "string_t"
     },
     "http_only": {
@@ -3092,6 +3197,17 @@
       "caption": "Hypervisor",
       "description": "The name of the hypervisor running on the device. For example, <code>Xen</code>, <code>VMware</code>, <code>Hyper-V</code>, <code>VirtualBox</code>, etc.",
       "type": "string_t"
+    },
+    "iam_role": {
+      "caption": "IAM Role",
+      "description": "A role with privileges and policy against resources that can be assigned to a user or group of users.",
+      "type": "iam_role"
+    },
+    "iam_roles": {
+      "caption": "IAM Roles",
+      "description": "One or more roles with privileges and policy against resources that can be assigned to a user or group of users.",
+      "type": "iam_role",
+      "is_array": true
     },
     "iccid": {
       "caption": "ICCID",
@@ -3719,6 +3835,11 @@
       "type": "kill_chain_phase",
       "is_array": true
     },
+    "key_name": {
+      "caption": "Key Name",
+      "description": "The name of a key. See specific usage.",
+      "type": "string_t"
+    },
     "labels": {
       "caption": "Labels",
       "description": "The list of labels attached to an entity. See specific usage.",
@@ -4167,7 +4288,7 @@
     },
     "mime_type": {
       "caption": "MIME type",
-      "description": "The Multipurpose Internet Mail Extensions (MIME) type of the file, if applicable.",
+      "description": "The Multipurpose Internet Mail Extensions (MIME) type of the data, if applicable.  See specific usage.",
       "type": "string_t"
     },
     "mitigation": {
@@ -4433,7 +4554,7 @@
     },
     "opcode_id": {
       "caption": "DNS Opcode ID",
-      "description": "The DNS opcode ID specifies the normalized query message type as defined in <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc5395.html'>RFC-5395</a>.",
+      "description": "The DNS opcode ID specifies the normalized query message type as defined in RFC 5395.",
       "type": "integer_t",
       "enum": {
         "0": {
@@ -4516,7 +4637,7 @@
     },
     "original_time": {
       "caption": "Original Time",
-      "description": "The original event time as reported by the event source, preserved as a pass-through string in its native format (e.g., Syslog timestamp, Windows event time). This is not normalized to <code>timestamp_t</code> &mdash; the normalized equivalent is the base event <code>time</code> attribute. Omit if the event is generated rather than collected via logs.",
+      "description": "The original event time as reported by the event source, preserved as a pass-through string in its native format (e.g., Syslog timestamp, Windows event time). This is not normalized to <code>timestamp_t</code> - the normalized equivalent is the base event <code>time</code> attribute. Omit if the event is generated rather than collected via logs.",
       "type": "string_t"
     },
     "os": {
@@ -4673,6 +4794,12 @@
       "caption": "Peripheral Device",
       "description": "The peripheral device that triggered the event.",
       "type": "peripheral_device"
+    },
+    "peripheral_devices": {
+      "caption": "Peripheral Device",
+      "description": "A set of peripheral devices. See specific usage.",
+      "type": "peripheral_device",
+      "is_array": true
     },
     "permission": {
       "caption": "Permission",
@@ -4962,6 +5089,11 @@
         "since": "1.4.0"
       }
     },
+    "prompt_text": {
+      "caption": "Prompt Text",
+      "description": "The text of the input prompt provided to the model for this message. This is the verbatim instruction, query, or context supplied to the AI system that drove the operation.",
+      "type": "string_t"
+    },
     "prompt_tokens": {
       "caption": "Prompt Tokens",
       "description": "Number of tokens in the input prompt for this message.",
@@ -5068,6 +5200,11 @@
       "caption": "DNS Query",
       "description": "The Domain Name System (DNS) query.",
       "type": "dns_query"
+    },
+    "query_additional": {
+      "caption": "DNS Query Additional Section",
+      "description": "The Additional section of the DNS query message sent by the client, containing supplementary resource records and an optional TSIG record. A DNS message has at most one TSIG record; for a transaction with both query and response, the query TSIG is in <code>query_additional.tsig</code> and the response TSIG is in <code>response_additional.tsig</code>.",
+      "type": "dns_section"
     },
     "query_evidence": {
       "caption": "Query Evidence",
@@ -5261,7 +5398,7 @@
     },
     "raw_data": {
       "caption": "Raw Data",
-      "description": "The original event/finding data as received from the source, before normalization into OCSF. Populate this with the verbatim log line, JSON payload, or other native format for forensic and debugging purposes. This field is not intended for structured querying &mdash; use the normalized OCSF attributes instead.",
+      "description": "The original event/finding data as received from the source, before normalization into OCSF. Populate this with the verbatim log line, JSON payload, or other native format for forensic and debugging purposes. This field is not intended for structured querying - use the normalized OCSF attributes instead.",
       "type": "string_t"
     },
     "raw_data_hash": {
@@ -5314,6 +5451,12 @@
       "caption": "Record Index in Array",
       "description": "The index of the record in the array of records.",
       "type": "integer_t"
+    },
+    "records": {
+      "caption": "DNS Resource Records",
+      "description": "The resource records in a DNS message section. See specific usage.",
+      "type": "dns_resource_record",
+      "is_array": true
     },
     "references": {
       "caption": "References",
@@ -5516,12 +5659,21 @@
       "caption": "Resource Results Array",
       "description": "Updated resources after an activity/event.",
       "type": "resource_details",
-      "is_array": true
+      "is_array": true,
+      "@deprecated": {
+        "message": "Use the <code>updated_resources</code> attribute instead.",
+        "since": "1.9.0"
+      }
     },
     "response": {
       "caption": "API Response Details",
       "description": "General Purpose API Response Object. See specific usage.",
       "type": "response"
+    },
+    "response_text": {
+      "caption": "Response Text",
+      "description": "The text of the model's response generated for this message. For agent-mediated operations, this is the content returned by the assistant, tool, or agent.",
+      "type": "string_t"
     },
     "response_time": {
       "caption": "Response Time",
@@ -5953,6 +6105,17 @@
       "description": "The serial number that pertains to the object. See specific usage.",
       "type": "string_t"
     },
+    "serialization": {
+      "caption": "Serialization",
+      "description": "The canonical serialization or signing-envelope scheme used to produce the deterministic byte sequence that was signed, e.g. <code>JCS</code> (RFC 8785). Normalized to the captions of the <code>serialization_id</code> values.",
+      "type": "string_t"
+    },
+    "serialization_id": {
+      "caption": "Serialization ID",
+      "description": "The normalized identifier of the canonical serialization or signing-envelope scheme used to produce the signed byte sequence. A verifier must apply the same scheme to reproduce the signing input.",
+      "sibling": "serialization",
+      "type": "integer_t"
+    },
     "server_ciphers": {
       "caption": "Server Cipher Suites",
       "description": "The server cipher suites that were exchanged during the TLS handshake negotiation.",
@@ -6146,6 +6309,11 @@
         }
       }
     },
+    "source_process": {
+      "caption": "Source Process",
+      "description": "The source process object.",
+      "type": "process"
+    },
     "sp_name": {
       "caption": "OS Service Pack",
       "description": "The name of the latest Service Pack.",
@@ -6170,6 +6338,11 @@
       "caption": "Speed Accuracy",
       "description": "Provides quality/containment on horizontal ground speed. Measured in meters/second.",
       "type": "string_t"
+    },
+    "speed_mhz": {
+      "caption": "Compute Unit Speed (MHz)",
+      "description": "The nominal clock speed of the unit, expressed in megahertz.",
+      "type": "integer_t"
     },
     "spf": {
       "caption": "SPF Status",
@@ -6378,6 +6551,11 @@
           "description": "The stratum level is not mapped. See the <code>stratum</code> attribute, which contains a data source specific value."
         }
       }
+    },
+    "string_data": {
+      "caption": "String Data",
+      "description": "The item's data if it can be represented as a UTF-8 string.",
+      "type": "string_t"
     },
     "sub_technique": {
       "caption": "MITRE Sub-technique",
@@ -6663,6 +6841,11 @@
       "type": "tls_extension",
       "is_array": true
     },
+    "tsig": {
+      "caption": "TSIG",
+      "description": "The TSIG (Transaction Signature) record used to authenticate the DNS message. See RFC 2845.",
+      "type": "tsig"
+    },
     "to": {
       "caption": "To",
       "description": "The machine-readable email header To values, as defined by RFC 5322. For example <code>example.user@usersdomain.com</code>",
@@ -6732,6 +6915,11 @@
       "description": "The traits that describe characteristics, features of an entity. See specific usage.",
       "type": "trait",
       "is_array": true
+    },
+    "transaction_id": {
+      "caption": "Transaction ID",
+      "description": "The identifier of a transaction. See specific usage.",
+      "type": "integer_t"
     },
     "transaction_uid": {
       "caption": "Transaction UID",
@@ -6852,6 +7040,11 @@
       "description": "The alternate unique identifier. See specific usage.",
       "type": "string_t"
     },
+    "uid_numeric": {
+      "caption": "Numeric Unique ID",
+      "description": "The unique identifier in numeric form. See specific usage.",
+      "type": "long_t"
+    },
     "unique_malware_count": {
       "caption": "Unique Malware Count",
       "description": "The number of unique malware detected during a scan. See specific usage.",
@@ -6874,8 +7067,18 @@
     },
     "unmapped": {
       "caption": "Unmapped Data",
-      "description": "A container for source-specific attributes that do not map to any defined OCSF attribute. Use this to preserve valuable source data that would otherwise be lost during normalization. The keys and values are specific to the event source. Consumers should not rely on a stable structure within this field.",
-      "type": "object"
+      "description": "A container for source-specific attributes that do not map to any defined OCSF attribute. Use this to preserve valuable source data that would otherwise be lost during normalization. The keys and values are specific to the event source. <p><b>Note: </b>Consumers should not rely on a stable structure within this field. The preferred approach to unmapped attributes is to create a custom extension with the desired structure.</p>",
+      "type": "object",
+      "references": [
+        {
+          "description": "Schema FAQ: When should I use the unmapped attribute?",
+          "url": "https://github.com/ocsf/ocsf-docs/blob/main/faqs/schema-faq.md#when-should-i-use-the-unmapped-attribute"
+        },
+        {
+          "description": "OCSF Extensions",
+          "url": "https://github.com/ocsf/ocsf-schema/blob/main/CONTRIBUTING.md#ocsf-extensions"
+        }
+      ]
     },
     "untruncated_size": {
       "caption": "Untruncated Size",
@@ -6892,10 +7095,42 @@
       "description": "The number of unused services. See specific usage.",
       "type": "integer_t"
     },
-    "updated_job": {      
+    "updated_entity": {
+      "caption": "Updated Entity",
+      "description": "The updated entity. See specific usage.",
+      "type": "managed_entity"
+    },
+    "updated_group": {
+      "caption": "Updated Group",
+      "description": "The updated group. See specific usage.",
+      "type": "group"
+    },
+    "updated_job": {
       "caption": "Updated Job",
       "description": "The updated job. See specific usage.",
       "type": "job"
+    },
+    "updated_resources": {
+      "caption": "Updated Resources",
+      "description": "The updated resources. See specific usage.",
+      "type": "resource_details",
+      "is_array": true
+    },
+    "updated_role": {
+      "caption": "Updated Role",
+      "description": "The updated role. See specific usage.",
+      "type": "iam_role"
+    },
+    "updated_user": {
+      "caption": "Updated User",
+      "description": "The updated user. See specific usage.",
+      "type": "user"
+    },
+    "updated_web_resources": {
+      "caption": "Updated Web Resources",
+      "description": "The updated web resources. See specific usage.",
+      "type": "web_resource",
+      "is_array": true
     },
     "uploaded_time": {
       "caption": "Uploaded Time",
@@ -6943,7 +7178,11 @@
     "user_result": {
       "caption": "User Result",
       "description": "The result of the user account change. It should contain the new values of the changed attributes.",
-      "type": "user"
+      "type": "user",
+      "@deprecated": {
+        "message": "Use the <code>updated_user</code> attribute instead.",
+        "since": "1.9.0"
+      }
     },
     "users": {
       "caption": "Users",
@@ -7129,7 +7368,11 @@
       "caption": "Web Resources Result",
       "description": "The results of the activity on web resources. It should contain the new values of the changed attributes of the web resources.",
       "type": "web_resource",
-      "is_array": true
+      "is_array": true,
+      "@deprecated": {
+        "message": "Use the <code>updated_web_resources</code> attribute instead.",
+        "since": "1.9.0"
+      }
     },
     "whois": {
       "caption": "WHOIS",
@@ -7160,7 +7403,7 @@
     },
     "xattributes": {
       "caption": "Extended Attributes",
-      "description": "An unordered collection of zero or more name/value pairs where each pair represents a file or folder extended attribute.</p>For example: Windows alternate data stream attributes (ADS stream name, ADS size, etc.), user-defined or application-defined attributes, ACL, owner, primary group, etc. Examples from DCS: </p><ul><li><strong>ads_name</strong></li><li><strong>ads_size</strong></li><li><strong>dacl</strong></li><li><strong>owner</strong></li><li><strong>primary_group</strong></li><li><strong>link_name</strong> - name of the link associated to the file.</li><li><strong>hard_link_count</strong> - the number of links that are associated to the file.</li></ul>",
+      "description": "Attributes not present in the schema that extend the class or object. See specific usage.",
       "type": "object"
     },
     "zone": {

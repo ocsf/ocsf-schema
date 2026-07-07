@@ -1,6 +1,6 @@
 {
   "caption": "Actor",
-  "description": "The Actor object contains details about the user, role, application, service, or process that initiated or performed a specific activity. Note that Actor is not the threat actor of a campaign but may be part of a campaign.",
+  "description": "The Actor object contains details about the user, role, application, service, or process that initiated or performed a specific activity. Note that Actor is not the threat actor of a campaign but may be part of a campaign. When the initiator of the activity is an autonomous AI agent, apply the <code>ai_operation</code> profile and populate <code>ai_operation.ai_agent</code> rather than describing the agent here.",
   "extends": "object",
   "name": "actor",
   "attributes": {
@@ -13,6 +13,10 @@
       "requirement": "optional"
     },
     "authorizations": {
+      "requirement": "optional"
+    },
+    "iam_role": {
+      "description": "The actor's role, or as an alternative to <code>user</code> or <code>process</code> when the role is serving as a security principal for the operation that initiated the activity.",
       "requirement": "optional"
     },
     "idp": {
@@ -42,6 +46,7 @@
     "at_least_one": [
       "process",
       "user",
+      "iam_role",
       "invoked_by",
       "session",
       "app_name",

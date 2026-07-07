@@ -1,17 +1,17 @@
 {
   "caption": "DNS Answer",
   "description": "The DNS Answer object represents a specific response provided by the Domain Name System (DNS) when querying for information about a domain or performing a DNS operation. It encapsulates the relevant details and data returned by the DNS server in response to a query.",
-  "extends": "_dns",
+  "extends": "dns_resource_record",
   "name": "dns_answer",
   "attributes": {
-    "class": {
-      "description": "The class of DNS data contained in this resource record. See <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc1035.txt'>RFC1035</a>. For example: <code>IN</code>.",
-      "requirement": "recommended"
-    },
     "flag_ids": {
       "caption": "DNS Header Flags",
       "description": "The list of DNS answer header flag IDs.",
       "requirement": "recommended",
+      "@deprecated": {
+        "message": "Use <code>flag_ids</code> on <code>DNS Activity</code> instead.",
+        "since": "1.9.0"
+      },
       "enum": {
         "1": {
           "caption": "Authoritative Answer"
@@ -36,17 +36,19 @@
     "flags": {
       "caption": "DNS Header Flags",
       "description": "The list of DNS answer header flags.",
-      "requirement": "optional"
+      "requirement": "optional",
+      "@deprecated": {
+        "message": "Use <code>flags</code> on <code>DNS Activity</code> instead.",
+        "since": "1.9.0"
+      }
     },
-    "rdata": {
-      "requirement": "required"
-    },
-    "ttl": {
-      "requirement": "recommended"
-    },
-    "type": {
-      "description": "The type of data contained in this resource record. See <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc1035.txt'>RFC1035</a>. For example: <code>CNAME</code>.",
-      "requirement": "recommended"
+    "packet_uid": {
+      "description": "The DNS packet identifier assigned by the program that generated the query. The identifier is copied to the response.",
+      "requirement": "recommended",
+      "@deprecated": {
+        "message": "Use <code>transaction_id</code> on <code>DNS Activity</code> instead.",
+        "since": "1.9.0"
+      }
     }
   },
   "references": [

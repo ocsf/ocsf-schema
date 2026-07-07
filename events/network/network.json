@@ -7,7 +7,8 @@
   "attributes": {
     "$include": [
       "profiles/network_proxy.json",
-      "profiles/load_balancer.json"
+      "profiles/load_balancer.json",
+      "profiles/ai_operation.json"
     ],
     "app_name": {
       "description": "The network application name identified by tools such as NBAR or App ID (e.g., youtube, facebook, webex). This represents a specific network application that uses standard protocols (such as https or quic) to deliver its service.",
@@ -50,10 +51,12 @@
     },
     "observation_point": {
       "description": "Indicates whether the source network endpoint, destination network endpoint, or neither served as the observation point for the activity. The value is normalized to the caption of the <code>observation_point_id</code>.",
+      "group": "context",
       "requirement": "optional"
     },
     "observation_point_id": {
       "description": "The normalized identifier of the observation point. The observation point identifier indicates whether the source network endpoint, destination network endpoint, or neither served as the observation point for the activity.",
+      "group": "context",
       "requirement": "optional",
       "enum": {
         "0": {
@@ -113,7 +116,8 @@
   },
   "profiles": [
     "network_proxy",
-    "load_balancer"
+    "load_balancer",
+    "ai_operation"
   ],
   "references": [
     {

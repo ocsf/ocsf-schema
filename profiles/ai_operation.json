@@ -4,7 +4,13 @@
     "meta": "profile",
     "name": "ai_operation",
     "attributes": {
+        "ai_agent": {
+            "description": "The autonomous AI agent that performed this operation. Carries model identity via <code>ai_agent.ai_model</code>. Populate when the action was performed by an agent rather than a direct model call.",
+            "group": "context",
+            "requirement": "optional"
+        },
         "ai_model": {
+            "description": "The AI model involved in this operation. Use for direct model invocations where no autonomous agent is involved. For agent-mediated operations, model identity is carried within <code>ai_agent.ai_model</code> instead.",
             "group": "context",
             "requirement": "recommended"
         },

@@ -23,7 +23,7 @@ import sys
 from pathlib import Path
 
 COMMENT_MARKER = "<!-- ocsf-description-review -->"
-DEFAULT_MODEL = "claude-sonnet-4-20250514"
+DEFAULT_MODEL = "claude-sonnet-4-6"
 MAX_CONTEXT_CHARS = 400_000
 
 # Deterministic normative pre-check (rules 13–15).

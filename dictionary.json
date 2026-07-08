@@ -2018,6 +2018,27 @@
         }
       }
     },
+    "detection_source": {
+      "caption": "Detection Source",
+      "description": "The technology from where a threat (or multiple threats) is reported, or originates from, normalized to the caption of the detection_source_id value.",
+      "type": "string_t"
+    },
+    "detection_source_id": {
+      "caption": "Detection Source ID",
+      "description": "The technology from where a threat (or multiple threats) is reported, or originates.",
+      "sibling": "detection_source",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The detection source is unknown"
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The detection source is not mapped. See the <code>detection_source</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
     "detection_system": {
       "caption": "Detection System",
       "description": "The name of the type of data security tool or system that the finding, detection, or alert originated from. E.g., Endpoint, Secure Email Gateway, etc.",
@@ -3480,6 +3501,11 @@
       "caption": "IP Address",
       "description": "The IP address, in either IPv4 or IPv6 format.",
       "type": "ip_t"
+    },
+    "is_aggregate": {
+      "caption": "Aggregate",
+      "description": "The event or finding represents an aggregation of other events or findings. See specific usage.",
+      "type": "boolean_t"
     },
     "is_alert": {
       "caption": "Alert",

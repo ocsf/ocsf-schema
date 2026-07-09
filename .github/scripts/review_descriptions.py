@@ -130,7 +130,14 @@ Array attributes should describe what each element represents, not just
 "A list of X."
 
 ### 6. CHANGELOG Conventions
-Every CHANGELOG entry MUST:
+**Description-only edits do NOT require a CHANGELOG entry.** By project
+convention, updating the `description` (or `caption`) of an *existing*
+attribute, object, or class is a documentation change and is intentionally
+NOT logged. NEVER flag a "missing CHANGELOG entry" for a description/caption
+update. Only new attributes/objects/classes, deprecations, removals, and
+type/structural/behavioral changes warrant a CHANGELOG entry.
+
+When a CHANGELOG entry *is* present, it MUST:
 - End with a PR reference link: `[#NNNN](https://github.com/ocsf/ocsf-schema/pull/NNNN)`
 - Use `1.` numbering with 2-space indent under `####` subsections
 - Be placed under the correct section (Added/Improved/Bugfixes/etc.) and
@@ -291,7 +298,9 @@ Numbered list. Each item:
 If no anti-patterns are found, omit this section entirely.
 
 ### CHANGELOG Issues
-List any convention violations.
+List any convention violations. Do NOT report a missing CHANGELOG entry for
+description-only or caption-only edits to existing schema elements (see
+criterion 6). Omit this section entirely if there are no violations.
 
 ### Normative / Neutrality Issues
 Findings for criteria 13–16. Numbered list. Each item:

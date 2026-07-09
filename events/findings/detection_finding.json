@@ -35,6 +35,7 @@
       "requirement": "optional"
     },
     "detection_source_id": {
+      "description": "The normalized identifier of the technology or sensor layer that detected or reported the threat. Use this to classify the detection surface (e.g., network sensor, endpoint agent, email gateway). Unlike <code>detection_system_id</code>, which categorizes the broad security tool type (e.g., EDR, SIEM), this attribute identifies the infrastructure layer from which the detection originated. The normalized label is available in <code>detection_source</code>.",
       "group": "primary",
       "requirement": "recommended",
       "enum": {
@@ -48,11 +49,11 @@
         },
         "3": {
           "caption": "Email",
-          "description": "The detection originates from an email or phishing exploit."
+          "description": "The detection is reported by, or originates from an email gateway or email security system."
         },
         "4": {
           "caption": "IAM",
-          "description": "The detection originates from an identity or privilege escalation exploit."
+          "description": "The detection is reported by, or originates from an identity and access management (IAM) system or service."
         },
         "5": {
           "caption": "Proxy",

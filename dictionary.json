@@ -2041,70 +2041,22 @@
     },
     "detection_system": {
       "caption": "Detection System",
-      "description": "The name of the type of data security tool or system that the finding, detection, or alert originated from. E.g., Endpoint, Secure Email Gateway, etc.",
+      "description": "The type of security tool or system that the finding, detection, or alert originated from, normalized to the caption of the detection_system_id value. See specific usage.",
       "type": "string_t"
     },
     "detection_system_id": {
       "caption": "Detection System ID",
-      "description": "The type of data security tool or system that the finding, detection, or alert originated from.",
+      "description": "The type of security tool or system that the finding, detection, or alert originated from. See specific usage.",
       "sibling": "detection_system",
       "type": "integer_t",
       "enum": {
         "0": {
           "caption": "Unknown",
-          "description": "The type is not mapped. See the <code>detection_system</code> attribute, which contains a data source specific value."
-        },
-        "1": {
-          "caption": "Endpoint",
-          "description": "A dedicated agent or sensor installed on a device, either a dedicated data security tool or an Endpoint Detection & Response (EDR) tool that can detect sensitive data and/or enforce data security policies. E.g., Forcepoint DLP, Symantec DLP, Microsoft Defender for Endpoint (MDE)."
-        },
-        "2": {
-          "caption": "DLP Gateway",
-          "description": "A Data Loss Prevention (DLP) gateway that is positioned in-line of an information store such as a network share, a database, or otherwise that can detect sensitive data and/or enforce data security policies."
-        },
-        "3": {
-          "caption": "Mobile Device Management",
-          "description": "A Mobile Device Management (MDM) or Enterprise Mobility Management (EMM) tool that can detect sensitive data and/or enforce data security policies on mobile devices (e.g., cellphones, tablets, End User Devices [EUDs])."
-        },
-        "4": {
-          "caption": "Data Discovery & Classification",
-          "description": "A tool that actively identifies and classifies sensitive data in digital media and information stores in accordance with a policy or automated functionality. E.g, Amazon Macie, Microsoft Purview."
-        },
-        "5": {
-          "caption": "Secure Web Gateway",
-          "description": "A Secure Web Gateway (SWG) is any tool that can detect sensitive data and/or enforce data security policies at a network-edge such as within a proxy or firewall service."
-        },
-        "6": {
-          "caption": "Secure Email Gateway",
-          "description": "A Secure Email Gateway (SEG) is any tool that can detect sensitive data and/or enforce data security policies within email systems. E.g., Microsoft Defender for Office, Google Workspaces."
-        },
-        "7": {
-          "caption": "Digital Rights Management",
-          "description": "A Digital Rights Management (DRM) or a dedicated Information Rights Management (IRM) are tools which can detect sensitive data and/or enforce data security policies on digital media via policy or user access rights."
-        },
-        "8": {
-          "caption": "Cloud Access Security Broker",
-          "description": "A Cloud Access Security Broker (CASB) that can detect sensitive data and/or enforce data security policies in-line to cloud systems such as the public cloud or Software-as-a-Service (SaaS) tool. E.g., Forcepoint CASB, SkyHigh Security."
-        },
-        "9": {
-          "caption": "Database Activity Monitoring",
-          "description": "A Database Activity Monitoring (DAM) tool that can detect sensitive data and/or enforce data security policies as part of a dedicated database or warehouse monitoring solution."
-        },
-        "10": {
-          "caption": "Application-Level DLP",
-          "description": "A built in Data Loss Prevention (DLP) or other data security capability within a tool or platform such as an Enterprise Resource Planning (ERP) or Customer Relations Management (CRM) tool that can detect sensitive data and/or enforce data security policies."
-        },
-        "11": {
-          "caption": "Developer Security",
-          "description": "Any Developer Security tool such as an Infrastructure-as-Code (IAC) security scanner, Secrets Detection, or Secure Software Development Lifecycle (SSDLC) tool that can detect sensitive data and/or enforce data security policies. E.g., TruffleHog, GitGuardian, Git-Secrets."
-        },
-        "12": {
-          "caption": "Data Security Posture Management",
-          "description": "A Data Security Posture Management (DSPM) tool is a continuous monitoring and data discovery solution that can detect sensitive data and/or enforce data security policies for local and cloud environments. E.g., Cyera, Sentra, IBM Polar Security."
+          "description": "The detection system type is Unknown."
         },
         "99": {
           "caption": "Other",
-          "description": "Any other type of detection system or a multi-variate system made up of several other systems."
+          "description": "The detection system type is not mapped. See the <code>detection_system</code> attribute, which contains a data source specific value."
         }
       }
     },

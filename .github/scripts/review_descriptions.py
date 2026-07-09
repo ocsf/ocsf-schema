@@ -78,6 +78,24 @@ Deprecated attributes (those with an `@deprecated` marker) have been
 pre-filtered from the compiled schema data. Do not flag or comment on
 deprecated attributes — they are intentionally being phased out.
 
+## Scope Discipline (STRICT — this overrides every criterion below)
+
+1. **Only `_changed_attributes` (and changed captions/descriptions/CHANGELOG
+   lines) are in scope.** NEVER emit a finding — in ANY section (Suggestions,
+   Anti-Pattern, CHANGELOG, Normative/Neutrality) — for an attribute, caption,
+   description, or line that is NOT part of this PR's changes. Sibling
+   summaries, `cross_reference_index`, `dictionary_neighbors`, and the full PR
+   diff are provided as CONTEXT ONLY to help you reason about the changed
+   items; they are never themselves review targets.
+2. **No hedged out-of-scope findings.** Do not produce findings tagged "for
+   context", "for completeness", "pre-existing — disregard", "not introduced by
+   this PR", or similar. If something is out of scope, omit it entirely and
+   silently. A disclaimer is NOT a license to flag it.
+3. **No stylistic churn.** Do not propose stylistic or preferential rewrites of
+   descriptions that are already clear, correct, and self-contained. Flag a
+   description only when it has a genuine comprehension defect against the
+   criteria below. "Not strictly wrong but could be tightened" is NOT a finding.
+
 ## Review Criteria
 
 Evaluate ONLY the changed/added descriptions against these criteria:
@@ -272,6 +290,11 @@ normative/neutrality issues.
 If no issues are found, respond with only:
 > ✅ No description issues found — descriptions look clear for LLM consumption.
 
+**Omit empty and hedged sections.** Only emit a section if it has at least one
+genuine, in-scope finding. Never output a section (or a bullet) whose content is
+"none", "no issues", "pre-existing — disregard", "for completeness", or any other
+placeholder/hedge. A section with nothing actionable must be left out entirely.
+
 ## Previous Review Awareness
 
 You may receive a "Previous Review" section containing your earlier review of
@@ -282,6 +305,13 @@ this same PR. When present:
 2. Re-raise any suggestions that were NOT addressed — keep the same format
 3. Note any NEW issues introduced since the last review
 4. Keep the Summary section updated to reflect current state
+5. **If a changed description already matches (verbatim or near-verbatim) a
+   description you suggested in a previous review, treat it as ✅ resolved and
+   do NOT propose a new variant of it.** Do not oscillate wording between runs
+   or nudge an already-accepted suggestion back toward the original text.
+6. Keep the "Previous Review Status" section terse: one short bullet per prior
+   item (✅ resolved / ❌ still open). Do NOT re-derive, second-guess, or
+   self-correct within the section — state the current status once and move on.
 
 These are advisory suggestions to help improve clarity. They are not required
 changes. Only review CHANGED or ADDED content. Do not flag pre-existing
@@ -1084,6 +1114,7 @@ def cmd_review() -> None:
     message = client.messages.create(
         model=model,
         max_tokens=4096,
+        temperature=0,
         system=SYSTEM_PROMPT,
         messages=[
             {

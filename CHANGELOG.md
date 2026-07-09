@@ -86,7 +86,7 @@ Thankyou! -->
   1. Added `ai_agent` attribute referencing the new `ai_agent` object. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added `hosted_ai_agent_list` attribute for enumerating AI agents hosted by a process or other runtime. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added `charter` attribute (file type) for documents defining the role, scope, and operating bounds of an entity. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
-  1. Added `criticality_id` enum to `resource_details` to pair with its sibling. [#]()
+  1. Added `criticality_id` enum to pair with its sibling. [#1693](https://github.com/ocsf/ocsf-schema/pull/1693)
 
 ### Improved
 * #### Categories
@@ -126,7 +126,7 @@ Thankyou! -->
   1. Removed `Microsoft` from descriptions in `algorithm_id` and `serialization_id` in the `digital_signature` object. [#1668](https://github.com/ocsf/ocsf-schema/pull/1668)
   1. Added `ai_agent` to `process`. Added `hosted_ai_agent_list` to `process` for cases where a process hosts multiple agents that cannot be individually attributed. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added `charter` attribute to `ai_agent` for the agent's durable role definition document (system prompt or constitution). [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
-  1. Added `device` and `user` to `resource_details`. Added a `criticality_id` enum to `resource_details` to pair with its sibling. [#]()
+  1. Added `device` and `user` to `resource_details`. Added a `criticality_id` enum to `resource_details` to pair with its sibling. [#1693](https://github.com/ocsf/ocsf-schema/pull/1693)
 * #### Observables
 * #### Platform Extensions
   1. Added `prev_win_service` attribute to Windows Service Activity Class in order to store previous state of the Windows service. [#1663](https://github.com/ocsf/ocsf-schema/pull/1663)

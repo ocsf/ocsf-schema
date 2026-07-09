@@ -86,6 +86,7 @@ Thankyou! -->
   1. Added `ai_agent` attribute referencing the new `ai_agent` object. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added `hosted_ai_agent_list` attribute for enumerating AI agents hosted by a process or other runtime. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added `charter` attribute (file type) for documents defining the role, scope, and operating bounds of an entity. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
+  1. Added `is_aggregate_finding` for findings that aggregate other findings. [#1688](https://github.com/ocsf/ocsf-schema/pull/1688)
 
 ### Improved
 * #### Categories
@@ -98,6 +99,8 @@ Thankyou! -->
   1. Extended `activity_id` attribute in `HTTP Activity` to cover all methods in IANA HTTP Method Registry. [#1654](https://github.com/ocsf/ocsf-schema/pull/1654)
   1. Added `users` to `group_management` to replace deprecated `user`. [#1666](https://github.com/ocsf/ocsf-schema/pull/1666)
   1. Added the `ai_operation` profile to the `system`, `network`, `application`, and `iam` base event classes so all System Activity, Network Activity, Application Activity, and Identity & Access Management events inherit agent attribution. Also added the profile to `email_activity` (which does not extend a base with the profile). [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
+  1. Added `detection_system` and `detection_system_id` with sensor-category enum override to `detection_finding` [#1688](https://github.com/ocsf/ocsf-schema/pull/1688)
+
 * #### Profiles
   1. Added `ai_agent` attribute to the `ai_operation` profile. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
 * #### Objects
@@ -125,6 +128,8 @@ Thankyou! -->
   1. Removed `Microsoft` from descriptions in `algorithm_id` and `serialization_id` in the `digital_signature` object. [#1668](https://github.com/ocsf/ocsf-schema/pull/1668)
   1. Added `ai_agent` to `process`. Added `hosted_ai_agent_list` to `process` for cases where a process hosts multiple agents that cannot be individually attributed. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added `charter` attribute to `ai_agent` for the agent's durable role definition document (system prompt or constitution). [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
+  1. Added per-object descriptions and data-security-specific enum for `detection_system_id` as an override to `data_security`. [#1688](https://github.com/ocsf/ocsf-schema/pull/1688)
+  1. Added `is_aggregate_finding` to `finding_info`. [#1688](https://github.com/ocsf/ocsf-schema/pull/1688)
 * #### Observables
 * #### Platform Extensions
   1. Added `prev_win_service` attribute to Windows Service Activity Class in order to store previous state of the Windows service. [#1663](https://github.com/ocsf/ocsf-schema/pull/1663)
@@ -132,6 +137,7 @@ Thankyou! -->
   1. Added "See specific usage" to `win_service` description in Windows extension dictionary. [#1663](https://github.com/ocsf/ocsf-schema/pull/1663)
 * #### Dictionary Attributes
   1. Improved `job` object description to describe cases beyond System Activity class.
+  1. Improved `detection_system` and `detection_system_id` (generalized to multi-context; per-class/per-object overrides added). [#1688](https://github.com/ocsf/ocsf-schema/pull/1688)
 
 ### Bugfixes
 1. Fixed the static anti-pattern checker so dictionary attributes are analyzed with the full compiled dictionary; the `missing-sibling` rule no longer false-positives when the sibling exists in `dictionary.json`. [#1613](https://github.com/ocsf/ocsf-schema/pull/1613)

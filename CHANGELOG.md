@@ -86,7 +86,7 @@ Thankyou! -->
   1. Added `ai_agent` attribute referencing the new `ai_agent` object. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added `hosted_ai_agent_list` attribute for enumerating AI agents hosted by a process or other runtime. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added `charter` attribute (file type) for documents defining the role, scope, and operating bounds of an entity. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
-  1. Added `criticality_id` enum to pair with its sibling. [#1693](https://github.com/ocsf/ocsf-schema/pull/1693)
+  1. Added 'criticality_id' dictionary attribute with a five-level criticality enum (Unknown, Low, Medium, High, Very High, Other) paired with the existing 'criticality' sibling. [#1693](https://github.com/ocsf/ocsf-schema/pull/1693)
 
 ### Improved
 * #### Categories

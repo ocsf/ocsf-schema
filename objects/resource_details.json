@@ -13,13 +13,14 @@
       "requirement": "optional"
     },
     "criticality": {
-      "description": "Criticality or relative importance of a resource/object in question, normalized to the caption of <code>criticality_id</code>. In the case of Other, the value defined by the event source.<p>Note: For versions prior to 1.9, <code>criticality_id</code> was not available and this is a source specific value.<p>"
+      "description": "Criticality or relative importance of this resource, normalized to the caption of <code>criticality_id</code>. In the case of Other, the value defined by the event source.<p>Note: For versions prior to 1.9, <code>criticality_id</code> was not available and this is a source specific value.<p>"
     },
     "criticality_id": {
+      "description": "The normalized identifier for the criticality or relative importance of this resource. Select the value that best reflects the operational and security impact if the resource were compromised or made unavailable. See the <code>criticality</code> sibling attribute for the corresponding human-readable label.",
       "requirement": "optional"
     },
     "device": {
-      "description": "An addressable device, computer system or host. Its <code>device.hostname</code> should match with the <code>hostname</code> attribute of this object.",
+      "description": "The device or host associated with this resource. Populate this attribute when the resource is a device or is directly bound to a specific device and additional device-level metadata — such as OS details, hardware inventory, or installed agents — beyond what the top-level <code>hostname</code> and <code>ip</code> attributes capture is available. The <code>device.hostname</code> value should match the <code>hostname</code> attribute of this object; the top-level <code>hostname</code> and <code>ip</code> remain the primary identifiers for the resource.",
       "requirement": "optional"
     },
     "group": {
@@ -91,7 +92,7 @@
       }
     },
     "user": {
-      "description": "The technical representation of a human resource, most often in the context of a finding, that has a role in the finding, but not necessarily the <code>owner</code> of the resource. For example the user entry in a directory that is the target of a phishing attack or whose information was leaked from a file server. See the <code>role_id</code>.",
+      "description": "The user associated with or represented by this resource — for example, the user who is the target of a finding, the identity whose credentials were exposed, or the cloud IAM principal the resource embodies. Distinct from <code>owner</code>, which identifies the entity responsible for the resource rather than the user affected by or represented within it. Use <code>role_id</code> to characterize the user's relationship to the resource.",
       "requirement": "optional"
     },    
     "version": {

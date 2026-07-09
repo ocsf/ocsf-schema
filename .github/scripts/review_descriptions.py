@@ -140,6 +140,29 @@ Every CHANGELOG entry MUST:
 Descriptions should be specific enough for an LLM to correctly populate the
 field from raw security telemetry and distinguish it from similar attributes.
 
+## Sibling Attribute Description Convention (PRESERVE — do not deviate)
+
+OCSF pairs an enum `<name>_id` attribute (`integer_t` with an `enum`) with a
+string sibling (declared via the `sibling` field) that carries the human-
+readable label. These descriptions follow a FIXED house convention. Treat the
+convention as correct; do NOT rewrite a description into a different shape,
+and do NOT flag a description merely for following it.
+
+- **Enum `<name>_id` attribute**: `"The normalized identifier of <concept>."`
+  (optionally noting `0` = Unknown and `99` = Other, and that the sibling must
+  carry the source-specific label when the value is Other).
+- **String sibling attribute**: `"The <concept>, normalized to the caption of
+  the <name>_id value. In the case of 'Other', it is defined by the event
+  source."` A trailing `See specific usage.` marker on a dictionary entry is an
+  intentional placeholder (see the dictionary-placeholder rule above) and must
+  not be flagged.
+
+Only raise a sibling finding when the description genuinely BREAKS this
+convention (e.g., wrong sibling name referenced, missing the `<name>_id`
+linkage, or the `Other` clause omitted where the enum has an Other value). When
+suggesting a fix, rewrite it back INTO this convention — never propose an
+alternative phrasing style.
+
 ## Anti-Pattern Detection
 
 In addition to description quality, flag structural design anti-patterns in

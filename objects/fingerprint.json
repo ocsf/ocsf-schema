@@ -197,6 +197,48 @@
         }
       }
     },
+    "encoding": {
+      "description": "The encoding of the <code>value</code> attribute, normalized to the caption of <code>encoding_id</code>. In the case of <code>Other</code>, it is defined by the event source.",
+      "requirement": "optional"
+    },
+    "encoding_id": {
+      "description": "The normalized identifier of the encoding used to represent the fingerprint bytes as the string in <code>value</code>. A verifier must decode <code>value</code> using this encoding to recover the raw hash bytes.",
+      "requirement": "recommended",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The encoding of the fingerprint value is not known."
+        },
+        "1": {
+          "caption": "Hex",
+          "description": "The fingerprint value is encoded as a lowercase or uppercase hexadecimal string."
+        },
+        "2": {
+          "caption": "Base64",
+          "description": "The fingerprint value is encoded using standard Base64.",
+          "references": [
+            {
+              "description": "RFC 4648, Section 4",
+              "url": "https://www.rfc-editor.org/rfc/rfc4648#section-4"
+            }
+          ]
+        },
+        "3": {
+          "caption": "Base64URL",
+          "description": "The fingerprint value is encoded using URL- and filename-safe Base64.",
+          "references": [
+            {
+              "description": "RFC 4648, Section 5",
+              "url": "https://www.rfc-editor.org/rfc/rfc4648#section-5"
+            }
+          ]
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The encoding of the fingerprint value is not mapped. See the <code>encoding</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
     "value": {
       "description": "The fingerprint value.<p><b>Note:</b> This uses type <code>file_hash_t</code> (&quot;Hash&quot;), which has been generalized for all fingerprints but retains the same name and caption for backwards compatibility.</p>",
       "requirement": "required",

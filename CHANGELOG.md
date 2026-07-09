@@ -117,6 +117,7 @@ Thankyou! -->
   1. Removed the abstract `_dns` object; `class`, `type`, and the deprecated `packet_uid` attribute now live directly on `dns_query`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
   1. Added `peripheral_devices` to `device`. [#1645](https://github.com/ocsf/ocsf-schema/pull/1645)
   1. Added `serialization` and `serialization_id` to the `digital_signature` object to record the canonical signing input (JCS, JWS, COSE, DSSE, Authenticode). [#1662](https://github.com/ocsf/ocsf-schema/pull/1662)
+  1. Added `encoding` and `encoding_id` to the `fingerprint` object to record how the raw hash bytes are represented as the `value` string (Hex, Base64, Base64URL). [#1684](https://github.com/ocsf/ocsf-schema/pull/1684)
   1. Added `uid_numeric` to `_entity` so that a numeric `uid` value can be represented natively. [#1643](https://github.com/ocsf/ocsf-schema/pull/1643)
   1. Extended `http_method` attribute in the `http_request` object to cover all methods in IANA HTTP Method Registry. [#1654](https://github.com/ocsf/ocsf-schema/pull/1654)
   1. Added `prompt_text` and `response_text` attributes to the `message_context` object, complementing the existing `prompt_tokens` and `completion_tokens` metrics with the verbatim prompt and response text. [#1674](https://github.com/ocsf/ocsf-schema/pull/1674)

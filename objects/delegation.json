@@ -1,6 +1,6 @@
 {
   "caption": "Delegation",
-  "description": "A durable authorization context that a principal issues to a delegate (e.g., an application, automated process, service account, or AI agent), representing delegated authority to act on the principal's behalf. Persists independently of any single trace, session, or workflow instance, so the same delegation can be referenced across many events. The principal and delegate themselves are identified by the other objects on the event carrying this delegation, such as <code>actor.user</code> or <code>actor.iam_role</code> for the principal and <code>ai_operation.ai_agent</code> for an AI delegate. The <code>delegation</code> object itself only carries the durable identifiers used to correlate across those events. Delegations reference a parent via <code>parent_uid</code>, forming a directed acyclic graph (DAG) that supports lineage queries across delegation chains, such as re-delegation or sub-agent spawning.",
+  "description": "A durable authorization context that a principal issues to a delegate (e.g., an application, automated process, service account, or AI agent), representing delegated authority to act on the principal's behalf. Persists independently of any single trace, session, or workflow instance, so the same delegation can be referenced across many events. The principal and delegate themselves are identified by the other objects on the event carrying this delegation, such as <code>actor.user</code> or <code>actor.iam_role</code> for the principal and <code>ai_operation.ai_agent</code> for an AI delegate. The <code>delegation</code> object itself only carries the durable identifiers used to correlate across those events. Delegations reference a parent via <code>parent_uid</code>, forming a directed acyclic graph (DAG) of re-delegations that supports lineage queries across the chain of authority. This authority graph is distinct from any agent instantiation or orchestration hierarchy, which may or may not coincide with it.",
   "extends": "object",
   "name": "delegation",
   "attributes": {
@@ -11,7 +11,7 @@
     },
     "parent_uid": {
       "caption": "Parent Delegation ID",
-      "description": "The delegation identifier of the parent delegation, if this delegation was created via re-delegation to another party (e.g., a sub-agent, downstream service, or automated process). This creates a parent-child relationship that enables tracking the complete chain of delegation ancestry.",
+      "description": "The delegation identifier of the parent delegation, if this delegation was created by re-delegating authority to another party (e.g., a downstream service or automated process). This creates a parent-child relationship that enables tracking the complete chain of delegation ancestry. Does not indicate that the delegate was instantiated or spawned by the parent's delegate; that relationship, if any, is tracked separately.",
       "requirement": "optional"
     },
     "created_time": {

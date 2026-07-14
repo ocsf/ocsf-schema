@@ -4,6 +4,10 @@
   "extends": "object",
   "description": "A cryptographic attestation that an event has not been altered since it was produced and was produced by the holder of a verifiable identity, providing integrity, authenticity, and non-repudiation. It is domain-agnostic and may be applied to any event class.",
   "attributes": {
+    "attestation_authority_uid": {
+      "description": "The unique identifier of the attestation authority that issued this attestation.",
+      "requirement": "required"
+    },
     "signatures": {
       "description": "One or more digital signatures of a canonical serialization of the event, each bound to a verifiable identity. The first entry is typically the producer; additional entries carry co-signatures such as a notary or witness over the same record. The signing algorithm, certificate or public-key material, and signing time are carried within each <code>digital_signature</code> object.",
       "requirement": "required"

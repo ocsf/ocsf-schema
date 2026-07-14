@@ -60,6 +60,8 @@ Thankyou! -->
   1. Added `dns_section` object to represent a DNS message section containing supplementary resource records and an optional TSIG record. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
   1. Added `tsig` object to represent a TSIG (Transaction Signature) record with structured fields for security analytics: `algorithm`, `key_name`, `error_id`, and `error`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
   1. Added `download_info` object with information pertaining to a downloaded file. [#1658](https://github.com/ocsf/ocsf-schema/pull/1658)
+  1. Added `note` object to capture a comment along with the user who made the comment and when the note was modified. [#1670](https://github.com/ocsf/ocsf-schema/pull/1670)
+
   1. Added `ai_agent` object representing an autonomous AI agent, distinct from the existing `agent` object (which models security sensors such as EDR, DLP, APM). [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
 * #### Observables
 * #### Platform Extensions
@@ -82,6 +84,7 @@ Thankyou! -->
   1. Added `binary_data`, `contents`, `clipboard_native_type`, `string_data`. [#1655](https://github.com/ocsf/ocsf-schema/pull/1655)
   1. Added `uid_numeric` attribute to enable a unique identifier that is numeric to be represented natively using the `long_t` data type. [#1643](https://github.com/ocsf/ocsf-schema/pull/1643)
   1. Added `download_info` attribute to `file` object. [#1658](https://github.com/ocsf/ocsf-schema/pull/1658)
+  1. Added `notes` attribute as an array of `Note` objects. [#1670](https://github.com/ocsf/ocsf-schema/pull/1670)
   1. Added `prompt_text` and `response_text` attributes for capturing the input prompt text and model response text of an AI message. [#1674](https://github.com/ocsf/ocsf-schema/pull/1674)
   1. Added `ai_agent` attribute referencing the new `ai_agent` object. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added `hosted_ai_agent_list` attribute for enumerating AI agents hosted by a process or other runtime. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
@@ -97,6 +100,8 @@ Thankyou! -->
   1. Added `transaction_id`, `opcode_id`/`opcode`, `flag_ids`/`flags`, `authority`, `query_additional`, and `response_additional` to `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
   1. Extended `activity_id` attribute in `HTTP Activity` to cover all methods in IANA HTTP Method Registry. [#1654](https://github.com/ocsf/ocsf-schema/pull/1654)
   1. Added `users` to `group_management` to replace deprecated `user`. [#1666](https://github.com/ocsf/ocsf-schema/pull/1666)
+  1. Added `notes` to `finding` and `incident_finding`. [#1670](https://github.com/ocsf/ocsf-schema/pull/1670)
+  1. Added `resources` to `finding` for consistency and referencing within the class. [#1670](https://github.com/ocsf/ocsf-schema/pull/1670)
   1. Added the `ai_operation` profile to the `system`, `network`, `application`, and `iam` base event classes so all System Activity, Network Activity, Application Activity, and Identity & Access Management events inherit agent attribution. Also added the profile to `email_activity` (which does not extend a base with the profile). [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
 * #### Profiles
   1. Added `ai_agent` attribute to the `ai_operation` profile. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
@@ -157,6 +162,7 @@ Thankyou! -->
 1. Deprecated `cpu_type` in the dictionary in favor of `model` and `vendor_name` within `cpu_info_list[*]`. [#1630](https://github.com/ocsf/ocsf-schema/pull/1630)
 1. Deprecated `cpu_architecture`, `cpu_architecture_id`, `cpu_bits`, `cpu_cores`, `cpu_speed`, and `cpu_type` on `device_hw_info` in favor of their equivalents within `cpu_info_list[*]`. [#1630](https://github.com/ocsf/ocsf-schema/pull/1630)
 1. Deprecated the `user` attribute in the `group_management` class in favor of `users`. [#1666](https://github.com/ocsf/ocsf-schema/pull/1666)
+1. Deprecated the `comment` attribute in the `finding` class and its extended classes, and the `incident_finding` class in favor of `notes`. [#1670](https://github.com/ocsf/ocsf-schema/pull/1670)
 
 ### Misc
 1. Added static anti-pattern detection, LLM-to-static learning pipeline, and deprecated attribute filtering to the automated PR review workflows. [#1599](https://github.com/ocsf/ocsf-schema/pull/1599)

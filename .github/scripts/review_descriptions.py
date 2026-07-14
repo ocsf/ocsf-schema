@@ -23,7 +23,7 @@ import sys
 from pathlib import Path
 
 COMMENT_MARKER = "<!-- ocsf-description-review -->"
-DEFAULT_MODEL = "claude-sonnet-4-20250514"
+DEFAULT_MODEL = "claude-sonnet-4-6"
 MAX_CONTEXT_CHARS = 400_000
 
 # Deterministic normative pre-check (rules 13–15).
@@ -78,6 +78,24 @@ Deprecated attributes (those with an `@deprecated` marker) have been
 pre-filtered from the compiled schema data. Do not flag or comment on
 deprecated attributes — they are intentionally being phased out.
 
+## Scope Discipline (STRICT — this overrides every criterion below)
+
+1. **Only `_changed_attributes` (and changed captions/descriptions/CHANGELOG
+   lines) are in scope.** NEVER emit a finding — in ANY section (Suggestions,
+   Anti-Pattern, CHANGELOG, Normative/Neutrality) — for an attribute, caption,
+   description, or line that is NOT part of this PR's changes. Sibling
+   summaries, `cross_reference_index`, `dictionary_neighbors`, and the full PR
+   diff are provided as CONTEXT ONLY to help you reason about the changed
+   items; they are never themselves review targets.
+2. **No hedged out-of-scope findings.** Do not produce findings tagged "for
+   context", "for completeness", "pre-existing — disregard", "not introduced by
+   this PR", or similar. If something is out of scope, omit it entirely and
+   silently. A disclaimer is NOT a license to flag it.
+3. **No stylistic churn.** Do not propose stylistic or preferential rewrites of
+   descriptions that are already clear, correct, and self-contained. Flag a
+   description only when it has a genuine comprehension defect against the
+   criteria below. "Not strictly wrong but could be tightened" is NOT a finding.
+
 ## Review Criteria
 
 Evaluate ONLY the changed/added descriptions against these criteria:
@@ -112,7 +130,14 @@ Array attributes should describe what each element represents, not just
 "A list of X."
 
 ### 6. CHANGELOG Conventions
-Every CHANGELOG entry MUST:
+**Description-only edits do NOT require a CHANGELOG entry.** By project
+convention, updating the `description` (or `caption`) of an *existing*
+attribute, object, or class is a documentation change and is intentionally
+NOT logged. NEVER flag a "missing CHANGELOG entry" for a description/caption
+update. Only new attributes/objects/classes, deprecations, removals, and
+type/structural/behavioral changes warrant a CHANGELOG entry.
+
+When a CHANGELOG entry *is* present, it MUST:
 - End with a PR reference link: `[#NNNN](https://github.com/ocsf/ocsf-schema/pull/NNNN)`
 - Use `1.` numbering with 2-space indent under `####` subsections
 - Be placed under the correct section (Added/Improved/Bugfixes/etc.) and
@@ -121,6 +146,29 @@ Every CHANGELOG entry MUST:
 ### 7. Machine Comprehension
 Descriptions should be specific enough for an LLM to correctly populate the
 field from raw security telemetry and distinguish it from similar attributes.
+
+## Sibling Attribute Description Convention (PRESERVE — do not deviate)
+
+OCSF pairs an enum `<name>_id` attribute (`integer_t` with an `enum`) with a
+string sibling (declared via the `sibling` field) that carries the human-
+readable label. These descriptions follow a FIXED house convention. Treat the
+convention as correct; do NOT rewrite a description into a different shape,
+and do NOT flag a description merely for following it.
+
+- **Enum `<name>_id` attribute**: `"The normalized identifier of <concept>."`
+  (optionally noting `0` = Unknown and `99` = Other, and that the sibling must
+  carry the source-specific label when the value is Other).
+- **String sibling attribute**: `"The <concept>, normalized to the caption of
+  the <name>_id value. In the case of 'Other', it is defined by the event
+  source."` A trailing `See specific usage.` marker on a dictionary entry is an
+  intentional placeholder (see the dictionary-placeholder rule above) and must
+  not be flagged.
+
+Only raise a sibling finding when the description genuinely BREAKS this
+convention (e.g., wrong sibling name referenced, missing the `<name>_id`
+linkage, or the `Other` clause omitted where the enum has an Other value). When
+suggesting a fix, rewrite it back INTO this convention — never propose an
+alternative phrasing style.
 
 ## Anti-Pattern Detection
 
@@ -250,7 +298,9 @@ Numbered list. Each item:
 If no anti-patterns are found, omit this section entirely.
 
 ### CHANGELOG Issues
-List any convention violations.
+List any convention violations. Do NOT report a missing CHANGELOG entry for
+description-only or caption-only edits to existing schema elements (see
+criterion 6). Omit this section entirely if there are no violations.
 
 ### Normative / Neutrality Issues
 Findings for criteria 13–16. Numbered list. Each item:
@@ -272,6 +322,11 @@ normative/neutrality issues.
 If no issues are found, respond with only:
 > ✅ No description issues found — descriptions look clear for LLM consumption.
 
+**Omit empty and hedged sections.** Only emit a section if it has at least one
+genuine, in-scope finding. Never output a section (or a bullet) whose content is
+"none", "no issues", "pre-existing — disregard", "for completeness", or any other
+placeholder/hedge. A section with nothing actionable must be left out entirely.
+
 ## Previous Review Awareness
 
 You may receive a "Previous Review" section containing your earlier review of
@@ -282,6 +337,13 @@ this same PR. When present:
 2. Re-raise any suggestions that were NOT addressed — keep the same format
 3. Note any NEW issues introduced since the last review
 4. Keep the Summary section updated to reflect current state
+5. **If a changed description already matches (verbatim or near-verbatim) a
+   description you suggested in a previous review, treat it as ✅ resolved and
+   do NOT propose a new variant of it.** Do not oscillate wording between runs
+   or nudge an already-accepted suggestion back toward the original text.
+6. Keep the "Previous Review Status" section terse: one short bullet per prior
+   item (✅ resolved / ❌ still open). Do NOT re-derive, second-guess, or
+   self-correct within the section — state the current status once and move on.
 
 These are advisory suggestions to help improve clarity. They are not required
 changes. Only review CHANGED or ADDED content. Do not flag pre-existing
@@ -1084,6 +1146,7 @@ def cmd_review() -> None:
     message = client.messages.create(
         model=model,
         max_tokens=4096,
+        temperature=0,
         system=SYSTEM_PROMPT,
         messages=[
             {

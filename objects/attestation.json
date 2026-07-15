@@ -2,31 +2,42 @@
   "caption": "Attestation",
   "name": "attestation",
   "extends": "object",
-  "description": "A cryptographic attestation that an event record has not been altered since it was produced and was produced by the holder of a verifiable identity, providing integrity, authenticity, and non-repudiation. Each signature is computed over a canonical serialization of the record, binding the included fields to that identity. An attestation may carry more than one signature (for example, a co-signature, notary, or witness over the same record) and may participate in a tamper-evident chain through its record and previous-record fingerprints. The verifiable identity is a technical credential, such as a key or certificate, and is not an attribution of any person, organization, or state.",
+  "description": "A cryptographic attestation that an event has not been altered since it was produced and was produced by the holder of a verifiable identity, providing integrity, authenticity, and non-repudiation. The attestation is computed over a canonical serialization of the event: the entire event, including the attestation's own <code>authority_uid</code>, <code>chain_uid</code>, and <code>prev_event</code> attributes, and excluding only the attestation's <code>fingerprint</code> and <code>signatures</code>. Because <code>prev_event</code> is inside the serialized content, deleting or altering an event in a chain breaks the fingerprint and signatures of the event that references it. An attestation may carry more than one signature (for example, a co-signature, notary, or witness over the same event). The verifiable identity is a technical credential, such as a key or certificate, and is not an attribution of any person, organization, or state.",
   "attributes": {
     "uid": {
       "caption": "Attestation ID",
-      "description": "Unique identifier of this attestation. It distinguishes an individual attestation, such as a single link within a tamper-evident chain, from the chain as a whole. See <code>chain_uid</code> for the identifier of the chain itself.",
+      "description": "Unique identifier of this attestation. It distinguishes an individual attestation, such as a single entry within a tamper-evident chain, from the chain as a whole. See <code>chain_uid</code> for the identifier of the chain itself.",
       "requirement": "optional"
     },
+    "authority_uid": {
+      "caption": "Authority ID",
+      "description": "Unique identifier of the authority that produced this attestation, tying the signing credential to a known party. Because signing credentials rotate and expire, a verifier uses this identifier to confirm that the credential carried in <code>signatures</code> belongs to the expected authority, rather than to a different holder of some otherwise-valid credential. Included in the canonical serialization.",
+      "requirement": "recommended"
+    },
     "signatures": {
-      "description": "One or more digital signatures over the canonical serialization of the event record, each bound to a verifiable identity. The first entry is typically the producer; additional entries carry co-signatures such as a notary or witness over the same record. The signing algorithm, certificate or public-key material, and signing time are carried within each <code>digital_signature</code> object.",
-      "requirement": "required"
+      "description": "One or more digital signatures, each computed over this event's <code>fingerprint</code> and thereby over the event's canonical serialization, each bound to a verifiable identity. The first entry is typically the producer; additional entries carry co-signatures such as a notary or witness over the same event. The signing algorithm, certificate or public-key material, and signing time are carried within each <code>digital_signature</code> object.",
+      "requirement": "recommended"
     },
-    "record_hash": {
-      "caption": "Record Hash",
-      "description": "Fingerprint of this record's canonical serialization. The next record in the chain references it through that record's <code>prev_record_hash</code>, so that altering this record breaks every later link.",
-      "requirement": "required"
+    "fingerprint": {
+      "caption": "Fingerprint",
+      "description": "The fingerprint of this event's canonical serialization. Where <code>signatures</code> are present, each signature is computed over this fingerprint. Without signatures, the fingerprint alone still detects accidental alteration or corruption of the event. The next event in a chain references this value through its own <code>prev_event.fingerprint</code>.",
+      "requirement": "recommended"
     },
-    "prev_record_hash": {
-      "caption": "Previous Record Hash",
-      "description": "Fingerprint of the prior record in the chain, providing tamper-evident ordering. Absent on the first, or genesis, entry of a chain.",
+    "prev_event": {
+      "caption": "Previous Event",
+      "description": "Reference to the previous event in a tamper-evident chain, carrying that event's fingerprint together with locator attributes for retrieval. Absent on the first, or genesis, event of a chain.",
       "requirement": "recommended"
     },
     "chain_uid": {
       "caption": "Chain ID",
-      "description": "Identifier of the append-only chain, such as a forensic or audit log, that this record belongs to. It groups a sequence of attestations so that an independent verifier can locate and validate them in order; it identifies the chain itself and is not a reference to any record outside of this one. Stable for the lifetime of the chain. For example, every attestation produced during a single agent session shares one <code>chain_uid</code>, while each record carries its own <code>record_hash</code> and links to its predecessor through <code>prev_record_hash</code>.",
+      "description": "Identifier of the append-only chain, such as a forensic or audit log, that this event belongs to. It groups a sequence of attestations so that an independent verifier can locate and validate them in order; it identifies the chain itself and is not a reference to any event outside of this one. Stable for the lifetime of the chain. For example, every attestation produced during a single agent session shares one <code>chain_uid</code>, so querying events whose <code>attestation.chain_uid</code> matches retrieves the full chain, including its newest entry, while each event links to its predecessor through <code>prev_event</code>.",
       "requirement": "recommended"
     }
+  },
+  "constraints": {
+    "at_least_one": [
+      "fingerprint",
+      "signatures"
+    ]
   }
 }

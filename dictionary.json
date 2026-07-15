@@ -177,24 +177,24 @@
       "description": "The permissions that were granted in a platform-native format. See specific usage.",
       "type": "integer_t"
     },
-    "prev_record_hash": {
-      "caption": "Previous Record Hash",
-      "description": "Fingerprint of the prior record in a tamper-evident chain.",
-      "type": "fingerprint"
+    "prev_event": {
+      "caption": "Previous Event",
+      "description": "Reference to the previous event in a tamper-evident chain, binding that event's fingerprint together with locator attributes for retrieval.",
+      "type": "prev_event"
     },
-    "record_hash": {
-      "caption": "Record Hash",
-      "description": "Fingerprint of a record's canonical serialization, used as a link in a tamper-evident chain.",
-      "type": "fingerprint"
+    "authority_uid": {
+      "caption": "Authority ID",
+      "description": "The unique identifier of the authority that produced an attestation. See specific usage.",
+      "type": "string_t"
     },
     "chain_uid": {
       "caption": "Chain ID",
-      "description": "Identifier of an append-only chain, such as a forensic or audit log, that groups a sequence of attested records for independent verification. Stable for the lifetime of the chain.",
+      "description": "Identifier of an append-only chain, such as a forensic or audit log, that groups a sequence of attested events for independent verification. Stable for the lifetime of the chain.",
       "type": "string_t"
     },
     "attestation": {
       "caption": "Attestation",
-      "description": "A cryptographic attestation over an event record, providing integrity, authenticity, and non-repudiation. Carried on the <code>record_integrity</code> profile; the object itself is domain-agnostic.",
+      "description": "A cryptographic attestation over an event, providing integrity, authenticity, and non-repudiation. Carried on the <code>record_integrity</code> profile; the object itself is domain-agnostic.",
       "type": "attestation"
     },
     "response_additional": {

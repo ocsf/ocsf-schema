@@ -239,6 +239,92 @@
         }
       }
     },
+    "serialization": {
+      "description": "The canonical serialization scheme used to produce the deterministic byte sequence that was fingerprinted, normalized to the caption of <code>serialization_id</code>. In the case of <code>Other</code>, it is defined by the event source.",
+      "requirement": "optional"
+    },
+    "serialization_id": {
+      "description": "The identifier of the normalized canonical serialization scheme used to produce the deterministic byte sequence that was fingerprinted. A verifier must apply the same scheme to reproduce the fingerprinted input. Only meaningful where the fingerprinted data is structured, such as an event; fingerprints of opaque data, such as file content, do not populate it. Distinct from <code>algorithm_id</code>, which identifies how the resulting bytes were hashed.",
+      "requirement": "optional",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "JCS",
+          "description": "JSON Canonicalization Scheme - deterministic JSON serialization of the structured data prior to hashing.",
+          "references": [
+            {
+              "description": "RFC 8785",
+              "url": "https://www.rfc-editor.org/rfc/rfc8785"
+            }
+          ]
+        },
+        "2": {
+          "caption": "JWS",
+          "description": "JSON Web Signature - the JWS Signing Input, i.e. BASE64URL(protected header) '.' BASE64URL(payload).",
+          "references": [
+            {
+              "description": "RFC 7515",
+              "url": "https://www.rfc-editor.org/rfc/rfc7515"
+            }
+          ]
+        },
+        "3": {
+          "caption": "COSE",
+          "description": "CBOR Object Signing and Encryption - the CBOR Sig_structure used as the binary input.",
+          "references": [
+            {
+              "description": "RFC 9052",
+              "url": "https://www.rfc-editor.org/rfc/rfc9052"
+            }
+          ]
+        },
+        "4": {
+          "caption": "DSSE",
+          "description": "Dead Simple Signing Envelope - the PAE (Pre-Authentication Encoding) canonical input. Note: DSSE is a signing-envelope scheme, not a hash algorithm; the hash algorithm is carried in <code>algorithm_id</code>.",
+          "references": [
+            {
+              "description": "DSSE specification (secure-systems-lab)",
+              "url": "https://github.com/secure-systems-lab/dsse"
+            }
+          ]
+        },
+        "5": {
+          "caption": "Authenticode",
+          "description": "The Portable Executable (PE) Image Hash procedure that canonicalizes the PE structure into the byte sequence fed to the digest, excluding specified header fields and digesting sections in a defined order.",
+          "references": [
+            {
+              "description": "Windows Authenticode Portable Executable Signature Format (Microsoft, 2008)",
+              "url": "https://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/Authenticode_PE.docx"
+            }
+          ]
+        },
+        "6": {
+          "caption": "Code Signing",
+          "description": "The procedure that describes how hashes of code and other structures form the Code Directory message that is digested.",
+          "references": [
+            {
+              "description": "TN3126: Inside Code Signing: Hashes",
+              "url": "https://developer.apple.com/documentation/technotes/tn3126-inside-code-signing-hashes"
+            }
+          ]
+        },
+        "7": {
+          "caption": "App Package",
+          "description": "The Windows Application Package signing procedure that describes how file hashes are stored in the manifest, and how that manifest is signed.",
+          "references": [
+            {
+              "description": "Sign an MSIX package",
+              "url": "https://learn.microsoft.com/en-us/windows/msix/package/signing-package-overview"
+            }
+          ]
+        },
+        "99": {
+          "caption": "Other"
+        }
+      }
+    },
     "value": {
       "description": "The fingerprint value.<p><b>Note:</b> This uses type <code>file_hash_t</code> (&quot;Hash&quot;), which has been generalized for all fingerprints but retains the same name and caption for backwards compatibility.</p>",
       "requirement": "required",

@@ -192,10 +192,11 @@
       "description": "Identifier of an append-only chain, such as a forensic or audit log, that groups a sequence of attested events for independent verification. Stable for the lifetime of the chain.",
       "type": "string_t"
     },
-    "attestation": {
-      "caption": "Attestation",
-      "description": "A cryptographic attestation over an event, providing integrity, authenticity, and non-repudiation. Carried on the <code>record_integrity</code> profile; the object itself is domain-agnostic.",
-      "type": "attestation"
+    "attestation_list": {
+      "caption": "Attestation List",
+      "description": "One or more cryptographic <code>attestation</code> objects over an event, each providing integrity, authenticity, and non-repudiation. Independent attesters over the same event — for example a producer at write time and a downstream processor at ingest — each contribute a separate attestation, distinct from co-signers on a single attestation, which share its <code>signatures</code> array. Carried on the <code>record_integrity</code> profile; the object itself is domain-agnostic.",
+      "type": "attestation",
+      "is_array": true
     },
     "response_additional": {
       "caption": "DNS Response Additional Section",

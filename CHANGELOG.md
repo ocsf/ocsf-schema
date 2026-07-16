@@ -69,7 +69,7 @@ Thankyou! -->
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
-  1. Added `attestation`, `prev_event`, `authority_uid`, and `chain_uid` attributes for the `record_integrity` profile. [#1661](https://github.com/ocsf/ocsf-schema/pull/1661)
+  1. Added `attestation_list`, `prev_event`, `authority_uid`, and `chain_uid` attributes for the `record_integrity` profile. [#1661](https://github.com/ocsf/ocsf-schema/pull/1661)
   1. Added `com_class_uuid` attribute to reflect Class Identifier of a Component Object Model. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `event_codes` that is a set of event identifiers. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `log_sources` that is a set of log systems. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)

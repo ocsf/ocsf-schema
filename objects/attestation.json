@@ -11,7 +11,7 @@
     },
     "authority_uid": {
       "caption": "Authority ID",
-      "description": "Unique identifier of the authority that produced this attestation, tying the signing credential to a known party. Because signing credentials rotate and expire, a verifier uses this identifier to confirm that the credential carried in <code>signatures</code> belongs to the expected authority, rather than to a different holder of some otherwise-valid credential. Included in the canonical serialization.",
+      "description": "Unique identifier of the authority that produced this attestation. When the attestation has a signature, <code>authority_uid</code> ties the signing credential to a known party: because signing credentials rotate and expire, a verifier uses this identifier to confirm that the credential belongs to the expected authority, rather than to a different holder of some otherwise-valid credential. Where multiple <code>signatures</code> are present, it identifies the authority that produced the attestation; the identity of each co-signer is carried within its own <code>digital_signature</code> object. Included in the canonical serialization.",
       "requirement": "recommended"
     },
     "signatures": {

@@ -244,13 +244,17 @@
       "requirement": "optional"
     },
     "serialization_id": {
-      "description": "The identifier of the normalized canonical serialization scheme used to produce the deterministic byte sequence that was fingerprinted. A verifier must apply the same scheme to reproduce the fingerprinted input. Only meaningful where the fingerprinted data is structured, such as an event; fingerprints of opaque data, such as file content, do not populate it. Distinct from <code>algorithm_id</code>, which identifies how the resulting bytes were hashed.",
+      "description": "The identifier of the normalized canonical serialization scheme used to produce the deterministic byte sequence that was fingerprinted. A verifier must apply the same scheme to reproduce the fingerprinted input. Use <code>Flat</code> where the fingerprinted data is an opaque byte sequence, such as file content, to which no canonical serialization was applied. Distinct from <code>algorithm_id</code>, which identifies how the resulting bytes were hashed.",
       "requirement": "optional",
       "enum": {
         "0": {
           "caption": "Unknown"
         },
         "1": {
+          "caption": "Flat",
+          "description": "No canonical serialization was applied; the fingerprint is computed over the data's raw byte sequence, such as the content of a disk file or any other opaque byte stream."
+        },
+        "2": {
           "caption": "JCS",
           "description": "JSON Canonicalization Scheme - deterministic JSON serialization of the structured data prior to hashing.",
           "references": [
@@ -260,7 +264,7 @@
             }
           ]
         },
-        "2": {
+        "3": {
           "caption": "JWS",
           "description": "JSON Web Signature - the JWS Signing Input, i.e. BASE64URL(protected header) '.' BASE64URL(payload).",
           "references": [
@@ -270,7 +274,7 @@
             }
           ]
         },
-        "3": {
+        "4": {
           "caption": "COSE",
           "description": "CBOR Object Signing and Encryption - the CBOR Sig_structure used as the binary input.",
           "references": [
@@ -280,7 +284,7 @@
             }
           ]
         },
-        "4": {
+        "5": {
           "caption": "DSSE",
           "description": "Dead Simple Signing Envelope - the PAE (Pre-Authentication Encoding) canonical input. Note: DSSE is a signing-envelope scheme, not a hash algorithm; the hash algorithm is carried in <code>algorithm_id</code>.",
           "references": [
@@ -290,7 +294,7 @@
             }
           ]
         },
-        "5": {
+        "6": {
           "caption": "Authenticode",
           "description": "The Portable Executable (PE) Image Hash procedure that canonicalizes the PE structure into the byte sequence fed to the digest, excluding specified header fields and digesting sections in a defined order.",
           "references": [
@@ -300,7 +304,7 @@
             }
           ]
         },
-        "6": {
+        "7": {
           "caption": "Code Signing",
           "description": "The procedure that describes how hashes of code and other structures form the Code Directory message that is digested.",
           "references": [
@@ -310,7 +314,7 @@
             }
           ]
         },
-        "7": {
+        "8": {
           "caption": "App Package",
           "description": "The Windows Application Package signing procedure that describes how file hashes are stored in the manifest, and how that manifest is signed.",
           "references": [

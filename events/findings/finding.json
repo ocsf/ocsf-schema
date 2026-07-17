@@ -4,6 +4,9 @@
   "description": "The Finding event is a generic event that defines a set of attributes available in the Findings category.",
   "extends": "base_event",
   "name": "finding",
+  "profiles": [
+    "incident"
+  ],
   "attributes": {
     "$include": [
       "profiles/incident.json"
@@ -31,7 +34,11 @@
     "comment": {
       "description": "A user provided comment about the finding.",
       "group": "context",
-      "requirement": "optional"
+      "requirement": "optional",
+      "@deprecated": {
+        "message": "Use the <code>notes</code> attribute instead.",
+        "since": "1.9.0"
+      }
     },
     "confidence": {
       "group": "context",
@@ -61,6 +68,18 @@
     "finding_info": {
       "group": "primary",
       "requirement": "required"
+    },
+    "notes": {
+      "caption": "Notes",
+      "description": "Additional notes related to the finding. Each note in the array can include a comment, the user who made the comment, the time when the note was created, and the time when the note was last modified (typically by the same user). Notes can be used to provide additional context, explanations, or observations by analysts related to the finding over time.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "resources": {
+      "caption": "Affected Resources",
+      "description": "Describes details about resources that were the target of the activity that triggered the finding.",
+      "group": "context",
+      "requirement": "recommended"
     },
     "start_time": {
       "description": "The time of the earliest event or finding that contributed to this finding.",
@@ -109,8 +128,5 @@
       "group": "context",
       "requirement": "optional"
     }
-  },
-  "profiles": [
-    "incident"
-  ]
+  }
 }

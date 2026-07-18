@@ -1,6 +1,6 @@
 {
   "caption": "Resource Details",
-  "description": "The Resource Details object describes details about resources that were affected by the activity/event.",
+  "description": "The Resource Details object describes details about a resource (including a user) affected by or related to the activity or finding. The <code>name</code> and/or <code>uid</code> should correspond to the resource for which the details pertain. Use <code>role_id</code> to characterize the role of the resource.",
   "extends": "_resource",
   "name": "resource_details",
   "attributes": {
@@ -21,7 +21,7 @@
       "requirement": "optional"
     },
     "device": {
-      "description": "The device or host associated with this resource. Populate this attribute when the resource is a device or is directly bound to a specific device and additional device-level metadata — such as OS details, hardware inventory, or installed agents — beyond what the top-level <code>hostname</code> and <code>ip</code> attributes capture is available. The <code>device.hostname</code> value should match the <code>hostname</code> attribute of this object; the top-level <code>hostname</code> and <code>ip</code> remain the primary identifiers for the resource.",
+      "description": "The device details when the resource type is a device — for example, a cloud compute instance, a laptop, or a network appliance. Provides structured device attributes (OS, type, hardware, agent) that the resource's scalar fields cannot represent — beyond what the <code>hostname</code> and <code>ip</code> attributes capture. The <code>device.name</code> and <code>device.uid</code> should match the <code>name</code> and <code>uid</code> of this objects; the <code>device.hostname</code> value should match the <code>hostname</code> attribute of this object. The top-level <code>hostname</code> and <code>ip</code> remain the primary identifiers for the device resource.",
       "requirement": "optional"
     },
     "group": {
@@ -93,7 +93,7 @@
       }
     },
     "user": {
-      "description": "The user associated with or represented by this resource — for example, the user who is the target of a finding, the identity whose credentials were exposed, or the cloud IAM principal the resource embodies. Distinct from <code>owner</code>, which identifies the entity responsible for the resource rather than the user affected by or represented within it. Use <code>role_id</code> to characterize the user's relationship to the resource.",
+      "description": "The user represented by this resource — for example, a cloud IAM user, a local account, or an application identity. Provides structured user attributes (email, groups, privileges) that this object's scalar fields such as <code>name</code> cannot represent. Distinct from <code>owner</code>, which identifies the entity responsible for managing the resource. The <code>user.name</code> value should match the <code>name</code> attribute of this object, <code>user.uid</code> should match the <code>uid</code> of this object.",
       "requirement": "optional"
     },    
     "version": {

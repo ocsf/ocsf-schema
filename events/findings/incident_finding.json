@@ -45,7 +45,11 @@
     "comment": {
       "description": "Additional user supplied details for updating or closing the incident.",
       "group": "context",
-      "requirement": "optional"
+      "requirement": "optional",
+      "@deprecated": {
+        "message": "Use the <code>notes</code> attribute instead.",
+        "since": "1.9.0"
+      }
     },
     "confidence": {
       "group": "context",
@@ -88,6 +92,12 @@
       "requirement": "recommended"
     },
     "is_suspected_breach": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "notes": {
+      "caption": "Notes",
+      "description": "Additional notes related to the finding. Each note in the array can include a comment, the user who made the comment, the time when the note was created, and the time when the note was last modified (typically by the same user). Notes can be used to provide additional context, explanations, or observations by analysts related to the incident over time.",
       "group": "context",
       "requirement": "optional"
     },

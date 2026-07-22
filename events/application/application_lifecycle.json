@@ -44,9 +44,21 @@
     },
     "app": {
       "description": "The application that was affected by the lifecycle event.  This also applies to self-updating application systems.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "application": {
+      "caption": "Application",
+      "description": "The application that was affected by the lifecycle event. This also applies to self-updating application systems. Product identity, such as vendor and version, can be conveyed via the nested <code>product</code> attribute.",
       "group": "primary",
-      "requirement": "required"
+      "requirement": "recommended"
     }
+  },
+  "constraints": {
+    "at_least_one": [
+      "app",
+      "application"
+    ]
   },
   "references": [
     {

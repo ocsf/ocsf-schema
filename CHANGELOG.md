@@ -49,6 +49,7 @@ Thankyou! -->
   1. Added user_management and role_management. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
   1. Added clipboard_activity. [#1655](https://github.com/ocsf/ocsf-schema/pull/1655)
   1. Added device_power_state_activity (`Device Power State Activity`) class to capture power state changes of a device. [#1624](https://github.com/ocsf/ocsf-schema/pull/1624)
+  1. Added aggregated_finding class as an alternative to incident_finding, without built-in incident semantics. [#1688](https://github.com/ocsf/ocsf-schema/pull/1688)
 * #### Profiles
   1. Added `record_integrity` profile that adds a cryptographic `attestation` over the event (integrity, authenticity, and non-repudiation), applied at the base event so any class can carry it. [#1661](https://github.com/ocsf/ocsf-schema/pull/1661)
 * #### Objects
@@ -66,6 +67,7 @@ Thankyou! -->
   1. Added `ai_agent` object representing an autonomous AI agent, distinct from the existing `agent` object (which models security sensors such as EDR, DLP, APM). [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added `attestation` object carrying a `fingerprint` of and digital `signatures` over an event, with optional tamper-evident chain attributes (`prev_event`, `chain_uid`) and an `authority_uid` identifying the attesting party. [#1661](https://github.com/ocsf/ocsf-schema/pull/1661)
   1. Added `prev_event` object referencing the previous event in a tamper-evident chain by its `fingerprint` (content binding) together with `uid` and `type_uid` (retrieval). [#1661](https://github.com/ocsf/ocsf-schema/pull/1661)
+  1. Added `detection` object including the `detection_system_id` and related attributes. [#1688](https://github.com/ocsf/ocsf-schema/pull/1688)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -93,7 +95,7 @@ Thankyou! -->
   1. Added `ai_agent` attribute referencing the new `ai_agent` object. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added `hosted_ai_agent_list` attribute for enumerating AI agents hosted by a process or other runtime. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added `charter` attribute (file type) for documents defining the role, scope, and operating bounds of an entity. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
-  1. Added `is_aggregate_finding` for findings that aggregate other findings. [#1688](https://github.com/ocsf/ocsf-schema/pull/1688)
+  1. Added `detection` of type `detection` for the `detection_finding` class. [#1688](https://github.com/ocsf/ocsf-schema/pull/1688)
 
 ### Improved
 * #### Categories
@@ -108,6 +110,7 @@ Thankyou! -->
   1. Added `notes` to `finding` and `incident_finding`. [#1670](https://github.com/ocsf/ocsf-schema/pull/1670)
   1. Added `resources` to `finding` for consistency and referencing within the class. [#1670](https://github.com/ocsf/ocsf-schema/pull/1670)
   1. Added the `ai_operation` profile to the `system`, `network`, `application`, and `iam` base event classes so all System Activity, Network Activity, Application Activity, and Identity & Access Management events inherit agent attribution. Also added the profile to `email_activity` (which does not extend a base with the profile). [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
+  1. Added `detection` to the `detection_finding` class, combining related attributes together. [#1688](https://github.com/ocsf/ocsf-schema/pull/1688)
 * #### Profiles
   1. Added `ai_agent` attribute to the `ai_operation` profile. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
 * #### Objects

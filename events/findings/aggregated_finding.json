@@ -17,20 +17,56 @@
       "enum": {
         "1": {
           "caption": "Create",
-          "description": "A finding was created."
+          "description": "An aggregated finding was created."
         },
         "2": {
           "caption": "Update",
-          "description": "A finding was updated."
+          "description": "An aggregated finding was updated, including adding, updating, or closing any of the aggregates."
         },
         "3": {
           "caption": "Close",
-          "description": "A finding was closed."
+          "description": "An aggregated finding was closed, along with all of the aggregates."
         }
       }
     },
     "activity_name": {
       "description": "The finding activity name, as defined by the <code>activity_id</code>. When <code>activity_id</code> is <code>99</code> (Other), this <b>must</b> contain the source-specific activity label."
+    },
+    "attacks": {
+      "description": "An array describing the tactics, techniques & sub-techniques of the aggregated findings; a union of those associated across all aggregated findings.",
+      "group": "context",
+      "requirement": "optional",
+      "profile": null,
+      "references": [
+        {
+          "description": "MITRE ATT&CK®",
+          "url": "https://attack.mitre.org"
+        }
+      ]
+    },
+    "confidence": {
+      "group": "context",
+      "requirement": "optional",
+      "profile": null
+    },
+    "confidence_id": {
+      "group": "context",
+      "requirement": "recommended",
+      "profile": null
+    },
+    "confidence_score": {
+      "group": "context",
+      "requirement": "optional",
+      "profile": null
+    },
+    "desc": {
+      "description": "The short description of the aggregated finding.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "end_time": {
+      "description": "The time of the most recent event or finding that contributed to this aggregated finding.",
+      "requirement": "optional"
     },
    "finding_info_list": {
       "group": "primary",
@@ -40,6 +76,16 @@
       "caption": "Notes",
       "description": "Additional notes related to the finding. Each note in the array can include a comment, the user who made the comment, the time when the note was created, and the time when the note was last modified (typically by the same user). Notes can be used to provide additional context, explanations, or observations by analysts related to the incident over time.",
       "group": "context",
+      "requirement": "optional"
+    },
+    "start_time": {
+      "description": "The time of the earliest event or finding that contributed to this aggregated finding.",
+      "requirement": "optional"
+    },
+    "time": {
+      "description": "The aggregated finding creation time &mdash; when the finding was first created, not when the underlying finding or finding activity occurred. For the time range of contributing findings, use <code>start_time</code> and <code>end_time</code>."
+    },
+    "vendor_attributes": {
       "requirement": "optional"
     }
   }

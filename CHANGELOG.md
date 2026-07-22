@@ -108,7 +108,6 @@ Thankyou! -->
   1. Added `resources` to `finding` for consistency and referencing within the class. [#1670](https://github.com/ocsf/ocsf-schema/pull/1670)
   1. Added the `ai_operation` profile to the `system`, `network`, `application`, and `iam` base event classes so all System Activity, Network Activity, Application Activity, and Identity & Access Management events inherit agent attribution. Also added the profile to `email_activity` (which does not extend a base with the profile). [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added the `record_integrity` profile to the `base_event` class so every event class can optionally carry a cryptographic `attestation` over the event. [#1661](https://github.com/ocsf/ocsf-schema/pull/1661)
-  1. Added the `ai_operation` profile to the `detection_finding` class so agent-threat detections can carry AI agent, model, and message context, with `ai_agent` framed as the subject of the finding (the targeted or compromised agent). [#1681](https://github.com/ocsf/ocsf-schema/pull/1681)
 * #### Profiles
   1. Added `ai_agent` attribute to the `ai_operation` profile. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
 * #### Objects

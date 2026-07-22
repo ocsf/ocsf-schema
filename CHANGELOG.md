@@ -93,6 +93,7 @@ Thankyou! -->
   1. Added `ai_agent` attribute referencing the new `ai_agent` object. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added `hosted_ai_agent_list` attribute for enumerating AI agents hosted by a process or other runtime. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added `charter` attribute (file type) for documents defining the role, scope, and operating bounds of an entity. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
+  1. Added 'criticality_id' dictionary attribute with a five-level criticality enum (Unknown, Low, Medium, High, Very High, Other) paired with the existing 'criticality' sibling. [#1693](https://github.com/ocsf/ocsf-schema/pull/1693)
 
 ### Improved
 * #### Categories
@@ -136,9 +137,6 @@ Thankyou! -->
   1. Added `ai_agent` attribute to the `evidences` object so detections involving multiple AI agents, such as an agent spawning a sub-agent in violation of usage policy, can be captured as separate evidence entries. [#1681](https://github.com/ocsf/ocsf-schema/pull/1681)
   1. Added `ai_agent` to `process`. Added `hosted_ai_agent_list` to `process` for cases where a process hosts multiple agents that cannot be individually attributed. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added `charter` attribute to `ai_agent` for the agent's durable role definition document (system prompt or constitution). [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
-  1. Added `App Package (6)` enum value to `algorithm_id` and `App Package (8)` enum value to `serialization_id` in the `digital_signature` object. [#1692](https://github.com/ocsf/ocsf-schema/pull/1692)
-  1. Added `serialization` and `serialization_id` to the `fingerprint` object, mirroring `digital_signature`, so a verifier knows the canonical serialization scheme used to produce the fingerprinted byte sequence. [#1661](https://github.com/ocsf/ocsf-schema/pull/1661)
-  1. Added `Flat (1)` enum value to `serialization_id` in the `digital_signature` and `fingerprint` objects for flat hashes or signatures over a raw byte sequence; the later `serialization_id` values shift up by one (`JCS (2)` through `App Package (8)`), keeping the two enums identical. [#1661](https://github.com/ocsf/ocsf-schema/pull/1661)
 * #### Observables
 * #### Platform Extensions
   1. Added `prev_win_service` attribute to Windows Service Activity Class in order to store previous state of the Windows service. [#1663](https://github.com/ocsf/ocsf-schema/pull/1663)

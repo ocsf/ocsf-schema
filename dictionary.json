@@ -1800,8 +1800,40 @@
     },
     "criticality": {
       "caption": "Criticality",
-      "description": "Criticality of a resource/object in question",
+      "description": "Criticality or relative importance of a resource/object in question, normalized to the caption of <code>criticality_id</code>. In the case of Other, the value is defined by the event source.",
       "type": "string_t"
+    },
+    "criticality_id": {
+      "caption": "Criticality Level ID",
+      "description": "Criticality or relative importance of a resource/object in question.",
+      "sibling": "criticality",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The criticality level is unknown."
+        },
+        "1": {
+          "caption": "Low",
+          "description": "Minimal operational or security importance."
+        },
+        "2": {
+          "caption": "Medium",
+          "description": "Affects localized functions or specific business processes."
+        },
+        "3": {
+          "caption": "High",
+          "description": "Critical to core operations. Compromise leads to significant, but recoverable disruptions."
+        },
+        "4": {
+          "caption": "Very High",
+          "description": "Mission critical, essential to business survival. Compromise could result in catastrophic consequences."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The criticality level is not mapped. See the <code>criticality</code> attribute, which contains a data source specific value."
+        }
+      }
     },
     "cumulative_traffic": {
       "caption": "Cumulative Traffic",

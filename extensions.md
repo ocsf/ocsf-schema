@@ -3,6 +3,7 @@ The purpose of this file is to keep track of and avoid collisions in Extension `
 
 | Caption     | Name     | UID | Notes |
 |-------------|----------|-----|-------|
+| Hiver       | hiver    | **988** | The Hiver SOAR platform schema extension (adds Observable type_ids for ASN and Passive DNS records — types OCSF v1.8 does not model natively) |
 | Synqly      | synqly   | **989** | The Synqly schema extension |
 | US GOV      | usg1     | **990** | The USG-1 schema extension |
 | Cisco       | cisco    | **991** | The Cisco schema extension |

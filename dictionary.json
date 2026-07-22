@@ -2067,11 +2067,6 @@
       "description": "Details of an entity. See specific usage",
       "type": "string_t"
     },
-    "detection": {
-      "caption": "Detection",
-      "description": "Describes the characteristics, techniques and content for the determination of a security violation, compromise, or breach.",
-      "type": "detection"
-    },
     "detection_pattern": {
       "caption": "Detection Pattern",
       "description": "Specific pattern, algorithm, fingerprint, or model used for detection.",
@@ -2118,18 +2113,66 @@
     },
     "detection_system": {
       "caption": "Detection System",
-      "description": "The type of security tool or system that the finding, detection, or alert originated from, normalized to the caption of the detection_system_id value. See specific usage.",
+      "description": "The data security tool or system that the finding, detection, or alert originated from, normalized to the caption of <code>detection_system_id</code>. E.g., Endpoint, Secure Email Gateway, etc. When <code>detection_system_id</code> is <code>99</code> (Other), this attribute must contain the source-specific label.",
       "type": "string_t"
     },
     "detection_system_id": {
       "caption": "Detection System ID",
-      "description": "The type of security tool or system that the finding, detection, or alert originated from. See specific usage.",
+      "description": "The normalized identifier of the data security tool or system type from which the finding, detection, or alert originated. When the type is not listed, use <code>99</code> (Other) and populate <code>detection_system</code> with the source-specific label.",
       "sibling": "detection_system",
       "type": "integer_t",
       "enum": {
         "0": {
           "caption": "Unknown",
           "description": "The detection system type is Unknown."
+        },
+        "1": {
+          "caption": "Endpoint",
+          "description": "A dedicated agent or sensor installed on a device, either a dedicated data security tool or an Endpoint Detection & Response (EDR) tool that can detect sensitive data and/or enforce data security policies. E.g., Forcepoint DLP, Symantec DLP, Microsoft Defender for Endpoint (MDE)."
+        },
+        "2": {
+          "caption": "DLP Gateway",
+          "description": "A Data Loss Prevention (DLP) gateway that is positioned in-line of an information store such as a network share, a database, or otherwise that can detect sensitive data and/or enforce data security policies."
+        },
+        "3": {
+          "caption": "Mobile Device Management",
+          "description": "A Mobile Device Management (MDM) or Enterprise Mobility Management (EMM) tool that can detect sensitive data and/or enforce data security policies on mobile devices (e.g., cellphones, tablets, End User Devices [EUDs])."
+        },
+        "4": {
+          "caption": "Data Discovery & Classification",
+          "description": "A tool that actively identifies and classifies sensitive data in digital media and information stores in accordance with a policy or automated functionality. E.g, Amazon Macie, Microsoft Purview."
+        },
+        "5": {
+          "caption": "Secure Web Gateway",
+          "description": "A Secure Web Gateway (SWG) is any tool that can detect sensitive data and/or enforce data security policies at a network-edge such as within a proxy or firewall service."
+        },
+        "6": {
+          "caption": "Secure Email Gateway",
+          "description": "A Secure Email Gateway (SEG) is any tool that can detect sensitive data and/or enforce data security policies within email systems. E.g., Microsoft Defender for Office, Google Workspaces."
+        },
+        "7": {
+          "caption": "Digital Rights Management",
+          "description": "A Digital Rights Management (DRM) or a dedicated Information Rights Management (IRM) are tools which can detect sensitive data and/or enforce data security policies on digital media via policy or user access rights."
+        },
+        "8": {
+          "caption": "Cloud Access Security Broker",
+          "description": "A Cloud Access Security Broker (CASB) that can detect sensitive data and/or enforce data security policies in-line to cloud systems such as the public cloud or Software-as-a-Service (SaaS) tool. E.g., Forcepoint CASB, SkyHigh Security."
+        },
+        "9": {
+          "caption": "Database Activity Monitoring",
+          "description": "A Database Activity Monitoring (DAM) tool that can detect sensitive data and/or enforce data security policies as part of a dedicated database or warehouse monitoring solution."
+        },
+        "10": {
+          "caption": "Application-Level DLP",
+          "description": "A built in Data Loss Prevention (DLP) or other data security capability within a tool or platform such as an Enterprise Resource Planning (ERP) or Customer Relations Management (CRM) tool that can detect sensitive data and/or enforce data security policies."
+        },
+        "11": {
+          "caption": "Developer Security",
+          "description": "Any Developer Security tool such as an Infrastructure-as-Code (IAC) security scanner, Secrets Detection, or Secure Software Development Lifecycle (SSDLC) tool that can detect sensitive data and/or enforce data security policies. E.g., TruffleHog, GitGuardian, Git-Secrets."
+        },
+        "12": {
+          "caption": "Data Security Posture Management",
+          "description": "A Data Security Posture Management (DSPM) tool is a continuous monitoring and data discovery solution that can detect sensitive data and/or enforce data security policies for local and cloud environments. E.g., Cyera, Sentra, IBM Polar Security."
         },
         "99": {
           "caption": "Other",
@@ -2904,7 +2947,7 @@
     },
     "finding_info_list": {
       "caption": "Finding Information List",
-      "description": "A list of <code>finding_info</code> objects associated to an incident.",
+      "description": "A list of <code>finding_info</code> objects associated to a finding.",
       "type": "finding_info",
       "is_array": true
     },
@@ -6198,6 +6241,61 @@
       "caption": "Sensitivity",
       "description": "The sensitivity of the firewall rule in the matched event. For example: HIGH.",
       "type": "string_t"
+    },
+    "sensor_info_list": {
+      "caption": "Sensor Information List",
+      "description": "An array of sensor_info objects that describe sensor control points.",
+      "type": "sensor_info",
+      "is_array": true
+    },
+    "sensor_layer": {
+      "caption": "Sensor Layer",
+      "description": "The normalized identifier of the sensor layer that emitted the data for the analysis. For example, use this to classify the detection surface (e.g., IPS sensor, endpoint agent, email gateway). When the type is not listed, use <code>99</code> (Other) and populate <code>sensor_layer</code> with the source-specific label.",
+      "type": "string_t"
+    },
+    "sensor_layer_id": {
+      "caption": "Sensor Layer ID",
+      "description": "The technology or sensor layer that the event or finding originated from. See specific usage.",
+      "sibling": "sensor_layer",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The sensor layer type is Unknown."
+        },
+        "1": {
+          "caption": "Network",
+          "description": "The analyzed data is emitted by, or originates from a network, firewall, or IPS sensor."
+        },
+        "2": {
+          "caption": "Endpoint",
+          "description": "The analyzed data is emitted by, or originates from an endpoint device or agent running on an OS."
+        },
+        "3": {
+          "caption": "Email",
+          "description": "The analyzed data is emitted by, or originates from an email gateway or email security system."
+        },
+        "4": {
+          "caption": "IAM",
+          "description": "The analyzed data is emitted by, or originates from an identity and access management (IAM) system or service."
+        },
+        "5": {
+          "caption": "Proxy",
+          "description": "The analyzed data is emitted by, or originates from a proxy server (e.g., forward or reverse proxy, web gateway)."
+        },
+        "6": {
+          "caption": "Threat Intel",
+          "description": "The analyzed data is emitted by, or originates from a cyber threat intelligence (CTI) system or by matching observables against a threat intelligence feed or report."
+        },
+        "7": {
+          "caption": "Application",
+          "description": "The analyzed data is emitted by, or originates from an application (e.g., web application, SaaS platform, or custom business application)."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The sensor layer type is not mapped. See the <code>sensor_layer</code> attribute, which contains a data source specific value."
+        }
+      }
     },
     "sequence": {
       "caption": "Sequence Number",

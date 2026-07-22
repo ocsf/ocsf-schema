@@ -2,7 +2,7 @@
   "uid": 9,
   "caption": "Aggregated Finding",
   "category": "findings",
-  "description": "An Aggregated Finding consolidates other finding references into an aggregate finding, via a list of <code>finding_info</code> objects. The class implements the same structure as <code>Incident Finding</code> but without incident semantics. Apply the <code>Incident</code> profile to add the incident attributes when the aggregated finding is declared as an incident.",
+  "description": "An Aggregated Finding consolidates other finding references into an aggregate finding, via a list of <code>finding_info</code> objects. The class implements the same structure as <code>Incident Finding</code> but without incident semantics. Apply the <code>Incident</code> profile to add the incident attributes when the aggregated finding is declared or promoted as an incident.",
   "extends": "base_event",
   "name": "aggregated_finding",
   "profiles": [
@@ -69,6 +69,7 @@
       "requirement": "optional"
     },
    "finding_info_list": {
+      "description": "A list of <code>finding_info</code> objects that represent the union of aggregated findings. Each element of the list summarizes a finding and the <code>uid</code> attribute references the full finding.",
       "group": "primary",
       "requirement": "required"
     },
@@ -81,6 +82,42 @@
     "start_time": {
       "description": "The time of the earliest event or finding that contributed to this aggregated finding.",
       "requirement": "optional"
+    },
+    "status": {
+      "description": "The aggregated finding lifecycle status label, normalized to the caption of the <code>status_id</code> value. When <code>status_id</code> is <code>99</code> (Other), this <b>must</b> contain the source-specific status label.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "status_id": {
+      "description": "The normalized aggregated finding lifecycle status identifier. This tracks the management workflow from initial triage through resolution. Producers should set this to reflect the current state in their management system.",
+      "group": "primary",
+      "requirement": "required",
+      "enum": {
+        "1": {
+          "caption": "New",
+          "description": "The management system has created, or received the aggregated finding but has not assigned it to an agent."
+        },
+        "2": {
+          "caption": "In Progress",
+          "description": "The aggregated finding has been assigned to an agent but has not been resolved. The agent is actively working with the user to diagnose and triage the underlying findings."
+        },
+        "3": {
+          "caption": "On Hold",
+          "description": "Some or all of the aggregated findings require more information or response from the user or from a third party."
+        },
+        "4": {
+          "caption": "Resolved",
+          "description": "The aggregated findings have been resolved."
+        },
+        "5": {
+          "caption": "Closed",
+          "description": "The aggregated findings have been resolved and no further action is necessary."
+        },
+        "6": {
+          "caption": "Promoted",
+          "description": "Some or all of the aggregated findings have been promoted to an incident. Apply the <code>Incident</code> profile or create an <code>Incident Finding</code>."
+        }
+      }
     },
     "time": {
       "description": "The aggregated finding creation time &mdash; when the finding was first created, not when the underlying finding or finding activity occurred. For the time range of contributing findings, use <code>start_time</code> and <code>end_time</code>."

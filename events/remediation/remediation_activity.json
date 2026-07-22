@@ -2,32 +2,78 @@
   "uid": 1,
   "caption": "Remediation Activity",
   "category": "remediation",
-  "description": "Remediation Activity events report on attempts at remediating a compromised device or computer network. It follows the MITRE countermeasures defined by the D3FEND™ <a target='_blank' href='https://d3fend.mitre.org/'>Matrix</a>.",
+  "description": "Remediation Activity events report on attempts at remediating a compromised device or computer network.",
   "extends": "base_event",
   "name": "remediation_activity",
+  "references": [
+    {
+      "description": "Countermeasures defined by the D3FEND™ Matrix",
+      "url": "https://d3fend.mitre.org/"
+    }
+  ],
   "attributes": {
     "activity_id": {
-      "description": "Matches the MITRE D3FEND™ Tactic. Note: the Model and Detect Tactics are not supported as remediations by the OCSF Remediation event class.",
+      "description": "Matches the countermeasure tactic. Note: the Model tactic is not supported by the OCSF Remediation event class.",
       "enum": {
         "1": {
           "caption": "Isolate",
-          "description": "Creates logical or physical barriers in a system which reduces opportunities for adversaries to create further accesses. Defined by D3FEND™ <a target='_blank' href='https://d3fend.mitre.org/tactic/d3f:Isolate/'>d3f:Isolate</a>."
+          "description": "Creates logical or physical barriers in a system which reduces opportunities for adversaries to create further accesses.",
+          "references": [
+            {
+              "description": "Defined by D3FEND™ Isolate",
+              "url": "https://d3fend.mitre.org/tactic/d3f:Isolate/"
+            }
+          ]
         },
         "2": {
           "caption": "Evict",
-          "description": "Removes an adversary or malicious resource from a device or computer network. Defined by D3FEND™ <a target='_blank' href='https://d3fend.mitre.org/tactic/d3f:Evict/'>d3f:Evict</a>."
+          "description": "Removes an adversary or malicious resource from a device or computer network.",
+          "references": [
+            {
+              "description": "Defined by D3FEND™ Evict",
+              "url": "https://d3fend.mitre.org/tactic/d3f:Evict/"
+            }
+          ]
         },
         "3": {
           "caption": "Restore",
-          "description": "Returns the system to a better state. Defined by D3FEND™ <a target='_blank' href='https://d3fend.mitre.org/tactic/d3f:Restore/'>d3f:Restore</a>."
+          "description": "Returns the system to a better state.",
+          "references": [
+            {
+              "description": "Defined by D3FEND™ Restore",
+              "url": "https://d3fend.mitre.org/tactic/d3f:Restore/"
+            }
+          ]
         },
         "4": {
           "caption": "Harden",
-          "description": "Increases the opportunity cost of computer network exploitation. Defined by D3FEND™ <a target='_blank' href='https://d3fend.mitre.org/tactic/d3f:Harden/'>d3f:Harden</a>."
+          "description": "Increases the opportunity cost of computer network exploitation.",
+          "references": [
+            {
+              "description": "Defined by D3FEND™ Harden",
+              "url": "https://d3fend.mitre.org/tactic/d3f:Harden/"
+            }
+          ]
         },
         "5": {
           "caption": "Detect",
-          "description": "Further identify adversary access to or unauthorized activity on computer networks. Defined by D3FEND™ <a target='_blank' href='https://d3fend.mitre.org/tactic/d3f:Detect/'>d3f:Detect</a>."
+          "description": "Identify adversary access to or unauthorized activity on computer networks.",
+          "references": [
+            {
+              "description": "Defined by D3FEND™ Detect",
+              "url": "https://d3fend.mitre.org/tactic/d3f:Detect/"
+            }
+          ]
+        },
+        "6": {
+          "caption": "Deceive",
+          "description": "Advertise, entice, and allow potential attackers access to an observed or controlled environment.",
+          "references": [
+            {
+              "description": "Defined by D3FEND™ Deceive",
+              "url": "https://d3fend.mitre.org/tactic/d3f:Deceive/"
+            }
+          ]
         }
       }
     },

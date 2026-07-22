@@ -275,8 +275,14 @@
     },
     "alert": {
       "caption": "Client TLS Alert",
-      "description": "The integer value of TLS alert if present. The alerts are defined in the TLS specification in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc2246'>RFC-2246</a>.",
-      "type": "integer_t"
+      "description": "The integer value of a TLS alert per the TLS specification.",
+      "type": "integer_t",
+      "references": [
+        {
+          "description": "RFC 2246",
+          "url": "https://datatracker.ietf.org/doc/html/rfc2246"
+        }
+      ]
     },
     "algorithm": {
       "caption": "Algorithm",
@@ -1192,8 +1198,14 @@
     },
     "chassis": {
       "caption": "Chassis",
-      "description": "The chassis type describes the system enclosure or physical form factor. Such as the following examples for Windows <a target='_blank' href='https://docs.microsoft.com/en-us/windows/win32/cimwin32prov/win32-systemenclosure'>Windows Chassis Types</a>",
-      "type": "string_t"
+      "description": "The chassis type describes the system enclosure or physical form factor. For example, as described for a Windows chassis type.",
+      "type": "string_t",
+      "references": [
+        {
+          "description": "Windows Chassis Types",
+          "url": "https://docs.microsoft.com/en-us/windows/win32/cimwin32prov/win32-systemenclosure"
+        }
+      ]
     },
     "checks": {
       "caption": "Compliance Checks",
@@ -1223,8 +1235,14 @@
     },
     "cis_benchmark": {
       "caption": "CIS Benchmark",
-      "description": "The CIS Benchmark describes best practices for securely configuring IT systems, software, networks, and cloud infrastructure as defined by the Center for Internet Security (<a target='_blank' href='https://www.cisecurity.org/cis-benchmarks/'>CIS</a>).",
+      "description": "The CIS Benchmark describes best practices for securely configuring IT systems, software, networks, and cloud infrastructure as defined by the Center for Internet Security.",
       "type": "cis_benchmark",
+      "references": [
+        {
+          "description": "CIS",
+          "url": "https://www.cisecurity.org/cis-benchmarks/"
+        }
+      ],
       "@deprecated": {
         "message": "Use Compliance object with Check object instead.",
         "since": "1.5.0"
@@ -1232,8 +1250,14 @@
     },
     "cis_benchmark_result": {
       "caption": "CIS Benchmark Result",
-      "description": "The CIS Benchmark Result object captures results generated from benchmark evaluations as defined by the Center for Internet Security (<a target='_blank' href='https://www.cisecurity.org/cis-benchmarks/'>CIS</a>).",
+      "description": "The CIS Benchmark Result object captures results generated from benchmark evaluations as defined by the Center for Internet Security.",
       "type": "cis_benchmark_result",
+      "references": [
+        {
+          "description": "CIS",
+          "url": "https://www.cisecurity.org/cis-benchmarks/"
+        }
+      ],
       "@deprecated": {
         "message": "Use Compliance object with Check object instead.",
         "since": "1.5.0"
@@ -1569,8 +1593,14 @@
     },
     "content_type": {
       "caption": "HTTP Content Type",
-      "description": "The request header that identifies the original <a target='_blank' href='https://www.iana.org/assignments/media-types/media-types.xhtml'>media type </a> of the resource (prior to any content encoding applied for sending).",
-      "type": "string_t"
+      "description": "The HTTP request header that identifies the original media type of the resource (prior to any content encoding applied for sending).",
+      "type": "string_t",
+      "references": [
+        {
+          "description": "IANA Media Types",
+          "url": "https://www.iana.org/assignments/media-types/media-types.xhtml"
+        }
+      ]
     },
     "contents": {
       "caption": "Clipboard Contents",
@@ -1596,8 +1626,14 @@
     },
     "coordinates": {
       "caption": "Coordinates",
-      "description": "A two-element array, containing a longitude/latitude pair. The format conforms with <a target='_blank' href='https://geojson.org'>GeoJSON</a>. For example: <code>[-73.983, 40.719]</code>.",
+      "description": "A two-element array, containing a longitude/latitude pair. The format conforms with GeoJSON. For example: <code>[-73.983, 40.719]</code>.",
       "type": "float_t",
+      "references": [
+        {
+          "description": "GeoJSON",
+          "url": "https://geojson.org"
+        }
+      ],
       "@deprecated": {
         "message": "Use specific <code>lat, long</code> attributes instead.",
         "since": "1.2.0"
@@ -1644,8 +1680,14 @@
     },
     "cpe_name": {
       "caption": "The product CPE identifier",
-      "description": "The Common Platform Enumeration (CPE) name as described by (<a target='_blank' href='https://nvd.nist.gov/products/cpe'>NIST</a>) For example: <code>cpe:/a:apple:safari:16.2</code>.",
-      "type": "string_t"
+      "description": "The Common Platform Enumeration (CPE) name. For example: <code>cpe:/a:apple:safari:16.2</code>.",
+      "type": "string_t",
+      "references": [
+        {
+        "description": "NIST Products",
+        "url": "https://nvd.nist.gov/products/cpe"
+        }
+      ]
     },
     "cpid": {
       "caption": "Common Process Identifier",
@@ -1809,30 +1851,60 @@
     },
     "cve": {
       "caption": "CVE",
-      "description": "The Common Vulnerabilities and Exposures (<a target='_blank' href='https://cve.mitre.org/'>CVE</a>) identifiers for the vulnerability.",
-      "type": "cve"
+      "description": "The Common Vulnerabilities and Exposures identifier for a vulnerability.",
+      "type": "cve",
+      "references": [
+        {
+          "description": "CVE",
+          "url": "https://cve.mitre.org/"
+        }
+      ]
     },
     "cves": {
       "caption": "CVE List",
-      "description": "List of Common Vulnerabilities and Exposures (<a target='_blank' href='https://cve.mitre.org/'>CVE</a>).",
+      "description": "List of Common Vulnerabilities and Exposures identifiers.",
       "type": "cve",
-      "is_array": true
+      "is_array": true,
+      "references": [
+        {
+          "description": "CVE",
+          "url": "https://cve.mitre.org/"
+        }
+      ]
     },
     "cvss": {
       "caption": "CVSS Score",
-      "description": "The CVSS object details Common Vulnerability Scoring System (<a target='_blank' href='https://www.first.org/cvss/'>CVSS</a>) scores from the advisory that are related to the vulnerability.",
+      "description": "The CVSS object details Common Vulnerability Scoring System scores from the advisory that are related to the vulnerability.",
       "type": "cvss",
-      "is_array": true
+      "is_array": true,
+      "references": [
+        {
+          "description": "CVSS",
+          "url": "https://www.first.org/cvss/"
+        }
+      ]
     },
     "cwe": {
       "caption": "CWE",
-      "description": "The CWE object represents a weakness in a software system that can be exploited by a threat actor to perform an attack. The CWE object is based on the <a target='_blank' href='https://cwe.mitre.org/'>Common Weakness Enumeration (CWE)</a> catalog.",
-      "type": "cwe"
+      "description": "The CWE object represents a weakness in a software system that can be exploited by a threat actor to perform an attack. The CWE object is based on the Common Weakness Enumeration (CWE) catalog.",
+      "type": "cwe",
+      "references": [
+        {
+          "description": "CWE",
+          "url": "https://cwe.mitre.org/"
+        }
+      ]
     },
     "cwe_uid": {
       "caption": "CWE UID",
-      "description": "The <a target='_blank' href='https://cwe.mitre.org/'>Common Weakness Enumeration (CWE)</a> unique identifier. For example: <code>CWE-787</code>.",
+      "description": "The Common Weakness Enumeration (CWE) unique identifier. For example: <code>CWE-787</code>.",
       "type": "string_t",
+      "references": [
+        {
+          "description": "CWE",
+          "url": "https://cwe.mitre.org/"
+        }
+      ],
       "@deprecated": {
         "message": "Use the <code>related_cwes</code> object attributes instead.",
         "since": "1.1.0"
@@ -2670,8 +2742,14 @@
     },
     "epss": {
       "caption": "EPSS",
-      "description": "The Exploit Prediction Scoring System (EPSS) object describes the estimated probability a vulnerability will be exploited. EPSS is a community-driven effort to combine descriptive information about vulnerabilities (CVEs) with evidence of actual exploitation in-the-wild. (<a target='_blank' href='https://www.first.org/epss/'>EPSS</a>).",
-      "type": "epss"
+      "description": "The Exploit Prediction Scoring System (EPSS) object describes the estimated probability a vulnerability will be exploited. EPSS is a community-driven effort to combine descriptive information about vulnerabilities (CVEs) with evidence of actual exploitation in-the-wild.",
+      "type": "epss",
+      "references": [
+        {
+          "description": "EPSS",
+          "url": "https://www.first.org/epss/"
+        }
+      ]
     },
     "error": {
       "caption": "Error Code",
@@ -3104,8 +3182,14 @@
     },
     "geohash": {
       "caption": "Geohash",
-      "description": "<p>Geohash of the geo-coordinates (latitude and longitude).</p><a target='_blank' href='https://en.wikipedia.org/wiki/Geohash'>Geohashing</a> is a geocoding system used to encode geographic coordinates in decimal degrees, to a single string.",
-      "type": "string_t"
+      "description": "<p>Geohash of the geo-coordinates (latitude and longitude).</p>Geohashing is a geocoding system used to encode geographic coordinates in decimal degrees, to a single string.",
+      "type": "string_t",
+      "references": [
+        {
+          "description": "Geohash",
+          "url": "https://en.wikipedia.org/wiki/Geohash"
+        }
+      ]
     },
     "given_name": {
       "caption": "Given Name",
@@ -3234,8 +3318,14 @@
     },
     "http_status": {
       "caption": "HTTP Status",
-      "description": "The Hypertext Transfer Protocol (HTTP) <a target='_blank' href='https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml'>status code</a> returned to the client.",
+      "description": "The Hypertext Transfer Protocol (HTTP) status code returned to the client.",
       "type": "integer_t",
+      "references": [
+        {
+          "description": "HTTP Status Codes",
+          "url": "https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml"
+        }
+      ],
       "@deprecated": {
         "message": "Use the <code>http_response.code</code> attribute instead.",
         "since": "1.1.0"
@@ -3884,9 +3974,15 @@
     },
     "kill_chain": {
       "caption": "Kill Chain",
-      "description": "The <a target='_blank' href='https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html'>Cyber Kill Chain®</a> provides a detailed description of each phase and its associated activities within the broader context of a cyber attack.",
+      "description": "The Kill Chain provides a detailed description of each phase and its associated activities within the broader context of a cyber attack.",
       "type": "kill_chain_phase",
-      "is_array": true
+      "is_array": true,
+      "references": [
+        {
+          "description": "Cyber Kill Chain®",
+          "url": "https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html"
+        }
+      ]
     },
     "key_name": {
       "caption": "Key Name",
@@ -3901,8 +3997,14 @@
     },
     "lang": {
       "caption": "Language",
-      "description": "The two letter lower case language codes, as defined by <a target='_blank' href='https://en.wikipedia.org/wiki/ISO_639-1'>ISO 639-1</a>. For example: <code>en</code> (English), <code>de</code> (German), or <code>fr</code> (French).",
-      "type": "string_t"
+      "description": "The two letter lower case language codes, as defined by ISO 639-1. For example: <code>en</code> (English), <code>de</code> (German), or <code>fr</code> (French).",
+      "type": "string_t",
+      "references": [
+        {
+          "description": "ISO 639-1",
+          "url": "https://en.wikipedia.org/wiki/ISO_639-1"
+        }
+      ]
     },
     "last_authentication_time": {
       "caption": "Last Authentication Time",
@@ -4014,8 +4116,14 @@
     },
     "license": {
       "caption": "Software License",
-      "description": "The name or identifier of the license applied on package or software. See <a target='_blank' href='https://spdx.org/licenses/'>SPDX License List</a>.",
-      "type": "string_t"
+      "description": "The name or identifier of the license applied on package or software. For example <code>Apache-2.0</code>.",
+      "type": "string_t",
+      "references": [
+        {
+          "description": "SPDX License List",
+          "url": "https://spdx.org/licenses/"
+        }
+      ]
     },
     "license_url": {
       "caption": "Software License URL",
@@ -4649,6 +4757,12 @@
           "description": "The DNS Opcode is not defined by the RFC. See the <code>opcode</code> attribute, which contains a data source specific value."
         }
       },
+      "references": [
+        {
+          "description": "RFC 5395",
+          "url": "https://www.rfc-editor.org/rfc/rfc5395.html"  
+        }
+      ],
       "suppress_checks": [
         "enum_convention"
       ]
@@ -5551,15 +5665,27 @@
     },
     "related_cves": {
       "caption": "Related CVEs",
-      "description": "Describes Common Vulnerabilities and Exposures <a target='_blank' href='https://cve.mitre.org/'>(CVE)</a> entries that are related to an entity. See specific usage.",
+      "description": "Describes Common Vulnerabilities and Exposures entries that are related to an entity. See specific usage.",
       "type": "cve",
-      "is_array": true
+      "is_array": true,
+      "references": [
+        {
+          "description": "CVE",
+          "url": "https://cve.mitre.org/"
+        }
+      ]
     },
     "related_cwes": {
       "caption": "Related CWEs",
-      "description": "Describes Common Weakness Enumeration <a target='_blank' href='https://cwe.mitre.org/'>(CWE)</a> entries that are related to an entity. See specific usage.",
+      "description": "Describes Common Weakness Enumeration entries that are related to an entity. See specific usage.",
       "type": "cwe",
-      "is_array": true
+      "is_array": true,
+      "references": [
+        {
+          "description": "CWE",
+          "url": "https://cwe.mitre.org/"
+        }
+      ]
     },
     "related_events": {
       "caption": "Related Events/Findings",
@@ -5937,33 +6063,33 @@
     },
     "scim": {
       "caption": "SCIM",
-      "description": "The System for Cross-domain Identity Management (SCIM) resource object provides a structured set of attributes related to SCIM protocols used for identity provisioning and management across cloud-based platforms. It standardizes user and group provisioning details, enabling identity synchronization and lifecycle management with compatible Identity Providers (IdPs) and applications. SCIM is defined in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc7643'>RFC-7634</a>",
+      "description": "The System for Cross-domain Identity Management (SCIM) resource object as defined in RFC 7634 provides a structured set of attributes related to SCIM protocols used for identity provisioning and management across cloud-based platforms. It standardizes user and group provisioning details, enabling identity synchronization and lifecycle management with compatible Identity Providers (IdPs) and applications.",
       "type": "scim",
       "references": [
         {
-          "description": "System for Cross-domain Identity Management (SCIM) RFC.",
+          "description": "RFC 7634.",
           "url": "https://datatracker.ietf.org/doc/html/rfc7643"
         }
       ]
     },
     "scim_group_schema": {
       "caption": "SCIM Group Schema",
-      "description": "SCIM provides a schema for representing groups, identified using the following schema URI: <code>urn:ietf:params:scim:schemas:core:2.0:Group</code> as defined in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc7643'>RFC-7634</a>. This attribute will capture key-value pairs for the scheme implemented in a SCIM resource.",
+      "description": "SCIM provides a schema for representing groups, identified using the following schema URI: <code>urn:ietf:params:scim:schemas:core:2.0:Group</code> as defined in RFC 7634. This attribute will capture key-value pairs for the scheme implemented in a SCIM resource.",
       "type": "json_t",
       "references": [
         {
-          "description": "System for Cross-domain Identity Management (SCIM) RFC spec.",
+          "description": "RFC 7634",
           "url": "https://datatracker.ietf.org/doc/html/rfc7643"
         }
       ]
     },
     "scim_user_schema": {
       "caption": "SCIM User Schema",
-      "description": "SCIM provides a resource type for user resources. The core schema for user is identified using the following schema URI: <code>urn:ietf:params:scim:schemas:core:2.0:User</code> as defined in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc7643'>RFC-7634</a>. his attribute will capture key-value pairs for the scheme implemented in a SCIM resource. This object is inclusive of both the basic and Enterprise User Schema Extension.",
+      "description": "SCIM provides a resource type for user resources. The core schema for user is identified using the following schema URI: <code>urn:ietf:params:scim:schemas:core:2.0:User</code> as defined in RFC 7634. This attribute will capture key-value pairs for the scheme implemented in a SCIM resource. This object is inclusive of both the basic and Enterprise User Schema Extension.",
       "type": "json_t",
       "references": [
         {
-          "description": "System for Cross-domain Identity Management (SCIM) RFC spec.",
+          "description": "RFC 7634",
           "url": "https://datatracker.ietf.org/doc/html/rfc7643"
         }
       ]
@@ -6582,9 +6708,15 @@
     },
     "stratum_id": {
       "caption": "Stratum ID",
-      "description": "The normalized identifier of the stratum level, as defined in <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc5905.html'>RFC-5905</a>.",
+      "description": "The normalized identifier of the stratum level of an NTP server's time source, as defined in RFC 5905. Levels range from 0 to 16, with lower numbers representing higher accuracy and greater proximity to the root clock.",
       "sibling": "stratum",
       "type": "integer_t",
+      "references": [
+        {
+          "description": "RFC 5905",
+          "url": "https://www.rfc-editor.org/rfc/rfc5905.html"
+        }
+      ],
       "enum": {
         "0": {
           "caption": "Unknown",
@@ -6694,7 +6826,7 @@
     },
     "tactic": {
       "caption": "MITRE Tactic",
-      "description": "The Tactic object describes the MITRE ATT&CK® or ATLAS™ Tactic ID and/or name that is associated to an attack.",
+      "description": "The Tactic object describes the Tactic ID and/or name associated to an attack.",
       "type": "tactic",
       "references": [
         {
@@ -6709,13 +6841,19 @@
     },
     "tactics": {
       "caption": "Tactics",
-      "description": "The Tactic object describes the tactic ID and/or tactic name that are associated with the attack technique, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK® Matrix</a>.",
+      "description": "The Tactics associated with the attack technique.",
       "type": "tactic",
       "@deprecated": {
         "message": "Use the <code>tactic</code> attribute instead.",
         "since": "1.1.0"
       },
-      "is_array": true
+      "is_array": true,
+      "references": [
+        {
+          "description": "ATT&CK® Matrix",
+          "url": "https://attack.mitre.org/wiki/ATT&CK_Matrix"
+        }
+      ]
     },
     "tag": {
       "caption": "Image Tag",
@@ -6886,8 +7024,14 @@
     },
     "tlp": {
       "caption": "Traffic Light Protocol",
-      "description": "The <a target='_blank' href='https://www.first.org/tlp/'>Traffic Light Protocol</a> was created to facilitate greater sharing of potentially sensitive information and more effective collaboration. TLP provides a simple and intuitive schema for indicating with whom potentially sensitive information can be shared.",
-      "type": "string_t"
+      "description": "The Traffic Light Protocol (TLP) was created to facilitate greater sharing of potentially sensitive information and more effective collaboration. TLP provides a simple and intuitive schema for indicating with whom potentially sensitive information can be shared.",
+      "type": "string_t",
+      "references": [
+        {
+          "description": "Traffic Light Protocol",
+          "url": "https://www.first.org/tlp/"
+        }
+      ]
     },
     "tls": {
       "caption": "TLS",
@@ -7111,8 +7255,14 @@
     },
     "unmanned_aerial_system": {
       "caption": "Unmanned Aerial System",
-      "description": "The Unmanned Aerial System object describes the characteristics, Position Location Information (PLI), and other metadata of Unmanned Aerial Systems (UAS) and other unmanned and drone systems used in Remote ID. Remote ID is defined in the Standard Specification for Remote ID and Tracking (ASTM Designation: F3411-22a) <a target='_blank' href='https://cdn.standards.iteh.ai/samples/112830/71297057ac42432880a203654f213709/ASTM-F3411-22a.pdf'>ASTM F3411-22a</a>.",
-      "type": "unmanned_aerial_system"
+      "description": "The Unmanned Aerial System object describes the characteristics, Position Location Information (PLI), and other metadata of Unmanned Aerial Systems (UAS) and other unmanned and drone systems used in Remote ID. Remote ID is defined in the Standard Specification for Remote ID and Tracking (ASTM Designation: F3411-22a).",
+      "type": "unmanned_aerial_system",
+      "references": [
+        {
+          "description": "ASTM F3411-22a",
+          "url": "https://cdn.standards.iteh.ai/samples/112830/71297057ac42432880a203654f213709/ASTM-F3411-22a.pdf"
+        }
+      ]
     },
     "unmanned_system_operating_area": {
       "caption": "UAS Operating Area",
@@ -7498,10 +7648,16 @@
       },
       "datetime_t": {
         "caption": "Datetime",
-        "description": "The Internet Date/Time format as defined in <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc3339.html'>RFC-3339</a>. For example:<br><code>2024-09-10T23:20:50.520Z</code>,<br><code>2024-09-10 23:20:50.520789Z</code>.",
+        "description": "The Internet Date/Time format as defined in RFC 3339. For example:<br><code>2024-09-10T23:20:50.520Z</code>,<br><code>2024-09-10 23:20:50.520789Z</code>.",
         "regex": "^\\d{4}-\\d{2}-\\d{2}[Tt]\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?([Zz]|[\\+-]\\d{2}:\\d{2})?$",
         "type": "string_t",
-        "type_name": "String"
+        "type_name": "String",
+        "references": [
+          {
+            "description": "RFC 3339",
+            "url": "https://www.rfc-editor.org/rfc/rfc3339.html"
+          }
+        ]
       },
       "email_t": {
         "observable": 5,
@@ -7558,7 +7714,13 @@
       },
       "json_t": {
         "caption": "JSON",
-        "description": "Embedded JSON value. A value can be a string, or a number, or true or false or null, or an object or an array. These structures can be nested. See <a target='_blank' href='https://www.json.org'>www.json.org</a>."
+        "description": "Embedded JSON value. A value can be a string, or a number, or true or false or null, or an object or an array. These structures can be nested.",
+        "references": [
+          {
+            "description": "JSON",
+            "url": "https://www.json.org"
+          }
+        ]
       },
       "long_t": {
         "caption": "Long",

@@ -136,6 +136,7 @@ Thankyou! -->
   1. Added `prompt_text` and `response_text` attributes to the `message_context` object, complementing the existing `prompt_tokens` and `completion_tokens` metrics with the verbatim prompt and response text. [#1674](https://github.com/ocsf/ocsf-schema/pull/1674)
   1. Added `Code Signing (5)` enum value to `algorithm_id` and `Code Signing (7)` enum value to `serialization_id` in the `digital_signature` object. [#1668](https://github.com/ocsf/ocsf-schema/pull/1668)
   1. Removed `Microsoft` from descriptions in `algorithm_id` and `serialization_id` in the `digital_signature` object. [#1668](https://github.com/ocsf/ocsf-schema/pull/1668)
+  1. Added `ai_agent` attribute to the `evidences` object so detections involving multiple AI agents, such as an agent spawning a sub-agent in violation of usage policy, can be captured as separate evidence entries. [#1681](https://github.com/ocsf/ocsf-schema/pull/1681)
   1. Added `ai_agent` to `process`. Added `hosted_ai_agent_list` to `process` for cases where a process hosts multiple agents that cannot be individually attributed. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added `charter` attribute to `ai_agent` for the agent's durable role definition document (system prompt or constitution). [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added `App Package (6)` enum value to `algorithm_id` and `App Package (8)` enum value to `serialization_id` in the `digital_signature` object. [#1692](https://github.com/ocsf/ocsf-schema/pull/1692)
@@ -153,6 +154,7 @@ Thankyou! -->
 1. Fixed the static anti-pattern checker so dictionary attributes are analyzed with the full compiled dictionary; the `missing-sibling` rule no longer false-positives when the sibling exists in `dictionary.json`. [#1613](https://github.com/ocsf/ocsf-schema/pull/1613)
 1. Added `tunnel_type_id` enum values to `dictionary.json` to resolve the anti-pattern of missing enums in the dictionary attribute. [#1602](https://github.com/ocsf/ocsf-schema/pull/1602)
 1. Fixed `rcode_id` enum value 16 caption from `BADSIG_VERS` to `BADVERS` in `DNS Activity`. Code 16 in the DNS header RCODE space is specifically Bad EDNS OPT Version; BADSIG belongs in the TSIG error field. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
+1. Fixed bad URLs to ASTM F3411-22a in `drone_flights_activity` event class and `unmanned_aerial_system` object. [#1676](https://github.com/ocsf/ocsf-schema/pull/1676)
 
 ### Deprecated
 1. Deprecated `is_src_dst_assignment_known` dictionary attribute and its usage in `Network Activity` in favour of `initiator_id`. [#1598](https://github.com/ocsf/ocsf-schema/pull/1598)
@@ -177,6 +179,7 @@ Thankyou! -->
 ### Misc
 1. Added static anti-pattern detection, LLM-to-static learning pipeline, and deprecated attribute filtering to the automated PR review workflows. [#1599](https://github.com/ocsf/ocsf-schema/pull/1599)
 1. Added `references` and `@deprecated` support to the profile metaschema, aligning it with event class and object metaschemas.[#1625](https://github.com/ocsf/ocsf-schema/pull/1625)
+1. Updated all dictionary attributes, event classes, and objects where descriptions contained embedded authoritative URLs, and moved them to `references` sections, keeping the normative schema descriptions free from required URLs. [#1676](https://github.com/ocsf/ocsf-schema/pull/1676)
 
 ## [v1.8.0] - Mar 16th, 2026
 ### Added

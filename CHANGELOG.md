@@ -49,7 +49,6 @@ Thankyou! -->
   1. Added user_management and role_management. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
   1. Added clipboard_activity. [#1655](https://github.com/ocsf/ocsf-schema/pull/1655)
   1. Added device_power_state_activity (`Device Power State Activity`) class to capture power state changes of a device. [#1624](https://github.com/ocsf/ocsf-schema/pull/1624)
-  1. Added aggregated_finding class as an alternative to incident_finding, without built-in incident semantics. [#1688](https://github.com/ocsf/ocsf-schema/pull/1688)
 * #### Profiles
   1. Added `record_integrity` profile that adds a cryptographic `attestation` over the event (integrity, authenticity, and non-repudiation), applied at the base event so any class can carry it. [#1661](https://github.com/ocsf/ocsf-schema/pull/1661)
 * #### Objects
@@ -67,7 +66,7 @@ Thankyou! -->
   1. Added `ai_agent` object representing an autonomous AI agent, distinct from the existing `agent` object (which models security sensors such as EDR, DLP, APM). [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added `attestation` object carrying a `fingerprint` of and digital `signatures` over an event, with optional tamper-evident chain attributes (`prev_event`, `chain_uid`) and an `authority_uid` identifying the attesting party. [#1661](https://github.com/ocsf/ocsf-schema/pull/1661)
   1. Added `prev_event` object referencing the previous event in a tamper-evident chain by its `fingerprint` (content binding) together with `uid` and `type_uid` (retrieval). [#1661](https://github.com/ocsf/ocsf-schema/pull/1661)
-  1. Added `sensor_info` object including the `sensor_layer_id` and related attributes. [#1688](https://github.com/ocsf/ocsf-schema/pull/1688)
+  1. Added `sensor_info` object including the `sensor_layer_id` and related attributes. [#](https://github.com/ocsf/ocsf-schema/pull/)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -95,8 +94,8 @@ Thankyou! -->
   1. Added `ai_agent` attribute referencing the new `ai_agent` object. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added `hosted_ai_agent_list` attribute for enumerating AI agents hosted by a process or other runtime. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added `charter` attribute (file type) for documents defining the role, scope, and operating bounds of an entity. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
-  1. Added `sensor_layer_id` and `sensor_layer` sibling. [#1688](https://github.com/ocsf/ocsf-schema/pull/1688)
-  1. Added `sensor_info_list` as an array of type `sensor_info` for the `analytic` object. [#1688](https://github.com/ocsf/ocsf-schema/pull/1688)
+  1. Added `sensor_layer_id` and `sensor_layer` sibling. [#](https://github.com/ocsf/ocsf-schema/pull/)
+  1. Added `sensor_info_list` as an array of type `sensor_info` for the `analytic` object. [#](https://github.com/ocsf/ocsf-schema/pull/)
 
 ### Improved
 * #### Categories
@@ -141,7 +140,7 @@ Thankyou! -->
   1. Added `ai_agent` to `process`. Added `hosted_ai_agent_list` to `process` for cases where a process hosts multiple agents that cannot be individually attributed. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added `charter` attribute to `ai_agent` for the agent's durable role definition document (system prompt or constitution). [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added `App Package (6)` enum value to `algorithm_id` and `App Package (8)` enum value to `serialization_id` in the `digital_signature` object. [#1692](https://github.com/ocsf/ocsf-schema/pull/1692)
-  1. Added `sensor_info_list` to the `analytic` object. [#1688](https://github.com/ocsf/ocsf-schema/pull/1688)
+  1. Added `sensor_info_list` to the `analytic` object. [#](https://github.com/ocsf/ocsf-schema/pull/)
 * #### Observables
 * #### Platform Extensions
   1. Added `prev_win_service` attribute to Windows Service Activity Class in order to store previous state of the Windows service. [#1663](https://github.com/ocsf/ocsf-schema/pull/1663)

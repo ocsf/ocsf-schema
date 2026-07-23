@@ -67,7 +67,7 @@ Thankyou! -->
   1. Added `ai_agent` object representing an autonomous AI agent, distinct from the existing `agent` object (which models security sensors such as EDR, DLP, APM). [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added `attestation` object carrying a `fingerprint` of and digital `signatures` over an event, with optional tamper-evident chain attributes (`prev_event`, `chain_uid`) and an `authority_uid` identifying the attesting party. [#1661](https://github.com/ocsf/ocsf-schema/pull/1661)
   1. Added `prev_event` object referencing the previous event in a tamper-evident chain by its `fingerprint` (content binding) together with `uid` and `type_uid` (retrieval). [#1661](https://github.com/ocsf/ocsf-schema/pull/1661)
-  1. Added `detection` object including the `detection_system_id` and related attributes. [#1688](https://github.com/ocsf/ocsf-schema/pull/1688)
+  1. Added `sensor_info` object including the `sensor_layer_id` and related attributes. [#1688](https://github.com/ocsf/ocsf-schema/pull/1688)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -95,7 +95,8 @@ Thankyou! -->
   1. Added `ai_agent` attribute referencing the new `ai_agent` object. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added `hosted_ai_agent_list` attribute for enumerating AI agents hosted by a process or other runtime. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added `charter` attribute (file type) for documents defining the role, scope, and operating bounds of an entity. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
-  1. Added `detection` of type `detection` for the `detection_finding` class. [#1688](https://github.com/ocsf/ocsf-schema/pull/1688)
+  1. Added `sensor_layer_id` and `sensor_layer` sibling. [#1688](https://github.com/ocsf/ocsf-schema/pull/1688)
+  1. Added `sensor_info_list` as an array of type `sensor_info` for the `analytic` object. [#1688](https://github.com/ocsf/ocsf-schema/pull/1688)
 
 ### Improved
 * #### Categories
@@ -138,6 +139,7 @@ Thankyou! -->
   1. Removed `Microsoft` from descriptions in `algorithm_id` and `serialization_id` in the `digital_signature` object. [#1668](https://github.com/ocsf/ocsf-schema/pull/1668)
   1. Added `ai_agent` to `process`. Added `hosted_ai_agent_list` to `process` for cases where a process hosts multiple agents that cannot be individually attributed. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added `charter` attribute to `ai_agent` for the agent's durable role definition document (system prompt or constitution). [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
+  1. Added `sensor_info_list` to the `analytic` object. [#1688](https://github.com/ocsf/ocsf-schema/pull/1688)
 * #### Observables
 * #### Platform Extensions
   1. Added `prev_win_service` attribute to Windows Service Activity Class in order to store previous state of the Windows service. [#1663](https://github.com/ocsf/ocsf-schema/pull/1663)
@@ -145,7 +147,6 @@ Thankyou! -->
   1. Added "See specific usage" to `win_service` description in Windows extension dictionary. [#1663](https://github.com/ocsf/ocsf-schema/pull/1663)
 * #### Dictionary Attributes
   1. Improved `job` object description to describe cases beyond System Activity class.
-  1. Improved `detection_system` and `detection_system_id` (generalized to multi-context; per-class/per-object overrides added). [#1688](https://github.com/ocsf/ocsf-schema/pull/1688)
 
 ### Bugfixes
 1. Fixed the static anti-pattern checker so dictionary attributes are analyzed with the full compiled dictionary; the `missing-sibling` rule no longer false-positives when the sibling exists in `dictionary.json`. [#1613](https://github.com/ocsf/ocsf-schema/pull/1613)

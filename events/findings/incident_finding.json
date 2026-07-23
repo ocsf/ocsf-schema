@@ -63,6 +63,7 @@
       "profile": null
     },
     "confidence_id": {
+      "description": "The normalized confidence is a summary across all aggregated findings of the incident. The normalized confidence refers to the accuracy of the analytics summarized across the findings of the incident. Analytics with lower confidence means that the finding scope is wide and may create finding reports that are noisy or may not be malicious in nature.",
       "group": "context",
       "requirement": "recommended",
       "profile": null
@@ -70,7 +71,11 @@
     "confidence_score": {
       "group": "context",
       "requirement": "optional",
-      "profile": null
+      "profile": null,
+      "@deprecated": {
+        "message": "Individual confidence scores from the sources are not summarizable here.",
+        "since":"1.9.0"
+      }
     },
     "desc": {
       "description": "The short description of the Incident.",

@@ -1,0 +1,16 @@
+{
+  "caption": "Sensor Information",
+  "description": "The Sensor Information object describes a control point sensor that emits data, or originates detections. It can be part of an endpoint or agent running on an OS, a SaaS application, a network device, a Cyber Threat Intelligence (CTI) system, or other detection and enforcement technologies.",
+  "name": "sensor_info",
+  "extends": "_entity",
+  "attributes": {
+    "sensor_layer": {
+      "description": "The technology or sensor layer that emitted the data, normalized to the caption of <code>sensor_layer_id</code>. When <code>sensor_layer_id</code> is <code>99</code> (Other), this attribute must contain the source-specific label.",
+      "requirement": "optional"
+    },
+    "sensor_layer_id": {
+      "description": "The normalized identifier of the sensor layer that emitted the data. For example, use this to classify the detection surface (e.g., IPS sensor, endpoint agent, email gateway). When the type is not listed, use <code>99</code> (Other) and populate <code>sensor_layer</code> with the source-specific label.",
+      "requirement": "required"
+    }
+  }
+}

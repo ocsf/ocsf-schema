@@ -63,6 +63,7 @@
       "profile": null
     },
     "confidence_id": {
+      "description": "The normalized identifier of the confidence level for this incident, represeenting a summary across all aggregated findings. It reflects the accuracy of the analytics that produced those findings. A lower confidence value indicates a wider finding scope that may produce noisy or potentially non-malicious reports. When the value is <code>99</code> (Other), the <code>confidence</code> attribute must contain the source-specific label.",
       "group": "context",
       "requirement": "recommended",
       "profile": null
@@ -70,7 +71,11 @@
     "confidence_score": {
       "group": "context",
       "requirement": "optional",
-      "profile": null
+      "profile": null,
+      "@deprecated": {
+        "message": "Individual confidence scores from the sources are not summarizable here.",
+        "since":"1.9.0"
+      }
     },
     "desc": {
       "description": "The short description of the Incident.",

@@ -1503,7 +1503,7 @@
     },
     "confidence_id": {
       "caption": "Confidence ID",
-      "description": "The normalized confidence refers to the accuracy of the rule that created the finding. A rule with a low confidence means that the finding scope is wide and may create finding reports that may not be malicious in nature.",
+      "description": "The normalized confidence refers to the accuracy of the analytics that produced the alert or finding. See specific usage.",
       "sibling": "confidence",
       "type": "integer_t",
       "enum": {
@@ -2113,18 +2113,18 @@
     },
     "detection_system": {
       "caption": "Detection System",
-      "description": "The name of the type of data security tool or system that the finding, detection, or alert originated from. E.g., Endpoint, Secure Email Gateway, etc.",
+      "description": "The data security tool or system that the finding, detection, or alert originated from, normalized to the caption of <code>detection_system_id</code>. E.g., Endpoint, Secure Email Gateway, etc. When <code>detection_system_id</code> is <code>99</code> (Other), this attribute must contain the source-specific label.",
       "type": "string_t"
     },
     "detection_system_id": {
       "caption": "Detection System ID",
-      "description": "The type of data security tool or system that the finding, detection, or alert originated from.",
+      "description": "The normalized identifier of the data security tool or system type from which the finding, detection, or alert originated. When the type is not listed, use <code>99</code> (Other) and populate <code>detection_system</code> with the source-specific label.",
       "sibling": "detection_system",
       "type": "integer_t",
       "enum": {
         "0": {
           "caption": "Unknown",
-          "description": "The type is not mapped. See the <code>detection_system</code> attribute, which contains a data source specific value."
+          "description": "The detection system type is Unknown."
         },
         "1": {
           "caption": "Endpoint",
@@ -2176,7 +2176,7 @@
         },
         "99": {
           "caption": "Other",
-          "description": "Any other type of detection system or a multi-variate system made up of several other systems."
+          "description": "The detection system type is not mapped. See the <code>detection_system</code> attribute, which contains a data source specific value."
         }
       }
     },
@@ -2947,7 +2947,7 @@
     },
     "finding_info_list": {
       "caption": "Finding Information List",
-      "description": "A list of <code>finding_info</code> objects associated to an incident.",
+      "description": "A list of <code>finding_info</code> objects associated to a finding.",
       "type": "finding_info",
       "is_array": true
     },
@@ -6241,6 +6241,61 @@
       "caption": "Sensitivity",
       "description": "The sensitivity of the firewall rule in the matched event. For example: HIGH.",
       "type": "string_t"
+    },
+    "sensor_info_list": {
+      "caption": "Sensor Information List",
+      "description": "An array of sensor_info objects that describe sensor control points.",
+      "type": "sensor_info",
+      "is_array": true
+    },
+    "sensor_layer": {
+      "caption": "Sensor Layer",
+      "description": "The normalized identifier of the sensor layer that emitted the data for the analysis. For example, use this to classify the detection surface (e.g., IPS sensor, endpoint agent, email gateway). When the type is not listed, use <code>99</code> (Other) and populate <code>sensor_layer</code> with the source-specific label.",
+      "type": "string_t"
+    },
+    "sensor_layer_id": {
+      "caption": "Sensor Layer ID",
+      "description": "The technology or sensor layer that the event or finding originated from. See specific usage.",
+      "sibling": "sensor_layer",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The sensor layer type is Unknown."
+        },
+        "1": {
+          "caption": "Network",
+          "description": "The analyzed data is emitted by, or originates from a network, firewall, or IPS sensor."
+        },
+        "2": {
+          "caption": "Endpoint",
+          "description": "The analyzed data is emitted by, or originates from an endpoint device or agent running on an OS."
+        },
+        "3": {
+          "caption": "Email",
+          "description": "The analyzed data is emitted by, or originates from an email gateway or email security system."
+        },
+        "4": {
+          "caption": "IAM",
+          "description": "The analyzed data is emitted by, or originates from an identity and access management (IAM) system or service."
+        },
+        "5": {
+          "caption": "Proxy",
+          "description": "The analyzed data is emitted by, or originates from a proxy server (e.g., forward or reverse proxy, web gateway)."
+        },
+        "6": {
+          "caption": "Threat Intel",
+          "description": "The analyzed data is emitted by, or originates from a cyber threat intelligence (CTI) system or by matching observables against a threat intelligence feed or report."
+        },
+        "7": {
+          "caption": "Application",
+          "description": "The analyzed data is emitted by, or originates from an application (e.g., web application, SaaS platform, or custom business application)."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The sensor layer type is not mapped. See the <code>sensor_layer</code> attribute, which contains a data source specific value."
+        }
+      }
     },
     "sequence": {
       "caption": "Sequence Number",

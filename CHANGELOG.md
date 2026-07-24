@@ -51,7 +51,9 @@ Thankyou! -->
   1. Added device_power_state_activity (`Device Power State Activity`) class to capture power state changes of a device. [#1624](https://github.com/ocsf/ocsf-schema/pull/1624)
 * #### Profiles
   1. Added `record_integrity` profile that adds a cryptographic `attestation` over the event (integrity, authenticity, and non-repudiation), applied at the base event so any class can carry it. [#1661](https://github.com/ocsf/ocsf-schema/pull/1661)
+  1. Added optional `delegation` attribute to the `ai_operation` profile, linking data-plane actions to the delegated authority under which they were performed. [#1665](https://github.com/ocsf/ocsf-schema/pull/1665)
 * #### Objects
+  1. Added `delegation` object describing a durable authorization context issued by a principal to a delegate. [#1665](https://github.com/ocsf/ocsf-schema/pull/1665)
   1. Added `job_action` object to describe an action that job can perform. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `job_trigger` object to describe a condition when job performs its action. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `cpu_info` object for CPUs (array name `cpu_info_list`). [#1630](https://github.com/ocsf/ocsf-schema/pull/1630)
@@ -94,8 +96,12 @@ Thankyou! -->
   1. Added `ai_agent` attribute referencing the new `ai_agent` object. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added `hosted_ai_agent_list` attribute for enumerating AI agents hosted by a process or other runtime. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added `charter` attribute (file type) for documents defining the role, scope, and operating bounds of an entity. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
+<<<<<<< HEAD
   1. Added `sensor_layer_id` and `sensor_layer` sibling. [#1703](https://github.com/ocsf/ocsf-schema/pull/1703)
   1. Added `sensor_info_list` as an array of type `sensor_info` for the `analytic` object. [#1703](https://github.com/ocsf/ocsf-schema/pull/1703)
+=======
+  1. Added `delegation` and `issuer_uid` attributes supporting the `delegation` object and `ai_operation` profile. [#1665](https://github.com/ocsf/ocsf-schema/pull/1665)
+>>>>>>> 2fac0a91c8f99dfc1c4f35086e16f3965aaeca88
 
 ### Improved
 * #### Categories
@@ -107,6 +113,7 @@ Thankyou! -->
   1. Added `transaction_id`, `opcode_id`/`opcode`, `flag_ids`/`flags`, `authority`, `query_additional`, and `response_additional` to `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
   1. Extended `activity_id` attribute in `HTTP Activity` to cover all methods in IANA HTTP Method Registry. [#1654](https://github.com/ocsf/ocsf-schema/pull/1654)
   1. Added `users` to `group_management` to replace deprecated `user`. [#1666](https://github.com/ocsf/ocsf-schema/pull/1666)
+  1. Added `application` attribute to `Application Lifecycle` to replace the deprecated `app` attribute, resolving the mismatch where `app` (captioned "Application") was typed as the `product` object. [#1702](https://github.com/ocsf/ocsf-schema/pull/1702)
   1. Added `notes` to `finding` and `incident_finding`. [#1670](https://github.com/ocsf/ocsf-schema/pull/1670)
   1. Added `resources` to `finding` for consistency and referencing within the class. [#1670](https://github.com/ocsf/ocsf-schema/pull/1670)
   1. Added the `ai_operation` profile to the `system`, `network`, `application`, and `iam` base event classes so all System Activity, Network Activity, Application Activity, and Identity & Access Management events inherit agent attribution. Also added the profile to `email_activity` (which does not extend a base with the profile). [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
@@ -139,6 +146,8 @@ Thankyou! -->
   1. Added `ai_agent` attribute to the `evidences` object so detections involving multiple AI agents, such as an agent spawning a sub-agent in violation of usage policy, can be captured as separate evidence entries. [#1681](https://github.com/ocsf/ocsf-schema/pull/1681)
   1. Added `ai_agent` to `process`. Added `hosted_ai_agent_list` to `process` for cases where a process hosts multiple agents that cannot be individually attributed. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added `charter` attribute to `ai_agent` for the agent's durable role definition document (system prompt or constitution). [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
+  1. Added `product` attribute to the `application` object so an application can carry the identity of the software product it is an instance of (vendor, CPE, canonical version). [#1702](https://github.com/ocsf/ocsf-schema/pull/1702)
+  1. Added `application` attribute to the `actor` object to replace the deprecated `app_name`/`app_uid` scalars with the richer `application` object for the client application or service that initiated the activity. [#1702](https://github.com/ocsf/ocsf-schema/pull/1702)
   1. Added `App Package (6)` enum value to `algorithm_id` and `App Package (8)` enum value to `serialization_id` in the `digital_signature` object. [#1692](https://github.com/ocsf/ocsf-schema/pull/1692)
   1. Added `sensor_info_list` to the `analytic` object. [#1703](https://github.com/ocsf/ocsf-schema/pull/1703)
 * #### Observables
@@ -164,6 +173,8 @@ Thankyou! -->
 1. Deprecated usage of `last_run_time` attribute in favor of `job_triggers.last_run_time` in the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
 1. Deprecated usage of `next_run_time` attribute in favor of `job_triggers.next_run_time` in the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
 1. Deprecated `packet_uid` attribute in `dns_query` object in favor of `transaction_id` on `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
+1. Deprecated the `app` dictionary attribute (captioned "Application" but typed as the `product` object) and its usage in `Application Lifecycle`, in favor of the `application` attribute. [#1702](https://github.com/ocsf/ocsf-schema/pull/1702)
+1. Deprecated the `app_name` and `app_uid` usages in the `actor` object in favor of the `application` attribute. (The `app_name` usage in `Network` is unchanged — there it is a DPI/NBAR traffic classification label, not an application entity.) [#1702](https://github.com/ocsf/ocsf-schema/pull/1702)
 1. Deprecated `opcode` and `opcode_id` attributes in `dns_query` object in favor of `opcode`/`opcode_id` on `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
 1. Deprecated `flag_ids`, `flags`, and `packet_uid` attributes in `dns_answer` object in favor of `flag_ids`/`flags`/`transaction_id` on `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
 1. Deprecated the `account_change` and `user_access_management` classes in favor of the `user_management` class. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
@@ -286,6 +297,7 @@ Thankyou! -->
 1. New Extension registration for Synqly [#1579](https://github.com/ocsf/ocsf-schema/pull/1579).
 1. Added GitHub Actions workflow for automated schema description review using Claude to suggest LLM comprehension improvements on PRs. [#1587](https://github.com/ocsf/ocsf-schema/pull/1587) [#1588](https://github.com/ocsf/ocsf-schema/pull/1588)
 1. Corrected caption for `type` attribute in `group` object: was `Account Type`, now `Group Type`. Also corrected description, which erroneously included 'or account'. [#1590](https://github.com/ocsf/ocsf-schema/pull/1590)
+1. New Extension registration for Trellix [#1701](https://github.com/ocsf/ocsf-schema/pull/1701). 
 
 
 

@@ -5,12 +5,24 @@
   "name": "actor",
   "attributes": {
     "app_name": {
+      "@deprecated": {
+        "message": "Use the <code>application</code> attribute instead.",
+        "since": "1.9.0"
+      },
       "description": "The client application or service that initiated the activity. This can be in conjunction with the <code>user</code> if present.  Note that <code>app_name</code> is distinct from the <code>process</code> if present.",
       "requirement": "optional"
     },
     "app_uid": {
+      "@deprecated": {
+        "message": "Use the <code>application</code> attribute instead.",
+        "since": "1.9.0"
+      },
       "description": "The unique identifier of the client application or service that initiated the activity. This can be in conjunction with the <code>user</code> if present. Note that <code>app_name</code> is distinct from the <code>process.pid</code> or <code>process.uid</code> if present.",
       "requirement": "optional"
+    },
+    "application": {
+      "description": "The client application or service that initiated the activity. This can be in conjunction with the <code>user</code> if present. Note that <code>application</code> is distinct from the <code>process</code> if present.",
+      "requirement": "recommended"
     },
     "authorizations": {
       "requirement": "optional"
@@ -25,7 +37,7 @@
     "invoked_by": {
       "requirement": "optional",
       "@deprecated": {
-        "message": "Use <code> app_name, app_uid </code> attributes instead.",
+        "message": "Use the <code>application</code> attribute instead.",
         "since": "1.2.0"
       }
     },
@@ -49,6 +61,7 @@
       "iam_role",
       "invoked_by",
       "session",
+      "application",
       "app_name",
       "app_uid"
     ]

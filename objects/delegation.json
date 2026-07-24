@@ -4,9 +4,17 @@
   "extends": "object",
   "name": "delegation",
   "attributes": {
+    "audience": {
+      "description": "The intended audience of this delegation - the service, resource, or party the delegated authority is meant to be exercised against (e.g., the <code>aud</code> claim of an issued token).",
+      "requirement": "optional"
+    },
     "created_time": {
       "description": "The time when the delegation was issued by the issuing authority.",
       "requirement": "recommended"
+    },
+    "expiration_time": {
+      "description": "The time when this delegation's granted authority expires. After this time the delegation no longer conveys authority, independent of any revocation.",
+      "requirement": "optional"
     },
     "issuer_uid": {
       "description": "The unique identifier of the trusted issuing authority (e.g., an OAuth authorization server, cloud STS, IAM broker, orchestration gateway, or SDK wrapper) that generated this delegation. Enables verification that delegation IDs were issued by an authorized component rather than self-asserted by the delegate.",
@@ -15,6 +23,10 @@
     "parent_uid": {
       "caption": "Parent Delegation ID",
       "description": "The delegation identifier of the parent delegation, if this delegation was created by re-delegating authority to another party (e.g., a downstream service or automated process). This creates a parent-child relationship that enables tracking the complete chain of delegation ancestry. Does not indicate that the delegate was instantiated or spawned by the parent's delegate; that relationship, if any, is tracked separately.",
+      "requirement": "optional"
+    },
+    "scopes": {
+      "description": "The scopes granted at this delegation node - the specific permissions the delegate is authorized to exercise on the principal's behalf. Comparing a delegation's scopes with its parent's reveals scope attenuation across the chain.",
       "requirement": "optional"
     },
     "uid": {

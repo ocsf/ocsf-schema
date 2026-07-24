@@ -75,6 +75,7 @@ Thankyou! -->
 * #### Platform Extensions
 * #### Dictionary Attributes
   1. Added `attestation_list`, `prev_event`, `authority_uid`, and `chain_uid` attributes for the `record_integrity` profile. [#1661](https://github.com/ocsf/ocsf-schema/pull/1661)
+  1. Added `stop_reason` and `stop_reason_id` attributes with a normalized enum (`Stop`, `Length`, `Tool Use`) for why a model completion ended. [#1704](https://github.com/ocsf/ocsf-schema/pull/1704)
   1. Added `com_class_uuid` attribute to reflect Class Identifier of a Component Object Model. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `event_codes` that is a set of event identifiers. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `log_sources` that is a set of log systems. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
@@ -120,6 +121,7 @@ Thankyou! -->
   1. Added the `record_integrity` profile to the `base_event` class so every event class can optionally carry a cryptographic `attestation` over the event. [#1661](https://github.com/ocsf/ocsf-schema/pull/1661)
 * #### Profiles
   1. Added `ai_agent` attribute to the `ai_operation` profile. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
+  1. Added `stop_reason`/`stop_reason_id` sibling attributes to the `ai_operation` profile, recording why a model completion ended. [#1704](https://github.com/ocsf/ocsf-schema/pull/1704)
 * #### Objects
   1. Added `job_actions` array of objects to the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `job_triggers` array of objects to the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)

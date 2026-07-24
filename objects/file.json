@@ -63,8 +63,18 @@
       "requirement": "optional"
     },
     "internal_name": {
-      "description": "The name of the file as identified within the file itself. This contrasts with the name by which the file is known on disk. Where available, the internal name is widely used by security practitioners and detection content because the on-disk file name is not reliable. On the Windows OS, most PE files contain a <a href=\"https://learn.microsoft.com/en-us/windows/win32/menurc/versioninfo-resource\">VERSIONINFO</a> resource from which the internal name can be obtained. On macOS, binaries can optionally embed a copy of the application's Info.plist file which in turn contains the name of the executable.",
-      "requirement": "optional"
+      "description": "The name of the file as identified within the file itself. This contrasts with the name by which the file is known on disk. Where available, the internal name is widely used by security practitioners and detection content because the on-disk file name is not reliable. On the Windows OS, most PE files contain a <code>VERSIONINFO</code> resource from which the internal name can be obtained. On macOS, binaries can optionally embed a copy of the application's <code>Info.plist</code> file which in turn contains the name of the executable.",
+      "requirement": "optional",
+      "references": [
+        {
+          "description": "VERSIONINFO resource",
+          "url": "https://learn.microsoft.com/en-us/windows/win32/menurc/versioninfo-resource"
+        },
+        {
+          "description": "Info.plist file",
+          "url": "https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Introduction/Introduction.html"
+        }
+      ]
     },
     "is_deleted": {
       "description": "Indicates if the file was deleted from the filesystem.",

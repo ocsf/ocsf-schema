@@ -144,6 +144,8 @@ Thankyou! -->
   1. Added `product` attribute to the `application` object so an application can carry the identity of the software product it is an instance of (vendor, CPE, canonical version). [#1702](https://github.com/ocsf/ocsf-schema/pull/1702)
   1. Added `application` attribute to the `actor` object to replace the deprecated `app_name`/`app_uid` scalars with the richer `application` object for the client application or service that initiated the activity. [#1702](https://github.com/ocsf/ocsf-schema/pull/1702)
   1. Added `App Package (6)` enum value to `algorithm_id` and `App Package (8)` enum value to `serialization_id` in the `digital_signature` object. [#1692](https://github.com/ocsf/ocsf-schema/pull/1692)
+  1. Added `serialization` and `serialization_id` to the `fingerprint` object, mirroring `digital_signature`, so a verifier knows the canonical serialization scheme used to produce the fingerprinted byte sequence. [#1661](https://github.com/ocsf/ocsf-schema/pull/1661)
+  1. Added `Flat (1)` enum value to `serialization_id` in the `digital_signature` and `fingerprint` objects for flat hashes or signatures over a raw byte sequence; the later `serialization_id` values shift up by one (`JCS (2)` through `App Package (8)`), keeping the two enums identical. [#1661](https://github.com/ocsf/ocsf-schema/pull/1661)
 * #### Observables
 * #### Platform Extensions
   1. Added `prev_win_service` attribute to Windows Service Activity Class in order to store previous state of the Windows service. [#1663](https://github.com/ocsf/ocsf-schema/pull/1663)

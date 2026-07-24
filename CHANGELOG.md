@@ -96,12 +96,9 @@ Thankyou! -->
   1. Added `ai_agent` attribute referencing the new `ai_agent` object. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added `hosted_ai_agent_list` attribute for enumerating AI agents hosted by a process or other runtime. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added `charter` attribute (file type) for documents defining the role, scope, and operating bounds of an entity. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
-<<<<<<< HEAD
   1. Added `sensor_layer_id` and `sensor_layer` sibling. [#1703](https://github.com/ocsf/ocsf-schema/pull/1703)
   1. Added `sensor_info_list` as an array of type `sensor_info` for the `analytic` object. [#1703](https://github.com/ocsf/ocsf-schema/pull/1703)
-=======
   1. Added `delegation` and `issuer_uid` attributes supporting the `delegation` object and `ai_operation` profile. [#1665](https://github.com/ocsf/ocsf-schema/pull/1665)
->>>>>>> 2fac0a91c8f99dfc1c4f35086e16f3965aaeca88
 
 ### Improved
 * #### Categories

@@ -372,6 +372,10 @@
       "type": "api"
     },
     "app": {
+      "@deprecated": {
+        "message": "Use the <code>application</code> attribute instead.",
+        "since": "1.9.0"
+      },
       "caption": "Application",
       "description": "The application that reported the event.",
       "type": "product"
@@ -2031,6 +2035,11 @@
       "caption": "Root Delay",
       "description": "The total round-trip delay to the reference clock in milliseconds.",
       "type": "integer_t"
+    },
+    "delegation": {
+      "caption": "Delegation",
+      "description": "A durable authorization context issued by a principal to a delegate (e.g., an application, automated process, service account, or AI agent), representing delegated authority to act on the principal's behalf. Independent of any single event, trace, or session, enabling correlation of actions performed under the same delegated authority.",
+      "type": "delegation"
     },
     "deleted_time": {
       "caption": "Deleted Time",
@@ -3856,6 +3865,11 @@
     "issuer": {
       "caption": "Issuer Details",
       "description": "The identifier of the issuer. See specific usage.",
+      "type": "string_t"
+    },
+    "issuer_uid": {
+      "caption": "Issuer ID",
+      "description": "The unique identifier of the entity that issued an object. See specific usage.",
       "type": "string_t"
     },
     "ja3_hash": {

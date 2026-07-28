@@ -1,6 +1,8 @@
 # OCSF Contribution Guide
 
-Rajas Panat, July 22; Updated July, 2026. 
+Rajas Panat, July 2022; Updated July 2026.
+
+Contributions by Mike Radka, Donovan Kolbly.
 
 This documentation presents guidelines and expected etiquettes to successfully contribute to the development of OCSF Schemas and the framework itself.
 

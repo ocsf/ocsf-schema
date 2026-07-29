@@ -227,7 +227,7 @@ individual enum value. Follow the steps below -
             "superseded_by": ["ALTERNATE_ATTRIBUTE"]
           }
     ```
-   - `message` (required) — a human-readable explanation. Name the replacement in a `<code>` tag using its actual name (not its display caption), so the text matches the machine-readable `superseded_by`.
+   - `message` (required) — a human-readable explanation. Name the replacement in a `<code>` tag using its actual name (not its display caption), so the text matches the machine-readable `superseded_by`. When the replacement is a dotted path, cite the whole path in a single `<code>` tag — `Use the <code>compliance.checks</code> attribute instead. The dotted form is what the browser renders as the "Replaced by" link text, so citing it verbatim keeps the sentence and the link consistent. Add any extra guidance as a following sentence rather than by breaking up the path.
    - `since` (required) — the version after which the item is deprecated.
    - `superseded_by` (required) — a machine-readable list of the replacement(s). List every concrete replacement. When the item is removed with no successor, use an empty array `[]` to state that explicitly.
 

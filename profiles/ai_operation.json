@@ -28,7 +28,7 @@
             "requirement": "optional"
         },
         "stop_reason_id": {
-            "description": "The normalized reason the model completion ended. Producers map their runtime's native value into this set. Populate on completion events; when the value is 'Other', set <code>stop_reason</code> to the event source's native label.",
+            "description": "The normalized reason the model completion ended. Producers map their runtime's native value into this set. Populate on completion events; when the value is 'Other', set <code>stop_reason</code> to the event source's native label. <code>Stateful Stop</code> and <code>State Unverified</code> additionally indicate whether the per-turn execution state was captured and verified; a cluster of <code>State Unverified</code> stops within a session is a leading indicator of malformed or adversarial input, not merely something to retry.",
             "group": "context",
             "requirement": "recommended"
         }

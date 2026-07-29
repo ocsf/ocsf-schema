@@ -75,7 +75,7 @@ Thankyou! -->
 * #### Platform Extensions
 * #### Dictionary Attributes
   1. Added `attestation_list`, `prev_event`, `authority_uid`, and `chain_uid` attributes for the `record_integrity` profile. [#1661](https://github.com/ocsf/ocsf-schema/pull/1661)
-  1. Added `stop_reason` and `stop_reason_id` attributes with a normalized enum (`Stop`, `Length`, `Tool Use`) for why a model completion ended. [#1704](https://github.com/ocsf/ocsf-schema/pull/1704)
+  1. Added `stop_reason` and `stop_reason_id` attributes with a normalized enum (`Stop`, `Length`, `Tool Use`, `Session Stop`) for why a model completion ended. [#1704](https://github.com/ocsf/ocsf-schema/pull/1704)
   1. Added `com_class_uuid` attribute to reflect Class Identifier of a Component Object Model. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `event_codes` that is a set of event identifiers. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `log_sources` that is a set of log systems. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)

@@ -227,7 +227,7 @@ individual enum value. Follow the steps below -
             "superseded_by": ["ALTERNATE_ATTRIBUTE"]
           }
     ```
-   - `message` (required) — a human-readable explanation. Name the replacement in a `<code>` tag using its actual name (not its display caption), so the text matches the machine-readable `superseded_by`. When the replacement is a dotted path, cite the whole path in a single `<code>` tag — `Use the <code>compliance.checks</code> attribute instead. The dotted form is what the browser renders as the "Replaced by" link text, so citing it verbatim keeps the sentence and the link consistent. Add any extra guidance as a following sentence rather than by breaking up the path.
+   - `message` (required) — a human-readable explanation. Name the replacement in a `<code>` tag using its actual name (not its display caption), so the text matches the machine-readable `superseded_by`. Cite a path in one `<code>` tag: `Use the <code>compliance.checks</code> attribute instead.`, not `Use the <code>checks</code> array in the <code>compliance</code> object instead.` Add any extra guidance as a following sentence.
    - `since` (required) — the version after which the item is deprecated.
    - `superseded_by` (required) — a machine-readable list of the replacement(s). List every concrete replacement. When the item is removed with no successor, use an empty array `[]` to state that explicitly.
 
@@ -237,6 +237,8 @@ individual enum value. Follow the steps below -
    - A class or object name, when deprecating a whole class/object — e.g. `["finding_info"]` or `["evidence_info"]`.
    - Another enum value's key, when deprecating an enum value — e.g. `["8"]`.
    - Multiple replacements are allowed — e.g. `["labels", "tags"]` or `["cpu_info_list[*].model", "cpu_info_list[*].vendor_name"]`.
+
+   > **Arrays.** When the replacement is a field inside an array of objects, mark the array with `[*]` and name the field — `["related_cwes[*].uid"]`, not `["related_cwes"]`. Reference the array alone only when the whole array is the replacement.
 
    > **Caution — bare names vs. qualified paths.** A bare attribute name marks the replacement *globally*: the schema browser will show a "Supersedes" note on that attribute **everywhere it is used**. Only use a bare name when the replacement genuinely is the schema-wide successor (e.g. `tag` → `labels`). When the replacement is context-specific, use the fully-qualified path instead — e.g. `cpu_type` (a CPU field) must reference `["cpu_info_list[*].vendor_name"]`, **not** `["vendor_name"]`; the bare form would incorrectly stamp the note on `vendor_name` in every unrelated object (vulnerability, product, agent, ...) that shares that generic name.
 

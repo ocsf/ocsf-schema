@@ -76,7 +76,7 @@
       "requirement": "optional"
     },
     "encoding": {
-      "description": "The encoding of the <code>value</code> attribute, normalized to the caption of <code>encoding_id</code>. In the case of <code>Other</code>, it is defined by the event source.",
+      "description": "The encoding of the signature bytes in the <code>value</code> attribute, normalized to the caption of <code>encoding_id</code>. In the case of <code>Other</code>, it is defined by the event source.",
       "requirement": "optional"
     },
     "encoding_id": {
@@ -258,7 +258,7 @@
       }
     },
     "value": {
-      "description": "The signature bytes, encoded as a string per <code>encoding_id</code>. A verifier decodes this value, reproduces the signing input per <code>serialization_id</code>, and checks the two using <code>algorithm_id</code> and the key in <code>certificate</code>. Populate where the producer holds the signature itself; the remaining attributes describe a signature without carrying it.",
+      "description": "The signature bytes, encoded as a string per <code>encoding_id</code>. A verifier decodes this value, reproduces the signing input per <code>serialization_id</code>, and checks the result using <code>algorithm_id</code> and the key in <code>certificate</code>. Present only when the event producer holds the raw signature bytes; omit when only descriptive metadata (algorithm, state, certificate) is available.",
       "requirement": "optional"
     }
   }

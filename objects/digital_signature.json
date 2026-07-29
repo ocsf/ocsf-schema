@@ -75,6 +75,48 @@
     "digest": {
       "requirement": "optional"
     },
+    "encoding": {
+      "description": "The encoding of the <code>value</code> attribute, normalized to the caption of <code>encoding_id</code>. In the case of <code>Other</code>, it is defined by the event source.",
+      "requirement": "optional"
+    },
+    "encoding_id": {
+      "description": "The normalized identifier of the encoding used to represent the signature bytes as the string in <code>value</code>. A verifier must decode <code>value</code> using this encoding to recover the raw signature bytes.",
+      "requirement": "recommended",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The encoding of the signature value is not known."
+        },
+        "1": {
+          "caption": "Hex",
+          "description": "The signature value is encoded as a lowercase or uppercase hexadecimal string."
+        },
+        "2": {
+          "caption": "Base64",
+          "description": "The signature value is encoded using standard Base64.",
+          "references": [
+            {
+              "description": "RFC 4648, Section 4",
+              "url": "https://www.rfc-editor.org/rfc/rfc4648#section-4"
+            }
+          ]
+        },
+        "3": {
+          "caption": "Base64URL",
+          "description": "The signature value is encoded using URL- and filename-safe Base64.",
+          "references": [
+            {
+              "description": "RFC 4648, Section 5",
+              "url": "https://www.rfc-editor.org/rfc/rfc4648#section-5"
+            }
+          ]
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The encoding of the signature value is not mapped. See the <code>encoding</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
     "serialization": {
       "description": "The canonical serialization or signing-envelope scheme used to produce the deterministic byte sequence that was signed, normalized to the caption of <code>serialization_id</code>. In the case of <code>Other</code>, it is defined by the event source.",
       "requirement": "optional"
@@ -214,6 +256,10 @@
           "description": "The digital signature is malformed and could not be processed."
         }
       }
+    },
+    "value": {
+      "description": "The signature bytes, encoded as a string per <code>encoding_id</code>. A verifier decodes this value, reproduces the signing input per <code>serialization_id</code>, and checks the two using <code>algorithm_id</code> and the key in <code>certificate</code>. Populate where the producer holds the signature itself; the remaining attributes describe a signature without carrying it.",
+      "requirement": "optional"
     }
   }
 }

@@ -119,7 +119,7 @@ Thankyou! -->
 * #### Profiles
   1. Added `ai_agent` attribute to the `ai_operation` profile. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
 * #### Objects
-  1. Added `value`, `encoding`, and `encoding_id` to the `digital_signature` object so an event can carry the signature bytes themselves, not only a description of them — mirroring the `value` + `encoding_id` pattern on `fingerprint`. [#1708](https://github.com/ocsf/ocsf-schema/pull/1708)
+  1. Added `value`, `encoding`, and `encoding_id` to the `digital_signature` object so an event can carry the signature bytes themselves, not only a description of them — mirroring the `value` + `encoding_id` pattern on `fingerprint`. [#1709](https://github.com/ocsf/ocsf-schema/pull/1709)
   1. Added `job_actions` array of objects to the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `job_triggers` array of objects to the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `type_id` attribute to the `job` object to describe mechanism that executes the job. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)

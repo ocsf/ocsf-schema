@@ -48,9 +48,9 @@ Thankyou! -->
 ### Added
 * #### Categories
 * #### Event Classes
-  1. Added user_management and role_management. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
-  1. Added clipboard_activity. [#1655](https://github.com/ocsf/ocsf-schema/pull/1655)
-  1. Added device_power_state_activity (`Device Power State Activity`) class to capture power state changes of a device. [#1624](https://github.com/ocsf/ocsf-schema/pull/1624)
+  1. Added `user_management` and `role_management`. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
+  1. Added `clipboard_activity`. [#1655](https://github.com/ocsf/ocsf-schema/pull/1655)
+  1. Added `device_power_state_activity` class to capture power state changes of a device. [#1624](https://github.com/ocsf/ocsf-schema/pull/1624)
 * #### Profiles
   1. Added `record_integrity` profile that adds a cryptographic `attestation` over the event (integrity, authenticity, and non-repudiation), applied at the base event so any class can carry it. [#1661](https://github.com/ocsf/ocsf-schema/pull/1661)
   1. Added optional `delegation` attribute to the `ai_operation` profile, linking data-plane actions to the delegated authority under which they were performed. [#1665](https://github.com/ocsf/ocsf-schema/pull/1665)

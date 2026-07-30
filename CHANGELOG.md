@@ -66,7 +66,6 @@ Thankyou! -->
   1. Added `tsig` object to represent a TSIG (Transaction Signature) record with structured fields for security analytics: `algorithm`, `key_name`, `error_id`, and `error`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
   1. Added `download_info` object with information pertaining to a downloaded file. [#1658](https://github.com/ocsf/ocsf-schema/pull/1658)
   1. Added `note` object to capture a comment along with the user who made the comment and when the note was modified. [#1670](https://github.com/ocsf/ocsf-schema/pull/1670)
-
   1. Added `ai_agent` object representing an autonomous AI agent, distinct from the existing `agent` object (which models security sensors such as EDR, DLP, APM). [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added `attestation` object carrying a `fingerprint` of and digital `signatures` over an event, with optional tamper-evident chain attributes (`prev_event`, `chain_uid`) and an `authority_uid` identifying the attesting party. [#1661](https://github.com/ocsf/ocsf-schema/pull/1661)
   1. Added `prev_event` object referencing the previous event in a tamper-evident chain by its `fingerprint` (content binding) together with `uid` and `type_uid` (retrieval). [#1661](https://github.com/ocsf/ocsf-schema/pull/1661)
@@ -98,7 +97,7 @@ Thankyou! -->
   1. Added `ai_agent` attribute referencing the new `ai_agent` object. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added `hosted_ai_agent_list` attribute for enumerating AI agents hosted by a process or other runtime. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
   1. Added `charter` attribute (file type) for documents defining the role, scope, and operating bounds of an entity. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
-  1. Added `criticality_id` dictionary attribute with a five-level criticality enum (Unknown, Low, Medium, High, Very High, Other) paired with the existing `criticality` sibling. [#1693](https://github.com/ocsf/ocsf-schema/pull/1693)
+  1. Added `criticality_id` dictionary attribute with a four-level criticality enum `Low (1)`, `Medium (2)`, `High (3)`, and `Very High (4)`, plus generic `Unknown (0)` and `Other (99)` enums, paired with the existing `criticality` sibling. [#1693](https://github.com/ocsf/ocsf-schema/pull/1693)
   1. Added `sensor_layer_id` and `sensor_layer` sibling. [#1703](https://github.com/ocsf/ocsf-schema/pull/1703)
   1. Added `sensor_info_list` as an array of type `sensor_info` for the `analytic` object. [#1703](https://github.com/ocsf/ocsf-schema/pull/1703)
   1. Added `delegation` and `issuer_uid` attributes supporting the `delegation` object and `ai_operation` profile. [#1665](https://github.com/ocsf/ocsf-schema/pull/1665)
@@ -130,8 +129,8 @@ Thankyou! -->
   1. Added `at_least_one` constraint for `name` and `type_id` attributes in the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Updated `cpu_count` description in `device_hw_info` to cross-reference `cpu_info_list`. [#1630](https://github.com/ocsf/ocsf-schema/pull/1630)
   1. Updated `gpu_count` and `gpu_info_list` descriptions in `device_hw_info` to cross-reference each other. [#1630](https://github.com/ocsf/ocsf-schema/pull/1630)
-  1. Added `bcc` attribute to the `email` object. [1632](https://github.com/ocsf/ocsf-schema/pull/1632)
-  1. Added `bcc_mailboxes` attribute to the `email` object. [1632](https://github.com/ocsf/ocsf-schema/pull/1632)
+  1. Added `bcc` attribute to the `email` object. [#1632](https://github.com/ocsf/ocsf-schema/pull/1632)
+  1. Added `bcc_mailboxes` attribute to the `email` object. [#1632](https://github.com/ocsf/ocsf-schema/pull/1632)
   1. Added `iam_role` to `actor`. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
   1. `dns_answer` now extends `dns_resource_record` so it inherits the RFC 1035 resource record fields (`class`, `hostname`, `rdata`, `ttl`, `type`); `flag_ids` and `flags` remain locally on `dns_answer` and are deprecated in favor of the corresponding attributes on `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
   1. Removed the abstract `_dns` object; `class`, `type`, and the deprecated `packet_uid` attribute now live directly on `dns_query`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
@@ -151,7 +150,7 @@ Thankyou! -->
   1. Added `App Package (6)` enum value to `algorithm_id` and `App Package (8)` enum value to `serialization_id` in the `digital_signature` object. [#1692](https://github.com/ocsf/ocsf-schema/pull/1692)
   1. Added `serialization` and `serialization_id` to the `fingerprint` object, mirroring `digital_signature`, so a verifier knows the canonical serialization scheme used to produce the fingerprinted byte sequence. [#1661](https://github.com/ocsf/ocsf-schema/pull/1661)
   1. Added `Flat (1)` enum value to `serialization_id` in the `digital_signature` and `fingerprint` objects for flat hashes or signatures over a raw byte sequence; the later `serialization_id` values shift up by one (`JCS (2)` through `App Package (8)`), keeping the two enums identical. [#1661](https://github.com/ocsf/ocsf-schema/pull/1661)
-  1. Added `rule` attribute to `discovery_details`. [#1706](https://github.com/ocsf-schema/pull/1706)
+  1. Added `rule` attribute to `discovery_details`. [#1706](https://github.com/ocsf/ocsf-schema/pull/1706)
   1. Added `sensor_info_list` to the `analytic` object. [#1703](https://github.com/ocsf/ocsf-schema/pull/1703)
 * #### Observables
 * #### Platform Extensions
@@ -177,7 +176,7 @@ Thankyou! -->
 1. Deprecated usage of `next_run_time` attribute in favor of `job_triggers.next_run_time` in the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
 1. Deprecated `packet_uid` attribute in `dns_query` object in favor of `transaction_id` on `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
 1. Deprecated the `app` dictionary attribute (captioned "Application" but typed as the `product` object) and its usage in `Application Lifecycle`, in favor of the `application` attribute. [#1702](https://github.com/ocsf/ocsf-schema/pull/1702)
-1. Deprecated the `app_name` and `app_uid` usages in the `actor` object in favor of the `application` attribute. (The `app_name` usage in `Network` is unchanged — there it is a DPI/NBAR traffic classification label, not an application entity.) [#1702](https://github.com/ocsf/ocsf-schema/pull/1702)
+1. Deprecated the `app_name` and `app_uid` usages in the `actor` object in favor of the `application` attribute. (The `app_name` usage in `Network` is unchanged - there it is a DPI/NBAR traffic classification label, not an application entity.) [#1702](https://github.com/ocsf/ocsf-schema/pull/1702)
 1. Deprecated `opcode` and `opcode_id` attributes in `dns_query` object in favor of `opcode`/`opcode_id` on `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
 1. Deprecated `flag_ids`, `flags`, and `packet_uid` attributes in `dns_answer` object in favor of `flag_ids`/`flags`/`transaction_id` on `DNS Activity`. [#1634](https://github.com/ocsf/ocsf-schema/pull/1634)
 1. Deprecated the `account_change` and `user_access_management` classes in favor of the `user_management` class. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
@@ -191,9 +190,10 @@ Thankyou! -->
 
 ### Misc
 1. Added static anti-pattern detection, LLM-to-static learning pipeline, and deprecated attribute filtering to the automated PR review workflows. [#1599](https://github.com/ocsf/ocsf-schema/pull/1599)
-1. Added `references` and `@deprecated` support to the profile metaschema, aligning it with event class and object metaschemas.[#1625](https://github.com/ocsf/ocsf-schema/pull/1625)
+1. Added `references` and `@deprecated` support to the profile metaschema, aligning it with event class and object metaschemas. [#1625](https://github.com/ocsf/ocsf-schema/pull/1625)
 1. Updated all dictionary attributes, event classes, and objects where descriptions contained embedded authoritative URLs, and moved them to `references` sections, keeping the normative schema descriptions free from required URLs. [#1676](https://github.com/ocsf/ocsf-schema/pull/1676)
-1. Added a required, machine-readable `superseded_by` field to the `@deprecated` annotation and backfilled all 126 existing deprecations (dictionary attributes, class/object/profile attributes, whole classes and objects, and enum values) with resolved replacement references; an empty array denotes removal with no replacement. Normalized deprecation messages to name replacements by their actual names in `<code>` tags.[#1707](https://github.com/ocsf/ocsf-schema/pull/1707)
+1. Added a required, machine-readable `superseded_by` field to the `@deprecated` annotation and backfilled all 126 existing deprecations (dictionary attributes, class/object/profile attributes, whole classes and objects, and enum values) with resolved replacement references; an empty array denotes removal with no replacement. Normalized deprecation messages to name replacements by their actual names in `<code>` tags. [#1707](https://github.com/ocsf/ocsf-schema/pull/1707)
+1. New Extension registration for Trellix [#1701](https://github.com/ocsf/ocsf-schema/pull/1701).
 
 ## [v1.8.0] - Mar 16th, 2026
 ### Added
@@ -301,7 +301,6 @@ Thankyou! -->
 1. New Extension registration for Synqly [#1579](https://github.com/ocsf/ocsf-schema/pull/1579).
 1. Added GitHub Actions workflow for automated schema description review using Claude to suggest LLM comprehension improvements on PRs. [#1587](https://github.com/ocsf/ocsf-schema/pull/1587) [#1588](https://github.com/ocsf/ocsf-schema/pull/1588)
 1. Corrected caption for `type` attribute in `group` object: was `Account Type`, now `Group Type`. Also corrected description, which erroneously included 'or account'. [#1590](https://github.com/ocsf/ocsf-schema/pull/1590)
-1. New Extension registration for Trellix [#1701](https://github.com/ocsf/ocsf-schema/pull/1701). 
 
 
 

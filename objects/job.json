@@ -5,15 +5,15 @@
   "name": "job",
   "attributes": {
     "cmd_line": {
+      "description": "The job command line.",
+      "requirement": "recommended",
       "@deprecated": {
         "message": "Use the <code>job_action.cmd_line</code> attribute instead.",
         "since": "1.9.0",
         "superseded_by": [
           "job_action.cmd_line"
         ]
-      },
-      "description": "The job command line.",
-      "requirement": "recommended"
+      }
     },
     "created_time": {
       "description": "The time when the job was created.",
@@ -36,30 +36,30 @@
       "requirement": "optional"
     },
     "last_run_time": {
+      "description": "The time when the job was last run.",
+      "requirement": "recommended",
       "@deprecated": {
         "message": "Use the <code>job_trigger.last_run_time</code> attribute instead.",
         "since": "1.9.0",
         "superseded_by": [
           "job_trigger.last_run_time"
         ]
-      },
-      "description": "The time when the job was last run.",
-      "requirement": "recommended"
+      }
     },
     "name": {
       "description": "The name of the job.",
       "requirement": "recommended"
     },
     "next_run_time": {
+      "description": "The time when the job will next be run.",
+      "requirement": "optional",
       "@deprecated": {
         "message": "Use the <code>job_trigger.next_run_time</code> attribute instead.",
         "since": "1.9.0",
         "superseded_by": [
           "job_trigger.next_run_time"
         ]
-      },
-      "description": "The time when the job will next be run.",
-      "requirement": "optional"
+      }
     },
     "run_state": {
       "description": "The run state of the job.",
@@ -84,9 +84,9 @@
         "4": {
           "caption": "Stopped"
         },
-	"5": {
-	  "caption": "Disabled"
-	},
+        "5": {
+          "caption": "Disabled"
+        },
         "99": {
           "caption": "Other"
         }
@@ -100,38 +100,38 @@
       "description": "The job type, i.e. the mechanism that executes the job.",
       "requirement": "recommended",
       "enum": {
-	"0": {
-	  "caption": "Unknown",
-	  "description": "The job orchestration mechanism is unknown."
-	},
-	"1": {
-	  "caption": "Task Scheduler",
-	  "description": "The job is executed by the Task Scheduler on Windows."
-	},
-	"2": {
-	  "caption": "Cron",
-	  "description": "The job is executed by <code>cron</code> on Linux, macOS, or another a Unix-like OS."
-	},
-	"3": {
-	  "caption": "Systemd",
-	  "description": "The job is executed by <code>systemd</code> on Linux."
-	},
-	"4": {
-	  "caption": "Launchd",
-	  "description": "The job is executed by <code>launchd</code> on macOS."
-	},
+        "0": {
+          "caption": "Unknown",
+          "description": "The job orchestration mechanism is unknown."
+        },
+        "1": {
+          "caption": "Task Scheduler",
+          "description": "The job is executed by the Task Scheduler on Windows."
+        },
+        "2": {
+          "caption": "Cron",
+          "description": "The job is executed by <code>cron</code> on Linux, macOS, or another a Unix-like OS."
+        },
+        "3": {
+          "caption": "Systemd",
+          "description": "The job is executed by <code>systemd</code> on Linux."
+        },
+        "4": {
+          "caption": "Launchd",
+          "description": "The job is executed by <code>launchd</code> on macOS."
+        },
         "99": {
           "caption": "Other",
           "description": "The job orchestration mechanism is not mapped. See the <code>type</code> attribute, which contains a data source specific value."
         }
       }
     },
-    "user": {
-      "description": "The user that created the job.",
-      "requirement": "optional"
-    },
     "uid": {
       "description": "The unique job identifier.",
+      "requirement": "optional"
+    },
+    "user": {
+      "description": "The user that created the job.",
       "requirement": "optional"
     }
   },

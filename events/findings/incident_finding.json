@@ -40,13 +40,13 @@
       "description": "An array of attack objects, each describing a tactic, technique, and/or sub-technique associated with the Incident.",
       "group": "context",
       "requirement": "optional",
-      "profile": null,
       "references": [
         {
           "description": "MITRE ATT&CK®",
           "url": "https://attack.mitre.org"
         }
-      ]
+      ],
+      "profile": null
     },
     "comment": {
       "description": "Additional user supplied details for updating or closing the incident.",
@@ -129,9 +129,6 @@
       "description": "The time of the earliest event or finding that contributed to this incident.",
       "requirement": "optional"
     },
-    "time": {
-      "description": "The incident creation time - when the incident was first opened, not when the underlying activity occurred. For the time range of contributing events, use <code>start_time</code> and <code>end_time</code>."
-    },
     "status": {
       "description": "The incident lifecycle status label, normalized to the caption of the <code>status_id</code> value. When <code>status_id</code> is <code>99</code> (Other), this <b>must</b> contain the source-specific status label.",
       "group": "primary",
@@ -178,6 +175,9 @@
     "tickets": {
       "group": "context",
       "requirement": "optional"
+    },
+    "time": {
+      "description": "The incident creation time - when the incident was first opened, not when the underlying activity occurred. For the time range of contributing events, use <code>start_time</code> and <code>end_time</code>."
     },
     "vendor_attributes": {
       "requirement": "optional"

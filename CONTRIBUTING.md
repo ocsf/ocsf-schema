@@ -1,5 +1,9 @@
 # OCSF Contribution Guide
 
+Rajas Panat, July 2022; Updated July 2026.
+
+Contributions by Mike Radka, Donovan Kolbly.
+
 This documentation presents guidelines and expected etiquettes to successfully contribute to the development of OCSF Schemas and the framework itself.
 
 * * *
@@ -16,10 +20,10 @@ All contributors must submit their changes via pull requests. If you're not fami
     1. Limit the number of commits in a single PR to aid reviewers, be as specific with the change as possible. A single PR **must** contain related changes.
     2. Each commit must include a DCO [Developer's Certificate of Origin](#developers-certificate-of-origin-11).
     3. Add an entry to the `Unreleased` section in [CHANGELOG.md](https://github.com/ocsf/ocsf-schema/blob/main/CHANGELOG.md).
-    3. Describe your change in as much detail as possible.
+    4. Describe your change in as much detail as possible.
     5. Confirm that you have tested the changes, and the server run was error free.
     6. Check the Preview tab to ensure everything looks as expected.
-    7. Once the PR is ready, add relevant labels, request approvers and submit it.
+    7. Once the PR is ready, add relevant labels, request at least 3 approvers and submit it.
     8. Resolve any github action failures, warnings reported for your pull request, and stay involved in the conversation.
 6. Thank you for your contribution!
 
@@ -83,7 +87,7 @@ Sample entry in the dictionary -
 ```
     "uid": 
     {
-      "caption": "Unique ID", // "previously name"
+      "caption": "Unique ID",
       "description": "The unique identifier. See specific usage.",
       "type": "string_t"
     }
@@ -97,10 +101,10 @@ Choose a **unique** field you want to add, `uid` in the example above and popula
     2. A generic definition of `uid` in the dictionary -
         1.  `uid` : `The unique identifier. See specific usage.`
     3. Specific description of `uid` in the `vulnerability` object -
-        1. `uid` : `Unique Identifier/s of the reported vulnerability. e.g. CVE ID/s"`
+        1. `uid` : `Unique Identifier/s of the reported vulnerability. e.g. CVE ID/s`
 3. `type` → Review OCSF data_types and ensure you utilize appropriate types while defining new fields.
     1. All the available data_types can be accessed [here](https://schema.ocsf.io/data_types).
-    2. They are also accessible in your local instance of the ocsf-server - http://localhost:8000/data_types
+    2. They are also accessible in your local instance of the ocsf-server - http://localhost:8080/data_types
 4. `is_array` → This a boolean key:value pair that you would need to add if the field you are defining is an array.
     1. e.g. `"is_array": true`
 
@@ -131,7 +135,7 @@ An example `vulnerability.json` object file,
 ```
 4. `caption` → Add a user friendly name to the object.
 5. `description` → Add a concise description to define the object.
-6. `extends` → Ensure the value is `object` or an existing object, e.g. `entity` (All objects in OCSF must extend a base definition of `object` or another existing object.)
+6. `extends` → Ensure the value is `object` or an existing object, e.g. `_entity` (All objects in OCSF must extend a base definition of `object` or another existing object.)
 7. `name` → Add a **unique** name of the object. `name` must match the filename of the actual `.json` file.
 8.  `attributes` → Add the attributes that you want to define in the object, 
     1. `requirement` →  For each attribute ensure you add a requirement value. Valid values are `optional`, `required`, `recommended` 
@@ -145,7 +149,7 @@ An example `vulnerability.json` object file,
         }
         ```
 
-**Note:** If you want to create an object which would act only as a base for other objects, you must prefix the object `name` and the actual `json` filename with an `_`. The resultant object will not be visible in the [OCSF Server.](https://schema.ocsf.io/1.0.0-rc.2/objects) For example, take a look at the [entity](https://github.com/ocsf/ocsf-schema/blob/main/objects/_entity.json) object. 
+**Note:** If you want to create an object which would act only as a base for other objects, you must prefix the object `name` and the actual `json` filename with an `_`. The resultant object will not be visible in the [OCSF Server.](https://schema.ocsf.io/objects) For example, take a look at the [_entity](https://github.com/ocsf/ocsf-schema/blob/main/objects/_entity.json) object. 
 
 Sample entry in the `dictionary.json`,
 
@@ -208,32 +212,56 @@ Choose a **unique** object you want to add, `vulnerability` in the example above
 
 * * *
 
-### Deprecating an attribute
+### Deprecating an attribute, object, class, or enum value
 
-To deprecate an attribute (`field`, `object`) follow the steps below -
+The `@deprecated` annotation can be added to a dictionary attribute, an attribute
+used within a class/object/profile, a whole object, a whole event class, or an
+individual enum value. Follow the steps below -
 
-1. Create a github issue, explaining why an attribute needs to be deprecated and what the alternate solution is.
-2. Utilize the following flag to allow deprecation of attributes. This flag needs to be added a json property of the attribute that is the subject of deprecation.
+1. Create a github issue, explaining why the item needs to be deprecated and what the alternate solution is.
+2. Add the `@deprecated` annotation as a json property of the item that is the subject of deprecation.
     ```
           "@deprecated": {
-            "message": "Use the <code> ALTERNATE_ATTRIBUTE </code> attribute instead.",
-            "since": "semver" 
+            "message": "Use the <code>ALTERNATE_ATTRIBUTE</code> attribute instead.",
+            "since": "semver",
+            "superseded_by": ["ALTERNATE_ATTRIBUTE"]
           }
     ```
-3. Example of a deprecated field
+   - `message` (required) — a human-readable explanation. Name the replacement in a `<code>` tag using its actual name (not its display caption), so the text matches the machine-readable `superseded_by`. Cite a path in one `<code>` tag: `Use the <code>compliance.checks</code> attribute instead.`, not `Use the <code>checks</code> array in the <code>compliance</code> object instead.` Add any extra guidance as a following sentence.
+   - `since` (required) — the version after which the item is deprecated.
+   - `superseded_by` (required) — a machine-readable list of the replacement(s). List every concrete replacement. When the item is removed with no successor, use an empty array `[]` to state that explicitly.
+
+3. What `superseded_by` may reference (use the form that matches where the replacement lives):
+   - A dictionary attribute name (e.g. `["application"]`), or the name of another attribute in the same class/object (e.g. `["resources"]`).
+   - A fully-qualified path into another object or class — e.g. `["job_action.cmd_line"]`, `["email.uid"]`, `["dns_activity.opcode"]`, or `["cpu_info_list[*].cores"]`.
+   - A class or object name, when deprecating a whole class/object — e.g. `["finding_info"]` or `["evidence_info"]`.
+   - Another enum value's key, when deprecating an enum value — e.g. `["8"]`.
+   - Multiple replacements are allowed — e.g. `["labels", "tags"]` or `["cpu_info_list[*].model", "cpu_info_list[*].vendor_name"]`.
+
+   > **Arrays.** When the replacement is a field inside an array of objects, mark the array with `[*]` and name the field — `["related_cwes[*].uid"]`, not `["related_cwes"]`. Reference the array alone only when the whole array is the replacement.
+
+   > **Caution — bare names vs. qualified paths.** A bare attribute name marks the replacement *globally*: the schema browser will show a "Supersedes" note on that attribute **everywhere it is used**. Only use a bare name when the replacement genuinely is the schema-wide successor (e.g. `tag` → `labels`). When the replacement is context-specific, use the fully-qualified path instead — e.g. `cpu_type` (a CPU field) must reference `["cpu_info_list[*].vendor_name"]`, **not** `["vendor_name"]`; the bare form would incorrectly stamp the note on `vendor_name` in every unrelated object (vulnerability, product, agent, ...) that shares that generic name.
+
+4. How the schema browser renders it (the compiler resolves `superseded_by` in browser mode):
+   - Same-scope replacement (a dictionary attribute, another attribute in the same class/object, a class/object name, or another enum value of the same attribute) → a "Supersedes" note is shown by default on the **replacement**, pointing back to the deprecated item.
+   - Cross-container replacement (a dotted path into a different object/class) → a "Replaced by" link is shown on the **deprecated** item, linking to the replacement's page.
+
+5. Example of a deprecated field (dictionary attribute)
     ```
     "packages": {
       "@deprecated": {
-        "message": "Use the <code> affected_packages </code> attribute instead.",
-        "since": "1.0.0"
+        "message": "Use the <code>affected_packages</code> attribute instead.",
+        "since": "1.0.0",
+        "superseded_by": ["affected_packages"]
       },
       "caption": "Software Packages",
       "description": "List of vulnerable packages as identified by the security product",
       "is_array": true,
       "type": "package"
     }
-4. Example of a deprecated object
-   ```
+    ```
+6. Example of a deprecated object
+    ```
     {
       "caption": "Finding",
       "description": "The Finding object describes metadata related to a security finding generated by a security tool or system.",
@@ -241,10 +269,35 @@ To deprecate an attribute (`field`, `object`) follow the steps below -
       "name": "finding",
       "@deprecated": {
         "message": "Use the new <code>finding_info</code> object.",
-        "since": "1.0.0"
+        "since": "1.0.0",
+        "superseded_by": ["finding_info"]
       },
       "attributes": {...}
     }
+    ```
+7. Example of a deprecated enum value (`superseded_by` references the replacement value's key)
+    ```
+    "9": {
+      "caption": "REG_QWORD_LITTLE_ENDIAN",
+      "@deprecated": {
+        "message": "Use <code>REG_QWORD</code> instead.",
+        "since": "1.6.0",
+        "superseded_by": ["8"]
+      }
+    }
+    ```
+8. Example of an item removed with no replacement (empty `superseded_by`)
+    ```
+    "obsolete_field": {
+      "@deprecated": {
+        "message": "This field is obsolete and has no replacement.",
+        "since": "1.6.0",
+        "superseded_by": []
+      },
+      "caption": "Obsolete Field",
+      "type": "string_t"
+    }
+    ```
 ***
  
 ### Verifying the changes

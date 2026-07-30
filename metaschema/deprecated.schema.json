@@ -15,7 +15,7 @@
       "$ref": "semver.schema.json"
     },
     "superseded_by": {
-      "description": "The attribute(s), object(s), class(es), or enum value(s) that supersede this deprecated item. Each entry is a reference to a replacement: a dictionary or sibling attribute name (e.g. \"application\"), a dotted attribute path into another object or class (e.g. \"cpu_info_list[*].cores\"), a class or object name, or an enum value key. Use an empty array when the item is removed with no replacement.",
+      "description": "The attribute(s), object(s), class(es), or enum value(s) that supersede this deprecated item. Each entry is a reference to a replacement: a dictionary attribute name or the name of another attribute in the same class or object (e.g. \"application\"), a dotted attribute path into another object or class (e.g. \"cpu_info_list[*].cores\"), a class or object name, or an enum value key. Use an empty array when the item is removed with no replacement.",
       "type": "array",
       "items": {
         "type": "string",
@@ -25,6 +25,7 @@
   },
   "required": [
     "message",
-    "since"
+    "since",
+    "superseded_by"
   ]
 }

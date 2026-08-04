@@ -45,15 +45,15 @@ Thankyou! -->
 
 ### Added
 * #### Dictionary Attributes
-  1. Added `likelihood` as a `string_t`, normalized to the caption of `likelihood_id`. [#0000](https://github.com/ocsf/ocsf-schema/pull/0000)
-  1. Added `likelihood_id` as an `integer_t` enum with values Unknown (0), Very Low (1), Low (2), Moderate (3), High (4), Very High (5), Other (99), aligned with the NIST SP 800-30 Rev. 1 qualitative likelihood scale. [#0000](https://github.com/ocsf/ocsf-schema/pull/0000)
+  1. Added `likelihood` as a `string_t`, normalized to the caption of `likelihood_id`. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
+  1. Added `likelihood_id` as an `integer_t` enum with values Unknown (0), Very Low (1), Low (2), Moderate (3), High (4), Very High (5), Other (99), aligned with the NIST SP 800-30 Rev. 1 qualitative likelihood scale. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
 
 ### Improved
 * #### Event Classes
-  1. Added `likelihood` and `likelihood_id` as optional attributes in the `context` group on `Detection Finding` (class 2004). [#0000](https://github.com/ocsf/ocsf-schema/pull/0000)
+  1. Added `likelihood` and `likelihood_id` as optional attributes in the `context` group on `Detection Finding` (class 2004). [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
 * #### Objects
-  1. Added `labels` to the `node` object for grouping nodes into named subgraphs. [#0000](https://github.com/ocsf/ocsf-schema/pull/0000)
-  1. Added `labels` to the `edge` object for grouping edges into named subgraphs. [#0000](https://github.com/ocsf/ocsf-schema/pull/0000)
+  1. Added `labels` to the `node` object for grouping nodes into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
+  1. Added `labels` to the `edge` object for grouping edges into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
 
 ## [v1.9.0] - Aug 3rd, 2026
 

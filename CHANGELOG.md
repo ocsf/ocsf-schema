@@ -43,6 +43,11 @@ Thankyou! -->
 
 ## [Unreleased]
 
+### Added
+* #### Objects
+  1. Added the `wifi` object describing IEEE 802.11 network identity, radio and security attributes. [#1721](https://github.com/ocsf/ocsf-schema/pull/1721)
+  1. Added the `wifi` attribute to the `network_endpoint` and `device` objects. Resolves #1463. [#1721](https://github.com/ocsf/ocsf-schema/pull/1721)
+
 ## [v1.9.0] - Aug 3rd, 2026
 
 ### Added

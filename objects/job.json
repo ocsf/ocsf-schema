@@ -4,6 +4,12 @@
   "extends": "object",
   "name": "job",
   "attributes": {
+    "bytes_processed": {
+      "requirement": "optional"
+    },
+    "bytes_written": {
+      "requirement": "optional"
+    },
     "cmd_line": {
       "description": "The job command line.",
       "requirement": "recommended",
@@ -61,6 +67,18 @@
         ]
       }
     },
+    "progress_current": {
+      "requirement": "optional"
+    },
+    "progress_total": {
+      "requirement": "optional"
+    },
+    "progress_unit": {
+      "requirement": "optional"
+    },
+    "queue_name": {
+      "requirement": "optional"
+    },
     "run_state": {
       "description": "The run state of the job.",
       "requirement": "optional"
@@ -91,6 +109,9 @@
           "caption": "Other"
         }
       }
+    },
+    "throughput": {
+      "requirement": "optional"
     },
     "type": {
       "description": "The job type, normalized to the caption of the <code>type_id</code> value. In the case of 'Other', it is defined by the event source.",

@@ -43,6 +43,10 @@ Thankyou! -->
 
 ## [Unreleased]
 
+### Added
+* #### Dictionary Attributes
+  1. Added `progress_current`, `progress_total`, `progress_unit`, `bytes_processed`, `bytes_written`, `throughput` and `queue_name` attributes to the `job` object. [#1722](https://github.com/ocsf/ocsf-schema/pull/1722)
+
 ## [v1.9.0] - Aug 3rd, 2026
 
 ### Added

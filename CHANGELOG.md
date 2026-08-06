@@ -43,6 +43,10 @@ Thankyou! -->
 
 ## [Unreleased]
 
+### Added
+* #### Dictionary Attributes
+  1. Added `icmp_type`, `icmp_code` and `icmp_uid` attributes to the `network_connection_info` object. [#1719](https://github.com/ocsf/ocsf-schema/pull/1719)
+
 ## [v1.9.0] - Aug 3rd, 2026
 
 ### Added

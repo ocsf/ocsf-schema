@@ -3,6 +3,7 @@ The purpose of this file is to keep track of and avoid collisions in Extension `
 
 | Caption     | Name     | UID | Notes |
 |-------------|----------|-----|-------|
+| Physical Security | physec | **42** | The physec schema extension for physical security operations |
 | Trellix     | trellix  | **988** | The Trellix schema extension |
 | Synqly      | synqly   | **989** | The Synqly schema extension |
 | US GOV      | usg1     | **990** | The USG-1 schema extension |

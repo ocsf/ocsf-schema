@@ -195,6 +195,7 @@ Thankyou! -->
 1. Updated all dictionary attributes, event classes, and objects where descriptions contained embedded authoritative URLs, and moved them to `references` sections, keeping the normative schema descriptions free from required URLs. [#1676](https://github.com/ocsf/ocsf-schema/pull/1676)
 1. Added a required, machine-readable `superseded_by` field to the `@deprecated` annotation and backfilled all 126 existing deprecations (dictionary attributes, class/object/profile attributes, whole classes and objects, and enum values) with resolved replacement references; an empty array denotes removal with no replacement. Normalized deprecation messages to name replacements by their actual names in `<code>` tags. [#1707](https://github.com/ocsf/ocsf-schema/pull/1707)
 1. New Extension registration for Trellix [#1701](https://github.com/ocsf/ocsf-schema/pull/1701).
+1. New Extension registration for physec [#1723](https://github.com/ocsf/ocsf-schema/pull/1723).
 
 ## [v1.8.0] - Mar 16th, 2026
 ### Added

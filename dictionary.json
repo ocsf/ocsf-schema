@@ -4263,6 +4263,128 @@
       "type": "location",
       "is_array": true
     },
+    "log_facility": {
+      "caption": "Log Facility",
+      "description": "The normalized caption of <code>log_facility_id</code>.",
+      "type": "string_t"
+    },
+    "log_facility_id": {
+      "caption": "Log Facility ID",
+      "description": "The facility that generated the message, as defined for the syslog protocol in RFC 5424. The facility identifies the originating subsystem independently of severity, so it is not recoverable from <code>severity_id</code>. Note that there is no <code>Unknown</code> value, because <code>0</code> is the kernel facility.",
+      "sibling": "log_facility",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "kern",
+          "description": "Kernel messages."
+        },
+        "1": {
+          "caption": "user",
+          "description": "User-level messages."
+        },
+        "2": {
+          "caption": "mail",
+          "description": "Mail system."
+        },
+        "3": {
+          "caption": "daemon",
+          "description": "System daemons."
+        },
+        "4": {
+          "caption": "auth",
+          "description": "Security and authorization messages."
+        },
+        "5": {
+          "caption": "syslog",
+          "description": "Messages generated internally by the syslog process."
+        },
+        "6": {
+          "caption": "lpr",
+          "description": "Line printer subsystem."
+        },
+        "7": {
+          "caption": "news",
+          "description": "Network news subsystem."
+        },
+        "8": {
+          "caption": "uucp",
+          "description": "UUCP subsystem."
+        },
+        "9": {
+          "caption": "cron",
+          "description": "Clock daemon."
+        },
+        "10": {
+          "caption": "authpriv",
+          "description": "Security and authorization messages, distinguished from facility 4 by convention and conventionally reserved for privileged access."
+        },
+        "11": {
+          "caption": "ftp",
+          "description": "FTP daemon."
+        },
+        "12": {
+          "caption": "ntp",
+          "description": "NTP subsystem."
+        },
+        "13": {
+          "caption": "audit",
+          "description": "Log audit."
+        },
+        "14": {
+          "caption": "alert",
+          "description": "Log alert."
+        },
+        "15": {
+          "caption": "clock",
+          "description": "Clock daemon, distinguished from facility 9 by convention."
+        },
+        "16": {
+          "caption": "local0",
+          "description": "Local use 0."
+        },
+        "17": {
+          "caption": "local1",
+          "description": "Local use 1."
+        },
+        "18": {
+          "caption": "local2",
+          "description": "Local use 2."
+        },
+        "19": {
+          "caption": "local3",
+          "description": "Local use 3."
+        },
+        "20": {
+          "caption": "local4",
+          "description": "Local use 4."
+        },
+        "21": {
+          "caption": "local5",
+          "description": "Local use 5."
+        },
+        "22": {
+          "caption": "local6",
+          "description": "Local use 6."
+        },
+        "23": {
+          "caption": "local7",
+          "description": "Local use 7."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The facility is not mapped. See the <code>log_facility</code> attribute, which contains a data source specific value."
+        }
+      },
+      "references": [
+        {
+          "description": "RFC 5424, Section 6.2.1, Syslog Message Facility",
+          "url": "https://datatracker.ietf.org/doc/html/rfc5424#section-6.2.1"
+        }
+      ],
+      "suppress_checks": [
+        "enum_convention"
+      ]
+    },
     "log_format": {
       "caption": "Log Format",
       "description": "The format of data in the log. See specific usage.",

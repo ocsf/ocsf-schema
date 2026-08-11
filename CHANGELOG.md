@@ -43,6 +43,10 @@ Thankyou! -->
 
 ## [Unreleased]
 
+### Added
+* #### Dictionary Attributes
+  1. Added `log_facility` and `log_facility_id` attributes to the `metadata` object. [#1720](https://github.com/ocsf/ocsf-schema/pull/1720)
+
 ## [v1.9.0] - Aug 3rd, 2026
 
 ### Added

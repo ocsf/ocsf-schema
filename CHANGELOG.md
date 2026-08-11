@@ -43,6 +43,9 @@ Thankyou! -->
 
 ## [Unreleased]
 
+### Misc
+1. New Extension registration for physec [#1723](https://github.com/ocsf/ocsf-schema/pull/1723).
+
 ## [v1.9.0] - Aug 3rd, 2026
 
 ### Added

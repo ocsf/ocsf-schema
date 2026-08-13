@@ -1,7 +1,7 @@
 {
   "uid": 8,
   "caption": "Role Management",
-  "description": "Role Management events report lifecycle management of a role, as well as privileges, policies, credentials, and resources associated with the role. There are two ways updates to the state of a role may be expressed: Using the <code>Update</code> activity, for example when updating multiple items at one time, the <code>updated_role</code> reflects the changes made to <code>iam_role</code>. Using discrete activities, such as <code>Assign Privileges</code> the state change is expressed by the <code>privileges</code> attribute. Optionally, on success, the <code>updated_role</code> reflects the new state of the role. Roles assigned or removed from users and groups are expressed by the <code>User Management</code> and <code>Group Management</code> classes.",
+  "description": "Role Management events report lifecycle management of a role, as well as privileges, policies, credentials, and resources associated with the role. There are two ways updates to the state of a role may be expressed: Using the <code>Update</code> activity, for example when updating multiple items at one time, the <code>updated_role</code> reflects the changes made to <code>iam_role</code>. Using discrete activities, such as <code>Assign Privileges</code> the state change is expressed by the <code>privileges</code> attribute. Optionally, on success, the <code>updated_role</code> reflects the new state of the role. Roles assigned or removed from users and groups are expressed by the <code>User Management</code> and <code>Group Management</code> classes. Role Management events also cover roles bound to AI agents, e.g., an agent's role being created, updated, or having privileges, resources, policies, or credentials granted, revoked, attached, detached, added, or removed. The <code>ai_agent</code> attribute identifies the agent associated with <code>iam_role</code>.",
   "extends": "iam",
   "name": "role_management",
   "attributes": {
@@ -52,6 +52,9 @@
           "description": "Remove credentials from a role. Use <code>programmatic_credentials</code> to be removed from <code>iam_role</code>."
         }
       }
+    },
+    "ai_agent": {
+      "description": "The AI agent that <code>iam_role</code> is provisioned for or bound to, e.g., an agent's execution role or the permission set governing an agentic service. Populate when the role being managed belongs to an AI agent rather than a human user or service."
     },
     "iam_role": {
       "description": "The target role.",

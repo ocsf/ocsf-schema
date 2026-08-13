@@ -43,6 +43,10 @@ Thankyou! -->
 
 ## [Unreleased]
 
+### Improved
+* #### Event Classes
+  1. Clarified `ai_agent` description in `role_management` to identify the agent that `iam_role` is provisioned for or bound to, rather than the actor-oriented wording inherited from the `ai_operation` profile. Noted in the class description that `role_management` covers roles bound to AI agents. [#1726](https://github.com/ocsf/ocsf-schema/pull/1726)
+
 ## [v1.9.0] - Aug 3rd, 2026
 
 ### Added

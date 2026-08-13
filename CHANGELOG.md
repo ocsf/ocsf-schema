@@ -62,6 +62,7 @@ Thankyou! -->
 * #### Event Classes
   1. Added `likelihood`, `likelihood_id`, and `likelihood_score` as optional attributes in the `context` group on `Detection Finding` (class 2004). [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
   1. Added `is_declared_incident` to finding.json and incident_finding.json. Added `resolved_time` to `finding.json` and `incident_finding.json`. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
+  1. Clarified `ai_agent` description in `role_management` to identify the agent that `iam_role` is provisioned for or bound to, rather than the actor-oriented wording inherited from the `ai_operation` profile. Noted in the class description that `role_management` covers roles bound to AI agents. [#1726](https://github.com/ocsf/ocsf-schema/pull/1726)
 * #### Profiles
   1. Added `is_declared_incident` to incident.json. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
 * #### Objects

@@ -242,6 +242,11 @@
       "sibling": "ai_role",
       "type": "integer_t"
     },
+    "ai_tool": {
+      "caption": "AI Tool",
+      "description": "The AI capability - tool, resource, or prompt - invoked in the operation described by the event.",
+      "type": "ai_tool"
+    },
     "aircraft": {
       "caption": "Aircraft",
       "description": "The Aircraft object represents any aircraft or otherwise airborne asset such as an unmanned system, airplane, balloon, spacecraft, or otherwise. The Aircraft object is intended to normalized data captured or otherwise logged from active radar, passive radar, multi-spectral systems, or the Automatic Dependant Broadcast - Surveillance (ADS-B), and/or Mode S systems.",
@@ -825,6 +830,33 @@
     "bytes_out": {
       "caption": "Bytes Out",
       "description": "The number of bytes sent from the source to the destination.",
+      "type": "long_t"
+    },
+    "cache_scope": {
+      "caption": "Cache Scope",
+      "description": "The cache scope, normalized to the caption of the <code>cache_scope_id</code> value. In the case of 'Other', it is defined by the event source. See specific usage.",
+      "sibling": "cache_scope_id",
+      "type": "string_t"
+    },
+    "cache_scope_id": {
+      "caption": "Cache Scope ID",
+      "description": "The normalized identifier of the declared cache scope, determining whether shared intermediaries may cache a result. See specific usage.",
+      "sibling": "cache_scope",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The cache scope is unknown."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The cache scope is not mapped. See the <code>cache_scope</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
+    "cache_ttl": {
+      "caption": "Cache TTL",
+      "description": "The declared freshness window of a cacheable result, in milliseconds.",
       "type": "long_t"
     },
     "campaign": {
@@ -3583,6 +3615,11 @@
         }
       }
     },
+    "input_schema_fingerprint": {
+      "caption": "Input Schema Fingerprint",
+      "description": "The fingerprint identifying the declared input contract (schema) of a capability, by reference rather than by value.",
+      "type": "fingerprint"
+    },
     "install_state": {
       "caption": "Install State",
       "description": "The install state, normalized to the caption of install_state_id. In the case of 'Other', it is defined by the event source.",
@@ -3732,6 +3769,11 @@
       "description": "Indicates if the entity was deleted. See specific usage.",
       "type": "boolean_t"
     },
+    "is_destructive": {
+      "caption": "Destructive",
+      "description": "Indicates that an operation or capability may perform destructive updates. See specific usage.",
+      "type": "boolean_t"
+    },
     "is_directed": {
       "caption": "Directed",
       "description": "Indicates if the entity has directionality. See specific usage.",
@@ -3772,6 +3814,11 @@
       "description": "This attribute prevents the cookie from being accessed via JavaScript.",
       "type": "boolean_t"
     },
+    "is_idempotent": {
+      "caption": "Idempotent",
+      "description": "Indicates that repeated invocations with the same arguments have no additional effect. See specific usage.",
+      "type": "boolean_t"
+    },
     "is_locked": {
       "caption": "Locked",
       "description": "Indicates if the entity is locked. See specific usage.",
@@ -3805,6 +3852,11 @@
     "is_on_premises_sync_enabled": {
       "caption": "On-Premises Sync Enabled",
       "description": "Indicates whether synchronization with an on-premises directory service is enabled. For example, Microsoft Entra Connect.",
+      "type": "boolean_t"
+    },
+    "is_open_world": {
+      "caption": "Open World",
+      "description": "Indicates interaction with an open world of external entities rather than a closed domain. See specific usage.",
       "type": "boolean_t"
     },
     "is_personal": {
@@ -4922,6 +4974,11 @@
       "caption": "Org Unit ID",
       "description": "The alternate identifier for an entity's unique identifier. For example, its Active Directory OU DN or AWS OU ID.",
       "type": "string_t"
+    },
+    "output_schema_fingerprint": {
+      "caption": "Output Schema Fingerprint",
+      "description": "The fingerprint identifying the declared output contract (schema) of a capability, by reference rather than by value.",
+      "type": "fingerprint"
     },
     "overall_score": {
       "caption": "Overall Score",
@@ -7061,6 +7118,11 @@
       "description": "The target of the event or object. See specific usage.",
       "type": "string_t"
     },
+    "task_uid": {
+      "caption": "Task UID",
+      "description": "The unique identifier of a long-running task, correlating an originating call with subsequent task lifecycle events.",
+      "type": "string_t"
+    },
     "tcp_flags": {
       "caption": "TCP Flags",
       "description": "The network connection TCP header flags (i.e., control bits).",
@@ -7323,6 +7385,28 @@
       "caption": "Transmission Time",
       "description": "The event transmission time from one device to another.  See specific usage.",
       "type": "timestamp_t"
+    },
+    "transport": {
+      "caption": "Transport",
+      "description": "The transport, normalized to the caption of the <code>transport_id</code> value. In the case of 'Other', it is defined by the event source. See specific usage.",
+      "sibling": "transport_id",
+      "type": "string_t"
+    },
+    "transport_id": {
+      "caption": "Transport ID",
+      "description": "The normalized identifier of the transport binding used to reach a serving system. See specific usage.",
+      "sibling": "transport",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The transport is unknown."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The transport is not mapped. See the <code>transport</code> attribute, which contains a data source specific value."
+        }
+      }
     },
     "tree_uid": {
       "caption": "Tree UID",

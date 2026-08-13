@@ -43,6 +43,14 @@ Thankyou! -->
 
 ## [Unreleased]
 
+### Added
+* #### Profiles
+  1. Added optional `ai_tool` attribute to the `ai_operation` profile, recording the invoked AI capability (tool, resource, or prompt). [#1728](https://github.com/ocsf/ocsf-schema/issues/1728)
+* #### Objects
+  1. Added `ai_tool` object describing an invoked AI capability — its primitive kind, provenance (serving system and transport), declared behavior hints, and input/output schema fingerprints. [#1728](https://github.com/ocsf/ocsf-schema/issues/1728)
+* #### Dictionary Attributes
+  1. Added `ai_tool`, `transport`/`transport_id`, `is_destructive`, `is_idempotent`, `is_open_world`, `input_schema_fingerprint`, `output_schema_fingerprint`, `cache_scope`/`cache_scope_id`, `cache_ttl`, and `task_uid` attributes for the `ai_tool` object. [#1728](https://github.com/ocsf/ocsf-schema/issues/1728)
+
 ## [v1.9.0] - Aug 3rd, 2026
 
 ### Added

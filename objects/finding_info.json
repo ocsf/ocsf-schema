@@ -36,6 +36,14 @@
       "description": "The time when the finding was first observed. e.g. The time when a vulnerability was first observed. <p>It can differ from the <code>created_time</code> timestamp, which reflects the time this finding was created.</p>",
       "requirement": "optional"
     },
+    "is_corroborated": {
+      "description": "Indicates that the finding is supported by more than one independent analytic basis. For example, a rule or signature analytic together with a machine-learning analytic, or multiple independent sensor control points. Prefer setting this when dual-signal corroboration strengthens remediation eligibility.",
+      "requirement": "optional"
+    },
+    "is_ml_only": {
+      "description": "Indicates that the finding is derived solely from machine-learning, deep-learning, or statistical analytics without a matching rule or signature analytic. When <code>true</code>, high confidence must not be equated to a rule or signature true positive for automated remediation.",
+      "requirement": "optional"
+    },
     "kill_chain": {
       "requirement": "optional"
     },

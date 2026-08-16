@@ -43,6 +43,16 @@ Thankyou! -->
 
 ## [Unreleased]
 
+### Added
+* #### Dictionary Attributes
+  * Added `is_ml_only` and `is_corroborated` boolean attributes to distinguish machine-learning-only findings from dual-signal corroborated findings for remediation gating.
+* #### Objects
+  * Added `is_ml_only` and `is_corroborated` to the `finding_info` object.
+
+### Improved
+* #### Objects
+  * Clarified `analytic.type_id` descriptions for **Rule** and **Learning (ML/DL)** so producers and consumers do not treat ML confidence as interchangeable with rule or signature true positives.
+
 ## [v1.9.0] - Aug 3rd, 2026
 
 ### Added

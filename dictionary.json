@@ -3722,6 +3722,11 @@
       "description": "The event occurred on a compliant device.",
       "type": "boolean_t"
     },
+    "is_corroborated": {
+      "caption": "Corroborated",
+      "description": "Indicates that the finding or conclusion is supported by more than one independent analytic basis. For example, a rule or signature analytic together with a machine-learning or statistical analytic, or multiple independent sensor control points that independently support the same finding. Corroborated findings are stronger candidates for gated remediation than machine-learning-only findings with comparable confidence scores.",
+      "type": "boolean_t"
+    },
     "is_default": {
       "caption": "Default Value",
       "description": "The indication of whether the value is from a default value name. For example, the value name could be missing.",
@@ -3785,6 +3790,11 @@
     "is_mfa": {
       "caption": "Multi Factor Authentication",
       "description": "Indicates whether Multi Factor Authentication was used during authentication.",
+      "type": "boolean_t"
+    },
+    "is_ml_only": {
+      "caption": "Machine Learning Only",
+      "description": "Indicates that the finding or conclusion is derived solely from machine-learning, deep-learning, or statistical analytics without a matching rule or signature analytic. A high <code>confidence</code> or <code>confidence_score</code> on an ML-only finding must not be treated as equivalent to a rule or signature true positive for automated remediation decisions; escalate for corroboration instead.",
       "type": "boolean_t"
     },
     "is_mobile_account_active": {

@@ -77,11 +77,6 @@
       "group": "context",
       "requirement": "optional"
     },
-    "resolved_time": {
-      "description": "The time when the finding was resolved. Populate when <code>status_id</code> is 4 (Resolved).",
-      "group": "occurrence",
-      "requirement": "recommended"
-    },
     "resources": {
       "caption": "Affected Resources",
       "description": "Describes details about resources that were the target of the activity that triggered the finding.",
@@ -129,7 +124,7 @@
       }
     },
     "time": {
-      "description": "The finding time - when the finding was first created, updated, or closed; not when the underlying activity occurred. For the time range of contributing events, use <code>start_time</code> and <code>end_time</code>. For the time when the finding was resolved, use <code>resolved_time</code>."
+      "description": "The finding time - when the finding was first created, updated, or closed; not when the underlying activity occurred. For the time range of related events contributing to the finding (<code>finding_info.related_events[]</code>), use <code>start_time</code> and <code>end_time</code>. For the times when the finding was created (<code>activity_id</code> = 1) or resolved (<code>activity_id</code> = 2 or 3 and <code>status_id</code> = 4), populate <code>finding_info.created_time</code> or <code>finding_info.resolved_time</code> with this value."
     },
     "vendor_attributes": {
       "group": "context",

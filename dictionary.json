@@ -466,6 +466,35 @@
       "description": "The bitmask value that represents the file attributes.",
       "type": "integer_t"
     },
+    "attribution_method": {
+      "caption": "Attribution Method",
+      "description": "The method by which a causal attribution was established, normalized to the caption of the <code>attribution_method_id</code> value. In the case of 'Other', it is defined by the event source.",
+      "type": "string_t"
+    },
+    "attribution_method_id": {
+      "caption": "Attribution Method ID",
+      "description": "The normalized identifier of how the recording system established the causal attribution. It describes the provenance of the binding, not the truth of the claim behind it. Links reconstructed after both records were written, for example by correlating timestamps, are not recorded here: they belong with the enrichment or analytic record that produced them, which carries its own provider.",
+      "sibling": "attribution_method",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The method by which the attribution was established is not known."
+        },
+        "1": {
+          "caption": "Propagated Context",
+          "description": "The identifier was carried to the recording system as part of the request that caused the change, and was persisted as received."
+        },
+        "2": {
+          "caption": "Correlated Identifier",
+          "description": "The identifier was matched against a value the recording system already held, such as a client-supplied reference stored alongside the change."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The attribution method is not mapped. See the <code>attribution_method</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
     "auid": {
       "caption": "Audit User ID",
       "description": "The audit user assigned at login by the audit subsystem.",
@@ -1142,6 +1171,17 @@
       "description": "The category unique identifier of the event. Each event class belongs to exactly one category. Producers and mappers must set this to the category defined by the event class being used.",
       "sibling": "category_name",
       "type": "integer_t"
+    },
+    "causal_link": {
+      "caption": "Causal Link",
+      "description": "A binding from an event to the operation that caused the change it records, together with how that binding was established.",
+      "type": "causal_link"
+    },
+    "caused_by": {
+      "caption": "Caused By",
+      "description": "The operation or operations that caused the change this event records, as asserted by the party that performed them and persisted by the system that owns the changed resource. Every element is asserted jointly, each at its own stated method; the attribute is not a list of candidate causes. A system that cannot determine which operation caused the change omits the attribute rather than enumerating possibilities, since an omitted binding states that none was recorded, which is a different claim from none existing. Most producers emit exactly one element; the array exists for fan-in, where a batched or bulk operation writes a single record attributable to several calls.",
+      "type": "causal_link",
+      "is_array": true
     },
     "cc": {
       "caption": "Cc",

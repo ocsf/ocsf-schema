@@ -1,0 +1,19 @@
+{
+  "caption": "Causal Link",
+  "description": "A binding from this event to the operation that caused the change it records. Written by the system that owns the changed resource, which generally did not observe the causing operation and knows only the identifier it was given and the way that identifier reached it. The binding is an unverified assertion by the causing party, faithfully persisted: <code>attribution_method_id</code> records how the recording system learned the identifier, not that the claim behind it is true. Where an operation is retried, <code>uid</code> names the call whose request the system acted on, so a retried operation resolves to a single record rather than one per attempt.",
+  "extends": "object",
+  "name": "causal_link",
+  "attributes": {
+    "attribution_method_id": {
+      "requirement": "required"
+    },
+    "attribution_method": {
+      "requirement": "optional"
+    },
+    "uid": {
+      "caption": "Causing Operation ID",
+      "description": "The unique identifier of the operation this event is attributed to, as recorded by the system that performed it. The value crosses a trust boundary rather than being generated here; the recording system persists what it was given, without having observed the operation the identifier names.",
+      "requirement": "required"
+    }
+  }
+}

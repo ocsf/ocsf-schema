@@ -487,7 +487,7 @@
         },
         "2": {
           "caption": "Correlated Identifier",
-          "description": "The identifier was matched against a value the recording system already held, such as a client-supplied reference stored alongside the change."
+          "description": "The identifier was matched against a value the recording system already held, resolving to exactly one causing operation deterministically, before this event was written. An identifier shared across several operations, such as one minted per credential, per session or per batch, does not resolve to a single operation and must not be recorded this way; where resolution is one-to-many or uncertain, the binding is omitted."
         },
         "99": {
           "caption": "Other",
@@ -1179,7 +1179,7 @@
     },
     "caused_by": {
       "caption": "Caused By",
-      "description": "The operation or operations that caused the change this event records, as asserted by the party that performed them and persisted by the system that owns the changed resource. Every element is asserted jointly, each at its own stated method; the attribute is not a list of candidate causes. A system that cannot determine which operation caused the change omits the attribute rather than enumerating possibilities, since an omitted binding states that none was recorded, which is a different claim from none existing. Most producers emit exactly one element; the array exists for fan-in, where a batched or bulk operation writes a single record attributable to several calls.",
+      "description": "The operation or operations that caused the event this record describes, as asserted by the party that performed them and persisted by the system that recorded the event. Every element is asserted jointly, each at its own stated method; the attribute is not a list of candidate causes. A system that cannot determine which operation caused the event omits the attribute rather than enumerating possibilities, since an omitted binding states that none was recorded, which is a different claim from none existing. Most producers emit exactly one element; the array exists for fan-in, where a batched or bulk operation writes a single record attributable to several calls.",
       "type": "causal_link",
       "is_array": true
     },

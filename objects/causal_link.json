@@ -1,14 +1,19 @@
 {
   "caption": "Causal Link",
-  "description": "A binding from this event to the operation that caused the change it records. Written by the system that owns the changed resource, which generally did not observe the causing operation and knows only the identifier it was given and the way that identifier reached it. The binding is an unverified assertion by the causing party, faithfully persisted: <code>attribution_method_id</code> records how the recording system learned the identifier, not that the claim behind it is true. Where an operation is retried, <code>uid</code> names the call whose request the system acted on, so a retried operation resolves to a single record rather than one per attempt.",
+  "description": "A binding from this event to the operation that caused it. Written by the system that recorded this event, which generally did not observe the causing operation and knows only the identifier it was given and the way that identifier reached it. The binding is an unverified assertion by the causing party, faithfully persisted: <code>attribution_method_id</code> records how the recording system learned the identifier, not that the claim behind it is true. The identifier is resolved within the namespace of the system that issued it, named by <code>issuer_uid</code>; an identifier that is not globally unique cannot be resolved without it. Where an operation is retried, <code>uid</code> names the call whose request the system acted on, so a retried operation resolves to a single record rather than one per attempt.",
   "extends": "object",
   "name": "causal_link",
   "attributes": {
+    "attribution_method": {
+      "requirement": "optional"
+    },
     "attribution_method_id": {
       "requirement": "required"
     },
-    "attribution_method": {
-      "requirement": "optional"
+    "issuer_uid": {
+      "caption": "Issuing System ID",
+      "description": "The unique identifier of the system that issued <code>uid</code>, naming the namespace the identifier is resolvable within. Required in practice whenever <code>uid</code> is not globally unique on its own: a distributed tracing span identifier, for example, is unique within its trace rather than universally, so a consumer given the value alone cannot resolve it to one operation. Omitting it asserts that <code>uid</code> is self-describing and globally resolvable.",
+      "requirement": "recommended"
     },
     "uid": {
       "caption": "Causing Operation ID",

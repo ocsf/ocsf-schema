@@ -1,6 +1,6 @@
 {
   "caption": "Causal Link",
-  "description": "A binding from this event to the operation that caused it. Written by the system that recorded this event, which generally did not observe the causing operation and knows only the identifier it was given and the way that identifier reached it. The binding is an unverified assertion by the causing party, faithfully persisted: <code>attribution_method_id</code> records how the recording system learned the identifier, not that the claim behind it is true. The identifier is resolved within the namespace of the system that issued it, named by <code>issuer_uid</code>; an identifier that is not globally unique cannot be resolved without it. Where an operation is retried, <code>uid</code> names the call whose request the system acted on, so a retried operation resolves to a single record rather than one per attempt.",
+  "description": "A binding from this event to the operation that caused it. Written by the system that recorded this event, which generally did not observe the causing operation and knows only the identifier it was given and the way that identifier reached it. The binding is an unverified assertion by the causing party, faithfully persisted: <code>attribution_method_id</code> records how the recording system learned the identifier, not that the claim behind it is true. Resolving the identifier across a trust boundary generally needs more than the identifier: <code>namespace_uid</code> gives the context it is unique within, and <code>issuer_uid</code> the system that minted it. Where an operation is retried, <code>uid</code> names the call whose request the system acted on, so a retried operation resolves to a single record rather than one per attempt.",
   "extends": "object",
   "name": "causal_link",
   "attributes": {
@@ -12,7 +12,12 @@
     },
     "issuer_uid": {
       "caption": "Issuing System ID",
-      "description": "The unique identifier of the system that issued <code>uid</code>, naming the namespace the identifier is resolvable within. Required in practice whenever <code>uid</code> is not globally unique on its own: a distributed tracing span identifier, for example, is unique within its trace rather than universally, so a consumer given the value alone cannot resolve it to one operation. Omitting it asserts that <code>uid</code> is self-describing and globally resolvable.",
+      "description": "The unique identifier of the system that issued <code>uid</code>, recording which system minted the identifier and would be able to resolve it. This is provenance and does not by itself establish the identifier's uniqueness scope: an issuer may mint locally scoped identifiers in many contexts, so naming the issuer does not say which context a given value belongs to. That is <code>namespace_uid</code>.",
+      "requirement": "recommended"
+    },
+    "namespace_uid": {
+      "caption": "Identifier Namespace",
+      "description": "The unique identifier of the context within which <code>uid</code> is unique. Many identifiers worth recording here are scoped rather than global: a distributed tracing span identifier is unique within its trace and not universally, so a span is addressed by the trace identifier together with the span identifier; a request identifier correlated on a connection or a session is unique within that connection or session. Recording the scope is what makes the binding resolvable by a consumer that did not observe the causing operation. Omitted only when <code>uid</code> is globally unique on its own, which is then what the omission asserts.",
       "requirement": "recommended"
     },
     "uid": {

@@ -45,10 +45,10 @@ Thankyou! -->
 
 ### Added
 * #### Objects
-  1. Added `causal_link` object, binding an event to the operation that caused the change it records, together with how that binding was established. [#1741](https://github.com/ocsf/ocsf-schema/pull/1741)
+  1. Added `causal_link` object, binding an event to the operation that caused it, together with how that binding was established and what is needed to resolve the identifier across a trust boundary. [#1741](https://github.com/ocsf/ocsf-schema/pull/1741)
 * #### Dictionary Attributes
-  1. Added `caused_by` as an array of `causal_link`, for the system that owns a changed resource to name the operation it attributes the change to. [#1741](https://github.com/ocsf/ocsf-schema/pull/1741)
-  1. Added `attribution_method_id` with enums `Unknown (0)`, `Propagated Context (1)`, `Correlated Identifier (2)` and `Other (99)`, plus the `attribution_method` sibling, recording how a causal attribution was established. [#1741](https://github.com/ocsf/ocsf-schema/pull/1741)
+  1. Added `caused_by` as an array of `causal_link`, for the system recording an event to name the operation it attributes that event to. [#1741](https://github.com/ocsf/ocsf-schema/pull/1741)
+  1. Added `namespace_uid`, and `attribution_method_id` with enums `Unknown (0)`, `Propagated Context (1)`, `Correlated Identifier (2)` and `Other (99)`, plus the `attribution_method` sibling, recording how a causal attribution was established. [#1741](https://github.com/ocsf/ocsf-schema/pull/1741)
 
 ### Improved
 * #### Event Classes

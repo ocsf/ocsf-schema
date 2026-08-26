@@ -43,6 +43,10 @@ Thankyou! -->
 
 ## [Unreleased]
 
+### Improved
+* #### Objects
+  1. Added per-node authority attributes `scopes`, `audience`, and `expiration_time` to the `delegation` object, so each hop in the chain of authority records what was granted, for whom, and until when. [#1705](https://github.com/ocsf/ocsf-schema/pull/1705)
+
 ## [v1.9.0] - Aug 3rd, 2026
 
 ### Added

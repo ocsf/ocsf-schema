@@ -43,6 +43,10 @@ Thankyou! -->
 
 ## [Unreleased]
 
+### Improved
+* #### Objects
+  1. Added per-node authority attributes `scopes`, `audience`, and `expiration_time` to the `delegation` object, so each hop in the chain of authority records what was granted, for whom, and until when. [#1705](https://github.com/ocsf/ocsf-schema/pull/1705)
+
 ## [v1.9.0] - Aug 3rd, 2026
 
 ### Added
@@ -121,7 +125,6 @@ Thankyou! -->
 * #### Profiles
   1. Added `ai_agent` attribute to the `ai_operation` profile. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
 * #### Objects
-  1. Added per-node authority attributes `scopes`, `audience`, and `expiration_time` to the `delegation` object, so each hop in the chain of authority records what was granted, for whom, and until when. [#1705](https://github.com/ocsf/ocsf-schema/pull/1705)
   1. Added `job_actions` array of objects to the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `job_triggers` array of objects to the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `type_id` attribute to the `job` object to describe mechanism that executes the job. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)

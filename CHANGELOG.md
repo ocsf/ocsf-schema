@@ -45,11 +45,11 @@ Thankyou! -->
 
 ### Added
 * #### Dictionary Attributes
-  1. Added `stop_reason` and `stop_reason_id` attributes with a normalized enum (`Stop`, `Length`, `Tool Use`, `Session Stop`) for why a model completion ended. [#1704](https://github.com/ocsf/ocsf-schema/pull/1704)
+  1. Added generic `stop_reason` and `stop_reason_id` attributes for the reason an activity or operation stopped, defined per the dictionary convention with only `Unknown` and `Other` so each usage supplies its own values. [#1704](https://github.com/ocsf/ocsf-schema/pull/1704)
 
 ### Improved
 * #### Profiles
-  1. Added `stop_reason`/`stop_reason_id` sibling attributes to the `ai_operation` profile, recording why a model completion ended. [#1704](https://github.com/ocsf/ocsf-schema/pull/1704)
+  1. Added `stop_reason`/`stop_reason_id` sibling attributes to the `ai_operation` profile, captioned `AI Stop Reason`, with a normalized enum (`End of Turn`, `Token Limit`, `Tool Use`, `Session Stop`) for why a model completion ended. [#1704](https://github.com/ocsf/ocsf-schema/pull/1704)
 
 ## [v1.9.0] - Aug 3rd, 2026
 

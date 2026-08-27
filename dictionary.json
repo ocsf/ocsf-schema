@@ -177,11 +177,6 @@
       "description": "The permissions that were granted in a platform-native format. See specific usage.",
       "type": "integer_t"
     },
-    "additional": {
-      "caption": "DNS Additional Section",
-      "description": "The Additional section of a DNS message, containing supplementary resource records and an optional TSIG record. Per RFC 2845, a DNS message has at most one TSIG record, available via <code>additional.tsig</code>.",
-      "type": "dns_section"
-    },
     "additional_restrictions": {
       "caption": "Additional Restrictions",
       "description": "The supplementary restrictions that may apply to an entity, by the virtue of a policy. See specific usage.",
@@ -2502,6 +2497,18 @@
       "caption": "DMARC Policy",
       "description": "The Domain-based Message Authentication, Reporting and Conformance (DMARC) policy status.",
       "type": "string_t"
+    },
+    "dns_additional": {
+      "caption": "DNS Additional Section",
+      "description": "The Additional section of a DNS message, containing supplementary resource records and an optional TSIG record. A DNS message has at most one TSIG record, available via <code>dns_additional.tsig</code>.",
+      "source": "Additional",
+      "type": "dns_section",
+      "references": [
+        {
+          "description": "RFC 2845 — Secret Key Transaction Authentication for DNS (TSIG).",
+          "url": "https://www.rfc-editor.org/rfc/rfc2845"
+        }
+      ]
     },
     "dns_zone": {
       "caption": "DNS Zone",

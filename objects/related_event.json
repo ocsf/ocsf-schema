@@ -1,6 +1,6 @@
 {
   "caption": "Related Event/Finding",
-  "description": "The Related Event object describes an event or another finding related to a finding. It may or may not be an OCSF event.",
+  "description": "The Related Event object describes an event or another finding related to a finding. It may or may not be an OCSF event. The event or finding is referenced by the <code>uid</code> attribute, summarized by other attributes. The <code>observables</code> attribute can carry just the observables of the related event or finding, and the full event can be included in the <code>raw_data</code> attribute.",
   "extends": "object",
   "name": "related_event",
   "attributes": {
@@ -43,6 +43,10 @@
     },
     "product_uid": {
       "description": "The unique identifier of the product that reported the related event.",
+      "requirement": "optional"
+    },
+    "raw_data": {
+      "description": "The content of the related event or finding. This is the data pointed to by the <code>uid</code> attribute. Populate when the entire related event is carried with the finding.",
       "requirement": "optional"
     },
     "severity": {

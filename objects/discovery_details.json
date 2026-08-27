@@ -1,6 +1,6 @@
 {
   "caption": "Discovery Details",
-  "description": "The Discovery Details object describes results of a discovery task/job.",
+  "description": "The Discovery Details object describes results of a discovery task/job. Each result may be due to the violation of a <code>rule</code> associated with a <code>policy</code> and have multiple <code>occurrences</code>.",
   "extends": "object",
   "name": "discovery_details",
   "attributes": {
@@ -13,12 +13,19 @@
       "requirement": "optional",
       "@deprecated": {
         "message": "Use <code>occurrences</code> instead.",
-        "since": "1.4.0"
+        "since": "1.4.0",
+        "superseded_by": [
+          "occurrences"
+        ]
       }
     },
     "occurrences": {
       "description": "Details about where in the target entity, specified information was discovered. Only the attributes, relevant to the target entity type should be populated.",
       "requirement": "optional"
+    },
+    "rule": {
+      "description": "The rule associated with this discovery, usually part of the higher level <code>policy</code> from an enclosing class or object.",
+      "requirement": "recommended"
     },
     "type": {
       "description": "The specific type of information that was discovered. e.g.<code> name, phone_number, etc.</code>",

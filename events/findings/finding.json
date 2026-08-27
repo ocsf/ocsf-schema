@@ -4,9 +4,6 @@
   "description": "The Finding event is a generic event that defines a set of attributes available in the Findings category.",
   "extends": "base_event",
   "name": "finding",
-  "profiles": [
-    "incident"
-  ],
   "attributes": {
     "$include": [
       "profiles/incident.json"
@@ -37,15 +34,20 @@
       "requirement": "optional",
       "@deprecated": {
         "message": "Use the <code>notes</code> attribute instead.",
-        "since": "1.9.0"
+        "since": "1.9.0",
+        "superseded_by": [
+          "notes"
+        ]
       }
     },
     "confidence": {
+      "description": "The confidence, normalized to the caption of the confidence_id value. In the case of 'Other', it is defined by the event source and should be the same as <code>confidence_score</code> if also populated..",
       "group": "context",
       "requirement": "optional",
       "profile": null
     },
     "confidence_id": {
+      "description": "The normalized confidence refers to the accuracy of the analytics that produced the finding. An analytic with a low confidence means that the finding scope is wide and may create finding reports that are noisy or may not be malicious in nature.",
       "group": "context",
       "requirement": "recommended",
       "profile": null
@@ -56,7 +58,7 @@
       "profile": null
     },
     "device": {
-      "description": "Describes the device/host relevant to the finding. <p>If applicable, it can be used in conjunction with <code>resources</code>. e.g. The role of the device as the target or the actor, its IP address etc.</p><p>If a single device is the source of the finding, rather than a targeted or affected device, use the <code>Host</code> profile and populate <code>device</code>.</p>",
+      "description": "Describes the affected device/host. It can be used in conjunction with <code>resources</code> or when there are multiple devices affected. E.g. The role of the device as target or actor, specific details about a cloud resource compute instance, etc.<p>If a single device is the source of the finding, use the <code>Host</code> profile and populate <code>device</code>.</p>",
       "group": "context",
       "requirement": "optional",
       "profile": null
@@ -84,9 +86,6 @@
     "start_time": {
       "description": "The time of the earliest event or finding that contributed to this finding.",
       "requirement": "optional"
-    },
-    "time": {
-      "description": "The finding creation time &mdash; when the finding was first generated, not when the underlying activity occurred. For the time range of contributing events, use <code>start_time</code> and <code>end_time</code>."
     },
     "status": {
       "description": "The finding lifecycle status label, normalized to the caption of the <code>status_id</code> value. When <code>status_id</code> is <code>99</code> (Other), this <b>must</b> contain the source-specific status label.",
@@ -124,9 +123,15 @@
         }
       }
     },
+    "time": {
+      "description": "The finding creation time - when the finding was first generated, not when the underlying activity occurred. For the time range of contributing events, use <code>start_time</code> and <code>end_time</code>."
+    },
     "vendor_attributes": {
       "group": "context",
       "requirement": "optional"
     }
-  }
+  },
+  "profiles": [
+    "incident"
+  ]
 }

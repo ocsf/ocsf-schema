@@ -24,8 +24,15 @@
       "requirement": "optional",
       "@deprecated": {
         "message": "Related Analytics has been decoupled from this object, instead use <code>finding_info.related_analytics</code>.",
-        "since": "1.0.0"
+        "since": "1.0.0",
+        "superseded_by": [
+          "finding_info.related_analytics"
+        ]
       }
+    },
+    "sensor_info_list": {
+      "description": "An array of <code>sensor_info</code> objects, each describing a sensor control point analyzed or correlated by the analytic. Each element typically represents a source of <code>related_events</code> that contributed to the finding. An individual sensor control point may also directly originate the finding, though more commonly it emits alerts that a downstream consumer treats as findings.",
+      "requirement": "optional"
     },
     "state": {
       "description": "The Analytic state.",

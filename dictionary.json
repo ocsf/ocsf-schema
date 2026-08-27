@@ -177,32 +177,6 @@
       "description": "The permissions that were granted in a platform-native format. See specific usage.",
       "type": "integer_t"
     },
-    "prev_event": {
-      "caption": "Previous Event",
-      "description": "Reference to the previous event in a chain of events. See specific usage.",
-      "type": "prev_event"
-    },
-    "authority_uid": {
-      "caption": "Authority ID",
-      "description": "The unique identifier of the authority that produced an attestation. See specific usage.",
-      "type": "string_t"
-    },
-    "chain_uid": {
-      "caption": "Chain ID",
-      "description": "Identifier of an append-only chain, such as a forensic or audit log, that groups a sequence of attested events for independent verification. Stable for the lifetime of the chain.",
-      "type": "string_t"
-    },
-    "attestation_list": {
-      "caption": "Attestation List",
-      "description": "One or more cryptographic <code>attestation</code> objects over an event, each providing integrity, authenticity, and non-repudiation. Independent attesters over the same event — for example a producer at write time and a downstream processor at ingest — each contribute a separate attestation, distinct from co-signers on a single attestation, which share its <code>signatures</code> array. Carried on the <code>record_integrity</code> profile; the object itself is domain-agnostic.",
-      "type": "attestation",
-      "is_array": true
-    },
-    "response_additional": {
-      "caption": "DNS Response Additional Section",
-      "description": "The Additional section of the DNS response message sent by the server, containing supplementary resource records and an optional TSIG record. A DNS message has at most one TSIG record; for a transaction with both query and response, the query TSIG is in <code>query_additional.tsig</code> and the response TSIG is in <code>response_additional.tsig</code>.",
-      "type": "dns_section"
-    },
     "additional_restrictions": {
       "caption": "Additional Restrictions",
       "description": "The supplementary restrictions that may apply to an entity, by the virtue of a policy. See specific usage.",
@@ -372,13 +346,16 @@
       "type": "api"
     },
     "app": {
-      "@deprecated": {
-        "message": "Use the <code>application</code> attribute instead.",
-        "since": "1.9.0"
-      },
       "caption": "Application",
       "description": "The application that reported the event.",
-      "type": "product"
+      "type": "product",
+      "@deprecated": {
+        "message": "Use the <code>application</code> attribute instead.",
+        "since": "1.9.0",
+        "superseded_by": [
+          "application"
+        ]
+      }
     },
     "app_name": {
       "caption": "Application Name",
@@ -477,6 +454,12 @@
       "caption": "Attempt",
       "description": "The delivery attempt.",
       "type": "integer_t"
+    },
+    "attestation_list": {
+      "caption": "Attestation List",
+      "description": "One or more cryptographic <code>attestation</code> objects over an event, each providing integrity, authenticity, and non-repudiation. Independent attesters over the same event — for example a producer at write time and a downstream processor at ingest — each contribute a separate attestation, distinct from co-signers on a single attestation, which share its <code>signatures</code> array. Carried on the <code>record_integrity</code> profile; the object itself is domain-agnostic.",
+      "type": "attestation",
+      "is_array": true
     },
     "attributes": {
       "caption": "Attributes",
@@ -582,16 +565,21 @@
       "description": "The author(s) who published the software component.",
       "type": "string_t"
     },
-    "authorizations": {
-      "caption": "Authorization Information",
-      "description": "Provides details about an authorization, such as authorization outcome, and any associated policies related to the activity/event.",
-      "type": "authorization",
-      "is_array": true
-    },
     "authority": {
       "caption": "DNS Authority Section",
       "description": "The DNS Authority section resource records. Contains NS records pointing to authoritative name servers, or a SOA record for negative responses (NXDOMAIN).",
       "type": "dns_resource_record",
+      "is_array": true
+    },
+    "authority_uid": {
+      "caption": "Authority ID",
+      "description": "The unique identifier of the authority that produced an attestation. See specific usage.",
+      "type": "string_t"
+    },
+    "authorizations": {
+      "caption": "Authorization Information",
+      "description": "Provides details about an authorization, such as authorization outcome, and any associated policies related to the activity/event.",
+      "type": "authorization",
       "is_array": true
     },
     "autonomous_system": {
@@ -628,6 +616,30 @@
       "caption": "Baselines",
       "description": "A list of baseline measurements or normal behavior patterns used as reference points for comparison and anomaly detection. See specific usage.",
       "type": "baseline",
+      "is_array": true
+    },
+    "bcc": {
+      "caption": "Bcc",
+      "description": "The machine-readable email header Bcc values, as defined by RFC 5322. For example <code>example.user@usersdomain.com</code>.",
+      "type": "email_t",
+      "references": [
+        {
+          "description": "RFC 5322",
+          "url": "https://www.rfc-editor.org/rfc/rfc5322"
+        }
+      ],
+      "is_array": true
+    },
+    "bcc_mailboxes": {
+      "caption": "Bcc Mailboxes",
+      "description": "The human-readable email header Bcc Mailbox values. For example <code>'Example User &lt;example.user@usersdomain.com&gt;'</code>.",
+      "type": "string_t",
+      "references": [
+        {
+          "description": "RFC 5322",
+          "url": "https://www.rfc-editor.org/rfc/rfc5322#section-3.4"
+        }
+      ],
       "is_array": true
     },
     "binary_data": {
@@ -1131,30 +1143,6 @@
       "sibling": "category_name",
       "type": "integer_t"
     },
-    "bcc": {
-      "caption": "Bcc",
-      "description": "The machine-readable email header Bcc values, as defined by RFC 5322. For example <code>example.user@usersdomain.com</code>.",
-      "type": "email_t",
-      "references": [
-        {
-          "description": "RFC 5322",
-          "url": "https://www.rfc-editor.org/rfc/rfc5322"
-        }
-      ],
-      "is_array": true
-    },
-    "bcc_mailboxes": {
-      "caption": "Bcc Mailboxes",
-      "description": "The human-readable email header Bcc Mailbox values. For example <code>'Example User &lt;example.user@usersdomain.com&gt;'</code>.",
-      "type": "string_t",
-      "references": [
-        {
-          "description": "RFC 5322",
-          "url": "https://www.rfc-editor.org/rfc/rfc5322#section-3.4"
-        }
-      ],
-      "is_array": true
-    },
     "cc": {
       "caption": "Cc",
       "description": "The machine-readable email header Cc values, as defined by RFC 5322. For example <code>example.user@usersdomain.com</code>.",
@@ -1194,6 +1182,11 @@
       "description": "The Chain of Certificate Serial Numbers field provides a chain of Certificate Issuer Serial Numbers leading to the Root Certificate Issuer.",
       "type": "string_t",
       "is_array": true
+    },
+    "chain_uid": {
+      "caption": "Chain ID",
+      "description": "Identifier of an append-only chain, such as a forensic or audit log, that groups a sequence of attested events for independent verification. Stable for the lifetime of the chain.",
+      "type": "string_t"
     },
     "charter": {
       "caption": "Charter",
@@ -1241,31 +1234,37 @@
       "caption": "CIS Benchmark",
       "description": "The CIS Benchmark describes best practices for securely configuring IT systems, software, networks, and cloud infrastructure as defined by the Center for Internet Security.",
       "type": "cis_benchmark",
+      "@deprecated": {
+        "message": "Use the <code>compliance.checks</code> attribute instead.",
+        "since": "1.5.0",
+        "superseded_by": [
+          "compliance.checks"
+        ]
+      },
       "references": [
         {
           "description": "CIS",
           "url": "https://www.cisecurity.org/cis-benchmarks/"
         }
-      ],
-      "@deprecated": {
-        "message": "Use Compliance object with Check object instead.",
-        "since": "1.5.0"
-      }
+      ]
     },
     "cis_benchmark_result": {
       "caption": "CIS Benchmark Result",
       "description": "The CIS Benchmark Result object captures results generated from benchmark evaluations as defined by the Center for Internet Security.",
       "type": "cis_benchmark_result",
+      "@deprecated": {
+        "message": "Use the <code>compliance.checks</code> attribute instead.",
+        "since": "1.5.0",
+        "superseded_by": [
+          "compliance.checks"
+        ]
+      },
       "references": [
         {
           "description": "CIS",
           "url": "https://www.cisecurity.org/cis-benchmarks/"
         }
-      ],
-      "@deprecated": {
-        "message": "Use Compliance object with Check object instead.",
-        "since": "1.5.0"
-      }
+      ]
     },
     "cis_controls": {
       "caption": "CIS Controls",
@@ -1278,8 +1277,11 @@
       "description": "The CIS Critical Security Controls is a list of top 20 actions and practices an organization’s security team can take on such that cyber attacks or malware, are minimized and prevented.",
       "type": "cis_csc",
       "@deprecated": {
-        "message": "Use CIS Controls for standard benchmark controls.",
-        "since": "1.5.0"
+        "message": "Use the <code>cis_control</code> object instead.",
+        "since": "1.5.0",
+        "superseded_by": [
+          "cis_control"
+        ]
       },
       "is_array": true
     },
@@ -1406,6 +1408,11 @@
       "description": "The number of the column. See specific usage.",
       "type": "integer_t"
     },
+    "com_class_uuid": {
+      "caption": "COM Class Identifier",
+      "description": "The COM Class Identifier (CLSID).",
+      "type": "uuid_t"
+    },
     "command": {
       "caption": "Command",
       "description": "The command name.",
@@ -1464,8 +1471,11 @@
       "description": "A list of reference KB articles that provide information to help organizations understand, interpret, and implement compliance standards. They provide guidance, best practices, and examples.",
       "type": "kb_article",
       "@deprecated": {
-        "message": "Use the Compliance object with Check array instead",
-        "since": "1.5.0"
+        "message": "Use the <code>compliance.checks</code> attribute instead.",
+        "since": "1.5.0",
+        "superseded_by": [
+          "compliance.checks"
+        ]
       },
       "is_array": true
     },
@@ -1474,8 +1484,11 @@
       "description": "A list of established guidelines or criteria that define specific requirements an organization must follow.",
       "type": "kb_article",
       "@deprecated": {
-        "message": "Use the Compliance object with Check array instead",
-        "since": "1.5.0"
+        "message": "Use the <code>compliance.checks</code> attribute instead.",
+        "since": "1.5.0",
+        "superseded_by": [
+          "compliance.checks"
+        ]
       },
       "is_array": true
     },
@@ -1483,11 +1496,6 @@
       "caption": "Component",
       "description": "The component of a data object. See specific usage.",
       "type": "string_t"
-    },
-    "com_class_uuid": {
-      "caption": "COM Class Identifier",
-      "description": "The COM Class Identifier (CLSID).",
-      "type": "uuid_t"
     },
     "condition": {
       "caption": "Condition",
@@ -1507,7 +1515,7 @@
     },
     "confidence_id": {
       "caption": "Confidence ID",
-      "description": "The normalized confidence refers to the accuracy of the rule that created the finding. A rule with a low confidence means that the finding scope is wide and may create finding reports that may not be malicious in nature.",
+      "description": "The normalized confidence refers to the accuracy of the analytics that produced the alert or finding. See specific usage.",
       "sibling": "confidence",
       "type": "integer_t",
       "enum": {
@@ -1632,16 +1640,20 @@
       "caption": "Coordinates",
       "description": "A two-element array, containing a longitude/latitude pair. The format conforms with GeoJSON. For example: <code>[-73.983, 40.719]</code>.",
       "type": "float_t",
+      "@deprecated": {
+        "message": "Use the <code>lat</code> and <code>long</code> attributes instead.",
+        "since": "1.2.0",
+        "superseded_by": [
+          "lat",
+          "long"
+        ]
+      },
       "references": [
         {
           "description": "GeoJSON",
           "url": "https://geojson.org"
         }
       ],
-      "@deprecated": {
-        "message": "Use specific <code>lat, long</code> attributes instead.",
-        "since": "1.2.0"
-      },
       "is_array": true
     },
     "cores": {
@@ -1688,8 +1700,8 @@
       "type": "string_t",
       "references": [
         {
-        "description": "NIST Products",
-        "url": "https://nvd.nist.gov/products/cpe"
+          "description": "NIST Products",
+          "url": "https://nvd.nist.gov/products/cpe"
         }
       ]
     },
@@ -1748,8 +1760,11 @@
       "description": "The number of processor cores in all installed processors. For Example: <code>42</code>.",
       "type": "integer_t",
       "@deprecated": {
-        "message": "Use the cores attribute instead.",
-        "since": "1.9.0"
+        "message": "Use the <code>cpu_info_list[*].cores</code> attribute instead.",
+        "since": "1.9.0",
+        "superseded_by": [
+          "cpu_info_list[*].cores"
+        ]
       }
     },
     "cpu_count": {
@@ -1768,8 +1783,11 @@
       "description": "The speed of the processor in Mhz. For Example: <code>4200</code>.",
       "type": "integer_t",
       "@deprecated": {
-        "message": "Use the speed_mhz attribute instead.",
-        "since": "1.9.0"
+        "message": "Use the <code>cpu_info_list[*].speed_mhz</code> attribute instead.",
+        "since": "1.9.0",
+        "superseded_by": [
+          "cpu_info_list[*].speed_mhz"
+        ]
       }
     },
     "cpu_type": {
@@ -1777,8 +1795,12 @@
       "description": "The processor type. For example: <code>x86 Family 6 Model 37 Stepping 5</code>.",
       "type": "string_t",
       "@deprecated": {
-        "message": "Use the model and vendor_name attributes instead.",
-        "since": "1.9.0"
+        "message": "Use the <code>cpu_info_list[*].model</code> and <code>cpu_info_list[*].vendor_name</code> attributes instead.",
+        "since": "1.9.0",
+        "superseded_by": [
+          "cpu_info_list[*].model",
+          "cpu_info_list[*].vendor_name"
+        ]
       }
     },
     "create_mask": {
@@ -1804,8 +1826,40 @@
     },
     "criticality": {
       "caption": "Criticality",
-      "description": "Criticality of a resource/object in question",
+      "description": "Criticality or relative importance of a resource/object in question, normalized to the caption of <code>criticality_id</code>. In the case of Other, the value is defined by the event source.",
       "type": "string_t"
+    },
+    "criticality_id": {
+      "caption": "Criticality Level ID",
+      "description": "Criticality or relative importance of a resource/object in question.",
+      "sibling": "criticality",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The criticality level is unknown."
+        },
+        "1": {
+          "caption": "Low",
+          "description": "Minimal operational or security importance."
+        },
+        "2": {
+          "caption": "Medium",
+          "description": "Affects localized functions or specific business processes."
+        },
+        "3": {
+          "caption": "High",
+          "description": "Critical to core operations. Compromise leads to significant, but recoverable disruptions."
+        },
+        "4": {
+          "caption": "Very High",
+          "description": "Mission critical, essential to business survival. Compromise could result in catastrophic consequences."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The criticality level is not mapped. See the <code>criticality</code> attribute, which contains a data source specific value."
+        }
+      }
     },
     "cumulative_traffic": {
       "caption": "Cumulative Traffic",
@@ -1818,7 +1872,10 @@
       "type": "string_t",
       "@deprecated": {
         "message": "Use the <code>tenant_uid</code> attribute instead.",
-        "since": "1.1.0"
+        "since": "1.1.0",
+        "superseded_by": [
+          "tenant_uid"
+        ]
       }
     },
     "cve": {
@@ -1836,25 +1893,25 @@
       "caption": "CVE List",
       "description": "List of Common Vulnerabilities and Exposures identifiers.",
       "type": "cve",
-      "is_array": true,
       "references": [
         {
           "description": "CVE",
           "url": "https://cve.mitre.org/"
         }
-      ]
+      ],
+      "is_array": true
     },
     "cvss": {
       "caption": "CVSS Score",
       "description": "The CVSS object details Common Vulnerability Scoring System scores from the advisory that are related to the vulnerability.",
       "type": "cvss",
-      "is_array": true,
       "references": [
         {
           "description": "CVSS",
           "url": "https://www.first.org/cvss/"
         }
-      ]
+      ],
+      "is_array": true
     },
     "cwe": {
       "caption": "CWE",
@@ -1871,24 +1928,30 @@
       "caption": "CWE UID",
       "description": "The Common Weakness Enumeration (CWE) unique identifier. For example: <code>CWE-787</code>.",
       "type": "string_t",
+      "@deprecated": {
+        "message": "Use the <code>related_cwes[*].uid</code> attribute instead.",
+        "since": "1.1.0",
+        "superseded_by": [
+          "related_cwes[*].uid"
+        ]
+      },
       "references": [
         {
           "description": "CWE",
           "url": "https://cwe.mitre.org/"
         }
-      ],
-      "@deprecated": {
-        "message": "Use the <code>related_cwes</code> object attributes instead.",
-        "since": "1.1.0"
-      }
+      ]
     },
     "cwe_url": {
       "caption": "CWE URL",
       "description": "Common Weakness Enumeration (CWE) definition URL. For example: <code>https://cwe.mitre.org/data/definitions/787.html</code>.",
       "type": "url_t",
       "@deprecated": {
-        "message": "Use the <code>related_cwes</code> object attributes instead.",
-        "since": "1.1.0"
+        "message": "Use the <code>related_cwes[*].src_url</code> attribute instead.",
+        "since": "1.1.0",
+        "superseded_by": [
+          "related_cwes[*].src_url"
+        ]
       }
     },
     "d3f_tactic": {
@@ -2020,7 +2083,10 @@
       "type": "email_t",
       "@deprecated": {
         "message": "Use the <code>delivered_to_list</code> attribute instead.",
-        "since": "1.4.0"
+        "since": "1.4.0",
+        "superseded_by": [
+          "delivered_to_list"
+        ]
       }
     },
     "delivered_to_list": {
@@ -2122,18 +2188,18 @@
     },
     "detection_system": {
       "caption": "Detection System",
-      "description": "The name of the type of data security tool or system that the finding, detection, or alert originated from. E.g., Endpoint, Secure Email Gateway, etc.",
+      "description": "The data security tool or system that the finding, detection, or alert originated from, normalized to the caption of <code>detection_system_id</code>. E.g., Endpoint, Secure Email Gateway, etc. When <code>detection_system_id</code> is <code>99</code> (Other), this attribute must contain the source-specific label.",
       "type": "string_t"
     },
     "detection_system_id": {
       "caption": "Detection System ID",
-      "description": "The type of data security tool or system that the finding, detection, or alert originated from.",
+      "description": "The normalized identifier of the data security tool or system type from which the finding, detection, or alert originated. When the type is not listed, use <code>99</code> (Other) and populate <code>detection_system</code> with the source-specific label.",
       "sibling": "detection_system",
       "type": "integer_t",
       "enum": {
         "0": {
           "caption": "Unknown",
-          "description": "The type is not mapped. See the <code>detection_system</code> attribute, which contains a data source specific value."
+          "description": "The detection system type is Unknown."
         },
         "1": {
           "caption": "Endpoint",
@@ -2185,7 +2251,7 @@
         },
         "99": {
           "caption": "Other",
-          "description": "Any other type of detection system or a multi-variate system made up of several other systems."
+          "description": "The detection system type is not mapped. See the <code>detection_system</code> attribute, which contains a data source specific value."
         }
       }
     },
@@ -2621,7 +2687,10 @@
       "type": "string_t",
       "@deprecated": {
         "message": "Use the <code>email.uid</code> attribute instead.",
-        "since": "1.4.0"
+        "since": "1.4.0",
+        "superseded_by": [
+          "email.uid"
+        ]
       }
     },
     "embedding_model": {
@@ -2703,7 +2772,10 @@
       "type": "managed_entity",
       "@deprecated": {
         "message": "Use the <code>updated_entity</code> attribute instead.",
-        "since": "1.9.0"
+        "since": "1.9.0",
+        "superseded_by": [
+          "updated_entity"
+        ]
       }
     },
     "environment_variables": {
@@ -2771,7 +2843,10 @@
       "type": "json_t",
       "@deprecated": {
         "message": "Use the <code>evidences</code> attribute instead.",
-        "since": "1.1.0"
+        "since": "1.1.0",
+        "superseded_by": [
+          "evidences"
+        ]
       }
     },
     "evidences": {
@@ -2831,7 +2906,10 @@
       "type": "extension",
       "@deprecated": {
         "message": "Use the <code>extensions</code> attribute instead.",
-        "since": "1.1.0"
+        "since": "1.1.0",
+        "superseded_by": [
+          "extensions"
+        ]
       }
     },
     "extension_list": {
@@ -2840,7 +2918,10 @@
       "type": "tls_extension",
       "@deprecated": {
         "message": "Use the <code>tls_extension_list</code> attribute instead.",
-        "since": "1.1.0"
+        "since": "1.1.0",
+        "superseded_by": [
+          "tls_extension_list"
+        ]
       },
       "is_array": true
     },
@@ -2956,7 +3037,7 @@
     },
     "finding_info_list": {
       "caption": "Finding Information List",
-      "description": "A list of <code>finding_info</code> objects associated to an incident.",
+      "description": "A list of <code>finding_info</code> objects.",
       "type": "finding_info",
       "is_array": true
     },
@@ -2987,7 +3068,10 @@
       "type": "boolean_t",
       "@deprecated": {
         "message": "Use the <code>is_fix_available</code> attribute instead.",
-        "since": "1.1.0"
+        "since": "1.1.0",
+        "superseded_by": [
+          "is_fix_available"
+        ]
       }
     },
     "fix_coverage": {
@@ -3206,7 +3290,10 @@
       "type": "string_t",
       "@deprecated": {
         "message": "Use the <code>group.name</code> attribute instead.",
-        "since": "1.1.0"
+        "since": "1.1.0",
+        "superseded_by": [
+          "group.name"
+        ]
       }
     },
     "groups": {
@@ -3280,7 +3367,10 @@
       "type": "boolean_t",
       "@deprecated": {
         "message": "Use the <code>is_http_only</code> attribute instead.",
-        "since": "1.1.0"
+        "since": "1.1.0",
+        "superseded_by": [
+          "is_http_only"
+        ]
       }
     },
     "http_request": {
@@ -3297,16 +3387,19 @@
       "caption": "HTTP Status",
       "description": "The Hypertext Transfer Protocol (HTTP) status code returned to the client.",
       "type": "integer_t",
+      "@deprecated": {
+        "message": "Use the <code>http_response.code</code> attribute instead.",
+        "since": "1.1.0",
+        "superseded_by": [
+          "http_response.code"
+        ]
+      },
       "references": [
         {
           "description": "HTTP Status Codes",
           "url": "https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml"
         }
-      ],
-      "@deprecated": {
-        "message": "Use the <code>http_response.code</code> attribute instead.",
-        "since": "1.1.0"
-      }
+      ]
     },
     "hw_info": {
       "caption": "Hardware Info",
@@ -3370,7 +3463,10 @@
       "type": "string_t",
       "@deprecated": {
         "message": "Use the <code>imei_list</code> attribute instead.",
-        "since": "1.4.0"
+        "since": "1.4.0",
+        "superseded_by": [
+          "imei_list"
+        ]
       }
     },
     "imei_list": {
@@ -3437,6 +3533,25 @@
       "description": "A list of symbols imported by the executable file.",
       "type": "string_t",
       "is_array": true
+    },
+    "initiator": {
+      "caption": "Initiator",
+      "description": "The initiator of an activity or operation. See specific usage.",
+      "type": "string_t"
+    },
+    "initiator_id": {
+      "caption": "Initiator ID",
+      "description": "The normalized identifier of the <code>initiator</code>. See specific usage.",
+      "sibling": "initiator",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "99": {
+          "caption": "Other"
+        }
+      }
     },
     "injection_type": {
       "caption": "Injection Type",
@@ -3505,25 +3620,6 @@
       "caption": "Instance ID",
       "description": "The unique identifier of a VM instance.",
       "type": "string_t"
-    },
-    "initiator": {
-      "caption": "Initiator",
-      "description": "The initiator of an activity or operation. See specific usage.",
-      "type": "string_t"
-    },
-    "initiator_id": {
-      "caption": "Initiator ID",
-      "description": "The normalized identifier of the <code>initiator</code>. See specific usage.",
-      "sibling": "initiator",
-      "type": "integer_t",
-      "enum": {
-        "0": {
-          "caption": "Unknown"
-        },
-        "99": {
-          "caption": "Other"
-        }
-      }
     },
     "integrity": {
       "caption": "Integrity",
@@ -3782,7 +3878,10 @@
       "type": "boolean_t",
       "@deprecated": {
         "message": "Use <code>initiator_id</code> instead, which provides richer semantics for bi-flow and asymmetric flow scenarios.",
-        "since": "1.9.0"
+        "since": "1.9.0",
+        "superseded_by": [
+          "initiator_id"
+        ]
       }
     },
     "is_superseded": {
@@ -3871,16 +3970,16 @@
       "type": "ja4_fingerprint",
       "is_array": true
     },
+    "job": {
+      "caption": "Job",
+      "description": "The object provides information about a scheduled job or a task.",
+      "type": "job"
+    },
     "job_actions": {
       "caption": "Job Actions",
       "description": "An array of actions that will be performed by a job when certain conditions are met.",
       "type": "job_action",
       "is_array": true
-    },
-    "job": {
-      "caption": "Job",
-      "description": "The object provides information about a scheduled job or a task.",
-      "type": "job"
     },
     "job_title": {
       "caption": "Job Title",
@@ -3910,7 +4009,10 @@
       "type": "string_t",
       "@deprecated": {
         "message": "Use the <code>kb_article_list</code> attribute instead.",
-        "since": "1.1.0"
+        "since": "1.1.0",
+        "superseded_by": [
+          "kb_article_list"
+        ]
       },
       "is_array": true
     },
@@ -3944,6 +4046,11 @@
       "description": "The length of the encryption key.",
       "type": "integer_t"
     },
+    "key_name": {
+      "caption": "Key Name",
+      "description": "The name of a key. See specific usage.",
+      "type": "string_t"
+    },
     "key_uid": {
       "caption": "Key UID",
       "description": "The unique identifier of the key. See specific usage.",
@@ -3973,18 +4080,13 @@
       "caption": "Kill Chain",
       "description": "The Kill Chain provides a detailed description of each phase and its associated activities within the broader context of a cyber attack.",
       "type": "kill_chain_phase",
-      "is_array": true,
       "references": [
         {
           "description": "Cyber Kill Chain®",
           "url": "https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html"
         }
-      ]
-    },
-    "key_name": {
-      "caption": "Key Name",
-      "description": "The name of a key. See specific usage.",
-      "type": "string_t"
+      ],
+      "is_array": true
     },
     "labels": {
       "caption": "Labels",
@@ -4566,16 +4668,16 @@
       "type": "string_t",
       "is_array": true
     },
-    "notes": {
-      "caption": "Notes",
-      "description": "Additional notes related to the event or object. See specific usage.",
-      "type": "note",
-      "is_array": true
-    },
     "nodes": {
       "caption": "Nodes",
       "description": "The list of node objects that are part of the graph.",
       "type": "node",
+      "is_array": true
+    },
+    "notes": {
+      "caption": "Notes",
+      "description": "Additional notes related to the event or object. See specific usage.",
+      "type": "note",
       "is_array": true
     },
     "num_detections": {
@@ -4757,7 +4859,7 @@
       "references": [
         {
           "description": "RFC 5395",
-          "url": "https://www.rfc-editor.org/rfc/rfc5395.html"  
+          "url": "https://www.rfc-editor.org/rfc/rfc5395.html"
         }
       ],
       "suppress_checks": [
@@ -4873,7 +4975,10 @@
       "type": "package",
       "@deprecated": {
         "message": "Use the <code>affected_packages</code> attribute instead.",
-        "since": "1.1.0"
+        "since": "1.1.0",
+        "superseded_by": [
+          "affected_packages"
+        ]
       },
       "is_array": true
     },
@@ -5114,6 +5219,11 @@
       "description": "The uncorrected barometric pressure altitude (based on reference standard 29.92 inHg, 1013.25 mb) provides a reference for algorithms that utilize 'altitude deltas' between aircraft. This value is provided in meters and must have a minimum resolution of 1 m.. Special Values: <code>Invalid</code>, <code>No Value</code>, or <code>Unknown: -1000 m</code>.",
       "type": "string_t"
     },
+    "prev_event": {
+      "caption": "Previous Event",
+      "description": "Reference to the previous event in a chain of events. See specific usage.",
+      "type": "prev_event"
+    },
     "prev_security_level": {
       "caption": "Previous Security Level",
       "description": "The previous security level of the entity",
@@ -5234,8 +5344,11 @@
       "description": "Unique Identifier of a product.",
       "type": "string_t",
       "@deprecated": {
-        "message": "Use the <code>uid</code> attribute in the <code>product</code> object instead. See specific usage.",
-        "since": "1.4.0"
+        "message": "Use the <code>product.uid</code> attribute instead.",
+        "since": "1.4.0",
+        "superseded_by": [
+          "product.uid"
+        ]
       }
     },
     "profiles": {
@@ -5256,7 +5369,10 @@
       "type": "string_t",
       "@deprecated": {
         "message": "Use the <code>account.uid</code> attribute instead.",
-        "since": "1.4.0"
+        "since": "1.4.0",
+        "superseded_by": [
+          "account.uid"
+        ]
       }
     },
     "prompt_text": {
@@ -5323,7 +5439,10 @@
       "type": "network_proxy",
       "@deprecated": {
         "message": "Use the <code>proxy_endpoint</code> attribute instead.",
-        "since": "1.1.0"
+        "since": "1.1.0",
+        "superseded_by": [
+          "proxy_endpoint"
+        ]
       }
     },
     "proxy_connection_info": {
@@ -5664,25 +5783,25 @@
       "caption": "Related CVEs",
       "description": "Describes Common Vulnerabilities and Exposures entries that are related to an entity. See specific usage.",
       "type": "cve",
-      "is_array": true,
       "references": [
         {
           "description": "CVE",
           "url": "https://cve.mitre.org/"
         }
-      ]
+      ],
+      "is_array": true
     },
     "related_cwes": {
       "caption": "Related CWEs",
       "description": "Describes Common Weakness Enumeration entries that are related to an entity. See specific usage.",
       "type": "cwe",
-      "is_array": true,
       "references": [
         {
           "description": "CWE",
           "url": "https://cwe.mitre.org/"
         }
-      ]
+      ],
+      "is_array": true
     },
     "related_events": {
       "caption": "Related Events/Findings",
@@ -5757,7 +5876,10 @@
       "type": "email_t",
       "@deprecated": {
         "message": "Use the <code>reply_to_list</code> attribute instead.",
-        "since": "1.4.0"
+        "since": "1.4.0",
+        "superseded_by": [
+          "reply_to_list"
+        ]
       },
       "references": [
         {
@@ -5841,16 +5963,24 @@
       "caption": "Resource Results Array",
       "description": "Updated resources after an activity/event.",
       "type": "resource_details",
-      "is_array": true,
       "@deprecated": {
         "message": "Use the <code>updated_resources</code> attribute instead.",
-        "since": "1.9.0"
-      }
+        "since": "1.9.0",
+        "superseded_by": [
+          "updated_resources"
+        ]
+      },
+      "is_array": true
     },
     "response": {
       "caption": "API Response Details",
       "description": "General Purpose API Response Object. See specific usage.",
       "type": "response"
+    },
+    "response_additional": {
+      "caption": "DNS Response Additional Section",
+      "description": "The Additional section of the DNS response message sent by the server, containing supplementary resource records and an optional TSIG record. A DNS message has at most one TSIG record; for a transaction with both query and response, the query TSIG is in <code>query_additional.tsig</code> and the response TSIG is in <code>response_additional.tsig</code>.",
+      "type": "dns_section"
     },
     "response_text": {
       "caption": "Response Text",
@@ -6195,7 +6325,10 @@
       "type": "boolean_t",
       "@deprecated": {
         "message": "Use the <code>is_secure</code> attribute instead.",
-        "since": "1.1.0"
+        "since": "1.1.0",
+        "superseded_by": [
+          "is_secure"
+        ]
       }
     },
     "security_descriptor": {
@@ -6270,6 +6403,61 @@
       "caption": "Sensitivity",
       "description": "The sensitivity of the firewall rule in the matched event. For example: HIGH.",
       "type": "string_t"
+    },
+    "sensor_info_list": {
+      "caption": "Sensor Information List",
+      "description": "An array of sensor_info objects that describe sensor control points.",
+      "type": "sensor_info",
+      "is_array": true
+    },
+    "sensor_layer": {
+      "caption": "Sensor Layer",
+      "description": "The normalized identifier of the sensor layer that emitted the data for the analysis. For example, use this to classify the detection surface (e.g., IPS sensor, endpoint agent, email gateway). When the type is not listed, use <code>99</code> (Other) and populate <code>sensor_layer</code> with the source-specific label.",
+      "type": "string_t"
+    },
+    "sensor_layer_id": {
+      "caption": "Sensor Layer ID",
+      "description": "The technology or sensor layer that the event or finding originated from. See specific usage.",
+      "sibling": "sensor_layer",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The sensor layer type is Unknown."
+        },
+        "1": {
+          "caption": "Network",
+          "description": "The analyzed data is emitted by, or originates from a network, firewall, or IPS sensor."
+        },
+        "2": {
+          "caption": "Endpoint",
+          "description": "The analyzed data is emitted by, or originates from an endpoint device or agent running on an OS."
+        },
+        "3": {
+          "caption": "Email",
+          "description": "The analyzed data is emitted by, or originates from an email gateway or email security system."
+        },
+        "4": {
+          "caption": "IAM",
+          "description": "The analyzed data is emitted by, or originates from an identity and access management (IAM) system or service."
+        },
+        "5": {
+          "caption": "Proxy",
+          "description": "The analyzed data is emitted by, or originates from a proxy server (e.g., forward or reverse proxy, web gateway)."
+        },
+        "6": {
+          "caption": "Threat Intel",
+          "description": "The analyzed data is emitted by, or originates from a cyber threat intelligence (CTI) system or by matching observables against a threat intelligence feed or report."
+        },
+        "7": {
+          "caption": "Application",
+          "description": "The analyzed data is emitted by, or originates from an application (e.g., web application, SaaS platform, or custom business application)."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The sensor layer type is not mapped. See the <code>sensor_layer</code> attribute, which contains a data source specific value."
+        }
+      }
     },
     "sequence": {
       "caption": "Sequence Number",
@@ -6437,7 +6625,10 @@
       "type": "email_t",
       "@deprecated": {
         "message": "Use the <code>from</code> attribute instead.",
-        "since": "1.4.0"
+        "since": "1.4.0",
+        "superseded_by": [
+          "from"
+        ]
       }
     },
     "smtp_hello": {
@@ -6446,7 +6637,10 @@
       "type": "string_t",
       "@deprecated": {
         "message": "Use the <code>command</code> attribute instead.",
-        "since": "1.4.0"
+        "since": "1.4.0",
+        "superseded_by": [
+          "command"
+        ]
       }
     },
     "smtp_to": {
@@ -6455,7 +6649,10 @@
       "type": "email_t",
       "@deprecated": {
         "message": "Use the <code>to</code> attribute instead.",
-        "since": "1.4.0"
+        "since": "1.4.0",
+        "superseded_by": [
+          "to"
+        ]
       },
       "is_array": true
     },
@@ -6708,12 +6905,6 @@
       "description": "The normalized identifier of the stratum level of an NTP server's time source, as defined in RFC 5905. Levels range from 0 to 16, with lower numbers representing higher accuracy and greater proximity to the root clock.",
       "sibling": "stratum",
       "type": "integer_t",
-      "references": [
-        {
-          "description": "RFC 5905",
-          "url": "https://www.rfc-editor.org/rfc/rfc5905.html"
-        }
-      ],
       "enum": {
         "0": {
           "caption": "Unknown",
@@ -6738,7 +6929,13 @@
           "caption": "Other",
           "description": "The stratum level is not mapped. See the <code>stratum</code> attribute, which contains a data source specific value."
         }
-      }
+      },
+      "references": [
+        {
+          "description": "RFC 5905",
+          "url": "https://www.rfc-editor.org/rfc/rfc5905.html"
+        }
+      ]
     },
     "string_data": {
       "caption": "String Data",
@@ -6842,23 +7039,30 @@
       "type": "tactic",
       "@deprecated": {
         "message": "Use the <code>tactic</code> attribute instead.",
-        "since": "1.1.0"
+        "since": "1.1.0",
+        "superseded_by": [
+          "tactic"
+        ]
       },
-      "is_array": true,
       "references": [
         {
           "description": "ATT&CK® Matrix",
           "url": "https://attack.mitre.org/wiki/ATT&CK_Matrix"
         }
-      ]
+      ],
+      "is_array": true
     },
     "tag": {
       "caption": "Image Tag",
       "description": "The image tag. For example: <code>1.11-alpine</code>.",
       "type": "string_t",
       "@deprecated": {
-        "message": "Use the <code>labels or tags</code> attribute instead.",
-        "since": "1.4.0"
+        "message": "Use the <code>labels</code> or <code>tags</code> attribute instead.",
+        "since": "1.4.0",
+        "superseded_by": [
+          "labels",
+          "tags"
+        ]
       }
     },
     "tags": {
@@ -6996,7 +7200,10 @@
       "type": "integer_t",
       "@deprecated": {
         "message": "<code>tid</code> is deprecated in favor of <code>ptid</code>. <code>ptid</code> has type <code>long_t</code> which can accommodate the thread identifiers returned by all platforms (e.g. 64-bit on MacOS).",
-        "since": "1.6.0"
+        "since": "1.6.0",
+        "superseded_by": [
+          "ptid"
+        ]
       }
     },
     "time": {
@@ -7040,11 +7247,6 @@
       "description": "The list of TLS extensions.",
       "type": "tls_extension",
       "is_array": true
-    },
-    "tsig": {
-      "caption": "TSIG",
-      "description": "The TSIG (Transaction Signature) record used to authenticate the DNS message. See RFC 2845.",
-      "type": "tsig"
     },
     "to": {
       "caption": "To",
@@ -7141,6 +7343,11 @@
       "caption": "Tree UID",
       "description": "The tree id is a unique SMB identifier which represents an open connection to a share.",
       "type": "string_t"
+    },
+    "tsig": {
+      "caption": "TSIG",
+      "description": "The TSIG (Transaction Signature) record used to authenticate the DNS message. See RFC 2845.",
+      "type": "tsig"
     },
     "ttl": {
       "caption": "TTL",
@@ -7387,7 +7594,10 @@
       "type": "user",
       "@deprecated": {
         "message": "Use the <code>updated_user</code> attribute instead.",
-        "since": "1.9.0"
+        "since": "1.9.0",
+        "superseded_by": [
+          "updated_user"
+        ]
       }
     },
     "users": {
@@ -7574,11 +7784,14 @@
       "caption": "Web Resources Result",
       "description": "The results of the activity on web resources. It should contain the new values of the changed attributes of the web resources.",
       "type": "web_resource",
-      "is_array": true,
       "@deprecated": {
         "message": "Use the <code>updated_web_resources</code> attribute instead.",
-        "since": "1.9.0"
-      }
+        "since": "1.9.0",
+        "superseded_by": [
+          "updated_web_resources"
+        ]
+      },
+      "is_array": true
     },
     "whois": {
       "caption": "WHOIS",

@@ -3,12 +3,6 @@
   "description": "The Common Vulnerabilities and Exposures (CVE) object represents publicly disclosed cybersecurity vulnerabilities defined in CVE Program catalog (CVE). There is one CVE Record for each vulnerability in the catalog.",
   "extends": "object",
   "name": "cve",
-  "references": [
-    {
-      "description": "CVE Program catalog",
-      "url": "https://cve.org/"
-    }
-  ],
   "attributes": {
     "created_time": {
       "description": "The Record Creation Date identifies when the CVE ID was issued to a CVE Numbering Authority (CNA) or the CVE Record was published on the CVE List. Note that the Record Creation Date does not necessarily indicate when this vulnerability was discovered, shared with the affected vendor, publicly disclosed, or updated in CVE.",
@@ -21,7 +15,10 @@
       "requirement": "optional",
       "@deprecated": {
         "message": "Use <code>related_cwes</code> attribute instead.",
-        "since": "1.4.0"
+        "since": "1.4.0",
+        "superseded_by": [
+          "related_cwes"
+        ]
       }
     },
     "cwe_uid": {
@@ -80,5 +77,11 @@
       "description": "The Common Vulnerabilities and Exposures unique number assigned to a specific computer vulnerability. A CVE Identifier begins with 4 digits representing the year followed by a sequence of digits that acts as a unique identifier. For example: <code>CVE-2021-12345</code>.",
       "requirement": "required"
     }
-  }
+  },
+  "references": [
+    {
+      "description": "CVE Program catalog",
+      "url": "https://cve.org/"
+    }
+  ]
 }

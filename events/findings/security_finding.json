@@ -6,8 +6,15 @@
   "extends": "base_event",
   "name": "security_finding",
   "@deprecated": {
-    "message": "Use the new specific classes according to the use-case: <code>Vulnerability Finding, Compliance Finding, Detection Finding, Incident Finding, Data Security Finding.</code>",
-    "since": "1.1.0"
+    "message": "Use the new specific classes according to the use-case: <code>vulnerability_finding</code>, <code>compliance_finding</code>, <code>detection_finding</code>, <code>incident_finding</code>, <code>data_security_finding</code>.",
+    "since": "1.1.0",
+    "superseded_by": [
+      "vulnerability_finding",
+      "compliance_finding",
+      "detection_finding",
+      "incident_finding",
+      "data_security_finding"
+    ]
   },
   "attributes": {
     "activity_id": {
@@ -31,9 +38,15 @@
       "requirement": "recommended"
     },
     "attacks": {
-      "description": "An array of <a target='_blank' href='https://attack.mitre.org'>MITRE ATT&CK®</a> objects describing the tactics, techniques & sub-techniques associated to the Finding.",
+      "description": "An array of attack objects, each describing a tactic, technique, and/or sub-technique associated with the Finding.",
       "group": "context",
       "requirement": "optional",
+      "references": [
+        {
+          "description": "MITRE ATT&CK®",
+          "url": "https://attack.mitre.org"
+        }
+      ],
       "profile": null
     },
     "cis_csc": {

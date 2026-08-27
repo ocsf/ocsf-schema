@@ -6,6 +6,9 @@
   "extends": "base_event",
   "name": "email_activity",
   "attributes": {
+    "$include": [
+      "profiles/ai_operation.json"
+    ],
     "activity_id": {
       "requirement": "required",
       "enum": {
@@ -113,7 +116,10 @@
       "requirement": "recommended",
       "@deprecated": {
         "message": "Use the <code>command</code> attribute instead.",
-        "since": "1.4.0"
+        "since": "1.4.0",
+        "superseded_by": [
+          "command"
+        ]
       }
     },
     "src_endpoint": {
@@ -127,6 +133,9 @@
       "requirement": "recommended"
     }
   },
+  "profiles": [
+    "ai_operation"
+  ],
   "references": [
     {
       "description": "D3FEND™ Ontology d3f:EmailEvent",

@@ -1,16 +1,34 @@
 {
   "caption": "Actor",
-  "description": "The Actor object contains details about the user, role, application, service, or process that initiated or performed a specific activity. Note that Actor is not the threat actor of a campaign but may be part of a campaign.",
+  "description": "The Actor object contains details about the user, role, application, service, or process that initiated or performed a specific activity. Note that Actor is not the threat actor of a campaign but may be part of a campaign. When the initiator of the activity is an autonomous AI agent, apply the <code>ai_operation</code> profile and populate <code>ai_operation.ai_agent</code> rather than describing the agent here.",
   "extends": "object",
   "name": "actor",
   "attributes": {
     "app_name": {
       "description": "The client application or service that initiated the activity. This can be in conjunction with the <code>user</code> if present.  Note that <code>app_name</code> is distinct from the <code>process</code> if present.",
-      "requirement": "optional"
+      "requirement": "optional",
+      "@deprecated": {
+        "message": "Use the <code>application.name</code> attribute instead.",
+        "since": "1.9.0",
+        "superseded_by": [
+          "application.name"
+        ]
+      }
     },
     "app_uid": {
       "description": "The unique identifier of the client application or service that initiated the activity. This can be in conjunction with the <code>user</code> if present. Note that <code>app_name</code> is distinct from the <code>process.pid</code> or <code>process.uid</code> if present.",
-      "requirement": "optional"
+      "requirement": "optional",
+      "@deprecated": {
+        "message": "Use the <code>application.uid</code> attribute instead.",
+        "since": "1.9.0",
+        "superseded_by": [
+          "application.uid"
+        ]
+      }
+    },
+    "application": {
+      "description": "The client application or service that initiated the activity. This can be in conjunction with the <code>user</code> if present. Note that <code>application</code> is distinct from the <code>process</code> if present.",
+      "requirement": "recommended"
     },
     "authorizations": {
       "requirement": "optional"
@@ -25,8 +43,11 @@
     "invoked_by": {
       "requirement": "optional",
       "@deprecated": {
-        "message": "Use <code> app_name, app_uid </code> attributes instead.",
-        "since": "1.2.0"
+        "message": "Use the <code>application</code> attribute instead.",
+        "since": "1.2.0",
+        "superseded_by": [
+          "application"
+        ]
       }
     },
     "process": {
@@ -49,6 +70,7 @@
       "iam_role",
       "invoked_by",
       "session",
+      "application",
       "app_name",
       "app_uid"
     ]

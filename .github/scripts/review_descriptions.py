@@ -23,8 +23,21 @@ import sys
 from pathlib import Path
 
 COMMENT_MARKER = "<!-- ocsf-description-review -->"
-DEFAULT_MODEL = "claude-sonnet-4-20250514"
+DEFAULT_MODEL = "claude-sonnet-4-6"
 MAX_CONTEXT_CHARS = 400_000
+
+# Deterministic normative pre-check (rules 13–15).
+COMPANY_NAMES_PATH = ".github/company-names.txt"
+TRADEMARK_SYMBOLS = ("®", "™", "℠")
+URL_RE = re.compile(r"https?://")
+# Objects allowed to keep a trademark/registered mark in their primary caption.
+CANONICAL_PROPRIETARY_STEMS = frozenset({
+    "attack",
+    "atlas",
+    "d3fend",
+    "d3f_tactic",
+    "d3f_technique",
+})
 
 SYSTEM_PROMPT = """\
 You are an expert reviewer for the Open Cybersecurity Schema Framework (OCSF).
@@ -65,6 +78,24 @@ Deprecated attributes (those with an `@deprecated` marker) have been
 pre-filtered from the compiled schema data. Do not flag or comment on
 deprecated attributes — they are intentionally being phased out.
 
+## Scope Discipline (STRICT — this overrides every criterion below)
+
+1. **Only `_changed_attributes` (and changed captions/descriptions/CHANGELOG
+   lines) are in scope.** NEVER emit a finding — in ANY section (Suggestions,
+   Anti-Pattern, CHANGELOG, Normative/Neutrality) — for an attribute, caption,
+   description, or line that is NOT part of this PR's changes. Sibling
+   summaries, `cross_reference_index`, `dictionary_neighbors`, and the full PR
+   diff are provided as CONTEXT ONLY to help you reason about the changed
+   items; they are never themselves review targets.
+2. **No hedged out-of-scope findings.** Do not produce findings tagged "for
+   context", "for completeness", "pre-existing — disregard", "not introduced by
+   this PR", or similar. If something is out of scope, omit it entirely and
+   silently. A disclaimer is NOT a license to flag it.
+3. **No stylistic churn.** Do not propose stylistic or preferential rewrites of
+   descriptions that are already clear, correct, and self-contained. Flag a
+   description only when it has a genuine comprehension defect against the
+   criteria below. "Not strictly wrong but could be tightened" is NOT a finding.
+
 ## Review Criteria
 
 Evaluate ONLY the changed/added descriptions against these criteria:
@@ -99,7 +130,14 @@ Array attributes should describe what each element represents, not just
 "A list of X."
 
 ### 6. CHANGELOG Conventions
-Every CHANGELOG entry MUST:
+**Description-only edits do NOT require a CHANGELOG entry.** By project
+convention, updating the `description` (or `caption`) of an *existing*
+attribute, object, or class is a documentation change and is intentionally
+NOT logged. NEVER flag a "missing CHANGELOG entry" for a description/caption
+update. Only new attributes/objects/classes, deprecations, removals, and
+type/structural/behavioral changes warrant a CHANGELOG entry.
+
+When a CHANGELOG entry *is* present, it MUST:
 - End with a PR reference link: `[#NNNN](https://github.com/ocsf/ocsf-schema/pull/NNNN)`
 - Use `1.` numbering with 2-space indent under `####` subsections
 - Be placed under the correct section (Added/Improved/Bugfixes/etc.) and
@@ -108,6 +146,29 @@ Every CHANGELOG entry MUST:
 ### 7. Machine Comprehension
 Descriptions should be specific enough for an LLM to correctly populate the
 field from raw security telemetry and distinguish it from similar attributes.
+
+## Sibling Attribute Description Convention (PRESERVE — do not deviate)
+
+OCSF pairs an enum `<name>_id` attribute (`integer_t` with an `enum`) with a
+string sibling (declared via the `sibling` field) that carries the human-
+readable label. These descriptions follow a FIXED house convention. Treat the
+convention as correct; do NOT rewrite a description into a different shape,
+and do NOT flag a description merely for following it.
+
+- **Enum `<name>_id` attribute**: `"The normalized identifier of <concept>."`
+  (optionally noting `0` = Unknown and `99` = Other, and that the sibling must
+  carry the source-specific label when the value is Other).
+- **String sibling attribute**: `"The <concept>, normalized to the caption of
+  the <name>_id value. In the case of 'Other', it is defined by the event
+  source."` A trailing `See specific usage.` marker on a dictionary entry is an
+  intentional placeholder (see the dictionary-placeholder rule above) and must
+  not be flagged.
+
+Only raise a sibling finding when the description genuinely BREAKS this
+convention (e.g., wrong sibling name referenced, missing the `<name>_id`
+linkage, or the `Other` clause omitted where the enum has an Other value). When
+suggesting a fix, rewrite it back INTO this convention — never propose an
+alternative phrasing style.
 
 ## Anti-Pattern Detection
 
@@ -155,6 +216,65 @@ directly encoding the information. Prefer direct representation.
 When the same attribute name appears on multiple objects in the compiled schema,
 flag cases where the descriptions or types are inconsistent without clear reason.
 
+## Normative & Neutrality Rules
+
+These rules keep the schema "normative" for international standardization
+(e.g. ITU ratification): captions and descriptions must be self-contained,
+vendor-neutral, and free of personal or politically-charged framing. A
+deterministic pre-check may already have flagged some of these as
+"Deterministic Pre-Check Findings" — when present, confirm each finding,
+discard false positives (e.g. genuine example values), and fold the real
+ones into the "Normative / Neutrality Issues" output section below.
+
+### 13. No Authoritative URLs in Captions/Descriptions
+Flag any `http://` or `https://` URL in a changed caption or description.
+Refer to the source *by name* instead (e.g. `RFC 1035`, `MITRE ATT&CK`,
+`ASTM F3411-22a`) and move the link into the container's `references` array
+(a list of `{"description": ..., "url": ...}` entries). URLs are acceptable
+only as clearly illustrative example values (e.g. a sample inside an
+`examples`/`enum` entry), never as the authoritative citation for the field.
+
+### 14. No Trademark/Registered Symbols; Generic Naming
+Flag the marks ®, ™, and ℠ in changed captions or descriptions. Captions and
+descriptions must be generic; the proprietary name (with its mark) belongs in
+the `references` array. See `objects/attack.json` for the canonical pattern —
+generic wording plus a `references` entry naming the proprietary source.
+Exception: the small set of canonical proprietary-source objects — `attack`,
+`atlas`, `d3fend`, `d3f_tactic`, `d3f_technique` — may retain the mark in their
+own primary caption. Everywhere else, the mark should be moved to `references`.
+
+### 15. Vendor/Company Neutrality
+Flag company, vendor, or commercial product names in changed captions or
+descriptions. Use the generic technology or standard instead and keep any
+vendor name to `examples` only. Exceptions: (a) names that are part of a
+formal standard/source identifier already handled via `references`, and
+(b) product names that *are* the modeled domain inside a platform extension
+(e.g. Windows registry concepts under `extensions/windows/`).
+
+### 16. Technical, Non-Personal, Neutral Framing (PII-like restriction)
+Descriptions and attribute names must read as technical data definitions, not
+as descriptions of a real person or a political/national entity. Flag:
+- **Anthropomorphic / biographical framing** that treats the subject as a
+  natural person with a personal life, preferences, or intent rather than a
+  digital identity record. Reframe toward the account / identity / principal
+  and its security-relevant attributes.
+- **Personal or protected-class characterization** (race, ethnicity, religion,
+  gender identity, sexual orientation, health, citizenship, political
+  affiliation, etc.) unless it is a defined, established security concept.
+- **Nation/state or politically-oriented framing** where a neutral technical
+  term works.
+
+Do NOT flag the words `user`, `account`, `identity`, `actor`, or `person` when
+used as technical entity/role names — these are valid OCSF entities, not
+violations. Do NOT flag geographic values stored as data (e.g. an ISO country
+code field). The goal is to remove personal/biographical/political *framing*,
+not to ban legitimate identity or geography modeling.
+
+Worked example (reframe, don't drop the noun):
+- Avoid: "Information about the user and the things they personally like to do."
+- Prefer: "Information about the user account and its security-relevant
+  attributes."
+
 ## Output Format
 
 Use this markdown structure:
@@ -178,13 +298,34 @@ Numbered list. Each item:
 If no anti-patterns are found, omit this section entirely.
 
 ### CHANGELOG Issues
-List any convention violations.
+List any convention violations. Do NOT report a missing CHANGELOG entry for
+description-only or caption-only edits to existing schema elements (see
+criterion 6). Omit this section entirely if there are no violations.
+
+### Normative / Neutrality Issues
+Findings for criteria 13–16. Numbered list. Each item:
+- **Rule**: one of `URL`, `Trademark`, `Vendor`, or `Personal/Political`
+- **Object/Class**: `name`
+- **Field**: `attribute_name`, or `caption` / `description` when the issue is
+  on the container itself
+- **Issue**: concise problem statement
+- **Current**: the current text (quoted)
+- **Fix**: rewritten generic/neutral text; for URLs and trademark names, state
+  "move to `references`" and show the suggested `references` entry
+
+If no such issues are found, omit this section entirely.
 
 ### Summary
-1-2 sentence overall assessment covering both descriptions and anti-patterns.
+1-2 sentence overall assessment covering descriptions, anti-patterns, and
+normative/neutrality issues.
 
 If no issues are found, respond with only:
 > ✅ No description issues found — descriptions look clear for LLM consumption.
+
+**Omit empty and hedged sections.** Only emit a section if it has at least one
+genuine, in-scope finding. Never output a section (or a bullet) whose content is
+"none", "no issues", "pre-existing — disregard", "for completeness", or any other
+placeholder/hedge. A section with nothing actionable must be left out entirely.
 
 ## Previous Review Awareness
 
@@ -196,6 +337,13 @@ this same PR. When present:
 2. Re-raise any suggestions that were NOT addressed — keep the same format
 3. Note any NEW issues introduced since the last review
 4. Keep the Summary section updated to reflect current state
+5. **If a changed description already matches (verbatim or near-verbatim) a
+   description you suggested in a previous review, treat it as ✅ resolved and
+   do NOT propose a new variant of it.** Do not oscillate wording between runs
+   or nudge an already-accepted suggestion back toward the original text.
+6. Keep the "Previous Review Status" section terse: one short bullet per prior
+   item (✅ resolved / ❌ still open). Do NOT re-derive, second-guess, or
+   self-correct within the section — state the current status once and move on.
 
 These are advisory suggestions to help improve clarity. They are not required
 changes. Only review CHANGED or ADDED content. Do not flag pre-existing
@@ -494,6 +642,103 @@ def _build_dictionary_neighbors(
 
 
 # ---------------------------------------------------------------------------
+# Deterministic normative pre-check (rules 13–15)
+# ---------------------------------------------------------------------------
+
+def _load_company_names() -> list[str]:
+    """Load the vendor/company watchlist (one name per line, `#` comments)."""
+    path = Path(COMPANY_NAMES_PATH)
+    if not path.exists():
+        return []
+    names: list[str] = []
+    for line in path.read_text().splitlines():
+        line = line.strip()
+        if line and not line.startswith("#"):
+            names.append(line)
+    return names
+
+
+# Matches a `"caption": "..."` or `"description": "..."` JSON pair, tolerating
+# escaped quotes inside the value.
+_CAPTION_DESC_RE = re.compile(r'"(caption|description)":\s*"((?:[^"\\]|\\.)*)"')
+
+
+def run_normative_precheck(diff: str, company_names: list[str]) -> list[dict]:
+    """Scan added caption/description values in the diff for normative issues.
+
+    Catches the mechanical rules deterministically so the LLM confirms/triages
+    rather than discovers them:
+      - URLs in captions/descriptions (rule 13)
+      - trademark/registered marks ®/™/℠ (rule 14), with a caption allowlist
+        for the canonical proprietary-source objects
+      - vendor/company names from the watchlist (rule 15), skipped under
+        `extensions/` where a product name may be the modeled domain
+
+    The judgment-only rule 16 (personal/political framing) is left to the LLM.
+    """
+    company_res = [
+        (name, re.compile(r"\b" + re.escape(name) + r"\b", re.IGNORECASE))
+        for name in company_names
+    ]
+    findings: list[dict] = []
+    current_file = ""
+
+    for line in diff.split("\n"):
+        if line.startswith("diff --git"):
+            parts = line.split(" b/")
+            current_file = parts[-1].strip() if len(parts) > 1 else ""
+            continue
+        if not line.startswith("+") or line.startswith("+++"):
+            continue
+
+        content = line[1:]
+        m = _CAPTION_DESC_RE.search(content)
+        if not m:
+            continue
+
+        field = m.group(1)
+        text = m.group(2)
+        stem = Path(current_file).stem
+        issues: list[str] = []
+
+        if URL_RE.search(text):
+            issues.append(
+                "Contains a URL — move it to a `references` entry and refer to "
+                "the source by name (e.g. RFC / standard / matrix name)."
+            )
+
+        if any(sym in text for sym in TRADEMARK_SYMBOLS):
+            symbol_allowed = (
+                field == "caption" and stem in CANONICAL_PROPRIETARY_STEMS
+            )
+            if not symbol_allowed:
+                issues.append(
+                    "Contains a trademark/registered mark (®/™/℠) — keep the "
+                    "marked proprietary name in `references` only."
+                )
+
+        if not current_file.startswith("extensions/"):
+            for name, rx in company_res:
+                if rx.search(text):
+                    issues.append(
+                        f'Mentions vendor/company name "{name}" — use a generic '
+                        "term; keep vendor names to examples only."
+                    )
+
+        if issues:
+            findings.append(
+                {
+                    "file": current_file,
+                    "field": field,
+                    "text": text,
+                    "issues": issues,
+                }
+            )
+
+    return findings
+
+
+# ---------------------------------------------------------------------------
 # Phase 1: prepare
 # ---------------------------------------------------------------------------
 
@@ -610,10 +855,13 @@ def cmd_prepare() -> None:
         if neighbors:
             context["dictionary_neighbors"][attr_name] = neighbors
 
+    normative_precheck = run_normative_precheck(diff, _load_company_names())
+
     output = {
         "pr_number": pr_number,
         "changed_files": changed_files,
         "compiled_context": context,
+        "normative_precheck": normative_precheck,
         "diff": diff,
     }
 
@@ -633,7 +881,21 @@ def build_review_prompt(
     ctx = data["compiled_context"]
     diff = data["diff"]
     changed_files = data["changed_files"]
+    precheck = data.get("normative_precheck") or []
     parts = []
+
+    if precheck:
+        parts.append(
+            "## Deterministic Pre-Check Findings\n"
+            "_A regex/watchlist scan flagged the following changed captions and "
+            "descriptions for normative rules 13–15 (URLs, trademark marks, "
+            "vendor names). Confirm each one, discard false positives (e.g. "
+            "genuine example values), and report the real ones under "
+            "'Normative / Neutrality Issues'._\n"
+            "```json\n"
+            + json.dumps(precheck, indent=2, ensure_ascii=False)
+            + "\n```\n"
+        )
 
     if previous_review:
         parts.append(
@@ -857,8 +1119,9 @@ def cmd_review() -> None:
         or ctx.get("dictionary_attributes")
     )
     has_changelog = "CHANGELOG.md" in data["changed_files"]
+    has_precheck = bool(data.get("normative_precheck"))
 
-    if not has_content and not has_changelog:
+    if not has_content and not has_changelog and not has_precheck:
         print("No reviewable content, skipping.")
         return
 
@@ -883,6 +1146,7 @@ def cmd_review() -> None:
     message = client.messages.create(
         model=model,
         max_tokens=4096,
+        temperature=0,
         system=SYSTEM_PROMPT,
         messages=[
             {

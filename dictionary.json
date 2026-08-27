@@ -177,11 +177,6 @@
       "description": "The permissions that were granted in a platform-native format. See specific usage.",
       "type": "integer_t"
     },
-    "response_additional": {
-      "caption": "DNS Response Additional Section",
-      "description": "The Additional section of the DNS response message sent by the server, containing supplementary resource records and an optional TSIG record. A DNS message has at most one TSIG record; for a transaction with both query and response, the query TSIG is in <code>query_additional.tsig</code> and the response TSIG is in <code>response_additional.tsig</code>.",
-      "type": "dns_section"
-    },
     "additional": {
       "caption": "DNS Additional Section",
       "description": "The Additional section of a DNS message, containing supplementary resource records and an optional TSIG record. Per RFC 2845, a DNS message has at most one TSIG record, available via <code>additional.tsig</code>.",
@@ -226,6 +221,11 @@
       "type": "agent",
       "is_array": true
     },
+    "ai_agent": {
+      "caption": "AI Agent",
+      "description": "An autonomous AI agent that performs tasks under delegated authority. Distinguished from the OCSF <code>agent</code> object, which describes security sensors such as EDR and DLP tools.",
+      "type": "ai_agent"
+    },
     "ai_model": {
       "caption": "AI Model",
       "description": "The AI Model object describes the characteristics of an AI/ML model. Examples include language models like GPT-4, embedding models like text-embedding-ada-002, and computer vision models like CLIP.",
@@ -254,8 +254,14 @@
     },
     "alert": {
       "caption": "Client TLS Alert",
-      "description": "The integer value of TLS alert if present. The alerts are defined in the TLS specification in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc2246'>RFC-2246</a>.",
-      "type": "integer_t"
+      "description": "The integer value of a TLS alert per the TLS specification.",
+      "type": "integer_t",
+      "references": [
+        {
+          "description": "RFC 2246",
+          "url": "https://datatracker.ietf.org/doc/html/rfc2246"
+        }
+      ]
     },
     "algorithm": {
       "caption": "Algorithm",
@@ -347,7 +353,14 @@
     "app": {
       "caption": "Application",
       "description": "The application that reported the event.",
-      "type": "product"
+      "type": "product",
+      "@deprecated": {
+        "message": "Use the <code>application</code> attribute instead.",
+        "since": "1.9.0",
+        "superseded_by": [
+          "application"
+        ]
+      }
     },
     "app_name": {
       "caption": "Application Name",
@@ -446,6 +459,12 @@
       "caption": "Attempt",
       "description": "The delivery attempt.",
       "type": "integer_t"
+    },
+    "attestation_list": {
+      "caption": "Attestation List",
+      "description": "One or more cryptographic <code>attestation</code> objects over an event, each providing integrity, authenticity, and non-repudiation. Independent attesters over the same event — for example a producer at write time and a downstream processor at ingest — each contribute a separate attestation, distinct from co-signers on a single attestation, which share its <code>signatures</code> array. Carried on the <code>record_integrity</code> profile; the object itself is domain-agnostic.",
+      "type": "attestation",
+      "is_array": true
     },
     "attributes": {
       "caption": "Attributes",
@@ -551,16 +570,21 @@
       "description": "The author(s) who published the software component.",
       "type": "string_t"
     },
-    "authorizations": {
-      "caption": "Authorization Information",
-      "description": "Provides details about an authorization, such as authorization outcome, and any associated policies related to the activity/event.",
-      "type": "authorization",
-      "is_array": true
-    },
     "authority": {
       "caption": "DNS Authority Section",
       "description": "The DNS Authority section resource records. Contains NS records pointing to authoritative name servers, or a SOA record for negative responses (NXDOMAIN).",
       "type": "dns_resource_record",
+      "is_array": true
+    },
+    "authority_uid": {
+      "caption": "Authority ID",
+      "description": "The unique identifier of the authority that produced an attestation. See specific usage.",
+      "type": "string_t"
+    },
+    "authorizations": {
+      "caption": "Authorization Information",
+      "description": "Provides details about an authorization, such as authorization outcome, and any associated policies related to the activity/event.",
+      "type": "authorization",
       "is_array": true
     },
     "autonomous_system": {
@@ -597,6 +621,30 @@
       "caption": "Baselines",
       "description": "A list of baseline measurements or normal behavior patterns used as reference points for comparison and anomaly detection. See specific usage.",
       "type": "baseline",
+      "is_array": true
+    },
+    "bcc": {
+      "caption": "Bcc",
+      "description": "The machine-readable email header Bcc values, as defined by RFC 5322. For example <code>example.user@usersdomain.com</code>.",
+      "type": "email_t",
+      "references": [
+        {
+          "description": "RFC 5322",
+          "url": "https://www.rfc-editor.org/rfc/rfc5322"
+        }
+      ],
+      "is_array": true
+    },
+    "bcc_mailboxes": {
+      "caption": "Bcc Mailboxes",
+      "description": "The human-readable email header Bcc Mailbox values. For example <code>'Example User &lt;example.user@usersdomain.com&gt;'</code>.",
+      "type": "string_t",
+      "references": [
+        {
+          "description": "RFC 5322",
+          "url": "https://www.rfc-editor.org/rfc/rfc5322#section-3.4"
+        }
+      ],
       "is_array": true
     },
     "binary_data": {
@@ -1100,30 +1148,6 @@
       "sibling": "category_name",
       "type": "integer_t"
     },
-    "bcc": {
-      "caption": "Bcc",
-      "description": "The machine-readable email header Bcc values, as defined by RFC 5322. For example <code>example.user@usersdomain.com</code>.",
-      "type": "email_t",
-      "references": [
-        {
-          "description": "RFC 5322",
-          "url": "https://www.rfc-editor.org/rfc/rfc5322"
-        }
-      ],
-      "is_array": true
-    },
-    "bcc_mailboxes": {
-      "caption": "Bcc Mailboxes",
-      "description": "The human-readable email header Bcc Mailbox values. For example <code>'Example User &lt;example.user@usersdomain.com&gt;'</code>.",
-      "type": "string_t",
-      "references": [
-        {
-          "description": "RFC 5322",
-          "url": "https://www.rfc-editor.org/rfc/rfc5322#section-3.4"
-        }
-      ],
-      "is_array": true
-    },
     "cc": {
       "caption": "Cc",
       "description": "The machine-readable email header Cc values, as defined by RFC 5322. For example <code>example.user@usersdomain.com</code>.",
@@ -1164,10 +1188,26 @@
       "type": "string_t",
       "is_array": true
     },
+    "chain_uid": {
+      "caption": "Chain ID",
+      "description": "Identifier of an append-only chain, such as a forensic or audit log, that groups a sequence of attested events for independent verification. Stable for the lifetime of the chain.",
+      "type": "string_t"
+    },
+    "charter": {
+      "caption": "Charter",
+      "description": "A document defining the role, scope, and operating bounds of an entity. See specific usage.",
+      "type": "file"
+    },
     "chassis": {
       "caption": "Chassis",
-      "description": "The chassis type describes the system enclosure or physical form factor. Such as the following examples for Windows <a target='_blank' href='https://docs.microsoft.com/en-us/windows/win32/cimwin32prov/win32-systemenclosure'>Windows Chassis Types</a>",
-      "type": "string_t"
+      "description": "The chassis type describes the system enclosure or physical form factor. For example, as described for a Windows chassis type.",
+      "type": "string_t",
+      "references": [
+        {
+          "description": "Windows Chassis Types",
+          "url": "https://docs.microsoft.com/en-us/windows/win32/cimwin32prov/win32-systemenclosure"
+        }
+      ]
     },
     "checks": {
       "caption": "Compliance Checks",
@@ -1197,21 +1237,39 @@
     },
     "cis_benchmark": {
       "caption": "CIS Benchmark",
-      "description": "The CIS Benchmark describes best practices for securely configuring IT systems, software, networks, and cloud infrastructure as defined by the Center for Internet Security (<a target='_blank' href='https://www.cisecurity.org/cis-benchmarks/'>CIS</a>).",
+      "description": "The CIS Benchmark describes best practices for securely configuring IT systems, software, networks, and cloud infrastructure as defined by the Center for Internet Security.",
       "type": "cis_benchmark",
       "@deprecated": {
-        "message": "Use Compliance object with Check object instead.",
-        "since": "1.5.0"
-      }
+        "message": "Use the <code>compliance.checks</code> attribute instead.",
+        "since": "1.5.0",
+        "superseded_by": [
+          "compliance.checks"
+        ]
+      },
+      "references": [
+        {
+          "description": "CIS",
+          "url": "https://www.cisecurity.org/cis-benchmarks/"
+        }
+      ]
     },
     "cis_benchmark_result": {
       "caption": "CIS Benchmark Result",
-      "description": "The CIS Benchmark Result object captures results generated from benchmark evaluations as defined by the Center for Internet Security (<a target='_blank' href='https://www.cisecurity.org/cis-benchmarks/'>CIS</a>).",
+      "description": "The CIS Benchmark Result object captures results generated from benchmark evaluations as defined by the Center for Internet Security.",
       "type": "cis_benchmark_result",
       "@deprecated": {
-        "message": "Use Compliance object with Check object instead.",
-        "since": "1.5.0"
-      }
+        "message": "Use the <code>compliance.checks</code> attribute instead.",
+        "since": "1.5.0",
+        "superseded_by": [
+          "compliance.checks"
+        ]
+      },
+      "references": [
+        {
+          "description": "CIS",
+          "url": "https://www.cisecurity.org/cis-benchmarks/"
+        }
+      ]
     },
     "cis_controls": {
       "caption": "CIS Controls",
@@ -1224,8 +1282,11 @@
       "description": "The CIS Critical Security Controls is a list of top 20 actions and practices an organization’s security team can take on such that cyber attacks or malware, are minimized and prevented.",
       "type": "cis_csc",
       "@deprecated": {
-        "message": "Use CIS Controls for standard benchmark controls.",
-        "since": "1.5.0"
+        "message": "Use the <code>cis_control</code> object instead.",
+        "since": "1.5.0",
+        "superseded_by": [
+          "cis_control"
+        ]
       },
       "is_array": true
     },
@@ -1352,6 +1413,11 @@
       "description": "The number of the column. See specific usage.",
       "type": "integer_t"
     },
+    "com_class_uuid": {
+      "caption": "COM Class Identifier",
+      "description": "The COM Class Identifier (CLSID).",
+      "type": "uuid_t"
+    },
     "command": {
       "caption": "Command",
       "description": "The command name.",
@@ -1410,8 +1476,11 @@
       "description": "A list of reference KB articles that provide information to help organizations understand, interpret, and implement compliance standards. They provide guidance, best practices, and examples.",
       "type": "kb_article",
       "@deprecated": {
-        "message": "Use the Compliance object with Check array instead",
-        "since": "1.5.0"
+        "message": "Use the <code>compliance.checks</code> attribute instead.",
+        "since": "1.5.0",
+        "superseded_by": [
+          "compliance.checks"
+        ]
       },
       "is_array": true
     },
@@ -1420,8 +1489,11 @@
       "description": "A list of established guidelines or criteria that define specific requirements an organization must follow.",
       "type": "kb_article",
       "@deprecated": {
-        "message": "Use the Compliance object with Check array instead",
-        "since": "1.5.0"
+        "message": "Use the <code>compliance.checks</code> attribute instead.",
+        "since": "1.5.0",
+        "superseded_by": [
+          "compliance.checks"
+        ]
       },
       "is_array": true
     },
@@ -1429,11 +1501,6 @@
       "caption": "Component",
       "description": "The component of a data object. See specific usage.",
       "type": "string_t"
-    },
-    "com_class_uuid": {
-      "caption": "COM Class Identifier",
-      "description": "The COM Class Identifier (CLSID).",
-      "type": "uuid_t"
     },
     "condition": {
       "caption": "Condition",
@@ -1453,7 +1520,7 @@
     },
     "confidence_id": {
       "caption": "Confidence ID",
-      "description": "The normalized confidence refers to the accuracy of the rule that created the finding. A rule with a low confidence means that the finding scope is wide and may create finding reports that may not be malicious in nature.",
+      "description": "The normalized confidence refers to the accuracy of the analytics that produced the alert or finding. See specific usage.",
       "sibling": "confidence",
       "type": "integer_t",
       "enum": {
@@ -1543,8 +1610,14 @@
     },
     "content_type": {
       "caption": "HTTP Content Type",
-      "description": "The request header that identifies the original <a target='_blank' href='https://www.iana.org/assignments/media-types/media-types.xhtml'>media type </a> of the resource (prior to any content encoding applied for sending).",
-      "type": "string_t"
+      "description": "The HTTP request header that identifies the original media type of the resource (prior to any content encoding applied for sending).",
+      "type": "string_t",
+      "references": [
+        {
+          "description": "IANA Media Types",
+          "url": "https://www.iana.org/assignments/media-types/media-types.xhtml"
+        }
+      ]
     },
     "contents": {
       "caption": "Clipboard Contents",
@@ -1570,12 +1643,22 @@
     },
     "coordinates": {
       "caption": "Coordinates",
-      "description": "A two-element array, containing a longitude/latitude pair. The format conforms with <a target='_blank' href='https://geojson.org'>GeoJSON</a>. For example: <code>[-73.983, 40.719]</code>.",
+      "description": "A two-element array, containing a longitude/latitude pair. The format conforms with GeoJSON. For example: <code>[-73.983, 40.719]</code>.",
       "type": "float_t",
       "@deprecated": {
-        "message": "Use specific <code>lat, long</code> attributes instead.",
-        "since": "1.2.0"
+        "message": "Use the <code>lat</code> and <code>long</code> attributes instead.",
+        "since": "1.2.0",
+        "superseded_by": [
+          "lat",
+          "long"
+        ]
       },
+      "references": [
+        {
+          "description": "GeoJSON",
+          "url": "https://geojson.org"
+        }
+      ],
       "is_array": true
     },
     "cores": {
@@ -1618,8 +1701,14 @@
     },
     "cpe_name": {
       "caption": "The product CPE identifier",
-      "description": "The Common Platform Enumeration (CPE) name as described by (<a target='_blank' href='https://nvd.nist.gov/products/cpe'>NIST</a>) For example: <code>cpe:/a:apple:safari:16.2</code>.",
-      "type": "string_t"
+      "description": "The Common Platform Enumeration (CPE) name. For example: <code>cpe:/a:apple:safari:16.2</code>.",
+      "type": "string_t",
+      "references": [
+        {
+          "description": "NIST Products",
+          "url": "https://nvd.nist.gov/products/cpe"
+        }
+      ]
     },
     "cpid": {
       "caption": "Common Process Identifier",
@@ -1674,22 +1763,50 @@
     "cpu_cores": {
       "caption": "CPU Cores",
       "description": "The number of processor cores in all installed processors. For Example: <code>42</code>.",
-      "type": "integer_t"
+      "type": "integer_t",
+      "@deprecated": {
+        "message": "Use the <code>cpu_info_list[*].cores</code> attribute instead.",
+        "since": "1.9.0",
+        "superseded_by": [
+          "cpu_info_list[*].cores"
+        ]
+      }
     },
     "cpu_count": {
       "caption": "CPU Count",
       "description": "The number of physical processors on a system. For example: <code>1</code>.",
       "type": "integer_t"
     },
+    "cpu_info_list": {
+      "caption": "CPU Information",
+      "description": "An array of objects, each describing a physical CPU package installed in the device.",
+      "type": "cpu_info",
+      "is_array": true
+    },
     "cpu_speed": {
       "caption": "Processor Speed",
       "description": "The speed of the processor in Mhz. For Example: <code>4200</code>.",
-      "type": "integer_t"
+      "type": "integer_t",
+      "@deprecated": {
+        "message": "Use the <code>cpu_info_list[*].speed_mhz</code> attribute instead.",
+        "since": "1.9.0",
+        "superseded_by": [
+          "cpu_info_list[*].speed_mhz"
+        ]
+      }
     },
     "cpu_type": {
       "caption": "Processor Type",
       "description": "The processor type. For example: <code>x86 Family 6 Model 37 Stepping 5</code>.",
-      "type": "string_t"
+      "type": "string_t",
+      "@deprecated": {
+        "message": "Use the <code>cpu_info_list[*].model</code> and <code>cpu_info_list[*].vendor_name</code> attributes instead.",
+        "since": "1.9.0",
+        "superseded_by": [
+          "cpu_info_list[*].model",
+          "cpu_info_list[*].vendor_name"
+        ]
+      }
     },
     "create_mask": {
       "caption": "Create Mask",
@@ -1714,8 +1831,40 @@
     },
     "criticality": {
       "caption": "Criticality",
-      "description": "Criticality of a resource/object in question",
+      "description": "Criticality or relative importance of a resource/object in question, normalized to the caption of <code>criticality_id</code>. In the case of Other, the value is defined by the event source.",
       "type": "string_t"
+    },
+    "criticality_id": {
+      "caption": "Criticality Level ID",
+      "description": "Criticality or relative importance of a resource/object in question.",
+      "sibling": "criticality",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The criticality level is unknown."
+        },
+        "1": {
+          "caption": "Low",
+          "description": "Minimal operational or security importance."
+        },
+        "2": {
+          "caption": "Medium",
+          "description": "Affects localized functions or specific business processes."
+        },
+        "3": {
+          "caption": "High",
+          "description": "Critical to core operations. Compromise leads to significant, but recoverable disruptions."
+        },
+        "4": {
+          "caption": "Very High",
+          "description": "Mission critical, essential to business survival. Compromise could result in catastrophic consequences."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The criticality level is not mapped. See the <code>criticality</code> attribute, which contains a data source specific value."
+        }
+      }
     },
     "cumulative_traffic": {
       "caption": "Cumulative Traffic",
@@ -1728,47 +1877,86 @@
       "type": "string_t",
       "@deprecated": {
         "message": "Use the <code>tenant_uid</code> attribute instead.",
-        "since": "1.1.0"
+        "since": "1.1.0",
+        "superseded_by": [
+          "tenant_uid"
+        ]
       }
     },
     "cve": {
       "caption": "CVE",
-      "description": "The Common Vulnerabilities and Exposures (<a target='_blank' href='https://cve.mitre.org/'>CVE</a>) identifiers for the vulnerability.",
-      "type": "cve"
+      "description": "The Common Vulnerabilities and Exposures identifier for a vulnerability.",
+      "type": "cve",
+      "references": [
+        {
+          "description": "CVE",
+          "url": "https://cve.mitre.org/"
+        }
+      ]
     },
     "cves": {
       "caption": "CVE List",
-      "description": "List of Common Vulnerabilities and Exposures (<a target='_blank' href='https://cve.mitre.org/'>CVE</a>).",
+      "description": "List of Common Vulnerabilities and Exposures identifiers.",
       "type": "cve",
+      "references": [
+        {
+          "description": "CVE",
+          "url": "https://cve.mitre.org/"
+        }
+      ],
       "is_array": true
     },
     "cvss": {
       "caption": "CVSS Score",
-      "description": "The CVSS object details Common Vulnerability Scoring System (<a target='_blank' href='https://www.first.org/cvss/'>CVSS</a>) scores from the advisory that are related to the vulnerability.",
+      "description": "The CVSS object details Common Vulnerability Scoring System scores from the advisory that are related to the vulnerability.",
       "type": "cvss",
+      "references": [
+        {
+          "description": "CVSS",
+          "url": "https://www.first.org/cvss/"
+        }
+      ],
       "is_array": true
     },
     "cwe": {
       "caption": "CWE",
-      "description": "The CWE object represents a weakness in a software system that can be exploited by a threat actor to perform an attack. The CWE object is based on the <a target='_blank' href='https://cwe.mitre.org/'>Common Weakness Enumeration (CWE)</a> catalog.",
-      "type": "cwe"
+      "description": "The CWE object represents a weakness in a software system that can be exploited by a threat actor to perform an attack. The CWE object is based on the Common Weakness Enumeration (CWE) catalog.",
+      "type": "cwe",
+      "references": [
+        {
+          "description": "CWE",
+          "url": "https://cwe.mitre.org/"
+        }
+      ]
     },
     "cwe_uid": {
       "caption": "CWE UID",
-      "description": "The <a target='_blank' href='https://cwe.mitre.org/'>Common Weakness Enumeration (CWE)</a> unique identifier. For example: <code>CWE-787</code>.",
+      "description": "The Common Weakness Enumeration (CWE) unique identifier. For example: <code>CWE-787</code>.",
       "type": "string_t",
       "@deprecated": {
-        "message": "Use the <code>related_cwes</code> object attributes instead.",
-        "since": "1.1.0"
-      }
+        "message": "Use the <code>related_cwes[*].uid</code> attribute instead.",
+        "since": "1.1.0",
+        "superseded_by": [
+          "related_cwes[*].uid"
+        ]
+      },
+      "references": [
+        {
+          "description": "CWE",
+          "url": "https://cwe.mitre.org/"
+        }
+      ]
     },
     "cwe_url": {
       "caption": "CWE URL",
       "description": "Common Weakness Enumeration (CWE) definition URL. For example: <code>https://cwe.mitre.org/data/definitions/787.html</code>.",
       "type": "url_t",
       "@deprecated": {
-        "message": "Use the <code>related_cwes</code> object attributes instead.",
-        "since": "1.1.0"
+        "message": "Use the <code>related_cwes[*].src_url</code> attribute instead.",
+        "since": "1.1.0",
+        "superseded_by": [
+          "related_cwes[*].src_url"
+        ]
       }
     },
     "d3f_tactic": {
@@ -1884,6 +2072,11 @@
       "description": "The total round-trip delay to the reference clock in milliseconds.",
       "type": "integer_t"
     },
+    "delegation": {
+      "caption": "Delegation",
+      "description": "A durable authorization context issued by a principal to a delegate (e.g., an application, automated process, service account, or AI agent), representing delegated authority to act on the principal's behalf. Independent of any single event, trace, or session, enabling correlation of actions performed under the same delegated authority.",
+      "type": "delegation"
+    },
     "deleted_time": {
       "caption": "Deleted Time",
       "description": "The timestamp when the user was deleted. In Active Directory (AD), when a user is deleted they are moved to a temporary container and then removed after 30 days. So, this field can be populated even after a user is deleted for the next 30 days.",
@@ -1895,7 +2088,10 @@
       "type": "email_t",
       "@deprecated": {
         "message": "Use the <code>delivered_to_list</code> attribute instead.",
-        "since": "1.4.0"
+        "since": "1.4.0",
+        "superseded_by": [
+          "delivered_to_list"
+        ]
       }
     },
     "delivered_to_list": {
@@ -1997,18 +2193,18 @@
     },
     "detection_system": {
       "caption": "Detection System",
-      "description": "The name of the type of data security tool or system that the finding, detection, or alert originated from. E.g., Endpoint, Secure Email Gateway, etc.",
+      "description": "The data security tool or system that the finding, detection, or alert originated from, normalized to the caption of <code>detection_system_id</code>. E.g., Endpoint, Secure Email Gateway, etc. When <code>detection_system_id</code> is <code>99</code> (Other), this attribute must contain the source-specific label.",
       "type": "string_t"
     },
     "detection_system_id": {
       "caption": "Detection System ID",
-      "description": "The type of data security tool or system that the finding, detection, or alert originated from.",
+      "description": "The normalized identifier of the data security tool or system type from which the finding, detection, or alert originated. When the type is not listed, use <code>99</code> (Other) and populate <code>detection_system</code> with the source-specific label.",
       "sibling": "detection_system",
       "type": "integer_t",
       "enum": {
         "0": {
           "caption": "Unknown",
-          "description": "The type is not mapped. See the <code>detection_system</code> attribute, which contains a data source specific value."
+          "description": "The detection system type is Unknown."
         },
         "1": {
           "caption": "Endpoint",
@@ -2060,7 +2256,7 @@
         },
         "99": {
           "caption": "Other",
-          "description": "Any other type of detection system or a multi-variate system made up of several other systems."
+          "description": "The detection system type is not mapped. See the <code>detection_system</code> attribute, which contains a data source specific value."
         }
       }
     },
@@ -2501,7 +2697,10 @@
       "type": "string_t",
       "@deprecated": {
         "message": "Use the <code>email.uid</code> attribute instead.",
-        "since": "1.4.0"
+        "since": "1.4.0",
+        "superseded_by": [
+          "email.uid"
+        ]
       }
     },
     "embedding_model": {
@@ -2583,7 +2782,10 @@
       "type": "managed_entity",
       "@deprecated": {
         "message": "Use the <code>updated_entity</code> attribute instead.",
-        "since": "1.9.0"
+        "since": "1.9.0",
+        "superseded_by": [
+          "updated_entity"
+        ]
       }
     },
     "environment_variables": {
@@ -2599,8 +2801,14 @@
     },
     "epss": {
       "caption": "EPSS",
-      "description": "The Exploit Prediction Scoring System (EPSS) object describes the estimated probability a vulnerability will be exploited. EPSS is a community-driven effort to combine descriptive information about vulnerabilities (CVEs) with evidence of actual exploitation in-the-wild. (<a target='_blank' href='https://www.first.org/epss/'>EPSS</a>).",
-      "type": "epss"
+      "description": "The Exploit Prediction Scoring System (EPSS) object describes the estimated probability a vulnerability will be exploited. EPSS is a community-driven effort to combine descriptive information about vulnerabilities (CVEs) with evidence of actual exploitation in-the-wild.",
+      "type": "epss",
+      "references": [
+        {
+          "description": "EPSS",
+          "url": "https://www.first.org/epss/"
+        }
+      ]
     },
     "error": {
       "caption": "Error Code",
@@ -2645,7 +2853,10 @@
       "type": "json_t",
       "@deprecated": {
         "message": "Use the <code>evidences</code> attribute instead.",
-        "since": "1.1.0"
+        "since": "1.1.0",
+        "superseded_by": [
+          "evidences"
+        ]
       }
     },
     "evidences": {
@@ -2710,7 +2921,10 @@
       "type": "extension",
       "@deprecated": {
         "message": "Use the <code>extensions</code> attribute instead.",
-        "since": "1.1.0"
+        "since": "1.1.0",
+        "superseded_by": [
+          "extensions"
+        ]
       }
     },
     "extension_list": {
@@ -2719,7 +2933,10 @@
       "type": "tls_extension",
       "@deprecated": {
         "message": "Use the <code>tls_extension_list</code> attribute instead.",
-        "since": "1.1.0"
+        "since": "1.1.0",
+        "superseded_by": [
+          "tls_extension_list"
+        ]
       },
       "is_array": true
     },
@@ -2815,11 +3032,7 @@
     "file_result": {
       "caption": "File Result",
       "description": "The result of the file change. It should contain the new values of the changed attributes.",
-      "type": "file",
-      "@deprecated": {
-        "message": "Use the <code>updated_file</code> attribute instead.",
-        "since": "1.9.0"
-      }
+      "type": "file"
     },
     "files": {
       "caption": "Files",
@@ -2839,7 +3052,7 @@
     },
     "finding_info_list": {
       "caption": "Finding Information List",
-      "description": "A list of <code>finding_info</code> objects associated to an incident.",
+      "description": "A list of <code>finding_info</code> objects.",
       "type": "finding_info",
       "is_array": true
     },
@@ -2870,7 +3083,10 @@
       "type": "boolean_t",
       "@deprecated": {
         "message": "Use the <code>is_fix_available</code> attribute instead.",
-        "since": "1.1.0"
+        "since": "1.1.0",
+        "superseded_by": [
+          "is_fix_available"
+        ]
       }
     },
     "fix_coverage": {
@@ -3042,8 +3258,14 @@
     },
     "geohash": {
       "caption": "Geohash",
-      "description": "<p>Geohash of the geo-coordinates (latitude and longitude).</p><a target='_blank' href='https://en.wikipedia.org/wiki/Geohash'>Geohashing</a> is a geocoding system used to encode geographic coordinates in decimal degrees, to a single string.",
-      "type": "string_t"
+      "description": "<p>Geohash of the geo-coordinates (latitude and longitude).</p>Geohashing is a geocoding system used to encode geographic coordinates in decimal degrees, to a single string.",
+      "type": "string_t",
+      "references": [
+        {
+          "description": "Geohash",
+          "url": "https://en.wikipedia.org/wiki/Geohash"
+        }
+      ]
     },
     "given_name": {
       "caption": "Given Name",
@@ -3083,7 +3305,10 @@
       "type": "string_t",
       "@deprecated": {
         "message": "Use the <code>group.name</code> attribute instead.",
-        "since": "1.1.0"
+        "since": "1.1.0",
+        "superseded_by": [
+          "group.name"
+        ]
       }
     },
     "groups": {
@@ -3123,6 +3348,12 @@
       "description": "Provides quality/containment on horizontal position. This is based on ADS-B NACp. Measured in meters.",
       "type": "string_t"
     },
+    "hosted_ai_agent_list": {
+      "caption": "Hosted AI Agent List",
+      "description": "A list of <code>ai_agent</code> objects hosted by the entity. Use to enumerate AI agents associated with a host when activity cannot be attributed to a single agent.",
+      "type": "ai_agent",
+      "is_array": true
+    },
     "hostname": {
       "caption": "Hostname",
       "description": "The hostname of an endpoint or a device.",
@@ -3151,7 +3382,10 @@
       "type": "boolean_t",
       "@deprecated": {
         "message": "Use the <code>is_http_only</code> attribute instead.",
-        "since": "1.1.0"
+        "since": "1.1.0",
+        "superseded_by": [
+          "is_http_only"
+        ]
       }
     },
     "http_request": {
@@ -3166,12 +3400,21 @@
     },
     "http_status": {
       "caption": "HTTP Status",
-      "description": "The Hypertext Transfer Protocol (HTTP) <a target='_blank' href='https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml'>status code</a> returned to the client.",
+      "description": "The Hypertext Transfer Protocol (HTTP) status code returned to the client.",
       "type": "integer_t",
       "@deprecated": {
         "message": "Use the <code>http_response.code</code> attribute instead.",
-        "since": "1.1.0"
-      }
+        "since": "1.1.0",
+        "superseded_by": [
+          "http_response.code"
+        ]
+      },
+      "references": [
+        {
+          "description": "HTTP Status Codes",
+          "url": "https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml"
+        }
+      ]
     },
     "hw_info": {
       "caption": "Hardware Info",
@@ -3235,7 +3478,10 @@
       "type": "string_t",
       "@deprecated": {
         "message": "Use the <code>imei_list</code> attribute instead.",
-        "since": "1.4.0"
+        "since": "1.4.0",
+        "superseded_by": [
+          "imei_list"
+        ]
       }
     },
     "imei_list": {
@@ -3302,6 +3548,25 @@
       "description": "A list of symbols imported by the executable file.",
       "type": "string_t",
       "is_array": true
+    },
+    "initiator": {
+      "caption": "Initiator",
+      "description": "The initiator of an activity or operation. See specific usage.",
+      "type": "string_t"
+    },
+    "initiator_id": {
+      "caption": "Initiator ID",
+      "description": "The normalized identifier of the <code>initiator</code>. See specific usage.",
+      "sibling": "initiator",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "99": {
+          "caption": "Other"
+        }
+      }
     },
     "injection_type": {
       "caption": "Injection Type",
@@ -3370,25 +3635,6 @@
       "caption": "Instance ID",
       "description": "The unique identifier of a VM instance.",
       "type": "string_t"
-    },
-    "initiator": {
-      "caption": "Initiator",
-      "description": "The initiator of an activity or operation. See specific usage.",
-      "type": "string_t"
-    },
-    "initiator_id": {
-      "caption": "Initiator ID",
-      "description": "The normalized identifier of the <code>initiator</code>. See specific usage.",
-      "sibling": "initiator",
-      "type": "integer_t",
-      "enum": {
-        "0": {
-          "caption": "Unknown"
-        },
-        "99": {
-          "caption": "Other"
-        }
-      }
     },
     "integrity": {
       "caption": "Integrity",
@@ -3632,7 +3878,10 @@
       "type": "boolean_t",
       "@deprecated": {
         "message": "Use <code>initiator_id</code> instead, which provides richer semantics for bi-flow and asymmetric flow scenarios.",
-        "since": "1.9.0"
+        "since": "1.9.0",
+        "superseded_by": [
+          "initiator_id"
+        ]
       }
     },
     "is_superseded": {
@@ -3700,6 +3949,11 @@
       "description": "The identifier of the issuer. See specific usage.",
       "type": "string_t"
     },
+    "issuer_uid": {
+      "caption": "Issuer ID",
+      "description": "The unique identifier of the entity that issued an object. See specific usage.",
+      "type": "string_t"
+    },
     "ja3_hash": {
       "caption": "JA3 Hash",
       "description": "The MD5 hash of a JA3 string.",
@@ -3716,16 +3970,16 @@
       "type": "ja4_fingerprint",
       "is_array": true
     },
+    "job": {
+      "caption": "Job",
+      "description": "The object provides information about a scheduled job or a task.",
+      "type": "job"
+    },
     "job_actions": {
       "caption": "Job Actions",
       "description": "An array of actions that will be performed by a job when certain conditions are met.",
       "type": "job_action",
       "is_array": true
-    },
-    "job": {
-      "caption": "Job",
-      "description": "The object provides information about a scheduled job or a task.",
-      "type": "job"
     },
     "job_title": {
       "caption": "Job Title",
@@ -3755,7 +4009,10 @@
       "type": "string_t",
       "@deprecated": {
         "message": "Use the <code>kb_article_list</code> attribute instead.",
-        "since": "1.1.0"
+        "since": "1.1.0",
+        "superseded_by": [
+          "kb_article_list"
+        ]
       },
       "is_array": true
     },
@@ -3789,6 +4046,11 @@
       "description": "The length of the encryption key.",
       "type": "integer_t"
     },
+    "key_name": {
+      "caption": "Key Name",
+      "description": "The name of a key. See specific usage.",
+      "type": "string_t"
+    },
     "key_uid": {
       "caption": "Key UID",
       "description": "The unique identifier of the key. See specific usage.",
@@ -3816,14 +4078,15 @@
     },
     "kill_chain": {
       "caption": "Kill Chain",
-      "description": "The <a target='_blank' href='https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html'>Cyber Kill Chain®</a> provides a detailed description of each phase and its associated activities within the broader context of a cyber attack.",
+      "description": "The Kill Chain provides a detailed description of each phase and its associated activities within the broader context of a cyber attack.",
       "type": "kill_chain_phase",
+      "references": [
+        {
+          "description": "Cyber Kill Chain®",
+          "url": "https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html"
+        }
+      ],
       "is_array": true
-    },
-    "key_name": {
-      "caption": "Key Name",
-      "description": "The name of a key. See specific usage.",
-      "type": "string_t"
     },
     "labels": {
       "caption": "Labels",
@@ -3833,8 +4096,14 @@
     },
     "lang": {
       "caption": "Language",
-      "description": "The two letter lower case language codes, as defined by <a target='_blank' href='https://en.wikipedia.org/wiki/ISO_639-1'>ISO 639-1</a>. For example: <code>en</code> (English), <code>de</code> (German), or <code>fr</code> (French).",
-      "type": "string_t"
+      "description": "The two letter lower case language codes, as defined by ISO 639-1. For example: <code>en</code> (English), <code>de</code> (German), or <code>fr</code> (French).",
+      "type": "string_t",
+      "references": [
+        {
+          "description": "ISO 639-1",
+          "url": "https://en.wikipedia.org/wiki/ISO_639-1"
+        }
+      ]
     },
     "last_authentication_time": {
       "caption": "Last Authentication Time",
@@ -3946,8 +4215,14 @@
     },
     "license": {
       "caption": "Software License",
-      "description": "The name or identifier of the license applied on package or software. See <a target='_blank' href='https://spdx.org/licenses/'>SPDX License List</a>.",
-      "type": "string_t"
+      "description": "The name or identifier of the license applied on package or software. For example <code>Apache-2.0</code>.",
+      "type": "string_t",
+      "references": [
+        {
+          "description": "SPDX License List",
+          "url": "https://spdx.org/licenses/"
+        }
+      ]
     },
     "license_url": {
       "caption": "Software License URL",
@@ -4404,6 +4679,12 @@
       "type": "node",
       "is_array": true
     },
+    "notes": {
+      "caption": "Notes",
+      "description": "Additional notes related to the event or object. See specific usage.",
+      "type": "note",
+      "is_array": true
+    },
     "num_detections": {
       "caption": "Detections",
       "description": "The number of detections.",
@@ -4585,6 +4866,12 @@
           "description": "The DNS Opcode is not defined by the RFC. See the <code>opcode</code> attribute, which contains a data source specific value."
         }
       },
+      "references": [
+        {
+          "description": "RFC 5395",
+          "url": "https://www.rfc-editor.org/rfc/rfc5395.html"
+        }
+      ],
       "suppress_checks": [
         "enum_convention"
       ]
@@ -4632,7 +4919,7 @@
     },
     "original_time": {
       "caption": "Original Time",
-      "description": "The original event time as reported by the event source, preserved as a pass-through string in its native format (e.g., Syslog timestamp, Windows event time). This is not normalized to <code>timestamp_t</code> &mdash; the normalized equivalent is the base event <code>time</code> attribute. Omit if the event is generated rather than collected via logs.",
+      "description": "The original event time as reported by the event source, preserved as a pass-through string in its native format (e.g., Syslog timestamp, Windows event time). This is not normalized to <code>timestamp_t</code> - the normalized equivalent is the base event <code>time</code> attribute. Omit if the event is generated rather than collected via logs.",
       "type": "string_t"
     },
     "os": {
@@ -4698,7 +4985,10 @@
       "type": "package",
       "@deprecated": {
         "message": "Use the <code>affected_packages</code> attribute instead.",
-        "since": "1.1.0"
+        "since": "1.1.0",
+        "superseded_by": [
+          "affected_packages"
+        ]
       },
       "is_array": true
     },
@@ -4939,6 +5229,11 @@
       "description": "The uncorrected barometric pressure altitude (based on reference standard 29.92 inHg, 1013.25 mb) provides a reference for algorithms that utilize 'altitude deltas' between aircraft. This value is provided in meters and must have a minimum resolution of 1 m.. Special Values: <code>Invalid</code>, <code>No Value</code>, or <code>Unknown: -1000 m</code>.",
       "type": "string_t"
     },
+    "prev_event": {
+      "caption": "Previous Event",
+      "description": "Reference to the previous event in a chain of events. See specific usage.",
+      "type": "prev_event"
+    },
     "prev_security_level": {
       "caption": "Previous Security Level",
       "description": "The previous security level of the entity",
@@ -5064,8 +5359,11 @@
       "description": "Unique Identifier of a product.",
       "type": "string_t",
       "@deprecated": {
-        "message": "Use the <code>uid</code> attribute in the <code>product</code> object instead. See specific usage.",
-        "since": "1.4.0"
+        "message": "Use the <code>product.uid</code> attribute instead.",
+        "since": "1.4.0",
+        "superseded_by": [
+          "product.uid"
+        ]
       }
     },
     "profiles": {
@@ -5086,8 +5384,16 @@
       "type": "string_t",
       "@deprecated": {
         "message": "Use the <code>account.uid</code> attribute instead.",
-        "since": "1.4.0"
+        "since": "1.4.0",
+        "superseded_by": [
+          "account.uid"
+        ]
       }
+    },
+    "prompt_text": {
+      "caption": "Prompt Text",
+      "description": "The text of the input prompt provided to the model for this message. This is the verbatim instruction, query, or context supplied to the AI system that drove the operation.",
+      "type": "string_t"
     },
     "prompt_tokens": {
       "caption": "Prompt Tokens",
@@ -5148,7 +5454,10 @@
       "type": "network_proxy",
       "@deprecated": {
         "message": "Use the <code>proxy_endpoint</code> attribute instead.",
-        "since": "1.1.0"
+        "since": "1.1.0",
+        "superseded_by": [
+          "proxy_endpoint"
+        ]
       }
     },
     "proxy_connection_info": {
@@ -5393,7 +5702,7 @@
     },
     "raw_data": {
       "caption": "Raw Data",
-      "description": "The original event/finding data as received from the source, before normalization into OCSF. Populate this with the verbatim log line, JSON payload, or other native format for forensic and debugging purposes. This field is not intended for structured querying &mdash; use the normalized OCSF attributes instead.",
+      "description": "The original event/finding data as received from the source, before normalization into OCSF. Populate this with the verbatim log line, JSON payload, or other native format for forensic and debugging purposes. This field is not intended for structured querying - use the normalized OCSF attributes instead.",
       "type": "string_t"
     },
     "raw_data_hash": {
@@ -5492,14 +5801,26 @@
     },
     "related_cves": {
       "caption": "Related CVEs",
-      "description": "Describes Common Vulnerabilities and Exposures <a target='_blank' href='https://cve.mitre.org/'>(CVE)</a> entries that are related to an entity. See specific usage.",
+      "description": "Describes Common Vulnerabilities and Exposures entries that are related to an entity. See specific usage.",
       "type": "cve",
+      "references": [
+        {
+          "description": "CVE",
+          "url": "https://cve.mitre.org/"
+        }
+      ],
       "is_array": true
     },
     "related_cwes": {
       "caption": "Related CWEs",
-      "description": "Describes Common Weakness Enumeration <a target='_blank' href='https://cwe.mitre.org/'>(CWE)</a> entries that are related to an entity. See specific usage.",
+      "description": "Describes Common Weakness Enumeration entries that are related to an entity. See specific usage.",
       "type": "cwe",
+      "references": [
+        {
+          "description": "CWE",
+          "url": "https://cwe.mitre.org/"
+        }
+      ],
       "is_array": true
     },
     "related_events": {
@@ -5575,7 +5896,10 @@
       "type": "email_t",
       "@deprecated": {
         "message": "Use the <code>reply_to_list</code> attribute instead.",
-        "since": "1.4.0"
+        "since": "1.4.0",
+        "superseded_by": [
+          "reply_to_list"
+        ]
       },
       "references": [
         {
@@ -5659,16 +5983,29 @@
       "caption": "Resource Results Array",
       "description": "Updated resources after an activity/event.",
       "type": "resource_details",
-      "is_array": true,
       "@deprecated": {
         "message": "Use the <code>updated_resources</code> attribute instead.",
-        "since": "1.9.0"
-      }
+        "since": "1.9.0",
+        "superseded_by": [
+          "updated_resources"
+        ]
+      },
+      "is_array": true
     },
     "response": {
       "caption": "API Response Details",
       "description": "General Purpose API Response Object. See specific usage.",
       "type": "response"
+    },
+    "response_additional": {
+      "caption": "DNS Response Additional Section",
+      "description": "The Additional section of the DNS response message sent by the server, containing supplementary resource records and an optional TSIG record. A DNS message has at most one TSIG record; for a transaction with both query and response, the query TSIG is in <code>query_additional.tsig</code> and the response TSIG is in <code>response_additional.tsig</code>.",
+      "type": "dns_section"
+    },
+    "response_text": {
+      "caption": "Response Text",
+      "description": "The text of the model's response generated for this message. For agent-mediated operations, this is the content returned by the assistant, tool, or agent.",
+      "type": "string_t"
     },
     "response_time": {
       "caption": "Response Time",
@@ -5883,33 +6220,33 @@
     },
     "scim": {
       "caption": "SCIM",
-      "description": "The System for Cross-domain Identity Management (SCIM) resource object provides a structured set of attributes related to SCIM protocols used for identity provisioning and management across cloud-based platforms. It standardizes user and group provisioning details, enabling identity synchronization and lifecycle management with compatible Identity Providers (IdPs) and applications. SCIM is defined in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc7643'>RFC-7634</a>",
+      "description": "The System for Cross-domain Identity Management (SCIM) resource object as defined in RFC 7634 provides a structured set of attributes related to SCIM protocols used for identity provisioning and management across cloud-based platforms. It standardizes user and group provisioning details, enabling identity synchronization and lifecycle management with compatible Identity Providers (IdPs) and applications.",
       "type": "scim",
       "references": [
         {
-          "description": "System for Cross-domain Identity Management (SCIM) RFC.",
+          "description": "RFC 7634.",
           "url": "https://datatracker.ietf.org/doc/html/rfc7643"
         }
       ]
     },
     "scim_group_schema": {
       "caption": "SCIM Group Schema",
-      "description": "SCIM provides a schema for representing groups, identified using the following schema URI: <code>urn:ietf:params:scim:schemas:core:2.0:Group</code> as defined in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc7643'>RFC-7634</a>. This attribute will capture key-value pairs for the scheme implemented in a SCIM resource.",
+      "description": "SCIM provides a schema for representing groups, identified using the following schema URI: <code>urn:ietf:params:scim:schemas:core:2.0:Group</code> as defined in RFC 7634. This attribute will capture key-value pairs for the scheme implemented in a SCIM resource.",
       "type": "json_t",
       "references": [
         {
-          "description": "System for Cross-domain Identity Management (SCIM) RFC spec.",
+          "description": "RFC 7634",
           "url": "https://datatracker.ietf.org/doc/html/rfc7643"
         }
       ]
     },
     "scim_user_schema": {
       "caption": "SCIM User Schema",
-      "description": "SCIM provides a resource type for user resources. The core schema for user is identified using the following schema URI: <code>urn:ietf:params:scim:schemas:core:2.0:User</code> as defined in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc7643'>RFC-7634</a>. his attribute will capture key-value pairs for the scheme implemented in a SCIM resource. This object is inclusive of both the basic and Enterprise User Schema Extension.",
+      "description": "SCIM provides a resource type for user resources. The core schema for user is identified using the following schema URI: <code>urn:ietf:params:scim:schemas:core:2.0:User</code> as defined in RFC 7634. This attribute will capture key-value pairs for the scheme implemented in a SCIM resource. This object is inclusive of both the basic and Enterprise User Schema Extension.",
       "type": "json_t",
       "references": [
         {
-          "description": "System for Cross-domain Identity Management (SCIM) RFC spec.",
+          "description": "RFC 7634",
           "url": "https://datatracker.ietf.org/doc/html/rfc7643"
         }
       ]
@@ -6018,7 +6355,10 @@
       "type": "boolean_t",
       "@deprecated": {
         "message": "Use the <code>is_secure</code> attribute instead.",
-        "since": "1.1.0"
+        "since": "1.1.0",
+        "superseded_by": [
+          "is_secure"
+        ]
       }
     },
     "security_descriptor": {
@@ -6093,6 +6433,61 @@
       "caption": "Sensitivity",
       "description": "The sensitivity of the firewall rule in the matched event. For example: HIGH.",
       "type": "string_t"
+    },
+    "sensor_info_list": {
+      "caption": "Sensor Information List",
+      "description": "An array of sensor_info objects that describe sensor control points.",
+      "type": "sensor_info",
+      "is_array": true
+    },
+    "sensor_layer": {
+      "caption": "Sensor Layer",
+      "description": "The normalized identifier of the sensor layer that emitted the data for the analysis. For example, use this to classify the detection surface (e.g., IPS sensor, endpoint agent, email gateway). When the type is not listed, use <code>99</code> (Other) and populate <code>sensor_layer</code> with the source-specific label.",
+      "type": "string_t"
+    },
+    "sensor_layer_id": {
+      "caption": "Sensor Layer ID",
+      "description": "The technology or sensor layer that the event or finding originated from. See specific usage.",
+      "sibling": "sensor_layer",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The sensor layer type is Unknown."
+        },
+        "1": {
+          "caption": "Network",
+          "description": "The analyzed data is emitted by, or originates from a network, firewall, or IPS sensor."
+        },
+        "2": {
+          "caption": "Endpoint",
+          "description": "The analyzed data is emitted by, or originates from an endpoint device or agent running on an OS."
+        },
+        "3": {
+          "caption": "Email",
+          "description": "The analyzed data is emitted by, or originates from an email gateway or email security system."
+        },
+        "4": {
+          "caption": "IAM",
+          "description": "The analyzed data is emitted by, or originates from an identity and access management (IAM) system or service."
+        },
+        "5": {
+          "caption": "Proxy",
+          "description": "The analyzed data is emitted by, or originates from a proxy server (e.g., forward or reverse proxy, web gateway)."
+        },
+        "6": {
+          "caption": "Threat Intel",
+          "description": "The analyzed data is emitted by, or originates from a cyber threat intelligence (CTI) system or by matching observables against a threat intelligence feed or report."
+        },
+        "7": {
+          "caption": "Application",
+          "description": "The analyzed data is emitted by, or originates from an application (e.g., web application, SaaS platform, or custom business application)."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The sensor layer type is not mapped. See the <code>sensor_layer</code> attribute, which contains a data source specific value."
+        }
+      }
     },
     "sequence": {
       "caption": "Sequence Number",
@@ -6265,7 +6660,10 @@
       "type": "email_t",
       "@deprecated": {
         "message": "Use the <code>from</code> attribute instead.",
-        "since": "1.4.0"
+        "since": "1.4.0",
+        "superseded_by": [
+          "from"
+        ]
       }
     },
     "smtp_hello": {
@@ -6274,7 +6672,10 @@
       "type": "string_t",
       "@deprecated": {
         "message": "Use the <code>command</code> attribute instead.",
-        "since": "1.4.0"
+        "since": "1.4.0",
+        "superseded_by": [
+          "command"
+        ]
       }
     },
     "smtp_to": {
@@ -6283,7 +6684,10 @@
       "type": "email_t",
       "@deprecated": {
         "message": "Use the <code>to</code> attribute instead.",
-        "since": "1.4.0"
+        "since": "1.4.0",
+        "superseded_by": [
+          "to"
+        ]
       },
       "is_array": true
     },
@@ -6353,6 +6757,11 @@
       "caption": "Speed Accuracy",
       "description": "Provides quality/containment on horizontal ground speed. Measured in meters/second.",
       "type": "string_t"
+    },
+    "speed_mhz": {
+      "caption": "Compute Unit Speed (MHz)",
+      "description": "The nominal clock speed of the unit, expressed in megahertz.",
+      "type": "integer_t"
     },
     "spf": {
       "caption": "SPF Status",
@@ -6533,7 +6942,7 @@
     },
     "stratum_id": {
       "caption": "Stratum ID",
-      "description": "The normalized identifier of the stratum level, as defined in <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc5905.html'>RFC-5905</a>.",
+      "description": "The normalized identifier of the stratum level of an NTP server's time source, as defined in RFC 5905. Levels range from 0 to 16, with lower numbers representing higher accuracy and greater proximity to the root clock.",
       "sibling": "stratum",
       "type": "integer_t",
       "enum": {
@@ -6560,7 +6969,13 @@
           "caption": "Other",
           "description": "The stratum level is not mapped. See the <code>stratum</code> attribute, which contains a data source specific value."
         }
-      }
+      },
+      "references": [
+        {
+          "description": "RFC 5905",
+          "url": "https://www.rfc-editor.org/rfc/rfc5905.html"
+        }
+      ]
     },
     "string_data": {
       "caption": "String Data",
@@ -6645,7 +7060,7 @@
     },
     "tactic": {
       "caption": "MITRE Tactic",
-      "description": "The Tactic object describes the MITRE ATT&CK® or ATLAS™ Tactic ID and/or name that is associated to an attack.",
+      "description": "The Tactic object describes the Tactic ID and/or name associated to an attack.",
       "type": "tactic",
       "references": [
         {
@@ -6660,12 +7075,21 @@
     },
     "tactics": {
       "caption": "Tactics",
-      "description": "The Tactic object describes the tactic ID and/or tactic name that are associated with the attack technique, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK® Matrix</a>.",
+      "description": "The Tactics associated with the attack technique.",
       "type": "tactic",
       "@deprecated": {
         "message": "Use the <code>tactic</code> attribute instead.",
-        "since": "1.1.0"
+        "since": "1.1.0",
+        "superseded_by": [
+          "tactic"
+        ]
       },
+      "references": [
+        {
+          "description": "ATT&CK® Matrix",
+          "url": "https://attack.mitre.org/wiki/ATT&CK_Matrix"
+        }
+      ],
       "is_array": true
     },
     "tag": {
@@ -6673,8 +7097,12 @@
       "description": "The image tag. For example: <code>1.11-alpine</code>.",
       "type": "string_t",
       "@deprecated": {
-        "message": "Use the <code>labels or tags</code> attribute instead.",
-        "since": "1.4.0"
+        "message": "Use the <code>labels</code> or <code>tags</code> attribute instead.",
+        "since": "1.4.0",
+        "superseded_by": [
+          "labels",
+          "tags"
+        ]
       }
     },
     "tags": {
@@ -6812,7 +7240,10 @@
       "type": "integer_t",
       "@deprecated": {
         "message": "<code>tid</code> is deprecated in favor of <code>ptid</code>. <code>ptid</code> has type <code>long_t</code> which can accommodate the thread identifiers returned by all platforms (e.g. 64-bit on MacOS).",
-        "since": "1.6.0"
+        "since": "1.6.0",
+        "superseded_by": [
+          "ptid"
+        ]
       }
     },
     "time": {
@@ -6837,8 +7268,14 @@
     },
     "tlp": {
       "caption": "Traffic Light Protocol",
-      "description": "The <a target='_blank' href='https://www.first.org/tlp/'>Traffic Light Protocol</a> was created to facilitate greater sharing of potentially sensitive information and more effective collaboration. TLP provides a simple and intuitive schema for indicating with whom potentially sensitive information can be shared.",
-      "type": "string_t"
+      "description": "The Traffic Light Protocol (TLP) was created to facilitate greater sharing of potentially sensitive information and more effective collaboration. TLP provides a simple and intuitive schema for indicating with whom potentially sensitive information can be shared.",
+      "type": "string_t",
+      "references": [
+        {
+          "description": "Traffic Light Protocol",
+          "url": "https://www.first.org/tlp/"
+        }
+      ]
     },
     "tls": {
       "caption": "TLS",
@@ -6850,11 +7287,6 @@
       "description": "The list of TLS extensions.",
       "type": "tls_extension",
       "is_array": true
-    },
-    "tsig": {
-      "caption": "TSIG",
-      "description": "The TSIG (Transaction Signature) record used to authenticate the DNS message. See RFC 2845.",
-      "type": "tsig"
     },
     "to": {
       "caption": "To",
@@ -6962,6 +7394,11 @@
       "caption": "Tree UID",
       "description": "The tree id is a unique SMB identifier which represents an open connection to a share.",
       "type": "string_t"
+    },
+    "tsig": {
+      "caption": "TSIG",
+      "description": "The TSIG (Transaction Signature) record used to authenticate the DNS message. See RFC 2845.",
+      "type": "tsig"
     },
     "ttl": {
       "caption": "TTL",
@@ -7073,8 +7510,14 @@
     },
     "unmanned_aerial_system": {
       "caption": "Unmanned Aerial System",
-      "description": "The Unmanned Aerial System object describes the characteristics, Position Location Information (PLI), and other metadata of Unmanned Aerial Systems (UAS) and other unmanned and drone systems used in Remote ID. Remote ID is defined in the Standard Specification for Remote ID and Tracking (ASTM Designation: F3411-22a) <a target='_blank' href='https://cdn.standards.iteh.ai/samples/112830/71297057ac42432880a203654f213709/ASTM-F3411-22a.pdf'>ASTM F3411-22a</a>.",
-      "type": "unmanned_aerial_system"
+      "description": "The Unmanned Aerial System object describes the characteristics, Position Location Information (PLI), and other metadata of Unmanned Aerial Systems (UAS) and other unmanned and drone systems used in Remote ID. Remote ID is defined in the Standard Specification for Remote ID and Tracking (ASTM Designation: F3411-22a).",
+      "type": "unmanned_aerial_system",
+      "references": [
+        {
+          "description": "ASTM F3411-22a",
+          "url": "https://cdn.standards.iteh.ai/samples/112830/71297057ac42432880a203654f213709/ASTM-F3411-22a.pdf"
+        }
+      ]
     },
     "unmanned_system_operating_area": {
       "caption": "UAS Operating Area",
@@ -7120,11 +7563,6 @@
       "caption": "Updated Entity",
       "description": "The updated entity. See specific usage.",
       "type": "managed_entity"
-    },
-    "updated_file": {
-      "caption": "Updated File",
-      "description": "The updated file. See specific usage.",
-      "type": "file"
     },
     "updated_group": {
       "caption": "Updated Group",
@@ -7212,7 +7650,10 @@
       "type": "user",
       "@deprecated": {
         "message": "Use the <code>updated_user</code> attribute instead.",
-        "since": "1.9.0"
+        "since": "1.9.0",
+        "superseded_by": [
+          "updated_user"
+        ]
       }
     },
     "users": {
@@ -7399,11 +7840,14 @@
       "caption": "Web Resources Result",
       "description": "The results of the activity on web resources. It should contain the new values of the changed attributes of the web resources.",
       "type": "web_resource",
-      "is_array": true,
       "@deprecated": {
         "message": "Use the <code>updated_web_resources</code> attribute instead.",
-        "since": "1.9.0"
-      }
+        "since": "1.9.0",
+        "superseded_by": [
+          "updated_web_resources"
+        ]
+      },
+      "is_array": true
     },
     "whois": {
       "caption": "WHOIS",
@@ -7470,10 +7914,16 @@
       },
       "datetime_t": {
         "caption": "Datetime",
-        "description": "The Internet Date/Time format as defined in <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc3339.html'>RFC-3339</a>. For example:<br><code>2024-09-10T23:20:50.520Z</code>,<br><code>2024-09-10 23:20:50.520789Z</code>.",
+        "description": "The Internet Date/Time format as defined in RFC 3339. For example:<br><code>2024-09-10T23:20:50.520Z</code>,<br><code>2024-09-10 23:20:50.520789Z</code>.",
         "regex": "^\\d{4}-\\d{2}-\\d{2}[Tt]\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?([Zz]|[\\+-]\\d{2}:\\d{2})?$",
         "type": "string_t",
-        "type_name": "String"
+        "type_name": "String",
+        "references": [
+          {
+            "description": "RFC 3339",
+            "url": "https://www.rfc-editor.org/rfc/rfc3339.html"
+          }
+        ]
       },
       "email_t": {
         "observable": 5,
@@ -7530,7 +7980,13 @@
       },
       "json_t": {
         "caption": "JSON",
-        "description": "Embedded JSON value. A value can be a string, or a number, or true or false or null, or an object or an array. These structures can be nested. See <a target='_blank' href='https://www.json.org'>www.json.org</a>."
+        "description": "Embedded JSON value. A value can be a string, or a number, or true or false or null, or an object or an array. These structures can be nested.",
+        "references": [
+          {
+            "description": "JSON",
+            "url": "https://www.json.org"
+          }
+        ]
       },
       "long_t": {
         "caption": "Long",

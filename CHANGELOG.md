@@ -43,6 +43,11 @@ Thankyou! -->
 
 ## [Unreleased]
 
+### Added
+* #### Categories
+* #### Event Classes
+  1. Added `risk_aggregate_finding`. [#1745](https://github.com/ocsf/ocsf-schema/pull/1745)
+
 ## [v1.9.0] - Aug 3rd, 2026
 
 ### Added

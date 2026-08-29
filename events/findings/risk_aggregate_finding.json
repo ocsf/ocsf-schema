@@ -1,9 +1,14 @@
 {
   "uid": 9,
   "caption": "Risk Aggregate Finding",
-  "description": "The Risk Aggregate Finding aggregates other findings and can represent risk combined from multiple intermediate findings via correlation or time-based accumulation.<p><b>Note:</b> If the event producer is a security control, the <code>security_control</code> profile should be applied and its <code>attacks</code> information, if present, should be duplicated into the <code>finding_info</code> object. <br><strong>Note: </strong>If the Finding is an incident, i.e. requires incident workflow, also apply the <code>incident</code> profile.",
+  "description": "The Risk Aggregate Finding aggregates other findings and can represent risk combined from multiple intermediate findings via a weighted algorithm and/or time-based accumulation.<p><b>Note:</b> If the event producer is a security control, the <code>security_control</code> profile should be applied and its <code>attacks</code> information, if present, should be duplicated into the <code>finding_info</code> object. <br><strong>Note: </strong>If the Finding is an incident, i.e. requires incident workflow, also apply the <code>incident</code> profile.",
   "extends": "finding",
   "name": "risk_aggregate_finding",
   "attributes": {
+    "finding_info_list": {
+      "description": "A list of <code>finding_info</code> objects representing intermediate findings that contributed to this finding. Use this list when this finding's <code>finding_info.analytic</code> evaluates other findings to produce the current finding. The intermediate findings may each include their own <code>finding_info.related_events</code> describing the events or activities analyzed to produce them.<p><b>Note:</b> If this finding is based on both intermediate findings and non-finding events or activities, include only the intermediate findings in this list. Capture the complete set of contributing inputs in this finding's <code>finding_info.related_events</code>, including any references to those intermediate findings.",
+      "group": "context",
+      "requirement": "optional"
+    }
   }
 }

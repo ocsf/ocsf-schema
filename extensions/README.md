@@ -2,7 +2,7 @@
 
 This directory holds the **platform** extensions that ship with the core schema: Linux, Windows, and macOS.
 
-Vendor extensions are registered in the [OCSF Extensions Registry](../extensions.md); the extension schema itself is maintained by the vendor, not added here. To reserve a name and UID, follow [Register a vendor extension](../CONTRIBUTING.md#register-a-vendor-extension).
+Vendor extensions are registered in the [OCSF Extensions Registry](../extensions.md); the extension schema itself is not added here. Host the code in the OCSF GitHub org, in your own org, or keep it private. See [Where to host a vendor extension](../CONTRIBUTING.md#where-to-host-a-vendor-extension). To reserve a name and UID, follow [Register a vendor extension](../CONTRIBUTING.md#register-a-vendor-extension).
 
 ## Extension layout
 

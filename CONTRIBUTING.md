@@ -501,22 +501,34 @@ You may type this line on your own when writing your commit messages. However, i
 
 OCSF can be extended with additional attributes, objects, profiles, event classes, and categories. Each public extension has a unique `name` and `uid` so it does not collide with the core schema or other extensions.
 
-Vendor extensions are **registered** in this repository; the extension schema itself is maintained by the vendor. Do not add an `extensions/<name>/` directory or `extension.json` as part of registration. (The Linux, Windows, and macOS platform extensions already live under `extensions/` in this repo.)
+Vendor extensions are **registered** in this repository; the extension schema itself is not added under `extensions/`. (The Linux, Windows, and macOS platform extensions already live there.)
+
+### Where to host a vendor extension
+
+Registration reserves a name and UID. The schema files live in a separate repository. You can:
+
+1. **Host it in the OCSF GitHub organization.** Ask `@ocsf/ocsf-maintainers` about creating a repo under [github.com/ocsf](https://github.com/ocsf). Public examples include [ocsf/aws](https://github.com/ocsf/aws), [ocsf/splunk](https://github.com/ocsf/splunk), [ocsf/symantec](https://github.com/ocsf/symantec), and [ocsf/dev-ext](https://github.com/ocsf/dev-ext).
+2. **Host it in your own organization** (or any other public git host).
+3. **Keep it private.** You can still register a name and UID so they are reserved. Leave the registry `Repository` cell empty.
+
+Use the same directory layout as the platform extensions; see [extensions/README.md](extensions/README.md). Compile a vendor extension with the core schema using `ocsf-schema-compiler path/to/ocsf-schema -e path/to/your-extension`.
+
+If the code is public, add a link in the registry's optional `Repository` column.
 
 ### Register a vendor extension
 
 To reserve a name and UID, open a pull request that only updates the registry. Follow [#1701](https://github.com/ocsf/ocsf-schema/pull/1701) as the example.
 
-1. Add a row to the [OCSF Extensions Registry](extensions.md) with a unique caption, name, UID, and a short notes line. Take the next unused vendor UID (the registry counts down from 998).
+1. Add a row to the [OCSF Extensions Registry](extensions.md) with a unique caption, name, UID, a short notes line, and an optional `Repository` URL. Take the next unused vendor UID (the registry counts down from 998).
 2. Add an `Unreleased` entry in [CHANGELOG.md](CHANGELOG.md), for example: `New Extension registration for <Vendor>`.
 3. Open a pull request using the PR template, and request reviewers as usual.
 4. Email [info@ocsf.io](mailto:info@ocsf.io) from an official company address so maintainers can confirm the request is authorized by the organization it represents.
 
 Example registry row:
 
-| Caption      | Name     | UID | Notes                         |
-| ------------ | -------- | --- | ----------------------------- |
-| _Vendor Name_ | _vendor_ | 123 | The _Vendor_ schema extension |
+| Caption       | Name     | UID | Notes                         | Repository |
+| ------------- | -------- | --- | ----------------------------- | ---------- |
+| _Vendor Name_ | _vendor_ | 123 | The _Vendor_ schema extension | |
 
 ---
 

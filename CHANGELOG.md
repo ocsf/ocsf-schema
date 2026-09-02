@@ -45,9 +45,17 @@ Thankyou! -->
 
 ### Added
 * #### Dictionary Attributes
+  1. Added `likelihood` as a `string_t`, normalized to the caption of `likelihood_id`. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
+  1. Added `likelihood_id` as an `integer_t` enum with values Unknown (0), Very Low (1), Low (2), Moderate (3), High (4), Very High (5), Other (99). [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
+  1. Added `likelihood_score` as an `integer_t`, complementing `confidence_score`, `impact_score`, and `risk_score`. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
   1. Added generic `stop_reason` and `stop_reason_id` attributes for the reason an activity or operation stopped, defined per the dictionary convention with only `Unknown` and `Other` so each usage supplies its own values. [#1704](https://github.com/ocsf/ocsf-schema/pull/1704)
 
 ### Improved
+* #### Event Classes
+  1. Added `likelihood`, `likelihood_id`, and `likelihood_score` as optional attributes in the `context` group on `Detection Finding` (class 2004). [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
+* #### Objects
+  1. Added `labels` to the `node` object for grouping nodes into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
+  1. Added `labels` to the `edge` object for grouping edges into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
 * #### Profiles
   1. Added `stop_reason`/`stop_reason_id` sibling attributes to the `ai_operation` profile, captioned `AI Stop Reason`, with a normalized enum (`End of Turn`, `Token Limit`, `Tool Use`, `Session Stop`) for why a model completion ended. [#1704](https://github.com/ocsf/ocsf-schema/pull/1704)
 

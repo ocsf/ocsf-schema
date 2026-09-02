@@ -22,6 +22,16 @@
     "message_context": {
       "group": "context",
       "requirement": "optional"
+    },
+    "ai_stop_reason": {
+      "description": "The reason the model completion ended, normalized to the caption of the <code>ai_stop_reason_id</code> value. In the case of 'Other', it is the event source's native label, e.g. <code>end_turn</code> or <code>max_tokens</code>.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "ai_stop_reason_id": {
+      "description": "The normalized reason the model completion ended. Producers map their runtime's native value into this set. Populate on completion events; when the value is 'Other', set <code>ai_stop_reason</code> to the event source's native label. Because completion behavior is bound to the configuration that produced it, a shift in this attribute's distribution is more meaningful when weighed against that configuration: <code>ai_model.version</code> for direct model invocations, and <code>ai_agent.version</code>, <code>ai_agent.charter</code>, and <code>ai_agent.instance_uid</code> for agent-mediated operations.",
+      "group": "context",
+      "requirement": "recommended"
     }
   }
 }

@@ -23,43 +23,15 @@
       "group": "context",
       "requirement": "optional"
     },
-    "stop_reason": {
-      "caption": "AI Stop Reason",
-      "description": "The reason the model completion ended, normalized to the caption of the <code>stop_reason_id</code> value. In the case of 'Other', it is the event source's native label, e.g. <code>end_turn</code> or <code>max_tokens</code>.",
+    "ai_stop_reason": {
+      "description": "The reason the model completion ended, normalized to the caption of the <code>ai_stop_reason_id</code> value. In the case of 'Other', it is the event source's native label, e.g. <code>end_turn</code> or <code>max_tokens</code>.",
       "group": "context",
       "requirement": "optional"
     },
-    "stop_reason_id": {
-      "caption": "AI Stop Reason ID",
-      "description": "The normalized reason the model completion ended - not the reason the event's own subject stopped. Producers map their runtime's native value into this set. Populate on completion events; when the value is 'Other', set <code>stop_reason</code> to the event source's native label. Because completion behavior is bound to the configuration that produced it, a shift in this attribute's distribution is more meaningful when weighed against that configuration: <code>ai_model.version</code> for direct model invocations, and <code>ai_agent.version</code>, <code>ai_agent.charter</code>, and <code>ai_agent.instance_uid</code> for agent-mediated operations.",
+    "ai_stop_reason_id": {
+      "description": "The normalized reason the model completion ended. Producers map their runtime's native value into this set. Populate on completion events; when the value is 'Other', set <code>ai_stop_reason</code> to the event source's native label. Because completion behavior is bound to the configuration that produced it, a shift in this attribute's distribution is more meaningful when weighed against that configuration: <code>ai_model.version</code> for direct model invocations, and <code>ai_agent.version</code>, <code>ai_agent.charter</code>, and <code>ai_agent.instance_uid</code> for agent-mediated operations.",
       "group": "context",
-      "requirement": "recommended",
-      "enum": {
-        "0": {
-          "caption": "Unknown",
-          "description": "The completion ended without the producer being able to determine why, so the state of the operation at termination is not established."
-        },
-        "1": {
-          "caption": "End of Turn",
-          "description": "The model reached the end of its turn: it completed its response naturally or emitted a configured stop sequence, and is not waiting on anything further."
-        },
-        "2": {
-          "caption": "Token Limit",
-          "description": "The completion was truncated by a token or length limit before the model finished, so the response is incomplete."
-        },
-        "3": {
-          "caption": "Tool Use",
-          "description": "The completion paused to invoke a tool. The turn is not finished; the model expects the tool result and will continue."
-        },
-        "4": {
-          "caption": "Session Stop",
-          "description": "The completion ended because the session or connection carrying it terminated - for example the caller cancelled, the client disconnected, or the transport closed - rather than because the model reached a stopping point. The session state at termination is therefore known, which distinguishes this from <code>Unknown</code> and lets a consumer decide whether the operation needs investigation or can simply be reclaimed."
-        },
-        "99": {
-          "caption": "Other",
-          "description": "The stop reason is not mapped. See the <code>stop_reason</code> attribute, which contains the event source's value."
-        }
-      }
+      "requirement": "recommended"
     }
   }
 }

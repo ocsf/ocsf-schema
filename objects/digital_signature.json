@@ -214,6 +214,10 @@
           "description": "The digital signature is malformed and could not be processed."
         }
       }
+    },
+    "value": {
+      "description": "The signature bytes, encoded using standard Base64 (RFC 4648, Section 4, with padding): the raw signature output of the algorithm in <code>algorithm_id</code>, not a container or envelope format such as a CMS/PKCS#7 structure or a complete JWS. A verifier decodes this value, reproduces the signing input per <code>serialization_id</code>, and checks the result using <code>algorithm_id</code> and the key in <code>certificate</code>. Present only when the event producer holds the raw signature bytes; omit when only descriptive metadata (algorithm, state, certificate) is available.",
+      "requirement": "optional"
     }
   }
 }

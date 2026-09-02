@@ -242,6 +242,47 @@
       "sibling": "ai_role",
       "type": "integer_t"
     },
+    "ai_stop_reason": {
+      "caption": "AI Stop Reason",
+      "description": "The reason a model completion ended, normalized to the caption of the <code>ai_stop_reason_id</code> value. In the case of 'Other', it is defined by the event source.",
+      "type": "string_t"
+    },
+    "ai_stop_reason_id": {
+      "caption": "AI Stop Reason ID",
+      "description": "The normalized reason a model completion ended.",
+      "sibling": "ai_stop_reason",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The completion ended without the producer being able to determine why, so the state of the operation at termination is not established."
+        },
+        "1": {
+          "caption": "End of Turn",
+          "description": "The model reached the end of its turn: it completed its response naturally or emitted a configured stop sequence, and is not waiting on anything further."
+        },
+        "2": {
+          "caption": "Token Limit",
+          "description": "The completion was truncated by a token or length limit before the model finished, so the response is incomplete."
+        },
+        "3": {
+          "caption": "Tool Use",
+          "description": "The completion paused to invoke a tool. The turn is not finished; the model expects the tool result and will continue."
+        },
+        "4": {
+          "caption": "Session Stop",
+          "description": "The completion ended because the session or connection carrying it terminated - for example the caller cancelled, the client disconnected, or the transport closed - rather than because the model reached a stopping point. The session state at termination is therefore known, which distinguishes this from <code>Unknown</code> and lets a consumer decide whether the operation needs investigation or can simply be reclaimed."
+        },
+        "5": {
+          "caption": "Content Filter",
+          "description": "The completion was stopped by a safety, policy, or content moderation mechanism rather than by the model reaching a stopping point or by the caller. This includes a refusal raised by a safety classifier and a guardrail intervening on the request or the response."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The stop reason is not mapped. See the <code>ai_stop_reason</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
     "aircraft": {
       "caption": "Aircraft",
       "description": "The Aircraft object represents any aircraft or otherwise airborne asset such as an unmanned system, airplane, balloon, spacecraft, or otherwise. The Aircraft object is intended to normalized data captured or otherwise logged from active radar, passive radar, multi-spectral systems, or the Automatic Dependant Broadcast - Surveillance (ADS-B), and/or Mode S systems.",
@@ -6929,27 +6970,6 @@
         "99": {
           "caption": "Other",
           "description": "The status is not mapped. See the <code>status</code> attribute, which contains a data source specific value."
-        }
-      }
-    },
-    "stop_reason": {
-      "caption": "Stop Reason",
-      "description": "The reason an activity or operation stopped, normalized to the caption of the <code>stop_reason_id</code> value. In the case of 'Other', it is defined by the event source. See specific usage.",
-      "type": "string_t"
-    },
-    "stop_reason_id": {
-      "caption": "Stop Reason ID",
-      "description": "The normalized reason an activity or operation stopped. See specific usage.",
-      "sibling": "stop_reason",
-      "type": "integer_t",
-      "enum": {
-        "0": {
-          "caption": "Unknown",
-          "description": "The stop reason is unknown."
-        },
-        "99": {
-          "caption": "Other",
-          "description": "The stop reason is not mapped. See the <code>stop_reason</code> attribute, which contains a data source specific value."
         }
       }
     },

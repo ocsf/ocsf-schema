@@ -4214,6 +4214,63 @@
       "description": "The URL pointing to the license applied on package or software. This is typically a <code>LICENSE.md</code> file within a repository.",
       "type": "url_t"
     },
+    "likelihood": {
+      "caption": "Likelihood",
+      "description": "The likelihood, normalized to the caption of the <code>likelihood_id</code> value. In the case of 'Other', it is defined by the event source.",
+      "type": "string_t"
+    },
+    "likelihood_id": {
+      "caption": "Likelihood ID",
+      "description": "The normalized likelihood of the finding, representing a subjective assessment of the probability that the reported threat activity will occur or succeed.",
+      "sibling": "likelihood",
+      "source": "likelihood of occurrence",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The normalized likelihood is unknown."
+        },
+        "1": {
+          "caption": "Very Low",
+          "description": "The probability that the reported threat activity will occur or succeed is very low."
+        },
+        "2": {
+          "caption": "Low",
+          "description": "The probability that the reported threat activity will occur or succeed is low."
+        },
+        "3": {
+          "caption": "Moderate",
+          "description": "The probability that the reported threat activity will occur or succeed is moderate."
+        },
+        "4": {
+          "caption": "High",
+          "description": "The probability that the reported threat activity will occur or succeed is high."
+        },
+        "5": {
+          "caption": "Very High",
+          "description": "The probability that the reported threat activity will occur or succeed is very high."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The likelihood is not mapped to the defined enum values. See the <code>likelihood</code> attribute, which contains a data source specific value."
+        }
+      },
+      "references": [
+        {
+          "description": "NIST SP 800-30 Rev. 1, Guide for Conducting Risk Assessments",
+          "url": "https://doi.org/10.6028/NIST.SP.800-30r1"
+        },
+        {
+          "description": "NIST Computer Security Resource Center",
+          "url": "https://csrc.nist.gov/glossary/term/likelihood"
+        }
+      ]
+    },
+    "likelihood_score": {
+      "caption": "Likelihood Score",
+      "description": "The likelihood score as reported by the event source.",
+      "type": "integer_t"
+    },
     "lineage": {
       "caption": "Lineage",
       "description": "The lineage of the process, represented by a list of paths for each ancestor process. For example: <code>['/usr/sbin/sshd', '/usr/bin/bash', '/usr/bin/whoami']</code>.",
@@ -4265,7 +4322,7 @@
     },
     "log_facility": {
       "caption": "Log Facility",
-      "description": "The normalized caption of <code>log_facility_id</code>.",
+      "description": "The syslog facility, normalized to the caption of the <code>log_facility_id</code> value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "log_facility_id": {

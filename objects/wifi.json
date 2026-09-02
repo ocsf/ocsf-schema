@@ -1,0 +1,79 @@
+{
+  "caption": "Wireless Network",
+  "description": "The Wireless Network object describes an IEEE 802.11 wireless link: the identity of the network, the radio parameters it operates on, and the security negotiated for it.",
+  "extends": "object",
+  "name": "wifi",
+  "attributes": {
+    "ap_status": {
+      "requirement": "optional"
+    },
+    "ap_status_id": {
+      "requirement": "optional"
+    },
+    "band": {
+      "requirement": "optional"
+    },
+    "band_id": {
+      "requirement": "recommended"
+    },
+    "bssid": {
+      "requirement": "recommended"
+    },
+    "channel": {
+      "caption": "Channel",
+      "description": "The channel number that the wireless link operates on.",
+      "requirement": "optional"
+    },
+    "cipher": {
+      "caption": "Cipher",
+      "description": "The negotiated encryption cipher. For example: <code>AES-CCMP</code>, <code>GCMP-256</code> or <code>TKIP</code>.",
+      "requirement": "optional"
+    },
+    "data_rate": {
+      "requirement": "optional"
+    },
+    "is_on_wired_network": {
+      "requirement": "optional"
+    },
+    "noise_floor": {
+      "requirement": "optional"
+    },
+    "rssi": {
+      "caption": "RSSI",
+      "description": "The Received Signal Strength Indicator reported for the wireless link.",
+      "requirement": "optional"
+    },
+    "security_protocol": {
+      "requirement": "optional"
+    },
+    "security_protocol_id": {
+      "requirement": "recommended"
+    },
+    "signal_strength": {
+      "requirement": "optional"
+    },
+    "snr": {
+      "requirement": "optional"
+    },
+    "ssid": {
+      "requirement": "recommended"
+    },
+    "standard": {
+      "caption": "Standard",
+      "description": "The IEEE 802.11 amendment that the link operates under. For example: <code>802.11ax</code> or <code>802.11ac</code>.",
+      "requirement": "optional"
+    }
+  },
+  "constraints": {
+    "at_least_one": [
+      "ssid",
+      "bssid"
+    ]
+  },
+  "references": [
+    {
+      "description": "IEEE 802.11 Wireless LAN Medium Access Control and Physical Layer Specifications",
+      "url": "https://standards.ieee.org/ieee/802.11/7028/"
+    }
+  ]
+}

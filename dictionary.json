@@ -340,6 +340,43 @@
       "type": "dns_answer",
       "is_array": true
     },
+    "ap_status": {
+      "caption": "Access Point Status",
+      "description": "The normalized caption of <code>ap_status_id</code>.",
+      "type": "string_t"
+    },
+    "ap_status_id": {
+      "caption": "Access Point Status ID",
+      "description": "The classification assigned to an observed access point by a wireless intrusion detection or prevention system.",
+      "sibling": "ap_status",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The classification is unknown."
+        },
+        "1": {
+          "caption": "Authorized",
+          "description": "The access point is a known, sanctioned device."
+        },
+        "2": {
+          "caption": "Unclassified",
+          "description": "The access point has been observed but not yet classified."
+        },
+        "3": {
+          "caption": "Rogue",
+          "description": "The access point is unsanctioned and is treated as a threat."
+        },
+        "4": {
+          "caption": "Suppressed",
+          "description": "The access point is being actively contained."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The classification is not mapped."
+        }
+      }
+    },
     "api": {
       "caption": "API Details",
       "description": "Describes details about a typical API (Application Programming Interface) call.",
@@ -597,6 +634,39 @@
       "description": "The average time span of an activity.",
       "type": "timespan"
     },
+    "band": {
+      "caption": "Band",
+      "description": "The normalized caption of <code>band_id</code>.",
+      "type": "string_t"
+    },
+    "band_id": {
+      "caption": "Band ID",
+      "description": "The radio frequency band that a wireless link operates in.",
+      "sibling": "band",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The frequency band is unknown."
+        },
+        "1": {
+          "caption": "2.4 GHz"
+        },
+        "2": {
+          "caption": "5 GHz"
+        },
+        "3": {
+          "caption": "6 GHz"
+        },
+        "4": {
+          "caption": "60 GHz"
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The frequency band is not mapped."
+        }
+      }
+    },
     "banner": {
       "caption": "Protocol Banner",
       "description": "The initial connection response that a messaging server receives after it connects to an email server.",
@@ -747,6 +817,11 @@
           "description": "The boundary is not mapped. See the <code>boundary</code> attribute, which contains a data source specific value."
         }
       }
+    },
+    "bssid": {
+      "caption": "BSSID",
+      "description": "The Basic Service Set Identifier, the address of the access point radio that serves a wireless network.",
+      "type": "mac_t"
     },
     "build": {
       "caption": "OS Build",
@@ -1187,6 +1262,11 @@
       "caption": "Chain ID",
       "description": "Identifier of an append-only chain, such as a forensic or audit log, that groups a sequence of attested events for independent verification. Stable for the lifetime of the chain.",
       "type": "string_t"
+    },
+    "channel": {
+      "caption": "Channel",
+      "description": "The channel number in use. See specific usage.",
+      "type": "integer_t"
     },
     "charter": {
       "caption": "Charter",
@@ -2024,6 +2104,11 @@
           "description": "The data lifecycle state is not mapped. See the <code>data_lifecycle_state</code> attribute, which contains a data source specific value."
         }
       }
+    },
+    "data_rate": {
+      "caption": "Data Rate",
+      "description": "The negotiated physical layer data rate, in megabits per second.",
+      "type": "integer_t"
     },
     "data_security": {
       "caption": "Data Security",
@@ -3807,6 +3892,11 @@
       "description": "Indicates whether synchronization with an on-premises directory service is enabled. For example, Microsoft Entra Connect.",
       "type": "boolean_t"
     },
+    "is_on_wired_network": {
+      "caption": "On Wired Network",
+      "description": "Indicates that the observed access point was also detected bridged onto the wired network, which distinguishes an adjacent network from one attached to the monitored infrastructure.",
+      "type": "boolean_t"
+    },
     "is_personal": {
       "caption": "Personal Device",
       "description": "The event occurred on a personal device.",
@@ -4715,6 +4805,11 @@
       "description": "The list of node objects that are part of the graph.",
       "type": "node",
       "is_array": true
+    },
+    "noise_floor": {
+      "caption": "Noise Floor",
+      "description": "The measured background noise power, in decibel-milliwatts.",
+      "type": "integer_t"
     },
     "notes": {
       "caption": "Notes",
@@ -6407,6 +6502,52 @@
         }
       }
     },
+    "security_protocol": {
+      "caption": "Security Protocol",
+      "description": "The normalized caption of <code>security_protocol_id</code>.",
+      "type": "string_t"
+    },
+    "security_protocol_id": {
+      "caption": "Security Protocol ID",
+      "description": "The authentication and key management suite that protects a wireless link.",
+      "sibling": "security_protocol",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The security protocol is unknown."
+        },
+        "1": {
+          "caption": "Open",
+          "description": "The wireless network is unauthenticated and unencrypted."
+        },
+        "2": {
+          "caption": "WEP"
+        },
+        "3": {
+          "caption": "WPA"
+        },
+        "4": {
+          "caption": "WPA2-Personal"
+        },
+        "5": {
+          "caption": "WPA2-Enterprise"
+        },
+        "6": {
+          "caption": "WPA3-Personal"
+        },
+        "7": {
+          "caption": "WPA3-Enterprise"
+        },
+        "8": {
+          "caption": "Opportunistic Wireless Encryption"
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The security protocol is not mapped."
+        }
+      }
+    },
     "security_questions": {
       "caption": "Security Questions",
       "description": "The question(s) provided to user for a question-based authentication factor.",
@@ -6645,6 +6786,11 @@
       "description": "The short description that pertains to the object or event. See specific usage.",
       "type": "string_t"
     },
+    "signal_strength": {
+      "caption": "Signal Strength",
+      "description": "The measured power of the received radio signal, in decibel-milliwatts.",
+      "type": "integer_t"
+    },
     "signature": {
       "caption": "Digital Signature",
       "description": "The digital signature of the file.",
@@ -6702,6 +6848,11 @@
       "caption": "Server Name Indication",
       "description": " The Server Name Indication (SNI) extension sent by the client.",
       "type": "string_t"
+    },
+    "snr": {
+      "caption": "SNR",
+      "description": "The Signal to Noise Ratio of the received radio signal, in decibels.",
+      "type": "integer_t"
     },
     "software_components": {
       "caption": "Software Components",
@@ -6780,10 +6931,20 @@
       "description": "The URL pointing towards the source of an entity. See specific usage.",
       "type": "url_t"
     },
+    "ssid": {
+      "caption": "SSID",
+      "description": "The Service Set Identifier, the advertised name of a wireless network.",
+      "type": "string_t"
+    },
     "sso": {
       "caption": "SSO",
       "description": "The Single Sign-On (SSO) object provides a structure for normalizing SSO attributes, configuration, and/or settings from Identity Providers.",
       "type": "sso"
+    },
+    "standard": {
+      "caption": "Standard",
+      "description": "The published standard that the link conforms to. See specific usage.",
+      "type": "string_t"
     },
     "standards": {
       "caption": "Compliance Standards: List",
@@ -7839,6 +8000,11 @@
       "caption": "WHOIS",
       "description": "The resources of a WHOIS record for a given domain. This can include domain names, IP address blocks, autonomous system information, and/or contact and registration information for a domain.",
       "type": "whois"
+    },
+    "wifi": {
+      "caption": "Wireless Network",
+      "description": "The wireless network attributes.",
+      "type": "wifi"
     },
     "working_directory": {
       "caption": "Working Directory",

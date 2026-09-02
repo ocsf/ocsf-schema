@@ -42,6 +42,24 @@ Thankyou! -->
 -->
 
 ## [Unreleased]
+### Added
+* #### Categories
+* #### Event Classes
+* #### Profiles
+* #### Objects
+* #### Observables
+* #### Platform Extensions
+* #### Dictionary Attributes
+
+### Improved
+* #### Categories
+* #### Event Classes
+* #### Profiles
+* #### Objects
+  1. Added `created_time`, `first_seen_time`, `last_seen_time`, `modified_time`, `src_url`, and `criticality_id` attributes to the `application` object. [#1683](https://github.com/ocsf/ocsf-schema/pull/1683)
+* #### Observables
+* #### Platform Extensions
+* #### Dictionary Attributes
 
 ### Added
 * #### Dictionary Attributes

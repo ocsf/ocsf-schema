@@ -1,6 +1,6 @@
 {
   "caption": "Related Event/Finding",
-  "description": "The Related Event object describes an event or another finding related to a finding. It may or may not be an OCSF event. The event or finding is referenced by the <code>uid</code> attribute, summarized by other attributes. The <code>observables</code> attribute can carry just the observables of the related event or finding, and the full event can be included in the <code>raw_data</code> attribute.",
+  "description": "The Related Event object describes an event or another finding related to a finding. It may or may not be an OCSF event. Using this class, a hierarchy of findings can be expressed when intermediate findings are themselves analyzed into a higher level finding. Typically these events or intermediate findings contribute to the parent finding via this finding's <code>analytic</code>. The full event or finding is referenced by the <code>uid</code> attribute, and summarized by other attributes of this object. The <code>observables</code> attribute can carry just the observables of the related event or finding, and the full event can be included in the <code>raw_data</code> attribute.<p><b>Note:</b> If the related event is a finding, <code>finding_info</code> should be populated with its <code>finding_info.uid</code> attribute equal to <code>uid</code>. That finding may also have related events.",
   "extends": "object",
   "name": "related_event",
   "attributes": {
@@ -18,6 +18,11 @@
     "desc": {
       "description": "A description of the related event/finding.",
       "requirement": "optional"
+    },
+    "finding_info": {
+      "description": "Describes the supporting information about a related finding which itself may contain its own related events or findings.",
+      "group": "context",
+      "requirement": "recommended"
     },
     "first_seen_time": {
       "description": "The time when the finding was first observed. e.g. The time when a vulnerability was first observed.<br>It can differ from the <code>created_time</code> timestamp, which reflects the time this finding was created.",
@@ -49,6 +54,23 @@
       "description": "The content of the related event or finding. This is the data pointed to by the <code>uid</code> attribute. Populate when the entire related event is carried with the finding.",
       "requirement": "optional"
     },
+     "risk_details": {
+      "description": "Describes the risk associated with a related finding.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "risk_level": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "risk_level_id": {
+      "group": "context",
+      "requirement": "optional"
+    },
+    "risk_score": {
+      "group": "context",
+      "requirement": "optional"
+    },
     "severity": {
       "requirement": "optional"
     },
@@ -73,8 +95,25 @@
       "requirement": "optional"
     },
     "type": {
-      "description": "<p>The type of the related event/finding.</p>Populate if the related event/finding is <code>NOT</code> in OCSF. If it is in OCSF, then utilize <code>type_name, type_uid</code> instead.",
+      "description": "<p>The type of the related event/finding.</p>Populate if the related event/finding is <code>NOT</code> in OCSF and <code>type_id</code> is 99 (Other). If it is in OCSF, then utilize <code>type_name, type_uid</code> for a type-specific value.",
       "requirement": "optional"
+    },
+    "type_id": {
+      "description": "The normalized identifier of the related event type.",
+      "enum": {
+        "1": {
+          "caption": "Activity",
+          "description": "The related event is a normal OCSF activity."
+        },
+        "2": {
+          "caption": "Alert",
+          "description": "The related event is an OCSF alert using the <code>security_control</code> profile with <code>is_alert = true</code>."
+        },
+        "3": {
+          "caption": "Finding",
+          "description": "The related event is an OCSF finding or intermediate finding. Intermediate findings are ordinary fndings analyzed into higher level findings."
+        }
+      }
     },
     "type_name": {
       "description": "The type of the related OCSF event, as defined by <code>type_uid</code>.<p>For example: <code>Process Activity: Launch.</code></p>Populate if the related event/finding is in OCSF.",

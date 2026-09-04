@@ -2498,6 +2498,23 @@
       "description": "The Domain-based Message Authentication, Reporting and Conformance (DMARC) policy status.",
       "type": "string_t"
     },
+    "dns_additional": {
+      "caption": "DNS Additional Section",
+      "description": "The Additional section of a DNS message, containing supplementary resource records and an optional TSIG record. A DNS message has at most one TSIG record, available via <code>dns_additional.tsig</code>.",
+      "source": "Additional",
+      "type": "dns_section",
+      "references": [
+        {
+          "description": "RFC 2845 — Secret Key Transaction Authentication for DNS (TSIG).",
+          "url": "https://www.rfc-editor.org/rfc/rfc2845"
+        }
+      ]
+    },
+    "dns_zone": {
+      "caption": "DNS Zone",
+      "description": "The fully qualified name of the DNS zone, i.e., the zone apex. For example: <code>example.com</code>. See specific usage.",
+      "type": "hostname_t"
+    },
     "dnssec_status": {
       "caption": "DNSSEC Status",
       "description": "The normalized value of dnssec_status_id.",
@@ -2874,6 +2891,11 @@
       "caption": "Expiration Time",
       "description": "The expiration time. See specific usage.",
       "type": "timestamp_t"
+    },
+    "expire_interval": {
+      "caption": "Expire Interval",
+      "description": "The time interval, in seconds, after which a secondary stops treating a resource as valid. See specific usage.",
+      "type": "integer_t"
     },
     "exploit_last_seen_time": {
       "caption": "Exploit Last Seen Time",
@@ -4593,6 +4615,11 @@
       "description": "The Multipurpose Internet Mail Extensions (MIME) type of the data, if applicable.  See specific usage.",
       "type": "string_t"
     },
+    "minimum_ttl": {
+      "caption": "Minimum TTL",
+      "description": "The minimum time-to-live (TTL), in seconds. See specific usage.",
+      "type": "integer_t"
+    },
     "mitigation": {
       "caption": "MITRE Mitigation",
       "description": "The Mitigation object describes the MITRE ATT&CK® or ATLAS™ Mitigation ID and/or name that is associated to an attack.",
@@ -4735,6 +4762,11 @@
     "num_folders": {
       "caption": "Scanned Folders",
       "description": "The number of folders scanned.",
+      "type": "integer_t"
+    },
+    "num_records": {
+      "caption": "Number of Records",
+      "description": "The number of records. See specific usage.",
       "type": "integer_t"
     },
     "num_infected": {
@@ -5301,6 +5333,11 @@
       "type": "security_state",
       "is_array": true
     },
+    "primary_server": {
+      "caption": "Primary Server",
+      "description": "The primary server for a resource. See specific usage.",
+      "type": "string_t"
+    },
     "priority": {
       "caption": "Priority",
       "description": "The priority, normalized to the caption of the priority_id value. In the case of 'Other', it is defined by the event source.",
@@ -5800,6 +5837,11 @@
       "description": "The request header that identifies the address of the previous web page, which is linked to the current web page or resource being requested.",
       "type": "string_t"
     },
+    "refresh_interval": {
+      "caption": "Refresh Interval",
+      "description": "The time interval, in seconds, before a resource should be refreshed. See specific usage.",
+      "type": "integer_t"
+    },
     "region": {
       "caption": "Region",
       "description": "The name or the code of a region. See specific usage.",
@@ -6033,6 +6075,16 @@
       "caption": "Response Time",
       "description": "The Domain Name System (DNS) response time.",
       "type": "timestamp_t"
+    },
+    "responsible_party": {
+      "caption": "Responsible Party",
+      "description": "The party responsible for a resource. See specific usage.",
+      "type": "string_t"
+    },
+    "retry_interval": {
+      "caption": "Retry Interval",
+      "description": "The time interval, in seconds, before a failed operation should be retried. See specific usage.",
+      "type": "integer_t"
     },
     "return_path": {
       "caption": "Return Path",
@@ -6511,6 +6563,11 @@
       "description": "The sequence number. See specific usage.",
       "type": "long_t"
     },
+    "serial": {
+      "caption": "Serial",
+      "description": "The serial number of a resource. See specific usage.",
+      "type": "long_t"
+    },
     "serial_number": {
       "observable": 37,
       "caption": "Serial Number",
@@ -6702,6 +6759,11 @@
       "caption": "Server Name Indication",
       "description": " The Server Name Indication (SNI) extension sent by the client.",
       "type": "string_t"
+    },
+    "soa": {
+      "caption": "SOA Record",
+      "description": "The DNS SOA (Start of Authority) record. See specific usage.",
+      "type": "dns_soa"
     },
     "software_components": {
       "caption": "Software Components",
@@ -7370,6 +7432,17 @@
       "description": "The unique identifier of the transaction.",
       "type": "string_t"
     },
+    "transfer_type": {
+      "caption": "Transfer Type",
+      "description": "The type of transfer, normalized to the caption of the <code>transfer_type_id</code> value. In the case of 'Other', it is defined by the event source. See specific usage.",
+      "type": "string_t"
+    },
+    "transfer_type_id": {
+      "caption": "Transfer Type ID",
+      "description": "The normalized identifier of the transfer type. See specific usage.",
+      "sibling": "transfer_type",
+      "type": "integer_t"
+    },
     "transformation_info_list": {
       "caption": "Transformation Info",
       "description": "An array of transformation info that describes the mappings or transforms applied to the data.",
@@ -7575,6 +7648,11 @@
       "caption": "Updated Role",
       "description": "The updated role. See specific usage.",
       "type": "iam_role"
+    },
+    "updated_soa": {
+      "caption": "Updated SOA Record",
+      "description": "The DNS SOA (Start of Authority) record after the change. See specific usage.",
+      "type": "dns_soa"
     },
     "updated_user": {
       "caption": "Updated User",

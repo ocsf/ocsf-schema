@@ -17,7 +17,7 @@
         },
         "3": {
           "caption": "Notify",
-          "description": "A NOTIFY message sent by the primary name server to inform a secondary that the zone has changed and a transfer may be needed. NOTIFY has no transfer type."
+          "description": "A NOTIFY exchange, comprising the primary name server's notification that the zone has changed and the secondary's acknowledgement, reported as a single record rather than as separate messages. NOTIFY has no transfer type; the outcome of the acknowledgement is conveyed by <code>status_id</code>."
         },
         "4": {
           "caption": "Transfer",
@@ -27,6 +27,7 @@
     },
     "transfer_type_id": {
       "description": "The normalized identifier of the zone transfer type. On a <code>Transfer Request</code> this is the type requested; on a <code>Transfer Response</code> or <code>Transfer</code> activity this is the type actually delivered.",
+      "group": "primary",
       "requirement": "recommended",
       "enum": {
         "0": {
@@ -49,6 +50,7 @@
     },
     "transfer_type": {
       "description": "The zone transfer type, normalized to the caption of the <code>transfer_type_id</code> value. In the case of 'Other', it is defined by the event source.",
+      "group": "primary",
       "requirement": "optional"
     },
     "dns_zone": {
@@ -195,14 +197,6 @@
       "caption": "DNS Transaction ID",
       "description": "The 16-bit DNS transaction identifier assigned by the client and echoed unchanged in the server response. This value is the same for both the request and response messages.",
       "group": "primary",
-      "requirement": "recommended"
-    },
-    "src_endpoint": {
-      "description": "The initiator of the zone transfer, typically the secondary (slave) name server requesting the zone or the recipient of a NOTIFY.",
-      "requirement": "recommended"
-    },
-    "dst_endpoint": {
-      "description": "The responder of the zone transfer, typically the primary (master) name server serving the zone or the sender of a NOTIFY.",
       "requirement": "recommended"
     }
   },

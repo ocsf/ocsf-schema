@@ -44,6 +44,22 @@ Thankyou! -->
 ## [Unreleased]
 
 ### Added
+* #### Categories
+* #### Event Classes
+* #### Profiles
+* #### Objects
+* #### Observables
+* #### Platform Extensions
+* #### Dictionary Attributes
+  1. Added `is_declared_incident` and `resolved_time`. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
+### Improved
+* #### Categories
+* #### Event Classes
+  1. Added `is_declared_incident` to finding.json and incident_finding.json. Added `resolved_time` to `finding.json` and `incident_finding.json`. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
+* #### Profiles
+  1. Added `is_declared_incident` to incident.json. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
+
+  
 * #### Dictionary Attributes
   1. Added `likelihood` as a `string_t`, normalized to the caption of `likelihood_id`. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
   1. Added `likelihood_id` as an `integer_t` enum with values Unknown (0), Very Low (1), Low (2), Moderate (3), High (4), Very High (5), Other (99). [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)

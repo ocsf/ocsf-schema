@@ -102,6 +102,10 @@
       "group": "primary",
       "requirement": "recommended"
     },
+    "is_declared_incident": {
+      "group": "context",
+      "requirement":"optional"
+    },
     "is_suspected_breach": {
       "group": "context",
       "requirement": "optional"
@@ -118,6 +122,11 @@
     },
     "priority_id": {
       "group": "context",
+      "requirement": "recommended"
+    },
+    "resolved_time": {
+      "description": "The time when the incident was resolved. Populate when <code>status_id</code> is 4 (Resolved).",
+      "group": "occurrence",
       "requirement": "recommended"
     },
     "src_url": {
@@ -177,7 +186,7 @@
       "requirement": "optional"
     },
     "time": {
-      "description": "The incident creation time - when the incident was first opened, not when the underlying activity occurred. For the time range of contributing events, use <code>start_time</code> and <code>end_time</code>."
+      "description": "The incident time - when the incident was first created, updated, or closed; not when the underlying findings or activity occurred. For the time range of contributing findings and events, use <code>start_time</code> and <code>end_time</code>. For the time when the incident was resolved, use <code>resolved_time</code>."
     },
     "vendor_attributes": {
       "requirement": "optional"

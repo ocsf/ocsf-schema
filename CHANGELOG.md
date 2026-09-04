@@ -44,14 +44,19 @@ Thankyou! -->
 ## [Unreleased]
 
 ### Added
+* #### Objects
+  1. Added `causal_link` object, binding an event to the operation that caused it, together with how that binding was established and what is needed to resolve the identifier across a trust boundary. [#1741](https://github.com/ocsf/ocsf-schema/pull/1741)
 * #### Dictionary Attributes
   1. Added `likelihood` as a `string_t`, normalized to the caption of `likelihood_id`. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
   1. Added `likelihood_id` as an `integer_t` enum with values Unknown (0), Very Low (1), Low (2), Moderate (3), High (4), Very High (5), Other (99). [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
   1. Added `likelihood_score` as an `integer_t`, complementing `confidence_score`, `impact_score`, and `risk_score`. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
+  1. Added `caused_by` as an array of `causal_link`, for the system recording an event to name the operation it attributes that event to. [#1741](https://github.com/ocsf/ocsf-schema/pull/1741)
+  1. Added `namespace_uid`, and `attribution_method_id` with enums `Unknown (0)`, `Propagated Context (1)`, `Correlated Identifier (2)` and `Other (99)`, plus the `attribution_method` sibling, recording how a causal attribution was established. [#1741](https://github.com/ocsf/ocsf-schema/pull/1741)
 
 ### Improved
 * #### Event Classes
   1. Added `likelihood`, `likelihood_id`, and `likelihood_score` as optional attributes in the `context` group on `Detection Finding` (class 2004). [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
+  1. Added optional `caused_by` to the `base_event` class, so any class can carry a binding to the operation that caused it without adopting a profile. [#1741](https://github.com/ocsf/ocsf-schema/pull/1741)
 * #### Objects
   1. Added `labels` to the `node` object for grouping nodes into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
   1. Added `labels` to the `edge` object for grouping edges into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)

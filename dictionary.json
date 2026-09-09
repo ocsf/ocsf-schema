@@ -6570,11 +6570,6 @@
       "type": "security_state",
       "is_array": true
     },
-    "security_zone": {
-      "caption": "Security Zone",
-      "description": "The physical security zone where the activity occurred.",
-      "type": "security_zone"
-    },
     "sender": {
       "caption": "Sender",
       "description": "The machine readable email address of the system or server that actually transmitted the email message, extracted from the email headers per RFC 5322. This differs from the <code>from</code> field, which shows the message author. The sender field is most commonly used when multiple addresses appear in the <code> from_list </code> field, or when the transmitting system is different from the message author (such as when sending on behalf of someone else).",
@@ -6812,15 +6807,20 @@
       "type": "digital_signature",
       "is_array": true
     },
+    "site_name": {
+      "caption": "Site Name",
+      "description": "The name of the physical site where the activity occurred.",
+      "type": "string_t"
+    },
     "site_uid": {
       "caption": "Site UID",
       "description": "The unique identifier of the physical site where the activity occurred, as defined by the reporting organization.",
       "type": "string_t"
     },
-    "site_name": {
-      "caption": "Site Name",
-      "description": "The name of the physical site where the activity occurred.",
-      "type": "string_t"
+    "site_zone": {
+      "caption": "Site Zone",
+      "description": "The site zone where the activity occurred: a defined area within a physical site that shares a common security posture.",
+      "type": "site_zone"
     },
     "size": {
       "caption": "Size",
@@ -8045,7 +8045,7 @@
     },
     "zone_type_id": {
       "caption": "Security Zone Type ID",
-      "description": "The normalized classification of the physical security zone.",
+      "description": "The normalized classification of the physical security zone. These are generic tiers by security posture. Regime-specific tiers map onto them rather than extending the list: for example, a DoD or DOE Controlled, Limited, or Protected Area maps to Restricted, and an Exclusion, Vital, or Material Access Area maps to Critical. Carry the native tier name in <code>zone_type</code>.",
       "sibling": "zone_type",
       "type": "integer_t",
       "enum": {

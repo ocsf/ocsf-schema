@@ -54,6 +54,8 @@ Thankyou! -->
   1. Added `physical_site` profile carrying physical site context (`site_uid`, `site_name`, `building`, `floor`, `security_zone`), applied at the base event so any class can carry it, and on the `location` object so devices and endpoints inherit site context through `device.location`.
   1. Added `physical_site` profile carrying physical site context (`site_uid`, `site_name`, `building`, `floor`, `security_zone`), applied at the base event so any class can carry it, and on the `location` object so devices and endpoints inherit site context through `device.location`. [#1750](https://github.com/ocsf/ocsf-schema/pull/1750)
   1. Added `security_zone` object describing a physical security zone within a site, distinct from the network `zone` attribute. [#1750](https://github.com/ocsf/ocsf-schema/pull/1750)
+  1. Added `physical_site` profile carrying physical site context (`site_uid`, `site_name`, `building`, `floor`, `site_zone`), applied at the base event so any class can carry it, and on the `location` object so devices and endpoints inherit site context through `device.location`. [#1750](https://github.com/ocsf/ocsf-schema/pull/1750)
+  1. Added `site_zone` object describing a defined area within a physical site that shares a common security posture, distinct from the network `zone` attribute. [#1750](https://github.com/ocsf/ocsf-schema/pull/1750)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -70,7 +72,7 @@ Thankyou! -->
   1. Added `security_zone` as an object attribute and `is_armed` as a `boolean_t`.
   1. Added `zone_type_id` as an `integer_t` enum with values Unknown (0), Perimeter (1), Public (2), Restricted (3), Critical (4), Transitional (5), External (6), Other (99), and `zone_type` as its `string_t` sibling.
   1. Added `site_uid`, `site_name`, `building`, and `floor` as `string_t` physical site context attributes. [#1750](https://github.com/ocsf/ocsf-schema/pull/1750)
-  1. Added `security_zone` as an object attribute and `is_armed` as a `boolean_t`. [#1750](https://github.com/ocsf/ocsf-schema/pull/1750)
+  1. Added `site_zone` as an object attribute and `is_armed` as a `boolean_t`. [#1750](https://github.com/ocsf/ocsf-schema/pull/1750)
   1. Added `zone_type_id` as an `integer_t` enum with values Unknown (0), Perimeter (1), Public (2), Restricted (3), Critical (4), Transitional (5), External (6), Other (99), and `zone_type` as its `string_t` sibling. [#1750](https://github.com/ocsf/ocsf-schema/pull/1750)
 
 ### Improved

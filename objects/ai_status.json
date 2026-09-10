@@ -1,0 +1,23 @@
+{
+  "caption": "AI Status",
+  "description": "Container for agent-related scalar status attributes contributed by the <code>ai_operation</code> profile. Holds per-operation outcomes reported by the agent runtime — e.g. permission decisions, context-compaction reasons, sub-agent stop reasons — so they do not proliferate as discrete attributes at the event root. Attributes are added here as their taxonomies are defined; the high-frequency <code>ai_stop_reason</code> / <code>ai_stop_reason_id</code> pair remains at the profile root.",
+  "extends": "object",
+  "name": "ai_status",
+  "attributes": {
+    "permission_result_id": {
+      "caption": "Permission Result ID",
+      "description": "The normalized outcome of the agent runtime's permission check for this operation, as reported by the runtime. Normalized taxonomy to be defined.",
+      "requirement": "optional"
+    },
+    "compaction_reason_id": {
+      "caption": "Compaction Reason ID",
+      "description": "The normalized reason the agent runtime compacted context during this operation, as reported by the runtime. Normalized taxonomy to be defined.",
+      "requirement": "optional"
+    },
+    "subagent_stop_reason_id": {
+      "caption": "Sub-agent Stop Reason ID",
+      "description": "The normalized reason a sub-agent spawned during this operation stopped, as reported by the runtime. Normalized taxonomy to be defined.",
+      "requirement": "optional"
+    }
+  }
+}

@@ -4,6 +4,10 @@
   "extends": "_entity",
   "name": "ai_tool",
   "attributes": {
+    "baseline_fingerprint": {
+      "description": "A fingerprint of the capability's declared contract as recorded at registration or approval time, identifying the approved contract version without embedding the contract body in the event. Compared against the contract fingerprints presented at invocation to detect a declared contract that changed after approval, such as supply-chain \"rug pull\" changes. Carries the approved value rather than a match verdict; consumers diff, the object does not assess.",
+      "requirement": "optional"
+    },
     "cache_scope": {
       "description": "The declared cache scope, normalized to the caption of <code>cache_scope_id</code>. In the case of <code>Other</code>, it is defined by the event source.",
       "requirement": "optional"
@@ -32,6 +36,10 @@
     },
     "cache_ttl": {
       "description": "The declared freshness window for this capability's results, in milliseconds, per the MCP <code>ttlMs</code> field. Bounds how long a cached result was treated as valid by the consuming system.",
+      "requirement": "optional"
+    },
+    "desc_fingerprint": {
+      "description": "A fingerprint of the capability's declared natural-language description or instructions (e.g., the tool docstring or manifest description presented at discovery), identifying the description version without embedding the description body in the event. The object carries no <code>desc</code> attribute; this fingerprints the model-visible description by reference. Enables detecting description poisoning, where the description is altered without any schema change.",
       "requirement": "optional"
     },
     "input_schema_fingerprint": {

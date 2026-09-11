@@ -56,9 +56,9 @@ Thankyou! -->
   1. Added `labels` to the `node` object for grouping nodes into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
   1. Added `labels` to the `edge` object for grouping edges into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
 * #### Dictionary Attributes
-  1. Added `Proximity Card (12)`, `Smart Card (13)`, and `Mobile Credential (14)` enum values to `factor_type_id`, so physical access credentials presented at a reader can be carried as authentication factors.
-  1. Added `Confirmed (28)`, `Unfounded (29)`, `Referred (30)`, and `Cancelled (31)` enum values to `disposition_id` for verdict-style outcomes of alarms and physical security dispatches.
-  1. Added `Physical (14)` enum value to `logon_type_id` for an entry made at a door, gate, or turnstile reader.
+  1. Added `Proximity Card (12)`, `Smart Card (13)`, and `Mobile Credential (14)` enum values to `factor_type_id`, so physical access credentials presented at a reader can be carried as authentication factors. [#1757](https://github.com/ocsf/ocsf-schema/pull/1757)
+  1. Added `Confirmed (28)`, `Unfounded (29)`, `Referred (30)`, and `Cancelled (31)` enum values to `disposition_id` for verdict-style outcomes of alarms and physical security dispatches. [#1757](https://github.com/ocsf/ocsf-schema/pull/1757)
+  1. Added `Physical (14)` enum value to `logon_type_id` for an entry made at a door, gate, or turnstile reader. [#1757](https://github.com/ocsf/ocsf-schema/pull/1757)
 
 ## [v1.9.0] - Aug 3rd, 2026
 

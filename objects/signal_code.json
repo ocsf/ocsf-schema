@@ -1,0 +1,35 @@
+{
+  "caption": "Signal Code",
+  "description": "The Signal Code object carries the equivalent identifiers for an event in established physical security vocabularies. Populating it allows a normalized event to be traced back to the code the originating system actually transmitted, and allows consumers to match on a vocabulary they already support.",
+  "extends": "object",
+  "name": "signal_code",
+  "attributes": {
+    "sia_dc03_code": {
+      "requirement": "optional"
+    },
+    "contact_id_code": {
+      "requirement": "optional"
+    },
+    "contact_id_qualifier": {
+      "requirement": "optional"
+    },
+    "onvif_topic": {
+      "requirement": "optional"
+    },
+    "osdp_reply": {
+      "requirement": "optional"
+    },
+    "native_type": {
+      "requirement": "recommended"
+    }
+  },
+  "constraints": {
+    "at_least_one": [
+      "sia_dc03_code",
+      "contact_id_code",
+      "onvif_topic",
+      "osdp_reply",
+      "native_type"
+    ]
+  }
+}

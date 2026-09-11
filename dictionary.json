@@ -247,6 +247,11 @@
       "description": "The Aircraft object represents any aircraft or otherwise airborne asset such as an unmanned system, airplane, balloon, spacecraft, or otherwise. The Aircraft object is intended to normalized data captured or otherwise logged from active radar, passive radar, multi-spectral systems, or the Automatic Dependant Broadcast - Surveillance (ADS-B), and/or Mode S systems.",
       "type": "aircraft"
     },
+    "alarm_point": {
+      "caption": "Alarm Point",
+      "description": "The monitored point that generated the signal.",
+      "type": "alarm_point"
+    },
     "alert": {
       "caption": "Client TLS Alert",
       "description": "The integer value of a TLS alert per the TLS specification.",
@@ -340,6 +345,11 @@
       "type": "dns_answer",
       "is_array": true
     },
+    "apco_incident_type": {
+      "caption": "APCO Incident Type",
+      "description": "The common incident type code used for public safety data exchange, where the incident was referred for dispatch.",
+      "type": "string_t"
+    },
     "api": {
       "caption": "API Details",
       "description": "Describes details about a typical API (Application Programming Interface) call.",
@@ -403,6 +413,11 @@
       "description": "A list of <code>assessment</code> objects. See specific usage.",
       "type": "assessment",
       "is_array": true
+    },
+    "assigned_time": {
+      "caption": "Assigned Time",
+      "description": "The time the resource was assigned to the event.",
+      "type": "timestamp_t"
     },
     "assignee": {
       "caption": "Assignee",
@@ -1148,6 +1163,63 @@
       "sibling": "category_name",
       "type": "integer_t"
     },
+    "cause": {
+      "caption": "Cause",
+      "description": "The cause, normalized to the caption of the <code>cause_id</code> value.",
+      "type": "string_t"
+    },
+    "cause_id": {
+      "caption": "Cause ID",
+      "description": "The assessed cause of the signal.",
+      "sibling": "cause",
+      "type": "integer_t",
+      "enum": {
+        "1": {
+          "caption": "Genuine",
+          "description": "The condition was real and correctly reported."
+        },
+        "2": {
+          "caption": "User Error",
+          "description": "An authorized person triggered the condition in error."
+        },
+        "3": {
+          "caption": "Equipment Malfunction",
+          "description": "The detection device or panel malfunctioned."
+        },
+        "4": {
+          "caption": "Equipment Unsuitable",
+          "description": "The device was inappropriate for the environment."
+        },
+        "5": {
+          "caption": "Installation Fault",
+          "description": "The device was incorrectly installed or aimed."
+        },
+        "6": {
+          "caption": "Environmental",
+          "description": "Weather, lighting, foliage, or similar environmental conditions."
+        },
+        "7": {
+          "caption": "Animal",
+          "description": "An animal triggered the condition."
+        },
+        "8": {
+          "caption": "Authorized Activity",
+          "description": "A scheduled or permitted activity triggered the condition."
+        },
+        "9": {
+          "caption": "Communication Fault",
+          "description": "A transmission or network fault produced the signal."
+        },
+        "10": {
+          "caption": "Monitoring Error",
+          "description": "The monitoring centre processed the signal incorrectly."
+        },
+        "11": {
+          "caption": "Malicious",
+          "description": "The condition was triggered deliberately and without cause."
+        }
+      }
+    },
     "cc": {
       "caption": "Cc",
       "description": "The machine-readable email header Cc values, as defined by RFC 5322. For example <code>example.user@usersdomain.com</code>.",
@@ -1176,6 +1248,35 @@
       "caption": "Cell Name",
       "description": "The name of the cell. See specific usage.",
       "type": "string_t"
+    },
+    "certainty": {
+      "caption": "Certainty",
+      "description": "The certainty, normalized to the caption of the <code>certainty_id</code> value.",
+      "type": "string_t"
+    },
+    "certainty_id": {
+      "caption": "Certainty ID",
+      "description": "The confidence that the reported condition occurred, using the dimension defined by the Common Alerting Protocol.",
+      "sibling": "certainty",
+      "type": "integer_t",
+      "enum": {
+        "1": {
+          "caption": "Observed",
+          "description": "Determined to have occurred or to be ongoing."
+        },
+        "2": {
+          "caption": "Likely",
+          "description": "Probability greater than approximately 50 percent."
+        },
+        "3": {
+          "caption": "Possible",
+          "description": "Probability less than or equal to approximately 50 percent."
+        },
+        "4": {
+          "caption": "Unlikely",
+          "description": "Not expected to occur, with probability approaching zero."
+        }
+      }
     },
     "certificate": {
       "caption": "Certificate",
@@ -1208,6 +1309,26 @@
           "url": "https://docs.microsoft.com/en-us/windows/win32/cimwin32prov/win32-systemenclosure"
         }
       ]
+    },
+    "checkpoint": {
+      "caption": "Checkpoint",
+      "description": "The patrol checkpoint.",
+      "type": "checkpoint"
+    },
+    "checkpoint_count": {
+      "caption": "Checkpoint Count",
+      "description": "The number of checkpoints registered during the tour.",
+      "type": "integer_t"
+    },
+    "checkpoint_expected_count": {
+      "caption": "Expected Checkpoint Count",
+      "description": "The number of checkpoints the tour was expected to register.",
+      "type": "integer_t"
+    },
+    "checkpoint_token_type": {
+      "caption": "Checkpoint Token Type",
+      "description": "The physical token technology used to register a checkpoint scan, for example NFC, QR, iButton, BLE, or GPS.",
+      "type": "string_t"
     },
     "checks": {
       "caption": "Compliance Checks",
@@ -1343,6 +1464,11 @@
       "caption": "Classifier Details",
       "description": "Describes details about the classifier used for data classification.",
       "type": "classifier_details"
+    },
+    "cleared_time": {
+      "caption": "Cleared Time",
+      "description": "The time the resource was released from the event.",
+      "type": "timestamp_t"
     },
     "client_ciphers": {
       "caption": "Client Cipher Suites",
@@ -1543,6 +1669,11 @@
         }
       }
     },
+    "confidence_pct": {
+      "caption": "Confidence Percentage",
+      "description": "The confidence of an inferred determination, expressed as a percentage from 0 to 100.",
+      "type": "integer_t"
+    },
     "confidence_score": {
       "caption": "Confidence Score",
       "description": "The confidence score. See specific usage.",
@@ -1595,6 +1726,16 @@
     "connection_uid": {
       "caption": "Connection Identifier",
       "description": "The network connection identifier.",
+      "type": "string_t"
+    },
+    "contact_id_code": {
+      "caption": "Contact ID Code",
+      "description": "The three-digit event code defined by the Ademco Contact ID protocol.",
+      "type": "string_t"
+    },
+    "contact_id_qualifier": {
+      "caption": "Contact ID Qualifier",
+      "description": "The Contact ID qualifier, where 1 indicates a new event, 3 a restore, and 6 a previously reported condition still present.",
       "type": "string_t"
     },
     "container": {
@@ -1822,6 +1963,52 @@
       "caption": "Creator",
       "description": "The user that created the object associated with event. See specific usage.",
       "type": "user"
+    },
+    "credential_status": {
+      "caption": "Credential Status",
+      "description": "The status of the credential, using the ONVIF credential reason vocabulary. Expected values are LockedOut, Blocked, Lost, Stolen, Damaged, Destroyed, Inactivity, Expired, and RenewalNeeded.",
+      "type": "string_t"
+    },
+    "credential_type": {
+      "caption": "Credential Type",
+      "description": "The credential type, normalized to the caption of the <code>credential_type_id</code> value.",
+      "type": "string_t"
+    },
+    "credential_type_id": {
+      "caption": "Credential Type ID",
+      "description": "The normalized form of the credential presented.",
+      "sibling": "credential_type",
+      "type": "integer_t",
+      "enum": {
+        "1": {
+          "caption": "Card",
+          "description": "A physical proximity or smart card."
+        },
+        "2": {
+          "caption": "Mobile",
+          "description": "A mobile device credential."
+        },
+        "3": {
+          "caption": "PIN",
+          "description": "A keypad-entered personal identification number."
+        },
+        "4": {
+          "caption": "Biometric",
+          "description": "A biometric sample."
+        },
+        "5": {
+          "caption": "License Plate",
+          "description": "A vehicle registration plate read."
+        },
+        "6": {
+          "caption": "Key",
+          "description": "A mechanical key."
+        },
+        "7": {
+          "caption": "Escort",
+          "description": "Entry authorized by an escorting person rather than by a credential."
+        }
+      }
     },
     "credential_uid": {
       "observable": 19,
@@ -2132,6 +2319,43 @@
         }
       }
     },
+    "derivation": {
+      "caption": "Derivation",
+      "description": "The derivation method, normalized to the caption of the <code>derivation_id</code> value.",
+      "type": "string_t"
+    },
+    "derivation_id": {
+      "caption": "Derivation ID",
+      "description": "How the reported condition was determined. Inferred conditions such as tailgating are not directly observable and must declare their derivation.",
+      "sibling": "derivation",
+      "type": "integer_t",
+      "enum": {
+        "1": {
+          "caption": "Direct",
+          "description": "Reported directly by a device or person."
+        },
+        "2": {
+          "caption": "Sensor Fusion",
+          "description": "Inferred by correlating two or more sensor sources."
+        },
+        "3": {
+          "caption": "Video Analytic",
+          "description": "Inferred by a video analytic."
+        },
+        "4": {
+          "caption": "Count Reconciliation",
+          "description": "Inferred by reconciling grant counts against door contact transitions."
+        },
+        "5": {
+          "caption": "Schedule Correlation",
+          "description": "Inferred by correlating against an expected schedule."
+        },
+        "6": {
+          "caption": "Human Assessment",
+          "description": "Determined by a human operator."
+        }
+      }
+    },
     "desc": {
       "caption": "Description",
       "description": "The description that pertains to the object or event. See specific usage.",
@@ -2334,6 +2558,43 @@
       "type": "discovery_details",
       "is_array": true
     },
+    "dispatch_outcome": {
+      "caption": "Dispatch Outcome",
+      "description": "The dispatch outcome, normalized to the caption of the <code>dispatch_outcome_id</code> value.",
+      "type": "string_t"
+    },
+    "dispatch_outcome_id": {
+      "caption": "Dispatch Outcome ID",
+      "description": "What ultimately happened in response to the signal.",
+      "sibling": "dispatch_outcome",
+      "type": "integer_t",
+      "enum": {
+        "1": {
+          "caption": "No Dispatch",
+          "description": "No response resource was dispatched."
+        },
+        "2": {
+          "caption": "Dispatched",
+          "description": "A response resource was dispatched."
+        },
+        "3": {
+          "caption": "Cancelled En Route",
+          "description": "A dispatch was cancelled before arrival."
+        },
+        "4": {
+          "caption": "Responded Verified",
+          "description": "A resource arrived and confirmed the condition."
+        },
+        "5": {
+          "caption": "Responded Unfounded",
+          "description": "A resource arrived and found no condition."
+        },
+        "6": {
+          "caption": "Chargeable False Alarm",
+          "description": "The event was assessed as a chargeable false alarm under a local ordinance."
+        }
+      }
+    },
     "dispersion": {
       "caption": "Root Dispersion",
       "description": "The dispersion in the NTP protocol is the estimated time error or uncertainty relative to the reference clock in milliseconds.",
@@ -2348,6 +2609,11 @@
       "caption": "Disposition",
       "description": "The disposition name, normalized to the caption of the disposition_id value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
+    },
+    "disposition_details": {
+      "caption": "Disposition Details",
+      "description": "The validated outcome of the signal.",
+      "type": "disposition_details"
     },
     "disposition_id": {
       "caption": "Disposition ID",
@@ -2765,6 +3031,11 @@
       "description": "The additional information from an external data source, which is associated with the event or a finding. For example add location information for the IP address in the DNS answers:</p><code>[{\"name\": \"answers.ip\", \"value\": \"92.24.47.250\", \"type\": \"location\", \"data\": {\"city\": \"Socotra\", \"continent\": \"Asia\", \"coordinates\": [-25.4153, 17.0743], \"country\": \"YE\", \"desc\": \"Yemen\"}}]</code>",
       "type": "enrichment",
       "is_array": true
+    },
+    "enroute_time": {
+      "caption": "En Route Time",
+      "description": "The time the resource began travelling to the location.",
+      "type": "timestamp_t"
     },
     "entity": {
       "caption": "Entity",
@@ -3251,6 +3522,11 @@
       "description": "Provides quality/containment on geodetic altitude. This is based on ADS-B Geodetic Vertical Accuracy (GVA). Measured in meters.",
       "type": "string_t"
     },
+    "geofence_status": {
+      "caption": "Geofence Status",
+      "description": "Whether the reported position fell inside or outside the defined geofence at the time of the event.",
+      "type": "string_t"
+    },
     "geohash": {
       "caption": "Geohash",
       "description": "<p>Geohash of the geo-coordinates (latitude and longitude).</p>Geohashing is a geocoding system used to encode geographic coordinates in decimal degrees, to a single string.",
@@ -3332,6 +3608,11 @@
       "description": "An array of hash attributes.",
       "type": "fingerprint",
       "is_array": true
+    },
+    "held_open_duration": {
+      "caption": "Held Open Duration",
+      "description": "The time in milliseconds the portal remained open beyond its configured threshold.",
+      "type": "integer_t"
     },
     "hire_time": {
       "caption": "Hire Time",
@@ -3544,6 +3825,132 @@
       "type": "string_t",
       "is_array": true
     },
+    "incident_type": {
+      "caption": "Incident Type",
+      "description": "The incident type, normalized to the caption of <code>incident_type_id</code>. In the case of 'Other', it is defined by the event source.",
+      "type": "string_t"
+    },
+    "incident_type_id": {
+      "caption": "Incident Type ID",
+      "description": "The normalized incident type. The values are generic categories under which an organization's own incident types (<code>incident_type_internal</code>) are mapped, so that locally defined types remain comparable across organizations. Use <code>Unclassified</code> when the source carries no classification at all, and <code>Other</code> when it carries one that maps to none of these values.",
+      "sibling": "incident_type",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The incident type is unknown."
+        },
+        "1": {
+          "caption": "Suspicious Activity",
+          "description": "A person, vehicle, or circumstance observed that warrants attention but involves no confirmed offense and no confirmed unauthorized presence. Once unauthorized presence on the property is confirmed, use trespass."
+        },
+        "2": {
+          "caption": "Trespass",
+          "description": "Confirmed unauthorized presence of a person on the protected property, including refusal to leave and encampment. Distinct from suspicious_activity (presence not confirmed unauthorized) and access_violation (a control was defeated)."
+        },
+        "3": {
+          "caption": "Access Violation",
+          "description": "An access control was circumvented or misused: tailgating, piggybacking, unauthorized credential use, or entry through a controlled portal without authorization. The defeat of the control is the defining feature, not mere presence."
+        },
+        "4": {
+          "caption": "Insecure Opening",
+          "description": "A door, gate, window, or other opening found unsecured (open, unlocked, or propped) with no evidence of force. Where forced entry is evident, use burglary_attempt; where the opening was damaged, consider vandalism."
+        },
+        "5": {
+          "caption": "Theft",
+          "description": "Confirmed taking of property, including cargo, materials, equipment, fuel, wire, or items from vehicles. An unsuccessful attempt to enter in order to steal belongs in burglary_attempt."
+        },
+        "6": {
+          "caption": "Burglary / Forced Entry Attempt",
+          "description": "Attempted or completed forced entry into a structure, enclosure, or vehicle, whether or not property was taken. Evidence of force distinguishes this from insecure_opening."
+        },
+        "7": {
+          "caption": "Vandalism",
+          "description": "Deliberate damage or defacement of property, including graffiti and sabotage, where taking property was not the apparent object."
+        },
+        "8": {
+          "caption": "Disturbance",
+          "description": "Verbal altercation, threatening or nuisance conduct, or disorderly activity without physical violence. Escalates to assault once physical contact occurs; use weapon when one is observed or mentioned."
+        },
+        "9": {
+          "caption": "Weapon Observed",
+          "description": "A weapon was observed, mentioned, or brandished. Takes precedence over disturbance or trespass classifications when present, regardless of whether another offense was completed."
+        },
+        "10": {
+          "caption": "Assault",
+          "description": "Physical violence against a person, from a mutual fight to a battery on staff or the public. Supersedes disturbance once contact occurs."
+        },
+        "11": {
+          "caption": "Fire / Smoke",
+          "description": "A fire, smoke, or combustion event of any size, confirmed or reasonably suspected."
+        },
+        "12": {
+          "caption": "Evacuation",
+          "description": "An evacuation or shelter-in-place of any scope, whatever the trigger."
+        },
+        "13": {
+          "caption": "Medical Emergency",
+          "description": "A medical emergency or injury requiring aid, from first aid rendered on site to EMS transport."
+        },
+        "14": {
+          "caption": "Safety Hazard",
+          "description": "An immediate hazard to persons - spill, exposed wiring, structural compromise, blocked egress - requiring prompt mitigation. Non-immediate deficiencies belong in property_maintenance."
+        },
+        "15": {
+          "caption": "Utility Failure",
+          "description": "Loss or failure of a utility (power, water, gas, communications) creating an unsafe or materially degraded condition."
+        },
+        "16": {
+          "caption": "Property / Maintenance Issue",
+          "description": "A non-immediate facility deficiency observed and reported: lighting out, leaks, broken fixtures or locks, sanitation, elevator faults. Immediate dangers are safety_hazard; damage done deliberately is vandalism."
+        },
+        "17": {
+          "caption": "Security Device Fault",
+          "description": "A security device (camera, intercom, access controller, sensor, barrier arm) found faulty, offline, or damaged. A frequent false-alarm cause; the device fault itself is the event."
+        },
+        "18": {
+          "caption": "Parking Violation",
+          "description": "A vehicle parked or stored in violation of site rules - unauthorized space, abandoned vehicle, tow-eligible condition - without damage or injury."
+        },
+        "19": {
+          "caption": "Vehicle Incident",
+          "description": "A vehicle event involving damage, injury risk, or a traffic hazard: collision, struck fixture or barrier, dangerous operation on the property. Rule violations without damage are parking_violation."
+        },
+        "20": {
+          "caption": "Service / Assist",
+          "description": "Routine assistance rendered to a customer, tenant, or visitor: escorts, lockouts, directions, deliveries, tenant requests. No adverse security condition is asserted."
+        },
+        "21": {
+          "caption": "Welfare Check",
+          "description": "A check on a person's wellbeing, requested or self-initiated, including unresponsive-person checks that do not become medical events."
+        },
+        "22": {
+          "caption": "False Alarm / Unfounded",
+          "description": "A signal or report investigated and determined to reflect no actual condition, where no other category applies. This classifies the unfounded outcome itself; paperwork artifacts (duplicates, tests) are administrative."
+        },
+        "23": {
+          "caption": "Administrative",
+          "description": "Documentation-only records: duplicate reports, tests, training entries, information-only notes. No field condition is asserted."
+        },
+        "24": {
+          "caption": "Unexpected Occupancy",
+          "description": "A person or activity present in a space at a time or in a manner not expected by schedule or authorization, without confirmed trespass intent - an after-hours worker, an unbadged contractor in a controlled area. Confirmed unauthorized presence is trespass."
+        },
+        "25": {
+          "caption": "Unclassified",
+          "description": "A report filed without a classifying flag; the incident type could not be determined at the source system. Producers should emit this value rather than dropping the event."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The incident type is not mapped. See the <code>incident_type</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
+    "incident_type_internal": {
+      "caption": "Internal Incident Type",
+      "description": "The incident type as classified by the reporting organization, retained verbatim.",
+      "type": "string_t"
+    },
     "initiator": {
       "caption": "Initiator",
       "description": "The initiator of an activity or operation. See specific usage.",
@@ -3712,6 +4119,11 @@
       "description": "Indicates that the event is considered to be an alertable signal.",
       "type": "boolean_t"
     },
+    "is_antipassback_violated": {
+      "caption": "Antipassback Violated",
+      "description": "Indicates the presentation violated an antipassback rule.",
+      "type": "boolean_t"
+    },
     "is_applied": {
       "caption": "Applied",
       "description": "A determination if a policy, rule, or enforcement action was applied.",
@@ -3725,6 +4137,11 @@
     "is_backed_up": {
       "caption": "Back Ups Configured",
       "description": "Indicates whether the device or resource has a backup enabled, such as an automated snapshot or a cloud backup. For example, this is indicated by the <code>cloudBackupEnabled</code> value within JAMF Pro mobile devices or the registration of an AWS ARN with the AWS Backup service.",
+      "type": "boolean_t"
+    },
+    "is_billable": {
+      "caption": "Billable",
+      "description": "Indicates the hours associated with this event are billable to the client.",
       "type": "boolean_t"
     },
     "is_cleartext": {
@@ -3827,6 +4244,11 @@
       "description": "Indicates whether synchronization with an on-premises directory service is enabled. For example, Microsoft Entra Connect.",
       "type": "boolean_t"
     },
+    "is_out_of_sequence": {
+      "caption": "Out Of Sequence",
+      "description": "Indicates the checkpoint was registered outside its expected order.",
+      "type": "boolean_t"
+    },
     "is_personal": {
       "caption": "Personal Device",
       "description": "The event occurred on a personal device.",
@@ -3860,6 +4282,11 @@
     "is_renewal": {
       "caption": "Renewal",
       "description": "The indication of whether the event or object represents a renewal. See specific usage.",
+      "type": "boolean_t"
+    },
+    "is_reportable": {
+      "caption": "Reportable",
+      "description": "Indicates the incident meets a client or regulatory reporting threshold.",
       "type": "boolean_t"
     },
     "is_secure": {
@@ -4233,6 +4660,55 @@
       "caption": "Software License URL",
       "description": "The URL pointing to the license applied on package or software. This is typically a <code>LICENSE.md</code> file within a repository.",
       "type": "url_t"
+    },
+    "lifecycle": {
+      "caption": "Lifecycle",
+      "description": "The lifecycle state, normalized to the caption of the <code>lifecycle_id</code> value.",
+      "type": "string_t"
+    },
+    "lifecycle_id": {
+      "caption": "Lifecycle ID",
+      "description": "The normalized lifecycle state of the condition, separating the state transition from the event type. This mirrors the SIA DC-03 second-letter modifier and the Contact ID qualifier field.",
+      "sibling": "lifecycle",
+      "type": "integer_t",
+      "enum": {
+        "1": {
+          "caption": "New",
+          "description": "A new event condition, equivalent to Contact ID qualifier 1."
+        },
+        "2": {
+          "caption": "Restore",
+          "description": "The condition returned to normal, equivalent to Contact ID qualifier 3 and the SIA DC-03 second-letter modifier R."
+        },
+        "3": {
+          "caption": "Still Present",
+          "description": "A previously reported condition is still present, equivalent to Contact ID qualifier 6."
+        },
+        "4": {
+          "caption": "Cancel",
+          "description": "The condition was cancelled by an authorized person."
+        },
+        "5": {
+          "caption": "Trouble",
+          "description": "A fault condition affecting the point or device."
+        },
+        "6": {
+          "caption": "Trouble Restore",
+          "description": "A fault condition returned to normal."
+        },
+        "7": {
+          "caption": "Bypass",
+          "description": "The point was bypassed or shunted."
+        },
+        "8": {
+          "caption": "Unbypass",
+          "description": "The point was returned to service."
+        },
+        "9": {
+          "caption": "Test",
+          "description": "The event was generated by a test."
+        }
+      }
     },
     "likelihood": {
       "caption": "Likelihood",
@@ -4631,6 +5107,11 @@
       "description": "The geographical Longitude coordinate represented in Decimal Degrees (DD). For example: <code>-71.057083</code>.",
       "type": "float_t"
     },
+    "loss_amount": {
+      "caption": "Loss Amount",
+      "description": "The estimated financial loss associated with the incident, in the smallest unit of the reporting currency.",
+      "type": "long_t"
+    },
     "mac": {
       "caption": "MAC Address",
       "description": "The Media Access Control (MAC) address that is associated with the network interface.",
@@ -4795,6 +5276,16 @@
       "description": "If running under a process namespace (such as in a container), the process identifier within that process namespace.",
       "type": "integer_t"
     },
+    "narrative": {
+      "caption": "Narrative",
+      "description": "The free-text account of the incident recorded by the reporting person.",
+      "type": "string_t"
+    },
+    "native_type": {
+      "caption": "Native Type",
+      "description": "The event type string as emitted by the originating system, retained verbatim.",
+      "type": "string_t"
+    },
     "network_driver": {
       "caption": "Network Driver",
       "description": "The network driver used by the container. For example, bridge, overlay, host, none, etc.",
@@ -4849,6 +5340,11 @@
       "caption": "Next Run",
       "description": "The next run time. See specific usage.",
       "type": "timestamp_t"
+    },
+    "nibrs_offense_code": {
+      "caption": "NIBRS Offense Code",
+      "description": "The offense code from the National Incident-Based Reporting System, where the incident describes a criminal act.",
+      "type": "string_t"
     },
     "nist": {
       "caption": "NIST List",
@@ -5001,6 +5497,16 @@
       "description": "The primary office location associated with the user. This could be any string and isn't a specific address. For example, <code>South East Virtual</code>.",
       "type": "string_t"
     },
+    "on_scene_time": {
+      "caption": "On Scene Time",
+      "description": "The time the resource arrived at the location.",
+      "type": "timestamp_t"
+    },
+    "onvif_topic": {
+      "caption": "ONVIF Topic",
+      "description": "The ONVIF topic namespace string for this event.",
+      "type": "string_t"
+    },
     "opcode": {
       "caption": "DNS Opcode",
       "description": "The DNS opcode specifies the type of the query message.",
@@ -5109,6 +5615,11 @@
       "caption": "OS Machine UUID",
       "description": "The operating system assigned Machine ID. In Windows, this is the value stored at the registry path: <code>HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography\\MachineGuid</code>. In Linux, this is stored in the file: <code>/etc/machine-id</code>.",
       "type": "uuid_t"
+    },
+    "osdp_reply": {
+      "caption": "OSDP Reply",
+      "description": "The OSDP reply name from which this event was derived.",
+      "type": "string_t"
     },
     "osint": {
       "caption": "OSINT",
@@ -5243,6 +5754,11 @@
       "description": "The path that pertains to the event or object. See specific usage.",
       "type": "string_t"
     },
+    "patrol_tour": {
+      "caption": "Patrol Tour",
+      "description": "The patrol tour session.",
+      "type": "patrol_tour"
+    },
     "pattern_match": {
       "caption": "Pattern Match",
       "description": "A text, binary, file name, or datastore that matched against a detection rule.",
@@ -5335,6 +5851,11 @@
       "type": "string_t",
       "is_array": true
     },
+    "physical_credential": {
+      "caption": "Physical Credential",
+      "description": "The credential presented.",
+      "type": "physical_credential"
+    },
     "physical_height": {
       "caption": "Physical Height",
       "description": "The numeric physical height of display.",
@@ -5381,6 +5902,109 @@
       "caption": "Port",
       "description": "The TCP/UDP port number associated with a connection. See specific usage.",
       "type": "port_t"
+    },
+    "portal": {
+      "caption": "Portal",
+      "description": "The door, gate, turnstile, or other controlled opening.",
+      "type": "portal"
+    },
+    "portal_mode": {
+      "caption": "Portal Mode",
+      "description": "The commanded state of the portal, using the ONVIF door mode vocabulary. Expected values are Locked, Unlocked, Accessed, Blocked, LockedDown, LockedOpen, and DoubleLocked.",
+      "type": "string_t"
+    },
+    "portal_physical_state": {
+      "caption": "Portal Physical State",
+      "description": "The observed physical state of the portal, using the ONVIF vocabulary. Expected values are Open, Closed, and Fault.",
+      "type": "string_t"
+    },
+    "portal_type": {
+      "caption": "Portal Type",
+      "description": "The portal type, normalized to the caption of the <code>portal_type_id</code> value.",
+      "type": "string_t"
+    },
+    "portal_type_id": {
+      "caption": "Portal Type ID",
+      "description": "The normalized type of the controlled opening.",
+      "sibling": "portal_type",
+      "type": "integer_t",
+      "enum": {
+        "1": {
+          "caption": "Door",
+          "description": "A pedestrian door."
+        },
+        "2": {
+          "caption": "Gate",
+          "description": "A vehicle or pedestrian gate."
+        },
+        "3": {
+          "caption": "Turnstile",
+          "description": "A turnstile or speed lane."
+        },
+        "4": {
+          "caption": "Mantrap",
+          "description": "An interlocked pair of portals."
+        },
+        "5": {
+          "caption": "Barrier",
+          "description": "A vehicle barrier or bollard."
+        },
+        "6": {
+          "caption": "Elevator",
+          "description": "An elevator or floor-access control point."
+        },
+        "7": {
+          "caption": "Cage",
+          "description": "A cabinet, cage, or rack door."
+        }
+      }
+    },
+    "position_accuracy": {
+      "caption": "Position Accuracy",
+      "description": "The horizontal accuracy of the reported position, in metres.",
+      "type": "integer_t"
+    },
+    "post": {
+      "caption": "Post",
+      "description": "The guard post.",
+      "type": "post"
+    },
+    "post_type": {
+      "caption": "Post Type",
+      "description": "The post type, normalized to the caption of the <code>post_type_id</code> value.",
+      "type": "string_t"
+    },
+    "post_type_id": {
+      "caption": "Post Type ID",
+      "description": "The normalized type of guard post.",
+      "sibling": "post_type",
+      "type": "integer_t",
+      "enum": {
+        "1": {
+          "caption": "Fixed",
+          "description": "A static post at a defined location."
+        },
+        "2": {
+          "caption": "Patrol",
+          "description": "A roving post covering an area."
+        },
+        "3": {
+          "caption": "Gatehouse",
+          "description": "An access-control post at a vehicle or pedestrian entrance."
+        },
+        "4": {
+          "caption": "Console",
+          "description": "A monitoring position in an operations centre."
+        },
+        "5": {
+          "caption": "Mobile",
+          "description": "A vehicle-based post covering multiple sites."
+        },
+        "6": {
+          "caption": "Remote",
+          "description": "A post staffed from a remote operations centre."
+        }
+      }
     },
     "post_value": {
       "caption": "Post-Value",
@@ -6146,6 +6770,50 @@
       "description": "The resource type as defined by the event source.",
       "type": "string_t"
     },
+    "resource_type_id": {
+      "caption": "Resource Type ID",
+      "description": "The normalized type of response resource.",
+      "sibling": "resource_type",
+      "type": "integer_t",
+      "enum": {
+        "1": {
+          "caption": "On Site Officer",
+          "description": "An officer already posted at the site."
+        },
+        "2": {
+          "caption": "Mobile Patrol",
+          "description": "A vehicle-based officer covering multiple sites."
+        },
+        "3": {
+          "caption": "Remote Operator",
+          "description": "A human operator in a remote monitoring centre."
+        },
+        "4": {
+          "caption": "Automated Talkdown",
+          "description": "An automated voice-down over a speaker."
+        },
+        "5": {
+          "caption": "Drone",
+          "description": "An uncrewed aerial system."
+        },
+        "6": {
+          "caption": "Ground Robot",
+          "description": "An uncrewed ground vehicle."
+        },
+        "7": {
+          "caption": "Law Enforcement",
+          "description": "A public law enforcement agency."
+        },
+        "8": {
+          "caption": "Fire Or EMS",
+          "description": "A public fire or emergency medical service."
+        },
+        "9": {
+          "caption": "Client Contact",
+          "description": "A representative of the client organization."
+        }
+      }
+    },
     "resources": {
       "caption": "Resources Array",
       "description": "Describes details about resources that were affected by the activity/event.",
@@ -6175,6 +6843,12 @@
       "description": "The Additional section of the DNS response message sent by the server, containing supplementary resource records and an optional TSIG record. A DNS message has at most one TSIG record; for a transaction with both query and response, the query TSIG is in <code>query_additional.tsig</code> and the response TSIG is in <code>response_additional.tsig</code>.",
       "type": "dns_section"
     },
+    "response_resource": {
+      "caption": "Response Resource",
+      "description": "The resource assigned to respond.",
+      "type": "response_resource",
+      "is_array": true
+    },
     "response_text": {
       "caption": "Response Text",
       "description": "The text of the model's response generated for this message. For agent-mediated operations, this is the content returned by the assistant, tool, or agent.",
@@ -6184,6 +6858,55 @@
       "caption": "Response Time",
       "description": "The Domain Name System (DNS) response time.",
       "type": "timestamp_t"
+    },
+    "response_type": {
+      "caption": "Response Type",
+      "description": "The response type, normalized to the caption of the <code>response_type_id</code> value.",
+      "type": "string_t"
+    },
+    "response_type_id": {
+      "caption": "Response Type ID",
+      "description": "The recommended responsive action, using the dimension defined by the Common Alerting Protocol.",
+      "sibling": "response_type",
+      "type": "integer_t",
+      "enum": {
+        "1": {
+          "caption": "Shelter",
+          "description": "Take shelter in place."
+        },
+        "2": {
+          "caption": "Evacuate",
+          "description": "Relocate as instructed."
+        },
+        "3": {
+          "caption": "Prepare",
+          "description": "Make preparations."
+        },
+        "4": {
+          "caption": "Execute",
+          "description": "Execute a pre-planned activity."
+        },
+        "5": {
+          "caption": "Avoid",
+          "description": "Avoid the subject area."
+        },
+        "6": {
+          "caption": "Monitor",
+          "description": "Attend to information sources."
+        },
+        "7": {
+          "caption": "Assess",
+          "description": "Evaluate the information in this event."
+        },
+        "8": {
+          "caption": "All Clear",
+          "description": "The subject event no longer poses a threat."
+        },
+        "9": {
+          "caption": "None",
+          "description": "No action recommended."
+        }
+      }
     },
     "return_path": {
       "caption": "Return Path",
@@ -6375,6 +7098,16 @@
       "caption": "Schedule UID",
       "description": "The unique identifier of the schedule associated with a scan job.",
       "type": "string_t"
+    },
+    "scheduled_end_time": {
+      "caption": "Scheduled End Time",
+      "description": "The scheduled end time of the shift or tour.",
+      "type": "timestamp_t"
+    },
+    "scheduled_start_time": {
+      "caption": "Scheduled Start Time",
+      "description": "The scheduled start time of the shift or tour.",
+      "type": "timestamp_t"
     },
     "scheme": {
       "caption": "Scheme",
@@ -6652,6 +7385,11 @@
         }
       }
     },
+    "sensor_type": {
+      "caption": "Sensor Type",
+      "description": "The detection technology of the monitored point, for example contact, motion, glassbreak, seismic, beam, fence, radar, or lidar.",
+      "type": "string_t"
+    },
     "sequence": {
       "caption": "Sequence Number",
       "description": "Sequence number of the event. The sequence number is a value available in some events, to make the exact ordering of events unambiguous, regardless of the event time precision.",
@@ -6795,6 +7533,16 @@
       "caption": "Short Description",
       "description": "The short description that pertains to the object or event. See specific usage.",
       "type": "string_t"
+    },
+    "sia_dc03_code": {
+      "caption": "SIA DC-03 Code",
+      "description": "The two-character event code defined by the SIA DC-03 format standard.",
+      "type": "string_t"
+    },
+    "signal_code": {
+      "caption": "Signal Code",
+      "description": "The equivalent identifiers for this event in established physical security vocabularies.",
+      "type": "signal_code"
     },
     "signature": {
       "caption": "Digital Signature",
@@ -7419,6 +8167,16 @@
       "description": "The normalized event occurrence time. See specific usage.",
       "type": "timestamp_t"
     },
+    "time_to_resolution": {
+      "caption": "Time To Resolution",
+      "description": "The elapsed time in milliseconds from signal receipt to the event being closed.",
+      "type": "integer_t"
+    },
+    "time_to_triage": {
+      "caption": "Time To Triage",
+      "description": "The elapsed time in milliseconds from signal receipt to a disposition being assigned.",
+      "type": "integer_t"
+    },
     "timespan": {
       "caption": "Time Span",
       "description": "The Time Span object represents different time period durations. If a timespan is fractional, i.e. crosses one period, e.g. a week and 3 days, more than one may be populated since each member is of integral type. In that case <code>type_id</code> if present should be set to <code>Other.</code><P>A timespan may also be defined by its time interval boundaries, <code>start_time</code> and <code>end_time</code>.",
@@ -7758,6 +8516,35 @@
       "description": "The timestamp at which an entity was uploaded. See specific usage.",
       "type": "timestamp_t"
     },
+    "urgency": {
+      "caption": "Urgency",
+      "description": "The urgency, normalized to the caption of the <code>urgency_id</code> value.",
+      "type": "string_t"
+    },
+    "urgency_id": {
+      "caption": "Urgency ID",
+      "description": "The time available to take responsive action, using the dimension defined by the Common Alerting Protocol.",
+      "sibling": "urgency",
+      "type": "integer_t",
+      "enum": {
+        "1": {
+          "caption": "Immediate",
+          "description": "Responsive action should be taken immediately."
+        },
+        "2": {
+          "caption": "Expected",
+          "description": "Responsive action should be taken soon."
+        },
+        "3": {
+          "caption": "Future",
+          "description": "Responsive action should be taken in the near future."
+        },
+        "4": {
+          "caption": "Past",
+          "description": "Responsive action is no longer required."
+        }
+      }
+    },
     "uri": {
       "caption": "URI",
       "description": "A Uniform Resource Identifier (URI) is a string of characters that identifies a resource on the Internet. URIs can identify physical resources, like webpages and documents. See specific usage.",
@@ -7819,6 +8606,39 @@
       "description": "The universally unique identifier. See specific usage.",
       "type": "uuid_t"
     },
+    "validation_level": {
+      "caption": "Validation Level",
+      "description": "The validation level, normalized to the caption of the <code>validation_level_id</code> value.",
+      "type": "string_t"
+    },
+    "validation_level_id": {
+      "caption": "Validation Level ID",
+      "description": "The alarm validation score defined by ANSI/TMA AVS-01.",
+      "sibling": "validation_level",
+      "type": "integer_t",
+      "enum": {
+        "1": {
+          "caption": "Level 0",
+          "description": "No call for service. Response is unwarranted, as defined by ANSI/TMA AVS-01."
+        },
+        "2": {
+          "caption": "Level 1",
+          "description": "A call for service with no other information. The default level absent contributing factors."
+        },
+        "3": {
+          "caption": "Level 2",
+          "description": "A call for service with proof of, or high probability of, a person present at the site."
+        },
+        "4": {
+          "caption": "Level 3",
+          "description": "A call for service with a person present and an apparent threat to property."
+        },
+        "5": {
+          "caption": "Level 4",
+          "description": "A call for service with a person present and an apparent threat to life."
+        }
+      }
+    },
     "value": {
       "caption": "Value",
       "description": "The value associated to an attribute. See specific usage.",
@@ -7829,6 +8649,11 @@
       "description": "An array of values associated to an attribute. See specific usage.",
       "type": "string_t",
       "is_array": true
+    },
+    "variance": {
+      "caption": "Variance",
+      "description": "The signed difference in milliseconds between the scheduled and actual time. A positive value indicates the actual time was later than scheduled.",
+      "type": "integer_t"
     },
     "vector_string": {
       "caption": "Vector String",
@@ -7909,6 +8734,55 @@
         "99": {
           "caption": "Other",
           "description": "The type is not mapped. See the <code>type</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
+    "verification_method": {
+      "caption": "Verification Method",
+      "description": "The verification method, normalized to the caption of the <code>verification_method_id</code> value.",
+      "type": "string_t"
+    },
+    "verification_method_id": {
+      "caption": "Verification Method ID",
+      "description": "The method used to verify or confirm the condition, drawing on ANSI/TMA CS-V-01.",
+      "sibling": "verification_method",
+      "type": "integer_t",
+      "enum": {
+        "1": {
+          "caption": "None",
+          "description": "No verification was attempted."
+        },
+        "2": {
+          "caption": "Phone Confirmation",
+          "description": "A single confirmation call was placed."
+        },
+        "3": {
+          "caption": "Enhanced Confirmation",
+          "description": "Two or more investigative calls were placed, as defined by ANSI/TMA CS-V-01."
+        },
+        "4": {
+          "caption": "Two Way Audio",
+          "description": "An event-driven hands-free audio session was used."
+        },
+        "5": {
+          "caption": "Listen In",
+          "description": "A one-way audio session was used."
+        },
+        "6": {
+          "caption": "Video",
+          "description": "Recorded or live video was reviewed by a human operator."
+        },
+        "7": {
+          "caption": "Analytics",
+          "description": "An automated analytic produced the verification determination."
+        },
+        "8": {
+          "caption": "Eyewitness",
+          "description": "A person at the site confirmed the condition."
+        },
+        "9": {
+          "caption": "On Site Check",
+          "description": "A responder physically checked the location."
         }
       }
     },

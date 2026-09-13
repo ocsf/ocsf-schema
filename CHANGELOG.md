@@ -56,6 +56,9 @@ Thankyou! -->
   1. Added `labels` to the `node` object for grouping nodes into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
   1. Added `labels` to the `edge` object for grouping edges into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
 
+### Misc
+1. New Extension registration for Yandex Cloud [#1759](https://github.com/ocsf/ocsf-schema/pull/1759).
+
 ## [v1.9.0] - Aug 3rd, 2026
 
 ### Added

@@ -6,6 +6,7 @@ The purpose of this file is to keep track of and avoid collisions in Extension `
 
 | Caption     | Name     | UID | Notes | Repository |
 |-------------|----------|-----|-------|------------|
+| Yandex Cloud | ycloud  | **986** | The Yandex Cloud schema extension | |
 | DefenXee    | defenxee | **987** | The DefenXee vendor extension| | 
 | Trellix     | trellix  | **988** | The Trellix schema extension | |
 | Synqly      | synqly   | **989** | The Synqly schema extension | |

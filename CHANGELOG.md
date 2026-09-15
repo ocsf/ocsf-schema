@@ -48,8 +48,8 @@ Thankyou! -->
   1. Added `likelihood` as a `string_t`, normalized to the caption of `likelihood_id`. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
   1. Added `likelihood_id` as an `integer_t` enum with values Unknown (0), Very Low (1), Low (2), Moderate (3), High (4), Very High (5), Other (99). [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
   1. Added `likelihood_score` as an `integer_t`, complementing `confidence_score`, `impact_score`, and `risk_score`. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
-  1. Added `ai_stop_reason` as a `string_t`, normalized to the caption of `ai_stop_reason_id`. [#1704](https://github.com/ocsf/ocsf-schema/pull/1704)
-  1. Added `ai_stop_reason_id` as an `integer_t` enum for the reason a model completion ended, with values Unknown (0), End of Turn (1), Token Limit (2), Tool Use (3), Session Stop (4), Content Filter (5), Other (99). [#1704](https://github.com/ocsf/ocsf-schema/pull/1704)
+* #### Objects
+  1. Added the `ai_status` object for per-operation outcome scalars contributed by the `ai_operation` profile, seeded with `stop_reason` / `stop_reason_id` (enum: Unknown (0), End of Turn (1), Token Limit (2), Tool Use (3), Session Stop (4), Content Filter (5), Other (99)) plus `permission_result_id`, `compaction_reason_id`, and `subagent_stop_reason_id` placeholders whose taxonomies are still to be defined. [#1704](https://github.com/ocsf/ocsf-schema/pull/1704)
 
 ### Improved
 * #### Event Classes
@@ -58,7 +58,7 @@ Thankyou! -->
   1. Added `labels` to the `node` object for grouping nodes into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
   1. Added `labels` to the `edge` object for grouping edges into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
 * #### Profiles
-  1. Added `ai_stop_reason` (optional) and `ai_stop_reason_id` (recommended) to the `ai_operation` profile in the `context` group, for the reason a model completion ended. [#1704](https://github.com/ocsf/ocsf-schema/pull/1704)
+  1. Added `ai_status` (optional) to the `ai_operation` profile in the `context` group, grouping per-operation outcome scalars (stop reason first; permission, compaction, and sub-agent taxonomies to follow) so they do not proliferate at the event root. [#1704](https://github.com/ocsf/ocsf-schema/pull/1704)
 
 ## [v1.9.0] - Aug 3rd, 2026
 

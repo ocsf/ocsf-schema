@@ -1,9 +1,49 @@
 {
   "caption": "AI Status",
-  "description": "Container for agent-related scalar status attributes contributed by the <code>ai_operation</code> profile. Holds per-operation outcomes reported by the agent runtime — e.g. permission decisions, context-compaction reasons, sub-agent stop reasons — so they do not proliferate as discrete attributes at the event root. Attributes are added here as their taxonomies are defined; the high-frequency <code>ai_stop_reason</code> / <code>ai_stop_reason_id</code> pair remains at the profile root.",
+  "description": "Container for per-operation outcome scalars contributed by the <code>ai_operation</code> profile. Holds outcomes reported by the model or agent runtime — e.g. why a completion stopped, permission decisions, context-compaction reasons, sub-agent stop reasons — so they do not proliferate as discrete attributes at the event root. Attributes are added here as their taxonomies are defined.",
   "extends": "object",
   "name": "ai_status",
   "attributes": {
+    "stop_reason": {
+      "caption": "Stop Reason",
+      "description": "The reason the model completion ended, as reported by the event source. Normalized to the caption of the <code>stop_reason_id</code> value; when the value is 'Other', this carries the event source's native label (e.g. <code>end_turn</code>, <code>max_tokens</code>).",
+      "requirement": "optional"
+    },
+    "stop_reason_id": {
+      "caption": "Stop Reason ID",
+      "description": "The normalized reason the model completion ended. Producers map their runtime's native value into this set. Populate on completion events; when the value is 'Other', set <code>stop_reason</code> to the event source's native label. Because completion behavior is bound to the configuration that produced it, a shift in this attribute's distribution is more meaningful when weighed against that configuration: <code>ai_model.version</code> for direct model invocations, and <code>ai_agent.version</code>, <code>ai_agent.charter</code>, and <code>ai_agent.instance_uid</code> for agent-mediated operations.",
+      "requirement": "recommended",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The completion ended without the producer being able to determine why, so the state of the operation at termination is not established."
+        },
+        "1": {
+          "caption": "End of Turn",
+          "description": "The model reached the end of its turn: it completed its response naturally or emitted a configured stop sequence, and is not waiting on anything further."
+        },
+        "2": {
+          "caption": "Token Limit",
+          "description": "The completion was truncated by a token or length limit before the model finished, so the response is incomplete."
+        },
+        "3": {
+          "caption": "Tool Use",
+          "description": "The completion paused to invoke a tool. The turn is not finished; the model expects the tool result and will continue."
+        },
+        "4": {
+          "caption": "Session Stop",
+          "description": "The completion ended because the session or connection carrying it terminated - for example the caller cancelled, the client disconnected, or the transport closed - rather than because the model reached a stopping point. The session state at termination is therefore known, which distinguishes this from <code>Unknown</code> and lets a consumer decide whether the operation needs investigation or can simply be reclaimed."
+        },
+        "5": {
+          "caption": "Content Filter",
+          "description": "The completion was stopped by a safety, policy, or content moderation mechanism rather than by the model reaching a stopping point or by the caller. This includes a refusal raised by a safety classifier and a guardrail intervening on the request or the response."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The stop reason is not mapped. See the <code>stop_reason</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
     "permission_result_id": {
       "caption": "Permission Result ID",
       "description": "The normalized outcome of the agent runtime's permission check for this operation, as reported by the runtime. Normalized taxonomy to be defined.",

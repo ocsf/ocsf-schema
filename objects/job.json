@@ -4,6 +4,14 @@
   "extends": "object",
   "name": "job",
   "attributes": {
+    "bytes_processed": {
+      "description": "The number of bytes the job read or examined while performing its work.",
+      "requirement": "optional"
+    },
+    "bytes_written": {
+      "description": "The number of bytes the job committed to the destination, after any compression or deduplication was applied.",
+      "requirement": "optional"
+    },
     "cmd_line": {
       "description": "The job command line.",
       "requirement": "recommended",
@@ -61,6 +69,22 @@
         ]
       }
     },
+    "progress_current": {
+      "description": "The units of work the job has completed so far, counted in <code>progress_unit</code>.",
+      "requirement": "optional"
+    },
+    "progress_total": {
+      "description": "The total units of work the job is expected to perform, counted in <code>progress_unit</code>.",
+      "requirement": "optional"
+    },
+    "progress_unit": {
+      "description": "The unit that the job's <code>progress_current</code> and <code>progress_total</code> are counted in. For example: <code>bytes</code>, <code>files</code> or <code>items</code>.",
+      "requirement": "optional"
+    },
+    "queue_name": {
+      "description": "The name of the queue that the job was dispatched to.",
+      "requirement": "optional"
+    },
     "run_state": {
       "description": "The run state of the job.",
       "requirement": "optional"
@@ -91,6 +115,10 @@
           "caption": "Other"
         }
       }
+    },
+    "throughput": {
+      "description": "The rate at which the job processed data, in bytes per second.",
+      "requirement": "optional"
     },
     "type": {
       "description": "The job type, normalized to the caption of the <code>type_id</code> value. In the case of 'Other', it is defined by the event source.",

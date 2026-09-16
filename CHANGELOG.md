@@ -44,10 +44,13 @@ Thankyou! -->
 ## [Unreleased]
 
 ### Added
+* #### Objects
+  1. Added the `wifi` object describing IEEE 802.11 network identity, radio and security attributes. [#1721](https://github.com/ocsf/ocsf-schema/pull/1721)
 * #### Dictionary Attributes
   1. Added `likelihood` as a `string_t`, normalized to the caption of `likelihood_id`. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
   1. Added `likelihood_id` as an `integer_t` enum with values Unknown (0), Very Low (1), Low (2), Moderate (3), High (4), Very High (5), Other (99). [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
   1. Added `likelihood_score` as an `integer_t`, complementing `confidence_score`, `impact_score`, and `risk_score`. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
+  1. Added the `wifi` attribute referencing the `wifi` object. [#1721](https://github.com/ocsf/ocsf-schema/pull/1721)
 
 ### Improved
 * #### Event Classes
@@ -55,6 +58,7 @@ Thankyou! -->
 * #### Objects
   1. Added `labels` to the `node` object for grouping nodes into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
   1. Added `labels` to the `edge` object for grouping edges into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
+  1. Added `wifi` to the `network_endpoint` and `device` objects. Resolves #1463. [#1721](https://github.com/ocsf/ocsf-schema/pull/1721)
 
 ## [v1.9.0] - Aug 3rd, 2026
 

@@ -50,7 +50,7 @@ Thankyou! -->
   1. Added `likelihood_score` as an `integer_t`, complementing `confidence_score`, `impact_score`, and `risk_score`. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
 
 * #### Extensions
-  1. New Extension registration for Agent Containment (see #1760).
+  1. New Extension registration for Agent Containment [#1761](https://github.com/ocsf/ocsf-schema/pull/1761).
 
 ### Improved
 * #### Event Classes

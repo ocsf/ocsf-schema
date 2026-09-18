@@ -68,7 +68,12 @@
       "requirement": "optional"
     },
     "manager": {
-      "requirement": "optional"
+      "requirement": "optional",
+      "@recursive": {
+        "message": "Populate <code>manager</code> once per event. The referenced user does not carry an <code>ldap_person</code> with a manager of its own.",
+        "limit": 1,
+        "path": ["user.ldap_person"]
+      }
     },
     "modified_time": {
       "description": "The timestamp when the user entry was last modified.",

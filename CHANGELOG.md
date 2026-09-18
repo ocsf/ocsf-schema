@@ -78,6 +78,9 @@ Thankyou! -->
 
 ### Misc
 
+### Misc
+1. New Extension registration for Yandex Cloud [#1759](https://github.com/ocsf/ocsf-schema/pull/1759).
+
 ## [v1.9.0] - Aug 3rd, 2026
 
 ### Added

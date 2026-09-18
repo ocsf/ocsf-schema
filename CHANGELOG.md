@@ -42,24 +42,6 @@ Thankyou! -->
 -->
 
 ## [Unreleased]
-### Added
-* #### Categories
-* #### Event Classes
-* #### Profiles
-* #### Objects
-* #### Observables
-* #### Platform Extensions
-* #### Dictionary Attributes
-
-### Improved
-* #### Categories
-* #### Event Classes
-* #### Profiles
-* #### Objects
-  1. Added `created_time`, `first_seen_time`, `last_seen_time`, `modified_time`, `src_url`, and `criticality_id` attributes to the `application` object. [#1683](https://github.com/ocsf/ocsf-schema/pull/1683)
-* #### Observables
-* #### Platform Extensions
-* #### Dictionary Attributes
 
 ### Added
 * #### Dictionary Attributes
@@ -73,6 +55,7 @@ Thankyou! -->
 * #### Objects
   1. Added `labels` to the `node` object for grouping nodes into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
   1. Added `labels` to the `edge` object for grouping edges into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
+  1. Added `created_time`, `first_seen_time`, `last_seen_time`, `modified_time`, `src_url`, and `criticality_id` attributes to the `application` object. [#1683](https://github.com/ocsf/ocsf-schema/pull/1683)
 
 ## [v1.9.0] - Aug 3rd, 2026
 

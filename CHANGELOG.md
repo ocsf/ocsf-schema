@@ -65,7 +65,7 @@ Thankyou! -->
   1. Added `is_declared_incident` to incident.json. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
 * #### Objects
   1. Added `labels` to the `node` object for grouping nodes into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
-  1. Marked the schema's four recursion points with `@recursive`, so tools walking the object graph know where to stop expanding: `process.parent_process`, `analytic.related_analytics`, `network_proxy.proxy_endpoint`, and the `ldap_person.manager` / `user.ldap_person` pair.
+  1. Marked the schema's four recursion points with `@recursive`, so tools walking the object graph know where to stop expanding: `process.parent_process`, `analytic.related_analytics`, `network_proxy.proxy_endpoint`, and the `ldap_person.manager` / `user.ldap_person` pair. [#1763](https://github.com/ocsf/ocsf-schema/pull/1763)
 * #### Observables
 * #### Platform Extensions
 * #### Objects

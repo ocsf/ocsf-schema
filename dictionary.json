@@ -242,6 +242,11 @@
       "sibling": "ai_role",
       "type": "integer_t"
     },
+    "ai_status": {
+      "caption": "AI Status",
+      "description": "The AI Status object contains per-operation outcome scalars reported by a model or agent runtime.",
+      "type": "ai_status"
+    },
     "aircraft": {
       "caption": "Aircraft",
       "description": "The Aircraft object represents any aircraft or otherwise airborne asset such as an unmanned system, airplane, balloon, spacecraft, or otherwise. The Aircraft object is intended to normalized data captured or otherwise logged from active radar, passive radar, multi-spectral systems, or the Automatic Dependant Broadcast - Surveillance (ADS-B), and/or Mode S systems.",
@@ -1450,6 +1455,11 @@
           "url": "https://github.com/corelight/community-id-spec"
         }
       ]
+    },
+    "compaction_reason_id": {
+      "caption": "Compaction Reason ID",
+      "description": "The normalized reason context was compacted during an operation.",
+      "type": "integer_t"
     },
     "company_name": {
       "caption": "Company Name",
@@ -5129,6 +5139,11 @@
       "type": "permission_analysis_result",
       "is_array": true
     },
+    "permission_result_id": {
+      "caption": "Permission Result ID",
+      "description": "The normalized outcome of a permission check.",
+      "type": "integer_t"
+    },
     "phase": {
       "caption": "Kill Chain Phase",
       "description": "The cyber kill chain phase.",
@@ -6937,6 +6952,17 @@
       "description": "The storage class of the entity. See specific usage.",
       "type": "string_t"
     },
+    "stop_reason": {
+      "caption": "Stop Reason",
+      "description": "The reason an operation stopped, normalized to the caption of the <code>stop_reason_id</code> value. In the case of 'Other', it is defined by the event source.",
+      "type": "string_t"
+    },
+    "stop_reason_id": {
+      "caption": "Stop Reason ID",
+      "description": "The normalized reason an operation stopped.",
+      "sibling": "stop_reason",
+      "type": "integer_t"
+    },
     "stratum": {
       "caption": "Stratum",
       "description": "The stratum level of the NTP server's time source, normalized to the caption of the stratum_id value.",
@@ -6998,6 +7024,11 @@
           "url": "https://atlas.mitre.org/matrices/ATLAS"
         }
       ]
+    },
+    "subagent_stop_reason_id": {
+      "caption": "Sub-agent Stop Reason ID",
+      "description": "The normalized reason a sub-agent stopped.",
+      "type": "integer_t"
     },
     "subdomain": {
       "caption": "Subdomain",

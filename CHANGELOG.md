@@ -44,17 +44,41 @@ Thankyou! -->
 ## [Unreleased]
 
 ### Added
+* #### Categories
+* #### Event Classes
+* #### Profiles
+* #### Objects
+* #### Observables
+* #### Platform Extensions
 * #### Dictionary Attributes
   1. Added `likelihood` as a `string_t`, normalized to the caption of `likelihood_id`. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
   1. Added `likelihood_id` as an `integer_t` enum with values Unknown (0), Very Low (1), Low (2), Moderate (3), High (4), Very High (5), Other (99). [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
   1. Added `likelihood_score` as an `integer_t`, complementing `confidence_score`, `impact_score`, and `risk_score`. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
 
 ### Improved
+* #### Categories
 * #### Event Classes
   1. Added `likelihood`, `likelihood_id`, and `likelihood_score` as optional attributes in the `context` group on `Detection Finding` (class 2004). [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
+* #### Profiles
 * #### Objects
   1. Added `labels` to the `node` object for grouping nodes into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
   1. Added `labels` to the `edge` object for grouping edges into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
+  1. Added `query_info` to the `finding_info` object  for the search behind the `related_events` in the finding. [#1744](https://github.com/ocsf/ocsf-schema/pull/1744)
+  1. Added `finding_info` to the `related_events` object for cases where the related event is a finding. [#1744](https://github.com/ocsf/ocsf-schema/pull/1744)
+  1. Added `raw_data` to the `related_events` object to optionally carry the full event as a string. [#1744](https://github.com/ocsf/ocsf-schema/pull/1744)
+  1. Added `risk_details`, `risk_level_id`, `risk_level`, `risk_score` to `related_events` to carry any risk values when the related event is a finding. [#1744](https://github.com/ocsf/ocsf-schema/pull/1744)
+  1. Added `type_id`, `type` to `related_events` to distinguish activities, alerts, or findings as the type of the related event. [#1744](https://github.com/ocsf/ocsf-schema/pull/1744)
+* #### Observables
+* #### Platform Extensions
+* #### Dictionary Attributes
+
+### Bugfixes
+
+### Deprecated
+
+### Breaking changes
+
+### Misc
 
 ## [v1.9.0] - Aug 3rd, 2026
 

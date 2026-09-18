@@ -77,6 +77,7 @@ Thankyou! -->
 ### Breaking changes
 
 ### Misc
+  1. Added the `@recursive` attribute annotation to the metaschema, letting an attribute declare that expanding it reenters a type already on the path, with an optional nesting `limit` and, for indirect recursion, the `path` that closes the cycle. No schema definitions are annotated yet. [#1004](https://github.com/ocsf/ocsf-schema/issues/1004)
 
 ## [v1.9.0] - Aug 3rd, 2026
 

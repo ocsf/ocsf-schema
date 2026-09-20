@@ -44,21 +44,42 @@ Thankyou! -->
 ## [Unreleased]
 
 ### Added
+* #### Categories
+* #### Event Classes
+* #### Profiles
+* #### Objects
+* #### Observables
+* #### Platform Extensions
 * #### Dictionary Attributes
   1. Added `likelihood` as a `string_t`, normalized to the caption of `likelihood_id`. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
   1. Added `likelihood_id` as an `integer_t` enum with values Unknown (0), Very Low (1), Low (2), Moderate (3), High (4), Very High (5), Other (99). [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
   1. Added `likelihood_score` as an `integer_t`, complementing `confidence_score`, `impact_score`, and `risk_score`. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
+  1. Added `is_declared_incident` and `resolved_time`. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
 
 ### Improved
+* #### Categories
 * #### Event Classes
   1. Added `likelihood`, `likelihood_id`, and `likelihood_score` as optional attributes in the `context` group on `Detection Finding` (class 2004). [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
+  1. Added `is_declared_incident` to finding.json and incident_finding.json. Added `resolved_time` to `finding.json` and `incident_finding.json`. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
+* #### Profiles
+  1. Added `is_declared_incident` to incident.json. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
 * #### Objects
   1. Added `labels` to the `node` object for grouping nodes into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
-  1. Added `labels` to the `edge` object for grouping edges into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
+* #### Observables
+* #### Platform Extensions
+* #### Objects
 * #### Dictionary Attributes
   1. Added `Proximity Card (12)`, `Smart Card (13)`, and `Mobile Credential (14)` enum values to `factor_type_id`, so physical access credentials presented at a reader can be carried as authentication factors. [#1757](https://github.com/ocsf/ocsf-schema/pull/1757)
   1. Added `Confirmed (28)`, `Unfounded (29)`, `Referred (30)`, and `Cancelled (31)` enum values to `disposition_id` for verdict-style outcomes of alarms and physical security dispatches. [#1757](https://github.com/ocsf/ocsf-schema/pull/1757)
   1. Added `Physical (14)` enum value to `logon_type_id` for an entry made at a door, gate, or turnstile reader. [#1757](https://github.com/ocsf/ocsf-schema/pull/1757)
+
+### Bugfixes
+
+### Deprecated
+
+### Breaking changes
+
+### Misc
 
 ## [v1.9.0] - Aug 3rd, 2026
 

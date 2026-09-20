@@ -63,6 +63,9 @@ Thankyou! -->
   1. Added `log_facility` and `log_facility_id` attributes. [#1720](https://github.com/ocsf/ocsf-schema/pull/1720)
   1. Added `icmp_type`, `icmp_code` and `icmp_uid` attributes. [#1719](https://github.com/ocsf/ocsf-schema/pull/1719)
   1. Added `ai_status`, `permission_result`, `permission_result_id`, `stop_reason`, and `stop_reason_id` attributes. [#1704](https://github.com/ocsf/ocsf-schema/pull/1704)
+  1. Added `Proximity Card (12)`, `Smart Card (13)`, and `Mobile Credential (14)` enum values to `factor_type_id`, so physical access credentials presented at a reader can be carried as authentication factors. [#1757](https://github.com/ocsf/ocsf-schema/pull/1757)
+  1. Added `Confirmed (28)`, `Unfounded (29)`, `Referred (30)`, `Cancelled (31)`, and `Unsubstantiated (32)` enum values to `disposition_id` for verdict-style outcomes of alarms and physical security dispatches. [#1757](https://github.com/ocsf/ocsf-schema/pull/1757)
+  1. Added `Physical (14)` enum value to `logon_type_id` for an entry made at a door, gate, or turnstile reader. [#1757](https://github.com/ocsf/ocsf-schema/pull/1757)
 
 ### Improved
 * #### Categories
@@ -109,12 +112,6 @@ Thankyou! -->
   1. Added the `@recursive` attribute annotation to the metaschema, letting an attribute declare that expanding it reenters a type already on the path, with an optional nesting `limit` and, for indirect recursion, the `path` that closes the cycle. No schema definitions are annotated yet. [#1762](https://github.com/ocsf/ocsf-schema/pull/1762)
   1. New Extension registration for Yandex Cloud. [#1759](https://github.com/ocsf/ocsf-schema/pull/1759)
   1. New Extension registration for WithSecure. [#1773](https://github.com/ocsf/ocsf-schema/pull/1773)
-  1. Added `Proximity Card (12)`, `Smart Card (13)`, and `Mobile Credential (14)` enum values to `factor_type_id`, so physical access credentials presented at a reader can be carried as authentication factors.
-  1. Added `Confirmed (28)`, `Unfounded (29)`, `Referred (30)`, and `Cancelled (31)` enum values to `disposition_id` for verdict-style outcomes of alarms and physical security dispatches.
-  1. Added `Physical (14)` enum value to `logon_type_id` for an entry made at a door, gate, or turnstile reader.
-  1. Added `Proximity Card (12)`, `Smart Card (13)`, and `Mobile Credential (14)` enum values to `factor_type_id`, so physical access credentials presented at a reader can be carried as authentication factors. [#1757](https://github.com/ocsf/ocsf-schema/pull/1757)
-  1. Added `Confirmed (28)`, `Unfounded (29)`, `Referred (30)`, and `Cancelled (31)` enum values to `disposition_id` for verdict-style outcomes of alarms and physical security dispatches. [#1757](https://github.com/ocsf/ocsf-schema/pull/1757)
-  1. Added `Physical (14)` enum value to `logon_type_id` for an entry made at a door, gate, or turnstile reader. [#1757](https://github.com/ocsf/ocsf-schema/pull/1757)
 
 ## [v1.9.0] - Aug 3rd, 2026
 

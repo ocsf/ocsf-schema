@@ -6,7 +6,7 @@ The purpose of this file is to keep track of and avoid collisions in Extension `
 
 | Caption     | Name     | UID | Notes | Repository |
 |-------------|----------|-----|-------|------------|
-| Agent Containment | agent_containment | **986** | The Agent Containment extension: accounting decisions and containment reasons for agentic systems | |
+| Agent Containment | agent_containment | **985** | The Agent Containment extension: accounting decisions and containment reasons for agentic systems | |
 | DefenXee    | defenxee | **987** | The DefenXee vendor extension| | 
 | Trellix     | trellix  | **988** | The Trellix schema extension | |
 | Synqly      | synqly   | **989** | The Synqly schema extension | |

@@ -44,19 +44,41 @@ Thankyou! -->
 ## [Unreleased]
 
 ### Added
+* #### Categories
+* #### Event Classes
+* #### Profiles
+* #### Objects
+* #### Observables
+* #### Platform Extensions
 * #### Dictionary Attributes
   1. Added `likelihood` as a `string_t`, normalized to the caption of `likelihood_id`. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
   1. Added `likelihood_id` as an `integer_t` enum with values Unknown (0), Very Low (1), Low (2), Moderate (3), High (4), Very High (5), Other (99). [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
   1. Added `likelihood_score` as an `integer_t`, complementing `confidence_score`, `impact_score`, and `risk_score`. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
-  1. Added `progress_current`, `progress_total`, `progress_unit`, `bytes_processed`, `bytes_written`, `throughput` and `queue_name` attributes. [#1722](https://github.com/ocsf/ocsf-schema/pull/1722)
+  1. Added `is_declared_incident` and `resolved_time`. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
+  1. Added `progress_current`, `progress_total`, `progress_unit`, `progress_unit_id`, `bytes_processed`, `bytes_written`, `throughput` and `queue_name` attributes. [#1722](https://github.com/ocsf/ocsf-schema/pull/1722)
 
 ### Improved
+* #### Categories
 * #### Event Classes
   1. Added `likelihood`, `likelihood_id`, and `likelihood_score` as optional attributes in the `context` group on `Detection Finding` (class 2004). [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
+  1. Added `is_declared_incident` to finding.json and incident_finding.json. Added `resolved_time` to `finding.json` and `incident_finding.json`. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
+* #### Profiles
+  1. Added `is_declared_incident` to incident.json. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
 * #### Objects
   1. Added `labels` to the `node` object for grouping nodes into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
-  1. Added `labels` to the `edge` object for grouping edges into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
-  1. Added `progress_current`, `progress_total`, `progress_unit`, `bytes_processed`, `bytes_written`, `throughput` and `queue_name` to the `job` object so a running job can report its progress and throughput. [#1722](https://github.com/ocsf/ocsf-schema/pull/1722)
+  1. Added `progress_current`, `progress_total`, `progress_unit`, `progress_unit_id`, `bytes_processed`, `bytes_written`, `throughput` and `queue_name` to the `job` object so a running job can report its progress and throughput. [#1722](https://github.com/ocsf/ocsf-schema/pull/1722)
+* #### Observables
+* #### Platform Extensions
+* #### Objects
+* #### Dictionary Attributes
+
+### Bugfixes
+
+### Deprecated
+
+### Breaking changes
+
+### Misc
 
 ## [v1.9.0] - Aug 3rd, 2026
 

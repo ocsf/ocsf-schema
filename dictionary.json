@@ -1550,7 +1550,7 @@
     },
     "confidence_score": {
       "caption": "Confidence Score",
-      "description": "The confidence score as reported by the event source.",
+      "description": "The confidence score. See specific usage.",
       "type": "integer_t"
     },
     "confidentiality": {
@@ -3732,6 +3732,11 @@
       "description": "The event occurred on a compliant device.",
       "type": "boolean_t"
     },
+    "is_declared_incident": {
+      "caption": "Declared Incident",
+      "description": "Indicates that the Finding (or Incident Finding) is declared to be an incident, subject to the meaning of incident to an organization.",
+      "type": "boolean_t"
+    },
     "is_default": {
       "caption": "Default Value",
       "description": "The indication of whether the value is from a default value name. For example, the value name could be missing.",
@@ -5427,8 +5432,40 @@
     },
     "progress_unit": {
       "caption": "Progress Unit",
-      "description": "The unit that <code>progress_current</code> and <code>progress_total</code> are counted in. For example: <code>bytes</code>, <code>files</code> or <code>items</code>.",
+      "description": "The unit that <code>progress_current</code> and <code>progress_total</code> are counted in, normalized to the caption of the <code>progress_unit_id</code> value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
+    },
+    "progress_unit_id": {
+      "caption": "Progress Unit ID",
+      "description": "The normalized identifier of the unit that <code>progress_current</code> and <code>progress_total</code> are counted in.",
+      "sibling": "progress_unit",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The unit is unknown."
+        },
+        "1": {
+          "caption": "Bytes",
+          "description": "Bytes of data."
+        },
+        "2": {
+          "caption": "Files",
+          "description": "Files or file-system objects."
+        },
+        "3": {
+          "caption": "Records",
+          "description": "Records, such as database rows, documents, or log records."
+        },
+        "4": {
+          "caption": "Items",
+          "description": "Generic countable items or work units."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The unit is not mapped. See the <code>progress_unit</code> attribute, which contains a data source specific value."
+        }
+      }
     },
     "project_uid": {
       "caption": "Project ID",
@@ -6009,6 +6046,11 @@
       "description": "A list of requirements associated to a specific control in an industry or regulatory framework. e.g. <code>NIST.800-53.r5 AU-10</code>",
       "type": "string_t",
       "is_array": true
+    },
+    "resolved_time": {
+      "caption": "Resolved Time",
+      "description": "The time a finding, incident or activity was resolved. See specific usage.",
+      "type": "timestamp_t"
     },
     "resource": {
       "caption": "Resource",

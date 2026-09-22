@@ -32,6 +32,7 @@ Thankyou! -->
 * #### Dictionary Attributes
 
 ### Bugfixes
+1. Changed the `account` requirement in the `user` object from optional to recommended to align with its participation in the `at_least_one` constraint.
 
 ### Deprecated
 

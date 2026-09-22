@@ -44,20 +44,45 @@ Thankyou! -->
 ## [Unreleased]
 
 ### Added
+* #### Categories
+* #### Event Classes
+* #### Profiles
+* #### Objects
+* #### Observables
+* #### Platform Extensions
 * #### Dictionary Attributes
   1. Added `likelihood` as a `string_t`, normalized to the caption of `likelihood_id`. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
   1. Added `likelihood_id` as an `integer_t` enum with values Unknown (0), Very Low (1), Low (2), Moderate (3), High (4), Very High (5), Other (99). [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
   1. Added `likelihood_score` as an `integer_t`, complementing `confidence_score`, `impact_score`, and `risk_score`. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
+  1. Added `is_declared_incident` and `resolved_time`. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
+  1. Added `log_facility` and `log_facility_id` attributes. [#1720](https://github.com/ocsf/ocsf-schema/pull/1720)
 
 * #### Extensions
   1. New Extension registration for Agent Containment [#1761](https://github.com/ocsf/ocsf-schema/pull/1761).
 
 ### Improved
+* #### Categories
 * #### Event Classes
   1. Added `likelihood`, `likelihood_id`, and `likelihood_score` as optional attributes in the `context` group on `Detection Finding` (class 2004). [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
+  1. Added `is_declared_incident` to finding.json and incident_finding.json. Added `resolved_time` to `finding.json` and `incident_finding.json`. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
+* #### Profiles
+  1. Added `is_declared_incident` to incident.json. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
 * #### Objects
   1. Added `labels` to the `node` object for grouping nodes into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
-  1. Added `labels` to the `edge` object for grouping edges into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
+  1. Added `log_facility` and `log_facility_id` to the `metadata` and `logger` objects. [#1720](https://github.com/ocsf/ocsf-schema/pull/1720)
+* #### Observables
+* #### Platform Extensions
+* #### Objects
+* #### Dictionary Attributes
+
+### Bugfixes
+
+### Deprecated
+
+### Breaking changes
+
+### Misc
+  1. Added the `@recursive` attribute annotation to the metaschema, letting an attribute declare that expanding it reenters a type already on the path, with an optional nesting `limit` and, for indirect recursion, the `path` that closes the cycle. No schema definitions are annotated yet. [#1762](https://github.com/ocsf/ocsf-schema/pull/1762)
 
 ## [v1.9.0] - Aug 3rd, 2026
 

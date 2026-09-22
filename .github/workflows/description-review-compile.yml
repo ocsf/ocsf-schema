@@ -3,12 +3,20 @@ name: Schema Description Review - Compile
 on:
   pull_request:
     types: [opened, synchronize, reopened]
+    # Only the paths review_descriptions.py actually reads. Extension schemas
+    # under extensions/*/ are omitted because `prepare` cannot match them yet.
     paths:
-      - "**.json"
+      - "objects/**.json"
+      - "events/**.json"
+      - "dictionary.json"
       - "CHANGELOG.md"
 
 permissions:
   contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 
 jobs:
   compile:

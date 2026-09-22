@@ -18,7 +18,6 @@ Thankyou! -->
 * #### Event Classes
 * #### Profiles
 * #### Objects
-  1. Added the `accounting_decision` object: an authority's verdict on an agent identity/credential claim (`claim_type`/`claim_type_id`, `decision`/`decision_id`, `reason`/`reason_id` with a closed rejection-reason enum). [#1765](https://github.com/ocsf/ocsf-schema/pull/1765)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -27,7 +26,6 @@ Thankyou! -->
 * #### Categories
 * #### Event Classes
 * #### Profiles
-  1. Added `containment_reason` and `containment_reason_id` to the `ai_operation` profile: why enforcement acted on the operation (operator kill, guardrail kill, crash). [#1765](https://github.com/ocsf/ocsf-schema/pull/1765)
 * #### Objects
 * #### Observables
 * #### Platform Extensions
@@ -50,6 +48,7 @@ Thankyou! -->
 * #### Event Classes
 * #### Profiles
 * #### Objects
+  1. Added the `accounting_decision` object: an authority's verdict on an agent identity/credential claim (`claim_type`/`claim_type_id`, `claim_decision`/`claim_decision_id`, `reason`/`reason_id` with a closed rejection-reason enum). [#1765](https://github.com/ocsf/ocsf-schema/pull/1765)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -66,6 +65,7 @@ Thankyou! -->
   1. Added `is_declared_incident` to finding.json and incident_finding.json. Added `resolved_time` to `finding.json` and `incident_finding.json`. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
 * #### Profiles
   1. Added `is_declared_incident` to incident.json. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
+  1. Added `containment_reason` and `containment_reason_id` to the `ai_operation` profile: why enforcement acted on the operation (operator kill, guardrail kill, crash). [#1765](https://github.com/ocsf/ocsf-schema/pull/1765)
 * #### Objects
   1. Added `labels` to the `node` object for grouping nodes into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
   1. Added `created_time`, `first_seen_time`, `last_seen_time`, `modified_time`, `src_url`, and `criticality_id` attributes to the `application` object. [#1683](https://github.com/ocsf/ocsf-schema/pull/1683)

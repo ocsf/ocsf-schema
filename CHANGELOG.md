@@ -67,10 +67,15 @@ Thankyou! -->
 * #### Objects
   1. Added `labels` to the `node` object for grouping nodes into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
   1. Added `created_time`, `first_seen_time`, `last_seen_time`, `modified_time`, `src_url`, and `criticality_id` attributes to the `application` object. [#1683](https://github.com/ocsf/ocsf-schema/pull/1683)
+  1. Added `is_declared_incident`, `resolved_time` to `finding.json` and `incident_finding.json`. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
+  1. Added `query_info` to the `finding_info` object  for the search behind the `related_events` in the finding. [#1744](https://github.com/ocsf/ocsf-schema/pull/1744)
+  1. Added `finding_info` to the `related_events` object for cases where the related event is a finding. [#1744](https://github.com/ocsf/ocsf-schema/pull/1744)
+  1. Added `raw_data` to the `related_events` object to optionally carry the full event as a string. [#1744](https://github.com/ocsf/ocsf-schema/pull/1744)
+  1. Added `risk_details`, `risk_level_id`, `risk_level`, `risk_score` to `related_events` to carry any risk values when the related event is a finding. [#1744](https://github.com/ocsf/ocsf-schema/pull/1744)
+  1. Added `type_id`, `type` to `related_events` to distinguish activities, alerts, or findings as the type of the related event. [#1744](https://github.com/ocsf/ocsf-schema/pull/1744)
   1. Added `log_facility` and `log_facility_id` to the `metadata` and `logger` objects. [#1720](https://github.com/ocsf/ocsf-schema/pull/1720)
 * #### Observables
 * #### Platform Extensions
-* #### Objects
 * #### Dictionary Attributes
 
 ### Bugfixes

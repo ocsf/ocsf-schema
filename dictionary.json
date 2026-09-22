@@ -1603,6 +1603,37 @@
       "type": "container",
       "is_array": true
     },
+    "containment_reason": {
+      "caption": "Containment Reason",
+      "description": "The reason enforcement acted on this operation, as reported by the event source \u2014 e.g. an operator kill, a guardrail kill, or a crash. Normalized to the caption of <code>containment_reason_id</code>; when the value is 'Other', this carries the event source's native label. Distinct from why a model completion ended (carried in <code>ai_status.stop_reason</code>): this records why enforcement acted, so an operator kill, a guardrail kill, and a crash are distinguishable and time-to-contain is measurable across deployments.",
+      "type": "string_t"
+    },
+    "containment_reason_id": {
+      "caption": "Containment Reason ID",
+      "description": "The normalized reason enforcement acted on this operation. Producers map their runtime's native value into this set; when the value is 'Other', set <code>containment_reason</code> to the event source's native label.",
+      "sibling": "containment_reason",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown"
+        },
+        "1": {
+          "caption": "Operator Kill",
+          "description": "A human operator terminated the operation."
+        },
+        "2": {
+          "caption": "Guardrail Kill",
+          "description": "An automated guardrail or policy control terminated the operation."
+        },
+        "3": {
+          "caption": "Crash",
+          "description": "The operation ended because the runtime crashed."
+        },
+        "99": {
+          "caption": "Other"
+        }
+      }
+    },
     "content_type": {
       "caption": "HTTP Content Type",
       "description": "The HTTP request header that identifies the original media type of the resource (prior to any content encoding applied for sending).",

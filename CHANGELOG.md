@@ -66,7 +66,6 @@ Thankyou! -->
   1. Added `is_declared_incident` to incident.json. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
 * #### Objects
   1. Added `labels` to the `node` object for grouping nodes into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
-  1. Added `labels` to the `edge` object for grouping edges into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
   1. Added `created_time`, `first_seen_time`, `last_seen_time`, `modified_time`, `src_url`, and `criticality_id` attributes to the `application` object. [#1683](https://github.com/ocsf/ocsf-schema/pull/1683)
   1. Added `log_facility` and `log_facility_id` to the `metadata` and `logger` objects. [#1720](https://github.com/ocsf/ocsf-schema/pull/1720)
 * #### Observables

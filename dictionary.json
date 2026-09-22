@@ -1981,30 +1981,34 @@
       "type": "integer_t",
       "enum": {
         "1": {
-          "caption": "Card",
-          "description": "A physical proximity or smart card."
+          "caption": "Proximity Card",
+          "description": "A card, key fob, or tag that presents a static identifier to a reader and is not cryptographically authenticated, such as a 125 kHz proximity credential or a card read only by its serial number. The distinction from <code>2</code> 'Smart Card' is the absence of cryptographic authentication, not the operating frequency or form factor."
         },
         "2": {
-          "caption": "Mobile",
-          "description": "A mobile device credential."
+          "caption": "Smart Card",
+          "description": "A contact or contactless credential that holds cryptographic keys and is authenticated through a cryptographic exchange with the reader, such as a PIV, CAC, or DESFire card. A smart card that is read only by its serial number, without cryptographic authentication, is a <code>1</code> 'Proximity Card'."
         },
         "3": {
+          "caption": "Mobile Credential",
+          "description": "A credential held on a mobile device and presented over NFC or Bluetooth, such as a mobile access badge in a wallet application."
+        },
+        "4": {
           "caption": "PIN",
           "description": "A keypad-entered personal identification number."
         },
-        "4": {
+        "5": {
           "caption": "Biometric",
           "description": "A biometric sample."
         },
-        "5": {
+        "6": {
           "caption": "License Plate",
           "description": "A vehicle registration plate read."
         },
-        "6": {
+        "7": {
           "caption": "Key",
           "description": "A mechanical key."
         },
-        "7": {
+        "8": {
           "caption": "Escort",
           "description": "Entry authorized by an escorting person rather than by a credential."
         }
@@ -2587,11 +2591,15 @@
         },
         "5": {
           "caption": "Responded Unfounded",
-          "description": "A resource arrived and found no condition."
+          "description": "A resource arrived and established that the condition was not genuine, for example a false or nuisance alarm with an identified cause. This is distinct from <code>7</code> 'Responded Unsubstantiated', where no determination could be reached."
         },
         "6": {
           "caption": "Chargeable False Alarm",
           "description": "The event was assessed as a chargeable false alarm under a local ordinance."
+        },
+        "7": {
+          "caption": "Responded Unsubstantiated",
+          "description": "A resource arrived and could neither confirm nor rule out the condition, for example no evidence of a cause was found. This is distinct from <code>5</code> 'Responded Unfounded', which asserts that the condition was not genuine."
         }
       }
     },

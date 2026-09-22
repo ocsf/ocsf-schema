@@ -1459,7 +1459,25 @@
     "compaction_reason_id": {
       "caption": "Compaction Reason ID",
       "description": "The normalized reason context was compacted during an operation.",
-      "type": "integer_t"
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The reason context was compacted could not be determined."
+        },
+        "1": {
+          "caption": "Token Budget",
+          "description": "The runtime compacted context automatically as the operation approached its context budget."
+        },
+        "2": {
+          "caption": "Manual",
+          "description": "Context was compacted at the explicit request of the operator or calling application."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "Context was compacted for a reason outside this set."
+        }
+      }
     },
     "company_name": {
       "caption": "Company Name",
@@ -5142,7 +5160,25 @@
     "permission_result_id": {
       "caption": "Permission Result ID",
       "description": "The normalized outcome of a permission check.",
-      "type": "integer_t"
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The permission check outcome could not be determined, so the authorization state of the operation is not established."
+        },
+        "1": {
+          "caption": "Allowed",
+          "description": "The agent runtime's permission check permitted the operation to proceed."
+        },
+        "2": {
+          "caption": "Denied",
+          "description": "The agent runtime's permission check refused the operation."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The permission check produced an outcome outside this set."
+        }
+      }
     },
     "phase": {
       "caption": "Kill Chain Phase",

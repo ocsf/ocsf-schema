@@ -66,6 +66,7 @@ Thankyou! -->
   1. Added `is_declared_incident` to incident.json. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
 * #### Objects
   1. Added `labels` to the `node` object for grouping nodes into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
+  1. Added `created_time`, `first_seen_time`, `last_seen_time`, `modified_time`, `src_url`, and `criticality_id` attributes to the `application` object. [#1683](https://github.com/ocsf/ocsf-schema/pull/1683)
   1. Added `is_declared_incident`, `resolved_time` to `finding.json` and `incident_finding.json`. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
   1. Added `query_info` to the `finding_info` object  for the search behind the `related_events` in the finding. [#1744](https://github.com/ocsf/ocsf-schema/pull/1744)
   1. Added `finding_info` to the `related_events` object for cases where the related event is a finding. [#1744](https://github.com/ocsf/ocsf-schema/pull/1744)

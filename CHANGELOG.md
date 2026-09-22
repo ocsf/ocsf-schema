@@ -18,6 +18,7 @@ Thankyou! -->
 * #### Event Classes
 * #### Profiles
 * #### Objects
+  1. Added the `accounting_decision` object: an authority's verdict on an agent identity/credential claim (`claim_type`/`claim_type_id`, `decision`/`decision_id`, `reason`/`reason_id` with a closed rejection-reason enum). [#1765](https://github.com/ocsf/ocsf-schema/pull/1765)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -26,6 +27,7 @@ Thankyou! -->
 * #### Categories
 * #### Event Classes
 * #### Profiles
+  1. Added `containment_reason` and `containment_reason_id` to the `ai_operation` profile: why enforcement acted on the operation (operator kill, guardrail kill, crash). [#1765](https://github.com/ocsf/ocsf-schema/pull/1765)
 * #### Objects
 * #### Observables
 * #### Platform Extensions

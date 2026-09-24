@@ -753,6 +753,11 @@
       "description": "The operating system build number.",
       "type": "string_t"
     },
+    "building": {
+      "caption": "Building",
+      "description": "The building within the physical site where the activity occurred.",
+      "type": "string_t"
+    },
     "bulletin": {
       "caption": "Patch Bulletin",
       "description": "The vendor bulletin identifier.",
@@ -3144,6 +3149,11 @@
       "type": "string_t",
       "is_array": true
     },
+    "floor": {
+      "caption": "Floor",
+      "description": "The floor or level within the building where the activity occurred.",
+      "type": "string_t"
+    },
     "folder": {
       "caption": "Folder",
       "description": "The folder that pertains to the event.",
@@ -3715,6 +3725,11 @@
     "is_applied": {
       "caption": "Applied",
       "description": "A determination if a policy, rule, or enforcement action was applied.",
+      "type": "boolean_t"
+    },
+    "is_armed": {
+      "caption": "Armed",
+      "description": "Indicates whether the security zone or monitored point was armed at the time of the event.",
       "type": "boolean_t"
     },
     "is_backed_up": {
@@ -6854,6 +6869,21 @@
       "type": "digital_signature",
       "is_array": true
     },
+    "site_name": {
+      "caption": "Site Name",
+      "description": "The name of the physical site where the activity occurred.",
+      "type": "string_t"
+    },
+    "site_uid": {
+      "caption": "Site UID",
+      "description": "The unique identifier of the physical site where the activity occurred, as defined by the reporting organization.",
+      "type": "string_t"
+    },
+    "site_zone": {
+      "caption": "Site Zone",
+      "description": "The site zone where the activity occurred: a defined area within a physical site that shares a common security posture.",
+      "type": "site_zone"
+    },
     "size": {
       "caption": "Size",
       "description": "The size of data, in bytes.",
@@ -8074,6 +8104,51 @@
       "caption": "Network Zone",
       "description": "The network zone or LAN segment. See specific usage.",
       "type": "string_t"
+    },
+    "zone_type": {
+      "caption": "Security Zone Type",
+      "description": "The security zone type, normalized to the caption of the <code>zone_type_id</code> value.",
+      "type": "string_t"
+    },
+    "zone_type_id": {
+      "caption": "Security Zone Type ID",
+      "description": "The normalized classification of the physical security zone. These are generic tiers by security posture. Regime-specific tiers map onto them rather than extending the list: for example, a DoD or DOE Controlled, Limited, or Protected Area maps to Restricted, and an Exclusion, Vital, or Material Access Area maps to Critical. Carry the native tier name in <code>zone_type</code>.",
+      "sibling": "zone_type",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The zone type is unknown."
+        },
+        "1": {
+          "caption": "Perimeter",
+          "description": "The outer boundary of the site."
+        },
+        "2": {
+          "caption": "Public",
+          "description": "An area open to the public."
+        },
+        "3": {
+          "caption": "Restricted",
+          "description": "An area restricted to authorized persons."
+        },
+        "4": {
+          "caption": "Critical",
+          "description": "An area containing critical assets."
+        },
+        "5": {
+          "caption": "Transitional",
+          "description": "A lobby, corridor, or other transitional space."
+        },
+        "6": {
+          "caption": "External",
+          "description": "An outdoor area within the site boundary."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The zone type is not mapped. See the <code>zone_type</code> attribute, which contains a data source specific value."
+        }
+      }
     }
   },
   "types": {

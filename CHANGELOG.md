@@ -45,14 +45,14 @@ Thankyou! -->
 
 ### Added
 * #### Profiles
-  1. Added optional `ai_tool` attribute to the `ai_operation` profile, recording the invoked AI capability (tool, resource, or prompt). [#1729](https://github.com/ocsf/ocsf-schema/pull/1729)
+  1. Added optional `ai_capability` attribute to the `ai_operation` profile, recording the invoked AI capability (tool, resource, or prompt). [#1729](https://github.com/ocsf/ocsf-schema/pull/1729)
 * #### Objects
-  1. Added `ai_tool` object describing an invoked AI capability — its primitive kind, provenance (serving system and transport), declared behavior hints, and input/output schema, description, and baseline fingerprints. [#1729](https://github.com/ocsf/ocsf-schema/pull/1729)
+  1. Added `ai_capability` object describing an invoked AI capability — its primitive kind, provenance (serving system and transport), declared behavior hints, and input/output schema, description, and baseline fingerprints. [#1729](https://github.com/ocsf/ocsf-schema/pull/1729)
 * #### Dictionary Attributes
   1. Added `likelihood` as a `string_t`, normalized to the caption of `likelihood_id`. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
   1. Added `likelihood_id` as an `integer_t` enum with values Unknown (0), Very Low (1), Low (2), Moderate (3), High (4), Very High (5), Other (99). [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
   1. Added `likelihood_score` as an `integer_t`, complementing `confidence_score`, `impact_score`, and `risk_score`. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
-  1. Added `ai_tool`, `transport`/`transport_id`, `is_destructive`, `is_idempotent`, `is_open_world`, `input_schema_fingerprint`, `output_schema_fingerprint`, `desc_fingerprint`, `baseline_fingerprint`, `cache_scope`/`cache_scope_id`, `cache_ttl`, and `task_uid` attributes for the `ai_tool` object. [#1729](https://github.com/ocsf/ocsf-schema/pull/1729)
+  1. Added `ai_capability`, `transport`/`transport_id`, `is_destructive`, `is_idempotent`, `is_open_world`, `input_schema_fingerprint`, `output_schema_fingerprint`, `desc_fingerprint`, `baseline_fingerprint`, `cache_scope`/`cache_scope_id`, `cache_ttl`, and `task_uid` attributes for the `ai_capability` object. [#1729](https://github.com/ocsf/ocsf-schema/pull/1729)
 
 ### Improved
 * #### Event Classes

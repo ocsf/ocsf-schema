@@ -1,8 +1,8 @@
 {
-  "caption": "AI Tool",
-  "description": "The AI Tool object describes a callable capability invoked by or on behalf of an AI system: a tool, a resource, or a prompt, in the sense of the Model Context Protocol (MCP) primitives. It records the invariant, advertised description of the capability - its identity, kind, provenance, declared contracts, and declared safety hints - not the per-call argument values or results, which are carried by the transport objects (e.g., <code>api.request.data</code> / <code>api.response.data</code>). The object is protocol-neutral: MCP is the motivating binding, but a framework-native function tool or a model provider's built-in tool populates the same shape, omitting the MCP-specific attributes. Distinguished from the <code>product</code> object, which describes the security product that generated the telemetry.",
+  "caption": "AI Capability",
+  "description": "The AI Capability object describes a callable capability invoked by or on behalf of an AI system: a tool, a resource, or a prompt, in the sense of the Model Context Protocol (MCP) primitives. It records the invariant, advertised description of the capability - its identity, kind, provenance, declared contracts, and declared safety hints - not the per-call argument values or results, which are carried by the transport objects (e.g., <code>api.request.data</code> / <code>api.response.data</code>). The object is protocol-neutral: MCP is the motivating binding, but a framework-native function tool or a model provider's built-in tool populates the same shape, omitting the MCP-specific attributes. Distinguished from the <code>product</code> object, which describes the security product that generated the telemetry.",
   "extends": "_entity",
-  "name": "ai_tool",
+  "name": "ai_capability",
   "attributes": {
     "baseline_fingerprint": {
       "description": "A fingerprint of the capability's declared contract as recorded at registration or approval time, identifying the approved contract version without embedding the contract body in the event. Compared against the contract fingerprints presented at invocation to detect a declared contract that changed after approval, such as supply-chain \"rug pull\" changes. Carries the approved value rather than a match verdict; consumers diff, the object does not assess.",
@@ -87,7 +87,7 @@
       "requirement": "optional"
     },
     "source_id": {
-      "description": "The normalized identifier of the mechanism through which the capability was provided to the AI system. Orthogonal to <code>type_id</code>, which is the kind of primitive: a <code>Tool</code> may be sourced via MCP, via framework-native function calling, or as a model provider's built-in. In the case of 'Other', it is defined by the event source and carried by the <code>source</code> attribute.",
+      "description": "The normalized identifier of the mechanism through which the capability was provided to the AI system. Orthogonal to <code>capability_type_id</code>, which is the kind of primitive: a <code>Tool</code> may be sourced via MCP, via framework-native function calling, or as a model provider's built-in. In the case of 'Other', it is defined by the event source and carried by the <code>source</code> attribute.",
       "requirement": "recommended",
       "enum": {
         "0": {
@@ -150,13 +150,13 @@
         }
       }
     },
-    "type": {
-      "caption": "Tool Type",
-      "description": "The kind of capability primitive, normalized to the caption of the <code>type_id</code> value. In the case of 'Other', it is defined by the event source.",
+    "capability_type": {
+      "caption": "Capability Type",
+      "description": "The kind of capability primitive, normalized to the caption of the <code>capability_type_id</code> value. In the case of 'Other', it is defined by the event source.",
       "requirement": "optional"
     },
-    "type_id": {
-      "caption": "Tool Type ID",
+    "capability_type_id": {
+      "caption": "Capability Type ID",
       "description": "The normalized identifier of the kind of capability primitive, per the Model Context Protocol primitive taxonomy. The three primitives carry different risk profiles; a first-class discriminator makes questions like \"resource reads vs. tool calls\" queryable rather than buried in free-text operation names.",
       "requirement": "recommended",
       "enum": {
@@ -166,24 +166,24 @@
         },
         "1": {
           "caption": "Tool",
-          "description": "A callable tool: a model-controlled function the AI system can invoke to take an action."
+          "description": "A model-invocable executable function; it may retrieve data or cause side effects."
         },
         "2": {
           "caption": "Resource",
-          "description": "A resource: application-controlled contextual data identified by a URI, read rather than executed."
+          "description": "Application-controlled contextual data or content, typically identified by a URI."
         },
         "3": {
-          "caption": "Prompt",
-          "description": "A prompt: a user-controlled template or workflow provided to the AI system."
+          "caption": "Prompt Template",
+          "description": "A reusable, user-selectable prompt template; this is not the end user's prompt text."
         },
         "99": {
           "caption": "Other",
-          "description": "The primitive kind is not mapped. See the <code>type</code> attribute, which contains a data source specific value."
+          "description": "The primitive kind is not mapped. See the <code>capability_type</code> attribute, which contains a data source specific value."
         }
       }
     },
     "uid": {
-      "caption": "AI Tool ID",
+      "caption": "AI Capability ID",
       "description": "The stable identifier of the capability itself, when one exists: a registry or catalog identifier, or a producer-derived stable key (e.g., serving server identity plus capability name). Identifies the capability across invocations; per-invocation correlation is carried by <code>transaction_uid</code> instead.",
       "requirement": "recommended"
     },
@@ -192,7 +192,7 @@
       "requirement": "optional"
     },
     "version": {
-      "caption": "AI Tool Version",
+      "caption": "AI Capability Version",
       "description": "The version of the capability as advertised by its provider, when versioned.",
       "requirement": "optional"
     }

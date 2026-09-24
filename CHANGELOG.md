@@ -32,6 +32,7 @@ Thankyou! -->
 * #### Dictionary Attributes
 
 ### Bugfixes
+1. Changed the `account` requirement in the `user` object from optional to recommended to align with its participation in the `at_least_one` constraint. [#1766](https://github.com/ocsf/ocsf-schema/pull/1766)
 
 ### Deprecated
 
@@ -170,6 +171,7 @@ Thankyou! -->
 * #### Profiles
   1. Added `ai_agent` attribute to the `ai_operation` profile. [#1641](https://github.com/ocsf/ocsf-schema/pull/1641)
 * #### Objects
+  1. Added `value` to the `digital_signature` object so an event can carry the signature bytes themselves, not only a description of them — the raw signature output of `algorithm_id`, encoded as standard Base64 (RFC 4648 §4). [#1709](https://github.com/ocsf/ocsf-schema/pull/1709)
   1. Added `job_actions` array of objects to the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `job_triggers` array of objects to the `job` object. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)
   1. Added `type_id` attribute to the `job` object to describe mechanism that executes the job. [#1597](https://github.com/ocsf/ocsf-schema/pull/1597)

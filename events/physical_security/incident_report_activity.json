@@ -1,0 +1,86 @@
+{
+  "uid": 7,
+  "caption": "Incident Report Activity",
+  "description": "Incident Report Activity events report the lifecycle of a documented incident. Classification follows the dual-coding pattern established by the Emergency Incident Data Document: a required common type from the <code>incident_type_id</code> enum, alongside the reporting organization's own internal type. Optional crosswalk attributes carry the equivalent public safety and offense codes where the incident maps to them.",
+  "extends": "physical_security",
+  "name": "incident_report_activity",
+  "attributes": {
+    "activity_id": {
+      "group": "primary",
+      "requirement": "required",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The event activity is unknown."
+        },
+        "1": {
+          "caption": "Created",
+          "description": "An incident report was opened."
+        },
+        "2": {
+          "caption": "Updated",
+          "description": "An existing incident report was amended."
+        },
+        "3": {
+          "caption": "Submitted",
+          "description": "The report was submitted for review."
+        },
+        "4": {
+          "caption": "Approved",
+          "description": "The report was approved by a supervisor."
+        },
+        "5": {
+          "caption": "Closed",
+          "description": "The incident was closed."
+        },
+        "6": {
+          "caption": "Reopened",
+          "description": "A closed incident was reopened."
+        },
+        "7": {
+          "caption": "Referred",
+          "description": "The incident was referred to a public safety agency or to the client."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The event activity is not mapped. See the <code>activity_name</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
+    "incident_type_id": {
+      "group": "primary",
+      "requirement": "required"
+    },
+    "incident_type": {
+      "requirement": "optional"
+    },
+    "incident_type_internal": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "narrative": {
+      "requirement": "optional"
+    },
+    "nibrs_offense_code": {
+      "requirement": "optional"
+    },
+    "apco_incident_type": {
+      "requirement": "optional"
+    },
+    "is_reportable": {
+      "requirement": "optional"
+    },
+    "loss_amount": {
+      "requirement": "optional"
+    },
+    "post": {
+      "requirement": "optional"
+    },
+    "response_resource": {
+      "requirement": "optional"
+    },
+    "disposition_details": {
+      "requirement": "optional"
+    }
+  }
+}

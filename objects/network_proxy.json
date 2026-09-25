@@ -3,7 +3,13 @@
   "description": "The network proxy endpoint object describes a proxy server, which acts as an intermediary between a client requesting a resource and the server providing that resource.",
   "extends": "network_endpoint",
   "name": "network_proxy",
-  "attributes": {},
+  "attributes": {
+    "proxy_endpoint": {
+      "@recursive": {
+        "message": "A proxy endpoint may reference the next proxy in a chain, so this attribute nests to the length of that chain. No fixed depth applies; consumers should impose their own bound when traversing it."
+      }
+    }
+  },
   "references": [
     {
       "description": "D3FEND™ Ontology d3f:ProxyServer",

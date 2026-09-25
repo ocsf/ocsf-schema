@@ -22,7 +22,11 @@
     "finding_info": {
       "description": "Describes the supporting information about a related finding which itself may contain its own related events or findings.",
       "group": "context",
-      "requirement": "recommended"
+      "requirement": "recommended",
+      "@recursive": {
+        "message": "A related finding carries its own <code>related_events</code>, so this attribute nests as deeply as the chain of findings does. No fixed depth applies; consumers should impose their own bound when traversing it.",
+        "path": ["finding_info.related_events"]
+      }
     },
     "first_seen_time": {
       "description": "The time when the finding was first observed. e.g. The time when a vulnerability was first observed.<br>It can differ from the <code>created_time</code> timestamp, which reflects the time this finding was created.",

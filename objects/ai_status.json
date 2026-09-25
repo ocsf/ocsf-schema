@@ -1,0 +1,51 @@
+{
+  "caption": "AI Status",
+  "description": "Container for per-operation outcome scalars contributed by the <code>ai_operation</code> profile. Holds outcomes reported by the model or agent runtime — e.g. why a completion stopped, permission decisions, context-compaction reasons, sub-agent stop reasons — so they do not proliferate as discrete attributes at the event root. Attributes are added here as their taxonomies are defined.",
+  "extends": "object",
+  "name": "ai_status",
+  "attributes": {
+    "stop_reason": {
+      "caption": "Stop Reason",
+      "description": "The reason the model completion ended, as reported by the event source. Normalized to the caption of the <code>stop_reason_id</code> value; when the value is 'Other', this carries the event source's native label (e.g. <code>end_turn</code>, <code>max_tokens</code>).",
+      "requirement": "optional"
+    },
+    "stop_reason_id": {
+      "caption": "Stop Reason ID",
+      "description": "The normalized reason the model completion ended. Producers map their runtime's native value into this set. Populate on completion events; when the value is 'Other', set <code>stop_reason</code> to the event source's native label. Because completion behavior is bound to the configuration that produced it, a shift in this attribute's distribution is more meaningful when weighed against that configuration: <code>ai_model.version</code> for direct model invocations, and <code>ai_agent.version</code>, <code>ai_agent.charter</code>, and <code>ai_agent.instance_uid</code> for agent-mediated operations.",
+      "requirement": "recommended"
+    },
+    "permission_result_id": {
+      "caption": "Permission Result ID",
+      "description": "The normalized outcome of the agent runtime's permission check for this operation, as reported by the runtime. Producers map their runtime's native value into this set.",
+      "requirement": "optional",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The permission check outcome could not be determined, so the authorization state of the operation is not established."
+        },
+        "1": {
+          "caption": "Allowed",
+          "description": "The agent runtime's permission check permitted the operation to proceed."
+        },
+        "2": {
+          "caption": "Denied",
+          "description": "The agent runtime's permission check refused the operation."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The permission check produced an outcome outside this set."
+        }
+      }
+    },
+    "compaction_reason_id": {
+      "caption": "Compaction Reason ID",
+      "description": "The normalized reason the agent runtime compacted context during this operation, as reported by the runtime. Producers map their runtime's native value into the dictionary enum.",
+      "requirement": "optional"
+    },
+    "subagent_stop_reason_id": {
+      "caption": "Sub-agent Stop Reason ID",
+      "description": "The normalized reason a sub-agent spawned during this operation stopped, as reported by the runtime. Normalized taxonomy to be defined.",
+      "requirement": "optional"
+    }
+  }
+}

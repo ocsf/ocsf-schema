@@ -49,6 +49,7 @@ Thankyou! -->
 * #### Event Classes
 * #### Profiles
 * #### Objects
+  1. Added the `ai_status` object for per-operation outcome scalars contributed by the `ai_operation` profile, seeded with `stop_reason` / `stop_reason_id` (enum: Unknown (0), End of Turn (1), Token Limit (2), Tool Use (3), Session Stop (4), Content Filter (5), Other (99)) plus `permission_result_id`, `compaction_reason_id`, and `subagent_stop_reason_id` placeholders whose taxonomies are still to be defined. [#1704](https://github.com/ocsf/ocsf-schema/pull/1704)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -65,9 +66,11 @@ Thankyou! -->
   1. Added `likelihood`, `likelihood_id`, and `likelihood_score` as optional attributes in the `context` group on `Detection Finding` (class 2004). [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
   1. Added `is_declared_incident` to finding.json and incident_finding.json. Added `resolved_time` to `finding.json` and `incident_finding.json`. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
 * #### Profiles
+  1. Added `ai_status` (optional) to the `ai_operation` profile in the `context` group, grouping per-operation outcome scalars (stop reason first; permission, compaction, and sub-agent taxonomies to follow) so they do not proliferate at the event root. [#1704](https://github.com/ocsf/ocsf-schema/pull/1704)
   1. Added `is_declared_incident` to incident.json. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
 * #### Objects
   1. Added `labels` to the `node` object for grouping nodes into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
+  1. Added `labels` to the `edge` object for grouping edges into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
   1. Added `progress_current`, `progress_total`, `progress_unit`, `progress_unit_id`, `bytes_processed`, `bytes_written`, `throughput` and `queue_name` to the `job` object so a running job can report its progress and throughput. [#1722](https://github.com/ocsf/ocsf-schema/pull/1722)
   1. Added `created_time`, `first_seen_time`, `last_seen_time`, `modified_time`, `src_url`, and `criticality_id` attributes to the `application` object. [#1683](https://github.com/ocsf/ocsf-schema/pull/1683)
   1. Added `is_declared_incident`, `resolved_time` to `finding.json` and `incident_finding.json`. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)

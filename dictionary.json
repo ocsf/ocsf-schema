@@ -242,6 +242,11 @@
       "sibling": "ai_role",
       "type": "integer_t"
     },
+    "ai_status": {
+      "caption": "AI Status",
+      "description": "The AI Status object contains per-operation outcome scalars reported by a model or agent runtime.",
+      "type": "ai_status"
+    },
     "aircraft": {
       "caption": "Aircraft",
       "description": "The Aircraft object represents any aircraft or otherwise airborne asset such as an unmanned system, airplane, balloon, spacecraft, or otherwise. The Aircraft object is intended to normalized data captured or otherwise logged from active radar, passive radar, multi-spectral systems, or the Automatic Dependant Broadcast - Surveillance (ADS-B), and/or Mode S systems.",
@@ -1460,6 +1465,29 @@
           "url": "https://github.com/corelight/community-id-spec"
         }
       ]
+    },
+    "compaction_reason_id": {
+      "caption": "Compaction Reason ID",
+      "description": "The normalized reason context was compacted during an operation.",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The reason context was compacted could not be determined."
+        },
+        "1": {
+          "caption": "Token Budget",
+          "description": "The runtime compacted context automatically as the operation approached its context budget."
+        },
+        "2": {
+          "caption": "Manual",
+          "description": "Context was compacted at the explicit request of the operator or calling application."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "Context was compacted for a reason outside this set."
+        }
+      }
     },
     "company_name": {
       "caption": "Company Name",
@@ -5270,6 +5298,21 @@
       "type": "permission_analysis_result",
       "is_array": true
     },
+    "permission_result_id": {
+      "caption": "Permission Result ID",
+      "description": "The normalized outcome of a permission check. See specific usage.",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The permission check outcome could not be determined, so the authorization state of the operation is not established."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The permission check produced an outcome outside this set."
+        }
+      }
+    },
     "phase": {
       "caption": "Kill Chain Phase",
       "description": "The cyber kill chain phase.",
@@ -7135,6 +7178,47 @@
       "description": "The storage class of the entity. See specific usage.",
       "type": "string_t"
     },
+    "stop_reason": {
+      "caption": "Stop Reason",
+      "description": "The reason an operation stopped, normalized to the caption of the <code>stop_reason_id</code> value. In the case of 'Other', it is defined by the event source.",
+      "type": "string_t"
+    },
+    "stop_reason_id": {
+      "caption": "Stop Reason ID",
+      "description": "The normalized reason an operation stopped.",
+      "sibling": "stop_reason",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The completion ended without the producer being able to determine why, so the state of the operation at termination is not established."
+        },
+        "1": {
+          "caption": "End of Turn",
+          "description": "The model reached the end of its turn: it completed its response naturally or emitted a configured stop sequence, and is not waiting on anything further."
+        },
+        "2": {
+          "caption": "Token Limit",
+          "description": "The completion was truncated by a token or length limit before the model finished, so the response is incomplete."
+        },
+        "3": {
+          "caption": "Tool Use",
+          "description": "The completion paused to invoke a tool. The turn is not finished; the model expects the tool result and will continue."
+        },
+        "4": {
+          "caption": "Session Stop",
+          "description": "The completion ended because the session or connection carrying it terminated - for example the caller cancelled, the client disconnected, or the transport closed - rather than because the model reached a stopping point. The session state at termination is therefore known, which distinguishes this from <code>Unknown</code> and lets a consumer decide whether the operation needs investigation or can simply be reclaimed."
+        },
+        "5": {
+          "caption": "Content Filter",
+          "description": "The completion was stopped by a safety, policy, or content moderation mechanism rather than by the model reaching a stopping point or by the caller. This includes a refusal raised by a safety classifier and a guardrail intervening on the request or the response."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The stop reason is not mapped. See the <code>stop_reason</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
     "stratum": {
       "caption": "Stratum",
       "description": "The stratum level of the NTP server's time source, normalized to the caption of the stratum_id value.",
@@ -7196,6 +7280,11 @@
           "url": "https://atlas.mitre.org/matrices/ATLAS"
         }
       ]
+    },
+    "subagent_stop_reason_id": {
+      "caption": "Sub-agent Stop Reason ID",
+      "description": "The normalized reason a sub-agent stopped.",
+      "type": "integer_t"
     },
     "subdomain": {
       "caption": "Subdomain",

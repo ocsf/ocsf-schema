@@ -16,8 +16,26 @@
     },
     "permission_result_id": {
       "caption": "Permission Result ID",
-      "description": "The normalized outcome of the agent runtime's permission check for this operation, as reported by the runtime. Producers map their runtime's native value into the dictionary enum.",
-      "requirement": "optional"
+      "description": "The normalized outcome of the agent runtime's permission check for this operation, as reported by the runtime. Producers map their runtime's native value into this set.",
+      "requirement": "optional",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The permission check outcome could not be determined, so the authorization state of the operation is not established."
+        },
+        "1": {
+          "caption": "Allowed",
+          "description": "The agent runtime's permission check permitted the operation to proceed."
+        },
+        "2": {
+          "caption": "Denied",
+          "description": "The agent runtime's permission check refused the operation."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The permission check produced an outcome outside this set."
+        }
+      }
     },
     "compaction_reason_id": {
       "caption": "Compaction Reason ID",

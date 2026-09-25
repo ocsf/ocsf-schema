@@ -77,6 +77,7 @@ Thankyou! -->
   1. Added `risk_details`, `risk_level_id`, `risk_level`, `risk_score` to `related_events` to carry any risk values when the related event is a finding. [#1744](https://github.com/ocsf/ocsf-schema/pull/1744)
   1. Added `type_id`, `type` to `related_events` to distinguish activities, alerts, or findings as the type of the related event. [#1744](https://github.com/ocsf/ocsf-schema/pull/1744)
   1. Added `log_facility` and `log_facility_id` to the `metadata` and `logger` objects. [#1720](https://github.com/ocsf/ocsf-schema/pull/1720)
+  1. Marked every recursion point in the schema with `@recursive`, so tools walking the object graph know where to stop expanding: `process.parent_process`, `analytic.related_analytics`, `network_proxy.proxy_endpoint`, and the `ldap_person.manager` / `user.ldap_person` and `finding_info.related_events` / `related_event.finding_info` pairs. [#1763](https://github.com/ocsf/ocsf-schema/pull/1763)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes

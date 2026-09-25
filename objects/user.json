@@ -7,7 +7,7 @@
   "attributes": {
     "account": {
       "description": "The user's account or the account associated with the user.",
-      "requirement": "recommended"
+      "requirement": "optional"
     },
     "credential_uid": {
       "requirement": "optional",
@@ -46,7 +46,12 @@
     },
     "ldap_person": {
       "description": "The additional LDAP attributes that describe a person.",
-      "requirement": "optional"
+      "requirement": "optional",
+      "@recursive": {
+        "message": "Populate the manager chain once per event rather than nesting an <code>ldap_person</code> on the referenced user.",
+        "limit": 1,
+        "path": ["ldap_person.manager"]
+      }
     },
     "name": {
       "description": "The username. For example, <code>janedoe1</code>.",

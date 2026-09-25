@@ -23,6 +23,7 @@ import sys
 from pathlib import Path
 
 COMMENT_MARKER = "<!-- ocsf-description-review -->"
+ERROR_MARKER = "<!-- ocsf-description-review-error -->"
 DEFAULT_MODEL = "claude-sonnet-4-6"
 MAX_CONTEXT_CHARS = 400_000
 
@@ -1022,62 +1023,56 @@ def _fit_within_budget(parts: list[str], diff: str) -> str:
     return context[:MAX_CONTEXT_CHARS] + "\n\n[CONTEXT HARD-TRUNCATED]"
 
 
-def find_existing_comment(pr_number: str) -> str | None:
-    """Find an existing bot comment on the PR and return its ID."""
+def fetch_bot_comments(pr_number: str) -> dict[str, tuple[str, str]]:
+    """Map marker -> (comment_id, body) for this bot's comments on the PR.
+
+    One paginated listing serves both callers: the review comment, whose body
+    is fed back to Claude as prior context and whose id is needed to update it
+    in place, and any stale failure notice, which is cleared on success.
+    """
     repo = os.environ.get("GITHUB_REPOSITORY", "")
-    jq_filter = f'.[] | select(.body | contains("{COMMENT_MARKER}")) | .id'
-    try:
-        output = run_gh(
-            "api",
-            f"repos/{repo}/issues/{pr_number}/comments",
-            "--paginate",
-            "--jq",
-            jq_filter,
-        )
-        first_id = output.strip().split("\n")[0]
-        return first_id if first_id else None
-    except subprocess.CalledProcessError:
-        return None
-
-
-def fetch_previous_review(pr_number: str) -> str | None:
-    """Fetch the body of the existing review comment, stripped of boilerplate."""
-    repo = os.environ.get("GITHUB_REPOSITORY", "")
-    jq_filter = f'.[] | select(.body | contains("{COMMENT_MARKER}")) | .body'
-    try:
-        output = run_gh(
-            "api",
-            f"repos/{repo}/issues/{pr_number}/comments",
-            "--paginate",
-            "--jq",
-            jq_filter,
-        )
-        body = output.strip()
-        if not body:
-            return None
-        # Strip the marker and preamble to get Claude's actual review text.
-        for delimiter in ["_\n\n", "_\r\n\r\n"]:
-            idx = body.find(delimiter)
-            if idx != -1:
-                return body[idx + len(delimiter):]
-        return body
-    except subprocess.CalledProcessError:
-        return None
-
-
-def post_or_update_comment(pr_number: str, body: str) -> None:
-    """Post a new comment or update the existing one (idempotent)."""
-    repo = os.environ.get("GITHUB_REPOSITORY", "")
-    full_body = (
-        f"{COMMENT_MARKER}\n"
-        "## Schema Description Review\n\n"
-        "_Automated suggestions for improving description clarity "
-        "for LLM consumption. These are advisory — not required changes._\n\n"
-        f"{body}"
+    jq_filter = (
+        f'.[] | select((.body | contains("{COMMENT_MARKER}")) or '
+        f'(.body | contains("{ERROR_MARKER}"))) | {{id, body}}'
     )
-    payload = json.dumps({"body": full_body})
+    try:
+        output = run_gh(
+            "api",
+            f"repos/{repo}/issues/{pr_number}/comments",
+            "--paginate",
+            "--jq",
+            jq_filter,
+        )
+    except subprocess.CalledProcessError:
+        return {}
 
-    existing_id = find_existing_comment(pr_number)
+    found: dict[str, tuple[str, str]] = {}
+    for line in output.strip().split("\n"):
+        if not line:
+            continue
+        try:
+            comment = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        body = comment.get("body", "")
+        marker = ERROR_MARKER if ERROR_MARKER in body else COMMENT_MARKER
+        found.setdefault(marker, (str(comment["id"]), body))
+    return found
+
+
+def strip_review_preamble(body: str) -> str | None:
+    """Drop the marker and boilerplate header to get Claude's review text."""
+    for delimiter in ["_\n\n", "_\r\n\r\n"]:
+        idx = body.find(delimiter)
+        if idx != -1:
+            return body[idx + len(delimiter):] or None
+    return body or None
+
+
+def _upsert_comment(pr_number: str, full_body: str, existing_id: str | None) -> str:
+    """PATCH the existing comment when present, otherwise POST a new one."""
+    repo = os.environ.get("GITHUB_REPOSITORY", "")
+    payload = json.dumps({"body": full_body})
 
     if existing_id:
         run_gh(
@@ -1086,15 +1081,34 @@ def post_or_update_comment(pr_number: str, body: str) -> None:
             "-X", "PATCH", "--input", "-",
             input_data=payload,
         )
-        print(f"Updated existing comment {existing_id}")
-    else:
-        run_gh(
-            "api",
-            f"repos/{repo}/issues/{pr_number}/comments",
-            "-X", "POST", "--input", "-",
-            input_data=payload,
-        )
-        print("Posted new comment")
+        return f"Updated existing comment {existing_id}"
+
+    run_gh(
+        "api",
+        f"repos/{repo}/issues/{pr_number}/comments",
+        "-X", "POST", "--input", "-",
+        input_data=payload,
+    )
+    return "Posted new comment"
+
+
+def _delete_comment(comment_id: str) -> None:
+    repo = os.environ.get("GITHUB_REPOSITORY", "")
+    run_gh("api", f"repos/{repo}/issues/comments/{comment_id}", "-X", "DELETE")
+
+
+def post_or_update_comment(
+    pr_number: str, body: str, existing_id: str | None
+) -> None:
+    """Post a new comment or update the existing one (idempotent)."""
+    full_body = (
+        f"{COMMENT_MARKER}\n"
+        "## Schema Description Review\n\n"
+        "_Automated suggestions for improving description clarity "
+        "for LLM consumption. These are advisory — not required changes._\n\n"
+        f"{body}"
+    )
+    print(_upsert_comment(pr_number, full_body, existing_id))
 
 
 def cmd_review() -> None:
@@ -1128,7 +1142,9 @@ def cmd_review() -> None:
     import anthropic
 
     print("Checking for previous review comment...")
-    previous_review = fetch_previous_review(pr_number)
+    bot_comments = fetch_bot_comments(pr_number)
+    existing_id, existing_body = bot_comments.get(COMMENT_MARKER, (None, ""))
+    previous_review = strip_review_preamble(existing_body) if existing_body else None
     if previous_review:
         print(f"Found previous review ({len(previous_review)} chars)")
     else:
@@ -1146,7 +1162,6 @@ def cmd_review() -> None:
     message = client.messages.create(
         model=model,
         max_tokens=4096,
-        temperature=0,
         system=SYSTEM_PROMPT,
         messages=[
             {
@@ -1165,8 +1180,50 @@ def cmd_review() -> None:
     review = message.content[0].text
 
     print("Posting review comment...")
-    post_or_update_comment(pr_number, review)
+    post_or_update_comment(pr_number, review, existing_id)
+
+    stale_error = bot_comments.get(ERROR_MARKER)
+    if stale_error:
+        _delete_comment(stale_error[0])
+        print(f"Cleared previous failure notice {stale_error[0]}")
+
     print("Done!")
+
+
+def cmd_report_failure() -> None:
+    """Leave a visible notice on the PR when the review run failed.
+
+    `workflow_run` jobs are not attached to the PR's check list, so a crashed
+    review is otherwise completely silent to both author and maintainers.
+    """
+    context_path = Path("review_context.json")
+    if not context_path.exists():
+        print("No review context available; cannot identify the PR.")
+        return
+
+    try:
+        data = json.loads(context_path.read_text())
+    except json.JSONDecodeError:
+        print("Review context is unreadable; cannot identify the PR.")
+        return
+
+    pr_number = data.get("pr_number")
+    if data.get("skip") or not pr_number:
+        return
+
+    body = (
+        f"{ERROR_MARKER}\n"
+        "## Schema Description Review — not posted\n\n"
+        "_The automated description review failed on this commit, so no "
+        "suggestions were generated. Nothing is required of you; this notice "
+        "is removed automatically once a review succeeds._\n"
+    )
+    run_url = os.environ.get("RUN_URL", "")
+    if run_url:
+        body += f"\n[View the failed workflow run]({run_url})\n"
+
+    existing = fetch_bot_comments(pr_number).get(ERROR_MARKER)
+    print(_upsert_comment(pr_number, body, existing[0] if existing else None))
 
 
 # ---------------------------------------------------------------------------
@@ -1174,14 +1231,21 @@ def cmd_review() -> None:
 # ---------------------------------------------------------------------------
 
 def main() -> None:
-    if len(sys.argv) < 2 or sys.argv[1] not in ("prepare", "review"):
-        print("Usage: review_descriptions.py <prepare|review>", file=sys.stderr)
+    if len(sys.argv) < 2 or sys.argv[1] not in (
+        "prepare", "review", "report-failure"
+    ):
+        print(
+            "Usage: review_descriptions.py <prepare|review|report-failure>",
+            file=sys.stderr,
+        )
         sys.exit(1)
 
     if sys.argv[1] == "prepare":
         cmd_prepare()
-    else:
+    elif sys.argv[1] == "review":
         cmd_review()
+    else:
+        cmd_report_failure()
 
 
 if __name__ == "__main__":

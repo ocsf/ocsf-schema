@@ -3439,29 +3439,37 @@
     },
     "icmp_code": {
       "caption": "ICMP Code",
-      "description": "The control message code, which qualifies <code>icmp_type</code>. Applies to both ICMP and ICMPv6, as defined by the Internet Assigned Numbers Authority (IANA).",
+      "description": "The control message code, which qualifies <code>icmp_type</code>. Applies to both ICMP and ICMPv6 and, like <code>icmp_type</code>, is interpreted against the Internet Assigned Numbers Authority (IANA) registry for the protocol in use (IP protocol number <code>1</code> for ICMP, <code>58</code> for ICMPv6).",
       "type": "integer_t",
       "references": [
         {
-          "description": "IANA ICMP Type Numbers",
+          "description": "IANA Internet Control Message Protocol (ICMP) Parameters: type numbers and code fields",
           "url": "https://www.iana.org/assignments/icmp-parameters/icmp-parameters.xhtml"
+        },
+        {
+          "description": "IANA Internet Control Message Protocol version 6 (ICMPv6) Parameters: type numbers and code fields",
+          "url": "https://www.iana.org/assignments/icmpv6-parameters/icmpv6-parameters.xhtml"
         }
       ]
     },
     "icmp_type": {
       "caption": "ICMP Type",
-      "description": "The control message type. Applies to both ICMP and ICMPv6, as defined by the Internet Assigned Numbers Authority (IANA). For example: <code>8</code> for an Echo Request.",
+      "description": "The control message type. Applies to both ICMP and ICMPv6, which the Internet Assigned Numbers Authority (IANA) numbers in separate registries, so the same value can identify different messages: interpret it against the registry for the protocol in use (IP protocol number <code>1</code> for ICMP, <code>58</code> for ICMPv6). For example: <code>8</code> for an ICMP Echo Request, or <code>128</code> for an ICMPv6 Echo Request.",
       "type": "integer_t",
       "references": [
         {
-          "description": "IANA ICMP Type Numbers",
+          "description": "IANA Internet Control Message Protocol (ICMP) Parameters: type numbers and code fields",
           "url": "https://www.iana.org/assignments/icmp-parameters/icmp-parameters.xhtml"
+        },
+        {
+          "description": "IANA Internet Control Message Protocol version 6 (ICMPv6) Parameters: type numbers and code fields",
+          "url": "https://www.iana.org/assignments/icmpv6-parameters/icmpv6-parameters.xhtml"
         }
       ]
     },
     "icmp_uid": {
       "caption": "ICMP Identifier",
-      "description": "The identifier carried in an Echo Request and repeated in the matching Echo Reply, used to correlate the two messages.",
+      "description": "The identifier carried in an ICMP query message or an ICMPv6 informational message, such as an Echo Request or a Timestamp message, and repeated in the matching reply, used to correlate the request with its reply.",
       "type": "integer_t"
     },
     "identifier_cookie": {

@@ -83,6 +83,8 @@ Thankyou! -->
 ### Bugfixes
 1. Changed the `account` requirement in the `user` object from optional to recommended to align with its participation in the `at_least_one` constraint. [#1766](https://github.com/ocsf/ocsf-schema/pull/1766)
 1. Changed optional attributes that participate in an `at_least_one` or `just_one` constraint to `recommended`, and replaced the undefined `log_file` constraint member on `event_log_activity` with `file`. [#1767](https://github.com/ocsf/ocsf-schema/pull/1767)
+1. Escaped the dots between IPv4 octets in the `ip_t` regex (IPv4 and IPv4-embedded IPv6 forms), which matched any character, so `192x168x1x1` validated as an IP address. Raised `ip_t` `max_len` from 40 to 45 so the longest form the regex accepts (`0000:0000:0000:0000:0000:ffff:192.168.100.200`) fits. [#PR](https://github.com/ocsf/ocsf-schema/pull/PR)
+1. Moved the literal `-` to the end of the `email_t` local-part character class. As `+-/` it formed a range that also admitted a comma, so `a,b@example.com` validated. [#PR](https://github.com/ocsf/ocsf-schema/pull/PR)
 
 ### Deprecated
 

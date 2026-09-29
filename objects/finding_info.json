@@ -64,7 +64,11 @@
       "requirement": "optional"
     },
     "related_events": {
-      "requirement": "optional"
+      "requirement": "optional",
+      "@recursive": {
+        "message": "A related event that is itself a finding carries <code>finding_info</code>, which has its own <code>related_events</code>. No fixed depth applies; consumers should impose their own bound when traversing the chain.",
+        "path": ["related_event.finding_info"]
+      }
     },
     "related_events_count": {
       "requirement": "optional"

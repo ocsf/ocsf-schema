@@ -6,6 +6,9 @@
   "extends": "base_event",
   "name": "incident_finding",
   "attributes": {
+    "$include": [
+      "profiles/physical_site.json"
+    ],
     "activity_id": {
       "description": "The normalized identifier of the incident activity. Use <code>1</code> (Create) when an incident is first opened, <code>2</code> (Update) when an existing incident is modified (e.g., new findings added, priority changed, assignee updated), and <code>3</code> (Close) when the incident is resolved.",
       "requirement": "required",
@@ -207,6 +210,7 @@
     ]
   },
   "profiles": [
-    "incident"
+    "incident",
+    "physical_site"
   ]
 }

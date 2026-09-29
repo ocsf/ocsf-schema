@@ -27,6 +27,7 @@ Thankyou! -->
 * #### Event Classes
 * #### Profiles
 * #### Objects
+  1. Added `site_uid` to the `location` object's `at_least_one` constraint, so a location that carries only physical site context validates when the `physical_site` profile is applied. [#1750](https://github.com/ocsf/ocsf-schema/pull/1750)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -47,7 +48,9 @@ Thankyou! -->
 * #### Categories
 * #### Event Classes
 * #### Profiles
+  1. Added `physical_site` profile carrying physical site context (`site_uid`, `site_name`, `building`, `floor`, `site_zone`), attached to the Identity & Access Management and Findings classes, and to the `location` object so devices, endpoints, and persons carry site context through `location`. [#1750](https://github.com/ocsf/ocsf-schema/pull/1750)
 * #### Objects
+  1. Added `site_zone` object describing a defined area within a physical site that shares a common security posture, distinct from the network `zone` attribute. [#1750](https://github.com/ocsf/ocsf-schema/pull/1750)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -57,6 +60,9 @@ Thankyou! -->
   1. Added `is_declared_incident` and `resolved_time`. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
   1. Added `progress_current`, `progress_total`, `progress_unit`, `progress_unit_id`, `bytes_processed`, `bytes_written`, `throughput` and `queue_name` attributes. [#1722](https://github.com/ocsf/ocsf-schema/pull/1722)
   1. Added `log_facility` and `log_facility_id` attributes. [#1720](https://github.com/ocsf/ocsf-schema/pull/1720)
+  1. Added `site_uid`, `site_name`, `building`, and `floor` as `string_t` physical site context attributes. [#1750](https://github.com/ocsf/ocsf-schema/pull/1750)
+  1. Added `site_zone` as an object attribute and `is_armed` as a `boolean_t`. [#1750](https://github.com/ocsf/ocsf-schema/pull/1750)
+  1. Added `site_zone_type_id` as an `integer_t` enum with values Unknown (0), Perimeter (1), Public (2), Restricted (3), Critical (4), Transitional (5), External (6), Other (99), and `site_zone_type` as its `string_t` sibling. [#1750](https://github.com/ocsf/ocsf-schema/pull/1750)
 
 ### Improved
 * #### Categories

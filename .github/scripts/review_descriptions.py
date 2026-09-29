@@ -24,7 +24,7 @@ from pathlib import Path
 
 COMMENT_MARKER = "<!-- ocsf-description-review -->"
 ERROR_MARKER = "<!-- ocsf-description-review-error -->"
-DEFAULT_MODEL = "claude-sonnet-4-6"
+DEFAULT_MODEL = "claude-sonnet-5-5"
 MAX_CONTEXT_CHARS = 400_000
 
 # Deterministic normative pre-check (rules 13–15).

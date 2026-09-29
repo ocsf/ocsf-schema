@@ -85,6 +85,11 @@ Thankyou! -->
 ### Bugfixes
 1. Changed the `account` requirement in the `user` object from optional to recommended to align with its participation in the `at_least_one` constraint. [#1766](https://github.com/ocsf/ocsf-schema/pull/1766)
 1. Changed optional attributes that participate in an `at_least_one` or `just_one` constraint to `recommended`, and replaced the undefined `log_file` constraint member on `event_log_activity` with `file`. [#1767](https://github.com/ocsf/ocsf-schema/pull/1767)
+1. Escaped the dots between IPv4 octets in the `ip_t` regex (IPv4 and IPv4-embedded IPv6 forms), which matched any character, so `192x168x1x1` validated as an IP address. Raised `ip_t` `max_len` from 40 to 45 so the longest form the regex accepts (`0000:0000:0000:0000:0000:ffff:192.168.100.200`) fits. [#1769](https://github.com/ocsf/ocsf-schema/pull/1769)
+1. Moved the literal `-` to the end of the `email_t` local-part character class. As `+-/` it formed a range that also admitted a comma, so `a,b@example.com` validated. [#1769](https://github.com/ocsf/ocsf-schema/pull/1769)
+1. Widened the `datetime_t` regex to accept a space between the date and the time, as RFC 3339 section 5.6 permits and as the type's own `2024-09-10 23:20:50.520789Z` example uses. [#1769](https://github.com/ocsf/ocsf-schema/pull/1769)
+1. Corrected the `uuid_t` description example, which had 11 hex digits in its last group and failed its own regex. Fixed the `file_hast_t` typo in `file_hash_t` and a repeated "For example:" in `file_path_t`. [#1768](https://github.com/ocsf/ocsf-schema/pull/1768)
+1. Corrected the `type_uid` example in the `observable` object: Network Activity is class_uid 4001 (type_uid 400101), not 3001. [#1768](https://github.com/ocsf/ocsf-schema/pull/1768)
 
 ### Deprecated
 

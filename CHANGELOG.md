@@ -32,7 +32,6 @@ Thankyou! -->
 * #### Dictionary Attributes
 
 ### Bugfixes
-1. Changed the `account` requirement in the `user` object from optional to recommended to align with its participation in the `at_least_one` constraint. [#1766](https://github.com/ocsf/ocsf-schema/pull/1766)
 
 ### Deprecated
 
@@ -84,6 +83,8 @@ Thankyou! -->
 * #### Dictionary Attributes
 
 ### Bugfixes
+1. Changed the `account` requirement in the `user` object from optional to recommended to align with its participation in the `at_least_one` constraint. [#1766](https://github.com/ocsf/ocsf-schema/pull/1766)
+1. Changed optional attributes that participate in an `at_least_one` or `just_one` constraint to `recommended`, and replaced the undefined `log_file` constraint member on `event_log_activity` with `file`. [#1767](https://github.com/ocsf/ocsf-schema/pull/1767)
 
 ### Deprecated
 
@@ -91,6 +92,7 @@ Thankyou! -->
 
 ### Misc
   1. Added the `@recursive` attribute annotation to the metaschema, letting an attribute declare that expanding it reenters a type already on the path, with an optional nesting `limit` and, for indirect recursion, the `path` that closes the cycle. No schema definitions are annotated yet. [#1762](https://github.com/ocsf/ocsf-schema/pull/1762)
+  1. New Extension registration for Yandex Cloud. [#1759](https://github.com/ocsf/ocsf-schema/pull/1759)
 
 ## [v1.9.0] - Aug 3rd, 2026
 

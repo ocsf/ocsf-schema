@@ -1,0 +1,71 @@
+{
+  "uid": 2,
+  "caption": "Alarm Signal Activity",
+  "description": "Alarm Signal Activity events report signals received from intrusion, environmental, and supervisory detection points. The event type describes what kind of condition was reported; the lifecycle attribute inherited from the base class describes the state transition, mirroring the modifier letter in the SIA DC-03 format and the qualifier field in the Ademco Contact ID protocol. Restore and trouble conditions are therefore not separate activities.",
+  "extends": "physical_security",
+  "name": "alarm_signal_activity",
+  "attributes": {
+    "activity_id": {
+      "group": "primary",
+      "requirement": "required",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The event activity is unknown."
+        },
+        "1": {
+          "caption": "Intrusion",
+          "description": "An intrusion detection point was activated. Equivalent to SIA BA and Contact ID 130."
+        },
+        "2": {
+          "caption": "Perimeter",
+          "description": "A perimeter detection point was activated. Equivalent to Contact ID 131."
+        },
+        "3": {
+          "caption": "Holdup",
+          "description": "A holdup or silent alarm was activated. Equivalent to SIA HA and Contact ID 122."
+        },
+        "4": {
+          "caption": "Panic",
+          "description": "A panic alarm was manually activated. Equivalent to SIA PA and Contact ID 120."
+        },
+        "5": {
+          "caption": "Tamper",
+          "description": "Detection equipment or its enclosure was tampered with. Equivalent to SIA TA and Contact ID 137."
+        },
+        "6": {
+          "caption": "Environmental",
+          "description": "An environmental condition such as water, gas, or temperature was detected."
+        },
+        "7": {
+          "caption": "Supervisory",
+          "description": "A supervisory condition such as power or battery was reported. Equivalent to SIA AT or YT and Contact ID 201 or 302."
+        },
+        "8": {
+          "caption": "Communication",
+          "description": "A communication path fault was reported. Equivalent to SIA YC and Contact ID 350."
+        },
+        "9": {
+          "caption": "Opening",
+          "description": "The zone or partition was disarmed. Equivalent to SIA OP and Contact ID 400."
+        },
+        "10": {
+          "caption": "Closing",
+          "description": "The zone or partition was armed. Equivalent to SIA CL and Contact ID 400."
+        },
+        "11": {
+          "caption": "Video Analytic",
+          "description": "A video analytic rule was triggered. Equivalent to an ONVIF RuleEngine topic."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The event activity is not mapped. See the <code>activity_name</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
+    "alarm_point": {
+      "group": "primary",
+      "requirement": "required"
+    }
+  }
+}

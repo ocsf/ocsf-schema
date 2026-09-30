@@ -8,6 +8,10 @@ on:
 permissions:
   pull-requests: write
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.workflow_run.head_repository.full_name }}-${{ github.event.workflow_run.head_branch }}
+  cancel-in-progress: true
+
 jobs:
   review:
     name: Post description review suggestions
@@ -18,15 +22,15 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: pip install anthropic
+        run: pip install anthropic==1.7.0
 
       - name: Download review context
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: review-context
           run-id: ${{ github.event.workflow_run.id }}
@@ -37,3 +41,10 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ZACHS_CLAUDE_KEY }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python .github/scripts/review_descriptions.py review
+
+      - name: Report review failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: python .github/scripts/review_descriptions.py report-failure

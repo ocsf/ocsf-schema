@@ -1,0 +1,31 @@
+{
+  "additionalProperties": false,
+  "$id": "https://schema.ocsf.io/recursive.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "An annotation marking an attribute whose own type can reappear inside its value, so that expanding the attribute reenters a type already on the path. Tools that walk the schema graph, such as class graph rendering, sample generation, and code generation, use this annotation to stop expanding the branch rather than recursing without bound.",
+  "title": "Recursive",
+  "type": "object",
+  "properties": {
+    "message": {
+      "description": "A message that explains the recursion to implementers, including how deeply the attribute is expected to nest in practice and where to record additional levels instead of nesting further.",
+      "type": "string"
+    },
+    "limit": {
+      "description": "The maximum nesting depth producers are expected to emit for this attribute. A limit of 1 means the attribute may be populated on the outermost value only and must be omitted from the value it nests. Omit when no fixed depth applies, in which case consumers should impose their own bound.",
+      "type": "integer",
+      "minimum": 1
+    },
+    "path": {
+      "description": "The chain of attributes through which the recursion closes, for indirect recursion that reenters this attribute's type by way of other objects. Each entry is a dotted attribute path naming the next edge in the cycle (e.g. \"user.ldap_person\" for the manager attribute of the LDAP Person object). Omit for direct recursion, where the attribute's type is the object that declares it.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "required": [
+    "message"
+  ]
+}

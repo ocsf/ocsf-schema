@@ -36,6 +36,18 @@
       "description": "The end time of the observation or reporting period.",
       "requirement": "optional"
     },
+    "ip_bytes": {
+      "description": "The total number of IP-layer bytes transferred in both directions (sum of ip_bytes_in and ip_bytes_out). Counts the IP and transport-layer headers in addition to the payload, so it is greater than or equal to <code>bytes</code> for the same flow.",
+      "requirement": "optional"
+    },
+    "ip_bytes_in": {
+      "description": "The number of IP-layer bytes sent from the destination to the source (inbound direction), counting the IP and transport-layer headers in addition to the payload. Distinct from <code>bytes_in</code>, which counts payload only; maps to a source field such as Zeek conn.log <code>resp_ip_bytes</code>.",
+      "requirement": "optional"
+    },
+    "ip_bytes_out": {
+      "description": "The number of IP-layer bytes sent from the source to the destination (outbound direction), counting the IP and transport-layer headers in addition to the payload. Distinct from <code>bytes_out</code>, which counts payload only; maps to a source field such as Zeek conn.log <code>orig_ip_bytes</code>.",
+      "requirement": "optional"
+    },
     "packets": {
       "description": "The total number of packets transferred in both directions (sum of packets_in and packets_out).",
       "requirement": "recommended"

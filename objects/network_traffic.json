@@ -36,6 +36,14 @@
       "description": "The end time of the observation or reporting period.",
       "requirement": "optional"
     },
+    "packet_layer": {
+      "description": "The packet layer, normalized to the caption of the <code>packet_layer_id</code> value. In the case of 'Other', it is defined by the event source.",
+      "requirement": "optional"
+    },
+    "packet_layer_id": {
+      "description": "Indicates what the packet includes (L2 headers, L3 headers, L4 headers). Byte counters include packet headers as well as payload.",
+      "requirement": "optional"
+    },
     "packets": {
       "description": "The total number of packets transferred in both directions (sum of packets_in and packets_out).",
       "requirement": "recommended"
@@ -46,6 +54,22 @@
     },
     "packets_out": {
       "description": "The number of packets sent from the source to the destination (outbound direction).",
+      "requirement": "optional"
+    },
+    "payload_bytes": {
+      "description": "The total number of bytes in the packet's payload transferred in both directions (sum of payload_bytes_in and payload_bytes_out).",
+      "requirement": "optional"
+    },
+    "payload_bytes_in": {
+      "description": "The number of bytes in the packet's payload sent from the destination to the source.",
+      "requirement": "optional"
+    },
+    "payload_bytes_missed": {
+      "description": "The number of bytes in the packet's payload that were missed during observation, typically due to packet loss or sampling limitations.",
+      "requirement": "optional"
+    },
+    "payload_bytes_out": {
+      "description": "The number of bytes in the packet's payload sent from the source to the destination.",
       "requirement": "optional"
     },
     "start_time": {

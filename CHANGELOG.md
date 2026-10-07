@@ -58,7 +58,7 @@ Thankyou! -->
   1. Added `progress_current`, `progress_total`, `progress_unit`, `progress_unit_id`, `bytes_processed`, `bytes_written`, `throughput` and `queue_name` attributes. [#1722](https://github.com/ocsf/ocsf-schema/pull/1722)
   1. Added `log_facility` and `log_facility_id` attributes. [#1720](https://github.com/ocsf/ocsf-schema/pull/1720)
   1. Added `icmp_type`, `icmp_code` and `icmp_uid` attributes. [#1719](https://github.com/ocsf/ocsf-schema/pull/1719)
-  1. Added `packet_layer`, `packet_layer_id`, `payload_bytes`, `payload_bytes_in`, `payload_bytes_missed` and `payload_bytes_out` attributes. [#1678](https://github.com/ocsf/ocsf-schema/issues/1678)
+  1. Added `packet_layer`, `packet_layer_id`, `payload_bytes`, `payload_bytes_in`, `payload_bytes_missed` and `payload_bytes_out` attributes. [#1775](https://github.com/ocsf/ocsf-schema/pull/1775)
 
 ### Improved
 * #### Categories
@@ -79,7 +79,7 @@ Thankyou! -->
   1. Added `type_id`, `type` to `related_events` to distinguish activities, alerts, or findings as the type of the related event. [#1744](https://github.com/ocsf/ocsf-schema/pull/1744)
   1. Added `log_facility` and `log_facility_id` to the `metadata` and `logger` objects. [#1720](https://github.com/ocsf/ocsf-schema/pull/1720)
   1. Added `icmp_type`, `icmp_code` and `icmp_uid` to the `network_connection_info` object. [#1719](https://github.com/ocsf/ocsf-schema/pull/1719)
-  1. Added `packet_layer`, `packet_layer_id`, `payload_bytes`, `payload_bytes_in`, `payload_bytes_missed` and `payload_bytes_out` to the `network_traffic` object, so that byte counts state which protocol headers they include. [#1678](https://github.com/ocsf/ocsf-schema/issues/1678)
+  1. Added `packet_layer`, `packet_layer_id`, `payload_bytes`, `payload_bytes_in`, `payload_bytes_missed` and `payload_bytes_out` to the `network_traffic` object, so that byte counters state which protocol headers they include. [#1775](https://github.com/ocsf/ocsf-schema/pull/1775)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes

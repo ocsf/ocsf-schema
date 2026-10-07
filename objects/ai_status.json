@@ -1,6 +1,6 @@
 {
   "caption": "AI Status",
-  "description": "Container for per-operation outcome scalars contributed by the <code>ai_operation</code> profile. Holds outcomes reported by the model or agent runtime — e.g. why a completion stopped, permission decisions, context-compaction reasons, sub-agent stop reasons — so they do not proliferate as discrete attributes at the event root. Attributes are added here as their taxonomies are defined.",
+  "description": "Container for per-operation outcome scalars contributed by the <code>ai_operation</code> profile. Holds outcomes reported by the model or agent runtime, such as why a completion stopped or the result of a permission check, so they do not proliferate as discrete attributes at the event root. Additional outcome attributes may be added to this object in later versions.",
   "extends": "object",
   "name": "ai_status",
   "attributes": {
@@ -36,16 +36,6 @@
           "description": "The permission check produced an outcome outside this set."
         }
       }
-    },
-    "compaction_reason_id": {
-      "caption": "Compaction Reason ID",
-      "description": "The normalized reason the agent runtime compacted context during this operation, as reported by the runtime. Producers map their runtime's native value into the dictionary enum.",
-      "requirement": "optional"
-    },
-    "subagent_stop_reason_id": {
-      "caption": "Sub-agent Stop Reason ID",
-      "description": "The normalized reason a sub-agent spawned during this operation stopped, as reported by the runtime. Normalized taxonomy to be defined.",
-      "requirement": "optional"
     }
   }
 }

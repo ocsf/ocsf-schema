@@ -14,9 +14,14 @@
       "description": "The normalized reason the model completion ended. Producers map their runtime's native value into this set. Populate on completion events; when the value is 'Other', set <code>stop_reason</code> to the event source's native label. Because completion behavior is bound to the configuration that produced it, a shift in this attribute's distribution is more meaningful when weighed against that configuration: <code>ai_model.version</code> for direct model invocations, and <code>ai_agent.version</code>, <code>ai_agent.charter</code>, and <code>ai_agent.instance_uid</code> for agent-mediated operations.",
       "requirement": "recommended"
     },
+    "permission_result": {
+      "caption": "Permission Result",
+      "description": "The outcome of the agent runtime's permission check for this operation, as reported by the runtime. Normalized to the caption of the <code>permission_result_id</code> value; when the value is 'Other', this carries the runtime's native label.",
+      "requirement": "optional"
+    },
     "permission_result_id": {
       "caption": "Permission Result ID",
-      "description": "The normalized outcome of the agent runtime's permission check for this operation, as reported by the runtime. Producers map their runtime's native value into this set.",
+      "description": "The normalized outcome of the agent runtime's permission check for this operation, as reported by the runtime. Producers map their runtime's native value into this set; when the value is 'Other', set <code>permission_result</code> to the runtime's native label.",
       "requirement": "optional",
       "enum": {
         "0": {

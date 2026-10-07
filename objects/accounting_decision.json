@@ -28,7 +28,41 @@
     "reason_id": {
       "caption": "Reason ID",
       "description": "The normalized reason the authority rejected the claim. Required when <code>claim_decision_id</code> is 'Rejected'; absent otherwise. The rejected reasons must not collapse: e.g. an unregistered key (possible attack) and a bad signature (defect or misconfiguration) triage completely differently. An absent <code>accounting_decision</code> means unknown — never 'no decision was made.'",
-      "requirement": "optional"
+      "requirement": "optional",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The reason the claim was rejected is unknown."
+        },
+        "1": {
+          "caption": "Unregistered Key",
+          "description": "The key was never registered — treat as a possible attack."
+        },
+        "2": {
+          "caption": "Bad Signature",
+          "description": "The signature failed verification — treat as a defect or misconfiguration."
+        },
+        "3": {
+          "caption": "Expired",
+          "description": "The claim or credential had expired."
+        },
+        "4": {
+          "caption": "Future Dated",
+          "description": "The claim or credential is dated in the future."
+        },
+        "5": {
+          "caption": "Malformed",
+          "description": "The claim or credential could not be parsed."
+        },
+        "6": {
+          "caption": "No Keys Registered",
+          "description": "No keys are registered for the claimed identity at all."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The claim was rejected for a reason outside this set. See the <code>reason</code> attribute, which contains a data source specific value."
+        }
+      }
     }
   },
   "caption": "Accounting Decision",

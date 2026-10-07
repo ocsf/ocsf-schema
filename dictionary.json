@@ -6142,44 +6142,22 @@
     },
     "reason": {
       "caption": "Reason",
-      "description": "The normalized reason the claim was rejected, as the caption of <code>reason_id</code>. Populate when <code>claim_decision_id</code> is 'Rejected'; omit otherwise. In the case of 'Other', it is defined by the event source.",
+      "description": "The reason, normalized to the caption of the <code>reason_id</code> value. In the case of 'Other', it is defined by the event source. See specific usage.",
       "type": "string_t"
     },
     "reason_id": {
       "caption": "Reason ID",
-      "description": "The normalized reason the authority rejected the claim. Required when <code>claim_decision_id</code> is 'Rejected'; absent otherwise. The rejected reasons must not collapse: e.g. an unregistered key (possible attack) and a bad signature (defect or misconfiguration) triage completely differently. An absent <code>accounting_decision</code> means unknown — never 'no decision was made.'",
+      "description": "The normalized reason identifier. See specific usage.",
       "sibling": "reason",
       "type": "integer_t",
       "enum": {
         "0": {
-          "caption": "Unknown"
-        },
-        "1": {
-          "caption": "rejected:unregistered-key",
-          "description": "The key was never registered — treat as a possible attack."
-        },
-        "2": {
-          "caption": "rejected:bad-signature",
-          "description": "The signature failed verification — treat as a defect or misconfiguration."
-        },
-        "3": {
-          "caption": "rejected:expired",
-          "description": "The claim or credential had expired."
-        },
-        "4": {
-          "caption": "rejected:future-dated",
-          "description": "The claim or credential is dated in the future."
-        },
-        "5": {
-          "caption": "rejected:malformed",
-          "description": "The claim or credential could not be parsed."
-        },
-        "6": {
-          "caption": "rejected:no-keys-registered",
-          "description": "No keys are registered for the claimed identity at all."
+          "caption": "Unknown",
+          "description": "The reason is unknown."
         },
         "99": {
-          "caption": "Other"
+          "caption": "Other",
+          "description": "The reason is not mapped. See the <code>reason</code> attribute, which contains a data source specific value."
         }
       }
     },

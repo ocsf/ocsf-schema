@@ -1,0 +1,46 @@
+name: Developer Certificate of Origin
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  dco:
+    name: Require Signed-off-by
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout pull request
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Check Signed-off-by trailers
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          git cat-file -e "${BASE_SHA}^{commit}" 2>/dev/null || git fetch --no-tags origin "${BASE_SHA}"
+
+          missing=0
+          while IFS= read -r sha; do
+            [ -z "$sha" ] && continue
+            # shellcheck disable=SC2086
+            set -- $(git rev-list --parents -n 1 "$sha")
+            if [ "$#" -gt 2 ]; then
+              continue
+            fi
+            if ! git log -1 --format=%B "$sha" | grep -Eq '^Signed-off-by: .+ <[^[:space:]>]+>$'; then
+              echo "::error title=Missing Signed-off-by::Commit ${sha} has no Signed-off-by trailer. Add one with git commit -s."
+              git log -1 --format='%h %an %s' "$sha"
+              missing=1
+            fi
+          done < <(git rev-list "${BASE_SHA}..${HEAD_SHA}")
+
+          if [ "$missing" -ne 0 ]; then
+            echo "Each commit must include: Signed-off-by: Real Name <email>"
+            exit 1
+          fi

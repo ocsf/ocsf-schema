@@ -50,6 +50,7 @@ Thankyou! -->
   1. Added optional `ai_capability` attribute to the `ai_operation` profile, recording the invoked AI capability (tool, resource, or prompt). [#1729](https://github.com/ocsf/ocsf-schema/pull/1729)
 * #### Objects
   1. Added `ai_capability` object describing an invoked AI capability — its primitive kind, provenance (serving system and transport), declared behavior hints, and input/output schema, description, and baseline fingerprints. [#1729](https://github.com/ocsf/ocsf-schema/pull/1729)
+  1. Added the `accounting_decision` object: an authority's verdict on an agent identity/credential claim (`claim_type`/`claim_type_id`, `claim_decision`/`claim_decision_id`, `reason`/`reason_id` with a closed rejection-reason enum). [#1765](https://github.com/ocsf/ocsf-schema/pull/1765)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -71,6 +72,7 @@ Thankyou! -->
   1. Clarified `ai_agent` description in `role_management` to identify the agent that `iam_role` is provisioned for or bound to, rather than the actor-oriented wording inherited from the `ai_operation` profile. Noted in the class description that `role_management` covers roles bound to AI agents. [#1726](https://github.com/ocsf/ocsf-schema/pull/1726)
 * #### Profiles
   1. Added `is_declared_incident` to incident.json. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
+  1. Added `containment_reason` and `containment_reason_id` to the `ai_operation` profile: why enforcement acted on the operation (operator kill, guardrail kill, crash). [#1765](https://github.com/ocsf/ocsf-schema/pull/1765)
 * #### Objects
   1. Added `labels` to the `node` object for grouping nodes into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
   1. Added `progress_current`, `progress_total`, `progress_unit`, `progress_unit_id`, `bytes_processed`, `bytes_written`, `throughput` and `queue_name` to the `job` object so a running job can report its progress and throughput. [#1722](https://github.com/ocsf/ocsf-schema/pull/1722)

@@ -1,0 +1,72 @@
+{
+  "attributes": {
+    "claim_type": {
+      "caption": "Claim Type",
+      "description": "The kind of credential claim the authority evaluated, normalized to the caption of <code>claim_type_id</code>. In the case of 'Other', it is defined by the event source.",
+      "requirement": "optional"
+    },
+    "claim_type_id": {
+      "caption": "Claim Type ID",
+      "description": "The normalized kind of credential claim the authority evaluated.",
+      "requirement": "recommended"
+    },
+    "claim_decision": {
+      "caption": "Decision",
+      "description": "The authority's verdict on the evaluated claim, normalized to the caption of <code>claim_decision_id</code>. In the case of 'Other', it is defined by the event source.",
+      "requirement": "optional"
+    },
+    "claim_decision_id": {
+      "caption": "Decision ID",
+      "description": "The normalized verdict of the authority on the evaluated claim.",
+      "requirement": "required"
+    },
+    "reason": {
+      "caption": "Reason",
+      "description": "The normalized reason the claim was rejected, as the caption of <code>reason_id</code>. Populate when <code>claim_decision_id</code> is 'Rejected'; omit otherwise. In the case of 'Other', it is defined by the event source.",
+      "requirement": "optional"
+    },
+    "reason_id": {
+      "caption": "Reason ID",
+      "description": "The normalized reason the authority rejected the claim. Required when <code>claim_decision_id</code> is 'Rejected'; absent otherwise. The rejected reasons must not collapse: e.g. an unregistered key (possible attack) and a bad signature (defect or misconfiguration) triage completely differently. An absent <code>accounting_decision</code> means unknown — never 'no decision was made.'",
+      "requirement": "optional",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The reason the claim was rejected is unknown."
+        },
+        "1": {
+          "caption": "Unregistered Key",
+          "description": "The key was never registered — treat as a possible attack."
+        },
+        "2": {
+          "caption": "Bad Signature",
+          "description": "The signature failed verification — treat as a defect or misconfiguration."
+        },
+        "3": {
+          "caption": "Expired",
+          "description": "The claim or credential had expired."
+        },
+        "4": {
+          "caption": "Future Dated",
+          "description": "The claim or credential is dated in the future."
+        },
+        "5": {
+          "caption": "Malformed",
+          "description": "The claim or credential could not be parsed."
+        },
+        "6": {
+          "caption": "No Keys Registered",
+          "description": "No keys are registered for the claimed identity at all."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The claim was rejected for a reason outside this set. See the <code>reason</code> attribute, which contains a data source specific value."
+        }
+      }
+    }
+  },
+  "caption": "Accounting Decision",
+  "description": "The verdict of an authority that evaluated an agent identity or credential claim — e.g. whether a presented key was attested, left unproven, or rejected — and, when rejected, the normalized reason. Carries the decision half of the evidence contract: a decision without a reason cannot be audited, only counted.",
+  "extends": "object",
+  "name": "accounting_decision"
+}

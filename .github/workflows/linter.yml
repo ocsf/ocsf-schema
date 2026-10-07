@@ -20,11 +20,12 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Spellcheck all content
         uses: streetsidesoftware/cspell-action@v7
         with:
           config: .github/.cspell.yaml
+          # Advisory only. Unknown words are annotations; they do not fail the job.
           strict: false
           inline: warning

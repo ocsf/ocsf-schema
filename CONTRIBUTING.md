@@ -452,7 +452,7 @@ Install the tools with `pip` in a virtual environment. The compiler requires **P
 
     The server should start with no errors.
 
-CI also runs `python -m ocsf.validate.compatibility` (from [ocsf-lib](https://pypi.org/project/ocsf-lib/)) against the last stable release. You do not need to run that locally unless you are changing classification IDs or removing attributes.
+CI also runs `python -m ocsf.validate.compatibility` (from [ocsf-lib](https://pypi.org/project/ocsf-lib/)) against the last stable release. It checks out that release tag (default `1.9.0`, or the `LATEST_STABLE` repository variable) and compiles it. A version string such as `1.9.0` cannot be fetched from schema.ocsf.io, because the legacy export API rejects `1.8.0` and newer. You do not need to run the comparison locally unless you are changing classification IDs or removing attributes.
 
 Address every compile error and validator ERROR before submitting.
 
@@ -494,6 +494,8 @@ Signed-off-by: Jane Smith <jane.smith@email.com>
 ```
 
 You may type this line on your own when writing your commit messages. However, if your `user.name` and `user.email` are set in your git configs, you can use `-s` or `--signoff` to add the Signed-off-by line to the end of the commit message.
+
+Pull requests fail the DCO check when any non-merge commit is missing this trailer.
 
 ---
 

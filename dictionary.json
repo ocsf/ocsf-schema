@@ -2551,6 +2551,23 @@
       "description": "The Domain-based Message Authentication, Reporting and Conformance (DMARC) policy status.",
       "type": "string_t"
     },
+    "dns_additional": {
+      "caption": "DNS Additional Section",
+      "description": "The Additional section of a DNS message, containing supplementary resource records and an optional TSIG record. A DNS message has at most one TSIG record, available via <code>dns_additional.tsig</code>.",
+      "source": "Additional",
+      "type": "dns_section",
+      "references": [
+        {
+          "description": "RFC 2845 — Secret Key Transaction Authentication for DNS (TSIG).",
+          "url": "https://www.rfc-editor.org/rfc/rfc2845"
+        }
+      ]
+    },
+    "dns_zone": {
+      "caption": "DNS Zone",
+      "description": "The fully qualified name of the DNS zone, i.e., the zone apex. For example: <code>example.com</code>. See specific usage.",
+      "type": "hostname_t"
+    },
     "dnssec_status": {
       "caption": "DNSSEC Status",
       "description": "The normalized value of dnssec_status_id.",
@@ -2927,6 +2944,11 @@
       "caption": "Expiration Time",
       "description": "The expiration time. See specific usage.",
       "type": "timestamp_t"
+    },
+    "expire_interval": {
+      "caption": "Expire Interval",
+      "description": "The time interval after which a resource is no longer considered valid. See specific usage.",
+      "type": "timespan"
     },
     "exploit_last_seen_time": {
       "caption": "Exploit Last Seen Time",
@@ -3479,6 +3501,41 @@
       "caption": "ICCID",
       "description": "The Integrated Circuit Card Identification of a mobile device. Typically it is a unique 18 to 22 digit number that identifies a SIM card.",
       "type": "string_t"
+    },
+    "icmp_code": {
+      "caption": "ICMP Code",
+      "description": "The control message code, which qualifies <code>icmp_type</code>. Applies to both ICMP and ICMPv6 and, like <code>icmp_type</code>, is interpreted against the Internet Assigned Numbers Authority (IANA) registry for the protocol in use (IP protocol number <code>1</code> for ICMP, <code>58</code> for ICMPv6).",
+      "type": "integer_t",
+      "references": [
+        {
+          "description": "IANA Internet Control Message Protocol (ICMP) Parameters: type numbers and code fields",
+          "url": "https://www.iana.org/assignments/icmp-parameters/icmp-parameters.xhtml"
+        },
+        {
+          "description": "IANA Internet Control Message Protocol version 6 (ICMPv6) Parameters: type numbers and code fields",
+          "url": "https://www.iana.org/assignments/icmpv6-parameters/icmpv6-parameters.xhtml"
+        }
+      ]
+    },
+    "icmp_type": {
+      "caption": "ICMP Type",
+      "description": "The control message type. Applies to both ICMP and ICMPv6, which the Internet Assigned Numbers Authority (IANA) numbers in separate registries, so the same value can identify different messages: interpret it against the registry for the protocol in use (IP protocol number <code>1</code> for ICMP, <code>58</code> for ICMPv6). For example: <code>8</code> for an ICMP Echo Request, or <code>128</code> for an ICMPv6 Echo Request.",
+      "type": "integer_t",
+      "references": [
+        {
+          "description": "IANA Internet Control Message Protocol (ICMP) Parameters: type numbers and code fields",
+          "url": "https://www.iana.org/assignments/icmp-parameters/icmp-parameters.xhtml"
+        },
+        {
+          "description": "IANA Internet Control Message Protocol version 6 (ICMPv6) Parameters: type numbers and code fields",
+          "url": "https://www.iana.org/assignments/icmpv6-parameters/icmpv6-parameters.xhtml"
+        }
+      ]
+    },
+    "icmp_uid": {
+      "caption": "ICMP Identifier",
+      "description": "The identifier carried in an ICMP query message or an ICMPv6 informational message, such as an Echo Request or a Timestamp message, and repeated in the matching reply, used to correlate the request with its reply.",
+      "type": "integer_t"
     },
     "identifier_cookie": {
       "caption": "Identifier Cookie",
@@ -4797,6 +4854,11 @@
       "description": "The Multipurpose Internet Mail Extensions (MIME) type of the data, if applicable.  See specific usage.",
       "type": "string_t"
     },
+    "minimum_ttl": {
+      "caption": "Minimum TTL",
+      "description": "The minimum time-to-live (TTL). See specific usage.",
+      "type": "timespan"
+    },
     "mitigation": {
       "caption": "MITRE Mitigation",
       "description": "The Mitigation object describes the MITRE ATT&CK® or ATLAS™ Mitigation ID and/or name that is associated to an attack.",
@@ -4939,6 +5001,11 @@
     "num_folders": {
       "caption": "Scanned Folders",
       "description": "The number of folders scanned.",
+      "type": "integer_t"
+    },
+    "num_records": {
+      "caption": "Number of Records",
+      "description": "The number of records. See specific usage.",
       "type": "integer_t"
     },
     "num_infected": {
@@ -5510,6 +5577,11 @@
       "type": "security_state",
       "is_array": true
     },
+    "primary_server": {
+      "caption": "Primary Server",
+      "description": "The primary server for a resource. See specific usage.",
+      "type": "string_t"
+    },
     "priority": {
       "caption": "Priority",
       "description": "The priority, normalized to the caption of the priority_id value. In the case of 'Other', it is defined by the event source.",
@@ -6061,6 +6133,11 @@
       "description": "The request header that identifies the address of the previous web page, which is linked to the current web page or resource being requested.",
       "type": "string_t"
     },
+    "refresh_interval": {
+      "caption": "Refresh Interval",
+      "description": "The time interval before a resource should be refreshed. See specific usage.",
+      "type": "timespan"
+    },
     "region": {
       "caption": "Region",
       "description": "The name or the code of a region. See specific usage.",
@@ -6299,6 +6376,16 @@
       "caption": "Response Time",
       "description": "The Domain Name System (DNS) response time.",
       "type": "timestamp_t"
+    },
+    "responsible_party": {
+      "caption": "Responsible Party",
+      "description": "The party responsible for a resource. See specific usage.",
+      "type": "string_t"
+    },
+    "retry_interval": {
+      "caption": "Retry Interval",
+      "description": "The time interval before a failed operation should be retried. See specific usage.",
+      "type": "timespan"
     },
     "return_path": {
       "caption": "Return Path",
@@ -6968,6 +7055,11 @@
       "caption": "Server Name Indication",
       "description": " The Server Name Indication (SNI) extension sent by the client.",
       "type": "string_t"
+    },
+    "soa": {
+      "caption": "SOA Record",
+      "description": "The DNS SOA (Start of Authority) record. See specific usage.",
+      "type": "dns_soa"
     },
     "software_components": {
       "caption": "Software Components",
@@ -7646,6 +7738,17 @@
       "description": "The unique identifier of the transaction.",
       "type": "string_t"
     },
+    "transfer_type": {
+      "caption": "Transfer Type",
+      "description": "The type of transfer, normalized to the caption of the <code>transfer_type_id</code> value. In the case of 'Other', it is defined by the event source. See specific usage.",
+      "type": "string_t"
+    },
+    "transfer_type_id": {
+      "caption": "Transfer Type ID",
+      "description": "The normalized identifier of the transfer type. See specific usage.",
+      "sibling": "transfer_type",
+      "type": "integer_t"
+    },
     "transformation_info_list": {
       "caption": "Transformation Info",
       "description": "An array of transformation info that describes the mappings or transforms applied to the data.",
@@ -7873,6 +7976,11 @@
       "caption": "Updated Role",
       "description": "The updated role. See specific usage.",
       "type": "iam_role"
+    },
+    "updated_soa": {
+      "caption": "Updated SOA Record",
+      "description": "The DNS SOA (Start of Authority) record after the change. See specific usage.",
+      "type": "dns_soa"
     },
     "updated_user": {
       "caption": "Updated User",

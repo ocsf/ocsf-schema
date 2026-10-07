@@ -60,6 +60,7 @@ Thankyou! -->
   1. Added `is_declared_incident` and `resolved_time`. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
   1. Added `progress_current`, `progress_total`, `progress_unit`, `progress_unit_id`, `bytes_processed`, `bytes_written`, `throughput` and `queue_name` attributes. [#1722](https://github.com/ocsf/ocsf-schema/pull/1722)
   1. Added `log_facility` and `log_facility_id` attributes. [#1720](https://github.com/ocsf/ocsf-schema/pull/1720)
+  1. Added `icmp_type`, `icmp_code` and `icmp_uid` attributes. [#1719](https://github.com/ocsf/ocsf-schema/pull/1719)
 
 ### Improved
 * #### Categories
@@ -79,6 +80,7 @@ Thankyou! -->
   1. Added `risk_details`, `risk_level_id`, `risk_level`, `risk_score` to `related_events` to carry any risk values when the related event is a finding. [#1744](https://github.com/ocsf/ocsf-schema/pull/1744)
   1. Added `type_id`, `type` to `related_events` to distinguish activities, alerts, or findings as the type of the related event. [#1744](https://github.com/ocsf/ocsf-schema/pull/1744)
   1. Added `log_facility` and `log_facility_id` to the `metadata` and `logger` objects. [#1720](https://github.com/ocsf/ocsf-schema/pull/1720)
+  1. Added `icmp_type`, `icmp_code` and `icmp_uid` to the `network_connection_info` object. [#1719](https://github.com/ocsf/ocsf-schema/pull/1719)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -99,6 +101,7 @@ Thankyou! -->
 ### Misc
   1. Added the `@recursive` attribute annotation to the metaschema, letting an attribute declare that expanding it reenters a type already on the path, with an optional nesting `limit` and, for indirect recursion, the `path` that closes the cycle. No schema definitions are annotated yet. [#1762](https://github.com/ocsf/ocsf-schema/pull/1762)
   1. New Extension registration for Yandex Cloud. [#1759](https://github.com/ocsf/ocsf-schema/pull/1759)
+  1. New Extension registration for WithSecure. [#1773](https://github.com/ocsf/ocsf-schema/pull/1773)
 
 ## [v1.9.0] - Aug 3rd, 2026
 
@@ -108,6 +111,7 @@ Thankyou! -->
   1. Added `user_management` and `role_management`. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
   1. Added `clipboard_activity`. [#1655](https://github.com/ocsf/ocsf-schema/pull/1655)
   1. Added `device_power_state_activity` class to capture power state changes of a device. [#1624](https://github.com/ocsf/ocsf-schema/pull/1624)
+  1. Added `dns_zone_transfer_activity` (`DNS Zone Transfer Activity`) class to capture DNS zone transfers (AXFR/IXFR) and NOTIFY. [#1675](https://github.com/ocsf/ocsf-schema/pull/1675)
 * #### Profiles
   1. Added `record_integrity` profile that adds a cryptographic `attestation` over the event (integrity, authenticity, and non-repudiation), applied at the base event so any class can carry it. [#1661](https://github.com/ocsf/ocsf-schema/pull/1661)
   1. Added optional `delegation` attribute to the `ai_operation` profile, linking data-plane actions to the delegated authority under which they were performed. [#1665](https://github.com/ocsf/ocsf-schema/pull/1665)
@@ -127,6 +131,7 @@ Thankyou! -->
   1. Added `attestation` object carrying a `fingerprint` of and digital `signatures` over an event, with optional tamper-evident chain attributes (`prev_event`, `chain_uid`) and an `authority_uid` identifying the attesting party. [#1661](https://github.com/ocsf/ocsf-schema/pull/1661)
   1. Added `prev_event` object referencing the previous event in a tamper-evident chain by its `fingerprint` (content binding) together with `uid` and `type_uid` (retrieval). [#1661](https://github.com/ocsf/ocsf-schema/pull/1661)
   1. Added `sensor_info` object including the `sensor_layer_id` and related attributes. [#1703](https://github.com/ocsf/ocsf-schema/pull/1703)
+  1. Added `dns_soa` object to represent the RFC 1035 SOA (Start of Authority) record RDATA, used to carry zone serials and timers in DNS zone transfers. [#1675](https://github.com/ocsf/ocsf-schema/pull/1675)
 * #### Observables
   1. Set `iam_role.name` (49) & `iam_role.uid` (50) as Observable types. [#1603](https://github.com/ocsf/ocsf-schema/pull/1603)
 * #### Platform Extensions
@@ -159,6 +164,7 @@ Thankyou! -->
   1. Added `sensor_layer_id` and `sensor_layer` sibling. [#1703](https://github.com/ocsf/ocsf-schema/pull/1703)
   1. Added `sensor_info_list` as an array of type `sensor_info` for the `analytic` object. [#1703](https://github.com/ocsf/ocsf-schema/pull/1703)
   1. Added `delegation` and `issuer_uid` attributes supporting the `delegation` object and `ai_operation` profile. [#1665](https://github.com/ocsf/ocsf-schema/pull/1665)
+  1. Added `dns_zone`, `dns_additional`, `soa`, `updated_soa`, `num_records`, `transfer_type`, `transfer_type_id`, and the SOA sub-fields `primary_server`, `responsible_party`, `sequence_number`, `refresh_interval`, `retry_interval`, `expire_interval`, and `minimum_ttl` for DNS zone transfers. [#1675](https://github.com/ocsf/ocsf-schema/pull/1675)
 
 ### Improved
 * #### Categories

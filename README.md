@@ -8,7 +8,7 @@ The Open Cybersecurity Schema Framework (OCSF) is an open standard for cybersecu
 
 This repository contains the core schema definitions that enable consistent representation of security events across different tools and platforms. The core schema for cybersecurity events is intended to be agnostic to implementations. OCSF is intended to be used by both products and devices which produce log events, analytic systems, and logging systems which retain log events.
 
-## 🚀 Quick Start
+## Quick Start
 
 **Explore the Schema**: Visit [schema.ocsf.io](https://schema.ocsf.io) to browse the complete schema interactively.
 
@@ -17,7 +17,7 @@ This repository contains the core schema definitions that enable consistent repr
 - [Contributing Guide](CONTRIBUTING.md) - How to contribute to the schema
 - [Changelog](CHANGELOG.md) - Latest updates and changes
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 ├── events/          # Event class definitions organized by category
@@ -31,7 +31,7 @@ This repository contains the core schema definitions that enable consistent repr
 └── version.json     # Current schema version
 ```
 
-## 🎯 What is OCSF?
+## What is OCSF?
 
 OCSF provides:
 - **Standardized Event Schema**: Common structure for cybersecurity events
@@ -45,7 +45,7 @@ The framework consists of:
 - **Objects**: Reusable data structures
 - **Attributes**: Individual data fields with standardized definitions
 
-## 🔧 Usage
+## Usage
 
 OCSF is designed for:
 - **Security Tools**: SIEM, SOAR, EDR, and other security platforms
@@ -79,25 +79,25 @@ A Claude-powered reviewer (`.github/scripts/review_descriptions.py`) comments on
 
 On a later push, the reviewer acknowledges suggestions that were fixed and repeats the ones that are still open.
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details on:
 - How to propose schema changes
 - Development workflow
 - Community guidelines
 
-## 📋 Versioning
+## Versioning
 
 OCSF follows [semantic versioning](https://semver.org/). Check [version.json](version.json) for the current version.
 
-## 📄 License
+## License
 
 Licensed under the [Apache License 2.0](LICENSE).
 
 ---
 
 **Need Help?** 
-- 📖 [Documentation](https://github.com/ocsf/ocsf-docs)
-- 🌐 [Schema Browser](https://schema.ocsf.io)
-- 💬 [Community Discussions](https://github.com/ocsf/ocsf-schema/discussions)
-- ⚡ [Slack Workspace](https://github.com/ocsf#slack-workspace)
+- [Documentation](https://github.com/ocsf/ocsf-docs)
+- [Schema Browser](https://schema.ocsf.io)
+- [Community Discussions](https://github.com/ocsf/ocsf-schema/discussions)
+- [Slack Workspace](https://github.com/ocsf#slack-workspace)

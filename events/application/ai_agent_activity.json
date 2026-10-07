@@ -1,0 +1,85 @@
+{
+  "uid": 9,
+  "caption": "AI Agent Activity",
+  "description": "AI Agent Activity events describe the behavior of autonomous AI agents.",
+  "extends": "application",
+  "name": "ai_agent_activity",
+  "attributes": {
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Session Start",
+          "description": "The agent has started or resumed a session. Refer to the <code>ai_agent_session_start_info</code> object for details."
+        },
+        "2": {
+          "caption": "Session End",
+          "description": "An agent session has ended. Refer to the <code>ai_agent_session_end_info</code> object for details."
+        },
+        "3": {
+          "caption": "Subagent Start",
+          "description": "The agent has started a sub-agent. Refer to the <code>ai_subagent_start_info</code> object for details."
+        },
+        "4": {
+          "caption": "Subagent Stop",
+          "description": "A sub-agent has stopped. Refer to the <code>ai_subagent_stop_info</code> object for details."
+        },
+        "5": {
+          "caption": "User Prompt Submit",
+          "description": "The user has submitted a prompt to the agent. Refer to the <code>ai_agent_user_prompt_submit_info</code> object for details."
+        },
+        "6": {
+          "caption": "Permission Request",
+          "description": "The agent has requested permission to make a tool call. Refer to the <code>ai_agent_permission_request_info</code> object for details."
+        },
+        "7": {
+          "caption": "Tool Use",
+          "description": "The agent has made or is about to make a tool call. Refer to the <code>ai_agent_tool_use_info</code> object for details."
+        },
+        "8": {
+          "caption": "Stop",
+          "description": "A turn has stopped due to natural completion, failure, or interruption by the user. Refer to the <code>ai_agent_stop_info</code> object for details."
+        },
+        "9": {
+          "caption": "Compact",
+          "description": "The agent has compacted or is about to compact its context. Refer to the <code>ai_agent_compact_info</code> object for details."
+        }
+      }
+    },
+    "ai_agent_compact_info": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "ai_agent_permission_request_info": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "ai_agent_session_end_info": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "ai_agent_session_start_info": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "ai_agent_stop_info": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "ai_agent_tool_use_info": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "ai_agent_user_prompt_submit_info": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "ai_subagent_start_info": {
+      "group": "primary",
+      "requirement": "optional"
+    },
+    "ai_subagent_stop_info": {
+      "group": "primary",
+      "requirement": "optional"
+    }
+  }
+}

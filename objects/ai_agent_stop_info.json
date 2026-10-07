@@ -1,0 +1,44 @@
+{
+  "caption": "AI Agent Stop Information",
+  "description": "The AI Agent Stop Information object provides detail pertaining to the <code>AI Agent Activity: Stop</code> event type.",
+  "extends": "object",
+  "name": "ai_agent_stop_info",
+  "attributes": {
+    "type": {
+      "caption": "Stop Type",
+      "description": "The stop type, normalized to the caption of the <code>type_id</code> value. In the case of 'Other', it is defined by the source.",
+      "requirement": "optional"
+    },
+    "type_id": {
+      "caption": "Stop Type ID",
+      "description": "The normalized stop type ID.",
+      "requirement": "required",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The turn ended for an unknown reason."
+        },
+        "1": {
+          "caption": "End of Turn",
+          "description": "The turn ended naturally. The model has returned a complete response."
+        },
+        "2": {
+          "caption": "Interrupt",
+          "description": "The turn ended prematurely having been interrupted by the user. Any response returned is incomplete."
+        },
+        "3": {
+          "caption": "Token Limit",
+          "description": "The turn ended abnormally due to token exhaustion. Any response returned is incomplete."
+        },
+        "4": {
+          "caption": "Failed",
+          "description": "The turn ended abnormally due to an unrecoverable failure. Any response returned is incomplete."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The turn ended for a reason that is not mapped. See the <code>type</code> attribute which contains an event source specific value."
+        }
+      }
+    }
+  }
+}

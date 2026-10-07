@@ -1,0 +1,24 @@
+{
+  "caption": "AI Agent Tool Use Information",
+  "description": "The AI Agent Tool Use Information object provides detail pertaining to the <code>AI Agent Activity: Tool Use</code> event type.",
+  "extends": "object",
+  "name": "ai_agent_tool_use_info",
+  "attributes": {
+    "ai_tool_input": {
+      "description": "Describes the input provided to the tool by the AI agent.",
+      "requirement": "recommended"
+    },
+    "ai_tool_response": {
+      "description": "Describes the response received by the AI agent from the tool. This attribute is not available when <code>is_pre_occurrence</code> is <code>true</code>.",
+      "requirement": "recommended"
+    },
+    "is_pre_occurrence": {
+      "description": "<code>true</code> indicates that the tool has not yet been invoked. <code>false</code> indicates that the tool use has occurred.",
+      "requirement": "required"
+    },
+    "name": {
+      "description": "The name of the invoked tool, e.g. <code>Bash</code>, <code>apply-patch</code>, <code>mcp__jira__search</code>, etc.",
+      "requirement": "required"
+    }
+  }
+}

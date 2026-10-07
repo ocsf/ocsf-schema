@@ -47,7 +47,9 @@ Thankyou! -->
 * #### Categories
 * #### Event Classes
 * #### Profiles
+  1. Added optional `ai_capability` attribute to the `ai_operation` profile, recording the invoked AI capability (tool, resource, or prompt). [#1729](https://github.com/ocsf/ocsf-schema/pull/1729)
 * #### Objects
+  1. Added `ai_capability` object describing an invoked AI capability — its primitive kind, provenance (serving system and transport), declared behavior hints, and input/output schema, description, and baseline fingerprints. [#1729](https://github.com/ocsf/ocsf-schema/pull/1729)
   1. Added the `ai_status` object for per-operation outcome scalars contributed by the `ai_operation` profile, with `stop_reason` / `stop_reason_id` (enum: Unknown (0), End of Turn (1), Token Limit (2), Tool Use (3), Session Stop (4), Content Filter (5), Other (99)) and `permission_result` / `permission_result_id` (enum: Unknown (0), Allowed (1), Denied (2), Other (99)). Additional outcome attributes may be added in later versions. [#1704](https://github.com/ocsf/ocsf-schema/pull/1704)
 * #### Observables
 * #### Platform Extensions
@@ -55,6 +57,7 @@ Thankyou! -->
   1. Added `likelihood` as a `string_t`, normalized to the caption of `likelihood_id`. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
   1. Added `likelihood_id` as an `integer_t` enum with values Unknown (0), Very Low (1), Low (2), Moderate (3), High (4), Very High (5), Other (99). [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
   1. Added `likelihood_score` as an `integer_t`, complementing `confidence_score`, `impact_score`, and `risk_score`. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
+  1. Added `ai_capability`, `transport`/`transport_id`, `is_destructive`, `is_idempotent`, `is_open_world`, `input_schema_fingerprint`, `output_schema_fingerprint`, `desc_fingerprint`, `baseline_fingerprint`, `cache_scope`/`cache_scope_id`, `cache_ttl`, and `task_uid` attributes for the `ai_capability` object. [#1729](https://github.com/ocsf/ocsf-schema/pull/1729)
   1. Added `is_declared_incident` and `resolved_time`. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
   1. Added `progress_current`, `progress_total`, `progress_unit`, `progress_unit_id`, `bytes_processed`, `bytes_written`, `throughput` and `queue_name` attributes. [#1722](https://github.com/ocsf/ocsf-schema/pull/1722)
   1. Added `log_facility` and `log_facility_id` attributes. [#1720](https://github.com/ocsf/ocsf-schema/pull/1720)

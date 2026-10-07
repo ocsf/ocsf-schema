@@ -5237,6 +5237,39 @@
       "description": "The packet object describes a single captured network packet and its associated metadata.",
       "type": "packet"
     },
+    "packet_layer": {
+      "caption": "Packet Layer",
+      "description": "The packet layer, normalized to the caption of the <code>packet_layer_id</code> value. In the case of 'Other', it is defined by the event source.",
+      "type": "string_t"
+    },
+    "packet_layer_id": {
+      "caption": "Packet Layer ID",
+      "description": "Indicates what the packet includes (L2 headers, L3 headers, L4 headers). Byte counters include packet headers as well as payload.",
+      "sibling": "packet_layer",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The packet layer is unknown."
+        },
+        "1": {
+          "caption": "Data Link",
+          "description": "The packet is a data link layer (L2) frame: the L2 header and its payload, which may include higher layer headers. Byte counters include the L2 header and the payload. Payload counters exclude the L2 header."
+        },
+        "2": {
+          "caption": "Network",
+          "description": "The packet is a network layer (L3) packet: the L3 header and its payload, which may include higher layer headers. Byte counters include the L3 header and the payload. Payload counters exclude the L3 header."
+        },
+        "3": {
+          "caption": "Transport",
+          "description": "The packet is a transport layer (L4) segment or datagram: the L4 header and its payload, which may include higher layer headers. Byte counters include the L4 header and the payload. Payload counters exclude the L4 header."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The packet layer is not mapped. See the <code>packet_layer</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
     "packet_list": {
       "caption": "Packets",
       "description": "The list of packet objects describing captured network packets.",
@@ -5309,6 +5342,21 @@
       "caption": "Pattern Match",
       "description": "A text, binary, file name, or datastore that matched against a detection rule.",
       "type": "string_t"
+    },
+    "payload_bytes": {
+      "caption": "Total Payload Bytes",
+      "description": "The total number of bytes (in and out), excluding the packet header.",
+      "type": "long_t"
+    },
+    "payload_bytes_in": {
+      "caption": "Payload Bytes In",
+      "description": "The number of bytes sent from the destination to the source, excluding the packet header.",
+      "type": "long_t"
+    },
+    "payload_bytes_out": {
+      "caption": "Payload Bytes Out",
+      "description": "The number of bytes sent from the source to the destination, excluding the packet header.",
+      "type": "long_t"
     },
     "percentile": {
       "caption": "EPSS Percentile",

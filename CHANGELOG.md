@@ -50,6 +50,7 @@ Thankyou! -->
   1. Added optional `ai_capability` attribute to the `ai_operation` profile, recording the invoked AI capability (tool, resource, or prompt). [#1729](https://github.com/ocsf/ocsf-schema/pull/1729)
 * #### Objects
   1. Added `ai_capability` object describing an invoked AI capability — its primitive kind, provenance (serving system and transport), declared behavior hints, and input/output schema, description, and baseline fingerprints. [#1729](https://github.com/ocsf/ocsf-schema/pull/1729)
+  1. Added the `wifi` object describing IEEE 802.11 network identity, radio and security attributes. [#1721](https://github.com/ocsf/ocsf-schema/pull/1721)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -61,6 +62,7 @@ Thankyou! -->
   1. Added `progress_current`, `progress_total`, `progress_unit`, `progress_unit_id`, `bytes_processed`, `bytes_written`, `throughput` and `queue_name` attributes. [#1722](https://github.com/ocsf/ocsf-schema/pull/1722)
   1. Added `log_facility` and `log_facility_id` attributes. [#1720](https://github.com/ocsf/ocsf-schema/pull/1720)
   1. Added `icmp_type`, `icmp_code` and `icmp_uid` attributes. [#1719](https://github.com/ocsf/ocsf-schema/pull/1719)
+  1. Added the `wifi` attribute referencing the `wifi` object. [#1721](https://github.com/ocsf/ocsf-schema/pull/1721)
 
 ### Improved
 * #### Categories
@@ -83,6 +85,7 @@ Thankyou! -->
   1. Added `type_id`, `type` to `related_events` to distinguish activities, alerts, or findings as the type of the related event. [#1744](https://github.com/ocsf/ocsf-schema/pull/1744)
   1. Added `log_facility` and `log_facility_id` to the `metadata` and `logger` objects. [#1720](https://github.com/ocsf/ocsf-schema/pull/1720)
   1. Added `icmp_type`, `icmp_code` and `icmp_uid` to the `network_connection_info` object. [#1719](https://github.com/ocsf/ocsf-schema/pull/1719)
+  1. Added `wifi` to the `network_endpoint` and `device` objects. Resolves #1463. [#1721](https://github.com/ocsf/ocsf-schema/pull/1721)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes

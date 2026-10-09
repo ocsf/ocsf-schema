@@ -1111,6 +1111,30 @@ def post_or_update_comment(
     print(_upsert_comment(pr_number, full_body, existing_id))
 
 
+def message_text(message: object) -> str:
+    """Return the text blocks from a Claude message.
+
+    Models such as claude-sonnet-5-5 put a thinking block first.
+    The review is a later block whose type is ``text``.
+    """
+    parts: list[str] = []
+    content = getattr(message, "content", [])
+    for block in content:
+        if getattr(block, "type", None) == "text":
+            text = getattr(block, "text", "")
+            if text:
+                parts.append(text)
+    if not parts:
+        kinds = [
+            getattr(block, "type", type(block).__name__) for block in content
+        ]
+        raise RuntimeError(
+            "Claude response contained no text block "
+            f"(content blocks: {', '.join(kinds) or 'none'})"
+        )
+    return "\n".join(parts)
+
+
 def cmd_review() -> None:
     """Read review_context.json, call Claude, post PR comment."""
     context_path = Path("review_context.json")
@@ -1177,7 +1201,7 @@ def cmd_review() -> None:
             }
         ],
     )
-    review = message.content[0].text
+    review = message_text(message)
 
     print("Posting review comment...")
     post_or_update_comment(pr_number, review, existing_id)

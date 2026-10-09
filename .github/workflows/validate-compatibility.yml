@@ -3,6 +3,12 @@ name: Compatibility Validation
 # To test with `act` on Apple silicon:
 # act -s GITHUB_TOKEN="$(gh auth token)" --container-architecture linux/amd64 -W .github/workflows/validate-compatibility.yml
 
+# ocsf-lib loads a version string from schema.ocsf.io/export/schema. That legacy
+# export returns HTTP 400 for 1.8.0 and newer (process.euid is contributed by
+# more than one profile). Check out the release tag and let ocsf-lib compile
+# it. LATEST_STABLE, when set, must be a git tag or branch on ocsf/ocsf-schema.
+# Bump the default when a stable release is cut.
+
 on:
   push:
     branches: [ "main" ]
@@ -14,20 +20,26 @@ jobs:
     name: Validate that changes are backwards compatible with the last stable release
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository content
-      uses: actions/checkout@v4
+    - name: Checkout schema under test
+      uses: actions/checkout@v6
+      with:
+        path: head
+
+    - name: Checkout last stable release
+      uses: actions/checkout@v6
+      with:
+        repository: ocsf/ocsf-schema
+        ref: ${{ vars.LATEST_STABLE || '1.9.0' }}
+        path: stable
 
     - name: Setup python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v6
       with:
-        python-version: '3.11'
+        python-version: "3.11"
 
     - name: Install validator
       run: python -m pip install "ocsf-lib>=${{ vars.COMPATIBILITY_VALIDATOR_VERSION || '0.10.0' }}"
 
     - name: Run validator
       shell: bash
-      run: export FORCE_COLOR=1 && python -m ocsf.validate.compatibility ${{ vars.LATEST_STABLE || '1.7.0' }} .
-        #      with:
-        #repository: ocsf/ocsf-schema
-        #path: schema
+      run: export FORCE_COLOR=1 && python -m ocsf.validate.compatibility "$GITHUB_WORKSPACE/stable" "$GITHUB_WORKSPACE/head"

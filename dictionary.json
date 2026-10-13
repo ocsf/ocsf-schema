@@ -362,7 +362,7 @@
         },
         "1": {
           "caption": "Authorized",
-          "description": "The access point is a known, sanctioned device."
+          "description": "The access point is a known, sanctioned device, for example an access point of the monitored infrastructure."
         },
         "2": {
           "caption": "Unclassified",
@@ -6855,52 +6855,6 @@
         }
       }
     },
-    "security_protocol": {
-      "caption": "Security Protocol",
-      "description": "The wireless security protocol, normalized to the caption of the <code>security_protocol_id</code> value. In the case of 'Other', it is defined by the event source.",
-      "type": "string_t"
-    },
-    "security_protocol_id": {
-      "caption": "Security Protocol ID",
-      "description": "The authentication and key management suite that protects a wireless link.",
-      "sibling": "security_protocol",
-      "type": "integer_t",
-      "enum": {
-        "0": {
-          "caption": "Unknown",
-          "description": "The security protocol is unknown."
-        },
-        "1": {
-          "caption": "Open",
-          "description": "The wireless network is unauthenticated and unencrypted."
-        },
-        "2": {
-          "caption": "WEP"
-        },
-        "3": {
-          "caption": "WPA"
-        },
-        "4": {
-          "caption": "WPA2-Personal"
-        },
-        "5": {
-          "caption": "WPA2-Enterprise"
-        },
-        "6": {
-          "caption": "WPA3-Personal"
-        },
-        "7": {
-          "caption": "WPA3-Enterprise"
-        },
-        "8": {
-          "caption": "Opportunistic Wireless Encryption"
-        },
-        "99": {
-          "caption": "Other",
-          "description": "The security protocol is not mapped."
-        }
-      }
-    },
     "security_questions": {
       "caption": "Security Questions",
       "description": "The question(s) provided to user for a question-based authentication factor.",
@@ -7139,6 +7093,11 @@
       "description": "The short description that pertains to the object or event. See specific usage.",
       "type": "string_t"
     },
+    "signal_noise_ratio": {
+      "caption": "Signal-to-Noise Ratio",
+      "description": "The power of the received radio signal relative to the noise floor, in decibels (dB).",
+      "type": "integer_t"
+    },
     "signal_strength": {
       "caption": "Signal Strength",
       "description": "The measured power of the received radio signal, in decibel-milliwatts.",
@@ -7201,11 +7160,6 @@
       "caption": "Server Name Indication",
       "description": " The Server Name Indication (SNI) extension sent by the client.",
       "type": "string_t"
-    },
-    "snr": {
-      "caption": "SNR",
-      "description": "The Signal to Noise Ratio of the received radio signal: the signal power relative to the noise floor, in decibels (dB).",
-      "type": "integer_t"
     },
     "soa": {
       "caption": "SOA Record",
@@ -8411,6 +8365,52 @@
       "caption": "Wireless Network",
       "description": "The wireless network attributes.",
       "type": "wifi"
+    },
+    "wifi_security_protocol": {
+      "caption": "Wi-Fi Security Protocol",
+      "description": "The Wi-Fi security protocol, normalized to the caption of the <code>wifi_security_protocol_id</code> value. In the case of 'Other', it is defined by the event source.",
+      "type": "string_t"
+    },
+    "wifi_security_protocol_id": {
+      "caption": "Wi-Fi Security Protocol ID",
+      "description": "The authentication and key management suite that protects a Wi-Fi link.",
+      "sibling": "wifi_security_protocol",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The security protocol is unknown."
+        },
+        "1": {
+          "caption": "Open",
+          "description": "The wireless network is unauthenticated and unencrypted."
+        },
+        "2": {
+          "caption": "WEP"
+        },
+        "3": {
+          "caption": "WPA"
+        },
+        "4": {
+          "caption": "WPA2-Personal"
+        },
+        "5": {
+          "caption": "WPA2-Enterprise"
+        },
+        "6": {
+          "caption": "WPA3-Personal"
+        },
+        "7": {
+          "caption": "WPA3-Enterprise"
+        },
+        "8": {
+          "caption": "Opportunistic Wireless Encryption"
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The security protocol is not mapped."
+        }
+      }
     },
     "working_directory": {
       "caption": "Working Directory",

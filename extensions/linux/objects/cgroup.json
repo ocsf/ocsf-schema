@@ -1,0 +1,30 @@
+{
+  "caption": "cgroup",
+  "description": "The cgroup object describes a Linux control group (cgroup), the kernel mechanism that organizes processes into hierarchical groups for resource control and accounting. cgroups are the basis for container and pod isolation, so the cgroup a task belongs to is commonly used to attribute kernel-level (e.g. eBPF/LSM) events to a container or pod.",
+  "extends": "_entity",
+  "name": "cgroup",
+  "attributes": {
+    "name": {
+      "description": "The cgroup name, typically the last path component of <code>path</code>.",
+      "requirement": "optional"
+    },
+    "path": {
+      "description": "The cgroup filesystem path relative to the cgroup mount, for example <code>/system.slice/docker-1a2b.scope</code>.",
+      "requirement": "recommended"
+    },
+    "uid": {
+      "description": "The kernel-assigned cgroup ID (the cgroup directory's inode number), stable for the lifetime of the cgroup.",
+      "requirement": "recommended"
+    },
+    "version": {
+      "description": "The cgroup hierarchy version, for example <code>1</code> or <code>2</code>.",
+      "requirement": "optional"
+    }
+  },
+  "constraints": {
+    "at_least_one": [
+      "uid",
+      "path"
+    ]
+  }
+}

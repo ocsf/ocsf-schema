@@ -1,0 +1,50 @@
+{
+  "uid": 3,
+  "caption": "Alarm Disposition Activity",
+  "description": "Alarm Disposition Activity events report what a signal turned out to be after triage. This is the class that converts raw signals into measurable outcomes: it records the validation level assigned, the method used to reach it, the assessed cause, and what was ultimately dispatched. Emitting a disposition for every signal is what makes false alarm rates, verification effectiveness, and triage latency comparable across sites, systems, and vendors.",
+  "extends": "physical_security",
+  "name": "alarm_disposition_activity",
+  "attributes": {
+    "activity_id": {
+      "group": "primary",
+      "requirement": "required",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The event activity is unknown."
+        },
+        "1": {
+          "caption": "Triaged",
+          "description": "A disposition was assigned to the signal."
+        },
+        "2": {
+          "caption": "Escalated",
+          "description": "The signal was escalated for further assessment or response."
+        },
+        "3": {
+          "caption": "Cleared",
+          "description": "The signal was closed without further action."
+        },
+        "4": {
+          "caption": "Reopened",
+          "description": "A previously closed signal was reopened."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The event activity is not mapped. See the <code>activity_name</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
+    "disposition_details": {
+      "group": "primary",
+      "requirement": "required"
+    },
+    "alarm_point": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "response_resource": {
+      "requirement": "optional"
+    }
+  }
+}

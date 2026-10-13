@@ -55,6 +55,7 @@ Thankyou! -->
   1. Added the `ai_status` object for per-operation outcome scalars contributed by the `ai_operation` profile, with `stop_reason` / `stop_reason_id` (enum: Unknown (0), End of Turn (1), Token Limit (2), Tool Use (3), Session Stop (4), Content Filter (5), Other (99)) and `permission_result` / `permission_result_id` (enum: Unknown (0), Allowed (1), Denied (2), Other (99)). Additional outcome attributes may be added in later versions. [#1704](https://github.com/ocsf/ocsf-schema/pull/1704)
   1. Added the `wifi` object describing IEEE 802.11 network identity, radio and security attributes. [#1721](https://github.com/ocsf/ocsf-schema/pull/1721)
   1. Added `dns_soa` object to represent the RFC 1035 SOA (Start of Authority) record RDATA, used to carry zone serials and timers in DNS zone transfers. [#1675](https://github.com/ocsf/ocsf-schema/pull/1675)
+  1. Added `physical_site` profile carrying physical site context (`site_uid`, `site_name`, `building`, `floor`, `security_zone`), applied at the base event so any class can carry it, and on the `location` object so devices and endpoints inherit site context through `device.location`.
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -73,6 +74,9 @@ Thankyou! -->
   1. Added `access_point_status`, `access_point_status_id`, `band`, `band_id`, `bssid`, `channel_number`, `data_rate`, `is_access_point_on_wired_network`, `noise_floor`, `security_protocol`, `security_protocol_id`, `signal_noise_ratio`, `signal_strength`, `ssid`, `standard` and `wifi` attributes. [#1721](https://github.com/ocsf/ocsf-schema/pull/1721)
   1. Added `dns_zone`, `dns_additional`, `soa`, `updated_soa`, `num_records`, `transfer_type`, `transfer_type_id`, and the SOA sub-fields `primary_server`, `responsible_party`, `sequence_number`, `refresh_interval`, `retry_interval`, `expire_interval`, and `minimum_ttl` for DNS zone transfers. [#1675](https://github.com/ocsf/ocsf-schema/pull/1675)
   1. Added `data_bytes`, `data_bytes_in` and `data_bytes_out` attributes. [#1775](https://github.com/ocsf/ocsf-schema/pull/1775)
+  1. Added `site_uid`, `site_name`, `building`, and `floor` as `string_t` physical site context attributes.
+  1. Added `security_zone` as an object attribute and `is_armed` as a `boolean_t`.
+  1. Added `zone_type_id` as an `integer_t` enum with values Unknown (0), Perimeter (1), Public (2), Restricted (3), Critical (4), Transitional (5), External (6), Other (99), and `zone_type` as its `string_t` sibling.
 
 ### Improved
 * #### Categories

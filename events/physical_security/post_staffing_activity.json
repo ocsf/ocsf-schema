@@ -1,0 +1,79 @@
+{
+  "uid": 5,
+  "caption": "Post Staffing Activity",
+  "description": "Post Staffing Activity events report whether guard posts were staffed as contracted. No published standard covers this area. These events are the record of coverage against obligation, and they are the basis on which the cost and reliability of human posts can be compared against automated alternatives.",
+  "extends": "physical_security",
+  "name": "post_staffing_activity",
+  "attributes": {
+    "activity_id": {
+      "group": "primary",
+      "requirement": "required",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The event activity is unknown."
+        },
+        "1": {
+          "caption": "Post Assumed",
+          "description": "An officer took over the post."
+        },
+        "2": {
+          "caption": "Post Relieved",
+          "description": "An officer was relieved from the post."
+        },
+        "3": {
+          "caption": "Late Arrival",
+          "description": "An officer assumed the post later than scheduled."
+        },
+        "4": {
+          "caption": "No Show",
+          "description": "No officer assumed the post at the scheduled time."
+        },
+        "5": {
+          "caption": "Post Abandoned",
+          "description": "The post was left unstaffed before the scheduled relief."
+        },
+        "6": {
+          "caption": "Break Started",
+          "description": "A scheduled rest or meal period began."
+        },
+        "7": {
+          "caption": "Break Ended",
+          "description": "A scheduled rest or meal period ended."
+        },
+        "8": {
+          "caption": "Break Missed",
+          "description": "A scheduled rest or meal period was not taken."
+        },
+        "9": {
+          "caption": "Coverage Gap",
+          "description": "The post was unstaffed during a period it was contracted to be staffed."
+        },
+        "10": {
+          "caption": "Overtime Incurred",
+          "description": "Hours were worked beyond the scheduled shift."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The event activity is not mapped. See the <code>activity_name</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
+    "post": {
+      "group": "primary",
+      "requirement": "required"
+    },
+    "scheduled_start_time": {
+      "requirement": "recommended"
+    },
+    "scheduled_end_time": {
+      "requirement": "optional"
+    },
+    "variance": {
+      "requirement": "recommended"
+    },
+    "is_billable": {
+      "requirement": "optional"
+    }
+  }
+}

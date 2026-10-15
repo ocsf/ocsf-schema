@@ -98,7 +98,6 @@ Thankyou! -->
 1. Widened the `datetime_t` regex to accept a space between the date and the time, as RFC 3339 section 5.6 permits and as the type's own `2024-09-10 23:20:50.520789Z` example uses. [#1769](https://github.com/ocsf/ocsf-schema/pull/1769)
 1. Corrected the `uuid_t` description example, which had 11 hex digits in its last group and failed its own regex. Fixed the `file_hast_t` typo in `file_hash_t` and a repeated "For example:" in `file_path_t`. [#1768](https://github.com/ocsf/ocsf-schema/pull/1768)
 1. Corrected the `type_uid` example in the `observable` object: Network Activity is class_uid 4001 (type_uid 400101), not 3001. [#1768](https://github.com/ocsf/ocsf-schema/pull/1768)
-1. Corrected the `stop_reason` description in the `ai_status` object: its examples for the `Other (99)` case were `end_turn` and `max_tokens`, which both map to defined values (End of Turn (1), Token Limit (2)) and so carry the enum caption, not the source's native label. [#1779](https://github.com/ocsf/ocsf-schema/pull/1779)
 
 ### Deprecated
 

@@ -45,12 +45,23 @@ Thankyou! -->
 
 ### Added
 * #### Categories
+  1. Added `Physical Security` category (uid 9) for activity in the physical world: portal and access control activity, alarm signals and their disposition, guard patrols, post staffing, response dispatch, and physical security reports. [#1758](https://github.com/ocsf/ocsf-schema/pull/1758)
 * #### Event Classes
+  1. Added `Physical Access Activity` (9001) event class to the Physical Security category: door-side outcomes and portal state changes (the access decision itself is an Authentication event carrying the `physical_site` profile), following the ONVIF Access Control and Door Control service vocabularies. [#1758](https://github.com/ocsf/ocsf-schema/pull/1758)
+  1. Added `Alarm Signal Activity` (9002) event class to the Physical Security category: alarm signals from monitored points, crosswalked to SIA DC-03 and Ademco Contact ID. [#1758](https://github.com/ocsf/ocsf-schema/pull/1758)
+  1. Added `Alarm Disposition Activity` (9003) event class to the Physical Security category: the validated outcome of a signal, with ANSI/TMA AVS-01 validation levels. [#1758](https://github.com/ocsf/ocsf-schema/pull/1758)
+  1. Added `Patrol Activity` (9004) event class to the Physical Security category: guard tours, checkpoint registrations, and their exceptions. [#1758](https://github.com/ocsf/ocsf-schema/pull/1758)
+  1. Added `Post Staffing Activity` (9005) event class to the Physical Security category: post assumption, relief, no-shows, and coverage gaps. [#1758](https://github.com/ocsf/ocsf-schema/pull/1758)
+  1. Added `Response Activity` (9006) event class to the Physical Security category: dispatch and progress of a response resource through assigned, en route, on scene, and cleared. [#1758](https://github.com/ocsf/ocsf-schema/pull/1758)
+  1. Added `Physical Report Activity` (9007) event class to the Physical Security category: reports written by security personnel about an incident or condition at a site, carrying a normalized incident type beside the reporting organization's own. [#1758](https://github.com/ocsf/ocsf-schema/pull/1758)
 * #### Profiles
   1. Added optional `ai_capability` attribute to the `ai_operation` profile, recording the invoked AI capability (tool, resource, or prompt). [#1729](https://github.com/ocsf/ocsf-schema/pull/1729)
+  1. Added `physical_site` profile carrying physical site context (`site_uid`, `site_name`, `building`, `floor`, `site_zone`), attached to the Identity & Access Management and Findings classes, and to the `location` object so devices, endpoints, and persons carry site context through `location`. [#1750](https://github.com/ocsf/ocsf-schema/pull/1750)
 * #### Objects
   1. Added `ai_capability` object describing an invoked AI capability — its primitive kind, provenance (serving system and transport), declared behavior hints, and input/output schema, description, and baseline fingerprints. [#1729](https://github.com/ocsf/ocsf-schema/pull/1729)
   1. Added the `ai_status` object for per-operation outcome scalars contributed by the `ai_operation` profile, with `stop_reason` / `stop_reason_id` (enum: Unknown (0), End of Turn (1), Token Limit (2), Tool Use (3), Session Stop (4), Content Filter (5), Other (99)) and `permission_result` / `permission_result_id` (enum: Unknown (0), Allowed (1), Denied (2), Other (99)). Additional outcome attributes may be added in later versions. [#1704](https://github.com/ocsf/ocsf-schema/pull/1704)
+  1. Added `site_zone` object describing a defined area within a physical site that shares a common security posture, distinct from the network `zone` attribute. [#1750](https://github.com/ocsf/ocsf-schema/pull/1750)
+  1. Added `portal`, `physical_credential`, `alarm_point`, `signal_code`, `post`, `checkpoint`, `patrol_tour`, `response_resource`, and `disposition_details` objects for the Physical Security classes. [#1758](https://github.com/ocsf/ocsf-schema/pull/1758)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -63,6 +74,12 @@ Thankyou! -->
   1. Added `log_facility` and `log_facility_id` attributes. [#1720](https://github.com/ocsf/ocsf-schema/pull/1720)
   1. Added `icmp_type`, `icmp_code` and `icmp_uid` attributes. [#1719](https://github.com/ocsf/ocsf-schema/pull/1719)
   1. Added `ai_status`, `permission_result`, `permission_result_id`, `stop_reason`, and `stop_reason_id` attributes. [#1704](https://github.com/ocsf/ocsf-schema/pull/1704)
+  1. Added `site_uid`, `site_name`, `building`, and `floor` as `string_t` physical site context attributes. [#1750](https://github.com/ocsf/ocsf-schema/pull/1750)
+  1. Added `site_zone` as an object attribute and `is_armed` as a `boolean_t`. [#1750](https://github.com/ocsf/ocsf-schema/pull/1750)
+  1. Added `site_zone_type_id` as an `integer_t` enum with values Unknown (0), Perimeter (1), Public (2), Restricted (3), Critical (4), Transitional (5), External (6), Other (99), and `site_zone_type` as its `string_t` sibling. [#1750](https://github.com/ocsf/ocsf-schema/pull/1750)
+  1. Added the shared attributes of the Physical Security base class: `lifecycle_id`/`lifecycle`, `derivation_id`/`derivation`, `urgency_id`/`urgency`, `certainty_id`/`certainty`, `response_type_id`/`response_type`, `confidence_pct`, and `signal_code`. [#1758](https://github.com/ocsf/ocsf-schema/pull/1758)
+  1. Added `incident_type_id` as an `integer_t` enum of 25 common incident types plus Unknown (0) and Other (99), `incident_type` as its `string_t` sibling, and `incident_type_internal` for the reporting organization's own type. [#1758](https://github.com/ocsf/ocsf-schema/pull/1758)
+  1. Added the class and object attributes: `portal`, `portal_type_id`/`portal_type`, `portal_mode`, `portal_physical_state`, `held_open_duration`, `is_antipassback_violated`; `physical_credential`, `credential_type_id`/`credential_type`, `credential_status`; `alarm_point`, `sensor_type`, `sia_dc03_code`, `contact_id_code`, `contact_id_qualifier`, `onvif_topic`, `osdp_reply`, `native_type`; `disposition_details`, `validation_level_id`/`validation_level`, `verification_method_id`/`verification_method`, `cause_id`/`cause`, `time_to_triage`, `time_to_resolution`; `patrol_tour`, `checkpoint`, `checkpoint_count`, `checkpoint_expected_count`, `checkpoint_token_type`, `is_out_of_sequence`, `geofence_status`, `position_accuracy`, `variance`; `post`, `post_type_id`/`post_type`, `scheduled_start_time`, `scheduled_end_time`, `is_billable`; `response_resource`, `resource_type_id` (with the existing `resource_type` as its sibling), `assigned_time`, `enroute_time`, `on_scene_time`, `cleared_time`, `dispatch_outcome_id`/`dispatch_outcome`; `narrative`, `nibrs_offense_code`, `apco_incident_type`, `is_reportable`, `loss_amount`. [#1758](https://github.com/ocsf/ocsf-schema/pull/1758)
 
 ### Improved
 * #### Categories
@@ -86,6 +103,7 @@ Thankyou! -->
   1. Added `type_id`, `type` to `related_events` to distinguish activities, alerts, or findings as the type of the related event. [#1744](https://github.com/ocsf/ocsf-schema/pull/1744)
   1. Added `log_facility` and `log_facility_id` to the `metadata` and `logger` objects. [#1720](https://github.com/ocsf/ocsf-schema/pull/1720)
   1. Added `icmp_type`, `icmp_code` and `icmp_uid` to the `network_connection_info` object. [#1719](https://github.com/ocsf/ocsf-schema/pull/1719)
+  1. Added `site_uid` to the `location` object's `at_least_one` constraint, so a location that carries only physical site context validates when the `physical_site` profile is applied. [#1750](https://github.com/ocsf/ocsf-schema/pull/1750)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes

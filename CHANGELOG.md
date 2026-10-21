@@ -64,6 +64,9 @@ Thankyou! -->
   1. Added `icmp_type`, `icmp_code` and `icmp_uid` attributes. [#1719](https://github.com/ocsf/ocsf-schema/pull/1719)
   1. Added `audience` as a `string_t`, with `source` set to the `aud` claim and a reference to RFC 7519. [#1705](https://github.com/ocsf/ocsf-schema/pull/1705)
   1. Added `ai_status`, `permission_result`, `permission_result_id`, `stop_reason`, and `stop_reason_id` attributes. [#1704](https://github.com/ocsf/ocsf-schema/pull/1704)
+  1. Added `Proximity Card (12)`, `Smart Card (13)`, and `Mobile Credential (14)` enum values to `factor_type_id`, so physical access credentials presented at a reader can be carried as authentication factors. [#1757](https://github.com/ocsf/ocsf-schema/pull/1757)
+  1. Added `Confirmed (28)`, `Unfounded (29)`, `Referred (30)`, `Cancelled (31)`, and `Unsubstantiated (32)` enum values to `disposition_id` for verdict-style outcomes of alarms and physical security dispatches. [#1757](https://github.com/ocsf/ocsf-schema/pull/1757)
+  1. Added `Physical (14)` enum value to `logon_type_id` for an entry made at a door, gate, or turnstile reader. [#1757](https://github.com/ocsf/ocsf-schema/pull/1757)
 
 ### Improved
 * #### Categories

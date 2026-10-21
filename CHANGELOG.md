@@ -64,7 +64,7 @@ Thankyou! -->
   1. Added `log_facility` and `log_facility_id` attributes. [#1720](https://github.com/ocsf/ocsf-schema/pull/1720)
   1. Added `icmp_type`, `icmp_code` and `icmp_uid` attributes. [#1719](https://github.com/ocsf/ocsf-schema/pull/1719)
   1. Added `ai_status`, `permission_result`, `permission_result_id`, `stop_reason`, and `stop_reason_id` attributes. [#1704](https://github.com/ocsf/ocsf-schema/pull/1704)
-  1. Added `ap_status`, `ap_status_id`, `band`, `band_id`, `bssid`, `channel`, `data_rate`, `is_on_wired_network`, `noise_floor`, `signal_noise_ratio`, `signal_strength`, `ssid`, `standard`, `wifi`, `wifi_security_protocol` and `wifi_security_protocol_id` attributes. [#1721](https://github.com/ocsf/ocsf-schema/pull/1721)
+  1. Added `access_point_status`, `access_point_status_id`, `band`, `band_id`, `bssid`, `channel_number`, `data_rate`, `is_access_point_on_wired_network`, `noise_floor`, `security_protocol`, `security_protocol_id`, `signal_noise_ratio`, `signal_strength`, `ssid`, `standard` and `wifi` attributes. [#1721](https://github.com/ocsf/ocsf-schema/pull/1721)
 
 ### Improved
 * #### Categories

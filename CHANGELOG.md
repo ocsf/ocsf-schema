@@ -51,6 +51,7 @@ Thankyou! -->
 * #### Objects
   1. Added `ai_capability` object describing an invoked AI capability — its primitive kind, provenance (serving system and transport), declared behavior hints, and input/output schema, description, and baseline fingerprints. [#1729](https://github.com/ocsf/ocsf-schema/pull/1729)
   1. Added the `ai_status` object for per-operation outcome scalars contributed by the `ai_operation` profile, with `stop_reason` / `stop_reason_id` (enum: Unknown (0), End of Turn (1), Token Limit (2), Tool Use (3), Session Stop (4), Content Filter (5), Other (99)) and `permission_result` / `permission_result_id` (enum: Unknown (0), Allowed (1), Denied (2), Other (99)). Additional outcome attributes may be added in later versions. [#1704](https://github.com/ocsf/ocsf-schema/pull/1704)
+  1. Added the `control_group` object, describing an operating system mechanism that groups processes for resource limits, accounting, and isolation, such as a Linux cgroup or a Windows job object. [#1725](https://github.com/ocsf/ocsf-schema/pull/1725)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -64,6 +65,7 @@ Thankyou! -->
   1. Added `icmp_type`, `icmp_code` and `icmp_uid` attributes. [#1719](https://github.com/ocsf/ocsf-schema/pull/1719)
   1. Added `audience` as a `string_t`, with `source` set to the `aud` claim and a reference to RFC 7519. [#1705](https://github.com/ocsf/ocsf-schema/pull/1705)
   1. Added `ai_status`, `permission_result`, `permission_result_id`, `stop_reason`, and `stop_reason_id` attributes. [#1704](https://github.com/ocsf/ocsf-schema/pull/1704)
+  1. Added `control_group` as a `control_group` object type. [#1725](https://github.com/ocsf/ocsf-schema/pull/1725)
 
 ### Improved
 * #### Categories
@@ -88,6 +90,7 @@ Thankyou! -->
   1. Added `log_facility` and `log_facility_id` to the `metadata` and `logger` objects. [#1720](https://github.com/ocsf/ocsf-schema/pull/1720)
   1. Added `icmp_type`, `icmp_code` and `icmp_uid` to the `network_connection_info` object. [#1719](https://github.com/ocsf/ocsf-schema/pull/1719)
   1. Added per-node authority attributes `scopes`, `audience`, and `expiration_time` to the `delegation` object, so each hop in the chain of authority records what was granted, for whom, and until when. [#1705](https://github.com/ocsf/ocsf-schema/pull/1705)
+  1. Added optional `control_group` to the `process` object, identifying the control group that the process is a member of. [#1725](https://github.com/ocsf/ocsf-schema/pull/1725)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes

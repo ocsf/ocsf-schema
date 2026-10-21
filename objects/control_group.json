@@ -1,0 +1,41 @@
+{
+  "caption": "Control Group",
+  "description": "The Control Group object describes an operating system mechanism that groups processes so that resource limits, accounting, and isolation can be applied to them as a unit. For example, a Linux control group (cgroup) or a Windows job object. Container runtimes build on control groups, but they also group processes outside containers, such as system services and user sessions. A Windows job object is unrelated to the <code>job</code> object, which describes a scheduled job or task.",
+  "extends": "_entity",
+  "name": "control_group",
+  "attributes": {
+    "name": {
+      "description": "The name of the control group. For example, the last component of a Linux cgroup path such as <code>sshd.service</code>, or the name of a named Windows job object.",
+      "requirement": "recommended"
+    },
+    "path": {
+      "description": "The hierarchical path of the control group, on platforms that organize control groups in a hierarchy. For a Linux cgroup, this is the path relative to the root of the cgroup hierarchy, as reported in <code>/proc/[pid]/cgroup</code> when read from the initial cgroup namespace, without the mount point of the cgroup filesystem. For example: <code>/system.slice/sshd.service</code>. A process inside a cgroup namespace, such as a container, sees a path relative to its namespace root instead, often just <code>/</code>.",
+      "requirement": "recommended"
+    },
+    "uid": {
+      "description": "The unique identifier of the control group, as assigned by the operating system. For a Linux cgroup v2, this is the 64-bit cgroup ID, which is the inode number of the cgroup directory and is the value returned by the <code>bpf_get_current_cgroup_id</code> eBPF helper.",
+      "requirement": "recommended"
+    },
+    "uid_numeric": {
+      "description": "The <code>uid</code> attribute in numeric form, where the operating system assigns a numeric identifier. For example, the 64-bit Linux cgroup ID.<br><strong>Note:</strong> Producers may populate <code>uid_numeric</code> only in addition to <code>uid</code> and not as an alternative to it.",
+      "requirement": "optional"
+    }
+  },
+  "constraints": {
+    "at_least_one": [
+      "name",
+      "path",
+      "uid"
+    ]
+  },
+  "references": [
+    {
+      "description": "Linux kernel documentation: Control Group v2",
+      "url": "https://docs.kernel.org/admin-guide/cgroup-v2.html"
+    },
+    {
+      "description": "Windows documentation: Job Objects",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/procthread/job-objects"
+    }
+  ]
+}

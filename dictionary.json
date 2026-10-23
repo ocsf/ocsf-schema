@@ -2034,6 +2034,21 @@
       "description": "The additional data that is associated with the event or object. See specific usage.",
       "type": "json_t"
     },
+    "data_bytes": {
+      "caption": "Total Data Bytes",
+      "description": "The total number of data bytes (in and out). Counts the data carried by the Layer 4 (Transport Layer) protocol, excluding the IP header and the transport header (such as TCP, UDP, etc.). Not applicable to protocols carried directly over IP without a transport header, such as ICMP, ICMPv6, IGMP, GRE, ESP and OSPF: leave it unset for those flows, whose bytes are counted by <code>bytes</code>, <code>bytes_in</code> and <code>bytes_out</code>.",
+      "type": "long_t"
+    },
+    "data_bytes_in": {
+      "caption": "Data Bytes In",
+      "description": "The number of data bytes sent from the destination to the source. Counts the data carried by the Layer 4 (Transport Layer) protocol, excluding the IP header and the transport header (such as TCP, UDP, etc.). Not applicable to protocols carried directly over IP without a transport header, such as ICMP, ICMPv6, IGMP, GRE, ESP and OSPF: leave it unset for those flows, whose bytes are counted by <code>bytes</code>, <code>bytes_in</code> and <code>bytes_out</code>.",
+      "type": "long_t"
+    },
+    "data_bytes_out": {
+      "caption": "Data Bytes Out",
+      "description": "The number of data bytes sent from the source to the destination. Counts the data carried by the Layer 4 (Transport Layer) protocol, excluding the IP header and the transport header (such as TCP, UDP, etc.). Not applicable to protocols carried directly over IP without a transport header, such as ICMP, ICMPv6, IGMP, GRE, ESP and OSPF: leave it unset for those flows, whose bytes are counted by <code>bytes</code>, <code>bytes_in</code> and <code>bytes_out</code>.",
+      "type": "long_t"
+    },
     "data_classification": {
       "caption": "Data Classification",
       "description": "The Data Classification object includes information about data classification levels and data category types.",
@@ -5382,21 +5397,6 @@
       "caption": "Pattern Match",
       "description": "A text, binary, file name, or datastore that matched against a detection rule.",
       "type": "string_t"
-    },
-    "payload_bytes": {
-      "caption": "Total Payload Bytes",
-      "description": "The total number of bytes (in and out). Counts bytes in the Layer 4 (Transport Layer) payload, excluding headers (such as TCP, UDP, etc.).",
-      "type": "long_t"
-    },
-    "payload_bytes_in": {
-      "caption": "Payload Bytes In",
-      "description": "The number of bytes sent from the destination to the source. Counts bytes in the Layer 4 (Transport Layer) payload, excluding headers (such as TCP, UDP, etc.).",
-      "type": "long_t"
-    },
-    "payload_bytes_out": {
-      "caption": "Payload Bytes Out",
-      "description": "The number of bytes sent from the source to the destination. Counts bytes in the Layer 4 (Transport Layer) payload, excluding headers (such as TCP, UDP, etc.).",
-      "type": "long_t"
     },
     "percentile": {
       "caption": "EPSS Percentile",

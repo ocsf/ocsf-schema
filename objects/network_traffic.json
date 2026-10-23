@@ -32,6 +32,18 @@
       "description": "The number of chunks sent from the source to the destination (outbound direction).",
       "requirement": "optional"
     },
+    "data_bytes": {
+      "description": "The total number of data bytes transferred in both directions (sum of data_bytes_in and data_bytes_out). Counts the data carried by the Layer 4 (Transport Layer) protocol, excluding the IP header and the transport header (such as TCP, UDP, etc.). Not applicable to protocols carried directly over IP without a transport header, such as ICMP, ICMPv6, IGMP, GRE, ESP and OSPF: leave it unset for those flows, whose bytes are counted by <code>bytes</code>, <code>bytes_in</code> and <code>bytes_out</code>.",
+      "requirement": "optional"
+    },
+    "data_bytes_in": {
+      "description": "The number of data bytes sent from the destination to the source. Counts the data carried by the Layer 4 (Transport Layer) protocol, excluding the IP header and the transport header (such as TCP, UDP, etc.). Not applicable to protocols carried directly over IP without a transport header, such as ICMP, ICMPv6, IGMP, GRE, ESP and OSPF: leave it unset for those flows, whose bytes are counted by <code>bytes</code>, <code>bytes_in</code> and <code>bytes_out</code>.",
+      "requirement": "optional"
+    },
+    "data_bytes_out": {
+      "description": "The number of data bytes sent from the source to the destination. Counts the data carried by the Layer 4 (Transport Layer) protocol, excluding the IP header and the transport header (such as TCP, UDP, etc.). Not applicable to protocols carried directly over IP without a transport header, such as ICMP, ICMPv6, IGMP, GRE, ESP and OSPF: leave it unset for those flows, whose bytes are counted by <code>bytes</code>, <code>bytes_in</code> and <code>bytes_out</code>.",
+      "requirement": "optional"
+    },
     "end_time": {
       "description": "The end time of the observation or reporting period.",
       "requirement": "optional"
@@ -46,18 +58,6 @@
     },
     "packets_out": {
       "description": "The number of packets sent from the source to the destination (outbound direction).",
-      "requirement": "optional"
-    },
-    "payload_bytes": {
-      "description": "The total number of bytes transferred in both directions (sum of payload_bytes_in and payload_bytes_out). Counts bytes in the Layer 4 (Transport Layer) payload, excluding headers (such as TCP, UDP, etc.).",
-      "requirement": "optional"
-    },
-    "payload_bytes_in": {
-      "description": "The number of bytes sent from the destination to the source. Counts bytes in the Layer 4 (Transport Layer) payload, excluding headers (such as TCP, UDP, etc.).",
-      "requirement": "optional"
-    },
-    "payload_bytes_out": {
-      "description": "The number of bytes sent from the source to the destination. Counts bytes in the Layer 4 (Transport Layer) payload, excluding headers (such as TCP, UDP, etc.).",
       "requirement": "optional"
     },
     "start_time": {

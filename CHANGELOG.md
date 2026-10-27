@@ -57,6 +57,7 @@ Thankyou! -->
   1. Added `dns_soa` object to represent the RFC 1035 SOA (Start of Authority) record RDATA, used to carry zone serials and timers in DNS zone transfers. [#1675](https://github.com/ocsf/ocsf-schema/pull/1675)
 * #### Observables
 * #### Platform Extensions
+  1. Added `token_elevation_type` and `token_elevation_type_id` to the Windows extension dictionary and to the Windows `process` object, for the User Account Control elevation type of the process token.
 * #### Dictionary Attributes
   1. Added `additional_firewall_rules` as an array of `firewall_rule_evaluation` objects. [#1786](https://github.com/ocsf/ocsf-schema/pull/1786)
   1. Added `likelihood` as a `string_t`, normalized to the caption of `likelihood_id`. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)

@@ -1,0 +1,56 @@
+{
+  "caption": "Firewall Rule Evaluation",
+  "description": "The Firewall Rule Evaluation object describes a reported evaluation of a firewall rule, including its properties, match context, and action and disposition. The action and disposition apply to this evaluation and do not imply the event-level outcome.",
+  "extends": "firewall_rule",
+  "name": "firewall_rule_evaluation",
+  "attributes": {
+    "action": {
+      "description": "The normalized caption of <code>action_id</code>. When <code>action_id</code> is <code>99</code> (Other), this attribute contains the source-specific action.",
+      "requirement": "optional"
+    },
+    "action_id": {
+      "description": "The normalized action reported for this firewall rule evaluation. An unknown action may still correspond to a known disposition. Refer to <code>disposition_id</code> for the outcome of this evaluation.",
+      "requirement": "optional",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The action is unknown. The disposition may still be known."
+        },
+        "1": {
+          "caption": "Allowed",
+          "description": "The activity was allowed by this rule evaluation."
+        },
+        "2": {
+          "caption": "Denied",
+          "description": "The activity was denied by this rule evaluation."
+        },
+        "3": {
+          "caption": "Observed",
+          "description": "The activity was observed, but neither explicitly allowed nor denied by this rule evaluation."
+        },
+        "4": {
+          "caption": "Modified",
+          "description": "The activity was modified, adjusted, or corrected by this rule evaluation."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The action is not mapped. See the <code>action</code> attribute, which contains the source-specific action."
+        }
+      }
+    },
+    "disposition": {
+      "description": "The normalized caption of <code>disposition_id</code>. When <code>disposition_id</code> is <code>99</code> (Other), this attribute contains the source-specific disposition.",
+      "requirement": "optional"
+    },
+    "disposition_id": {
+      "description": "The normalized outcome reported for this firewall rule evaluation. This disposition does not imply the event-level disposition.",
+      "requirement": "optional",
+      "enum": {
+        "19": {
+          "caption": "Alert",
+          "description": "The rule evaluation detected a threat and produced a notification without itself blocking the activity. Other rule evaluations may determine the event-level outcome."
+        }
+      }
+    }
+  }
+}

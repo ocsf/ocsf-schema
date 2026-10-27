@@ -2959,21 +2959,6 @@
         ]
       }
     },
-    "entropy": {
-      "caption": "Entropy",
-      "description": "The Shannon entropy of the data, in bits per symbol. The maximum value depends on the size of the symbol alphabet, for example <code>8.0</code> when the symbols are bytes. See specific usage.",
-      "type": "float_t",
-      "references": [
-        {
-          "description": "Shannon, C. E. (1948). A Mathematical Theory of Communication. Bell System Technical Journal, 27(3), 379-423.",
-          "url": "https://doi.org/10.1002/j.1538-7305.1948.tb01338.x"
-        },
-        {
-          "description": "Lyda, R. and Hamrock, J. (2007). Using Entropy Analysis to Find Encrypted and Packed Malware. IEEE Security and Privacy, 5(2), 40-45. Computes entropy in bits per byte over file content.",
-          "url": "https://doi.org/10.1109/MSP.2007.48"
-        }
-      ]
-    },
     "environment_variables": {
       "caption": "Environment Variables",
       "description": "An array of environment variables.",
@@ -7135,6 +7120,21 @@
           "description": "The event/finding severity is not mapped. See the <code>severity</code> attribute, which contains a data source specific value."
         }
       }
+    },
+    "shannon_entropy": {
+      "caption": "Shannon Entropy",
+      "description": "The Shannon entropy of the data, measured in bits per symbol. The maximum value is the base 2 logarithm of the size of the symbol alphabet, for example <code>8.0</code> for file content, where the alphabet is the 256 possible byte values, or about <code>5.2</code> for domain names, where the alphabet is 37 characters (letters, digits and hyphen). High values indicate compressed, encrypted or packed content, or machine generated names such as those produced by a domain generation algorithm. See specific usage.",
+      "type": "float_t",
+      "references": [
+        {
+          "description": "Shannon, C. E. (1948). A Mathematical Theory of Communication. Bell System Technical Journal, 27(3), 379-423.",
+          "url": "https://doi.org/10.1002/j.1538-7305.1948.tb01338.x"
+        },
+        {
+          "description": "Lyda, R. and Hamrock, J. (2007). Using Entropy Analysis to Find Encrypted and Packed Malware. IEEE Security and Privacy, 5(2), 40-45. Computes entropy in bits per byte over file content.",
+          "url": "https://doi.org/10.1109/MSP.2007.48"
+        }
+      ]
     },
     "share": {
       "caption": "Share",

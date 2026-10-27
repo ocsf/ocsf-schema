@@ -67,6 +67,7 @@ Thankyou! -->
   1. Added `audience` as a `string_t`, with `source` set to the `aud` claim and a reference to RFC 7519. [#1705](https://github.com/ocsf/ocsf-schema/pull/1705)
   1. Added `ai_status`, `permission_result`, `permission_result_id`, `stop_reason`, and `stop_reason_id` attributes. [#1704](https://github.com/ocsf/ocsf-schema/pull/1704)
   1. Added `dns_zone`, `dns_additional`, `soa`, `updated_soa`, `num_records`, `transfer_type`, `transfer_type_id`, and the SOA sub-fields `primary_server`, `responsible_party`, `sequence_number`, `refresh_interval`, `retry_interval`, `expire_interval`, and `minimum_ttl` for DNS zone transfers. [#1675](https://github.com/ocsf/ocsf-schema/pull/1675)
+  1. Added `data_bytes`, `data_bytes_in` and `data_bytes_out` attributes. [#1775](https://github.com/ocsf/ocsf-schema/pull/1775)
 
 ### Improved
 * #### Categories
@@ -90,6 +91,7 @@ Thankyou! -->
   1. Added `type_id`, `type` to `related_events` to distinguish activities, alerts, or findings as the type of the related event. [#1744](https://github.com/ocsf/ocsf-schema/pull/1744)
   1. Added `log_facility` and `log_facility_id` to the `metadata` and `logger` objects. [#1720](https://github.com/ocsf/ocsf-schema/pull/1720)
   1. Added `icmp_type`, `icmp_code` and `icmp_uid` to the `network_connection_info` object. [#1719](https://github.com/ocsf/ocsf-schema/pull/1719)
+  1. Added `data_bytes`, `data_bytes_in` and `data_bytes_out` to the `network_traffic` object, counting the data carried by the Layer 4 (Transport Layer) protocol, excluding the IP and transport headers, and clarified that its `bytes`, `bytes_in`, `bytes_out` and `bytes_missed` count bytes in Layer 3 (Network Layer) packets, including IP header and payload. [#1775](https://github.com/ocsf/ocsf-schema/pull/1775)
   1. Added per-node authority attributes `scopes`, `audience`, and `expiration_time` to the `delegation` object, so each hop in the chain of authority records what was granted, for whom, and until when. [#1705](https://github.com/ocsf/ocsf-schema/pull/1705)
   1. Added `value` to the `digital_signature` object so an event can carry the signature bytes themselves, not only a description of them — the raw signature output of `algorithm_id`, encoded as standard Base64 (RFC 4648 §4). [#1709](https://github.com/ocsf/ocsf-schema/pull/1709)
 * #### Observables

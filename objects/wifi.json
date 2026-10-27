@@ -1,0 +1,150 @@
+{
+  "caption": "Wireless Network",
+  "description": "The Wireless Network object describes an IEEE 802.11 wireless link: the identity of the network, the radio parameters it operates on, and the security negotiated for it.",
+  "extends": "object",
+  "name": "wifi",
+  "attributes": {
+    "access_point_status": {
+      "requirement": "optional"
+    },
+    "access_point_status_id": {
+      "requirement": "optional"
+    },
+    "band": {
+      "description": "The radio frequency band that the wireless link operates in, normalized to the caption of the <code>band_id</code> value. In the case of <code>Other</code>, it is defined by the event source.",
+      "requirement": "optional"
+    },
+    "band_id": {
+      "description": "The radio frequency band that the wireless link operates in.",
+      "requirement": "optional",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The band is unknown."
+        },
+        "1": {
+          "caption": "2.4 GHz",
+          "description": "The 2.4 GHz band, used by IEEE 802.11b, 802.11g, 802.11n, 802.11ax and 802.11be."
+        },
+        "2": {
+          "caption": "5 GHz",
+          "description": "The 5 GHz band, used by IEEE 802.11a, 802.11n, 802.11ac, 802.11ax and 802.11be."
+        },
+        "3": {
+          "caption": "6 GHz",
+          "description": "The 6 GHz band, used by IEEE 802.11ax and 802.11be."
+        },
+        "4": {
+          "caption": "60 GHz",
+          "description": "The 60 GHz band, used by IEEE 802.11ad and 802.11ay."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The band is not mapped. See the <code>band</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
+    "bssid": {
+      "requirement": "recommended"
+    },
+    "channel_number": {
+      "description": "The channel number that the wireless link operates on.",
+      "requirement": "optional"
+    },
+    "cipher": {
+      "caption": "Cipher",
+      "description": "The negotiated encryption cipher. For example: <code>AES-CCMP</code>, <code>GCMP-256</code> or <code>TKIP</code>.",
+      "requirement": "optional"
+    },
+    "data_rate": {
+      "requirement": "optional"
+    },
+    "is_access_point_on_wired_network": {
+      "requirement": "optional"
+    },
+    "noise_floor": {
+      "requirement": "optional"
+    },
+    "rssi": {
+      "caption": "RSSI",
+      "description": "The Received Signal Strength Indicator reported for the wireless link, on the reporting vendor's own scale, which may be a relative index or a power level. For the received power in decibel-milliwatts, see <code>signal_strength</code>.",
+      "requirement": "optional"
+    },
+    "security_protocol": {
+      "description": "The Wi-Fi security protocol, normalized to the caption of the <code>security_protocol_id</code> value. In the case of <code>Other</code>, it is defined by the event source.",
+      "requirement": "optional"
+    },
+    "security_protocol_id": {
+      "description": "The authentication and key management suite that protects the wireless link.",
+      "requirement": "recommended",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The security protocol is unknown."
+        },
+        "1": {
+          "caption": "Open",
+          "description": "The wireless network is unauthenticated and unencrypted."
+        },
+        "2": {
+          "caption": "WEP",
+          "description": "Wired Equivalent Privacy, the original IEEE 802.11 security mechanism, which uses a static shared key. It is deprecated."
+        },
+        "3": {
+          "caption": "WPA",
+          "description": "Wi-Fi Protected Access, which uses TKIP with a pre-shared key or IEEE 802.1X authentication."
+        },
+        "4": {
+          "caption": "WPA2-Personal",
+          "description": "Wi-Fi Protected Access 2 with a pre-shared key."
+        },
+        "5": {
+          "caption": "WPA2-Enterprise",
+          "description": "Wi-Fi Protected Access 2 with IEEE 802.1X authentication."
+        },
+        "6": {
+          "caption": "WPA3-Personal",
+          "description": "Wi-Fi Protected Access 3 with Simultaneous Authentication of Equals (SAE) in place of a pre-shared key handshake."
+        },
+        "7": {
+          "caption": "WPA3-Enterprise",
+          "description": "Wi-Fi Protected Access 3 with IEEE 802.1X authentication, including the optional 192-bit security mode."
+        },
+        "8": {
+          "caption": "Opportunistic Wireless Encryption",
+          "description": "Opportunistic Wireless Encryption (RFC 8110), which encrypts an open network without authentication."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The security protocol is not mapped. See the <code>security_protocol</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
+    "signal_noise_ratio": {
+      "requirement": "optional"
+    },
+    "signal_strength": {
+      "requirement": "optional"
+    },
+    "ssid": {
+      "requirement": "recommended"
+    },
+    "standard": {
+      "caption": "Standard",
+      "description": "The IEEE 802.11 amendment that the link operates under. For example: <code>802.11ax</code> or <code>802.11ac</code>.",
+      "requirement": "optional"
+    }
+  },
+  "constraints": {
+    "at_least_one": [
+      "ssid",
+      "bssid"
+    ]
+  },
+  "references": [
+    {
+      "description": "IEEE 802.11 Wireless LAN Medium Access Control and Physical Layer Specifications",
+      "url": "https://standards.ieee.org/ieee/802.11/7028/"
+    }
+  ]
+}

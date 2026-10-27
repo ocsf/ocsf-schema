@@ -53,6 +53,7 @@ Thankyou! -->
   1. Added `firewall_rule_evaluation` (Security Control Rule Evaluation), extending `firewall_rule` with optional normalized action and disposition attributes. [#1786](https://github.com/ocsf/ocsf-schema/pull/1786)
   1. Added `ai_capability` object describing an invoked AI capability — its primitive kind, provenance (serving system and transport), declared behavior hints, and input/output schema, description, and baseline fingerprints. [#1729](https://github.com/ocsf/ocsf-schema/pull/1729)
   1. Added the `ai_status` object for per-operation outcome scalars contributed by the `ai_operation` profile, with `stop_reason` / `stop_reason_id` (enum: Unknown (0), End of Turn (1), Token Limit (2), Tool Use (3), Session Stop (4), Content Filter (5), Other (99)) and `permission_result` / `permission_result_id` (enum: Unknown (0), Allowed (1), Denied (2), Other (99)). Additional outcome attributes may be added in later versions. [#1704](https://github.com/ocsf/ocsf-schema/pull/1704)
+  1. Added the `wifi` object describing IEEE 802.11 network identity, radio and security attributes. [#1721](https://github.com/ocsf/ocsf-schema/pull/1721)
   1. Added `dns_soa` object to represent the RFC 1035 SOA (Start of Authority) record RDATA, used to carry zone serials and timers in DNS zone transfers. [#1675](https://github.com/ocsf/ocsf-schema/pull/1675)
 * #### Observables
 * #### Platform Extensions
@@ -68,6 +69,7 @@ Thankyou! -->
   1. Added `icmp_type`, `icmp_code` and `icmp_uid` attributes. [#1719](https://github.com/ocsf/ocsf-schema/pull/1719)
   1. Added `audience` as a `string_t`, with `source` set to the `aud` claim and a reference to RFC 7519. [#1705](https://github.com/ocsf/ocsf-schema/pull/1705)
   1. Added `ai_status`, `permission_result`, `permission_result_id`, `stop_reason`, and `stop_reason_id` attributes. [#1704](https://github.com/ocsf/ocsf-schema/pull/1704)
+  1. Added `access_point_status`, `access_point_status_id`, `band`, `band_id`, `bssid`, `channel_number`, `data_rate`, `is_access_point_on_wired_network`, `noise_floor`, `security_protocol`, `security_protocol_id`, `signal_noise_ratio`, `signal_strength`, `ssid`, `standard` and `wifi` attributes. [#1721](https://github.com/ocsf/ocsf-schema/pull/1721)
   1. Added `dns_zone`, `dns_additional`, `soa`, `updated_soa`, `num_records`, `transfer_type`, `transfer_type_id`, and the SOA sub-fields `primary_server`, `responsible_party`, `sequence_number`, `refresh_interval`, `retry_interval`, `expire_interval`, and `minimum_ttl` for DNS zone transfers. [#1675](https://github.com/ocsf/ocsf-schema/pull/1675)
   1. Added `data_bytes`, `data_bytes_in` and `data_bytes_out` attributes. [#1775](https://github.com/ocsf/ocsf-schema/pull/1775)
 
@@ -97,6 +99,7 @@ Thankyou! -->
   1. Added `icmp_type`, `icmp_code` and `icmp_uid` to the `network_connection_info` object. [#1719](https://github.com/ocsf/ocsf-schema/pull/1719)
   1. Added `data_bytes`, `data_bytes_in` and `data_bytes_out` to the `network_traffic` object, counting the data carried by the Layer 4 (Transport Layer) protocol, excluding the IP and transport headers, and clarified that its `bytes`, `bytes_in`, `bytes_out` and `bytes_missed` count bytes in Layer 3 (Network Layer) packets, including IP header and payload. [#1775](https://github.com/ocsf/ocsf-schema/pull/1775)
   1. Added per-node authority attributes `scopes`, `audience`, and `expiration_time` to the `delegation` object, so each hop in the chain of authority records what was granted, for whom, and until when. [#1705](https://github.com/ocsf/ocsf-schema/pull/1705)
+  1. Added `wifi` to the `network_endpoint` and `network_interface` objects. Resolves #1463. [#1721](https://github.com/ocsf/ocsf-schema/pull/1721)
   1. Added `value` to the `digital_signature` object so an event can carry the signature bytes themselves, not only a description of them — the raw signature output of `algorithm_id`, encoded as standard Base64 (RFC 4648 §4). [#1709](https://github.com/ocsf/ocsf-schema/pull/1709)
 * #### Observables
 * #### Platform Extensions

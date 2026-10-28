@@ -214,6 +214,12 @@
       "description": "The permissions that were granted in a platform-native format. See specific usage.",
       "type": "integer_t"
     },
+    "additional_firewall_rules": {
+      "caption": "Additional Security Control Rules",
+      "description": "Additional security control rule evaluations associated with the activity represented by the event. Excludes the evaluation represented by <code>firewall_rule</code>, when present. This array may be populated when <code>firewall_rule</code> is absent. Entries may represent separate evaluations of the same rule. The array does not imply evaluation order, a parent-child relationship, or a complete record of all evaluated rules.",
+      "type": "firewall_rule_evaluation",
+      "is_array": true
+    },
     "additional_restrictions": {
       "caption": "Additional Restrictions",
       "description": "The supplementary restrictions that may apply to an entity, by the virtue of a policy. See specific usage.",
@@ -3233,8 +3239,8 @@
       "is_array": true
     },
     "firewall_rule": {
-      "caption": "Firewall Rule",
-      "description": "The firewall rule that triggered the event.",
+      "caption": "Security Control Rule",
+      "description": "The security control rule to which the event-level action or disposition is attributed, when that attribution is known. Examples of security controls include firewalls, intrusion detection and prevention systems, network proxies, and endpoint protection systems.",
       "type": "firewall_rule"
     },
     "first_seen_time": {

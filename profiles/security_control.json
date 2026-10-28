@@ -1,6 +1,6 @@
 {
   "caption": "Security Control",
-  "description": "The attributes including disposition that represent the outcome of a security control including but not limited to access control, malware or policy violation, network proxy, intrusion detection, firewall, or data control.  The profile is intended to augment activities or findings with an outcome when a security control has observed or intervened. If the control detected a security violation, and the <code>disposition_id</code> or <code>action_id</code> is an alertable outcome or action, the <code>is_alert</code> flag may be set to <code>true</code>.",
+  "description": "The Security Control profile describes the action and disposition reported by a security control for the activity or finding represented by an event. It applies when a control observes or intervenes, including access control, malware detection, policy enforcement, network proxy, intrusion detection, firewall, and data protection. Event-level action and disposition describe the reported outcome. The <code>firewall_rule</code> attribute identifies the rule associated with that outcome, when known, and <code>additional_firewall_rules</code> records other rule evaluations with their own actions and dispositions. If the control detected a security violation and the action or disposition is alertable, the <code>is_alert</code> flag may be set to <code>true</code>.",
   "meta": "profile",
   "name": "security_control",
   "annotations": {
@@ -9,12 +9,12 @@
   "attributes": {
     "action": {
       "caption": "Action",
-      "description": "The normalized caption of <code>action_id</code>.",
+      "description": "The normalized caption of the event-level <code>action_id</code>. When <code>action_id</code> is <code>99</code> (Other), this attribute contains the source-specific action.",
       "requirement": "optional"
     },
     "action_id": {
       "caption": "Action ID",
-      "description": "The action taken by a control or other policy-based system leading to an outcome or disposition. An unknown action may still correspond to a known disposition. Refer to <code>disposition_id</code> for the outcome of the action.",
+      "description": "The normalized action taken by the security control for the activity or finding represented by this event. An unknown action may still correspond to a known disposition. Refer to the event-level <code>disposition_id</code> for the outcome of the action.",
       "requirement": "recommended",
       "enum": {
         "0": {
@@ -43,6 +43,9 @@
         }
       }
     },
+    "additional_firewall_rules": {
+      "requirement": "optional"
+    },
     "attacks": {
       "requirement": "optional"
     },
@@ -65,13 +68,15 @@
       "requirement": "optional"
     },
     "disposition": {
+      "description": "The normalized caption of the event-level <code>disposition_id</code>. When <code>disposition_id</code> is <code>99</code> (Other), this attribute contains the source-specific disposition.",
       "requirement": "optional"
     },
     "disposition_id": {
+      "description": "The normalized outcome reported by the security control for the activity or finding represented by this event. Dispositions in <code>additional_firewall_rules</code> describe the individual rule evaluations and do not imply this event-level outcome.",
       "requirement": "recommended"
     },
     "firewall_rule": {
-      "description": "The firewall rule that pertains to the control that triggered the event, if applicable.",
+      "description": "The security control rule to which the event-level action or disposition is attributed, when that attribution is known. The rule may be evaluated by a firewall, intrusion detection or prevention system, network proxy, endpoint protection system, or another security control. Other reported rule evaluations are recorded in <code>additional_firewall_rules</code>.",
       "requirement": "optional"
     },
     "is_alert": {

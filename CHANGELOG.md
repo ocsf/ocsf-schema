@@ -72,6 +72,9 @@ Thankyou! -->
   1. Added `access_point_status`, `access_point_status_id`, `band`, `band_id`, `bssid`, `channel_number`, `data_rate`, `is_access_point_on_wired_network`, `noise_floor`, `security_protocol`, `security_protocol_id`, `signal_noise_ratio`, `signal_strength`, `ssid`, `standard` and `wifi` attributes. [#1721](https://github.com/ocsf/ocsf-schema/pull/1721)
   1. Added `dns_zone`, `dns_additional`, `soa`, `updated_soa`, `num_records`, `transfer_type`, `transfer_type_id`, and the SOA sub-fields `primary_server`, `responsible_party`, `sequence_number`, `refresh_interval`, `retry_interval`, `expire_interval`, and `minimum_ttl` for DNS zone transfers. [#1675](https://github.com/ocsf/ocsf-schema/pull/1675)
   1. Added `data_bytes`, `data_bytes_in` and `data_bytes_out` attributes. [#1775](https://github.com/ocsf/ocsf-schema/pull/1775)
+  1. Added `Proximity Card (12)`, `Smart Card (13)`, and `Mobile Credential (14)` enum values to `factor_type_id`, so physical access credentials presented at a reader can be carried as authentication factors. [#1757](https://github.com/ocsf/ocsf-schema/pull/1757)
+  1. Added `Confirmed (28)`, `Unfounded (29)`, `Referred (30)`, `Cancelled (31)`, and `Unsubstantiated (32)` enum values to `disposition_id` for verdict-style outcomes of alarms and physical security dispatches. [#1757](https://github.com/ocsf/ocsf-schema/pull/1757)
+  1. Added `Physical (14)` enum value to `logon_type_id` for an entry made at a door, gate, or turnstile reader. [#1757](https://github.com/ocsf/ocsf-schema/pull/1757)
 
 ### Improved
 * #### Categories

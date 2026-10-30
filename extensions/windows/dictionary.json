@@ -235,6 +235,50 @@
         }
       }
     },
+    "token_elevation_type": {
+      "caption": "Token Elevation Type",
+      "description": "The User Account Control elevation type of the access token that the process runs with, normalized to the caption of the <code>token_elevation_type_id</code> value. In the case of 'Other', it is defined by the event source.",
+      "type": "string_t"
+    },
+    "token_elevation_type_id": {
+      "caption": "Token Elevation Type ID",
+      "description": "The normalized identifier of the User Account Control elevation type of the access token that the process runs with. The values match the Windows <code>TOKEN_ELEVATION_TYPE</code> enumeration.",
+      "sibling": "token_elevation_type",
+      "source": "TOKEN_ELEVATION_TYPE",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The token elevation type is unknown."
+        },
+        "1": {
+          "caption": "Default",
+          "description": "The token does not have a linked token. This is the case, for example, when User Account Control is disabled, or for the built-in Administrator account, service accounts, and the local system account. Corresponds to <code>TokenElevationTypeDefault</code>."
+        },
+        "2": {
+          "caption": "Full",
+          "description": "The token is an elevated token with no privileges removed or groups disabled, for example when a program is started with Run as administrator or is configured to always require administrative privilege. Corresponds to <code>TokenElevationTypeFull</code>."
+        },
+        "3": {
+          "caption": "Limited",
+          "description": "The token is a limited token with administrative privileges removed and administrative groups disabled. Corresponds to <code>TokenElevationTypeLimited</code>."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The token elevation type is not mapped. See the <code>token_elevation_type</code> attribute, which contains an event source specific value."
+        }
+      },
+      "references": [
+        {
+          "description": "TOKEN_ELEVATION_TYPE enumeration",
+          "url": "https://learn.microsoft.com/en-us/windows/win32/api/winnt/ne-winnt-token_elevation_type"
+        },
+        {
+          "description": "Security event 4688, A new process has been created (Token Elevation Type field)",
+          "url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4688"
+        }
+      ]
+    },
     "win_resource": {
       "caption": "Windows Resource",
       "description": "The Windows resource object that was accessed, such as a mutant or timer.",

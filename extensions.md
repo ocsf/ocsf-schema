@@ -6,6 +6,7 @@ The purpose of this file is to keep track of and avoid collisions in Extension `
 
 | Caption     | Name     | UID | Notes | Repository |
 |-------------|----------|-----|-------|------------|
+| ZeroSOC     | zerosoc  | **984** | The ZeroSOC Framework schema extension | [ZeroSOC/zerosoc-framework](https://github.com/ZeroSOC/zerosoc-framework) |
 | WithSecure | withsecure | **985** | The WithSecure schema extension | |
 | Yandex Cloud | ycloud  | **986** | The Yandex Cloud schema extension | |
 | TrustPlane    | TrustPlane | **987** | The TrustPlane vendor extension| | 

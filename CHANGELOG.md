@@ -127,6 +127,8 @@ Thankyou! -->
   1. New Extension registration for Yandex Cloud. [#1759](https://github.com/ocsf/ocsf-schema/pull/1759)
   1. New Extension registration for WithSecure. [#1773](https://github.com/ocsf/ocsf-schema/pull/1773)
   1. New Extension registration for ZeroSOC. [#1785](https://github.com/ocsf/ocsf-schema/pull/1785)
+  1. New Extension registration for DefenXee. [#1749](https://github.com/ocsf/ocsf-schema/pull/1749)
+  1. Rename DefenXee to TrustPlane. [#1781](https://github.com/ocsf/ocsf-schema/pull/1781)
 
 ## [v1.9.0] - Aug 3rd, 2026
 

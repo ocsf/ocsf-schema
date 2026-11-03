@@ -1305,7 +1305,7 @@
     },
     "cause": {
       "caption": "Cause",
-      "description": "The cause, normalized to the caption of the <code>cause_id</code> value.",
+      "description": "The cause, normalized to the caption of the <code>cause_id</code> value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "cause_id": {
@@ -1314,6 +1314,10 @@
       "sibling": "cause",
       "type": "integer_t",
       "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The cause is unknown."
+        },
         "1": {
           "caption": "Genuine",
           "description": "The condition was real and correctly reported."
@@ -1357,6 +1361,10 @@
         "11": {
           "caption": "Malicious",
           "description": "The condition was triggered deliberately and without cause."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The cause is not mapped. See the <code>cause</code> attribute, which contains a data source specific value."
         }
       }
     },
@@ -1391,7 +1399,7 @@
     },
     "certainty": {
       "caption": "Certainty",
-      "description": "The certainty, normalized to the caption of the <code>certainty_id</code> value.",
+      "description": "The certainty, normalized to the caption of the <code>certainty_id</code> value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "certainty_id": {
@@ -1400,6 +1408,10 @@
       "sibling": "certainty",
       "type": "integer_t",
       "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The certainty is unknown."
+        },
         "1": {
           "caption": "Observed",
           "description": "Determined to have occurred or to be ongoing."
@@ -1415,6 +1427,10 @@
         "4": {
           "caption": "Unlikely",
           "description": "Not expected to occur, with probability approaching zero."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The certainty is not mapped. See the <code>certainty</code> attribute, which contains a data source specific value."
         }
       }
     },
@@ -2116,7 +2132,7 @@
     },
     "credential_type": {
       "caption": "Credential Type",
-      "description": "The credential type, normalized to the caption of the <code>credential_type_id</code> value.",
+      "description": "The credential type, normalized to the caption of the <code>credential_type_id</code> value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "credential_type_id": {
@@ -2125,6 +2141,10 @@
       "sibling": "credential_type",
       "type": "integer_t",
       "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The credential type is unknown."
+        },
         "1": {
           "caption": "Proximity Card",
           "description": "A card, key fob, or tag that presents a static identifier to a reader and is not cryptographically authenticated, such as a 125 kHz proximity credential or a card read only by its serial number. The distinction from <code>2</code> 'Smart Card' is the absence of cryptographic authentication, not the operating frequency or form factor."
@@ -2156,6 +2176,10 @@
         "8": {
           "caption": "Escort",
           "description": "Entry authorized by an escorting person rather than by a credential."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The credential type is not mapped. See the <code>credential_type</code> attribute, which contains a data source specific value."
         }
       }
     },
@@ -2490,7 +2514,7 @@
     },
     "derivation": {
       "caption": "Derivation",
-      "description": "The derivation method, normalized to the caption of the <code>derivation_id</code> value.",
+      "description": "The derivation method, normalized to the caption of the <code>derivation_id</code> value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "derivation_id": {
@@ -2499,6 +2523,10 @@
       "sibling": "derivation",
       "type": "integer_t",
       "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The derivation is unknown."
+        },
         "1": {
           "caption": "Direct",
           "description": "Reported directly by a device or person."
@@ -2522,6 +2550,10 @@
         "6": {
           "caption": "Human Assessment",
           "description": "Determined by a human operator."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The derivation is not mapped. See the <code>derivation</code> attribute, which contains a data source specific value."
         }
       }
     },
@@ -2734,7 +2766,7 @@
     },
     "dispatch_outcome": {
       "caption": "Dispatch Outcome",
-      "description": "The dispatch outcome, normalized to the caption of the <code>dispatch_outcome_id</code> value.",
+      "description": "The dispatch outcome, normalized to the caption of the <code>dispatch_outcome_id</code> value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "dispatch_outcome_id": {
@@ -2743,6 +2775,10 @@
       "sibling": "dispatch_outcome",
       "type": "integer_t",
       "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The dispatch outcome is unknown."
+        },
         "1": {
           "caption": "No Dispatch",
           "description": "No response resource was dispatched."
@@ -2770,6 +2806,10 @@
         "7": {
           "caption": "Responded Unsubstantiated",
           "description": "A resource arrived and could neither confirm nor rule out the condition, for example no evidence of a cause was found. This is distinct from <code>5</code> 'Responded Unfounded', which asserts that the condition was not genuine."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The dispatch outcome is not mapped. See the <code>dispatch_outcome</code> attribute, which contains a data source specific value."
         }
       }
     },
@@ -4948,7 +4988,7 @@
     },
     "lifecycle": {
       "caption": "Lifecycle",
-      "description": "The lifecycle state, normalized to the caption of the <code>lifecycle_id</code> value.",
+      "description": "The lifecycle state, normalized to the caption of the <code>lifecycle_id</code> value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "lifecycle_id": {
@@ -4957,6 +4997,10 @@
       "sibling": "lifecycle",
       "type": "integer_t",
       "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The lifecycle is unknown."
+        },
         "1": {
           "caption": "New",
           "description": "A new event condition, equivalent to Contact ID qualifier 1."
@@ -4992,6 +5036,10 @@
         "9": {
           "caption": "Test",
           "description": "The event was generated by a test."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The lifecycle is not mapped. See the <code>lifecycle</code> attribute, which contains a data source specific value."
         }
       }
     },
@@ -6246,7 +6294,7 @@
     },
     "portal_type": {
       "caption": "Portal Type",
-      "description": "The portal type, normalized to the caption of the <code>portal_type_id</code> value.",
+      "description": "The portal type, normalized to the caption of the <code>portal_type_id</code> value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "portal_type_id": {
@@ -6255,6 +6303,10 @@
       "sibling": "portal_type",
       "type": "integer_t",
       "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The portal type is unknown."
+        },
         "1": {
           "caption": "Door",
           "description": "A pedestrian door."
@@ -6282,6 +6334,10 @@
         "7": {
           "caption": "Cage",
           "description": "A cabinet, cage, or rack door."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The portal type is not mapped. See the <code>portal_type</code> attribute, which contains a data source specific value."
         }
       }
     },
@@ -6297,7 +6353,7 @@
     },
     "post_type": {
       "caption": "Post Type",
-      "description": "The post type, normalized to the caption of the <code>post_type_id</code> value.",
+      "description": "The post type, normalized to the caption of the <code>post_type_id</code> value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "post_type_id": {
@@ -6306,6 +6362,10 @@
       "sibling": "post_type",
       "type": "integer_t",
       "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The post type is unknown."
+        },
         "1": {
           "caption": "Fixed",
           "description": "A static post at a defined location."
@@ -6329,6 +6389,10 @@
         "6": {
           "caption": "Remote",
           "description": "A post staffed from a remote operations centre."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The post type is not mapped. See the <code>post_type</code> attribute, which contains a data source specific value."
         }
       }
     },
@@ -7216,7 +7280,7 @@
     },
     "resource_type": {
       "caption": "Resource Type",
-      "description": "The resource type as defined by the event source.",
+      "description": "The resource type as defined by the event source. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "resource_type_id": {
@@ -7225,6 +7289,10 @@
       "sibling": "resource_type",
       "type": "integer_t",
       "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The resource type is unknown."
+        },
         "1": {
           "caption": "On Site Officer",
           "description": "An officer already posted at the site."
@@ -7260,6 +7328,10 @@
         "9": {
           "caption": "Client Contact",
           "description": "A representative of the client organization."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The resource type is not mapped. See the <code>resource_type</code> attribute, which contains a data source specific value."
         }
       }
     },
@@ -7310,7 +7382,7 @@
     },
     "response_type": {
       "caption": "Response Type",
-      "description": "The response type, normalized to the caption of the <code>response_type_id</code> value.",
+      "description": "The response type, normalized to the caption of the <code>response_type_id</code> value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "response_type_id": {
@@ -7319,6 +7391,10 @@
       "sibling": "response_type",
       "type": "integer_t",
       "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The response type is unknown."
+        },
         "1": {
           "caption": "Shelter",
           "description": "Take shelter in place."
@@ -7354,6 +7430,10 @@
         "9": {
           "caption": "None",
           "description": "No action recommended."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The response type is not mapped. See the <code>response_type</code> attribute, which contains a data source specific value."
         }
       }
     },
@@ -9243,7 +9323,7 @@
     },
     "urgency": {
       "caption": "Urgency",
-      "description": "The urgency, normalized to the caption of the <code>urgency_id</code> value.",
+      "description": "The urgency, normalized to the caption of the <code>urgency_id</code> value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "urgency_id": {
@@ -9252,6 +9332,10 @@
       "sibling": "urgency",
       "type": "integer_t",
       "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The urgency is unknown."
+        },
         "1": {
           "caption": "Immediate",
           "description": "Responsive action should be taken immediately."
@@ -9267,6 +9351,10 @@
         "4": {
           "caption": "Past",
           "description": "Responsive action is no longer required."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The urgency is not mapped. See the <code>urgency</code> attribute, which contains a data source specific value."
         }
       }
     },
@@ -9333,7 +9421,7 @@
     },
     "validation_level": {
       "caption": "Validation Level",
-      "description": "The validation level, normalized to the caption of the <code>validation_level_id</code> value.",
+      "description": "The validation level, normalized to the caption of the <code>validation_level_id</code> value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "validation_level_id": {
@@ -9342,6 +9430,10 @@
       "sibling": "validation_level",
       "type": "integer_t",
       "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The validation level is unknown."
+        },
         "1": {
           "caption": "Level 0",
           "description": "No call for service. Response is unwarranted, as defined by ANSI/TMA AVS-01."
@@ -9361,6 +9453,10 @@
         "5": {
           "caption": "Level 4",
           "description": "A call for service with a person present and an apparent threat to life."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The validation level is not mapped. See the <code>validation_level</code> attribute, which contains a data source specific value."
         }
       }
     },
@@ -9464,7 +9560,7 @@
     },
     "verification_method": {
       "caption": "Verification Method",
-      "description": "The verification method, normalized to the caption of the <code>verification_method_id</code> value.",
+      "description": "The verification method, normalized to the caption of the <code>verification_method_id</code> value. In the case of 'Other', it is defined by the event source.",
       "type": "string_t"
     },
     "verification_method_id": {
@@ -9473,6 +9569,10 @@
       "sibling": "verification_method",
       "type": "integer_t",
       "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The verification method is unknown."
+        },
         "1": {
           "caption": "None",
           "description": "No verification was attempted."
@@ -9508,6 +9608,10 @@
         "9": {
           "caption": "On Site Check",
           "description": "A responder physically checked the location."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The verification method is not mapped. See the <code>verification_method</code> attribute, which contains a data source specific value."
         }
       }
     },

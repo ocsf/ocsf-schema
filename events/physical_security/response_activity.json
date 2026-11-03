@@ -1,0 +1,69 @@
+{
+  "uid": 6,
+  "caption": "Response Activity",
+  "description": "Response Activity events report the assignment and progress of resources responding to a condition. Human officers, remote operators, automated talkdown, uncrewed systems, and public agencies are represented uniformly so that the cost, latency, and outcome of different response paths can be compared for the same class of event.",
+  "extends": "physical_security",
+  "name": "response_activity",
+  "attributes": {
+    "activity_id": {
+      "group": "primary",
+      "requirement": "required",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The event activity is unknown."
+        },
+        "1": {
+          "caption": "Assigned",
+          "description": "A resource was assigned to the event."
+        },
+        "2": {
+          "caption": "Acknowledged",
+          "description": "The assigned resource acknowledged the assignment."
+        },
+        "3": {
+          "caption": "En Route",
+          "description": "The resource began travelling to the location."
+        },
+        "4": {
+          "caption": "On Scene",
+          "description": "The resource arrived at the location."
+        },
+        "5": {
+          "caption": "Action Taken",
+          "description": "The resource performed an intervention such as a talkdown, a challenge, or a lock-down."
+        },
+        "6": {
+          "caption": "Cleared",
+          "description": "The resource was released from the event."
+        },
+        "7": {
+          "caption": "Declined",
+          "description": "The resource was unable to accept the assignment."
+        },
+        "8": {
+          "caption": "Reassigned",
+          "description": "The event was transferred to a different resource."
+        },
+        "9": {
+          "caption": "Escalated To Agency",
+          "description": "The event was referred to a public safety agency."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The event activity is not mapped. See the <code>activity_name</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
+    "response_resource": {
+      "group": "primary",
+      "requirement": "required"
+    },
+    "disposition_details": {
+      "requirement": "optional"
+    },
+    "post": {
+      "requirement": "optional"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "caption": "Physical Site",
+  "description": "Adds physical site context: the site identity (<code>site_uid</code>, <code>site_name</code>) and the in-site location (<code>building</code>, <code>floor</code>, <code>site_zone</code>). The profile is attached where the event itself takes place at a site the producer can name: the Identity &amp; Access Management classes (an access decision at a reader, or the administration of access rights to a site's doors, correlated with logical access at the same site) and the Findings classes (findings raised about, or aggregated by, a site). It is also applied to the <code>location</code> object, so a device, endpoint, or person in any class carries physical site context through its <code>location</code>; when the profile is applied, <code>site_uid</code> alone satisfies that object's at-least-one constraint, so an indoor reader or device need not carry geographic attributes. Further categories can be added as producers appear.",
+  "meta": "profile",
+  "name": "physical_site",
+  "annotations": {
+    "group": "context"
+  },
+  "attributes": {
+    "site_uid": {
+      "description": "The unique identifier of the physical site where the activity occurred, as defined by the reporting organization.",
+      "requirement": "recommended"
+    },
+    "site_name": {
+      "description": "The name of the physical site where the activity occurred.",
+      "requirement": "optional"
+    },
+    "building": {
+      "description": "The building within the physical site.",
+      "requirement": "optional"
+    },
+    "floor": {
+      "description": "The floor or level within the building.",
+      "requirement": "optional"
+    },
+    "site_zone": {
+      "description": "The site zone where the activity occurred.",
+      "requirement": "optional"
+    }
+  }
+}

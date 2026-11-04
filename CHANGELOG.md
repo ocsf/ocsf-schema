@@ -104,6 +104,7 @@ Thankyou! -->
   1. Added `wifi` to the `network_endpoint` and `network_interface` objects. Resolves #1463. [#1721](https://github.com/ocsf/ocsf-schema/pull/1721)
   1. Added `value` to the `digital_signature` object so an event can carry the signature bytes themselves, not only a description of them — the raw signature output of `algorithm_id`, encoded as standard Base64 (RFC 4648 §4). [#1709](https://github.com/ocsf/ocsf-schema/pull/1709)
   1. Added `RC4 (7)` enum value to `algorithm_id` in the `encryption_details` object, so Kerberos tickets encrypted with RC4 can be normalized. [#1787](https://github.com/ocsf/ocsf-schema/pull/1787)
+  1. Added `desc` to the `trait` object to carry a human-readable description of the trait. [#0000](https://github.com/ocsf/ocsf-schema/pull/0000)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes

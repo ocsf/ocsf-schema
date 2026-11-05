@@ -43,7 +43,7 @@
       "requirement": "optional"
     },
     "logged_time": {
-      "description": "The time when this logger received and logged the event. For the last logger in the pipeline, this value should match <code>metadata.logged_time</code>.",
+      "description": "The timestamp when this logger received and logged the event (assuming no internal processing delay). If processing occurred, provide a distinct <code>received_time</code> value. For the final logger in the pipeline, this must match <code>metadata.logged_time</code>.",
       "requirement": "recommended"
     },
     "name": {
@@ -53,6 +53,10 @@
     "product": {
       "description": "The product logging the event.  This may be the event source product, a management server product, a scanning product, a SIEM, etc.",
       "requirement": "recommended"
+    },
+    "received_time": {
+      "description": "The timestamp when this logger first received the event. This matches <code>logged_time</code> if received and logged simultaneously. If the logger uses a multi-stage processing pipeline, this records the time the event entered the first stage.",
+      "requirement": "optional"
     },
     "transmit_time": {
       "description": "The time when the event was transmitted from the logging device to it's next destination.",

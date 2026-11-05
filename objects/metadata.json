@@ -94,7 +94,7 @@
       "requirement": "optional"
     },
     "received_time": {
-      "description": "The time when the event was first received in the event pipeline. This matches <code>logged_time</code> if received and logged simultaneously. Per-hop received times are recorded in <code>loggers[].received_time</code>, in which case this values should match the <code>loggers[0].received_time</code>.",
+      "description": "The time when the event was first received in the event pipeline, i.e. by the first logger. In a single-hop pipeline where the event is received and logged simultaneously, this matches logged_time. If loggers is populated, this value should match loggers[0].received_time; per-hop received times are recorded in loggers[].received_time.",
       "requirement": "optional"
     },
     "reporter": {

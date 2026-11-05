@@ -7176,21 +7176,6 @@
       "description": "The short description that pertains to the object or event. See specific usage.",
       "type": "string_t"
     },
-    "signal": {
-      "caption": "Signal",
-      "description": "The name of the signal delivered to a process, as defined by POSIX. For a process activity, this is the signal that terminated the target process or that the actor sent to it. For example: <code>SIGKILL</code>, <code>SIGTERM</code> or <code>SIGSEGV</code>. The name is used rather than the number because signal numbers differ between processor architectures.",
-      "type": "string_t",
-      "references": [
-        {
-          "description": "signal(7), overview of signals",
-          "url": "https://man7.org/linux/man-pages/man7/signal.7.html"
-        },
-        {
-          "description": "POSIX signal.h, standard signal names",
-          "url": "https://pubs.opengroup.org/onlinepubs/9799919799/basedefs/signal.h.html"
-        }
-      ]
-    },
     "signal_noise_ratio": {
       "caption": "Signal-to-Noise Ratio",
       "description": "The power of the received radio signal relative to the noise floor, in decibels (dB).",
@@ -7834,6 +7819,113 @@
       "caption": "Terminated Time",
       "description": "The time when the entity was terminated. See specific usage.",
       "type": "timestamp_t"
+    },
+    "terminating_signal": {
+      "caption": "Terminating Signal",
+      "description": "The name of the signal that terminated the process, or that was sent to terminate it, normalized to the caption of the <code>terminating_signal_id</code> value. In the case of 'Other', it is defined by the event source.",
+      "type": "string_t"
+    },
+    "terminating_signal_id": {
+      "caption": "Terminating Signal ID",
+      "description": "The normalized identifier of the signal that terminated the process, or that was sent to terminate it. Signals are defined by POSIX and are used on Unix-like operating systems. The values follow the Linux signal numbers on x86 and ARM processors. Signal numbers differ between processor architectures and operating systems, so on other platforms the signal is mapped by its name. Only the POSIX signals whose default action is to terminate the process are listed; any other signal maps to 'Other'.",
+      "sibling": "terminating_signal",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The signal is unknown."
+        },
+        "1": {
+          "caption": "SIGHUP",
+          "description": "Hangup. The controlling terminal was closed or its controlling process ended."
+        },
+        "2": {
+          "caption": "SIGINT",
+          "description": "Terminal interrupt signal, for example Ctrl+C."
+        },
+        "3": {
+          "caption": "SIGQUIT",
+          "description": "Terminal quit signal. The process ends with a core dump."
+        },
+        "4": {
+          "caption": "SIGILL",
+          "description": "Illegal instruction. The process ends with a core dump."
+        },
+        "5": {
+          "caption": "SIGTRAP",
+          "description": "Trace or breakpoint trap. The process ends with a core dump."
+        },
+        "6": {
+          "caption": "SIGABRT",
+          "description": "Process abort signal, for example from <code>abort()</code>. The process ends with a core dump."
+        },
+        "7": {
+          "caption": "SIGBUS",
+          "description": "Access to an undefined portion of a memory object. The process ends with a core dump."
+        },
+        "8": {
+          "caption": "SIGFPE",
+          "description": "Erroneous arithmetic operation. The process ends with a core dump."
+        },
+        "9": {
+          "caption": "SIGKILL",
+          "description": "Kill signal. It cannot be caught or ignored."
+        },
+        "10": {
+          "caption": "SIGUSR1",
+          "description": "User-defined signal 1."
+        },
+        "11": {
+          "caption": "SIGSEGV",
+          "description": "Invalid memory reference. The process ends with a core dump."
+        },
+        "12": {
+          "caption": "SIGUSR2",
+          "description": "User-defined signal 2."
+        },
+        "13": {
+          "caption": "SIGPIPE",
+          "description": "Write on a pipe with no one to read it."
+        },
+        "14": {
+          "caption": "SIGALRM",
+          "description": "Alarm clock."
+        },
+        "15": {
+          "caption": "SIGTERM",
+          "description": "Termination signal. This is the default signal sent to ask a process to end."
+        },
+        "24": {
+          "caption": "SIGXCPU",
+          "description": "CPU time limit exceeded. The process ends with a core dump."
+        },
+        "25": {
+          "caption": "SIGXFSZ",
+          "description": "File size limit exceeded. The process ends with a core dump."
+        },
+        "26": {
+          "caption": "SIGVTALRM",
+          "description": "Virtual timer expired."
+        },
+        "31": {
+          "caption": "SIGSYS",
+          "description": "Bad system call. The process ends with a core dump."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The signal is not mapped. See the <code>terminating_signal</code> attribute, which contains an event source specific value, for example a real-time signal."
+        }
+      },
+      "references": [
+        {
+          "description": "signal(7), overview of signals and signal numbers by architecture",
+          "url": "https://man7.org/linux/man-pages/man7/signal.7.html"
+        },
+        {
+          "description": "POSIX signal.h, standard signals and their default actions",
+          "url": "https://pubs.opengroup.org/onlinepubs/9799919799/basedefs/signal.h.html"
+        }
+      ]
     },
     "threat_actor": {
       "caption": "Threat Actor",

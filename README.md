@@ -53,6 +53,21 @@ OCSF is designed for:
 - **Analytics Platforms**: Tools processing and analyzing security data
 - **Data Pipelines**: ETL processes normalizing security data
 
+## Contributing
+
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details on:
+- How to propose schema changes
+- Development workflow
+- Community guidelines
+
+## Governance
+
+OCSF is a Series of LF Projects, LLC. See the [governance repository](https://github.com/ocsf/governance) for the full set of governance documents.
+
+- [OCSF Technical Charter](https://github.com/ocsf/governance/blob/main/OCSF%20Technical%20Charter.pdf)
+- [Steering Committee](https://github.com/ocsf/governance/blob/main/SteeringCommittee.md)
+- [Maintainers](https://github.com/ocsf/governance/blob/main/Maintainers.md)
+
 ## Automated checks
 
 Pull requests to `main` run these checks:
@@ -78,13 +93,6 @@ A Claude-powered reviewer (`.github/scripts/review_descriptions.py`) comments on
 - `CHANGELOG.md` convention compliance
 
 On a later push, the reviewer acknowledges suggestions that were fixed and repeats the ones that are still open.
-
-## Contributing
-
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details on:
-- How to propose schema changes
-- Development workflow
-- Community guidelines
 
 ## Versioning
 

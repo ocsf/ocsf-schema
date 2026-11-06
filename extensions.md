@@ -9,7 +9,7 @@ The purpose of this file is to keep track of and avoid collisions in Extension `
 | ZeroSOC     | zerosoc  | **984** | The ZeroSOC Framework schema extension | [ZeroSOC/zerosoc-framework](https://github.com/ZeroSOC/zerosoc-framework) |
 | WithSecure | withsecure | **985** | The WithSecure schema extension | |
 | Yandex Cloud | ycloud  | **986** | The Yandex Cloud schema extension | |
-| DefenXee    | defenxee | **987** | The DefenXee vendor extension| | 
+| TrustPlane    | TrustPlane | **987** | The TrustPlane vendor extension| | 
 | Trellix     | trellix  | **988** | The Trellix schema extension | |
 | Synqly      | synqly   | **989** | The Synqly schema extension | |
 | US GOV      | usg1     | **990** | The USG-1 schema extension | |

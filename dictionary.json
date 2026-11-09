@@ -3798,11 +3798,29 @@
         "3": {
           "caption": "Queue APC"
         },
+        "4": {
+          "caption": "Ptrace",
+          "description": "The actor injected code using the process trace system call, for example by attaching to the target process and writing to its memory or registers with <code>PTRACE_POKETEXT</code>, <code>PTRACE_POKEDATA</code> or <code>PTRACE_SETREGS</code>."
+        },
+        "5": {
+          "caption": "Proc Memory",
+          "description": "The actor injected code by writing directly to the memory of the target process through the process file system, for example <code>/proc/[pid]/mem</code>, without using the process trace system call."
+        },
         "99": {
           "caption": "Other",
           "description": "The injection type is not mapped. See the <code>injection_type</code> attribute, which contains a data source specific value."
         }
-      }
+      },
+      "references": [
+        {
+          "description": "ptrace(2), process trace system call",
+          "url": "https://man7.org/linux/man-pages/man2/ptrace.2.html"
+        },
+        {
+          "description": "proc_pid_mem(5), process memory file",
+          "url": "https://man7.org/linux/man-pages/man5/proc_pid_mem.5.html"
+        }
+      ]
     },
     "input_schema_fingerprint": {
       "caption": "Input Schema Fingerprint",

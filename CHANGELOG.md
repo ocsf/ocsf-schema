@@ -108,6 +108,7 @@ Thankyou! -->
   1. Added `desc` to the `trait` object to carry a human-readable description of the trait. [#1797](https://github.com/ocsf/ocsf-schema/pull/1797)
 * #### Observables
 * #### Platform Extensions
+  1. Changed the caption of `token_elevation_type_id` value 1 in the Windows extension back to `Default`, to match the Windows `TOKEN_ELEVATION_TYPE` names, and added `source` to values 1, 2 and 3.
 * #### Dictionary Attributes
   1. Added `Sub-Agent Stop (6)` to the `stop_reason_id` enum, for a completion that ended because the sub-agent performing it was stopped. [#1780](https://github.com/ocsf/ocsf-schema/pull/1780)
   1. Broadened the `firewall_rule` caption and description to Security Control Rule while preserving its attribution to the event-level action or disposition. [#1786](https://github.com/ocsf/ocsf-schema/pull/1786)

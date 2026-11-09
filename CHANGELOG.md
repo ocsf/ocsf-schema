@@ -88,7 +88,7 @@ Thankyou! -->
   1. Added `is_declared_incident` to incident.json. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
 * #### Objects
   1. Added `labels` to the `node` object for grouping nodes into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
-  1. Added the missing `"extends": "object"` to the `analysis_target`, `anomaly_analysis`, `query_evidence` and `startup_item` objects, so they inherit from the `object` base like other objects.
+  1. Added the missing `"extends": "object"` to the `analysis_target`, `anomaly_analysis`, `query_evidence` and `startup_item` objects, so they inherit from the `object` base like other objects. [#1803](https://github.com/ocsf/ocsf-schema/pull/1803)
   1. Broadened the `firewall_rule` caption and descriptions to Security Control Rule, covering rules evaluated by firewalls and other security controls. [#1786](https://github.com/ocsf/ocsf-schema/pull/1786)
   1. Added `progress_current`, `progress_total`, `progress_unit`, `progress_unit_id`, `bytes_processed`, `bytes_written`, `throughput` and `queue_name` to the `job` object so a running job can report its progress and throughput. [#1722](https://github.com/ocsf/ocsf-schema/pull/1722)
   1. Added `created_time`, `first_seen_time`, `last_seen_time`, `modified_time`, `src_url`, and `criticality_id` attributes to the `application` object. [#1683](https://github.com/ocsf/ocsf-schema/pull/1683)

@@ -63,6 +63,11 @@
       "description": "The stable logical identifier for the agent, assigned by the agent's authoritative source (e.g., its control plane, registry, or issuing identity provider). Persists across restarts and instances. Producers populate this from whatever identity they observe: for a runtime that owns the agent, this is its issued ID; for a gateway or proxy, it is typically derived from the agent's credential. Multiple producers logging the same agent should converge on the same <code>uid</code> when they share an authoritative source.",
       "requirement": "recommended"
     },
+    "uuid": {
+      "caption": "AI Agent UUID",
+      "description": "The universally unique identifier for the agent. Unlike <code>uid</code>, which is only guaranteed to be unique within the agent's authoritative source, <code>uuid</code> is unique across sources, enabling correlation of the same agent across tenants, organizations, identity providers, or registries that do not share an authoritative source for <code>uid</code>. The value may be assigned by the agent's authoritative source or by a downstream system, and should remain stable for the lifetime of the agent.",
+      "requirement": "recommended"
+    },
     "version": {
       "caption": "AI Agent Version",
       "description": "The version of the agent: the agent's own code or configuration revision (e.g., <code>1.4.2</code>), distinct from the version of the model backing it (carried on <code>ai_model.version</code>). Enables correlation of behavioral changes with charter or configuration revisions across agent versions.",

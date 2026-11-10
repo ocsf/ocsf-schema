@@ -57,6 +57,7 @@ Thankyou! -->
   1. Added `dns_soa` object to represent the RFC 1035 SOA (Start of Authority) record RDATA, used to carry zone serials and timers in DNS zone transfers. [#1675](https://github.com/ocsf/ocsf-schema/pull/1675)
 * #### Observables
 * #### Platform Extensions
+  1. Added `token_elevation_type` and `token_elevation_type_id` to the Windows extension dictionary and to the Windows `process` object, for the User Account Control elevation type of the process token. [#1788](https://github.com/ocsf/ocsf-schema/pull/1788)
 * #### Dictionary Attributes
   1. Added `additional_firewall_rules` as an array of `firewall_rule_evaluation` objects. [#1786](https://github.com/ocsf/ocsf-schema/pull/1786)
   1. Added `likelihood` as a `string_t`, normalized to the caption of `likelihood_id`. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
@@ -114,6 +115,7 @@ Thankyou! -->
   1. Broadened the `firewall_rule` caption and description to Security Control Rule while preserving its attribution to the event-level action or disposition. [#1786](https://github.com/ocsf/ocsf-schema/pull/1786)
 
 ### Bugfixes
+1. Added `ai_agent` to the core and Windows `evidences` objects' `at_least_one` constraints so evidence containing only an AI agent satisfies the constraint. [#1796](https://github.com/ocsf/ocsf-schema/pull/1796)
 1. Changed the `account` requirement in the `user` object from optional to recommended to align with its participation in the `at_least_one` constraint. [#1766](https://github.com/ocsf/ocsf-schema/pull/1766)
 1. Changed optional attributes that participate in an `at_least_one` or `just_one` constraint to `recommended`, and replaced the undefined `log_file` constraint member on `event_log_activity` with `file`. [#1767](https://github.com/ocsf/ocsf-schema/pull/1767)
 1. Escaped the dots between IPv4 octets in the `ip_t` regex (IPv4 and IPv4-embedded IPv6 forms), which matched any character, so `192x168x1x1` validated as an IP address. Raised `ip_t` `max_len` from 40 to 45 so the longest form the regex accepts (`0000:0000:0000:0000:0000:ffff:192.168.100.200`) fits. [#1769](https://github.com/ocsf/ocsf-schema/pull/1769)

@@ -8,6 +8,12 @@ This documentation presents guidelines and expected etiquettes to successfully c
 
 ---
 
+## Maintainers and governance
+
+The OCSF [Maintainers](https://github.com/ocsf/governance/blob/main/Maintainers.md) review and merge pull requests in this repository. The [Steering Committee](https://github.com/ocsf/governance/blob/main/SteeringCommittee.md) oversees the project under the [OCSF Technical Charter](https://github.com/ocsf/governance/blob/main/OCSF%20Technical%20Charter.pdf). Both lists are kept in the [governance repository](https://github.com/ocsf/governance).
+
+---
+
 ## Pull Request Guidelines
 
 All contributors must submit their changes via pull requests. If you're not familiar with pull requests, please read [the GitHub documentation](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests). Following are a few guidelines and expectations for submitting a PR.

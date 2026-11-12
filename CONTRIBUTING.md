@@ -25,7 +25,7 @@ All contributors must submit their changes via pull requests. If you're not fami
 5. Follow the guidelines in the PR template.
     1. Keep the PR focused: a single PR **must** contain related changes.
     2. Each commit must include a DCO [Developer's Certificate of Origin](#developers-certificate-of-origin-11).
-    3. Add a numbered entry to the matching subsection of `Unreleased` in [CHANGELOG.md](CHANGELOG.md) (`Added`, `Improved`, `Deprecated`, `Misc`, and so on). Link the pull request, not the issue, for example `[#1234](https://github.com/ocsf/ocsf-schema/pull/1234)`, and link the issue in the PR description instead. Open the PR first if you need its number, then add the entry.
+    3. Add a changelog file named after the PR number, `changelog.d/<PR number>.md`, with your entry under the matching section (`Added`, `Improved`, `Deprecated`, `Misc`, and so on). Don't edit [CHANGELOG.md](CHANGELOG.md): maintainers merge the files into it at release, and add the PR link from the file name. Open the PR first to get its number, then add the file. See [changelog.d/README.md](changelog.d/README.md) for the format. A change that only edits descriptions or captions of existing items doesn't need an entry; a maintainer adds the `skip changelog` label instead. Link the issue in the PR description.
     4. Describe your change in as much detail as possible.
     5. Confirm that you have tested the changes, and the local verification run was error free.
     6. Check the Preview tab to ensure everything looks as expected.
@@ -525,19 +525,20 @@ Address every compile error and validator ERROR before submitting.
 
 ### Checks on pull requests
 
-Pull requests to `main` run these checks. The first four fail the PR when they find a problem; the last two are advisory.
+Pull requests to `main` run these checks. The first five fail the PR when they find a problem; the last two are advisory.
 
 1. **Metaschema**: `ocsf-validator` checks the uncompiled files against [metaschema](metaschema/), as in step 1 above.
 2. **Compile**: `ocsf-schema-compiler` must compile the schema, as in step 2 above.
 3. **Compatibility**: `python -m ocsf.validate.compatibility` (from [ocsf-lib](https://pypi.org/project/ocsf-lib/)) compares the PR with the last stable release. CI checks out that release's tag (default `1.9.0`, or the `LATEST_STABLE` repository variable) and compiles it, because the schema.ocsf.io legacy export API rejects `1.8.0` and newer. You only need to run the comparison locally if you change classification IDs or remove attributes.
 4. **Developer Certificate of Origin**: every non-merge commit needs a `Signed-off-by` trailer. See [Developer's Certificate of Origin 1.1](#developers-certificate-of-origin-11).
-5. **Spellcheck**: `cspell` reports unknown words as warnings. If it flags a legitimate term, such as a protocol name or an acronym, add the term to [.github/.project-words.txt](.github/.project-words.txt).
-6. **Description review**: an AI reviewer ([.github/scripts/review_descriptions.py](.github/scripts/review_descriptions.py)) comments on PRs that change event classes, objects, profiles, or a dictionary, in the core schema or in `extensions/`, or that change `CHANGELOG.md`. It looks at:
+5. **Changelog**: a PR that changes the schema must add `changelog.d/<PR number>.md`, and every file in `changelog.d/` must follow the format in [changelog.d/README.md](changelog.d/README.md). A PR with the `skip changelog` label skips the check. A PR that edits `CHANGELOG.md` instead gets a warning, not a failure. To check locally, run `python .github/scripts/changelog.py check`.
+6. **Spellcheck**: `cspell` reports unknown words as warnings. If it flags a legitimate term, such as a protocol name or an acronym, add the term to [.github/.project-words.txt](.github/.project-words.txt).
+7. **Description review**: an AI reviewer ([.github/scripts/review_descriptions.py](.github/scripts/review_descriptions.py)) comments on PRs that change event classes, objects, profiles, or a dictionary, in the core schema or in `extensions/`, or that change a changelog file or `CHANGELOG.md`. It looks at:
     - whether descriptions are clear, precise, and self-contained
     - whether a description is specific enough to populate the field correctly from raw telemetry
     - overlapping attributes, wrong type choices, and indirect attribution
     - the [caption and description style rules](#caption--description-style-normative--neutral): no URLs, trademark marks, or vendor names, and no personal or political framing
-    - CHANGELOG conventions
+    - whether changelog entries describe the change accurately, under the right heading
 
     On later pushes, it notes which suggestions were fixed and repeats the ones that are still open.
 
@@ -607,8 +608,8 @@ If the code is public, add a link in the registry's optional `Repository` column
 To reserve a name and UID, open a pull request that only updates the registry. Follow [#1701](https://github.com/ocsf/ocsf-schema/pull/1701) as the example.
 
 1. Add a row to the [OCSF Extensions Registry](extensions.md) with a unique caption, name, UID, a short notes line, and an optional `Repository` URL. Take the next unused vendor UID (the registry counts down from 998).
-2. Add an `Unreleased` entry in [CHANGELOG.md](CHANGELOG.md), for example: `New Extension registration for <Vendor>`.
-3. Open a pull request using the PR template. GitHub requests a review from the maintainers automatically.
+2. Open a pull request using the PR template. GitHub requests a review from the maintainers automatically.
+3. Add `changelog.d/<PR number>.md` with a `### Misc` entry, for example `- New Extension registration for <Vendor>.` (#1701 predates changelog files and edits `CHANGELOG.md` instead.)
 4. Email [info@ocsf.io](mailto:info@ocsf.io) from an official company address so maintainers can confirm the request is authorized by the organization it represents.
 
 Example registry row:

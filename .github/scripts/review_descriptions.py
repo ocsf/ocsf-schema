@@ -232,8 +232,9 @@ Flag any `http://` or `https://` URL in a changed caption or description.
 Refer to the source *by name* instead (e.g. `RFC 1035`, `MITRE ATT&CK`,
 `ASTM F3411-22a`) and move the link into the container's `references` array
 (a list of `{"description": ..., "url": ...}` entries). URLs are acceptable
-only as clearly illustrative example values (e.g. a sample inside an
-`examples`/`enum` entry), never as the authoritative citation for the field.
+only as clearly illustrative example values (e.g. a sample value in
+`<code>` after "For example:"), never as the authoritative citation for the
+field.
 
 ### 14. No Trademark/Registered Symbols; Generic Naming
 Flag the marks ®, ™, and ℠ in changed captions or descriptions. Captions and
@@ -246,9 +247,10 @@ own primary caption. Everywhere else, the mark should be moved to `references`.
 
 ### 15. Vendor/Company Neutrality
 Flag company, vendor, or commercial product names in changed captions or
-descriptions. Use the generic technology or standard instead and keep any
-vendor name to `examples` only. Exceptions: (a) names that are part of a
-formal standard/source identifier already handled via `references`, and
+descriptions. Use the generic technology or standard instead; when a vendor's
+documentation is the source, cite it in `references`. Exceptions: (a) names
+that are part of a formal standard/source identifier already handled via
+`references`, and
 (b) product names that *are* the modeled domain inside a platform extension
 (e.g. Windows registry concepts under `extensions/windows/`).
 
@@ -723,7 +725,7 @@ def run_normative_precheck(diff: str, company_names: list[str]) -> list[dict]:
                 if rx.search(text):
                     issues.append(
                         f'Mentions vendor/company name "{name}" — use a generic '
-                        "term; keep vendor names to examples only."
+                        "term; cite vendor sources in `references`."
                     )
 
         if issues:

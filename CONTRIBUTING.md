@@ -532,7 +532,7 @@ Pull requests to `main` run these checks. The first four fail the PR when they f
 3. **Compatibility**: `python -m ocsf.validate.compatibility` (from [ocsf-lib](https://pypi.org/project/ocsf-lib/)) compares the PR with the last stable release. CI checks out that release's tag (default `1.9.0`, or the `LATEST_STABLE` repository variable) and compiles it, because the schema.ocsf.io legacy export API rejects `1.8.0` and newer. You only need to run the comparison locally if you change classification IDs or remove attributes.
 4. **Developer Certificate of Origin**: every non-merge commit needs a `Signed-off-by` trailer. See [Developer's Certificate of Origin 1.1](#developers-certificate-of-origin-11).
 5. **Spellcheck**: `cspell` reports unknown words as warnings. If it flags a legitimate term, such as a protocol name or an acronym, add the term to [.github/.project-words.txt](.github/.project-words.txt).
-6. **Description review**: an AI reviewer ([.github/scripts/review_descriptions.py](.github/scripts/review_descriptions.py)) comments on PRs that change `events/`, `objects/`, `dictionary.json`, or `CHANGELOG.md`. It looks at:
+6. **Description review**: an AI reviewer ([.github/scripts/review_descriptions.py](.github/scripts/review_descriptions.py)) comments on PRs that change event classes, objects, profiles, or a dictionary, in the core schema or in `extensions/`, or that change `CHANGELOG.md`. It looks at:
     - whether descriptions are clear, precise, and self-contained
     - whether a description is specific enough to populate the field correctly from raw telemetry
     - overlapping attributes, wrong type choices, and indirect attribution

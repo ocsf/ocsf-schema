@@ -2,7 +2,7 @@
 
 Don't edit [CHANGELOG.md](../CHANGELOG.md) in a pull request. Add a file to this folder instead, named after your pull request's number, for example `changelog.d/1234.md`. Open the pull request first to get its number, then add the file. Each pull request adds its own file, so pull requests don't conflict over `CHANGELOG.md`.
 
-When a release is prepared, a maintainer merges these files into the `Unreleased` section of `CHANGELOG.md` and deletes them.
+When a release is prepared, a maintainer adds the entries to `CHANGELOG.md` under the release's version heading and deletes the files.
 
 ## Format
 
@@ -41,7 +41,7 @@ python .github/scripts/changelog.py check
 python .github/scripts/changelog.py preview
 ```
 
-`check` validates every file in this folder, and `preview` prints the `Unreleased` section with the files merged in. The Changelog check on pull requests runs the same validation and makes sure a pull request that changes the schema adds its file.
+`check` validates every file in this folder, and `preview` prints the next release's section of `CHANGELOG.md` with the files added. The Changelog check on pull requests runs the same validation and makes sure a pull request that changes the schema adds its file.
 
 ## Preparing a release
 
@@ -51,4 +51,6 @@ In the release prep pull request, run:
 python .github/scripts/changelog.py build
 ```
 
-It adds each entry, with its pull request link, under the matching heading of `Unreleased` in `CHANGELOG.md`, in pull request order, and deletes the files in this folder (except this README). Then add the version heading as usual.
+It adds the release's section to `CHANGELOG.md`, such as `## [v1.10.0] - Feb 2nd, 2027`, right below `## [Unreleased]`. The version comes from `version.json`, without `-dev`, and the date is today; set them with `--version` and `--date`. If the section already exists, the entries are added to it.
+
+Each entry goes under its heading in pull request order, with its pull request link, and the files in this folder are deleted (except this README). Anything still listed under `Unreleased`, from pull requests that edited `CHANGELOG.md` directly, becomes part of the release, as it does when the version heading is added by hand.

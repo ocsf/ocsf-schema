@@ -7,11 +7,11 @@ file. See changelog.d/README.md for the format.
 
   check [--pr N --base SHA]  Validate every changelog file. With --pr, also
                              require this pull request's file (used by CI).
-  preview                    Print the Unreleased section with the changelog
-                             files merged in. Changes nothing.
-  build                      Merge the changelog files into the Unreleased
-                             section of CHANGELOG.md and delete them. Run when
-                             preparing a release.
+  preview                    Print the next release's section of CHANGELOG.md
+                             with the changelog files added. Changes nothing.
+  build                      Add the changelog files to the release's section
+                             of CHANGELOG.md, `## [vX.Y.Z] - <date>`, and
+                             delete them. Run when preparing a release.
 
 Uses only the standard library.
 """
@@ -19,6 +19,8 @@ Uses only the standard library.
 from __future__ import annotations
 
 import argparse
+import datetime
+import json
 import os
 import re
 import subprocess
@@ -29,6 +31,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 FRAGMENT_DIR = ROOT / "changelog.d"
 CHANGELOG = ROOT / "CHANGELOG.md"
+VERSION_FILE = ROOT / "version.json"
 README_NAME = "README.md"
 PR_URL = "https://github.com/ocsf/ocsf-schema/pull/{}"
 SKIP_LABEL = "skip changelog"
@@ -229,26 +232,121 @@ def load_fragments(
     return entries, problems
 
 
-def _unreleased_bounds(lines: list[str]) -> tuple[int, int] | None:
-    starts = (i for i, line in enumerate(lines) if line.startswith("## [Unreleased]"))
-    start = next(starts, None)
-    if start is None:
-        return None
-    ends = (i for i in range(start + 1, len(lines)) if lines[i].startswith("## "))
-    return start, next(ends, len(lines))
+def release_version(version: str | None) -> str:
+    """The release's version: `--version`, or version.json without `-dev`."""
+    if version is None:
+        version = json.loads(VERSION_FILE.read_text(encoding="utf-8"))["version"]
+        version = version.split("-")[0]
+    return version.removeprefix("v")
 
 
-def merge(changelog: str, entries: list[Entry]) -> tuple[str, list[str]]:
-    """Insert entries under their headings in the Unreleased section.
+def release_date(day: datetime.date | None = None) -> str:
+    """A date in CHANGELOG.md's style, such as `Aug 3rd, 2026`."""
+    day = day or datetime.datetime.now().astimezone().date()
+    if 11 <= day.day % 100 <= 13:
+        suffix = "th"
+    else:
+        suffix = {1: "st", 2: "nd", 3: "rd"}.get(day.day % 10, "th")
+    return f"{day:%b} {day.day}{suffix}, {day.year}"
+
+
+def _find(lines: list[str], prefix: str, start: int = 0) -> int | None:
+    return next(
+        (i for i in range(start, len(lines)) if lines[i].startswith(prefix)), None
+    )
+
+
+def _section_end(lines: list[str], start: int) -> int:
+    """Index of the next `## ` heading after `start`, or the end of the file."""
+    end = _find(lines, "## ", start + 1)
+    return len(lines) if end is None else end
+
+
+def _release_section(lines: list[str], version: str, date: str) -> int:
+    """Find the release's `## [vX.Y.Z]` heading, adding it if it's missing.
+
+    A new heading goes right below `## [Unreleased]`, the same place a
+    maintainer adds it by hand, so anything still listed under Unreleased
+    becomes part of the release. Returns the heading's index.
+    """
+    heading = f"## [v{version}]"
+    start = _find(lines, heading)
+    if start is not None:
+        return start
+    unreleased = _find(lines, "## [Unreleased]")
+    if unreleased is not None:
+        start = unreleased + 2
+        lines[unreleased + 1 : unreleased + 1] = ["", f"{heading} - {date}"]
+    else:
+        first_release = _find(lines, "## [v")
+        start = len(lines) if first_release is None else first_release
+        lines[start:start] = [f"{heading} - {date}"]
+    if start + 1 >= len(lines) or lines[start + 1].strip():
+        lines.insert(start + 1, "")
+    return start
+
+
+def _last_content(lines: list[str], start: int, end: int) -> int:
+    """Index of the last non-blank line in lines[start:end]."""
+    return next(i for i in range(end - 1, start - 1, -1) if lines[i].strip())
+
+
+def _ensure_headings(lines: list[str], start: int) -> None:
+    """Add any standard heading missing from the section at `start`.
+
+    Missing headings go in CHANGELOG.md's standard order, so a new release
+    section gets every heading, as earlier releases have.
+    """
+    for i, section in enumerate(SECTIONS):
+        end = _section_end(lines, start)
+        found = {
+            name: j
+            for j in range(start + 1, end)
+            if (m := SECTION_LINE.match(lines[j]))
+            and (name := _canonical(m.group(1), SECTIONS))
+        }
+        if section not in found:
+            new = [f"### {section}"]
+            if section in SECTIONS_WITH_KINDS:
+                new += [f"* #### {kind}" for kind in KINDS]
+            later = [found[s] for s in SECTIONS[i + 1 :] if s in found]
+            if later:
+                lines[later[0] : later[0]] = [*new, ""]
+            else:
+                at = _last_content(lines, start, end) + 1
+                lines[at:at] = ["", *new]
+            continue
+        if section not in SECTIONS_WITH_KINDS:
+            continue
+        heading = found[section]
+        for k, kind in enumerate(KINDS):
+            end = _section_end(lines, start)
+            sub_end = next(
+                (j for j in range(heading + 1, end) if SECTION_LINE.match(lines[j])),
+                end,
+            )
+            kinds = {
+                name: j
+                for j in range(heading + 1, sub_end)
+                if (m := KIND_LINE.match(lines[j]))
+                and (name := _canonical(m.group(1), KINDS))
+            }
+            if kind not in kinds:
+                later = [kinds[x] for x in KINDS[k + 1 :] if x in kinds]
+                at = later[0] if later else _last_content(lines, heading, sub_end) + 1
+                lines.insert(at, f"* #### {kind}")
+
+
+def merge(changelog: str, entries: list[Entry], version: str, date: str) -> str:
+    """Add entries under their headings in the release's section.
 
     Each entry goes after the last line under its heading and reuses the list
     prefix of the entry above it. Existing lines are never changed.
     """
     lines = changelog.split("\n")
-    bounds = _unreleased_bounds(lines)
-    if bounds is None:
-        return changelog, ["CHANGELOG.md has no `## [Unreleased]` heading."]
-    start, end = bounds
+    start = _release_section(lines, version, date)
+    _ensure_headings(lines, start)
+    end = _section_end(lines, start)
 
     # (section, kind) -> [index of the block's last line, prefix of its last entry]
     blocks: dict[tuple[str, str | None], list] = {}
@@ -272,20 +370,8 @@ def merge(changelog: str, entries: list[Entry]) -> tuple[str, list[str]]:
             blocks[key][0] = i  # a wrapped line of the entry above
 
     inserts: dict[int, list[str]] = {}
-    errors: dict[str, None] = {}  # an ordered set
     for entry in entries:
-        block = blocks.get((entry.section, entry.kind))
-        if block is None:
-            if entry.kind:
-                heading = f"`* #### {entry.kind}` heading under `### {entry.section}`"
-            else:
-                heading = f"`### {entry.section}` heading"
-            errors[
-                f"The Unreleased section of CHANGELOG.md has no {heading}. Restore "
-                "it from the list of sections at the top of the file."
-            ] = None
-            continue
-        last, prefix = block
+        last, prefix = blocks[(entry.section, entry.kind)]
         if prefix is None:
             prefix = "  1. " if entry.kind else "1. "
         text = entry.text
@@ -297,7 +383,7 @@ def merge(changelog: str, entries: list[Entry]) -> tuple[str, list[str]]:
     for i, line in enumerate(lines):
         merged.append(line)
         merged += inserts.get(i, [])
-    return "\n".join(merged), list(errors)
+    return "\n".join(merged)
 
 
 def changed_files(base: str) -> list[tuple[str, str]]:
@@ -382,14 +468,14 @@ def report(problems: list[Problem]) -> bool:
     return any(p.level == "error" for p in problems)
 
 
-def _merged_changelog() -> tuple[str | None, list[Entry]]:
+def _merged_changelog(args: argparse.Namespace) -> tuple[str | None, list[Entry], str]:
+    """CHANGELOG.md with the changelog files added, its entries, and the version."""
+    version = release_version(args.version)
     entries, problems = load_fragments()
     if report(problems):
-        return None, entries
-    text, errors = merge(CHANGELOG.read_text(encoding="utf-8"), entries)
-    if report([Problem(e) for e in errors]):
-        return None, entries
-    return text, entries
+        return None, entries, version
+    changelog = CHANGELOG.read_text(encoding="utf-8")
+    return merge(changelog, entries, version, args.date), entries, version
 
 
 def cmd_check(args: argparse.Namespace) -> int:
@@ -404,29 +490,29 @@ def cmd_check(args: argparse.Namespace) -> int:
 
 
 def cmd_preview(args: argparse.Namespace) -> int:
-    text, _ = _merged_changelog()
+    text, _, version = _merged_changelog(args)
     if text is None:
         return 1
     lines = text.split("\n")
-    start, end = _unreleased_bounds(lines)
-    print("\n".join(lines[start:end]).rstrip())
+    start = _find(lines, f"## [v{version}]")
+    print("\n".join(lines[start : _section_end(lines, start)]).rstrip())
     return 0
 
 
 def cmd_build(args: argparse.Namespace) -> int:
     paths = fragment_paths()
-    text, entries = _merged_changelog()
+    text, entries, version = _merged_changelog(args)
     if text is None:
         return 1
     if not entries:
-        print("No changelog files to merge.")
+        print("No changelog files to add.")
         return 0
     CHANGELOG.write_text(text, encoding="utf-8")
     for path in paths:
         path.unlink()
     print(
-        f"Merged {len(entries)} entries from {len(paths)} file(s) into "
-        "CHANGELOG.md and deleted the files."
+        f"Added {len(entries)} entries from {len(paths)} file(s) to the v{version} "
+        "section of CHANGELOG.md and deleted the files."
     )
     return 0
 
@@ -442,12 +528,20 @@ def main() -> int:
     check.add_argument("--base", help="the pull request's base commit (with --pr)")
     check.set_defaults(func=cmd_check)
 
+    release = argparse.ArgumentParser(add_help=False)
+    release.add_argument(
+        "--version", help="release version (default: version.json without -dev)"
+    )
+    release.add_argument(
+        "--date", default=release_date(), help="release date (default: today)"
+    )
     preview = commands.add_parser(
-        "preview", help="print Unreleased with the files merged"
+        "preview", parents=[release], help="print the release's section"
     )
     preview.set_defaults(func=cmd_preview)
-
-    build = commands.add_parser("build", help="merge the files into CHANGELOG.md")
+    build = commands.add_parser(
+        "build", parents=[release], help="add the files to the release's section"
+    )
     build.set_defaults(func=cmd_build)
 
     args = parser.parse_args()

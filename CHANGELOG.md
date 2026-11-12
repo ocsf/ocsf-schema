@@ -1,12 +1,13 @@
 # CHANGELOG
-All notable changes to this project will be documented in this file. Changes for the next release are collected in [changelog.d](changelog.d/), one file per pull request, and merged into the `[Unreleased]` section at the top when the release is prepared.
+All notable changes to this project will be documented in this file. Changes for the next release are collected in [changelog.d](changelog.d/), one file per pull request, and added under the release's version heading when the release is prepared.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 <!-- Don't edit the Unreleased section in a pull request. Add changelog.d/<PR number>.md
-instead; see changelog.d/README.md. `python .github/scripts/changelog.py build` merges
-those files in here when a release is prepared.
+instead; see changelog.d/README.md. When a release is prepared,
+`python .github/scripts/changelog.py build` adds those entries here, under the release's
+version heading.
 
 Entries follow the Keep a Changelog guiding principles: https://keepachangelog.com/en/1.1.0/#how. -->
 

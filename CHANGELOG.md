@@ -87,6 +87,7 @@ Thankyou! -->
   1. Added `ai_status` (optional) to the `ai_operation` profile in the `context` group, grouping per-operation outcome scalars (stop reason and permission check result) so they do not proliferate at the event root. [#1704](https://github.com/ocsf/ocsf-schema/pull/1704)
   1. Added `is_declared_incident` to incident.json. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
 * #### Objects
+  1. Changed `endpoint.mac` from optional to recommended and added it to the identity constraints of `endpoint` and `network_endpoint`. [#1801](https://github.com/ocsf/ocsf-schema/pull/1801)
   1. Added `labels` to the `node` object for grouping nodes into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
   1. Added the missing `"extends": "object"` to the `analysis_target`, `anomaly_analysis`, `query_evidence` and `startup_item` objects, so they inherit from the `object` base like other objects. [#1803](https://github.com/ocsf/ocsf-schema/pull/1803)
   1. Broadened the `firewall_rule` caption and descriptions to Security Control Rule, covering rules evaluated by firewalls and other security controls. [#1786](https://github.com/ocsf/ocsf-schema/pull/1786)

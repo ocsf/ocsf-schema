@@ -1270,6 +1270,7 @@ def cmd_review() -> None:
     has_content = bool(
         ctx.get("objects")
         or ctx.get("classes")
+        or ctx.get("profiles")
         or ctx.get("dictionary_attributes")
     )
     has_changelog = "CHANGELOG.md" in data["changed_files"]

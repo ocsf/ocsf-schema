@@ -57,6 +57,7 @@ Thankyou! -->
   1. Added `dns_soa` object to represent the RFC 1035 SOA (Start of Authority) record RDATA, used to carry zone serials and timers in DNS zone transfers. [#1675](https://github.com/ocsf/ocsf-schema/pull/1675)
 * #### Observables
 * #### Platform Extensions
+  1. Added `token_elevation_type` and `token_elevation_type_id` to the Windows extension dictionary and to the Windows `process` object, for the User Account Control elevation type of the process token. [#1788](https://github.com/ocsf/ocsf-schema/pull/1788)
 * #### Dictionary Attributes
   1. Added `additional_firewall_rules` as an array of `firewall_rule_evaluation` objects. [#1786](https://github.com/ocsf/ocsf-schema/pull/1786)
   1. Added `likelihood` as a `string_t`, normalized to the caption of `likelihood_id`. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
@@ -87,7 +88,9 @@ Thankyou! -->
   1. Added `ai_status` (optional) to the `ai_operation` profile in the `context` group, grouping per-operation outcome scalars (stop reason and permission check result) so they do not proliferate at the event root. [#1704](https://github.com/ocsf/ocsf-schema/pull/1704)
   1. Added `is_declared_incident` to incident.json. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
 * #### Objects
+  1. Changed `endpoint.mac` from optional to recommended and added it to the identity constraints of `endpoint` and `network_endpoint`. [#1801](https://github.com/ocsf/ocsf-schema/pull/1801)
   1. Added `labels` to the `node` object for grouping nodes into named subgraphs. [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
+  1. Added the missing `"extends": "object"` to the `analysis_target`, `anomaly_analysis`, `query_evidence` and `startup_item` objects, so they inherit from the `object` base like other objects. [#1803](https://github.com/ocsf/ocsf-schema/pull/1803)
   1. Broadened the `firewall_rule` caption and descriptions to Security Control Rule, covering rules evaluated by firewalls and other security controls. [#1786](https://github.com/ocsf/ocsf-schema/pull/1786)
   1. Added `progress_current`, `progress_total`, `progress_unit`, `progress_unit_id`, `bytes_processed`, `bytes_written`, `throughput` and `queue_name` to the `job` object so a running job can report its progress and throughput. [#1722](https://github.com/ocsf/ocsf-schema/pull/1722)
   1. Added `created_time`, `first_seen_time`, `last_seen_time`, `modified_time`, `src_url`, and `criticality_id` attributes to the `application` object. [#1683](https://github.com/ocsf/ocsf-schema/pull/1683)
@@ -107,6 +110,7 @@ Thankyou! -->
   1. Added `RC4 (7)` enum value to `algorithm_id` in the `encryption_details` object, so Kerberos tickets encrypted with RC4 can be normalized. [#1787](https://github.com/ocsf/ocsf-schema/pull/1787)
   1. Added `desc` to the `trait` object to carry a human-readable description of the trait. [#1797](https://github.com/ocsf/ocsf-schema/pull/1797)
   1. Added `preauth_type` and `preauth_type_id` to the `authentication_token` object for the method the client used to pre-authenticate, such as the Kerberos pre-authentication type. [#1791](https://github.com/ocsf/ocsf-schema/pull/1791)
+  1. Added optional `uuid` to the `ai_agent` object, a universally unique agent identifier for correlating the same agent across sources that do not share an authoritative source for `uid`. [#1810](https://github.com/ocsf/ocsf-schema/pull/1810)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -114,6 +118,7 @@ Thankyou! -->
   1. Broadened the `firewall_rule` caption and description to Security Control Rule while preserving its attribution to the event-level action or disposition. [#1786](https://github.com/ocsf/ocsf-schema/pull/1786)
 
 ### Bugfixes
+1. Added `ai_agent` to the core and Windows `evidences` objects' `at_least_one` constraints so evidence containing only an AI agent satisfies the constraint. [#1796](https://github.com/ocsf/ocsf-schema/pull/1796)
 1. Changed the `account` requirement in the `user` object from optional to recommended to align with its participation in the `at_least_one` constraint. [#1766](https://github.com/ocsf/ocsf-schema/pull/1766)
 1. Changed optional attributes that participate in an `at_least_one` or `just_one` constraint to `recommended`, and replaced the undefined `log_file` constraint member on `event_log_activity` with `file`. [#1767](https://github.com/ocsf/ocsf-schema/pull/1767)
 1. Escaped the dots between IPv4 octets in the `ip_t` regex (IPv4 and IPv4-embedded IPv6 forms), which matched any character, so `192x168x1x1` validated as an IP address. Raised `ip_t` `max_len` from 40 to 45 so the longest form the regex accepts (`0000:0000:0000:0000:0000:ffff:192.168.100.200`) fits. [#1769](https://github.com/ocsf/ocsf-schema/pull/1769)

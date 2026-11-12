@@ -5669,6 +5669,62 @@
       "description": "The value before. See specific usage.",
       "type": "string_t"
     },
+    "preauth_type": {
+      "caption": "Pre-Authentication Type",
+      "description": "The method the client used to pre-authenticate to the authentication service before a ticket was issued, normalized to the caption of the <code>preauth_type_id</code> value. In the case of 'Other', it is defined by the event source.",
+      "type": "string_t"
+    },
+    "preauth_type_id": {
+      "caption": "Pre-Authentication Type ID",
+      "description": "The normalized identifier of the method the client used to pre-authenticate to the authentication service before a ticket was issued. For Kerberos, this is the pre-authentication data (PA-DATA) type of the initial authentication request.",
+      "sibling": "preauth_type",
+      "source": "padata-type",
+      "type": "integer_t",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The pre-authentication type is unknown."
+        },
+        "1": {
+          "caption": "None",
+          "description": "No pre-authentication was performed. For Kerberos, the account does not require pre-authentication, so the authentication service reply can be requested without proof of the client key."
+        },
+        "2": {
+          "caption": "Encrypted Timestamp",
+          "description": "The client proved knowledge of its long-term key by encrypting a timestamp, the Kerberos <code>PA-ENC-TIMESTAMP</code> type. This is the usual password based method."
+        },
+        "3": {
+          "caption": "Public Key",
+          "description": "The client authenticated with a certificate and its private key, the Kerberos PKINIT types <code>PA-PK-AS-REQ</code> and <code>PA-PK-AS-REP</code>, including their older forms. For example, a smart card logon."
+        },
+        "4": {
+          "caption": "Encrypted Challenge",
+          "description": "The client answered an encrypted challenge inside an armored channel, the Kerberos FAST type <code>PA-ENCRYPTED-CHALLENGE</code>."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The pre-authentication type is not mapped. See the <code>preauth_type</code> attribute, which contains an event source specific value."
+        }
+      },
+      "references": [
+        {
+          "description": "RFC 4120, The Kerberos Network Authentication Service (V5), Section 5.2.7 (PA-DATA) and Section 7.5.2 (PreAuthentication Data Types)",
+          "url": "https://www.rfc-editor.org/rfc/rfc4120"
+        },
+        {
+          "description": "RFC 4556, Public Key Cryptography for Initial Authentication in Kerberos (PKINIT)",
+          "url": "https://www.rfc-editor.org/rfc/rfc4556"
+        },
+        {
+          "description": "RFC 6113, A Generalized Framework for Kerberos Pre-Authentication (FAST and PA-ENCRYPTED-CHALLENGE)",
+          "url": "https://www.rfc-editor.org/rfc/rfc6113"
+        },
+        {
+          "description": "IANA Kerberos Parameters, Pre-authentication and Typed Data registry",
+          "url": "https://www.iana.org/assignments/kerberos-parameters/kerberos-parameters.xhtml"
+        }
+      ]
+    },
     "precision": {
       "caption": "Precision",
       "description": "The numeric precision. See specific usage.",

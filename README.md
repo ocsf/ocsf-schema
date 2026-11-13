@@ -26,6 +26,7 @@ This repository contains the core schema definitions that enable consistent repr
 ├── extensions/      # Platform extensions (Linux, macOS, Windows)
 ├── metaschema/      # Schema validation rules
 ├── templates/       # Starter files for new event classes, objects, and profiles
+├── changelog.d/     # Changelog entries for the next release, one file per PR
 ├── categories.json  # Event category definitions
 ├── dictionary.json  # Attribute dictionary
 ├── extensions.md    # Registry of vendor extension names and UIDs

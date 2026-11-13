@@ -142,7 +142,16 @@ NOT logged. NEVER flag a "missing CHANGELOG entry" for a description/caption
 update. Only new attributes/objects/classes, deprecations, removals, and
 type/structural/behavioral changes warrant a CHANGELOG entry.
 
-When a CHANGELOG entry *is* present, it MUST:
+Entries go in `changelog.d/<PR number>.md`, one file per pull request, and
+are merged into CHANGELOG.md at release. For an entry in one of these files:
+- Check that it describes the change accurately and sits under the correct
+  section (Added/Improved/Bugfixes/etc.) and subsection (Objects/Dictionary
+  Attributes/etc.).
+- Do NOT flag its formatting or a missing PR link: the Changelog check
+  validates the file name, headings, and list format, and the PR link is
+  added from the file name at release.
+
+An entry added to CHANGELOG.md directly (older PRs do this) MUST:
 - End with a PR reference link: `[#NNNN](https://github.com/ocsf/ocsf-schema/pull/NNNN)`
 - Use `1.` numbering with 2-space indent under `####` subsections
 - Be placed under the correct section (Added/Improved/Bugfixes/etc.) and
@@ -520,6 +529,15 @@ def _extension_name(filepath: str) -> str | None:
     return _EXTENSION_NAMES[ext_dir]
 
 
+def _is_changelog_file(filepath: str) -> bool:
+    """CHANGELOG.md, or a per-PR changelog file in changelog.d/."""
+    return filepath == "CHANGELOG.md" or (
+        filepath.startswith("changelog.d/")
+        and filepath.endswith(".md")
+        and filepath != "changelog.d/README.md"
+    )
+
+
 def _schema_file_kind(filepath: str) -> str | None:
     """Classify a changed JSON file as `objects`, `classes`, or `profiles`."""
     parts = Path(filepath).parts
@@ -856,7 +874,7 @@ def cmd_prepare() -> None:
     pr_number = pr_number_path.read_text().strip()
 
     schema_files = [
-        f for f in changed_files if f.endswith(".json") or f == "CHANGELOG.md"
+        f for f in changed_files if f.endswith(".json") or _is_changelog_file(f)
     ]
     if not schema_files:
         print("No schema files changed, writing empty context.")
@@ -1067,22 +1085,18 @@ def build_review_prompt(
             + "\n```\n"
         )
 
-    if "CHANGELOG.md" in changed_files:
+    changelog_files = [f for f in changed_files if _is_changelog_file(f)]
+    if changelog_files:
         changelog_lines = []
         in_changelog = False
         for line in diff.split("\n"):
-            if line.startswith("diff --git") and "CHANGELOG.md" in line:
-                in_changelog = True
-                continue
-            if line.startswith("diff --git") and in_changelog:
-                break
+            if line.startswith("diff --git"):
+                in_changelog = any(line.endswith(f" b/{f}") for f in changelog_files)
             if in_changelog:
                 changelog_lines.append(line)
         if changelog_lines:
             parts.append(
-                "## CHANGELOG.md diff\n```diff\n"
-                + "\n".join(changelog_lines)
-                + "\n```\n"
+                "## Changelog diff\n```diff\n" + "\n".join(changelog_lines) + "\n```\n"
             )
 
     parts.append(
@@ -1101,7 +1115,7 @@ def _fit_within_budget(parts: list[str], diff: str) -> str:
         3. Dictionary Attributes      — primary review subject
         4. Cross-Reference Index      — cross-container anti-pattern signal
         5. Dictionary Neighbors       — duplicate/conflict signal
-        6. CHANGELOG.md diff          — convention checks
+        6. Changelog diff             — accuracy and placement of entries
         7. Full PR diff               — verbose, mostly redundant with structured sections
 
     The full PR diff is shed first when over budget. We replace it with a
@@ -1126,7 +1140,7 @@ def _fit_within_budget(parts: list[str], diff: str) -> str:
     if len(context) <= MAX_CONTEXT_CHARS:
         return context
 
-    parts = [p for p in parts if not p.startswith("## CHANGELOG.md diff")]
+    parts = [p for p in parts if not p.startswith("## Changelog diff")]
     context = "\n".join(parts)
     if len(context) <= MAX_CONTEXT_CHARS:
         return context
@@ -1273,7 +1287,7 @@ def cmd_review() -> None:
         or ctx.get("profiles")
         or ctx.get("dictionary_attributes")
     )
-    has_changelog = "CHANGELOG.md" in data["changed_files"]
+    has_changelog = any(_is_changelog_file(f) for f in data["changed_files"])
     has_precheck = bool(data.get("normative_precheck"))
 
     if not has_content and not has_changelog and not has_precheck:

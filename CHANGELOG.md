@@ -75,6 +75,8 @@ Thankyou! -->
   1. Added `dns_zone`, `dns_additional`, `soa`, `updated_soa`, `num_records`, `transfer_type`, `transfer_type_id`, and the SOA sub-fields `primary_server`, `responsible_party`, `sequence_number`, `refresh_interval`, `retry_interval`, `expire_interval`, and `minimum_ttl` for DNS zone transfers. [#1675](https://github.com/ocsf/ocsf-schema/pull/1675)
   1. Added `data_bytes`, `data_bytes_in` and `data_bytes_out` attributes. [#1775](https://github.com/ocsf/ocsf-schema/pull/1775)
   1. Added `preauth_type` and `preauth_type_id` attributes. [#1791](https://github.com/ocsf/ocsf-schema/pull/1791)
+  1. Added `is_privileged` as a `boolean_t`. [#1805](https://github.com/ocsf/ocsf-schema/pull/1805)
+  1. Added `session_key_encryption_details` as an `encryption_details` object. [#1808](https://github.com/ocsf/ocsf-schema/pull/1808)
   1. Added `is_hidden` as a `boolean_t`. [#1792](https://github.com/ocsf/ocsf-schema/pull/1792)
 
 ### Improved
@@ -109,9 +111,11 @@ Thankyou! -->
   1. Added `wifi` to the `network_endpoint` and `network_interface` objects. Resolves #1463. [#1721](https://github.com/ocsf/ocsf-schema/pull/1721)
   1. Added `value` to the `digital_signature` object so an event can carry the signature bytes themselves, not only a description of them — the raw signature output of `algorithm_id`, encoded as standard Base64 (RFC 4648 §4). [#1709](https://github.com/ocsf/ocsf-schema/pull/1709)
   1. Added `RC4 (7)` enum value to `algorithm_id` in the `encryption_details` object, so Kerberos tickets encrypted with RC4 can be normalized. [#1787](https://github.com/ocsf/ocsf-schema/pull/1787)
+  1. Added `session_key_encryption_details` to the `authentication_token` object, for the encryption type of a Kerberos ticket session key, reported separately from the ticket encryption. [#1808](https://github.com/ocsf/ocsf-schema/pull/1808)
   1. Added `desc` to the `trait` object to carry a human-readable description of the trait. [#1797](https://github.com/ocsf/ocsf-schema/pull/1797)
   1. Added `preauth_type` and `preauth_type_id` to the `authentication_token` object for the method the client used to pre-authenticate, such as the Kerberos pre-authentication type. [#1791](https://github.com/ocsf/ocsf-schema/pull/1791)
   1. Added optional `uuid` to the `ai_agent` object, a universally unique agent identifier for correlating the same agent across sources that do not share an authoritative source for `uid`. [#1810](https://github.com/ocsf/ocsf-schema/pull/1810)
+  1. Added `is_privileged` to the `container` object to indicate a container running in privileged mode. [#1805](https://github.com/ocsf/ocsf-schema/pull/1805)
   1. Added `is_hidden` to the `file` object, alongside `is_system` and `is_readonly`, to indicate a hidden file or directory. [#1792](https://github.com/ocsf/ocsf-schema/pull/1792)
 * #### Observables
 * #### Platform Extensions

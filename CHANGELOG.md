@@ -75,7 +75,7 @@ Thankyou! -->
   1. Added `dns_zone`, `dns_additional`, `soa`, `updated_soa`, `num_records`, `transfer_type`, `transfer_type_id`, and the SOA sub-fields `primary_server`, `responsible_party`, `sequence_number`, `refresh_interval`, `retry_interval`, `expire_interval`, and `minimum_ttl` for DNS zone transfers. [#1675](https://github.com/ocsf/ocsf-schema/pull/1675)
   1. Added `data_bytes`, `data_bytes_in` and `data_bytes_out` attributes. [#1775](https://github.com/ocsf/ocsf-schema/pull/1775)
   1. Added `preauth_type` and `preauth_type_id` attributes. [#1791](https://github.com/ocsf/ocsf-schema/pull/1791)
-  1. Added `effective_capabilities` as an array of `string_t`.
+  1. Added `effective_capabilities` as an array of `string_t`. [#1807](https://github.com/ocsf/ocsf-schema/pull/1807)
 
 ### Improved
 * #### Categories
@@ -114,7 +114,7 @@ Thankyou! -->
   1. Added optional `uuid` to the `ai_agent` object, a universally unique agent identifier for correlating the same agent across sources that do not share an authoritative source for `uid`. [#1810](https://github.com/ocsf/ocsf-schema/pull/1810)
 * #### Observables
 * #### Platform Extensions
-  1. Added `effective_capabilities` to the Linux `process` object, for the effective capability set of the process.
+  1. Added `effective_capabilities` to the Linux `process` object, for the effective capability set of the process. [#1807](https://github.com/ocsf/ocsf-schema/pull/1807)
 * #### Dictionary Attributes
   1. Added `Sub-Agent Stop (6)` to the `stop_reason_id` enum, for a completion that ended because the sub-agent performing it was stopped. [#1780](https://github.com/ocsf/ocsf-schema/pull/1780)
   1. Broadened the `firewall_rule` caption and description to Security Control Rule while preserving its attribution to the event-level action or disposition. [#1786](https://github.com/ocsf/ocsf-schema/pull/1786)

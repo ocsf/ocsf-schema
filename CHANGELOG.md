@@ -116,6 +116,7 @@ Thankyou! -->
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
+  1. Added `Ptrace (4)` and `Proc Memory (5)` to the `injection_type_id` enum, for code injection on Linux through the process trace system call and through the process memory file. [#1806](https://github.com/ocsf/ocsf-schema/pull/1806)
   1. Added `Sub-Agent Stop (6)` to the `stop_reason_id` enum, for a completion that ended because the sub-agent performing it was stopped. [#1780](https://github.com/ocsf/ocsf-schema/pull/1780)
   1. Broadened the `firewall_rule` caption and description to Security Control Rule while preserving its attribution to the event-level action or disposition. [#1786](https://github.com/ocsf/ocsf-schema/pull/1786)
 

@@ -75,7 +75,7 @@ Thankyou! -->
   1. Added `dns_zone`, `dns_additional`, `soa`, `updated_soa`, `num_records`, `transfer_type`, `transfer_type_id`, and the SOA sub-fields `primary_server`, `responsible_party`, `sequence_number`, `refresh_interval`, `retry_interval`, `expire_interval`, and `minimum_ttl` for DNS zone transfers. [#1675](https://github.com/ocsf/ocsf-schema/pull/1675)
   1. Added `data_bytes`, `data_bytes_in` and `data_bytes_out` attributes. [#1775](https://github.com/ocsf/ocsf-schema/pull/1775)
   1. Added `preauth_type` and `preauth_type_id` attributes. [#1791](https://github.com/ocsf/ocsf-schema/pull/1791)
-  1. Added `is_elevated` as a `boolean_t`.
+  1. Added `is_elevated` as a `boolean_t`. [#1809](https://github.com/ocsf/ocsf-schema/pull/1809)
 
 ### Improved
 * #### Categories
@@ -107,7 +107,7 @@ Thankyou! -->
   1. Added `data_bytes`, `data_bytes_in` and `data_bytes_out` to the `network_traffic` object, counting the data carried by the Layer 4 (Transport Layer) protocol, excluding the IP and transport headers, and clarified that its `bytes`, `bytes_in`, `bytes_out` and `bytes_missed` count bytes in Layer 3 (Network Layer) packets, including IP header and payload. [#1775](https://github.com/ocsf/ocsf-schema/pull/1775)
   1. Added per-node authority attributes `scopes`, `audience`, and `expiration_time` to the `delegation` object, so each hop in the chain of authority records what was granted, for whom, and until when. [#1705](https://github.com/ocsf/ocsf-schema/pull/1705)
   1. Added `wifi` to the `network_endpoint` and `network_interface` objects. Resolves #1463. [#1721](https://github.com/ocsf/ocsf-schema/pull/1721)
-  1. Added `is_elevated` to the `session` object, for a session running with elevated privileges such as a Windows elevated token.
+  1. Added `is_elevated` to the `session` object, for a session running with elevated privileges such as a Windows elevated token. [#1809](https://github.com/ocsf/ocsf-schema/pull/1809)
   1. Added `value` to the `digital_signature` object so an event can carry the signature bytes themselves, not only a description of them — the raw signature output of `algorithm_id`, encoded as standard Base64 (RFC 4648 §4). [#1709](https://github.com/ocsf/ocsf-schema/pull/1709)
   1. Added `RC4 (7)` enum value to `algorithm_id` in the `encryption_details` object, so Kerberos tickets encrypted with RC4 can be normalized. [#1787](https://github.com/ocsf/ocsf-schema/pull/1787)
   1. Added `desc` to the `trait` object to carry a human-readable description of the trait. [#1797](https://github.com/ocsf/ocsf-schema/pull/1797)

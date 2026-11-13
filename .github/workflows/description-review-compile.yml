@@ -3,12 +3,17 @@ name: Schema Description Review - Compile
 on:
   pull_request:
     types: [opened, synchronize, reopened]
-    # Only the paths review_descriptions.py actually reads. Extension schemas
-    # under extensions/*/ are omitted because `prepare` cannot match them yet.
+    # Only the paths review_descriptions.py actually reads: core and
+    # extension objects, event classes, profiles, and dictionaries.
     paths:
       - "objects/**.json"
       - "events/**.json"
+      - "profiles/**.json"
       - "dictionary.json"
+      - "extensions/*/objects/**.json"
+      - "extensions/*/events/**.json"
+      - "extensions/*/profiles/**.json"
+      - "extensions/*/dictionary.json"
       - "CHANGELOG.md"
 
 permissions:

@@ -23,11 +23,14 @@ This repository contains the core schema definitions that enable consistent repr
 ├── events/          # Event class definitions organized by category
 ├── objects/         # Reusable object definitions
 ├── profiles/        # Schema profiles for specific use cases
-├── extensions/      # Schema extensions (Linux, Windows, etc.)
+├── extensions/      # Platform extensions (Linux, macOS, Windows)
 ├── metaschema/      # Schema validation rules
-├── templates/       # Template definitions
+├── templates/       # Starter files for new event classes, objects, and profiles
 ├── categories.json  # Event category definitions
 ├── dictionary.json  # Attribute dictionary
+├── extensions.md    # Registry of vendor extension names and UIDs
+├── CHANGELOG.md     # Changes by release
+├── CONTRIBUTING.md  # Contribution guide
 └── version.json     # Current schema version
 ```
 
@@ -60,6 +63,8 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 - Development workflow
 - Community guidelines
 
+Pull requests are checked automatically; see [Checks on pull requests](CONTRIBUTING.md#checks-on-pull-requests).
+
 ## Governance
 
 OCSF is a Series of LF Projects, LLC. See the [governance repository](https://github.com/ocsf/governance) for the full set of governance documents.
@@ -67,32 +72,6 @@ OCSF is a Series of LF Projects, LLC. See the [governance repository](https://gi
 - [OCSF Technical Charter](https://github.com/ocsf/governance/blob/main/OCSF%20Technical%20Charter.pdf)
 - [Steering Committee](https://github.com/ocsf/governance/blob/main/SteeringCommittee.md)
 - [Maintainers](https://github.com/ocsf/governance/blob/main/Maintainers.md)
-
-## Automated checks
-
-Pull requests to `main` run these checks:
-
-- **Metaschema** — `ocsf-validator` confirms the uncompiled files match `metaschema/`.
-- **Compile** — `ocsf-schema-compiler` must compile the schema.
-- **Compatibility** — `ocsf-lib` compares the pull request with the last stable release. The default tag is `1.9.0`; the `LATEST_STABLE` repository variable can name another tag. CI checks that tag out and compiles it. Passing a version number to `ocsf-lib` does not work for `1.8.0` and newer, because [schema.ocsf.io](https://schema.ocsf.io) rejects the legacy `export/schema` API for those releases.
-- **Developer Certificate of Origin** — every non-merge commit must include a `Signed-off-by: Real Name <email>` trailer. See [CONTRIBUTING.md](CONTRIBUTING.md).
-- **Spellcheck** — `cspell` reports unknown words as warnings. It does not fail the pull request.
-
-### Description review
-
-A Claude-powered reviewer (`.github/scripts/review_descriptions.py`) comments on pull requests that change event classes, objects, the dictionary, or `CHANGELOG.md`. The comment is advisory and does not fail the check.
-
-**How it works:**
-1. The `description-review-compile` workflow compiles the schema with `ocsf-schema-compiler` and saves review context as an artifact.
-2. The `description-review-comment` workflow downloads that artifact, calls Claude, and posts a comment on the pull request.
-
-**What it evaluates:**
-- Description clarity, precision, and self-containedness
-- Whether descriptions are specific enough for an LLM to correctly populate fields from raw telemetry
-- Semantic anti-patterns (overlap between attributes, incorrect type choices, indirect attribution)
-- `CHANGELOG.md` convention compliance
-
-On a later push, the reviewer acknowledges suggestions that were fixed and repeats the ones that are still open.
 
 ## Versioning
 

@@ -23,6 +23,26 @@
     "kerberos_flags": {
       "requirement": "recommended"
     },
+    "preauth_type": {
+      "requirement": "optional"
+    },
+    "preauth_type_id": {
+      "requirement": "optional"
+    },
+    "session_key_encryption_details": {
+      "description": "The encryption details of the session key that is issued with the authentication token. For a Kerberos ticket, this is the encryption type of the ticket session key, which can differ from the encryption type of the ticket itself in <code>encryption_details</code>.",
+      "requirement": "optional",
+      "references": [
+        {
+          "description": "RFC 4120, The Kerberos Network Authentication Service (V5), Section 5.4.2 (session key in the KDC reply)",
+          "url": "https://www.rfc-editor.org/rfc/rfc4120"
+        },
+        {
+          "description": "Security event 4769, A Kerberos service ticket was requested (Session Encryption Type field)",
+          "url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4769"
+        }
+      ]
+    },
     "type": {
       "description": "The type of the authentication token.",
       "requirement": "recommended"

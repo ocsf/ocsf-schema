@@ -78,6 +78,7 @@ Thankyou! -->
   1. Added `is_privileged` as a `boolean_t`. [#1805](https://github.com/ocsf/ocsf-schema/pull/1805)
   1. Added `session_key_encryption_details` as an `encryption_details` object. [#1808](https://github.com/ocsf/ocsf-schema/pull/1808)
   1. Added `is_hidden` as a `boolean_t`. [#1792](https://github.com/ocsf/ocsf-schema/pull/1792)
+  1. Added `terminating_signal` and `terminating_signal_id` attributes, with the POSIX signals whose default action is to terminate the process. [#1793](https://github.com/ocsf/ocsf-schema/pull/1793)
 
 ### Improved
 * #### Categories
@@ -86,6 +87,7 @@ Thankyou! -->
   1. Added `is_declared_incident` to finding.json and incident_finding.json. Added `resolved_time` to `finding.json` and `incident_finding.json`. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
   1. Overrode the `ai_operation` profile's `ai_agent` description on `Application Lifecycle` (class 6002) to clarify that it represents the affected application when that application is itself an AI agent. [#1751](https://github.com/ocsf/ocsf-schema/pull/1751)
   1. Clarified `ai_agent` description in `role_management` to identify the agent that `iam_role` is provisioned for or bound to, rather than the actor-oriented wording inherited from the `ai_operation` profile. Noted in the class description that `role_management` covers roles bound to AI agents. [#1726](https://github.com/ocsf/ocsf-schema/pull/1726)
+  1. Added `terminating_signal` and `terminating_signal_id` to `Process Activity` (class 1007) for the signal that terminated the target process, or that the actor sent to terminate it. Complements `exit_code`. [#1793](https://github.com/ocsf/ocsf-schema/pull/1793)
 * #### Profiles
   1. Added optional `additional_firewall_rules` to the `security_control` profile for other reported security control rule evaluations and their individual actions and dispositions. Clarified the profile's event-level action and disposition, attribution through `firewall_rule`, and distinction from additional rule evaluations. [#1786](https://github.com/ocsf/ocsf-schema/pull/1786)
   1. Added `ai_status` (optional) to the `ai_operation` profile in the `context` group, grouping per-operation outcome scalars (stop reason and permission check result) so they do not proliferate at the event root. [#1704](https://github.com/ocsf/ocsf-schema/pull/1704)

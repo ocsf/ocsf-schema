@@ -113,7 +113,6 @@ Thankyou! -->
   1. Added optional `uuid` to the `ai_agent` object, a universally unique agent identifier for correlating the same agent across sources that do not share an authoritative source for `uid`. [#1810](https://github.com/ocsf/ocsf-schema/pull/1810)
 * #### Observables
 * #### Platform Extensions
-  1. Changed the caption of `token_elevation_type_id` value 1 in the Windows extension back to `Default`, to match the Windows `TOKEN_ELEVATION_TYPE` names, and added `source` to values 1, 2 and 3. [#1804](https://github.com/ocsf/ocsf-schema/pull/1804)
 * #### Dictionary Attributes
   1. Added `Sub-Agent Stop (6)` to the `stop_reason_id` enum, for a completion that ended because the sub-agent performing it was stopped. [#1780](https://github.com/ocsf/ocsf-schema/pull/1780)
   1. Broadened the `firewall_rule` caption and description to Security Control Rule while preserving its attribution to the event-level action or disposition. [#1786](https://github.com/ocsf/ocsf-schema/pull/1786)

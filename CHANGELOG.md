@@ -78,6 +78,7 @@ Thankyou! -->
   1. Added `is_privileged` as a `boolean_t`. [#1805](https://github.com/ocsf/ocsf-schema/pull/1805)
   1. Added `session_key_encryption_details` as an `encryption_details` object. [#1808](https://github.com/ocsf/ocsf-schema/pull/1808)
   1. Added `is_hidden` as a `boolean_t`. [#1792](https://github.com/ocsf/ocsf-schema/pull/1792)
+  1. Added `effective_capabilities` as an array of `string_t`. [#1807](https://github.com/ocsf/ocsf-schema/pull/1807)
 
 ### Improved
 * #### Categories
@@ -119,6 +120,7 @@ Thankyou! -->
   1. Added `is_hidden` to the `file` object, alongside `is_system` and `is_readonly`, to indicate a hidden file or directory. [#1792](https://github.com/ocsf/ocsf-schema/pull/1792)
 * #### Observables
 * #### Platform Extensions
+  1. Added `effective_capabilities` to the Linux `process` object, for the effective capability set of the process. [#1807](https://github.com/ocsf/ocsf-schema/pull/1807)
 * #### Dictionary Attributes
   1. Added `Sub-Agent Stop (6)` to the `stop_reason_id` enum, for a completion that ended because the sub-agent performing it was stopped. [#1780](https://github.com/ocsf/ocsf-schema/pull/1780)
   1. Broadened the `firewall_rule` caption and description to Security Control Rule while preserving its attribution to the event-level action or disposition. [#1786](https://github.com/ocsf/ocsf-schema/pull/1786)

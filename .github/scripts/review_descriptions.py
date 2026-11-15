@@ -51,12 +51,16 @@ definitions have been merged with object-level overrides, and types are fully
 enriched. This is the final form that downstream consumers and LLMs will see.
 
 The compiled schema contains:
-- **objects** / **classes**: Fully resolved definitions. Each carries a
-  `_changed_attributes` list naming the attributes added or modified in this
-  PR — **only flag findings on those attributes**. The remaining attributes
-  in the container are unchanged siblings, included as compact summaries
-  (`type`, `caption`, truncated `description`, `has_enum`) so you can reason
-  about the changed attribute in context.
+- **objects** / **classes** / **profiles**: Fully resolved definitions. Each
+  carries a `_changed_attributes` list naming the attributes added or
+  modified in this PR — **only flag findings on those attributes**. The
+  remaining attributes in the container are unchanged siblings, included as
+  compact summaries (`type`, `caption`, truncated `description`, `has_enum`)
+  so you can reason about the changed attribute in context. Profile
+  attributes are resolved by merging the profile file with the dictionary.
+  Items from extensions are keyed `<extension>/<name>` (e.g. `win/reg_key`);
+  an extension file that patches a core object appears under the core
+  object's name.
 - **dictionary_attributes**: Changed dictionary entries that carry a full,
   standalone description. Entries whose dictionary description ends with
   the `See specific usage.` marker are intentionally generic placeholders
@@ -232,8 +236,9 @@ Flag any `http://` or `https://` URL in a changed caption or description.
 Refer to the source *by name* instead (e.g. `RFC 1035`, `MITRE ATT&CK`,
 `ASTM F3411-22a`) and move the link into the container's `references` array
 (a list of `{"description": ..., "url": ...}` entries). URLs are acceptable
-only as clearly illustrative example values (e.g. a sample inside an
-`examples`/`enum` entry), never as the authoritative citation for the field.
+only as clearly illustrative example values (e.g. a sample value in
+`<code>` after "For example:"), never as the authoritative citation for the
+field.
 
 ### 14. No Trademark/Registered Symbols; Generic Naming
 Flag the marks ®, ™, and ℠ in changed captions or descriptions. Captions and
@@ -246,9 +251,10 @@ own primary caption. Everywhere else, the mark should be moved to `references`.
 
 ### 15. Vendor/Company Neutrality
 Flag company, vendor, or commercial product names in changed captions or
-descriptions. Use the generic technology or standard instead and keep any
-vendor name to `examples` only. Exceptions: (a) names that are part of a
-formal standard/source identifier already handled via `references`, and
+descriptions. Use the generic technology or standard instead; when a vendor's
+documentation is the source, cite it in `references`. Exceptions: (a) names
+that are part of a formal standard/source identifier already handled via
+`references`, and
 (b) product names that *are* the modeled domain inside a platform extension
 (e.g. Windows registry concepts under `extensions/windows/`).
 
@@ -426,7 +432,9 @@ def _extract_changed_attr_keys(diff: str, filename: str) -> set[str]:
     opaque_depth: int | None = None  # depth at which we entered the current opaque wrapper
 
     for line in diff.split("\n"):
-        if line.startswith("diff --git") and filename in line:
+        # Match the exact path: `dictionary.json` must not also match
+        # `extensions/windows/dictionary.json`.
+        if line.startswith("diff --git") and line.endswith(f" b/{filename}"):
             in_file = True
             current_key = None
             brace_depth = 0
@@ -479,14 +487,99 @@ def _extract_changed_attr_keys(diff: str, filename: str) -> set[str]:
     return keys
 
 
-def extract_changed_dict_attrs(diff: str) -> set[str]:
-    """Parse attribute names added/modified in dictionary.json from the diff."""
-    return _extract_changed_attr_keys(diff, "dictionary.json")
-
-
 def extract_changed_attrs_in_file(diff: str, filename: str) -> set[str]:
     """Extract attribute names that were added or modified in a file's diff."""
     return _extract_changed_attr_keys(diff, filename)
+
+
+# ---------------------------------------------------------------------------
+# Mapping changed source files to compiled schema entries
+# ---------------------------------------------------------------------------
+
+_EXTENSION_NAMES: dict[str, str | None] = {}
+
+
+def _extension_name(filepath: str) -> str | None:
+    """Return the extension `name` for a file under `extensions/<dir>/`.
+
+    Compiled keys use the name from `extension.json` (e.g. `win`), not the
+    directory name (`windows`). Returns None for core schema files.
+    """
+    parts = Path(filepath).parts
+    if len(parts) < 3 or parts[0] != "extensions":
+        return None
+    ext_dir = parts[1]
+    if ext_dir not in _EXTENSION_NAMES:
+        try:
+            manifest = json.loads(
+                (Path("extensions") / ext_dir / "extension.json").read_text()
+            )
+            _EXTENSION_NAMES[ext_dir] = manifest.get("name")
+        except (OSError, ValueError):
+            _EXTENSION_NAMES[ext_dir] = None
+    return _EXTENSION_NAMES[ext_dir]
+
+
+def _schema_file_kind(filepath: str) -> str | None:
+    """Classify a changed JSON file as `objects`, `classes`, or `profiles`."""
+    parts = Path(filepath).parts
+    if len(parts) > 2 and parts[0] == "extensions":
+        parts = parts[2:]
+    if len(parts) < 2 or not filepath.endswith(".json"):
+        return None
+    return {"objects": "objects", "events": "classes", "profiles": "profiles"}.get(
+        parts[0]
+    )
+
+
+def _compiled_key(filepath: str, compiled_items: dict) -> str | None:
+    """Return the compiled schema key for a changed object, class, or profile.
+
+    Core files compile under their file stem. Extension files compile under
+    `<extension name>/<name>` (e.g. `win/reg_key`); an extension file without
+    a `name` patches the core item it `extends` and keeps that item's key.
+    """
+    ext = _extension_name(filepath)
+    if ext is None:
+        key = Path(filepath).stem
+    else:
+        try:
+            source = json.loads(Path(filepath).read_text())
+        except (OSError, ValueError):
+            return None
+        name = source.get("name")
+        key = f"{ext}/{name}" if name else source.get("extends")
+    return key if key in compiled_items else None
+
+
+def _compiled_dict_key(attr_name: str, ext: str | None, compiled_dict: dict) -> str:
+    """Return the compiled dictionary key for an attribute.
+
+    Extension dictionary attributes compile as `<extension name>/<attr>`.
+    """
+    if ext and f"{ext}/{attr_name}" in compiled_dict:
+        return f"{ext}/{attr_name}"
+    return attr_name
+
+
+def _resolve_profile(filepath: str, compiled_profile: dict, compiled_dict: dict) -> dict:
+    """Return a compiled profile with its attributes resolved.
+
+    The lean compile omits profile attributes, so each attribute in the
+    profile file is merged with its dictionary entry (profile overrides win).
+    """
+    try:
+        source = json.loads(Path(filepath).read_text())
+    except (OSError, ValueError):
+        return dict(compiled_profile)
+    ext = _extension_name(filepath)
+    attrs: dict = {}
+    for attr_name, override in source.get("attributes", {}).items():
+        if attr_name.startswith("$") or not isinstance(override, dict):
+            continue
+        base = compiled_dict.get(_compiled_dict_key(attr_name, ext, compiled_dict), {})
+        attrs[attr_name] = {**base, **override}
+    return {**compiled_profile, "attributes": attrs}
 
 
 SIBLING_DESC_MAX = 200
@@ -723,7 +816,7 @@ def run_normative_precheck(diff: str, company_names: list[str]) -> list[dict]:
                 if rx.search(text):
                     issues.append(
                         f'Mentions vendor/company name "{name}" — use a generic '
-                        "term; keep vendor names to examples only."
+                        "term; cite vendor sources in `references`."
                     )
 
         if issues:
@@ -773,6 +866,7 @@ def cmd_prepare() -> None:
     context = {
         "objects": {},
         "classes": {},
+        "profiles": {},
         "dictionary_attributes": {},
         "cross_reference_index": {},
         "dictionary_neighbors": {},
@@ -780,37 +874,50 @@ def cmd_prepare() -> None:
 
     compiled_objects = compiled.get("objects", {})
     compiled_classes = compiled.get("classes", {})
+    compiled_profiles = compiled.get("profiles", {})
     compiled_dict_attrs = compiled.get("dictionary", {}).get("attributes", {})
+    compiled_by_kind = {
+        "objects": compiled_objects,
+        "classes": compiled_classes,
+        "profiles": compiled_profiles,
+    }
 
     all_changed_attr_names: set[str] = set()
     changed_dict_attr_names: set[str] = set()
 
+    # Objects, event classes, and profiles, in the core schema and in
+    # extensions/<dir>/{objects,events,profiles}/.
     for filepath in changed_files:
-        if filepath.endswith(".json") and filepath.startswith("objects/"):
-            name = Path(filepath).stem
-            if name in compiled_objects:
-                changed_attrs = extract_changed_attrs_in_file(diff, filepath)
-                if changed_attrs:
-                    context["objects"][name] = _build_container_context(
-                        compiled_objects[name], changed_attrs
-                    )
-                    all_changed_attr_names |= changed_attrs
+        kind = _schema_file_kind(filepath)
+        if kind is None:
+            continue
+        compiled_items = compiled_by_kind[kind]
+        key = _compiled_key(filepath, compiled_items)
+        if key is None:
+            continue
+        changed_attrs = extract_changed_attrs_in_file(diff, filepath)
+        if not changed_attrs:
+            continue
+        definition = compiled_items[key]
+        if kind == "profiles":
+            definition = _resolve_profile(filepath, definition, compiled_dict_attrs)
+        context[kind][key] = _build_container_context(definition, changed_attrs)
+        all_changed_attr_names |= changed_attrs
 
-        elif filepath.endswith(".json") and filepath.startswith("events/"):
-            name = Path(filepath).stem
-            if name in compiled_classes:
-                changed_attrs = extract_changed_attrs_in_file(diff, filepath)
-                if changed_attrs:
-                    context["classes"][name] = _build_container_context(
-                        compiled_classes[name], changed_attrs
-                    )
-                    all_changed_attr_names |= changed_attrs
-
-    if "dictionary.json" in changed_files:
-        for attr_name in extract_changed_dict_attrs(diff):
-            if attr_name not in compiled_dict_attrs:
+    # The core dictionary and extension dictionaries.
+    dictionary_files = [
+        f
+        for f in changed_files
+        if f == "dictionary.json"
+        or (f.startswith("extensions/") and f.endswith("/dictionary.json"))
+    ]
+    for dict_file in dictionary_files:
+        ext = _extension_name(dict_file)
+        for attr_name in extract_changed_attrs_in_file(diff, dict_file):
+            dict_key = _compiled_dict_key(attr_name, ext, compiled_dict_attrs)
+            if dict_key not in compiled_dict_attrs:
                 continue
-            dict_entry = compiled_dict_attrs[attr_name]
+            dict_entry = compiled_dict_attrs[dict_key]
             if dict_entry.get("@deprecated"):
                 continue
             desc = dict_entry.get("description", "")
@@ -836,9 +943,11 @@ def cmd_prepare() -> None:
                                 cls_data, {attr_name}
                             )
             else:
-                context["dictionary_attributes"][attr_name] = dict_entry
+                context["dictionary_attributes"][dict_key] = dict_entry
 
-            changed_dict_attr_names.add(attr_name)
+            # Dictionary lookups use the compiled key (`win/...` for
+            # extensions); containers list the attribute by its plain name.
+            changed_dict_attr_names.add(dict_key)
             all_changed_attr_names.add(attr_name)
 
     if all_changed_attr_names:
@@ -921,6 +1030,13 @@ def build_review_prompt(
             + "\n```\n"
         )
 
+    if ctx.get("profiles"):
+        parts.append(
+            "## Profiles (attributes resolved from the dictionary)\n```json\n"
+            + json.dumps(ctx["profiles"], indent=2)
+            + "\n```\n"
+        )
+
     if ctx.get("dictionary_attributes"):
         parts.append(
             "## Dictionary Attributes (changed, non-placeholder descriptions)\n```json\n"
@@ -981,7 +1097,7 @@ def _fit_within_budget(parts: list[str], diff: str) -> str:
 
     Order of preference (most to least valuable):
         1. Previous Review            — agent-state continuity
-        2. Compiled Objects/Classes   — primary review subject
+        2. Compiled Objects/Classes/Profiles — primary review subject
         3. Dictionary Attributes      — primary review subject
         4. Cross-Reference Index      — cross-container anti-pattern signal
         5. Dictionary Neighbors       — duplicate/conflict signal
@@ -1154,6 +1270,7 @@ def cmd_review() -> None:
     has_content = bool(
         ctx.get("objects")
         or ctx.get("classes")
+        or ctx.get("profiles")
         or ctx.get("dictionary_attributes")
     )
     has_changelog = "CHANGELOG.md" in data["changed_files"]

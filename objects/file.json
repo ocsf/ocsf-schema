@@ -84,6 +84,20 @@
       "description": "Indicates if the file is encrypted.",
       "requirement": "optional"
     },
+    "is_hidden": {
+      "description": "Indicates that the file or directory is hidden from ordinary directory listings and default user interfaces. The value is <code>true</code> when the hidden file attribute is set (on a Windows endpoint), when the file is a dot file (on a Unix-like OS), or when the user hidden file flag is set.",
+      "requirement": "optional",
+      "references": [
+        {
+          "description": "File Attribute Constants, FILE_ATTRIBUTE_HIDDEN",
+          "url": "https://learn.microsoft.com/en-us/windows/win32/fileio/file-attribute-constants"
+        },
+        {
+          "description": "File flags system call manual page, UF_HIDDEN flag",
+          "url": "https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man2/chflags.2.html"
+        }
+      ]
+    },
     "is_public": {
       "description": "Indicates if the file is publicly accessible. For example in an object's public access in AWS S3",
       "profile": "cloud",

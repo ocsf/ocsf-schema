@@ -91,6 +91,7 @@ Thankyou! -->
   1. Clarified `ai_agent` description in `role_management` to identify the agent that `iam_role` is provisioned for or bound to, rather than the actor-oriented wording inherited from the `ai_operation` profile. Noted in the class description that `role_management` covers roles bound to AI agents. [#1726](https://github.com/ocsf/ocsf-schema/pull/1726)
   1. Added `List` (5) to the `activity_id` enum of `API Activity` (class 6003), for calls that enumerate a collection of resources. [#1816](https://github.com/ocsf/ocsf-schema/pull/1816)
   1. Added `terminating_signal` and `terminating_signal_id` to `Process Activity` (class 1007) for the signal that terminated the target process, or that the actor sent to terminate it. Complements `exit_code`. [#1793](https://github.com/ocsf/ocsf-schema/pull/1793)
+  1. Mentioned writes to `/proc/[pid]/mem` on Linux in the description of the `Write` activity in `Memory Activity` (class 1004), with a reference to proc_pid_mem(5). [#1806](https://github.com/ocsf/ocsf-schema/pull/1806)
 * #### Profiles
   1. Added optional `additional_firewall_rules` to the `security_control` profile for other reported security control rule evaluations and their individual actions and dispositions. Clarified the profile's event-level action and disposition, attribution through `firewall_rule`, and distinction from additional rule evaluations. [#1786](https://github.com/ocsf/ocsf-schema/pull/1786)
   1. Added `ai_status` (optional) to the `ai_operation` profile in the `context` group, grouping per-operation outcome scalars (stop reason and permission check result) so they do not proliferate at the event root. [#1704](https://github.com/ocsf/ocsf-schema/pull/1704)
@@ -128,6 +129,7 @@ Thankyou! -->
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
+  1. Added `Ptrace (4)` to the `injection_type_id` enum, for code injection on Linux through the process trace system call. [#1806](https://github.com/ocsf/ocsf-schema/pull/1806)
   1. Added `Sub-Agent Stop (6)` to the `stop_reason_id` enum, for a completion that ended because the sub-agent performing it was stopped. [#1780](https://github.com/ocsf/ocsf-schema/pull/1780)
   1. Broadened the `firewall_rule` caption and description to Security Control Rule while preserving its attribution to the event-level action or disposition. [#1786](https://github.com/ocsf/ocsf-schema/pull/1786)
 

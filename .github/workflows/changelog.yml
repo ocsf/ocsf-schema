@@ -1,0 +1,41 @@
+name: Changelog
+
+on:
+  pull_request:
+    branches: [ "main" ]
+    # labeled/unlabeled re-run the check when the skip label changes.
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  changelog:
+    name: Require a changelog file
+    # Maintainers add this label to changes that need no entry, such as
+    # description-only edits. A skipped job counts as passing.
+    if: ${{ !contains(github.event.pull_request.labels.*.name, 'skip changelog') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout pull request
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.14"
+
+      - name: Check changelog files
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          git cat-file -e "${BASE_SHA}^{commit}" 2>/dev/null || git fetch --no-tags origin "${BASE_SHA}"
+          python .github/scripts/changelog.py check --pr "$PR_NUMBER" --base "$BASE_SHA"

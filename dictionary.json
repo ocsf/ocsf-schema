@@ -3804,11 +3804,21 @@
         "3": {
           "caption": "Queue APC"
         },
+        "4": {
+          "caption": "Ptrace",
+          "description": "The actor injected code using the process trace system call, for example by attaching to the target process and writing to its memory or registers with <code>PTRACE_POKETEXT</code>, <code>PTRACE_POKEDATA</code> or <code>PTRACE_SETREGS</code>."
+        },
         "99": {
           "caption": "Other",
           "description": "The injection type is not mapped. See the <code>injection_type</code> attribute, which contains a data source specific value."
         }
-      }
+      },
+      "references": [
+        {
+          "description": "ptrace(2), process trace system call",
+          "url": "https://man7.org/linux/man-pages/man2/ptrace.2.html"
+        }
+      ]
     },
     "input_schema_fingerprint": {
       "caption": "Input Schema Fingerprint",
@@ -3987,6 +3997,11 @@
     "is_disabled": {
       "caption": "Disabled",
       "description": "Indicates if the entity is disabled. See specific usage.",
+      "type": "boolean_t"
+    },
+    "is_elevated": {
+      "caption": "Elevated",
+      "description": "Indicates that the object has elevated privileges. See specific usage.",
       "type": "boolean_t"
     },
     "is_encrypted": {

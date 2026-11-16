@@ -78,6 +78,7 @@ Thankyou! -->
   1. Added `preauth_type` and `preauth_type_id` attributes. [#1791](https://github.com/ocsf/ocsf-schema/pull/1791)
   1. Added `is_privileged` as a `boolean_t`. [#1805](https://github.com/ocsf/ocsf-schema/pull/1805)
   1. Added `session_key_encryption_details` as an `encryption_details` object. [#1808](https://github.com/ocsf/ocsf-schema/pull/1808)
+  1. Added `is_elevated` as a `boolean_t`. [#1809](https://github.com/ocsf/ocsf-schema/pull/1809)
   1. Added `is_hidden` as a `boolean_t`. [#1792](https://github.com/ocsf/ocsf-schema/pull/1792)
   1. Added `call_stack` as an array of `string_t`. [#1794](https://github.com/ocsf/ocsf-schema/pull/1794)
   1. Added `terminating_signal` and `terminating_signal_id` attributes, with the POSIX signals whose default action is to terminate the process. [#1793](https://github.com/ocsf/ocsf-schema/pull/1793)
@@ -89,8 +90,10 @@ Thankyou! -->
   1. Added `is_declared_incident` to finding.json and incident_finding.json. Added `resolved_time` to `finding.json` and `incident_finding.json`. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
   1. Overrode the `ai_operation` profile's `ai_agent` description on `Application Lifecycle` (class 6002) to clarify that it represents the affected application when that application is itself an AI agent. [#1751](https://github.com/ocsf/ocsf-schema/pull/1751)
   1. Clarified `ai_agent` description in `role_management` to identify the agent that `iam_role` is provisioned for or bound to, rather than the actor-oriented wording inherited from the `ai_operation` profile. Noted in the class description that `role_management` covers roles bound to AI agents. [#1726](https://github.com/ocsf/ocsf-schema/pull/1726)
+  1. Moved the `risk_*` attributes from `data_security_finding` and `detection_finding` up to `finding`. [#1811](https://github.com/ocsf/ocsf-schema/pull/1811)
   1. Added `List` (5) to the `activity_id` enum of `API Activity` (class 6003), for calls that enumerate a collection of resources. [#1816](https://github.com/ocsf/ocsf-schema/pull/1816)
   1. Added `terminating_signal` and `terminating_signal_id` to `Process Activity` (class 1007) for the signal that terminated the target process, or that the actor sent to terminate it. Complements `exit_code`. [#1793](https://github.com/ocsf/ocsf-schema/pull/1793)
+  1. Mentioned writes to `/proc/[pid]/mem` on Linux in the description of the `Write` activity in `Memory Activity` (class 1004), with a reference to proc_pid_mem(5). [#1806](https://github.com/ocsf/ocsf-schema/pull/1806)
   1. Added `access_list` and `access_mask` to `SMB Activity` (class 4006), for the access rights that the client requested when it opened a file or folder through the share. [#1820](https://github.com/ocsf/ocsf-schema/pull/1820)
 * #### Profiles
   1. Added optional `additional_firewall_rules` to the `security_control` profile for other reported security control rule evaluations and their individual actions and dispositions. Clarified the profile's event-level action and disposition, attribution through `firewall_rule`, and distinction from additional rule evaluations. [#1786](https://github.com/ocsf/ocsf-schema/pull/1786)
@@ -115,6 +118,7 @@ Thankyou! -->
   1. Added `data_bytes`, `data_bytes_in` and `data_bytes_out` to the `network_traffic` object, counting the data carried by the Layer 4 (Transport Layer) protocol, excluding the IP and transport headers, and clarified that its `bytes`, `bytes_in`, `bytes_out` and `bytes_missed` count bytes in Layer 3 (Network Layer) packets, including IP header and payload. [#1775](https://github.com/ocsf/ocsf-schema/pull/1775)
   1. Added per-node authority attributes `scopes`, `audience`, and `expiration_time` to the `delegation` object, so each hop in the chain of authority records what was granted, for whom, and until when. [#1705](https://github.com/ocsf/ocsf-schema/pull/1705)
   1. Added `wifi` to the `network_endpoint` and `network_interface` objects. Resolves #1463. [#1721](https://github.com/ocsf/ocsf-schema/pull/1721)
+  1. Added `is_elevated` to the `session` object, for a session running with elevated privileges such as a Windows elevated token. [#1809](https://github.com/ocsf/ocsf-schema/pull/1809)
   1. Added `value` to the `digital_signature` object so an event can carry the signature bytes themselves, not only a description of them — the raw signature output of `algorithm_id`, encoded as standard Base64 (RFC 4648 §4). [#1709](https://github.com/ocsf/ocsf-schema/pull/1709)
   1. Added `RC4 (7)` enum value to `algorithm_id` in the `encryption_details` object, so Kerberos tickets encrypted with RC4 can be normalized. [#1787](https://github.com/ocsf/ocsf-schema/pull/1787)
   1. Added `session_key_encryption_details` to the `authentication_token` object, for the encryption type of a Kerberos ticket session key, reported separately from the ticket encryption. [#1808](https://github.com/ocsf/ocsf-schema/pull/1808)
@@ -128,6 +132,7 @@ Thankyou! -->
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
+  1. Added `Ptrace (4)` to the `injection_type_id` enum, for code injection on Linux through the process trace system call. [#1806](https://github.com/ocsf/ocsf-schema/pull/1806)
   1. Added `Sub-Agent Stop (6)` to the `stop_reason_id` enum, for a completion that ended because the sub-agent performing it was stopped. [#1780](https://github.com/ocsf/ocsf-schema/pull/1780)
   1. Broadened the `firewall_rule` caption and description to Security Control Rule while preserving its attribution to the event-level action or disposition. [#1786](https://github.com/ocsf/ocsf-schema/pull/1786)
 

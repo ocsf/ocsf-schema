@@ -1,6 +1,6 @@
 # OCSF Contribution Guide
 
-Rajas Panat, July 2022; Updated September 2026.
+Rajas Panat, July 2022; Updated November 2026.
 
 Contributions by Mike Radka, Donovan Kolbly.
 
@@ -21,15 +21,15 @@ All contributors must submit their changes via pull requests. If you're not fami
 1. Fork [ocsf-schema](https://github.com/ocsf/ocsf-schema). For changes to [ocsf-docs](https://github.com/ocsf/ocsf-docs) or [ocsf-server](https://github.com/ocsf/ocsf-server), follow that repository's contributing docs.
 2. Make the desired changes in the forked repo and [verify they work](#verifying-the-changes) before opening a PR.
 3. Push the changes to the forked repo.
-4. Create a **Pull Request** to merge into `ocsf/ocsf-schema`. You'll need at least 3 approvals to get the PR merged.
+4. Create a **Pull Request** to merge into `ocsf/ocsf-schema`. You'll need at least 3 approvals, from code owners (`@ocsf/ocsf-maintainers`), to get the PR merged.
 5. Follow the guidelines in the PR template.
     1. Keep the PR focused: a single PR **must** contain related changes.
     2. Each commit must include a DCO [Developer's Certificate of Origin](#developers-certificate-of-origin-11).
-    3. Add a numbered entry to the matching subsection of `Unreleased` in [CHANGELOG.md](CHANGELOG.md) (`Added`, `Improved`, `Deprecated`, `Misc`, and so on). Include the PR link once the PR exists.
+    3. Add a numbered entry to the matching subsection of `Unreleased` in [CHANGELOG.md](CHANGELOG.md) (`Added`, `Improved`, `Deprecated`, `Misc`, and so on). Link the pull request, not the issue, for example `[#1234](https://github.com/ocsf/ocsf-schema/pull/1234)`, and link the issue in the PR description instead. Open the PR first if you need its number, then add the entry.
     4. Describe your change in as much detail as possible.
     5. Confirm that you have tested the changes, and the local verification run was error free.
     6. Check the Preview tab to ensure everything looks as expected.
-    7. Once the PR is ready, add relevant labels and submit it.
+    7. Once the PR is ready, submit it. Maintainers add the relevant labels.
     8. Resolve any GitHub Action failures or warnings on your pull request, and stay involved in the conversation.
 6. Thank you for your contribution!
 
@@ -84,7 +84,7 @@ To keep OCSF suitable for international standardization (e.g. ITU ratification),
 
 1. **No authoritative URLs in captions or descriptions.** Refer to the source by name (e.g. `RFC 1035`, `MITRE ATT&CK`, `ASTM F3411-22a`) and put the link in the container's `references` array. URLs are fine only as illustrative example values, never as the citation for a field.
 2. **No trademark/registered marks (®, ™, ℠) in captions or descriptions.** Use generic wording and keep the marked, proprietary name in `references` only. See `objects/attack.json` for the canonical pattern. (The canonical proprietary-source objects — `attack`, `atlas`, `d3fend`, `d3f_tactic`, `d3f_technique` — may keep the mark in their own primary caption.)
-3. **No company/vendor/product names in captions or descriptions.** Use the generic technology or standard, and keep any vendor name to `examples` only. Product names that *are* the modeled domain inside a platform extension (e.g. Windows registry concepts under `extensions/windows/`) are an exception.
+3. **No company/vendor/product names in captions or descriptions.** Use the generic technology or standard instead. When a vendor's documentation is the source, cite it in `references`. Product names that *are* the modeled domain inside a platform extension (e.g. Windows registry concepts under `extensions/windows/`) are an exception.
 4. **Keep descriptions technical, not personal or political.** Write descriptions as data definitions, not as descriptions of a real person or a nation/state. Avoid anthropomorphic/biographical framing, personal or protected-class characterization (race, religion, health, citizenship, political affiliation, etc.), and politically-charged wording. This does **not** ban legitimate entities — `user`, `account`, `identity`, `actor`, and `person` remain valid technical terms, and geographic values stored as data (e.g. an ISO country code) are fine. When phrasing drifts toward describing a human, reframe toward the account/identity/principal — e.g. prefer "the user account and its security-relevant attributes" over "the user and what they personally like to do".
 
 #### How to define a `field` in the dictionary?
@@ -115,7 +115,7 @@ Choose a **unique** field you want to add, `uid` in the example above and popula
     2. They are also accessible in your local instance of the ocsf-server: [http://localhost:8080/data_types](http://localhost:8080/data_types)
 4. `is_array` → This is a boolean key:value pair that you would need to add if the field you are defining is an array.
     1. e.g. `"is_array": true`
-5. Integer enums → Normalized enumerations are `integer_t` attributes whose names end in `_id` (arrays: `_ids`). Declare a string `sibling` (usually the same name without `_id`, for example `severity_id` / `severity`) and an `enum` map. Include `0` Unknown and `99` Other unless you are matching an existing documented exception. Classification siblings use `_name` (`class_uid` / `class_name`).
+5. Integer enums → Normalized enumerations are `integer_t` attributes whose names end in `_id` (arrays: `_ids`). Declare a string `sibling` (usually the same name without `_id`, for example `severity_id` / `severity`) and an `enum` map. Include `0` Unknown and `99` Other. Classification siblings use `_name` (`class_uid` / `class_name`). If an enum has to break one of these conventions, declare it with `suppress_checks` on the dictionary attribute: `["enum_convention"]` when `0` can't mean Unknown (for example `log_facility_id`, where `0` is the syslog `kern` facility), or `["sibling_convention"]` when the sibling is not the name without `_id` (for example `activity_id` / `activity_name`).
 
     ```json
     "severity_id": {
@@ -198,6 +198,57 @@ Choose a **unique** object you want to add, `vulnerability` in the example above
 4. `is_array` → This is a boolean key:value pair that you would need to add if the object you are defining is an array.
     1. e.g. `"is_array": true`
 
+#### Adding a value to an existing enum
+
+Enums are defined on attributes in [dictionary.json](dictionary.json). A class or object can override an attribute's enum; for example, each class defines its own `activity_id` values.
+
+1. Add the value under the next unused integer key. If the enum mirrors a standard's own numbering (for example syslog facilities in `log_facility_id`), use the standard's number instead.
+2. Never renumber or reuse an existing key, including a deprecated one. Stored events already carry these numbers.
+3. Keep `0` (Unknown) and `99` (Other).
+4. Give the value a `caption`, and a `description` when the caption alone is not clear. The caption is the value that goes in the string sibling, for example `severity` for `severity_id`.
+5. To retire a value, mark it [`@deprecated`](#deprecating-an-attribute-object-class-or-enum-value) instead of deleting it.
+6. An enum value can also have a `source` and `references`. See the next section.
+
+#### Recording where an item comes from: `source` and `references`
+
+When an attribute or enum value comes from an external standard or a well-known schema (an RFC, LDAP, an operating system API), record its origin:
+
+1. `source` → The item's name in that standard, as a plain string, spelled exactly as the standard spells it. It is not a URL.
+2. `references` → A list of links, each with a `url` and a `description`. Cite the standard here. This is also where URLs go instead of captions and descriptions (see [Caption & description style](#caption--description-style-normative--neutral)).
+
+Both are allowed on dictionary attributes, on attributes in a class, object, or profile, and on individual enum values. `references` can also be set on a whole class, object, or profile. The schema browser adds both to the item's description.
+
+```json
+"message_uid": {
+  "caption": "Message UID",
+  "description": "The email header Message-ID value, as defined by RFC 5322.",
+  "source": "Message-ID",
+  "type": "string_t",
+  "observable": 42,
+  "references": [
+    {
+      "description": "RFC 5322",
+      "url": "https://www.rfc-editor.org/rfc/rfc5322"
+    }
+  ]
+}
+```
+
+Other examples in [dictionary.json](dictionary.json): `preauth_type_id` (`"source": "padata-type"`, citing RFC 4120) and, in the Windows extension, `token_elevation_type_id` (`"source": "TOKEN_ELEVATION_TYPE"`).
+
+#### Making an attribute observable
+
+Observables are values of interest, such as IP addresses, host names, and users, that producers can copy into an event's `observables` array with a `type_id` saying what each value is. To make something observable, set `observable` to an integer that is not used anywhere else in the schema. It can be set on:
+
+1. A data type in the `types` section of [dictionary.json](dictionary.json), for example `ip_t`. Every attribute of that type becomes observable.
+2. A dictionary attribute, for example `cmd_line`. The attribute is observable wherever it is used.
+3. An object, for example [objects/user.json](objects/user.json).
+4. An attribute inside a class or object, for example `uid` in [objects/cwe.json](objects/cwe.json). The attribute is observable only there.
+
+A class can also map attribute paths to observable numbers with a class-level `observables` object.
+
+The compiler builds the Observable object's `type_id` enum from these numbers and fails if two items use the same number. To pick one, take the next number above the highest in use: search the repository for `"observable":`, or check the `type_id` values at [schema.ocsf.io/objects/observable](https://schema.ocsf.io/objects/observable).
+
 ---
 
 ### Adding/Modifying an `event_class`
@@ -207,7 +258,7 @@ Choose a **unique** object you want to add, `vulnerability` in the example above
 3. To define a new class:
     1. Create a new file → `<event_class_name.json>` inside the category specific subfolder in the [events](events/) folder.
     2. Use [templates/event_class_name.json](templates/event_class_name.json) to get started with the `.json` definition.
-    3. `uid` → Select an integer in the range 0–99. Ensure the integer is **unique** within the category.
+    3. `uid` → Select an integer that is **unique** within the category. The metaschema allows 0–999; core classes use 1–99 by convention.
         - Note: Without `uid`, an event_class won't be visible in the ocsf-server.
         - Do not set `class_uid` or `type_uid` by hand; the compiler derives them (`class_uid` = `category_uid * 1000 + uid`).
     4. `caption` → Add a user friendly name to the event_class.
@@ -238,7 +289,7 @@ Choose a **unique** object you want to add, `vulnerability` in the example above
         }
         ```
 
-        A Constraint is a documented rule subject to validation that requires at least one of the specified recommended attributes of a class to be populated.
+        A constraint is a documented rule subject to validation. `at_least_one` requires at least one of the listed attributes to be populated, and `just_one` requires exactly one. The listed attributes are usually `recommended` rather than `required`.
 
 ---
 
@@ -421,9 +472,21 @@ The `@deprecated` annotation can be added to a dictionary attribute, an attribut
 
 ---
 
+### Other metaschema keywords
+
+The [metaschema](metaschema/) folder defines every keyword the schema files may use, and the validator checks your changes against it. These keywords are used less often:
+
+| Keyword | Where | Purpose |
+| ------- | ----- | ------- |
+| `@recursive` | Attribute | Marks an attribute whose type can reappear inside its own value, so tools that walk the schema stop expanding it. Takes a required `message` and optional `limit` and `path`. |
+| `types` | [dictionary.json](dictionary.json) | Defines the data types, such as `ip_t` and `email_t`, with optional `regex`, `max_len`, `range`, and `values` constraints. |
+| Categories | [categories.json](categories.json) | Each category has a unique `uid`, a `caption`, and a `description`. The category's root class sets `category`, for example [events/network/network.json](events/network/network.json). |
+
+---
+
 ## Verifying the changes
 
-Before you open a PR, confirm the schema is valid and compiles. Pull requests to `main` run metaschema validation, a lean compile, and a backwards-compatibility check. Spellcheck runs on PRs as a warning only.
+Before you open a PR, confirm the schema is valid and compiles. The same checks run again on the PR; see [Checks on pull requests](#checks-on-pull-requests).
 
 Install the tools with `pip` in a virtual environment. The compiler requires **Python 3.14+**. The validator needs Python 3.11+ (3.14 works).
 
@@ -458,9 +521,25 @@ Install the tools with `pip` in a virtual environment. The compiler requires **P
 
     The server should start with no errors.
 
-CI also runs `python -m ocsf.validate.compatibility` (from [ocsf-lib](https://pypi.org/project/ocsf-lib/)) against the last stable release. It checks out that release tag (default `1.9.0`, or the `LATEST_STABLE` repository variable) and compiles it. A version string such as `1.9.0` cannot be fetched from schema.ocsf.io, because the legacy export API rejects `1.8.0` and newer. You do not need to run the comparison locally unless you are changing classification IDs or removing attributes.
-
 Address every compile error and validator ERROR before submitting.
+
+### Checks on pull requests
+
+Pull requests to `main` run these checks. The first four fail the PR when they find a problem; the last two are advisory.
+
+1. **Metaschema**: `ocsf-validator` checks the uncompiled files against [metaschema](metaschema/), as in step 1 above.
+2. **Compile**: `ocsf-schema-compiler` must compile the schema, as in step 2 above.
+3. **Compatibility**: `python -m ocsf.validate.compatibility` (from [ocsf-lib](https://pypi.org/project/ocsf-lib/)) compares the PR with the last stable release. CI checks out that release's tag (default `1.9.0`, or the `LATEST_STABLE` repository variable) and compiles it, because the schema.ocsf.io legacy export API rejects `1.8.0` and newer. You only need to run the comparison locally if you change classification IDs or remove attributes.
+4. **Developer Certificate of Origin**: every non-merge commit needs a `Signed-off-by` trailer. See [Developer's Certificate of Origin 1.1](#developers-certificate-of-origin-11).
+5. **Spellcheck**: `cspell` reports unknown words as warnings. If it flags a legitimate term, such as a protocol name or an acronym, add the term to [.github/.project-words.txt](.github/.project-words.txt).
+6. **Description review**: an AI reviewer ([.github/scripts/review_descriptions.py](.github/scripts/review_descriptions.py)) comments on PRs that change event classes, objects, profiles, or a dictionary, in the core schema or in `extensions/`, or that change `CHANGELOG.md`. It looks at:
+    - whether descriptions are clear, precise, and self-contained
+    - whether a description is specific enough to populate the field correctly from raw telemetry
+    - overlapping attributes, wrong type choices, and indirect attribution
+    - the [caption and description style rules](#caption--description-style-normative--neutral): no URLs, trademark marks, or vendor names, and no personal or political framing
+    - CHANGELOG conventions
+
+    On later pushes, it notes which suggestions were fixed and repeats the ones that are still open.
 
 ---
 
@@ -515,7 +594,7 @@ Vendor extensions are **registered** in this repository; the extension schema it
 
 Registration reserves a name and UID. The schema files live in a separate repository. You can:
 
-1. **Host it in the OCSF GitHub organization.** Ask `@ocsf/ocsf-maintainers` about creating a repo under [github.com/ocsf](https://github.com/ocsf). Public examples include [ocsf/aws](https://github.com/ocsf/aws), [ocsf/splunk](https://github.com/ocsf/splunk), [ocsf/symantec](https://github.com/ocsf/symantec), and [ocsf/dev-ext](https://github.com/ocsf/dev-ext).
+1. **Host it in the OCSF GitHub organization.** Ask `@ocsf/ocsf-maintainers` about creating a repo under [github.com/ocsf](https://github.com/ocsf). Public examples include [ocsf/aws](https://github.com/ocsf/aws), [ocsf/splunk](https://github.com/ocsf/splunk), and [ocsf/dev-ext](https://github.com/ocsf/dev-ext).
 2. **Host it in your own organization** (or any other public git host).
 3. **Keep it private.** You can still register a name and UID so they are reserved. Leave the registry `Repository` cell empty.
 
@@ -529,7 +608,7 @@ To reserve a name and UID, open a pull request that only updates the registry. F
 
 1. Add a row to the [OCSF Extensions Registry](extensions.md) with a unique caption, name, UID, a short notes line, and an optional `Repository` URL. Take the next unused vendor UID (the registry counts down from 998).
 2. Add an `Unreleased` entry in [CHANGELOG.md](CHANGELOG.md), for example: `New Extension registration for <Vendor>`.
-3. Open a pull request using the PR template, and request reviewers as usual.
+3. Open a pull request using the PR template. GitHub requests a review from the maintainers automatically.
 4. Email [info@ocsf.io](mailto:info@ocsf.io) from an official company address so maintainers can confirm the request is authorized by the organization it represents.
 
 Example registry row:

@@ -82,7 +82,6 @@ Entries follow the Keep a Changelog guiding principles: https://keepachangelog.c
   1. Added `is_hidden` as a `boolean_t`. [#1792](https://github.com/ocsf/ocsf-schema/pull/1792)
   1. Added `call_stack` as an array of `string_t`. [#1794](https://github.com/ocsf/ocsf-schema/pull/1794)
   1. Added `terminating_signal` and `terminating_signal_id` attributes, with the POSIX signals whose default action is to terminate the process. [#1793](https://github.com/ocsf/ocsf-schema/pull/1793)
-  1. Added `effective_capabilities` as an array of `string_t`. [#1807](https://github.com/ocsf/ocsf-schema/pull/1807)
 
 ### Improved
 * #### Categories
@@ -132,7 +131,6 @@ Entries follow the Keep a Changelog guiding principles: https://keepachangelog.c
   1. Clarified in the `metadata` object which value `received_time` matches when the first logger records no separate `received_time`, and stated `total_queued_duration` as `logged_time` minus `processed_time`. [#1821](https://github.com/ocsf/ocsf-schema/pull/1821)
 * #### Observables
 * #### Platform Extensions
-  1. Added `effective_capabilities` to the Linux `process` object, for the effective capability set of the process. [#1807](https://github.com/ocsf/ocsf-schema/pull/1807)
 * #### Dictionary Attributes
   1. Added `Ptrace (4)` to the `injection_type_id` enum, for code injection on Linux through the process trace system call. [#1806](https://github.com/ocsf/ocsf-schema/pull/1806)
   1. Added `Sub-Agent Stop (6)` to the `stop_reason_id` enum, for a completion that ended because the sub-agent performing it was stopped. [#1780](https://github.com/ocsf/ocsf-schema/pull/1780)

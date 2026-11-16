@@ -78,6 +78,7 @@ Thankyou! -->
   1. Added `is_privileged` as a `boolean_t`. [#1805](https://github.com/ocsf/ocsf-schema/pull/1805)
   1. Added `session_key_encryption_details` as an `encryption_details` object. [#1808](https://github.com/ocsf/ocsf-schema/pull/1808)
   1. Added `is_hidden` as a `boolean_t`. [#1792](https://github.com/ocsf/ocsf-schema/pull/1792)
+  1. Added `call_stack` as an array of `string_t`. [#1794](https://github.com/ocsf/ocsf-schema/pull/1794)
   1. Added `terminating_signal` and `terminating_signal_id` attributes, with the POSIX signals whose default action is to terminate the process. [#1793](https://github.com/ocsf/ocsf-schema/pull/1793)
 
 ### Improved
@@ -119,6 +120,7 @@ Thankyou! -->
   1. Added optional `uuid` to the `ai_agent` object, a universally unique agent identifier for correlating the same agent across sources that do not share an authoritative source for `uid`. [#1810](https://github.com/ocsf/ocsf-schema/pull/1810)
   1. Added `is_privileged` to the `container` object to indicate a container running in privileged mode. [#1805](https://github.com/ocsf/ocsf-schema/pull/1805)
   1. Added `is_hidden` to the `file` object, alongside `is_system` and `is_readonly`, to indicate a hidden file or directory. [#1792](https://github.com/ocsf/ocsf-schema/pull/1792)
+  1. Added `call_stack` to the `process` object for the call stack of the thread identified by `tid` at the time of the activity, for example the thread that opened or injected into another process. [#1794](https://github.com/ocsf/ocsf-schema/pull/1794)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes

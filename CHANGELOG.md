@@ -128,6 +128,7 @@ Entries follow the Keep a Changelog guiding principles: https://keepachangelog.c
   1. Added `is_privileged` to the `container` object to indicate a container running in privileged mode. [#1805](https://github.com/ocsf/ocsf-schema/pull/1805)
   1. Added `is_hidden` to the `file` object, alongside `is_system` and `is_readonly`, to indicate a hidden file or directory. [#1792](https://github.com/ocsf/ocsf-schema/pull/1792)
   1. Added `call_stack` to the `process` object for the call stack of the thread identified by `tid` at the time of the activity, for example the thread that opened or injected into another process. [#1794](https://github.com/ocsf/ocsf-schema/pull/1794)
+  1. Clarified in the `metadata` object which value `received_time` matches when the first logger records no separate `received_time`, and stated `total_queued_duration` as `logged_time` minus `processed_time`. [#1821](https://github.com/ocsf/ocsf-schema/pull/1821)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes

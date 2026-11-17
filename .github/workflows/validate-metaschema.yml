@@ -6,22 +6,31 @@ on:
   pull_request:
     branches: [ "main" ]
 
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: true
+
 jobs:
-  validate:
-    name: Validate the schema satisfies the requirements of the metaschema
+  metaschema:
+    name: Validate metaschema
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-    - name: Checkout repository content
-      uses: actions/checkout@v6
+      - name: Checkout
+        uses: actions/checkout@v7
 
-    - name: Setup python
-      uses: actions/setup-python@v6
-      with:
-        python-version: "3.11"
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.14"
 
-    - name: Install validator
-      run: python -m pip install "ocsf-validator>=${{ vars.SCHEMA_VALIDATOR_VERSION || '0.2,<0.3' }}"
+      - name: Install validator
+        run: python -m pip install "ocsf-validator>=${{ vars.SCHEMA_VALIDATOR_VERSION || '0.2,<0.3' }}"
 
-    - name: Run validator
-      shell: bash
-      run: export FORCE_COLOR=1 && python -m ocsf_validator .
+      - name: Run validator
+        env:
+          FORCE_COLOR: "1"
+        run: python -m ocsf_validator .

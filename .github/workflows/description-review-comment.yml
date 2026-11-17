@@ -30,10 +30,21 @@ jobs:
       - name: Install dependencies
         run: pip install anthropic==1.7.0
 
+      # The artifact is built by an unprivileged job running untrusted PR code,
+      # so its contents are attacker-controlled. Stage it in a dedicated
+      # directory under RUNNER_TEMP, never the workspace: extracting into the
+      # workspace would let a crafted artifact overwrite the checked-out
+      # review script that the privileged step below executes.
+      - name: Create artifact staging directory
+        run: |
+          rm -rf "${RUNNER_TEMP}/review-artifact"
+          mkdir -p "${RUNNER_TEMP}/review-artifact"
+
       - name: Download review context
         uses: actions/download-artifact@v8
         with:
           name: review-context
+          path: ${{ runner.temp }}/review-artifact
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -41,6 +52,10 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ZACHS_CLAUDE_KEY }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REVIEW_CONTEXT_DIR: ${{ runner.temp }}/review-artifact
+          # Trusted value from the workflow_run event, used to confirm the
+          # PR number inside the artifact really belongs to this run.
+          EXPECTED_HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
         run: python .github/scripts/review_descriptions.py review
 
       - name: Report review failure
@@ -48,4 +63,6 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          REVIEW_CONTEXT_DIR: ${{ runner.temp }}/review-artifact
+          EXPECTED_HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
         run: python .github/scripts/review_descriptions.py report-failure

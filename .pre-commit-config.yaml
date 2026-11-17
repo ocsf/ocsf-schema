@@ -1,6 +1,6 @@
-# Optional local checks that run when you commit. Pull request CI runs the same
-# checks, so you don't need these. See "Local checks with pre-commit" in
-# CONTRIBUTING.md.
+# Recommended local checks that run when you commit, so you see problems before
+# you push. Pull request CI runs the same checks either way. See "Local checks
+# with pre-commit" in CONTRIBUTING.md.
 default_install_hook_types: [pre-commit, commit-msg]
 default_stages: [pre-commit, manual]
 
@@ -51,6 +51,7 @@ repos:
     rev: v6.0.0
     hooks:
       - id: check-json
+      - id: end-of-file-fixer
       - id: check-merge-conflict
       - id: check-added-large-files
 

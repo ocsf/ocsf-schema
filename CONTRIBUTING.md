@@ -486,7 +486,7 @@ The [metaschema](metaschema/) folder defines every keyword the schema files may 
 
 ## Verifying the changes
 
-Before you open a PR, format the schema files and confirm the schema is valid and compiles. The same checks run again on the PR; see [Checks on pull requests](#checks-on-pull-requests). To run them on each commit instead, see [Local checks with pre-commit](#local-checks-with-pre-commit).
+Before you open a PR, format the schema files and confirm the schema is valid and compiles. The same checks run again on the PR; see [Checks on pull requests](#checks-on-pull-requests). We recommend running them on each commit with pre-commit; see [Local checks with pre-commit](#local-checks-with-pre-commit).
 
 Install the tools with `pip` in a virtual environment. The compiler requires **Python 3.14+**. The validator needs Python 3.11+ (3.14 works).
 
@@ -496,7 +496,7 @@ Install the tools with `pip` in a virtual environment. The compiler requires **P
     python .github/scripts/format_schema.py
     ```
 
-    In each object, keys are ordered by the type of their value (numbers, strings, objects, arrays, null, then true/false) and then by name. A class or object's `profiles` list goes right before `attributes`. The script also reports an event class, object or profile file that isn't named `<name>.json`.
+    In each object, keys are ordered by the type of their value (numbers, strings, objects, arrays, null, then true/false) and then by name. A class or object's `profiles` list goes right before `attributes`. Files use two-space indentation and end with a newline. The script also reports an event class, object or profile file that isn't named `<name>.json`.
 
 2. From the schema repository root, run the metaschema validator ([ocsf-validator](https://github.com/ocsf/ocsf-validator)):
 
@@ -553,7 +553,7 @@ Pull requests to `main` run these checks. The first six fail the PR when they fi
 
 ### Local checks with pre-commit
 
-[pre-commit](https://pre-commit.com) can run most of these checks each time you commit. It's optional; the checks on the PR are the ones that count. To set it up:
+We recommend [pre-commit](https://pre-commit.com), which runs most of these checks each time you commit, so you see problems before you push instead of on the PR. To set it up:
 
 ```bash
 pip install pre-commit
@@ -562,7 +562,7 @@ pre-commit install
 
 On each commit, it:
 
-- sorts and formats the schema JSON files you changed. If it changes a file, the commit stops; look over the change, `git add` the file, and commit again.
+- sorts and formats the schema JSON files you changed, and adds a missing final newline to any other file. If it changes a file, the commit stops; look over the change, `git add` the file, and commit again.
 - runs the metaschema validator when you change schema files.
 - checks changelog files, JSON syntax, and leftover merge conflict markers.
 - shows unknown words from `cspell`, without failing.

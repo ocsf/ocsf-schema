@@ -10,7 +10,7 @@ Every schema JSON file is written the same way:
   with `$` (`$include`) come first.
 - A class or object's `profiles` list comes after the strings at the top of
   the file and before `attributes`.
-- A file keeps one final newline if it has one.
+- Every file ends with a newline.
 
 An event class, object or profile file is named after its `name`, as
 `<name>.json`. A file without `name`, such as an extension's patch of a core
@@ -109,16 +109,19 @@ def _no_duplicates(pairs: list[tuple[str, object]]) -> dict:
     return seen
 
 
-def dump(value: object, newline: bool) -> str:
-    return json.dumps(value, indent=2, ensure_ascii=False) + ("\n" if newline else "")
+def dump(value: object) -> str:
+    return json.dumps(value, indent=2, ensure_ascii=False) + "\n"
 
 
 def first_difference(a: str, b: str) -> int:
     """1-based number of the first line that differs."""
-    for number, (x, y) in enumerate(zip(a.splitlines(), b.splitlines()), 1):
+    a_lines, b_lines = a.splitlines(), b.splitlines()
+    for number, (x, y) in enumerate(zip(a_lines, b_lines), 1):
         if x != y:
             return number
-    return min(len(a.splitlines()), len(b.splitlines())) + 1
+    # The lines match, so the difference is at the end: a missing newline on the
+    # last line, or extra lines after it.
+    return min(len(a_lines), len(b_lines)) + (len(a_lines) != len(b_lines))
 
 
 def name_line(text: str) -> int | None:
@@ -167,8 +170,7 @@ def process(path: str, check: bool) -> tuple[bool, bool]:
             )
             error = True
 
-    newline = text.endswith("\n")
-    formatted = dump(sort_value(data, top=True), newline)
+    formatted = dump(sort_value(data, top=True))
     if formatted == text:
         return False, error
     if not check:
@@ -177,9 +179,12 @@ def process(path: str, check: bool) -> tuple[bool, bool]:
         return True, error
 
     problems = []
-    if dump(data, newline) != formatted:
+    as_is = dump(data)
+    if as_is != formatted:
         problems.append("its keys are out of order")
-    if dump(data, newline) != text:
+    if as_is == text + "\n":
+        problems.append("it doesn't end with a newline")
+    elif as_is != text:
         problems.append("its spacing differs from the other schema files")
     report(
         "error",

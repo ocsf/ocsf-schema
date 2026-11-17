@@ -1,4 +1,4 @@
-name: Schema Description Review - Compile
+name: Schema Description Review - Prepare
 
 on:
   pull_request:
@@ -27,18 +27,18 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  compile:
-    name: Prepare review context
+  prepare:
+    name: Prepare description review
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
           python-version: "3.14"
 
@@ -65,7 +65,7 @@ jobs:
         run: python .github/scripts/review_descriptions.py prepare
 
       - name: Upload review context
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: review-context
           path: review_context.json

@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   changelog:
-    name: Require a changelog file
+    name: Check changelog file
     # Maintainers add this label to changes that need no entry, such as
     # description-only edits. A skipped job counts as passing.
     if: ${{ !contains(github.event.pull_request.labels.*.name, 'skip changelog') }}
@@ -26,12 +26,12 @@ jobs:
       # on a pull request opened before the script existed. The merge's first
       # parent is main, so the diff against it is the pull request's changes.
       - name: Checkout pull request merged into main
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 2
 
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
           python-version: "3.14"
 

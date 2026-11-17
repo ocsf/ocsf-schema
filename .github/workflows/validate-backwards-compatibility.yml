@@ -23,25 +23,25 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  validate:
-    name: Validate that changes are backwards compatible with the last stable release
+  compatibility:
+    name: Check backwards compatibility
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - name: Checkout schema under test
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           path: head
 
       - name: Checkout last stable release
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           repository: ocsf/ocsf-schema
           ref: ${{ vars.LATEST_STABLE || '1.9.0' }}
           path: stable
 
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
           # ocsf-lib 0.10.4 fails on Python 3.14 ("... does not have
           # annotations"). Move to 3.14 once ocsf-lib supports it.

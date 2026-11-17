@@ -4,7 +4,8 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
     # Only the paths review_descriptions.py actually reads: core and
-    # extension objects, event classes, profiles, and dictionaries.
+    # extension objects, event classes, profiles, and dictionaries, and
+    # changelog entries.
     paths:
       - "objects/**.json"
       - "events/**.json"
@@ -14,6 +15,8 @@ on:
       - "extensions/*/events/**.json"
       - "extensions/*/profiles/**.json"
       - "extensions/*/dictionary.json"
+      - "changelog.d/*.md"
+      - "!changelog.d/README.md"
       - "CHANGELOG.md"
 
 permissions:

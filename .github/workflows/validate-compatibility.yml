@@ -15,31 +15,42 @@ on:
   pull_request:
     branches: [ "main" ]
 
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: true
+
 jobs:
   validate:
     name: Validate that changes are backwards compatible with the last stable release
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-    - name: Checkout schema under test
-      uses: actions/checkout@v6
-      with:
-        path: head
+      - name: Checkout schema under test
+        uses: actions/checkout@v6
+        with:
+          path: head
 
-    - name: Checkout last stable release
-      uses: actions/checkout@v6
-      with:
-        repository: ocsf/ocsf-schema
-        ref: ${{ vars.LATEST_STABLE || '1.9.0' }}
-        path: stable
+      - name: Checkout last stable release
+        uses: actions/checkout@v6
+        with:
+          repository: ocsf/ocsf-schema
+          ref: ${{ vars.LATEST_STABLE || '1.9.0' }}
+          path: stable
 
-    - name: Setup python
-      uses: actions/setup-python@v6
-      with:
-        python-version: "3.11"
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          # ocsf-lib 0.10.4 fails on Python 3.14 ("... does not have
+          # annotations"). Move to 3.14 once ocsf-lib supports it.
+          python-version: "3.13"
 
-    - name: Install validator
-      run: python -m pip install "ocsf-lib>=${{ vars.COMPATIBILITY_VALIDATOR_VERSION || '0.10.0' }}"
+      - name: Install validator
+        run: python -m pip install "ocsf-lib>=${{ vars.COMPATIBILITY_VALIDATOR_VERSION || '0.10.0' }}"
 
-    - name: Run validator
-      shell: bash
-      run: export FORCE_COLOR=1 && python -m ocsf.validate.compatibility "$GITHUB_WORKSPACE/stable" "$GITHUB_WORKSPACE/head"
+      - name: Run validator
+        env:
+          FORCE_COLOR: "1"
+        run: python -m ocsf.validate.compatibility "$GITHUB_WORKSPACE/stable" "$GITHUB_WORKSPACE/head"

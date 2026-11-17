@@ -20,6 +20,7 @@ jobs:
     # description-only edits. A skipped job counts as passing.
     if: ${{ !contains(github.event.pull_request.labels.*.name, 'skip changelog') }}
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       # The pull request merged into main, so the check runs main's script even
       # on a pull request opened before the script existed. The merge's first

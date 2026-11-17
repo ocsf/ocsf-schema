@@ -6,10 +6,15 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 jobs:
   dco:
     name: Require Signed-off-by
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout pull request
         uses: actions/checkout@v6

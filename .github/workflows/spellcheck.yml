@@ -1,28 +1,28 @@
----
-name: Lint OCSF Metaschema
+name: Spellcheck
 
 on:
   workflow_dispatch:
   pull_request:
-    branches: 
-      - main
+    branches: [ "main" ]
 
-# Cancel in-progress runs when a new workflow with the same ID is triggered
+permissions:
+  contents: read
+
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
   cancel-in-progress: true
 
 jobs:
-  lint:
-    name: Lint OCSF Metaschema
+  spellcheck:
+    name: Spellcheck
     runs-on: ubuntu-latest
     timeout-minutes: 10
-
     steps:
-      - name: Checkout Code
+      - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Spellcheck all content
+      # On a pull request, cspell checks only the files it changes.
+      - name: Run cspell
         uses: streetsidesoftware/cspell-action@v7
         with:
           config: .github/.cspell.yaml

@@ -25,54 +25,6 @@
         }
       }
     },
-    "transfer_type_id": {
-      "description": "The normalized identifier of the zone transfer type. On a <code>Transfer Request</code> this is the type requested; on a <code>Transfer Response</code> or <code>Transfer</code> activity this is the type actually delivered.",
-      "group": "primary",
-      "requirement": "recommended",
-      "enum": {
-        "0": {
-          "caption": "Unknown",
-          "description": "The transfer type is unknown. For example, the event source reports a transfer without indicating whether it was full or incremental, or the message has no transfer type (such as a NOTIFY)."
-        },
-        "1": {
-          "caption": "Full Transfer (AXFR)",
-          "description": "A full zone transfer, in which the primary name server sends the complete contents of the zone."
-        },
-        "2": {
-          "caption": "Incremental Transfer (IXFR)",
-          "description": "An incremental zone transfer, in which the primary name server sends only the changes since the secondary's known SOA serial."
-        },
-        "99": {
-          "caption": "Other",
-          "description": "The transfer type is not mapped. See the <code>transfer_type</code> attribute, which contains a data source specific value."
-        }
-      }
-    },
-    "transfer_type": {
-      "description": "The zone transfer type, normalized to the caption of the <code>transfer_type_id</code> value. In the case of 'Other', it is defined by the event source.",
-      "group": "primary",
-      "requirement": "recommended"
-    },
-    "dns_zone": {
-      "description": "The DNS zone being transferred, i.e., the zone apex. This is the QNAME present in every message of the transfer or NOTIFY. The message role is conveyed by <code>activity_id</code> and the transfer type (AXFR or IXFR) by <code>transfer_type_id</code>. For example: <code>example.com</code>.",
-      "group": "primary",
-      "requirement": "recommended"
-    },
-    "soa": {
-      "description": "The current Start of Authority (SOA) record for the zone. For an IXFR request, this is the SOA the secondary already holds, i.e., the \"from\" serial that bounds the requested delta.",
-      "group": "context",
-      "requirement": "optional"
-    },
-    "updated_soa": {
-      "description": "The new Start of Authority (SOA) record for the zone after the transfer, i.e., the \"to\" serial. Present when the transfer advances the zone to a newer serial.",
-      "group": "context",
-      "requirement": "optional"
-    },
-    "records": {
-      "description": "The resource records transferred for the zone. For an AXFR this is the complete set of zone records; for an IXFR this is the changed records that make up the delta.",
-      "group": "primary",
-      "requirement": "recommended"
-    },
     "authority": {
       "group": "context",
       "requirement": "optional"
@@ -81,6 +33,11 @@
       "description": "The Additional section of this DNS message, carrying any supplementary resource records (such as an EDNS OPT pseudo-record) and an optional TSIG record. Because <code>activity_id</code> distinguishes the request from the response, each event represents a single DNS message with a single Additional section. The TSIG record authenticating the message is available via <code>dns_additional.tsig</code>; a <code>BADKEY</code> or <code>BADSIG</code> error commonly indicates an unauthorized transfer attempt.",
       "group": "context",
       "requirement": "optional"
+    },
+    "dns_zone": {
+      "description": "The DNS zone being transferred, i.e., the zone apex. This is the QNAME present in every message of the transfer or NOTIFY. The message role is conveyed by <code>activity_id</code> and the transfer type (AXFR or IXFR) by <code>transfer_type_id</code>. For example: <code>example.com</code>.",
+      "group": "primary",
+      "requirement": "recommended"
     },
     "num_records": {
       "caption": "Number of Records",
@@ -193,11 +150,54 @@
         }
       }
     },
+    "records": {
+      "description": "The resource records transferred for the zone. For an AXFR this is the complete set of zone records; for an IXFR this is the changed records that make up the delta.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "soa": {
+      "description": "The current Start of Authority (SOA) record for the zone. For an IXFR request, this is the SOA the secondary already holds, i.e., the \"from\" serial that bounds the requested delta.",
+      "group": "context",
+      "requirement": "optional"
+    },
     "transaction_id": {
       "caption": "DNS Transaction ID",
       "description": "The 16-bit DNS transaction identifier assigned by the client and echoed unchanged in the server response. This value is the same for both the request and response messages.",
       "group": "primary",
       "requirement": "recommended"
+    },
+    "transfer_type": {
+      "description": "The zone transfer type, normalized to the caption of the <code>transfer_type_id</code> value. In the case of 'Other', it is defined by the event source.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "transfer_type_id": {
+      "description": "The normalized identifier of the zone transfer type. On a <code>Transfer Request</code> this is the type requested; on a <code>Transfer Response</code> or <code>Transfer</code> activity this is the type actually delivered.",
+      "group": "primary",
+      "requirement": "recommended",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The transfer type is unknown. For example, the event source reports a transfer without indicating whether it was full or incremental, or the message has no transfer type (such as a NOTIFY)."
+        },
+        "1": {
+          "caption": "Full Transfer (AXFR)",
+          "description": "A full zone transfer, in which the primary name server sends the complete contents of the zone."
+        },
+        "2": {
+          "caption": "Incremental Transfer (IXFR)",
+          "description": "An incremental zone transfer, in which the primary name server sends only the changes since the secondary's known SOA serial."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The transfer type is not mapped. See the <code>transfer_type</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
+    "updated_soa": {
+      "description": "The new Start of Authority (SOA) record for the zone after the transfer, i.e., the \"to\" serial. Present when the transfer advances the zone to a newer serial.",
+      "group": "context",
+      "requirement": "optional"
     }
   },
   "references": [

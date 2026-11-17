@@ -4,6 +4,10 @@
   "description": "The Identity & Access Management event is a generic event that defines a set of attributes available in the access control events. As a generic event, it could be used to log events that are not otherwise defined by the IAM category.",
   "extends": "base_event",
   "name": "iam",
+  "profiles": [
+    "ai_operation",
+    "physical_site"
+  ],
   "attributes": {
     "$include": [
       "profiles/ai_operation.json",
@@ -29,9 +33,5 @@
       "group": "primary",
       "requirement": "recommended"
     }
-  },
-  "profiles": [
-    "ai_operation",
-    "physical_site"
-  ]
+  }
 }

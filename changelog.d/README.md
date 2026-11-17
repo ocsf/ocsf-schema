@@ -41,7 +41,7 @@ python .github/scripts/changelog.py check
 python .github/scripts/changelog.py preview
 ```
 
-`check` validates every file in this folder, and `preview` prints the next release's section of `CHANGELOG.md` with the files added. The Changelog check on pull requests runs the same validation and makes sure a pull request that changes the schema adds its file.
+`check` validates every file in this folder, and `preview` prints the next release's section of `CHANGELOG.md` with the files added. The Changelog check on pull requests runs the same validation and makes sure a pull request that changes the schema adds its file and doesn't edit `CHANGELOG.md`.
 
 ## Preparing a release
 
@@ -53,4 +53,4 @@ python .github/scripts/changelog.py build
 
 It adds the release's section to `CHANGELOG.md`, such as `## [v1.10.0] - Feb 2nd, 2027`, right below `## [Unreleased]`. The version comes from `version.json`, without `-dev`, and the date is today; set them with `--version` and `--date`. If the section already exists, the entries are added to it.
 
-Each entry goes under its heading in pull request order, with its pull request link, and the files in this folder are deleted (except this README). Anything still listed under `Unreleased`, from pull requests that edited `CHANGELOG.md` directly, becomes part of the release, as it does when the version heading is added by hand.
+Each entry goes under its heading in pull request order, with its pull request link, and the files in this folder are deleted (except this README). Anything still listed under `Unreleased`, from pull requests that edited `CHANGELOG.md` directly, becomes part of the release, as it does when the version heading is added by hand. Because the pull request deletes the files, the Changelog check doesn't ask it for a file of its own.

@@ -21,11 +21,13 @@ jobs:
     if: ${{ !contains(github.event.pull_request.labels.*.name, 'skip changelog') }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout pull request
+      # The pull request merged into main, so the check runs main's script even
+      # on a pull request opened before the script existed. The merge's first
+      # parent is main, so the diff against it is the pull request's changes.
+      - name: Checkout pull request merged into main
         uses: actions/checkout@v6
         with:
-          fetch-depth: 0
-          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 2
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -35,7 +37,4 @@ jobs:
       - name: Check changelog files
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
-        run: |
-          git cat-file -e "${BASE_SHA}^{commit}" 2>/dev/null || git fetch --no-tags origin "${BASE_SHA}"
-          python .github/scripts/changelog.py check --pr "$PR_NUMBER" --base "$BASE_SHA"
+        run: python .github/scripts/changelog.py check --pr "$PR_NUMBER" --base HEAD^1

@@ -400,7 +400,8 @@ def changed_files(base: str) -> list[tuple[str, str]]:
 
 
 def check_pull_request(pr: int, base: str) -> list[Problem]:
-    """Require this pull request's changelog file when it changes the schema."""
+    """Require this pull request's changelog file when it changes the schema,
+    instead of an edit to CHANGELOG.md."""
     expected = f"changelog.d/{pr}.md"
     changes = changed_files(base)
     paths = [path for _, path in changes]
@@ -421,19 +422,51 @@ def check_pull_request(pr: int, base: str) -> list[Problem]:
             for path in misnamed
         ]
 
-    if (ROOT / expected).is_file():
-        print(f"Found {expected}.")
+    # Preparing a release runs `build`, which edits CHANGELOG.md and deletes
+    # the changelog files.
+    if any(
+        status == "D"
+        and path.startswith("changelog.d/")
+        and path != f"changelog.d/{README_NAME}"
+        for status, path in changes
+    ):
+        print("This pull request deletes changelog files, as a release does.")
         return []
+
+    has_file = (ROOT / expected).is_file()
+    changes_schema = any(path.startswith(SCHEMA_PATHS) for path in paths)
     if "CHANGELOG.md" in paths:
+        if not changes_schema:
+            # It may be fixing an entry that's already there.
+            return [
+                Problem(
+                    "This pull request edits CHANGELOG.md. If it adds an entry, "
+                    f"move the entry to `{expected}` so pull requests don't "
+                    "conflict over CHANGELOG.md; see changelog.d/README.md.",
+                    "CHANGELOG.md",
+                    level="warning",
+                )
+            ]
+        if has_file:
+            return [
+                Problem(
+                    f"Undo the CHANGELOG.md edit. The entry in `{expected}` is "
+                    "added to CHANGELOG.md at release, so it would be listed twice.",
+                    "CHANGELOG.md",
+                )
+            ]
         return [
             Problem(
-                f"This pull request edits CHANGELOG.md. Move the entry to "
-                f"`{expected}` so it doesn't conflict with other pull requests; "
-                "see changelog.d/README.md.",
-                level="warning",
+                f"Move the entry from CHANGELOG.md to `{expected}` and undo the "
+                "CHANGELOG.md edit, so pull requests don't conflict over "
+                "CHANGELOG.md; see changelog.d/README.md.",
+                "CHANGELOG.md",
             )
         ]
-    if not any(path.startswith(SCHEMA_PATHS) for path in paths):
+    if has_file:
+        print(f"Found {expected}.")
+        return []
+    if not changes_schema:
         print("No schema files changed, so no changelog file is needed.")
         return []
     return [

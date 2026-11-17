@@ -31,15 +31,10 @@ jobs:
         run: pip install anthropic==1.7.0
 
       # The artifact is built by an unprivileged job running untrusted PR code,
-      # so its contents are attacker-controlled. Stage it in a dedicated
-      # directory under RUNNER_TEMP, never the workspace: extracting into the
-      # workspace would let a crafted artifact overwrite the checked-out
-      # review script that the privileged step below executes.
-      - name: Create artifact staging directory
-        run: |
-          rm -rf "${RUNNER_TEMP}/review-artifact"
-          mkdir -p "${RUNNER_TEMP}/review-artifact"
-
+      # so its contents are attacker-controlled. Download it under RUNNER_TEMP,
+      # never the workspace: extracting into the workspace would let a crafted
+      # artifact overwrite the checked-out review script that the privileged
+      # step below executes.
       - name: Download review context
         uses: actions/download-artifact@v8
         with:

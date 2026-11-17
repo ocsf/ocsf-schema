@@ -1276,23 +1276,17 @@ def review_context_path() -> Path:
     return (Path(base) if base else Path(".")) / "review_context.json"
 
 
-def validate_pr_number(raw: object) -> str:
-    """Return `raw` as a PR number, or exit if it is not a plain integer.
+def parse_pr_number(raw: object) -> str | None:
+    """Return `raw` as a PR number, or None if it is not a plain integer.
 
     This value arrives inside an artifact produced by an unprivileged job that
     ran untrusted PR code, and it is interpolated into `gh api` REST paths.
     Without this check a value such as `1/../../repos/owner/other/issues/1`
     would redirect the privileged token's writes to another resource.
+    `str()` of a bool, float, list, dict or None never matches the pattern.
     """
-    if isinstance(raw, bool) or not isinstance(raw, (str, int)):
-        print(f"Refusing malformed PR number: {raw!r}", file=sys.stderr)
-        sys.exit(1)
-
     text = str(raw).strip()
-    if not re.fullmatch(r"[1-9][0-9]{0,9}", text):
-        print(f"Refusing malformed PR number: {raw!r}", file=sys.stderr)
-        sys.exit(1)
-    return text
+    return text if re.fullmatch(r"[1-9][0-9]{0,9}", text) else None
 
 
 def pr_belongs_to_run(pr_number: str) -> bool:
@@ -1305,8 +1299,8 @@ def pr_belongs_to_run(pr_number: str) -> bool:
     """
     expected_sha = os.environ.get("EXPECTED_HEAD_SHA", "").strip()
     if not expected_sha:
-        # Not running in the privileged workflow_run job; nothing to bind to.
-        return True
+        print("EXPECTED_HEAD_SHA is not set; refusing to post.", file=sys.stderr)
+        return False
 
     repo = os.environ.get("GITHUB_REPOSITORY", "")
     try:
@@ -1342,7 +1336,11 @@ def cmd_review() -> None:
         print("No schema files were changed, nothing to review.")
         return
 
-    pr_number = validate_pr_number(data.get("pr_number"))
+    raw_pr_number = data.get("pr_number")
+    pr_number = parse_pr_number(raw_pr_number)
+    if pr_number is None:
+        print(f"Refusing malformed PR number: {raw_pr_number!r}", file=sys.stderr)
+        sys.exit(1)
     if not pr_belongs_to_run(pr_number):
         sys.exit(1)
     ctx = data["compiled_context"]
@@ -1435,10 +1433,10 @@ def cmd_report_failure() -> None:
     # Same untrusted artifact as the review path, so apply the same checks.
     # This runs as a failure handler, so decline quietly instead of exiting
     # non-zero and masking the original error.
-    if not re.fullmatch(r"[1-9][0-9]{0,9}", str(raw_pr_number).strip()):
+    pr_number = parse_pr_number(raw_pr_number)
+    if pr_number is None:
         print(f"Refusing malformed PR number: {raw_pr_number!r}")
         return
-    pr_number = str(raw_pr_number).strip()
     if not pr_belongs_to_run(pr_number):
         return
 

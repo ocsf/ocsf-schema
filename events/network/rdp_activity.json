@@ -99,6 +99,62 @@
       "group": "primary",
       "requirement": "recommended"
     },
+    "security_protocol": {
+      "description": "The security protocol that the server selected for the RDP connection, normalized to the caption of the <code>security_protocol_id</code> value. In the case of 'Other', it is defined by the event source.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "security_protocol_id": {
+      "description": "The normalized identifier of the security protocol that the server selected for the RDP connection, as reported in the <code>selectedProtocol</code> field of the RDP Negotiation Response. It tells whether the user was authenticated before the remote session was set up, which is what Network Level Authentication requires.",
+      "group": "primary",
+      "requirement": "recommended",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The security protocol is unknown."
+        },
+        "1": {
+          "caption": "Standard RDP Security",
+          "description": "Standard RDP Security, which uses the encryption built into RDP. Neither TLS nor CredSSP is used, and the user is not authenticated until after the remote session is set up.",
+          "source": "PROTOCOL_RDP"
+        },
+        "2": {
+          "caption": "TLS",
+          "description": "TLS protects the connection, but the user is not authenticated until after the remote session is set up.",
+          "source": "PROTOCOL_SSL"
+        },
+        "3": {
+          "caption": "CredSSP",
+          "description": "The Credential Security Support Provider (CredSSP) protocol over TLS, which authenticates the user before the remote session is set up. This is the protocol that Network Level Authentication uses.",
+          "source": "PROTOCOL_HYBRID"
+        },
+        "4": {
+          "caption": "RDSTLS",
+          "description": "The RDSTLS protocol, in which the client authenticates over TLS with credentials it received earlier from the server, for example in a redirection.",
+          "source": "PROTOCOL_RDSTLS"
+        },
+        "5": {
+          "caption": "CredSSP with Early User Authorization",
+          "description": "CredSSP coupled with the Early User Authorization Result PDU, in which the server also tells the client whether the authenticated user is allowed to connect before the remote session is set up.",
+          "source": "PROTOCOL_HYBRID_EX"
+        },
+        "6": {
+          "caption": "RDS-AAD-Auth",
+          "description": "RDS-AAD-Auth Security, in which the client authenticates with a token from a cloud identity provider.",
+          "source": "PROTOCOL_RDSAAD"
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The security protocol is not mapped. See the <code>security_protocol</code> attribute, which contains a data source specific value."
+        }
+      },
+      "references": [
+        {
+          "description": "MS-RDPBCGR 2.2.1.2.1 RDP Negotiation Response (RDP_NEG_RSP)",
+          "url": "https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-rdpbcgr/b2975bdc-6d56-49ee-9c57-f2ff3a0b6817"
+        }
+      ]
+    },
     "user": {
       "description": "The target user associated with the RDP activity.",
       "group": "primary",

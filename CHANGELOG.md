@@ -4,13 +4,6 @@ All notable changes to this project will be documented in this file. Changes for
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-<!-- Don't edit the Unreleased section in a pull request. Add changelog.d/<PR number>.md
-instead; see changelog.d/README.md. When a release is prepared,
-`python .github/scripts/changelog.py build` adds those entries here, under the release's
-version heading.
-
-Entries follow the Keep a Changelog guiding principles: https://keepachangelog.com/en/1.1.0/#how. -->
-
 <!-- All available sections in the Changelog:
 
 ### Added
@@ -40,6 +33,13 @@ Entries follow the Keep a Changelog guiding principles: https://keepachangelog.c
 ### Misc
 
 -->
+
+<!-- Don't edit the Unreleased section in a pull request. Add changelog.d/<PR number>.md
+instead; see changelog.d/README.md. When a release is prepared,
+`python .github/scripts/changelog.py build` adds those entries here, under the release's
+version heading.
+
+Entries follow the Keep a Changelog guiding principles: https://keepachangelog.com/en/1.1.0/#how. -->
 
 ## [Unreleased]
 

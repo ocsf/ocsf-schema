@@ -738,6 +738,17 @@
       "description": "The item's data in binary form.",
       "type": "bytestring_t"
     },
+    "bind_type": {
+      "caption": "Bind Type",
+      "description": "The bind type, normalized to the caption of the <code>bind_type_id</code> value. In the case of 'Other', it is defined by the event source. See specific usage.",
+      "type": "string_t"
+    },
+    "bind_type_id": {
+      "caption": "Bind Type ID",
+      "description": "The normalized identifier of the bind type. See specific usage.",
+      "sibling": "bind_type",
+      "type": "integer_t"
+    },
     "bios_date": {
       "caption": "BIOS Date",
       "description": "The BIOS date. For example: <code>03/31/16</code>.",
@@ -6541,6 +6552,12 @@
       "description": "General Purpose API Request Object. See specific usage",
       "type": "request"
     },
+    "requested_attributes": {
+      "caption": "Requested Attributes",
+      "description": "The names of the attributes requested by a client. See specific usage.",
+      "is_array": true,
+      "type": "string_t"
+    },
     "requested_permissions": {
       "caption": "Requested Permissions",
       "description": "The permissions mask. See specific usage.",
@@ -6792,6 +6809,17 @@
       "type": "san",
       "is_array": true
     },
+    "sasl_mechanism": {
+      "caption": "SASL Mechanism",
+      "description": "The name of the Simple Authentication and Security Layer (SASL) mechanism. For example: <code>GSSAPI</code>, <code>GSS-SPNEGO</code> or <code>EXTERNAL</code>. See specific usage.",
+      "type": "string_t",
+      "references": [
+        {
+          "description": "IANA Simple Authentication and Security Layer (SASL) Mechanisms",
+          "url": "https://www.iana.org/assignments/sasl-mechanisms/sasl-mechanisms.xhtml"
+        }
+      ]
+    },
     "sbom": {
       "caption": "Software Bill Of Materials",
       "description": "The Software Bill of Materials (SBOM) object describes the characteristics of a generated SBOM for a software package.",
@@ -6927,6 +6955,22 @@
       "caption": "Script Content",
       "description": "The script content, normalized to UTF-8 encoding irrespective of its original encoding. When emitting this attribute, it may be appropriate to truncate large scripts. When consuming this attribute, large scripts should be anticipated.",
       "type": "long_string"
+    },
+    "search_filter": {
+      "caption": "Search Filter",
+      "description": "The filter that selects the entries returned by a search. See specific usage.",
+      "type": "string_t"
+    },
+    "search_scope": {
+      "caption": "Search Scope",
+      "description": "The search scope, normalized to the caption of the <code>search_scope_id</code> value. In the case of 'Other', it is defined by the event source. See specific usage.",
+      "type": "string_t"
+    },
+    "search_scope_id": {
+      "caption": "Search Scope ID",
+      "description": "The normalized identifier of the search scope. See specific usage.",
+      "sibling": "search_scope",
+      "type": "integer_t"
     },
     "section_a": {
       "caption": "JA4 Section A",

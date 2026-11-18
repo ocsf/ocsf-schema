@@ -39,6 +39,20 @@
     "is_remote": {
       "requirement": "recommended"
     },
+    "is_restricted_admin": {
+      "description": "Indicates whether the remote interactive logon that created the session used restricted admin mode, in which the client authenticates without sending reusable credentials to the remote host, so they cannot be harvested there. It is only meaningful for remote interactive logons. Because restricted admin mode also lets a client log on with an NTLM hash instead of a password, a restricted admin logon from an unexpected account or host is worth reviewing.",
+      "requirement": "optional",
+      "references": [
+        {
+          "description": "Security event 4624, An account was successfully logged on (Restricted Admin Mode field)",
+          "url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4624"
+        },
+        {
+          "description": "Remote Desktop Protocol: Basic Connectivity and Graphics Remoting, 2.2.1.2.1 RDP Negotiation Response (RESTRICTED_ADMIN_MODE_SUPPORTED)",
+          "url": "https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-rdpbcgr/b2975bdc-6d56-49ee-9c57-f2ff3a0b6817"
+        }
+      ]
+    },
     "is_vpn": {
       "requirement": "optional"
     },

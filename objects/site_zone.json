@@ -1,0 +1,64 @@
+{
+  "caption": "Site Zone",
+  "description": "The Site Zone object describes a site zone: a defined area within a physical site that shares a common security posture, such as a perimeter, a public lobby, or a restricted area. It is distinct from the <code>zone</code> attribute, which describes a network zone.",
+  "extends": "_entity",
+  "name": "site_zone",
+  "attributes": {
+    "type_id": {
+      "description": "The normalized classification of the site zone by security posture. These are generic tiers by security posture. Regime-specific tiers map onto them rather than extending the list: for example, a controlled, limited, or protected area maps to Restricted, and an exclusion, vital, or material access area maps to Critical. Carry the native tier name in <code>type</code>.",
+      "group": "classification",
+      "requirement": "recommended",
+      "references": [
+        {
+          "description": "DoD 5200.08-R, Physical Security Program: restricted areas (controlled, limited, exclusion)",
+          "url": "https://www.esd.whs.mil/Portals/54/Documents/DD/issuances/dodm/520008rm.pdf"
+        },
+        {
+          "description": "10 CFR 73.2, NRC definitions: protected area, vital area, material access area",
+          "url": "https://www.ecfr.gov/current/title-10/chapter-I/part-73/subpart-A/section-73.2"
+        }
+      ],
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The zone type is unknown."
+        },
+        "1": {
+          "caption": "Perimeter",
+          "description": "The outer boundary of the site."
+        },
+        "2": {
+          "caption": "Public",
+          "description": "An area open to the public."
+        },
+        "3": {
+          "caption": "Restricted",
+          "description": "An area restricted to authorized persons."
+        },
+        "4": {
+          "caption": "Critical",
+          "description": "An area containing critical assets."
+        },
+        "5": {
+          "caption": "Transitional",
+          "description": "A lobby, corridor, or other transitional space."
+        },
+        "6": {
+          "caption": "External",
+          "description": "An outdoor area within the site boundary."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The zone type is not mapped. See the <code>type</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
+    "type": {
+      "description": "The site zone type, normalized to the caption of the <code>type_id</code> value. In the case of 'Other', it is defined by the event source.",
+      "requirement": "optional"
+    },
+    "is_armed": {
+      "requirement": "optional"
+    }
+  }
+}

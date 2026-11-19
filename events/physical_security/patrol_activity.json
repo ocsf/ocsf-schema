@@ -1,0 +1,85 @@
+{
+  "uid": 4,
+  "caption": "Patrol Activity",
+  "description": "Patrol Activity events report the execution of guard patrols against their defined routes and schedules. No published standard covers this area; the model here follows the widely used pattern of a tour definition, an occurrence of that tour, and the checkpoint registrations and exceptions recorded within it.",
+  "extends": "physical_security",
+  "name": "patrol_activity",
+  "attributes": {
+    "activity_id": {
+      "group": "primary",
+      "requirement": "required",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The event activity is unknown."
+        },
+        "1": {
+          "caption": "Tour Started",
+          "description": "A patrol tour began."
+        },
+        "2": {
+          "caption": "Checkpoint Registered",
+          "description": "A checkpoint was registered by the officer on patrol."
+        },
+        "3": {
+          "caption": "Tour Completed",
+          "description": "A patrol tour finished with all expected checkpoints registered."
+        },
+        "4": {
+          "caption": "Tour Incomplete",
+          "description": "A patrol tour finished with fewer checkpoints registered than expected."
+        },
+        "5": {
+          "caption": "Tour Missed",
+          "description": "A scheduled patrol tour did not start."
+        },
+        "6": {
+          "caption": "Checkpoint Missed",
+          "description": "An expected checkpoint was not registered."
+        },
+        "7": {
+          "caption": "Tour Overrun",
+          "description": "A patrol tour exceeded its expected duration."
+        },
+        "8": {
+          "caption": "Geofence Exception",
+          "description": "A checkpoint was registered from outside the defined geofence."
+        },
+        "9": {
+          "caption": "Sequence Exception",
+          "description": "A checkpoint was registered outside its expected order."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The event activity is not mapped. See the <code>activity_name</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
+    "patrol_tour": {
+      "group": "primary",
+      "requirement": "required"
+    },
+    "checkpoint": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "post": {
+      "requirement": "optional"
+    },
+    "checkpoint_count": {
+      "requirement": "optional"
+    },
+    "is_out_of_sequence": {
+      "requirement": "optional"
+    },
+    "geofence_status": {
+      "requirement": "optional"
+    },
+    "position_accuracy": {
+      "requirement": "optional"
+    },
+    "variance": {
+      "requirement": "optional"
+    }
+  }
+}

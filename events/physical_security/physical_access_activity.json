@@ -1,0 +1,74 @@
+{
+  "uid": 1,
+  "caption": "Physical Access Activity",
+  "description": "Physical Access Activity events report what happened at a portal: access outcomes and portal state changes. The activity set follows the ONVIF Access Control and Door Control service vocabularies, which separate the access decision from whether the portal was actually used. That separation is what makes tailgating and no-entry-made conditions expressible. The access decision itself, granted or denied, is an Authentication event (class 3002) carrying the <code>physical_site</code> profile; this class reports what happened at the portal after the decision.",
+  "extends": "physical_security",
+  "name": "physical_access_activity",
+  "attributes": {
+    "activity_id": {
+      "group": "primary",
+      "requirement": "required",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The event activity is unknown."
+        },
+        "1": {
+          "caption": "Access Taken",
+          "description": "Access was authorized and the portal was used. Equivalent to ONVIF AccessTaken."
+        },
+        "2": {
+          "caption": "Access Not Taken",
+          "description": "Access was authorized but the portal was not used. Equivalent to ONVIF AccessNotTaken."
+        },
+        "3": {
+          "caption": "Portal Forced",
+          "description": "The portal was opened without an access request. Equivalent to ONVIF DoorForcedOpen, SIA DF, and Contact ID 423."
+        },
+        "4": {
+          "caption": "Portal Held Open",
+          "description": "The portal remained open beyond its configured threshold. Equivalent to ONVIF DoorOpenTooLong, SIA DN, and Contact ID 426."
+        },
+        "5": {
+          "caption": "Request To Exit",
+          "description": "An egress request was registered. Equivalent to SIA DX and Contact ID 425."
+        },
+        "6": {
+          "caption": "Duress",
+          "description": "A duress credential or code was presented. Equivalent to ONVIF Duress, SIA HA, and Contact ID 121 or 434."
+        },
+        "7": {
+          "caption": "Antipassback Violation",
+          "description": "The presentation violated an antipassback rule. Equivalent to SIA DI."
+        },
+        "8": {
+          "caption": "Tailgate",
+          "description": "More persons transited than were authorized. This condition is not directly observable and is always inferred; the derivation attribute is required."
+        },
+        "9": {
+          "caption": "Portal Mode Changed",
+          "description": "The commanded state of the portal changed."
+        },
+        "10": {
+          "caption": "Tamper",
+          "description": "The portal, reader, or its enclosure was tampered with. Equivalent to SIA TA and Contact ID 137 or 144."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The event activity is not mapped. See the <code>activity_name</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
+    "portal": {
+      "group": "primary",
+      "requirement": "required"
+    },
+    "physical_credential": {
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "held_open_duration": {
+      "requirement": "optional"
+    }
+  }
+}

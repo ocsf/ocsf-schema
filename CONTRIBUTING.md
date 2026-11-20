@@ -18,7 +18,7 @@ The OCSF [Maintainers](https://github.com/ocsf/governance/blob/main/Maintainers.
 
 All contributors must submit their changes via pull requests. If you're not familiar with pull requests, please read [the GitHub documentation](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests). Following are a few guidelines and expectations for submitting a PR.
 
-1. Fork [ocsf-schema](https://github.com/ocsf/ocsf-schema). For changes to [ocsf-docs](https://github.com/ocsf/ocsf-docs) or [ocsf-server](https://github.com/ocsf/ocsf-server), follow that repository's contributing docs.
+1. Fork [ocsf-schema](https://github.com/ocsf/ocsf-schema) and [set up your clone](#setting-up). For changes to [ocsf-docs](https://github.com/ocsf/ocsf-docs) or [ocsf-server](https://github.com/ocsf/ocsf-server), follow that repository's contributing docs.
 2. Make the desired changes in the forked repo and [verify they work](#verifying-the-changes) before opening a PR.
 3. Push the changes to the forked repo.
 4. Create a **Pull Request** to merge into `ocsf/ocsf-schema`. You'll need at least 3 approvals, from code owners (`@ocsf/ocsf-maintainers`), to get the PR merged.
@@ -32,6 +32,27 @@ All contributors must submit their changes via pull requests. If you're not fami
     7. Once the PR is ready, submit it. Maintainers add the relevant labels.
     8. Resolve any GitHub Action failures or warnings on your pull request, and stay involved in the conversation.
 6. Thank you for your contribution!
+
+---
+
+## Setting up
+
+You need git and Python 3.14 or later. Fork [ocsf-schema](https://github.com/ocsf/ocsf-schema), then clone your fork and install pre-commit in a virtual environment:
+
+```bash
+git clone https://github.com/<your-username>/ocsf-schema.git
+cd ocsf-schema
+python3.14 -m venv .venv
+source .venv/bin/activate
+pip install pre-commit
+pre-commit install
+```
+
+On Windows, create and activate the environment with `py -3.14 -m venv .venv` and `.venv\Scripts\activate`.
+
+From then on, each commit runs the formatter and most of the [checks on pull requests](#checks-on-pull-requests), so you see problems before you push. pre-commit installs the tools these checks need, such as the metaschema validator, itself. See [Local checks with pre-commit](#local-checks-with-pre-commit) for what runs.
+
+Sign off each commit with `git commit -s`; see [Developer's Certificate of Origin 1.1](#developers-certificate-of-origin-11).
 
 ---
 
@@ -488,7 +509,7 @@ The [metaschema](metaschema/) folder defines every keyword the schema files may 
 
 Before you open a PR, format the schema files and confirm the schema is valid and compiles. The same checks run again on the PR; see [Checks on pull requests](#checks-on-pull-requests). We recommend running them on each commit with pre-commit; see [Local checks with pre-commit](#local-checks-with-pre-commit).
 
-Install the tools with `pip` in a virtual environment. The compiler requires **Python 3.14+**. The validator needs Python 3.11+ (3.14 works).
+Install the tools with `pip` in the virtual environment from [Setting up](#setting-up). The compiler requires **Python 3.14+**. The validator needs Python 3.11+ (3.14 works).
 
 1. Sort and format the schema JSON files. The script uses only the Python standard library:
 
@@ -553,7 +574,7 @@ Pull requests to `main` run these checks. The first six fail the PR when they fi
 
 ### Local checks with pre-commit
 
-We recommend [pre-commit](https://pre-commit.com), which runs most of these checks each time you commit, so you see problems before you push instead of on the PR. To set it up:
+We recommend [pre-commit](https://pre-commit.com), which runs most of these checks each time you commit, so you see problems before you push instead of on the PR. [Setting up](#setting-up) installs it. If your clone is already set up without it, run:
 
 ```bash
 pip install pre-commit

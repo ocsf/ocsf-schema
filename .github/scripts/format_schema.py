@@ -45,7 +45,7 @@ FIX_COMMAND = "python .github/scripts/format_schema.py"
 PRE_COMMIT_TIP = (
     "pre-commit runs this check each time you commit, and formats the files for "
     "you. To set it up, run `pip install pre-commit` and then `pre-commit "
-    'install`. See "Local checks with pre-commit" in CONTRIBUTING.md.'
+    'install`. See "Setting up" in CONTRIBUTING.md.'
 )
 
 # Released names that differ from their file names. Renaming either one would

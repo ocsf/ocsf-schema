@@ -27,6 +27,22 @@ jobs:
         with:
           python-version: "3.14"
 
+      - name: Install pre-commit
+        run: python -m pip install "pre-commit>=4,<5"
+
       # Checks every schema JSON file, which takes under a second.
       - name: Check key order, formatting and file names
         run: python .github/scripts/format_schema.py --check
+
+      # Every file, not only the schema JSON, must end with one newline. This
+      # runs pre-commit's end-of-file-fixer hook, so CI and the local hook use
+      # the same rule.
+      - name: Check final newlines
+        if: ${{ !cancelled() }}
+        run: |
+          if ! pre-commit run end-of-file-fixer --all-files; then
+            git diff --name-only | while read -r file; do
+              echo "::error file=$file,line=$(wc -l < "$file")::This file must end with one newline: add a missing one, or remove the blank lines after the last line. pre-commit does this for you; see \"Setting up\" in CONTRIBUTING.md."
+            done
+            exit 1
+          fi

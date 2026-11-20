@@ -13,7 +13,8 @@
                       Needs cspell (npm install -g cspell).
   next [VERSION]      After the release is published: set the next version,
                       VERSION-dev (default: the next minor version), and make
-                      the release the backwards compatibility baseline.
+                      the release branch, vX.Y.Z, the backwards compatibility
+                      baseline.
 
 The version is set in version.json, every extensions/*/extension.json, the
 README badge, and the example in extensions/README.md.
@@ -289,19 +290,18 @@ def cmd_next(args: argparse.Namespace) -> None:
     if parse_release(version) <= parse_release(released):
         raise ReleaseError(f"{version} isn't later than {released}")
 
-    baseline = [
-        Field(COMPATIBILITY_WORKFLOW, BASELINE_REF),
-        Field(CONTRIBUTING, BASELINE_DOC),
-    ]
-    for field in baseline:
+    workflow = Field(COMPATIBILITY_WORKFLOW, BASELINE_REF)
+    doc = Field(CONTRIBUTING, BASELINE_DOC)
+    for field in (workflow, doc):
         field.read()  # before changing anything
 
     set_version(f"{version}-dev")
-    for field in baseline:
-        field.write(released)
+    branch = f"v{released}"
+    workflow.write(f"refs/heads/{branch}")
+    doc.write(branch)
     print(
-        f"The backwards compatibility check now compares with {released}. CI checks "
-        "out that tag, so the release must be published first."
+        f"The backwards compatibility check now compares with the {branch} branch. "
+        "CI checks out that branch, so it must exist first."
     )
 
 

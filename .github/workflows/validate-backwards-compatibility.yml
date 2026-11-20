@@ -36,9 +36,10 @@ jobs:
         uses: actions/checkout@v7
         with:
           repository: ocsf/ocsf-schema
-          # The last stable release's tag. `release.py next` updates it after
-          # each release.
-          ref: "1.10.0"
+          # The last stable release's branch, which the v1.* ruleset keeps
+          # from changing. A full ref, since a tag can have the same name.
+          # `release.py next` updates it after each release.
+          ref: "refs/heads/v1.10.0"
           path: stable
 
       - name: Set up Python

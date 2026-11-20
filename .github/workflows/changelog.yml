@@ -9,8 +9,11 @@ on:
 permissions:
   contents: read
 
+# A new push cancels the run for the previous one. Each label gets its own
+# group, so labels added together, as when a PR opens with labels, don't
+# cancel each other's runs or the run for the push.
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}-${{ github.event.label.name }}
   cancel-in-progress: true
 
 jobs:

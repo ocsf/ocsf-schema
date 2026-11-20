@@ -41,6 +41,12 @@ SCHEMA_DIRS = ("events", "objects", "profiles", "extensions")
 SCHEMA_FILES = ("categories.json", "dictionary.json", "version.json")
 NAMED_DIRS = {"events", "objects", "profiles"}
 FIX_COMMAND = "python .github/scripts/format_schema.py"
+# Shown when --check fails, since that usually means pre-commit isn't set up.
+PRE_COMMIT_TIP = (
+    "pre-commit runs this check each time you commit, and formats the files for "
+    "you. To set it up, run `pip install pre-commit` and then `pre-commit "
+    'install`. See "Local checks with pre-commit" in CONTRIBUTING.md.'
+)
 
 # Released names that differ from their file names. Renaming either one would
 # break compatibility, so they stay as they are.
@@ -222,7 +228,11 @@ def main() -> int:
     errors = any(error for _, error in results)
     done = "Files that need formatting" if args.check else "Files formatted"
     print(f"Checked {len(paths)} schema file(s). {done}: {unformatted}.")
-    return 1 if errors or (args.check and unformatted) else 0
+    failed = errors or (args.check and unformatted)
+    if failed and args.check:
+        in_ci = os.environ.get("GITHUB_ACTIONS") == "true"
+        print(f"::notice::{PRE_COMMIT_TIP}" if in_ci else PRE_COMMIT_TIP)
+    return 1 if failed else 0
 
 
 if __name__ == "__main__":

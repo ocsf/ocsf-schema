@@ -13,7 +13,7 @@ Each extension is a subdirectory with an `extension.json` that defines its `capt
   "caption": "Linux",
   "name": "linux",
   "uid": 1,
-  "version": "1.10.0"
+  "version": "1.11.0-dev"
 }
 ```
 

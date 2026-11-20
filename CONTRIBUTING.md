@@ -509,7 +509,7 @@ The [metaschema](metaschema/) folder defines every keyword the schema files may 
 
 Before you open a PR, format the schema files and confirm the schema is valid and compiles. The same checks run again on the PR; see [Checks on pull requests](#checks-on-pull-requests). We recommend running them on each commit with pre-commit; see [Local checks with pre-commit](#local-checks-with-pre-commit).
 
-Install the tools with `pip` in the virtual environment from [Setting up](#setting-up). The compiler requires **Python 3.14+**. The validator needs Python 3.11+ (3.14 works).
+Install the tools with `pip` in the virtual environment from [Setting up](#setting-up).
 
 1. Sort and format the schema JSON files. The script uses only the Python standard library:
 
@@ -574,12 +574,7 @@ Pull requests to `main` run these checks. The first six fail the PR when they fi
 
 ### Local checks with pre-commit
 
-We recommend [pre-commit](https://pre-commit.com), which runs most of these checks each time you commit, so you see problems before you push instead of on the PR. [Setting up](#setting-up) installs it. If your clone is already set up without it, run:
-
-```bash
-pip install pre-commit
-pre-commit install
-```
+We recommend [pre-commit](https://pre-commit.com), which runs most of these checks each time you commit, so you see problems before you push instead of on the PR. [Setting up](#setting-up) installs it.
 
 On each commit, it:
 

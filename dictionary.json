@@ -264,6 +264,11 @@
       "description": "An autonomous AI agent that performs tasks under delegated authority. Distinguished from the OCSF <code>agent</code> object, which describes security sensors such as EDR and DLP tools.",
       "type": "ai_agent"
     },
+    "ai_capability": {
+      "caption": "AI Capability",
+      "description": "The AI capability - tool, resource, or prompt - invoked in the operation described by the event.",
+      "type": "ai_capability"
+    },
     "ai_model": {
       "caption": "AI Model",
       "description": "The AI Model object describes the characteristics of an AI/ML model. Examples include language models like GPT-4, embedding models like text-embedding-ada-002, and computer vision models like CLIP.",
@@ -284,11 +289,6 @@
       "description": "The originator or target role of the message.",
       "sibling": "ai_role",
       "type": "integer_t"
-    },
-    "ai_capability": {
-      "caption": "AI Capability",
-      "description": "The AI capability - tool, resource, or prompt - invoked in the operation described by the event.",
-      "type": "ai_capability"
     },
     "ai_status": {
       "caption": "AI Status",
@@ -963,7 +963,6 @@
     "cache_ttl": {
       "caption": "Cache TTL",
       "description": "The declared freshness window of a cacheable result, in milliseconds.",
-
       "type": "long_t"
     },
     "call_stack": {
@@ -5170,11 +5169,6 @@
       "description": "The number of folders scanned.",
       "type": "integer_t"
     },
-    "num_records": {
-      "caption": "Number of Records",
-      "description": "The number of records. See specific usage.",
-      "type": "integer_t"
-    },
     "num_infected": {
       "caption": "Number of Infected Entities",
       "description": "The number of infected entities. See specific usage.",
@@ -5188,6 +5182,11 @@
     "num_processes": {
       "caption": "Scanned Processes",
       "description": "The number of processes scanned.",
+      "type": "integer_t"
+    },
+    "num_records": {
+      "caption": "Number of Records",
+      "description": "The number of records. See specific usage.",
       "type": "integer_t"
     },
     "num_registry_items": {
@@ -7610,11 +7609,6 @@
         }
       }
     },
-    "storage_class": {
-      "caption": "Storage Class",
-      "description": "The storage class of the entity. See specific usage.",
-      "type": "string_t"
-    },
     "stop_reason": {
       "caption": "Stop Reason",
       "description": "The reason an operation stopped, normalized to the caption of the <code>stop_reason_id</code> value. In the case of 'Other', it is defined by the event source.",
@@ -7659,6 +7653,11 @@
           "description": "The stop reason is not mapped. See the <code>stop_reason</code> attribute, which contains a data source specific value."
         }
       }
+    },
+    "storage_class": {
+      "caption": "Storage Class",
+      "description": "The storage class of the entity. See specific usage.",
+      "type": "string_t"
     },
     "stratum": {
       "caption": "Stratum",

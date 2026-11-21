@@ -72,6 +72,11 @@
       "group": "primary",
       "requirement": "recommended"
     },
+    "auth_protocol_ver": {
+      "description": "The version or variant of the authentication protocol in <code>auth_protocol_id</code>. For NTLM, this is the NTLM family protocol that was used: <code>LM</code>, <code>NTLM V1</code> or <code>NTLM V2</code>. LM and NTLM V1 are legacy protocols whose responses can be brute forced, so finding where they are still used is a common hardening step.",
+      "group": "context",
+      "requirement": "optional"
+    },
     "authentication_token": {
       "description": "The authentication token, ticket, or assertion, e.g. <code>Kerberos</code>, <code>OIDC</code>, <code>SAML</code>.",
       "group": "context",
@@ -117,6 +122,11 @@
       "description": "The attempted authentication is over a remote connection.",
       "group": "primary",
       "requirement": "recommended"
+    },
+    "key_length": {
+      "description": "The length, in bits, of the session security key negotiated for the logon. For NTLM it is typically 128, and a shorter key points to a legacy or misconfigured client. It is 0 when no session key applies, for example with Kerberos.",
+      "group": "context",
+      "requirement": "optional"
     },
     "logon_process": {
       "group": "context",

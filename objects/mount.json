@@ -1,0 +1,72 @@
+{
+  "caption": "Mount",
+  "description": "The Mount object describes a file system mount that makes a directory, file or volume available at a path inside a container, such as a bind mount of a host path, a named volume or a memory-backed file system. Mounts that expose sensitive host paths, for example the container runtime socket or the host root, can let a container escape to its host.",
+  "extends": "object",
+  "name": "mount",
+  "attributes": {
+    "host_path": {
+      "description": "The path on the host that is mounted, for a bind mount or a Kubernetes <code>hostPath</code> volume. For example: <code>/var/run/docker.sock</code> or <code>/etc</code>.",
+      "requirement": "recommended"
+    },
+    "is_read_only": {
+      "description": "Indicates that the mount is read only inside the container. A writable mount of a host path lets the container change files on the host.",
+      "requirement": "recommended"
+    },
+    "name": {
+      "description": "The name of the volume, if the mount has one. For example, the name of a named volume, or the name of a Kubernetes pod volume.",
+      "requirement": "optional"
+    },
+    "path": {
+      "description": "The path inside the container where the mount is attached. For example: <code>/host</code> or <code>/var/run/docker.sock</code>.",
+      "requirement": "required"
+    },
+    "type": {
+      "description": "The mount type, normalized to the caption of the <code>type_id</code> value. In the case of 'Other', it is defined by the event source.",
+      "requirement": "optional"
+    },
+    "type_id": {
+      "description": "The normalized identifier of the mount type.",
+      "requirement": "recommended",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The mount type is unknown."
+        },
+        "1": {
+          "caption": "Bind",
+          "description": "A directory or file from the host is mounted into the container, such as a bind mount or a Kubernetes <code>hostPath</code> volume. <code>host_path</code> holds the host path."
+        },
+        "2": {
+          "caption": "Volume",
+          "description": "Storage managed by the container runtime or the orchestrator is mounted, such as a named volume, or a Kubernetes persistent volume claim, <code>emptyDir</code>, <code>configMap</code> or <code>secret</code> volume."
+        },
+        "3": {
+          "caption": "Temporary File System",
+          "description": "A memory-backed temporary file system is mounted, which is not persisted on the host."
+        },
+        "4": {
+          "caption": "Named Pipe",
+          "description": "A named pipe from the host is mounted into a Windows container."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The mount type is not mapped. See the <code>type</code> attribute, which contains a data source specific value."
+        }
+      }
+    }
+  },
+  "references": [
+    {
+      "description": "Kubernetes, Volumes, hostPath",
+      "url": "https://kubernetes.io/docs/concepts/storage/volumes/#hostpath"
+    },
+    {
+      "description": "Kubernetes Pod Security Standards, Baseline policy, HostPath Volumes",
+      "url": "https://kubernetes.io/docs/concepts/security/pod-security-standards/"
+    },
+    {
+      "description": "Docker Engine API, container inspect, Mounts (MountPoint)",
+      "url": "https://docs.docker.com/reference/api/engine/version/v1.47/"
+    }
+  ]
+}

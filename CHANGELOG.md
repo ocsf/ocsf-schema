@@ -4,13 +4,6 @@ All notable changes to this project will be documented in this file. Changes for
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-<!-- Don't edit the Unreleased section in a pull request. Add changelog.d/<PR number>.md
-instead; see changelog.d/README.md. When a release is prepared,
-`python .github/scripts/changelog.py build` adds those entries here, under the release's
-version heading.
-
-Entries follow the Keep a Changelog guiding principles: https://keepachangelog.com/en/1.1.0/#how. -->
-
 <!-- All available sections in the Changelog:
 
 ### Added
@@ -41,7 +34,16 @@ Entries follow the Keep a Changelog guiding principles: https://keepachangelog.c
 
 -->
 
+<!-- Don't edit the Unreleased section in a pull request. Add changelog.d/<PR number>.md
+instead; see changelog.d/README.md. When a release is prepared,
+`python .github/scripts/changelog.py build` adds those entries here, under the release's
+version heading.
+
+Entries follow the Keep a Changelog guiding principles: https://keepachangelog.com/en/1.1.0/#how. -->
+
 ## [Unreleased]
+
+## [v1.10.0] - Nov 20th, 2026
 
 ### Added
 * #### Categories
@@ -49,12 +51,15 @@ Entries follow the Keep a Changelog guiding principles: https://keepachangelog.c
   1. Added `dns_zone_transfer_activity` (`DNS Zone Transfer Activity`) class to capture DNS zone transfers (AXFR/IXFR) and NOTIFY. [#1675](https://github.com/ocsf/ocsf-schema/pull/1675)
 * #### Profiles
   1. Added optional `ai_capability` attribute to the `ai_operation` profile, recording the invoked AI capability (tool, resource, or prompt). [#1729](https://github.com/ocsf/ocsf-schema/pull/1729)
+  1. Added `physical_site` profile carrying physical site context through the `physical_site` object, attached to the Identity & Access Management and Findings classes, and to the `location` object so devices, endpoints, and persons carry site context through `location`. [#1750](https://github.com/ocsf/ocsf-schema/pull/1750)
 * #### Objects
   1. Added `firewall_rule_evaluation` (Security Control Rule Evaluation), extending `firewall_rule` with optional normalized action and disposition attributes. [#1786](https://github.com/ocsf/ocsf-schema/pull/1786)
-  1. Added `ai_capability` object describing an invoked AI capability — its primitive kind, provenance (serving system and transport), declared behavior hints, and input/output schema, description, and baseline fingerprints. [#1729](https://github.com/ocsf/ocsf-schema/pull/1729)
+  1. Added `ai_capability` object describing an invoked AI capability - its primitive kind, provenance (serving system and transport), declared behavior hints, and input/output schema, description, and baseline fingerprints. [#1729](https://github.com/ocsf/ocsf-schema/pull/1729)
   1. Added the `ai_status` object for per-operation outcome scalars contributed by the `ai_operation` profile, with `stop_reason` / `stop_reason_id` (enum: Unknown (0), End of Turn (1), Token Limit (2), Tool Use (3), Session Stop (4), Content Filter (5), Other (99)) and `permission_result` / `permission_result_id` (enum: Unknown (0), Allowed (1), Denied (2), Other (99)). Additional outcome attributes may be added in later versions. [#1704](https://github.com/ocsf/ocsf-schema/pull/1704)
   1. Added the `wifi` object describing IEEE 802.11 network identity, radio and security attributes. [#1721](https://github.com/ocsf/ocsf-schema/pull/1721)
   1. Added `dns_soa` object to represent the RFC 1035 SOA (Start of Authority) record RDATA, used to carry zone serials and timers in DNS zone transfers. [#1675](https://github.com/ocsf/ocsf-schema/pull/1675)
+  1. Added `physical_site` object describing a physical site as defined by the reporting organization (`uid`, `name`) and the location within it (`building`, `floor`, `site_zone`). [#1750](https://github.com/ocsf/ocsf-schema/pull/1750)
+  1. Added `site_zone` object describing a defined area within a physical site that shares a common security posture, distinct from the network `zone` attribute. It reuses `type_id` with an object-scoped enum: Unknown (0), Perimeter (1), Public (2), Restricted (3), Critical (4), Transitional (5), External (6), Other (99), with `type` as its sibling. [#1750](https://github.com/ocsf/ocsf-schema/pull/1750)
 * #### Observables
 * #### Platform Extensions
   1. Added `token_elevation_type` and `token_elevation_type_id` to the Windows extension dictionary and to the Windows `process` object, for the User Account Control elevation type of the process token. [#1788](https://github.com/ocsf/ocsf-schema/pull/1788)
@@ -82,12 +87,14 @@ Entries follow the Keep a Changelog guiding principles: https://keepachangelog.c
   1. Added `is_hidden` as a `boolean_t`. [#1792](https://github.com/ocsf/ocsf-schema/pull/1792)
   1. Added `call_stack` as an array of `string_t`. [#1794](https://github.com/ocsf/ocsf-schema/pull/1794)
   1. Added `terminating_signal` and `terminating_signal_id` attributes, with the POSIX signals whose default action is to terminate the process. [#1793](https://github.com/ocsf/ocsf-schema/pull/1793)
+  1. Added `building` and `floor` as `string_t` physical site attributes. [#1750](https://github.com/ocsf/ocsf-schema/pull/1750)
+  1. Added `physical_site` and `site_zone` as object attributes and `is_armed` as a `boolean_t`. [#1750](https://github.com/ocsf/ocsf-schema/pull/1750)
 
 ### Improved
 * #### Categories
 * #### Event Classes
   1. Added `likelihood`, `likelihood_id`, and `likelihood_score` as optional attributes in the `context` group on `Detection Finding` (class 2004). [#1715](https://github.com/ocsf/ocsf-schema/pull/1715)
-  1. Added `is_declared_incident` to finding.json and incident_finding.json. Added `resolved_time` to `finding.json` and `incident_finding.json`. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
+  1. Added `is_declared_incident` and `resolved_time` to `Incident Finding` (class 2005), and clarified the `time` description in the `Finding` base class. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
   1. Overrode the `ai_operation` profile's `ai_agent` description on `Application Lifecycle` (class 6002) to clarify that it represents the affected application when that application is itself an AI agent. [#1751](https://github.com/ocsf/ocsf-schema/pull/1751)
   1. Clarified `ai_agent` description in `role_management` to identify the agent that `iam_role` is provisioned for or bound to, rather than the actor-oriented wording inherited from the `ai_operation` profile. Noted in the class description that `role_management` covers roles bound to AI agents. [#1726](https://github.com/ocsf/ocsf-schema/pull/1726)
   1. Moved the `risk_*` attributes from `data_security_finding` and `detection_finding` up to `finding`. [#1811](https://github.com/ocsf/ocsf-schema/pull/1811)
@@ -105,8 +112,8 @@ Entries follow the Keep a Changelog guiding principles: https://keepachangelog.c
   1. Broadened the `firewall_rule` caption and descriptions to Security Control Rule, covering rules evaluated by firewalls and other security controls. [#1786](https://github.com/ocsf/ocsf-schema/pull/1786)
   1. Added `progress_current`, `progress_total`, `progress_unit`, `progress_unit_id`, `bytes_processed`, `bytes_written`, `throughput` and `queue_name` to the `job` object so a running job can report its progress and throughput. [#1722](https://github.com/ocsf/ocsf-schema/pull/1722)
   1. Added `created_time`, `first_seen_time`, `last_seen_time`, `modified_time`, `src_url`, and `criticality_id` attributes to the `application` object. [#1683](https://github.com/ocsf/ocsf-schema/pull/1683)
-  1. Added `is_declared_incident`, `resolved_time` to `finding.json` and `incident_finding.json`. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
-  1. Added `query_info` to the `finding_info` object  for the search behind the `related_events` in the finding. [#1744](https://github.com/ocsf/ocsf-schema/pull/1744)
+  1. Added `resolved_time` to the `finding_info` object, and changed its `created_time` from optional to recommended. [#1740](https://github.com/ocsf/ocsf-schema/pull/1740)
+  1. Added `query_info` to the `finding_info` object for the search behind the `related_events` in the finding. [#1744](https://github.com/ocsf/ocsf-schema/pull/1744)
   1. Added `finding_info` to the `related_events` object for cases where the related event is a finding. [#1744](https://github.com/ocsf/ocsf-schema/pull/1744)
   1. Added `raw_data` to the `related_events` object to optionally carry the full event as a string. [#1744](https://github.com/ocsf/ocsf-schema/pull/1744)
   1. Added `risk_details`, `risk_level_id`, `risk_level`, `risk_score` to `related_events` to carry any risk values when the related event is a finding. [#1744](https://github.com/ocsf/ocsf-schema/pull/1744)
@@ -118,7 +125,7 @@ Entries follow the Keep a Changelog guiding principles: https://keepachangelog.c
   1. Added per-node authority attributes `scopes`, `audience`, and `expiration_time` to the `delegation` object, so each hop in the chain of authority records what was granted, for whom, and until when. [#1705](https://github.com/ocsf/ocsf-schema/pull/1705)
   1. Added `wifi` to the `network_endpoint` and `network_interface` objects. Resolves #1463. [#1721](https://github.com/ocsf/ocsf-schema/pull/1721)
   1. Added `is_elevated` to the `session` object, for a session running with elevated privileges such as a Windows elevated token. [#1809](https://github.com/ocsf/ocsf-schema/pull/1809)
-  1. Added `value` to the `digital_signature` object so an event can carry the signature bytes themselves, not only a description of them — the raw signature output of `algorithm_id`, encoded as standard Base64 (RFC 4648 §4). [#1709](https://github.com/ocsf/ocsf-schema/pull/1709)
+  1. Added `value` to the `digital_signature` object so an event can carry the signature bytes themselves, not only a description of them - the raw signature output of `algorithm_id`, encoded as standard Base64 (RFC 4648 §4). [#1709](https://github.com/ocsf/ocsf-schema/pull/1709)
   1. Added `RC4 (7)` enum value to `algorithm_id` in the `encryption_details` object, so Kerberos tickets encrypted with RC4 can be normalized. [#1787](https://github.com/ocsf/ocsf-schema/pull/1787)
   1. Added `session_key_encryption_details` to the `authentication_token` object, for the encryption type of a Kerberos ticket session key, reported separately from the ticket encryption. [#1808](https://github.com/ocsf/ocsf-schema/pull/1808)
   1. Added `desc` to the `trait` object to carry a human-readable description of the trait. [#1797](https://github.com/ocsf/ocsf-schema/pull/1797)
@@ -129,6 +136,7 @@ Entries follow the Keep a Changelog guiding principles: https://keepachangelog.c
   1. Added `is_hidden` to the `file` object, alongside `is_system` and `is_readonly`, to indicate a hidden file or directory. [#1792](https://github.com/ocsf/ocsf-schema/pull/1792)
   1. Added `call_stack` to the `process` object for the call stack of the thread identified by `tid` at the time of the activity, for example the thread that opened or injected into another process. [#1794](https://github.com/ocsf/ocsf-schema/pull/1794)
   1. Clarified in the `metadata` object which value `received_time` matches when the first logger records no separate `received_time`, and stated `total_queued_duration` as `logged_time` minus `processed_time`. [#1821](https://github.com/ocsf/ocsf-schema/pull/1821)
+  1. Added `physical_site` to the `location` object's `at_least_one` constraint, so a location that carries only physical site context validates when the `physical_site` profile is applied. [#1750](https://github.com/ocsf/ocsf-schema/pull/1750)
 * #### Observables
 * #### Platform Extensions
 * #### Dictionary Attributes
@@ -152,12 +160,18 @@ Entries follow the Keep a Changelog guiding principles: https://keepachangelog.c
 ### Breaking changes
 
 ### Misc
-  1. Compare compatibility CI with the `1.9.0` tag, align GitHub Action versions, and require a `Signed-off-by` trailer on pull request commits. Spellcheck stays a warning.
-  1. Read the text block from the description-review response. `claude-sonnet-5-5` returns a thinking block first, and the reviewer crashed on `content[0].text`.
+  1. Compare compatibility CI with the `1.9.0` tag, align GitHub Action versions, and require a `Signed-off-by` trailer on pull request commits. Spellcheck stays a warning. [#1776](https://github.com/ocsf/ocsf-schema/pull/1776)
+  1. Read the text block from the description-review response. `claude-sonnet-5-5` returns a thinking block first, and the reviewer crashed on `content[0].text`. [#1776](https://github.com/ocsf/ocsf-schema/pull/1776)
   1. Added the `@recursive` attribute annotation to the metaschema, letting an attribute declare that expanding it reenters a type already on the path, with an optional nesting `limit` and, for indirect recursion, the `path` that closes the cycle. No schema definitions are annotated yet. [#1762](https://github.com/ocsf/ocsf-schema/pull/1762)
   1. New Extension registration for Yandex Cloud. [#1759](https://github.com/ocsf/ocsf-schema/pull/1759)
   1. New Extension registration for WithSecure. [#1773](https://github.com/ocsf/ocsf-schema/pull/1773)
   1. New Extension registration for ZeroSOC. [#1785](https://github.com/ocsf/ocsf-schema/pull/1785)
+  1. Changelog entries now go in `changelog.d/<PR number>.md`, one file per pull request, and are merged into CHANGELOG.md when a release is prepared, so pull requests no longer conflict over CHANGELOG.md. A new Changelog check requires the file on pull requests that change the schema. [#1813](https://github.com/ocsf/ocsf-schema/pull/1813)
+  1. The Changelog check now fails a pull request that changes the schema and edits CHANGELOG.md, instead of warning, and runs on pull requests opened before changelog files existed. [#1822](https://github.com/ocsf/ocsf-schema/pull/1822)
+  1. CI: renamed workflows and checks to say what they check, removed the unused server validation workflow, updated the GitHub Actions to their current major versions, aligned Python versions, and gave every workflow a timeout and cancellation of superseded pull request runs. [#1823](https://github.com/ocsf/ocsf-schema/pull/1823)
+  1. Added a formatter for the schema JSON files (`.github/scripts/format_schema.py`), a CI check that runs it, and a recommended pre-commit config. A class or object's `profiles` list now comes before `attributes`, and the reformatted files keep the same values. Every file now ends with a newline, and CI checks that it stays that way. [#1825](https://github.com/ocsf/ocsf-schema/pull/1825)
+  1. CI: the compatibility check's baseline release and the `ocsf-lib` and `ocsf-validator` versions are set in the workflows instead of repository variables. [#1826](https://github.com/ocsf/ocsf-schema/pull/1826)
+  1. Added `.github/scripts/release.py` for release maintainers. `prep` builds the changelog, sets the release version and updates the spellcheck word list, holding back likely typos. `next` sets the next `-dev` version and moves the backwards compatibility baseline to the release. [#1835](https://github.com/ocsf/ocsf-schema/pull/1835)
 
 ## [v1.9.0] - Aug 3rd, 2026
 

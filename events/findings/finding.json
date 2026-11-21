@@ -4,9 +4,14 @@
   "description": "The Finding event is a generic event that defines a set of attributes available in the Findings category.",
   "extends": "base_event",
   "name": "finding",
+  "profiles": [
+    "incident",
+    "physical_site"
+  ],
   "attributes": {
     "$include": [
-      "profiles/incident.json"
+      "profiles/incident.json",
+      "profiles/physical_site.json"
     ],
     "activity_id": {
       "description": "The normalized identifier of the finding activity. Use <code>1</code> (Create) when a finding is first generated, <code>2</code> (Update) when an existing finding is modified (e.g., severity change, new evidence), and <code>3</code> (Close) when a finding is resolved or dismissed.",
@@ -150,8 +155,5 @@
       "group": "context",
       "requirement": "optional"
     }
-  },
-  "profiles": [
-    "incident"
-  ]
+  }
 }

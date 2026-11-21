@@ -1,0 +1,35 @@
+name: Compilation Validation
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: true
+
+jobs:
+  compile:
+    name: Compile schema
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.14"
+
+      - name: Install compiler
+        run: python -m pip install ocsf-schema-compiler
+
+      # Only whether it compiles matters, so the output is discarded.
+      - name: Compile schema
+        run: ocsf-schema-compiler . > /dev/null

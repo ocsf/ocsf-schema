@@ -1,0 +1,58 @@
+name: Backwards Compatibility Validation
+
+# To test with `act` on Apple silicon:
+# act -s GITHUB_TOKEN="$(gh auth token)" --container-architecture linux/amd64 -W .github/workflows/validate-backwards-compatibility.yml
+
+# ocsf-lib loads a version string from schema.ocsf.io/export/schema. That legacy
+# export returns HTTP 400 for 1.8.0 and newer (process.euid is contributed by
+# more than one profile). Check out the release tag and let ocsf-lib compile
+# it.
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: true
+
+jobs:
+  compatibility:
+    name: Check backwards compatibility
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout schema under test
+        uses: actions/checkout@v7
+        with:
+          path: head
+
+      - name: Checkout last stable release
+        uses: actions/checkout@v7
+        with:
+          repository: ocsf/ocsf-schema
+          # The last stable release's branch, which the v1.* ruleset keeps
+          # from changing. A full ref, since a tag can have the same name.
+          # `release.py next` updates it after each release.
+          ref: "refs/heads/v1.10.0"
+          path: stable
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          # ocsf-lib 0.10.4 fails on Python 3.14 ("... does not have
+          # annotations"). Move to 3.14 once ocsf-lib supports it.
+          python-version: "3.13"
+
+      - name: Install validator
+        run: python -m pip install "ocsf-lib>=0.10.0"
+
+      - name: Run validator
+        env:
+          FORCE_COLOR: "1"
+        run: python -m ocsf.validate.compatibility "$GITHUB_WORKSPACE/stable" "$GITHUB_WORKSPACE/head"

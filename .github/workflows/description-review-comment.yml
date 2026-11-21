@@ -2,7 +2,7 @@ name: Schema Description Review - Comment
 
 on:
   workflow_run:
-    workflows: ["Schema Description Review - Compile"]
+    workflows: ["Schema Description Review - Prepare"]
     types: [completed]
 
 permissions:
@@ -14,25 +14,32 @@ concurrency:
 
 jobs:
   review:
-    name: Post description review suggestions
+    name: Post description review
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     if: github.event.workflow_run.conclusion == 'success'
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
-          python-version: "3.12"
+          python-version: "3.14"
 
       - name: Install dependencies
         run: pip install anthropic==1.7.0
 
+      # The artifact is built by an unprivileged job running untrusted PR code,
+      # so its contents are attacker-controlled. Download it under RUNNER_TEMP,
+      # never the workspace: extracting into the workspace would let a crafted
+      # artifact overwrite the checked-out review script that the privileged
+      # step below executes.
       - name: Download review context
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v8
         with:
           name: review-context
+          path: ${{ runner.temp }}/review-artifact
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -40,6 +47,10 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ZACHS_CLAUDE_KEY }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REVIEW_CONTEXT_DIR: ${{ runner.temp }}/review-artifact
+          # Trusted value from the workflow_run event, used to confirm the
+          # PR number inside the artifact really belongs to this run.
+          EXPECTED_HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
         run: python .github/scripts/review_descriptions.py review
 
       - name: Report review failure
@@ -47,4 +58,6 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          REVIEW_CONTEXT_DIR: ${{ runner.temp }}/review-artifact
+          EXPECTED_HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
         run: python .github/scripts/review_descriptions.py report-failure

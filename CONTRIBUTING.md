@@ -18,7 +18,7 @@ The OCSF [Maintainers](https://github.com/ocsf/governance/blob/main/Maintainers.
 
 All contributors must submit their changes via pull requests. If you're not familiar with pull requests, please read [the GitHub documentation](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests). Following are a few guidelines and expectations for submitting a PR.
 
-1. Fork [ocsf-schema](https://github.com/ocsf/ocsf-schema). For changes to [ocsf-docs](https://github.com/ocsf/ocsf-docs) or [ocsf-server](https://github.com/ocsf/ocsf-server), follow that repository's contributing docs.
+1. Fork [ocsf-schema](https://github.com/ocsf/ocsf-schema) and [set up your clone](#setting-up). For changes to [ocsf-docs](https://github.com/ocsf/ocsf-docs) or [ocsf-server](https://github.com/ocsf/ocsf-server), follow that repository's contributing docs.
 2. Make the desired changes in the forked repo and [verify they work](#verifying-the-changes) before opening a PR.
 3. Push the changes to the forked repo.
 4. Create a **Pull Request** to merge into `ocsf/ocsf-schema`. You'll need at least 3 approvals, from code owners (`@ocsf/ocsf-maintainers`), to get the PR merged.
@@ -32,6 +32,27 @@ All contributors must submit their changes via pull requests. If you're not fami
     7. Once the PR is ready, submit it. Maintainers add the relevant labels.
     8. Resolve any GitHub Action failures or warnings on your pull request, and stay involved in the conversation.
 6. Thank you for your contribution!
+
+---
+
+## Setting up
+
+You need git and Python 3.14 or later. Fork [ocsf-schema](https://github.com/ocsf/ocsf-schema), then clone your fork and install pre-commit in a virtual environment:
+
+```bash
+git clone https://github.com/<your-username>/ocsf-schema.git
+cd ocsf-schema
+python3.14 -m venv .venv
+source .venv/bin/activate
+pip install pre-commit
+pre-commit install
+```
+
+On Windows, create and activate the environment with `py -3.14 -m venv .venv` and `.venv\Scripts\activate`.
+
+From then on, each commit runs the formatter and most of the [checks on pull requests](#checks-on-pull-requests), so you see problems before you push. pre-commit installs the tools these checks need, such as the metaschema validator, itself. See [Local checks with pre-commit](#local-checks-with-pre-commit) for what runs.
+
+Sign off each commit with `git commit -s`; see [Developer's Certificate of Origin 1.1](#developers-certificate-of-origin-11).
 
 ---
 
@@ -486,11 +507,19 @@ The [metaschema](metaschema/) folder defines every keyword the schema files may 
 
 ## Verifying the changes
 
-Before you open a PR, confirm the schema is valid and compiles. The same checks run again on the PR; see [Checks on pull requests](#checks-on-pull-requests).
+Before you open a PR, format the schema files and confirm the schema is valid and compiles. The same checks run again on the PR; see [Checks on pull requests](#checks-on-pull-requests). We recommend running them on each commit with pre-commit; see [Local checks with pre-commit](#local-checks-with-pre-commit).
 
-Install the tools with `pip` in a virtual environment. The compiler requires **Python 3.14+**. The validator needs Python 3.11+ (3.14 works).
+Install the tools with `pip` in the virtual environment from [Setting up](#setting-up).
 
-1. From the schema repository root, run the metaschema validator ([ocsf-validator](https://github.com/ocsf/ocsf-validator)):
+1. Sort and format the schema JSON files. The script uses only the Python standard library:
+
+    ```bash
+    python .github/scripts/format_schema.py
+    ```
+
+    In each object, keys are ordered by the type of their value (numbers, strings, objects, arrays, null, then true/false) and then by name. A class or object's `profiles` list goes right before `attributes`. Files use two-space indentation and end with a newline. The script also reports an event class, object or profile file that isn't named `<name>.json`.
+
+2. From the schema repository root, run the metaschema validator ([ocsf-validator](https://github.com/ocsf/ocsf-validator)):
 
     ```bash
     pip install "ocsf-validator>=0.2,<0.3"
@@ -499,7 +528,7 @@ Install the tools with `pip` in a virtual environment. The compiler requires **P
 
     FATAL and ERROR findings fail the command. WARNINGs do not; still fix warnings that are about your change.
 
-2. Compile the schema ([ocsf-schema-compiler](https://github.com/ocsf/ocsf-schema-compiler)). JSON is written to stdout and logs to stderr — redirect the JSON, or it will flood your terminal. This lean compile is what CI runs:
+3. Compile the schema ([ocsf-schema-compiler](https://github.com/ocsf/ocsf-schema-compiler)). JSON is written to stdout and logs to stderr — redirect the JSON, or it will flood your terminal. This lean compile is what CI runs:
 
     ```bash
     pip install ocsf-schema-compiler
@@ -513,7 +542,7 @@ Install the tools with `pip` in a virtual environment. The compiler requires **P
     Compilation failed: ...
     ```
 
-3. To browse locally, compile in **browser mode** (`-b`) and point [ocsf-server](https://github.com/ocsf/ocsf-server) v4+ at that file via `SCHEMA_FILE`. Lean JSON will not work in the server. Follow the [ocsf-server README](https://github.com/ocsf/ocsf-server/blob/main/README.md).
+4. To browse locally, compile in **browser mode** (`-b`) and point [ocsf-server](https://github.com/ocsf/ocsf-server) v4+ at that file via `SCHEMA_FILE`. Lean JSON will not work in the server. Follow the [ocsf-server README](https://github.com/ocsf/ocsf-server/blob/main/README.md).
 
     ```bash
     ocsf-schema-compiler . -b > compiled-browser.json
@@ -525,15 +554,16 @@ Address every compile error and validator ERROR before submitting.
 
 ### Checks on pull requests
 
-Pull requests to `main` run these checks. The first five fail the PR when they find a problem; the last two are advisory.
+Pull requests to `main` run these checks. The first six fail the PR when they find a problem; the last two are advisory.
 
-1. **Metaschema**: `ocsf-validator` checks the uncompiled files against [metaschema](metaschema/), as in step 1 above.
-2. **Compile**: `ocsf-schema-compiler` must compile the schema, as in step 2 above.
-3. **Compatibility**: `python -m ocsf.validate.compatibility` (from [ocsf-lib](https://pypi.org/project/ocsf-lib/)) compares the PR with the last stable release. CI checks out that release's tag (default `1.9.0`, or the `LATEST_STABLE` repository variable) and compiles it, because the schema.ocsf.io legacy export API rejects `1.8.0` and newer. You only need to run the comparison locally if you change classification IDs or remove attributes.
+1. **Metaschema**: `ocsf-validator` checks the uncompiled files against [metaschema](metaschema/), as in step 2 above.
+2. **Compile**: `ocsf-schema-compiler` must compile the schema, as in step 3 above.
+3. **Backwards compatibility**: `python -m ocsf.validate.compatibility` (from [ocsf-lib](https://pypi.org/project/ocsf-lib/)) compares the PR with the last stable release. CI checks out that release's branch (currently `v1.10.0`, set in [validate-backwards-compatibility.yml](.github/workflows/validate-backwards-compatibility.yml)) and compiles it, because the schema.ocsf.io legacy export API rejects `1.8.0` and newer. You only need to run the comparison locally if you change classification IDs or remove attributes. `ocsf-lib` doesn't run on Python 3.14 yet, so use Python 3.13 or earlier for it.
 4. **Developer Certificate of Origin**: every non-merge commit needs a `Signed-off-by` trailer. See [Developer's Certificate of Origin 1.1](#developers-certificate-of-origin-11).
 5. **Changelog**: a PR that changes the schema must add `changelog.d/<PR number>.md` and must not edit `CHANGELOG.md`, and every file in `changelog.d/` must follow the format in [changelog.d/README.md](changelog.d/README.md). A PR that edits `CHANGELOG.md` without changing the schema, for example to fix an earlier entry, gets a warning instead. The release prep PR deletes the changelog files, so it doesn't need one of its own. A PR with the `skip changelog` label skips the check. To check locally, run `python .github/scripts/changelog.py check`.
-6. **Spellcheck**: `cspell` reports unknown words as warnings. If it flags a legitimate term, such as a protocol name or an acronym, add the term to [.github/.project-words.txt](.github/.project-words.txt).
-7. **Description review**: an AI reviewer ([.github/scripts/review_descriptions.py](.github/scripts/review_descriptions.py)) comments on PRs that change event classes, objects, profiles, or a dictionary, in the core schema or in `extensions/`, or that change a changelog file or `CHANGELOG.md`. It looks at:
+6. **Schema format**: every schema JSON file must be sorted and formatted as `python .github/scripts/format_schema.py` writes it, and named after its `name`, as in step 1 above. Run the script to fix the order and spacing. Every other file must also end with one newline; pre-commit adds a missing one for you.
+7. **Spellcheck**: `cspell` reports unknown words as warnings. If it flags a legitimate term, such as a protocol name or an acronym, add the term to [.github/.project-words.txt](.github/.project-words.txt).
+8. **Description review**: an AI reviewer ([.github/scripts/review_descriptions.py](.github/scripts/review_descriptions.py)) comments on PRs that change event classes, objects, profiles, or a dictionary, in the core schema or in `extensions/`, or that change a changelog file or `CHANGELOG.md`. It looks at:
     - whether descriptions are clear, precise, and self-contained
     - whether a description is specific enough to populate the field correctly from raw telemetry
     - overlapping attributes, wrong type choices, and indirect attribution
@@ -541,6 +571,26 @@ Pull requests to `main` run these checks. The first five fail the PR when they f
     - whether changelog entries describe the change accurately, under the right heading
 
     On later pushes, it notes which suggestions were fixed and repeats the ones that are still open.
+
+### Local checks with pre-commit
+
+We recommend [pre-commit](https://pre-commit.com), which runs most of these checks each time you commit, so you see problems before you push instead of on the PR. [Setting up](#setting-up) installs it.
+
+On each commit, it:
+
+- sorts and formats the schema JSON files you changed, and adds a missing final newline to any other file. If it changes a file, the commit stops; look over the change, `git add` the file, and commit again.
+- runs the metaschema validator when you change schema files.
+- checks changelog files, JSON syntax, and leftover merge conflict markers.
+- shows unknown words from `cspell`, without failing.
+- refuses a commit message without a `Signed-off-by` trailer. Commit with `git commit -s`. Merge commits don't need one.
+
+The first commit after setup takes about a minute while pre-commit installs the tools. The compiler needs Python 3.14, so it runs only when you ask:
+
+```bash
+pre-commit run --hook-stage manual compile-schema --all-files
+```
+
+To run the checks on every file, use `pre-commit run --all-files`.
 
 ---
 

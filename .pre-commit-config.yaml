@@ -1,0 +1,64 @@
+# Recommended local checks that run when you commit, so you see problems before
+# you push. Pull request CI runs the same checks either way. See "Local checks
+# with pre-commit" in CONTRIBUTING.md.
+default_install_hook_types: [pre-commit, commit-msg]
+default_stages: [pre-commit, manual]
+
+repos:
+  - repo: local
+    hooks:
+      - id: format-schema
+        name: Sort and format schema JSON
+        entry: python .github/scripts/format_schema.py
+        language: python
+        types: [json]
+
+      - id: changelog
+        name: Check changelog files
+        entry: python .github/scripts/changelog.py check
+        language: python
+        files: ^changelog\.d/
+        pass_filenames: false
+
+      - id: validate-metaschema
+        name: Validate metaschema
+        entry: python -m ocsf_validator .
+        language: python
+        additional_dependencies: ["ocsf-validator>=0.2,<0.3"]
+        files: ^((events|objects|profiles|extensions|metaschema)/|(categories|dictionary|version)\.json$)
+        pass_filenames: false
+
+      # Needs Python 3.14, so it only runs when asked:
+      # pre-commit run --hook-stage manual compile-schema --all-files
+      - id: compile-schema
+        name: Compile schema
+        entry: ocsf-schema-compiler .
+        language: python
+        language_version: python3.14
+        additional_dependencies: [ocsf-schema-compiler]
+        pass_filenames: false
+        stages: [manual]
+
+      - id: signed-off-by
+        name: Check Signed-off-by (add it with git commit -s)
+        # Merge commits don't need one, as in CI.
+        entry: '\AMerge |^Signed-off-by: [^\n]+ <[^\s>]+>$'
+        language: pygrep
+        args: [--multiline, --negate]
+        stages: [commit-msg]
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-json
+      - id: end-of-file-fixer
+      - id: check-merge-conflict
+      - id: check-added-large-files
+
+  - repo: https://github.com/streetsidesoftware/cspell-cli
+    rev: v10.4.1
+    hooks:
+      # Shows unknown words without failing, like the Spellcheck check.
+      - id: cspell
+        args: [--config, .github/.cspell.yaml, --no-exit-code, --no-must-find-files, --no-progress, --no-summary, --gitignore, --files]
+        verbose: true

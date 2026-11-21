@@ -48,9 +48,11 @@ python .github/scripts/changelog.py preview
 In the release prep pull request, run:
 
 ```bash
-python .github/scripts/changelog.py build
+python .github/scripts/release.py prep
 ```
 
-It adds the release's section to `CHANGELOG.md`, such as `## [v1.10.0] - Feb 2nd, 2027`, right below `## [Unreleased]`. The version comes from `version.json`, without `-dev`, and the date is today; set them with `--version` and `--date`. If the section already exists, the entries are added to it.
+It runs `python .github/scripts/changelog.py build`, sets the release version in place of the `-dev` version, and updates the spellcheck word list. After the release is published, `release.py next` starts the next version. Run `release.py --help` for details.
+
+`changelog.py build` adds the release's section to `CHANGELOG.md`, such as `## [v1.10.0] - Feb 2nd, 2027`, right below `## [Unreleased]`. The version comes from `version.json`, without `-dev`, and the date is today; to set another date, run `release.py prep --date "Feb 2nd, 2027"`. If the section already exists, the entries are added to it.
 
 Each entry goes under its heading in pull request order, with its pull request link, and the files in this folder are deleted (except this README). Anything still listed under `Unreleased`, from pull requests that edited `CHANGELOG.md` directly, becomes part of the release, as it does when the version heading is added by hand. Because the pull request deletes the files, the Changelog check doesn't ask it for a file of its own.

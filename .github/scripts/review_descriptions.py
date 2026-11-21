@@ -1265,11 +1265,69 @@ def message_text(message: object) -> str:
     return "\n".join(parts)
 
 
+def review_context_path() -> Path:
+    """Locate review_context.json.
+
+    In the privileged `workflow_run` job the artifact is staged outside the
+    workspace and REVIEW_CONTEXT_DIR points at it. `prepare` runs in the
+    compile job and writes to the working directory, so default to that.
+    """
+    base = os.environ.get("REVIEW_CONTEXT_DIR", "")
+    return (Path(base) if base else Path(".")) / "review_context.json"
+
+
+def parse_pr_number(raw: object) -> str | None:
+    """Return `raw` as a PR number, or None if it is not a plain integer.
+
+    This value arrives inside an artifact produced by an unprivileged job that
+    ran untrusted PR code, and it is interpolated into `gh api` REST paths.
+    Without this check a value such as `1/../../repos/owner/other/issues/1`
+    would redirect the privileged token's writes to another resource.
+    `str()` of a bool, float, list, dict or None never matches the pattern.
+    """
+    text = str(raw).strip()
+    return text if re.fullmatch(r"[1-9][0-9]{0,9}", text) else None
+
+
+def pr_belongs_to_run(pr_number: str) -> bool:
+    """Confirm the artifact's PR number matches this workflow_run's head SHA.
+
+    A numeric check alone still lets a crafted artifact aim the bot's
+    privileged comment writes at an unrelated PR. EXPECTED_HEAD_SHA comes from
+    the trusted workflow_run event, so requiring it to equal the PR's current
+    head commit binds the review to the PR that actually produced it.
+    """
+    expected_sha = os.environ.get("EXPECTED_HEAD_SHA", "").strip()
+    if not expected_sha:
+        print("EXPECTED_HEAD_SHA is not set; refusing to post.", file=sys.stderr)
+        return False
+
+    repo = os.environ.get("GITHUB_REPOSITORY", "")
+    try:
+        actual_sha = run_gh(
+            "api",
+            f"repos/{repo}/pulls/{pr_number}",
+            "--jq", ".head.sha",
+        ).strip()
+    except (subprocess.CalledProcessError, OSError):
+        print(f"Could not resolve PR #{pr_number}", file=sys.stderr)
+        return False
+
+    if actual_sha != expected_sha:
+        print(
+            f"PR #{pr_number} head is {actual_sha or '<unknown>'} but this run "
+            f"was triggered for {expected_sha}; refusing to post.",
+            file=sys.stderr,
+        )
+        return False
+    return True
+
+
 def cmd_review() -> None:
     """Read review_context.json, call Claude, post PR comment."""
-    context_path = Path("review_context.json")
+    context_path = review_context_path()
     if not context_path.exists():
-        print("review_context.json not found", file=sys.stderr)
+        print(f"{context_path} not found", file=sys.stderr)
         sys.exit(1)
 
     data = json.loads(context_path.read_text())
@@ -1278,7 +1336,13 @@ def cmd_review() -> None:
         print("No schema files were changed, nothing to review.")
         return
 
-    pr_number = data["pr_number"]
+    raw_pr_number = data.get("pr_number")
+    pr_number = parse_pr_number(raw_pr_number)
+    if pr_number is None:
+        print(f"Refusing malformed PR number: {raw_pr_number!r}", file=sys.stderr)
+        sys.exit(1)
+    if not pr_belongs_to_run(pr_number):
+        sys.exit(1)
     ctx = data["compiled_context"]
 
     has_content = bool(
@@ -1351,7 +1415,7 @@ def cmd_report_failure() -> None:
     `workflow_run` jobs are not attached to the PR's check list, so a crashed
     review is otherwise completely silent to both author and maintainers.
     """
-    context_path = Path("review_context.json")
+    context_path = review_context_path()
     if not context_path.exists():
         print("No review context available; cannot identify the PR.")
         return
@@ -1362,8 +1426,18 @@ def cmd_report_failure() -> None:
         print("Review context is unreadable; cannot identify the PR.")
         return
 
-    pr_number = data.get("pr_number")
-    if data.get("skip") or not pr_number:
+    raw_pr_number = data.get("pr_number")
+    if data.get("skip") or not raw_pr_number:
+        return
+
+    # Same untrusted artifact as the review path, so apply the same checks.
+    # This runs as a failure handler, so decline quietly instead of exiting
+    # non-zero and masking the original error.
+    pr_number = parse_pr_number(raw_pr_number)
+    if pr_number is None:
+        print(f"Refusing malformed PR number: {raw_pr_number!r}")
+        return
+    if not pr_belongs_to_run(pr_number):
         return
 
     body = (

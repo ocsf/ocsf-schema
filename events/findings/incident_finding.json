@@ -5,7 +5,14 @@
   "description": "An Incident Finding reports the creation, update, or closure of security incidents as a result of detections and/or analytics. <br><strong>Note: </strong><code>Incident Finding</code> implicitly includes the <code>incident</code> profile and it should be added to the <code>metadata.profiles[]</code> array.",
   "extends": "base_event",
   "name": "incident_finding",
+  "profiles": [
+    "incident",
+    "physical_site"
+  ],
   "attributes": {
+    "$include": [
+      "profiles/physical_site.json"
+    ],
     "activity_id": {
       "description": "The normalized identifier of the incident activity. Use <code>1</code> (Create) when an incident is first opened, <code>2</code> (Update) when an existing incident is modified (e.g., new findings added, priority changed, assignee updated), and <code>3</code> (Close) when the incident is resolved.",
       "requirement": "required",
@@ -104,7 +111,7 @@
     },
     "is_declared_incident": {
       "group": "context",
-      "requirement":"optional"
+      "requirement": "optional"
     },
     "is_suspected_breach": {
       "group": "context",
@@ -205,8 +212,5 @@
       "assignee",
       "assignee_group"
     ]
-  },
-  "profiles": [
-    "incident"
-  ]
+  }
 }

@@ -13,6 +13,48 @@
       "description": "The container image used as a template to run the container.",
       "requirement": "recommended"
     },
+    "is_host_ipc": {
+      "description": "Indicates that the container shares the IPC namespace of the host, so it can use the host's shared memory and other IPC objects. For example, the Kubernetes pod setting <code>hostIPC: true</code>, or an IPC mode of <code>host</code> in the container runtime.",
+      "requirement": "optional",
+      "references": [
+        {
+          "description": "Kubernetes Pod Security Standards, Baseline policy, Host Namespaces",
+          "url": "https://kubernetes.io/docs/concepts/security/pod-security-standards/"
+        },
+        {
+          "description": "Docker Engine API, container create and inspect, HostConfig",
+          "url": "https://docs.docker.com/reference/api/engine/version/v1.47/"
+        }
+      ]
+    },
+    "is_host_network": {
+      "description": "Indicates that the container shares the network namespace of the host, so it sees and uses the host's network interfaces and can bind to its ports and reach services listening on its loopback address. For example, the Kubernetes pod setting <code>hostNetwork: true</code>, or a network mode of <code>host</code> in the container runtime.",
+      "requirement": "optional",
+      "references": [
+        {
+          "description": "Kubernetes Pod Security Standards, Baseline policy, Host Namespaces",
+          "url": "https://kubernetes.io/docs/concepts/security/pod-security-standards/"
+        },
+        {
+          "description": "Docker Engine API, container create and inspect, HostConfig",
+          "url": "https://docs.docker.com/reference/api/engine/version/v1.47/"
+        }
+      ]
+    },
+    "is_host_pid": {
+      "description": "Indicates that the container shares the PID namespace of the host, so it can see, and with enough privileges signal or trace, every process on the host. For example, the Kubernetes pod setting <code>hostPID: true</code>, or a PID mode of <code>host</code> in the container runtime.",
+      "requirement": "optional",
+      "references": [
+        {
+          "description": "Kubernetes Pod Security Standards, Baseline policy, Host Namespaces",
+          "url": "https://kubernetes.io/docs/concepts/security/pod-security-standards/"
+        },
+        {
+          "description": "Docker Engine API, container create and inspect, HostConfig",
+          "url": "https://docs.docker.com/reference/api/engine/version/v1.47/"
+        }
+      ]
+    },
     "is_privileged": {
       "description": "Indicates that the container runs in privileged mode. A privileged container gets all kernel capabilities and access to the host devices, and the runtime does not apply its default system call filter, AppArmor or SELinux confinement, so it is not isolated from the host in a meaningful way.",
       "requirement": "optional",

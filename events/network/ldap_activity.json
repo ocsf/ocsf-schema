@@ -1,0 +1,182 @@
+{
+  "uid": 16,
+  "caption": "LDAP Activity",
+  "description": "LDAP Activity events report Lightweight Directory Access Protocol (LDAP) operations between a client and a directory server, such as Bind, Search, Modify, Add and Delete, as seen on the network or reported by the client or the server. Each event reports one operation, identified by its message ID, together with its result. A Bind that authenticates a user can also be reported with the <code>Authentication</code> class, using an <code>auth_protocol_id</code> of LDAP; this class reports the protocol level details of the operation.",
+  "extends": "network",
+  "name": "ldap_activity",
+  "attributes": {
+    "activity_id": {
+      "enum": {
+        "1": {
+          "caption": "Bind",
+          "description": "A Bind operation, which authenticates the client to the directory server. The authentication method is conveyed by <code>bind_type_id</code>."
+        },
+        "2": {
+          "caption": "Unbind",
+          "description": "An Unbind operation, which the client sends to end the LDAP session."
+        },
+        "3": {
+          "caption": "Search",
+          "description": "A Search operation, which reads the entries under <code>ldap_dn</code> that match <code>search_filter</code> within <code>search_scope_id</code>."
+        },
+        "4": {
+          "caption": "Modify",
+          "description": "A Modify operation, which adds, deletes or replaces attribute values of the entry <code>ldap_dn</code>."
+        },
+        "5": {
+          "caption": "Add",
+          "description": "An Add operation, which creates the entry <code>ldap_dn</code>."
+        },
+        "6": {
+          "caption": "Delete",
+          "description": "A Delete operation, which removes the entry <code>ldap_dn</code>."
+        },
+        "7": {
+          "caption": "Modify DN",
+          "description": "A Modify DN operation, which renames the entry <code>ldap_dn</code> or moves it to a new parent."
+        },
+        "8": {
+          "caption": "Compare",
+          "description": "A Compare operation, which tests whether the entry <code>ldap_dn</code> holds a given attribute value."
+        },
+        "9": {
+          "caption": "Abandon",
+          "description": "An Abandon operation, which asks the server to stop processing an earlier request."
+        },
+        "10": {
+          "caption": "Extended",
+          "description": "An Extended operation, which requests a service that is not part of the core protocol, such as StartTLS or Password Modify."
+        }
+      }
+    },
+    "bind_type": {
+      "description": "The authentication method of a Bind, normalized to the caption of the <code>bind_type_id</code> value. In the case of 'Other', it is defined by the event source.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "bind_type_id": {
+      "description": "The normalized identifier of the authentication method of a Bind.",
+      "group": "primary",
+      "requirement": "recommended",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The bind type is unknown."
+        },
+        "1": {
+          "caption": "Simple",
+          "description": "A simple Bind, which authenticates with a name and a password, or anonymously when both are empty. The password is sent as is, so a simple Bind on a connection that is not protected by TLS exposes it."
+        },
+        "2": {
+          "caption": "SASL",
+          "description": "A Bind that authenticates with a Simple Authentication and Security Layer (SASL) mechanism, which is conveyed by <code>sasl_mechanism</code>."
+        },
+        "3": {
+          "caption": "Sicily",
+          "description": "A Bind that uses Sicily, a non-standard, multi-step bind method that carries NTLM authentication. It is made of a <code>sicilyNegotiate</code> request followed by a <code>sicilyResponse</code> request.",
+          "references": [
+            {
+              "description": "MS-ADTS 5.1.1.1 Supported Authentication Methods",
+              "url": "https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-adts/e7d814a5-4cb5-4b0d-b408-09d79988b550"
+            }
+          ]
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The bind type is not mapped. See the <code>bind_type</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
+    "is_cleartext": {
+      "description": "Indicates whether a Bind sent the password in clear text, which is the case for a simple Bind on a connection that is not protected by TLS.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "ldap_dn": {
+      "description": "The distinguished name of the entry that the operation applies to: the name in a Bind request, the base object of a Search, or the entry that a Modify, Add, Delete, Modify DN or Compare operation targets. For example: <code>CN=Users,DC=corp,DC=example,DC=com</code>.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "num_records": {
+      "description": "The number of entries returned by a Search.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "requested_attributes": {
+      "description": "The attributes that a Search asks the server to return for each matching entry. For example: <code>[\"sAMAccountName\", \"servicePrincipalName\"]</code>. An empty list means all user attributes.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "sasl_mechanism": {
+      "description": "The SASL mechanism of a SASL Bind. For example: <code>GSSAPI</code>, <code>GSS-SPNEGO</code> or <code>EXTERNAL</code>.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "search_filter": {
+      "description": "The filter of a Search, in the string form defined by RFC 4515. For example: <code>(servicePrincipalName=*)</code>.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "search_scope": {
+      "description": "The scope of a Search, normalized to the caption of the <code>search_scope_id</code> value. In the case of 'Other', it is defined by the event source.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "search_scope_id": {
+      "description": "The normalized identifier of the scope of a Search. Each value is 1 greater than its RFC 4511 <code>scope</code> equivalent.",
+      "group": "context",
+      "requirement": "optional",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The search scope is unknown."
+        },
+        "1": {
+          "caption": "Base Object",
+          "description": "The search is limited to the entry <code>ldap_dn</code> itself (RFC 4511 <code>baseObject</code>)."
+        },
+        "2": {
+          "caption": "Single Level",
+          "description": "The search covers the entries directly under <code>ldap_dn</code> (RFC 4511 <code>singleLevel</code>)."
+        },
+        "3": {
+          "caption": "Whole Subtree",
+          "description": "The search covers <code>ldap_dn</code> and every entry below it (RFC 4511 <code>wholeSubtree</code>)."
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The search scope is not mapped. See the <code>search_scope</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
+    "status_code": {
+      "description": "The LDAP result code of the response, as the number or name reported by the event source. For example: <code>49</code> or <code>invalidCredentials</code>.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "status_detail": {
+      "description": "The diagnostic message of the LDAP response, which the server can use to explain the result code.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "transaction_id": {
+      "description": "The LDAP message ID, which the client assigns to a request and the server repeats in each response to it.",
+      "group": "context",
+      "requirement": "recommended"
+    }
+  },
+  "references": [
+    {
+      "description": "RFC 4511 Lightweight Directory Access Protocol (LDAP): The Protocol",
+      "url": "https://www.rfc-editor.org/rfc/rfc4511"
+    },
+    {
+      "description": "RFC 4513 Lightweight Directory Access Protocol (LDAP): Authentication Methods and Security Mechanisms",
+      "url": "https://www.rfc-editor.org/rfc/rfc4513"
+    },
+    {
+      "description": "RFC 4515 Lightweight Directory Access Protocol (LDAP): String Representation of Search Filters",
+      "url": "https://www.rfc-editor.org/rfc/rfc4515"
+    }
+  ]
+}

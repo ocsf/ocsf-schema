@@ -79,12 +79,42 @@
         }
       }
     },
+    "cipher_algorithm": {
+      "description": "The encryption algorithm negotiated for the SSH connection. For example: <code>aes256-gcm@openssh.com</code> or <code>chacha20-poly1305@openssh.com</code>. When the two directions use different algorithms, use the value as reported by the event source.",
+      "group": "context",
+      "requirement": "optional"
+    },
     "client_hassh": {
       "group": "primary",
       "requirement": "recommended"
     },
+    "compression_algorithm": {
+      "description": "The compression algorithm negotiated for the SSH connection. For example: <code>none</code> or <code>zlib@openssh.com</code>.",
+      "group": "context",
+      "requirement": "optional"
+    },
     "file": {
       "description": "The file that is the target of the SSH activity.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "host_key_algorithm": {
+      "description": "The public key algorithm of the server host key that the server used to sign the key exchange. For example: <code>ssh-ed25519</code>, <code>rsa-sha2-512</code> or <code>ecdsa-sha2-nistp256</code>.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "host_key_fingerprint": {
+      "description": "The fingerprint of the server host key. For example, for a host key fingerprint reported as <code>SHA256:</code> followed by a Base64 digest, set <code>algorithm_id</code> to <code>3</code> (SHA-256) and <code>value</code> to the Base64 digest without the <code>SHA256:</code> prefix. A change in the host key presented by the same server can indicate that the server was replaced or that the connection is being intercepted.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "kex_algorithm": {
+      "description": "The key exchange algorithm negotiated for the SSH connection. For example: <code>curve25519-sha256</code> or <code>sntrup761x25519-sha512@openssh.com</code>.",
+      "group": "context",
+      "requirement": "optional"
+    },
+    "mac_algorithm": {
+      "description": "The message authentication code (MAC) algorithm negotiated for the SSH connection. For example: <code>hmac-sha2-256-etm@openssh.com</code>. When the two directions use different algorithms, use the value as reported by the event source.",
       "group": "context",
       "requirement": "optional"
     },

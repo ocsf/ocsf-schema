@@ -8,7 +8,7 @@
       "description": "The path on the host that is mounted, for a bind mount or a Kubernetes <code>hostPath</code> volume. For example: <code>/var/run/docker.sock</code> or <code>/etc</code>.",
       "requirement": "recommended"
     },
-    "is_read_only": {
+    "is_readonly": {
       "description": "Indicates that the mount is read only inside the container. A writable mount of a host path lets the container change files on the host.",
       "requirement": "recommended"
     },
@@ -18,7 +18,8 @@
     },
     "path": {
       "description": "The path inside the container where the mount is attached. For example: <code>/host</code> or <code>/var/run/docker.sock</code>.",
-      "requirement": "required"
+      "requirement": "required",
+      "type": "file_path_t"
     },
     "type": {
       "description": "The mount type, normalized to the caption of the <code>type_id</code> value. In the case of 'Other', it is defined by the event source.",

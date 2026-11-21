@@ -101,6 +101,125 @@
       "group": "primary",
       "requirement": "recommended"
     },
+    "grant_type": {
+      "description": "The OAuth 2.0 authorization grant type, normalized to the caption of the <code>grant_type_id</code> value. In the case of 'Other', it is defined by the event source.",
+      "group": "primary",
+      "requirement": "recommended"
+    },
+    "grant_type_id": {
+      "description": "The normalized identifier of the OAuth 2.0 authorization grant that the client used to obtain its tokens, for example when <code>auth_protocol_id</code> is OAUTH 2.0 or OpenID. Grants that do not involve the user signing in to the authorization server in a browser, such as Device Code and Resource Owner Password Credentials, are frequent targets of phishing and password spraying.",
+      "group": "primary",
+      "requirement": "recommended",
+      "enum": {
+        "0": {
+          "caption": "Unknown",
+          "description": "The grant type is unknown."
+        },
+        "1": {
+          "caption": "Authorization Code",
+          "description": "The client redirects the user to the authorization server to sign in, and exchanges the authorization code it receives for tokens.",
+          "source": "authorization_code",
+          "references": [
+            {
+              "description": "RFC 6749 section 4.1 Authorization Code Grant",
+              "url": "https://www.rfc-editor.org/rfc/rfc6749#section-4.1"
+            }
+          ]
+        },
+        "2": {
+          "caption": "Implicit",
+          "description": "The authorization server returns the access token directly in the redirect, without an authorization code.",
+          "source": "response_type=token",
+          "references": [
+            {
+              "description": "RFC 6749 section 4.2 Implicit Grant",
+              "url": "https://www.rfc-editor.org/rfc/rfc6749#section-4.2"
+            }
+          ]
+        },
+        "3": {
+          "caption": "Resource Owner Password Credentials",
+          "description": "The client collects the user name and password itself and sends them to the authorization server for tokens.",
+          "source": "password",
+          "references": [
+            {
+              "description": "RFC 6749 section 4.3 Resource Owner Password Credentials Grant",
+              "url": "https://www.rfc-editor.org/rfc/rfc6749#section-4.3"
+            }
+          ]
+        },
+        "4": {
+          "caption": "Client Credentials",
+          "description": "The client authenticates as itself, without a user, with its own credentials such as a client secret or certificate.",
+          "source": "client_credentials",
+          "references": [
+            {
+              "description": "RFC 6749 section 4.4 Client Credentials Grant",
+              "url": "https://www.rfc-editor.org/rfc/rfc6749#section-4.4"
+            }
+          ]
+        },
+        "5": {
+          "caption": "Refresh Token",
+          "description": "The client exchanges a refresh token for a new access token.",
+          "source": "refresh_token",
+          "references": [
+            {
+              "description": "RFC 6749 section 6 Refreshing an Access Token",
+              "url": "https://www.rfc-editor.org/rfc/rfc6749#section-6"
+            }
+          ]
+        },
+        "6": {
+          "caption": "Device Code",
+          "description": "The device shows a code that the user enters on another device to sign in, while the device polls the authorization server for tokens. Used by devices with limited input.",
+          "source": "urn:ietf:params:oauth:grant-type:device_code",
+          "references": [
+            {
+              "description": "RFC 8628 OAuth 2.0 Device Authorization Grant",
+              "url": "https://www.rfc-editor.org/rfc/rfc8628"
+            }
+          ]
+        },
+        "7": {
+          "caption": "JWT Bearer",
+          "description": "The client presents a signed JSON Web Token as the authorization grant.",
+          "source": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+          "references": [
+            {
+              "description": "RFC 7523 JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants",
+              "url": "https://www.rfc-editor.org/rfc/rfc7523"
+            }
+          ]
+        },
+        "8": {
+          "caption": "SAML 2.0 Bearer",
+          "description": "The client presents a SAML 2.0 assertion as the authorization grant.",
+          "source": "urn:ietf:params:oauth:grant-type:saml2-bearer",
+          "references": [
+            {
+              "description": "RFC 7522 Security Assertion Markup Language (SAML) 2.0 Profile for OAuth 2.0 Client Authentication and Authorization Grants",
+              "url": "https://www.rfc-editor.org/rfc/rfc7522"
+            }
+          ]
+        },
+        "9": {
+          "caption": "Token Exchange",
+          "description": "The client exchanges a security token it already holds for a different token, for example to act on behalf of a user.",
+          "source": "urn:ietf:params:oauth:grant-type:token-exchange",
+          "references": [
+            {
+              "description": "RFC 8693 OAuth 2.0 Token Exchange",
+              "url": "https://www.rfc-editor.org/rfc/rfc8693"
+            }
+          ]
+        },
+        "99": {
+          "caption": "Other",
+          "description": "The grant type is not mapped. See the <code>grant_type</code> attribute, which contains a data source specific value."
+        }
+      }
+    },
     "is_cleartext": {
       "group": "context",
       "requirement": "optional"

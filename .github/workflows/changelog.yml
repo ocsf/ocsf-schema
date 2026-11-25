@@ -9,28 +9,32 @@ on:
 permissions:
   contents: read
 
+# A new push cancels the run for the previous one. Each label gets its own
+# group, so labels added together, as when a PR opens with labels, don't
+# cancel each other's runs or the run for the push.
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}-${{ github.event.label.name }}
   cancel-in-progress: true
 
 jobs:
   changelog:
-    name: Require a changelog file
+    name: Check changelog file
     # Maintainers add this label to changes that need no entry, such as
     # description-only edits. A skipped job counts as passing.
     if: ${{ !contains(github.event.pull_request.labels.*.name, 'skip changelog') }}
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       # The pull request merged into main, so the check runs main's script even
       # on a pull request opened before the script existed. The merge's first
       # parent is main, so the diff against it is the pull request's changes.
       - name: Checkout pull request merged into main
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 2
 
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
           python-version: "3.14"
 
